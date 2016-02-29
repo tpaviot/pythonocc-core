@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include IntAna2d_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -254,20 +266,6 @@ class IntAna2d_AnaIntersection {
 };
 
 
-%feature("shadow") IntAna2d_AnaIntersection::~IntAna2d_AnaIntersection %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna2d_AnaIntersection {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntAna2d_Conic;
 class IntAna2d_Conic {
 	public:
@@ -376,20 +374,6 @@ class IntAna2d_Conic {
 };
 
 
-%feature("shadow") IntAna2d_Conic::~IntAna2d_Conic %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna2d_Conic {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntAna2d_IntPoint;
 class IntAna2d_IntPoint {
 	public:
@@ -510,17 +494,3 @@ class IntAna2d_IntPoint {
 };
 
 
-%feature("shadow") IntAna2d_IntPoint::~IntAna2d_IntPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna2d_IntPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include SortTools_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -57,20 +69,6 @@ class SortTools_HeapSortOfInteger {
 };
 
 
-%feature("shadow") SortTools_HeapSortOfInteger::~SortTools_HeapSortOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend SortTools_HeapSortOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class SortTools_HeapSortOfReal {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -84,20 +82,6 @@ class SortTools_HeapSortOfReal {
 };
 
 
-%feature("shadow") SortTools_HeapSortOfReal::~SortTools_HeapSortOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend SortTools_HeapSortOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class SortTools_QuickSortOfInteger {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -111,20 +95,6 @@ class SortTools_QuickSortOfInteger {
 };
 
 
-%feature("shadow") SortTools_QuickSortOfInteger::~SortTools_QuickSortOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend SortTools_QuickSortOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class SortTools_QuickSortOfReal {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -138,20 +108,6 @@ class SortTools_QuickSortOfReal {
 };
 
 
-%feature("shadow") SortTools_QuickSortOfReal::~SortTools_QuickSortOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend SortTools_QuickSortOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class SortTools_ShellSortOfInteger {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -165,20 +121,6 @@ class SortTools_ShellSortOfInteger {
 };
 
 
-%feature("shadow") SortTools_ShellSortOfInteger::~SortTools_ShellSortOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend SortTools_ShellSortOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class SortTools_ShellSortOfReal {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -192,20 +134,6 @@ class SortTools_ShellSortOfReal {
 };
 
 
-%feature("shadow") SortTools_ShellSortOfReal::~SortTools_ShellSortOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend SortTools_ShellSortOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class SortTools_StraightInsertionSortOfInteger {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -219,20 +147,6 @@ class SortTools_StraightInsertionSortOfInteger {
 };
 
 
-%feature("shadow") SortTools_StraightInsertionSortOfInteger::~SortTools_StraightInsertionSortOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend SortTools_StraightInsertionSortOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class SortTools_StraightInsertionSortOfReal {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -246,17 +160,3 @@ class SortTools_StraightInsertionSortOfReal {
 };
 
 
-%feature("shadow") SortTools_StraightInsertionSortOfReal::~SortTools_StraightInsertionSortOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend SortTools_StraightInsertionSortOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

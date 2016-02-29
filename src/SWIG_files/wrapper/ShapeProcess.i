@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include ShapeProcess_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const Handle_ShapeProcess_Context & context );
@@ -81,20 +93,6 @@ class ShapeProcess {
 };
 
 
-%feature("shadow") ShapeProcess::~ShapeProcess %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeProcess {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeProcess_Context;
 class ShapeProcess_Context : public MMgt_TShared {
 	public:
@@ -137,7 +135,7 @@ class ShapeProcess_Context : public MMgt_TShared {
 
 	:rtype: Handle_Resource_Manager
 ") ResourceManager;
-		const Handle_Resource_Manager & ResourceManager ();
+		Handle_Resource_Manager ResourceManager ();
 		%feature("compactdefaultargs") SetScope;
 		%feature("autodoc", "	* Set a new (sub)scope
 
@@ -273,25 +271,23 @@ class ShapeProcess_Context : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeProcess_Context::~ShapeProcess_Context %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeProcess_Context {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeProcess_Context(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeProcess_Context {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeProcess_Context {
-	Handle_ShapeProcess_Context GetHandle() {
-	return *(Handle_ShapeProcess_Context*) &$self;
-	}
-};
+%pythonappend Handle_ShapeProcess_Context::Handle_ShapeProcess_Context %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeProcess_Context;
 class Handle_ShapeProcess_Context : public Handle_MMgt_TShared {
@@ -309,20 +305,6 @@ class Handle_ShapeProcess_Context : public Handle_MMgt_TShared {
 %extend Handle_ShapeProcess_Context {
     ShapeProcess_Context* GetObject() {
     return (ShapeProcess_Context*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeProcess_Context::~Handle_ShapeProcess_Context %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeProcess_Context {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -356,7 +338,7 @@ class ShapeProcess_DictionaryOfOperator : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_ShapeProcess_Operator
 ") Item;
-		const Handle_ShapeProcess_Operator & Item (const char * name,const Standard_Boolean exact = Standard_True);
+		Handle_ShapeProcess_Operator Item (const char * name,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
@@ -364,7 +346,7 @@ class ShapeProcess_DictionaryOfOperator : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_ShapeProcess_Operator
 ") Item;
-		const Handle_ShapeProcess_Operator & Item (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
+		Handle_ShapeProcess_Operator Item (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") GetItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
@@ -414,7 +396,7 @@ class ShapeProcess_DictionaryOfOperator : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_ShapeProcess_Operator
 ") NewItem;
-		Handle_ShapeProcess_Operator & NewItem (const char * name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
+		Handle_ShapeProcess_Operator NewItem (const char * name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") NewItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
@@ -424,7 +406,7 @@ class ShapeProcess_DictionaryOfOperator : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_ShapeProcess_Operator
 ") NewItem;
-		Handle_ShapeProcess_Operator & NewItem (const TCollection_AsciiString & name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
+		Handle_ShapeProcess_Operator NewItem (const TCollection_AsciiString & name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
@@ -470,25 +452,23 @@ class ShapeProcess_DictionaryOfOperator : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeProcess_DictionaryOfOperator::~ShapeProcess_DictionaryOfOperator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeProcess_DictionaryOfOperator {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeProcess_DictionaryOfOperator(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeProcess_DictionaryOfOperator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeProcess_DictionaryOfOperator {
-	Handle_ShapeProcess_DictionaryOfOperator GetHandle() {
-	return *(Handle_ShapeProcess_DictionaryOfOperator*) &$self;
-	}
-};
+%pythonappend Handle_ShapeProcess_DictionaryOfOperator::Handle_ShapeProcess_DictionaryOfOperator %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeProcess_DictionaryOfOperator;
 class Handle_ShapeProcess_DictionaryOfOperator : public Handle_MMgt_TShared {
@@ -506,20 +486,6 @@ class Handle_ShapeProcess_DictionaryOfOperator : public Handle_MMgt_TShared {
 %extend Handle_ShapeProcess_DictionaryOfOperator {
     ShapeProcess_DictionaryOfOperator* GetObject() {
     return (ShapeProcess_DictionaryOfOperator*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeProcess_DictionaryOfOperator::~Handle_ShapeProcess_DictionaryOfOperator %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeProcess_DictionaryOfOperator {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -563,7 +529,7 @@ class ShapeProcess_IteratorOfDictionaryOfOperator {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_ShapeProcess_Operator
 ") Value;
-		const Handle_ShapeProcess_Operator & Value ();
+		Handle_ShapeProcess_Operator Value ();
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	:rtype: TCollection_AsciiString
 ") Name;
@@ -571,20 +537,6 @@ class ShapeProcess_IteratorOfDictionaryOfOperator {
 };
 
 
-%feature("shadow") ShapeProcess_IteratorOfDictionaryOfOperator::~ShapeProcess_IteratorOfDictionaryOfOperator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeProcess_IteratorOfDictionaryOfOperator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class ShapeProcess_OperLibrary {
 	public:
 		%feature("compactdefaultargs") Init;
@@ -610,20 +562,6 @@ class ShapeProcess_OperLibrary {
 };
 
 
-%feature("shadow") ShapeProcess_OperLibrary::~ShapeProcess_OperLibrary %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeProcess_OperLibrary {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeProcess_Operator;
 class ShapeProcess_Operator : public MMgt_TShared {
 	public:
@@ -638,25 +576,23 @@ class ShapeProcess_Operator : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeProcess_Operator::~ShapeProcess_Operator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeProcess_Operator {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeProcess_Operator(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeProcess_Operator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeProcess_Operator {
-	Handle_ShapeProcess_Operator GetHandle() {
-	return *(Handle_ShapeProcess_Operator*) &$self;
-	}
-};
+%pythonappend Handle_ShapeProcess_Operator::Handle_ShapeProcess_Operator %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeProcess_Operator;
 class Handle_ShapeProcess_Operator : public Handle_MMgt_TShared {
@@ -674,20 +610,6 @@ class Handle_ShapeProcess_Operator : public Handle_MMgt_TShared {
 %extend Handle_ShapeProcess_Operator {
     ShapeProcess_Operator* GetObject() {
     return (ShapeProcess_Operator*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeProcess_Operator::~Handle_ShapeProcess_Operator %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeProcess_Operator {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -721,25 +643,23 @@ class ShapeProcess_StackItemOfDictionaryOfOperator : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeProcess_StackItemOfDictionaryOfOperator::~ShapeProcess_StackItemOfDictionaryOfOperator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeProcess_StackItemOfDictionaryOfOperator {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeProcess_StackItemOfDictionaryOfOperator(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeProcess_StackItemOfDictionaryOfOperator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeProcess_StackItemOfDictionaryOfOperator {
-	Handle_ShapeProcess_StackItemOfDictionaryOfOperator GetHandle() {
-	return *(Handle_ShapeProcess_StackItemOfDictionaryOfOperator*) &$self;
-	}
-};
+%pythonappend Handle_ShapeProcess_StackItemOfDictionaryOfOperator::Handle_ShapeProcess_StackItemOfDictionaryOfOperator %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeProcess_StackItemOfDictionaryOfOperator;
 class Handle_ShapeProcess_StackItemOfDictionaryOfOperator : public Handle_MMgt_TShared {
@@ -757,20 +677,6 @@ class Handle_ShapeProcess_StackItemOfDictionaryOfOperator : public Handle_MMgt_T
 %extend Handle_ShapeProcess_StackItemOfDictionaryOfOperator {
     ShapeProcess_StackItemOfDictionaryOfOperator* GetObject() {
     return (ShapeProcess_StackItemOfDictionaryOfOperator*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeProcess_StackItemOfDictionaryOfOperator::~Handle_ShapeProcess_StackItemOfDictionaryOfOperator %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeProcess_StackItemOfDictionaryOfOperator {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -826,13 +732,13 @@ class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 		%feature("compactdefaultargs") Messages;
 		%feature("autodoc", "	:rtype: Handle_ShapeExtend_MsgRegistrator
 ") Messages;
-		const Handle_ShapeExtend_MsgRegistrator & Messages ();
+		Handle_ShapeExtend_MsgRegistrator Messages ();
 		%feature("compactdefaultargs") Messages;
 		%feature("autodoc", "	* Returns messages recorded during shape processing It can be nullified before processing in order to avoid recording messages
 
 	:rtype: Handle_ShapeExtend_MsgRegistrator
 ") Messages;
-		Handle_ShapeExtend_MsgRegistrator & Messages ();
+		Handle_ShapeExtend_MsgRegistrator Messages ();
 		%feature("compactdefaultargs") SetDetalisation;
 		%feature("autodoc", "	:param level:
 	:type level: TopAbs_ShapeEnum
@@ -924,25 +830,23 @@ class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 };
 
 
-%feature("shadow") ShapeProcess_ShapeContext::~ShapeProcess_ShapeContext %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeProcess_ShapeContext {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeProcess_ShapeContext(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeProcess_ShapeContext {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeProcess_ShapeContext {
-	Handle_ShapeProcess_ShapeContext GetHandle() {
-	return *(Handle_ShapeProcess_ShapeContext*) &$self;
-	}
-};
+%pythonappend Handle_ShapeProcess_ShapeContext::Handle_ShapeProcess_ShapeContext %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeProcess_ShapeContext;
 class Handle_ShapeProcess_ShapeContext : public Handle_ShapeProcess_Context {
@@ -960,20 +864,6 @@ class Handle_ShapeProcess_ShapeContext : public Handle_ShapeProcess_Context {
 %extend Handle_ShapeProcess_ShapeContext {
     ShapeProcess_ShapeContext* GetObject() {
     return (ShapeProcess_ShapeContext*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeProcess_ShapeContext::~Handle_ShapeProcess_ShapeContext %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeProcess_ShapeContext {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -999,25 +889,23 @@ class ShapeProcess_UOperator : public ShapeProcess_Operator {
 };
 
 
-%feature("shadow") ShapeProcess_UOperator::~ShapeProcess_UOperator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeProcess_UOperator {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeProcess_UOperator(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeProcess_UOperator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeProcess_UOperator {
-	Handle_ShapeProcess_UOperator GetHandle() {
-	return *(Handle_ShapeProcess_UOperator*) &$self;
-	}
-};
+%pythonappend Handle_ShapeProcess_UOperator::Handle_ShapeProcess_UOperator %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeProcess_UOperator;
 class Handle_ShapeProcess_UOperator : public Handle_ShapeProcess_Operator {
@@ -1035,20 +923,6 @@ class Handle_ShapeProcess_UOperator : public Handle_ShapeProcess_Operator {
 %extend Handle_ShapeProcess_UOperator {
     ShapeProcess_UOperator* GetObject() {
     return (ShapeProcess_UOperator*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeProcess_UOperator::~Handle_ShapeProcess_UOperator %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeProcess_UOperator {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

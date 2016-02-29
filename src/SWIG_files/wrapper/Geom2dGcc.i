@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Geom2dGcc_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -82,20 +94,6 @@ class Geom2dGcc {
 };
 
 
-%feature("shadow") Geom2dGcc::~Geom2dGcc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_Circ2d2TanOn;
 class Geom2dGcc_Circ2d2TanOn {
 	public:
@@ -254,20 +252,6 @@ class Geom2dGcc_Circ2d2TanOn {
 };
 
 
-%feature("shadow") Geom2dGcc_Circ2d2TanOn::~Geom2dGcc_Circ2d2TanOn %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_Circ2d2TanOn {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_Circ2d2TanRad;
 class Geom2dGcc_Circ2d2TanRad {
 	public:
@@ -400,20 +384,6 @@ class Geom2dGcc_Circ2d2TanRad {
 };
 
 
-%feature("shadow") Geom2dGcc_Circ2d2TanRad::~Geom2dGcc_Circ2d2TanRad %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_Circ2d2TanRad {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_Circ2d3Tan;
 class Geom2dGcc_Circ2d3Tan {
 	public:
@@ -600,20 +570,6 @@ class Geom2dGcc_Circ2d3Tan {
 };
 
 
-%feature("shadow") Geom2dGcc_Circ2d3Tan::~Geom2dGcc_Circ2d3Tan %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_Circ2d3Tan {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_Circ2dTanCen;
 class Geom2dGcc_Circ2dTanCen {
 	public:
@@ -684,20 +640,6 @@ class Geom2dGcc_Circ2dTanCen {
 };
 
 
-%feature("shadow") Geom2dGcc_Circ2dTanCen::~Geom2dGcc_Circ2dTanCen %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_Circ2dTanCen {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_Circ2dTanOnRad;
 class Geom2dGcc_Circ2dTanOnRad {
 	public:
@@ -808,20 +750,6 @@ class Geom2dGcc_Circ2dTanOnRad {
 };
 
 
-%feature("shadow") Geom2dGcc_Circ2dTanOnRad::~Geom2dGcc_Circ2dTanOnRad %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_Circ2dTanOnRad {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class Geom2dGcc_CurveTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -903,20 +831,6 @@ class Geom2dGcc_CurveTool {
 };
 
 
-%feature("shadow") Geom2dGcc_CurveTool::~Geom2dGcc_CurveTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_CurveTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_FuncTCirCuOfMyL2d2Tan;
 class Geom2dGcc_FuncTCirCuOfMyL2d2Tan : public math_FunctionWithDerivative {
 	public:
@@ -957,20 +871,6 @@ class Geom2dGcc_FuncTCirCuOfMyL2d2Tan : public math_FunctionWithDerivative {
 };
 
 
-%feature("shadow") Geom2dGcc_FuncTCirCuOfMyL2d2Tan::~Geom2dGcc_FuncTCirCuOfMyL2d2Tan %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_FuncTCirCuOfMyL2d2Tan {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_FuncTCuCuOfMyL2d2Tan;
 class Geom2dGcc_FuncTCuCuOfMyL2d2Tan : public math_FunctionSetWithDerivatives {
 	public:
@@ -1045,20 +945,6 @@ class Geom2dGcc_FuncTCuCuOfMyL2d2Tan : public math_FunctionSetWithDerivatives {
 };
 
 
-%feature("shadow") Geom2dGcc_FuncTCuCuOfMyL2d2Tan::~Geom2dGcc_FuncTCuCuOfMyL2d2Tan %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_FuncTCuCuOfMyL2d2Tan {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_FuncTCuCuOnCuOfMyC2d2TanOn;
 class Geom2dGcc_FuncTCuCuOnCuOfMyC2d2TanOn : public math_FunctionSetWithDerivatives {
 	public:
@@ -1267,20 +1153,6 @@ class Geom2dGcc_FuncTCuCuOnCuOfMyC2d2TanOn : public math_FunctionSetWithDerivati
 };
 
 
-%feature("shadow") Geom2dGcc_FuncTCuCuOnCuOfMyC2d2TanOn::~Geom2dGcc_FuncTCuCuOnCuOfMyC2d2TanOn %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_FuncTCuCuOnCuOfMyC2d2TanOn {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_FuncTCuPtOfMyL2d2Tan;
 class Geom2dGcc_FuncTCuPtOfMyL2d2Tan : public math_FunctionWithDerivative {
 	public:
@@ -1321,20 +1193,6 @@ class Geom2dGcc_FuncTCuPtOfMyL2d2Tan : public math_FunctionWithDerivative {
 };
 
 
-%feature("shadow") Geom2dGcc_FuncTCuPtOfMyL2d2Tan::~Geom2dGcc_FuncTCuPtOfMyL2d2Tan %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_FuncTCuPtOfMyL2d2Tan {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_FuncTOblOfMyL2dTanObl;
 class Geom2dGcc_FuncTOblOfMyL2dTanObl : public math_FunctionWithDerivative {
 	public:
@@ -1375,20 +1233,6 @@ class Geom2dGcc_FuncTOblOfMyL2dTanObl : public math_FunctionWithDerivative {
 };
 
 
-%feature("shadow") Geom2dGcc_FuncTOblOfMyL2dTanObl::~Geom2dGcc_FuncTOblOfMyL2dTanObl %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_FuncTOblOfMyL2dTanObl {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_Lin2d2Tan;
 class Geom2dGcc_Lin2d2Tan {
 	public:
@@ -1509,20 +1353,6 @@ class Geom2dGcc_Lin2d2Tan {
 };
 
 
-%feature("shadow") Geom2dGcc_Lin2d2Tan::~Geom2dGcc_Lin2d2Tan %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_Lin2d2Tan {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_Lin2dTanObl;
 class Geom2dGcc_Lin2dTanObl {
 	public:
@@ -1617,20 +1447,6 @@ class Geom2dGcc_Lin2dTanObl {
 };
 
 
-%feature("shadow") Geom2dGcc_Lin2dTanObl::~Geom2dGcc_Lin2dTanObl %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_Lin2dTanObl {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_MyC2d2TanOn;
 class Geom2dGcc_MyC2d2TanOn {
 	public:
@@ -1899,20 +1715,6 @@ class Geom2dGcc_MyC2d2TanOn {
 };
 
 
-%feature("shadow") Geom2dGcc_MyC2d2TanOn::~Geom2dGcc_MyC2d2TanOn %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_MyC2d2TanOn {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_MyC2d3Tan;
 class Geom2dGcc_MyC2d3Tan {
 	public:
@@ -2149,20 +1951,6 @@ class Geom2dGcc_MyC2d3Tan {
 };
 
 
-%feature("shadow") Geom2dGcc_MyC2d3Tan::~Geom2dGcc_MyC2d3Tan %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_MyC2d3Tan {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_MyCirc2d2TanOn;
 class Geom2dGcc_MyCirc2d2TanOn {
 	public:
@@ -2311,20 +2099,6 @@ class Geom2dGcc_MyCirc2d2TanOn {
 };
 
 
-%feature("shadow") Geom2dGcc_MyCirc2d2TanOn::~Geom2dGcc_MyCirc2d2TanOn %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_MyCirc2d2TanOn {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_MyCirc2d2TanRad;
 class Geom2dGcc_MyCirc2d2TanRad {
 	public:
@@ -2439,20 +2213,6 @@ class Geom2dGcc_MyCirc2d2TanRad {
 };
 
 
-%feature("shadow") Geom2dGcc_MyCirc2d2TanRad::~Geom2dGcc_MyCirc2d2TanRad %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_MyCirc2d2TanRad {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_MyCirc2dTanCen;
 class Geom2dGcc_MyCirc2dTanCen {
 	public:
@@ -2503,20 +2263,6 @@ class Geom2dGcc_MyCirc2dTanCen {
 };
 
 
-%feature("shadow") Geom2dGcc_MyCirc2dTanCen::~Geom2dGcc_MyCirc2dTanCen %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_MyCirc2dTanCen {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_MyCirc2dTanOnRad;
 class Geom2dGcc_MyCirc2dTanOnRad {
 	public:
@@ -2645,20 +2391,6 @@ class Geom2dGcc_MyCirc2dTanOnRad {
 };
 
 
-%feature("shadow") Geom2dGcc_MyCirc2dTanOnRad::~Geom2dGcc_MyCirc2dTanOnRad %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_MyCirc2dTanOnRad {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class Geom2dGcc_MyCurveTool {
 	public:
 		%feature("compactdefaultargs") TheType;
@@ -2792,20 +2524,6 @@ class Geom2dGcc_MyCurveTool {
 };
 
 
-%feature("shadow") Geom2dGcc_MyCurveTool::~Geom2dGcc_MyCurveTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_MyCurveTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_MyL2d2Tan;
 class Geom2dGcc_MyL2d2Tan {
 	public:
@@ -2886,20 +2604,6 @@ class Geom2dGcc_MyL2d2Tan {
 };
 
 
-%feature("shadow") Geom2dGcc_MyL2d2Tan::~Geom2dGcc_MyL2d2Tan %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_MyL2d2Tan {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_MyL2dTanObl;
 class Geom2dGcc_MyL2dTanObl {
 	public:
@@ -2958,20 +2662,6 @@ class Geom2dGcc_MyL2dTanObl {
 };
 
 
-%feature("shadow") Geom2dGcc_MyL2dTanObl::~Geom2dGcc_MyL2dTanObl %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_MyL2dTanObl {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_MyQCurve;
 class Geom2dGcc_MyQCurve {
 	public:
@@ -3010,20 +2700,6 @@ class Geom2dGcc_MyQCurve {
 };
 
 
-%feature("shadow") Geom2dGcc_MyQCurve::~Geom2dGcc_MyQCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_MyQCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dGcc_QualifiedCurve;
 class Geom2dGcc_QualifiedCurve {
 	public:
@@ -3076,17 +2752,3 @@ class Geom2dGcc_QualifiedCurve {
 };
 
 
-%feature("shadow") Geom2dGcc_QualifiedCurve::~Geom2dGcc_QualifiedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dGcc_QualifiedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

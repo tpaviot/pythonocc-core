@@ -70,6 +70,12 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(t.Value(1), 3)
         self.assertEqual(t.Value(2), 33)
 
+    def test_handle_standard_transient_copy(self):
+        def evil_function(t):
+            handle = Handle_Standard_Transient(t)
+        t = Standard_Transient()
+        evil_function(t)
+
     def test_list(self):
         '''
         Test python lists features

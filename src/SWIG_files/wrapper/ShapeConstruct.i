@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include ShapeConstruct_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -180,20 +192,6 @@ class ShapeConstruct {
 };
 
 
-%feature("shadow") ShapeConstruct::~ShapeConstruct %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeConstruct {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeConstruct_CompBezierCurves2dToBSplineCurve2d;
 class ShapeConstruct_CompBezierCurves2dToBSplineCurve2d {
 	public:
@@ -244,20 +242,6 @@ class ShapeConstruct_CompBezierCurves2dToBSplineCurve2d {
 };
 
 
-%feature("shadow") ShapeConstruct_CompBezierCurves2dToBSplineCurve2d::~ShapeConstruct_CompBezierCurves2dToBSplineCurve2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeConstruct_CompBezierCurves2dToBSplineCurve2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeConstruct_CompBezierCurvesToBSplineCurve;
 class ShapeConstruct_CompBezierCurvesToBSplineCurve {
 	public:
@@ -308,20 +292,6 @@ class ShapeConstruct_CompBezierCurvesToBSplineCurve {
 };
 
 
-%feature("shadow") ShapeConstruct_CompBezierCurvesToBSplineCurve::~ShapeConstruct_CompBezierCurvesToBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeConstruct_CompBezierCurvesToBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class ShapeConstruct_Curve {
 	public:
 		%feature("compactdefaultargs") AdjustCurve;
@@ -417,20 +387,6 @@ class ShapeConstruct_Curve {
 };
 
 
-%feature("shadow") ShapeConstruct_Curve::~ShapeConstruct_Curve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeConstruct_Curve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeConstruct_MakeTriangulation;
 class ShapeConstruct_MakeTriangulation : public BRepBuilderAPI_MakeShape {
 	public:
@@ -461,20 +417,6 @@ class ShapeConstruct_MakeTriangulation : public BRepBuilderAPI_MakeShape {
 };
 
 
-%feature("shadow") ShapeConstruct_MakeTriangulation::~ShapeConstruct_MakeTriangulation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeConstruct_MakeTriangulation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeConstruct_ProjectCurveOnSurface;
 class ShapeConstruct_ProjectCurveOnSurface : public MMgt_TShared {
 	public:
@@ -619,25 +561,23 @@ class ShapeConstruct_ProjectCurveOnSurface : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeConstruct_ProjectCurveOnSurface::~ShapeConstruct_ProjectCurveOnSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeConstruct_ProjectCurveOnSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeConstruct_ProjectCurveOnSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeConstruct_ProjectCurveOnSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeConstruct_ProjectCurveOnSurface {
-	Handle_ShapeConstruct_ProjectCurveOnSurface GetHandle() {
-	return *(Handle_ShapeConstruct_ProjectCurveOnSurface*) &$self;
-	}
-};
+%pythonappend Handle_ShapeConstruct_ProjectCurveOnSurface::Handle_ShapeConstruct_ProjectCurveOnSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeConstruct_ProjectCurveOnSurface;
 class Handle_ShapeConstruct_ProjectCurveOnSurface : public Handle_MMgt_TShared {
@@ -655,20 +595,6 @@ class Handle_ShapeConstruct_ProjectCurveOnSurface : public Handle_MMgt_TShared {
 %extend Handle_ShapeConstruct_ProjectCurveOnSurface {
     ShapeConstruct_ProjectCurveOnSurface* GetObject() {
     return (ShapeConstruct_ProjectCurveOnSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeConstruct_ProjectCurveOnSurface::~Handle_ShapeConstruct_ProjectCurveOnSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeConstruct_ProjectCurveOnSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include GeomLib_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef GeomLib_DenominatorMultiplier * GeomLib_DenominatorMultiplierPtr;
@@ -292,20 +304,6 @@ class GeomLib {
 };
 
 
-%feature("shadow") GeomLib::~GeomLib %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomLib {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomLib_Array1OfMat;
 class GeomLib_Array1OfMat {
 	public:
@@ -388,20 +386,6 @@ class GeomLib_Array1OfMat {
 };
 
 
-%feature("shadow") GeomLib_Array1OfMat::~GeomLib_Array1OfMat %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomLib_Array1OfMat {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomLib_Check2dBSplineCurve;
 class GeomLib_Check2dBSplineCurve {
 	public:
@@ -448,20 +432,6 @@ class GeomLib_Check2dBSplineCurve {
 };
 
 
-%feature("shadow") GeomLib_Check2dBSplineCurve::~GeomLib_Check2dBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomLib_Check2dBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomLib_CheckBSplineCurve;
 class GeomLib_CheckBSplineCurve {
 	public:
@@ -508,20 +478,6 @@ class GeomLib_CheckBSplineCurve {
 };
 
 
-%feature("shadow") GeomLib_CheckBSplineCurve::~GeomLib_CheckBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomLib_CheckBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomLib_DenominatorMultiplier;
 class GeomLib_DenominatorMultiplier {
 	public:
@@ -548,20 +504,6 @@ class GeomLib_DenominatorMultiplier {
 };
 
 
-%feature("shadow") GeomLib_DenominatorMultiplier::~GeomLib_DenominatorMultiplier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomLib_DenominatorMultiplier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomLib_Interpolate;
 class GeomLib_Interpolate {
 	public:
@@ -598,20 +540,6 @@ class GeomLib_Interpolate {
 };
 
 
-%feature("shadow") GeomLib_Interpolate::~GeomLib_Interpolate %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomLib_Interpolate {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomLib_IsPlanarSurface;
 class GeomLib_IsPlanarSurface {
 	public:
@@ -638,20 +566,6 @@ class GeomLib_IsPlanarSurface {
 };
 
 
-%feature("shadow") GeomLib_IsPlanarSurface::~GeomLib_IsPlanarSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomLib_IsPlanarSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomLib_LogSample;
 class GeomLib_LogSample : public math_FunctionSample {
 	public:
@@ -676,20 +590,6 @@ class GeomLib_LogSample : public math_FunctionSample {
 };
 
 
-%feature("shadow") GeomLib_LogSample::~GeomLib_LogSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomLib_LogSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomLib_MakeCurvefromApprox;
 class GeomLib_MakeCurvefromApprox {
 	public:
@@ -770,20 +670,6 @@ class GeomLib_MakeCurvefromApprox {
 };
 
 
-%feature("shadow") GeomLib_MakeCurvefromApprox::~GeomLib_MakeCurvefromApprox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomLib_MakeCurvefromApprox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomLib_PolyFunc;
 class GeomLib_PolyFunc : public math_FunctionWithDerivative {
 	public:
@@ -828,20 +714,6 @@ class GeomLib_PolyFunc : public math_FunctionWithDerivative {
 };
 
 
-%feature("shadow") GeomLib_PolyFunc::~GeomLib_PolyFunc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomLib_PolyFunc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class GeomLib_Tool {
 	public:
 		%feature("compactdefaultargs") Parameter;
@@ -891,17 +763,3 @@ class GeomLib_Tool {
 };
 
 
-%feature("shadow") GeomLib_Tool::~GeomLib_Tool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomLib_Tool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

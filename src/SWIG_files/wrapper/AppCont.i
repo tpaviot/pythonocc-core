@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include AppCont_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -86,20 +98,6 @@ class AppCont_FitFunction {
 };
 
 
-%feature("shadow") AppCont_FitFunction::~AppCont_FitFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AppCont_FitFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AppCont_FitFunction2d;
 class AppCont_FitFunction2d {
 	public:
@@ -142,20 +140,6 @@ class AppCont_FitFunction2d {
 };
 
 
-%feature("shadow") AppCont_FitFunction2d::~AppCont_FitFunction2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AppCont_FitFunction2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AppCont_Function;
 class AppCont_Function {
 	public:
@@ -198,20 +182,6 @@ class AppCont_Function {
 };
 
 
-%feature("shadow") AppCont_Function::~AppCont_Function %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AppCont_Function {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AppCont_Function2d;
 class AppCont_Function2d {
 	public:
@@ -254,20 +224,6 @@ class AppCont_Function2d {
 };
 
 
-%feature("shadow") AppCont_Function2d::~AppCont_Function2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AppCont_Function2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class AppCont_FunctionTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -373,20 +329,6 @@ class AppCont_FunctionTool {
 };
 
 
-%feature("shadow") AppCont_FunctionTool::~AppCont_FunctionTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AppCont_FunctionTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class AppCont_FunctionTool2d {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -492,17 +434,3 @@ class AppCont_FunctionTool2d {
 };
 
 
-%feature("shadow") AppCont_FunctionTool2d::~AppCont_FunctionTool2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AppCont_FunctionTool2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include ShapeExtend_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -102,20 +114,6 @@ class ShapeExtend {
 };
 
 
-%feature("shadow") ShapeExtend::~ShapeExtend %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeExtend {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeExtend_BasicMsgRegistrator;
 class ShapeExtend_BasicMsgRegistrator : public MMgt_TShared {
 	public:
@@ -162,25 +160,23 @@ class ShapeExtend_BasicMsgRegistrator : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeExtend_BasicMsgRegistrator::~ShapeExtend_BasicMsgRegistrator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeExtend_BasicMsgRegistrator {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeExtend_BasicMsgRegistrator(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeExtend_BasicMsgRegistrator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeExtend_BasicMsgRegistrator {
-	Handle_ShapeExtend_BasicMsgRegistrator GetHandle() {
-	return *(Handle_ShapeExtend_BasicMsgRegistrator*) &$self;
-	}
-};
+%pythonappend Handle_ShapeExtend_BasicMsgRegistrator::Handle_ShapeExtend_BasicMsgRegistrator %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeExtend_BasicMsgRegistrator;
 class Handle_ShapeExtend_BasicMsgRegistrator : public Handle_MMgt_TShared {
@@ -200,20 +196,6 @@ class Handle_ShapeExtend_BasicMsgRegistrator : public Handle_MMgt_TShared {
     return (ShapeExtend_BasicMsgRegistrator*)$self->Access();
     }
 };
-%feature("shadow") Handle_ShapeExtend_BasicMsgRegistrator::~Handle_ShapeExtend_BasicMsgRegistrator %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeExtend_BasicMsgRegistrator {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor ShapeExtend_ComplexCurve;
 class ShapeExtend_ComplexCurve : public Geom_Curve {
@@ -231,7 +213,7 @@ class ShapeExtend_ComplexCurve : public Geom_Curve {
 	:type index: int
 	:rtype: Handle_Geom_Curve
 ") Curve;
-		virtual const Handle_Geom_Curve & Curve (const Standard_Integer index);
+		Handle_Geom_Curve Curve (const Standard_Integer index);
 		%feature("compactdefaultargs") LocateParameter;
 		%feature("autodoc", "	* Returns number of the curve for the given parameter U and local paramete r UOut for the found curve
 
@@ -379,25 +361,23 @@ class ShapeExtend_ComplexCurve : public Geom_Curve {
 };
 
 
-%feature("shadow") ShapeExtend_ComplexCurve::~ShapeExtend_ComplexCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeExtend_ComplexCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeExtend_ComplexCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeExtend_ComplexCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeExtend_ComplexCurve {
-	Handle_ShapeExtend_ComplexCurve GetHandle() {
-	return *(Handle_ShapeExtend_ComplexCurve*) &$self;
-	}
-};
+%pythonappend Handle_ShapeExtend_ComplexCurve::Handle_ShapeExtend_ComplexCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeExtend_ComplexCurve;
 class Handle_ShapeExtend_ComplexCurve : public Handle_Geom_Curve {
@@ -415,20 +395,6 @@ class Handle_ShapeExtend_ComplexCurve : public Handle_Geom_Curve {
 %extend Handle_ShapeExtend_ComplexCurve {
     ShapeExtend_ComplexCurve* GetObject() {
     return (ShapeExtend_ComplexCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeExtend_ComplexCurve::~Handle_ShapeExtend_ComplexCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeExtend_ComplexCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -506,13 +472,13 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 	:type j: int
 	:rtype: Handle_Geom_Surface
 ") Patch;
-		const Handle_Geom_Surface & Patch (const Standard_Integer i,const Standard_Integer j);
+		Handle_Geom_Surface Patch (const Standard_Integer i,const Standard_Integer j);
 		%feature("compactdefaultargs") Patches;
 		%feature("autodoc", "	* Returns grid of surfaces
 
 	:rtype: Handle_TColGeom_HArray2OfSurface
 ") Patches;
-		const Handle_TColGeom_HArray2OfSurface & Patches ();
+		Handle_TColGeom_HArray2OfSurface Patches ();
 		%feature("compactdefaultargs") UJointValues;
 		%feature("autodoc", "	* Returns the array of U values corresponding to joint points between patches as well as to start and end points, which define global parametrisation of the surface
 
@@ -610,7 +576,7 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 	:type V: float
 	:rtype: Handle_Geom_Surface
 ") Patch;
-		const Handle_Geom_Surface & Patch (const Standard_Real U,const Standard_Real V);
+		Handle_Geom_Surface Patch (const Standard_Real U,const Standard_Real V);
 		%feature("compactdefaultargs") Patch;
 		%feature("autodoc", "	* Returns one surface patch that contains given point
 
@@ -618,7 +584,7 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 	:type pnt: gp_Pnt2d
 	:rtype: Handle_Geom_Surface
 ") Patch;
-		const Handle_Geom_Surface & Patch (const gp_Pnt2d & pnt);
+		Handle_Geom_Surface Patch (const gp_Pnt2d & pnt);
 		%feature("compactdefaultargs") ULocalToGlobal;
 		%feature("autodoc", "	* Converts local parameter u on patch i,j to global parameter U
 
@@ -944,25 +910,23 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 };
 
 
-%feature("shadow") ShapeExtend_CompositeSurface::~ShapeExtend_CompositeSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeExtend_CompositeSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeExtend_CompositeSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeExtend_CompositeSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeExtend_CompositeSurface {
-	Handle_ShapeExtend_CompositeSurface GetHandle() {
-	return *(Handle_ShapeExtend_CompositeSurface*) &$self;
-	}
-};
+%pythonappend Handle_ShapeExtend_CompositeSurface::Handle_ShapeExtend_CompositeSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeExtend_CompositeSurface;
 class Handle_ShapeExtend_CompositeSurface : public Handle_Geom_Surface {
@@ -980,20 +944,6 @@ class Handle_ShapeExtend_CompositeSurface : public Handle_Geom_Surface {
 %extend Handle_ShapeExtend_CompositeSurface {
     ShapeExtend_CompositeSurface* GetObject() {
     return (ShapeExtend_CompositeSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeExtend_CompositeSurface::~Handle_ShapeExtend_CompositeSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeExtend_CompositeSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1027,20 +977,6 @@ class ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg : public TCollection_
 };
 
 
-%feature("shadow") ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg::~ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg;
 class ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg : public TCollection_BasicMapIterator {
 	public:
@@ -1063,7 +999,7 @@ class ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg : public TCollect
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Key;
-		const Handle_Standard_Transient & Key ();
+		Handle_Standard_Transient Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Message_ListOfMsg
 ") Value;
@@ -1071,20 +1007,6 @@ class ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg : public TCollect
 };
 
 
-%feature("shadow") ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg::~ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg;
 class ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public TCollection_MapNode {
 	public:
@@ -1109,25 +1031,23 @@ class ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public TCollection_MapN
 };
 
 
-%feature("shadow") ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg::~ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg {
-	Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg GetHandle() {
-	return *(Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg*) &$self;
-	}
-};
+%pythonappend Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg::Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg;
 class Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public Handle_TCollection_MapNode {
@@ -1147,20 +1067,6 @@ class Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public Handle_TC
     return (ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg*)$self->Access();
     }
 };
-%feature("shadow") Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg::~Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg;
 class ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public TCollection_MapNode {
@@ -1178,7 +1084,7 @@ class ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public TCollection_
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Key;
-		Handle_Standard_Transient & Key ();
+		Handle_Standard_Transient Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Message_ListOfMsg
 ") Value;
@@ -1186,25 +1092,23 @@ class ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public TCollection_
 };
 
 
-%feature("shadow") ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg::~ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
-	Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg GetHandle() {
-	return *(Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg*) &$self;
-	}
-};
+%pythonappend Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg::Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg;
 class Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public Handle_TCollection_MapNode {
@@ -1222,20 +1126,6 @@ class Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public Handl
 %extend Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
     ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg* GetObject() {
     return (ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg::~Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1317,20 +1207,6 @@ class ShapeExtend_DataMapOfShapeListOfMsg : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") ShapeExtend_DataMapOfShapeListOfMsg::~ShapeExtend_DataMapOfShapeListOfMsg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeExtend_DataMapOfShapeListOfMsg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeExtend_DataMapOfTransientListOfMsg;
 class ShapeExtend_DataMapOfTransientListOfMsg : public TCollection_BasicMap {
 	public:
@@ -1409,20 +1285,6 @@ class ShapeExtend_DataMapOfTransientListOfMsg : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") ShapeExtend_DataMapOfTransientListOfMsg::~ShapeExtend_DataMapOfTransientListOfMsg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeExtend_DataMapOfTransientListOfMsg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeExtend_Explorer;
 class ShapeExtend_Explorer {
 	public:
@@ -1521,20 +1383,6 @@ class ShapeExtend_Explorer {
 };
 
 
-%feature("shadow") ShapeExtend_Explorer::~ShapeExtend_Explorer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeExtend_Explorer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeExtend_WireData;
 class ShapeExtend_WireData : public MMgt_TShared {
 	public:
@@ -1784,25 +1632,23 @@ class ShapeExtend_WireData : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeExtend_WireData::~ShapeExtend_WireData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeExtend_WireData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeExtend_WireData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeExtend_WireData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeExtend_WireData {
-	Handle_ShapeExtend_WireData GetHandle() {
-	return *(Handle_ShapeExtend_WireData*) &$self;
-	}
-};
+%pythonappend Handle_ShapeExtend_WireData::Handle_ShapeExtend_WireData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeExtend_WireData;
 class Handle_ShapeExtend_WireData : public Handle_MMgt_TShared {
@@ -1820,20 +1666,6 @@ class Handle_ShapeExtend_WireData : public Handle_MMgt_TShared {
 %extend Handle_ShapeExtend_WireData {
     ShapeExtend_WireData* GetObject() {
     return (ShapeExtend_WireData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeExtend_WireData::~Handle_ShapeExtend_WireData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeExtend_WireData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1885,25 +1717,23 @@ class ShapeExtend_MsgRegistrator : public ShapeExtend_BasicMsgRegistrator {
 };
 
 
-%feature("shadow") ShapeExtend_MsgRegistrator::~ShapeExtend_MsgRegistrator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeExtend_MsgRegistrator {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeExtend_MsgRegistrator(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeExtend_MsgRegistrator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeExtend_MsgRegistrator {
-	Handle_ShapeExtend_MsgRegistrator GetHandle() {
-	return *(Handle_ShapeExtend_MsgRegistrator*) &$self;
-	}
-};
+%pythonappend Handle_ShapeExtend_MsgRegistrator::Handle_ShapeExtend_MsgRegistrator %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeExtend_MsgRegistrator;
 class Handle_ShapeExtend_MsgRegistrator : public Handle_ShapeExtend_BasicMsgRegistrator {
@@ -1921,20 +1751,6 @@ class Handle_ShapeExtend_MsgRegistrator : public Handle_ShapeExtend_BasicMsgRegi
 %extend Handle_ShapeExtend_MsgRegistrator {
     ShapeExtend_MsgRegistrator* GetObject() {
     return (ShapeExtend_MsgRegistrator*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeExtend_MsgRegistrator::~Handle_ShapeExtend_MsgRegistrator %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeExtend_MsgRegistrator {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

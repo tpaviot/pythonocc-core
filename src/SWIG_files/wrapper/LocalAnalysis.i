@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include LocalAnalysis_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -78,20 +90,6 @@ class LocalAnalysis {
 };
 
 
-%feature("shadow") LocalAnalysis::~LocalAnalysis %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend LocalAnalysis {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor LocalAnalysis_CurveContinuity;
 class LocalAnalysis_CurveContinuity {
 	public:
@@ -194,20 +192,6 @@ class LocalAnalysis_CurveContinuity {
 };
 
 
-%feature("shadow") LocalAnalysis_CurveContinuity::~LocalAnalysis_CurveContinuity %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend LocalAnalysis_CurveContinuity {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor LocalAnalysis_SurfaceContinuity;
 class LocalAnalysis_SurfaceContinuity {
 	public:
@@ -384,17 +368,3 @@ class LocalAnalysis_SurfaceContinuity {
 };
 
 
-%feature("shadow") LocalAnalysis_SurfaceContinuity::~LocalAnalysis_SurfaceContinuity %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend LocalAnalysis_SurfaceContinuity {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

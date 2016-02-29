@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include V3d_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef V3d_View * V3d_ViewPointer;
@@ -271,20 +283,6 @@ class V3d {
 };
 
 
-%feature("shadow") V3d::~V3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend V3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor V3d_CircularGrid;
 class V3d_CircularGrid : public Aspect_CircularGrid {
 	public:
@@ -337,25 +335,23 @@ class V3d_CircularGrid : public Aspect_CircularGrid {
 };
 
 
-%feature("shadow") V3d_CircularGrid::~V3d_CircularGrid %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_CircularGrid {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_CircularGrid(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_CircularGrid {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_CircularGrid {
-	Handle_V3d_CircularGrid GetHandle() {
-	return *(Handle_V3d_CircularGrid*) &$self;
-	}
-};
+%pythonappend Handle_V3d_CircularGrid::Handle_V3d_CircularGrid %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_CircularGrid;
 class Handle_V3d_CircularGrid : public Handle_Aspect_CircularGrid {
@@ -373,20 +369,6 @@ class Handle_V3d_CircularGrid : public Handle_Aspect_CircularGrid {
 %extend Handle_V3d_CircularGrid {
     V3d_CircularGrid* GetObject() {
     return (V3d_CircularGrid*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_CircularGrid::~Handle_V3d_CircularGrid %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_CircularGrid {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -474,25 +456,23 @@ class V3d_ColorScale : public Aspect_ColorScale {
 };
 
 
-%feature("shadow") V3d_ColorScale::~V3d_ColorScale %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_ColorScale {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_ColorScale(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_ColorScale {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_ColorScale {
-	Handle_V3d_ColorScale GetHandle() {
-	return *(Handle_V3d_ColorScale*) &$self;
-	}
-};
+%pythonappend Handle_V3d_ColorScale::Handle_V3d_ColorScale %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_ColorScale;
 class Handle_V3d_ColorScale : public Handle_Aspect_ColorScale {
@@ -510,20 +490,6 @@ class Handle_V3d_ColorScale : public Handle_Aspect_ColorScale {
 %extend Handle_V3d_ColorScale {
     V3d_ColorScale* GetObject() {
     return (V3d_ColorScale*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_ColorScale::~Handle_V3d_ColorScale %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_ColorScale {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -553,25 +519,23 @@ class V3d_ColorScaleLayerItem : public Visual3d_LayerItem {
 };
 
 
-%feature("shadow") V3d_ColorScaleLayerItem::~V3d_ColorScaleLayerItem %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_ColorScaleLayerItem {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_ColorScaleLayerItem(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_ColorScaleLayerItem {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_ColorScaleLayerItem {
-	Handle_V3d_ColorScaleLayerItem GetHandle() {
-	return *(Handle_V3d_ColorScaleLayerItem*) &$self;
-	}
-};
+%pythonappend Handle_V3d_ColorScaleLayerItem::Handle_V3d_ColorScaleLayerItem %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_ColorScaleLayerItem;
 class Handle_V3d_ColorScaleLayerItem : public Handle_Visual3d_LayerItem {
@@ -591,20 +555,6 @@ class Handle_V3d_ColorScaleLayerItem : public Handle_Visual3d_LayerItem {
     return (V3d_ColorScaleLayerItem*)$self->Access();
     }
 };
-%feature("shadow") Handle_V3d_ColorScaleLayerItem::~Handle_V3d_ColorScaleLayerItem %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_ColorScaleLayerItem {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor V3d_LayerMgr;
 class V3d_LayerMgr : public MMgt_TShared {
@@ -618,7 +568,7 @@ class V3d_LayerMgr : public MMgt_TShared {
 		%feature("compactdefaultargs") Overlay;
 		%feature("autodoc", "	:rtype: Handle_Visual3d_Layer
 ") Overlay;
-		const Handle_Visual3d_Layer & Overlay ();
+		Handle_Visual3d_Layer Overlay ();
 		%feature("compactdefaultargs") View;
 		%feature("autodoc", "	:rtype: Handle_V3d_View
 ") View;
@@ -652,25 +602,23 @@ class V3d_LayerMgr : public MMgt_TShared {
 };
 
 
-%feature("shadow") V3d_LayerMgr::~V3d_LayerMgr %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_LayerMgr {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_LayerMgr(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_LayerMgr {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_LayerMgr {
-	Handle_V3d_LayerMgr GetHandle() {
-	return *(Handle_V3d_LayerMgr*) &$self;
-	}
-};
+%pythonappend Handle_V3d_LayerMgr::Handle_V3d_LayerMgr %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_LayerMgr;
 class Handle_V3d_LayerMgr : public Handle_MMgt_TShared {
@@ -688,20 +636,6 @@ class Handle_V3d_LayerMgr : public Handle_MMgt_TShared {
 %extend Handle_V3d_LayerMgr {
     V3d_LayerMgr* GetObject() {
     return (V3d_LayerMgr*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_LayerMgr::~Handle_V3d_LayerMgr %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_LayerMgr {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -795,25 +729,23 @@ class V3d_Light : public MMgt_TShared {
 };
 
 
-%feature("shadow") V3d_Light::~V3d_Light %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_Light {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_Light(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_Light {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_Light {
-	Handle_V3d_Light GetHandle() {
-	return *(Handle_V3d_Light*) &$self;
-	}
-};
+%pythonappend Handle_V3d_Light::Handle_V3d_Light %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_Light;
 class Handle_V3d_Light : public Handle_MMgt_TShared {
@@ -831,20 +763,6 @@ class Handle_V3d_Light : public Handle_MMgt_TShared {
 %extend Handle_V3d_Light {
     V3d_Light* GetObject() {
     return (V3d_Light*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_Light::~Handle_V3d_Light %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_Light {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -870,20 +788,6 @@ class V3d_ListOfTransient : public TColStd_ListOfTransient {
 };
 
 
-%feature("shadow") V3d_ListOfTransient::~V3d_ListOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend V3d_ListOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor V3d_RectangularGrid;
 class V3d_RectangularGrid : public Aspect_RectangularGrid {
 	public:
@@ -940,25 +844,23 @@ class V3d_RectangularGrid : public Aspect_RectangularGrid {
 };
 
 
-%feature("shadow") V3d_RectangularGrid::~V3d_RectangularGrid %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_RectangularGrid {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_RectangularGrid(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_RectangularGrid {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_RectangularGrid {
-	Handle_V3d_RectangularGrid GetHandle() {
-	return *(Handle_V3d_RectangularGrid*) &$self;
-	}
-};
+%pythonappend Handle_V3d_RectangularGrid::Handle_V3d_RectangularGrid %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_RectangularGrid;
 class Handle_V3d_RectangularGrid : public Handle_Aspect_RectangularGrid {
@@ -976,20 +878,6 @@ class Handle_V3d_RectangularGrid : public Handle_Aspect_RectangularGrid {
 %extend Handle_V3d_RectangularGrid {
     V3d_RectangularGrid* GetObject() {
     return (V3d_RectangularGrid*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_RectangularGrid::~Handle_V3d_RectangularGrid %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_RectangularGrid {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2899,25 +2787,23 @@ class V3d_View : public MMgt_TShared {
 };
 
 
-%feature("shadow") V3d_View::~V3d_View %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_View {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_View(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_View {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_View {
-	Handle_V3d_View GetHandle() {
-	return *(Handle_V3d_View*) &$self;
-	}
-};
+%pythonappend Handle_V3d_View::Handle_V3d_View %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_View;
 class Handle_V3d_View : public Handle_MMgt_TShared {
@@ -2935,20 +2821,6 @@ class Handle_V3d_View : public Handle_MMgt_TShared {
 %extend Handle_V3d_View {
     V3d_View* GetObject() {
     return (V3d_View*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_View::~Handle_V3d_View %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_View {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3678,7 +3550,7 @@ class V3d_Viewer : public MMgt_TShared {
 		%feature("compactdefaultargs") Driver;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_GraphicDriver
 ") Driver;
-		const Handle_Graphic3d_GraphicDriver & Driver ();
+		Handle_Graphic3d_GraphicDriver Driver ();
 		%feature("compactdefaultargs") NextName;
 		%feature("autodoc", "	:rtype: Standard_ExtString
 ") NextName;
@@ -3690,25 +3562,23 @@ class V3d_Viewer : public MMgt_TShared {
 };
 
 
-%feature("shadow") V3d_Viewer::~V3d_Viewer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_Viewer {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_Viewer(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_Viewer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_Viewer {
-	Handle_V3d_Viewer GetHandle() {
-	return *(Handle_V3d_Viewer*) &$self;
-	}
-};
+%pythonappend Handle_V3d_Viewer::Handle_V3d_Viewer %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_Viewer;
 class Handle_V3d_Viewer : public Handle_MMgt_TShared {
@@ -3728,20 +3598,6 @@ class Handle_V3d_Viewer : public Handle_MMgt_TShared {
     return (V3d_Viewer*)$self->Access();
     }
 };
-%feature("shadow") Handle_V3d_Viewer::~Handle_V3d_Viewer %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_Viewer {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor V3d_AmbientLight;
 class V3d_AmbientLight : public V3d_Light {
@@ -3759,25 +3615,23 @@ class V3d_AmbientLight : public V3d_Light {
 };
 
 
-%feature("shadow") V3d_AmbientLight::~V3d_AmbientLight %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_AmbientLight {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_AmbientLight(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_AmbientLight {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_AmbientLight {
-	Handle_V3d_AmbientLight GetHandle() {
-	return *(Handle_V3d_AmbientLight*) &$self;
-	}
-};
+%pythonappend Handle_V3d_AmbientLight::Handle_V3d_AmbientLight %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_AmbientLight;
 class Handle_V3d_AmbientLight : public Handle_V3d_Light {
@@ -3795,20 +3649,6 @@ class Handle_V3d_AmbientLight : public Handle_V3d_Light {
 %extend Handle_V3d_AmbientLight {
     V3d_AmbientLight* GetObject() {
     return (V3d_AmbientLight*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_AmbientLight::~Handle_V3d_AmbientLight %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_AmbientLight {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3850,25 +3690,23 @@ class V3d_OrthographicView : public V3d_View {
 };
 
 
-%feature("shadow") V3d_OrthographicView::~V3d_OrthographicView %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_OrthographicView {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_OrthographicView(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_OrthographicView {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_OrthographicView {
-	Handle_V3d_OrthographicView GetHandle() {
-	return *(Handle_V3d_OrthographicView*) &$self;
-	}
-};
+%pythonappend Handle_V3d_OrthographicView::Handle_V3d_OrthographicView %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_OrthographicView;
 class Handle_V3d_OrthographicView : public Handle_V3d_View {
@@ -3886,20 +3724,6 @@ class Handle_V3d_OrthographicView : public Handle_V3d_View {
 %extend Handle_V3d_OrthographicView {
     V3d_OrthographicView* GetObject() {
     return (V3d_OrthographicView*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_OrthographicView::~Handle_V3d_OrthographicView %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_OrthographicView {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3969,25 +3793,23 @@ class V3d_PerspectiveView : public V3d_View {
 };
 
 
-%feature("shadow") V3d_PerspectiveView::~V3d_PerspectiveView %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_PerspectiveView {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_PerspectiveView(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_PerspectiveView {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_PerspectiveView {
-	Handle_V3d_PerspectiveView GetHandle() {
-	return *(Handle_V3d_PerspectiveView*) &$self;
-	}
-};
+%pythonappend Handle_V3d_PerspectiveView::Handle_V3d_PerspectiveView %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_PerspectiveView;
 class Handle_V3d_PerspectiveView : public Handle_V3d_View {
@@ -4005,20 +3827,6 @@ class Handle_V3d_PerspectiveView : public Handle_V3d_View {
 %extend Handle_V3d_PerspectiveView {
     V3d_PerspectiveView* GetObject() {
     return (V3d_PerspectiveView*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_PerspectiveView::~Handle_V3d_PerspectiveView %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_PerspectiveView {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4144,25 +3952,23 @@ class V3d_PositionLight : public V3d_Light {
 };
 
 
-%feature("shadow") V3d_PositionLight::~V3d_PositionLight %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_PositionLight {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_PositionLight(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_PositionLight {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_PositionLight {
-	Handle_V3d_PositionLight GetHandle() {
-	return *(Handle_V3d_PositionLight*) &$self;
-	}
-};
+%pythonappend Handle_V3d_PositionLight::Handle_V3d_PositionLight %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_PositionLight;
 class Handle_V3d_PositionLight : public Handle_V3d_Light {
@@ -4180,20 +3986,6 @@ class Handle_V3d_PositionLight : public Handle_V3d_Light {
 %extend Handle_V3d_PositionLight {
     V3d_PositionLight* GetObject() {
     return (V3d_PositionLight*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_PositionLight::~Handle_V3d_PositionLight %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_PositionLight {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4331,25 +4123,23 @@ class V3d_DirectionalLight : public V3d_PositionLight {
 };
 
 
-%feature("shadow") V3d_DirectionalLight::~V3d_DirectionalLight %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_DirectionalLight {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_DirectionalLight(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_DirectionalLight {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_DirectionalLight {
-	Handle_V3d_DirectionalLight GetHandle() {
-	return *(Handle_V3d_DirectionalLight*) &$self;
-	}
-};
+%pythonappend Handle_V3d_DirectionalLight::Handle_V3d_DirectionalLight %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_DirectionalLight;
 class Handle_V3d_DirectionalLight : public Handle_V3d_PositionLight {
@@ -4367,20 +4157,6 @@ class Handle_V3d_DirectionalLight : public Handle_V3d_PositionLight {
 %extend Handle_V3d_DirectionalLight {
     V3d_DirectionalLight* GetObject() {
     return (V3d_DirectionalLight*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_DirectionalLight::~Handle_V3d_DirectionalLight %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_DirectionalLight {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4490,25 +4266,23 @@ class V3d_PositionalLight : public V3d_PositionLight {
 };
 
 
-%feature("shadow") V3d_PositionalLight::~V3d_PositionalLight %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_PositionalLight {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_PositionalLight(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_PositionalLight {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_PositionalLight {
-	Handle_V3d_PositionalLight GetHandle() {
-	return *(Handle_V3d_PositionalLight*) &$self;
-	}
-};
+%pythonappend Handle_V3d_PositionalLight::Handle_V3d_PositionalLight %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_PositionalLight;
 class Handle_V3d_PositionalLight : public Handle_V3d_PositionLight {
@@ -4526,20 +4300,6 @@ class Handle_V3d_PositionalLight : public Handle_V3d_PositionLight {
 %extend Handle_V3d_PositionalLight {
     V3d_PositionalLight* GetObject() {
     return (V3d_PositionalLight*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_PositionalLight::~Handle_V3d_PositionalLight %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_PositionalLight {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4717,25 +4477,23 @@ class V3d_SpotLight : public V3d_PositionLight {
 };
 
 
-%feature("shadow") V3d_SpotLight::~V3d_SpotLight %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend V3d_SpotLight {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_SpotLight(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend V3d_SpotLight {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend V3d_SpotLight {
-	Handle_V3d_SpotLight GetHandle() {
-	return *(Handle_V3d_SpotLight*) &$self;
-	}
-};
+%pythonappend Handle_V3d_SpotLight::Handle_V3d_SpotLight %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_V3d_SpotLight;
 class Handle_V3d_SpotLight : public Handle_V3d_PositionLight {
@@ -4753,20 +4511,6 @@ class Handle_V3d_SpotLight : public Handle_V3d_PositionLight {
 %extend Handle_V3d_SpotLight {
     V3d_SpotLight* GetObject() {
     return (V3d_SpotLight*)$self->Access();
-    }
-};
-%feature("shadow") Handle_V3d_SpotLight::~Handle_V3d_SpotLight %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_V3d_SpotLight {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

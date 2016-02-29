@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Standard_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef bool Standard_Boolean;
@@ -142,20 +154,6 @@ class Standard {
 };
 
 
-%feature("shadow") Standard::~Standard %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Standard {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Standard_ErrorHandler;
 class Standard_ErrorHandler {
 	public:
@@ -212,20 +210,6 @@ class Standard_ErrorHandler {
 };
 
 
-%feature("shadow") Standard_ErrorHandler::~Standard_ErrorHandler %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Standard_ErrorHandler {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Standard_ErrorHandlerCallback;
 class Standard_ErrorHandlerCallback {
 	public:
@@ -250,20 +234,6 @@ class Standard_ErrorHandlerCallback {
 };
 
 
-%feature("shadow") Standard_ErrorHandlerCallback::~Standard_ErrorHandlerCallback %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Standard_ErrorHandlerCallback {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Standard_GUID;
 class Standard_GUID {
 	public:
@@ -554,20 +524,6 @@ class Standard_GUID {
 };
 
 
-%feature("shadow") Standard_GUID::~Standard_GUID %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Standard_GUID {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Standard_MMgrRoot;
 class Standard_MMgrRoot {
 	public:
@@ -608,20 +564,6 @@ class Standard_MMgrRoot {
 };
 
 
-%feature("shadow") Standard_MMgrRoot::~Standard_MMgrRoot %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Standard_MMgrRoot {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Standard_Static_Assert<true>;
 class Standard_Static_Assert<true> {
 	public:
@@ -632,20 +574,6 @@ class Standard_Static_Assert<true> {
 };
 
 
-%feature("shadow") Standard_Static_Assert<true>::~Standard_Static_Assert<true> %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Standard_Static_Assert<true> {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class Standard_Storable {
 	public:
 		%feature("compactdefaultargs") Delete;
@@ -707,20 +635,6 @@ class Standard_Storable {
         };
 
 
-%feature("shadow") Standard_Storable::~Standard_Storable %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Standard_Storable {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Standard_Transient;
 class Standard_Transient {
 	public:
@@ -765,7 +679,7 @@ class Standard_Transient {
 
 	:rtype: Handle_Standard_Type
 ") DynamicType;
-		virtual const Handle_Standard_Type & DynamicType ();
+		Handle_Standard_Type DynamicType ();
 		%feature("compactdefaultargs") IsInstance;
 		%feature("autodoc", "	* Returns a true value if this is an instance of Type.
 
@@ -813,25 +727,23 @@ class Standard_Transient {
 };
 
 
-%feature("shadow") Standard_Transient::~Standard_Transient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Standard_Transient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Standard_Transient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Standard_Transient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Standard_Transient {
-	Handle_Standard_Transient GetHandle() {
-	return *(Handle_Standard_Transient*) &$self;
-	}
-};
+%pythonappend Handle_Standard_Transient::Handle_Standard_Transient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Standard_Transient;
 class Handle_Standard_Transient {
@@ -897,20 +809,6 @@ class Handle_Standard_Transient {
     return (Standard_Transient*)$self->Access();
     }
 };
-%feature("shadow") Handle_Standard_Transient::~Handle_Standard_Transient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Standard_Transient {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Standard_MMgrOpt;
 class Standard_MMgrOpt : public Standard_MMgrRoot {
@@ -968,20 +866,6 @@ class Standard_MMgrOpt : public Standard_MMgrRoot {
 };
 
 
-%feature("shadow") Standard_MMgrOpt::~Standard_MMgrOpt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Standard_MMgrOpt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Standard_MMgrRaw;
 class Standard_MMgrRaw : public Standard_MMgrRoot {
 	public:
@@ -1022,20 +906,6 @@ class Standard_MMgrRaw : public Standard_MMgrRoot {
 };
 
 
-%feature("shadow") Standard_MMgrRaw::~Standard_MMgrRaw %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Standard_MMgrRaw {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Standard_MMgrTBBalloc;
 class Standard_MMgrTBBalloc : public Standard_MMgrRoot {
 	public:
@@ -1076,20 +946,6 @@ class Standard_MMgrTBBalloc : public Standard_MMgrRoot {
 };
 
 
-%feature("shadow") Standard_MMgrTBBalloc::~Standard_MMgrTBBalloc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Standard_MMgrTBBalloc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Standard_Mutex;
 class Standard_Mutex : public Standard_ErrorHandlerCallback {
 	public:
@@ -1120,20 +976,6 @@ class Standard_Mutex : public Standard_ErrorHandlerCallback {
 };
 
 
-%feature("shadow") Standard_Mutex::~Standard_Mutex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Standard_Mutex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Standard_Type;
 class Standard_Type : public Standard_Transient {
 	public:
@@ -1284,25 +1126,23 @@ class Standard_Type : public Standard_Transient {
         };
 
 
-%feature("shadow") Standard_Type::~Standard_Type %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Standard_Type {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Standard_Type(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Standard_Type {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Standard_Type {
-	Handle_Standard_Type GetHandle() {
-	return *(Handle_Standard_Type*) &$self;
-	}
-};
+%pythonappend Handle_Standard_Type::Handle_Standard_Type %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Standard_Type;
 class Handle_Standard_Type : public Handle_Standard_Transient {
@@ -1320,20 +1160,6 @@ class Handle_Standard_Type : public Handle_Standard_Transient {
 %extend Handle_Standard_Type {
     Standard_Type* GetObject() {
     return (Standard_Type*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Standard_Type::~Handle_Standard_Type %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Standard_Type {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include GCE2d_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -80,28 +92,14 @@ class GCE2d_MakeMirror {
 
 	:rtype: Handle_Geom2d_Transformation
 ") Value;
-		const Handle_Geom2d_Transformation & Value ();
+		Handle_Geom2d_Transformation Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
 ") Operator;
-		const Handle_Geom2d_Transformation & Operator ();
+		Handle_Geom2d_Transformation Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeMirror::~GCE2d_MakeMirror %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeMirror {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeRotation;
 class GCE2d_MakeRotation {
 	public:
@@ -120,28 +118,14 @@ class GCE2d_MakeRotation {
 
 	:rtype: Handle_Geom2d_Transformation
 ") Value;
-		const Handle_Geom2d_Transformation & Value ();
+		Handle_Geom2d_Transformation Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
 ") Operator;
-		const Handle_Geom2d_Transformation & Operator ();
+		Handle_Geom2d_Transformation Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeRotation::~GCE2d_MakeRotation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeRotation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeScale;
 class GCE2d_MakeScale {
 	public:
@@ -160,28 +144,14 @@ class GCE2d_MakeScale {
 
 	:rtype: Handle_Geom2d_Transformation
 ") Value;
-		const Handle_Geom2d_Transformation & Value ();
+		Handle_Geom2d_Transformation Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
 ") Operator;
-		const Handle_Geom2d_Transformation & Operator ();
+		Handle_Geom2d_Transformation Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeScale::~GCE2d_MakeScale %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeScale {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeTranslation;
 class GCE2d_MakeTranslation {
 	public:
@@ -208,28 +178,14 @@ class GCE2d_MakeTranslation {
 
 	:rtype: Handle_Geom2d_Transformation
 ") Value;
-		const Handle_Geom2d_Transformation & Value ();
+		Handle_Geom2d_Transformation Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Transformation
 ") Operator;
-		const Handle_Geom2d_Transformation & Operator ();
+		Handle_Geom2d_Transformation Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeTranslation::~GCE2d_MakeTranslation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeTranslation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class GCE2d_Root {
 	public:
 		%feature("compactdefaultargs") IsDone;
@@ -247,20 +203,6 @@ class GCE2d_Root {
 };
 
 
-%feature("shadow") GCE2d_Root::~GCE2d_Root %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_Root {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeArcOfCircle;
 class GCE2d_MakeArcOfCircle : public GCE2d_Root {
 	public:
@@ -335,28 +277,14 @@ class GCE2d_MakeArcOfCircle : public GCE2d_Root {
 
 	:rtype: Handle_Geom2d_TrimmedCurve
 ") Value;
-		const Handle_Geom2d_TrimmedCurve & Value ();
+		Handle_Geom2d_TrimmedCurve Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
 ") Operator;
-		const Handle_Geom2d_TrimmedCurve & Operator ();
+		Handle_Geom2d_TrimmedCurve Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeArcOfCircle::~GCE2d_MakeArcOfCircle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeArcOfCircle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeArcOfEllipse;
 class GCE2d_MakeArcOfEllipse : public GCE2d_Root {
 	public:
@@ -407,28 +335,14 @@ class GCE2d_MakeArcOfEllipse : public GCE2d_Root {
 
 	:rtype: Handle_Geom2d_TrimmedCurve
 ") Value;
-		const Handle_Geom2d_TrimmedCurve & Value ();
+		Handle_Geom2d_TrimmedCurve Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
 ") Operator;
-		const Handle_Geom2d_TrimmedCurve & Operator ();
+		Handle_Geom2d_TrimmedCurve Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeArcOfEllipse::~GCE2d_MakeArcOfEllipse %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeArcOfEllipse {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeArcOfHyperbola;
 class GCE2d_MakeArcOfHyperbola : public GCE2d_Root {
 	public:
@@ -479,28 +393,14 @@ class GCE2d_MakeArcOfHyperbola : public GCE2d_Root {
 
 	:rtype: Handle_Geom2d_TrimmedCurve
 ") Value;
-		const Handle_Geom2d_TrimmedCurve & Value ();
+		Handle_Geom2d_TrimmedCurve Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
 ") Operator;
-		const Handle_Geom2d_TrimmedCurve & Operator ();
+		Handle_Geom2d_TrimmedCurve Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeArcOfHyperbola::~GCE2d_MakeArcOfHyperbola %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeArcOfHyperbola {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeArcOfParabola;
 class GCE2d_MakeArcOfParabola : public GCE2d_Root {
 	public:
@@ -551,28 +451,14 @@ class GCE2d_MakeArcOfParabola : public GCE2d_Root {
 
 	:rtype: Handle_Geom2d_TrimmedCurve
 ") Value;
-		const Handle_Geom2d_TrimmedCurve & Value ();
+		Handle_Geom2d_TrimmedCurve Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
 ") Operator;
-		const Handle_Geom2d_TrimmedCurve & Operator ();
+		Handle_Geom2d_TrimmedCurve Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeArcOfParabola::~GCE2d_MakeArcOfParabola %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeArcOfParabola {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeCircle;
 class GCE2d_MakeCircle : public GCE2d_Root {
 	public:
@@ -667,28 +553,14 @@ class GCE2d_MakeCircle : public GCE2d_Root {
 
 	:rtype: Handle_Geom2d_Circle
 ") Value;
-		const Handle_Geom2d_Circle & Value ();
+		Handle_Geom2d_Circle Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Circle
 ") Operator;
-		const Handle_Geom2d_Circle & Operator ();
+		Handle_Geom2d_Circle Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeCircle::~GCE2d_MakeCircle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeCircle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeEllipse;
 class GCE2d_MakeEllipse : public GCE2d_Root {
 	public:
@@ -743,28 +615,14 @@ class GCE2d_MakeEllipse : public GCE2d_Root {
 
 	:rtype: Handle_Geom2d_Ellipse
 ") Value;
-		const Handle_Geom2d_Ellipse & Value ();
+		Handle_Geom2d_Ellipse Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Ellipse
 ") Operator;
-		const Handle_Geom2d_Ellipse & Operator ();
+		Handle_Geom2d_Ellipse Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeEllipse::~GCE2d_MakeEllipse %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeEllipse {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeHyperbola;
 class GCE2d_MakeHyperbola : public GCE2d_Root {
 	public:
@@ -819,28 +677,14 @@ class GCE2d_MakeHyperbola : public GCE2d_Root {
 
 	:rtype: Handle_Geom2d_Hyperbola
 ") Value;
-		const Handle_Geom2d_Hyperbola & Value ();
+		Handle_Geom2d_Hyperbola Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Hyperbola
 ") Operator;
-		const Handle_Geom2d_Hyperbola & Operator ();
+		Handle_Geom2d_Hyperbola Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeHyperbola::~GCE2d_MakeHyperbola %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeHyperbola {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeLine;
 class GCE2d_MakeLine : public GCE2d_Root {
 	public:
@@ -905,28 +749,14 @@ class GCE2d_MakeLine : public GCE2d_Root {
 
 	:rtype: Handle_Geom2d_Line
 ") Value;
-		const Handle_Geom2d_Line & Value ();
+		Handle_Geom2d_Line Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Line
 ") Operator;
-		const Handle_Geom2d_Line & Operator ();
+		Handle_Geom2d_Line Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeLine::~GCE2d_MakeLine %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeLine {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeParabola;
 class GCE2d_MakeParabola : public GCE2d_Root {
 	public:
@@ -997,28 +827,14 @@ class GCE2d_MakeParabola : public GCE2d_Root {
 
 	:rtype: Handle_Geom2d_Parabola
 ") Value;
-		const Handle_Geom2d_Parabola & Value ();
+		Handle_Geom2d_Parabola Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Parabola
 ") Operator;
-		const Handle_Geom2d_Parabola & Operator ();
+		Handle_Geom2d_Parabola Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeParabola::~GCE2d_MakeParabola %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeParabola {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GCE2d_MakeSegment;
 class GCE2d_MakeSegment : public GCE2d_Root {
 	public:
@@ -1085,25 +901,11 @@ class GCE2d_MakeSegment : public GCE2d_Root {
 
 	:rtype: Handle_Geom2d_TrimmedCurve
 ") Value;
-		const Handle_Geom2d_TrimmedCurve & Value ();
+		Handle_Geom2d_TrimmedCurve Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_TrimmedCurve
 ") Operator;
-		const Handle_Geom2d_TrimmedCurve & Operator ();
+		Handle_Geom2d_TrimmedCurve Operator ();
 };
 
 
-%feature("shadow") GCE2d_MakeSegment::~GCE2d_MakeSegment %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GCE2d_MakeSegment {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

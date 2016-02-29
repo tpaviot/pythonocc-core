@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include TColQuantity_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -126,20 +138,6 @@ class TColQuantity_Array1OfLength {
 };
 
 
-%feature("shadow") TColQuantity_Array1OfLength::~TColQuantity_Array1OfLength %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColQuantity_Array1OfLength {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColQuantity_Array2OfLength;
 class TColQuantity_Array2OfLength {
 	public:
@@ -244,20 +242,6 @@ class TColQuantity_Array2OfLength {
 };
 
 
-%feature("shadow") TColQuantity_Array2OfLength::~TColQuantity_Array2OfLength %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColQuantity_Array2OfLength {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColQuantity_HArray1OfLength;
 class TColQuantity_HArray1OfLength : public MMgt_TShared {
 	public:
@@ -328,25 +312,23 @@ class TColQuantity_HArray1OfLength : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColQuantity_HArray1OfLength::~TColQuantity_HArray1OfLength %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColQuantity_HArray1OfLength {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColQuantity_HArray1OfLength(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColQuantity_HArray1OfLength {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColQuantity_HArray1OfLength {
-	Handle_TColQuantity_HArray1OfLength GetHandle() {
-	return *(Handle_TColQuantity_HArray1OfLength*) &$self;
-	}
-};
+%pythonappend Handle_TColQuantity_HArray1OfLength::Handle_TColQuantity_HArray1OfLength %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColQuantity_HArray1OfLength;
 class Handle_TColQuantity_HArray1OfLength : public Handle_MMgt_TShared {
@@ -364,20 +346,6 @@ class Handle_TColQuantity_HArray1OfLength : public Handle_MMgt_TShared {
 %extend Handle_TColQuantity_HArray1OfLength {
     TColQuantity_HArray1OfLength* GetObject() {
     return (TColQuantity_HArray1OfLength*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColQuantity_HArray1OfLength::~Handle_TColQuantity_HArray1OfLength %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColQuantity_HArray1OfLength {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -477,25 +445,23 @@ class TColQuantity_HArray2OfLength : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColQuantity_HArray2OfLength::~TColQuantity_HArray2OfLength %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColQuantity_HArray2OfLength {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColQuantity_HArray2OfLength(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColQuantity_HArray2OfLength {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColQuantity_HArray2OfLength {
-	Handle_TColQuantity_HArray2OfLength GetHandle() {
-	return *(Handle_TColQuantity_HArray2OfLength*) &$self;
-	}
-};
+%pythonappend Handle_TColQuantity_HArray2OfLength::Handle_TColQuantity_HArray2OfLength %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColQuantity_HArray2OfLength;
 class Handle_TColQuantity_HArray2OfLength : public Handle_MMgt_TShared {
@@ -513,20 +479,6 @@ class Handle_TColQuantity_HArray2OfLength : public Handle_MMgt_TShared {
 %extend Handle_TColQuantity_HArray2OfLength {
     TColQuantity_HArray2OfLength* GetObject() {
     return (TColQuantity_HArray2OfLength*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColQuantity_HArray2OfLength::~Handle_TColQuantity_HArray2OfLength %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColQuantity_HArray2OfLength {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

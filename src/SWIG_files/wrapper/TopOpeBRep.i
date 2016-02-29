@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include TopOpeBRep_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef TopOpeBRep_EdgesIntersector * TopOpeBRep_PEdgesIntersector;
@@ -87,20 +99,6 @@ class TopOpeBRep {
 };
 
 
-%feature("shadow") TopOpeBRep::~TopOpeBRep %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_Array1OfLineInter;
 class TopOpeBRep_Array1OfLineInter {
 	public:
@@ -183,20 +181,6 @@ class TopOpeBRep_Array1OfLineInter {
 };
 
 
-%feature("shadow") TopOpeBRep_Array1OfLineInter::~TopOpeBRep_Array1OfLineInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_Array1OfLineInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_Array1OfVPointInter;
 class TopOpeBRep_Array1OfVPointInter {
 	public:
@@ -279,20 +263,6 @@ class TopOpeBRep_Array1OfVPointInter {
 };
 
 
-%feature("shadow") TopOpeBRep_Array1OfVPointInter::~TopOpeBRep_Array1OfVPointInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_Array1OfVPointInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_Bipoint;
 class TopOpeBRep_Bipoint {
 	public:
@@ -319,20 +289,6 @@ class TopOpeBRep_Bipoint {
 };
 
 
-%feature("shadow") TopOpeBRep_Bipoint::~TopOpeBRep_Bipoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_Bipoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_DSFiller;
 class TopOpeBRep_DSFiller {
 	public:
@@ -507,20 +463,6 @@ class TopOpeBRep_DSFiller {
 };
 
 
-%feature("shadow") TopOpeBRep_DSFiller::~TopOpeBRep_DSFiller %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_DSFiller {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool;
 class TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool : public TCollection_BasicMapIterator {
 	public:
@@ -547,24 +489,10 @@ class TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool : public TCollection_BasicM
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_BRepTopAdaptor_TopolTool
 ") Value;
-		const Handle_BRepTopAdaptor_TopolTool & Value ();
+		Handle_BRepTopAdaptor_TopolTool Value ();
 };
 
 
-%feature("shadow") TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool::~TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_DataMapNodeOfDataMapOfTopolTool;
 class TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public TCollection_MapNode {
 	public:
@@ -585,29 +513,27 @@ class TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_BRepTopAdaptor_TopolTool
 ") Value;
-		Handle_BRepTopAdaptor_TopolTool & Value ();
+		Handle_BRepTopAdaptor_TopolTool Value ();
 };
 
 
-%feature("shadow") TopOpeBRep_DataMapNodeOfDataMapOfTopolTool::~TopOpeBRep_DataMapNodeOfDataMapOfTopolTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool::Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
-	Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool GetHandle() {
-	return *(Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool;
 class Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public Handle_TCollection_MapNode {
@@ -625,20 +551,6 @@ class Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public Handle_TCollect
 %extend Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
     TopOpeBRep_DataMapNodeOfDataMapOfTopolTool* GetObject() {
     return (TopOpeBRep_DataMapNodeOfDataMapOfTopolTool*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool::~Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -698,13 +610,13 @@ class TopOpeBRep_DataMapOfTopolTool : public TCollection_BasicMap {
 	:type K: TopoDS_Shape &
 	:rtype: Handle_BRepTopAdaptor_TopolTool
 ") Find;
-		const Handle_BRepTopAdaptor_TopolTool & Find (const TopoDS_Shape & K);
+		Handle_BRepTopAdaptor_TopolTool Find (const TopoDS_Shape & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: Handle_BRepTopAdaptor_TopolTool
 ") ChangeFind;
-		Handle_BRepTopAdaptor_TopolTool & ChangeFind (const TopoDS_Shape & K);
+		Handle_BRepTopAdaptor_TopolTool ChangeFind (const TopoDS_Shape & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
@@ -720,20 +632,6 @@ class TopOpeBRep_DataMapOfTopolTool : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopOpeBRep_DataMapOfTopolTool::~TopOpeBRep_DataMapOfTopolTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_DataMapOfTopolTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_EdgesFiller;
 class TopOpeBRep_EdgesFiller {
 	public:
@@ -770,20 +668,6 @@ class TopOpeBRep_EdgesFiller {
 };
 
 
-%feature("shadow") TopOpeBRep_EdgesFiller::~TopOpeBRep_EdgesFiller %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_EdgesFiller {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_EdgesIntersector;
 class TopOpeBRep_EdgesIntersector {
 	public:
@@ -968,20 +852,6 @@ class TopOpeBRep_EdgesIntersector {
 };
 
 
-%feature("shadow") TopOpeBRep_EdgesIntersector::~TopOpeBRep_EdgesIntersector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_EdgesIntersector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_FFDumper;
 class TopOpeBRep_FFDumper : public MMgt_TShared {
 	public:
@@ -1050,25 +920,23 @@ class TopOpeBRep_FFDumper : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopOpeBRep_FFDumper::~TopOpeBRep_FFDumper %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopOpeBRep_FFDumper {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopOpeBRep_FFDumper(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopOpeBRep_FFDumper {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopOpeBRep_FFDumper {
-	Handle_TopOpeBRep_FFDumper GetHandle() {
-	return *(Handle_TopOpeBRep_FFDumper*) &$self;
-	}
-};
+%pythonappend Handle_TopOpeBRep_FFDumper::Handle_TopOpeBRep_FFDumper %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopOpeBRep_FFDumper;
 class Handle_TopOpeBRep_FFDumper : public Handle_MMgt_TShared {
@@ -1086,20 +954,6 @@ class Handle_TopOpeBRep_FFDumper : public Handle_MMgt_TShared {
 %extend Handle_TopOpeBRep_FFDumper {
     TopOpeBRep_FFDumper* GetObject() {
     return (TopOpeBRep_FFDumper*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopOpeBRep_FFDumper::~Handle_TopOpeBRep_FFDumper %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopOpeBRep_FFDumper {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1162,20 +1016,6 @@ class TopOpeBRep_FFTransitionTool {
 };
 
 
-%feature("shadow") TopOpeBRep_FFTransitionTool::~TopOpeBRep_FFTransitionTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_FFTransitionTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_FaceEdgeFiller;
 class TopOpeBRep_FaceEdgeFiller {
 	public:
@@ -1198,20 +1038,6 @@ class TopOpeBRep_FaceEdgeFiller {
 };
 
 
-%feature("shadow") TopOpeBRep_FaceEdgeFiller::~TopOpeBRep_FaceEdgeFiller %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_FaceEdgeFiller {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_FaceEdgeIntersector;
 class TopOpeBRep_FaceEdgeIntersector {
 	public:
@@ -1334,20 +1160,6 @@ class TopOpeBRep_FaceEdgeIntersector {
 };
 
 
-%feature("shadow") TopOpeBRep_FaceEdgeIntersector::~TopOpeBRep_FaceEdgeIntersector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_FaceEdgeIntersector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_FacesFiller;
 class TopOpeBRep_FacesFiller {
 	public:
@@ -1772,20 +1584,6 @@ class TopOpeBRep_FacesFiller {
 };
 
 
-%feature("shadow") TopOpeBRep_FacesFiller::~TopOpeBRep_FacesFiller %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_FacesFiller {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_FacesIntersector;
 class TopOpeBRep_FacesIntersector {
 	public:
@@ -1920,20 +1718,6 @@ class TopOpeBRep_FacesIntersector {
 };
 
 
-%feature("shadow") TopOpeBRep_FacesIntersector::~TopOpeBRep_FacesIntersector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_FacesIntersector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class TopOpeBRep_GeomTool {
 	public:
 		%feature("compactdefaultargs") MakeCurves;
@@ -1987,20 +1771,6 @@ class TopOpeBRep_GeomTool {
 };
 
 
-%feature("shadow") TopOpeBRep_GeomTool::~TopOpeBRep_GeomTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_GeomTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_HArray1OfLineInter;
 class TopOpeBRep_HArray1OfLineInter : public MMgt_TShared {
 	public:
@@ -2071,25 +1841,23 @@ class TopOpeBRep_HArray1OfLineInter : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopOpeBRep_HArray1OfLineInter::~TopOpeBRep_HArray1OfLineInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopOpeBRep_HArray1OfLineInter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopOpeBRep_HArray1OfLineInter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopOpeBRep_HArray1OfLineInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopOpeBRep_HArray1OfLineInter {
-	Handle_TopOpeBRep_HArray1OfLineInter GetHandle() {
-	return *(Handle_TopOpeBRep_HArray1OfLineInter*) &$self;
-	}
-};
+%pythonappend Handle_TopOpeBRep_HArray1OfLineInter::Handle_TopOpeBRep_HArray1OfLineInter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopOpeBRep_HArray1OfLineInter;
 class Handle_TopOpeBRep_HArray1OfLineInter : public Handle_MMgt_TShared {
@@ -2107,20 +1875,6 @@ class Handle_TopOpeBRep_HArray1OfLineInter : public Handle_MMgt_TShared {
 %extend Handle_TopOpeBRep_HArray1OfLineInter {
     TopOpeBRep_HArray1OfLineInter* GetObject() {
     return (TopOpeBRep_HArray1OfLineInter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopOpeBRep_HArray1OfLineInter::~Handle_TopOpeBRep_HArray1OfLineInter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopOpeBRep_HArray1OfLineInter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2194,25 +1948,23 @@ class TopOpeBRep_HArray1OfVPointInter : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopOpeBRep_HArray1OfVPointInter::~TopOpeBRep_HArray1OfVPointInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopOpeBRep_HArray1OfVPointInter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopOpeBRep_HArray1OfVPointInter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopOpeBRep_HArray1OfVPointInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopOpeBRep_HArray1OfVPointInter {
-	Handle_TopOpeBRep_HArray1OfVPointInter GetHandle() {
-	return *(Handle_TopOpeBRep_HArray1OfVPointInter*) &$self;
-	}
-};
+%pythonappend Handle_TopOpeBRep_HArray1OfVPointInter::Handle_TopOpeBRep_HArray1OfVPointInter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopOpeBRep_HArray1OfVPointInter;
 class Handle_TopOpeBRep_HArray1OfVPointInter : public Handle_MMgt_TShared {
@@ -2230,20 +1982,6 @@ class Handle_TopOpeBRep_HArray1OfVPointInter : public Handle_MMgt_TShared {
 %extend Handle_TopOpeBRep_HArray1OfVPointInter {
     TopOpeBRep_HArray1OfVPointInter* GetObject() {
     return (TopOpeBRep_HArray1OfVPointInter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopOpeBRep_HArray1OfVPointInter::~Handle_TopOpeBRep_HArray1OfVPointInter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopOpeBRep_HArray1OfVPointInter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2287,25 +2025,23 @@ class TopOpeBRep_Hctxee2d : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopOpeBRep_Hctxee2d::~TopOpeBRep_Hctxee2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopOpeBRep_Hctxee2d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopOpeBRep_Hctxee2d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopOpeBRep_Hctxee2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopOpeBRep_Hctxee2d {
-	Handle_TopOpeBRep_Hctxee2d GetHandle() {
-	return *(Handle_TopOpeBRep_Hctxee2d*) &$self;
-	}
-};
+%pythonappend Handle_TopOpeBRep_Hctxee2d::Handle_TopOpeBRep_Hctxee2d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopOpeBRep_Hctxee2d;
 class Handle_TopOpeBRep_Hctxee2d : public Handle_MMgt_TShared {
@@ -2323,20 +2059,6 @@ class Handle_TopOpeBRep_Hctxee2d : public Handle_MMgt_TShared {
 %extend Handle_TopOpeBRep_Hctxee2d {
     TopOpeBRep_Hctxee2d* GetObject() {
     return (TopOpeBRep_Hctxee2d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopOpeBRep_Hctxee2d::~Handle_TopOpeBRep_Hctxee2d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopOpeBRep_Hctxee2d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2412,25 +2134,23 @@ class TopOpeBRep_Hctxff2d : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopOpeBRep_Hctxff2d::~TopOpeBRep_Hctxff2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopOpeBRep_Hctxff2d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopOpeBRep_Hctxff2d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopOpeBRep_Hctxff2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopOpeBRep_Hctxff2d {
-	Handle_TopOpeBRep_Hctxff2d GetHandle() {
-	return *(Handle_TopOpeBRep_Hctxff2d*) &$self;
-	}
-};
+%pythonappend Handle_TopOpeBRep_Hctxff2d::Handle_TopOpeBRep_Hctxff2d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopOpeBRep_Hctxff2d;
 class Handle_TopOpeBRep_Hctxff2d : public Handle_MMgt_TShared {
@@ -2448,20 +2168,6 @@ class Handle_TopOpeBRep_Hctxff2d : public Handle_MMgt_TShared {
 %extend Handle_TopOpeBRep_Hctxff2d {
     TopOpeBRep_Hctxff2d* GetObject() {
     return (TopOpeBRep_Hctxff2d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopOpeBRep_Hctxff2d::~Handle_TopOpeBRep_Hctxff2d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopOpeBRep_Hctxff2d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2633,15 +2339,15 @@ class TopOpeBRep_LineInter {
 		%feature("compactdefaultargs") LineW;
 		%feature("autodoc", "	:rtype: Handle_IntPatch_WLine
 ") LineW;
-		const Handle_IntPatch_WLine & LineW ();
+		Handle_IntPatch_WLine LineW ();
 		%feature("compactdefaultargs") LineG;
 		%feature("autodoc", "	:rtype: Handle_IntPatch_GLine
 ") LineG;
-		const Handle_IntPatch_GLine & LineG ();
+		Handle_IntPatch_GLine LineG ();
 		%feature("compactdefaultargs") LineR;
 		%feature("autodoc", "	:rtype: Handle_IntPatch_RLine
 ") LineR;
-		const Handle_IntPatch_RLine & LineR ();
+		Handle_IntPatch_RLine LineR ();
 		%feature("compactdefaultargs") HasFirstPoint;
 		%feature("autodoc", "	:rtype: bool
 ") HasFirstPoint;
@@ -2721,20 +2427,6 @@ class TopOpeBRep_LineInter {
         };
 
 
-%feature("shadow") TopOpeBRep_LineInter::~TopOpeBRep_LineInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_LineInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_ListIteratorOfListOfBipoint;
 class TopOpeBRep_ListIteratorOfListOfBipoint {
 	public:
@@ -2769,20 +2461,6 @@ class TopOpeBRep_ListIteratorOfListOfBipoint {
 };
 
 
-%feature("shadow") TopOpeBRep_ListIteratorOfListOfBipoint::~TopOpeBRep_ListIteratorOfListOfBipoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_ListIteratorOfListOfBipoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_ListNodeOfListOfBipoint;
 class TopOpeBRep_ListNodeOfListOfBipoint : public TCollection_MapNode {
 	public:
@@ -2801,25 +2479,23 @@ class TopOpeBRep_ListNodeOfListOfBipoint : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TopOpeBRep_ListNodeOfListOfBipoint::~TopOpeBRep_ListNodeOfListOfBipoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopOpeBRep_ListNodeOfListOfBipoint {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopOpeBRep_ListNodeOfListOfBipoint(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopOpeBRep_ListNodeOfListOfBipoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopOpeBRep_ListNodeOfListOfBipoint {
-	Handle_TopOpeBRep_ListNodeOfListOfBipoint GetHandle() {
-	return *(Handle_TopOpeBRep_ListNodeOfListOfBipoint*) &$self;
-	}
-};
+%pythonappend Handle_TopOpeBRep_ListNodeOfListOfBipoint::Handle_TopOpeBRep_ListNodeOfListOfBipoint %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopOpeBRep_ListNodeOfListOfBipoint;
 class Handle_TopOpeBRep_ListNodeOfListOfBipoint : public Handle_TCollection_MapNode {
@@ -2837,20 +2513,6 @@ class Handle_TopOpeBRep_ListNodeOfListOfBipoint : public Handle_TCollection_MapN
 %extend Handle_TopOpeBRep_ListNodeOfListOfBipoint {
     TopOpeBRep_ListNodeOfListOfBipoint* GetObject() {
     return (TopOpeBRep_ListNodeOfListOfBipoint*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopOpeBRep_ListNodeOfListOfBipoint::~Handle_TopOpeBRep_ListNodeOfListOfBipoint %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopOpeBRep_ListNodeOfListOfBipoint {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2978,20 +2640,6 @@ class TopOpeBRep_ListOfBipoint {
 };
 
 
-%feature("shadow") TopOpeBRep_ListOfBipoint::~TopOpeBRep_ListOfBipoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_ListOfBipoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_Point2d;
 class TopOpeBRep_Point2d {
 	public:
@@ -3202,20 +2850,6 @@ class TopOpeBRep_Point2d {
 };
 
 
-%feature("shadow") TopOpeBRep_Point2d::~TopOpeBRep_Point2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_Point2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_PointClassifier;
 class TopOpeBRep_PointClassifier {
 	public:
@@ -3252,20 +2886,6 @@ class TopOpeBRep_PointClassifier {
 };
 
 
-%feature("shadow") TopOpeBRep_PointClassifier::~TopOpeBRep_PointClassifier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_PointClassifier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class TopOpeBRep_PointGeomTool {
 	public:
 		%feature("compactdefaultargs") MakePoint;
@@ -3303,20 +2923,6 @@ class TopOpeBRep_PointGeomTool {
 };
 
 
-%feature("shadow") TopOpeBRep_PointGeomTool::~TopOpeBRep_PointGeomTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_PointGeomTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_SequenceNodeOfSequenceOfPoint2d;
 class TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public TCollection_SeqNode {
 	public:
@@ -3337,25 +2943,23 @@ class TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") TopOpeBRep_SequenceNodeOfSequenceOfPoint2d::~TopOpeBRep_SequenceNodeOfSequenceOfPoint2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
-	Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d GetHandle() {
-	return *(Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d*) &$self;
-	}
-};
+%pythonappend Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d::Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d;
 class Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public Handle_TCollection_SeqNode {
@@ -3373,20 +2977,6 @@ class Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public Handle_TCollect
 %extend Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
     TopOpeBRep_SequenceNodeOfSequenceOfPoint2d* GetObject() {
     return (TopOpeBRep_SequenceNodeOfSequenceOfPoint2d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d::~Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3522,20 +3112,6 @@ class TopOpeBRep_SequenceOfPoint2d : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TopOpeBRep_SequenceOfPoint2d::~TopOpeBRep_SequenceOfPoint2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_SequenceOfPoint2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_ShapeIntersector;
 class TopOpeBRep_ShapeIntersector {
 	public:
@@ -3648,20 +3224,6 @@ class TopOpeBRep_ShapeIntersector {
 };
 
 
-%feature("shadow") TopOpeBRep_ShapeIntersector::~TopOpeBRep_ShapeIntersector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_ShapeIntersector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_ShapeIntersector2d;
 class TopOpeBRep_ShapeIntersector2d {
 	public:
@@ -3728,20 +3290,6 @@ class TopOpeBRep_ShapeIntersector2d {
 };
 
 
-%feature("shadow") TopOpeBRep_ShapeIntersector2d::~TopOpeBRep_ShapeIntersector2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_ShapeIntersector2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_ShapeScanner;
 class TopOpeBRep_ShapeScanner {
 	public:
@@ -3810,20 +3358,6 @@ class TopOpeBRep_ShapeScanner {
         };
 
 
-%feature("shadow") TopOpeBRep_ShapeScanner::~TopOpeBRep_ShapeScanner %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_ShapeScanner {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_VPointInter;
 class TopOpeBRep_VPointInter {
 	public:
@@ -4126,20 +3660,6 @@ class TopOpeBRep_VPointInter {
 };
 
 
-%feature("shadow") TopOpeBRep_VPointInter::~TopOpeBRep_VPointInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_VPointInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_VPointInterClassifier;
 class TopOpeBRep_VPointInterClassifier {
 	public:
@@ -4180,20 +3700,6 @@ class TopOpeBRep_VPointInterClassifier {
 };
 
 
-%feature("shadow") TopOpeBRep_VPointInterClassifier::~TopOpeBRep_VPointInterClassifier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_VPointInterClassifier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_VPointInterIterator;
 class TopOpeBRep_VPointInterIterator {
 	public:
@@ -4246,20 +3752,6 @@ class TopOpeBRep_VPointInterIterator {
 };
 
 
-%feature("shadow") TopOpeBRep_VPointInterIterator::~TopOpeBRep_VPointInterIterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_VPointInterIterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_WPointInter;
 class TopOpeBRep_WPointInter {
 	public:
@@ -4320,20 +3812,6 @@ class TopOpeBRep_WPointInter {
 };
 
 
-%feature("shadow") TopOpeBRep_WPointInter::~TopOpeBRep_WPointInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_WPointInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopOpeBRep_WPointInterIterator;
 class TopOpeBRep_WPointInterIterator {
 	public:
@@ -4376,17 +3854,3 @@ class TopOpeBRep_WPointInterIterator {
 };
 
 
-%feature("shadow") TopOpeBRep_WPointInterIterator::~TopOpeBRep_WPointInterIterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopOpeBRep_WPointInterIterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

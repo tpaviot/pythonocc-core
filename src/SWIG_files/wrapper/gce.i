@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include gce_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -125,20 +137,6 @@ class gce_MakeMirror {
 };
 
 
-%feature("shadow") gce_MakeMirror::~gce_MakeMirror %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeMirror {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeMirror2d;
 class gce_MakeMirror2d {
 	public:
@@ -187,20 +185,6 @@ class gce_MakeMirror2d {
 };
 
 
-%feature("shadow") gce_MakeMirror2d::~gce_MakeMirror2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeMirror2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeRotation;
 class gce_MakeRotation {
 	public:
@@ -253,20 +237,6 @@ class gce_MakeRotation {
 };
 
 
-%feature("shadow") gce_MakeRotation::~gce_MakeRotation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeRotation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeRotation2d;
 class gce_MakeRotation2d {
 	public:
@@ -297,20 +267,6 @@ class gce_MakeRotation2d {
 };
 
 
-%feature("shadow") gce_MakeRotation2d::~gce_MakeRotation2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeRotation2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeScale;
 class gce_MakeScale {
 	public:
@@ -341,20 +297,6 @@ class gce_MakeScale {
 };
 
 
-%feature("shadow") gce_MakeScale::~gce_MakeScale %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeScale {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeScale2d;
 class gce_MakeScale2d {
 	public:
@@ -385,20 +327,6 @@ class gce_MakeScale2d {
 };
 
 
-%feature("shadow") gce_MakeScale2d::~gce_MakeScale2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeScale2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeTranslation;
 class gce_MakeTranslation {
 	public:
@@ -437,20 +365,6 @@ class gce_MakeTranslation {
 };
 
 
-%feature("shadow") gce_MakeTranslation::~gce_MakeTranslation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeTranslation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeTranslation2d;
 class gce_MakeTranslation2d {
 	public:
@@ -489,20 +403,6 @@ class gce_MakeTranslation2d {
 };
 
 
-%feature("shadow") gce_MakeTranslation2d::~gce_MakeTranslation2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeTranslation2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class gce_Root {
 	public:
 		%feature("compactdefaultargs") IsDone;
@@ -520,20 +420,6 @@ class gce_Root {
 };
 
 
-%feature("shadow") gce_Root::~gce_Root %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_Root {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeCirc;
 class gce_MakeCirc : public gce_Root {
 	public:
@@ -642,20 +528,6 @@ class gce_MakeCirc : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeCirc::~gce_MakeCirc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeCirc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeCirc2d;
 class gce_MakeCirc2d : public gce_Root {
 	public:
@@ -754,20 +626,6 @@ class gce_MakeCirc2d : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeCirc2d::~gce_MakeCirc2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeCirc2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeCone;
 class gce_MakeCone : public gce_Root {
 	public:
@@ -872,20 +730,6 @@ class gce_MakeCone : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeCone::~gce_MakeCone %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeCone {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeCylinder;
 class gce_MakeCylinder : public gce_Root {
 	public:
@@ -966,20 +810,6 @@ class gce_MakeCylinder : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeCylinder::~gce_MakeCylinder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeCylinder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeDir;
 class gce_MakeDir : public gce_Root {
 	public:
@@ -1038,20 +868,6 @@ class gce_MakeDir : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeDir::~gce_MakeDir %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeDir {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeDir2d;
 class gce_MakeDir2d : public gce_Root {
 	public:
@@ -1108,20 +924,6 @@ class gce_MakeDir2d : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeDir2d::~gce_MakeDir2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeDir2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeElips;
 class gce_MakeElips : public gce_Root {
 	public:
@@ -1166,20 +968,6 @@ class gce_MakeElips : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeElips::~gce_MakeElips %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeElips {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeElips2d;
 class gce_MakeElips2d : public gce_Root {
 	public:
@@ -1238,20 +1026,6 @@ class gce_MakeElips2d : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeElips2d::~gce_MakeElips2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeElips2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeHypr;
 class gce_MakeHypr : public gce_Root {
 	public:
@@ -1296,20 +1070,6 @@ class gce_MakeHypr : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeHypr::~gce_MakeHypr %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeHypr {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeHypr2d;
 class gce_MakeHypr2d : public gce_Root {
 	public:
@@ -1368,20 +1128,6 @@ class gce_MakeHypr2d : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeHypr2d::~gce_MakeHypr2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeHypr2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeLin;
 class gce_MakeLin : public gce_Root {
 	public:
@@ -1440,20 +1186,6 @@ class gce_MakeLin : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeLin::~gce_MakeLin %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeLin {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeLin2d;
 class gce_MakeLin2d : public gce_Root {
 	public:
@@ -1534,20 +1266,6 @@ class gce_MakeLin2d : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeLin2d::~gce_MakeLin2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeLin2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeParab;
 class gce_MakeParab : public gce_Root {
 	public:
@@ -1588,20 +1306,6 @@ class gce_MakeParab : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeParab::~gce_MakeParab %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeParab {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakeParab2d;
 class gce_MakeParab2d : public gce_Root {
 	public:
@@ -1678,20 +1382,6 @@ class gce_MakeParab2d : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakeParab2d::~gce_MakeParab2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakeParab2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gce_MakePln;
 class gce_MakePln : public gce_Root {
 	public:
@@ -1794,17 +1484,3 @@ class gce_MakePln : public gce_Root {
 };
 
 
-%feature("shadow") gce_MakePln::~gce_MakePln %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gce_MakePln {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

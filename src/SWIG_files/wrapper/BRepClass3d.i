@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include BRepClass3d_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -58,20 +70,6 @@ class BRepClass3d {
 };
 
 
-%feature("shadow") BRepClass3d::~BRepClass3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass3d_DataMapIteratorOfMapOfInter;
 class BRepClass3d_DataMapIteratorOfMapOfInter : public TCollection_BasicMapIterator {
 	public:
@@ -102,20 +100,6 @@ class BRepClass3d_DataMapIteratorOfMapOfInter : public TCollection_BasicMapItera
 };
 
 
-%feature("shadow") BRepClass3d_DataMapIteratorOfMapOfInter::~BRepClass3d_DataMapIteratorOfMapOfInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass3d_DataMapIteratorOfMapOfInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass3d_DataMapNodeOfMapOfInter;
 class BRepClass3d_DataMapNodeOfMapOfInter : public TCollection_MapNode {
 	public:
@@ -140,25 +124,23 @@ class BRepClass3d_DataMapNodeOfMapOfInter : public TCollection_MapNode {
 };
 
 
-%feature("shadow") BRepClass3d_DataMapNodeOfMapOfInter::~BRepClass3d_DataMapNodeOfMapOfInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepClass3d_DataMapNodeOfMapOfInter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepClass3d_DataMapNodeOfMapOfInter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepClass3d_DataMapNodeOfMapOfInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepClass3d_DataMapNodeOfMapOfInter {
-	Handle_BRepClass3d_DataMapNodeOfMapOfInter GetHandle() {
-	return *(Handle_BRepClass3d_DataMapNodeOfMapOfInter*) &$self;
-	}
-};
+%pythonappend Handle_BRepClass3d_DataMapNodeOfMapOfInter::Handle_BRepClass3d_DataMapNodeOfMapOfInter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepClass3d_DataMapNodeOfMapOfInter;
 class Handle_BRepClass3d_DataMapNodeOfMapOfInter : public Handle_TCollection_MapNode {
@@ -176,20 +158,6 @@ class Handle_BRepClass3d_DataMapNodeOfMapOfInter : public Handle_TCollection_Map
 %extend Handle_BRepClass3d_DataMapNodeOfMapOfInter {
     BRepClass3d_DataMapNodeOfMapOfInter* GetObject() {
     return (BRepClass3d_DataMapNodeOfMapOfInter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepClass3d_DataMapNodeOfMapOfInter::~Handle_BRepClass3d_DataMapNodeOfMapOfInter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepClass3d_DataMapNodeOfMapOfInter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -273,20 +241,6 @@ class BRepClass3d_Intersector3d {
 };
 
 
-%feature("shadow") BRepClass3d_Intersector3d::~BRepClass3d_Intersector3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass3d_Intersector3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass3d_MapOfInter;
 class BRepClass3d_MapOfInter : public TCollection_BasicMap {
 	public:
@@ -365,20 +319,6 @@ class BRepClass3d_MapOfInter : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepClass3d_MapOfInter::~BRepClass3d_MapOfInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass3d_MapOfInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass3d_SClassifier;
 class BRepClass3d_SClassifier {
 	public:
@@ -449,20 +389,6 @@ class BRepClass3d_SClassifier {
 };
 
 
-%feature("shadow") BRepClass3d_SClassifier::~BRepClass3d_SClassifier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass3d_SClassifier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass3d_SolidExplorer;
 class BRepClass3d_SolidExplorer {
 	public:
@@ -773,20 +699,6 @@ class BRepClass3d_SolidExplorer {
 };
 
 
-%feature("shadow") BRepClass3d_SolidExplorer::~BRepClass3d_SolidExplorer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass3d_SolidExplorer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass3d_SolidPassiveClassifier;
 class BRepClass3d_SolidPassiveClassifier {
 	public:
@@ -831,20 +743,6 @@ class BRepClass3d_SolidPassiveClassifier {
 };
 
 
-%feature("shadow") BRepClass3d_SolidPassiveClassifier::~BRepClass3d_SolidPassiveClassifier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass3d_SolidPassiveClassifier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass3d_SolidClassifier;
 class BRepClass3d_SolidClassifier : public BRepClass3d_SClassifier {
 	public:
@@ -905,17 +803,3 @@ class BRepClass3d_SolidClassifier : public BRepClass3d_SClassifier {
 };
 
 
-%feature("shadow") BRepClass3d_SolidClassifier::~BRepClass3d_SolidClassifier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass3d_SolidClassifier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

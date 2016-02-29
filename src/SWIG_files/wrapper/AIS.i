@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include AIS_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef AIS_NListTransient::Iterator AIS_NListIteratorOfListTransient;
@@ -630,20 +642,6 @@ class AIS {
 };
 
 
-%feature("shadow") AIS::~AIS %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_AttributeFilter;
 class AIS_AttributeFilter : public SelectMgr_Filter {
 	public:
@@ -720,25 +718,23 @@ class AIS_AttributeFilter : public SelectMgr_Filter {
 };
 
 
-%feature("shadow") AIS_AttributeFilter::~AIS_AttributeFilter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_AttributeFilter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_AttributeFilter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_AttributeFilter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_AttributeFilter {
-	Handle_AIS_AttributeFilter GetHandle() {
-	return *(Handle_AIS_AttributeFilter*) &$self;
-	}
-};
+%pythonappend Handle_AIS_AttributeFilter::Handle_AIS_AttributeFilter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_AttributeFilter;
 class Handle_AIS_AttributeFilter : public Handle_SelectMgr_Filter {
@@ -756,20 +752,6 @@ class Handle_AIS_AttributeFilter : public Handle_SelectMgr_Filter {
 %extend Handle_AIS_AttributeFilter {
     AIS_AttributeFilter* GetObject() {
     return (AIS_AttributeFilter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_AttributeFilter::~Handle_AIS_AttributeFilter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_AttributeFilter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -823,25 +805,23 @@ class AIS_BadEdgeFilter : public SelectMgr_Filter {
 };
 
 
-%feature("shadow") AIS_BadEdgeFilter::~AIS_BadEdgeFilter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_BadEdgeFilter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_BadEdgeFilter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_BadEdgeFilter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_BadEdgeFilter {
-	Handle_AIS_BadEdgeFilter GetHandle() {
-	return *(Handle_AIS_BadEdgeFilter*) &$self;
-	}
-};
+%pythonappend Handle_AIS_BadEdgeFilter::Handle_AIS_BadEdgeFilter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_BadEdgeFilter;
 class Handle_AIS_BadEdgeFilter : public Handle_SelectMgr_Filter {
@@ -859,20 +839,6 @@ class Handle_AIS_BadEdgeFilter : public Handle_SelectMgr_Filter {
 %extend Handle_AIS_BadEdgeFilter {
     AIS_BadEdgeFilter* GetObject() {
     return (AIS_BadEdgeFilter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_BadEdgeFilter::~Handle_AIS_BadEdgeFilter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_BadEdgeFilter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -900,25 +866,23 @@ class AIS_C0RegularityFilter : public SelectMgr_Filter {
 };
 
 
-%feature("shadow") AIS_C0RegularityFilter::~AIS_C0RegularityFilter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_C0RegularityFilter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_C0RegularityFilter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_C0RegularityFilter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_C0RegularityFilter {
-	Handle_AIS_C0RegularityFilter GetHandle() {
-	return *(Handle_AIS_C0RegularityFilter*) &$self;
-	}
-};
+%pythonappend Handle_AIS_C0RegularityFilter::Handle_AIS_C0RegularityFilter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_C0RegularityFilter;
 class Handle_AIS_C0RegularityFilter : public Handle_SelectMgr_Filter {
@@ -936,20 +900,6 @@ class Handle_AIS_C0RegularityFilter : public Handle_SelectMgr_Filter {
 %extend Handle_AIS_C0RegularityFilter {
     AIS_C0RegularityFilter* GetObject() {
     return (AIS_C0RegularityFilter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_C0RegularityFilter::~Handle_AIS_C0RegularityFilter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_C0RegularityFilter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -979,24 +929,10 @@ class AIS_DataMapIteratorOfDataMapOfILC : public TCollection_BasicMapIterator {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_AIS_LocalContext
 ") Value;
-		const Handle_AIS_LocalContext & Value ();
+		Handle_AIS_LocalContext Value ();
 };
 
 
-%feature("shadow") AIS_DataMapIteratorOfDataMapOfILC::~AIS_DataMapIteratorOfDataMapOfILC %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_DataMapIteratorOfDataMapOfILC {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_DataMapIteratorOfDataMapOfIOStatus;
 class AIS_DataMapIteratorOfDataMapOfIOStatus : public TCollection_BasicMapIterator {
 	public:
@@ -1019,28 +955,14 @@ class AIS_DataMapIteratorOfDataMapOfIOStatus : public TCollection_BasicMapIterat
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") Key;
-		const Handle_AIS_InteractiveObject & Key ();
+		Handle_AIS_InteractiveObject Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_AIS_GlobalStatus
 ") Value;
-		const Handle_AIS_GlobalStatus & Value ();
+		Handle_AIS_GlobalStatus Value ();
 };
 
 
-%feature("shadow") AIS_DataMapIteratorOfDataMapOfIOStatus::~AIS_DataMapIteratorOfDataMapOfIOStatus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_DataMapIteratorOfDataMapOfIOStatus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_DataMapIteratorOfDataMapOfSelStat;
 class AIS_DataMapIteratorOfDataMapOfSelStat : public TCollection_BasicMapIterator {
 	public:
@@ -1063,28 +985,14 @@ class AIS_DataMapIteratorOfDataMapOfSelStat : public TCollection_BasicMapIterato
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_SelectMgr_SelectableObject
 ") Key;
-		const Handle_SelectMgr_SelectableObject & Key ();
+		Handle_SelectMgr_SelectableObject Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_AIS_LocalStatus
 ") Value;
-		const Handle_AIS_LocalStatus & Value ();
+		Handle_AIS_LocalStatus Value ();
 };
 
 
-%feature("shadow") AIS_DataMapIteratorOfDataMapOfSelStat::~AIS_DataMapIteratorOfDataMapOfSelStat %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_DataMapIteratorOfDataMapOfSelStat {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
 class AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive : public TCollection_BasicMapIterator {
 	public:
@@ -1115,20 +1023,6 @@ class AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive : public TCollectio
 };
 
 
-%feature("shadow") AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive::~AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_DataMapNodeOfDataMapOfILC;
 class AIS_DataMapNodeOfDataMapOfILC : public TCollection_MapNode {
 	public:
@@ -1158,29 +1052,27 @@ class AIS_DataMapNodeOfDataMapOfILC : public TCollection_MapNode {
             		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_AIS_LocalContext
 ") Value;
-		Handle_AIS_LocalContext & Value ();
+		Handle_AIS_LocalContext Value ();
 };
 
 
-%feature("shadow") AIS_DataMapNodeOfDataMapOfILC::~AIS_DataMapNodeOfDataMapOfILC %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend AIS_DataMapNodeOfDataMapOfILC {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_DataMapNodeOfDataMapOfILC(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_DataMapNodeOfDataMapOfILC::Handle_AIS_DataMapNodeOfDataMapOfILC %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend AIS_DataMapNodeOfDataMapOfILC {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_DataMapNodeOfDataMapOfILC {
-	Handle_AIS_DataMapNodeOfDataMapOfILC GetHandle() {
-	return *(Handle_AIS_DataMapNodeOfDataMapOfILC*) &$self;
-	}
-};
 
 %nodefaultctor Handle_AIS_DataMapNodeOfDataMapOfILC;
 class Handle_AIS_DataMapNodeOfDataMapOfILC : public Handle_TCollection_MapNode {
@@ -1200,20 +1092,6 @@ class Handle_AIS_DataMapNodeOfDataMapOfILC : public Handle_TCollection_MapNode {
     return (AIS_DataMapNodeOfDataMapOfILC*)$self->Access();
     }
 };
-%feature("shadow") Handle_AIS_DataMapNodeOfDataMapOfILC::~Handle_AIS_DataMapNodeOfDataMapOfILC %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_DataMapNodeOfDataMapOfILC {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor AIS_DataMapNodeOfDataMapOfIOStatus;
 class AIS_DataMapNodeOfDataMapOfIOStatus : public TCollection_MapNode {
@@ -1231,33 +1109,31 @@ class AIS_DataMapNodeOfDataMapOfIOStatus : public TCollection_MapNode {
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") Key;
-		Handle_AIS_InteractiveObject & Key ();
+		Handle_AIS_InteractiveObject Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_AIS_GlobalStatus
 ") Value;
-		Handle_AIS_GlobalStatus & Value ();
+		Handle_AIS_GlobalStatus Value ();
 };
 
 
-%feature("shadow") AIS_DataMapNodeOfDataMapOfIOStatus::~AIS_DataMapNodeOfDataMapOfIOStatus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend AIS_DataMapNodeOfDataMapOfIOStatus {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_DataMapNodeOfDataMapOfIOStatus(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_DataMapNodeOfDataMapOfIOStatus::Handle_AIS_DataMapNodeOfDataMapOfIOStatus %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend AIS_DataMapNodeOfDataMapOfIOStatus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_DataMapNodeOfDataMapOfIOStatus {
-	Handle_AIS_DataMapNodeOfDataMapOfIOStatus GetHandle() {
-	return *(Handle_AIS_DataMapNodeOfDataMapOfIOStatus*) &$self;
-	}
-};
 
 %nodefaultctor Handle_AIS_DataMapNodeOfDataMapOfIOStatus;
 class Handle_AIS_DataMapNodeOfDataMapOfIOStatus : public Handle_TCollection_MapNode {
@@ -1277,20 +1153,6 @@ class Handle_AIS_DataMapNodeOfDataMapOfIOStatus : public Handle_TCollection_MapN
     return (AIS_DataMapNodeOfDataMapOfIOStatus*)$self->Access();
     }
 };
-%feature("shadow") Handle_AIS_DataMapNodeOfDataMapOfIOStatus::~Handle_AIS_DataMapNodeOfDataMapOfIOStatus %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_DataMapNodeOfDataMapOfIOStatus {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor AIS_DataMapNodeOfDataMapOfSelStat;
 class AIS_DataMapNodeOfDataMapOfSelStat : public TCollection_MapNode {
@@ -1308,33 +1170,31 @@ class AIS_DataMapNodeOfDataMapOfSelStat : public TCollection_MapNode {
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_SelectMgr_SelectableObject
 ") Key;
-		Handle_SelectMgr_SelectableObject & Key ();
+		Handle_SelectMgr_SelectableObject Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_AIS_LocalStatus
 ") Value;
-		Handle_AIS_LocalStatus & Value ();
+		Handle_AIS_LocalStatus Value ();
 };
 
 
-%feature("shadow") AIS_DataMapNodeOfDataMapOfSelStat::~AIS_DataMapNodeOfDataMapOfSelStat %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend AIS_DataMapNodeOfDataMapOfSelStat {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_DataMapNodeOfDataMapOfSelStat(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_DataMapNodeOfDataMapOfSelStat::Handle_AIS_DataMapNodeOfDataMapOfSelStat %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend AIS_DataMapNodeOfDataMapOfSelStat {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_DataMapNodeOfDataMapOfSelStat {
-	Handle_AIS_DataMapNodeOfDataMapOfSelStat GetHandle() {
-	return *(Handle_AIS_DataMapNodeOfDataMapOfSelStat*) &$self;
-	}
-};
 
 %nodefaultctor Handle_AIS_DataMapNodeOfDataMapOfSelStat;
 class Handle_AIS_DataMapNodeOfDataMapOfSelStat : public Handle_TCollection_MapNode {
@@ -1352,20 +1212,6 @@ class Handle_AIS_DataMapNodeOfDataMapOfSelStat : public Handle_TCollection_MapNo
 %extend Handle_AIS_DataMapNodeOfDataMapOfSelStat {
     AIS_DataMapNodeOfDataMapOfSelStat* GetObject() {
     return (AIS_DataMapNodeOfDataMapOfSelStat*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_DataMapNodeOfDataMapOfSelStat::~Handle_AIS_DataMapNodeOfDataMapOfSelStat %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_DataMapNodeOfDataMapOfSelStat {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1402,25 +1248,23 @@ class AIS_DataMapNodeOfDataMapofIntegerListOfinteractive : public TCollection_Ma
 };
 
 
-%feature("shadow") AIS_DataMapNodeOfDataMapofIntegerListOfinteractive::~AIS_DataMapNodeOfDataMapofIntegerListOfinteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_DataMapNodeOfDataMapofIntegerListOfinteractive {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_DataMapNodeOfDataMapofIntegerListOfinteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_DataMapNodeOfDataMapofIntegerListOfinteractive {
-	Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive GetHandle() {
-	return *(Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive*) &$self;
-	}
-};
+%pythonappend Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive::Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive;
 class Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive : public Handle_TCollection_MapNode {
@@ -1438,20 +1282,6 @@ class Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive : public Handle_
 %extend Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive {
     AIS_DataMapNodeOfDataMapofIntegerListOfinteractive* GetObject() {
     return (AIS_DataMapNodeOfDataMapofIntegerListOfinteractive*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive::~Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1511,13 +1341,13 @@ class AIS_DataMapOfILC : public TCollection_BasicMap {
 	:type K: int &
 	:rtype: Handle_AIS_LocalContext
 ") Find;
-		const Handle_AIS_LocalContext & Find (const Standard_Integer & K);
+		Handle_AIS_LocalContext Find (const Standard_Integer & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: int &
 	:rtype: Handle_AIS_LocalContext
 ") ChangeFind;
-		Handle_AIS_LocalContext & ChangeFind (const Standard_Integer & K);
+		Handle_AIS_LocalContext ChangeFind (const Standard_Integer & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: int &
@@ -1533,20 +1363,6 @@ class AIS_DataMapOfILC : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") AIS_DataMapOfILC::~AIS_DataMapOfILC %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_DataMapOfILC {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_DataMapOfIOStatus;
 class AIS_DataMapOfIOStatus : public TCollection_BasicMap {
 	public:
@@ -1603,13 +1419,13 @@ class AIS_DataMapOfIOStatus : public TCollection_BasicMap {
 	:type K: Handle_AIS_InteractiveObject &
 	:rtype: Handle_AIS_GlobalStatus
 ") Find;
-		const Handle_AIS_GlobalStatus & Find (const Handle_AIS_InteractiveObject & K);
+		Handle_AIS_GlobalStatus Find (const Handle_AIS_InteractiveObject & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_AIS_InteractiveObject &
 	:rtype: Handle_AIS_GlobalStatus
 ") ChangeFind;
-		Handle_AIS_GlobalStatus & ChangeFind (const Handle_AIS_InteractiveObject & K);
+		Handle_AIS_GlobalStatus ChangeFind (const Handle_AIS_InteractiveObject & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_AIS_InteractiveObject &
@@ -1625,20 +1441,6 @@ class AIS_DataMapOfIOStatus : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") AIS_DataMapOfIOStatus::~AIS_DataMapOfIOStatus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_DataMapOfIOStatus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_DataMapOfSelStat;
 class AIS_DataMapOfSelStat : public TCollection_BasicMap {
 	public:
@@ -1695,13 +1497,13 @@ class AIS_DataMapOfSelStat : public TCollection_BasicMap {
 	:type K: Handle_SelectMgr_SelectableObject &
 	:rtype: Handle_AIS_LocalStatus
 ") Find;
-		const Handle_AIS_LocalStatus & Find (const Handle_SelectMgr_SelectableObject & K);
+		Handle_AIS_LocalStatus Find (const Handle_SelectMgr_SelectableObject & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_SelectMgr_SelectableObject &
 	:rtype: Handle_AIS_LocalStatus
 ") ChangeFind;
-		Handle_AIS_LocalStatus & ChangeFind (const Handle_SelectMgr_SelectableObject & K);
+		Handle_AIS_LocalStatus ChangeFind (const Handle_SelectMgr_SelectableObject & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_SelectMgr_SelectableObject &
@@ -1717,20 +1519,6 @@ class AIS_DataMapOfSelStat : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") AIS_DataMapOfSelStat::~AIS_DataMapOfSelStat %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_DataMapOfSelStat {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_DataMapofIntegerListOfinteractive;
 class AIS_DataMapofIntegerListOfinteractive : public TCollection_BasicMap {
 	public:
@@ -1809,20 +1597,6 @@ class AIS_DataMapofIntegerListOfinteractive : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") AIS_DataMapofIntegerListOfinteractive::~AIS_DataMapofIntegerListOfinteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_DataMapofIntegerListOfinteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_DimensionOwner;
 class AIS_DimensionOwner : public SelectMgr_EntityOwner {
 	public:
@@ -1883,25 +1657,23 @@ class AIS_DimensionOwner : public SelectMgr_EntityOwner {
 };
 
 
-%feature("shadow") AIS_DimensionOwner::~AIS_DimensionOwner %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_DimensionOwner {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_DimensionOwner(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_DimensionOwner {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_DimensionOwner {
-	Handle_AIS_DimensionOwner GetHandle() {
-	return *(Handle_AIS_DimensionOwner*) &$self;
-	}
-};
+%pythonappend Handle_AIS_DimensionOwner::Handle_AIS_DimensionOwner %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_DimensionOwner;
 class Handle_AIS_DimensionOwner : public Handle_SelectMgr_EntityOwner {
@@ -1919,20 +1691,6 @@ class Handle_AIS_DimensionOwner : public Handle_SelectMgr_EntityOwner {
 %extend Handle_AIS_DimensionOwner {
     AIS_DimensionOwner* GetObject() {
     return (AIS_DimensionOwner*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_DimensionOwner::~Handle_AIS_DimensionOwner %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_DimensionOwner {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2390,7 +2148,7 @@ class AIS_Drawer : public Prs3d_Drawer {
 		%feature("compactdefaultargs") Link;
 		%feature("autodoc", "	:rtype: Handle_Prs3d_Drawer
 ") Link;
-		const Handle_Prs3d_Drawer & Link ();
+		Handle_Prs3d_Drawer Link ();
 		%feature("compactdefaultargs") HasLink;
 		%feature("autodoc", "	:rtype: bool
 ") HasLink;
@@ -2422,25 +2180,23 @@ class AIS_Drawer : public Prs3d_Drawer {
 };
 
 
-%feature("shadow") AIS_Drawer::~AIS_Drawer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Drawer {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Drawer(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Drawer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Drawer {
-	Handle_AIS_Drawer GetHandle() {
-	return *(Handle_AIS_Drawer*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Drawer::Handle_AIS_Drawer %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Drawer;
 class Handle_AIS_Drawer : public Handle_Prs3d_Drawer {
@@ -2458,20 +2214,6 @@ class Handle_AIS_Drawer : public Handle_Prs3d_Drawer {
 %extend Handle_AIS_Drawer {
     AIS_Drawer* GetObject() {
     return (AIS_Drawer*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_Drawer::~Handle_AIS_Drawer %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Drawer {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2581,25 +2323,23 @@ class AIS_ExclusionFilter : public SelectMgr_Filter {
 };
 
 
-%feature("shadow") AIS_ExclusionFilter::~AIS_ExclusionFilter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_ExclusionFilter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_ExclusionFilter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_ExclusionFilter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_ExclusionFilter {
-	Handle_AIS_ExclusionFilter GetHandle() {
-	return *(Handle_AIS_ExclusionFilter*) &$self;
-	}
-};
+%pythonappend Handle_AIS_ExclusionFilter::Handle_AIS_ExclusionFilter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_ExclusionFilter;
 class Handle_AIS_ExclusionFilter : public Handle_SelectMgr_Filter {
@@ -2617,20 +2357,6 @@ class Handle_AIS_ExclusionFilter : public Handle_SelectMgr_Filter {
 %extend Handle_AIS_ExclusionFilter {
     AIS_ExclusionFilter* GetObject() {
     return (AIS_ExclusionFilter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_ExclusionFilter::~Handle_AIS_ExclusionFilter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_ExclusionFilter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2760,25 +2486,23 @@ class AIS_GlobalStatus : public MMgt_TShared {
 };
 
 
-%feature("shadow") AIS_GlobalStatus::~AIS_GlobalStatus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_GlobalStatus {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_GlobalStatus(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_GlobalStatus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_GlobalStatus {
-	Handle_AIS_GlobalStatus GetHandle() {
-	return *(Handle_AIS_GlobalStatus*) &$self;
-	}
-};
+%pythonappend Handle_AIS_GlobalStatus::Handle_AIS_GlobalStatus %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_GlobalStatus;
 class Handle_AIS_GlobalStatus : public Handle_MMgt_TShared {
@@ -2796,20 +2520,6 @@ class Handle_AIS_GlobalStatus : public Handle_MMgt_TShared {
 %extend Handle_AIS_GlobalStatus {
     AIS_GlobalStatus* GetObject() {
     return (AIS_GlobalStatus*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_GlobalStatus::~Handle_AIS_GlobalStatus %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_GlobalStatus {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2886,20 +2596,6 @@ class AIS_GraphicTool {
 };
 
 
-%feature("shadow") AIS_GraphicTool::~AIS_GraphicTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_GraphicTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs;
 class AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public TCollection_MapNode {
 	public:
@@ -2920,7 +2616,7 @@ class AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public TCollection_MapN
 		%feature("compactdefaultargs") Key1;
 		%feature("autodoc", "	:rtype: Handle_SelectMgr_EntityOwner
 ") Key1;
-		Handle_SelectMgr_EntityOwner & Key1 ();
+		Handle_SelectMgr_EntityOwner Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -2941,29 +2637,27 @@ class AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public TCollection_MapN
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Prs3d_Presentation
 ") Value;
-		Handle_Prs3d_Presentation & Value ();
+		Handle_Prs3d_Presentation Value ();
 };
 
 
-%feature("shadow") AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs::~AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs::Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs {
-	Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs GetHandle() {
-	return *(Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs*) &$self;
-	}
-};
 
 %nodefaultctor Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs;
 class Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public Handle_TCollection_MapNode {
@@ -2981,20 +2675,6 @@ class Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public Handle_TC
 %extend Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs {
     AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs* GetObject() {
     return (AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs::~Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3062,19 +2742,19 @@ class AIS_IndexedDataMapOfOwnerPrs : public TCollection_BasicMap {
 	:type I: int
 	:rtype: Handle_SelectMgr_EntityOwner
 ") FindKey;
-		const Handle_SelectMgr_EntityOwner & FindKey (const Standard_Integer I);
+		Handle_SelectMgr_EntityOwner FindKey (const Standard_Integer I);
 		%feature("compactdefaultargs") FindFromIndex;
 		%feature("autodoc", "	:param I:
 	:type I: int
 	:rtype: Handle_Prs3d_Presentation
 ") FindFromIndex;
-		const Handle_Prs3d_Presentation & FindFromIndex (const Standard_Integer I);
+		Handle_Prs3d_Presentation FindFromIndex (const Standard_Integer I);
 		%feature("compactdefaultargs") ChangeFromIndex;
 		%feature("autodoc", "	:param I:
 	:type I: int
 	:rtype: Handle_Prs3d_Presentation
 ") ChangeFromIndex;
-		Handle_Prs3d_Presentation & ChangeFromIndex (const Standard_Integer I);
+		Handle_Prs3d_Presentation ChangeFromIndex (const Standard_Integer I);
 		%feature("compactdefaultargs") FindIndex;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_SelectMgr_EntityOwner &
@@ -3086,13 +2766,13 @@ class AIS_IndexedDataMapOfOwnerPrs : public TCollection_BasicMap {
 	:type K: Handle_SelectMgr_EntityOwner &
 	:rtype: Handle_Prs3d_Presentation
 ") FindFromKey;
-		const Handle_Prs3d_Presentation & FindFromKey (const Handle_SelectMgr_EntityOwner & K);
+		Handle_Prs3d_Presentation FindFromKey (const Handle_SelectMgr_EntityOwner & K);
 		%feature("compactdefaultargs") ChangeFromKey;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_SelectMgr_EntityOwner &
 	:rtype: Handle_Prs3d_Presentation
 ") ChangeFromKey;
-		Handle_Prs3d_Presentation & ChangeFromKey (const Handle_SelectMgr_EntityOwner & K);
+		Handle_Prs3d_Presentation ChangeFromKey (const Handle_SelectMgr_EntityOwner & K);
 		%feature("compactdefaultargs") FindFromKey1;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_SelectMgr_EntityOwner &
@@ -3108,20 +2788,6 @@ class AIS_IndexedDataMapOfOwnerPrs : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") AIS_IndexedDataMapOfOwnerPrs::~AIS_IndexedDataMapOfOwnerPrs %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_IndexedDataMapOfOwnerPrs {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_InteractiveContext;
 class AIS_InteractiveContext : public MMgt_TShared {
 	public:
@@ -4854,13 +4520,13 @@ class AIS_InteractiveContext : public MMgt_TShared {
 
 	:rtype: Handle_Prs3d_Drawer
 ") DefaultDrawer;
-		const Handle_Prs3d_Drawer & DefaultDrawer ();
+		Handle_Prs3d_Drawer DefaultDrawer ();
 		%feature("compactdefaultargs") CurrentViewer;
 		%feature("autodoc", "	* Returns the current viewer.
 
 	:rtype: Handle_V3d_Viewer
 ") CurrentViewer;
-		const Handle_V3d_Viewer & CurrentViewer ();
+		Handle_V3d_Viewer CurrentViewer ();
 		%feature("compactdefaultargs") DisplayedObjects;
 		%feature("autodoc", "	* Returns the list of displayed objects of a particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals -1. This means that there is a check on type only.
 
@@ -4974,15 +4640,15 @@ class AIS_InteractiveContext : public MMgt_TShared {
 		%feature("compactdefaultargs") SelectionManager;
 		%feature("autodoc", "	:rtype: Handle_SelectMgr_SelectionManager
 ") SelectionManager;
-		const Handle_SelectMgr_SelectionManager & SelectionManager ();
+		Handle_SelectMgr_SelectionManager SelectionManager ();
 		%feature("compactdefaultargs") MainPrsMgr;
 		%feature("autodoc", "	:rtype: Handle_PrsMgr_PresentationManager3d
 ") MainPrsMgr;
-		const Handle_PrsMgr_PresentationManager3d & MainPrsMgr ();
+		Handle_PrsMgr_PresentationManager3d MainPrsMgr ();
 		%feature("compactdefaultargs") MainSelector;
 		%feature("autodoc", "	:rtype: Handle_StdSelect_ViewerSelector3d
 ") MainSelector;
-		const Handle_StdSelect_ViewerSelector3d & MainSelector ();
+		Handle_StdSelect_ViewerSelector3d MainSelector ();
 		%feature("compactdefaultargs") LocalSelector;
 		%feature("autodoc", "	:rtype: Handle_StdSelect_ViewerSelector3d
 ") LocalSelector;
@@ -5050,25 +4716,23 @@ class AIS_InteractiveContext : public MMgt_TShared {
 };
 
 
-%feature("shadow") AIS_InteractiveContext::~AIS_InteractiveContext %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_InteractiveContext {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_InteractiveContext(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_InteractiveContext {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_InteractiveContext {
-	Handle_AIS_InteractiveContext GetHandle() {
-	return *(Handle_AIS_InteractiveContext*) &$self;
-	}
-};
+%pythonappend Handle_AIS_InteractiveContext::Handle_AIS_InteractiveContext %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_InteractiveContext;
 class Handle_AIS_InteractiveContext : public Handle_MMgt_TShared {
@@ -5086,20 +4750,6 @@ class Handle_AIS_InteractiveContext : public Handle_MMgt_TShared {
 %extend Handle_AIS_InteractiveContext {
     AIS_InteractiveContext* GetObject() {
     return (AIS_InteractiveContext*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_InteractiveContext::~Handle_AIS_InteractiveContext %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_InteractiveContext {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5237,7 +4887,7 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 
 	:rtype: Handle_Standard_Transient
 ") GetOwner;
-		const Handle_Standard_Transient & GetOwner ();
+		Handle_Standard_Transient GetOwner ();
 		%feature("compactdefaultargs") SetOwner;
 		%feature("autodoc", "	* Allows you to attribute the owner ApplicativeEntity to an Interactive Object. This can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of. The owner takes the form of a transient.
 
@@ -5477,7 +5127,7 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 
 	:rtype: Handle_AIS_Drawer
 ") Attributes;
-		const Handle_AIS_Drawer & Attributes ();
+		Handle_AIS_Drawer Attributes ();
 		%feature("compactdefaultargs") UnsetAttributes;
 		%feature("autodoc", "	* Clears settings provided by the drawing tool aDrawer.
 
@@ -5579,25 +5229,23 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 };
 
 
-%feature("shadow") AIS_InteractiveObject::~AIS_InteractiveObject %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_InteractiveObject {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_InteractiveObject(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_InteractiveObject {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_InteractiveObject {
-	Handle_AIS_InteractiveObject GetHandle() {
-	return *(Handle_AIS_InteractiveObject*) &$self;
-	}
-};
+%pythonappend Handle_AIS_InteractiveObject::Handle_AIS_InteractiveObject %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_InteractiveObject;
 class Handle_AIS_InteractiveObject : public Handle_SelectMgr_SelectableObject {
@@ -5615,20 +5263,6 @@ class Handle_AIS_InteractiveObject : public Handle_SelectMgr_SelectableObject {
 %extend Handle_AIS_InteractiveObject {
     AIS_InteractiveObject* GetObject() {
     return (AIS_InteractiveObject*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_InteractiveObject::~Handle_AIS_InteractiveObject %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_InteractiveObject {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5662,24 +5296,10 @@ class AIS_ListIteratorOfListOfInteractive {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") Value;
-		Handle_AIS_InteractiveObject & Value ();
+		Handle_AIS_InteractiveObject Value ();
 };
 
 
-%feature("shadow") AIS_ListIteratorOfListOfInteractive::~AIS_ListIteratorOfListOfInteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_ListIteratorOfListOfInteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_ListNodeOfListOfInteractive;
 class AIS_ListNodeOfListOfInteractive : public TCollection_MapNode {
 	public:
@@ -5694,29 +5314,27 @@ class AIS_ListNodeOfListOfInteractive : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") Value;
-		Handle_AIS_InteractiveObject & Value ();
+		Handle_AIS_InteractiveObject Value ();
 };
 
 
-%feature("shadow") AIS_ListNodeOfListOfInteractive::~AIS_ListNodeOfListOfInteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend AIS_ListNodeOfListOfInteractive {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_ListNodeOfListOfInteractive(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_ListNodeOfListOfInteractive::Handle_AIS_ListNodeOfListOfInteractive %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend AIS_ListNodeOfListOfInteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_ListNodeOfListOfInteractive {
-	Handle_AIS_ListNodeOfListOfInteractive GetHandle() {
-	return *(Handle_AIS_ListNodeOfListOfInteractive*) &$self;
-	}
-};
 
 %nodefaultctor Handle_AIS_ListNodeOfListOfInteractive;
 class Handle_AIS_ListNodeOfListOfInteractive : public Handle_TCollection_MapNode {
@@ -5734,20 +5352,6 @@ class Handle_AIS_ListNodeOfListOfInteractive : public Handle_TCollection_MapNode
 %extend Handle_AIS_ListNodeOfListOfInteractive {
     AIS_ListNodeOfListOfInteractive* GetObject() {
     return (AIS_ListNodeOfListOfInteractive*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_ListNodeOfListOfInteractive::~Handle_AIS_ListNodeOfListOfInteractive %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_ListNodeOfListOfInteractive {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5825,11 +5429,11 @@ class AIS_ListOfInteractive {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") First;
-		Handle_AIS_InteractiveObject & First ();
+		Handle_AIS_InteractiveObject First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") Last;
-		Handle_AIS_InteractiveObject & Last ();
+		Handle_AIS_InteractiveObject Last ();
 		%feature("compactdefaultargs") RemoveFirst;
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
@@ -5875,20 +5479,6 @@ class AIS_ListOfInteractive {
 };
 
 
-%feature("shadow") AIS_ListOfInteractive::~AIS_ListOfInteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_ListOfInteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_LocalContext;
 class AIS_LocalContext : public MMgt_TShared {
 	public:
@@ -6077,7 +5667,7 @@ class AIS_LocalContext : public MMgt_TShared {
 		%feature("compactdefaultargs") Filter;
 		%feature("autodoc", "	:rtype: Handle_SelectMgr_OrFilter
 ") Filter;
-		const Handle_SelectMgr_OrFilter & Filter ();
+		Handle_SelectMgr_OrFilter Filter ();
 		%feature("compactdefaultargs") SetAutomaticHilight;
 		%feature("autodoc", "	* if <aStatus> = True , the shapes or subshapes detected by the selector will be automatically hilighted in the main viewer. Else the user has to manage the detected shape outside the Shape Selector....
 
@@ -6355,7 +5945,7 @@ class AIS_LocalContext : public MMgt_TShared {
 		%feature("compactdefaultargs") SelectedApplicative;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") SelectedApplicative;
-		const Handle_Standard_Transient & SelectedApplicative ();
+		Handle_Standard_Transient SelectedApplicative ();
 		%feature("compactdefaultargs") SetDisplayPriority;
 		%feature("autodoc", "	:param anObject:
 	:type anObject: Handle_AIS_InteractiveObject &
@@ -6587,7 +6177,7 @@ class AIS_LocalContext : public MMgt_TShared {
 		%feature("compactdefaultargs") MainSelector;
 		%feature("autodoc", "	:rtype: Handle_StdSelect_ViewerSelector3d
 ") MainSelector;
-		const Handle_StdSelect_ViewerSelector3d & MainSelector ();
+		Handle_StdSelect_ViewerSelector3d MainSelector ();
 		%feature("compactdefaultargs") FindSelectedOwnerFromIO;
 		%feature("autodoc", "	:param anIObj:
 	:type anIObj: Handle_AIS_InteractiveObject &
@@ -6603,25 +6193,23 @@ class AIS_LocalContext : public MMgt_TShared {
 };
 
 
-%feature("shadow") AIS_LocalContext::~AIS_LocalContext %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_LocalContext {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_LocalContext(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_LocalContext {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_LocalContext {
-	Handle_AIS_LocalContext GetHandle() {
-	return *(Handle_AIS_LocalContext*) &$self;
-	}
-};
+%pythonappend Handle_AIS_LocalContext::Handle_AIS_LocalContext %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_LocalContext;
 class Handle_AIS_LocalContext : public Handle_MMgt_TShared {
@@ -6639,20 +6227,6 @@ class Handle_AIS_LocalContext : public Handle_MMgt_TShared {
 %extend Handle_AIS_LocalContext {
     AIS_LocalContext* GetObject() {
     return (AIS_LocalContext*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_LocalContext::~Handle_AIS_LocalContext %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_LocalContext {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6790,29 +6364,27 @@ class AIS_LocalStatus : public MMgt_TShared {
 		%feature("compactdefaultargs") PreviousState;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") PreviousState;
-		const Handle_Standard_Transient & PreviousState ();
+		Handle_Standard_Transient PreviousState ();
 };
 
 
-%feature("shadow") AIS_LocalStatus::~AIS_LocalStatus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend AIS_LocalStatus {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_LocalStatus(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_LocalStatus::Handle_AIS_LocalStatus %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend AIS_LocalStatus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_LocalStatus {
-	Handle_AIS_LocalStatus GetHandle() {
-	return *(Handle_AIS_LocalStatus*) &$self;
-	}
-};
 
 %nodefaultctor Handle_AIS_LocalStatus;
 class Handle_AIS_LocalStatus : public Handle_MMgt_TShared {
@@ -6830,20 +6402,6 @@ class Handle_AIS_LocalStatus : public Handle_MMgt_TShared {
 %extend Handle_AIS_LocalStatus {
     AIS_LocalStatus* GetObject() {
     return (AIS_LocalStatus*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_LocalStatus::~Handle_AIS_LocalStatus %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_LocalStatus {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6869,24 +6427,10 @@ class AIS_MapIteratorOfMapOfInteractive : public TCollection_BasicMapIterator {
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") Key;
-		const Handle_AIS_InteractiveObject & Key ();
+		Handle_AIS_InteractiveObject Key ();
 };
 
 
-%feature("shadow") AIS_MapIteratorOfMapOfInteractive::~AIS_MapIteratorOfMapOfInteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_MapIteratorOfMapOfInteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_MapOfInteractive;
 class AIS_MapOfInteractive : public TCollection_BasicMap {
 	public:
@@ -6939,20 +6483,6 @@ class AIS_MapOfInteractive : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") AIS_MapOfInteractive::~AIS_MapOfInteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_MapOfInteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_Selection;
 class AIS_Selection : public MMgt_TShared {
 	public:
@@ -7073,7 +6603,7 @@ class AIS_Selection : public MMgt_TShared {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 		%feature("compactdefaultargs") NbStored;
 		%feature("autodoc", "	:rtype: int
 ") NbStored;
@@ -7091,25 +6621,23 @@ class AIS_Selection : public MMgt_TShared {
 };
 
 
-%feature("shadow") AIS_Selection::~AIS_Selection %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Selection {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Selection(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Selection {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Selection {
-	Handle_AIS_Selection GetHandle() {
-	return *(Handle_AIS_Selection*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Selection::Handle_AIS_Selection %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Selection;
 class Handle_AIS_Selection : public Handle_MMgt_TShared {
@@ -7129,20 +6657,6 @@ class Handle_AIS_Selection : public Handle_MMgt_TShared {
     return (AIS_Selection*)$self->Access();
     }
 };
-%feature("shadow") Handle_AIS_Selection::~Handle_AIS_Selection %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Selection {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor AIS_SequenceNodeOfSequenceOfDimension;
 class AIS_SequenceNodeOfSequenceOfDimension : public TCollection_SeqNode {
@@ -7160,29 +6674,27 @@ class AIS_SequenceNodeOfSequenceOfDimension : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_AIS_Relation
 ") Value;
-		Handle_AIS_Relation & Value ();
+		Handle_AIS_Relation Value ();
 };
 
 
-%feature("shadow") AIS_SequenceNodeOfSequenceOfDimension::~AIS_SequenceNodeOfSequenceOfDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend AIS_SequenceNodeOfSequenceOfDimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_SequenceNodeOfSequenceOfDimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_SequenceNodeOfSequenceOfDimension::Handle_AIS_SequenceNodeOfSequenceOfDimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend AIS_SequenceNodeOfSequenceOfDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_SequenceNodeOfSequenceOfDimension {
-	Handle_AIS_SequenceNodeOfSequenceOfDimension GetHandle() {
-	return *(Handle_AIS_SequenceNodeOfSequenceOfDimension*) &$self;
-	}
-};
 
 %nodefaultctor Handle_AIS_SequenceNodeOfSequenceOfDimension;
 class Handle_AIS_SequenceNodeOfSequenceOfDimension : public Handle_TCollection_SeqNode {
@@ -7202,20 +6714,6 @@ class Handle_AIS_SequenceNodeOfSequenceOfDimension : public Handle_TCollection_S
     return (AIS_SequenceNodeOfSequenceOfDimension*)$self->Access();
     }
 };
-%feature("shadow") Handle_AIS_SequenceNodeOfSequenceOfDimension::~Handle_AIS_SequenceNodeOfSequenceOfDimension %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_SequenceNodeOfSequenceOfDimension {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor AIS_SequenceNodeOfSequenceOfInteractive;
 class AIS_SequenceNodeOfSequenceOfInteractive : public TCollection_SeqNode {
@@ -7233,29 +6731,27 @@ class AIS_SequenceNodeOfSequenceOfInteractive : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") Value;
-		Handle_AIS_InteractiveObject & Value ();
+		Handle_AIS_InteractiveObject Value ();
 };
 
 
-%feature("shadow") AIS_SequenceNodeOfSequenceOfInteractive::~AIS_SequenceNodeOfSequenceOfInteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend AIS_SequenceNodeOfSequenceOfInteractive {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_SequenceNodeOfSequenceOfInteractive(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_SequenceNodeOfSequenceOfInteractive::Handle_AIS_SequenceNodeOfSequenceOfInteractive %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend AIS_SequenceNodeOfSequenceOfInteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_SequenceNodeOfSequenceOfInteractive {
-	Handle_AIS_SequenceNodeOfSequenceOfInteractive GetHandle() {
-	return *(Handle_AIS_SequenceNodeOfSequenceOfInteractive*) &$self;
-	}
-};
 
 %nodefaultctor Handle_AIS_SequenceNodeOfSequenceOfInteractive;
 class Handle_AIS_SequenceNodeOfSequenceOfInteractive : public Handle_TCollection_SeqNode {
@@ -7273,20 +6769,6 @@ class Handle_AIS_SequenceNodeOfSequenceOfInteractive : public Handle_TCollection
 %extend Handle_AIS_SequenceNodeOfSequenceOfInteractive {
     AIS_SequenceNodeOfSequenceOfInteractive* GetObject() {
     return (AIS_SequenceNodeOfSequenceOfInteractive*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_SequenceNodeOfSequenceOfInteractive::~Handle_AIS_SequenceNodeOfSequenceOfInteractive %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_SequenceNodeOfSequenceOfInteractive {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7372,11 +6854,11 @@ class AIS_SequenceOfDimension : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_AIS_Relation
 ") First;
-		const Handle_AIS_Relation & First ();
+		Handle_AIS_Relation First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_AIS_Relation
 ") Last;
-		const Handle_AIS_Relation & Last ();
+		Handle_AIS_Relation Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -7390,7 +6872,7 @@ class AIS_SequenceOfDimension : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_AIS_Relation
 ") Value;
-		const Handle_AIS_Relation & Value (const Standard_Integer Index);
+		Handle_AIS_Relation Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -7404,7 +6886,7 @@ class AIS_SequenceOfDimension : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_AIS_Relation
 ") ChangeValue;
-		Handle_AIS_Relation & ChangeValue (const Standard_Integer Index);
+		Handle_AIS_Relation ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -7422,20 +6904,6 @@ class AIS_SequenceOfDimension : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") AIS_SequenceOfDimension::~AIS_SequenceOfDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_SequenceOfDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_SequenceOfInteractive;
 class AIS_SequenceOfInteractive : public TCollection_BaseSequence {
 	public:
@@ -7518,11 +6986,11 @@ class AIS_SequenceOfInteractive : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") First;
-		const Handle_AIS_InteractiveObject & First ();
+		Handle_AIS_InteractiveObject First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") Last;
-		const Handle_AIS_InteractiveObject & Last ();
+		Handle_AIS_InteractiveObject Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -7536,7 +7004,7 @@ class AIS_SequenceOfInteractive : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_AIS_InteractiveObject
 ") Value;
-		const Handle_AIS_InteractiveObject & Value (const Standard_Integer Index);
+		Handle_AIS_InteractiveObject Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -7550,7 +7018,7 @@ class AIS_SequenceOfInteractive : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_AIS_InteractiveObject
 ") ChangeValue;
-		Handle_AIS_InteractiveObject & ChangeValue (const Standard_Integer Index);
+		Handle_AIS_InteractiveObject ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -7568,20 +7036,6 @@ class AIS_SequenceOfInteractive : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") AIS_SequenceOfInteractive::~AIS_SequenceOfInteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_SequenceOfInteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_StdMapNodeOfMapOfInteractive;
 class AIS_StdMapNodeOfMapOfInteractive : public TCollection_MapNode {
 	public:
@@ -7596,29 +7050,27 @@ class AIS_StdMapNodeOfMapOfInteractive : public TCollection_MapNode {
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") Key;
-		Handle_AIS_InteractiveObject & Key ();
+		Handle_AIS_InteractiveObject Key ();
 };
 
 
-%feature("shadow") AIS_StdMapNodeOfMapOfInteractive::~AIS_StdMapNodeOfMapOfInteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend AIS_StdMapNodeOfMapOfInteractive {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_StdMapNodeOfMapOfInteractive(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_StdMapNodeOfMapOfInteractive::Handle_AIS_StdMapNodeOfMapOfInteractive %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend AIS_StdMapNodeOfMapOfInteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_StdMapNodeOfMapOfInteractive {
-	Handle_AIS_StdMapNodeOfMapOfInteractive GetHandle() {
-	return *(Handle_AIS_StdMapNodeOfMapOfInteractive*) &$self;
-	}
-};
 
 %nodefaultctor Handle_AIS_StdMapNodeOfMapOfInteractive;
 class Handle_AIS_StdMapNodeOfMapOfInteractive : public Handle_TCollection_MapNode {
@@ -7636,20 +7088,6 @@ class Handle_AIS_StdMapNodeOfMapOfInteractive : public Handle_TCollection_MapNod
 %extend Handle_AIS_StdMapNodeOfMapOfInteractive {
     AIS_StdMapNodeOfMapOfInteractive* GetObject() {
     return (AIS_StdMapNodeOfMapOfInteractive*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_StdMapNodeOfMapOfInteractive::~Handle_AIS_StdMapNodeOfMapOfInteractive %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_StdMapNodeOfMapOfInteractive {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7675,25 +7113,23 @@ class AIS_TypeFilter : public SelectMgr_Filter {
 };
 
 
-%feature("shadow") AIS_TypeFilter::~AIS_TypeFilter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_TypeFilter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_TypeFilter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_TypeFilter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_TypeFilter {
-	Handle_AIS_TypeFilter GetHandle() {
-	return *(Handle_AIS_TypeFilter*) &$self;
-	}
-};
+%pythonappend Handle_AIS_TypeFilter::Handle_AIS_TypeFilter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_TypeFilter;
 class Handle_AIS_TypeFilter : public Handle_SelectMgr_Filter {
@@ -7711,20 +7147,6 @@ class Handle_AIS_TypeFilter : public Handle_SelectMgr_Filter {
 %extend Handle_AIS_TypeFilter {
     AIS_TypeFilter* GetObject() {
     return (AIS_TypeFilter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_TypeFilter::~Handle_AIS_TypeFilter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_TypeFilter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7762,7 +7184,7 @@ class AIS_Axis : public AIS_InteractiveObject {
 
 	:rtype: Handle_Geom_Line
 ") Component;
-		const Handle_Geom_Line & Component ();
+		Handle_Geom_Line Component ();
 		%feature("compactdefaultargs") SetComponent;
 		%feature("autodoc", "	* Sets the coordinates of the lin aComponent.
 
@@ -7776,7 +7198,7 @@ class AIS_Axis : public AIS_InteractiveObject {
 
 	:rtype: Handle_Geom_Axis2Placement
 ") Axis2Placement;
-		const Handle_Geom_Axis2Placement & Axis2Placement ();
+		Handle_Geom_Axis2Placement Axis2Placement ();
 		%feature("compactdefaultargs") SetAxis2Placement;
 		%feature("autodoc", "	* Allows you to provide settings for aComponent:the position and direction of an axis in 3D space. The coordinate system used is right-handed.
 
@@ -7872,25 +7294,23 @@ class AIS_Axis : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_Axis::~AIS_Axis %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Axis {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Axis(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Axis {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Axis {
-	Handle_AIS_Axis GetHandle() {
-	return *(Handle_AIS_Axis*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Axis::Handle_AIS_Axis %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Axis;
 class Handle_AIS_Axis : public Handle_AIS_InteractiveObject {
@@ -7908,20 +7328,6 @@ class Handle_AIS_Axis : public Handle_AIS_InteractiveObject {
 %extend Handle_AIS_Axis {
     AIS_Axis* GetObject() {
     return (AIS_Axis*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_Axis::~Handle_AIS_Axis %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Axis {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7979,7 +7385,7 @@ class AIS_Circle : public AIS_InteractiveObject {
 
 	:rtype: Handle_Geom_Circle
 ") Circle;
-		const Handle_Geom_Circle & Circle ();
+		Handle_Geom_Circle Circle ();
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "	* Constructs instances of the starting point and the end point parameters, u1 and u2.
 
@@ -8065,25 +7471,23 @@ class AIS_Circle : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_Circle::~AIS_Circle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Circle {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Circle(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Circle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Circle {
-	Handle_AIS_Circle GetHandle() {
-	return *(Handle_AIS_Circle*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Circle::Handle_AIS_Circle %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Circle;
 class Handle_AIS_Circle : public Handle_AIS_InteractiveObject {
@@ -8101,20 +7505,6 @@ class Handle_AIS_Circle : public Handle_AIS_InteractiveObject {
 %extend Handle_AIS_Circle {
     AIS_Circle* GetObject() {
     return (AIS_Circle*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_Circle::~Handle_AIS_Circle %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Circle {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8168,7 +7558,7 @@ class AIS_ConnectedInteractive : public AIS_InteractiveObject {
 
 	:rtype: Handle_AIS_InteractiveObject
 ") ConnectedTo;
-		const Handle_AIS_InteractiveObject & ConnectedTo ();
+		Handle_AIS_InteractiveObject ConnectedTo ();
 		%feature("compactdefaultargs") Disconnect;
 		%feature("autodoc", "	* Clears the connection with a source reference. The presentation will no longer be displayed. Warning Must be done before deleting the presentation.
 
@@ -8214,25 +7604,23 @@ class AIS_ConnectedInteractive : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_ConnectedInteractive::~AIS_ConnectedInteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_ConnectedInteractive {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_ConnectedInteractive(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_ConnectedInteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_ConnectedInteractive {
-	Handle_AIS_ConnectedInteractive GetHandle() {
-	return *(Handle_AIS_ConnectedInteractive*) &$self;
-	}
-};
+%pythonappend Handle_AIS_ConnectedInteractive::Handle_AIS_ConnectedInteractive %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_ConnectedInteractive;
 class Handle_AIS_ConnectedInteractive : public Handle_AIS_InteractiveObject {
@@ -8250,20 +7638,6 @@ class Handle_AIS_ConnectedInteractive : public Handle_AIS_InteractiveObject {
 %extend Handle_AIS_ConnectedInteractive {
     AIS_ConnectedInteractive* GetObject() {
     return (AIS_ConnectedInteractive*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_ConnectedInteractive::~Handle_AIS_ConnectedInteractive %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_ConnectedInteractive {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8472,20 +7846,6 @@ enum ComputeMode {
 };
 
 
-%feature("shadow") AIS_Dimension::~AIS_Dimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_Dimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_Line;
 class AIS_Line : public AIS_InteractiveObject {
 	public:
@@ -8536,7 +7896,7 @@ class AIS_Line : public AIS_InteractiveObject {
 
 	:rtype: Handle_Geom_Line
 ") Line;
-		const Handle_Geom_Line & Line ();
+		Handle_Geom_Line Line ();
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "	* Returns the starting point PStart and the end point PEnd of the line set by SetPoints.
 
@@ -8602,25 +7962,23 @@ class AIS_Line : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_Line::~AIS_Line %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Line {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Line(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Line {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Line {
-	Handle_AIS_Line GetHandle() {
-	return *(Handle_AIS_Line*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Line::Handle_AIS_Line %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Line;
 class Handle_AIS_Line : public Handle_AIS_InteractiveObject {
@@ -8638,20 +7996,6 @@ class Handle_AIS_Line : public Handle_AIS_InteractiveObject {
 %extend Handle_AIS_Line {
     AIS_Line* GetObject() {
     return (AIS_Line*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_Line::~Handle_AIS_Line %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Line {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8731,25 +8075,23 @@ class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_MultipleConnectedInteractive::~AIS_MultipleConnectedInteractive %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_MultipleConnectedInteractive {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_MultipleConnectedInteractive(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_MultipleConnectedInteractive {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_MultipleConnectedInteractive {
-	Handle_AIS_MultipleConnectedInteractive GetHandle() {
-	return *(Handle_AIS_MultipleConnectedInteractive*) &$self;
-	}
-};
+%pythonappend Handle_AIS_MultipleConnectedInteractive::Handle_AIS_MultipleConnectedInteractive %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_MultipleConnectedInteractive;
 class Handle_AIS_MultipleConnectedInteractive : public Handle_AIS_InteractiveObject {
@@ -8767,20 +8109,6 @@ class Handle_AIS_MultipleConnectedInteractive : public Handle_AIS_InteractiveObj
 %extend Handle_AIS_MultipleConnectedInteractive {
     AIS_MultipleConnectedInteractive* GetObject() {
     return (AIS_MultipleConnectedInteractive*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_MultipleConnectedInteractive::~Handle_AIS_MultipleConnectedInteractive %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_MultipleConnectedInteractive {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8882,7 +8210,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 
 	:rtype: Handle_Geom_Plane
 ") Component;
-		const Handle_Geom_Plane & Component ();
+		Handle_Geom_Plane Component ();
 		%feature("compactdefaultargs") SetComponent;
 		%feature("autodoc", "	* Creates an instance of the plane aComponent.
 
@@ -9044,25 +8372,23 @@ class AIS_Plane : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_Plane::~AIS_Plane %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Plane {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Plane(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Plane {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Plane {
-	Handle_AIS_Plane GetHandle() {
-	return *(Handle_AIS_Plane*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Plane::Handle_AIS_Plane %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Plane;
 class Handle_AIS_Plane : public Handle_AIS_InteractiveObject {
@@ -9080,20 +8406,6 @@ class Handle_AIS_Plane : public Handle_AIS_InteractiveObject {
 %extend Handle_AIS_Plane {
     AIS_Plane* GetObject() {
     return (AIS_Plane*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_Plane::~Handle_AIS_Plane %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Plane {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9213,25 +8525,23 @@ class AIS_PlaneTrihedron : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_PlaneTrihedron::~AIS_PlaneTrihedron %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_PlaneTrihedron {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_PlaneTrihedron(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_PlaneTrihedron {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_PlaneTrihedron {
-	Handle_AIS_PlaneTrihedron GetHandle() {
-	return *(Handle_AIS_PlaneTrihedron*) &$self;
-	}
-};
+%pythonappend Handle_AIS_PlaneTrihedron::Handle_AIS_PlaneTrihedron %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_PlaneTrihedron;
 class Handle_AIS_PlaneTrihedron : public Handle_AIS_InteractiveObject {
@@ -9249,20 +8559,6 @@ class Handle_AIS_PlaneTrihedron : public Handle_AIS_InteractiveObject {
 %extend Handle_AIS_PlaneTrihedron {
     AIS_PlaneTrihedron* GetObject() {
     return (AIS_PlaneTrihedron*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_PlaneTrihedron::~Handle_AIS_PlaneTrihedron %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_PlaneTrihedron {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9372,25 +8668,23 @@ class AIS_Point : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_Point::~AIS_Point %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Point {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Point(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Point {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Point {
-	Handle_AIS_Point GetHandle() {
-	return *(Handle_AIS_Point*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Point::Handle_AIS_Point %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Point;
 class Handle_AIS_Point : public Handle_AIS_InteractiveObject {
@@ -9408,20 +8702,6 @@ class Handle_AIS_Point : public Handle_AIS_InteractiveObject {
 %extend Handle_AIS_Point {
     AIS_Point* GetObject() {
     return (AIS_Point*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_Point::~Handle_AIS_Point %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Point {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9513,7 +8793,7 @@ class AIS_Relation : public AIS_InteractiveObject {
 
 	:rtype: Handle_Geom_Plane
 ") Plane;
-		const Handle_Geom_Plane & Plane ();
+		Handle_Geom_Plane Plane ();
 		%feature("compactdefaultargs") SetPlane;
 		%feature("autodoc", "	* Allows you to set the plane aPlane. This is used to define relations and dimensions in several daughter classes.
 
@@ -9627,25 +8907,23 @@ class AIS_Relation : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_Relation::~AIS_Relation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Relation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Relation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Relation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Relation {
-	Handle_AIS_Relation GetHandle() {
-	return *(Handle_AIS_Relation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Relation::Handle_AIS_Relation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Relation;
 class Handle_AIS_Relation : public Handle_AIS_InteractiveObject {
@@ -9663,20 +8941,6 @@ class Handle_AIS_Relation : public Handle_AIS_InteractiveObject {
 %extend Handle_AIS_Relation {
     AIS_Relation* GetObject() {
     return (AIS_Relation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_Relation::~Handle_AIS_Relation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Relation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9982,25 +9246,23 @@ class AIS_Shape : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_Shape::~AIS_Shape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Shape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Shape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Shape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Shape {
-	Handle_AIS_Shape GetHandle() {
-	return *(Handle_AIS_Shape*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Shape::Handle_AIS_Shape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Shape;
 class Handle_AIS_Shape : public Handle_AIS_InteractiveObject {
@@ -10018,20 +9280,6 @@ class Handle_AIS_Shape : public Handle_AIS_InteractiveObject {
 %extend Handle_AIS_Shape {
     AIS_Shape* GetObject() {
     return (AIS_Shape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_Shape::~Handle_AIS_Shape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Shape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10059,25 +9307,23 @@ class AIS_SignatureFilter : public AIS_TypeFilter {
 };
 
 
-%feature("shadow") AIS_SignatureFilter::~AIS_SignatureFilter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_SignatureFilter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_SignatureFilter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_SignatureFilter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_SignatureFilter {
-	Handle_AIS_SignatureFilter GetHandle() {
-	return *(Handle_AIS_SignatureFilter*) &$self;
-	}
-};
+%pythonappend Handle_AIS_SignatureFilter::Handle_AIS_SignatureFilter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_SignatureFilter;
 class Handle_AIS_SignatureFilter : public Handle_AIS_TypeFilter {
@@ -10095,20 +9341,6 @@ class Handle_AIS_SignatureFilter : public Handle_AIS_TypeFilter {
 %extend Handle_AIS_SignatureFilter {
     AIS_SignatureFilter* GetObject() {
     return (AIS_SignatureFilter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_SignatureFilter::~Handle_AIS_SignatureFilter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_SignatureFilter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10152,25 +9384,23 @@ class AIS_Triangulation : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_Triangulation::~AIS_Triangulation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Triangulation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Triangulation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Triangulation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Triangulation {
-	Handle_AIS_Triangulation GetHandle() {
-	return *(Handle_AIS_Triangulation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Triangulation::Handle_AIS_Triangulation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Triangulation;
 class Handle_AIS_Triangulation : public Handle_AIS_InteractiveObject {
@@ -10190,20 +9420,6 @@ class Handle_AIS_Triangulation : public Handle_AIS_InteractiveObject {
     return (AIS_Triangulation*)$self->Access();
     }
 };
-%feature("shadow") Handle_AIS_Triangulation::~Handle_AIS_Triangulation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Triangulation {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor AIS_Trihedron;
 class AIS_Trihedron : public AIS_InteractiveObject {
@@ -10221,7 +9437,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 
 	:rtype: Handle_Geom_Axis2Placement
 ") Component;
-		const Handle_Geom_Axis2Placement & Component ();
+		Handle_Geom_Axis2Placement Component ();
 		%feature("compactdefaultargs") SetComponent;
 		%feature("autodoc", "	* Constructs the right-handed coordinate system aComponent.
 
@@ -10407,25 +9623,23 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 };
 
 
-%feature("shadow") AIS_Trihedron::~AIS_Trihedron %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Trihedron {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Trihedron(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Trihedron {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Trihedron {
-	Handle_AIS_Trihedron GetHandle() {
-	return *(Handle_AIS_Trihedron*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Trihedron::Handle_AIS_Trihedron %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Trihedron;
 class Handle_AIS_Trihedron : public Handle_AIS_InteractiveObject {
@@ -10443,20 +9657,6 @@ class Handle_AIS_Trihedron : public Handle_AIS_InteractiveObject {
 %extend Handle_AIS_Trihedron {
     AIS_Trihedron* GetObject() {
     return (AIS_Trihedron*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_Trihedron::~Handle_AIS_Trihedron %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Trihedron {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10666,20 +9866,6 @@ class AIS_AngleDimension : public AIS_Dimension {
 };
 
 
-%feature("shadow") AIS_AngleDimension::~AIS_AngleDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_AngleDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_Chamf2dDimension;
 class AIS_Chamf2dDimension : public AIS_Relation {
 	public:
@@ -10744,25 +9930,23 @@ class AIS_Chamf2dDimension : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_Chamf2dDimension::~AIS_Chamf2dDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Chamf2dDimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Chamf2dDimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Chamf2dDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Chamf2dDimension {
-	Handle_AIS_Chamf2dDimension GetHandle() {
-	return *(Handle_AIS_Chamf2dDimension*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Chamf2dDimension::Handle_AIS_Chamf2dDimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Chamf2dDimension;
 class Handle_AIS_Chamf2dDimension : public Handle_AIS_Relation {
@@ -10780,20 +9964,6 @@ class Handle_AIS_Chamf2dDimension : public Handle_AIS_Relation {
 %extend Handle_AIS_Chamf2dDimension {
     AIS_Chamf2dDimension* GetObject() {
     return (AIS_Chamf2dDimension*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_Chamf2dDimension::~Handle_AIS_Chamf2dDimension %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Chamf2dDimension {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10857,25 +10027,23 @@ class AIS_Chamf3dDimension : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_Chamf3dDimension::~AIS_Chamf3dDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_Chamf3dDimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Chamf3dDimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_Chamf3dDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_Chamf3dDimension {
-	Handle_AIS_Chamf3dDimension GetHandle() {
-	return *(Handle_AIS_Chamf3dDimension*) &$self;
-	}
-};
+%pythonappend Handle_AIS_Chamf3dDimension::Handle_AIS_Chamf3dDimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_Chamf3dDimension;
 class Handle_AIS_Chamf3dDimension : public Handle_AIS_Relation {
@@ -10893,20 +10061,6 @@ class Handle_AIS_Chamf3dDimension : public Handle_AIS_Relation {
 %extend Handle_AIS_Chamf3dDimension {
     AIS_Chamf3dDimension* GetObject() {
     return (AIS_Chamf3dDimension*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_Chamf3dDimension::~Handle_AIS_Chamf3dDimension %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_Chamf3dDimension {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10940,25 +10094,23 @@ class AIS_ConcentricRelation : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_ConcentricRelation::~AIS_ConcentricRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_ConcentricRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_ConcentricRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_ConcentricRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_ConcentricRelation {
-	Handle_AIS_ConcentricRelation GetHandle() {
-	return *(Handle_AIS_ConcentricRelation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_ConcentricRelation::Handle_AIS_ConcentricRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_ConcentricRelation;
 class Handle_AIS_ConcentricRelation : public Handle_AIS_Relation {
@@ -10976,20 +10128,6 @@ class Handle_AIS_ConcentricRelation : public Handle_AIS_Relation {
 %extend Handle_AIS_ConcentricRelation {
     AIS_ConcentricRelation* GetObject() {
     return (AIS_ConcentricRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_ConcentricRelation::~Handle_AIS_ConcentricRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_ConcentricRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -11063,25 +10201,23 @@ class AIS_ConnectedShape : public AIS_ConnectedInteractive {
 };
 
 
-%feature("shadow") AIS_ConnectedShape::~AIS_ConnectedShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_ConnectedShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_ConnectedShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_ConnectedShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_ConnectedShape {
-	Handle_AIS_ConnectedShape GetHandle() {
-	return *(Handle_AIS_ConnectedShape*) &$self;
-	}
-};
+%pythonappend Handle_AIS_ConnectedShape::Handle_AIS_ConnectedShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_ConnectedShape;
 class Handle_AIS_ConnectedShape : public Handle_AIS_ConnectedInteractive {
@@ -11099,20 +10235,6 @@ class Handle_AIS_ConnectedShape : public Handle_AIS_ConnectedInteractive {
 %extend Handle_AIS_ConnectedShape {
     AIS_ConnectedShape* GetObject() {
     return (AIS_ConnectedShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_ConnectedShape::~Handle_AIS_ConnectedShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_ConnectedShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -11226,20 +10348,6 @@ class AIS_DiameterDimension : public AIS_Dimension {
 };
 
 
-%feature("shadow") AIS_DiameterDimension::~AIS_DiameterDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_DiameterDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_EllipseRadiusDimension;
 class AIS_EllipseRadiusDimension : public AIS_Relation {
 	public:
@@ -11258,25 +10366,23 @@ class AIS_EllipseRadiusDimension : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_EllipseRadiusDimension::~AIS_EllipseRadiusDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_EllipseRadiusDimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_EllipseRadiusDimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_EllipseRadiusDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_EllipseRadiusDimension {
-	Handle_AIS_EllipseRadiusDimension GetHandle() {
-	return *(Handle_AIS_EllipseRadiusDimension*) &$self;
-	}
-};
+%pythonappend Handle_AIS_EllipseRadiusDimension::Handle_AIS_EllipseRadiusDimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_EllipseRadiusDimension;
 class Handle_AIS_EllipseRadiusDimension : public Handle_AIS_Relation {
@@ -11294,20 +10400,6 @@ class Handle_AIS_EllipseRadiusDimension : public Handle_AIS_Relation {
 %extend Handle_AIS_EllipseRadiusDimension {
     AIS_EllipseRadiusDimension* GetObject() {
     return (AIS_EllipseRadiusDimension*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_EllipseRadiusDimension::~Handle_AIS_EllipseRadiusDimension %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_EllipseRadiusDimension {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -11483,25 +10575,23 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_EqualDistanceRelation::~AIS_EqualDistanceRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_EqualDistanceRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_EqualDistanceRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_EqualDistanceRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_EqualDistanceRelation {
-	Handle_AIS_EqualDistanceRelation GetHandle() {
-	return *(Handle_AIS_EqualDistanceRelation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_EqualDistanceRelation::Handle_AIS_EqualDistanceRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_EqualDistanceRelation;
 class Handle_AIS_EqualDistanceRelation : public Handle_AIS_Relation {
@@ -11519,20 +10609,6 @@ class Handle_AIS_EqualDistanceRelation : public Handle_AIS_Relation {
 %extend Handle_AIS_EqualDistanceRelation {
     AIS_EqualDistanceRelation* GetObject() {
     return (AIS_EqualDistanceRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_EqualDistanceRelation::~Handle_AIS_EqualDistanceRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_EqualDistanceRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -11566,25 +10642,23 @@ class AIS_EqualRadiusRelation : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_EqualRadiusRelation::~AIS_EqualRadiusRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_EqualRadiusRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_EqualRadiusRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_EqualRadiusRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_EqualRadiusRelation {
-	Handle_AIS_EqualRadiusRelation GetHandle() {
-	return *(Handle_AIS_EqualRadiusRelation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_EqualRadiusRelation::Handle_AIS_EqualRadiusRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_EqualRadiusRelation;
 class Handle_AIS_EqualRadiusRelation : public Handle_AIS_Relation {
@@ -11602,20 +10676,6 @@ class Handle_AIS_EqualRadiusRelation : public Handle_AIS_Relation {
 %extend Handle_AIS_EqualRadiusRelation {
     AIS_EqualRadiusRelation* GetObject() {
     return (AIS_EqualRadiusRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_EqualRadiusRelation::~Handle_AIS_EqualRadiusRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_EqualRadiusRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -11709,25 +10769,23 @@ class AIS_FixRelation : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_FixRelation::~AIS_FixRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_FixRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_FixRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_FixRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_FixRelation {
-	Handle_AIS_FixRelation GetHandle() {
-	return *(Handle_AIS_FixRelation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_FixRelation::Handle_AIS_FixRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_FixRelation;
 class Handle_AIS_FixRelation : public Handle_AIS_Relation {
@@ -11745,20 +10803,6 @@ class Handle_AIS_FixRelation : public Handle_AIS_Relation {
 %extend Handle_AIS_FixRelation {
     AIS_FixRelation* GetObject() {
     return (AIS_FixRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_FixRelation::~Handle_AIS_FixRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_FixRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -11798,25 +10842,23 @@ class AIS_IdenticRelation : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_IdenticRelation::~AIS_IdenticRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_IdenticRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_IdenticRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_IdenticRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_IdenticRelation {
-	Handle_AIS_IdenticRelation GetHandle() {
-	return *(Handle_AIS_IdenticRelation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_IdenticRelation::Handle_AIS_IdenticRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_IdenticRelation;
 class Handle_AIS_IdenticRelation : public Handle_AIS_Relation {
@@ -11834,20 +10876,6 @@ class Handle_AIS_IdenticRelation : public Handle_AIS_Relation {
 %extend Handle_AIS_IdenticRelation {
     AIS_IdenticRelation* GetObject() {
     return (AIS_IdenticRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_IdenticRelation::~Handle_AIS_IdenticRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_IdenticRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -12021,20 +11049,6 @@ class AIS_LengthDimension : public AIS_Dimension {
 };
 
 
-%feature("shadow") AIS_LengthDimension::~AIS_LengthDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_LengthDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_MidPointRelation;
 class AIS_MidPointRelation : public AIS_Relation {
 	public:
@@ -12079,25 +11093,23 @@ class AIS_MidPointRelation : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_MidPointRelation::~AIS_MidPointRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_MidPointRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_MidPointRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_MidPointRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_MidPointRelation {
-	Handle_AIS_MidPointRelation GetHandle() {
-	return *(Handle_AIS_MidPointRelation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_MidPointRelation::Handle_AIS_MidPointRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_MidPointRelation;
 class Handle_AIS_MidPointRelation : public Handle_AIS_Relation {
@@ -12115,20 +11127,6 @@ class Handle_AIS_MidPointRelation : public Handle_AIS_Relation {
 %extend Handle_AIS_MidPointRelation {
     AIS_MidPointRelation* GetObject() {
     return (AIS_MidPointRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_MidPointRelation::~Handle_AIS_MidPointRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_MidPointRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -12174,25 +11172,23 @@ class AIS_MultipleConnectedShape : public AIS_MultipleConnectedInteractive {
 };
 
 
-%feature("shadow") AIS_MultipleConnectedShape::~AIS_MultipleConnectedShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_MultipleConnectedShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_MultipleConnectedShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_MultipleConnectedShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_MultipleConnectedShape {
-	Handle_AIS_MultipleConnectedShape GetHandle() {
-	return *(Handle_AIS_MultipleConnectedShape*) &$self;
-	}
-};
+%pythonappend Handle_AIS_MultipleConnectedShape::Handle_AIS_MultipleConnectedShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_MultipleConnectedShape;
 class Handle_AIS_MultipleConnectedShape : public Handle_AIS_MultipleConnectedInteractive {
@@ -12210,20 +11206,6 @@ class Handle_AIS_MultipleConnectedShape : public Handle_AIS_MultipleConnectedInt
 %extend Handle_AIS_MultipleConnectedShape {
     AIS_MultipleConnectedShape* GetObject() {
     return (AIS_MultipleConnectedShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_MultipleConnectedShape::~Handle_AIS_MultipleConnectedShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_MultipleConnectedShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -12279,25 +11261,23 @@ class AIS_OffsetDimension : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_OffsetDimension::~AIS_OffsetDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_OffsetDimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_OffsetDimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_OffsetDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_OffsetDimension {
-	Handle_AIS_OffsetDimension GetHandle() {
-	return *(Handle_AIS_OffsetDimension*) &$self;
-	}
-};
+%pythonappend Handle_AIS_OffsetDimension::Handle_AIS_OffsetDimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_OffsetDimension;
 class Handle_AIS_OffsetDimension : public Handle_AIS_Relation {
@@ -12315,20 +11295,6 @@ class Handle_AIS_OffsetDimension : public Handle_AIS_Relation {
 %extend Handle_AIS_OffsetDimension {
     AIS_OffsetDimension* GetObject() {
     return (AIS_OffsetDimension*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_OffsetDimension::~Handle_AIS_OffsetDimension %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_OffsetDimension {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -12386,25 +11352,23 @@ class AIS_ParallelRelation : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_ParallelRelation::~AIS_ParallelRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_ParallelRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_ParallelRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_ParallelRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_ParallelRelation {
-	Handle_AIS_ParallelRelation GetHandle() {
-	return *(Handle_AIS_ParallelRelation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_ParallelRelation::Handle_AIS_ParallelRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_ParallelRelation;
 class Handle_AIS_ParallelRelation : public Handle_AIS_Relation {
@@ -12422,20 +11386,6 @@ class Handle_AIS_ParallelRelation : public Handle_AIS_Relation {
 %extend Handle_AIS_ParallelRelation {
     AIS_ParallelRelation* GetObject() {
     return (AIS_ParallelRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_ParallelRelation::~Handle_AIS_ParallelRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_ParallelRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -12479,25 +11429,23 @@ class AIS_PerpendicularRelation : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_PerpendicularRelation::~AIS_PerpendicularRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_PerpendicularRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_PerpendicularRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_PerpendicularRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_PerpendicularRelation {
-	Handle_AIS_PerpendicularRelation GetHandle() {
-	return *(Handle_AIS_PerpendicularRelation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_PerpendicularRelation::Handle_AIS_PerpendicularRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_PerpendicularRelation;
 class Handle_AIS_PerpendicularRelation : public Handle_AIS_Relation {
@@ -12515,20 +11463,6 @@ class Handle_AIS_PerpendicularRelation : public Handle_AIS_Relation {
 %extend Handle_AIS_PerpendicularRelation {
     AIS_PerpendicularRelation* GetObject() {
     return (AIS_PerpendicularRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_PerpendicularRelation::~Handle_AIS_PerpendicularRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_PerpendicularRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -12642,20 +11576,6 @@ class AIS_RadiusDimension : public AIS_Dimension {
 };
 
 
-%feature("shadow") AIS_RadiusDimension::~AIS_RadiusDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_RadiusDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_SymmetricRelation;
 class AIS_SymmetricRelation : public AIS_Relation {
 	public:
@@ -12708,25 +11628,23 @@ class AIS_SymmetricRelation : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_SymmetricRelation::~AIS_SymmetricRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_SymmetricRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_SymmetricRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_SymmetricRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_SymmetricRelation {
-	Handle_AIS_SymmetricRelation GetHandle() {
-	return *(Handle_AIS_SymmetricRelation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_SymmetricRelation::Handle_AIS_SymmetricRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_SymmetricRelation;
 class Handle_AIS_SymmetricRelation : public Handle_AIS_Relation {
@@ -12744,20 +11662,6 @@ class Handle_AIS_SymmetricRelation : public Handle_AIS_Relation {
 %extend Handle_AIS_SymmetricRelation {
     AIS_SymmetricRelation* GetObject() {
     return (AIS_SymmetricRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_SymmetricRelation::~Handle_AIS_SymmetricRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_SymmetricRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -12807,25 +11711,23 @@ class AIS_TangentRelation : public AIS_Relation {
 };
 
 
-%feature("shadow") AIS_TangentRelation::~AIS_TangentRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_TangentRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_TangentRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_TangentRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_TangentRelation {
-	Handle_AIS_TangentRelation GetHandle() {
-	return *(Handle_AIS_TangentRelation*) &$self;
-	}
-};
+%pythonappend Handle_AIS_TangentRelation::Handle_AIS_TangentRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_TangentRelation;
 class Handle_AIS_TangentRelation : public Handle_AIS_Relation {
@@ -12843,20 +11745,6 @@ class Handle_AIS_TangentRelation : public Handle_AIS_Relation {
 %extend Handle_AIS_TangentRelation {
     AIS_TangentRelation* GetObject() {
     return (AIS_TangentRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_TangentRelation::~Handle_AIS_TangentRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_TangentRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -12916,7 +11804,7 @@ class AIS_TexturedShape : public AIS_Shape {
 
 	:rtype: Handle_Image_PixMap
 ") TexturePixMap;
-		const Handle_Image_PixMap & TexturePixMap ();
+		Handle_Image_PixMap TexturePixMap ();
 		%feature("compactdefaultargs") UpdateAttributes;
 		%feature("autodoc", "	* @name methods to alter texture mapping properties Use this method to display the textured shape without recomputing the whole presentation. Use this method when ONLY the texture content has been changed. If other parameters (ie: scale factors, texture origin, texture repeat...) have changed, the whole presentation has to be recomputed: @code if (myShape->DisplayMode() == 3) { myAISContext->RecomputePrsOnly (myShape); } else { myAISContext->SetDisplayMode (myShape, 3, Standard_False); myAISContext->Display (myShape, Standard_True); } @endcode
 
@@ -13034,20 +11922,6 @@ class AIS_TexturedShape : public AIS_Shape {
 };
 
 
-%feature("shadow") AIS_TexturedShape::~AIS_TexturedShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AIS_TexturedShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AIS_MaxRadiusDimension;
 class AIS_MaxRadiusDimension : public AIS_EllipseRadiusDimension {
 	public:
@@ -13096,25 +11970,23 @@ class AIS_MaxRadiusDimension : public AIS_EllipseRadiusDimension {
 };
 
 
-%feature("shadow") AIS_MaxRadiusDimension::~AIS_MaxRadiusDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_MaxRadiusDimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_MaxRadiusDimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_MaxRadiusDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_MaxRadiusDimension {
-	Handle_AIS_MaxRadiusDimension GetHandle() {
-	return *(Handle_AIS_MaxRadiusDimension*) &$self;
-	}
-};
+%pythonappend Handle_AIS_MaxRadiusDimension::Handle_AIS_MaxRadiusDimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_MaxRadiusDimension;
 class Handle_AIS_MaxRadiusDimension : public Handle_AIS_EllipseRadiusDimension {
@@ -13132,20 +12004,6 @@ class Handle_AIS_MaxRadiusDimension : public Handle_AIS_EllipseRadiusDimension {
 %extend Handle_AIS_MaxRadiusDimension {
     AIS_MaxRadiusDimension* GetObject() {
     return (AIS_MaxRadiusDimension*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_MaxRadiusDimension::~Handle_AIS_MaxRadiusDimension %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_MaxRadiusDimension {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -13197,25 +12055,23 @@ class AIS_MinRadiusDimension : public AIS_EllipseRadiusDimension {
 };
 
 
-%feature("shadow") AIS_MinRadiusDimension::~AIS_MinRadiusDimension %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AIS_MinRadiusDimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_MinRadiusDimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AIS_MinRadiusDimension {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AIS_MinRadiusDimension {
-	Handle_AIS_MinRadiusDimension GetHandle() {
-	return *(Handle_AIS_MinRadiusDimension*) &$self;
-	}
-};
+%pythonappend Handle_AIS_MinRadiusDimension::Handle_AIS_MinRadiusDimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AIS_MinRadiusDimension;
 class Handle_AIS_MinRadiusDimension : public Handle_AIS_EllipseRadiusDimension {
@@ -13233,20 +12089,6 @@ class Handle_AIS_MinRadiusDimension : public Handle_AIS_EllipseRadiusDimension {
 %extend Handle_AIS_MinRadiusDimension {
     AIS_MinRadiusDimension* GetObject() {
     return (AIS_MinRadiusDimension*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AIS_MinRadiusDimension::~Handle_AIS_MinRadiusDimension %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AIS_MinRadiusDimension {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

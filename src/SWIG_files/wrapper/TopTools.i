@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include TopTools_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef TopTools_LocationSet * TopTools_LocationSetPtr;
@@ -69,20 +81,6 @@ class TopTools {
 };
 
 
-%feature("shadow") TopTools::~TopTools %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_Array1OfListOfShape;
 class TopTools_Array1OfListOfShape {
 	public:
@@ -165,20 +163,6 @@ class TopTools_Array1OfListOfShape {
 };
 
 
-%feature("shadow") TopTools_Array1OfListOfShape::~TopTools_Array1OfListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_Array1OfListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_Array1OfShape;
 class TopTools_Array1OfShape {
 	public:
@@ -261,20 +245,6 @@ class TopTools_Array1OfShape {
 };
 
 
-%feature("shadow") TopTools_Array1OfShape::~TopTools_Array1OfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_Array1OfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_Array2OfShape;
 class TopTools_Array2OfShape {
 	public:
@@ -379,20 +349,6 @@ class TopTools_Array2OfShape {
 };
 
 
-%feature("shadow") TopTools_Array2OfShape::~TopTools_Array2OfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_Array2OfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape;
 class TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -423,20 +379,6 @@ class TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape : public TCollection
 };
 
 
-%feature("shadow") TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape::~TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfIntegerShape;
 class TopTools_DataMapIteratorOfDataMapOfIntegerShape : public TCollection_BasicMapIterator {
 	public:
@@ -467,20 +409,6 @@ class TopTools_DataMapIteratorOfDataMapOfIntegerShape : public TCollection_Basic
 };
 
 
-%feature("shadow") TopTools_DataMapIteratorOfDataMapOfIntegerShape::~TopTools_DataMapIteratorOfDataMapOfIntegerShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapIteratorOfDataMapOfIntegerShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger;
 class TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger : public TCollection_BasicMapIterator {
 	public:
@@ -511,20 +439,6 @@ class TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger : public TCollecti
 };
 
 
-%feature("shadow") TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger::~TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
 class TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape : public TCollection_BasicMapIterator {
 	public:
@@ -555,20 +469,6 @@ class TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape : public TCollection
 };
 
 
-%feature("shadow") TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape::~TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeInteger;
 class TopTools_DataMapIteratorOfDataMapOfShapeInteger : public TCollection_BasicMapIterator {
 	public:
@@ -599,20 +499,6 @@ class TopTools_DataMapIteratorOfDataMapOfShapeInteger : public TCollection_Basic
 };
 
 
-%feature("shadow") TopTools_DataMapIteratorOfDataMapOfShapeInteger::~TopTools_DataMapIteratorOfDataMapOfShapeInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapIteratorOfDataMapOfShapeInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger;
 class TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -643,20 +529,6 @@ class TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger : public TCollection
 };
 
 
-%feature("shadow") TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger::~TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeListOfShape;
 class TopTools_DataMapIteratorOfDataMapOfShapeListOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -687,20 +559,6 @@ class TopTools_DataMapIteratorOfDataMapOfShapeListOfShape : public TCollection_B
 };
 
 
-%feature("shadow") TopTools_DataMapIteratorOfDataMapOfShapeListOfShape::~TopTools_DataMapIteratorOfDataMapOfShapeListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapIteratorOfDataMapOfShapeListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeReal;
 class TopTools_DataMapIteratorOfDataMapOfShapeReal : public TCollection_BasicMapIterator {
 	public:
@@ -731,20 +589,6 @@ class TopTools_DataMapIteratorOfDataMapOfShapeReal : public TCollection_BasicMap
 };
 
 
-%feature("shadow") TopTools_DataMapIteratorOfDataMapOfShapeReal::~TopTools_DataMapIteratorOfDataMapOfShapeReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapIteratorOfDataMapOfShapeReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape;
 class TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -775,20 +619,6 @@ class TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape : public TCollecti
 };
 
 
-%feature("shadow") TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape::~TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeShape;
 class TopTools_DataMapIteratorOfDataMapOfShapeShape : public TCollection_BasicMapIterator {
 	public:
@@ -819,20 +649,6 @@ class TopTools_DataMapIteratorOfDataMapOfShapeShape : public TCollection_BasicMa
 };
 
 
-%feature("shadow") TopTools_DataMapIteratorOfDataMapOfShapeShape::~TopTools_DataMapIteratorOfDataMapOfShapeShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapIteratorOfDataMapOfShapeShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfIntegerListOfShape;
 class TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public TCollection_MapNode {
 	public:
@@ -866,25 +682,23 @@ class TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public TCollection_Map
 };
 
 
-%feature("shadow") TopTools_DataMapNodeOfDataMapOfIntegerListOfShape::~TopTools_DataMapNodeOfDataMapOfIntegerListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
-	Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape GetHandle() {
-	return *(Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape::Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape;
 class Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public Handle_TCollection_MapNode {
@@ -902,20 +716,6 @@ class Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public Handle_T
 %extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
     TopTools_DataMapNodeOfDataMapOfIntegerListOfShape* GetObject() {
     return (TopTools_DataMapNodeOfDataMapOfIntegerListOfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape::~Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -952,25 +752,23 @@ class TopTools_DataMapNodeOfDataMapOfIntegerShape : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TopTools_DataMapNodeOfDataMapOfIntegerShape::~TopTools_DataMapNodeOfDataMapOfIntegerShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_DataMapNodeOfDataMapOfIntegerShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_DataMapNodeOfDataMapOfIntegerShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_DataMapNodeOfDataMapOfIntegerShape {
-	Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape GetHandle() {
-	return *(Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape::Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape;
 class Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape : public Handle_TCollection_MapNode {
@@ -988,20 +786,6 @@ class Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape : public Handle_TCollec
 %extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape {
     TopTools_DataMapNodeOfDataMapOfIntegerShape* GetObject() {
     return (TopTools_DataMapNodeOfDataMapOfIntegerShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape::~Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1038,25 +822,23 @@ class TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public TCollection_M
             };
 
 
-%feature("shadow") TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger::~TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
-	Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger GetHandle() {
-	return *(Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger::Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger;
 class Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public Handle_TCollection_MapNode {
@@ -1074,20 +856,6 @@ class Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public Handle
 %extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
     TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger* GetObject() {
     return (TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger::~Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1115,25 +883,23 @@ class TopTools_DataMapNodeOfDataMapOfOrientedShapeShape : public TCollection_Map
 };
 
 
-%feature("shadow") TopTools_DataMapNodeOfDataMapOfOrientedShapeShape::~TopTools_DataMapNodeOfDataMapOfOrientedShapeShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
-	Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape GetHandle() {
-	return *(Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape::Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape;
 class Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape : public Handle_TCollection_MapNode {
@@ -1151,20 +917,6 @@ class Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape : public Handle_T
 %extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
     TopTools_DataMapNodeOfDataMapOfOrientedShapeShape* GetObject() {
     return (TopTools_DataMapNodeOfDataMapOfOrientedShapeShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape::~Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1201,25 +953,23 @@ class TopTools_DataMapNodeOfDataMapOfShapeInteger : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TopTools_DataMapNodeOfDataMapOfShapeInteger::~TopTools_DataMapNodeOfDataMapOfShapeInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_DataMapNodeOfDataMapOfShapeInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_DataMapNodeOfDataMapOfShapeInteger {
-	Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger GetHandle() {
-	return *(Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger::Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger;
 class Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger : public Handle_TCollection_MapNode {
@@ -1237,20 +987,6 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger : public Handle_TCollec
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger {
     TopTools_DataMapNodeOfDataMapOfShapeInteger* GetObject() {
     return (TopTools_DataMapNodeOfDataMapOfShapeInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger::~Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1278,25 +1014,23 @@ class TopTools_DataMapNodeOfDataMapOfShapeListOfInteger : public TCollection_Map
 };
 
 
-%feature("shadow") TopTools_DataMapNodeOfDataMapOfShapeListOfInteger::~TopTools_DataMapNodeOfDataMapOfShapeListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
-	Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger GetHandle() {
-	return *(Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger::Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger;
 class Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger : public Handle_TCollection_MapNode {
@@ -1314,20 +1048,6 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger : public Handle_T
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
     TopTools_DataMapNodeOfDataMapOfShapeListOfInteger* GetObject() {
     return (TopTools_DataMapNodeOfDataMapOfShapeListOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger::~Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1355,25 +1075,23 @@ class TopTools_DataMapNodeOfDataMapOfShapeListOfShape : public TCollection_MapNo
 };
 
 
-%feature("shadow") TopTools_DataMapNodeOfDataMapOfShapeListOfShape::~TopTools_DataMapNodeOfDataMapOfShapeListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
-	Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape GetHandle() {
-	return *(Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape::Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape;
 class Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape : public Handle_TCollection_MapNode {
@@ -1391,20 +1109,6 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape : public Handle_TCo
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
     TopTools_DataMapNodeOfDataMapOfShapeListOfShape* GetObject() {
     return (TopTools_DataMapNodeOfDataMapOfShapeListOfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape::~Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1441,25 +1145,23 @@ class TopTools_DataMapNodeOfDataMapOfShapeReal : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TopTools_DataMapNodeOfDataMapOfShapeReal::~TopTools_DataMapNodeOfDataMapOfShapeReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_DataMapNodeOfDataMapOfShapeReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_DataMapNodeOfDataMapOfShapeReal {
-	Handle_TopTools_DataMapNodeOfDataMapOfShapeReal GetHandle() {
-	return *(Handle_TopTools_DataMapNodeOfDataMapOfShapeReal*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeReal::Handle_TopTools_DataMapNodeOfDataMapOfShapeReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeReal;
 class Handle_TopTools_DataMapNodeOfDataMapOfShapeReal : public Handle_TCollection_MapNode {
@@ -1477,20 +1179,6 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeReal : public Handle_TCollectio
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeReal {
     TopTools_DataMapNodeOfDataMapOfShapeReal* GetObject() {
     return (TopTools_DataMapNodeOfDataMapOfShapeReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_DataMapNodeOfDataMapOfShapeReal::~Handle_TopTools_DataMapNodeOfDataMapOfShapeReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1518,25 +1206,23 @@ class TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public TCollection_M
 };
 
 
-%feature("shadow") TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape::~TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
-	Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape GetHandle() {
-	return *(Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape::Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape;
 class Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public Handle_TCollection_MapNode {
@@ -1554,20 +1240,6 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public Handle
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
     TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape* GetObject() {
     return (TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape::~Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1595,25 +1267,23 @@ class TopTools_DataMapNodeOfDataMapOfShapeShape : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TopTools_DataMapNodeOfDataMapOfShapeShape::~TopTools_DataMapNodeOfDataMapOfShapeShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_DataMapNodeOfDataMapOfShapeShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_DataMapNodeOfDataMapOfShapeShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_DataMapNodeOfDataMapOfShapeShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_DataMapNodeOfDataMapOfShapeShape {
-	Handle_TopTools_DataMapNodeOfDataMapOfShapeShape GetHandle() {
-	return *(Handle_TopTools_DataMapNodeOfDataMapOfShapeShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_DataMapNodeOfDataMapOfShapeShape::Handle_TopTools_DataMapNodeOfDataMapOfShapeShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_DataMapNodeOfDataMapOfShapeShape;
 class Handle_TopTools_DataMapNodeOfDataMapOfShapeShape : public Handle_TCollection_MapNode {
@@ -1631,20 +1301,6 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeShape : public Handle_TCollecti
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeShape {
     TopTools_DataMapNodeOfDataMapOfShapeShape* GetObject() {
     return (TopTools_DataMapNodeOfDataMapOfShapeShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_DataMapNodeOfDataMapOfShapeShape::~Handle_TopTools_DataMapNodeOfDataMapOfShapeShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1726,20 +1382,6 @@ class TopTools_DataMapOfIntegerListOfShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_DataMapOfIntegerListOfShape::~TopTools_DataMapOfIntegerListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapOfIntegerListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapOfIntegerShape;
 class TopTools_DataMapOfIntegerShape : public TCollection_BasicMap {
 	public:
@@ -1818,20 +1460,6 @@ class TopTools_DataMapOfIntegerShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_DataMapOfIntegerShape::~TopTools_DataMapOfIntegerShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapOfIntegerShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapOfOrientedShapeInteger;
 class TopTools_DataMapOfOrientedShapeInteger : public TCollection_BasicMap {
 	public:
@@ -1910,20 +1538,6 @@ class TopTools_DataMapOfOrientedShapeInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_DataMapOfOrientedShapeInteger::~TopTools_DataMapOfOrientedShapeInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapOfOrientedShapeInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapOfOrientedShapeShape;
 class TopTools_DataMapOfOrientedShapeShape : public TCollection_BasicMap {
 	public:
@@ -2002,20 +1616,6 @@ class TopTools_DataMapOfOrientedShapeShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_DataMapOfOrientedShapeShape::~TopTools_DataMapOfOrientedShapeShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapOfOrientedShapeShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapOfShapeInteger;
 class TopTools_DataMapOfShapeInteger : public TCollection_BasicMap {
 	public:
@@ -2094,20 +1694,6 @@ class TopTools_DataMapOfShapeInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_DataMapOfShapeInteger::~TopTools_DataMapOfShapeInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapOfShapeInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapOfShapeListOfInteger;
 class TopTools_DataMapOfShapeListOfInteger : public TCollection_BasicMap {
 	public:
@@ -2186,20 +1772,6 @@ class TopTools_DataMapOfShapeListOfInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_DataMapOfShapeListOfInteger::~TopTools_DataMapOfShapeListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapOfShapeListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapOfShapeListOfShape;
 class TopTools_DataMapOfShapeListOfShape : public TCollection_BasicMap {
 	public:
@@ -2278,20 +1850,6 @@ class TopTools_DataMapOfShapeListOfShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_DataMapOfShapeListOfShape::~TopTools_DataMapOfShapeListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapOfShapeListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapOfShapeReal;
 class TopTools_DataMapOfShapeReal : public TCollection_BasicMap {
 	public:
@@ -2370,20 +1928,6 @@ class TopTools_DataMapOfShapeReal : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_DataMapOfShapeReal::~TopTools_DataMapOfShapeReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapOfShapeReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapOfShapeSequenceOfShape;
 class TopTools_DataMapOfShapeSequenceOfShape : public TCollection_BasicMap {
 	public:
@@ -2462,20 +2006,6 @@ class TopTools_DataMapOfShapeSequenceOfShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_DataMapOfShapeSequenceOfShape::~TopTools_DataMapOfShapeSequenceOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapOfShapeSequenceOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_DataMapOfShapeShape;
 class TopTools_DataMapOfShapeShape : public TCollection_BasicMap {
 	public:
@@ -2554,20 +2084,6 @@ class TopTools_DataMapOfShapeShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_DataMapOfShapeShape::~TopTools_DataMapOfShapeShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_DataMapOfShapeShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_HArray1OfListOfShape;
 class TopTools_HArray1OfListOfShape : public MMgt_TShared {
 	public:
@@ -2638,25 +2154,23 @@ class TopTools_HArray1OfListOfShape : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopTools_HArray1OfListOfShape::~TopTools_HArray1OfListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_HArray1OfListOfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_HArray1OfListOfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_HArray1OfListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_HArray1OfListOfShape {
-	Handle_TopTools_HArray1OfListOfShape GetHandle() {
-	return *(Handle_TopTools_HArray1OfListOfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_HArray1OfListOfShape::Handle_TopTools_HArray1OfListOfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_HArray1OfListOfShape;
 class Handle_TopTools_HArray1OfListOfShape : public Handle_MMgt_TShared {
@@ -2674,20 +2188,6 @@ class Handle_TopTools_HArray1OfListOfShape : public Handle_MMgt_TShared {
 %extend Handle_TopTools_HArray1OfListOfShape {
     TopTools_HArray1OfListOfShape* GetObject() {
     return (TopTools_HArray1OfListOfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_HArray1OfListOfShape::~Handle_TopTools_HArray1OfListOfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_HArray1OfListOfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2761,25 +2261,23 @@ class TopTools_HArray1OfShape : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopTools_HArray1OfShape::~TopTools_HArray1OfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_HArray1OfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_HArray1OfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_HArray1OfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_HArray1OfShape {
-	Handle_TopTools_HArray1OfShape GetHandle() {
-	return *(Handle_TopTools_HArray1OfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_HArray1OfShape::Handle_TopTools_HArray1OfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_HArray1OfShape;
 class Handle_TopTools_HArray1OfShape : public Handle_MMgt_TShared {
@@ -2797,20 +2295,6 @@ class Handle_TopTools_HArray1OfShape : public Handle_MMgt_TShared {
 %extend Handle_TopTools_HArray1OfShape {
     TopTools_HArray1OfShape* GetObject() {
     return (TopTools_HArray1OfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_HArray1OfShape::~Handle_TopTools_HArray1OfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_HArray1OfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2910,25 +2394,23 @@ class TopTools_HArray2OfShape : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopTools_HArray2OfShape::~TopTools_HArray2OfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_HArray2OfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_HArray2OfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_HArray2OfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_HArray2OfShape {
-	Handle_TopTools_HArray2OfShape GetHandle() {
-	return *(Handle_TopTools_HArray2OfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_HArray2OfShape::Handle_TopTools_HArray2OfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_HArray2OfShape;
 class Handle_TopTools_HArray2OfShape : public Handle_MMgt_TShared {
@@ -2946,20 +2428,6 @@ class Handle_TopTools_HArray2OfShape : public Handle_MMgt_TShared {
 %extend Handle_TopTools_HArray2OfShape {
     TopTools_HArray2OfShape* GetObject() {
     return (TopTools_HArray2OfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_HArray2OfShape::~Handle_TopTools_HArray2OfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_HArray2OfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3105,25 +2573,23 @@ class TopTools_HSequenceOfShape : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopTools_HSequenceOfShape::~TopTools_HSequenceOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_HSequenceOfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_HSequenceOfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_HSequenceOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_HSequenceOfShape {
-	Handle_TopTools_HSequenceOfShape GetHandle() {
-	return *(Handle_TopTools_HSequenceOfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_HSequenceOfShape::Handle_TopTools_HSequenceOfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_HSequenceOfShape;
 class Handle_TopTools_HSequenceOfShape : public Handle_MMgt_TShared {
@@ -3141,20 +2607,6 @@ class Handle_TopTools_HSequenceOfShape : public Handle_MMgt_TShared {
 %extend Handle_TopTools_HSequenceOfShape {
     TopTools_HSequenceOfShape* GetObject() {
     return (TopTools_HSequenceOfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_HSequenceOfShape::~Handle_TopTools_HSequenceOfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_HSequenceOfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3203,25 +2655,23 @@ class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress : public TCollec
 };
 
 
-%feature("shadow") TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress::~TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
-	Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress GetHandle() {
-	return *(Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress::Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress;
 class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress : public Handle_TCollection_MapNode {
@@ -3239,20 +2689,6 @@ class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress : public 
 %extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
     TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress* GetObject() {
     return (TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress::~Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3301,25 +2737,23 @@ class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape : public TCo
 };
 
 
-%feature("shadow") TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape::~TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
-	Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape GetHandle() {
-	return *(Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape::Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape;
 class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape : public Handle_TCollection_MapNode {
@@ -3337,20 +2771,6 @@ class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape : pub
 %extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
     TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape* GetObject() {
     return (TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape::~Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3399,25 +2819,23 @@ class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape : public TCollecti
 };
 
 
-%feature("shadow") TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape::~TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
-	Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape GetHandle() {
-	return *(Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape::Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape;
 class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape : public Handle_TCollection_MapNode {
@@ -3435,20 +2853,6 @@ class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape : public Ha
 %extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
     TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape* GetObject() {
     return (TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape::~Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3562,20 +2966,6 @@ class TopTools_IndexedDataMapOfShapeAddress : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_IndexedDataMapOfShapeAddress::~TopTools_IndexedDataMapOfShapeAddress %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_IndexedDataMapOfShapeAddress {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_IndexedDataMapOfShapeListOfShape;
 class TopTools_IndexedDataMapOfShapeListOfShape : public TCollection_BasicMap {
 	public:
@@ -3686,20 +3076,6 @@ class TopTools_IndexedDataMapOfShapeListOfShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_IndexedDataMapOfShapeListOfShape::~TopTools_IndexedDataMapOfShapeListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_IndexedDataMapOfShapeListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_IndexedDataMapOfShapeShape;
 class TopTools_IndexedDataMapOfShapeShape : public TCollection_BasicMap {
 	public:
@@ -3810,20 +3186,6 @@ class TopTools_IndexedDataMapOfShapeShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_IndexedDataMapOfShapeShape::~TopTools_IndexedDataMapOfShapeShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_IndexedDataMapOfShapeShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape;
 class TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public TCollection_MapNode {
 	public:
@@ -3863,25 +3225,23 @@ class TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public TCollection_Ma
 };
 
 
-%feature("shadow") TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape::~TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
-	Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape GetHandle() {
-	return *(Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape::Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape;
 class Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public Handle_TCollection_MapNode {
@@ -3899,20 +3259,6 @@ class Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public Handle_
 %extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
     TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape* GetObject() {
     return (TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape::~Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3955,25 +3301,23 @@ class TopTools_IndexedMapNodeOfIndexedMapOfShape : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TopTools_IndexedMapNodeOfIndexedMapOfShape::~TopTools_IndexedMapNodeOfIndexedMapOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_IndexedMapNodeOfIndexedMapOfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_IndexedMapNodeOfIndexedMapOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_IndexedMapNodeOfIndexedMapOfShape {
-	Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape GetHandle() {
-	return *(Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape::Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape;
 class Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape : public Handle_TCollection_MapNode {
@@ -3991,20 +3335,6 @@ class Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape : public Handle_TCollect
 %extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape {
     TopTools_IndexedMapNodeOfIndexedMapOfShape* GetObject() {
     return (TopTools_IndexedMapNodeOfIndexedMapOfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape::~Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4078,20 +3408,6 @@ class TopTools_IndexedMapOfOrientedShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_IndexedMapOfOrientedShape::~TopTools_IndexedMapOfOrientedShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_IndexedMapOfOrientedShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_IndexedMapOfShape;
 class TopTools_IndexedMapOfShape : public TCollection_BasicMap {
 	public:
@@ -4162,20 +3478,6 @@ class TopTools_IndexedMapOfShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_IndexedMapOfShape::~TopTools_IndexedMapOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_IndexedMapOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_ListIteratorOfListOfShape;
 class TopTools_ListIteratorOfListOfShape {
 	public:
@@ -4210,20 +3512,6 @@ class TopTools_ListIteratorOfListOfShape {
 };
 
 
-%feature("shadow") TopTools_ListIteratorOfListOfShape::~TopTools_ListIteratorOfListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_ListIteratorOfListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_ListNodeOfListOfShape;
 class TopTools_ListNodeOfListOfShape : public TCollection_MapNode {
 	public:
@@ -4242,25 +3530,23 @@ class TopTools_ListNodeOfListOfShape : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TopTools_ListNodeOfListOfShape::~TopTools_ListNodeOfListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_ListNodeOfListOfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_ListNodeOfListOfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_ListNodeOfListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_ListNodeOfListOfShape {
-	Handle_TopTools_ListNodeOfListOfShape GetHandle() {
-	return *(Handle_TopTools_ListNodeOfListOfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_ListNodeOfListOfShape::Handle_TopTools_ListNodeOfListOfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_ListNodeOfListOfShape;
 class Handle_TopTools_ListNodeOfListOfShape : public Handle_TCollection_MapNode {
@@ -4278,20 +3564,6 @@ class Handle_TopTools_ListNodeOfListOfShape : public Handle_TCollection_MapNode 
 %extend Handle_TopTools_ListNodeOfListOfShape {
     TopTools_ListNodeOfListOfShape* GetObject() {
     return (TopTools_ListNodeOfListOfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_ListNodeOfListOfShape::~Handle_TopTools_ListNodeOfListOfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_ListNodeOfListOfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4419,20 +3691,6 @@ class TopTools_ListOfShape {
 };
 
 
-%feature("shadow") TopTools_ListOfShape::~TopTools_ListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_ListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_LocationSet;
 class TopTools_LocationSet {
 	public:
@@ -4508,20 +3766,6 @@ class TopTools_LocationSet {
 };
 
 
-%feature("shadow") TopTools_LocationSet::~TopTools_LocationSet %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_LocationSet {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_MapIteratorOfMapOfOrientedShape;
 class TopTools_MapIteratorOfMapOfOrientedShape : public TCollection_BasicMapIterator {
 	public:
@@ -4548,20 +3792,6 @@ class TopTools_MapIteratorOfMapOfOrientedShape : public TCollection_BasicMapIter
 };
 
 
-%feature("shadow") TopTools_MapIteratorOfMapOfOrientedShape::~TopTools_MapIteratorOfMapOfOrientedShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_MapIteratorOfMapOfOrientedShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_MapIteratorOfMapOfShape;
 class TopTools_MapIteratorOfMapOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -4588,20 +3818,6 @@ class TopTools_MapIteratorOfMapOfShape : public TCollection_BasicMapIterator {
 };
 
 
-%feature("shadow") TopTools_MapIteratorOfMapOfShape::~TopTools_MapIteratorOfMapOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_MapIteratorOfMapOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_MapOfOrientedShape;
 class TopTools_MapOfOrientedShape : public TCollection_BasicMap {
 	public:
@@ -4654,20 +3870,6 @@ class TopTools_MapOfOrientedShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_MapOfOrientedShape::~TopTools_MapOfOrientedShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_MapOfOrientedShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_MapOfShape;
 class TopTools_MapOfShape : public TCollection_BasicMap {
 	public:
@@ -4720,20 +3922,6 @@ class TopTools_MapOfShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopTools_MapOfShape::~TopTools_MapOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_MapOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_MutexForShapeProvider;
 class TopTools_MutexForShapeProvider {
 	public:
@@ -4778,20 +3966,6 @@ class TopTools_MutexForShapeProvider {
 };
 
 
-%feature("shadow") TopTools_MutexForShapeProvider::~TopTools_MutexForShapeProvider %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_MutexForShapeProvider {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class TopTools_OrientedShapeMapHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -4817,20 +3991,6 @@ class TopTools_OrientedShapeMapHasher {
 };
 
 
-%feature("shadow") TopTools_OrientedShapeMapHasher::~TopTools_OrientedShapeMapHasher %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_OrientedShapeMapHasher {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_SequenceNodeOfSequenceOfShape;
 class TopTools_SequenceNodeOfSequenceOfShape : public TCollection_SeqNode {
 	public:
@@ -4851,25 +4011,23 @@ class TopTools_SequenceNodeOfSequenceOfShape : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") TopTools_SequenceNodeOfSequenceOfShape::~TopTools_SequenceNodeOfSequenceOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_SequenceNodeOfSequenceOfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_SequenceNodeOfSequenceOfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_SequenceNodeOfSequenceOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_SequenceNodeOfSequenceOfShape {
-	Handle_TopTools_SequenceNodeOfSequenceOfShape GetHandle() {
-	return *(Handle_TopTools_SequenceNodeOfSequenceOfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_SequenceNodeOfSequenceOfShape::Handle_TopTools_SequenceNodeOfSequenceOfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_SequenceNodeOfSequenceOfShape;
 class Handle_TopTools_SequenceNodeOfSequenceOfShape : public Handle_TCollection_SeqNode {
@@ -4887,20 +4045,6 @@ class Handle_TopTools_SequenceNodeOfSequenceOfShape : public Handle_TCollection_
 %extend Handle_TopTools_SequenceNodeOfSequenceOfShape {
     TopTools_SequenceNodeOfSequenceOfShape* GetObject() {
     return (TopTools_SequenceNodeOfSequenceOfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_SequenceNodeOfSequenceOfShape::~Handle_TopTools_SequenceNodeOfSequenceOfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_SequenceNodeOfSequenceOfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5036,20 +4180,6 @@ class TopTools_SequenceOfShape : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TopTools_SequenceOfShape::~TopTools_SequenceOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_SequenceOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class TopTools_ShapeMapHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -5075,20 +4205,6 @@ class TopTools_ShapeMapHasher {
 };
 
 
-%feature("shadow") TopTools_ShapeMapHasher::~TopTools_ShapeMapHasher %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_ShapeMapHasher {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_ShapeSet;
 class TopTools_ShapeSet {
 	public:
@@ -5323,20 +4439,6 @@ class TopTools_ShapeSet {
 };
 
 
-%feature("shadow") TopTools_ShapeSet::~TopTools_ShapeSet %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopTools_ShapeSet {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopTools_StdMapNodeOfMapOfOrientedShape;
 class TopTools_StdMapNodeOfMapOfOrientedShape : public TCollection_MapNode {
 	public:
@@ -5355,25 +4457,23 @@ class TopTools_StdMapNodeOfMapOfOrientedShape : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TopTools_StdMapNodeOfMapOfOrientedShape::~TopTools_StdMapNodeOfMapOfOrientedShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_StdMapNodeOfMapOfOrientedShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_StdMapNodeOfMapOfOrientedShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_StdMapNodeOfMapOfOrientedShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_StdMapNodeOfMapOfOrientedShape {
-	Handle_TopTools_StdMapNodeOfMapOfOrientedShape GetHandle() {
-	return *(Handle_TopTools_StdMapNodeOfMapOfOrientedShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_StdMapNodeOfMapOfOrientedShape::Handle_TopTools_StdMapNodeOfMapOfOrientedShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_StdMapNodeOfMapOfOrientedShape;
 class Handle_TopTools_StdMapNodeOfMapOfOrientedShape : public Handle_TCollection_MapNode {
@@ -5391,20 +4491,6 @@ class Handle_TopTools_StdMapNodeOfMapOfOrientedShape : public Handle_TCollection
 %extend Handle_TopTools_StdMapNodeOfMapOfOrientedShape {
     TopTools_StdMapNodeOfMapOfOrientedShape* GetObject() {
     return (TopTools_StdMapNodeOfMapOfOrientedShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_StdMapNodeOfMapOfOrientedShape::~Handle_TopTools_StdMapNodeOfMapOfOrientedShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_StdMapNodeOfMapOfOrientedShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5426,25 +4512,23 @@ class TopTools_StdMapNodeOfMapOfShape : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TopTools_StdMapNodeOfMapOfShape::~TopTools_StdMapNodeOfMapOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopTools_StdMapNodeOfMapOfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopTools_StdMapNodeOfMapOfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopTools_StdMapNodeOfMapOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopTools_StdMapNodeOfMapOfShape {
-	Handle_TopTools_StdMapNodeOfMapOfShape GetHandle() {
-	return *(Handle_TopTools_StdMapNodeOfMapOfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopTools_StdMapNodeOfMapOfShape::Handle_TopTools_StdMapNodeOfMapOfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopTools_StdMapNodeOfMapOfShape;
 class Handle_TopTools_StdMapNodeOfMapOfShape : public Handle_TCollection_MapNode {
@@ -5462,20 +4546,6 @@ class Handle_TopTools_StdMapNodeOfMapOfShape : public Handle_TCollection_MapNode
 %extend Handle_TopTools_StdMapNodeOfMapOfShape {
     TopTools_StdMapNodeOfMapOfShape* GetObject() {
     return (TopTools_StdMapNodeOfMapOfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopTools_StdMapNodeOfMapOfShape::~Handle_TopTools_StdMapNodeOfMapOfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopTools_StdMapNodeOfMapOfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

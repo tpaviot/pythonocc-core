@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Poly_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef NCollection_Vector <Poly_CoherentLink>::Iterator Poly_BaseIteratorOfCoherentLink;
@@ -173,20 +185,6 @@ class Poly {
 };
 
 
-%feature("shadow") Poly::~Poly %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Poly {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Poly_Array1OfTriangle;
 class Poly_Array1OfTriangle {
 	public:
@@ -269,20 +267,6 @@ class Poly_Array1OfTriangle {
 };
 
 
-%feature("shadow") Poly_Array1OfTriangle::~Poly_Array1OfTriangle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Poly_Array1OfTriangle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Poly_CoherentLink;
 class Poly_CoherentLink {
 	public:
@@ -357,20 +341,6 @@ class Poly_CoherentLink {
 };
 
 
-%feature("shadow") Poly_CoherentLink::~Poly_CoherentLink %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Poly_CoherentLink {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Poly_CoherentNode;
 class Poly_CoherentNode : public gp_XYZ {
 	public:
@@ -495,20 +465,6 @@ class Poly_CoherentNode : public gp_XYZ {
         };
 
 
-%feature("shadow") Poly_CoherentNode::~Poly_CoherentNode %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Poly_CoherentNode {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Poly_CoherentTriangle;
 class Poly_CoherentTriangle {
 	public:
@@ -619,20 +575,6 @@ class Poly_CoherentTriangle {
 };
 
 
-%feature("shadow") Poly_CoherentTriangle::~Poly_CoherentTriangle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Poly_CoherentTriangle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Poly_Connect;
 class Poly_Connect {
 	public:
@@ -715,20 +657,6 @@ class Poly_Connect {
 };
 
 
-%feature("shadow") Poly_Connect::~Poly_Connect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Poly_Connect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Poly_HArray1OfTriangle;
 class Poly_HArray1OfTriangle : public MMgt_TShared {
 	public:
@@ -799,25 +727,23 @@ class Poly_HArray1OfTriangle : public MMgt_TShared {
 };
 
 
-%feature("shadow") Poly_HArray1OfTriangle::~Poly_HArray1OfTriangle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Poly_HArray1OfTriangle {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Poly_HArray1OfTriangle(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Poly_HArray1OfTriangle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Poly_HArray1OfTriangle {
-	Handle_Poly_HArray1OfTriangle GetHandle() {
-	return *(Handle_Poly_HArray1OfTriangle*) &$self;
-	}
-};
+%pythonappend Handle_Poly_HArray1OfTriangle::Handle_Poly_HArray1OfTriangle %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Poly_HArray1OfTriangle;
 class Handle_Poly_HArray1OfTriangle : public Handle_MMgt_TShared {
@@ -835,20 +761,6 @@ class Handle_Poly_HArray1OfTriangle : public Handle_MMgt_TShared {
 %extend Handle_Poly_HArray1OfTriangle {
     Poly_HArray1OfTriangle* GetObject() {
     return (Poly_HArray1OfTriangle*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Poly_HArray1OfTriangle::~Handle_Poly_HArray1OfTriangle %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Poly_HArray1OfTriangle {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -892,25 +804,23 @@ class Poly_Polygon2D : public MMgt_TShared {
 };
 
 
-%feature("shadow") Poly_Polygon2D::~Poly_Polygon2D %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Poly_Polygon2D {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Poly_Polygon2D(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Poly_Polygon2D {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Poly_Polygon2D {
-	Handle_Poly_Polygon2D GetHandle() {
-	return *(Handle_Poly_Polygon2D*) &$self;
-	}
-};
+%pythonappend Handle_Poly_Polygon2D::Handle_Poly_Polygon2D %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Poly_Polygon2D;
 class Handle_Poly_Polygon2D : public Handle_MMgt_TShared {
@@ -928,20 +838,6 @@ class Handle_Poly_Polygon2D : public Handle_MMgt_TShared {
 %extend Handle_Poly_Polygon2D {
     Poly_Polygon2D* GetObject() {
     return (Poly_Polygon2D*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Poly_Polygon2D::~Handle_Poly_Polygon2D %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Poly_Polygon2D {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1013,25 +909,23 @@ class Poly_Polygon3D : public MMgt_TShared {
 };
 
 
-%feature("shadow") Poly_Polygon3D::~Poly_Polygon3D %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Poly_Polygon3D {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Poly_Polygon3D(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Poly_Polygon3D {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Poly_Polygon3D {
-	Handle_Poly_Polygon3D GetHandle() {
-	return *(Handle_Poly_Polygon3D*) &$self;
-	}
-};
+%pythonappend Handle_Poly_Polygon3D::Handle_Poly_Polygon3D %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Poly_Polygon3D;
 class Handle_Poly_Polygon3D : public Handle_MMgt_TShared {
@@ -1049,20 +943,6 @@ class Handle_Poly_Polygon3D : public Handle_MMgt_TShared {
 %extend Handle_Poly_Polygon3D {
     Poly_Polygon3D* GetObject() {
     return (Poly_Polygon3D*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Poly_Polygon3D::~Handle_Poly_Polygon3D %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Poly_Polygon3D {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1128,25 +1008,23 @@ class Poly_PolygonOnTriangulation : public MMgt_TShared {
 };
 
 
-%feature("shadow") Poly_PolygonOnTriangulation::~Poly_PolygonOnTriangulation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Poly_PolygonOnTriangulation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Poly_PolygonOnTriangulation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Poly_PolygonOnTriangulation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Poly_PolygonOnTriangulation {
-	Handle_Poly_PolygonOnTriangulation GetHandle() {
-	return *(Handle_Poly_PolygonOnTriangulation*) &$self;
-	}
-};
+%pythonappend Handle_Poly_PolygonOnTriangulation::Handle_Poly_PolygonOnTriangulation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Poly_PolygonOnTriangulation;
 class Handle_Poly_PolygonOnTriangulation : public Handle_MMgt_TShared {
@@ -1164,20 +1042,6 @@ class Handle_Poly_PolygonOnTriangulation : public Handle_MMgt_TShared {
 %extend Handle_Poly_PolygonOnTriangulation {
     Poly_PolygonOnTriangulation* GetObject() {
     return (Poly_PolygonOnTriangulation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Poly_PolygonOnTriangulation::~Handle_Poly_PolygonOnTriangulation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Poly_PolygonOnTriangulation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1255,20 +1119,6 @@ class Poly_Triangle {
 };
 
 
-%feature("shadow") Poly_Triangle::~Poly_Triangle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Poly_Triangle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Poly_Triangulation;
 class Poly_Triangulation : public MMgt_TShared {
 	public:
@@ -1403,25 +1253,23 @@ class Poly_Triangulation : public MMgt_TShared {
 };
 
 
-%feature("shadow") Poly_Triangulation::~Poly_Triangulation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Poly_Triangulation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Poly_Triangulation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Poly_Triangulation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Poly_Triangulation {
-	Handle_Poly_Triangulation GetHandle() {
-	return *(Handle_Poly_Triangulation*) &$self;
-	}
-};
+%pythonappend Handle_Poly_Triangulation::Handle_Poly_Triangulation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Poly_Triangulation;
 class Handle_Poly_Triangulation : public Handle_MMgt_TShared {
@@ -1439,20 +1287,6 @@ class Handle_Poly_Triangulation : public Handle_MMgt_TShared {
 %extend Handle_Poly_Triangulation {
     Poly_Triangulation* GetObject() {
     return (Poly_Triangulation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Poly_Triangulation::~Handle_Poly_Triangulation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Poly_Triangulation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

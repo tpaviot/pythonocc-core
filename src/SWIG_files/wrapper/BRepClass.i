@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include BRepClass_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -78,20 +90,6 @@ class BRepClass_Edge {
 };
 
 
-%feature("shadow") BRepClass_Edge::~BRepClass_Edge %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass_Edge {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass_FClass2dOfFClassifier;
 class BRepClass_FClass2dOfFClassifier {
 	public:
@@ -140,20 +138,6 @@ class BRepClass_FClass2dOfFClassifier {
 };
 
 
-%feature("shadow") BRepClass_FClass2dOfFClassifier::~BRepClass_FClass2dOfFClassifier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass_FClass2dOfFClassifier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass_FClassifier;
 class BRepClass_FClassifier {
 	public:
@@ -208,20 +192,6 @@ class BRepClass_FClassifier {
 };
 
 
-%feature("shadow") BRepClass_FClassifier::~BRepClass_FClassifier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass_FClassifier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass_FaceExplorer;
 class BRepClass_FaceExplorer {
 	public:
@@ -332,20 +302,6 @@ class BRepClass_FaceExplorer {
 };
 
 
-%feature("shadow") BRepClass_FaceExplorer::~BRepClass_FaceExplorer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass_FaceExplorer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass_FacePassiveClassifier;
 class BRepClass_FacePassiveClassifier {
 	public:
@@ -394,20 +350,6 @@ class BRepClass_FacePassiveClassifier {
 };
 
 
-%feature("shadow") BRepClass_FacePassiveClassifier::~BRepClass_FacePassiveClassifier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass_FacePassiveClassifier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepClass_Intersector;
 class BRepClass_Intersector : public Geom2dInt_IntConicCurveOfGInter {
 	public:
@@ -448,17 +390,3 @@ class BRepClass_Intersector : public Geom2dInt_IntConicCurveOfGInter {
 };
 
 
-%feature("shadow") BRepClass_Intersector::~BRepClass_Intersector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepClass_Intersector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

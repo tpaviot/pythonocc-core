@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Message_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef Handle_Message_ArrayOfMsg Message_HArrayOfMsg;
@@ -203,7 +215,7 @@ class Message {
 
 	:rtype: Handle_Message_Messenger
 ") DefaultMessenger;
-		static const Handle_Message_Messenger & DefaultMessenger ();
+		Handle_Message_Messenger DefaultMessenger ();
 		%feature("compactdefaultargs") FillTime;
 		%feature("autodoc", "	* Returns the string filled with values of hours, minutes and seconds. Example: 1. (5, 12, 26.3345) returns '05h:12m:26.33s', 2. (0, 6, 34.496 ) returns '06m:34.50s', 3. (0, 0, 4.5 ) returns '4.50s'
 
@@ -219,20 +231,6 @@ class Message {
 };
 
 
-%feature("shadow") Message::~Message %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Message {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Message_Algorithm;
 class Message_Algorithm : public MMgt_TShared {
 	public:
@@ -441,25 +439,23 @@ class Message_Algorithm : public MMgt_TShared {
 };
 
 
-%feature("shadow") Message_Algorithm::~Message_Algorithm %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Message_Algorithm {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Message_Algorithm(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Message_Algorithm {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Message_Algorithm {
-	Handle_Message_Algorithm GetHandle() {
-	return *(Handle_Message_Algorithm*) &$self;
-	}
-};
+%pythonappend Handle_Message_Algorithm::Handle_Message_Algorithm %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Message_Algorithm;
 class Handle_Message_Algorithm : public Handle_MMgt_TShared {
@@ -477,20 +473,6 @@ class Handle_Message_Algorithm : public Handle_MMgt_TShared {
 %extend Handle_Message_Algorithm {
     Message_Algorithm* GetObject() {
     return (Message_Algorithm*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Message_Algorithm::~Handle_Message_Algorithm %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Message_Algorithm {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -528,20 +510,6 @@ class Message_ListIteratorOfListOfMsg {
 };
 
 
-%feature("shadow") Message_ListIteratorOfListOfMsg::~Message_ListIteratorOfListOfMsg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Message_ListIteratorOfListOfMsg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Message_ListNodeOfListOfMsg;
 class Message_ListNodeOfListOfMsg : public TCollection_MapNode {
 	public:
@@ -560,25 +528,23 @@ class Message_ListNodeOfListOfMsg : public TCollection_MapNode {
 };
 
 
-%feature("shadow") Message_ListNodeOfListOfMsg::~Message_ListNodeOfListOfMsg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Message_ListNodeOfListOfMsg {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Message_ListNodeOfListOfMsg(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Message_ListNodeOfListOfMsg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Message_ListNodeOfListOfMsg {
-	Handle_Message_ListNodeOfListOfMsg GetHandle() {
-	return *(Handle_Message_ListNodeOfListOfMsg*) &$self;
-	}
-};
+%pythonappend Handle_Message_ListNodeOfListOfMsg::Handle_Message_ListNodeOfListOfMsg %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Message_ListNodeOfListOfMsg;
 class Handle_Message_ListNodeOfListOfMsg : public Handle_TCollection_MapNode {
@@ -596,20 +562,6 @@ class Handle_Message_ListNodeOfListOfMsg : public Handle_TCollection_MapNode {
 %extend Handle_Message_ListNodeOfListOfMsg {
     Message_ListNodeOfListOfMsg* GetObject() {
     return (Message_ListNodeOfListOfMsg*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Message_ListNodeOfListOfMsg::~Handle_Message_ListNodeOfListOfMsg %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Message_ListNodeOfListOfMsg {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -737,20 +689,6 @@ class Message_ListOfMsg {
 };
 
 
-%feature("shadow") Message_ListOfMsg::~Message_ListOfMsg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Message_ListOfMsg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Message_Messenger;
 class Message_Messenger : public MMgt_TShared {
 	public:
@@ -843,25 +781,23 @@ class Message_Messenger : public MMgt_TShared {
 };
 
 
-%feature("shadow") Message_Messenger::~Message_Messenger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Message_Messenger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Message_Messenger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Message_Messenger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Message_Messenger {
-	Handle_Message_Messenger GetHandle() {
-	return *(Handle_Message_Messenger*) &$self;
-	}
-};
+%pythonappend Handle_Message_Messenger::Handle_Message_Messenger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Message_Messenger;
 class Handle_Message_Messenger : public Handle_MMgt_TShared {
@@ -879,20 +815,6 @@ class Handle_Message_Messenger : public Handle_MMgt_TShared {
 %extend Handle_Message_Messenger {
     Message_Messenger* GetObject() {
     return (Message_Messenger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Message_Messenger::~Handle_Message_Messenger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Message_Messenger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -955,20 +877,6 @@ class Message_MsgFile {
 };
 
 
-%feature("shadow") Message_MsgFile::~Message_MsgFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Message_MsgFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Message_Printer;
 class Message_Printer : public MMgt_TShared {
 	public:
@@ -1011,25 +919,23 @@ class Message_Printer : public MMgt_TShared {
 };
 
 
-%feature("shadow") Message_Printer::~Message_Printer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Message_Printer {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Message_Printer(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Message_Printer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Message_Printer {
-	Handle_Message_Printer GetHandle() {
-	return *(Handle_Message_Printer*) &$self;
-	}
-};
+%pythonappend Handle_Message_Printer::Handle_Message_Printer %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Message_Printer;
 class Handle_Message_Printer : public Handle_MMgt_TShared {
@@ -1047,20 +953,6 @@ class Handle_Message_Printer : public Handle_MMgt_TShared {
 %extend Handle_Message_Printer {
     Message_Printer* GetObject() {
     return (Message_Printer*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Message_Printer::~Handle_Message_Printer %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Message_Printer {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1268,25 +1160,23 @@ class Message_ProgressIndicator : public MMgt_TShared {
 };
 
 
-%feature("shadow") Message_ProgressIndicator::~Message_ProgressIndicator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Message_ProgressIndicator {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Message_ProgressIndicator(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Message_ProgressIndicator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Message_ProgressIndicator {
-	Handle_Message_ProgressIndicator GetHandle() {
-	return *(Handle_Message_ProgressIndicator*) &$self;
-	}
-};
+%pythonappend Handle_Message_ProgressIndicator::Handle_Message_ProgressIndicator %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Message_ProgressIndicator;
 class Handle_Message_ProgressIndicator : public Handle_MMgt_TShared {
@@ -1304,20 +1194,6 @@ class Handle_Message_ProgressIndicator : public Handle_MMgt_TShared {
 %extend Handle_Message_ProgressIndicator {
     Message_ProgressIndicator* GetObject() {
     return (Message_ProgressIndicator*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Message_ProgressIndicator::~Handle_Message_ProgressIndicator %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Message_ProgressIndicator {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1467,20 +1343,6 @@ class Message_ProgressScale {
 };
 
 
-%feature("shadow") Message_ProgressScale::~Message_ProgressScale %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Message_ProgressScale {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Message_ProgressSentry;
 class Message_ProgressSentry {
 	public:
@@ -1567,20 +1429,6 @@ class Message_ProgressSentry {
 };
 
 
-%feature("shadow") Message_ProgressSentry::~Message_ProgressSentry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Message_ProgressSentry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Message_SequenceNodeOfSequenceOfPrinters;
 class Message_SequenceNodeOfSequenceOfPrinters : public TCollection_SeqNode {
 	public:
@@ -1597,29 +1445,27 @@ class Message_SequenceNodeOfSequenceOfPrinters : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Message_Printer
 ") Value;
-		Handle_Message_Printer & Value ();
+		Handle_Message_Printer Value ();
 };
 
 
-%feature("shadow") Message_SequenceNodeOfSequenceOfPrinters::~Message_SequenceNodeOfSequenceOfPrinters %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Message_SequenceNodeOfSequenceOfPrinters {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Message_SequenceNodeOfSequenceOfPrinters(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Message_SequenceNodeOfSequenceOfPrinters::Handle_Message_SequenceNodeOfSequenceOfPrinters %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Message_SequenceNodeOfSequenceOfPrinters {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Message_SequenceNodeOfSequenceOfPrinters {
-	Handle_Message_SequenceNodeOfSequenceOfPrinters GetHandle() {
-	return *(Handle_Message_SequenceNodeOfSequenceOfPrinters*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Message_SequenceNodeOfSequenceOfPrinters;
 class Handle_Message_SequenceNodeOfSequenceOfPrinters : public Handle_TCollection_SeqNode {
@@ -1637,20 +1483,6 @@ class Handle_Message_SequenceNodeOfSequenceOfPrinters : public Handle_TCollectio
 %extend Handle_Message_SequenceNodeOfSequenceOfPrinters {
     Message_SequenceNodeOfSequenceOfPrinters* GetObject() {
     return (Message_SequenceNodeOfSequenceOfPrinters*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Message_SequenceNodeOfSequenceOfPrinters::~Handle_Message_SequenceNodeOfSequenceOfPrinters %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Message_SequenceNodeOfSequenceOfPrinters {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1674,25 +1506,23 @@ class Message_SequenceNodeOfSequenceOfProgressScale : public TCollection_SeqNode
 };
 
 
-%feature("shadow") Message_SequenceNodeOfSequenceOfProgressScale::~Message_SequenceNodeOfSequenceOfProgressScale %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Message_SequenceNodeOfSequenceOfProgressScale {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Message_SequenceNodeOfSequenceOfProgressScale(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Message_SequenceNodeOfSequenceOfProgressScale {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Message_SequenceNodeOfSequenceOfProgressScale {
-	Handle_Message_SequenceNodeOfSequenceOfProgressScale GetHandle() {
-	return *(Handle_Message_SequenceNodeOfSequenceOfProgressScale*) &$self;
-	}
-};
+%pythonappend Handle_Message_SequenceNodeOfSequenceOfProgressScale::Handle_Message_SequenceNodeOfSequenceOfProgressScale %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Message_SequenceNodeOfSequenceOfProgressScale;
 class Handle_Message_SequenceNodeOfSequenceOfProgressScale : public Handle_TCollection_SeqNode {
@@ -1710,20 +1540,6 @@ class Handle_Message_SequenceNodeOfSequenceOfProgressScale : public Handle_TColl
 %extend Handle_Message_SequenceNodeOfSequenceOfProgressScale {
     Message_SequenceNodeOfSequenceOfProgressScale* GetObject() {
     return (Message_SequenceNodeOfSequenceOfProgressScale*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Message_SequenceNodeOfSequenceOfProgressScale::~Handle_Message_SequenceNodeOfSequenceOfProgressScale %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Message_SequenceNodeOfSequenceOfProgressScale {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1809,11 +1625,11 @@ class Message_SequenceOfPrinters : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Message_Printer
 ") First;
-		const Handle_Message_Printer & First ();
+		Handle_Message_Printer First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Message_Printer
 ") Last;
-		const Handle_Message_Printer & Last ();
+		Handle_Message_Printer Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1827,7 +1643,7 @@ class Message_SequenceOfPrinters : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Message_Printer
 ") Value;
-		const Handle_Message_Printer & Value (const Standard_Integer Index);
+		Handle_Message_Printer Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1841,7 +1657,7 @@ class Message_SequenceOfPrinters : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Message_Printer
 ") ChangeValue;
-		Handle_Message_Printer & ChangeValue (const Standard_Integer Index);
+		Handle_Message_Printer ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1859,20 +1675,6 @@ class Message_SequenceOfPrinters : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Message_SequenceOfPrinters::~Message_SequenceOfPrinters %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Message_SequenceOfPrinters {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Message_SequenceOfProgressScale;
 class Message_SequenceOfProgressScale : public TCollection_BaseSequence {
 	public:
@@ -2005,20 +1807,6 @@ class Message_SequenceOfProgressScale : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Message_SequenceOfProgressScale::~Message_SequenceOfProgressScale %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Message_SequenceOfProgressScale {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Message_PrinterOStream;
 class Message_PrinterOStream : public Message_Printer {
 	public:
@@ -2121,25 +1909,23 @@ class Message_PrinterOStream : public Message_Printer {
 };
 
 
-%feature("shadow") Message_PrinterOStream::~Message_PrinterOStream %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Message_PrinterOStream {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Message_PrinterOStream(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Message_PrinterOStream {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Message_PrinterOStream {
-	Handle_Message_PrinterOStream GetHandle() {
-	return *(Handle_Message_PrinterOStream*) &$self;
-	}
-};
+%pythonappend Handle_Message_PrinterOStream::Handle_Message_PrinterOStream %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Message_PrinterOStream;
 class Handle_Message_PrinterOStream : public Handle_Message_Printer {
@@ -2157,20 +1943,6 @@ class Handle_Message_PrinterOStream : public Handle_Message_Printer {
 %extend Handle_Message_PrinterOStream {
     Message_PrinterOStream* GetObject() {
     return (Message_PrinterOStream*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Message_PrinterOStream::~Handle_Message_PrinterOStream %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Message_PrinterOStream {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

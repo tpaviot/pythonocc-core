@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include IntCurve_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -142,20 +154,6 @@ class IntCurve_IConicTool {
 };
 
 
-%feature("shadow") IntCurve_IConicTool::~IntCurve_IConicTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurve_IConicTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurve_IntConicConic;
 class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	public:
@@ -708,20 +706,6 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 };
 
 
-%feature("shadow") IntCurve_IntConicConic::~IntCurve_IntConicConic %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurve_IntConicConic {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurve_IntImpConicParConic;
 class IntCurve_IntImpConicParConic : public IntRes2d_Intersection {
 	public:
@@ -820,20 +804,6 @@ class IntCurve_IntImpConicParConic : public IntRes2d_Intersection {
 };
 
 
-%feature("shadow") IntCurve_IntImpConicParConic::~IntCurve_IntImpConicParConic %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurve_IntImpConicParConic {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurve_MyImpParToolOfIntImpConicParConic;
 class IntCurve_MyImpParToolOfIntImpConicParConic : public math_FunctionWithDerivative {
 	public:
@@ -874,20 +844,6 @@ class IntCurve_MyImpParToolOfIntImpConicParConic : public math_FunctionWithDeriv
 };
 
 
-%feature("shadow") IntCurve_MyImpParToolOfIntImpConicParConic::~IntCurve_MyImpParToolOfIntImpConicParConic %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurve_MyImpParToolOfIntImpConicParConic {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurve_PConic;
 class IntCurve_PConic {
 	public:
@@ -972,20 +928,6 @@ class IntCurve_PConic {
 };
 
 
-%feature("shadow") IntCurve_PConic::~IntCurve_PConic %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurve_PConic {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class IntCurve_PConicTool {
 	public:
 		%feature("compactdefaultargs") EpsX;
@@ -1047,20 +989,6 @@ class IntCurve_PConicTool {
 };
 
 
-%feature("shadow") IntCurve_PConicTool::~IntCurve_PConicTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurve_PConicTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class IntCurve_ProjectOnPConicTool {
 	public:
 		%feature("compactdefaultargs") FindParameter;
@@ -1094,17 +1022,3 @@ class IntCurve_ProjectOnPConicTool {
 };
 
 
-%feature("shadow") IntCurve_ProjectOnPConicTool::~IntCurve_ProjectOnPConicTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurve_ProjectOnPConicTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

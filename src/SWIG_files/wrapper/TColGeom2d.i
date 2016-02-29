@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include TColGeom2d_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -116,30 +128,16 @@ class TColGeom2d_Array1OfBSplineCurve {
 	:type Index: int
 	:rtype: Handle_Geom2d_BSplineCurve
 ") Value;
-		const Handle_Geom2d_BSplineCurve & Value (const Standard_Integer Index);
+		Handle_Geom2d_BSplineCurve Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Geom2d_BSplineCurve
 ") ChangeValue;
-		Handle_Geom2d_BSplineCurve & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_BSplineCurve ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") TColGeom2d_Array1OfBSplineCurve::~TColGeom2d_Array1OfBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColGeom2d_Array1OfBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColGeom2d_Array1OfBezierCurve;
 class TColGeom2d_Array1OfBezierCurve {
 	public:
@@ -212,30 +210,16 @@ class TColGeom2d_Array1OfBezierCurve {
 	:type Index: int
 	:rtype: Handle_Geom2d_BezierCurve
 ") Value;
-		const Handle_Geom2d_BezierCurve & Value (const Standard_Integer Index);
+		Handle_Geom2d_BezierCurve Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Geom2d_BezierCurve
 ") ChangeValue;
-		Handle_Geom2d_BezierCurve & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_BezierCurve ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") TColGeom2d_Array1OfBezierCurve::~TColGeom2d_Array1OfBezierCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColGeom2d_Array1OfBezierCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColGeom2d_Array1OfBoundedCurve;
 class TColGeom2d_Array1OfBoundedCurve {
 	public:
@@ -308,30 +292,16 @@ class TColGeom2d_Array1OfBoundedCurve {
 	:type Index: int
 	:rtype: Handle_Geom2d_BoundedCurve
 ") Value;
-		const Handle_Geom2d_BoundedCurve & Value (const Standard_Integer Index);
+		Handle_Geom2d_BoundedCurve Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Geom2d_BoundedCurve
 ") ChangeValue;
-		Handle_Geom2d_BoundedCurve & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_BoundedCurve ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") TColGeom2d_Array1OfBoundedCurve::~TColGeom2d_Array1OfBoundedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColGeom2d_Array1OfBoundedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColGeom2d_Array1OfCurve;
 class TColGeom2d_Array1OfCurve {
 	public:
@@ -404,30 +374,16 @@ class TColGeom2d_Array1OfCurve {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") Value;
-		const Handle_Geom2d_Curve & Value (const Standard_Integer Index);
+		Handle_Geom2d_Curve Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") ChangeValue;
-		Handle_Geom2d_Curve & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_Curve ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") TColGeom2d_Array1OfCurve::~TColGeom2d_Array1OfCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColGeom2d_Array1OfCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColGeom2d_Array1OfGeometry;
 class TColGeom2d_Array1OfGeometry {
 	public:
@@ -500,30 +456,16 @@ class TColGeom2d_Array1OfGeometry {
 	:type Index: int
 	:rtype: Handle_Geom2d_Geometry
 ") Value;
-		const Handle_Geom2d_Geometry & Value (const Standard_Integer Index);
+		Handle_Geom2d_Geometry Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Geom2d_Geometry
 ") ChangeValue;
-		Handle_Geom2d_Geometry & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_Geometry ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") TColGeom2d_Array1OfGeometry::~TColGeom2d_Array1OfGeometry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColGeom2d_Array1OfGeometry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColGeom2d_HArray1OfBSplineCurve;
 class TColGeom2d_HArray1OfBSplineCurve : public MMgt_TShared {
 	public:
@@ -576,13 +518,13 @@ class TColGeom2d_HArray1OfBSplineCurve : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_Geom2d_BSplineCurve
 ") Value;
-		const Handle_Geom2d_BSplineCurve & Value (const Standard_Integer Index);
+		Handle_Geom2d_BSplineCurve Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Geom2d_BSplineCurve
 ") ChangeValue;
-		Handle_Geom2d_BSplineCurve & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_BSplineCurve ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfBSplineCurve
 ") Array1;
@@ -594,25 +536,23 @@ class TColGeom2d_HArray1OfBSplineCurve : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColGeom2d_HArray1OfBSplineCurve::~TColGeom2d_HArray1OfBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColGeom2d_HArray1OfBSplineCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColGeom2d_HArray1OfBSplineCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColGeom2d_HArray1OfBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColGeom2d_HArray1OfBSplineCurve {
-	Handle_TColGeom2d_HArray1OfBSplineCurve GetHandle() {
-	return *(Handle_TColGeom2d_HArray1OfBSplineCurve*) &$self;
-	}
-};
+%pythonappend Handle_TColGeom2d_HArray1OfBSplineCurve::Handle_TColGeom2d_HArray1OfBSplineCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColGeom2d_HArray1OfBSplineCurve;
 class Handle_TColGeom2d_HArray1OfBSplineCurve : public Handle_MMgt_TShared {
@@ -630,20 +570,6 @@ class Handle_TColGeom2d_HArray1OfBSplineCurve : public Handle_MMgt_TShared {
 %extend Handle_TColGeom2d_HArray1OfBSplineCurve {
     TColGeom2d_HArray1OfBSplineCurve* GetObject() {
     return (TColGeom2d_HArray1OfBSplineCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColGeom2d_HArray1OfBSplineCurve::~Handle_TColGeom2d_HArray1OfBSplineCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColGeom2d_HArray1OfBSplineCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -699,13 +625,13 @@ class TColGeom2d_HArray1OfBezierCurve : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_Geom2d_BezierCurve
 ") Value;
-		const Handle_Geom2d_BezierCurve & Value (const Standard_Integer Index);
+		Handle_Geom2d_BezierCurve Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Geom2d_BezierCurve
 ") ChangeValue;
-		Handle_Geom2d_BezierCurve & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_BezierCurve ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfBezierCurve
 ") Array1;
@@ -717,25 +643,23 @@ class TColGeom2d_HArray1OfBezierCurve : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColGeom2d_HArray1OfBezierCurve::~TColGeom2d_HArray1OfBezierCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColGeom2d_HArray1OfBezierCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColGeom2d_HArray1OfBezierCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColGeom2d_HArray1OfBezierCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColGeom2d_HArray1OfBezierCurve {
-	Handle_TColGeom2d_HArray1OfBezierCurve GetHandle() {
-	return *(Handle_TColGeom2d_HArray1OfBezierCurve*) &$self;
-	}
-};
+%pythonappend Handle_TColGeom2d_HArray1OfBezierCurve::Handle_TColGeom2d_HArray1OfBezierCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColGeom2d_HArray1OfBezierCurve;
 class Handle_TColGeom2d_HArray1OfBezierCurve : public Handle_MMgt_TShared {
@@ -753,20 +677,6 @@ class Handle_TColGeom2d_HArray1OfBezierCurve : public Handle_MMgt_TShared {
 %extend Handle_TColGeom2d_HArray1OfBezierCurve {
     TColGeom2d_HArray1OfBezierCurve* GetObject() {
     return (TColGeom2d_HArray1OfBezierCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColGeom2d_HArray1OfBezierCurve::~Handle_TColGeom2d_HArray1OfBezierCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColGeom2d_HArray1OfBezierCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -822,13 +732,13 @@ class TColGeom2d_HArray1OfBoundedCurve : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_Geom2d_BoundedCurve
 ") Value;
-		const Handle_Geom2d_BoundedCurve & Value (const Standard_Integer Index);
+		Handle_Geom2d_BoundedCurve Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Geom2d_BoundedCurve
 ") ChangeValue;
-		Handle_Geom2d_BoundedCurve & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_BoundedCurve ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfBoundedCurve
 ") Array1;
@@ -840,25 +750,23 @@ class TColGeom2d_HArray1OfBoundedCurve : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColGeom2d_HArray1OfBoundedCurve::~TColGeom2d_HArray1OfBoundedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColGeom2d_HArray1OfBoundedCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColGeom2d_HArray1OfBoundedCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColGeom2d_HArray1OfBoundedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColGeom2d_HArray1OfBoundedCurve {
-	Handle_TColGeom2d_HArray1OfBoundedCurve GetHandle() {
-	return *(Handle_TColGeom2d_HArray1OfBoundedCurve*) &$self;
-	}
-};
+%pythonappend Handle_TColGeom2d_HArray1OfBoundedCurve::Handle_TColGeom2d_HArray1OfBoundedCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColGeom2d_HArray1OfBoundedCurve;
 class Handle_TColGeom2d_HArray1OfBoundedCurve : public Handle_MMgt_TShared {
@@ -876,20 +784,6 @@ class Handle_TColGeom2d_HArray1OfBoundedCurve : public Handle_MMgt_TShared {
 %extend Handle_TColGeom2d_HArray1OfBoundedCurve {
     TColGeom2d_HArray1OfBoundedCurve* GetObject() {
     return (TColGeom2d_HArray1OfBoundedCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColGeom2d_HArray1OfBoundedCurve::~Handle_TColGeom2d_HArray1OfBoundedCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColGeom2d_HArray1OfBoundedCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -945,13 +839,13 @@ class TColGeom2d_HArray1OfCurve : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") Value;
-		const Handle_Geom2d_Curve & Value (const Standard_Integer Index);
+		Handle_Geom2d_Curve Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") ChangeValue;
-		Handle_Geom2d_Curve & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_Curve ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfCurve
 ") Array1;
@@ -963,25 +857,23 @@ class TColGeom2d_HArray1OfCurve : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColGeom2d_HArray1OfCurve::~TColGeom2d_HArray1OfCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColGeom2d_HArray1OfCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColGeom2d_HArray1OfCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColGeom2d_HArray1OfCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColGeom2d_HArray1OfCurve {
-	Handle_TColGeom2d_HArray1OfCurve GetHandle() {
-	return *(Handle_TColGeom2d_HArray1OfCurve*) &$self;
-	}
-};
+%pythonappend Handle_TColGeom2d_HArray1OfCurve::Handle_TColGeom2d_HArray1OfCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColGeom2d_HArray1OfCurve;
 class Handle_TColGeom2d_HArray1OfCurve : public Handle_MMgt_TShared {
@@ -999,20 +891,6 @@ class Handle_TColGeom2d_HArray1OfCurve : public Handle_MMgt_TShared {
 %extend Handle_TColGeom2d_HArray1OfCurve {
     TColGeom2d_HArray1OfCurve* GetObject() {
     return (TColGeom2d_HArray1OfCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColGeom2d_HArray1OfCurve::~Handle_TColGeom2d_HArray1OfCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColGeom2d_HArray1OfCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1068,13 +946,13 @@ class TColGeom2d_HArray1OfGeometry : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_Geom2d_Geometry
 ") Value;
-		const Handle_Geom2d_Geometry & Value (const Standard_Integer Index);
+		Handle_Geom2d_Geometry Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Geom2d_Geometry
 ") ChangeValue;
-		Handle_Geom2d_Geometry & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_Geometry ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfGeometry
 ") Array1;
@@ -1086,25 +964,23 @@ class TColGeom2d_HArray1OfGeometry : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColGeom2d_HArray1OfGeometry::~TColGeom2d_HArray1OfGeometry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColGeom2d_HArray1OfGeometry {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColGeom2d_HArray1OfGeometry(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColGeom2d_HArray1OfGeometry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColGeom2d_HArray1OfGeometry {
-	Handle_TColGeom2d_HArray1OfGeometry GetHandle() {
-	return *(Handle_TColGeom2d_HArray1OfGeometry*) &$self;
-	}
-};
+%pythonappend Handle_TColGeom2d_HArray1OfGeometry::Handle_TColGeom2d_HArray1OfGeometry %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColGeom2d_HArray1OfGeometry;
 class Handle_TColGeom2d_HArray1OfGeometry : public Handle_MMgt_TShared {
@@ -1122,20 +998,6 @@ class Handle_TColGeom2d_HArray1OfGeometry : public Handle_MMgt_TShared {
 %extend Handle_TColGeom2d_HArray1OfGeometry {
     TColGeom2d_HArray1OfGeometry* GetObject() {
     return (TColGeom2d_HArray1OfGeometry*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColGeom2d_HArray1OfGeometry::~Handle_TColGeom2d_HArray1OfGeometry %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColGeom2d_HArray1OfGeometry {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1245,13 +1107,13 @@ class TColGeom2d_HSequenceOfBoundedCurve : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Geom2d_BoundedCurve
 ") Value;
-		const Handle_Geom2d_BoundedCurve & Value (const Standard_Integer anIndex);
+		Handle_Geom2d_BoundedCurve Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Geom2d_BoundedCurve
 ") ChangeValue;
-		Handle_Geom2d_BoundedCurve & ChangeValue (const Standard_Integer anIndex);
+		Handle_Geom2d_BoundedCurve ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -1281,25 +1143,23 @@ class TColGeom2d_HSequenceOfBoundedCurve : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColGeom2d_HSequenceOfBoundedCurve::~TColGeom2d_HSequenceOfBoundedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColGeom2d_HSequenceOfBoundedCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColGeom2d_HSequenceOfBoundedCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColGeom2d_HSequenceOfBoundedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColGeom2d_HSequenceOfBoundedCurve {
-	Handle_TColGeom2d_HSequenceOfBoundedCurve GetHandle() {
-	return *(Handle_TColGeom2d_HSequenceOfBoundedCurve*) &$self;
-	}
-};
+%pythonappend Handle_TColGeom2d_HSequenceOfBoundedCurve::Handle_TColGeom2d_HSequenceOfBoundedCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColGeom2d_HSequenceOfBoundedCurve;
 class Handle_TColGeom2d_HSequenceOfBoundedCurve : public Handle_MMgt_TShared {
@@ -1317,20 +1177,6 @@ class Handle_TColGeom2d_HSequenceOfBoundedCurve : public Handle_MMgt_TShared {
 %extend Handle_TColGeom2d_HSequenceOfBoundedCurve {
     TColGeom2d_HSequenceOfBoundedCurve* GetObject() {
     return (TColGeom2d_HSequenceOfBoundedCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColGeom2d_HSequenceOfBoundedCurve::~Handle_TColGeom2d_HSequenceOfBoundedCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColGeom2d_HSequenceOfBoundedCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1440,13 +1286,13 @@ class TColGeom2d_HSequenceOfCurve : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Geom2d_Curve
 ") Value;
-		const Handle_Geom2d_Curve & Value (const Standard_Integer anIndex);
+		Handle_Geom2d_Curve Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Geom2d_Curve
 ") ChangeValue;
-		Handle_Geom2d_Curve & ChangeValue (const Standard_Integer anIndex);
+		Handle_Geom2d_Curve ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -1476,25 +1322,23 @@ class TColGeom2d_HSequenceOfCurve : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColGeom2d_HSequenceOfCurve::~TColGeom2d_HSequenceOfCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColGeom2d_HSequenceOfCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColGeom2d_HSequenceOfCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColGeom2d_HSequenceOfCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColGeom2d_HSequenceOfCurve {
-	Handle_TColGeom2d_HSequenceOfCurve GetHandle() {
-	return *(Handle_TColGeom2d_HSequenceOfCurve*) &$self;
-	}
-};
+%pythonappend Handle_TColGeom2d_HSequenceOfCurve::Handle_TColGeom2d_HSequenceOfCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColGeom2d_HSequenceOfCurve;
 class Handle_TColGeom2d_HSequenceOfCurve : public Handle_MMgt_TShared {
@@ -1512,20 +1356,6 @@ class Handle_TColGeom2d_HSequenceOfCurve : public Handle_MMgt_TShared {
 %extend Handle_TColGeom2d_HSequenceOfCurve {
     TColGeom2d_HSequenceOfCurve* GetObject() {
     return (TColGeom2d_HSequenceOfCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColGeom2d_HSequenceOfCurve::~Handle_TColGeom2d_HSequenceOfCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColGeom2d_HSequenceOfCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1635,13 +1465,13 @@ class TColGeom2d_HSequenceOfGeometry : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Geom2d_Geometry
 ") Value;
-		const Handle_Geom2d_Geometry & Value (const Standard_Integer anIndex);
+		Handle_Geom2d_Geometry Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Geom2d_Geometry
 ") ChangeValue;
-		Handle_Geom2d_Geometry & ChangeValue (const Standard_Integer anIndex);
+		Handle_Geom2d_Geometry ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -1671,25 +1501,23 @@ class TColGeom2d_HSequenceOfGeometry : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColGeom2d_HSequenceOfGeometry::~TColGeom2d_HSequenceOfGeometry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColGeom2d_HSequenceOfGeometry {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColGeom2d_HSequenceOfGeometry(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColGeom2d_HSequenceOfGeometry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColGeom2d_HSequenceOfGeometry {
-	Handle_TColGeom2d_HSequenceOfGeometry GetHandle() {
-	return *(Handle_TColGeom2d_HSequenceOfGeometry*) &$self;
-	}
-};
+%pythonappend Handle_TColGeom2d_HSequenceOfGeometry::Handle_TColGeom2d_HSequenceOfGeometry %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColGeom2d_HSequenceOfGeometry;
 class Handle_TColGeom2d_HSequenceOfGeometry : public Handle_MMgt_TShared {
@@ -1709,20 +1537,6 @@ class Handle_TColGeom2d_HSequenceOfGeometry : public Handle_MMgt_TShared {
     return (TColGeom2d_HSequenceOfGeometry*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColGeom2d_HSequenceOfGeometry::~Handle_TColGeom2d_HSequenceOfGeometry %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColGeom2d_HSequenceOfGeometry {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve;
 class TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve : public TCollection_SeqNode {
@@ -1740,29 +1554,27 @@ class TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve : public TCollection_SeqNo
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_BoundedCurve
 ") Value;
-		Handle_Geom2d_BoundedCurve & Value ();
+		Handle_Geom2d_BoundedCurve Value ();
 };
 
 
-%feature("shadow") TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve::~TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve::Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve {
-	Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve GetHandle() {
-	return *(Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve;
 class Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve : public Handle_TCollection_SeqNode {
@@ -1782,20 +1594,6 @@ class Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve : public Handle_TCo
     return (TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve::~Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColGeom2d_SequenceNodeOfSequenceOfCurve;
 class TColGeom2d_SequenceNodeOfSequenceOfCurve : public TCollection_SeqNode {
@@ -1813,29 +1611,27 @@ class TColGeom2d_SequenceNodeOfSequenceOfCurve : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
 ") Value;
-		Handle_Geom2d_Curve & Value ();
+		Handle_Geom2d_Curve Value ();
 };
 
 
-%feature("shadow") TColGeom2d_SequenceNodeOfSequenceOfCurve::~TColGeom2d_SequenceNodeOfSequenceOfCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColGeom2d_SequenceNodeOfSequenceOfCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve::Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColGeom2d_SequenceNodeOfSequenceOfCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColGeom2d_SequenceNodeOfSequenceOfCurve {
-	Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve GetHandle() {
-	return *(Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve;
 class Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve : public Handle_TCollection_SeqNode {
@@ -1855,20 +1651,6 @@ class Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve : public Handle_TCollectio
     return (TColGeom2d_SequenceNodeOfSequenceOfCurve*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve::~Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColGeom2d_SequenceNodeOfSequenceOfGeometry;
 class TColGeom2d_SequenceNodeOfSequenceOfGeometry : public TCollection_SeqNode {
@@ -1886,29 +1668,27 @@ class TColGeom2d_SequenceNodeOfSequenceOfGeometry : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
 ") Value;
-		Handle_Geom2d_Geometry & Value ();
+		Handle_Geom2d_Geometry Value ();
 };
 
 
-%feature("shadow") TColGeom2d_SequenceNodeOfSequenceOfGeometry::~TColGeom2d_SequenceNodeOfSequenceOfGeometry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColGeom2d_SequenceNodeOfSequenceOfGeometry {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry::Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColGeom2d_SequenceNodeOfSequenceOfGeometry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColGeom2d_SequenceNodeOfSequenceOfGeometry {
-	Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry GetHandle() {
-	return *(Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry;
 class Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry : public Handle_TCollection_SeqNode {
@@ -1926,20 +1706,6 @@ class Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry : public Handle_TCollec
 %extend Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry {
     TColGeom2d_SequenceNodeOfSequenceOfGeometry* GetObject() {
     return (TColGeom2d_SequenceNodeOfSequenceOfGeometry*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry::~Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2025,11 +1791,11 @@ class TColGeom2d_SequenceOfBoundedCurve : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_BoundedCurve
 ") First;
-		const Handle_Geom2d_BoundedCurve & First ();
+		Handle_Geom2d_BoundedCurve First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_BoundedCurve
 ") Last;
-		const Handle_Geom2d_BoundedCurve & Last ();
+		Handle_Geom2d_BoundedCurve Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2043,7 +1809,7 @@ class TColGeom2d_SequenceOfBoundedCurve : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Geom2d_BoundedCurve
 ") Value;
-		const Handle_Geom2d_BoundedCurve & Value (const Standard_Integer Index);
+		Handle_Geom2d_BoundedCurve Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2057,7 +1823,7 @@ class TColGeom2d_SequenceOfBoundedCurve : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Geom2d_BoundedCurve
 ") ChangeValue;
-		Handle_Geom2d_BoundedCurve & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_BoundedCurve ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2075,20 +1841,6 @@ class TColGeom2d_SequenceOfBoundedCurve : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColGeom2d_SequenceOfBoundedCurve::~TColGeom2d_SequenceOfBoundedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColGeom2d_SequenceOfBoundedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColGeom2d_SequenceOfCurve;
 class TColGeom2d_SequenceOfCurve : public TCollection_BaseSequence {
 	public:
@@ -2171,11 +1923,11 @@ class TColGeom2d_SequenceOfCurve : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
 ") First;
-		const Handle_Geom2d_Curve & First ();
+		Handle_Geom2d_Curve First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
 ") Last;
-		const Handle_Geom2d_Curve & Last ();
+		Handle_Geom2d_Curve Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2189,7 +1941,7 @@ class TColGeom2d_SequenceOfCurve : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") Value;
-		const Handle_Geom2d_Curve & Value (const Standard_Integer Index);
+		Handle_Geom2d_Curve Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2203,7 +1955,7 @@ class TColGeom2d_SequenceOfCurve : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") ChangeValue;
-		Handle_Geom2d_Curve & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_Curve ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2221,20 +1973,6 @@ class TColGeom2d_SequenceOfCurve : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColGeom2d_SequenceOfCurve::~TColGeom2d_SequenceOfCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColGeom2d_SequenceOfCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColGeom2d_SequenceOfGeometry;
 class TColGeom2d_SequenceOfGeometry : public TCollection_BaseSequence {
 	public:
@@ -2317,11 +2055,11 @@ class TColGeom2d_SequenceOfGeometry : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
 ") First;
-		const Handle_Geom2d_Geometry & First ();
+		Handle_Geom2d_Geometry First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
 ") Last;
-		const Handle_Geom2d_Geometry & Last ();
+		Handle_Geom2d_Geometry Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2335,7 +2073,7 @@ class TColGeom2d_SequenceOfGeometry : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Geom2d_Geometry
 ") Value;
-		const Handle_Geom2d_Geometry & Value (const Standard_Integer Index);
+		Handle_Geom2d_Geometry Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2349,7 +2087,7 @@ class TColGeom2d_SequenceOfGeometry : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Geom2d_Geometry
 ") ChangeValue;
-		Handle_Geom2d_Geometry & ChangeValue (const Standard_Integer Index);
+		Handle_Geom2d_Geometry ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2367,17 +2105,3 @@ class TColGeom2d_SequenceOfGeometry : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColGeom2d_SequenceOfGeometry::~TColGeom2d_SequenceOfGeometry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColGeom2d_SequenceOfGeometry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

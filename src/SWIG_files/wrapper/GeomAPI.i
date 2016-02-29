@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include GeomAPI_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -70,20 +82,6 @@ class GeomAPI {
 };
 
 
-%feature("shadow") GeomAPI::~GeomAPI %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomAPI {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomAPI_ExtremaCurveCurve;
 class GeomAPI_ExtremaCurveCurve {
 	public:
@@ -256,20 +254,6 @@ class GeomAPI_ExtremaCurveCurve {
 };
 
 
-%feature("shadow") GeomAPI_ExtremaCurveCurve::~GeomAPI_ExtremaCurveCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomAPI_ExtremaCurveCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomAPI_ExtremaCurveSurface;
 class GeomAPI_ExtremaCurveSurface {
 	public:
@@ -428,20 +412,6 @@ class GeomAPI_ExtremaCurveSurface {
 };
 
 
-%feature("shadow") GeomAPI_ExtremaCurveSurface::~GeomAPI_ExtremaCurveSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomAPI_ExtremaCurveSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomAPI_ExtremaSurfaceSurface;
 class GeomAPI_ExtremaSurfaceSurface {
 	public:
@@ -612,20 +582,6 @@ class GeomAPI_ExtremaSurfaceSurface {
 };
 
 
-%feature("shadow") GeomAPI_ExtremaSurfaceSurface::~GeomAPI_ExtremaSurfaceSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomAPI_ExtremaSurfaceSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomAPI_IntCS;
 class GeomAPI_IntCS {
 	public:
@@ -722,20 +678,6 @@ class GeomAPI_IntCS {
 };
 
 
-%feature("shadow") GeomAPI_IntCS::~GeomAPI_IntCS %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomAPI_IntCS {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomAPI_IntSS;
 class GeomAPI_IntSS {
 	public:
@@ -788,24 +730,10 @@ class GeomAPI_IntSS {
 	:type Index: int
 	:rtype: Handle_Geom_Curve
 ") Line;
-		const Handle_Geom_Curve & Line (const Standard_Integer Index);
+		Handle_Geom_Curve Line (const Standard_Integer Index);
 };
 
 
-%feature("shadow") GeomAPI_IntSS::~GeomAPI_IntSS %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomAPI_IntSS {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomAPI_Interpolate;
 class GeomAPI_Interpolate {
 	public:
@@ -870,7 +798,7 @@ class GeomAPI_Interpolate {
 
 	:rtype: Handle_Geom_BSplineCurve
 ") Curve;
-		const Handle_Geom_BSplineCurve & Curve ();
+		Handle_Geom_BSplineCurve Curve ();
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns true if the constrained BSpline curve is successfully constructed. Note: in this case, the result is given by the function Curve.
 
@@ -880,20 +808,6 @@ class GeomAPI_Interpolate {
 };
 
 
-%feature("shadow") GeomAPI_Interpolate::~GeomAPI_Interpolate %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomAPI_Interpolate {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomAPI_PointsToBSpline;
 class GeomAPI_PointsToBSpline {
 	public:
@@ -1052,7 +966,7 @@ class GeomAPI_PointsToBSpline {
 
 	:rtype: Handle_Geom_BSplineCurve
 ") Curve;
-		const Handle_Geom_BSplineCurve & Curve ();
+		Handle_Geom_BSplineCurve Curve ();
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
@@ -1060,20 +974,6 @@ class GeomAPI_PointsToBSpline {
 };
 
 
-%feature("shadow") GeomAPI_PointsToBSpline::~GeomAPI_PointsToBSpline %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomAPI_PointsToBSpline {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomAPI_PointsToBSplineSurface;
 class GeomAPI_PointsToBSplineSurface {
 	public:
@@ -1278,7 +1178,7 @@ class GeomAPI_PointsToBSplineSurface {
 
 	:rtype: Handle_Geom_BSplineSurface
 ") Surface;
-		const Handle_Geom_BSplineSurface & Surface ();
+		Handle_Geom_BSplineSurface Surface ();
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
@@ -1286,20 +1186,6 @@ class GeomAPI_PointsToBSplineSurface {
 };
 
 
-%feature("shadow") GeomAPI_PointsToBSplineSurface::~GeomAPI_PointsToBSplineSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomAPI_PointsToBSplineSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomAPI_ProjectPointOnCurve;
 class GeomAPI_ProjectPointOnCurve {
 	public:
@@ -1456,20 +1342,6 @@ class GeomAPI_ProjectPointOnCurve {
 };
 
 
-%feature("shadow") GeomAPI_ProjectPointOnCurve::~GeomAPI_ProjectPointOnCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomAPI_ProjectPointOnCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomAPI_ProjectPointOnSurf;
 class GeomAPI_ProjectPointOnSurf {
 	public:
@@ -1732,17 +1604,3 @@ class GeomAPI_ProjectPointOnSurf {
 };
 
 
-%feature("shadow") GeomAPI_ProjectPointOnSurf::~GeomAPI_ProjectPointOnSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomAPI_ProjectPointOnSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

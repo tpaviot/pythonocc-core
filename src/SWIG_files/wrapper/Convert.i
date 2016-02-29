@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Convert_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef void Convert_CosAndSinEvalFunction ( Standard_Real , 	 	 	 	 	 const Standard_Integer , 	 	 	 	 	 const TColgp_Array1OfPnt2d & , 	 	 	 	 	 const TColStd_Array1OfReal & , 	 	 	 	 	 const TColStd_Array1OfInteger & , 	 	 	 	 	 Standard_Real Result [ 2 ] );
@@ -121,20 +133,6 @@ class Convert_CompBezierCurves2dToBSplineCurve2d {
 };
 
 
-%feature("shadow") Convert_CompBezierCurves2dToBSplineCurve2d::~Convert_CompBezierCurves2dToBSplineCurve2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_CompBezierCurves2dToBSplineCurve2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_CompBezierCurvesToBSplineCurve;
 class Convert_CompBezierCurvesToBSplineCurve {
 	public:
@@ -199,20 +197,6 @@ class Convert_CompBezierCurvesToBSplineCurve {
 };
 
 
-%feature("shadow") Convert_CompBezierCurvesToBSplineCurve::~Convert_CompBezierCurvesToBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_CompBezierCurvesToBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_CompPolynomialToPoles;
 class Convert_CompPolynomialToPoles {
 	public:
@@ -325,20 +309,6 @@ class Convert_CompPolynomialToPoles {
 };
 
 
-%feature("shadow") Convert_CompPolynomialToPoles::~Convert_CompPolynomialToPoles %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_CompPolynomialToPoles {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_ConicToBSplineCurve;
 class Convert_ConicToBSplineCurve {
 	public:
@@ -441,20 +411,6 @@ class Convert_ConicToBSplineCurve {
 };
 
 
-%feature("shadow") Convert_ConicToBSplineCurve::~Convert_ConicToBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_ConicToBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_ElementarySurfaceToBSplineSurface;
 class Convert_ElementarySurfaceToBSplineSurface {
 	public:
@@ -553,20 +509,6 @@ class Convert_ElementarySurfaceToBSplineSurface {
 };
 
 
-%feature("shadow") Convert_ElementarySurfaceToBSplineSurface::~Convert_ElementarySurfaceToBSplineSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_ElementarySurfaceToBSplineSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_GridPolynomialToPoles;
 class Convert_GridPolynomialToPoles {
 	public:
@@ -655,7 +597,7 @@ class Convert_GridPolynomialToPoles {
 
 	:rtype: Handle_TColgp_HArray2OfPnt
 ") Poles;
-		const Handle_TColgp_HArray2OfPnt & Poles ();
+		Handle_TColgp_HArray2OfPnt Poles ();
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "	:rtype: int
 ") UDegree;
@@ -677,25 +619,25 @@ class Convert_GridPolynomialToPoles {
 
 	:rtype: Handle_TColStd_HArray1OfReal
 ") UKnots;
-		const Handle_TColStd_HArray1OfReal & UKnots ();
+		Handle_TColStd_HArray1OfReal UKnots ();
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "	* Knots in the V direction
 
 	:rtype: Handle_TColStd_HArray1OfReal
 ") VKnots;
-		const Handle_TColStd_HArray1OfReal & VKnots ();
+		Handle_TColStd_HArray1OfReal VKnots ();
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "	* Multiplicities of the knots in the U direction
 
 	:rtype: Handle_TColStd_HArray1OfInteger
 ") UMultiplicities;
-		const Handle_TColStd_HArray1OfInteger & UMultiplicities ();
+		Handle_TColStd_HArray1OfInteger UMultiplicities ();
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "	* Multiplicities of the knots in the V direction
 
 	:rtype: Handle_TColStd_HArray1OfInteger
 ") VMultiplicities;
-		const Handle_TColStd_HArray1OfInteger & VMultiplicities ();
+		Handle_TColStd_HArray1OfInteger VMultiplicities ();
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
@@ -703,20 +645,6 @@ class Convert_GridPolynomialToPoles {
 };
 
 
-%feature("shadow") Convert_GridPolynomialToPoles::~Convert_GridPolynomialToPoles %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_GridPolynomialToPoles {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_SequenceNodeOfSequenceOfArray1OfPoles;
 class Convert_SequenceNodeOfSequenceOfArray1OfPoles : public TCollection_SeqNode {
 	public:
@@ -733,29 +661,27 @@ class Convert_SequenceNodeOfSequenceOfArray1OfPoles : public TCollection_SeqNode
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_TColgp_HArray1OfPnt
 ") Value;
-		Handle_TColgp_HArray1OfPnt & Value ();
+		Handle_TColgp_HArray1OfPnt Value ();
 };
 
 
-%feature("shadow") Convert_SequenceNodeOfSequenceOfArray1OfPoles::~Convert_SequenceNodeOfSequenceOfArray1OfPoles %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Convert_SequenceNodeOfSequenceOfArray1OfPoles {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles::Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Convert_SequenceNodeOfSequenceOfArray1OfPoles {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Convert_SequenceNodeOfSequenceOfArray1OfPoles {
-	Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles GetHandle() {
-	return *(Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles;
 class Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles : public Handle_TCollection_SeqNode {
@@ -773,20 +699,6 @@ class Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles : public Handle_TColl
 %extend Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles {
     Convert_SequenceNodeOfSequenceOfArray1OfPoles* GetObject() {
     return (Convert_SequenceNodeOfSequenceOfArray1OfPoles*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles::~Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -872,11 +784,11 @@ class Convert_SequenceOfArray1OfPoles : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_TColgp_HArray1OfPnt
 ") First;
-		const Handle_TColgp_HArray1OfPnt & First ();
+		Handle_TColgp_HArray1OfPnt First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_TColgp_HArray1OfPnt
 ") Last;
-		const Handle_TColgp_HArray1OfPnt & Last ();
+		Handle_TColgp_HArray1OfPnt Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -890,7 +802,7 @@ class Convert_SequenceOfArray1OfPoles : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_TColgp_HArray1OfPnt
 ") Value;
-		const Handle_TColgp_HArray1OfPnt & Value (const Standard_Integer Index);
+		Handle_TColgp_HArray1OfPnt Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -904,7 +816,7 @@ class Convert_SequenceOfArray1OfPoles : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_TColgp_HArray1OfPnt
 ") ChangeValue;
-		Handle_TColgp_HArray1OfPnt & ChangeValue (const Standard_Integer Index);
+		Handle_TColgp_HArray1OfPnt ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -922,20 +834,6 @@ class Convert_SequenceOfArray1OfPoles : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Convert_SequenceOfArray1OfPoles::~Convert_SequenceOfArray1OfPoles %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_SequenceOfArray1OfPoles {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_CircleToBSplineCurve;
 class Convert_CircleToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
@@ -966,20 +864,6 @@ class Convert_CircleToBSplineCurve : public Convert_ConicToBSplineCurve {
 };
 
 
-%feature("shadow") Convert_CircleToBSplineCurve::~Convert_CircleToBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_CircleToBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_ConeToBSplineSurface;
 class Convert_ConeToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
@@ -1014,20 +898,6 @@ class Convert_ConeToBSplineSurface : public Convert_ElementarySurfaceToBSplineSu
 };
 
 
-%feature("shadow") Convert_ConeToBSplineSurface::~Convert_ConeToBSplineSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_ConeToBSplineSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_CylinderToBSplineSurface;
 class Convert_CylinderToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
@@ -1062,20 +932,6 @@ class Convert_CylinderToBSplineSurface : public Convert_ElementarySurfaceToBSpli
 };
 
 
-%feature("shadow") Convert_CylinderToBSplineSurface::~Convert_CylinderToBSplineSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_CylinderToBSplineSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_EllipseToBSplineCurve;
 class Convert_EllipseToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
@@ -1106,20 +962,6 @@ class Convert_EllipseToBSplineCurve : public Convert_ConicToBSplineCurve {
 };
 
 
-%feature("shadow") Convert_EllipseToBSplineCurve::~Convert_EllipseToBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_EllipseToBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_HyperbolaToBSplineCurve;
 class Convert_HyperbolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
@@ -1138,20 +980,6 @@ class Convert_HyperbolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 };
 
 
-%feature("shadow") Convert_HyperbolaToBSplineCurve::~Convert_HyperbolaToBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_HyperbolaToBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_ParabolaToBSplineCurve;
 class Convert_ParabolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
@@ -1170,20 +998,6 @@ class Convert_ParabolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 };
 
 
-%feature("shadow") Convert_ParabolaToBSplineCurve::~Convert_ParabolaToBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_ParabolaToBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_SphereToBSplineSurface;
 class Convert_SphereToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
@@ -1228,20 +1042,6 @@ class Convert_SphereToBSplineSurface : public Convert_ElementarySurfaceToBSpline
 };
 
 
-%feature("shadow") Convert_SphereToBSplineSurface::~Convert_SphereToBSplineSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_SphereToBSplineSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Convert_TorusToBSplineSurface;
 class Convert_TorusToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
@@ -1286,17 +1086,3 @@ class Convert_TorusToBSplineSurface : public Convert_ElementarySurfaceToBSplineS
 };
 
 
-%feature("shadow") Convert_TorusToBSplineSurface::~Convert_TorusToBSplineSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Convert_TorusToBSplineSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

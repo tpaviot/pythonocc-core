@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Aspect_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef void * 	 Aspect_Display;
@@ -427,20 +439,6 @@ class Aspect {
 };
 
 
-%feature("shadow") Aspect::~Aspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_Array1OfEdge;
 class Aspect_Array1OfEdge {
 	public:
@@ -523,20 +521,6 @@ class Aspect_Array1OfEdge {
 };
 
 
-%feature("shadow") Aspect_Array1OfEdge::~Aspect_Array1OfEdge %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_Array1OfEdge {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_AspectFillArea;
 class Aspect_AspectFillArea : public MMgt_TShared {
 	public:
@@ -637,25 +621,23 @@ class Aspect_AspectFillArea : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_AspectFillArea::~Aspect_AspectFillArea %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_AspectFillArea {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_AspectFillArea(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_AspectFillArea {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_AspectFillArea {
-	Handle_Aspect_AspectFillArea GetHandle() {
-	return *(Handle_Aspect_AspectFillArea*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_AspectFillArea::Handle_Aspect_AspectFillArea %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_AspectFillArea;
 class Handle_Aspect_AspectFillArea : public Handle_MMgt_TShared {
@@ -673,20 +655,6 @@ class Handle_Aspect_AspectFillArea : public Handle_MMgt_TShared {
 %extend Handle_Aspect_AspectFillArea {
     Aspect_AspectFillArea* GetObject() {
     return (Aspect_AspectFillArea*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_AspectFillArea::~Handle_Aspect_AspectFillArea %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_AspectFillArea {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -732,25 +700,23 @@ class Aspect_AspectLine : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_AspectLine::~Aspect_AspectLine %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_AspectLine {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_AspectLine(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_AspectLine {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_AspectLine {
-	Handle_Aspect_AspectLine GetHandle() {
-	return *(Handle_Aspect_AspectLine*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_AspectLine::Handle_Aspect_AspectLine %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_AspectLine;
 class Handle_Aspect_AspectLine : public Handle_MMgt_TShared {
@@ -768,20 +734,6 @@ class Handle_Aspect_AspectLine : public Handle_MMgt_TShared {
 %extend Handle_Aspect_AspectLine {
     Aspect_AspectLine* GetObject() {
     return (Aspect_AspectLine*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_AspectLine::~Handle_Aspect_AspectLine %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_AspectLine {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -827,25 +779,23 @@ class Aspect_AspectMarker : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_AspectMarker::~Aspect_AspectMarker %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_AspectMarker {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_AspectMarker(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_AspectMarker {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_AspectMarker {
-	Handle_Aspect_AspectMarker GetHandle() {
-	return *(Handle_Aspect_AspectMarker*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_AspectMarker::Handle_Aspect_AspectMarker %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_AspectMarker;
 class Handle_Aspect_AspectMarker : public Handle_MMgt_TShared {
@@ -863,20 +813,6 @@ class Handle_Aspect_AspectMarker : public Handle_MMgt_TShared {
 %extend Handle_Aspect_AspectMarker {
     Aspect_AspectMarker* GetObject() {
     return (Aspect_AspectMarker*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_AspectMarker::~Handle_Aspect_AspectMarker %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_AspectMarker {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -914,20 +850,6 @@ class Aspect_Background {
 };
 
 
-%feature("shadow") Aspect_Background::~Aspect_Background %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_Background {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_ColorMap;
 class Aspect_ColorMap : public MMgt_TShared {
 	public:
@@ -1004,25 +926,23 @@ class Aspect_ColorMap : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_ColorMap::~Aspect_ColorMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_ColorMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_ColorMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_ColorMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_ColorMap {
-	Handle_Aspect_ColorMap GetHandle() {
-	return *(Handle_Aspect_ColorMap*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_ColorMap::Handle_Aspect_ColorMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_ColorMap;
 class Handle_Aspect_ColorMap : public Handle_MMgt_TShared {
@@ -1040,20 +960,6 @@ class Handle_Aspect_ColorMap : public Handle_MMgt_TShared {
 %extend Handle_Aspect_ColorMap {
     Aspect_ColorMap* GetObject() {
     return (Aspect_ColorMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_ColorMap::~Handle_Aspect_ColorMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_ColorMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1195,20 +1101,6 @@ class Aspect_ColorMapEntry {
 };
 
 
-%feature("shadow") Aspect_ColorMapEntry::~Aspect_ColorMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_ColorMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_ColorScale;
 class Aspect_ColorScale : public MMgt_TShared {
 	public:
@@ -1635,25 +1527,23 @@ class Aspect_ColorScale : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_ColorScale::~Aspect_ColorScale %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_ColorScale {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_ColorScale(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_ColorScale {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_ColorScale {
-	Handle_Aspect_ColorScale GetHandle() {
-	return *(Handle_Aspect_ColorScale*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_ColorScale::Handle_Aspect_ColorScale %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_ColorScale;
 class Handle_Aspect_ColorScale : public Handle_MMgt_TShared {
@@ -1671,20 +1561,6 @@ class Handle_Aspect_ColorScale : public Handle_MMgt_TShared {
 %extend Handle_Aspect_ColorScale {
     Aspect_ColorScale* GetObject() {
     return (Aspect_ColorScale*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_ColorScale::~Handle_Aspect_ColorScale %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_ColorScale {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2134,25 +2010,23 @@ class Aspect_Driver : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_Driver::~Aspect_Driver %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_Driver {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_Driver(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_Driver {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_Driver {
-	Handle_Aspect_Driver GetHandle() {
-	return *(Handle_Aspect_Driver*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_Driver::Handle_Aspect_Driver %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_Driver;
 class Handle_Aspect_Driver : public Handle_MMgt_TShared {
@@ -2170,20 +2044,6 @@ class Handle_Aspect_Driver : public Handle_MMgt_TShared {
 %extend Handle_Aspect_Driver {
     Aspect_Driver* GetObject() {
     return (Aspect_Driver*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_Driver::~Handle_Aspect_Driver %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_Driver {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2253,20 +2113,6 @@ class Aspect_Edge {
 };
 
 
-%feature("shadow") Aspect_Edge::~Aspect_Edge %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_Edge {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_FontMap;
 class Aspect_FontMap : public MMgt_TShared {
 	public:
@@ -2319,25 +2165,23 @@ class Aspect_FontMap : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_FontMap::~Aspect_FontMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_FontMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_FontMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_FontMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_FontMap {
-	Handle_Aspect_FontMap GetHandle() {
-	return *(Handle_Aspect_FontMap*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_FontMap::Handle_Aspect_FontMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_FontMap;
 class Handle_Aspect_FontMap : public Handle_MMgt_TShared {
@@ -2355,20 +2199,6 @@ class Handle_Aspect_FontMap : public Handle_MMgt_TShared {
 %extend Handle_Aspect_FontMap {
     Aspect_FontMap* GetObject() {
     return (Aspect_FontMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_FontMap::~Handle_Aspect_FontMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_FontMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2466,20 +2296,6 @@ class Aspect_FontMapEntry {
 };
 
 
-%feature("shadow") Aspect_FontMapEntry::~Aspect_FontMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_FontMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_FontStyle;
 class Aspect_FontStyle {
 	public:
@@ -2788,20 +2604,6 @@ class Aspect_FontStyle {
         };
 
 
-%feature("shadow") Aspect_FontStyle::~Aspect_FontStyle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_FontStyle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_GenId;
 class Aspect_GenId {
 	public:
@@ -2862,40 +2664,12 @@ class Aspect_GenId {
 };
 
 
-%feature("shadow") Aspect_GenId::~Aspect_GenId %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_GenId {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_GraphicCallbackStruct;
 class Aspect_GraphicCallbackStruct {
 	public:
 };
 
 
-%feature("shadow") Aspect_GraphicCallbackStruct::~Aspect_GraphicCallbackStruct %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_GraphicCallbackStruct {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_Grid;
 class Aspect_Grid : public MMgt_TShared {
 	public:
@@ -3064,25 +2838,23 @@ class Aspect_Grid : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_Grid::~Aspect_Grid %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_Grid {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_Grid(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_Grid {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_Grid {
-	Handle_Aspect_Grid GetHandle() {
-	return *(Handle_Aspect_Grid*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_Grid::Handle_Aspect_Grid %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_Grid;
 class Handle_Aspect_Grid : public Handle_MMgt_TShared {
@@ -3100,20 +2872,6 @@ class Handle_Aspect_Grid : public Handle_MMgt_TShared {
 %extend Handle_Aspect_Grid {
     Aspect_Grid* GetObject() {
     return (Aspect_Grid*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_Grid::~Handle_Aspect_Grid %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_Grid {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3233,20 +2991,6 @@ class Aspect_LineStyle {
         };
 
 
-%feature("shadow") Aspect_LineStyle::~Aspect_LineStyle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_LineStyle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_MarkMap;
 class Aspect_MarkMap : public MMgt_TShared {
 	public:
@@ -3299,25 +3043,23 @@ class Aspect_MarkMap : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_MarkMap::~Aspect_MarkMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_MarkMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_MarkMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_MarkMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_MarkMap {
-	Handle_Aspect_MarkMap GetHandle() {
-	return *(Handle_Aspect_MarkMap*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_MarkMap::Handle_Aspect_MarkMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_MarkMap;
 class Handle_Aspect_MarkMap : public Handle_MMgt_TShared {
@@ -3335,20 +3077,6 @@ class Handle_Aspect_MarkMap : public Handle_MMgt_TShared {
 %extend Handle_Aspect_MarkMap {
     Aspect_MarkMap* GetObject() {
     return (Aspect_MarkMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_MarkMap::~Handle_Aspect_MarkMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_MarkMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3448,20 +3176,6 @@ class Aspect_MarkMapEntry {
 };
 
 
-%feature("shadow") Aspect_MarkMapEntry::~Aspect_MarkMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_MarkMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_MarkerStyle;
 class Aspect_MarkerStyle {
 	public:
@@ -3600,20 +3314,6 @@ class Aspect_MarkerStyle {
         };
 
 
-%feature("shadow") Aspect_MarkerStyle::~Aspect_MarkerStyle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_MarkerStyle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_Pixel;
 class Aspect_Pixel {
 	public:
@@ -3628,40 +3328,12 @@ class Aspect_Pixel {
         };
 
 
-%feature("shadow") Aspect_Pixel::~Aspect_Pixel %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_Pixel {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_RGBPixel;
 class Aspect_RGBPixel {
 	public:
 };
 
 
-%feature("shadow") Aspect_RGBPixel::~Aspect_RGBPixel %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_RGBPixel {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_SequenceNodeOfSequenceOfColor;
 class Aspect_SequenceNodeOfSequenceOfColor : public TCollection_SeqNode {
 	public:
@@ -3682,25 +3354,23 @@ class Aspect_SequenceNodeOfSequenceOfColor : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") Aspect_SequenceNodeOfSequenceOfColor::~Aspect_SequenceNodeOfSequenceOfColor %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_SequenceNodeOfSequenceOfColor {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_SequenceNodeOfSequenceOfColor(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_SequenceNodeOfSequenceOfColor {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_SequenceNodeOfSequenceOfColor {
-	Handle_Aspect_SequenceNodeOfSequenceOfColor GetHandle() {
-	return *(Handle_Aspect_SequenceNodeOfSequenceOfColor*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_SequenceNodeOfSequenceOfColor::Handle_Aspect_SequenceNodeOfSequenceOfColor %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_SequenceNodeOfSequenceOfColor;
 class Handle_Aspect_SequenceNodeOfSequenceOfColor : public Handle_TCollection_SeqNode {
@@ -3718,20 +3388,6 @@ class Handle_Aspect_SequenceNodeOfSequenceOfColor : public Handle_TCollection_Se
 %extend Handle_Aspect_SequenceNodeOfSequenceOfColor {
     Aspect_SequenceNodeOfSequenceOfColor* GetObject() {
     return (Aspect_SequenceNodeOfSequenceOfColor*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_SequenceNodeOfSequenceOfColor::~Handle_Aspect_SequenceNodeOfSequenceOfColor %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_SequenceNodeOfSequenceOfColor {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3755,25 +3411,23 @@ class Aspect_SequenceNodeOfSequenceOfColorMapEntry : public TCollection_SeqNode 
 };
 
 
-%feature("shadow") Aspect_SequenceNodeOfSequenceOfColorMapEntry::~Aspect_SequenceNodeOfSequenceOfColorMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_SequenceNodeOfSequenceOfColorMapEntry {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_SequenceNodeOfSequenceOfColorMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_SequenceNodeOfSequenceOfColorMapEntry {
-	Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry GetHandle() {
-	return *(Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry::Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry;
 class Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry : public Handle_TCollection_SeqNode {
@@ -3791,20 +3445,6 @@ class Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry : public Handle_TColle
 %extend Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry {
     Aspect_SequenceNodeOfSequenceOfColorMapEntry* GetObject() {
     return (Aspect_SequenceNodeOfSequenceOfColorMapEntry*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry::~Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_SequenceNodeOfSequenceOfColorMapEntry {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3828,25 +3468,23 @@ class Aspect_SequenceNodeOfSequenceOfFontMapEntry : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") Aspect_SequenceNodeOfSequenceOfFontMapEntry::~Aspect_SequenceNodeOfSequenceOfFontMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_SequenceNodeOfSequenceOfFontMapEntry {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_SequenceNodeOfSequenceOfFontMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_SequenceNodeOfSequenceOfFontMapEntry {
-	Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry GetHandle() {
-	return *(Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry::Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry;
 class Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry : public Handle_TCollection_SeqNode {
@@ -3864,20 +3502,6 @@ class Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry : public Handle_TCollec
 %extend Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry {
     Aspect_SequenceNodeOfSequenceOfFontMapEntry* GetObject() {
     return (Aspect_SequenceNodeOfSequenceOfFontMapEntry*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry::~Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_SequenceNodeOfSequenceOfFontMapEntry {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3901,25 +3525,23 @@ class Aspect_SequenceNodeOfSequenceOfMarkMapEntry : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") Aspect_SequenceNodeOfSequenceOfMarkMapEntry::~Aspect_SequenceNodeOfSequenceOfMarkMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_SequenceNodeOfSequenceOfMarkMapEntry {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_SequenceNodeOfSequenceOfMarkMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_SequenceNodeOfSequenceOfMarkMapEntry {
-	Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry GetHandle() {
-	return *(Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry::Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry;
 class Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry : public Handle_TCollection_SeqNode {
@@ -3937,20 +3559,6 @@ class Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry : public Handle_TCollec
 %extend Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry {
     Aspect_SequenceNodeOfSequenceOfMarkMapEntry* GetObject() {
     return (Aspect_SequenceNodeOfSequenceOfMarkMapEntry*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry::~Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_SequenceNodeOfSequenceOfMarkMapEntry {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3974,25 +3582,23 @@ class Aspect_SequenceNodeOfSequenceOfTypeMapEntry : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") Aspect_SequenceNodeOfSequenceOfTypeMapEntry::~Aspect_SequenceNodeOfSequenceOfTypeMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_SequenceNodeOfSequenceOfTypeMapEntry {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_SequenceNodeOfSequenceOfTypeMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_SequenceNodeOfSequenceOfTypeMapEntry {
-	Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry GetHandle() {
-	return *(Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry::Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry;
 class Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry : public Handle_TCollection_SeqNode {
@@ -4010,20 +3616,6 @@ class Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry : public Handle_TCollec
 %extend Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry {
     Aspect_SequenceNodeOfSequenceOfTypeMapEntry* GetObject() {
     return (Aspect_SequenceNodeOfSequenceOfTypeMapEntry*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry::~Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_SequenceNodeOfSequenceOfTypeMapEntry {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4047,25 +3639,23 @@ class Aspect_SequenceNodeOfSequenceOfWidthMapEntry : public TCollection_SeqNode 
 };
 
 
-%feature("shadow") Aspect_SequenceNodeOfSequenceOfWidthMapEntry::~Aspect_SequenceNodeOfSequenceOfWidthMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_SequenceNodeOfSequenceOfWidthMapEntry {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_SequenceNodeOfSequenceOfWidthMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_SequenceNodeOfSequenceOfWidthMapEntry {
-	Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry GetHandle() {
-	return *(Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry::Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry;
 class Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry : public Handle_TCollection_SeqNode {
@@ -4083,20 +3673,6 @@ class Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry : public Handle_TColle
 %extend Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry {
     Aspect_SequenceNodeOfSequenceOfWidthMapEntry* GetObject() {
     return (Aspect_SequenceNodeOfSequenceOfWidthMapEntry*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry::~Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_SequenceNodeOfSequenceOfWidthMapEntry {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4232,20 +3808,6 @@ class Aspect_SequenceOfColor : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Aspect_SequenceOfColor::~Aspect_SequenceOfColor %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_SequenceOfColor {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_SequenceOfColorMapEntry;
 class Aspect_SequenceOfColorMapEntry : public TCollection_BaseSequence {
 	public:
@@ -4378,20 +3940,6 @@ class Aspect_SequenceOfColorMapEntry : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Aspect_SequenceOfColorMapEntry::~Aspect_SequenceOfColorMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_SequenceOfColorMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_SequenceOfFontMapEntry;
 class Aspect_SequenceOfFontMapEntry : public TCollection_BaseSequence {
 	public:
@@ -4524,20 +4072,6 @@ class Aspect_SequenceOfFontMapEntry : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Aspect_SequenceOfFontMapEntry::~Aspect_SequenceOfFontMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_SequenceOfFontMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_SequenceOfMarkMapEntry;
 class Aspect_SequenceOfMarkMapEntry : public TCollection_BaseSequence {
 	public:
@@ -4670,20 +4204,6 @@ class Aspect_SequenceOfMarkMapEntry : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Aspect_SequenceOfMarkMapEntry::~Aspect_SequenceOfMarkMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_SequenceOfMarkMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_SequenceOfTypeMapEntry;
 class Aspect_SequenceOfTypeMapEntry : public TCollection_BaseSequence {
 	public:
@@ -4816,20 +4336,6 @@ class Aspect_SequenceOfTypeMapEntry : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Aspect_SequenceOfTypeMapEntry::~Aspect_SequenceOfTypeMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_SequenceOfTypeMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_SequenceOfWidthMapEntry;
 class Aspect_SequenceOfWidthMapEntry : public TCollection_BaseSequence {
 	public:
@@ -4962,20 +4468,6 @@ class Aspect_SequenceOfWidthMapEntry : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Aspect_SequenceOfWidthMapEntry::~Aspect_SequenceOfWidthMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_SequenceOfWidthMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_TypeMap;
 class Aspect_TypeMap : public MMgt_TShared {
 	public:
@@ -5028,25 +4520,23 @@ class Aspect_TypeMap : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_TypeMap::~Aspect_TypeMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_TypeMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_TypeMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_TypeMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_TypeMap {
-	Handle_Aspect_TypeMap GetHandle() {
-	return *(Handle_Aspect_TypeMap*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_TypeMap::Handle_Aspect_TypeMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_TypeMap;
 class Handle_Aspect_TypeMap : public Handle_MMgt_TShared {
@@ -5064,20 +4554,6 @@ class Handle_Aspect_TypeMap : public Handle_MMgt_TShared {
 %extend Handle_Aspect_TypeMap {
     Aspect_TypeMap* GetObject() {
     return (Aspect_TypeMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_TypeMap::~Handle_Aspect_TypeMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_TypeMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5177,20 +4653,6 @@ class Aspect_TypeMapEntry {
 };
 
 
-%feature("shadow") Aspect_TypeMapEntry::~Aspect_TypeMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_TypeMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_WidthMap;
 class Aspect_WidthMap : public MMgt_TShared {
 	public:
@@ -5253,25 +4715,23 @@ class Aspect_WidthMap : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_WidthMap::~Aspect_WidthMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_WidthMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_WidthMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_WidthMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_WidthMap {
-	Handle_Aspect_WidthMap GetHandle() {
-	return *(Handle_Aspect_WidthMap*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_WidthMap::Handle_Aspect_WidthMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_WidthMap;
 class Handle_Aspect_WidthMap : public Handle_MMgt_TShared {
@@ -5289,20 +4749,6 @@ class Handle_Aspect_WidthMap : public Handle_MMgt_TShared {
 %extend Handle_Aspect_WidthMap {
     Aspect_WidthMap* GetObject() {
     return (Aspect_WidthMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_WidthMap::~Handle_Aspect_WidthMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_WidthMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5436,20 +4882,6 @@ class Aspect_WidthMapEntry {
 };
 
 
-%feature("shadow") Aspect_WidthMapEntry::~Aspect_WidthMapEntry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_WidthMapEntry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_Window;
 class Aspect_Window : public MMgt_TShared {
 	public:
@@ -5598,25 +5030,23 @@ class Aspect_Window : public MMgt_TShared {
 };
 
 
-%feature("shadow") Aspect_Window::~Aspect_Window %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_Window {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_Window(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_Window {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_Window {
-	Handle_Aspect_Window GetHandle() {
-	return *(Handle_Aspect_Window*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_Window::Handle_Aspect_Window %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_Window;
 class Handle_Aspect_Window : public Handle_MMgt_TShared {
@@ -5634,20 +5064,6 @@ class Handle_Aspect_Window : public Handle_MMgt_TShared {
 %extend Handle_Aspect_Window {
     Aspect_Window* GetObject() {
     return (Aspect_Window*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_Window::~Handle_Aspect_Window %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_Window {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5733,25 +5149,23 @@ class Aspect_CircularGrid : public Aspect_Grid {
 };
 
 
-%feature("shadow") Aspect_CircularGrid::~Aspect_CircularGrid %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_CircularGrid {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_CircularGrid(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_CircularGrid {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_CircularGrid {
-	Handle_Aspect_CircularGrid GetHandle() {
-	return *(Handle_Aspect_CircularGrid*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_CircularGrid::Handle_Aspect_CircularGrid %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_CircularGrid;
 class Handle_Aspect_CircularGrid : public Handle_Aspect_Grid {
@@ -5769,20 +5183,6 @@ class Handle_Aspect_CircularGrid : public Handle_Aspect_Grid {
 %extend Handle_Aspect_CircularGrid {
     Aspect_CircularGrid* GetObject() {
     return (Aspect_CircularGrid*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_CircularGrid::~Handle_Aspect_CircularGrid %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_CircularGrid {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5870,25 +5270,23 @@ class Aspect_ColorCubeColorMap : public Aspect_ColorMap {
 };
 
 
-%feature("shadow") Aspect_ColorCubeColorMap::~Aspect_ColorCubeColorMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_ColorCubeColorMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_ColorCubeColorMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_ColorCubeColorMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_ColorCubeColorMap {
-	Handle_Aspect_ColorCubeColorMap GetHandle() {
-	return *(Handle_Aspect_ColorCubeColorMap*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_ColorCubeColorMap::Handle_Aspect_ColorCubeColorMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_ColorCubeColorMap;
 class Handle_Aspect_ColorCubeColorMap : public Handle_Aspect_ColorMap {
@@ -5906,20 +5304,6 @@ class Handle_Aspect_ColorCubeColorMap : public Handle_Aspect_ColorMap {
 %extend Handle_Aspect_ColorCubeColorMap {
     Aspect_ColorCubeColorMap* GetObject() {
     return (Aspect_ColorCubeColorMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_ColorCubeColorMap::~Handle_Aspect_ColorCubeColorMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_ColorCubeColorMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6015,20 +5399,6 @@ class Aspect_ColorPixel : public Aspect_Pixel {
 };
 
 
-%feature("shadow") Aspect_ColorPixel::~Aspect_ColorPixel %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_ColorPixel {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_ColorRampColorMap;
 class Aspect_ColorRampColorMap : public Aspect_ColorMap {
 	public:
@@ -6111,25 +5481,23 @@ class Aspect_ColorRampColorMap : public Aspect_ColorMap {
 };
 
 
-%feature("shadow") Aspect_ColorRampColorMap::~Aspect_ColorRampColorMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_ColorRampColorMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_ColorRampColorMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_ColorRampColorMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_ColorRampColorMap {
-	Handle_Aspect_ColorRampColorMap GetHandle() {
-	return *(Handle_Aspect_ColorRampColorMap*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_ColorRampColorMap::Handle_Aspect_ColorRampColorMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_ColorRampColorMap;
 class Handle_Aspect_ColorRampColorMap : public Handle_Aspect_ColorMap {
@@ -6147,20 +5515,6 @@ class Handle_Aspect_ColorRampColorMap : public Handle_Aspect_ColorMap {
 %extend Handle_Aspect_ColorRampColorMap {
     Aspect_ColorRampColorMap* GetObject() {
     return (Aspect_ColorRampColorMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_ColorRampColorMap::~Handle_Aspect_ColorRampColorMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_ColorRampColorMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6232,25 +5586,23 @@ class Aspect_GenericColorMap : public Aspect_ColorMap {
 };
 
 
-%feature("shadow") Aspect_GenericColorMap::~Aspect_GenericColorMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_GenericColorMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_GenericColorMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_GenericColorMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_GenericColorMap {
-	Handle_Aspect_GenericColorMap GetHandle() {
-	return *(Handle_Aspect_GenericColorMap*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_GenericColorMap::Handle_Aspect_GenericColorMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_GenericColorMap;
 class Handle_Aspect_GenericColorMap : public Handle_Aspect_ColorMap {
@@ -6268,20 +5620,6 @@ class Handle_Aspect_GenericColorMap : public Handle_Aspect_ColorMap {
 %extend Handle_Aspect_GenericColorMap {
     Aspect_GenericColorMap* GetObject() {
     return (Aspect_GenericColorMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_GenericColorMap::~Handle_Aspect_GenericColorMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_GenericColorMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6337,20 +5675,6 @@ class Aspect_GradientBackground : public Aspect_Background {
 };
 
 
-%feature("shadow") Aspect_GradientBackground::~Aspect_GradientBackground %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_GradientBackground {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_IndexPixel;
 class Aspect_IndexPixel : public Aspect_Pixel {
 	public:
@@ -6449,20 +5773,6 @@ class Aspect_IndexPixel : public Aspect_Pixel {
 };
 
 
-%feature("shadow") Aspect_IndexPixel::~Aspect_IndexPixel %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Aspect_IndexPixel {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Aspect_RectangularGrid;
 class Aspect_RectangularGrid : public Aspect_Grid {
 	public:
@@ -6571,25 +5881,23 @@ class Aspect_RectangularGrid : public Aspect_Grid {
 };
 
 
-%feature("shadow") Aspect_RectangularGrid::~Aspect_RectangularGrid %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_RectangularGrid {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_RectangularGrid(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_RectangularGrid {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_RectangularGrid {
-	Handle_Aspect_RectangularGrid GetHandle() {
-	return *(Handle_Aspect_RectangularGrid*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_RectangularGrid::Handle_Aspect_RectangularGrid %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_RectangularGrid;
 class Handle_Aspect_RectangularGrid : public Handle_Aspect_Grid {
@@ -6607,20 +5915,6 @@ class Handle_Aspect_RectangularGrid : public Handle_Aspect_Grid {
 %extend Handle_Aspect_RectangularGrid {
     Aspect_RectangularGrid* GetObject() {
     return (Aspect_RectangularGrid*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_RectangularGrid::~Handle_Aspect_RectangularGrid %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_RectangularGrid {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6936,25 +6230,23 @@ class Aspect_WindowDriver : public Aspect_Driver {
 };
 
 
-%feature("shadow") Aspect_WindowDriver::~Aspect_WindowDriver %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Aspect_WindowDriver {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Aspect_WindowDriver(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Aspect_WindowDriver {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Aspect_WindowDriver {
-	Handle_Aspect_WindowDriver GetHandle() {
-	return *(Handle_Aspect_WindowDriver*) &$self;
-	}
-};
+%pythonappend Handle_Aspect_WindowDriver::Handle_Aspect_WindowDriver %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Aspect_WindowDriver;
 class Handle_Aspect_WindowDriver : public Handle_Aspect_Driver {
@@ -6972,20 +6264,6 @@ class Handle_Aspect_WindowDriver : public Handle_Aspect_Driver {
 %extend Handle_Aspect_WindowDriver {
     Aspect_WindowDriver* GetObject() {
     return (Aspect_WindowDriver*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Aspect_WindowDriver::~Handle_Aspect_WindowDriver %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Aspect_WindowDriver {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

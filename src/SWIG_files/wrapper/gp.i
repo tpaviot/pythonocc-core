@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include gp_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -187,20 +199,6 @@ class gp {
 };
 
 
-%feature("shadow") gp::~gp %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Ax1;
 class gp_Ax1 {
 	public:
@@ -461,20 +459,6 @@ class gp_Ax1 {
 };
 
 
-%feature("shadow") gp_Ax1::~gp_Ax1 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Ax1 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Ax2;
 class gp_Ax2 {
 	public:
@@ -751,20 +735,6 @@ class gp_Ax2 {
 };
 
 
-%feature("shadow") gp_Ax2::~gp_Ax2 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Ax2 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Ax22d;
 class gp_Ax22d {
 	public:
@@ -1011,20 +981,6 @@ class gp_Ax22d {
 };
 
 
-%feature("shadow") gp_Ax22d::~gp_Ax22d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Ax22d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Ax2d;
 class gp_Ax2d {
 	public:
@@ -1255,20 +1211,6 @@ class gp_Ax2d {
 };
 
 
-%feature("shadow") gp_Ax2d::~gp_Ax2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Ax2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Ax3;
 class gp_Ax3 {
 	public:
@@ -1579,20 +1521,6 @@ class gp_Ax3 {
 };
 
 
-%feature("shadow") gp_Ax3::~gp_Ax3 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Ax3 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Circ;
 class gp_Circ {
 	public:
@@ -1859,20 +1787,6 @@ class gp_Circ {
 };
 
 
-%feature("shadow") gp_Circ::~gp_Circ %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Circ {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Circ2d;
 class gp_Circ2d {
 	public:
@@ -2181,20 +2095,6 @@ class gp_Circ2d {
 };
 
 
-%feature("shadow") gp_Circ2d::~gp_Circ2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Circ2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Cone;
 class gp_Cone {
 	public:
@@ -2499,20 +2399,6 @@ class gp_Cone {
 };
 
 
-%feature("shadow") gp_Cone::~gp_Cone %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Cone {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Cylinder;
 class gp_Cylinder {
 	public:
@@ -2785,20 +2671,6 @@ class gp_Cylinder {
 };
 
 
-%feature("shadow") gp_Cylinder::~gp_Cylinder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Cylinder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Dir;
 class gp_Dir {
 	public:
@@ -3157,20 +3029,6 @@ class gp_Dir {
 };
 
 
-%feature("shadow") gp_Dir::~gp_Dir %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Dir {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Dir2d;
 class gp_Dir2d {
 	public:
@@ -3439,20 +3297,6 @@ class gp_Dir2d {
 };
 
 
-%feature("shadow") gp_Dir2d::~gp_Dir2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Dir2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Elips;
 class gp_Elips {
 	public:
@@ -3755,20 +3599,6 @@ class gp_Elips {
 };
 
 
-%feature("shadow") gp_Elips::~gp_Elips %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Elips {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Elips2d;
 class gp_Elips2d {
 	public:
@@ -4103,20 +3933,6 @@ class gp_Elips2d {
 };
 
 
-%feature("shadow") gp_Elips2d::~gp_Elips2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Elips2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_GTrsf;
 class gp_GTrsf {
 	public:
@@ -4347,20 +4163,6 @@ class gp_GTrsf {
 };
 
 
-%feature("shadow") gp_GTrsf::~gp_GTrsf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_GTrsf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_GTrsf2d;
 class gp_GTrsf2d {
 	public:
@@ -4591,20 +4393,6 @@ class gp_GTrsf2d {
 };
 
 
-%feature("shadow") gp_GTrsf2d::~gp_GTrsf2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_GTrsf2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Hypr;
 class gp_Hypr {
 	public:
@@ -4931,20 +4719,6 @@ class gp_Hypr {
 };
 
 
-%feature("shadow") gp_Hypr::~gp_Hypr %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Hypr {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Hypr2d;
 class gp_Hypr2d {
 	public:
@@ -5307,20 +5081,6 @@ class gp_Hypr2d {
 };
 
 
-%feature("shadow") gp_Hypr2d::~gp_Hypr2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Hypr2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Lin;
 class gp_Lin {
 	public:
@@ -5589,20 +5349,6 @@ class gp_Lin {
 };
 
 
-%feature("shadow") gp_Lin::~gp_Lin %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Lin {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Lin2d;
 class gp_Lin2d {
 	public:
@@ -5881,20 +5627,6 @@ class gp_Lin2d {
 };
 
 
-%feature("shadow") gp_Lin2d::~gp_Lin2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Lin2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Mat;
 class gp_Mat {
 	public:
@@ -6283,20 +6015,6 @@ class gp_Mat {
 };
 
 
-%feature("shadow") gp_Mat::~gp_Mat %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Mat {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Mat2d;
 class gp_Mat2d {
 	public:
@@ -6631,20 +6349,6 @@ class gp_Mat2d {
 };
 
 
-%feature("shadow") gp_Mat2d::~gp_Mat2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Mat2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Parab;
 class gp_Parab {
 	public:
@@ -6901,20 +6605,6 @@ class gp_Parab {
 };
 
 
-%feature("shadow") gp_Parab::~gp_Parab %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Parab {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Parab2d;
 class gp_Parab2d {
 	public:
@@ -7203,20 +6893,6 @@ class gp_Parab2d {
 };
 
 
-%feature("shadow") gp_Parab2d::~gp_Parab2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Parab2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Pln;
 class gp_Pln {
 	public:
@@ -7545,20 +7221,6 @@ class gp_Pln {
 };
 
 
-%feature("shadow") gp_Pln::~gp_Pln %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Pln {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Pnt;
 class gp_Pnt {
 	public:
@@ -7867,20 +7529,6 @@ class gp_Pnt {
 };
 
 
-%feature("shadow") gp_Pnt::~gp_Pnt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Pnt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Pnt2d;
 class gp_Pnt2d {
 	public:
@@ -8143,20 +7791,6 @@ class gp_Pnt2d {
 };
 
 
-%feature("shadow") gp_Pnt2d::~gp_Pnt2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Pnt2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Quaternion;
 class gp_Quaternion {
 	public:
@@ -8567,20 +8201,6 @@ class gp_Quaternion {
 };
 
 
-%feature("shadow") gp_Quaternion::~gp_Quaternion %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Quaternion {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_QuaternionNLerp;
 class gp_QuaternionNLerp {
 	public:
@@ -8635,20 +8255,6 @@ class gp_QuaternionNLerp {
 };
 
 
-%feature("shadow") gp_QuaternionNLerp::~gp_QuaternionNLerp %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_QuaternionNLerp {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_QuaternionSLerp;
 class gp_QuaternionSLerp {
 	public:
@@ -8693,20 +8299,6 @@ class gp_QuaternionSLerp {
 };
 
 
-%feature("shadow") gp_QuaternionSLerp::~gp_QuaternionSLerp %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_QuaternionSLerp {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Sphere;
 class gp_Sphere {
 	public:
@@ -8977,20 +8569,6 @@ class gp_Sphere {
 };
 
 
-%feature("shadow") gp_Sphere::~gp_Sphere %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Sphere {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Torus;
 class gp_Torus {
 	public:
@@ -9275,20 +8853,6 @@ class gp_Torus {
 };
 
 
-%feature("shadow") gp_Torus::~gp_Torus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Torus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Trsf;
 class gp_Trsf {
 	public:
@@ -9633,20 +9197,6 @@ class gp_Trsf {
 };
 
 
-%feature("shadow") gp_Trsf::~gp_Trsf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Trsf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Trsf2d;
 class gp_Trsf2d {
 	public:
@@ -9909,20 +9459,6 @@ class gp_Trsf2d {
 };
 
 
-%feature("shadow") gp_Trsf2d::~gp_Trsf2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Trsf2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Vec;
 class gp_Vec {
 	public:
@@ -10537,20 +10073,6 @@ class gp_Vec {
 };
 
 
-%feature("shadow") gp_Vec::~gp_Vec %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Vec {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_Vec2d;
 class gp_Vec2d {
 	public:
@@ -11043,20 +10565,6 @@ class gp_Vec2d {
 };
 
 
-%feature("shadow") gp_Vec2d::~gp_Vec2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_Vec2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_XY;
 class gp_XY {
 	public:
@@ -11473,20 +10981,6 @@ class gp_XY {
 };
 
 
-%feature("shadow") gp_XY::~gp_XY %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_XY {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor gp_XYZ;
 class gp_XYZ {
 	public:
@@ -12009,17 +11503,3 @@ class gp_XYZ {
 };
 
 
-%feature("shadow") gp_XYZ::~gp_XYZ %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend gp_XYZ {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

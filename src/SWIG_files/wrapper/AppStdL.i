@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include AppStdL_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -72,25 +84,23 @@ class AppStdL_Application : public TDocStd_Application {
 };
 
 
-%feature("shadow") AppStdL_Application::~AppStdL_Application %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AppStdL_Application {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AppStdL_Application(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AppStdL_Application {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AppStdL_Application {
-	Handle_AppStdL_Application GetHandle() {
-	return *(Handle_AppStdL_Application*) &$self;
-	}
-};
+%pythonappend Handle_AppStdL_Application::Handle_AppStdL_Application %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AppStdL_Application;
 class Handle_AppStdL_Application : public Handle_TDocStd_Application {
@@ -108,20 +118,6 @@ class Handle_AppStdL_Application : public Handle_TDocStd_Application {
 %extend Handle_AppStdL_Application {
     AppStdL_Application* GetObject() {
     return (AppStdL_Application*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AppStdL_Application::~Handle_AppStdL_Application %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AppStdL_Application {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

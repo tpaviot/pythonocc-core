@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Geom2dInt_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -108,20 +120,6 @@ class Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter {
 };
 
 
-%feature("shadow") Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter::~Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_GInter;
 class Geom2dInt_GInter : public IntRes2d_Intersection {
 	public:
@@ -296,20 +294,6 @@ class Geom2dInt_GInter : public IntRes2d_Intersection {
 };
 
 
-%feature("shadow") Geom2dInt_GInter::~Geom2dInt_GInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_GInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class Geom2dInt_Geom2dCurveTool {
 	public:
 		%feature("compactdefaultargs") GetType;
@@ -497,20 +481,6 @@ class Geom2dInt_Geom2dCurveTool {
 };
 
 
-%feature("shadow") Geom2dInt_Geom2dCurveTool::~Geom2dInt_Geom2dCurveTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_Geom2dCurveTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_IntConicCurveOfGInter;
 class Geom2dInt_IntConicCurveOfGInter : public IntRes2d_Intersection {
 	public:
@@ -681,20 +651,6 @@ class Geom2dInt_IntConicCurveOfGInter : public IntRes2d_Intersection {
 };
 
 
-%feature("shadow") Geom2dInt_IntConicCurveOfGInter::~Geom2dInt_IntConicCurveOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_IntConicCurveOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter;
 class Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter : public math_FunctionWithDerivative {
 	public:
@@ -735,20 +691,6 @@ class Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter : public 
 };
 
 
-%feature("shadow") Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter::~Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
 class Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public math_FunctionWithDerivative {
 	public:
@@ -843,20 +785,6 @@ class Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public math_Functi
 };
 
 
-%feature("shadow") Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::~Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
 class Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public TCollection_BaseSequence {
 	public:
@@ -989,20 +917,6 @@ class Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public TCol
 };
 
 
-%feature("shadow") Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::~Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
 class Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public TCollection_SeqNode {
 	public:
@@ -1023,25 +937,23 @@ class Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter
 };
 
 
-%feature("shadow") Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::~Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
-	Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter GetHandle() {
-	return *(Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter*) &$self;
-	}
-};
+%pythonappend Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
 class Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public Handle_TCollection_SeqNode {
@@ -1061,40 +973,12 @@ class Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurO
     return (Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter*)$self->Access();
     }
 };
-%feature("shadow") Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::~Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 class Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter {
 	public:
 };
 
 
-%feature("shadow") Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter::~Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter;
 class Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter : public math_FunctionSetWithDerivatives {
 	public:
@@ -1143,20 +1027,6 @@ class Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter : public math_
 };
 
 
-%feature("shadow") Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter::~Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_TheIntConicCurveOfGInter;
 class Geom2dInt_TheIntConicCurveOfGInter : public IntRes2d_Intersection {
 	public:
@@ -1327,20 +1197,6 @@ class Geom2dInt_TheIntConicCurveOfGInter : public IntRes2d_Intersection {
 };
 
 
-%feature("shadow") Geom2dInt_TheIntConicCurveOfGInter::~Geom2dInt_TheIntConicCurveOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_TheIntConicCurveOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_TheIntPCurvePCurveOfGInter;
 class Geom2dInt_TheIntPCurvePCurveOfGInter : public IntRes2d_Intersection {
 	public:
@@ -1379,20 +1235,6 @@ class Geom2dInt_TheIntPCurvePCurveOfGInter : public IntRes2d_Intersection {
 };
 
 
-%feature("shadow") Geom2dInt_TheIntPCurvePCurveOfGInter::~Geom2dInt_TheIntPCurvePCurveOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_TheIntPCurvePCurveOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter;
 class Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter : public IntRes2d_Intersection {
 	public:
@@ -1491,20 +1333,6 @@ class Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter : public IntRes2d_Inter
 };
 
 
-%feature("shadow") Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter::~Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter;
 class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter {
 	public:
@@ -1579,20 +1407,6 @@ class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter {
 };
 
 
-%feature("shadow") Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter::~Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter;
 class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter : public Intf_Polygon2d {
 	public:
@@ -1703,20 +1517,6 @@ class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter : public Intf_Polygon2d
 };
 
 
-%feature("shadow") Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter::~Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class Geom2dInt_TheProjPCurOfGInter {
 	public:
 		%feature("compactdefaultargs") FindParameter;
@@ -1746,17 +1546,3 @@ class Geom2dInt_TheProjPCurOfGInter {
 };
 
 
-%feature("shadow") Geom2dInt_TheProjPCurOfGInter::~Geom2dInt_TheProjPCurOfGInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dInt_TheProjPCurOfGInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

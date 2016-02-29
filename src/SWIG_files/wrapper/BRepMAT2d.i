@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include BRepMAT2d_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -118,20 +130,6 @@ class BRepMAT2d_BisectingLocus {
 };
 
 
-%feature("shadow") BRepMAT2d_BisectingLocus::~BRepMAT2d_BisectingLocus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMAT2d_BisectingLocus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape;
 class BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape : public TCollection_BasicMapIterator {
 	public:
@@ -154,7 +152,7 @@ class BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape : public TCollection_Bas
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
 ") Key;
-		const Handle_MAT_BasicElt & Key ();
+		Handle_MAT_BasicElt Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
@@ -162,20 +160,6 @@ class BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape : public TCollection_Bas
 };
 
 
-%feature("shadow") BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape::~BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt;
 class BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt : public TCollection_BasicMapIterator {
 	public:
@@ -206,20 +190,6 @@ class BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt : public TColl
 };
 
 
-%feature("shadow") BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt::~BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape;
 class BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape : public TCollection_MapNode {
 	public:
@@ -236,7 +206,7 @@ class BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape : public TCollection_MapNode
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
 ") Key;
-		Handle_MAT_BasicElt & Key ();
+		Handle_MAT_BasicElt Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
@@ -244,25 +214,23 @@ class BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape : public TCollection_MapNode
 };
 
 
-%feature("shadow") BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape::~BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape {
-	Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape GetHandle() {
-	return *(Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape*) &$self;
-	}
-};
+%pythonappend Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape::Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape;
 class Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape : public Handle_TCollection_MapNode {
@@ -280,20 +248,6 @@ class Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape : public Handle_TColl
 %extend Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape {
     BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape* GetObject() {
     return (BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape::~Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -321,25 +275,23 @@ class BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt : public TCollecti
 };
 
 
-%feature("shadow") BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt::~BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt {
-	Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt GetHandle() {
-	return *(Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt*) &$self;
-	}
-};
+%pythonappend Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt::Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt;
 class Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt : public Handle_TCollection_MapNode {
@@ -357,20 +309,6 @@ class Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt : public Ha
 %extend Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt {
     BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt* GetObject() {
     return (BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt::~Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -452,20 +390,6 @@ class BRepMAT2d_DataMapOfBasicEltShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepMAT2d_DataMapOfBasicEltShape::~BRepMAT2d_DataMapOfBasicEltShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMAT2d_DataMapOfBasicEltShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMAT2d_DataMapOfShapeSequenceOfBasicElt;
 class BRepMAT2d_DataMapOfShapeSequenceOfBasicElt : public TCollection_BasicMap {
 	public:
@@ -544,20 +468,6 @@ class BRepMAT2d_DataMapOfShapeSequenceOfBasicElt : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepMAT2d_DataMapOfShapeSequenceOfBasicElt::~BRepMAT2d_DataMapOfShapeSequenceOfBasicElt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMAT2d_DataMapOfShapeSequenceOfBasicElt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMAT2d_Explorer;
 class BRepMAT2d_Explorer {
 	public:
@@ -654,20 +564,6 @@ class BRepMAT2d_Explorer {
 };
 
 
-%feature("shadow") BRepMAT2d_Explorer::~BRepMAT2d_Explorer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMAT2d_Explorer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMAT2d_LinkTopoBilo;
 class BRepMAT2d_LinkTopoBilo {
 	public:
@@ -732,20 +628,6 @@ class BRepMAT2d_LinkTopoBilo {
 };
 
 
-%feature("shadow") BRepMAT2d_LinkTopoBilo::~BRepMAT2d_LinkTopoBilo %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMAT2d_LinkTopoBilo {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMAT2d_SequenceNodeOfSequenceOfBasicElt;
 class BRepMAT2d_SequenceNodeOfSequenceOfBasicElt : public TCollection_SeqNode {
 	public:
@@ -762,29 +644,27 @@ class BRepMAT2d_SequenceNodeOfSequenceOfBasicElt : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
 ") Value;
-		Handle_MAT_BasicElt & Value ();
+		Handle_MAT_BasicElt Value ();
 };
 
 
-%feature("shadow") BRepMAT2d_SequenceNodeOfSequenceOfBasicElt::~BRepMAT2d_SequenceNodeOfSequenceOfBasicElt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend BRepMAT2d_SequenceNodeOfSequenceOfBasicElt {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt::Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend BRepMAT2d_SequenceNodeOfSequenceOfBasicElt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMAT2d_SequenceNodeOfSequenceOfBasicElt {
-	Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt GetHandle() {
-	return *(Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt*) &$self;
-	}
-};
 
 %nodefaultctor Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt;
 class Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt : public Handle_TCollection_SeqNode {
@@ -802,20 +682,6 @@ class Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt : public Handle_TCollect
 %extend Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt {
     BRepMAT2d_SequenceNodeOfSequenceOfBasicElt* GetObject() {
     return (BRepMAT2d_SequenceNodeOfSequenceOfBasicElt*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt::~Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -901,11 +767,11 @@ class BRepMAT2d_SequenceOfBasicElt : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
 ") First;
-		const Handle_MAT_BasicElt & First ();
+		Handle_MAT_BasicElt First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
 ") Last;
-		const Handle_MAT_BasicElt & Last ();
+		Handle_MAT_BasicElt Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -919,7 +785,7 @@ class BRepMAT2d_SequenceOfBasicElt : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_MAT_BasicElt
 ") Value;
-		const Handle_MAT_BasicElt & Value (const Standard_Integer Index);
+		Handle_MAT_BasicElt Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -933,7 +799,7 @@ class BRepMAT2d_SequenceOfBasicElt : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_MAT_BasicElt
 ") ChangeValue;
-		Handle_MAT_BasicElt & ChangeValue (const Standard_Integer Index);
+		Handle_MAT_BasicElt ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -951,17 +817,3 @@ class BRepMAT2d_SequenceOfBasicElt : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") BRepMAT2d_SequenceOfBasicElt::~BRepMAT2d_SequenceOfBasicElt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMAT2d_SequenceOfBasicElt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

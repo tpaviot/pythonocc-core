@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include BRepPrimAPI_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -168,20 +180,6 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakeBox::~BRepPrimAPI_MakeBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakeBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepPrimAPI_MakeHalfSpace;
 class BRepPrimAPI_MakeHalfSpace : public BRepBuilderAPI_MakeShape {
 	public:
@@ -218,20 +216,6 @@ class BRepPrimAPI_MakeHalfSpace : public BRepBuilderAPI_MakeShape {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakeHalfSpace::~BRepPrimAPI_MakeHalfSpace %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakeHalfSpace {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepPrimAPI_MakeOneAxis;
 class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 	public:
@@ -280,20 +264,6 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakeOneAxis::~BRepPrimAPI_MakeOneAxis %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakeOneAxis {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepPrimAPI_MakeSweep;
 class BRepPrimAPI_MakeSweep : public BRepBuilderAPI_MakeShape {
 	public:
@@ -312,20 +282,6 @@ class BRepPrimAPI_MakeSweep : public BRepBuilderAPI_MakeShape {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakeSweep::~BRepPrimAPI_MakeSweep %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakeSweep {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepPrimAPI_MakeWedge;
 class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 	public:
@@ -436,20 +392,6 @@ class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakeWedge::~BRepPrimAPI_MakeWedge %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakeWedge {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepPrimAPI_MakeCone;
 class BRepPrimAPI_MakeCone : public BRepPrimAPI_MakeOneAxis {
 	public:
@@ -524,20 +466,6 @@ class BRepPrimAPI_MakeCone : public BRepPrimAPI_MakeOneAxis {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakeCone::~BRepPrimAPI_MakeCone %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakeCone {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepPrimAPI_MakeCylinder;
 class BRepPrimAPI_MakeCylinder : public BRepPrimAPI_MakeOneAxis {
 	public:
@@ -604,20 +532,6 @@ class BRepPrimAPI_MakeCylinder : public BRepPrimAPI_MakeOneAxis {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakeCylinder::~BRepPrimAPI_MakeCylinder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakeCylinder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepPrimAPI_MakePrism;
 class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 	public:
@@ -702,20 +616,6 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakePrism::~BRepPrimAPI_MakePrism %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakePrism {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepPrimAPI_MakeRevol;
 class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 	public:
@@ -804,20 +704,6 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakeRevol::~BRepPrimAPI_MakeRevol %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakeRevol {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepPrimAPI_MakeRevolution;
 class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 	public:
@@ -932,20 +818,6 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakeRevolution::~BRepPrimAPI_MakeRevolution %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakeRevolution {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepPrimAPI_MakeSphere;
 class BRepPrimAPI_MakeSphere : public BRepPrimAPI_MakeOneAxis {
 	public:
@@ -1112,20 +984,6 @@ class BRepPrimAPI_MakeSphere : public BRepPrimAPI_MakeOneAxis {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakeSphere::~BRepPrimAPI_MakeSphere %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakeSphere {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepPrimAPI_MakeTorus;
 class BRepPrimAPI_MakeTorus : public BRepPrimAPI_MakeOneAxis {
 	public:
@@ -1256,17 +1114,3 @@ class BRepPrimAPI_MakeTorus : public BRepPrimAPI_MakeOneAxis {
 };
 
 
-%feature("shadow") BRepPrimAPI_MakeTorus::~BRepPrimAPI_MakeTorus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepPrimAPI_MakeTorus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

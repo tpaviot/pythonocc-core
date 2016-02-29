@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Dynamic_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -64,20 +76,6 @@ class Dynamic {
 };
 
 
-%feature("shadow") Dynamic::~Dynamic %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Dynamic {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Dynamic_DynamicClass;
 class Dynamic_DynamicClass : public MMgt_TShared {
 	public:
@@ -142,25 +140,23 @@ class Dynamic_DynamicClass : public MMgt_TShared {
         };
 
 
-%feature("shadow") Dynamic_DynamicClass::~Dynamic_DynamicClass %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_DynamicClass {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_DynamicClass(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_DynamicClass {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_DynamicClass {
-	Handle_Dynamic_DynamicClass GetHandle() {
-	return *(Handle_Dynamic_DynamicClass*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_DynamicClass::Handle_Dynamic_DynamicClass %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_DynamicClass;
 class Handle_Dynamic_DynamicClass : public Handle_MMgt_TShared {
@@ -178,20 +174,6 @@ class Handle_Dynamic_DynamicClass : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_DynamicClass {
     Dynamic_DynamicClass* GetObject() {
     return (Dynamic_DynamicClass*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_DynamicClass::~Handle_Dynamic_DynamicClass %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_DynamicClass {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -287,25 +269,23 @@ class Dynamic_DynamicInstance : public MMgt_TShared {
 };
 
 
-%feature("shadow") Dynamic_DynamicInstance::~Dynamic_DynamicInstance %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_DynamicInstance {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_DynamicInstance(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_DynamicInstance {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_DynamicInstance {
-	Handle_Dynamic_DynamicInstance GetHandle() {
-	return *(Handle_Dynamic_DynamicInstance*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_DynamicInstance::Handle_Dynamic_DynamicInstance %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_DynamicInstance;
 class Handle_Dynamic_DynamicInstance : public Handle_MMgt_TShared {
@@ -323,20 +303,6 @@ class Handle_Dynamic_DynamicInstance : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_DynamicInstance {
     Dynamic_DynamicInstance* GetObject() {
     return (Dynamic_DynamicInstance*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_DynamicInstance::~Handle_Dynamic_DynamicInstance %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_DynamicInstance {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -482,25 +448,23 @@ class Dynamic_FuzzyClass : public MMgt_TShared {
         };
 
 
-%feature("shadow") Dynamic_FuzzyClass::~Dynamic_FuzzyClass %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_FuzzyClass {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_FuzzyClass(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_FuzzyClass {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_FuzzyClass {
-	Handle_Dynamic_FuzzyClass GetHandle() {
-	return *(Handle_Dynamic_FuzzyClass*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_FuzzyClass::Handle_Dynamic_FuzzyClass %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_FuzzyClass;
 class Handle_Dynamic_FuzzyClass : public Handle_MMgt_TShared {
@@ -518,20 +482,6 @@ class Handle_Dynamic_FuzzyClass : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_FuzzyClass {
     Dynamic_FuzzyClass* GetObject() {
     return (Dynamic_FuzzyClass*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_FuzzyClass::~Handle_Dynamic_FuzzyClass %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_FuzzyClass {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -599,25 +549,23 @@ class Dynamic_FuzzyDefinitionsDictionary : public MMgt_TShared {
         };
 
 
-%feature("shadow") Dynamic_FuzzyDefinitionsDictionary::~Dynamic_FuzzyDefinitionsDictionary %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_FuzzyDefinitionsDictionary {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_FuzzyDefinitionsDictionary(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_FuzzyDefinitionsDictionary {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_FuzzyDefinitionsDictionary {
-	Handle_Dynamic_FuzzyDefinitionsDictionary GetHandle() {
-	return *(Handle_Dynamic_FuzzyDefinitionsDictionary*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_FuzzyDefinitionsDictionary::Handle_Dynamic_FuzzyDefinitionsDictionary %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_FuzzyDefinitionsDictionary;
 class Handle_Dynamic_FuzzyDefinitionsDictionary : public Handle_MMgt_TShared {
@@ -635,20 +583,6 @@ class Handle_Dynamic_FuzzyDefinitionsDictionary : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_FuzzyDefinitionsDictionary {
     Dynamic_FuzzyDefinitionsDictionary* GetObject() {
     return (Dynamic_FuzzyDefinitionsDictionary*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_FuzzyDefinitionsDictionary::~Handle_Dynamic_FuzzyDefinitionsDictionary %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_FuzzyDefinitionsDictionary {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -716,25 +650,23 @@ class Dynamic_Method : public MMgt_TShared {
         };
 
 
-%feature("shadow") Dynamic_Method::~Dynamic_Method %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_Method {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_Method(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_Method {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_Method {
-	Handle_Dynamic_Method GetHandle() {
-	return *(Handle_Dynamic_Method*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_Method::Handle_Dynamic_Method %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_Method;
 class Handle_Dynamic_Method : public Handle_MMgt_TShared {
@@ -752,20 +684,6 @@ class Handle_Dynamic_Method : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_Method {
     Dynamic_Method* GetObject() {
     return (Dynamic_Method*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_Method::~Handle_Dynamic_Method %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_Method {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -841,25 +759,23 @@ class Dynamic_MethodDefinitionsDictionary : public Standard_Transient {
         };
 
 
-%feature("shadow") Dynamic_MethodDefinitionsDictionary::~Dynamic_MethodDefinitionsDictionary %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_MethodDefinitionsDictionary {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_MethodDefinitionsDictionary(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_MethodDefinitionsDictionary {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_MethodDefinitionsDictionary {
-	Handle_Dynamic_MethodDefinitionsDictionary GetHandle() {
-	return *(Handle_Dynamic_MethodDefinitionsDictionary*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_MethodDefinitionsDictionary::Handle_Dynamic_MethodDefinitionsDictionary %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_MethodDefinitionsDictionary;
 class Handle_Dynamic_MethodDefinitionsDictionary : public Handle_Standard_Transient {
@@ -877,20 +793,6 @@ class Handle_Dynamic_MethodDefinitionsDictionary : public Handle_Standard_Transi
 %extend Handle_Dynamic_MethodDefinitionsDictionary {
     Dynamic_MethodDefinitionsDictionary* GetObject() {
     return (Dynamic_MethodDefinitionsDictionary*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_MethodDefinitionsDictionary::~Handle_Dynamic_MethodDefinitionsDictionary %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_MethodDefinitionsDictionary {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -914,25 +816,23 @@ class Dynamic_Parameter : public MMgt_TShared {
         };
 
 
-%feature("shadow") Dynamic_Parameter::~Dynamic_Parameter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_Parameter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_Parameter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_Parameter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_Parameter {
-	Handle_Dynamic_Parameter GetHandle() {
-	return *(Handle_Dynamic_Parameter*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_Parameter::Handle_Dynamic_Parameter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_Parameter;
 class Handle_Dynamic_Parameter : public Handle_MMgt_TShared {
@@ -950,20 +850,6 @@ class Handle_Dynamic_Parameter : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_Parameter {
     Dynamic_Parameter* GetObject() {
     return (Dynamic_Parameter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_Parameter::~Handle_Dynamic_Parameter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_Parameter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1003,25 +889,23 @@ class Dynamic_ParameterNode : public MMgt_TShared {
 };
 
 
-%feature("shadow") Dynamic_ParameterNode::~Dynamic_ParameterNode %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_ParameterNode {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_ParameterNode(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_ParameterNode {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_ParameterNode {
-	Handle_Dynamic_ParameterNode GetHandle() {
-	return *(Handle_Dynamic_ParameterNode*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_ParameterNode::Handle_Dynamic_ParameterNode %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_ParameterNode;
 class Handle_Dynamic_ParameterNode : public Handle_MMgt_TShared {
@@ -1039,20 +923,6 @@ class Handle_Dynamic_ParameterNode : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_ParameterNode {
     Dynamic_ParameterNode* GetObject() {
     return (Dynamic_ParameterNode*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_ParameterNode::~Handle_Dynamic_ParameterNode %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_ParameterNode {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1138,11 +1008,11 @@ class Dynamic_SeqOfClasses : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_DynamicClass
 ") First;
-		const Handle_Dynamic_DynamicClass & First ();
+		Handle_Dynamic_DynamicClass First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_DynamicClass
 ") Last;
-		const Handle_Dynamic_DynamicClass & Last ();
+		Handle_Dynamic_DynamicClass Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1156,7 +1026,7 @@ class Dynamic_SeqOfClasses : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Dynamic_DynamicClass
 ") Value;
-		const Handle_Dynamic_DynamicClass & Value (const Standard_Integer Index);
+		Handle_Dynamic_DynamicClass Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1170,7 +1040,7 @@ class Dynamic_SeqOfClasses : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Dynamic_DynamicClass
 ") ChangeValue;
-		Handle_Dynamic_DynamicClass & ChangeValue (const Standard_Integer Index);
+		Handle_Dynamic_DynamicClass ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1188,20 +1058,6 @@ class Dynamic_SeqOfClasses : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Dynamic_SeqOfClasses::~Dynamic_SeqOfClasses %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Dynamic_SeqOfClasses {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Dynamic_SeqOfFuzzyDefinitions;
 class Dynamic_SeqOfFuzzyDefinitions : public TCollection_BaseSequence {
 	public:
@@ -1284,11 +1140,11 @@ class Dynamic_SeqOfFuzzyDefinitions : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_FuzzyDefinition
 ") First;
-		const Handle_Dynamic_FuzzyDefinition & First ();
+		Handle_Dynamic_FuzzyDefinition First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_FuzzyDefinition
 ") Last;
-		const Handle_Dynamic_FuzzyDefinition & Last ();
+		Handle_Dynamic_FuzzyDefinition Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1302,7 +1158,7 @@ class Dynamic_SeqOfFuzzyDefinitions : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Dynamic_FuzzyDefinition
 ") Value;
-		const Handle_Dynamic_FuzzyDefinition & Value (const Standard_Integer Index);
+		Handle_Dynamic_FuzzyDefinition Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1316,7 +1172,7 @@ class Dynamic_SeqOfFuzzyDefinitions : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Dynamic_FuzzyDefinition
 ") ChangeValue;
-		Handle_Dynamic_FuzzyDefinition & ChangeValue (const Standard_Integer Index);
+		Handle_Dynamic_FuzzyDefinition ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1334,20 +1190,6 @@ class Dynamic_SeqOfFuzzyDefinitions : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Dynamic_SeqOfFuzzyDefinitions::~Dynamic_SeqOfFuzzyDefinitions %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Dynamic_SeqOfFuzzyDefinitions {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Dynamic_SeqOfMethodDefinitions;
 class Dynamic_SeqOfMethodDefinitions : public TCollection_BaseSequence {
 	public:
@@ -1430,11 +1272,11 @@ class Dynamic_SeqOfMethodDefinitions : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_MethodDefinition
 ") First;
-		const Handle_Dynamic_MethodDefinition & First ();
+		Handle_Dynamic_MethodDefinition First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_MethodDefinition
 ") Last;
-		const Handle_Dynamic_MethodDefinition & Last ();
+		Handle_Dynamic_MethodDefinition Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1448,7 +1290,7 @@ class Dynamic_SeqOfMethodDefinitions : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Dynamic_MethodDefinition
 ") Value;
-		const Handle_Dynamic_MethodDefinition & Value (const Standard_Integer Index);
+		Handle_Dynamic_MethodDefinition Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1462,7 +1304,7 @@ class Dynamic_SeqOfMethodDefinitions : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Dynamic_MethodDefinition
 ") ChangeValue;
-		Handle_Dynamic_MethodDefinition & ChangeValue (const Standard_Integer Index);
+		Handle_Dynamic_MethodDefinition ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1480,20 +1322,6 @@ class Dynamic_SeqOfMethodDefinitions : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Dynamic_SeqOfMethodDefinitions::~Dynamic_SeqOfMethodDefinitions %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Dynamic_SeqOfMethodDefinitions {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Dynamic_SeqOfMethods;
 class Dynamic_SeqOfMethods : public TCollection_BaseSequence {
 	public:
@@ -1576,11 +1404,11 @@ class Dynamic_SeqOfMethods : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_Method
 ") First;
-		const Handle_Dynamic_Method & First ();
+		Handle_Dynamic_Method First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_Method
 ") Last;
-		const Handle_Dynamic_Method & Last ();
+		Handle_Dynamic_Method Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1594,7 +1422,7 @@ class Dynamic_SeqOfMethods : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Dynamic_Method
 ") Value;
-		const Handle_Dynamic_Method & Value (const Standard_Integer Index);
+		Handle_Dynamic_Method Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1608,7 +1436,7 @@ class Dynamic_SeqOfMethods : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Dynamic_Method
 ") ChangeValue;
-		Handle_Dynamic_Method & ChangeValue (const Standard_Integer Index);
+		Handle_Dynamic_Method ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1626,20 +1454,6 @@ class Dynamic_SeqOfMethods : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Dynamic_SeqOfMethods::~Dynamic_SeqOfMethods %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Dynamic_SeqOfMethods {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfClasses;
 class Dynamic_SequenceNodeOfSeqOfClasses : public TCollection_SeqNode {
 	public:
@@ -1656,29 +1470,27 @@ class Dynamic_SequenceNodeOfSeqOfClasses : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_DynamicClass
 ") Value;
-		Handle_Dynamic_DynamicClass & Value ();
+		Handle_Dynamic_DynamicClass Value ();
 };
 
 
-%feature("shadow") Dynamic_SequenceNodeOfSeqOfClasses::~Dynamic_SequenceNodeOfSeqOfClasses %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Dynamic_SequenceNodeOfSeqOfClasses {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_SequenceNodeOfSeqOfClasses(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Dynamic_SequenceNodeOfSeqOfClasses::Handle_Dynamic_SequenceNodeOfSeqOfClasses %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Dynamic_SequenceNodeOfSeqOfClasses {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_SequenceNodeOfSeqOfClasses {
-	Handle_Dynamic_SequenceNodeOfSeqOfClasses GetHandle() {
-	return *(Handle_Dynamic_SequenceNodeOfSeqOfClasses*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Dynamic_SequenceNodeOfSeqOfClasses;
 class Handle_Dynamic_SequenceNodeOfSeqOfClasses : public Handle_TCollection_SeqNode {
@@ -1698,20 +1510,6 @@ class Handle_Dynamic_SequenceNodeOfSeqOfClasses : public Handle_TCollection_SeqN
     return (Dynamic_SequenceNodeOfSeqOfClasses*)$self->Access();
     }
 };
-%feature("shadow") Handle_Dynamic_SequenceNodeOfSeqOfClasses::~Handle_Dynamic_SequenceNodeOfSeqOfClasses %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_SequenceNodeOfSeqOfClasses {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions;
 class Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions : public TCollection_SeqNode {
@@ -1729,29 +1527,27 @@ class Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_FuzzyDefinition
 ") Value;
-		Handle_Dynamic_FuzzyDefinition & Value ();
+		Handle_Dynamic_FuzzyDefinition Value ();
 };
 
 
-%feature("shadow") Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions::~Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions::Handle_Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions {
-	Handle_Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions GetHandle() {
-	return *(Handle_Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions;
 class Handle_Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions : public Handle_TCollection_SeqNode {
@@ -1771,20 +1567,6 @@ class Handle_Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions : public Handle_TCollec
     return (Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions*)$self->Access();
     }
 };
-%feature("shadow") Handle_Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions::~Handle_Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfMethodDefinitions;
 class Dynamic_SequenceNodeOfSeqOfMethodDefinitions : public TCollection_SeqNode {
@@ -1802,29 +1584,27 @@ class Dynamic_SequenceNodeOfSeqOfMethodDefinitions : public TCollection_SeqNode 
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_MethodDefinition
 ") Value;
-		Handle_Dynamic_MethodDefinition & Value ();
+		Handle_Dynamic_MethodDefinition Value ();
 };
 
 
-%feature("shadow") Dynamic_SequenceNodeOfSeqOfMethodDefinitions::~Dynamic_SequenceNodeOfSeqOfMethodDefinitions %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Dynamic_SequenceNodeOfSeqOfMethodDefinitions {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_SequenceNodeOfSeqOfMethodDefinitions(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Dynamic_SequenceNodeOfSeqOfMethodDefinitions::Handle_Dynamic_SequenceNodeOfSeqOfMethodDefinitions %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Dynamic_SequenceNodeOfSeqOfMethodDefinitions {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_SequenceNodeOfSeqOfMethodDefinitions {
-	Handle_Dynamic_SequenceNodeOfSeqOfMethodDefinitions GetHandle() {
-	return *(Handle_Dynamic_SequenceNodeOfSeqOfMethodDefinitions*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Dynamic_SequenceNodeOfSeqOfMethodDefinitions;
 class Handle_Dynamic_SequenceNodeOfSeqOfMethodDefinitions : public Handle_TCollection_SeqNode {
@@ -1844,20 +1624,6 @@ class Handle_Dynamic_SequenceNodeOfSeqOfMethodDefinitions : public Handle_TColle
     return (Dynamic_SequenceNodeOfSeqOfMethodDefinitions*)$self->Access();
     }
 };
-%feature("shadow") Handle_Dynamic_SequenceNodeOfSeqOfMethodDefinitions::~Handle_Dynamic_SequenceNodeOfSeqOfMethodDefinitions %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_SequenceNodeOfSeqOfMethodDefinitions {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfMethods;
 class Dynamic_SequenceNodeOfSeqOfMethods : public TCollection_SeqNode {
@@ -1875,29 +1641,27 @@ class Dynamic_SequenceNodeOfSeqOfMethods : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_Method
 ") Value;
-		Handle_Dynamic_Method & Value ();
+		Handle_Dynamic_Method Value ();
 };
 
 
-%feature("shadow") Dynamic_SequenceNodeOfSeqOfMethods::~Dynamic_SequenceNodeOfSeqOfMethods %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Dynamic_SequenceNodeOfSeqOfMethods {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_SequenceNodeOfSeqOfMethods(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Dynamic_SequenceNodeOfSeqOfMethods::Handle_Dynamic_SequenceNodeOfSeqOfMethods %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Dynamic_SequenceNodeOfSeqOfMethods {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_SequenceNodeOfSeqOfMethods {
-	Handle_Dynamic_SequenceNodeOfSeqOfMethods GetHandle() {
-	return *(Handle_Dynamic_SequenceNodeOfSeqOfMethods*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Dynamic_SequenceNodeOfSeqOfMethods;
 class Handle_Dynamic_SequenceNodeOfSeqOfMethods : public Handle_TCollection_SeqNode {
@@ -1915,20 +1679,6 @@ class Handle_Dynamic_SequenceNodeOfSeqOfMethods : public Handle_TCollection_SeqN
 %extend Handle_Dynamic_SequenceNodeOfSeqOfMethods {
     Dynamic_SequenceNodeOfSeqOfMethods* GetObject() {
     return (Dynamic_SequenceNodeOfSeqOfMethods*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_SequenceNodeOfSeqOfMethods::~Handle_Dynamic_SequenceNodeOfSeqOfMethods %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_SequenceNodeOfSeqOfMethods {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2038,13 +1788,13 @@ class Dynamic_SequenceOfClasses : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Dynamic_DynamicClass
 ") Value;
-		const Handle_Dynamic_DynamicClass & Value (const Standard_Integer anIndex);
+		Handle_Dynamic_DynamicClass Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Dynamic_DynamicClass
 ") ChangeValue;
-		Handle_Dynamic_DynamicClass & ChangeValue (const Standard_Integer anIndex);
+		Handle_Dynamic_DynamicClass ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -2074,25 +1824,23 @@ class Dynamic_SequenceOfClasses : public MMgt_TShared {
 };
 
 
-%feature("shadow") Dynamic_SequenceOfClasses::~Dynamic_SequenceOfClasses %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_SequenceOfClasses {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_SequenceOfClasses(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_SequenceOfClasses {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_SequenceOfClasses {
-	Handle_Dynamic_SequenceOfClasses GetHandle() {
-	return *(Handle_Dynamic_SequenceOfClasses*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_SequenceOfClasses::Handle_Dynamic_SequenceOfClasses %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_SequenceOfClasses;
 class Handle_Dynamic_SequenceOfClasses : public Handle_MMgt_TShared {
@@ -2110,20 +1858,6 @@ class Handle_Dynamic_SequenceOfClasses : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_SequenceOfClasses {
     Dynamic_SequenceOfClasses* GetObject() {
     return (Dynamic_SequenceOfClasses*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_SequenceOfClasses::~Handle_Dynamic_SequenceOfClasses %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_SequenceOfClasses {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2233,13 +1967,13 @@ class Dynamic_SequenceOfFuzzyDefinitions : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Dynamic_FuzzyDefinition
 ") Value;
-		const Handle_Dynamic_FuzzyDefinition & Value (const Standard_Integer anIndex);
+		Handle_Dynamic_FuzzyDefinition Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Dynamic_FuzzyDefinition
 ") ChangeValue;
-		Handle_Dynamic_FuzzyDefinition & ChangeValue (const Standard_Integer anIndex);
+		Handle_Dynamic_FuzzyDefinition ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -2269,25 +2003,23 @@ class Dynamic_SequenceOfFuzzyDefinitions : public MMgt_TShared {
 };
 
 
-%feature("shadow") Dynamic_SequenceOfFuzzyDefinitions::~Dynamic_SequenceOfFuzzyDefinitions %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_SequenceOfFuzzyDefinitions {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_SequenceOfFuzzyDefinitions(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_SequenceOfFuzzyDefinitions {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_SequenceOfFuzzyDefinitions {
-	Handle_Dynamic_SequenceOfFuzzyDefinitions GetHandle() {
-	return *(Handle_Dynamic_SequenceOfFuzzyDefinitions*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_SequenceOfFuzzyDefinitions::Handle_Dynamic_SequenceOfFuzzyDefinitions %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_SequenceOfFuzzyDefinitions;
 class Handle_Dynamic_SequenceOfFuzzyDefinitions : public Handle_MMgt_TShared {
@@ -2305,20 +2037,6 @@ class Handle_Dynamic_SequenceOfFuzzyDefinitions : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_SequenceOfFuzzyDefinitions {
     Dynamic_SequenceOfFuzzyDefinitions* GetObject() {
     return (Dynamic_SequenceOfFuzzyDefinitions*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_SequenceOfFuzzyDefinitions::~Handle_Dynamic_SequenceOfFuzzyDefinitions %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_SequenceOfFuzzyDefinitions {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2428,13 +2146,13 @@ class Dynamic_SequenceOfMethodDefinitions : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Dynamic_MethodDefinition
 ") Value;
-		const Handle_Dynamic_MethodDefinition & Value (const Standard_Integer anIndex);
+		Handle_Dynamic_MethodDefinition Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Dynamic_MethodDefinition
 ") ChangeValue;
-		Handle_Dynamic_MethodDefinition & ChangeValue (const Standard_Integer anIndex);
+		Handle_Dynamic_MethodDefinition ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -2464,25 +2182,23 @@ class Dynamic_SequenceOfMethodDefinitions : public MMgt_TShared {
 };
 
 
-%feature("shadow") Dynamic_SequenceOfMethodDefinitions::~Dynamic_SequenceOfMethodDefinitions %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_SequenceOfMethodDefinitions {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_SequenceOfMethodDefinitions(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_SequenceOfMethodDefinitions {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_SequenceOfMethodDefinitions {
-	Handle_Dynamic_SequenceOfMethodDefinitions GetHandle() {
-	return *(Handle_Dynamic_SequenceOfMethodDefinitions*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_SequenceOfMethodDefinitions::Handle_Dynamic_SequenceOfMethodDefinitions %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_SequenceOfMethodDefinitions;
 class Handle_Dynamic_SequenceOfMethodDefinitions : public Handle_MMgt_TShared {
@@ -2500,20 +2216,6 @@ class Handle_Dynamic_SequenceOfMethodDefinitions : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_SequenceOfMethodDefinitions {
     Dynamic_SequenceOfMethodDefinitions* GetObject() {
     return (Dynamic_SequenceOfMethodDefinitions*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_SequenceOfMethodDefinitions::~Handle_Dynamic_SequenceOfMethodDefinitions %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_SequenceOfMethodDefinitions {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2623,13 +2325,13 @@ class Dynamic_SequenceOfMethods : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Dynamic_Method
 ") Value;
-		const Handle_Dynamic_Method & Value (const Standard_Integer anIndex);
+		Handle_Dynamic_Method Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Dynamic_Method
 ") ChangeValue;
-		Handle_Dynamic_Method & ChangeValue (const Standard_Integer anIndex);
+		Handle_Dynamic_Method ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -2659,25 +2361,23 @@ class Dynamic_SequenceOfMethods : public MMgt_TShared {
 };
 
 
-%feature("shadow") Dynamic_SequenceOfMethods::~Dynamic_SequenceOfMethods %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_SequenceOfMethods {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_SequenceOfMethods(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_SequenceOfMethods {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_SequenceOfMethods {
-	Handle_Dynamic_SequenceOfMethods GetHandle() {
-	return *(Handle_Dynamic_SequenceOfMethods*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_SequenceOfMethods::Handle_Dynamic_SequenceOfMethods %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_SequenceOfMethods;
 class Handle_Dynamic_SequenceOfMethods : public Handle_MMgt_TShared {
@@ -2695,20 +2395,6 @@ class Handle_Dynamic_SequenceOfMethods : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_SequenceOfMethods {
     Dynamic_SequenceOfMethods* GetObject() {
     return (Dynamic_SequenceOfMethods*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_SequenceOfMethods::~Handle_Dynamic_SequenceOfMethods %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_SequenceOfMethods {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2760,25 +2446,23 @@ class Dynamic_Variable : public MMgt_TShared {
         };
 
 
-%feature("shadow") Dynamic_Variable::~Dynamic_Variable %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_Variable {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_Variable(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_Variable {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_Variable {
-	Handle_Dynamic_Variable GetHandle() {
-	return *(Handle_Dynamic_Variable*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_Variable::Handle_Dynamic_Variable %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_Variable;
 class Handle_Dynamic_Variable : public Handle_MMgt_TShared {
@@ -2796,20 +2480,6 @@ class Handle_Dynamic_Variable : public Handle_MMgt_TShared {
 %extend Handle_Dynamic_Variable {
     Dynamic_Variable* GetObject() {
     return (Dynamic_Variable*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_Variable::~Handle_Dynamic_Variable %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_Variable {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2849,25 +2519,23 @@ class Dynamic_VariableNode : public MMgt_TShared {
 };
 
 
-%feature("shadow") Dynamic_VariableNode::~Dynamic_VariableNode %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_VariableNode {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_VariableNode(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_VariableNode {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_VariableNode {
-	Handle_Dynamic_VariableNode GetHandle() {
-	return *(Handle_Dynamic_VariableNode*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_VariableNode::Handle_Dynamic_VariableNode %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_VariableNode;
 class Handle_Dynamic_VariableNode : public Handle_MMgt_TShared {
@@ -2887,20 +2555,6 @@ class Handle_Dynamic_VariableNode : public Handle_MMgt_TShared {
     return (Dynamic_VariableNode*)$self->Access();
     }
 };
-%feature("shadow") Handle_Dynamic_VariableNode::~Handle_Dynamic_VariableNode %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_VariableNode {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Dynamic_AbstractVariableInstance;
 class Dynamic_AbstractVariableInstance : public Dynamic_Variable {
@@ -2916,25 +2570,23 @@ class Dynamic_AbstractVariableInstance : public Dynamic_Variable {
 };
 
 
-%feature("shadow") Dynamic_AbstractVariableInstance::~Dynamic_AbstractVariableInstance %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_AbstractVariableInstance {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_AbstractVariableInstance(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_AbstractVariableInstance {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_AbstractVariableInstance {
-	Handle_Dynamic_AbstractVariableInstance GetHandle() {
-	return *(Handle_Dynamic_AbstractVariableInstance*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_AbstractVariableInstance::Handle_Dynamic_AbstractVariableInstance %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_AbstractVariableInstance;
 class Handle_Dynamic_AbstractVariableInstance : public Handle_Dynamic_Variable {
@@ -2952,20 +2604,6 @@ class Handle_Dynamic_AbstractVariableInstance : public Handle_Dynamic_Variable {
 %extend Handle_Dynamic_AbstractVariableInstance {
     Dynamic_AbstractVariableInstance* GetObject() {
     return (Dynamic_AbstractVariableInstance*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_AbstractVariableInstance::~Handle_Dynamic_AbstractVariableInstance %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_AbstractVariableInstance {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3025,25 +2663,23 @@ class Dynamic_BooleanParameter : public Dynamic_Parameter {
         };
 
 
-%feature("shadow") Dynamic_BooleanParameter::~Dynamic_BooleanParameter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_BooleanParameter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_BooleanParameter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_BooleanParameter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_BooleanParameter {
-	Handle_Dynamic_BooleanParameter GetHandle() {
-	return *(Handle_Dynamic_BooleanParameter*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_BooleanParameter::Handle_Dynamic_BooleanParameter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_BooleanParameter;
 class Handle_Dynamic_BooleanParameter : public Handle_Dynamic_Parameter {
@@ -3061,20 +2697,6 @@ class Handle_Dynamic_BooleanParameter : public Handle_Dynamic_Parameter {
 %extend Handle_Dynamic_BooleanParameter {
     Dynamic_BooleanParameter* GetObject() {
     return (Dynamic_BooleanParameter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_BooleanParameter::~Handle_Dynamic_BooleanParameter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_BooleanParameter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3114,25 +2736,23 @@ class Dynamic_DynamicDerivedClass : public Dynamic_DynamicClass {
 };
 
 
-%feature("shadow") Dynamic_DynamicDerivedClass::~Dynamic_DynamicDerivedClass %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_DynamicDerivedClass {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_DynamicDerivedClass(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_DynamicDerivedClass {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_DynamicDerivedClass {
-	Handle_Dynamic_DynamicDerivedClass GetHandle() {
-	return *(Handle_Dynamic_DynamicDerivedClass*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_DynamicDerivedClass::Handle_Dynamic_DynamicDerivedClass %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_DynamicDerivedClass;
 class Handle_Dynamic_DynamicDerivedClass : public Handle_Dynamic_DynamicClass {
@@ -3150,20 +2770,6 @@ class Handle_Dynamic_DynamicDerivedClass : public Handle_Dynamic_DynamicClass {
 %extend Handle_Dynamic_DynamicDerivedClass {
     Dynamic_DynamicDerivedClass* GetObject() {
     return (Dynamic_DynamicDerivedClass*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_DynamicDerivedClass::~Handle_Dynamic_DynamicDerivedClass %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_DynamicDerivedClass {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3195,25 +2801,23 @@ class Dynamic_FuzzyDefinition : public Dynamic_FuzzyClass {
         };
 
 
-%feature("shadow") Dynamic_FuzzyDefinition::~Dynamic_FuzzyDefinition %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_FuzzyDefinition {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_FuzzyDefinition(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_FuzzyDefinition {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_FuzzyDefinition {
-	Handle_Dynamic_FuzzyDefinition GetHandle() {
-	return *(Handle_Dynamic_FuzzyDefinition*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_FuzzyDefinition::Handle_Dynamic_FuzzyDefinition %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_FuzzyDefinition;
 class Handle_Dynamic_FuzzyDefinition : public Handle_Dynamic_FuzzyClass {
@@ -3231,20 +2835,6 @@ class Handle_Dynamic_FuzzyDefinition : public Handle_Dynamic_FuzzyClass {
 %extend Handle_Dynamic_FuzzyDefinition {
     Dynamic_FuzzyDefinition* GetObject() {
     return (Dynamic_FuzzyDefinition*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_FuzzyDefinition::~Handle_Dynamic_FuzzyDefinition %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_FuzzyDefinition {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3294,25 +2884,23 @@ class Dynamic_InstanceParameter : public Dynamic_Parameter {
         };
 
 
-%feature("shadow") Dynamic_InstanceParameter::~Dynamic_InstanceParameter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_InstanceParameter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_InstanceParameter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_InstanceParameter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_InstanceParameter {
-	Handle_Dynamic_InstanceParameter GetHandle() {
-	return *(Handle_Dynamic_InstanceParameter*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_InstanceParameter::Handle_Dynamic_InstanceParameter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_InstanceParameter;
 class Handle_Dynamic_InstanceParameter : public Handle_Dynamic_Parameter {
@@ -3330,20 +2918,6 @@ class Handle_Dynamic_InstanceParameter : public Handle_Dynamic_Parameter {
 %extend Handle_Dynamic_InstanceParameter {
     Dynamic_InstanceParameter* GetObject() {
     return (Dynamic_InstanceParameter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_InstanceParameter::~Handle_Dynamic_InstanceParameter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_InstanceParameter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3393,25 +2967,23 @@ class Dynamic_IntegerParameter : public Dynamic_Parameter {
         };
 
 
-%feature("shadow") Dynamic_IntegerParameter::~Dynamic_IntegerParameter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_IntegerParameter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_IntegerParameter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_IntegerParameter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_IntegerParameter {
-	Handle_Dynamic_IntegerParameter GetHandle() {
-	return *(Handle_Dynamic_IntegerParameter*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_IntegerParameter::Handle_Dynamic_IntegerParameter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_IntegerParameter;
 class Handle_Dynamic_IntegerParameter : public Handle_Dynamic_Parameter {
@@ -3429,20 +3001,6 @@ class Handle_Dynamic_IntegerParameter : public Handle_Dynamic_Parameter {
 %extend Handle_Dynamic_IntegerParameter {
     Dynamic_IntegerParameter* GetObject() {
     return (Dynamic_IntegerParameter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_IntegerParameter::~Handle_Dynamic_IntegerParameter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_IntegerParameter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3478,25 +3036,23 @@ class Dynamic_MethodDefinition : public Dynamic_Method {
         };
 
 
-%feature("shadow") Dynamic_MethodDefinition::~Dynamic_MethodDefinition %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_MethodDefinition {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_MethodDefinition(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_MethodDefinition {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_MethodDefinition {
-	Handle_Dynamic_MethodDefinition GetHandle() {
-	return *(Handle_Dynamic_MethodDefinition*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_MethodDefinition::Handle_Dynamic_MethodDefinition %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_MethodDefinition;
 class Handle_Dynamic_MethodDefinition : public Handle_Dynamic_Method {
@@ -3514,20 +3070,6 @@ class Handle_Dynamic_MethodDefinition : public Handle_Dynamic_Method {
 %extend Handle_Dynamic_MethodDefinition {
     Dynamic_MethodDefinition* GetObject() {
     return (Dynamic_MethodDefinition*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_MethodDefinition::~Handle_Dynamic_MethodDefinition %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_MethodDefinition {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3577,25 +3119,23 @@ class Dynamic_ObjectParameter : public Dynamic_Parameter {
         };
 
 
-%feature("shadow") Dynamic_ObjectParameter::~Dynamic_ObjectParameter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_ObjectParameter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_ObjectParameter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_ObjectParameter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_ObjectParameter {
-	Handle_Dynamic_ObjectParameter GetHandle() {
-	return *(Handle_Dynamic_ObjectParameter*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_ObjectParameter::Handle_Dynamic_ObjectParameter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_ObjectParameter;
 class Handle_Dynamic_ObjectParameter : public Handle_Dynamic_Parameter {
@@ -3613,20 +3153,6 @@ class Handle_Dynamic_ObjectParameter : public Handle_Dynamic_Parameter {
 %extend Handle_Dynamic_ObjectParameter {
     Dynamic_ObjectParameter* GetObject() {
     return (Dynamic_ObjectParameter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_ObjectParameter::~Handle_Dynamic_ObjectParameter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_ObjectParameter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3676,25 +3202,23 @@ class Dynamic_RealParameter : public Dynamic_Parameter {
         };
 
 
-%feature("shadow") Dynamic_RealParameter::~Dynamic_RealParameter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_RealParameter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_RealParameter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_RealParameter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_RealParameter {
-	Handle_Dynamic_RealParameter GetHandle() {
-	return *(Handle_Dynamic_RealParameter*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_RealParameter::Handle_Dynamic_RealParameter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_RealParameter;
 class Handle_Dynamic_RealParameter : public Handle_Dynamic_Parameter {
@@ -3712,20 +3236,6 @@ class Handle_Dynamic_RealParameter : public Handle_Dynamic_Parameter {
 %extend Handle_Dynamic_RealParameter {
     Dynamic_RealParameter* GetObject() {
     return (Dynamic_RealParameter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_RealParameter::~Handle_Dynamic_RealParameter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_RealParameter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3775,25 +3285,23 @@ class Dynamic_StringParameter : public Dynamic_Parameter {
         };
 
 
-%feature("shadow") Dynamic_StringParameter::~Dynamic_StringParameter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_StringParameter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_StringParameter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_StringParameter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_StringParameter {
-	Handle_Dynamic_StringParameter GetHandle() {
-	return *(Handle_Dynamic_StringParameter*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_StringParameter::Handle_Dynamic_StringParameter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_StringParameter;
 class Handle_Dynamic_StringParameter : public Handle_Dynamic_Parameter {
@@ -3813,20 +3321,6 @@ class Handle_Dynamic_StringParameter : public Handle_Dynamic_Parameter {
     return (Dynamic_StringParameter*)$self->Access();
     }
 };
-%feature("shadow") Handle_Dynamic_StringParameter::~Handle_Dynamic_StringParameter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_StringParameter {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Dynamic_VariableGroup;
 class Dynamic_VariableGroup : public Dynamic_Variable {
@@ -3840,25 +3334,23 @@ class Dynamic_VariableGroup : public Dynamic_Variable {
 };
 
 
-%feature("shadow") Dynamic_VariableGroup::~Dynamic_VariableGroup %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_VariableGroup {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_VariableGroup(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_VariableGroup {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_VariableGroup {
-	Handle_Dynamic_VariableGroup GetHandle() {
-	return *(Handle_Dynamic_VariableGroup*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_VariableGroup::Handle_Dynamic_VariableGroup %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_VariableGroup;
 class Handle_Dynamic_VariableGroup : public Handle_Dynamic_Variable {
@@ -3876,20 +3368,6 @@ class Handle_Dynamic_VariableGroup : public Handle_Dynamic_Variable {
 %extend Handle_Dynamic_VariableGroup {
     Dynamic_VariableGroup* GetObject() {
     return (Dynamic_VariableGroup*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_VariableGroup::~Handle_Dynamic_VariableGroup %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_VariableGroup {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3923,25 +3401,23 @@ class Dynamic_CompiledMethod : public Dynamic_MethodDefinition {
 };
 
 
-%feature("shadow") Dynamic_CompiledMethod::~Dynamic_CompiledMethod %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_CompiledMethod {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_CompiledMethod(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_CompiledMethod {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_CompiledMethod {
-	Handle_Dynamic_CompiledMethod GetHandle() {
-	return *(Handle_Dynamic_CompiledMethod*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_CompiledMethod::Handle_Dynamic_CompiledMethod %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_CompiledMethod;
 class Handle_Dynamic_CompiledMethod : public Handle_Dynamic_MethodDefinition {
@@ -3959,20 +3435,6 @@ class Handle_Dynamic_CompiledMethod : public Handle_Dynamic_MethodDefinition {
 %extend Handle_Dynamic_CompiledMethod {
     Dynamic_CompiledMethod* GetObject() {
     return (Dynamic_CompiledMethod*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_CompiledMethod::~Handle_Dynamic_CompiledMethod %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_CompiledMethod {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4020,25 +3482,23 @@ class Dynamic_CompositMethod : public Dynamic_MethodDefinition {
         };
 
 
-%feature("shadow") Dynamic_CompositMethod::~Dynamic_CompositMethod %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_CompositMethod {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_CompositMethod(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_CompositMethod {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_CompositMethod {
-	Handle_Dynamic_CompositMethod GetHandle() {
-	return *(Handle_Dynamic_CompositMethod*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_CompositMethod::Handle_Dynamic_CompositMethod %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_CompositMethod;
 class Handle_Dynamic_CompositMethod : public Handle_Dynamic_MethodDefinition {
@@ -4056,20 +3516,6 @@ class Handle_Dynamic_CompositMethod : public Handle_Dynamic_MethodDefinition {
 %extend Handle_Dynamic_CompositMethod {
     Dynamic_CompositMethod* GetObject() {
     return (Dynamic_CompositMethod*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_CompositMethod::~Handle_Dynamic_CompositMethod %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_CompositMethod {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4099,25 +3545,23 @@ class Dynamic_CompositVariableInstance : public Dynamic_AbstractVariableInstance
 };
 
 
-%feature("shadow") Dynamic_CompositVariableInstance::~Dynamic_CompositVariableInstance %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_CompositVariableInstance {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_CompositVariableInstance(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_CompositVariableInstance {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_CompositVariableInstance {
-	Handle_Dynamic_CompositVariableInstance GetHandle() {
-	return *(Handle_Dynamic_CompositVariableInstance*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_CompositVariableInstance::Handle_Dynamic_CompositVariableInstance %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_CompositVariableInstance;
 class Handle_Dynamic_CompositVariableInstance : public Handle_Dynamic_AbstractVariableInstance {
@@ -4135,20 +3579,6 @@ class Handle_Dynamic_CompositVariableInstance : public Handle_Dynamic_AbstractVa
 %extend Handle_Dynamic_CompositVariableInstance {
     Dynamic_CompositVariableInstance* GetObject() {
     return (Dynamic_CompositVariableInstance*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_CompositVariableInstance::~Handle_Dynamic_CompositVariableInstance %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_CompositVariableInstance {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4182,25 +3612,23 @@ class Dynamic_InterpretedMethod : public Dynamic_MethodDefinition {
 };
 
 
-%feature("shadow") Dynamic_InterpretedMethod::~Dynamic_InterpretedMethod %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_InterpretedMethod {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_InterpretedMethod(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_InterpretedMethod {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_InterpretedMethod {
-	Handle_Dynamic_InterpretedMethod GetHandle() {
-	return *(Handle_Dynamic_InterpretedMethod*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_InterpretedMethod::Handle_Dynamic_InterpretedMethod %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_InterpretedMethod;
 class Handle_Dynamic_InterpretedMethod : public Handle_Dynamic_MethodDefinition {
@@ -4218,20 +3646,6 @@ class Handle_Dynamic_InterpretedMethod : public Handle_Dynamic_MethodDefinition 
 %extend Handle_Dynamic_InterpretedMethod {
     Dynamic_InterpretedMethod* GetObject() {
     return (Dynamic_InterpretedMethod*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_InterpretedMethod::~Handle_Dynamic_InterpretedMethod %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_InterpretedMethod {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4261,25 +3675,23 @@ class Dynamic_VariableInstance : public Dynamic_AbstractVariableInstance {
 };
 
 
-%feature("shadow") Dynamic_VariableInstance::~Dynamic_VariableInstance %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dynamic_VariableInstance {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dynamic_VariableInstance(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dynamic_VariableInstance {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dynamic_VariableInstance {
-	Handle_Dynamic_VariableInstance GetHandle() {
-	return *(Handle_Dynamic_VariableInstance*) &$self;
-	}
-};
+%pythonappend Handle_Dynamic_VariableInstance::Handle_Dynamic_VariableInstance %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dynamic_VariableInstance;
 class Handle_Dynamic_VariableInstance : public Handle_Dynamic_AbstractVariableInstance {
@@ -4297,20 +3709,6 @@ class Handle_Dynamic_VariableInstance : public Handle_Dynamic_AbstractVariableIn
 %extend Handle_Dynamic_VariableInstance {
     Dynamic_VariableInstance* GetObject() {
     return (Dynamic_VariableInstance*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dynamic_VariableInstance::~Handle_Dynamic_VariableInstance %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dynamic_VariableInstance {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include IGESControl_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -72,25 +84,23 @@ class IGESControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 };
 
 
-%feature("shadow") IGESControl_ActorWrite::~IGESControl_ActorWrite %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IGESControl_ActorWrite {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IGESControl_ActorWrite(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IGESControl_ActorWrite {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IGESControl_ActorWrite {
-	Handle_IGESControl_ActorWrite GetHandle() {
-	return *(Handle_IGESControl_ActorWrite*) &$self;
-	}
-};
+%pythonappend Handle_IGESControl_ActorWrite::Handle_IGESControl_ActorWrite %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IGESControl_ActorWrite;
 class Handle_IGESControl_ActorWrite : public Handle_Transfer_ActorOfFinderProcess {
@@ -110,20 +120,6 @@ class Handle_IGESControl_ActorWrite : public Handle_Transfer_ActorOfFinderProces
     return (IGESControl_ActorWrite*)$self->Access();
     }
 };
-%feature("shadow") Handle_IGESControl_ActorWrite::~Handle_IGESControl_ActorWrite %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IGESControl_ActorWrite {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor IGESControl_AlgoContainer;
 class IGESControl_AlgoContainer : public IGESToBRep_AlgoContainer {
@@ -137,25 +133,23 @@ class IGESControl_AlgoContainer : public IGESToBRep_AlgoContainer {
 };
 
 
-%feature("shadow") IGESControl_AlgoContainer::~IGESControl_AlgoContainer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IGESControl_AlgoContainer {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IGESControl_AlgoContainer(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IGESControl_AlgoContainer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IGESControl_AlgoContainer {
-	Handle_IGESControl_AlgoContainer GetHandle() {
-	return *(Handle_IGESControl_AlgoContainer*) &$self;
-	}
-};
+%pythonappend Handle_IGESControl_AlgoContainer::Handle_IGESControl_AlgoContainer %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IGESControl_AlgoContainer;
 class Handle_IGESControl_AlgoContainer : public Handle_IGESToBRep_AlgoContainer {
@@ -173,20 +167,6 @@ class Handle_IGESControl_AlgoContainer : public Handle_IGESToBRep_AlgoContainer 
 %extend Handle_IGESControl_AlgoContainer {
     IGESControl_AlgoContainer* GetObject() {
     return (IGESControl_AlgoContainer*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IGESControl_AlgoContainer::~Handle_IGESControl_AlgoContainer %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IGESControl_AlgoContainer {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -244,25 +224,23 @@ class IGESControl_Controller : public XSControl_Controller {
 };
 
 
-%feature("shadow") IGESControl_Controller::~IGESControl_Controller %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IGESControl_Controller {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IGESControl_Controller(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IGESControl_Controller {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IGESControl_Controller {
-	Handle_IGESControl_Controller GetHandle() {
-	return *(Handle_IGESControl_Controller*) &$self;
-	}
-};
+%pythonappend Handle_IGESControl_Controller::Handle_IGESControl_Controller %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IGESControl_Controller;
 class Handle_IGESControl_Controller : public Handle_XSControl_Controller {
@@ -280,20 +258,6 @@ class Handle_IGESControl_Controller : public Handle_XSControl_Controller {
 %extend Handle_IGESControl_Controller {
     IGESControl_Controller* GetObject() {
     return (IGESControl_Controller*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IGESControl_Controller::~Handle_IGESControl_Controller %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IGESControl_Controller {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -331,25 +295,23 @@ class IGESControl_IGESBoundary : public IGESToBRep_IGESBoundary {
 };
 
 
-%feature("shadow") IGESControl_IGESBoundary::~IGESControl_IGESBoundary %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IGESControl_IGESBoundary {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IGESControl_IGESBoundary(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IGESControl_IGESBoundary {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IGESControl_IGESBoundary {
-	Handle_IGESControl_IGESBoundary GetHandle() {
-	return *(Handle_IGESControl_IGESBoundary*) &$self;
-	}
-};
+%pythonappend Handle_IGESControl_IGESBoundary::Handle_IGESControl_IGESBoundary %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IGESControl_IGESBoundary;
 class Handle_IGESControl_IGESBoundary : public Handle_IGESToBRep_IGESBoundary {
@@ -367,20 +329,6 @@ class Handle_IGESControl_IGESBoundary : public Handle_IGESToBRep_IGESBoundary {
 %extend Handle_IGESControl_IGESBoundary {
     IGESControl_IGESBoundary* GetObject() {
     return (IGESControl_IGESBoundary*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IGESControl_IGESBoundary::~Handle_IGESControl_IGESBoundary %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IGESControl_IGESBoundary {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -440,20 +388,6 @@ class IGESControl_Reader : public XSControl_Reader {
 };
 
 
-%feature("shadow") IGESControl_Reader::~IGESControl_Reader %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IGESControl_Reader {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IGESControl_ToolContainer;
 class IGESControl_ToolContainer : public IGESToBRep_ToolContainer {
 	public:
@@ -472,25 +406,23 @@ class IGESControl_ToolContainer : public IGESToBRep_ToolContainer {
 };
 
 
-%feature("shadow") IGESControl_ToolContainer::~IGESControl_ToolContainer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IGESControl_ToolContainer {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IGESControl_ToolContainer(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IGESControl_ToolContainer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IGESControl_ToolContainer {
-	Handle_IGESControl_ToolContainer GetHandle() {
-	return *(Handle_IGESControl_ToolContainer*) &$self;
-	}
-};
+%pythonappend Handle_IGESControl_ToolContainer::Handle_IGESControl_ToolContainer %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IGESControl_ToolContainer;
 class Handle_IGESControl_ToolContainer : public Handle_IGESToBRep_ToolContainer {
@@ -508,20 +440,6 @@ class Handle_IGESControl_ToolContainer : public Handle_IGESToBRep_ToolContainer 
 %extend Handle_IGESControl_ToolContainer {
     IGESControl_ToolContainer* GetObject() {
     return (IGESControl_ToolContainer*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IGESControl_ToolContainer::~Handle_IGESControl_ToolContainer %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IGESControl_ToolContainer {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -635,17 +553,3 @@ class IGESControl_Writer {
 };
 
 
-%feature("shadow") IGESControl_Writer::~IGESControl_Writer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IGESControl_Writer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

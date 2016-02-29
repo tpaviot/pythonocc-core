@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include TShort_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -126,20 +138,6 @@ class TShort_Array1OfShortReal {
 };
 
 
-%feature("shadow") TShort_Array1OfShortReal::~TShort_Array1OfShortReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TShort_Array1OfShortReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TShort_Array2OfShortReal;
 class TShort_Array2OfShortReal {
 	public:
@@ -244,20 +242,6 @@ class TShort_Array2OfShortReal {
 };
 
 
-%feature("shadow") TShort_Array2OfShortReal::~TShort_Array2OfShortReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TShort_Array2OfShortReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TShort_HArray1OfShortReal;
 class TShort_HArray1OfShortReal : public MMgt_TShared {
 	public:
@@ -328,25 +312,23 @@ class TShort_HArray1OfShortReal : public MMgt_TShared {
 };
 
 
-%feature("shadow") TShort_HArray1OfShortReal::~TShort_HArray1OfShortReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TShort_HArray1OfShortReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TShort_HArray1OfShortReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TShort_HArray1OfShortReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TShort_HArray1OfShortReal {
-	Handle_TShort_HArray1OfShortReal GetHandle() {
-	return *(Handle_TShort_HArray1OfShortReal*) &$self;
-	}
-};
+%pythonappend Handle_TShort_HArray1OfShortReal::Handle_TShort_HArray1OfShortReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TShort_HArray1OfShortReal;
 class Handle_TShort_HArray1OfShortReal : public Handle_MMgt_TShared {
@@ -364,20 +346,6 @@ class Handle_TShort_HArray1OfShortReal : public Handle_MMgt_TShared {
 %extend Handle_TShort_HArray1OfShortReal {
     TShort_HArray1OfShortReal* GetObject() {
     return (TShort_HArray1OfShortReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TShort_HArray1OfShortReal::~Handle_TShort_HArray1OfShortReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TShort_HArray1OfShortReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -477,25 +445,23 @@ class TShort_HArray2OfShortReal : public MMgt_TShared {
 };
 
 
-%feature("shadow") TShort_HArray2OfShortReal::~TShort_HArray2OfShortReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TShort_HArray2OfShortReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TShort_HArray2OfShortReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TShort_HArray2OfShortReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TShort_HArray2OfShortReal {
-	Handle_TShort_HArray2OfShortReal GetHandle() {
-	return *(Handle_TShort_HArray2OfShortReal*) &$self;
-	}
-};
+%pythonappend Handle_TShort_HArray2OfShortReal::Handle_TShort_HArray2OfShortReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TShort_HArray2OfShortReal;
 class Handle_TShort_HArray2OfShortReal : public Handle_MMgt_TShared {
@@ -513,20 +479,6 @@ class Handle_TShort_HArray2OfShortReal : public Handle_MMgt_TShared {
 %extend Handle_TShort_HArray2OfShortReal {
     TShort_HArray2OfShortReal* GetObject() {
     return (TShort_HArray2OfShortReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TShort_HArray2OfShortReal::~Handle_TShort_HArray2OfShortReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TShort_HArray2OfShortReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -672,25 +624,23 @@ class TShort_HSequenceOfShortReal : public MMgt_TShared {
 };
 
 
-%feature("shadow") TShort_HSequenceOfShortReal::~TShort_HSequenceOfShortReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TShort_HSequenceOfShortReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TShort_HSequenceOfShortReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TShort_HSequenceOfShortReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TShort_HSequenceOfShortReal {
-	Handle_TShort_HSequenceOfShortReal GetHandle() {
-	return *(Handle_TShort_HSequenceOfShortReal*) &$self;
-	}
-};
+%pythonappend Handle_TShort_HSequenceOfShortReal::Handle_TShort_HSequenceOfShortReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TShort_HSequenceOfShortReal;
 class Handle_TShort_HSequenceOfShortReal : public Handle_MMgt_TShared {
@@ -708,20 +658,6 @@ class Handle_TShort_HSequenceOfShortReal : public Handle_MMgt_TShared {
 %extend Handle_TShort_HSequenceOfShortReal {
     TShort_HSequenceOfShortReal* GetObject() {
     return (TShort_HSequenceOfShortReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TShort_HSequenceOfShortReal::~Handle_TShort_HSequenceOfShortReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TShort_HSequenceOfShortReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -745,25 +681,23 @@ class TShort_SequenceNodeOfSequenceOfShortReal : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") TShort_SequenceNodeOfSequenceOfShortReal::~TShort_SequenceNodeOfSequenceOfShortReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TShort_SequenceNodeOfSequenceOfShortReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TShort_SequenceNodeOfSequenceOfShortReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TShort_SequenceNodeOfSequenceOfShortReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TShort_SequenceNodeOfSequenceOfShortReal {
-	Handle_TShort_SequenceNodeOfSequenceOfShortReal GetHandle() {
-	return *(Handle_TShort_SequenceNodeOfSequenceOfShortReal*) &$self;
-	}
-};
+%pythonappend Handle_TShort_SequenceNodeOfSequenceOfShortReal::Handle_TShort_SequenceNodeOfSequenceOfShortReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TShort_SequenceNodeOfSequenceOfShortReal;
 class Handle_TShort_SequenceNodeOfSequenceOfShortReal : public Handle_TCollection_SeqNode {
@@ -781,20 +715,6 @@ class Handle_TShort_SequenceNodeOfSequenceOfShortReal : public Handle_TCollectio
 %extend Handle_TShort_SequenceNodeOfSequenceOfShortReal {
     TShort_SequenceNodeOfSequenceOfShortReal* GetObject() {
     return (TShort_SequenceNodeOfSequenceOfShortReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TShort_SequenceNodeOfSequenceOfShortReal::~Handle_TShort_SequenceNodeOfSequenceOfShortReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TShort_SequenceNodeOfSequenceOfShortReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -930,17 +850,3 @@ class TShort_SequenceOfShortReal : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TShort_SequenceOfShortReal::~TShort_SequenceOfShortReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TShort_SequenceOfShortReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

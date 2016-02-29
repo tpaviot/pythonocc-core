@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include ShapeAnalysis_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef NCollection_UBTree <Standard_Integer , Bnd_Box> ShapeAnalysis_BoxBndTree;
@@ -137,20 +149,6 @@ class ShapeAnalysis {
 };
 
 
-%feature("shadow") ShapeAnalysis::~ShapeAnalysis %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_CheckSmallFace;
 class ShapeAnalysis_CheckSmallFace {
 	public:
@@ -381,20 +379,6 @@ class ShapeAnalysis_CheckSmallFace {
 };
 
 
-%feature("shadow") ShapeAnalysis_CheckSmallFace::~ShapeAnalysis_CheckSmallFace %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_CheckSmallFace {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class ShapeAnalysis_Curve {
 	public:
 		%feature("compactdefaultargs") Project;
@@ -634,20 +618,6 @@ class ShapeAnalysis_Curve {
 };
 
 
-%feature("shadow") ShapeAnalysis_Curve::~ShapeAnalysis_Curve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_Curve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal;
 class ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal : public TCollection_BasicMapIterator {
 	public:
@@ -678,20 +648,6 @@ class ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal : public TCollecti
 };
 
 
-%feature("shadow") ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal::~ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal;
 class ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public TCollection_MapNode {
 	public:
@@ -716,25 +672,23 @@ class ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public TCollection_M
 };
 
 
-%feature("shadow") ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal::~ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
-	Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal GetHandle() {
-	return *(Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal*) &$self;
-	}
-};
+%pythonappend Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal::Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal;
 class Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public Handle_TCollection_MapNode {
@@ -752,20 +706,6 @@ class Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public Handle
 %extend Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
     ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal* GetObject() {
     return (ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal::~Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -847,20 +787,6 @@ class ShapeAnalysis_DataMapOfShapeListOfReal : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") ShapeAnalysis_DataMapOfShapeListOfReal::~ShapeAnalysis_DataMapOfShapeListOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_DataMapOfShapeListOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_Edge;
 class ShapeAnalysis_Edge {
 	public:
@@ -1181,20 +1107,6 @@ class ShapeAnalysis_Edge {
 };
 
 
-%feature("shadow") ShapeAnalysis_Edge::~ShapeAnalysis_Edge %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_Edge {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_FreeBoundData;
 class ShapeAnalysis_FreeBoundData : public MMgt_TShared {
 	public:
@@ -1337,25 +1249,23 @@ class ShapeAnalysis_FreeBoundData : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeAnalysis_FreeBoundData::~ShapeAnalysis_FreeBoundData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeAnalysis_FreeBoundData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeAnalysis_FreeBoundData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeAnalysis_FreeBoundData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeAnalysis_FreeBoundData {
-	Handle_ShapeAnalysis_FreeBoundData GetHandle() {
-	return *(Handle_ShapeAnalysis_FreeBoundData*) &$self;
-	}
-};
+%pythonappend Handle_ShapeAnalysis_FreeBoundData::Handle_ShapeAnalysis_FreeBoundData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeAnalysis_FreeBoundData;
 class Handle_ShapeAnalysis_FreeBoundData : public Handle_MMgt_TShared {
@@ -1373,20 +1283,6 @@ class Handle_ShapeAnalysis_FreeBoundData : public Handle_MMgt_TShared {
 %extend Handle_ShapeAnalysis_FreeBoundData {
     ShapeAnalysis_FreeBoundData* GetObject() {
     return (ShapeAnalysis_FreeBoundData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeAnalysis_FreeBoundData::~Handle_ShapeAnalysis_FreeBoundData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeAnalysis_FreeBoundData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1512,20 +1408,6 @@ class ShapeAnalysis_FreeBounds {
 };
 
 
-%feature("shadow") ShapeAnalysis_FreeBounds::~ShapeAnalysis_FreeBounds %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_FreeBounds {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_FreeBoundsProperties;
 class ShapeAnalysis_FreeBoundsProperties {
 	public:
@@ -1706,20 +1588,6 @@ class ShapeAnalysis_FreeBoundsProperties {
 };
 
 
-%feature("shadow") ShapeAnalysis_FreeBoundsProperties::~ShapeAnalysis_FreeBoundsProperties %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_FreeBoundsProperties {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class ShapeAnalysis_Geom {
 	public:
 		%feature("compactdefaultargs") NearestPlane;
@@ -1751,20 +1619,6 @@ class ShapeAnalysis_Geom {
 };
 
 
-%feature("shadow") ShapeAnalysis_Geom::~ShapeAnalysis_Geom %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_Geom {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_HSequenceOfFreeBounds;
 class ShapeAnalysis_HSequenceOfFreeBounds : public MMgt_TShared {
 	public:
@@ -1871,13 +1725,13 @@ class ShapeAnalysis_HSequenceOfFreeBounds : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_ShapeAnalysis_FreeBoundData
 ") Value;
-		const Handle_ShapeAnalysis_FreeBoundData & Value (const Standard_Integer anIndex);
+		Handle_ShapeAnalysis_FreeBoundData Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_ShapeAnalysis_FreeBoundData
 ") ChangeValue;
-		Handle_ShapeAnalysis_FreeBoundData & ChangeValue (const Standard_Integer anIndex);
+		Handle_ShapeAnalysis_FreeBoundData ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -1907,25 +1761,23 @@ class ShapeAnalysis_HSequenceOfFreeBounds : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeAnalysis_HSequenceOfFreeBounds::~ShapeAnalysis_HSequenceOfFreeBounds %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeAnalysis_HSequenceOfFreeBounds {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeAnalysis_HSequenceOfFreeBounds(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeAnalysis_HSequenceOfFreeBounds {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeAnalysis_HSequenceOfFreeBounds {
-	Handle_ShapeAnalysis_HSequenceOfFreeBounds GetHandle() {
-	return *(Handle_ShapeAnalysis_HSequenceOfFreeBounds*) &$self;
-	}
-};
+%pythonappend Handle_ShapeAnalysis_HSequenceOfFreeBounds::Handle_ShapeAnalysis_HSequenceOfFreeBounds %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeAnalysis_HSequenceOfFreeBounds;
 class Handle_ShapeAnalysis_HSequenceOfFreeBounds : public Handle_MMgt_TShared {
@@ -1945,20 +1797,6 @@ class Handle_ShapeAnalysis_HSequenceOfFreeBounds : public Handle_MMgt_TShared {
     return (ShapeAnalysis_HSequenceOfFreeBounds*)$self->Access();
     }
 };
-%feature("shadow") Handle_ShapeAnalysis_HSequenceOfFreeBounds::~Handle_ShapeAnalysis_HSequenceOfFreeBounds %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeAnalysis_HSequenceOfFreeBounds {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds;
 class ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds : public TCollection_SeqNode {
@@ -1976,29 +1814,27 @@ class ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds : public TCollection_SeqN
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_ShapeAnalysis_FreeBoundData
 ") Value;
-		Handle_ShapeAnalysis_FreeBoundData & Value ();
+		Handle_ShapeAnalysis_FreeBoundData Value ();
 };
 
 
-%feature("shadow") ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds::~ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds::Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
-	Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds GetHandle() {
-	return *(Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds;
 class Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds : public Handle_TCollection_SeqNode {
@@ -2016,20 +1852,6 @@ class Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds : public Handle_TC
 %extend Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
     ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds* GetObject() {
     return (ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds::~Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2115,11 +1937,11 @@ class ShapeAnalysis_SequenceOfFreeBounds : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_ShapeAnalysis_FreeBoundData
 ") First;
-		const Handle_ShapeAnalysis_FreeBoundData & First ();
+		Handle_ShapeAnalysis_FreeBoundData First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_ShapeAnalysis_FreeBoundData
 ") Last;
-		const Handle_ShapeAnalysis_FreeBoundData & Last ();
+		Handle_ShapeAnalysis_FreeBoundData Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2133,7 +1955,7 @@ class ShapeAnalysis_SequenceOfFreeBounds : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_ShapeAnalysis_FreeBoundData
 ") Value;
-		const Handle_ShapeAnalysis_FreeBoundData & Value (const Standard_Integer Index);
+		Handle_ShapeAnalysis_FreeBoundData Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2147,7 +1969,7 @@ class ShapeAnalysis_SequenceOfFreeBounds : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_ShapeAnalysis_FreeBoundData
 ") ChangeValue;
-		Handle_ShapeAnalysis_FreeBoundData & ChangeValue (const Standard_Integer Index);
+		Handle_ShapeAnalysis_FreeBoundData ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2165,20 +1987,6 @@ class ShapeAnalysis_SequenceOfFreeBounds : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") ShapeAnalysis_SequenceOfFreeBounds::~ShapeAnalysis_SequenceOfFreeBounds %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_SequenceOfFreeBounds {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_ShapeContents;
 class ShapeAnalysis_ShapeContents {
 	public:
@@ -2445,20 +2253,6 @@ class ShapeAnalysis_ShapeContents {
 };
 
 
-%feature("shadow") ShapeAnalysis_ShapeContents::~ShapeAnalysis_ShapeContents %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_ShapeContents {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_ShapeTolerance;
 class ShapeAnalysis_ShapeTolerance {
 	public:
@@ -2533,20 +2327,6 @@ class ShapeAnalysis_ShapeTolerance {
 };
 
 
-%feature("shadow") ShapeAnalysis_ShapeTolerance::~ShapeAnalysis_ShapeTolerance %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_ShapeTolerance {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class ShapeAnalysis_Shell {
 	public:
 		%feature("compactdefaultargs") Clear;
@@ -2630,20 +2410,6 @@ class ShapeAnalysis_Shell {
 };
 
 
-%feature("shadow") ShapeAnalysis_Shell::~ShapeAnalysis_Shell %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_Shell {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_Surface;
 class ShapeAnalysis_Surface : public MMgt_TShared {
 	public:
@@ -2688,19 +2454,19 @@ class ShapeAnalysis_Surface : public MMgt_TShared {
 
 	:rtype: Handle_Geom_Surface
 ") Surface;
-		const Handle_Geom_Surface & Surface ();
+		Handle_Geom_Surface Surface ();
 		%feature("compactdefaultargs") Adaptor3d;
 		%feature("autodoc", "	* Returns the Adaptor. Creates it if not yet done.
 
 	:rtype: Handle_GeomAdaptor_HSurface
 ") Adaptor3d;
-		const Handle_GeomAdaptor_HSurface & Adaptor3d ();
+		Handle_GeomAdaptor_HSurface Adaptor3d ();
 		%feature("compactdefaultargs") TrueAdaptor3d;
 		%feature("autodoc", "	* Returns the Adaptor (may be Null if method Adaptor() was not called)
 
 	:rtype: Handle_GeomAdaptor_HSurface
 ") TrueAdaptor3d;
-		const Handle_GeomAdaptor_HSurface & TrueAdaptor3d ();
+		Handle_GeomAdaptor_HSurface TrueAdaptor3d ();
 		%feature("compactdefaultargs") Gap;
 		%feature("autodoc", "	* Returns 3D distance found by one of the following methods. IsDegenerated, DegeneratedValues, ProjectDegenerated (distance between 3D point and found or last (if not found) singularity), IsUClosed, IsVClosed (minimum value of precision to consider the surface to be closed), ValueOfUV (distance between 3D point and found solution).
 
@@ -2958,25 +2724,23 @@ class ShapeAnalysis_Surface : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeAnalysis_Surface::~ShapeAnalysis_Surface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeAnalysis_Surface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeAnalysis_Surface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeAnalysis_Surface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeAnalysis_Surface {
-	Handle_ShapeAnalysis_Surface GetHandle() {
-	return *(Handle_ShapeAnalysis_Surface*) &$self;
-	}
-};
+%pythonappend Handle_ShapeAnalysis_Surface::Handle_ShapeAnalysis_Surface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeAnalysis_Surface;
 class Handle_ShapeAnalysis_Surface : public Handle_MMgt_TShared {
@@ -2994,20 +2758,6 @@ class Handle_ShapeAnalysis_Surface : public Handle_MMgt_TShared {
 %extend Handle_ShapeAnalysis_Surface {
     ShapeAnalysis_Surface* GetObject() {
     return (ShapeAnalysis_Surface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeAnalysis_Surface::~Handle_ShapeAnalysis_Surface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeAnalysis_Surface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3091,25 +2841,23 @@ class ShapeAnalysis_TransferParameters : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeAnalysis_TransferParameters::~ShapeAnalysis_TransferParameters %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeAnalysis_TransferParameters {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeAnalysis_TransferParameters(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeAnalysis_TransferParameters {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeAnalysis_TransferParameters {
-	Handle_ShapeAnalysis_TransferParameters GetHandle() {
-	return *(Handle_ShapeAnalysis_TransferParameters*) &$self;
-	}
-};
+%pythonappend Handle_ShapeAnalysis_TransferParameters::Handle_ShapeAnalysis_TransferParameters %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeAnalysis_TransferParameters;
 class Handle_ShapeAnalysis_TransferParameters : public Handle_MMgt_TShared {
@@ -3127,20 +2875,6 @@ class Handle_ShapeAnalysis_TransferParameters : public Handle_MMgt_TShared {
 %extend Handle_ShapeAnalysis_TransferParameters {
     ShapeAnalysis_TransferParameters* GetObject() {
     return (ShapeAnalysis_TransferParameters*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeAnalysis_TransferParameters::~Handle_ShapeAnalysis_TransferParameters %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeAnalysis_TransferParameters {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3278,7 +3012,7 @@ class ShapeAnalysis_Wire : public MMgt_TShared {
 
 	:rtype: Handle_ShapeExtend_WireData
 ") WireData;
-		const Handle_ShapeExtend_WireData & WireData ();
+		Handle_ShapeExtend_WireData WireData ();
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "	* Returns the number of edges in the wire, or 0 if it is not loaded
 
@@ -3296,7 +3030,7 @@ class ShapeAnalysis_Wire : public MMgt_TShared {
 
 	:rtype: Handle_ShapeAnalysis_Surface
 ") Surface;
-		const Handle_ShapeAnalysis_Surface & Surface ();
+		Handle_ShapeAnalysis_Surface Surface ();
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Performs all the checks in the following order : //!	 CheckOrder, CheckSmall, CheckConected, CheckEdgeCurves, CheckDegenerated, CheckSelfIntersection, CheckLacking, CheckClosed Returns: True if at least one method returned True; For deeper analysis use Status...(status) methods
 
@@ -3742,25 +3476,23 @@ class ShapeAnalysis_Wire : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeAnalysis_Wire::~ShapeAnalysis_Wire %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeAnalysis_Wire {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeAnalysis_Wire(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeAnalysis_Wire {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeAnalysis_Wire {
-	Handle_ShapeAnalysis_Wire GetHandle() {
-	return *(Handle_ShapeAnalysis_Wire*) &$self;
-	}
-};
+%pythonappend Handle_ShapeAnalysis_Wire::Handle_ShapeAnalysis_Wire %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeAnalysis_Wire;
 class Handle_ShapeAnalysis_Wire : public Handle_MMgt_TShared {
@@ -3778,20 +3510,6 @@ class Handle_ShapeAnalysis_Wire : public Handle_MMgt_TShared {
 %extend Handle_ShapeAnalysis_Wire {
     ShapeAnalysis_Wire* GetObject() {
     return (ShapeAnalysis_Wire*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeAnalysis_Wire::~Handle_ShapeAnalysis_Wire %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeAnalysis_Wire {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3990,20 +3708,6 @@ class ShapeAnalysis_WireOrder {
 };
 
 
-%feature("shadow") ShapeAnalysis_WireOrder::~ShapeAnalysis_WireOrder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_WireOrder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_WireVertex;
 class ShapeAnalysis_WireVertex {
 	public:
@@ -4146,7 +3850,7 @@ class ShapeAnalysis_WireVertex {
 
 	:rtype: Handle_ShapeExtend_WireData
 ") WireData;
-		const Handle_ShapeExtend_WireData & WireData ();
+		Handle_ShapeExtend_WireData WireData ();
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "	* Returns the recorded status for a vertex More detail by method Data
 
@@ -4210,20 +3914,6 @@ class ShapeAnalysis_WireVertex {
 };
 
 
-%feature("shadow") ShapeAnalysis_WireVertex::~ShapeAnalysis_WireVertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeAnalysis_WireVertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeAnalysis_TransferParametersProj;
 class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParameters {
 	public:
@@ -4329,25 +4019,23 @@ class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParame
 };
 
 
-%feature("shadow") ShapeAnalysis_TransferParametersProj::~ShapeAnalysis_TransferParametersProj %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeAnalysis_TransferParametersProj {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeAnalysis_TransferParametersProj(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeAnalysis_TransferParametersProj {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeAnalysis_TransferParametersProj {
-	Handle_ShapeAnalysis_TransferParametersProj GetHandle() {
-	return *(Handle_ShapeAnalysis_TransferParametersProj*) &$self;
-	}
-};
+%pythonappend Handle_ShapeAnalysis_TransferParametersProj::Handle_ShapeAnalysis_TransferParametersProj %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeAnalysis_TransferParametersProj;
 class Handle_ShapeAnalysis_TransferParametersProj : public Handle_ShapeAnalysis_TransferParameters {
@@ -4365,20 +4053,6 @@ class Handle_ShapeAnalysis_TransferParametersProj : public Handle_ShapeAnalysis_
 %extend Handle_ShapeAnalysis_TransferParametersProj {
     ShapeAnalysis_TransferParametersProj* GetObject() {
     return (ShapeAnalysis_TransferParametersProj*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeAnalysis_TransferParametersProj::~Handle_ShapeAnalysis_TransferParametersProj %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeAnalysis_TransferParametersProj {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

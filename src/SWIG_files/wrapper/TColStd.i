@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include TColStd_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -126,20 +138,6 @@ class TColStd_Array1OfAsciiString {
 };
 
 
-%feature("shadow") TColStd_Array1OfAsciiString::~TColStd_Array1OfAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array1OfAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array1OfBoolean;
 class TColStd_Array1OfBoolean {
 	public:
@@ -222,20 +220,6 @@ class TColStd_Array1OfBoolean {
 };
 
 
-%feature("shadow") TColStd_Array1OfBoolean::~TColStd_Array1OfBoolean %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array1OfBoolean {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array1OfByte;
 class TColStd_Array1OfByte {
 	public:
@@ -318,20 +302,6 @@ class TColStd_Array1OfByte {
 };
 
 
-%feature("shadow") TColStd_Array1OfByte::~TColStd_Array1OfByte %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array1OfByte {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array1OfCharacter;
 class TColStd_Array1OfCharacter {
 	public:
@@ -414,20 +384,6 @@ class TColStd_Array1OfCharacter {
 };
 
 
-%feature("shadow") TColStd_Array1OfCharacter::~TColStd_Array1OfCharacter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array1OfCharacter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array1OfExtendedString;
 class TColStd_Array1OfExtendedString {
 	public:
@@ -510,20 +466,6 @@ class TColStd_Array1OfExtendedString {
 };
 
 
-%feature("shadow") TColStd_Array1OfExtendedString::~TColStd_Array1OfExtendedString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array1OfExtendedString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array1OfInteger;
 class TColStd_Array1OfInteger {
 	public:
@@ -606,20 +548,6 @@ class TColStd_Array1OfInteger {
 };
 
 
-%feature("shadow") TColStd_Array1OfInteger::~TColStd_Array1OfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array1OfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array1OfListOfInteger;
 class TColStd_Array1OfListOfInteger {
 	public:
@@ -702,20 +630,6 @@ class TColStd_Array1OfListOfInteger {
 };
 
 
-%feature("shadow") TColStd_Array1OfListOfInteger::~TColStd_Array1OfListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array1OfListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array1OfReal;
 class TColStd_Array1OfReal {
 	public:
@@ -798,20 +712,6 @@ class TColStd_Array1OfReal {
 };
 
 
-%feature("shadow") TColStd_Array1OfReal::~TColStd_Array1OfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array1OfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array1OfTransient;
 class TColStd_Array1OfTransient {
 	public:
@@ -884,30 +784,16 @@ class TColStd_Array1OfTransient {
 	:type Index: int
 	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value (const Standard_Integer Index);
+		Handle_Standard_Transient Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Standard_Transient
 ") ChangeValue;
-		Handle_Standard_Transient & ChangeValue (const Standard_Integer Index);
+		Handle_Standard_Transient ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") TColStd_Array1OfTransient::~TColStd_Array1OfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array1OfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array2OfBoolean;
 class TColStd_Array2OfBoolean {
 	public:
@@ -1012,20 +898,6 @@ class TColStd_Array2OfBoolean {
 };
 
 
-%feature("shadow") TColStd_Array2OfBoolean::~TColStd_Array2OfBoolean %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array2OfBoolean {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array2OfCharacter;
 class TColStd_Array2OfCharacter {
 	public:
@@ -1130,20 +1002,6 @@ class TColStd_Array2OfCharacter {
 };
 
 
-%feature("shadow") TColStd_Array2OfCharacter::~TColStd_Array2OfCharacter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array2OfCharacter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array2OfInteger;
 class TColStd_Array2OfInteger {
 	public:
@@ -1248,20 +1106,6 @@ class TColStd_Array2OfInteger {
 };
 
 
-%feature("shadow") TColStd_Array2OfInteger::~TColStd_Array2OfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array2OfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array2OfReal;
 class TColStd_Array2OfReal {
 	public:
@@ -1366,20 +1210,6 @@ class TColStd_Array2OfReal {
 };
 
 
-%feature("shadow") TColStd_Array2OfReal::~TColStd_Array2OfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array2OfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_Array2OfTransient;
 class TColStd_Array2OfTransient {
 	public:
@@ -1472,7 +1302,7 @@ class TColStd_Array2OfTransient {
 	:type Col: int
 	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value (const Standard_Integer Row,const Standard_Integer Col);
+		Handle_Standard_Transient Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Row:
 	:type Row: int
@@ -1480,24 +1310,10 @@ class TColStd_Array2OfTransient {
 	:type Col: int
 	:rtype: Handle_Standard_Transient
 ") ChangeValue;
-		Handle_Standard_Transient & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		Handle_Standard_Transient ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
-%feature("shadow") TColStd_Array2OfTransient::~TColStd_Array2OfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_Array2OfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger;
 class TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1528,20 +1344,6 @@ class TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger : public TCollection_
 };
 
 
-%feature("shadow") TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger::~TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerInteger;
 class TColStd_DataMapIteratorOfDataMapOfIntegerInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1572,20 +1374,6 @@ class TColStd_DataMapIteratorOfDataMapOfIntegerInteger : public TCollection_Basi
 };
 
 
-%feature("shadow") TColStd_DataMapIteratorOfDataMapOfIntegerInteger::~TColStd_DataMapIteratorOfDataMapOfIntegerInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapIteratorOfDataMapOfIntegerInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger;
 class TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1616,20 +1404,6 @@ class TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger : public TCollectio
 };
 
 
-%feature("shadow") TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger::~TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerReal;
 class TColStd_DataMapIteratorOfDataMapOfIntegerReal : public TCollection_BasicMapIterator {
 	public:
@@ -1660,20 +1434,6 @@ class TColStd_DataMapIteratorOfDataMapOfIntegerReal : public TCollection_BasicMa
 };
 
 
-%feature("shadow") TColStd_DataMapIteratorOfDataMapOfIntegerReal::~TColStd_DataMapIteratorOfDataMapOfIntegerReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapIteratorOfDataMapOfIntegerReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerTransient;
 class TColStd_DataMapIteratorOfDataMapOfIntegerTransient : public TCollection_BasicMapIterator {
 	public:
@@ -1700,24 +1460,10 @@ class TColStd_DataMapIteratorOfDataMapOfIntegerTransient : public TCollection_Ba
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_DataMapIteratorOfDataMapOfIntegerTransient::~TColStd_DataMapIteratorOfDataMapOfIntegerTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapIteratorOfDataMapOfIntegerTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfStringInteger;
 class TColStd_DataMapIteratorOfDataMapOfStringInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1748,20 +1494,6 @@ class TColStd_DataMapIteratorOfDataMapOfStringInteger : public TCollection_Basic
 };
 
 
-%feature("shadow") TColStd_DataMapIteratorOfDataMapOfStringInteger::~TColStd_DataMapIteratorOfDataMapOfStringInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapIteratorOfDataMapOfStringInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfTransientTransient;
 class TColStd_DataMapIteratorOfDataMapOfTransientTransient : public TCollection_BasicMapIterator {
 	public:
@@ -1784,28 +1516,14 @@ class TColStd_DataMapIteratorOfDataMapOfTransientTransient : public TCollection_
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Key;
-		const Handle_Standard_Transient & Key ();
+		Handle_Standard_Transient Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_DataMapIteratorOfDataMapOfTransientTransient::~TColStd_DataMapIteratorOfDataMapOfTransientTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapIteratorOfDataMapOfTransientTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfAsciiStringInteger;
 class TColStd_DataMapNodeOfDataMapOfAsciiStringInteger : public TCollection_MapNode {
 	public:
@@ -1839,25 +1557,23 @@ class TColStd_DataMapNodeOfDataMapOfAsciiStringInteger : public TCollection_MapN
             };
 
 
-%feature("shadow") TColStd_DataMapNodeOfDataMapOfAsciiStringInteger::~TColStd_DataMapNodeOfDataMapOfAsciiStringInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
-	Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger GetHandle() {
-	return *(Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger::Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger;
 class Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger : public Handle_TCollection_MapNode {
@@ -1875,20 +1591,6 @@ class Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger : public Handle_TC
 %extend Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
     TColStd_DataMapNodeOfDataMapOfAsciiStringInteger* GetObject() {
     return (TColStd_DataMapNodeOfDataMapOfAsciiStringInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger::~Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1934,25 +1636,23 @@ class TColStd_DataMapNodeOfDataMapOfIntegerInteger : public TCollection_MapNode 
             };
 
 
-%feature("shadow") TColStd_DataMapNodeOfDataMapOfIntegerInteger::~TColStd_DataMapNodeOfDataMapOfIntegerInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_DataMapNodeOfDataMapOfIntegerInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_DataMapNodeOfDataMapOfIntegerInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_DataMapNodeOfDataMapOfIntegerInteger {
-	Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger GetHandle() {
-	return *(Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger::Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger;
 class Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger : public Handle_TCollection_MapNode {
@@ -1970,20 +1670,6 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger : public Handle_TColle
 %extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger {
     TColStd_DataMapNodeOfDataMapOfIntegerInteger* GetObject() {
     return (TColStd_DataMapNodeOfDataMapOfIntegerInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger::~Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2020,25 +1706,23 @@ class TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public TCollection_Ma
 };
 
 
-%feature("shadow") TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger::~TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
-	Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger GetHandle() {
-	return *(Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger::Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger;
 class Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public Handle_TCollection_MapNode {
@@ -2056,20 +1740,6 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public Handle_
 %extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
     TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger* GetObject() {
     return (TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger::~Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2115,25 +1785,23 @@ class TColStd_DataMapNodeOfDataMapOfIntegerReal : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_DataMapNodeOfDataMapOfIntegerReal::~TColStd_DataMapNodeOfDataMapOfIntegerReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_DataMapNodeOfDataMapOfIntegerReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_DataMapNodeOfDataMapOfIntegerReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_DataMapNodeOfDataMapOfIntegerReal {
-	Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal GetHandle() {
-	return *(Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal::Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal;
 class Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal : public Handle_TCollection_MapNode {
@@ -2151,20 +1819,6 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal : public Handle_TCollecti
 %extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal {
     TColStd_DataMapNodeOfDataMapOfIntegerReal* GetObject() {
     return (TColStd_DataMapNodeOfDataMapOfIntegerReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal::~Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2197,29 +1851,27 @@ class TColStd_DataMapNodeOfDataMapOfIntegerTransient : public TCollection_MapNod
             		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_DataMapNodeOfDataMapOfIntegerTransient::~TColStd_DataMapNodeOfDataMapOfIntegerTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColStd_DataMapNodeOfDataMapOfIntegerTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient::Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColStd_DataMapNodeOfDataMapOfIntegerTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_DataMapNodeOfDataMapOfIntegerTransient {
-	Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient GetHandle() {
-	return *(Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient;
 class Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient : public Handle_TCollection_MapNode {
@@ -2237,20 +1889,6 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient : public Handle_TCol
 %extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient {
     TColStd_DataMapNodeOfDataMapOfIntegerTransient* GetObject() {
     return (TColStd_DataMapNodeOfDataMapOfIntegerTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient::~Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2287,25 +1925,23 @@ class TColStd_DataMapNodeOfDataMapOfStringInteger : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_DataMapNodeOfDataMapOfStringInteger::~TColStd_DataMapNodeOfDataMapOfStringInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_DataMapNodeOfDataMapOfStringInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfStringInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_DataMapNodeOfDataMapOfStringInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_DataMapNodeOfDataMapOfStringInteger {
-	Handle_TColStd_DataMapNodeOfDataMapOfStringInteger GetHandle() {
-	return *(Handle_TColStd_DataMapNodeOfDataMapOfStringInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfStringInteger::Handle_TColStd_DataMapNodeOfDataMapOfStringInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfStringInteger;
 class Handle_TColStd_DataMapNodeOfDataMapOfStringInteger : public Handle_TCollection_MapNode {
@@ -2325,20 +1961,6 @@ class Handle_TColStd_DataMapNodeOfDataMapOfStringInteger : public Handle_TCollec
     return (TColStd_DataMapNodeOfDataMapOfStringInteger*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColStd_DataMapNodeOfDataMapOfStringInteger::~Handle_TColStd_DataMapNodeOfDataMapOfStringInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfStringInteger {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfTransientTransient;
 class TColStd_DataMapNodeOfDataMapOfTransientTransient : public TCollection_MapNode {
@@ -2356,33 +1978,31 @@ class TColStd_DataMapNodeOfDataMapOfTransientTransient : public TCollection_MapN
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Key;
-		Handle_Standard_Transient & Key ();
+		Handle_Standard_Transient Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_DataMapNodeOfDataMapOfTransientTransient::~TColStd_DataMapNodeOfDataMapOfTransientTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColStd_DataMapNodeOfDataMapOfTransientTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient::Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColStd_DataMapNodeOfDataMapOfTransientTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_DataMapNodeOfDataMapOfTransientTransient {
-	Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient GetHandle() {
-	return *(Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient;
 class Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient : public Handle_TCollection_MapNode {
@@ -2400,20 +2020,6 @@ class Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient : public Handle_TC
 %extend Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient {
     TColStd_DataMapNodeOfDataMapOfTransientTransient* GetObject() {
     return (TColStd_DataMapNodeOfDataMapOfTransientTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient::~Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2495,20 +2101,6 @@ class TColStd_DataMapOfAsciiStringInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_DataMapOfAsciiStringInteger::~TColStd_DataMapOfAsciiStringInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapOfAsciiStringInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapOfIntegerInteger;
 class TColStd_DataMapOfIntegerInteger : public TCollection_BasicMap {
 	public:
@@ -2587,20 +2179,6 @@ class TColStd_DataMapOfIntegerInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_DataMapOfIntegerInteger::~TColStd_DataMapOfIntegerInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapOfIntegerInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapOfIntegerListOfInteger;
 class TColStd_DataMapOfIntegerListOfInteger : public TCollection_BasicMap {
 	public:
@@ -2679,20 +2257,6 @@ class TColStd_DataMapOfIntegerListOfInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_DataMapOfIntegerListOfInteger::~TColStd_DataMapOfIntegerListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapOfIntegerListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapOfIntegerReal;
 class TColStd_DataMapOfIntegerReal : public TCollection_BasicMap {
 	public:
@@ -2771,20 +2335,6 @@ class TColStd_DataMapOfIntegerReal : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_DataMapOfIntegerReal::~TColStd_DataMapOfIntegerReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapOfIntegerReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapOfIntegerTransient;
 class TColStd_DataMapOfIntegerTransient : public TCollection_BasicMap {
 	public:
@@ -2841,13 +2391,13 @@ class TColStd_DataMapOfIntegerTransient : public TCollection_BasicMap {
 	:type K: int &
 	:rtype: Handle_Standard_Transient
 ") Find;
-		const Handle_Standard_Transient & Find (const Standard_Integer & K);
+		Handle_Standard_Transient Find (const Standard_Integer & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: int &
 	:rtype: Handle_Standard_Transient
 ") ChangeFind;
-		Handle_Standard_Transient & ChangeFind (const Standard_Integer & K);
+		Handle_Standard_Transient ChangeFind (const Standard_Integer & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: int &
@@ -2863,20 +2413,6 @@ class TColStd_DataMapOfIntegerTransient : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_DataMapOfIntegerTransient::~TColStd_DataMapOfIntegerTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapOfIntegerTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapOfStringInteger;
 class TColStd_DataMapOfStringInteger : public TCollection_BasicMap {
 	public:
@@ -2955,20 +2491,6 @@ class TColStd_DataMapOfStringInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_DataMapOfStringInteger::~TColStd_DataMapOfStringInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapOfStringInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_DataMapOfTransientTransient;
 class TColStd_DataMapOfTransientTransient : public TCollection_BasicMap {
 	public:
@@ -3025,13 +2547,13 @@ class TColStd_DataMapOfTransientTransient : public TCollection_BasicMap {
 	:type K: Handle_Standard_Transient &
 	:rtype: Handle_Standard_Transient
 ") Find;
-		const Handle_Standard_Transient & Find (const Handle_Standard_Transient & K);
+		Handle_Standard_Transient Find (const Handle_Standard_Transient & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_Standard_Transient &
 	:rtype: Handle_Standard_Transient
 ") ChangeFind;
-		Handle_Standard_Transient & ChangeFind (const Handle_Standard_Transient & K);
+		Handle_Standard_Transient ChangeFind (const Handle_Standard_Transient & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_Standard_Transient &
@@ -3047,20 +2569,6 @@ class TColStd_DataMapOfTransientTransient : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_DataMapOfTransientTransient::~TColStd_DataMapOfTransientTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_DataMapOfTransientTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_HArray1OfAsciiString;
 class TColStd_HArray1OfAsciiString : public MMgt_TShared {
 	public:
@@ -3131,25 +2639,23 @@ class TColStd_HArray1OfAsciiString : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray1OfAsciiString::~TColStd_HArray1OfAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray1OfAsciiString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray1OfAsciiString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray1OfAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray1OfAsciiString {
-	Handle_TColStd_HArray1OfAsciiString GetHandle() {
-	return *(Handle_TColStd_HArray1OfAsciiString*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray1OfAsciiString::Handle_TColStd_HArray1OfAsciiString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray1OfAsciiString;
 class Handle_TColStd_HArray1OfAsciiString : public Handle_MMgt_TShared {
@@ -3167,20 +2673,6 @@ class Handle_TColStd_HArray1OfAsciiString : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray1OfAsciiString {
     TColStd_HArray1OfAsciiString* GetObject() {
     return (TColStd_HArray1OfAsciiString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray1OfAsciiString::~Handle_TColStd_HArray1OfAsciiString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray1OfAsciiString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3254,25 +2746,23 @@ class TColStd_HArray1OfBoolean : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray1OfBoolean::~TColStd_HArray1OfBoolean %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray1OfBoolean {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray1OfBoolean(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray1OfBoolean {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray1OfBoolean {
-	Handle_TColStd_HArray1OfBoolean GetHandle() {
-	return *(Handle_TColStd_HArray1OfBoolean*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray1OfBoolean::Handle_TColStd_HArray1OfBoolean %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray1OfBoolean;
 class Handle_TColStd_HArray1OfBoolean : public Handle_MMgt_TShared {
@@ -3290,20 +2780,6 @@ class Handle_TColStd_HArray1OfBoolean : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray1OfBoolean {
     TColStd_HArray1OfBoolean* GetObject() {
     return (TColStd_HArray1OfBoolean*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray1OfBoolean::~Handle_TColStd_HArray1OfBoolean %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray1OfBoolean {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3377,25 +2853,23 @@ class TColStd_HArray1OfByte : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray1OfByte::~TColStd_HArray1OfByte %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray1OfByte {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray1OfByte(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray1OfByte {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray1OfByte {
-	Handle_TColStd_HArray1OfByte GetHandle() {
-	return *(Handle_TColStd_HArray1OfByte*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray1OfByte::Handle_TColStd_HArray1OfByte %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray1OfByte;
 class Handle_TColStd_HArray1OfByte : public Handle_MMgt_TShared {
@@ -3413,20 +2887,6 @@ class Handle_TColStd_HArray1OfByte : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray1OfByte {
     TColStd_HArray1OfByte* GetObject() {
     return (TColStd_HArray1OfByte*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray1OfByte::~Handle_TColStd_HArray1OfByte %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray1OfByte {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3500,25 +2960,23 @@ class TColStd_HArray1OfCharacter : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray1OfCharacter::~TColStd_HArray1OfCharacter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray1OfCharacter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray1OfCharacter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray1OfCharacter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray1OfCharacter {
-	Handle_TColStd_HArray1OfCharacter GetHandle() {
-	return *(Handle_TColStd_HArray1OfCharacter*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray1OfCharacter::Handle_TColStd_HArray1OfCharacter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray1OfCharacter;
 class Handle_TColStd_HArray1OfCharacter : public Handle_MMgt_TShared {
@@ -3536,20 +2994,6 @@ class Handle_TColStd_HArray1OfCharacter : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray1OfCharacter {
     TColStd_HArray1OfCharacter* GetObject() {
     return (TColStd_HArray1OfCharacter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray1OfCharacter::~Handle_TColStd_HArray1OfCharacter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray1OfCharacter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3623,25 +3067,23 @@ class TColStd_HArray1OfExtendedString : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray1OfExtendedString::~TColStd_HArray1OfExtendedString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray1OfExtendedString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray1OfExtendedString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray1OfExtendedString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray1OfExtendedString {
-	Handle_TColStd_HArray1OfExtendedString GetHandle() {
-	return *(Handle_TColStd_HArray1OfExtendedString*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray1OfExtendedString::Handle_TColStd_HArray1OfExtendedString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray1OfExtendedString;
 class Handle_TColStd_HArray1OfExtendedString : public Handle_MMgt_TShared {
@@ -3659,20 +3101,6 @@ class Handle_TColStd_HArray1OfExtendedString : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray1OfExtendedString {
     TColStd_HArray1OfExtendedString* GetObject() {
     return (TColStd_HArray1OfExtendedString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray1OfExtendedString::~Handle_TColStd_HArray1OfExtendedString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray1OfExtendedString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3746,25 +3174,23 @@ class TColStd_HArray1OfInteger : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray1OfInteger::~TColStd_HArray1OfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray1OfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray1OfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray1OfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray1OfInteger {
-	Handle_TColStd_HArray1OfInteger GetHandle() {
-	return *(Handle_TColStd_HArray1OfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray1OfInteger::Handle_TColStd_HArray1OfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray1OfInteger;
 class Handle_TColStd_HArray1OfInteger : public Handle_MMgt_TShared {
@@ -3782,20 +3208,6 @@ class Handle_TColStd_HArray1OfInteger : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray1OfInteger {
     TColStd_HArray1OfInteger* GetObject() {
     return (TColStd_HArray1OfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray1OfInteger::~Handle_TColStd_HArray1OfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray1OfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3869,25 +3281,23 @@ class TColStd_HArray1OfListOfInteger : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray1OfListOfInteger::~TColStd_HArray1OfListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray1OfListOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray1OfListOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray1OfListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray1OfListOfInteger {
-	Handle_TColStd_HArray1OfListOfInteger GetHandle() {
-	return *(Handle_TColStd_HArray1OfListOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray1OfListOfInteger::Handle_TColStd_HArray1OfListOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray1OfListOfInteger;
 class Handle_TColStd_HArray1OfListOfInteger : public Handle_MMgt_TShared {
@@ -3905,20 +3315,6 @@ class Handle_TColStd_HArray1OfListOfInteger : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray1OfListOfInteger {
     TColStd_HArray1OfListOfInteger* GetObject() {
     return (TColStd_HArray1OfListOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray1OfListOfInteger::~Handle_TColStd_HArray1OfListOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray1OfListOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3992,25 +3388,23 @@ class TColStd_HArray1OfReal : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray1OfReal::~TColStd_HArray1OfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray1OfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray1OfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray1OfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray1OfReal {
-	Handle_TColStd_HArray1OfReal GetHandle() {
-	return *(Handle_TColStd_HArray1OfReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray1OfReal::Handle_TColStd_HArray1OfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray1OfReal;
 class Handle_TColStd_HArray1OfReal : public Handle_MMgt_TShared {
@@ -4028,20 +3422,6 @@ class Handle_TColStd_HArray1OfReal : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray1OfReal {
     TColStd_HArray1OfReal* GetObject() {
     return (TColStd_HArray1OfReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray1OfReal::~Handle_TColStd_HArray1OfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray1OfReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4097,13 +3477,13 @@ class TColStd_HArray1OfTransient : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value (const Standard_Integer Index);
+		Handle_Standard_Transient Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Standard_Transient
 ") ChangeValue;
-		Handle_Standard_Transient & ChangeValue (const Standard_Integer Index);
+		Handle_Standard_Transient ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: TColStd_Array1OfTransient
 ") Array1;
@@ -4115,25 +3495,23 @@ class TColStd_HArray1OfTransient : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray1OfTransient::~TColStd_HArray1OfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray1OfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray1OfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray1OfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray1OfTransient {
-	Handle_TColStd_HArray1OfTransient GetHandle() {
-	return *(Handle_TColStd_HArray1OfTransient*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray1OfTransient::Handle_TColStd_HArray1OfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray1OfTransient;
 class Handle_TColStd_HArray1OfTransient : public Handle_MMgt_TShared {
@@ -4151,20 +3529,6 @@ class Handle_TColStd_HArray1OfTransient : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray1OfTransient {
     TColStd_HArray1OfTransient* GetObject() {
     return (TColStd_HArray1OfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray1OfTransient::~Handle_TColStd_HArray1OfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray1OfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4264,25 +3628,23 @@ class TColStd_HArray2OfBoolean : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray2OfBoolean::~TColStd_HArray2OfBoolean %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray2OfBoolean {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray2OfBoolean(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray2OfBoolean {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray2OfBoolean {
-	Handle_TColStd_HArray2OfBoolean GetHandle() {
-	return *(Handle_TColStd_HArray2OfBoolean*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray2OfBoolean::Handle_TColStd_HArray2OfBoolean %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray2OfBoolean;
 class Handle_TColStd_HArray2OfBoolean : public Handle_MMgt_TShared {
@@ -4300,20 +3662,6 @@ class Handle_TColStd_HArray2OfBoolean : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray2OfBoolean {
     TColStd_HArray2OfBoolean* GetObject() {
     return (TColStd_HArray2OfBoolean*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray2OfBoolean::~Handle_TColStd_HArray2OfBoolean %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray2OfBoolean {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4413,25 +3761,23 @@ class TColStd_HArray2OfCharacter : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray2OfCharacter::~TColStd_HArray2OfCharacter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray2OfCharacter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray2OfCharacter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray2OfCharacter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray2OfCharacter {
-	Handle_TColStd_HArray2OfCharacter GetHandle() {
-	return *(Handle_TColStd_HArray2OfCharacter*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray2OfCharacter::Handle_TColStd_HArray2OfCharacter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray2OfCharacter;
 class Handle_TColStd_HArray2OfCharacter : public Handle_MMgt_TShared {
@@ -4449,20 +3795,6 @@ class Handle_TColStd_HArray2OfCharacter : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray2OfCharacter {
     TColStd_HArray2OfCharacter* GetObject() {
     return (TColStd_HArray2OfCharacter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray2OfCharacter::~Handle_TColStd_HArray2OfCharacter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray2OfCharacter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4562,25 +3894,23 @@ class TColStd_HArray2OfInteger : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray2OfInteger::~TColStd_HArray2OfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray2OfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray2OfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray2OfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray2OfInteger {
-	Handle_TColStd_HArray2OfInteger GetHandle() {
-	return *(Handle_TColStd_HArray2OfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray2OfInteger::Handle_TColStd_HArray2OfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray2OfInteger;
 class Handle_TColStd_HArray2OfInteger : public Handle_MMgt_TShared {
@@ -4598,20 +3928,6 @@ class Handle_TColStd_HArray2OfInteger : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray2OfInteger {
     TColStd_HArray2OfInteger* GetObject() {
     return (TColStd_HArray2OfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray2OfInteger::~Handle_TColStd_HArray2OfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray2OfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4711,25 +4027,23 @@ class TColStd_HArray2OfReal : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray2OfReal::~TColStd_HArray2OfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray2OfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray2OfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray2OfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray2OfReal {
-	Handle_TColStd_HArray2OfReal GetHandle() {
-	return *(Handle_TColStd_HArray2OfReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray2OfReal::Handle_TColStd_HArray2OfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray2OfReal;
 class Handle_TColStd_HArray2OfReal : public Handle_MMgt_TShared {
@@ -4747,20 +4061,6 @@ class Handle_TColStd_HArray2OfReal : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray2OfReal {
     TColStd_HArray2OfReal* GetObject() {
     return (TColStd_HArray2OfReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray2OfReal::~Handle_TColStd_HArray2OfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray2OfReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4840,7 +4140,7 @@ class TColStd_HArray2OfTransient : public MMgt_TShared {
 	:type Col: int
 	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value (const Standard_Integer Row,const Standard_Integer Col);
+		Handle_Standard_Transient Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Row:
 	:type Row: int
@@ -4848,7 +4148,7 @@ class TColStd_HArray2OfTransient : public MMgt_TShared {
 	:type Col: int
 	:rtype: Handle_Standard_Transient
 ") ChangeValue;
-		Handle_Standard_Transient & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		Handle_Standard_Transient ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("compactdefaultargs") Array2;
 		%feature("autodoc", "	:rtype: TColStd_Array2OfTransient
 ") Array2;
@@ -4860,25 +4160,23 @@ class TColStd_HArray2OfTransient : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HArray2OfTransient::~TColStd_HArray2OfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HArray2OfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HArray2OfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HArray2OfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HArray2OfTransient {
-	Handle_TColStd_HArray2OfTransient GetHandle() {
-	return *(Handle_TColStd_HArray2OfTransient*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HArray2OfTransient::Handle_TColStd_HArray2OfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HArray2OfTransient;
 class Handle_TColStd_HArray2OfTransient : public Handle_MMgt_TShared {
@@ -4896,20 +4194,6 @@ class Handle_TColStd_HArray2OfTransient : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HArray2OfTransient {
     TColStd_HArray2OfTransient* GetObject() {
     return (TColStd_HArray2OfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HArray2OfTransient::~Handle_TColStd_HArray2OfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HArray2OfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4939,25 +4223,23 @@ class TColStd_HPackedMapOfInteger : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HPackedMapOfInteger::~TColStd_HPackedMapOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HPackedMapOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HPackedMapOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HPackedMapOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HPackedMapOfInteger {
-	Handle_TColStd_HPackedMapOfInteger GetHandle() {
-	return *(Handle_TColStd_HPackedMapOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HPackedMapOfInteger::Handle_TColStd_HPackedMapOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HPackedMapOfInteger;
 class Handle_TColStd_HPackedMapOfInteger : public Handle_MMgt_TShared {
@@ -4975,20 +4257,6 @@ class Handle_TColStd_HPackedMapOfInteger : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HPackedMapOfInteger {
     TColStd_HPackedMapOfInteger* GetObject() {
     return (TColStd_HPackedMapOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HPackedMapOfInteger::~Handle_TColStd_HPackedMapOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HPackedMapOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5134,25 +4402,23 @@ class TColStd_HSequenceOfAsciiString : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HSequenceOfAsciiString::~TColStd_HSequenceOfAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HSequenceOfAsciiString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HSequenceOfAsciiString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HSequenceOfAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HSequenceOfAsciiString {
-	Handle_TColStd_HSequenceOfAsciiString GetHandle() {
-	return *(Handle_TColStd_HSequenceOfAsciiString*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HSequenceOfAsciiString::Handle_TColStd_HSequenceOfAsciiString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HSequenceOfAsciiString;
 class Handle_TColStd_HSequenceOfAsciiString : public Handle_MMgt_TShared {
@@ -5170,20 +4436,6 @@ class Handle_TColStd_HSequenceOfAsciiString : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HSequenceOfAsciiString {
     TColStd_HSequenceOfAsciiString* GetObject() {
     return (TColStd_HSequenceOfAsciiString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HSequenceOfAsciiString::~Handle_TColStd_HSequenceOfAsciiString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HSequenceOfAsciiString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5329,25 +4581,23 @@ class TColStd_HSequenceOfExtendedString : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HSequenceOfExtendedString::~TColStd_HSequenceOfExtendedString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HSequenceOfExtendedString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HSequenceOfExtendedString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HSequenceOfExtendedString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HSequenceOfExtendedString {
-	Handle_TColStd_HSequenceOfExtendedString GetHandle() {
-	return *(Handle_TColStd_HSequenceOfExtendedString*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HSequenceOfExtendedString::Handle_TColStd_HSequenceOfExtendedString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HSequenceOfExtendedString;
 class Handle_TColStd_HSequenceOfExtendedString : public Handle_MMgt_TShared {
@@ -5365,20 +4615,6 @@ class Handle_TColStd_HSequenceOfExtendedString : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HSequenceOfExtendedString {
     TColStd_HSequenceOfExtendedString* GetObject() {
     return (TColStd_HSequenceOfExtendedString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HSequenceOfExtendedString::~Handle_TColStd_HSequenceOfExtendedString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HSequenceOfExtendedString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5488,13 +4724,13 @@ class TColStd_HSequenceOfHAsciiString : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_TCollection_HAsciiString
 ") Value;
-		const Handle_TCollection_HAsciiString & Value (const Standard_Integer anIndex);
+		Handle_TCollection_HAsciiString Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_TCollection_HAsciiString
 ") ChangeValue;
-		Handle_TCollection_HAsciiString & ChangeValue (const Standard_Integer anIndex);
+		Handle_TCollection_HAsciiString ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -5524,25 +4760,23 @@ class TColStd_HSequenceOfHAsciiString : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HSequenceOfHAsciiString::~TColStd_HSequenceOfHAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HSequenceOfHAsciiString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HSequenceOfHAsciiString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HSequenceOfHAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HSequenceOfHAsciiString {
-	Handle_TColStd_HSequenceOfHAsciiString GetHandle() {
-	return *(Handle_TColStd_HSequenceOfHAsciiString*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HSequenceOfHAsciiString::Handle_TColStd_HSequenceOfHAsciiString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HSequenceOfHAsciiString;
 class Handle_TColStd_HSequenceOfHAsciiString : public Handle_MMgt_TShared {
@@ -5560,20 +4794,6 @@ class Handle_TColStd_HSequenceOfHAsciiString : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HSequenceOfHAsciiString {
     TColStd_HSequenceOfHAsciiString* GetObject() {
     return (TColStd_HSequenceOfHAsciiString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HSequenceOfHAsciiString::~Handle_TColStd_HSequenceOfHAsciiString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HSequenceOfHAsciiString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5683,13 +4903,13 @@ class TColStd_HSequenceOfHExtendedString : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_TCollection_HExtendedString
 ") Value;
-		const Handle_TCollection_HExtendedString & Value (const Standard_Integer anIndex);
+		Handle_TCollection_HExtendedString Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_TCollection_HExtendedString
 ") ChangeValue;
-		Handle_TCollection_HExtendedString & ChangeValue (const Standard_Integer anIndex);
+		Handle_TCollection_HExtendedString ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -5719,25 +4939,23 @@ class TColStd_HSequenceOfHExtendedString : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HSequenceOfHExtendedString::~TColStd_HSequenceOfHExtendedString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HSequenceOfHExtendedString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HSequenceOfHExtendedString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HSequenceOfHExtendedString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HSequenceOfHExtendedString {
-	Handle_TColStd_HSequenceOfHExtendedString GetHandle() {
-	return *(Handle_TColStd_HSequenceOfHExtendedString*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HSequenceOfHExtendedString::Handle_TColStd_HSequenceOfHExtendedString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HSequenceOfHExtendedString;
 class Handle_TColStd_HSequenceOfHExtendedString : public Handle_MMgt_TShared {
@@ -5755,20 +4973,6 @@ class Handle_TColStd_HSequenceOfHExtendedString : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HSequenceOfHExtendedString {
     TColStd_HSequenceOfHExtendedString* GetObject() {
     return (TColStd_HSequenceOfHExtendedString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HSequenceOfHExtendedString::~Handle_TColStd_HSequenceOfHExtendedString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HSequenceOfHExtendedString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5914,25 +5118,23 @@ class TColStd_HSequenceOfInteger : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HSequenceOfInteger::~TColStd_HSequenceOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HSequenceOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HSequenceOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HSequenceOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HSequenceOfInteger {
-	Handle_TColStd_HSequenceOfInteger GetHandle() {
-	return *(Handle_TColStd_HSequenceOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HSequenceOfInteger::Handle_TColStd_HSequenceOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HSequenceOfInteger;
 class Handle_TColStd_HSequenceOfInteger : public Handle_MMgt_TShared {
@@ -5950,20 +5152,6 @@ class Handle_TColStd_HSequenceOfInteger : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HSequenceOfInteger {
     TColStd_HSequenceOfInteger* GetObject() {
     return (TColStd_HSequenceOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HSequenceOfInteger::~Handle_TColStd_HSequenceOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HSequenceOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6109,25 +5297,23 @@ class TColStd_HSequenceOfReal : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HSequenceOfReal::~TColStd_HSequenceOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HSequenceOfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HSequenceOfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HSequenceOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HSequenceOfReal {
-	Handle_TColStd_HSequenceOfReal GetHandle() {
-	return *(Handle_TColStd_HSequenceOfReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HSequenceOfReal::Handle_TColStd_HSequenceOfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HSequenceOfReal;
 class Handle_TColStd_HSequenceOfReal : public Handle_MMgt_TShared {
@@ -6145,20 +5331,6 @@ class Handle_TColStd_HSequenceOfReal : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HSequenceOfReal {
     TColStd_HSequenceOfReal* GetObject() {
     return (TColStd_HSequenceOfReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HSequenceOfReal::~Handle_TColStd_HSequenceOfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HSequenceOfReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6268,13 +5440,13 @@ class TColStd_HSequenceOfTransient : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value (const Standard_Integer anIndex);
+		Handle_Standard_Transient Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Standard_Transient
 ") ChangeValue;
-		Handle_Standard_Transient & ChangeValue (const Standard_Integer anIndex);
+		Handle_Standard_Transient ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -6304,25 +5476,23 @@ class TColStd_HSequenceOfTransient : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HSequenceOfTransient::~TColStd_HSequenceOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HSequenceOfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HSequenceOfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HSequenceOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HSequenceOfTransient {
-	Handle_TColStd_HSequenceOfTransient GetHandle() {
-	return *(Handle_TColStd_HSequenceOfTransient*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HSequenceOfTransient::Handle_TColStd_HSequenceOfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HSequenceOfTransient;
 class Handle_TColStd_HSequenceOfTransient : public Handle_MMgt_TShared {
@@ -6340,20 +5510,6 @@ class Handle_TColStd_HSequenceOfTransient : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HSequenceOfTransient {
     TColStd_HSequenceOfTransient* GetObject() {
     return (TColStd_HSequenceOfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HSequenceOfTransient::~Handle_TColStd_HSequenceOfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HSequenceOfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6439,25 +5595,23 @@ class TColStd_HSetOfInteger : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HSetOfInteger::~TColStd_HSetOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HSetOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HSetOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HSetOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HSetOfInteger {
-	Handle_TColStd_HSetOfInteger GetHandle() {
-	return *(Handle_TColStd_HSetOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HSetOfInteger::Handle_TColStd_HSetOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HSetOfInteger;
 class Handle_TColStd_HSetOfInteger : public Handle_MMgt_TShared {
@@ -6475,20 +5629,6 @@ class Handle_TColStd_HSetOfInteger : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HSetOfInteger {
     TColStd_HSetOfInteger* GetObject() {
     return (TColStd_HSetOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HSetOfInteger::~Handle_TColStd_HSetOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HSetOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6574,25 +5714,23 @@ class TColStd_HSetOfReal : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HSetOfReal::~TColStd_HSetOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HSetOfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HSetOfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HSetOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HSetOfReal {
-	Handle_TColStd_HSetOfReal GetHandle() {
-	return *(Handle_TColStd_HSetOfReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HSetOfReal::Handle_TColStd_HSetOfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HSetOfReal;
 class Handle_TColStd_HSetOfReal : public Handle_MMgt_TShared {
@@ -6610,20 +5748,6 @@ class Handle_TColStd_HSetOfReal : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HSetOfReal {
     TColStd_HSetOfReal* GetObject() {
     return (TColStd_HSetOfReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HSetOfReal::~Handle_TColStd_HSetOfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HSetOfReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6709,25 +5833,23 @@ class TColStd_HSetOfTransient : public MMgt_TShared {
 };
 
 
-%feature("shadow") TColStd_HSetOfTransient::~TColStd_HSetOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_HSetOfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_HSetOfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_HSetOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_HSetOfTransient {
-	Handle_TColStd_HSetOfTransient GetHandle() {
-	return *(Handle_TColStd_HSetOfTransient*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_HSetOfTransient::Handle_TColStd_HSetOfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_HSetOfTransient;
 class Handle_TColStd_HSetOfTransient : public Handle_MMgt_TShared {
@@ -6745,20 +5867,6 @@ class Handle_TColStd_HSetOfTransient : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HSetOfTransient {
     TColStd_HSetOfTransient* GetObject() {
     return (TColStd_HSetOfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_HSetOfTransient::~Handle_TColStd_HSetOfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_HSetOfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6782,7 +5890,7 @@ class TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient : public TC
 		%feature("compactdefaultargs") Key1;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Key1;
-		Handle_Standard_Transient & Key1 ();
+		Handle_Standard_Transient Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -6803,29 +5911,27 @@ class TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient : public TC
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient::~TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient::Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
-	Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient GetHandle() {
-	return *(Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient;
 class Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient : public Handle_TCollection_MapNode {
@@ -6843,20 +5949,6 @@ class Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient : pu
 %extend Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
     TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient* GetObject() {
     return (TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient::~Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6924,19 +6016,19 @@ class TColStd_IndexedDataMapOfTransientTransient : public TCollection_BasicMap {
 	:type I: int
 	:rtype: Handle_Standard_Transient
 ") FindKey;
-		const Handle_Standard_Transient & FindKey (const Standard_Integer I);
+		Handle_Standard_Transient FindKey (const Standard_Integer I);
 		%feature("compactdefaultargs") FindFromIndex;
 		%feature("autodoc", "	:param I:
 	:type I: int
 	:rtype: Handle_Standard_Transient
 ") FindFromIndex;
-		const Handle_Standard_Transient & FindFromIndex (const Standard_Integer I);
+		Handle_Standard_Transient FindFromIndex (const Standard_Integer I);
 		%feature("compactdefaultargs") ChangeFromIndex;
 		%feature("autodoc", "	:param I:
 	:type I: int
 	:rtype: Handle_Standard_Transient
 ") ChangeFromIndex;
-		Handle_Standard_Transient & ChangeFromIndex (const Standard_Integer I);
+		Handle_Standard_Transient ChangeFromIndex (const Standard_Integer I);
 		%feature("compactdefaultargs") FindIndex;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_Standard_Transient &
@@ -6948,13 +6040,13 @@ class TColStd_IndexedDataMapOfTransientTransient : public TCollection_BasicMap {
 	:type K: Handle_Standard_Transient &
 	:rtype: Handle_Standard_Transient
 ") FindFromKey;
-		const Handle_Standard_Transient & FindFromKey (const Handle_Standard_Transient & K);
+		Handle_Standard_Transient FindFromKey (const Handle_Standard_Transient & K);
 		%feature("compactdefaultargs") ChangeFromKey;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_Standard_Transient &
 	:rtype: Handle_Standard_Transient
 ") ChangeFromKey;
-		Handle_Standard_Transient & ChangeFromKey (const Handle_Standard_Transient & K);
+		Handle_Standard_Transient ChangeFromKey (const Handle_Standard_Transient & K);
 		%feature("compactdefaultargs") FindFromKey1;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_Standard_Transient &
@@ -6970,20 +6062,6 @@ class TColStd_IndexedDataMapOfTransientTransient : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_IndexedDataMapOfTransientTransient::~TColStd_IndexedDataMapOfTransientTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_IndexedDataMapOfTransientTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_IndexedMapNodeOfIndexedMapOfInteger;
 class TColStd_IndexedMapNodeOfIndexedMapOfInteger : public TCollection_MapNode {
 	public:
@@ -7032,25 +6110,23 @@ class TColStd_IndexedMapNodeOfIndexedMapOfInteger : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TColStd_IndexedMapNodeOfIndexedMapOfInteger::~TColStd_IndexedMapNodeOfIndexedMapOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_IndexedMapNodeOfIndexedMapOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_IndexedMapNodeOfIndexedMapOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_IndexedMapNodeOfIndexedMapOfInteger {
-	Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger GetHandle() {
-	return *(Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger::Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger;
 class Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger : public Handle_TCollection_MapNode {
@@ -7068,20 +6144,6 @@ class Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger : public Handle_TCollec
 %extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger {
     TColStd_IndexedMapNodeOfIndexedMapOfInteger* GetObject() {
     return (TColStd_IndexedMapNodeOfIndexedMapOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger::~Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7133,25 +6195,23 @@ class TColStd_IndexedMapNodeOfIndexedMapOfReal : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TColStd_IndexedMapNodeOfIndexedMapOfReal::~TColStd_IndexedMapNodeOfIndexedMapOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_IndexedMapNodeOfIndexedMapOfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_IndexedMapNodeOfIndexedMapOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_IndexedMapNodeOfIndexedMapOfReal {
-	Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal GetHandle() {
-	return *(Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal::Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal;
 class Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal : public Handle_TCollection_MapNode {
@@ -7169,20 +6229,6 @@ class Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal : public Handle_TCollectio
 %extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal {
     TColStd_IndexedMapNodeOfIndexedMapOfReal* GetObject() {
     return (TColStd_IndexedMapNodeOfIndexedMapOfReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal::~Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7204,7 +6250,7 @@ class TColStd_IndexedMapNodeOfIndexedMapOfTransient : public TCollection_MapNode
 		%feature("compactdefaultargs") Key1;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Key1;
-		Handle_Standard_Transient & Key1 ();
+		Handle_Standard_Transient Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -7225,25 +6271,23 @@ class TColStd_IndexedMapNodeOfIndexedMapOfTransient : public TCollection_MapNode
 };
 
 
-%feature("shadow") TColStd_IndexedMapNodeOfIndexedMapOfTransient::~TColStd_IndexedMapNodeOfIndexedMapOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_IndexedMapNodeOfIndexedMapOfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_IndexedMapNodeOfIndexedMapOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_IndexedMapNodeOfIndexedMapOfTransient {
-	Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient GetHandle() {
-	return *(Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient::Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient;
 class Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient : public Handle_TCollection_MapNode {
@@ -7261,20 +6305,6 @@ class Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient : public Handle_TColl
 %extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient {
     TColStd_IndexedMapNodeOfIndexedMapOfTransient* GetObject() {
     return (TColStd_IndexedMapNodeOfIndexedMapOfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient::~Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7348,20 +6378,6 @@ class TColStd_IndexedMapOfInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_IndexedMapOfInteger::~TColStd_IndexedMapOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_IndexedMapOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_IndexedMapOfReal;
 class TColStd_IndexedMapOfReal : public TCollection_BasicMap {
 	public:
@@ -7432,20 +6448,6 @@ class TColStd_IndexedMapOfReal : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_IndexedMapOfReal::~TColStd_IndexedMapOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_IndexedMapOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_IndexedMapOfTransient;
 class TColStd_IndexedMapOfTransient : public TCollection_BasicMap {
 	public:
@@ -7506,7 +6508,7 @@ class TColStd_IndexedMapOfTransient : public TCollection_BasicMap {
 	:type I: int
 	:rtype: Handle_Standard_Transient
 ") FindKey;
-		const Handle_Standard_Transient & FindKey (const Standard_Integer I);
+		Handle_Standard_Transient FindKey (const Standard_Integer I);
 		%feature("compactdefaultargs") FindIndex;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_Standard_Transient &
@@ -7516,20 +6518,6 @@ class TColStd_IndexedMapOfTransient : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_IndexedMapOfTransient::~TColStd_IndexedMapOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_IndexedMapOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_ListIteratorOfListOfAsciiString;
 class TColStd_ListIteratorOfListOfAsciiString {
 	public:
@@ -7564,20 +6552,6 @@ class TColStd_ListIteratorOfListOfAsciiString {
 };
 
 
-%feature("shadow") TColStd_ListIteratorOfListOfAsciiString::~TColStd_ListIteratorOfListOfAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_ListIteratorOfListOfAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_ListIteratorOfListOfInteger;
 class TColStd_ListIteratorOfListOfInteger {
 	public:
@@ -7621,20 +6595,6 @@ class TColStd_ListIteratorOfListOfInteger {
             };
 
 
-%feature("shadow") TColStd_ListIteratorOfListOfInteger::~TColStd_ListIteratorOfListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_ListIteratorOfListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_ListIteratorOfListOfReal;
 class TColStd_ListIteratorOfListOfReal {
 	public:
@@ -7678,20 +6638,6 @@ class TColStd_ListIteratorOfListOfReal {
             };
 
 
-%feature("shadow") TColStd_ListIteratorOfListOfReal::~TColStd_ListIteratorOfListOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_ListIteratorOfListOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_ListIteratorOfListOfTransient;
 class TColStd_ListIteratorOfListOfTransient {
 	public:
@@ -7722,24 +6668,10 @@ class TColStd_ListIteratorOfListOfTransient {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_ListIteratorOfListOfTransient::~TColStd_ListIteratorOfListOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_ListIteratorOfListOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_ListIteratorOfSetListOfSetOfInteger;
 class TColStd_ListIteratorOfSetListOfSetOfInteger {
 	public:
@@ -7783,20 +6715,6 @@ class TColStd_ListIteratorOfSetListOfSetOfInteger {
             };
 
 
-%feature("shadow") TColStd_ListIteratorOfSetListOfSetOfInteger::~TColStd_ListIteratorOfSetListOfSetOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_ListIteratorOfSetListOfSetOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_ListIteratorOfSetListOfSetOfReal;
 class TColStd_ListIteratorOfSetListOfSetOfReal {
 	public:
@@ -7840,20 +6758,6 @@ class TColStd_ListIteratorOfSetListOfSetOfReal {
             };
 
 
-%feature("shadow") TColStd_ListIteratorOfSetListOfSetOfReal::~TColStd_ListIteratorOfSetListOfSetOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_ListIteratorOfSetListOfSetOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_ListIteratorOfSetListOfSetOfTransient;
 class TColStd_ListIteratorOfSetListOfSetOfTransient {
 	public:
@@ -7884,24 +6788,10 @@ class TColStd_ListIteratorOfSetListOfSetOfTransient {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_ListIteratorOfSetListOfSetOfTransient::~TColStd_ListIteratorOfSetListOfSetOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_ListIteratorOfSetListOfSetOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_ListNodeOfListOfAsciiString;
 class TColStd_ListNodeOfListOfAsciiString : public TCollection_MapNode {
 	public:
@@ -7920,25 +6810,23 @@ class TColStd_ListNodeOfListOfAsciiString : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TColStd_ListNodeOfListOfAsciiString::~TColStd_ListNodeOfListOfAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_ListNodeOfListOfAsciiString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_ListNodeOfListOfAsciiString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_ListNodeOfListOfAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_ListNodeOfListOfAsciiString {
-	Handle_TColStd_ListNodeOfListOfAsciiString GetHandle() {
-	return *(Handle_TColStd_ListNodeOfListOfAsciiString*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_ListNodeOfListOfAsciiString::Handle_TColStd_ListNodeOfListOfAsciiString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_ListNodeOfListOfAsciiString;
 class Handle_TColStd_ListNodeOfListOfAsciiString : public Handle_TCollection_MapNode {
@@ -7956,20 +6844,6 @@ class Handle_TColStd_ListNodeOfListOfAsciiString : public Handle_TCollection_Map
 %extend Handle_TColStd_ListNodeOfListOfAsciiString {
     TColStd_ListNodeOfListOfAsciiString* GetObject() {
     return (TColStd_ListNodeOfListOfAsciiString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_ListNodeOfListOfAsciiString::~Handle_TColStd_ListNodeOfListOfAsciiString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_ListNodeOfListOfAsciiString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8000,25 +6874,23 @@ class TColStd_ListNodeOfListOfInteger : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_ListNodeOfListOfInteger::~TColStd_ListNodeOfListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_ListNodeOfListOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_ListNodeOfListOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_ListNodeOfListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_ListNodeOfListOfInteger {
-	Handle_TColStd_ListNodeOfListOfInteger GetHandle() {
-	return *(Handle_TColStd_ListNodeOfListOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_ListNodeOfListOfInteger::Handle_TColStd_ListNodeOfListOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_ListNodeOfListOfInteger;
 class Handle_TColStd_ListNodeOfListOfInteger : public Handle_TCollection_MapNode {
@@ -8036,20 +6908,6 @@ class Handle_TColStd_ListNodeOfListOfInteger : public Handle_TCollection_MapNode
 %extend Handle_TColStd_ListNodeOfListOfInteger {
     TColStd_ListNodeOfListOfInteger* GetObject() {
     return (TColStd_ListNodeOfListOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_ListNodeOfListOfInteger::~Handle_TColStd_ListNodeOfListOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_ListNodeOfListOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8080,25 +6938,23 @@ class TColStd_ListNodeOfListOfReal : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_ListNodeOfListOfReal::~TColStd_ListNodeOfListOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_ListNodeOfListOfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_ListNodeOfListOfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_ListNodeOfListOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_ListNodeOfListOfReal {
-	Handle_TColStd_ListNodeOfListOfReal GetHandle() {
-	return *(Handle_TColStd_ListNodeOfListOfReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_ListNodeOfListOfReal::Handle_TColStd_ListNodeOfListOfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_ListNodeOfListOfReal;
 class Handle_TColStd_ListNodeOfListOfReal : public Handle_TCollection_MapNode {
@@ -8118,20 +6974,6 @@ class Handle_TColStd_ListNodeOfListOfReal : public Handle_TCollection_MapNode {
     return (TColStd_ListNodeOfListOfReal*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColStd_ListNodeOfListOfReal::~Handle_TColStd_ListNodeOfListOfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_ListNodeOfListOfReal {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColStd_ListNodeOfListOfTransient;
 class TColStd_ListNodeOfListOfTransient : public TCollection_MapNode {
@@ -8147,29 +6989,27 @@ class TColStd_ListNodeOfListOfTransient : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_ListNodeOfListOfTransient::~TColStd_ListNodeOfListOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColStd_ListNodeOfListOfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_ListNodeOfListOfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColStd_ListNodeOfListOfTransient::Handle_TColStd_ListNodeOfListOfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColStd_ListNodeOfListOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_ListNodeOfListOfTransient {
-	Handle_TColStd_ListNodeOfListOfTransient GetHandle() {
-	return *(Handle_TColStd_ListNodeOfListOfTransient*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColStd_ListNodeOfListOfTransient;
 class Handle_TColStd_ListNodeOfListOfTransient : public Handle_TCollection_MapNode {
@@ -8187,20 +7027,6 @@ class Handle_TColStd_ListNodeOfListOfTransient : public Handle_TCollection_MapNo
 %extend Handle_TColStd_ListNodeOfListOfTransient {
     TColStd_ListNodeOfListOfTransient* GetObject() {
     return (TColStd_ListNodeOfListOfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_ListNodeOfListOfTransient::~Handle_TColStd_ListNodeOfListOfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_ListNodeOfListOfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8231,25 +7057,23 @@ class TColStd_ListNodeOfSetListOfSetOfInteger : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_ListNodeOfSetListOfSetOfInteger::~TColStd_ListNodeOfSetListOfSetOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_ListNodeOfSetListOfSetOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_ListNodeOfSetListOfSetOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_ListNodeOfSetListOfSetOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_ListNodeOfSetListOfSetOfInteger {
-	Handle_TColStd_ListNodeOfSetListOfSetOfInteger GetHandle() {
-	return *(Handle_TColStd_ListNodeOfSetListOfSetOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_ListNodeOfSetListOfSetOfInteger::Handle_TColStd_ListNodeOfSetListOfSetOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_ListNodeOfSetListOfSetOfInteger;
 class Handle_TColStd_ListNodeOfSetListOfSetOfInteger : public Handle_TCollection_MapNode {
@@ -8267,20 +7091,6 @@ class Handle_TColStd_ListNodeOfSetListOfSetOfInteger : public Handle_TCollection
 %extend Handle_TColStd_ListNodeOfSetListOfSetOfInteger {
     TColStd_ListNodeOfSetListOfSetOfInteger* GetObject() {
     return (TColStd_ListNodeOfSetListOfSetOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_ListNodeOfSetListOfSetOfInteger::~Handle_TColStd_ListNodeOfSetListOfSetOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_ListNodeOfSetListOfSetOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8311,25 +7121,23 @@ class TColStd_ListNodeOfSetListOfSetOfReal : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_ListNodeOfSetListOfSetOfReal::~TColStd_ListNodeOfSetListOfSetOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_ListNodeOfSetListOfSetOfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_ListNodeOfSetListOfSetOfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_ListNodeOfSetListOfSetOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_ListNodeOfSetListOfSetOfReal {
-	Handle_TColStd_ListNodeOfSetListOfSetOfReal GetHandle() {
-	return *(Handle_TColStd_ListNodeOfSetListOfSetOfReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_ListNodeOfSetListOfSetOfReal::Handle_TColStd_ListNodeOfSetListOfSetOfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_ListNodeOfSetListOfSetOfReal;
 class Handle_TColStd_ListNodeOfSetListOfSetOfReal : public Handle_TCollection_MapNode {
@@ -8349,20 +7157,6 @@ class Handle_TColStd_ListNodeOfSetListOfSetOfReal : public Handle_TCollection_Ma
     return (TColStd_ListNodeOfSetListOfSetOfReal*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColStd_ListNodeOfSetListOfSetOfReal::~Handle_TColStd_ListNodeOfSetListOfSetOfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_ListNodeOfSetListOfSetOfReal {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColStd_ListNodeOfSetListOfSetOfTransient;
 class TColStd_ListNodeOfSetListOfSetOfTransient : public TCollection_MapNode {
@@ -8378,29 +7172,27 @@ class TColStd_ListNodeOfSetListOfSetOfTransient : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_ListNodeOfSetListOfSetOfTransient::~TColStd_ListNodeOfSetListOfSetOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColStd_ListNodeOfSetListOfSetOfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_ListNodeOfSetListOfSetOfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColStd_ListNodeOfSetListOfSetOfTransient::Handle_TColStd_ListNodeOfSetListOfSetOfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColStd_ListNodeOfSetListOfSetOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_ListNodeOfSetListOfSetOfTransient {
-	Handle_TColStd_ListNodeOfSetListOfSetOfTransient GetHandle() {
-	return *(Handle_TColStd_ListNodeOfSetListOfSetOfTransient*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColStd_ListNodeOfSetListOfSetOfTransient;
 class Handle_TColStd_ListNodeOfSetListOfSetOfTransient : public Handle_TCollection_MapNode {
@@ -8418,20 +7210,6 @@ class Handle_TColStd_ListNodeOfSetListOfSetOfTransient : public Handle_TCollecti
 %extend Handle_TColStd_ListNodeOfSetListOfSetOfTransient {
     TColStd_ListNodeOfSetListOfSetOfTransient* GetObject() {
     return (TColStd_ListNodeOfSetListOfSetOfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_ListNodeOfSetListOfSetOfTransient::~Handle_TColStd_ListNodeOfSetListOfSetOfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_ListNodeOfSetListOfSetOfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8559,20 +7337,6 @@ class TColStd_ListOfAsciiString {
 };
 
 
-%feature("shadow") TColStd_ListOfAsciiString::~TColStd_ListOfAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_ListOfAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_ListOfInteger;
 class TColStd_ListOfInteger {
 	public:
@@ -8715,20 +7479,6 @@ class TColStd_ListOfInteger {
 };
 
 
-%feature("shadow") TColStd_ListOfInteger::~TColStd_ListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_ListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_ListOfReal;
 class TColStd_ListOfReal {
 	public:
@@ -8871,20 +7621,6 @@ class TColStd_ListOfReal {
 };
 
 
-%feature("shadow") TColStd_ListOfReal::~TColStd_ListOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_ListOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_ListOfTransient;
 class TColStd_ListOfTransient {
 	public:
@@ -8959,11 +7695,11 @@ class TColStd_ListOfTransient {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") First;
-		Handle_Standard_Transient & First ();
+		Handle_Standard_Transient First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Last;
-		Handle_Standard_Transient & Last ();
+		Handle_Standard_Transient Last ();
 		%feature("compactdefaultargs") RemoveFirst;
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
@@ -9009,20 +7745,6 @@ class TColStd_ListOfTransient {
 };
 
 
-%feature("shadow") TColStd_ListOfTransient::~TColStd_ListOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_ListOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class TColStd_MapIntegerHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -9044,20 +7766,6 @@ class TColStd_MapIntegerHasher {
 };
 
 
-%feature("shadow") TColStd_MapIntegerHasher::~TColStd_MapIntegerHasher %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapIntegerHasher {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_MapIteratorOfMapOfAsciiString;
 class TColStd_MapIteratorOfMapOfAsciiString : public TCollection_BasicMapIterator {
 	public:
@@ -9084,20 +7792,6 @@ class TColStd_MapIteratorOfMapOfAsciiString : public TCollection_BasicMapIterato
 };
 
 
-%feature("shadow") TColStd_MapIteratorOfMapOfAsciiString::~TColStd_MapIteratorOfMapOfAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapIteratorOfMapOfAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_MapIteratorOfMapOfInteger;
 class TColStd_MapIteratorOfMapOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -9124,20 +7818,6 @@ class TColStd_MapIteratorOfMapOfInteger : public TCollection_BasicMapIterator {
 };
 
 
-%feature("shadow") TColStd_MapIteratorOfMapOfInteger::~TColStd_MapIteratorOfMapOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapIteratorOfMapOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_MapIteratorOfMapOfReal;
 class TColStd_MapIteratorOfMapOfReal : public TCollection_BasicMapIterator {
 	public:
@@ -9164,20 +7844,6 @@ class TColStd_MapIteratorOfMapOfReal : public TCollection_BasicMapIterator {
 };
 
 
-%feature("shadow") TColStd_MapIteratorOfMapOfReal::~TColStd_MapIteratorOfMapOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapIteratorOfMapOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_MapIteratorOfMapOfTransient;
 class TColStd_MapIteratorOfMapOfTransient : public TCollection_BasicMapIterator {
 	public:
@@ -9200,24 +7866,10 @@ class TColStd_MapIteratorOfMapOfTransient : public TCollection_BasicMapIterator 
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Key;
-		const Handle_Standard_Transient & Key ();
+		Handle_Standard_Transient Key ();
 };
 
 
-%feature("shadow") TColStd_MapIteratorOfMapOfTransient::~TColStd_MapIteratorOfMapOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapIteratorOfMapOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_MapIteratorOfPackedMapOfInteger;
 class TColStd_MapIteratorOfPackedMapOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -9264,20 +7916,6 @@ class TColStd_MapIteratorOfPackedMapOfInteger : public TCollection_BasicMapItera
 };
 
 
-%feature("shadow") TColStd_MapIteratorOfPackedMapOfInteger::~TColStd_MapIteratorOfPackedMapOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapIteratorOfPackedMapOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_MapOfAsciiString;
 class TColStd_MapOfAsciiString : public TCollection_BasicMap {
 	public:
@@ -9330,20 +7968,6 @@ class TColStd_MapOfAsciiString : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_MapOfAsciiString::~TColStd_MapOfAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapOfAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_MapOfInteger;
 class TColStd_MapOfInteger : public TCollection_BasicMap {
 	public:
@@ -9396,20 +8020,6 @@ class TColStd_MapOfInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_MapOfInteger::~TColStd_MapOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_MapOfReal;
 class TColStd_MapOfReal : public TCollection_BasicMap {
 	public:
@@ -9462,20 +8072,6 @@ class TColStd_MapOfReal : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_MapOfReal::~TColStd_MapOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_MapOfTransient;
 class TColStd_MapOfTransient : public TCollection_BasicMap {
 	public:
@@ -9528,20 +8124,6 @@ class TColStd_MapOfTransient : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TColStd_MapOfTransient::~TColStd_MapOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class TColStd_MapRealHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -9563,20 +8145,6 @@ class TColStd_MapRealHasher {
 };
 
 
-%feature("shadow") TColStd_MapRealHasher::~TColStd_MapRealHasher %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapRealHasher {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class TColStd_MapTransientHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -9598,20 +8166,6 @@ class TColStd_MapTransientHasher {
 };
 
 
-%feature("shadow") TColStd_MapTransientHasher::~TColStd_MapTransientHasher %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_MapTransientHasher {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_QueueNodeOfQueueOfInteger;
 class TColStd_QueueNodeOfQueueOfInteger : public TCollection_MapNode {
 	public:
@@ -9639,25 +8193,23 @@ class TColStd_QueueNodeOfQueueOfInteger : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_QueueNodeOfQueueOfInteger::~TColStd_QueueNodeOfQueueOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_QueueNodeOfQueueOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_QueueNodeOfQueueOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_QueueNodeOfQueueOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_QueueNodeOfQueueOfInteger {
-	Handle_TColStd_QueueNodeOfQueueOfInteger GetHandle() {
-	return *(Handle_TColStd_QueueNodeOfQueueOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_QueueNodeOfQueueOfInteger::Handle_TColStd_QueueNodeOfQueueOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_QueueNodeOfQueueOfInteger;
 class Handle_TColStd_QueueNodeOfQueueOfInteger : public Handle_TCollection_MapNode {
@@ -9675,20 +8227,6 @@ class Handle_TColStd_QueueNodeOfQueueOfInteger : public Handle_TCollection_MapNo
 %extend Handle_TColStd_QueueNodeOfQueueOfInteger {
     TColStd_QueueNodeOfQueueOfInteger* GetObject() {
     return (TColStd_QueueNodeOfQueueOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_QueueNodeOfQueueOfInteger::~Handle_TColStd_QueueNodeOfQueueOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_QueueNodeOfQueueOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9719,25 +8257,23 @@ class TColStd_QueueNodeOfQueueOfReal : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_QueueNodeOfQueueOfReal::~TColStd_QueueNodeOfQueueOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_QueueNodeOfQueueOfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_QueueNodeOfQueueOfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_QueueNodeOfQueueOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_QueueNodeOfQueueOfReal {
-	Handle_TColStd_QueueNodeOfQueueOfReal GetHandle() {
-	return *(Handle_TColStd_QueueNodeOfQueueOfReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_QueueNodeOfQueueOfReal::Handle_TColStd_QueueNodeOfQueueOfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_QueueNodeOfQueueOfReal;
 class Handle_TColStd_QueueNodeOfQueueOfReal : public Handle_TCollection_MapNode {
@@ -9757,20 +8293,6 @@ class Handle_TColStd_QueueNodeOfQueueOfReal : public Handle_TCollection_MapNode 
     return (TColStd_QueueNodeOfQueueOfReal*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColStd_QueueNodeOfQueueOfReal::~Handle_TColStd_QueueNodeOfQueueOfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_QueueNodeOfQueueOfReal {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColStd_QueueNodeOfQueueOfTransient;
 class TColStd_QueueNodeOfQueueOfTransient : public TCollection_MapNode {
@@ -9786,29 +8308,27 @@ class TColStd_QueueNodeOfQueueOfTransient : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_QueueNodeOfQueueOfTransient::~TColStd_QueueNodeOfQueueOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColStd_QueueNodeOfQueueOfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_QueueNodeOfQueueOfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColStd_QueueNodeOfQueueOfTransient::Handle_TColStd_QueueNodeOfQueueOfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColStd_QueueNodeOfQueueOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_QueueNodeOfQueueOfTransient {
-	Handle_TColStd_QueueNodeOfQueueOfTransient GetHandle() {
-	return *(Handle_TColStd_QueueNodeOfQueueOfTransient*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColStd_QueueNodeOfQueueOfTransient;
 class Handle_TColStd_QueueNodeOfQueueOfTransient : public Handle_TCollection_MapNode {
@@ -9826,20 +8346,6 @@ class Handle_TColStd_QueueNodeOfQueueOfTransient : public Handle_TCollection_Map
 %extend Handle_TColStd_QueueNodeOfQueueOfTransient {
     TColStd_QueueNodeOfQueueOfTransient* GetObject() {
     return (TColStd_QueueNodeOfQueueOfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_QueueNodeOfQueueOfTransient::~Handle_TColStd_QueueNodeOfQueueOfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_QueueNodeOfQueueOfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9904,20 +8410,6 @@ class TColStd_QueueOfInteger {
             };
 
 
-%feature("shadow") TColStd_QueueOfInteger::~TColStd_QueueOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_QueueOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_QueueOfReal;
 class TColStd_QueueOfReal {
 	public:
@@ -9979,20 +8471,6 @@ class TColStd_QueueOfReal {
             };
 
 
-%feature("shadow") TColStd_QueueOfReal::~TColStd_QueueOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_QueueOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_QueueOfTransient;
 class TColStd_QueueOfTransient {
 	public:
@@ -10023,7 +8501,7 @@ class TColStd_QueueOfTransient {
 		%feature("compactdefaultargs") Front;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Front;
-		const Handle_Standard_Transient & Front ();
+		Handle_Standard_Transient Front ();
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -10041,24 +8519,10 @@ class TColStd_QueueOfTransient {
 		%feature("compactdefaultargs") ChangeFront;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") ChangeFront;
-		Handle_Standard_Transient & ChangeFront ();
+		Handle_Standard_Transient ChangeFront ();
 };
 
 
-%feature("shadow") TColStd_QueueOfTransient::~TColStd_QueueOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_QueueOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfAddress;
 class TColStd_SequenceNodeOfSequenceOfAddress : public TCollection_SeqNode {
 	public:
@@ -10079,25 +8543,23 @@ class TColStd_SequenceNodeOfSequenceOfAddress : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") TColStd_SequenceNodeOfSequenceOfAddress::~TColStd_SequenceNodeOfSequenceOfAddress %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_SequenceNodeOfSequenceOfAddress {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfAddress(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_SequenceNodeOfSequenceOfAddress {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_SequenceNodeOfSequenceOfAddress {
-	Handle_TColStd_SequenceNodeOfSequenceOfAddress GetHandle() {
-	return *(Handle_TColStd_SequenceNodeOfSequenceOfAddress*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfAddress::Handle_TColStd_SequenceNodeOfSequenceOfAddress %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfAddress;
 class Handle_TColStd_SequenceNodeOfSequenceOfAddress : public Handle_TCollection_SeqNode {
@@ -10115,20 +8577,6 @@ class Handle_TColStd_SequenceNodeOfSequenceOfAddress : public Handle_TCollection
 %extend Handle_TColStd_SequenceNodeOfSequenceOfAddress {
     TColStd_SequenceNodeOfSequenceOfAddress* GetObject() {
     return (TColStd_SequenceNodeOfSequenceOfAddress*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_SequenceNodeOfSequenceOfAddress::~Handle_TColStd_SequenceNodeOfSequenceOfAddress %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfAddress {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10152,25 +8600,23 @@ class TColStd_SequenceNodeOfSequenceOfAsciiString : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") TColStd_SequenceNodeOfSequenceOfAsciiString::~TColStd_SequenceNodeOfSequenceOfAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_SequenceNodeOfSequenceOfAsciiString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfAsciiString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_SequenceNodeOfSequenceOfAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_SequenceNodeOfSequenceOfAsciiString {
-	Handle_TColStd_SequenceNodeOfSequenceOfAsciiString GetHandle() {
-	return *(Handle_TColStd_SequenceNodeOfSequenceOfAsciiString*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfAsciiString::Handle_TColStd_SequenceNodeOfSequenceOfAsciiString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfAsciiString;
 class Handle_TColStd_SequenceNodeOfSequenceOfAsciiString : public Handle_TCollection_SeqNode {
@@ -10188,20 +8634,6 @@ class Handle_TColStd_SequenceNodeOfSequenceOfAsciiString : public Handle_TCollec
 %extend Handle_TColStd_SequenceNodeOfSequenceOfAsciiString {
     TColStd_SequenceNodeOfSequenceOfAsciiString* GetObject() {
     return (TColStd_SequenceNodeOfSequenceOfAsciiString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_SequenceNodeOfSequenceOfAsciiString::~Handle_TColStd_SequenceNodeOfSequenceOfAsciiString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfAsciiString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10234,25 +8666,23 @@ class TColStd_SequenceNodeOfSequenceOfBoolean : public TCollection_SeqNode {
             };
 
 
-%feature("shadow") TColStd_SequenceNodeOfSequenceOfBoolean::~TColStd_SequenceNodeOfSequenceOfBoolean %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_SequenceNodeOfSequenceOfBoolean {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfBoolean(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_SequenceNodeOfSequenceOfBoolean {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_SequenceNodeOfSequenceOfBoolean {
-	Handle_TColStd_SequenceNodeOfSequenceOfBoolean GetHandle() {
-	return *(Handle_TColStd_SequenceNodeOfSequenceOfBoolean*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfBoolean::Handle_TColStd_SequenceNodeOfSequenceOfBoolean %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfBoolean;
 class Handle_TColStd_SequenceNodeOfSequenceOfBoolean : public Handle_TCollection_SeqNode {
@@ -10270,20 +8700,6 @@ class Handle_TColStd_SequenceNodeOfSequenceOfBoolean : public Handle_TCollection
 %extend Handle_TColStd_SequenceNodeOfSequenceOfBoolean {
     TColStd_SequenceNodeOfSequenceOfBoolean* GetObject() {
     return (TColStd_SequenceNodeOfSequenceOfBoolean*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_SequenceNodeOfSequenceOfBoolean::~Handle_TColStd_SequenceNodeOfSequenceOfBoolean %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfBoolean {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10307,25 +8723,23 @@ class TColStd_SequenceNodeOfSequenceOfExtendedString : public TCollection_SeqNod
 };
 
 
-%feature("shadow") TColStd_SequenceNodeOfSequenceOfExtendedString::~TColStd_SequenceNodeOfSequenceOfExtendedString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_SequenceNodeOfSequenceOfExtendedString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfExtendedString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_SequenceNodeOfSequenceOfExtendedString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_SequenceNodeOfSequenceOfExtendedString {
-	Handle_TColStd_SequenceNodeOfSequenceOfExtendedString GetHandle() {
-	return *(Handle_TColStd_SequenceNodeOfSequenceOfExtendedString*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfExtendedString::Handle_TColStd_SequenceNodeOfSequenceOfExtendedString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfExtendedString;
 class Handle_TColStd_SequenceNodeOfSequenceOfExtendedString : public Handle_TCollection_SeqNode {
@@ -10345,20 +8759,6 @@ class Handle_TColStd_SequenceNodeOfSequenceOfExtendedString : public Handle_TCol
     return (TColStd_SequenceNodeOfSequenceOfExtendedString*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColStd_SequenceNodeOfSequenceOfExtendedString::~Handle_TColStd_SequenceNodeOfSequenceOfExtendedString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfExtendedString {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfHAsciiString;
 class TColStd_SequenceNodeOfSequenceOfHAsciiString : public TCollection_SeqNode {
@@ -10376,29 +8776,27 @@ class TColStd_SequenceNodeOfSequenceOfHAsciiString : public TCollection_SeqNode 
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
 ") Value;
-		Handle_TCollection_HAsciiString & Value ();
+		Handle_TCollection_HAsciiString Value ();
 };
 
 
-%feature("shadow") TColStd_SequenceNodeOfSequenceOfHAsciiString::~TColStd_SequenceNodeOfSequenceOfHAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColStd_SequenceNodeOfSequenceOfHAsciiString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString::Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColStd_SequenceNodeOfSequenceOfHAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_SequenceNodeOfSequenceOfHAsciiString {
-	Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString GetHandle() {
-	return *(Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString;
 class Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString : public Handle_TCollection_SeqNode {
@@ -10418,20 +8816,6 @@ class Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString : public Handle_TColle
     return (TColStd_SequenceNodeOfSequenceOfHAsciiString*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString::~Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfHExtendedString;
 class TColStd_SequenceNodeOfSequenceOfHExtendedString : public TCollection_SeqNode {
@@ -10449,29 +8833,27 @@ class TColStd_SequenceNodeOfSequenceOfHExtendedString : public TCollection_SeqNo
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_TCollection_HExtendedString
 ") Value;
-		Handle_TCollection_HExtendedString & Value ();
+		Handle_TCollection_HExtendedString Value ();
 };
 
 
-%feature("shadow") TColStd_SequenceNodeOfSequenceOfHExtendedString::~TColStd_SequenceNodeOfSequenceOfHExtendedString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColStd_SequenceNodeOfSequenceOfHExtendedString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString::Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColStd_SequenceNodeOfSequenceOfHExtendedString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_SequenceNodeOfSequenceOfHExtendedString {
-	Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString GetHandle() {
-	return *(Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString;
 class Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString : public Handle_TCollection_SeqNode {
@@ -10489,20 +8871,6 @@ class Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString : public Handle_TCo
 %extend Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString {
     TColStd_SequenceNodeOfSequenceOfHExtendedString* GetObject() {
     return (TColStd_SequenceNodeOfSequenceOfHExtendedString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString::~Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10535,25 +8903,23 @@ class TColStd_SequenceNodeOfSequenceOfInteger : public TCollection_SeqNode {
             };
 
 
-%feature("shadow") TColStd_SequenceNodeOfSequenceOfInteger::~TColStd_SequenceNodeOfSequenceOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_SequenceNodeOfSequenceOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_SequenceNodeOfSequenceOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_SequenceNodeOfSequenceOfInteger {
-	Handle_TColStd_SequenceNodeOfSequenceOfInteger GetHandle() {
-	return *(Handle_TColStd_SequenceNodeOfSequenceOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfInteger::Handle_TColStd_SequenceNodeOfSequenceOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfInteger;
 class Handle_TColStd_SequenceNodeOfSequenceOfInteger : public Handle_TCollection_SeqNode {
@@ -10571,20 +8937,6 @@ class Handle_TColStd_SequenceNodeOfSequenceOfInteger : public Handle_TCollection
 %extend Handle_TColStd_SequenceNodeOfSequenceOfInteger {
     TColStd_SequenceNodeOfSequenceOfInteger* GetObject() {
     return (TColStd_SequenceNodeOfSequenceOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_SequenceNodeOfSequenceOfInteger::~Handle_TColStd_SequenceNodeOfSequenceOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10617,25 +8969,23 @@ class TColStd_SequenceNodeOfSequenceOfReal : public TCollection_SeqNode {
             };
 
 
-%feature("shadow") TColStd_SequenceNodeOfSequenceOfReal::~TColStd_SequenceNodeOfSequenceOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_SequenceNodeOfSequenceOfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_SequenceNodeOfSequenceOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_SequenceNodeOfSequenceOfReal {
-	Handle_TColStd_SequenceNodeOfSequenceOfReal GetHandle() {
-	return *(Handle_TColStd_SequenceNodeOfSequenceOfReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfReal::Handle_TColStd_SequenceNodeOfSequenceOfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfReal;
 class Handle_TColStd_SequenceNodeOfSequenceOfReal : public Handle_TCollection_SeqNode {
@@ -10655,20 +9005,6 @@ class Handle_TColStd_SequenceNodeOfSequenceOfReal : public Handle_TCollection_Se
     return (TColStd_SequenceNodeOfSequenceOfReal*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColStd_SequenceNodeOfSequenceOfReal::~Handle_TColStd_SequenceNodeOfSequenceOfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfReal {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfTransient;
 class TColStd_SequenceNodeOfSequenceOfTransient : public TCollection_SeqNode {
@@ -10686,29 +9022,27 @@ class TColStd_SequenceNodeOfSequenceOfTransient : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_SequenceNodeOfSequenceOfTransient::~TColStd_SequenceNodeOfSequenceOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColStd_SequenceNodeOfSequenceOfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_SequenceNodeOfSequenceOfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColStd_SequenceNodeOfSequenceOfTransient::Handle_TColStd_SequenceNodeOfSequenceOfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColStd_SequenceNodeOfSequenceOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_SequenceNodeOfSequenceOfTransient {
-	Handle_TColStd_SequenceNodeOfSequenceOfTransient GetHandle() {
-	return *(Handle_TColStd_SequenceNodeOfSequenceOfTransient*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColStd_SequenceNodeOfSequenceOfTransient;
 class Handle_TColStd_SequenceNodeOfSequenceOfTransient : public Handle_TCollection_SeqNode {
@@ -10726,20 +9060,6 @@ class Handle_TColStd_SequenceNodeOfSequenceOfTransient : public Handle_TCollecti
 %extend Handle_TColStd_SequenceNodeOfSequenceOfTransient {
     TColStd_SequenceNodeOfSequenceOfTransient* GetObject() {
     return (TColStd_SequenceNodeOfSequenceOfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_SequenceNodeOfSequenceOfTransient::~Handle_TColStd_SequenceNodeOfSequenceOfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_SequenceNodeOfSequenceOfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10875,20 +9195,6 @@ class TColStd_SequenceOfAddress : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColStd_SequenceOfAddress::~TColStd_SequenceOfAddress %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SequenceOfAddress {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SequenceOfAsciiString;
 class TColStd_SequenceOfAsciiString : public TCollection_BaseSequence {
 	public:
@@ -11021,20 +9327,6 @@ class TColStd_SequenceOfAsciiString : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColStd_SequenceOfAsciiString::~TColStd_SequenceOfAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SequenceOfAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SequenceOfBoolean;
 class TColStd_SequenceOfBoolean : public TCollection_BaseSequence {
 	public:
@@ -11167,20 +9459,6 @@ class TColStd_SequenceOfBoolean : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColStd_SequenceOfBoolean::~TColStd_SequenceOfBoolean %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SequenceOfBoolean {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SequenceOfExtendedString;
 class TColStd_SequenceOfExtendedString : public TCollection_BaseSequence {
 	public:
@@ -11313,20 +9591,6 @@ class TColStd_SequenceOfExtendedString : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColStd_SequenceOfExtendedString::~TColStd_SequenceOfExtendedString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SequenceOfExtendedString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SequenceOfHAsciiString;
 class TColStd_SequenceOfHAsciiString : public TCollection_BaseSequence {
 	public:
@@ -11409,11 +9673,11 @@ class TColStd_SequenceOfHAsciiString : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
 ") First;
-		const Handle_TCollection_HAsciiString & First ();
+		Handle_TCollection_HAsciiString First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
 ") Last;
-		const Handle_TCollection_HAsciiString & Last ();
+		Handle_TCollection_HAsciiString Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -11427,7 +9691,7 @@ class TColStd_SequenceOfHAsciiString : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_TCollection_HAsciiString
 ") Value;
-		const Handle_TCollection_HAsciiString & Value (const Standard_Integer Index);
+		Handle_TCollection_HAsciiString Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -11441,7 +9705,7 @@ class TColStd_SequenceOfHAsciiString : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_TCollection_HAsciiString
 ") ChangeValue;
-		Handle_TCollection_HAsciiString & ChangeValue (const Standard_Integer Index);
+		Handle_TCollection_HAsciiString ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -11459,20 +9723,6 @@ class TColStd_SequenceOfHAsciiString : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColStd_SequenceOfHAsciiString::~TColStd_SequenceOfHAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SequenceOfHAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SequenceOfHExtendedString;
 class TColStd_SequenceOfHExtendedString : public TCollection_BaseSequence {
 	public:
@@ -11555,11 +9805,11 @@ class TColStd_SequenceOfHExtendedString : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_TCollection_HExtendedString
 ") First;
-		const Handle_TCollection_HExtendedString & First ();
+		Handle_TCollection_HExtendedString First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_TCollection_HExtendedString
 ") Last;
-		const Handle_TCollection_HExtendedString & Last ();
+		Handle_TCollection_HExtendedString Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -11573,7 +9823,7 @@ class TColStd_SequenceOfHExtendedString : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_TCollection_HExtendedString
 ") Value;
-		const Handle_TCollection_HExtendedString & Value (const Standard_Integer Index);
+		Handle_TCollection_HExtendedString Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -11587,7 +9837,7 @@ class TColStd_SequenceOfHExtendedString : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_TCollection_HExtendedString
 ") ChangeValue;
-		Handle_TCollection_HExtendedString & ChangeValue (const Standard_Integer Index);
+		Handle_TCollection_HExtendedString ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -11605,20 +9855,6 @@ class TColStd_SequenceOfHExtendedString : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColStd_SequenceOfHExtendedString::~TColStd_SequenceOfHExtendedString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SequenceOfHExtendedString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SequenceOfInteger;
 class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 	public:
@@ -11751,20 +9987,6 @@ class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColStd_SequenceOfInteger::~TColStd_SequenceOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SequenceOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SequenceOfReal;
 class TColStd_SequenceOfReal : public TCollection_BaseSequence {
 	public:
@@ -11897,20 +10119,6 @@ class TColStd_SequenceOfReal : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColStd_SequenceOfReal::~TColStd_SequenceOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SequenceOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SequenceOfTransient;
 class TColStd_SequenceOfTransient : public TCollection_BaseSequence {
 	public:
@@ -11993,11 +10201,11 @@ class TColStd_SequenceOfTransient : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") First;
-		const Handle_Standard_Transient & First ();
+		Handle_Standard_Transient First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Last;
-		const Handle_Standard_Transient & Last ();
+		Handle_Standard_Transient Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -12011,7 +10219,7 @@ class TColStd_SequenceOfTransient : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value (const Standard_Integer Index);
+		Handle_Standard_Transient Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -12025,7 +10233,7 @@ class TColStd_SequenceOfTransient : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Standard_Transient
 ") ChangeValue;
-		Handle_Standard_Transient & ChangeValue (const Standard_Integer Index);
+		Handle_Standard_Transient ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -12043,20 +10251,6 @@ class TColStd_SequenceOfTransient : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") TColStd_SequenceOfTransient::~TColStd_SequenceOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SequenceOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SetIteratorOfSetOfInteger;
 class TColStd_SetIteratorOfSetOfInteger {
 	public:
@@ -12091,20 +10285,6 @@ class TColStd_SetIteratorOfSetOfInteger {
 };
 
 
-%feature("shadow") TColStd_SetIteratorOfSetOfInteger::~TColStd_SetIteratorOfSetOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SetIteratorOfSetOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SetIteratorOfSetOfReal;
 class TColStd_SetIteratorOfSetOfReal {
 	public:
@@ -12139,20 +10319,6 @@ class TColStd_SetIteratorOfSetOfReal {
 };
 
 
-%feature("shadow") TColStd_SetIteratorOfSetOfReal::~TColStd_SetIteratorOfSetOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SetIteratorOfSetOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SetIteratorOfSetOfTransient;
 class TColStd_SetIteratorOfSetOfTransient {
 	public:
@@ -12183,24 +10349,10 @@ class TColStd_SetIteratorOfSetOfTransient {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_SetIteratorOfSetOfTransient::~TColStd_SetIteratorOfSetOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SetIteratorOfSetOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SetListOfSetOfInteger;
 class TColStd_SetListOfSetOfInteger {
 	public:
@@ -12343,20 +10495,6 @@ class TColStd_SetListOfSetOfInteger {
 };
 
 
-%feature("shadow") TColStd_SetListOfSetOfInteger::~TColStd_SetListOfSetOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SetListOfSetOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SetListOfSetOfReal;
 class TColStd_SetListOfSetOfReal {
 	public:
@@ -12499,20 +10637,6 @@ class TColStd_SetListOfSetOfReal {
 };
 
 
-%feature("shadow") TColStd_SetListOfSetOfReal::~TColStd_SetListOfSetOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SetListOfSetOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SetListOfSetOfTransient;
 class TColStd_SetListOfSetOfTransient {
 	public:
@@ -12587,11 +10711,11 @@ class TColStd_SetListOfSetOfTransient {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") First;
-		Handle_Standard_Transient & First ();
+		Handle_Standard_Transient First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Last;
-		Handle_Standard_Transient & Last ();
+		Handle_Standard_Transient Last ();
 		%feature("compactdefaultargs") RemoveFirst;
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
@@ -12637,20 +10761,6 @@ class TColStd_SetListOfSetOfTransient {
 };
 
 
-%feature("shadow") TColStd_SetListOfSetOfTransient::~TColStd_SetListOfSetOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SetListOfSetOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SetOfInteger;
 class TColStd_SetOfInteger {
 	public:
@@ -12721,20 +10831,6 @@ class TColStd_SetOfInteger {
 };
 
 
-%feature("shadow") TColStd_SetOfInteger::~TColStd_SetOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SetOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SetOfReal;
 class TColStd_SetOfReal {
 	public:
@@ -12805,20 +10901,6 @@ class TColStd_SetOfReal {
 };
 
 
-%feature("shadow") TColStd_SetOfReal::~TColStd_SetOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SetOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_SetOfTransient;
 class TColStd_SetOfTransient {
 	public:
@@ -12889,20 +10971,6 @@ class TColStd_SetOfTransient {
 };
 
 
-%feature("shadow") TColStd_SetOfTransient::~TColStd_SetOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_SetOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_StackIteratorOfStackOfInteger;
 class TColStd_StackIteratorOfStackOfInteger {
 	public:
@@ -12937,20 +11005,6 @@ class TColStd_StackIteratorOfStackOfInteger {
 };
 
 
-%feature("shadow") TColStd_StackIteratorOfStackOfInteger::~TColStd_StackIteratorOfStackOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_StackIteratorOfStackOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_StackIteratorOfStackOfReal;
 class TColStd_StackIteratorOfStackOfReal {
 	public:
@@ -12985,20 +11039,6 @@ class TColStd_StackIteratorOfStackOfReal {
 };
 
 
-%feature("shadow") TColStd_StackIteratorOfStackOfReal::~TColStd_StackIteratorOfStackOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_StackIteratorOfStackOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_StackIteratorOfStackOfTransient;
 class TColStd_StackIteratorOfStackOfTransient {
 	public:
@@ -13029,24 +11069,10 @@ class TColStd_StackIteratorOfStackOfTransient {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_StackIteratorOfStackOfTransient::~TColStd_StackIteratorOfStackOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_StackIteratorOfStackOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_StackNodeOfStackOfInteger;
 class TColStd_StackNodeOfStackOfInteger : public TCollection_MapNode {
 	public:
@@ -13074,25 +11100,23 @@ class TColStd_StackNodeOfStackOfInteger : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_StackNodeOfStackOfInteger::~TColStd_StackNodeOfStackOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_StackNodeOfStackOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_StackNodeOfStackOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_StackNodeOfStackOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_StackNodeOfStackOfInteger {
-	Handle_TColStd_StackNodeOfStackOfInteger GetHandle() {
-	return *(Handle_TColStd_StackNodeOfStackOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_StackNodeOfStackOfInteger::Handle_TColStd_StackNodeOfStackOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_StackNodeOfStackOfInteger;
 class Handle_TColStd_StackNodeOfStackOfInteger : public Handle_TCollection_MapNode {
@@ -13110,20 +11134,6 @@ class Handle_TColStd_StackNodeOfStackOfInteger : public Handle_TCollection_MapNo
 %extend Handle_TColStd_StackNodeOfStackOfInteger {
     TColStd_StackNodeOfStackOfInteger* GetObject() {
     return (TColStd_StackNodeOfStackOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_StackNodeOfStackOfInteger::~Handle_TColStd_StackNodeOfStackOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_StackNodeOfStackOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -13154,25 +11164,23 @@ class TColStd_StackNodeOfStackOfReal : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_StackNodeOfStackOfReal::~TColStd_StackNodeOfStackOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_StackNodeOfStackOfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_StackNodeOfStackOfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_StackNodeOfStackOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_StackNodeOfStackOfReal {
-	Handle_TColStd_StackNodeOfStackOfReal GetHandle() {
-	return *(Handle_TColStd_StackNodeOfStackOfReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_StackNodeOfStackOfReal::Handle_TColStd_StackNodeOfStackOfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_StackNodeOfStackOfReal;
 class Handle_TColStd_StackNodeOfStackOfReal : public Handle_TCollection_MapNode {
@@ -13192,20 +11200,6 @@ class Handle_TColStd_StackNodeOfStackOfReal : public Handle_TCollection_MapNode 
     return (TColStd_StackNodeOfStackOfReal*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColStd_StackNodeOfStackOfReal::~Handle_TColStd_StackNodeOfStackOfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_StackNodeOfStackOfReal {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColStd_StackNodeOfStackOfTransient;
 class TColStd_StackNodeOfStackOfTransient : public TCollection_MapNode {
@@ -13221,29 +11215,27 @@ class TColStd_StackNodeOfStackOfTransient : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") TColStd_StackNodeOfStackOfTransient::~TColStd_StackNodeOfStackOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColStd_StackNodeOfStackOfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_StackNodeOfStackOfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColStd_StackNodeOfStackOfTransient::Handle_TColStd_StackNodeOfStackOfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColStd_StackNodeOfStackOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_StackNodeOfStackOfTransient {
-	Handle_TColStd_StackNodeOfStackOfTransient GetHandle() {
-	return *(Handle_TColStd_StackNodeOfStackOfTransient*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColStd_StackNodeOfStackOfTransient;
 class Handle_TColStd_StackNodeOfStackOfTransient : public Handle_TCollection_MapNode {
@@ -13261,20 +11253,6 @@ class Handle_TColStd_StackNodeOfStackOfTransient : public Handle_TCollection_Map
 %extend Handle_TColStd_StackNodeOfStackOfTransient {
     TColStd_StackNodeOfStackOfTransient* GetObject() {
     return (TColStd_StackNodeOfStackOfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_StackNodeOfStackOfTransient::~Handle_TColStd_StackNodeOfStackOfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_StackNodeOfStackOfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -13339,20 +11317,6 @@ class TColStd_StackOfInteger {
             };
 
 
-%feature("shadow") TColStd_StackOfInteger::~TColStd_StackOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_StackOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_StackOfReal;
 class TColStd_StackOfReal {
 	public:
@@ -13414,20 +11378,6 @@ class TColStd_StackOfReal {
             };
 
 
-%feature("shadow") TColStd_StackOfReal::~TColStd_StackOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_StackOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_StackOfTransient;
 class TColStd_StackOfTransient {
 	public:
@@ -13458,7 +11408,7 @@ class TColStd_StackOfTransient {
 		%feature("compactdefaultargs") Top;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Top;
-		const Handle_Standard_Transient & Top ();
+		Handle_Standard_Transient Top ();
 		%feature("compactdefaultargs") Push;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_Standard_Transient &
@@ -13476,24 +11426,10 @@ class TColStd_StackOfTransient {
 		%feature("compactdefaultargs") ChangeTop;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") ChangeTop;
-		Handle_Standard_Transient & ChangeTop ();
+		Handle_Standard_Transient ChangeTop ();
 };
 
 
-%feature("shadow") TColStd_StackOfTransient::~TColStd_StackOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TColStd_StackOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TColStd_StdMapNodeOfMapOfAsciiString;
 class TColStd_StdMapNodeOfMapOfAsciiString : public TCollection_MapNode {
 	public:
@@ -13512,25 +11448,23 @@ class TColStd_StdMapNodeOfMapOfAsciiString : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TColStd_StdMapNodeOfMapOfAsciiString::~TColStd_StdMapNodeOfMapOfAsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_StdMapNodeOfMapOfAsciiString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_StdMapNodeOfMapOfAsciiString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_StdMapNodeOfMapOfAsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_StdMapNodeOfMapOfAsciiString {
-	Handle_TColStd_StdMapNodeOfMapOfAsciiString GetHandle() {
-	return *(Handle_TColStd_StdMapNodeOfMapOfAsciiString*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_StdMapNodeOfMapOfAsciiString::Handle_TColStd_StdMapNodeOfMapOfAsciiString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_StdMapNodeOfMapOfAsciiString;
 class Handle_TColStd_StdMapNodeOfMapOfAsciiString : public Handle_TCollection_MapNode {
@@ -13548,20 +11482,6 @@ class Handle_TColStd_StdMapNodeOfMapOfAsciiString : public Handle_TCollection_Ma
 %extend Handle_TColStd_StdMapNodeOfMapOfAsciiString {
     TColStd_StdMapNodeOfMapOfAsciiString* GetObject() {
     return (TColStd_StdMapNodeOfMapOfAsciiString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_StdMapNodeOfMapOfAsciiString::~Handle_TColStd_StdMapNodeOfMapOfAsciiString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_StdMapNodeOfMapOfAsciiString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -13592,25 +11512,23 @@ class TColStd_StdMapNodeOfMapOfInteger : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_StdMapNodeOfMapOfInteger::~TColStd_StdMapNodeOfMapOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_StdMapNodeOfMapOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_StdMapNodeOfMapOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_StdMapNodeOfMapOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_StdMapNodeOfMapOfInteger {
-	Handle_TColStd_StdMapNodeOfMapOfInteger GetHandle() {
-	return *(Handle_TColStd_StdMapNodeOfMapOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_StdMapNodeOfMapOfInteger::Handle_TColStd_StdMapNodeOfMapOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_StdMapNodeOfMapOfInteger;
 class Handle_TColStd_StdMapNodeOfMapOfInteger : public Handle_TCollection_MapNode {
@@ -13628,20 +11546,6 @@ class Handle_TColStd_StdMapNodeOfMapOfInteger : public Handle_TCollection_MapNod
 %extend Handle_TColStd_StdMapNodeOfMapOfInteger {
     TColStd_StdMapNodeOfMapOfInteger* GetObject() {
     return (TColStd_StdMapNodeOfMapOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_StdMapNodeOfMapOfInteger::~Handle_TColStd_StdMapNodeOfMapOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_StdMapNodeOfMapOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -13672,25 +11576,23 @@ class TColStd_StdMapNodeOfMapOfReal : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TColStd_StdMapNodeOfMapOfReal::~TColStd_StdMapNodeOfMapOfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TColStd_StdMapNodeOfMapOfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_StdMapNodeOfMapOfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TColStd_StdMapNodeOfMapOfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_StdMapNodeOfMapOfReal {
-	Handle_TColStd_StdMapNodeOfMapOfReal GetHandle() {
-	return *(Handle_TColStd_StdMapNodeOfMapOfReal*) &$self;
-	}
-};
+%pythonappend Handle_TColStd_StdMapNodeOfMapOfReal::Handle_TColStd_StdMapNodeOfMapOfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TColStd_StdMapNodeOfMapOfReal;
 class Handle_TColStd_StdMapNodeOfMapOfReal : public Handle_TCollection_MapNode {
@@ -13710,20 +11612,6 @@ class Handle_TColStd_StdMapNodeOfMapOfReal : public Handle_TCollection_MapNode {
     return (TColStd_StdMapNodeOfMapOfReal*)$self->Access();
     }
 };
-%feature("shadow") Handle_TColStd_StdMapNodeOfMapOfReal::~Handle_TColStd_StdMapNodeOfMapOfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_StdMapNodeOfMapOfReal {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TColStd_StdMapNodeOfMapOfTransient;
 class TColStd_StdMapNodeOfMapOfTransient : public TCollection_MapNode {
@@ -13739,29 +11627,27 @@ class TColStd_StdMapNodeOfMapOfTransient : public TCollection_MapNode {
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Key;
-		Handle_Standard_Transient & Key ();
+		Handle_Standard_Transient Key ();
 };
 
 
-%feature("shadow") TColStd_StdMapNodeOfMapOfTransient::~TColStd_StdMapNodeOfMapOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TColStd_StdMapNodeOfMapOfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColStd_StdMapNodeOfMapOfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColStd_StdMapNodeOfMapOfTransient::Handle_TColStd_StdMapNodeOfMapOfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TColStd_StdMapNodeOfMapOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TColStd_StdMapNodeOfMapOfTransient {
-	Handle_TColStd_StdMapNodeOfMapOfTransient GetHandle() {
-	return *(Handle_TColStd_StdMapNodeOfMapOfTransient*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TColStd_StdMapNodeOfMapOfTransient;
 class Handle_TColStd_StdMapNodeOfMapOfTransient : public Handle_TCollection_MapNode {
@@ -13779,20 +11665,6 @@ class Handle_TColStd_StdMapNodeOfMapOfTransient : public Handle_TCollection_MapN
 %extend Handle_TColStd_StdMapNodeOfMapOfTransient {
     TColStd_StdMapNodeOfMapOfTransient* GetObject() {
     return (TColStd_StdMapNodeOfMapOfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TColStd_StdMapNodeOfMapOfTransient::~Handle_TColStd_StdMapNodeOfMapOfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TColStd_StdMapNodeOfMapOfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include TDataStd_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef TDataStd_TreeNode * TDataStd_PtrTreeNode;
@@ -75,20 +87,6 @@ class TDataStd {
 };
 
 
-%feature("shadow") TDataStd::~TDataStd %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_AsciiString;
 class TDataStd_AsciiString : public TDF_Attribute {
 	public:
@@ -159,25 +157,23 @@ class TDataStd_AsciiString : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_AsciiString::~TDataStd_AsciiString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_AsciiString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_AsciiString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_AsciiString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_AsciiString {
-	Handle_TDataStd_AsciiString GetHandle() {
-	return *(Handle_TDataStd_AsciiString*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_AsciiString::Handle_TDataStd_AsciiString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_AsciiString;
 class Handle_TDataStd_AsciiString : public Handle_TDF_Attribute {
@@ -195,20 +191,6 @@ class Handle_TDataStd_AsciiString : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_AsciiString {
     TDataStd_AsciiString* GetObject() {
     return (TDataStd_AsciiString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_AsciiString::~Handle_TDataStd_AsciiString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_AsciiString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -282,7 +264,7 @@ class TDataStd_BooleanArray : public TDF_Attribute {
 		%feature("compactdefaultargs") InternalArray;
 		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfByte
 ") InternalArray;
-		const Handle_TColStd_HArray1OfByte & InternalArray ();
+		Handle_TColStd_HArray1OfByte InternalArray ();
 		%feature("compactdefaultargs") SetInternalArray;
 		%feature("autodoc", "	:param values:
 	:type values: Handle_TColStd_HArray1OfByte &
@@ -326,25 +308,23 @@ class TDataStd_BooleanArray : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_BooleanArray::~TDataStd_BooleanArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_BooleanArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_BooleanArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_BooleanArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_BooleanArray {
-	Handle_TDataStd_BooleanArray GetHandle() {
-	return *(Handle_TDataStd_BooleanArray*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_BooleanArray::Handle_TDataStd_BooleanArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_BooleanArray;
 class Handle_TDataStd_BooleanArray : public Handle_TDF_Attribute {
@@ -362,20 +342,6 @@ class Handle_TDataStd_BooleanArray : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_BooleanArray {
     TDataStd_BooleanArray* GetObject() {
     return (TDataStd_BooleanArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_BooleanArray::~Handle_TDataStd_BooleanArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_BooleanArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -471,25 +437,23 @@ class TDataStd_BooleanList : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_BooleanList::~TDataStd_BooleanList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_BooleanList {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_BooleanList(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_BooleanList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_BooleanList {
-	Handle_TDataStd_BooleanList GetHandle() {
-	return *(Handle_TDataStd_BooleanList*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_BooleanList::Handle_TDataStd_BooleanList %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_BooleanList;
 class Handle_TDataStd_BooleanList : public Handle_TDF_Attribute {
@@ -507,20 +471,6 @@ class Handle_TDataStd_BooleanList : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_BooleanList {
     TDataStd_BooleanList* GetObject() {
     return (TDataStd_BooleanList*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_BooleanList::~Handle_TDataStd_BooleanList %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_BooleanList {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -664,25 +614,23 @@ class TDataStd_ByteArray : public TDF_Attribute {
 };
 
 
-%feature("shadow") TDataStd_ByteArray::~TDataStd_ByteArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_ByteArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_ByteArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_ByteArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_ByteArray {
-	Handle_TDataStd_ByteArray GetHandle() {
-	return *(Handle_TDataStd_ByteArray*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_ByteArray::Handle_TDataStd_ByteArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_ByteArray;
 class Handle_TDataStd_ByteArray : public Handle_TDF_Attribute {
@@ -700,20 +648,6 @@ class Handle_TDataStd_ByteArray : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_ByteArray {
     TDataStd_ByteArray* GetObject() {
     return (TDataStd_ByteArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_ByteArray::~Handle_TDataStd_ByteArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_ByteArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -773,20 +707,6 @@ class TDataStd_ChildNodeIterator {
 };
 
 
-%feature("shadow") TDataStd_ChildNodeIterator::~TDataStd_ChildNodeIterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_ChildNodeIterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_Comment;
 class TDataStd_Comment : public TDF_Attribute {
 	public:
@@ -869,25 +789,23 @@ class TDataStd_Comment : public TDF_Attribute {
 };
 
 
-%feature("shadow") TDataStd_Comment::~TDataStd_Comment %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_Comment {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_Comment(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_Comment {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_Comment {
-	Handle_TDataStd_Comment GetHandle() {
-	return *(Handle_TDataStd_Comment*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_Comment::Handle_TDataStd_Comment %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_Comment;
 class Handle_TDataStd_Comment : public Handle_TDF_Attribute {
@@ -905,20 +823,6 @@ class Handle_TDataStd_Comment : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_Comment {
     TDataStd_Comment* GetObject() {
     return (TDataStd_Comment*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_Comment::~Handle_TDataStd_Comment %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_Comment {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1002,25 +906,23 @@ class TDataStd_Current : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_Current::~TDataStd_Current %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_Current {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_Current(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_Current {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_Current {
-	Handle_TDataStd_Current GetHandle() {
-	return *(Handle_TDataStd_Current*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_Current::Handle_TDataStd_Current %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_Current;
 class Handle_TDataStd_Current : public Handle_TDF_Attribute {
@@ -1038,20 +940,6 @@ class Handle_TDataStd_Current : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_Current {
     TDataStd_Current* GetObject() {
     return (TDataStd_Current*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_Current::~Handle_TDataStd_Current %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_Current {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1085,20 +973,6 @@ class TDataStd_DataMapIteratorOfDataMapOfStringByte : public TCollection_BasicMa
 };
 
 
-%feature("shadow") TDataStd_DataMapIteratorOfDataMapOfStringByte::~TDataStd_DataMapIteratorOfDataMapOfStringByte %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_DataMapIteratorOfDataMapOfStringByte {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger;
 class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1125,24 +999,10 @@ class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger : public TCollec
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
 ") Value;
-		const Handle_TColStd_HArray1OfInteger & Value ();
+		Handle_TColStd_HArray1OfInteger Value ();
 };
 
 
-%feature("shadow") TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger::~TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal;
 class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal : public TCollection_BasicMapIterator {
 	public:
@@ -1169,24 +1029,10 @@ class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal : public TCollectio
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
 ") Value;
-		const Handle_TColStd_HArray1OfReal & Value ();
+		Handle_TColStd_HArray1OfReal Value ();
 };
 
 
-%feature("shadow") TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal::~TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_DataMapIteratorOfDataMapOfStringReal;
 class TDataStd_DataMapIteratorOfDataMapOfStringReal : public TCollection_BasicMapIterator {
 	public:
@@ -1217,20 +1063,6 @@ class TDataStd_DataMapIteratorOfDataMapOfStringReal : public TCollection_BasicMa
 };
 
 
-%feature("shadow") TDataStd_DataMapIteratorOfDataMapOfStringReal::~TDataStd_DataMapIteratorOfDataMapOfStringReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_DataMapIteratorOfDataMapOfStringReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_DataMapIteratorOfDataMapOfStringString;
 class TDataStd_DataMapIteratorOfDataMapOfStringString : public TCollection_BasicMapIterator {
 	public:
@@ -1261,20 +1093,6 @@ class TDataStd_DataMapIteratorOfDataMapOfStringString : public TCollection_Basic
 };
 
 
-%feature("shadow") TDataStd_DataMapIteratorOfDataMapOfStringString::~TDataStd_DataMapIteratorOfDataMapOfStringString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_DataMapIteratorOfDataMapOfStringString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_DataMapNodeOfDataMapOfStringByte;
 class TDataStd_DataMapNodeOfDataMapOfStringByte : public TCollection_MapNode {
 	public:
@@ -1299,25 +1117,23 @@ class TDataStd_DataMapNodeOfDataMapOfStringByte : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TDataStd_DataMapNodeOfDataMapOfStringByte::~TDataStd_DataMapNodeOfDataMapOfStringByte %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_DataMapNodeOfDataMapOfStringByte {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_DataMapNodeOfDataMapOfStringByte(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_DataMapNodeOfDataMapOfStringByte {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_DataMapNodeOfDataMapOfStringByte {
-	Handle_TDataStd_DataMapNodeOfDataMapOfStringByte GetHandle() {
-	return *(Handle_TDataStd_DataMapNodeOfDataMapOfStringByte*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_DataMapNodeOfDataMapOfStringByte::Handle_TDataStd_DataMapNodeOfDataMapOfStringByte %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_DataMapNodeOfDataMapOfStringByte;
 class Handle_TDataStd_DataMapNodeOfDataMapOfStringByte : public Handle_TCollection_MapNode {
@@ -1335,20 +1151,6 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringByte : public Handle_TCollecti
 %extend Handle_TDataStd_DataMapNodeOfDataMapOfStringByte {
     TDataStd_DataMapNodeOfDataMapOfStringByte* GetObject() {
     return (TDataStd_DataMapNodeOfDataMapOfStringByte*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_DataMapNodeOfDataMapOfStringByte::~Handle_TDataStd_DataMapNodeOfDataMapOfStringByte %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringByte {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1372,29 +1174,27 @@ class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger : public TCollection
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfInteger
 ") Value;
-		Handle_TColStd_HArray1OfInteger & Value ();
+		Handle_TColStd_HArray1OfInteger Value ();
 };
 
 
-%feature("shadow") TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger::~TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger::Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
-	Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger GetHandle() {
-	return *(Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger;
 class Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger : public Handle_TCollection_MapNode {
@@ -1412,20 +1212,6 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger : public Hand
 %extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
     TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger* GetObject() {
     return (TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger::~Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1449,29 +1235,27 @@ class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal : public TCollection_Ma
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
 ") Value;
-		Handle_TColStd_HArray1OfReal & Value ();
+		Handle_TColStd_HArray1OfReal Value ();
 };
 
 
-%feature("shadow") TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal::~TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal::Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
-	Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal GetHandle() {
-	return *(Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal*) &$self;
-	}
-};
 
 %nodefaultctor Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal;
 class Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal : public Handle_TCollection_MapNode {
@@ -1489,20 +1273,6 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal : public Handle_
 %extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
     TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal* GetObject() {
     return (TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal::~Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1539,25 +1309,23 @@ class TDataStd_DataMapNodeOfDataMapOfStringReal : public TCollection_MapNode {
             };
 
 
-%feature("shadow") TDataStd_DataMapNodeOfDataMapOfStringReal::~TDataStd_DataMapNodeOfDataMapOfStringReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_DataMapNodeOfDataMapOfStringReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_DataMapNodeOfDataMapOfStringReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_DataMapNodeOfDataMapOfStringReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_DataMapNodeOfDataMapOfStringReal {
-	Handle_TDataStd_DataMapNodeOfDataMapOfStringReal GetHandle() {
-	return *(Handle_TDataStd_DataMapNodeOfDataMapOfStringReal*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_DataMapNodeOfDataMapOfStringReal::Handle_TDataStd_DataMapNodeOfDataMapOfStringReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_DataMapNodeOfDataMapOfStringReal;
 class Handle_TDataStd_DataMapNodeOfDataMapOfStringReal : public Handle_TCollection_MapNode {
@@ -1575,20 +1343,6 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringReal : public Handle_TCollecti
 %extend Handle_TDataStd_DataMapNodeOfDataMapOfStringReal {
     TDataStd_DataMapNodeOfDataMapOfStringReal* GetObject() {
     return (TDataStd_DataMapNodeOfDataMapOfStringReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_DataMapNodeOfDataMapOfStringReal::~Handle_TDataStd_DataMapNodeOfDataMapOfStringReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1616,25 +1370,23 @@ class TDataStd_DataMapNodeOfDataMapOfStringString : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TDataStd_DataMapNodeOfDataMapOfStringString::~TDataStd_DataMapNodeOfDataMapOfStringString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_DataMapNodeOfDataMapOfStringString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_DataMapNodeOfDataMapOfStringString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_DataMapNodeOfDataMapOfStringString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_DataMapNodeOfDataMapOfStringString {
-	Handle_TDataStd_DataMapNodeOfDataMapOfStringString GetHandle() {
-	return *(Handle_TDataStd_DataMapNodeOfDataMapOfStringString*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_DataMapNodeOfDataMapOfStringString::Handle_TDataStd_DataMapNodeOfDataMapOfStringString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_DataMapNodeOfDataMapOfStringString;
 class Handle_TDataStd_DataMapNodeOfDataMapOfStringString : public Handle_TCollection_MapNode {
@@ -1652,20 +1404,6 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringString : public Handle_TCollec
 %extend Handle_TDataStd_DataMapNodeOfDataMapOfStringString {
     TDataStd_DataMapNodeOfDataMapOfStringString* GetObject() {
     return (TDataStd_DataMapNodeOfDataMapOfStringString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_DataMapNodeOfDataMapOfStringString::~Handle_TDataStd_DataMapNodeOfDataMapOfStringString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1747,20 +1485,6 @@ class TDataStd_DataMapOfStringByte : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TDataStd_DataMapOfStringByte::~TDataStd_DataMapOfStringByte %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_DataMapOfStringByte {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_DataMapOfStringHArray1OfInteger;
 class TDataStd_DataMapOfStringHArray1OfInteger : public TCollection_BasicMap {
 	public:
@@ -1817,13 +1541,13 @@ class TDataStd_DataMapOfStringHArray1OfInteger : public TCollection_BasicMap {
 	:type K: TCollection_ExtendedString &
 	:rtype: Handle_TColStd_HArray1OfInteger
 ") Find;
-		const Handle_TColStd_HArray1OfInteger & Find (const TCollection_ExtendedString & K);
+		Handle_TColStd_HArray1OfInteger Find (const TCollection_ExtendedString & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: TCollection_ExtendedString &
 	:rtype: Handle_TColStd_HArray1OfInteger
 ") ChangeFind;
-		Handle_TColStd_HArray1OfInteger & ChangeFind (const TCollection_ExtendedString & K);
+		Handle_TColStd_HArray1OfInteger ChangeFind (const TCollection_ExtendedString & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: TCollection_ExtendedString &
@@ -1839,20 +1563,6 @@ class TDataStd_DataMapOfStringHArray1OfInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TDataStd_DataMapOfStringHArray1OfInteger::~TDataStd_DataMapOfStringHArray1OfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_DataMapOfStringHArray1OfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_DataMapOfStringHArray1OfReal;
 class TDataStd_DataMapOfStringHArray1OfReal : public TCollection_BasicMap {
 	public:
@@ -1909,13 +1619,13 @@ class TDataStd_DataMapOfStringHArray1OfReal : public TCollection_BasicMap {
 	:type K: TCollection_ExtendedString &
 	:rtype: Handle_TColStd_HArray1OfReal
 ") Find;
-		const Handle_TColStd_HArray1OfReal & Find (const TCollection_ExtendedString & K);
+		Handle_TColStd_HArray1OfReal Find (const TCollection_ExtendedString & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: TCollection_ExtendedString &
 	:rtype: Handle_TColStd_HArray1OfReal
 ") ChangeFind;
-		Handle_TColStd_HArray1OfReal & ChangeFind (const TCollection_ExtendedString & K);
+		Handle_TColStd_HArray1OfReal ChangeFind (const TCollection_ExtendedString & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: TCollection_ExtendedString &
@@ -1931,20 +1641,6 @@ class TDataStd_DataMapOfStringHArray1OfReal : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TDataStd_DataMapOfStringHArray1OfReal::~TDataStd_DataMapOfStringHArray1OfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_DataMapOfStringHArray1OfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_DataMapOfStringReal;
 class TDataStd_DataMapOfStringReal : public TCollection_BasicMap {
 	public:
@@ -2023,20 +1719,6 @@ class TDataStd_DataMapOfStringReal : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TDataStd_DataMapOfStringReal::~TDataStd_DataMapOfStringReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_DataMapOfStringReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_DataMapOfStringString;
 class TDataStd_DataMapOfStringString : public TCollection_BasicMap {
 	public:
@@ -2115,20 +1797,6 @@ class TDataStd_DataMapOfStringString : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TDataStd_DataMapOfStringString::~TDataStd_DataMapOfStringString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_DataMapOfStringString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_DeltaOnModificationOfByteArray;
 class TDataStd_DeltaOnModificationOfByteArray : public TDF_DeltaOnModification {
 	public:
@@ -2149,25 +1817,23 @@ class TDataStd_DeltaOnModificationOfByteArray : public TDF_DeltaOnModification {
 };
 
 
-%feature("shadow") TDataStd_DeltaOnModificationOfByteArray::~TDataStd_DeltaOnModificationOfByteArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_DeltaOnModificationOfByteArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_DeltaOnModificationOfByteArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_DeltaOnModificationOfByteArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_DeltaOnModificationOfByteArray {
-	Handle_TDataStd_DeltaOnModificationOfByteArray GetHandle() {
-	return *(Handle_TDataStd_DeltaOnModificationOfByteArray*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_DeltaOnModificationOfByteArray::Handle_TDataStd_DeltaOnModificationOfByteArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_DeltaOnModificationOfByteArray;
 class Handle_TDataStd_DeltaOnModificationOfByteArray : public Handle_TDF_DeltaOnModification {
@@ -2185,20 +1851,6 @@ class Handle_TDataStd_DeltaOnModificationOfByteArray : public Handle_TDF_DeltaOn
 %extend Handle_TDataStd_DeltaOnModificationOfByteArray {
     TDataStd_DeltaOnModificationOfByteArray* GetObject() {
     return (TDataStd_DeltaOnModificationOfByteArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_DeltaOnModificationOfByteArray::~Handle_TDataStd_DeltaOnModificationOfByteArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_DeltaOnModificationOfByteArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2222,25 +1874,23 @@ class TDataStd_DeltaOnModificationOfExtStringArray : public TDF_DeltaOnModificat
 };
 
 
-%feature("shadow") TDataStd_DeltaOnModificationOfExtStringArray::~TDataStd_DeltaOnModificationOfExtStringArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_DeltaOnModificationOfExtStringArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_DeltaOnModificationOfExtStringArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_DeltaOnModificationOfExtStringArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_DeltaOnModificationOfExtStringArray {
-	Handle_TDataStd_DeltaOnModificationOfExtStringArray GetHandle() {
-	return *(Handle_TDataStd_DeltaOnModificationOfExtStringArray*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_DeltaOnModificationOfExtStringArray::Handle_TDataStd_DeltaOnModificationOfExtStringArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_DeltaOnModificationOfExtStringArray;
 class Handle_TDataStd_DeltaOnModificationOfExtStringArray : public Handle_TDF_DeltaOnModification {
@@ -2258,20 +1908,6 @@ class Handle_TDataStd_DeltaOnModificationOfExtStringArray : public Handle_TDF_De
 %extend Handle_TDataStd_DeltaOnModificationOfExtStringArray {
     TDataStd_DeltaOnModificationOfExtStringArray* GetObject() {
     return (TDataStd_DeltaOnModificationOfExtStringArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_DeltaOnModificationOfExtStringArray::~Handle_TDataStd_DeltaOnModificationOfExtStringArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_DeltaOnModificationOfExtStringArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2295,25 +1931,23 @@ class TDataStd_DeltaOnModificationOfIntArray : public TDF_DeltaOnModification {
 };
 
 
-%feature("shadow") TDataStd_DeltaOnModificationOfIntArray::~TDataStd_DeltaOnModificationOfIntArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_DeltaOnModificationOfIntArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_DeltaOnModificationOfIntArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_DeltaOnModificationOfIntArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_DeltaOnModificationOfIntArray {
-	Handle_TDataStd_DeltaOnModificationOfIntArray GetHandle() {
-	return *(Handle_TDataStd_DeltaOnModificationOfIntArray*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_DeltaOnModificationOfIntArray::Handle_TDataStd_DeltaOnModificationOfIntArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_DeltaOnModificationOfIntArray;
 class Handle_TDataStd_DeltaOnModificationOfIntArray : public Handle_TDF_DeltaOnModification {
@@ -2331,20 +1965,6 @@ class Handle_TDataStd_DeltaOnModificationOfIntArray : public Handle_TDF_DeltaOnM
 %extend Handle_TDataStd_DeltaOnModificationOfIntArray {
     TDataStd_DeltaOnModificationOfIntArray* GetObject() {
     return (TDataStd_DeltaOnModificationOfIntArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_DeltaOnModificationOfIntArray::~Handle_TDataStd_DeltaOnModificationOfIntArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_DeltaOnModificationOfIntArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2368,25 +1988,23 @@ class TDataStd_DeltaOnModificationOfIntPackedMap : public TDF_DeltaOnModificatio
 };
 
 
-%feature("shadow") TDataStd_DeltaOnModificationOfIntPackedMap::~TDataStd_DeltaOnModificationOfIntPackedMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_DeltaOnModificationOfIntPackedMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_DeltaOnModificationOfIntPackedMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_DeltaOnModificationOfIntPackedMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_DeltaOnModificationOfIntPackedMap {
-	Handle_TDataStd_DeltaOnModificationOfIntPackedMap GetHandle() {
-	return *(Handle_TDataStd_DeltaOnModificationOfIntPackedMap*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_DeltaOnModificationOfIntPackedMap::Handle_TDataStd_DeltaOnModificationOfIntPackedMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_DeltaOnModificationOfIntPackedMap;
 class Handle_TDataStd_DeltaOnModificationOfIntPackedMap : public Handle_TDF_DeltaOnModification {
@@ -2404,20 +2022,6 @@ class Handle_TDataStd_DeltaOnModificationOfIntPackedMap : public Handle_TDF_Delt
 %extend Handle_TDataStd_DeltaOnModificationOfIntPackedMap {
     TDataStd_DeltaOnModificationOfIntPackedMap* GetObject() {
     return (TDataStd_DeltaOnModificationOfIntPackedMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_DeltaOnModificationOfIntPackedMap::~Handle_TDataStd_DeltaOnModificationOfIntPackedMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_DeltaOnModificationOfIntPackedMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2441,25 +2045,23 @@ class TDataStd_DeltaOnModificationOfRealArray : public TDF_DeltaOnModification {
 };
 
 
-%feature("shadow") TDataStd_DeltaOnModificationOfRealArray::~TDataStd_DeltaOnModificationOfRealArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_DeltaOnModificationOfRealArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_DeltaOnModificationOfRealArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_DeltaOnModificationOfRealArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_DeltaOnModificationOfRealArray {
-	Handle_TDataStd_DeltaOnModificationOfRealArray GetHandle() {
-	return *(Handle_TDataStd_DeltaOnModificationOfRealArray*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_DeltaOnModificationOfRealArray::Handle_TDataStd_DeltaOnModificationOfRealArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_DeltaOnModificationOfRealArray;
 class Handle_TDataStd_DeltaOnModificationOfRealArray : public Handle_TDF_DeltaOnModification {
@@ -2477,20 +2079,6 @@ class Handle_TDataStd_DeltaOnModificationOfRealArray : public Handle_TDF_DeltaOn
 %extend Handle_TDataStd_DeltaOnModificationOfRealArray {
     TDataStd_DeltaOnModificationOfRealArray* GetObject() {
     return (TDataStd_DeltaOnModificationOfRealArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_DeltaOnModificationOfRealArray::~Handle_TDataStd_DeltaOnModificationOfRealArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_DeltaOnModificationOfRealArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2580,25 +2168,23 @@ class TDataStd_Directory : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_Directory::~TDataStd_Directory %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_Directory {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_Directory(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_Directory {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_Directory {
-	Handle_TDataStd_Directory GetHandle() {
-	return *(Handle_TDataStd_Directory*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_Directory::Handle_TDataStd_Directory %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_Directory;
 class Handle_TDataStd_Directory : public Handle_TDF_Attribute {
@@ -2616,20 +2202,6 @@ class Handle_TDataStd_Directory : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_Directory {
     TDataStd_Directory* GetObject() {
     return (TDataStd_Directory*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_Directory::~Handle_TDataStd_Directory %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_Directory {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2707,25 +2279,23 @@ class TDataStd_Expression : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_Expression::~TDataStd_Expression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_Expression {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_Expression(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_Expression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_Expression {
-	Handle_TDataStd_Expression GetHandle() {
-	return *(Handle_TDataStd_Expression*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_Expression::Handle_TDataStd_Expression %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_Expression;
 class Handle_TDataStd_Expression : public Handle_TDF_Attribute {
@@ -2743,20 +2313,6 @@ class Handle_TDataStd_Expression : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_Expression {
     TDataStd_Expression* GetObject() {
     return (TDataStd_Expression*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_Expression::~Handle_TDataStd_Expression %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_Expression {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2902,25 +2458,23 @@ class TDataStd_ExtStringArray : public TDF_Attribute {
 };
 
 
-%feature("shadow") TDataStd_ExtStringArray::~TDataStd_ExtStringArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_ExtStringArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_ExtStringArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_ExtStringArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_ExtStringArray {
-	Handle_TDataStd_ExtStringArray GetHandle() {
-	return *(Handle_TDataStd_ExtStringArray*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_ExtStringArray::Handle_TDataStd_ExtStringArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_ExtStringArray;
 class Handle_TDataStd_ExtStringArray : public Handle_TDF_Attribute {
@@ -2938,20 +2492,6 @@ class Handle_TDataStd_ExtStringArray : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_ExtStringArray {
     TDataStd_ExtStringArray* GetObject() {
     return (TDataStd_ExtStringArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_ExtStringArray::~Handle_TDataStd_ExtStringArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_ExtStringArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3073,25 +2613,23 @@ class TDataStd_ExtStringList : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_ExtStringList::~TDataStd_ExtStringList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_ExtStringList {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_ExtStringList(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_ExtStringList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_ExtStringList {
-	Handle_TDataStd_ExtStringList GetHandle() {
-	return *(Handle_TDataStd_ExtStringList*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_ExtStringList::Handle_TDataStd_ExtStringList %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_ExtStringList;
 class Handle_TDataStd_ExtStringList : public Handle_TDF_Attribute {
@@ -3109,20 +2647,6 @@ class Handle_TDataStd_ExtStringList : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_ExtStringList {
     TDataStd_ExtStringList* GetObject() {
     return (TDataStd_ExtStringList*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_ExtStringList::~Handle_TDataStd_ExtStringList %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_ExtStringList {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3152,25 +2676,23 @@ class TDataStd_HDataMapOfStringByte : public MMgt_TShared {
 };
 
 
-%feature("shadow") TDataStd_HDataMapOfStringByte::~TDataStd_HDataMapOfStringByte %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_HDataMapOfStringByte {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_HDataMapOfStringByte(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_HDataMapOfStringByte {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_HDataMapOfStringByte {
-	Handle_TDataStd_HDataMapOfStringByte GetHandle() {
-	return *(Handle_TDataStd_HDataMapOfStringByte*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_HDataMapOfStringByte::Handle_TDataStd_HDataMapOfStringByte %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_HDataMapOfStringByte;
 class Handle_TDataStd_HDataMapOfStringByte : public Handle_MMgt_TShared {
@@ -3188,20 +2710,6 @@ class Handle_TDataStd_HDataMapOfStringByte : public Handle_MMgt_TShared {
 %extend Handle_TDataStd_HDataMapOfStringByte {
     TDataStd_HDataMapOfStringByte* GetObject() {
     return (TDataStd_HDataMapOfStringByte*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_HDataMapOfStringByte::~Handle_TDataStd_HDataMapOfStringByte %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_HDataMapOfStringByte {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3231,25 +2739,23 @@ class TDataStd_HDataMapOfStringHArray1OfInteger : public MMgt_TShared {
 };
 
 
-%feature("shadow") TDataStd_HDataMapOfStringHArray1OfInteger::~TDataStd_HDataMapOfStringHArray1OfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_HDataMapOfStringHArray1OfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_HDataMapOfStringHArray1OfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_HDataMapOfStringHArray1OfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_HDataMapOfStringHArray1OfInteger {
-	Handle_TDataStd_HDataMapOfStringHArray1OfInteger GetHandle() {
-	return *(Handle_TDataStd_HDataMapOfStringHArray1OfInteger*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_HDataMapOfStringHArray1OfInteger::Handle_TDataStd_HDataMapOfStringHArray1OfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_HDataMapOfStringHArray1OfInteger;
 class Handle_TDataStd_HDataMapOfStringHArray1OfInteger : public Handle_MMgt_TShared {
@@ -3267,20 +2773,6 @@ class Handle_TDataStd_HDataMapOfStringHArray1OfInteger : public Handle_MMgt_TSha
 %extend Handle_TDataStd_HDataMapOfStringHArray1OfInteger {
     TDataStd_HDataMapOfStringHArray1OfInteger* GetObject() {
     return (TDataStd_HDataMapOfStringHArray1OfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_HDataMapOfStringHArray1OfInteger::~Handle_TDataStd_HDataMapOfStringHArray1OfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_HDataMapOfStringHArray1OfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3310,25 +2802,23 @@ class TDataStd_HDataMapOfStringHArray1OfReal : public MMgt_TShared {
 };
 
 
-%feature("shadow") TDataStd_HDataMapOfStringHArray1OfReal::~TDataStd_HDataMapOfStringHArray1OfReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_HDataMapOfStringHArray1OfReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_HDataMapOfStringHArray1OfReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_HDataMapOfStringHArray1OfReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_HDataMapOfStringHArray1OfReal {
-	Handle_TDataStd_HDataMapOfStringHArray1OfReal GetHandle() {
-	return *(Handle_TDataStd_HDataMapOfStringHArray1OfReal*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_HDataMapOfStringHArray1OfReal::Handle_TDataStd_HDataMapOfStringHArray1OfReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_HDataMapOfStringHArray1OfReal;
 class Handle_TDataStd_HDataMapOfStringHArray1OfReal : public Handle_MMgt_TShared {
@@ -3346,20 +2836,6 @@ class Handle_TDataStd_HDataMapOfStringHArray1OfReal : public Handle_MMgt_TShared
 %extend Handle_TDataStd_HDataMapOfStringHArray1OfReal {
     TDataStd_HDataMapOfStringHArray1OfReal* GetObject() {
     return (TDataStd_HDataMapOfStringHArray1OfReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_HDataMapOfStringHArray1OfReal::~Handle_TDataStd_HDataMapOfStringHArray1OfReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_HDataMapOfStringHArray1OfReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3389,25 +2865,23 @@ class TDataStd_HDataMapOfStringInteger : public MMgt_TShared {
 };
 
 
-%feature("shadow") TDataStd_HDataMapOfStringInteger::~TDataStd_HDataMapOfStringInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_HDataMapOfStringInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_HDataMapOfStringInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_HDataMapOfStringInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_HDataMapOfStringInteger {
-	Handle_TDataStd_HDataMapOfStringInteger GetHandle() {
-	return *(Handle_TDataStd_HDataMapOfStringInteger*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_HDataMapOfStringInteger::Handle_TDataStd_HDataMapOfStringInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_HDataMapOfStringInteger;
 class Handle_TDataStd_HDataMapOfStringInteger : public Handle_MMgt_TShared {
@@ -3425,20 +2899,6 @@ class Handle_TDataStd_HDataMapOfStringInteger : public Handle_MMgt_TShared {
 %extend Handle_TDataStd_HDataMapOfStringInteger {
     TDataStd_HDataMapOfStringInteger* GetObject() {
     return (TDataStd_HDataMapOfStringInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_HDataMapOfStringInteger::~Handle_TDataStd_HDataMapOfStringInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_HDataMapOfStringInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3468,25 +2928,23 @@ class TDataStd_HDataMapOfStringReal : public MMgt_TShared {
 };
 
 
-%feature("shadow") TDataStd_HDataMapOfStringReal::~TDataStd_HDataMapOfStringReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_HDataMapOfStringReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_HDataMapOfStringReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_HDataMapOfStringReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_HDataMapOfStringReal {
-	Handle_TDataStd_HDataMapOfStringReal GetHandle() {
-	return *(Handle_TDataStd_HDataMapOfStringReal*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_HDataMapOfStringReal::Handle_TDataStd_HDataMapOfStringReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_HDataMapOfStringReal;
 class Handle_TDataStd_HDataMapOfStringReal : public Handle_MMgt_TShared {
@@ -3504,20 +2962,6 @@ class Handle_TDataStd_HDataMapOfStringReal : public Handle_MMgt_TShared {
 %extend Handle_TDataStd_HDataMapOfStringReal {
     TDataStd_HDataMapOfStringReal* GetObject() {
     return (TDataStd_HDataMapOfStringReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_HDataMapOfStringReal::~Handle_TDataStd_HDataMapOfStringReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_HDataMapOfStringReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3547,25 +2991,23 @@ class TDataStd_HDataMapOfStringString : public MMgt_TShared {
 };
 
 
-%feature("shadow") TDataStd_HDataMapOfStringString::~TDataStd_HDataMapOfStringString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_HDataMapOfStringString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_HDataMapOfStringString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_HDataMapOfStringString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_HDataMapOfStringString {
-	Handle_TDataStd_HDataMapOfStringString GetHandle() {
-	return *(Handle_TDataStd_HDataMapOfStringString*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_HDataMapOfStringString::Handle_TDataStd_HDataMapOfStringString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_HDataMapOfStringString;
 class Handle_TDataStd_HDataMapOfStringString : public Handle_MMgt_TShared {
@@ -3583,20 +3025,6 @@ class Handle_TDataStd_HDataMapOfStringString : public Handle_MMgt_TShared {
 %extend Handle_TDataStd_HDataMapOfStringString {
     TDataStd_HDataMapOfStringString* GetObject() {
     return (TDataStd_HDataMapOfStringString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_HDataMapOfStringString::~Handle_TDataStd_HDataMapOfStringString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_HDataMapOfStringString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3670,25 +3098,23 @@ class TDataStd_HLabelArray1 : public MMgt_TShared {
 };
 
 
-%feature("shadow") TDataStd_HLabelArray1::~TDataStd_HLabelArray1 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_HLabelArray1 {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_HLabelArray1(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_HLabelArray1 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_HLabelArray1 {
-	Handle_TDataStd_HLabelArray1 GetHandle() {
-	return *(Handle_TDataStd_HLabelArray1*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_HLabelArray1::Handle_TDataStd_HLabelArray1 %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_HLabelArray1;
 class Handle_TDataStd_HLabelArray1 : public Handle_MMgt_TShared {
@@ -3706,20 +3132,6 @@ class Handle_TDataStd_HLabelArray1 : public Handle_MMgt_TShared {
 %extend Handle_TDataStd_HLabelArray1 {
     TDataStd_HLabelArray1* GetObject() {
     return (TDataStd_HLabelArray1*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_HLabelArray1::~Handle_TDataStd_HLabelArray1 %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_HLabelArray1 {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3759,7 +3171,7 @@ class TDataStd_IntPackedMap : public TDF_Attribute {
 		%feature("compactdefaultargs") GetHMap;
 		%feature("autodoc", "	:rtype: Handle_TColStd_HPackedMapOfInteger
 ") GetHMap;
-		const Handle_TColStd_HPackedMapOfInteger & GetHMap ();
+		Handle_TColStd_HPackedMapOfInteger GetHMap ();
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: bool
 ") Clear;
@@ -3843,25 +3255,23 @@ class TDataStd_IntPackedMap : public TDF_Attribute {
 };
 
 
-%feature("shadow") TDataStd_IntPackedMap::~TDataStd_IntPackedMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_IntPackedMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_IntPackedMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_IntPackedMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_IntPackedMap {
-	Handle_TDataStd_IntPackedMap GetHandle() {
-	return *(Handle_TDataStd_IntPackedMap*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_IntPackedMap::Handle_TDataStd_IntPackedMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_IntPackedMap;
 class Handle_TDataStd_IntPackedMap : public Handle_TDF_Attribute {
@@ -3879,20 +3289,6 @@ class Handle_TDataStd_IntPackedMap : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_IntPackedMap {
     TDataStd_IntPackedMap* GetObject() {
     return (TDataStd_IntPackedMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_IntPackedMap::~Handle_TDataStd_IntPackedMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_IntPackedMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3970,25 +3366,23 @@ class TDataStd_Integer : public TDF_Attribute {
 };
 
 
-%feature("shadow") TDataStd_Integer::~TDataStd_Integer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_Integer {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_Integer(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_Integer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_Integer {
-	Handle_TDataStd_Integer GetHandle() {
-	return *(Handle_TDataStd_Integer*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_Integer::Handle_TDataStd_Integer %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_Integer;
 class Handle_TDataStd_Integer : public Handle_TDF_Attribute {
@@ -4006,20 +3400,6 @@ class Handle_TDataStd_Integer : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_Integer {
     TDataStd_Integer* GetObject() {
     return (TDataStd_Integer*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_Integer::~Handle_TDataStd_Integer %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_Integer {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4167,25 +3547,23 @@ class TDataStd_IntegerArray : public TDF_Attribute {
 };
 
 
-%feature("shadow") TDataStd_IntegerArray::~TDataStd_IntegerArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_IntegerArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_IntegerArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_IntegerArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_IntegerArray {
-	Handle_TDataStd_IntegerArray GetHandle() {
-	return *(Handle_TDataStd_IntegerArray*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_IntegerArray::Handle_TDataStd_IntegerArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_IntegerArray;
 class Handle_TDataStd_IntegerArray : public Handle_TDF_Attribute {
@@ -4203,20 +3581,6 @@ class Handle_TDataStd_IntegerArray : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_IntegerArray {
     TDataStd_IntegerArray* GetObject() {
     return (TDataStd_IntegerArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_IntegerArray::~Handle_TDataStd_IntegerArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_IntegerArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4338,25 +3702,23 @@ class TDataStd_IntegerList : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_IntegerList::~TDataStd_IntegerList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_IntegerList {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_IntegerList(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_IntegerList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_IntegerList {
-	Handle_TDataStd_IntegerList GetHandle() {
-	return *(Handle_TDataStd_IntegerList*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_IntegerList::Handle_TDataStd_IntegerList %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_IntegerList;
 class Handle_TDataStd_IntegerList : public Handle_TDF_Attribute {
@@ -4374,20 +3736,6 @@ class Handle_TDataStd_IntegerList : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_IntegerList {
     TDataStd_IntegerList* GetObject() {
     return (TDataStd_IntegerList*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_IntegerList::~Handle_TDataStd_IntegerList %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_IntegerList {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4473,20 +3821,6 @@ class TDataStd_LabelArray1 {
 };
 
 
-%feature("shadow") TDataStd_LabelArray1::~TDataStd_LabelArray1 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_LabelArray1 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_ListIteratorOfListOfByte;
 class TDataStd_ListIteratorOfListOfByte {
 	public:
@@ -4521,20 +3855,6 @@ class TDataStd_ListIteratorOfListOfByte {
 };
 
 
-%feature("shadow") TDataStd_ListIteratorOfListOfByte::~TDataStd_ListIteratorOfListOfByte %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_ListIteratorOfListOfByte {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_ListIteratorOfListOfExtendedString;
 class TDataStd_ListIteratorOfListOfExtendedString {
 	public:
@@ -4569,20 +3889,6 @@ class TDataStd_ListIteratorOfListOfExtendedString {
 };
 
 
-%feature("shadow") TDataStd_ListIteratorOfListOfExtendedString::~TDataStd_ListIteratorOfListOfExtendedString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_ListIteratorOfListOfExtendedString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_ListNodeOfListOfByte;
 class TDataStd_ListNodeOfListOfByte : public TCollection_MapNode {
 	public:
@@ -4601,25 +3907,23 @@ class TDataStd_ListNodeOfListOfByte : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TDataStd_ListNodeOfListOfByte::~TDataStd_ListNodeOfListOfByte %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_ListNodeOfListOfByte {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_ListNodeOfListOfByte(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_ListNodeOfListOfByte {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_ListNodeOfListOfByte {
-	Handle_TDataStd_ListNodeOfListOfByte GetHandle() {
-	return *(Handle_TDataStd_ListNodeOfListOfByte*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_ListNodeOfListOfByte::Handle_TDataStd_ListNodeOfListOfByte %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_ListNodeOfListOfByte;
 class Handle_TDataStd_ListNodeOfListOfByte : public Handle_TCollection_MapNode {
@@ -4637,20 +3941,6 @@ class Handle_TDataStd_ListNodeOfListOfByte : public Handle_TCollection_MapNode {
 %extend Handle_TDataStd_ListNodeOfListOfByte {
     TDataStd_ListNodeOfListOfByte* GetObject() {
     return (TDataStd_ListNodeOfListOfByte*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_ListNodeOfListOfByte::~Handle_TDataStd_ListNodeOfListOfByte %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_ListNodeOfListOfByte {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4672,25 +3962,23 @@ class TDataStd_ListNodeOfListOfExtendedString : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TDataStd_ListNodeOfListOfExtendedString::~TDataStd_ListNodeOfListOfExtendedString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_ListNodeOfListOfExtendedString {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_ListNodeOfListOfExtendedString(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_ListNodeOfListOfExtendedString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_ListNodeOfListOfExtendedString {
-	Handle_TDataStd_ListNodeOfListOfExtendedString GetHandle() {
-	return *(Handle_TDataStd_ListNodeOfListOfExtendedString*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_ListNodeOfListOfExtendedString::Handle_TDataStd_ListNodeOfListOfExtendedString %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_ListNodeOfListOfExtendedString;
 class Handle_TDataStd_ListNodeOfListOfExtendedString : public Handle_TCollection_MapNode {
@@ -4708,20 +3996,6 @@ class Handle_TDataStd_ListNodeOfListOfExtendedString : public Handle_TCollection
 %extend Handle_TDataStd_ListNodeOfListOfExtendedString {
     TDataStd_ListNodeOfListOfExtendedString* GetObject() {
     return (TDataStd_ListNodeOfListOfExtendedString*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_ListNodeOfListOfExtendedString::~Handle_TDataStd_ListNodeOfListOfExtendedString %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_ListNodeOfListOfExtendedString {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4849,20 +4123,6 @@ class TDataStd_ListOfByte {
 };
 
 
-%feature("shadow") TDataStd_ListOfByte::~TDataStd_ListOfByte %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_ListOfByte {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_ListOfExtendedString;
 class TDataStd_ListOfExtendedString {
 	public:
@@ -4987,20 +4247,6 @@ class TDataStd_ListOfExtendedString {
 };
 
 
-%feature("shadow") TDataStd_ListOfExtendedString::~TDataStd_ListOfExtendedString %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TDataStd_ListOfExtendedString {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TDataStd_Name;
 class TDataStd_Name : public TDF_Attribute {
 	public:
@@ -5071,25 +4317,23 @@ class TDataStd_Name : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_Name::~TDataStd_Name %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_Name {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_Name(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_Name {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_Name {
-	Handle_TDataStd_Name GetHandle() {
-	return *(Handle_TDataStd_Name*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_Name::Handle_TDataStd_Name %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_Name;
 class Handle_TDataStd_Name : public Handle_TDF_Attribute {
@@ -5107,20 +4351,6 @@ class Handle_TDataStd_Name : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_Name {
     TDataStd_Name* GetObject() {
     return (TDataStd_Name*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_Name::~Handle_TDataStd_Name %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_Name {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5350,7 +4580,7 @@ class TDataStd_NamedData : public TDF_Attribute {
 	:type theName: TCollection_ExtendedString &
 	:rtype: Handle_TColStd_HArray1OfInteger
 ") GetArrayOfIntegers;
-		const Handle_TColStd_HArray1OfInteger & GetArrayOfIntegers (const TCollection_ExtendedString & theName);
+		Handle_TColStd_HArray1OfInteger GetArrayOfIntegers (const TCollection_ExtendedString & theName);
 		%feature("compactdefaultargs") SetArrayOfIntegers;
 		%feature("autodoc", "	* Defines a named array of integer values. If the array already exists, it changes its value to <theArrayOfIntegers>.
 
@@ -5396,7 +4626,7 @@ class TDataStd_NamedData : public TDF_Attribute {
 	:type theName: TCollection_ExtendedString &
 	:rtype: Handle_TColStd_HArray1OfReal
 ") GetArrayOfReals;
-		const Handle_TColStd_HArray1OfReal & GetArrayOfReals (const TCollection_ExtendedString & theName);
+		Handle_TColStd_HArray1OfReal GetArrayOfReals (const TCollection_ExtendedString & theName);
 		%feature("compactdefaultargs") SetArrayOfReals;
 		%feature("autodoc", "	* Defines a named array of real values. If the array already exists, it changes its value to <theArrayOfReals>.
 
@@ -5454,25 +4684,23 @@ class TDataStd_NamedData : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_NamedData::~TDataStd_NamedData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_NamedData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_NamedData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_NamedData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_NamedData {
-	Handle_TDataStd_NamedData GetHandle() {
-	return *(Handle_TDataStd_NamedData*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_NamedData::Handle_TDataStd_NamedData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_NamedData;
 class Handle_TDataStd_NamedData : public Handle_TDF_Attribute {
@@ -5490,20 +4718,6 @@ class Handle_TDataStd_NamedData : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_NamedData {
     TDataStd_NamedData* GetObject() {
     return (TDataStd_NamedData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_NamedData::~Handle_TDataStd_NamedData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_NamedData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5591,25 +4805,23 @@ class TDataStd_NoteBook : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_NoteBook::~TDataStd_NoteBook %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_NoteBook {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_NoteBook(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_NoteBook {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_NoteBook {
-	Handle_TDataStd_NoteBook GetHandle() {
-	return *(Handle_TDataStd_NoteBook*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_NoteBook::Handle_TDataStd_NoteBook %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_NoteBook;
 class Handle_TDataStd_NoteBook : public Handle_TDF_Attribute {
@@ -5627,20 +4839,6 @@ class Handle_TDataStd_NoteBook : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_NoteBook {
     TDataStd_NoteBook* GetObject() {
     return (TDataStd_NoteBook*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_NoteBook::~Handle_TDataStd_NoteBook %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_NoteBook {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5730,25 +4928,23 @@ class TDataStd_Real : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_Real::~TDataStd_Real %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_Real {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_Real(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_Real {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_Real {
-	Handle_TDataStd_Real GetHandle() {
-	return *(Handle_TDataStd_Real*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_Real::Handle_TDataStd_Real %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_Real;
 class Handle_TDataStd_Real : public Handle_TDF_Attribute {
@@ -5766,20 +4962,6 @@ class Handle_TDataStd_Real : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_Real {
     TDataStd_Real* GetObject() {
     return (TDataStd_Real*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_Real::~Handle_TDataStd_Real %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_Real {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5927,25 +5109,23 @@ class TDataStd_RealArray : public TDF_Attribute {
 };
 
 
-%feature("shadow") TDataStd_RealArray::~TDataStd_RealArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_RealArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_RealArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_RealArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_RealArray {
-	Handle_TDataStd_RealArray GetHandle() {
-	return *(Handle_TDataStd_RealArray*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_RealArray::Handle_TDataStd_RealArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_RealArray;
 class Handle_TDataStd_RealArray : public Handle_TDF_Attribute {
@@ -5963,20 +5143,6 @@ class Handle_TDataStd_RealArray : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_RealArray {
     TDataStd_RealArray* GetObject() {
     return (TDataStd_RealArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_RealArray::~Handle_TDataStd_RealArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_RealArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6098,25 +5264,23 @@ class TDataStd_RealList : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_RealList::~TDataStd_RealList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_RealList {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_RealList(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_RealList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_RealList {
-	Handle_TDataStd_RealList GetHandle() {
-	return *(Handle_TDataStd_RealList*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_RealList::Handle_TDataStd_RealList %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_RealList;
 class Handle_TDataStd_RealList : public Handle_TDF_Attribute {
@@ -6134,20 +5298,6 @@ class Handle_TDataStd_RealList : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_RealList {
     TDataStd_RealList* GetObject() {
     return (TDataStd_RealList*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_RealList::~Handle_TDataStd_RealList %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_RealList {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6221,7 +5371,7 @@ class TDataStd_ReferenceArray : public TDF_Attribute {
 		%feature("compactdefaultargs") InternalArray;
 		%feature("autodoc", "	:rtype: Handle_TDataStd_HLabelArray1
 ") InternalArray;
-		const Handle_TDataStd_HLabelArray1 & InternalArray ();
+		Handle_TDataStd_HLabelArray1 InternalArray ();
 		%feature("compactdefaultargs") SetInternalArray;
 		%feature("autodoc", "	:param values:
 	:type values: Handle_TDataStd_HLabelArray1 &
@@ -6273,25 +5423,23 @@ class TDataStd_ReferenceArray : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_ReferenceArray::~TDataStd_ReferenceArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_ReferenceArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_ReferenceArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_ReferenceArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_ReferenceArray {
-	Handle_TDataStd_ReferenceArray GetHandle() {
-	return *(Handle_TDataStd_ReferenceArray*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_ReferenceArray::Handle_TDataStd_ReferenceArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_ReferenceArray;
 class Handle_TDataStd_ReferenceArray : public Handle_TDF_Attribute {
@@ -6309,20 +5457,6 @@ class Handle_TDataStd_ReferenceArray : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_ReferenceArray {
     TDataStd_ReferenceArray* GetObject() {
     return (TDataStd_ReferenceArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_ReferenceArray::~Handle_TDataStd_ReferenceArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_ReferenceArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6450,25 +5584,23 @@ class TDataStd_ReferenceList : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_ReferenceList::~TDataStd_ReferenceList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_ReferenceList {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_ReferenceList(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_ReferenceList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_ReferenceList {
-	Handle_TDataStd_ReferenceList GetHandle() {
-	return *(Handle_TDataStd_ReferenceList*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_ReferenceList::Handle_TDataStd_ReferenceList %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_ReferenceList;
 class Handle_TDataStd_ReferenceList : public Handle_TDF_Attribute {
@@ -6486,20 +5618,6 @@ class Handle_TDataStd_ReferenceList : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_ReferenceList {
     TDataStd_ReferenceList* GetObject() {
     return (TDataStd_ReferenceList*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_ReferenceList::~Handle_TDataStd_ReferenceList %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_ReferenceList {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6577,25 +5695,23 @@ class TDataStd_Relation : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_Relation::~TDataStd_Relation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_Relation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_Relation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_Relation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_Relation {
-	Handle_TDataStd_Relation GetHandle() {
-	return *(Handle_TDataStd_Relation*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_Relation::Handle_TDataStd_Relation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_Relation;
 class Handle_TDataStd_Relation : public Handle_TDF_Attribute {
@@ -6613,20 +5729,6 @@ class Handle_TDataStd_Relation : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_Relation {
     TDataStd_Relation* GetObject() {
     return (TDataStd_Relation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_Relation::~Handle_TDataStd_Relation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_Relation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6684,25 +5786,23 @@ class TDataStd_Tick : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_Tick::~TDataStd_Tick %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_Tick {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_Tick(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_Tick {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_Tick {
-	Handle_TDataStd_Tick GetHandle() {
-	return *(Handle_TDataStd_Tick*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_Tick::Handle_TDataStd_Tick %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_Tick;
 class Handle_TDataStd_Tick : public Handle_TDF_Attribute {
@@ -6720,20 +5820,6 @@ class Handle_TDataStd_Tick : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_Tick {
     TDataStd_Tick* GetObject() {
     return (TDataStd_Tick*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_Tick::~Handle_TDataStd_Tick %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_Tick {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7057,25 +6143,23 @@ class TDataStd_TreeNode : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_TreeNode::~TDataStd_TreeNode %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_TreeNode {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_TreeNode(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_TreeNode {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_TreeNode {
-	Handle_TDataStd_TreeNode GetHandle() {
-	return *(Handle_TDataStd_TreeNode*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_TreeNode::Handle_TDataStd_TreeNode %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_TreeNode;
 class Handle_TDataStd_TreeNode : public Handle_TDF_Attribute {
@@ -7093,20 +6177,6 @@ class Handle_TDataStd_TreeNode : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_TreeNode {
     TDataStd_TreeNode* GetObject() {
     return (TDataStd_TreeNode*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_TreeNode::~Handle_TDataStd_TreeNode %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_TreeNode {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7172,25 +6242,23 @@ class TDataStd_UAttribute : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_UAttribute::~TDataStd_UAttribute %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_UAttribute {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_UAttribute(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_UAttribute {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_UAttribute {
-	Handle_TDataStd_UAttribute GetHandle() {
-	return *(Handle_TDataStd_UAttribute*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_UAttribute::Handle_TDataStd_UAttribute %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_UAttribute;
 class Handle_TDataStd_UAttribute : public Handle_TDF_Attribute {
@@ -7208,20 +6276,6 @@ class Handle_TDataStd_UAttribute : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_UAttribute {
     TDataStd_UAttribute* GetObject() {
     return (TDataStd_UAttribute*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_UAttribute::~Handle_TDataStd_UAttribute %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_UAttribute {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7385,25 +6439,23 @@ class TDataStd_Variable : public TDF_Attribute {
         };
 
 
-%feature("shadow") TDataStd_Variable::~TDataStd_Variable %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TDataStd_Variable {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TDataStd_Variable(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TDataStd_Variable {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TDataStd_Variable {
-	Handle_TDataStd_Variable GetHandle() {
-	return *(Handle_TDataStd_Variable*) &$self;
-	}
-};
+%pythonappend Handle_TDataStd_Variable::Handle_TDataStd_Variable %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TDataStd_Variable;
 class Handle_TDataStd_Variable : public Handle_TDF_Attribute {
@@ -7421,20 +6473,6 @@ class Handle_TDataStd_Variable : public Handle_TDF_Attribute {
 %extend Handle_TDataStd_Variable {
     TDataStd_Variable* GetObject() {
     return (TDataStd_Variable*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TDataStd_Variable::~Handle_TDataStd_Variable %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TDataStd_Variable {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

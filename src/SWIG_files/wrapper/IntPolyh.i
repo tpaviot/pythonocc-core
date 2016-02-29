@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include IntPolyh_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef IntPolyh_Array <IntPolyh_Edge> IntPolyh_ArrayOfEdges;
@@ -112,20 +124,6 @@ class IntPolyh_Couple {
 };
 
 
-%feature("shadow") IntPolyh_Couple::~IntPolyh_Couple %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntPolyh_Couple {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntPolyh_Edge;
 class IntPolyh_Edge {
 	public:
@@ -204,20 +202,6 @@ class IntPolyh_Edge {
 };
 
 
-%feature("shadow") IntPolyh_Edge::~IntPolyh_Edge %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntPolyh_Edge {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntPolyh_Intersection;
 class IntPolyh_Intersection {
 	public:
@@ -360,20 +344,6 @@ class IntPolyh_Intersection {
 };
 
 
-%feature("shadow") IntPolyh_Intersection::~IntPolyh_Intersection %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntPolyh_Intersection {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntPolyh_Point;
 class IntPolyh_Point {
 	public:
@@ -588,20 +558,6 @@ class IntPolyh_Point {
 };
 
 
-%feature("shadow") IntPolyh_Point::~IntPolyh_Point %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntPolyh_Point {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntPolyh_SectionLine;
 class IntPolyh_SectionLine {
 	public:
@@ -674,20 +630,6 @@ class IntPolyh_SectionLine {
 };
 
 
-%feature("shadow") IntPolyh_SectionLine::~IntPolyh_SectionLine %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntPolyh_SectionLine {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntPolyh_SeqOfStartPoints;
 class IntPolyh_SeqOfStartPoints : public TCollection_BaseSequence {
 	public:
@@ -820,20 +762,6 @@ class IntPolyh_SeqOfStartPoints : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") IntPolyh_SeqOfStartPoints::~IntPolyh_SeqOfStartPoints %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntPolyh_SeqOfStartPoints {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntPolyh_SequenceNodeOfSeqOfStartPoints;
 class IntPolyh_SequenceNodeOfSeqOfStartPoints : public TCollection_SeqNode {
 	public:
@@ -854,25 +782,23 @@ class IntPolyh_SequenceNodeOfSeqOfStartPoints : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") IntPolyh_SequenceNodeOfSeqOfStartPoints::~IntPolyh_SequenceNodeOfSeqOfStartPoints %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntPolyh_SequenceNodeOfSeqOfStartPoints {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntPolyh_SequenceNodeOfSeqOfStartPoints {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntPolyh_SequenceNodeOfSeqOfStartPoints {
-	Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints GetHandle() {
-	return *(Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints*) &$self;
-	}
-};
+%pythonappend Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints::Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints;
 class Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints : public Handle_TCollection_SeqNode {
@@ -890,20 +816,6 @@ class Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints : public Handle_TCollection
 %extend Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints {
     IntPolyh_SequenceNodeOfSeqOfStartPoints* GetObject() {
     return (IntPolyh_SequenceNodeOfSeqOfStartPoints*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints::~Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1119,20 +1031,6 @@ class IntPolyh_StartPoint {
 };
 
 
-%feature("shadow") IntPolyh_StartPoint::~IntPolyh_StartPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntPolyh_StartPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntPolyh_Triangle;
 class IntPolyh_Triangle {
 	public:
@@ -1409,17 +1307,3 @@ class IntPolyh_Triangle {
 };
 
 
-%feature("shadow") IntPolyh_Triangle::~IntPolyh_Triangle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntPolyh_Triangle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

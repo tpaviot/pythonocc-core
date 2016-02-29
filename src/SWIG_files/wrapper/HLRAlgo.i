@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include HLRAlgo_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -138,20 +150,6 @@ class HLRAlgo {
 };
 
 
-%feature("shadow") HLRAlgo::~HLRAlgo %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_Array1OfPHDat;
 class HLRAlgo_Array1OfPHDat {
 	public:
@@ -234,20 +232,6 @@ class HLRAlgo_Array1OfPHDat {
 };
 
 
-%feature("shadow") HLRAlgo_Array1OfPHDat::~HLRAlgo_Array1OfPHDat %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_Array1OfPHDat {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_Array1OfPINod;
 class HLRAlgo_Array1OfPINod {
 	public:
@@ -320,30 +304,16 @@ class HLRAlgo_Array1OfPINod {
 	:type Index: int
 	:rtype: Handle_HLRAlgo_PolyInternalNode
 ") Value;
-		const Handle_HLRAlgo_PolyInternalNode & Value (const Standard_Integer Index);
+		Handle_HLRAlgo_PolyInternalNode Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_HLRAlgo_PolyInternalNode
 ") ChangeValue;
-		Handle_HLRAlgo_PolyInternalNode & ChangeValue (const Standard_Integer Index);
+		Handle_HLRAlgo_PolyInternalNode ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") HLRAlgo_Array1OfPINod::~HLRAlgo_Array1OfPINod %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_Array1OfPINod {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_Array1OfPISeg;
 class HLRAlgo_Array1OfPISeg {
 	public:
@@ -426,20 +396,6 @@ class HLRAlgo_Array1OfPISeg {
 };
 
 
-%feature("shadow") HLRAlgo_Array1OfPISeg::~HLRAlgo_Array1OfPISeg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_Array1OfPISeg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_Array1OfTData;
 class HLRAlgo_Array1OfTData {
 	public:
@@ -522,20 +478,6 @@ class HLRAlgo_Array1OfTData {
 };
 
 
-%feature("shadow") HLRAlgo_Array1OfTData::~HLRAlgo_Array1OfTData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_Array1OfTData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_BiPoint;
 class HLRAlgo_BiPoint {
 	public:
@@ -850,20 +792,6 @@ class HLRAlgo_BiPoint {
 };
 
 
-%feature("shadow") HLRAlgo_BiPoint::~HLRAlgo_BiPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_BiPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_Coincidence;
 class HLRAlgo_Coincidence {
 	public:
@@ -906,20 +834,6 @@ class HLRAlgo_Coincidence {
 };
 
 
-%feature("shadow") HLRAlgo_Coincidence::~HLRAlgo_Coincidence %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_Coincidence {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_EdgeIterator;
 class HLRAlgo_EdgeIterator {
 	public:
@@ -988,20 +902,6 @@ class HLRAlgo_EdgeIterator {
 };
 
 
-%feature("shadow") HLRAlgo_EdgeIterator::~HLRAlgo_EdgeIterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_EdgeIterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_EdgeStatus;
 class HLRAlgo_EdgeStatus {
 	public:
@@ -1120,20 +1020,6 @@ class HLRAlgo_EdgeStatus {
 };
 
 
-%feature("shadow") HLRAlgo_EdgeStatus::~HLRAlgo_EdgeStatus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_EdgeStatus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_EdgesBlock;
 class HLRAlgo_EdgesBlock : public MMgt_TShared {
 	public:
@@ -1246,25 +1132,23 @@ class HLRAlgo_EdgesBlock : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRAlgo_EdgesBlock::~HLRAlgo_EdgesBlock %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_EdgesBlock {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_EdgesBlock(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_EdgesBlock {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_EdgesBlock {
-	Handle_HLRAlgo_EdgesBlock GetHandle() {
-	return *(Handle_HLRAlgo_EdgesBlock*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_EdgesBlock::Handle_HLRAlgo_EdgesBlock %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_EdgesBlock;
 class Handle_HLRAlgo_EdgesBlock : public Handle_MMgt_TShared {
@@ -1282,20 +1166,6 @@ class Handle_HLRAlgo_EdgesBlock : public Handle_MMgt_TShared {
 %extend Handle_HLRAlgo_EdgesBlock {
     HLRAlgo_EdgesBlock* GetObject() {
     return (HLRAlgo_EdgesBlock*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_EdgesBlock::~Handle_HLRAlgo_EdgesBlock %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_EdgesBlock {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1369,25 +1239,23 @@ class HLRAlgo_HArray1OfPHDat : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRAlgo_HArray1OfPHDat::~HLRAlgo_HArray1OfPHDat %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_HArray1OfPHDat {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_HArray1OfPHDat(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_HArray1OfPHDat {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_HArray1OfPHDat {
-	Handle_HLRAlgo_HArray1OfPHDat GetHandle() {
-	return *(Handle_HLRAlgo_HArray1OfPHDat*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_HArray1OfPHDat::Handle_HLRAlgo_HArray1OfPHDat %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_HArray1OfPHDat;
 class Handle_HLRAlgo_HArray1OfPHDat : public Handle_MMgt_TShared {
@@ -1405,20 +1273,6 @@ class Handle_HLRAlgo_HArray1OfPHDat : public Handle_MMgt_TShared {
 %extend Handle_HLRAlgo_HArray1OfPHDat {
     HLRAlgo_HArray1OfPHDat* GetObject() {
     return (HLRAlgo_HArray1OfPHDat*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_HArray1OfPHDat::~Handle_HLRAlgo_HArray1OfPHDat %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_HArray1OfPHDat {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1474,13 +1328,13 @@ class HLRAlgo_HArray1OfPINod : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_HLRAlgo_PolyInternalNode
 ") Value;
-		const Handle_HLRAlgo_PolyInternalNode & Value (const Standard_Integer Index);
+		Handle_HLRAlgo_PolyInternalNode Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_HLRAlgo_PolyInternalNode
 ") ChangeValue;
-		Handle_HLRAlgo_PolyInternalNode & ChangeValue (const Standard_Integer Index);
+		Handle_HLRAlgo_PolyInternalNode ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfPINod
 ") Array1;
@@ -1492,25 +1346,23 @@ class HLRAlgo_HArray1OfPINod : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRAlgo_HArray1OfPINod::~HLRAlgo_HArray1OfPINod %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_HArray1OfPINod {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_HArray1OfPINod(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_HArray1OfPINod {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_HArray1OfPINod {
-	Handle_HLRAlgo_HArray1OfPINod GetHandle() {
-	return *(Handle_HLRAlgo_HArray1OfPINod*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_HArray1OfPINod::Handle_HLRAlgo_HArray1OfPINod %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_HArray1OfPINod;
 class Handle_HLRAlgo_HArray1OfPINod : public Handle_MMgt_TShared {
@@ -1528,20 +1380,6 @@ class Handle_HLRAlgo_HArray1OfPINod : public Handle_MMgt_TShared {
 %extend Handle_HLRAlgo_HArray1OfPINod {
     HLRAlgo_HArray1OfPINod* GetObject() {
     return (HLRAlgo_HArray1OfPINod*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_HArray1OfPINod::~Handle_HLRAlgo_HArray1OfPINod %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_HArray1OfPINod {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1615,25 +1453,23 @@ class HLRAlgo_HArray1OfPISeg : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRAlgo_HArray1OfPISeg::~HLRAlgo_HArray1OfPISeg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_HArray1OfPISeg {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_HArray1OfPISeg(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_HArray1OfPISeg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_HArray1OfPISeg {
-	Handle_HLRAlgo_HArray1OfPISeg GetHandle() {
-	return *(Handle_HLRAlgo_HArray1OfPISeg*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_HArray1OfPISeg::Handle_HLRAlgo_HArray1OfPISeg %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_HArray1OfPISeg;
 class Handle_HLRAlgo_HArray1OfPISeg : public Handle_MMgt_TShared {
@@ -1651,20 +1487,6 @@ class Handle_HLRAlgo_HArray1OfPISeg : public Handle_MMgt_TShared {
 %extend Handle_HLRAlgo_HArray1OfPISeg {
     HLRAlgo_HArray1OfPISeg* GetObject() {
     return (HLRAlgo_HArray1OfPISeg*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_HArray1OfPISeg::~Handle_HLRAlgo_HArray1OfPISeg %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_HArray1OfPISeg {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1738,25 +1560,23 @@ class HLRAlgo_HArray1OfTData : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRAlgo_HArray1OfTData::~HLRAlgo_HArray1OfTData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_HArray1OfTData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_HArray1OfTData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_HArray1OfTData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_HArray1OfTData {
-	Handle_HLRAlgo_HArray1OfTData GetHandle() {
-	return *(Handle_HLRAlgo_HArray1OfTData*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_HArray1OfTData::Handle_HLRAlgo_HArray1OfTData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_HArray1OfTData;
 class Handle_HLRAlgo_HArray1OfTData : public Handle_MMgt_TShared {
@@ -1774,20 +1594,6 @@ class Handle_HLRAlgo_HArray1OfTData : public Handle_MMgt_TShared {
 %extend Handle_HLRAlgo_HArray1OfTData {
     HLRAlgo_HArray1OfTData* GetObject() {
     return (HLRAlgo_HArray1OfTData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_HArray1OfTData::~Handle_HLRAlgo_HArray1OfTData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_HArray1OfTData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1873,20 +1679,6 @@ class HLRAlgo_Interference {
 };
 
 
-%feature("shadow") HLRAlgo_Interference::~HLRAlgo_Interference %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_Interference {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_InterferenceList;
 class HLRAlgo_InterferenceList {
 	public:
@@ -2011,20 +1803,6 @@ class HLRAlgo_InterferenceList {
 };
 
 
-%feature("shadow") HLRAlgo_InterferenceList::~HLRAlgo_InterferenceList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_InterferenceList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_Intersection;
 class HLRAlgo_Intersection {
 	public:
@@ -2123,20 +1901,6 @@ class HLRAlgo_Intersection {
 };
 
 
-%feature("shadow") HLRAlgo_Intersection::~HLRAlgo_Intersection %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_Intersection {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_ListIteratorOfInterferenceList;
 class HLRAlgo_ListIteratorOfInterferenceList {
 	public:
@@ -2171,20 +1935,6 @@ class HLRAlgo_ListIteratorOfInterferenceList {
 };
 
 
-%feature("shadow") HLRAlgo_ListIteratorOfInterferenceList::~HLRAlgo_ListIteratorOfInterferenceList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_ListIteratorOfInterferenceList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_ListIteratorOfListOfBPoint;
 class HLRAlgo_ListIteratorOfListOfBPoint {
 	public:
@@ -2219,20 +1969,6 @@ class HLRAlgo_ListIteratorOfListOfBPoint {
 };
 
 
-%feature("shadow") HLRAlgo_ListIteratorOfListOfBPoint::~HLRAlgo_ListIteratorOfListOfBPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_ListIteratorOfListOfBPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_ListNodeOfInterferenceList;
 class HLRAlgo_ListNodeOfInterferenceList : public TCollection_MapNode {
 	public:
@@ -2251,25 +1987,23 @@ class HLRAlgo_ListNodeOfInterferenceList : public TCollection_MapNode {
 };
 
 
-%feature("shadow") HLRAlgo_ListNodeOfInterferenceList::~HLRAlgo_ListNodeOfInterferenceList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_ListNodeOfInterferenceList {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_ListNodeOfInterferenceList(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_ListNodeOfInterferenceList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_ListNodeOfInterferenceList {
-	Handle_HLRAlgo_ListNodeOfInterferenceList GetHandle() {
-	return *(Handle_HLRAlgo_ListNodeOfInterferenceList*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_ListNodeOfInterferenceList::Handle_HLRAlgo_ListNodeOfInterferenceList %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_ListNodeOfInterferenceList;
 class Handle_HLRAlgo_ListNodeOfInterferenceList : public Handle_TCollection_MapNode {
@@ -2287,20 +2021,6 @@ class Handle_HLRAlgo_ListNodeOfInterferenceList : public Handle_TCollection_MapN
 %extend Handle_HLRAlgo_ListNodeOfInterferenceList {
     HLRAlgo_ListNodeOfInterferenceList* GetObject() {
     return (HLRAlgo_ListNodeOfInterferenceList*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_ListNodeOfInterferenceList::~Handle_HLRAlgo_ListNodeOfInterferenceList %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_ListNodeOfInterferenceList {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2322,25 +2042,23 @@ class HLRAlgo_ListNodeOfListOfBPoint : public TCollection_MapNode {
 };
 
 
-%feature("shadow") HLRAlgo_ListNodeOfListOfBPoint::~HLRAlgo_ListNodeOfListOfBPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_ListNodeOfListOfBPoint {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_ListNodeOfListOfBPoint(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_ListNodeOfListOfBPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_ListNodeOfListOfBPoint {
-	Handle_HLRAlgo_ListNodeOfListOfBPoint GetHandle() {
-	return *(Handle_HLRAlgo_ListNodeOfListOfBPoint*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_ListNodeOfListOfBPoint::Handle_HLRAlgo_ListNodeOfListOfBPoint %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_ListNodeOfListOfBPoint;
 class Handle_HLRAlgo_ListNodeOfListOfBPoint : public Handle_TCollection_MapNode {
@@ -2358,20 +2076,6 @@ class Handle_HLRAlgo_ListNodeOfListOfBPoint : public Handle_TCollection_MapNode 
 %extend Handle_HLRAlgo_ListNodeOfListOfBPoint {
     HLRAlgo_ListNodeOfListOfBPoint* GetObject() {
     return (HLRAlgo_ListNodeOfListOfBPoint*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_ListNodeOfListOfBPoint::~Handle_HLRAlgo_ListNodeOfListOfBPoint %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_ListNodeOfListOfBPoint {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2499,20 +2203,6 @@ class HLRAlgo_ListOfBPoint {
 };
 
 
-%feature("shadow") HLRAlgo_ListOfBPoint::~HLRAlgo_ListOfBPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_ListOfBPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_PolyAlgo;
 class HLRAlgo_PolyAlgo : public MMgt_TShared {
 	public:
@@ -2605,25 +2295,23 @@ class HLRAlgo_PolyAlgo : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRAlgo_PolyAlgo::~HLRAlgo_PolyAlgo %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_PolyAlgo {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_PolyAlgo(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_PolyAlgo {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_PolyAlgo {
-	Handle_HLRAlgo_PolyAlgo GetHandle() {
-	return *(Handle_HLRAlgo_PolyAlgo*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_PolyAlgo::Handle_HLRAlgo_PolyAlgo %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_PolyAlgo;
 class Handle_HLRAlgo_PolyAlgo : public Handle_MMgt_TShared {
@@ -2641,20 +2329,6 @@ class Handle_HLRAlgo_PolyAlgo : public Handle_MMgt_TShared {
 %extend Handle_HLRAlgo_PolyAlgo {
     HLRAlgo_PolyAlgo* GetObject() {
     return (HLRAlgo_PolyAlgo*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_PolyAlgo::~Handle_HLRAlgo_PolyAlgo %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_PolyAlgo {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2738,25 +2412,23 @@ class HLRAlgo_PolyData : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRAlgo_PolyData::~HLRAlgo_PolyData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_PolyData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_PolyData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_PolyData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_PolyData {
-	Handle_HLRAlgo_PolyData GetHandle() {
-	return *(Handle_HLRAlgo_PolyData*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_PolyData::Handle_HLRAlgo_PolyData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_PolyData;
 class Handle_HLRAlgo_PolyData : public Handle_MMgt_TShared {
@@ -2774,20 +2446,6 @@ class Handle_HLRAlgo_PolyData : public Handle_MMgt_TShared {
 %extend Handle_HLRAlgo_PolyData {
     HLRAlgo_PolyData* GetObject() {
     return (HLRAlgo_PolyData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_PolyData::~Handle_HLRAlgo_PolyData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_PolyData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2827,20 +2485,6 @@ class HLRAlgo_PolyHidingData {
 };
 
 
-%feature("shadow") HLRAlgo_PolyHidingData::~HLRAlgo_PolyHidingData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_PolyHidingData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_PolyInternalData;
 class HLRAlgo_PolyInternalData : public MMgt_TShared {
 	public:
@@ -2991,25 +2635,23 @@ class HLRAlgo_PolyInternalData : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRAlgo_PolyInternalData::~HLRAlgo_PolyInternalData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_PolyInternalData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_PolyInternalData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_PolyInternalData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_PolyInternalData {
-	Handle_HLRAlgo_PolyInternalData GetHandle() {
-	return *(Handle_HLRAlgo_PolyInternalData*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_PolyInternalData::Handle_HLRAlgo_PolyInternalData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_PolyInternalData;
 class Handle_HLRAlgo_PolyInternalData : public Handle_MMgt_TShared {
@@ -3027,20 +2669,6 @@ class Handle_HLRAlgo_PolyInternalData : public Handle_MMgt_TShared {
 %extend Handle_HLRAlgo_PolyInternalData {
     HLRAlgo_PolyInternalData* GetObject() {
     return (HLRAlgo_PolyInternalData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_PolyInternalData::~Handle_HLRAlgo_PolyInternalData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_PolyInternalData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3062,25 +2690,23 @@ class HLRAlgo_PolyInternalNode : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRAlgo_PolyInternalNode::~HLRAlgo_PolyInternalNode %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_PolyInternalNode {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_PolyInternalNode(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_PolyInternalNode {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_PolyInternalNode {
-	Handle_HLRAlgo_PolyInternalNode GetHandle() {
-	return *(Handle_HLRAlgo_PolyInternalNode*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_PolyInternalNode::Handle_HLRAlgo_PolyInternalNode %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_PolyInternalNode;
 class Handle_HLRAlgo_PolyInternalNode : public Handle_MMgt_TShared {
@@ -3100,20 +2726,6 @@ class Handle_HLRAlgo_PolyInternalNode : public Handle_MMgt_TShared {
     return (HLRAlgo_PolyInternalNode*)$self->Access();
     }
 };
-%feature("shadow") Handle_HLRAlgo_PolyInternalNode::~Handle_HLRAlgo_PolyInternalNode %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_PolyInternalNode {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor HLRAlgo_PolyInternalSegment;
 class HLRAlgo_PolyInternalSegment {
@@ -3129,20 +2741,6 @@ class HLRAlgo_PolyInternalSegment {
 };
 
 
-%feature("shadow") HLRAlgo_PolyInternalSegment::~HLRAlgo_PolyInternalSegment %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_PolyInternalSegment {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_PolyShellData;
 class HLRAlgo_PolyShellData : public MMgt_TShared {
 	public:
@@ -3187,25 +2785,23 @@ class HLRAlgo_PolyShellData : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRAlgo_PolyShellData::~HLRAlgo_PolyShellData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_PolyShellData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_PolyShellData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_PolyShellData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_PolyShellData {
-	Handle_HLRAlgo_PolyShellData GetHandle() {
-	return *(Handle_HLRAlgo_PolyShellData*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_PolyShellData::Handle_HLRAlgo_PolyShellData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_PolyShellData;
 class Handle_HLRAlgo_PolyShellData : public Handle_MMgt_TShared {
@@ -3223,20 +2819,6 @@ class Handle_HLRAlgo_PolyShellData : public Handle_MMgt_TShared {
 %extend Handle_HLRAlgo_PolyShellData {
     HLRAlgo_PolyShellData* GetObject() {
     return (HLRAlgo_PolyShellData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_PolyShellData::~Handle_HLRAlgo_PolyShellData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_PolyShellData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3416,20 +2998,6 @@ class HLRAlgo_Projector {
 };
 
 
-%feature("shadow") HLRAlgo_Projector::~HLRAlgo_Projector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_Projector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_TriangleData;
 class HLRAlgo_TriangleData {
 	public:
@@ -3444,20 +3012,6 @@ class HLRAlgo_TriangleData {
 };
 
 
-%feature("shadow") HLRAlgo_TriangleData::~HLRAlgo_TriangleData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRAlgo_TriangleData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRAlgo_WiresBlock;
 class HLRAlgo_WiresBlock : public MMgt_TShared {
 	public:
@@ -3486,7 +3040,7 @@ class HLRAlgo_WiresBlock : public MMgt_TShared {
 	:type I: int
 	:rtype: Handle_HLRAlgo_EdgesBlock
 ") Wire;
-		Handle_HLRAlgo_EdgesBlock & Wire (const Standard_Integer I);
+		Handle_HLRAlgo_EdgesBlock Wire (const Standard_Integer I);
 		%feature("compactdefaultargs") UpdateMinMax;
 		%feature("autodoc", "	:param TotMinMax:
 	:type TotMinMax: Standard_Address
@@ -3500,25 +3054,23 @@ class HLRAlgo_WiresBlock : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRAlgo_WiresBlock::~HLRAlgo_WiresBlock %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRAlgo_WiresBlock {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRAlgo_WiresBlock(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRAlgo_WiresBlock {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRAlgo_WiresBlock {
-	Handle_HLRAlgo_WiresBlock GetHandle() {
-	return *(Handle_HLRAlgo_WiresBlock*) &$self;
-	}
-};
+%pythonappend Handle_HLRAlgo_WiresBlock::Handle_HLRAlgo_WiresBlock %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRAlgo_WiresBlock;
 class Handle_HLRAlgo_WiresBlock : public Handle_MMgt_TShared {
@@ -3536,20 +3088,6 @@ class Handle_HLRAlgo_WiresBlock : public Handle_MMgt_TShared {
 %extend Handle_HLRAlgo_WiresBlock {
     HLRAlgo_WiresBlock* GetObject() {
     return (HLRAlgo_WiresBlock*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRAlgo_WiresBlock::~Handle_HLRAlgo_WiresBlock %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRAlgo_WiresBlock {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

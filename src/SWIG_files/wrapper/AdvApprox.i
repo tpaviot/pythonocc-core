@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include AdvApprox_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -278,20 +290,6 @@ class AdvApprox_ApproxAFunction {
         };
 
 
-%feature("shadow") AdvApprox_ApproxAFunction::~AdvApprox_ApproxAFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApprox_ApproxAFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApprox_Cutting;
 class AdvApprox_Cutting {
 	public:
@@ -312,20 +310,6 @@ class AdvApprox_Cutting {
 };
 
 
-%feature("shadow") AdvApprox_Cutting::~AdvApprox_Cutting %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApprox_Cutting {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApprox_SimpleApprox;
 class AdvApprox_SimpleApprox {
 	public:
@@ -420,20 +404,6 @@ class AdvApprox_SimpleApprox {
         };
 
 
-%feature("shadow") AdvApprox_SimpleApprox::~AdvApprox_SimpleApprox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApprox_SimpleApprox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApprox_DichoCutting;
 class AdvApprox_DichoCutting : public AdvApprox_Cutting {
 	public:
@@ -454,20 +424,6 @@ class AdvApprox_DichoCutting : public AdvApprox_Cutting {
 };
 
 
-%feature("shadow") AdvApprox_DichoCutting::~AdvApprox_DichoCutting %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApprox_DichoCutting {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApprox_PrefAndRec;
 class AdvApprox_PrefAndRec : public AdvApprox_Cutting {
 	public:
@@ -496,20 +452,6 @@ class AdvApprox_PrefAndRec : public AdvApprox_Cutting {
 };
 
 
-%feature("shadow") AdvApprox_PrefAndRec::~AdvApprox_PrefAndRec %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApprox_PrefAndRec {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApprox_PrefCutting;
 class AdvApprox_PrefCutting : public AdvApprox_Cutting {
 	public:
@@ -532,17 +474,3 @@ class AdvApprox_PrefCutting : public AdvApprox_Cutting {
 };
 
 
-%feature("shadow") AdvApprox_PrefCutting::~AdvApprox_PrefCutting %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApprox_PrefCutting {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

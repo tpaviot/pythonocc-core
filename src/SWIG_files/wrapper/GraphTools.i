@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include GraphTools_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -78,20 +90,6 @@ class GraphTools_ListIteratorOfListOfSequenceOfInteger {
 };
 
 
-%feature("shadow") GraphTools_ListIteratorOfListOfSequenceOfInteger::~GraphTools_ListIteratorOfListOfSequenceOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GraphTools_ListIteratorOfListOfSequenceOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GraphTools_ListIteratorOfSCList;
 class GraphTools_ListIteratorOfSCList {
 	public:
@@ -122,24 +120,10 @@ class GraphTools_ListIteratorOfSCList {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_GraphTools_SC
 ") Value;
-		Handle_GraphTools_SC & Value ();
+		Handle_GraphTools_SC Value ();
 };
 
 
-%feature("shadow") GraphTools_ListIteratorOfSCList::~GraphTools_ListIteratorOfSCList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GraphTools_ListIteratorOfSCList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GraphTools_ListNodeOfListOfSequenceOfInteger;
 class GraphTools_ListNodeOfListOfSequenceOfInteger : public TCollection_MapNode {
 	public:
@@ -158,25 +142,23 @@ class GraphTools_ListNodeOfListOfSequenceOfInteger : public TCollection_MapNode 
 };
 
 
-%feature("shadow") GraphTools_ListNodeOfListOfSequenceOfInteger::~GraphTools_ListNodeOfListOfSequenceOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GraphTools_ListNodeOfListOfSequenceOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GraphTools_ListNodeOfListOfSequenceOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GraphTools_ListNodeOfListOfSequenceOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GraphTools_ListNodeOfListOfSequenceOfInteger {
-	Handle_GraphTools_ListNodeOfListOfSequenceOfInteger GetHandle() {
-	return *(Handle_GraphTools_ListNodeOfListOfSequenceOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_GraphTools_ListNodeOfListOfSequenceOfInteger::Handle_GraphTools_ListNodeOfListOfSequenceOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GraphTools_ListNodeOfListOfSequenceOfInteger;
 class Handle_GraphTools_ListNodeOfListOfSequenceOfInteger : public Handle_TCollection_MapNode {
@@ -196,20 +178,6 @@ class Handle_GraphTools_ListNodeOfListOfSequenceOfInteger : public Handle_TColle
     return (GraphTools_ListNodeOfListOfSequenceOfInteger*)$self->Access();
     }
 };
-%feature("shadow") Handle_GraphTools_ListNodeOfListOfSequenceOfInteger::~Handle_GraphTools_ListNodeOfListOfSequenceOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GraphTools_ListNodeOfListOfSequenceOfInteger {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor GraphTools_ListNodeOfSCList;
 class GraphTools_ListNodeOfSCList : public TCollection_MapNode {
@@ -225,29 +193,27 @@ class GraphTools_ListNodeOfSCList : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_GraphTools_SC
 ") Value;
-		Handle_GraphTools_SC & Value ();
+		Handle_GraphTools_SC Value ();
 };
 
 
-%feature("shadow") GraphTools_ListNodeOfSCList::~GraphTools_ListNodeOfSCList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend GraphTools_ListNodeOfSCList {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GraphTools_ListNodeOfSCList(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_GraphTools_ListNodeOfSCList::Handle_GraphTools_ListNodeOfSCList %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend GraphTools_ListNodeOfSCList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GraphTools_ListNodeOfSCList {
-	Handle_GraphTools_ListNodeOfSCList GetHandle() {
-	return *(Handle_GraphTools_ListNodeOfSCList*) &$self;
-	}
-};
 
 %nodefaultctor Handle_GraphTools_ListNodeOfSCList;
 class Handle_GraphTools_ListNodeOfSCList : public Handle_TCollection_MapNode {
@@ -265,20 +231,6 @@ class Handle_GraphTools_ListNodeOfSCList : public Handle_TCollection_MapNode {
 %extend Handle_GraphTools_ListNodeOfSCList {
     GraphTools_ListNodeOfSCList* GetObject() {
     return (GraphTools_ListNodeOfSCList*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GraphTools_ListNodeOfSCList::~Handle_GraphTools_ListNodeOfSCList %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GraphTools_ListNodeOfSCList {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -406,20 +358,6 @@ class GraphTools_ListOfSequenceOfInteger {
 };
 
 
-%feature("shadow") GraphTools_ListOfSequenceOfInteger::~GraphTools_ListOfSequenceOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GraphTools_ListOfSequenceOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GraphTools_RGNode;
 class GraphTools_RGNode {
 	public:
@@ -470,20 +408,6 @@ class GraphTools_RGNode {
 };
 
 
-%feature("shadow") GraphTools_RGNode::~GraphTools_RGNode %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GraphTools_RGNode {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GraphTools_SC;
 class GraphTools_SC : public MMgt_TShared {
 	public:
@@ -534,25 +458,23 @@ class GraphTools_SC : public MMgt_TShared {
 };
 
 
-%feature("shadow") GraphTools_SC::~GraphTools_SC %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GraphTools_SC {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GraphTools_SC(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GraphTools_SC {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GraphTools_SC {
-	Handle_GraphTools_SC GetHandle() {
-	return *(Handle_GraphTools_SC*) &$self;
-	}
-};
+%pythonappend Handle_GraphTools_SC::Handle_GraphTools_SC %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GraphTools_SC;
 class Handle_GraphTools_SC : public Handle_MMgt_TShared {
@@ -570,20 +492,6 @@ class Handle_GraphTools_SC : public Handle_MMgt_TShared {
 %extend Handle_GraphTools_SC {
     GraphTools_SC* GetObject() {
     return (GraphTools_SC*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GraphTools_SC::~Handle_GraphTools_SC %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GraphTools_SC {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -661,11 +569,11 @@ class GraphTools_SCList {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_GraphTools_SC
 ") First;
-		Handle_GraphTools_SC & First ();
+		Handle_GraphTools_SC First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_GraphTools_SC
 ") Last;
-		Handle_GraphTools_SC & Last ();
+		Handle_GraphTools_SC Last ();
 		%feature("compactdefaultargs") RemoveFirst;
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
@@ -711,20 +619,6 @@ class GraphTools_SCList {
 };
 
 
-%feature("shadow") GraphTools_SCList::~GraphTools_SCList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GraphTools_SCList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GraphTools_TSNode;
 class GraphTools_TSNode {
 	public:
@@ -767,17 +661,3 @@ class GraphTools_TSNode {
 };
 
 
-%feature("shadow") GraphTools_TSNode::~GraphTools_TSNode %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GraphTools_TSNode {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include XCAFPrs_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -92,20 +104,6 @@ class XCAFPrs {
 };
 
 
-%feature("shadow") XCAFPrs::~XCAFPrs %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFPrs {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor XCAFPrs_AISObject;
 class XCAFPrs_AISObject : public AIS_Shape {
 	public:
@@ -156,25 +154,23 @@ class XCAFPrs_AISObject : public AIS_Shape {
 };
 
 
-%feature("shadow") XCAFPrs_AISObject::~XCAFPrs_AISObject %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFPrs_AISObject {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFPrs_AISObject(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFPrs_AISObject {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFPrs_AISObject {
-	Handle_XCAFPrs_AISObject GetHandle() {
-	return *(Handle_XCAFPrs_AISObject*) &$self;
-	}
-};
+%pythonappend Handle_XCAFPrs_AISObject::Handle_XCAFPrs_AISObject %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFPrs_AISObject;
 class Handle_XCAFPrs_AISObject : public Handle_AIS_Shape {
@@ -192,20 +188,6 @@ class Handle_XCAFPrs_AISObject : public Handle_AIS_Shape {
 %extend Handle_XCAFPrs_AISObject {
     XCAFPrs_AISObject* GetObject() {
     return (XCAFPrs_AISObject*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFPrs_AISObject::~Handle_XCAFPrs_AISObject %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFPrs_AISObject {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -239,20 +221,6 @@ class XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle : public TCollection_BasicMap
 };
 
 
-%feature("shadow") XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle::~XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
 class XCAFPrs_DataMapIteratorOfDataMapOfStyleShape : public TCollection_BasicMapIterator {
 	public:
@@ -283,20 +251,6 @@ class XCAFPrs_DataMapIteratorOfDataMapOfStyleShape : public TCollection_BasicMap
 };
 
 
-%feature("shadow") XCAFPrs_DataMapIteratorOfDataMapOfStyleShape::~XCAFPrs_DataMapIteratorOfDataMapOfStyleShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFPrs_DataMapIteratorOfDataMapOfStyleShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
 class XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient : public TCollection_BasicMapIterator {
 	public:
@@ -323,24 +277,10 @@ class XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient : public TCollection_Basi
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient::~XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor XCAFPrs_DataMapNodeOfDataMapOfShapeStyle;
 class XCAFPrs_DataMapNodeOfDataMapOfShapeStyle : public TCollection_MapNode {
 	public:
@@ -365,25 +305,23 @@ class XCAFPrs_DataMapNodeOfDataMapOfShapeStyle : public TCollection_MapNode {
 };
 
 
-%feature("shadow") XCAFPrs_DataMapNodeOfDataMapOfShapeStyle::~XCAFPrs_DataMapNodeOfDataMapOfShapeStyle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
-	Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle GetHandle() {
-	return *(Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle*) &$self;
-	}
-};
+%pythonappend Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle::Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle;
 class Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle : public Handle_TCollection_MapNode {
@@ -401,20 +339,6 @@ class Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle : public Handle_TCollectio
 %extend Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
     XCAFPrs_DataMapNodeOfDataMapOfShapeStyle* GetObject() {
     return (XCAFPrs_DataMapNodeOfDataMapOfShapeStyle*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle::~Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -442,25 +366,23 @@ class XCAFPrs_DataMapNodeOfDataMapOfStyleShape : public TCollection_MapNode {
 };
 
 
-%feature("shadow") XCAFPrs_DataMapNodeOfDataMapOfStyleShape::~XCAFPrs_DataMapNodeOfDataMapOfStyleShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
-	Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape GetHandle() {
-	return *(Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape*) &$self;
-	}
-};
+%pythonappend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape::Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape;
 class Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape : public Handle_TCollection_MapNode {
@@ -478,20 +400,6 @@ class Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape : public Handle_TCollectio
 %extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
     XCAFPrs_DataMapNodeOfDataMapOfStyleShape* GetObject() {
     return (XCAFPrs_DataMapNodeOfDataMapOfStyleShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape::~Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -515,29 +423,27 @@ class XCAFPrs_DataMapNodeOfDataMapOfStyleTransient : public TCollection_MapNode 
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 };
 
 
-%feature("shadow") XCAFPrs_DataMapNodeOfDataMapOfStyleTransient::~XCAFPrs_DataMapNodeOfDataMapOfStyleTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient::Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
-	Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient GetHandle() {
-	return *(Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient*) &$self;
-	}
-};
 
 %nodefaultctor Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient;
 class Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient : public Handle_TCollection_MapNode {
@@ -555,20 +461,6 @@ class Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient : public Handle_TColle
 %extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
     XCAFPrs_DataMapNodeOfDataMapOfStyleTransient* GetObject() {
     return (XCAFPrs_DataMapNodeOfDataMapOfStyleTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient::~Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -650,20 +542,6 @@ class XCAFPrs_DataMapOfShapeStyle : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") XCAFPrs_DataMapOfShapeStyle::~XCAFPrs_DataMapOfShapeStyle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFPrs_DataMapOfShapeStyle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor XCAFPrs_DataMapOfStyleShape;
 class XCAFPrs_DataMapOfStyleShape : public TCollection_BasicMap {
 	public:
@@ -742,20 +620,6 @@ class XCAFPrs_DataMapOfStyleShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") XCAFPrs_DataMapOfStyleShape::~XCAFPrs_DataMapOfStyleShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFPrs_DataMapOfStyleShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor XCAFPrs_DataMapOfStyleTransient;
 class XCAFPrs_DataMapOfStyleTransient : public TCollection_BasicMap {
 	public:
@@ -812,13 +676,13 @@ class XCAFPrs_DataMapOfStyleTransient : public TCollection_BasicMap {
 	:type K: XCAFPrs_Style &
 	:rtype: Handle_Standard_Transient
 ") Find;
-		const Handle_Standard_Transient & Find (const XCAFPrs_Style & K);
+		Handle_Standard_Transient Find (const XCAFPrs_Style & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: XCAFPrs_Style &
 	:rtype: Handle_Standard_Transient
 ") ChangeFind;
-		Handle_Standard_Transient & ChangeFind (const XCAFPrs_Style & K);
+		Handle_Standard_Transient ChangeFind (const XCAFPrs_Style & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: XCAFPrs_Style &
@@ -834,20 +698,6 @@ class XCAFPrs_DataMapOfStyleTransient : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") XCAFPrs_DataMapOfStyleTransient::~XCAFPrs_DataMapOfStyleTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFPrs_DataMapOfStyleTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor XCAFPrs_Driver;
 class XCAFPrs_Driver : public TPrsStd_Driver {
 	public:
@@ -868,25 +718,23 @@ class XCAFPrs_Driver : public TPrsStd_Driver {
 };
 
 
-%feature("shadow") XCAFPrs_Driver::~XCAFPrs_Driver %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFPrs_Driver {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFPrs_Driver(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFPrs_Driver {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFPrs_Driver {
-	Handle_XCAFPrs_Driver GetHandle() {
-	return *(Handle_XCAFPrs_Driver*) &$self;
-	}
-};
+%pythonappend Handle_XCAFPrs_Driver::Handle_XCAFPrs_Driver %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFPrs_Driver;
 class Handle_XCAFPrs_Driver : public Handle_TPrsStd_Driver {
@@ -904,20 +752,6 @@ class Handle_XCAFPrs_Driver : public Handle_TPrsStd_Driver {
 %extend Handle_XCAFPrs_Driver {
     XCAFPrs_Driver* GetObject() {
     return (XCAFPrs_Driver*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFPrs_Driver::~Handle_XCAFPrs_Driver %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFPrs_Driver {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1025,17 +859,3 @@ class XCAFPrs_Style {
 };
 
 
-%feature("shadow") XCAFPrs_Style::~XCAFPrs_Style %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFPrs_Style {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

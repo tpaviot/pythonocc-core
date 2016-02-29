@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include IntRes2d_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -219,20 +231,6 @@ class IntRes2d_Domain {
 };
 
 
-%feature("shadow") IntRes2d_Domain::~IntRes2d_Domain %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntRes2d_Domain {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntRes2d_Intersection;
 class IntRes2d_Intersection {
 	public:
@@ -285,20 +283,6 @@ class IntRes2d_Intersection {
 };
 
 
-%feature("shadow") IntRes2d_Intersection::~IntRes2d_Intersection %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntRes2d_Intersection {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntRes2d_IntersectionPoint;
 class IntRes2d_IntersectionPoint {
 	public:
@@ -409,20 +393,6 @@ class IntRes2d_IntersectionPoint {
 };
 
 
-%feature("shadow") IntRes2d_IntersectionPoint::~IntRes2d_IntersectionPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntRes2d_IntersectionPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntRes2d_IntersectionSegment;
 class IntRes2d_IntersectionSegment {
 	public:
@@ -535,20 +505,6 @@ class IntRes2d_IntersectionSegment {
 };
 
 
-%feature("shadow") IntRes2d_IntersectionSegment::~IntRes2d_IntersectionSegment %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntRes2d_IntersectionSegment {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint;
 class IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint : public TCollection_SeqNode {
 	public:
@@ -569,25 +525,23 @@ class IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint : public TCollection_Se
 };
 
 
-%feature("shadow") IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint::~IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
-	Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint GetHandle() {
-	return *(Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint*) &$self;
-	}
-};
+%pythonappend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint::Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint;
 class Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint : public Handle_TCollection_SeqNode {
@@ -605,20 +559,6 @@ class Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint : public Handle_
 %extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
     IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint* GetObject() {
     return (IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint::~Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -642,25 +582,23 @@ class IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment : public TCollection_
 };
 
 
-%feature("shadow") IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment::~IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
-	Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment GetHandle() {
-	return *(Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment*) &$self;
-	}
-};
+%pythonappend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment::Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment;
 class Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment : public Handle_TCollection_SeqNode {
@@ -678,20 +616,6 @@ class Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment : public Handl
 %extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
     IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment* GetObject() {
     return (IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment::~Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -827,20 +751,6 @@ class IntRes2d_SequenceOfIntersectionPoint : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") IntRes2d_SequenceOfIntersectionPoint::~IntRes2d_SequenceOfIntersectionPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntRes2d_SequenceOfIntersectionPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntRes2d_SequenceOfIntersectionSegment;
 class IntRes2d_SequenceOfIntersectionSegment : public TCollection_BaseSequence {
 	public:
@@ -973,20 +883,6 @@ class IntRes2d_SequenceOfIntersectionSegment : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") IntRes2d_SequenceOfIntersectionSegment::~IntRes2d_SequenceOfIntersectionSegment %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntRes2d_SequenceOfIntersectionSegment {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntRes2d_Transition;
 class IntRes2d_Transition {
 	public:
@@ -1155,17 +1051,3 @@ class IntRes2d_Transition {
 };
 
 
-%feature("shadow") IntRes2d_Transition::~IntRes2d_Transition %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntRes2d_Transition {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

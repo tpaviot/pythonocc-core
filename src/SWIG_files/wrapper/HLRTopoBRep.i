@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include HLRTopoBRep_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -65,20 +77,6 @@ class HLRTopoBRep_DSFiller {
 };
 
 
-%feature("shadow") HLRTopoBRep_DSFiller::~HLRTopoBRep_DSFiller %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRTopoBRep_DSFiller {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRTopoBRep_Data;
 class HLRTopoBRep_Data {
 	public:
@@ -321,20 +319,6 @@ class HLRTopoBRep_Data {
 };
 
 
-%feature("shadow") HLRTopoBRep_Data::~HLRTopoBRep_Data %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRTopoBRep_Data {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData;
 class HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData : public TCollection_BasicMapIterator {
 	public:
@@ -365,20 +349,6 @@ class HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData : public TCollection_B
 };
 
 
-%feature("shadow") HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData::~HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData;
 class HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData : public TCollection_BasicMapIterator {
 	public:
@@ -409,20 +379,6 @@ class HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData : public TCollection_Ba
 };
 
 
-%feature("shadow") HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData::~HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData;
 class HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public TCollection_MapNode {
 	public:
@@ -447,25 +403,23 @@ class HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public TCollection_MapNo
 };
 
 
-%feature("shadow") HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData::~HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
-	Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData GetHandle() {
-	return *(Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData*) &$self;
-	}
-};
+%pythonappend Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData::Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData;
 class Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public Handle_TCollection_MapNode {
@@ -483,20 +437,6 @@ class Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public Handle_TCo
 %extend Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
     HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData* GetObject() {
     return (HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData::~Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -524,25 +464,23 @@ class HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData : public TCollection_MapNod
 };
 
 
-%feature("shadow") HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData::~HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
-	Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData GetHandle() {
-	return *(Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData*) &$self;
-	}
-};
+%pythonappend Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData::Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData;
 class Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData : public Handle_TCollection_MapNode {
@@ -560,20 +498,6 @@ class Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData : public Handle_TCol
 %extend Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
     HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData* GetObject() {
     return (HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData::~Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -655,20 +579,6 @@ class HLRTopoBRep_DataMapOfShapeFaceData : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") HLRTopoBRep_DataMapOfShapeFaceData::~HLRTopoBRep_DataMapOfShapeFaceData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRTopoBRep_DataMapOfShapeFaceData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRTopoBRep_FaceData;
 class HLRTopoBRep_FaceData {
 	public:
@@ -703,20 +613,6 @@ class HLRTopoBRep_FaceData {
 };
 
 
-%feature("shadow") HLRTopoBRep_FaceData::~HLRTopoBRep_FaceData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRTopoBRep_FaceData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRTopoBRep_FaceIsoLiner {
 	public:
 		%feature("compactdefaultargs") Perform;
@@ -768,20 +664,6 @@ class HLRTopoBRep_FaceIsoLiner {
 };
 
 
-%feature("shadow") HLRTopoBRep_FaceIsoLiner::~HLRTopoBRep_FaceIsoLiner %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRTopoBRep_FaceIsoLiner {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRTopoBRep_ListIteratorOfListOfVData;
 class HLRTopoBRep_ListIteratorOfListOfVData {
 	public:
@@ -816,20 +698,6 @@ class HLRTopoBRep_ListIteratorOfListOfVData {
 };
 
 
-%feature("shadow") HLRTopoBRep_ListIteratorOfListOfVData::~HLRTopoBRep_ListIteratorOfListOfVData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRTopoBRep_ListIteratorOfListOfVData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRTopoBRep_ListNodeOfListOfVData;
 class HLRTopoBRep_ListNodeOfListOfVData : public TCollection_MapNode {
 	public:
@@ -848,25 +716,23 @@ class HLRTopoBRep_ListNodeOfListOfVData : public TCollection_MapNode {
 };
 
 
-%feature("shadow") HLRTopoBRep_ListNodeOfListOfVData::~HLRTopoBRep_ListNodeOfListOfVData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRTopoBRep_ListNodeOfListOfVData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRTopoBRep_ListNodeOfListOfVData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRTopoBRep_ListNodeOfListOfVData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRTopoBRep_ListNodeOfListOfVData {
-	Handle_HLRTopoBRep_ListNodeOfListOfVData GetHandle() {
-	return *(Handle_HLRTopoBRep_ListNodeOfListOfVData*) &$self;
-	}
-};
+%pythonappend Handle_HLRTopoBRep_ListNodeOfListOfVData::Handle_HLRTopoBRep_ListNodeOfListOfVData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRTopoBRep_ListNodeOfListOfVData;
 class Handle_HLRTopoBRep_ListNodeOfListOfVData : public Handle_TCollection_MapNode {
@@ -884,20 +750,6 @@ class Handle_HLRTopoBRep_ListNodeOfListOfVData : public Handle_TCollection_MapNo
 %extend Handle_HLRTopoBRep_ListNodeOfListOfVData {
     HLRTopoBRep_ListNodeOfListOfVData* GetObject() {
     return (HLRTopoBRep_ListNodeOfListOfVData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRTopoBRep_ListNodeOfListOfVData::~Handle_HLRTopoBRep_ListNodeOfListOfVData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRTopoBRep_ListNodeOfListOfVData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1025,20 +877,6 @@ class HLRTopoBRep_ListOfVData {
 };
 
 
-%feature("shadow") HLRTopoBRep_ListOfVData::~HLRTopoBRep_ListOfVData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRTopoBRep_ListOfVData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRTopoBRep_MapOfShapeListOfVData;
 class HLRTopoBRep_MapOfShapeListOfVData : public TCollection_BasicMap {
 	public:
@@ -1117,20 +955,6 @@ class HLRTopoBRep_MapOfShapeListOfVData : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") HLRTopoBRep_MapOfShapeListOfVData::~HLRTopoBRep_MapOfShapeListOfVData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRTopoBRep_MapOfShapeListOfVData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRTopoBRep_OutLiner;
 class HLRTopoBRep_OutLiner : public MMgt_TShared {
 	public:
@@ -1189,25 +1013,23 @@ class HLRTopoBRep_OutLiner : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRTopoBRep_OutLiner::~HLRTopoBRep_OutLiner %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRTopoBRep_OutLiner {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRTopoBRep_OutLiner(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRTopoBRep_OutLiner {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRTopoBRep_OutLiner {
-	Handle_HLRTopoBRep_OutLiner GetHandle() {
-	return *(Handle_HLRTopoBRep_OutLiner*) &$self;
-	}
-};
+%pythonappend Handle_HLRTopoBRep_OutLiner::Handle_HLRTopoBRep_OutLiner %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRTopoBRep_OutLiner;
 class Handle_HLRTopoBRep_OutLiner : public Handle_MMgt_TShared {
@@ -1225,20 +1047,6 @@ class Handle_HLRTopoBRep_OutLiner : public Handle_MMgt_TShared {
 %extend Handle_HLRTopoBRep_OutLiner {
     HLRTopoBRep_OutLiner* GetObject() {
     return (HLRTopoBRep_OutLiner*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRTopoBRep_OutLiner::~Handle_HLRTopoBRep_OutLiner %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRTopoBRep_OutLiner {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1268,17 +1076,3 @@ class HLRTopoBRep_VData {
 };
 
 
-%feature("shadow") HLRTopoBRep_VData::~HLRTopoBRep_VData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRTopoBRep_VData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

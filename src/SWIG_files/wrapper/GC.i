@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include GC_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -96,28 +108,14 @@ class GC_MakeMirror {
 
 	:rtype: Handle_Geom_Transformation
 ") Value;
-		const Handle_Geom_Transformation & Value ();
+		Handle_Geom_Transformation Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_Transformation
 ") Operator;
-		const Handle_Geom_Transformation & Operator ();
+		Handle_Geom_Transformation Operator ();
 };
 
 
-%feature("shadow") GC_MakeMirror::~GC_MakeMirror %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeMirror {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeRotation;
 class GC_MakeRotation {
 	public:
@@ -158,28 +156,14 @@ class GC_MakeRotation {
 
 	:rtype: Handle_Geom_Transformation
 ") Value;
-		const Handle_Geom_Transformation & Value ();
+		Handle_Geom_Transformation Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_Transformation
 ") Operator;
-		const Handle_Geom_Transformation & Operator ();
+		Handle_Geom_Transformation Operator ();
 };
 
 
-%feature("shadow") GC_MakeRotation::~GC_MakeRotation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeRotation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeScale;
 class GC_MakeScale {
 	public:
@@ -198,28 +182,14 @@ class GC_MakeScale {
 
 	:rtype: Handle_Geom_Transformation
 ") Value;
-		const Handle_Geom_Transformation & Value ();
+		Handle_Geom_Transformation Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_Transformation
 ") Operator;
-		const Handle_Geom_Transformation & Operator ();
+		Handle_Geom_Transformation Operator ();
 };
 
 
-%feature("shadow") GC_MakeScale::~GC_MakeScale %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeScale {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeTranslation;
 class GC_MakeTranslation {
 	public:
@@ -246,28 +216,14 @@ class GC_MakeTranslation {
 
 	:rtype: Handle_Geom_Transformation
 ") Value;
-		const Handle_Geom_Transformation & Value ();
+		Handle_Geom_Transformation Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_Transformation
 ") Operator;
-		const Handle_Geom_Transformation & Operator ();
+		Handle_Geom_Transformation Operator ();
 };
 
 
-%feature("shadow") GC_MakeTranslation::~GC_MakeTranslation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeTranslation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class GC_Root {
 	public:
 		%feature("compactdefaultargs") IsDone;
@@ -285,20 +241,6 @@ class GC_Root {
 };
 
 
-%feature("shadow") GC_Root::~GC_Root %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_Root {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeArcOfCircle;
 class GC_MakeArcOfCircle : public GC_Root {
 	public:
@@ -373,28 +315,14 @@ class GC_MakeArcOfCircle : public GC_Root {
 
 	:rtype: Handle_Geom_TrimmedCurve
 ") Value;
-		const Handle_Geom_TrimmedCurve & Value ();
+		Handle_Geom_TrimmedCurve Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_TrimmedCurve
 ") Operator;
-		const Handle_Geom_TrimmedCurve & Operator ();
+		Handle_Geom_TrimmedCurve Operator ();
 };
 
 
-%feature("shadow") GC_MakeArcOfCircle::~GC_MakeArcOfCircle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeArcOfCircle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeArcOfEllipse;
 class GC_MakeArcOfEllipse : public GC_Root {
 	public:
@@ -445,28 +373,14 @@ class GC_MakeArcOfEllipse : public GC_Root {
 
 	:rtype: Handle_Geom_TrimmedCurve
 ") Value;
-		const Handle_Geom_TrimmedCurve & Value ();
+		Handle_Geom_TrimmedCurve Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_TrimmedCurve
 ") Operator;
-		const Handle_Geom_TrimmedCurve & Operator ();
+		Handle_Geom_TrimmedCurve Operator ();
 };
 
 
-%feature("shadow") GC_MakeArcOfEllipse::~GC_MakeArcOfEllipse %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeArcOfEllipse {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeArcOfHyperbola;
 class GC_MakeArcOfHyperbola : public GC_Root {
 	public:
@@ -517,28 +431,14 @@ class GC_MakeArcOfHyperbola : public GC_Root {
 
 	:rtype: Handle_Geom_TrimmedCurve
 ") Value;
-		const Handle_Geom_TrimmedCurve & Value ();
+		Handle_Geom_TrimmedCurve Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_TrimmedCurve
 ") Operator;
-		const Handle_Geom_TrimmedCurve & Operator ();
+		Handle_Geom_TrimmedCurve Operator ();
 };
 
 
-%feature("shadow") GC_MakeArcOfHyperbola::~GC_MakeArcOfHyperbola %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeArcOfHyperbola {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeArcOfParabola;
 class GC_MakeArcOfParabola : public GC_Root {
 	public:
@@ -589,28 +489,14 @@ class GC_MakeArcOfParabola : public GC_Root {
 
 	:rtype: Handle_Geom_TrimmedCurve
 ") Value;
-		const Handle_Geom_TrimmedCurve & Value ();
+		Handle_Geom_TrimmedCurve Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_TrimmedCurve
 ") Operator;
-		const Handle_Geom_TrimmedCurve & Operator ();
+		Handle_Geom_TrimmedCurve Operator ();
 };
 
 
-%feature("shadow") GC_MakeArcOfParabola::~GC_MakeArcOfParabola %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeArcOfParabola {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeCircle;
 class GC_MakeCircle : public GC_Root {
 	public:
@@ -703,28 +589,14 @@ class GC_MakeCircle : public GC_Root {
 
 	:rtype: Handle_Geom_Circle
 ") Value;
-		const Handle_Geom_Circle & Value ();
+		Handle_Geom_Circle Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_Circle
 ") Operator;
-		const Handle_Geom_Circle & Operator ();
+		Handle_Geom_Circle Operator ();
 };
 
 
-%feature("shadow") GC_MakeCircle::~GC_MakeCircle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeCircle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeConicalSurface;
 class GC_MakeConicalSurface : public GC_Root {
 	public:
@@ -825,28 +697,14 @@ class GC_MakeConicalSurface : public GC_Root {
 
 	:rtype: Handle_Geom_ConicalSurface
 ") Value;
-		const Handle_Geom_ConicalSurface & Value ();
+		Handle_Geom_ConicalSurface Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_ConicalSurface
 ") Operator;
-		const Handle_Geom_ConicalSurface & Operator ();
+		Handle_Geom_ConicalSurface Operator ();
 };
 
 
-%feature("shadow") GC_MakeConicalSurface::~GC_MakeConicalSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeConicalSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeCylindricalSurface;
 class GC_MakeCylindricalSurface : public GC_Root {
 	public:
@@ -923,28 +781,14 @@ class GC_MakeCylindricalSurface : public GC_Root {
 
 	:rtype: Handle_Geom_CylindricalSurface
 ") Value;
-		const Handle_Geom_CylindricalSurface & Value ();
+		Handle_Geom_CylindricalSurface Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_CylindricalSurface
 ") Operator;
-		const Handle_Geom_CylindricalSurface & Operator ();
+		Handle_Geom_CylindricalSurface Operator ();
 };
 
 
-%feature("shadow") GC_MakeCylindricalSurface::~GC_MakeCylindricalSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeCylindricalSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeEllipse;
 class GC_MakeEllipse : public GC_Root {
 	public:
@@ -985,28 +829,14 @@ class GC_MakeEllipse : public GC_Root {
 
 	:rtype: Handle_Geom_Ellipse
 ") Value;
-		const Handle_Geom_Ellipse & Value ();
+		Handle_Geom_Ellipse Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_Ellipse
 ") Operator;
-		const Handle_Geom_Ellipse & Operator ();
+		Handle_Geom_Ellipse Operator ();
 };
 
 
-%feature("shadow") GC_MakeEllipse::~GC_MakeEllipse %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeEllipse {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeHyperbola;
 class GC_MakeHyperbola : public GC_Root {
 	public:
@@ -1047,28 +877,14 @@ class GC_MakeHyperbola : public GC_Root {
 
 	:rtype: Handle_Geom_Hyperbola
 ") Value;
-		const Handle_Geom_Hyperbola & Value ();
+		Handle_Geom_Hyperbola Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_Hyperbola
 ") Operator;
-		const Handle_Geom_Hyperbola & Operator ();
+		Handle_Geom_Hyperbola Operator ();
 };
 
 
-%feature("shadow") GC_MakeHyperbola::~GC_MakeHyperbola %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeHyperbola {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeLine;
 class GC_MakeLine : public GC_Root {
 	public:
@@ -1123,28 +939,14 @@ class GC_MakeLine : public GC_Root {
 
 	:rtype: Handle_Geom_Line
 ") Value;
-		const Handle_Geom_Line & Value ();
+		Handle_Geom_Line Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_Line
 ") Operator;
-		const Handle_Geom_Line & Operator ();
+		Handle_Geom_Line Operator ();
 };
 
 
-%feature("shadow") GC_MakeLine::~GC_MakeLine %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeLine {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakePlane;
 class GC_MakePlane : public GC_Root {
 	public:
@@ -1233,28 +1035,14 @@ class GC_MakePlane : public GC_Root {
 
 	:rtype: Handle_Geom_Plane
 ") Value;
-		const Handle_Geom_Plane & Value ();
+		Handle_Geom_Plane Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_Plane
 ") Operator;
-		const Handle_Geom_Plane & Operator ();
+		Handle_Geom_Plane Operator ();
 };
 
 
-%feature("shadow") GC_MakePlane::~GC_MakePlane %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakePlane {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeSegment;
 class GC_MakeSegment : public GC_Root {
 	public:
@@ -1309,28 +1097,14 @@ class GC_MakeSegment : public GC_Root {
 
 	:rtype: Handle_Geom_TrimmedCurve
 ") Value;
-		const Handle_Geom_TrimmedCurve & Value ();
+		Handle_Geom_TrimmedCurve Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_TrimmedCurve
 ") Operator;
-		const Handle_Geom_TrimmedCurve & Operator ();
+		Handle_Geom_TrimmedCurve Operator ();
 };
 
 
-%feature("shadow") GC_MakeSegment::~GC_MakeSegment %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeSegment {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeTrimmedCone;
 class GC_MakeTrimmedCone : public GC_Root {
 	public:
@@ -1367,28 +1141,14 @@ class GC_MakeTrimmedCone : public GC_Root {
 
 	:rtype: Handle_Geom_RectangularTrimmedSurface
 ") Value;
-		const Handle_Geom_RectangularTrimmedSurface & Value ();
+		Handle_Geom_RectangularTrimmedSurface Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_RectangularTrimmedSurface
 ") Operator;
-		const Handle_Geom_RectangularTrimmedSurface & Operator ();
+		Handle_Geom_RectangularTrimmedSurface Operator ();
 };
 
 
-%feature("shadow") GC_MakeTrimmedCone::~GC_MakeTrimmedCone %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeTrimmedCone {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GC_MakeTrimmedCylinder;
 class GC_MakeTrimmedCylinder : public GC_Root {
 	public:
@@ -1455,25 +1215,11 @@ class GC_MakeTrimmedCylinder : public GC_Root {
 
 	:rtype: Handle_Geom_RectangularTrimmedSurface
 ") Value;
-		const Handle_Geom_RectangularTrimmedSurface & Value ();
+		Handle_Geom_RectangularTrimmedSurface Value ();
 		%feature("compactdefaultargs") Operator;
 		%feature("autodoc", "	:rtype: Handle_Geom_RectangularTrimmedSurface
 ") Operator;
-		const Handle_Geom_RectangularTrimmedSurface & Operator ();
+		Handle_Geom_RectangularTrimmedSurface Operator ();
 };
 
 
-%feature("shadow") GC_MakeTrimmedCylinder::~GC_MakeTrimmedCylinder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GC_MakeTrimmedCylinder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

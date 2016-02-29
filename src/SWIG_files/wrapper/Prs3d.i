@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Prs3d_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef Prs3d_NListOfSequenceOfPnt::Iterator Prs3d_NListIteratorOfListOfSequenceOfPnt;
@@ -101,45 +113,29 @@ class Prs3d {
 };
 
 
-%feature("shadow") Prs3d::~Prs3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Prs3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Prs3d_BasicAspect;
 class Prs3d_BasicAspect : public MMgt_TShared {
 	public:
 };
 
 
-%feature("shadow") Prs3d_BasicAspect::~Prs3d_BasicAspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_BasicAspect {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_BasicAspect(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_BasicAspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_BasicAspect {
-	Handle_Prs3d_BasicAspect GetHandle() {
-	return *(Handle_Prs3d_BasicAspect*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_BasicAspect::Handle_Prs3d_BasicAspect %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_BasicAspect;
 class Handle_Prs3d_BasicAspect : public Handle_MMgt_TShared {
@@ -157,20 +153,6 @@ class Handle_Prs3d_BasicAspect : public Handle_MMgt_TShared {
 %extend Handle_Prs3d_BasicAspect {
     Prs3d_BasicAspect* GetObject() {
     return (Prs3d_BasicAspect*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_BasicAspect::~Handle_Prs3d_BasicAspect %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_BasicAspect {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -220,20 +202,6 @@ class Prs3d_DimensionUnits {
 };
 
 
-%feature("shadow") Prs3d_DimensionUnits::~Prs3d_DimensionUnits %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Prs3d_DimensionUnits {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Prs3d_Drawer;
 class Prs3d_Drawer : public MMgt_TShared {
 	public:
@@ -790,25 +758,23 @@ class Prs3d_Drawer : public MMgt_TShared {
 };
 
 
-%feature("shadow") Prs3d_Drawer::~Prs3d_Drawer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_Drawer {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_Drawer(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_Drawer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_Drawer {
-	Handle_Prs3d_Drawer GetHandle() {
-	return *(Handle_Prs3d_Drawer*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_Drawer::Handle_Prs3d_Drawer %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_Drawer;
 class Handle_Prs3d_Drawer : public Handle_MMgt_TShared {
@@ -826,20 +792,6 @@ class Handle_Prs3d_Drawer : public Handle_MMgt_TShared {
 %extend Handle_Prs3d_Drawer {
     Prs3d_Drawer* GetObject() {
     return (Prs3d_Drawer*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_Drawer::~Handle_Prs3d_Drawer %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_Drawer {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -921,25 +873,23 @@ class Prs3d_PlaneSet : public MMgt_TShared {
 };
 
 
-%feature("shadow") Prs3d_PlaneSet::~Prs3d_PlaneSet %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_PlaneSet {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_PlaneSet(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_PlaneSet {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_PlaneSet {
-	Handle_Prs3d_PlaneSet GetHandle() {
-	return *(Handle_Prs3d_PlaneSet*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_PlaneSet::Handle_Prs3d_PlaneSet %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_PlaneSet;
 class Handle_Prs3d_PlaneSet : public Handle_MMgt_TShared {
@@ -957,20 +907,6 @@ class Handle_Prs3d_PlaneSet : public Handle_MMgt_TShared {
 %extend Handle_Prs3d_PlaneSet {
     Prs3d_PlaneSet* GetObject() {
     return (Prs3d_PlaneSet*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_PlaneSet::~Handle_Prs3d_PlaneSet %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_PlaneSet {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1128,25 +1064,23 @@ class Prs3d_Presentation : public Graphic3d_Structure {
 };
 
 
-%feature("shadow") Prs3d_Presentation::~Prs3d_Presentation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_Presentation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_Presentation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_Presentation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_Presentation {
-	Handle_Prs3d_Presentation GetHandle() {
-	return *(Handle_Prs3d_Presentation*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_Presentation::Handle_Prs3d_Presentation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_Presentation;
 class Handle_Prs3d_Presentation : public Handle_Graphic3d_Structure {
@@ -1164,20 +1098,6 @@ class Handle_Prs3d_Presentation : public Handle_Graphic3d_Structure {
 %extend Handle_Prs3d_Presentation {
     Prs3d_Presentation* GetObject() {
     return (Prs3d_Presentation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_Presentation::~Handle_Prs3d_Presentation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_Presentation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1227,25 +1147,23 @@ class Prs3d_Projector : public MMgt_TShared {
 };
 
 
-%feature("shadow") Prs3d_Projector::~Prs3d_Projector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_Projector {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_Projector(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_Projector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_Projector {
-	Handle_Prs3d_Projector GetHandle() {
-	return *(Handle_Prs3d_Projector*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_Projector::Handle_Prs3d_Projector %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_Projector;
 class Handle_Prs3d_Projector : public Handle_MMgt_TShared {
@@ -1263,20 +1181,6 @@ class Handle_Prs3d_Projector : public Handle_MMgt_TShared {
 %extend Handle_Prs3d_Projector {
     Prs3d_Projector* GetObject() {
     return (Prs3d_Projector*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_Projector::~Handle_Prs3d_Projector %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_Projector {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1301,20 +1205,6 @@ class Prs3d_Root {
 };
 
 
-%feature("shadow") Prs3d_Root::~Prs3d_Root %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Prs3d_Root {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Prs3d_ShapeTool;
 class Prs3d_ShapeTool {
 	public:
@@ -1425,20 +1315,6 @@ class Prs3d_ShapeTool {
 };
 
 
-%feature("shadow") Prs3d_ShapeTool::~Prs3d_ShapeTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Prs3d_ShapeTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class Prs3d_Arrow : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Draw;
@@ -1476,20 +1352,6 @@ class Prs3d_Arrow : public Prs3d_Root {
 };
 
 
-%feature("shadow") Prs3d_Arrow::~Prs3d_Arrow %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Prs3d_Arrow {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Prs3d_ArrowAspect;
 class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 	public:
@@ -1556,25 +1418,23 @@ class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 };
 
 
-%feature("shadow") Prs3d_ArrowAspect::~Prs3d_ArrowAspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_ArrowAspect {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_ArrowAspect(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_ArrowAspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_ArrowAspect {
-	Handle_Prs3d_ArrowAspect GetHandle() {
-	return *(Handle_Prs3d_ArrowAspect*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_ArrowAspect::Handle_Prs3d_ArrowAspect %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_ArrowAspect;
 class Handle_Prs3d_ArrowAspect : public Handle_Prs3d_BasicAspect {
@@ -1592,20 +1452,6 @@ class Handle_Prs3d_ArrowAspect : public Handle_Prs3d_BasicAspect {
 %extend Handle_Prs3d_ArrowAspect {
     Prs3d_ArrowAspect* GetObject() {
     return (Prs3d_ArrowAspect*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_ArrowAspect::~Handle_Prs3d_ArrowAspect %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_ArrowAspect {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1697,25 +1543,23 @@ class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 };
 
 
-%feature("shadow") Prs3d_DatumAspect::~Prs3d_DatumAspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_DatumAspect {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_DatumAspect(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_DatumAspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_DatumAspect {
-	Handle_Prs3d_DatumAspect GetHandle() {
-	return *(Handle_Prs3d_DatumAspect*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_DatumAspect::Handle_Prs3d_DatumAspect %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_DatumAspect;
 class Handle_Prs3d_DatumAspect : public Handle_Prs3d_BasicAspect {
@@ -1733,20 +1577,6 @@ class Handle_Prs3d_DatumAspect : public Handle_Prs3d_BasicAspect {
 %extend Handle_Prs3d_DatumAspect {
     Prs3d_DatumAspect* GetObject() {
     return (Prs3d_DatumAspect*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_DatumAspect::~Handle_Prs3d_DatumAspect %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_DatumAspect {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1952,25 +1782,23 @@ class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 };
 
 
-%feature("shadow") Prs3d_DimensionAspect::~Prs3d_DimensionAspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_DimensionAspect {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_DimensionAspect(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_DimensionAspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_DimensionAspect {
-	Handle_Prs3d_DimensionAspect GetHandle() {
-	return *(Handle_Prs3d_DimensionAspect*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_DimensionAspect::Handle_Prs3d_DimensionAspect %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_DimensionAspect;
 class Handle_Prs3d_DimensionAspect : public Handle_Prs3d_BasicAspect {
@@ -1988,20 +1816,6 @@ class Handle_Prs3d_DimensionAspect : public Handle_Prs3d_BasicAspect {
 %extend Handle_Prs3d_DimensionAspect {
     Prs3d_DimensionAspect* GetObject() {
     return (Prs3d_DimensionAspect*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_DimensionAspect::~Handle_Prs3d_DimensionAspect %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_DimensionAspect {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2069,25 +1883,23 @@ class Prs3d_LineAspect : public Prs3d_BasicAspect {
 };
 
 
-%feature("shadow") Prs3d_LineAspect::~Prs3d_LineAspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_LineAspect {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_LineAspect(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_LineAspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_LineAspect {
-	Handle_Prs3d_LineAspect GetHandle() {
-	return *(Handle_Prs3d_LineAspect*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_LineAspect::Handle_Prs3d_LineAspect %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_LineAspect;
 class Handle_Prs3d_LineAspect : public Handle_Prs3d_BasicAspect {
@@ -2105,20 +1917,6 @@ class Handle_Prs3d_LineAspect : public Handle_Prs3d_BasicAspect {
 %extend Handle_Prs3d_LineAspect {
     Prs3d_LineAspect* GetObject() {
     return (Prs3d_LineAspect*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_LineAspect::~Handle_Prs3d_LineAspect %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_LineAspect {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2278,25 +2076,23 @@ class Prs3d_PlaneAspect : public Prs3d_BasicAspect {
 };
 
 
-%feature("shadow") Prs3d_PlaneAspect::~Prs3d_PlaneAspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_PlaneAspect {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_PlaneAspect(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_PlaneAspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_PlaneAspect {
-	Handle_Prs3d_PlaneAspect GetHandle() {
-	return *(Handle_Prs3d_PlaneAspect*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_PlaneAspect::Handle_Prs3d_PlaneAspect %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_PlaneAspect;
 class Handle_Prs3d_PlaneAspect : public Handle_Prs3d_BasicAspect {
@@ -2314,20 +2110,6 @@ class Handle_Prs3d_PlaneAspect : public Handle_Prs3d_BasicAspect {
 %extend Handle_Prs3d_PlaneAspect {
     Prs3d_PlaneAspect* GetObject() {
     return (Prs3d_PlaneAspect*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_PlaneAspect::~Handle_Prs3d_PlaneAspect %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_PlaneAspect {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2421,25 +2203,23 @@ class Prs3d_PointAspect : public Prs3d_BasicAspect {
 };
 
 
-%feature("shadow") Prs3d_PointAspect::~Prs3d_PointAspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_PointAspect {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_PointAspect(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_PointAspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_PointAspect {
-	Handle_Prs3d_PointAspect GetHandle() {
-	return *(Handle_Prs3d_PointAspect*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_PointAspect::Handle_Prs3d_PointAspect %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_PointAspect;
 class Handle_Prs3d_PointAspect : public Handle_Prs3d_BasicAspect {
@@ -2457,20 +2237,6 @@ class Handle_Prs3d_PointAspect : public Handle_Prs3d_BasicAspect {
 %extend Handle_Prs3d_PointAspect {
     Prs3d_PointAspect* GetObject() {
     return (Prs3d_PointAspect*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_PointAspect::~Handle_Prs3d_PointAspect %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_PointAspect {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2572,25 +2338,23 @@ class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 };
 
 
-%feature("shadow") Prs3d_ShadingAspect::~Prs3d_ShadingAspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_ShadingAspect {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_ShadingAspect(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_ShadingAspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_ShadingAspect {
-	Handle_Prs3d_ShadingAspect GetHandle() {
-	return *(Handle_Prs3d_ShadingAspect*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_ShadingAspect::Handle_Prs3d_ShadingAspect %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_ShadingAspect;
 class Handle_Prs3d_ShadingAspect : public Handle_Prs3d_BasicAspect {
@@ -2608,20 +2372,6 @@ class Handle_Prs3d_ShadingAspect : public Handle_Prs3d_BasicAspect {
 %extend Handle_Prs3d_ShadingAspect {
     Prs3d_ShadingAspect* GetObject() {
     return (Prs3d_ShadingAspect*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_ShadingAspect::~Handle_Prs3d_ShadingAspect %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_ShadingAspect {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2658,20 +2408,6 @@ class Prs3d_Text : public Prs3d_Root {
 };
 
 
-%feature("shadow") Prs3d_Text::~Prs3d_Text %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Prs3d_Text {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Prs3d_TextAspect;
 class Prs3d_TextAspect : public Prs3d_BasicAspect {
 	public:
@@ -2798,25 +2534,23 @@ class Prs3d_TextAspect : public Prs3d_BasicAspect {
 };
 
 
-%feature("shadow") Prs3d_TextAspect::~Prs3d_TextAspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_TextAspect {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_TextAspect(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_TextAspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_TextAspect {
-	Handle_Prs3d_TextAspect GetHandle() {
-	return *(Handle_Prs3d_TextAspect*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_TextAspect::Handle_Prs3d_TextAspect %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_TextAspect;
 class Handle_Prs3d_TextAspect : public Handle_Prs3d_BasicAspect {
@@ -2834,20 +2568,6 @@ class Handle_Prs3d_TextAspect : public Handle_Prs3d_BasicAspect {
 %extend Handle_Prs3d_TextAspect {
     Prs3d_TextAspect* GetObject() {
     return (Prs3d_TextAspect*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_TextAspect::~Handle_Prs3d_TextAspect %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_TextAspect {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2897,25 +2617,23 @@ class Prs3d_IsoAspect : public Prs3d_LineAspect {
 };
 
 
-%feature("shadow") Prs3d_IsoAspect::~Prs3d_IsoAspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Prs3d_IsoAspect {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_IsoAspect(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Prs3d_IsoAspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Prs3d_IsoAspect {
-	Handle_Prs3d_IsoAspect GetHandle() {
-	return *(Handle_Prs3d_IsoAspect*) &$self;
-	}
-};
+%pythonappend Handle_Prs3d_IsoAspect::Handle_Prs3d_IsoAspect %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Prs3d_IsoAspect;
 class Handle_Prs3d_IsoAspect : public Handle_Prs3d_LineAspect {
@@ -2933,20 +2651,6 @@ class Handle_Prs3d_IsoAspect : public Handle_Prs3d_LineAspect {
 %extend Handle_Prs3d_IsoAspect {
     Prs3d_IsoAspect* GetObject() {
     return (Prs3d_IsoAspect*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Prs3d_IsoAspect::~Handle_Prs3d_IsoAspect %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Prs3d_IsoAspect {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

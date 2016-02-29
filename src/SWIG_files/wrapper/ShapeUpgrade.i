@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include ShapeUpgrade_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -70,20 +82,6 @@ class ShapeUpgrade {
 };
 
 
-%feature("shadow") ShapeUpgrade::~ShapeUpgrade %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeUpgrade {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeUpgrade_RemoveLocations;
 class ShapeUpgrade_RemoveLocations : public MMgt_TShared {
 	public:
@@ -132,25 +130,23 @@ class ShapeUpgrade_RemoveLocations : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeUpgrade_RemoveLocations::~ShapeUpgrade_RemoveLocations %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_RemoveLocations {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_RemoveLocations(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_RemoveLocations {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_RemoveLocations {
-	Handle_ShapeUpgrade_RemoveLocations GetHandle() {
-	return *(Handle_ShapeUpgrade_RemoveLocations*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_RemoveLocations::Handle_ShapeUpgrade_RemoveLocations %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_RemoveLocations;
 class Handle_ShapeUpgrade_RemoveLocations : public Handle_MMgt_TShared {
@@ -168,20 +164,6 @@ class Handle_ShapeUpgrade_RemoveLocations : public Handle_MMgt_TShared {
 %extend Handle_ShapeUpgrade_RemoveLocations {
     ShapeUpgrade_RemoveLocations* GetObject() {
     return (ShapeUpgrade_RemoveLocations*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_RemoveLocations::~Handle_ShapeUpgrade_RemoveLocations %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_RemoveLocations {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -299,20 +281,6 @@ class ShapeUpgrade_ShapeDivide {
 };
 
 
-%feature("shadow") ShapeUpgrade_ShapeDivide::~ShapeUpgrade_ShapeDivide %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeUpgrade_ShapeDivide {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeUpgrade_ShellSewing;
 class ShapeUpgrade_ShellSewing {
 	public:
@@ -335,20 +303,6 @@ class ShapeUpgrade_ShellSewing {
 };
 
 
-%feature("shadow") ShapeUpgrade_ShellSewing::~ShapeUpgrade_ShellSewing %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeUpgrade_ShellSewing {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeUpgrade_SplitCurve;
 class ShapeUpgrade_SplitCurve : public MMgt_TShared {
 	public:
@@ -389,7 +343,7 @@ class ShapeUpgrade_SplitCurve : public MMgt_TShared {
 
 	:rtype: Handle_TColStd_HSequenceOfReal
 ") SplitValues;
-		const Handle_TColStd_HSequenceOfReal & SplitValues ();
+		Handle_TColStd_HSequenceOfReal SplitValues ();
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	* Calculates points for correction/splitting of the curve
 
@@ -415,25 +369,23 @@ class ShapeUpgrade_SplitCurve : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeUpgrade_SplitCurve::~ShapeUpgrade_SplitCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_SplitCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_SplitCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_SplitCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_SplitCurve {
-	Handle_ShapeUpgrade_SplitCurve GetHandle() {
-	return *(Handle_ShapeUpgrade_SplitCurve*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_SplitCurve::Handle_ShapeUpgrade_SplitCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_SplitCurve;
 class Handle_ShapeUpgrade_SplitCurve : public Handle_MMgt_TShared {
@@ -451,20 +403,6 @@ class Handle_ShapeUpgrade_SplitCurve : public Handle_MMgt_TShared {
 %extend Handle_ShapeUpgrade_SplitCurve {
     ShapeUpgrade_SplitCurve* GetObject() {
     return (ShapeUpgrade_SplitCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_SplitCurve::~Handle_ShapeUpgrade_SplitCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_SplitCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -546,13 +484,13 @@ class ShapeUpgrade_SplitSurface : public MMgt_TShared {
 
 	:rtype: Handle_TColStd_HSequenceOfReal
 ") USplitValues;
-		const Handle_TColStd_HSequenceOfReal & USplitValues ();
+		Handle_TColStd_HSequenceOfReal USplitValues ();
 		%feature("compactdefaultargs") VSplitValues;
 		%feature("autodoc", "	* returns all the splitting V values including the First and Last parameters of the input surface
 
 	:rtype: Handle_TColStd_HSequenceOfReal
 ") VSplitValues;
-		const Handle_TColStd_HSequenceOfReal & VSplitValues ();
+		Handle_TColStd_HSequenceOfReal VSplitValues ();
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "	* Returns the status OK - no splitting is needed DONE1 - splitting required and gives more than one patch DONE2 - splitting is required, but gives only single patch (initial) DONE3 - geometric form of the surface or parametrisation is modified
 
@@ -566,29 +504,27 @@ class ShapeUpgrade_SplitSurface : public MMgt_TShared {
 
 	:rtype: Handle_ShapeExtend_CompositeSurface
 ") ResSurfaces;
-		const Handle_ShapeExtend_CompositeSurface & ResSurfaces ();
+		Handle_ShapeExtend_CompositeSurface ResSurfaces ();
 };
 
 
-%feature("shadow") ShapeUpgrade_SplitSurface::~ShapeUpgrade_SplitSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ShapeUpgrade_SplitSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_SplitSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ShapeUpgrade_SplitSurface::Handle_ShapeUpgrade_SplitSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ShapeUpgrade_SplitSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_SplitSurface {
-	Handle_ShapeUpgrade_SplitSurface GetHandle() {
-	return *(Handle_ShapeUpgrade_SplitSurface*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ShapeUpgrade_SplitSurface;
 class Handle_ShapeUpgrade_SplitSurface : public Handle_MMgt_TShared {
@@ -606,20 +542,6 @@ class Handle_ShapeUpgrade_SplitSurface : public Handle_MMgt_TShared {
 %extend Handle_ShapeUpgrade_SplitSurface {
     ShapeUpgrade_SplitSurface* GetObject() {
     return (ShapeUpgrade_SplitSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_SplitSurface::~Handle_ShapeUpgrade_SplitSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_SplitSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -707,25 +629,23 @@ class ShapeUpgrade_Tool : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeUpgrade_Tool::~ShapeUpgrade_Tool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_Tool {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_Tool(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_Tool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_Tool {
-	Handle_ShapeUpgrade_Tool GetHandle() {
-	return *(Handle_ShapeUpgrade_Tool*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_Tool::Handle_ShapeUpgrade_Tool %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_Tool;
 class Handle_ShapeUpgrade_Tool : public Handle_MMgt_TShared {
@@ -743,20 +663,6 @@ class Handle_ShapeUpgrade_Tool : public Handle_MMgt_TShared {
 %extend Handle_ShapeUpgrade_Tool {
     ShapeUpgrade_Tool* GetObject() {
     return (ShapeUpgrade_Tool*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_Tool::~Handle_ShapeUpgrade_Tool %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_Tool {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -832,25 +738,23 @@ class ShapeUpgrade_UnifySameDomain : public MMgt_TShared {
 };
 
 
-%feature("shadow") ShapeUpgrade_UnifySameDomain::~ShapeUpgrade_UnifySameDomain %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_UnifySameDomain {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_UnifySameDomain(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_UnifySameDomain {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_UnifySameDomain {
-	Handle_ShapeUpgrade_UnifySameDomain GetHandle() {
-	return *(Handle_ShapeUpgrade_UnifySameDomain*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_UnifySameDomain::Handle_ShapeUpgrade_UnifySameDomain %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_UnifySameDomain;
 class Handle_ShapeUpgrade_UnifySameDomain : public Handle_MMgt_TShared {
@@ -868,20 +772,6 @@ class Handle_ShapeUpgrade_UnifySameDomain : public Handle_MMgt_TShared {
 %extend Handle_ShapeUpgrade_UnifySameDomain {
     ShapeUpgrade_UnifySameDomain* GetObject() {
     return (ShapeUpgrade_UnifySameDomain*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_UnifySameDomain::~Handle_ShapeUpgrade_UnifySameDomain %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_UnifySameDomain {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -975,25 +865,23 @@ class ShapeUpgrade_ConvertSurfaceToBezierBasis : public ShapeUpgrade_SplitSurfac
 };
 
 
-%feature("shadow") ShapeUpgrade_ConvertSurfaceToBezierBasis::~ShapeUpgrade_ConvertSurfaceToBezierBasis %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_ConvertSurfaceToBezierBasis {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_ConvertSurfaceToBezierBasis {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_ConvertSurfaceToBezierBasis {
-	Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis GetHandle() {
-	return *(Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis::Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis;
 class Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis : public Handle_ShapeUpgrade_SplitSurface {
@@ -1011,20 +899,6 @@ class Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis : public Handle_ShapeUpgra
 %extend Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis {
     ShapeUpgrade_ConvertSurfaceToBezierBasis* GetObject() {
     return (ShapeUpgrade_ConvertSurfaceToBezierBasis*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis::~Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1102,25 +976,23 @@ class ShapeUpgrade_EdgeDivide : public ShapeUpgrade_Tool {
 };
 
 
-%feature("shadow") ShapeUpgrade_EdgeDivide::~ShapeUpgrade_EdgeDivide %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_EdgeDivide {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_EdgeDivide(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_EdgeDivide {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_EdgeDivide {
-	Handle_ShapeUpgrade_EdgeDivide GetHandle() {
-	return *(Handle_ShapeUpgrade_EdgeDivide*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_EdgeDivide::Handle_ShapeUpgrade_EdgeDivide %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_EdgeDivide;
 class Handle_ShapeUpgrade_EdgeDivide : public Handle_ShapeUpgrade_Tool {
@@ -1138,20 +1010,6 @@ class Handle_ShapeUpgrade_EdgeDivide : public Handle_ShapeUpgrade_Tool {
 %extend Handle_ShapeUpgrade_EdgeDivide {
     ShapeUpgrade_EdgeDivide* GetObject() {
     return (ShapeUpgrade_EdgeDivide*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_EdgeDivide::~Handle_ShapeUpgrade_EdgeDivide %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_EdgeDivide {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1245,25 +1103,23 @@ class ShapeUpgrade_FaceDivide : public ShapeUpgrade_Tool {
 };
 
 
-%feature("shadow") ShapeUpgrade_FaceDivide::~ShapeUpgrade_FaceDivide %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_FaceDivide {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_FaceDivide(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_FaceDivide {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_FaceDivide {
-	Handle_ShapeUpgrade_FaceDivide GetHandle() {
-	return *(Handle_ShapeUpgrade_FaceDivide*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_FaceDivide::Handle_ShapeUpgrade_FaceDivide %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_FaceDivide;
 class Handle_ShapeUpgrade_FaceDivide : public Handle_ShapeUpgrade_Tool {
@@ -1281,20 +1137,6 @@ class Handle_ShapeUpgrade_FaceDivide : public Handle_ShapeUpgrade_Tool {
 %extend Handle_ShapeUpgrade_FaceDivide {
     ShapeUpgrade_FaceDivide* GetObject() {
     return (ShapeUpgrade_FaceDivide*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_FaceDivide::~Handle_ShapeUpgrade_FaceDivide %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_FaceDivide {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1354,25 +1196,23 @@ class ShapeUpgrade_FixSmallCurves : public ShapeUpgrade_Tool {
 };
 
 
-%feature("shadow") ShapeUpgrade_FixSmallCurves::~ShapeUpgrade_FixSmallCurves %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_FixSmallCurves {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_FixSmallCurves(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_FixSmallCurves {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_FixSmallCurves {
-	Handle_ShapeUpgrade_FixSmallCurves GetHandle() {
-	return *(Handle_ShapeUpgrade_FixSmallCurves*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_FixSmallCurves::Handle_ShapeUpgrade_FixSmallCurves %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_FixSmallCurves;
 class Handle_ShapeUpgrade_FixSmallCurves : public Handle_ShapeUpgrade_Tool {
@@ -1390,20 +1230,6 @@ class Handle_ShapeUpgrade_FixSmallCurves : public Handle_ShapeUpgrade_Tool {
 %extend Handle_ShapeUpgrade_FixSmallCurves {
     ShapeUpgrade_FixSmallCurves* GetObject() {
     return (ShapeUpgrade_FixSmallCurves*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_FixSmallCurves::~Handle_ShapeUpgrade_FixSmallCurves %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_FixSmallCurves {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1499,25 +1325,23 @@ class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
 };
 
 
-%feature("shadow") ShapeUpgrade_RemoveInternalWires::~ShapeUpgrade_RemoveInternalWires %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_RemoveInternalWires {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_RemoveInternalWires(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_RemoveInternalWires {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_RemoveInternalWires {
-	Handle_ShapeUpgrade_RemoveInternalWires GetHandle() {
-	return *(Handle_ShapeUpgrade_RemoveInternalWires*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_RemoveInternalWires::Handle_ShapeUpgrade_RemoveInternalWires %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_RemoveInternalWires;
 class Handle_ShapeUpgrade_RemoveInternalWires : public Handle_ShapeUpgrade_Tool {
@@ -1535,20 +1359,6 @@ class Handle_ShapeUpgrade_RemoveInternalWires : public Handle_ShapeUpgrade_Tool 
 %extend Handle_ShapeUpgrade_RemoveInternalWires {
     ShapeUpgrade_RemoveInternalWires* GetObject() {
     return (ShapeUpgrade_RemoveInternalWires*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_RemoveInternalWires::~Handle_ShapeUpgrade_RemoveInternalWires %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_RemoveInternalWires {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1720,20 +1530,6 @@ class ShapeUpgrade_ShapeConvertToBezier : public ShapeUpgrade_ShapeDivide {
 };
 
 
-%feature("shadow") ShapeUpgrade_ShapeConvertToBezier::~ShapeUpgrade_ShapeConvertToBezier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeUpgrade_ShapeConvertToBezier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeUpgrade_ShapeDivideAngle;
 class ShapeUpgrade_ShapeDivideAngle : public ShapeUpgrade_ShapeDivide {
 	public:
@@ -1780,20 +1576,6 @@ class ShapeUpgrade_ShapeDivideAngle : public ShapeUpgrade_ShapeDivide {
 };
 
 
-%feature("shadow") ShapeUpgrade_ShapeDivideAngle::~ShapeUpgrade_ShapeDivideAngle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeUpgrade_ShapeDivideAngle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeUpgrade_ShapeDivideArea;
 class ShapeUpgrade_ShapeDivideArea : public ShapeUpgrade_ShapeDivide {
 	public:
@@ -1825,20 +1607,6 @@ class ShapeUpgrade_ShapeDivideArea : public ShapeUpgrade_ShapeDivide {
             };
 
 
-%feature("shadow") ShapeUpgrade_ShapeDivideArea::~ShapeUpgrade_ShapeDivideArea %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeUpgrade_ShapeDivideArea {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeUpgrade_ShapeDivideClosed;
 class ShapeUpgrade_ShapeDivideClosed : public ShapeUpgrade_ShapeDivide {
 	public:
@@ -1861,20 +1629,6 @@ class ShapeUpgrade_ShapeDivideClosed : public ShapeUpgrade_ShapeDivide {
 };
 
 
-%feature("shadow") ShapeUpgrade_ShapeDivideClosed::~ShapeUpgrade_ShapeDivideClosed %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeUpgrade_ShapeDivideClosed {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeUpgrade_ShapeDivideClosedEdges;
 class ShapeUpgrade_ShapeDivideClosedEdges : public ShapeUpgrade_ShapeDivide {
 	public:
@@ -1897,20 +1651,6 @@ class ShapeUpgrade_ShapeDivideClosedEdges : public ShapeUpgrade_ShapeDivide {
 };
 
 
-%feature("shadow") ShapeUpgrade_ShapeDivideClosedEdges::~ShapeUpgrade_ShapeDivideClosedEdges %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeUpgrade_ShapeDivideClosedEdges {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeUpgrade_ShapeDivideContinuity;
 class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 	public:
@@ -1969,20 +1709,6 @@ class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 };
 
 
-%feature("shadow") ShapeUpgrade_ShapeDivideContinuity::~ShapeUpgrade_ShapeDivideContinuity %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeUpgrade_ShapeDivideContinuity {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeUpgrade_SplitCurve2d;
 class ShapeUpgrade_SplitCurve2d : public ShapeUpgrade_SplitCurve {
 	public:
@@ -2023,29 +1749,27 @@ class ShapeUpgrade_SplitCurve2d : public ShapeUpgrade_SplitCurve {
 		%feature("compactdefaultargs") GetCurves;
 		%feature("autodoc", "	:rtype: Handle_TColGeom2d_HArray1OfCurve
 ") GetCurves;
-		const Handle_TColGeom2d_HArray1OfCurve & GetCurves ();
+		Handle_TColGeom2d_HArray1OfCurve GetCurves ();
 };
 
 
-%feature("shadow") ShapeUpgrade_SplitCurve2d::~ShapeUpgrade_SplitCurve2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ShapeUpgrade_SplitCurve2d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_SplitCurve2d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ShapeUpgrade_SplitCurve2d::Handle_ShapeUpgrade_SplitCurve2d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ShapeUpgrade_SplitCurve2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_SplitCurve2d {
-	Handle_ShapeUpgrade_SplitCurve2d GetHandle() {
-	return *(Handle_ShapeUpgrade_SplitCurve2d*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ShapeUpgrade_SplitCurve2d;
 class Handle_ShapeUpgrade_SplitCurve2d : public Handle_ShapeUpgrade_SplitCurve {
@@ -2063,20 +1787,6 @@ class Handle_ShapeUpgrade_SplitCurve2d : public Handle_ShapeUpgrade_SplitCurve {
 %extend Handle_ShapeUpgrade_SplitCurve2d {
     ShapeUpgrade_SplitCurve2d* GetObject() {
     return (ShapeUpgrade_SplitCurve2d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_SplitCurve2d::~Handle_ShapeUpgrade_SplitCurve2d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_SplitCurve2d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2120,29 +1830,27 @@ class ShapeUpgrade_SplitCurve3d : public ShapeUpgrade_SplitCurve {
 		%feature("compactdefaultargs") GetCurves;
 		%feature("autodoc", "	:rtype: Handle_TColGeom_HArray1OfCurve
 ") GetCurves;
-		const Handle_TColGeom_HArray1OfCurve & GetCurves ();
+		Handle_TColGeom_HArray1OfCurve GetCurves ();
 };
 
 
-%feature("shadow") ShapeUpgrade_SplitCurve3d::~ShapeUpgrade_SplitCurve3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ShapeUpgrade_SplitCurve3d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_SplitCurve3d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ShapeUpgrade_SplitCurve3d::Handle_ShapeUpgrade_SplitCurve3d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ShapeUpgrade_SplitCurve3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_SplitCurve3d {
-	Handle_ShapeUpgrade_SplitCurve3d GetHandle() {
-	return *(Handle_ShapeUpgrade_SplitCurve3d*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ShapeUpgrade_SplitCurve3d;
 class Handle_ShapeUpgrade_SplitCurve3d : public Handle_ShapeUpgrade_SplitCurve {
@@ -2160,20 +1868,6 @@ class Handle_ShapeUpgrade_SplitCurve3d : public Handle_ShapeUpgrade_SplitCurve {
 %extend Handle_ShapeUpgrade_SplitCurve3d {
     ShapeUpgrade_SplitCurve3d* GetObject() {
     return (ShapeUpgrade_SplitCurve3d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_SplitCurve3d::~Handle_ShapeUpgrade_SplitCurve3d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_SplitCurve3d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2213,25 +1907,23 @@ class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface {
 };
 
 
-%feature("shadow") ShapeUpgrade_SplitSurfaceAngle::~ShapeUpgrade_SplitSurfaceAngle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_SplitSurfaceAngle {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_SplitSurfaceAngle(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_SplitSurfaceAngle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_SplitSurfaceAngle {
-	Handle_ShapeUpgrade_SplitSurfaceAngle GetHandle() {
-	return *(Handle_ShapeUpgrade_SplitSurfaceAngle*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_SplitSurfaceAngle::Handle_ShapeUpgrade_SplitSurfaceAngle %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_SplitSurfaceAngle;
 class Handle_ShapeUpgrade_SplitSurfaceAngle : public Handle_ShapeUpgrade_SplitSurface {
@@ -2249,20 +1941,6 @@ class Handle_ShapeUpgrade_SplitSurfaceAngle : public Handle_ShapeUpgrade_SplitSu
 %extend Handle_ShapeUpgrade_SplitSurfaceAngle {
     ShapeUpgrade_SplitSurfaceAngle* GetObject() {
     return (ShapeUpgrade_SplitSurfaceAngle*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_SplitSurfaceAngle::~Handle_ShapeUpgrade_SplitSurfaceAngle %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_SplitSurfaceAngle {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2297,25 +1975,23 @@ class ShapeUpgrade_SplitSurfaceArea : public ShapeUpgrade_SplitSurface {
 };
 
 
-%feature("shadow") ShapeUpgrade_SplitSurfaceArea::~ShapeUpgrade_SplitSurfaceArea %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_SplitSurfaceArea {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_SplitSurfaceArea(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_SplitSurfaceArea {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_SplitSurfaceArea {
-	Handle_ShapeUpgrade_SplitSurfaceArea GetHandle() {
-	return *(Handle_ShapeUpgrade_SplitSurfaceArea*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_SplitSurfaceArea::Handle_ShapeUpgrade_SplitSurfaceArea %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_SplitSurfaceArea;
 class Handle_ShapeUpgrade_SplitSurfaceArea : public Handle_ShapeUpgrade_SplitSurface {
@@ -2333,20 +2009,6 @@ class Handle_ShapeUpgrade_SplitSurfaceArea : public Handle_ShapeUpgrade_SplitSur
 %extend Handle_ShapeUpgrade_SplitSurfaceArea {
     ShapeUpgrade_SplitSurfaceArea* GetObject() {
     return (ShapeUpgrade_SplitSurfaceArea*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_SplitSurfaceArea::~Handle_ShapeUpgrade_SplitSurfaceArea %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_SplitSurfaceArea {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2384,25 +2046,23 @@ class ShapeUpgrade_SplitSurfaceContinuity : public ShapeUpgrade_SplitSurface {
 };
 
 
-%feature("shadow") ShapeUpgrade_SplitSurfaceContinuity::~ShapeUpgrade_SplitSurfaceContinuity %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_SplitSurfaceContinuity {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_SplitSurfaceContinuity(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_SplitSurfaceContinuity {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_SplitSurfaceContinuity {
-	Handle_ShapeUpgrade_SplitSurfaceContinuity GetHandle() {
-	return *(Handle_ShapeUpgrade_SplitSurfaceContinuity*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_SplitSurfaceContinuity::Handle_ShapeUpgrade_SplitSurfaceContinuity %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_SplitSurfaceContinuity;
 class Handle_ShapeUpgrade_SplitSurfaceContinuity : public Handle_ShapeUpgrade_SplitSurface {
@@ -2420,20 +2080,6 @@ class Handle_ShapeUpgrade_SplitSurfaceContinuity : public Handle_ShapeUpgrade_Sp
 %extend Handle_ShapeUpgrade_SplitSurfaceContinuity {
     ShapeUpgrade_SplitSurfaceContinuity* GetObject() {
     return (ShapeUpgrade_SplitSurfaceContinuity*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_SplitSurfaceContinuity::~Handle_ShapeUpgrade_SplitSurfaceContinuity %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_SplitSurfaceContinuity {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2597,25 +2243,23 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 };
 
 
-%feature("shadow") ShapeUpgrade_WireDivide::~ShapeUpgrade_WireDivide %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_WireDivide {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_WireDivide(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_WireDivide {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_WireDivide {
-	Handle_ShapeUpgrade_WireDivide GetHandle() {
-	return *(Handle_ShapeUpgrade_WireDivide*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_WireDivide::Handle_ShapeUpgrade_WireDivide %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_WireDivide;
 class Handle_ShapeUpgrade_WireDivide : public Handle_ShapeUpgrade_Tool {
@@ -2633,20 +2277,6 @@ class Handle_ShapeUpgrade_WireDivide : public Handle_ShapeUpgrade_Tool {
 %extend Handle_ShapeUpgrade_WireDivide {
     ShapeUpgrade_WireDivide* GetObject() {
     return (ShapeUpgrade_WireDivide*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_WireDivide::~Handle_ShapeUpgrade_WireDivide %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_WireDivide {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2668,25 +2298,23 @@ class ShapeUpgrade_ClosedEdgeDivide : public ShapeUpgrade_EdgeDivide {
 };
 
 
-%feature("shadow") ShapeUpgrade_ClosedEdgeDivide::~ShapeUpgrade_ClosedEdgeDivide %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_ClosedEdgeDivide {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_ClosedEdgeDivide(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_ClosedEdgeDivide {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_ClosedEdgeDivide {
-	Handle_ShapeUpgrade_ClosedEdgeDivide GetHandle() {
-	return *(Handle_ShapeUpgrade_ClosedEdgeDivide*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_ClosedEdgeDivide::Handle_ShapeUpgrade_ClosedEdgeDivide %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_ClosedEdgeDivide;
 class Handle_ShapeUpgrade_ClosedEdgeDivide : public Handle_ShapeUpgrade_EdgeDivide {
@@ -2704,20 +2332,6 @@ class Handle_ShapeUpgrade_ClosedEdgeDivide : public Handle_ShapeUpgrade_EdgeDivi
 %extend Handle_ShapeUpgrade_ClosedEdgeDivide {
     ShapeUpgrade_ClosedEdgeDivide* GetObject() {
     return (ShapeUpgrade_ClosedEdgeDivide*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_ClosedEdgeDivide::~Handle_ShapeUpgrade_ClosedEdgeDivide %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_ClosedEdgeDivide {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2761,25 +2375,23 @@ class ShapeUpgrade_ClosedFaceDivide : public ShapeUpgrade_FaceDivide {
 };
 
 
-%feature("shadow") ShapeUpgrade_ClosedFaceDivide::~ShapeUpgrade_ClosedFaceDivide %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_ClosedFaceDivide {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_ClosedFaceDivide(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_ClosedFaceDivide {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_ClosedFaceDivide {
-	Handle_ShapeUpgrade_ClosedFaceDivide GetHandle() {
-	return *(Handle_ShapeUpgrade_ClosedFaceDivide*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_ClosedFaceDivide::Handle_ShapeUpgrade_ClosedFaceDivide %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_ClosedFaceDivide;
 class Handle_ShapeUpgrade_ClosedFaceDivide : public Handle_ShapeUpgrade_FaceDivide {
@@ -2797,20 +2409,6 @@ class Handle_ShapeUpgrade_ClosedFaceDivide : public Handle_ShapeUpgrade_FaceDivi
 %extend Handle_ShapeUpgrade_ClosedFaceDivide {
     ShapeUpgrade_ClosedFaceDivide* GetObject() {
     return (ShapeUpgrade_ClosedFaceDivide*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_ClosedFaceDivide::~Handle_ShapeUpgrade_ClosedFaceDivide %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_ClosedFaceDivide {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2846,25 +2444,23 @@ class ShapeUpgrade_ConvertCurve2dToBezier : public ShapeUpgrade_SplitCurve2d {
 };
 
 
-%feature("shadow") ShapeUpgrade_ConvertCurve2dToBezier::~ShapeUpgrade_ConvertCurve2dToBezier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_ConvertCurve2dToBezier {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_ConvertCurve2dToBezier(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_ConvertCurve2dToBezier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_ConvertCurve2dToBezier {
-	Handle_ShapeUpgrade_ConvertCurve2dToBezier GetHandle() {
-	return *(Handle_ShapeUpgrade_ConvertCurve2dToBezier*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_ConvertCurve2dToBezier::Handle_ShapeUpgrade_ConvertCurve2dToBezier %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_ConvertCurve2dToBezier;
 class Handle_ShapeUpgrade_ConvertCurve2dToBezier : public Handle_ShapeUpgrade_SplitCurve2d {
@@ -2882,20 +2478,6 @@ class Handle_ShapeUpgrade_ConvertCurve2dToBezier : public Handle_ShapeUpgrade_Sp
 %extend Handle_ShapeUpgrade_ConvertCurve2dToBezier {
     ShapeUpgrade_ConvertCurve2dToBezier* GetObject() {
     return (ShapeUpgrade_ConvertCurve2dToBezier*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_ConvertCurve2dToBezier::~Handle_ShapeUpgrade_ConvertCurve2dToBezier %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_ConvertCurve2dToBezier {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2973,25 +2555,23 @@ class ShapeUpgrade_ConvertCurve3dToBezier : public ShapeUpgrade_SplitCurve3d {
 };
 
 
-%feature("shadow") ShapeUpgrade_ConvertCurve3dToBezier::~ShapeUpgrade_ConvertCurve3dToBezier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_ConvertCurve3dToBezier {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_ConvertCurve3dToBezier(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_ConvertCurve3dToBezier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_ConvertCurve3dToBezier {
-	Handle_ShapeUpgrade_ConvertCurve3dToBezier GetHandle() {
-	return *(Handle_ShapeUpgrade_ConvertCurve3dToBezier*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_ConvertCurve3dToBezier::Handle_ShapeUpgrade_ConvertCurve3dToBezier %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_ConvertCurve3dToBezier;
 class Handle_ShapeUpgrade_ConvertCurve3dToBezier : public Handle_ShapeUpgrade_SplitCurve3d {
@@ -3009,20 +2589,6 @@ class Handle_ShapeUpgrade_ConvertCurve3dToBezier : public Handle_ShapeUpgrade_Sp
 %extend Handle_ShapeUpgrade_ConvertCurve3dToBezier {
     ShapeUpgrade_ConvertCurve3dToBezier* GetObject() {
     return (ShapeUpgrade_ConvertCurve3dToBezier*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_ConvertCurve3dToBezier::~Handle_ShapeUpgrade_ConvertCurve3dToBezier %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_ConvertCurve3dToBezier {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3063,25 +2629,23 @@ class ShapeUpgrade_FaceDivideArea : public ShapeUpgrade_FaceDivide {
             };
 
 
-%feature("shadow") ShapeUpgrade_FaceDivideArea::~ShapeUpgrade_FaceDivideArea %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_FaceDivideArea {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_FaceDivideArea(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_FaceDivideArea {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_FaceDivideArea {
-	Handle_ShapeUpgrade_FaceDivideArea GetHandle() {
-	return *(Handle_ShapeUpgrade_FaceDivideArea*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_FaceDivideArea::Handle_ShapeUpgrade_FaceDivideArea %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_FaceDivideArea;
 class Handle_ShapeUpgrade_FaceDivideArea : public Handle_ShapeUpgrade_FaceDivide {
@@ -3099,20 +2663,6 @@ class Handle_ShapeUpgrade_FaceDivideArea : public Handle_ShapeUpgrade_FaceDivide
 %extend Handle_ShapeUpgrade_FaceDivideArea {
     ShapeUpgrade_FaceDivideArea* GetObject() {
     return (ShapeUpgrade_FaceDivideArea*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_FaceDivideArea::~Handle_ShapeUpgrade_FaceDivideArea %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_FaceDivideArea {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3140,25 +2690,23 @@ class ShapeUpgrade_FixSmallBezierCurves : public ShapeUpgrade_FixSmallCurves {
 };
 
 
-%feature("shadow") ShapeUpgrade_FixSmallBezierCurves::~ShapeUpgrade_FixSmallBezierCurves %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_FixSmallBezierCurves {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_FixSmallBezierCurves(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_FixSmallBezierCurves {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_FixSmallBezierCurves {
-	Handle_ShapeUpgrade_FixSmallBezierCurves GetHandle() {
-	return *(Handle_ShapeUpgrade_FixSmallBezierCurves*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_FixSmallBezierCurves::Handle_ShapeUpgrade_FixSmallBezierCurves %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_FixSmallBezierCurves;
 class Handle_ShapeUpgrade_FixSmallBezierCurves : public Handle_ShapeUpgrade_FixSmallCurves {
@@ -3176,20 +2724,6 @@ class Handle_ShapeUpgrade_FixSmallBezierCurves : public Handle_ShapeUpgrade_FixS
 %extend Handle_ShapeUpgrade_FixSmallBezierCurves {
     ShapeUpgrade_FixSmallBezierCurves* GetObject() {
     return (ShapeUpgrade_FixSmallBezierCurves*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_FixSmallBezierCurves::~Handle_ShapeUpgrade_FixSmallBezierCurves %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_FixSmallBezierCurves {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3227,25 +2761,23 @@ class ShapeUpgrade_SplitCurve2dContinuity : public ShapeUpgrade_SplitCurve2d {
 };
 
 
-%feature("shadow") ShapeUpgrade_SplitCurve2dContinuity::~ShapeUpgrade_SplitCurve2dContinuity %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeUpgrade_SplitCurve2dContinuity {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_SplitCurve2dContinuity(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeUpgrade_SplitCurve2dContinuity {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_SplitCurve2dContinuity {
-	Handle_ShapeUpgrade_SplitCurve2dContinuity GetHandle() {
-	return *(Handle_ShapeUpgrade_SplitCurve2dContinuity*) &$self;
-	}
-};
+%pythonappend Handle_ShapeUpgrade_SplitCurve2dContinuity::Handle_ShapeUpgrade_SplitCurve2dContinuity %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeUpgrade_SplitCurve2dContinuity;
 class Handle_ShapeUpgrade_SplitCurve2dContinuity : public Handle_ShapeUpgrade_SplitCurve2d {
@@ -3263,20 +2795,6 @@ class Handle_ShapeUpgrade_SplitCurve2dContinuity : public Handle_ShapeUpgrade_Sp
 %extend Handle_ShapeUpgrade_SplitCurve2dContinuity {
     ShapeUpgrade_SplitCurve2dContinuity* GetObject() {
     return (ShapeUpgrade_SplitCurve2dContinuity*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_SplitCurve2dContinuity::~Handle_ShapeUpgrade_SplitCurve2dContinuity %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_SplitCurve2dContinuity {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3314,29 +2832,27 @@ class ShapeUpgrade_SplitCurve3dContinuity : public ShapeUpgrade_SplitCurve3d {
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "	:rtype: Handle_Geom_Curve
 ") GetCurve;
-		const Handle_Geom_Curve & GetCurve ();
+		Handle_Geom_Curve GetCurve ();
 };
 
 
-%feature("shadow") ShapeUpgrade_SplitCurve3dContinuity::~ShapeUpgrade_SplitCurve3dContinuity %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ShapeUpgrade_SplitCurve3dContinuity {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeUpgrade_SplitCurve3dContinuity(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ShapeUpgrade_SplitCurve3dContinuity::Handle_ShapeUpgrade_SplitCurve3dContinuity %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ShapeUpgrade_SplitCurve3dContinuity {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeUpgrade_SplitCurve3dContinuity {
-	Handle_ShapeUpgrade_SplitCurve3dContinuity GetHandle() {
-	return *(Handle_ShapeUpgrade_SplitCurve3dContinuity*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ShapeUpgrade_SplitCurve3dContinuity;
 class Handle_ShapeUpgrade_SplitCurve3dContinuity : public Handle_ShapeUpgrade_SplitCurve3d {
@@ -3354,20 +2870,6 @@ class Handle_ShapeUpgrade_SplitCurve3dContinuity : public Handle_ShapeUpgrade_Sp
 %extend Handle_ShapeUpgrade_SplitCurve3dContinuity {
     ShapeUpgrade_SplitCurve3dContinuity* GetObject() {
     return (ShapeUpgrade_SplitCurve3dContinuity*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeUpgrade_SplitCurve3dContinuity::~Handle_ShapeUpgrade_SplitCurve3dContinuity %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeUpgrade_SplitCurve3dContinuity {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

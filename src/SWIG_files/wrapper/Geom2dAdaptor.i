@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Geom2dAdaptor_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -58,20 +70,6 @@ class Geom2dAdaptor {
 };
 
 
-%feature("shadow") Geom2dAdaptor::~Geom2dAdaptor %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dAdaptor {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dAdaptor_Curve;
 class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 	public:
@@ -118,7 +116,7 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
 ") Curve;
-		const Handle_Geom2d_Curve & Curve ();
+		Handle_Geom2d_Curve Curve ();
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "	:rtype: float
 ") FirstParameter;
@@ -306,20 +304,6 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 };
 
 
-%feature("shadow") Geom2dAdaptor_Curve::~Geom2dAdaptor_Curve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dAdaptor_Curve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dAdaptor_GHCurve;
 class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
 	public:
@@ -350,25 +334,23 @@ class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
 };
 
 
-%feature("shadow") Geom2dAdaptor_GHCurve::~Geom2dAdaptor_GHCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom2dAdaptor_GHCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom2dAdaptor_GHCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom2dAdaptor_GHCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom2dAdaptor_GHCurve {
-	Handle_Geom2dAdaptor_GHCurve GetHandle() {
-	return *(Handle_Geom2dAdaptor_GHCurve*) &$self;
-	}
-};
+%pythonappend Handle_Geom2dAdaptor_GHCurve::Handle_Geom2dAdaptor_GHCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom2dAdaptor_GHCurve;
 class Handle_Geom2dAdaptor_GHCurve : public Handle_Adaptor2d_HCurve2d {
@@ -386,20 +368,6 @@ class Handle_Geom2dAdaptor_GHCurve : public Handle_Adaptor2d_HCurve2d {
 %extend Handle_Geom2dAdaptor_GHCurve {
     Geom2dAdaptor_GHCurve* GetObject() {
     return (Geom2dAdaptor_GHCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom2dAdaptor_GHCurve::~Handle_Geom2dAdaptor_GHCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom2dAdaptor_GHCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -437,25 +405,23 @@ class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
 };
 
 
-%feature("shadow") Geom2dAdaptor_HCurve::~Geom2dAdaptor_HCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom2dAdaptor_HCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom2dAdaptor_HCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom2dAdaptor_HCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom2dAdaptor_HCurve {
-	Handle_Geom2dAdaptor_HCurve GetHandle() {
-	return *(Handle_Geom2dAdaptor_HCurve*) &$self;
-	}
-};
+%pythonappend Handle_Geom2dAdaptor_HCurve::Handle_Geom2dAdaptor_HCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom2dAdaptor_HCurve;
 class Handle_Geom2dAdaptor_HCurve : public Handle_Geom2dAdaptor_GHCurve {
@@ -473,20 +439,6 @@ class Handle_Geom2dAdaptor_HCurve : public Handle_Geom2dAdaptor_GHCurve {
 %extend Handle_Geom2dAdaptor_HCurve {
     Geom2dAdaptor_HCurve* GetObject() {
     return (Geom2dAdaptor_HCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom2dAdaptor_HCurve::~Handle_Geom2dAdaptor_HCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom2dAdaptor_HCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

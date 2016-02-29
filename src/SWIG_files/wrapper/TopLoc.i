@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include TopLoc_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef gp_Trsf * TopLoc_TrsfPtr;
@@ -79,25 +91,23 @@ class TopLoc_Datum3D : public MMgt_TShared {
         };
 
 
-%feature("shadow") TopLoc_Datum3D::~TopLoc_Datum3D %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopLoc_Datum3D {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopLoc_Datum3D(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopLoc_Datum3D {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopLoc_Datum3D {
-	Handle_TopLoc_Datum3D GetHandle() {
-	return *(Handle_TopLoc_Datum3D*) &$self;
-	}
-};
+%pythonappend Handle_TopLoc_Datum3D::Handle_TopLoc_Datum3D %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopLoc_Datum3D;
 class Handle_TopLoc_Datum3D : public Handle_MMgt_TShared {
@@ -115,20 +125,6 @@ class Handle_TopLoc_Datum3D : public Handle_MMgt_TShared {
 %extend Handle_TopLoc_Datum3D {
     TopLoc_Datum3D* GetObject() {
     return (TopLoc_Datum3D*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopLoc_Datum3D::~Handle_TopLoc_Datum3D %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopLoc_Datum3D {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -171,25 +167,23 @@ class TopLoc_IndexedMapNodeOfIndexedMapOfLocation : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TopLoc_IndexedMapNodeOfIndexedMapOfLocation::~TopLoc_IndexedMapNodeOfIndexedMapOfLocation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
-	Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation GetHandle() {
-	return *(Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation*) &$self;
-	}
-};
+%pythonappend Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation::Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation;
 class Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation : public Handle_TCollection_MapNode {
@@ -207,20 +201,6 @@ class Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation : public Handle_TCollec
 %extend Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
     TopLoc_IndexedMapNodeOfIndexedMapOfLocation* GetObject() {
     return (TopLoc_IndexedMapNodeOfIndexedMapOfLocation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation::~Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -294,20 +274,6 @@ class TopLoc_IndexedMapOfLocation : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopLoc_IndexedMapOfLocation::~TopLoc_IndexedMapOfLocation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopLoc_IndexedMapOfLocation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopLoc_ItemLocation;
 class TopLoc_ItemLocation {
 	public:
@@ -348,20 +314,6 @@ class TopLoc_ItemLocation {
 };
 
 
-%feature("shadow") TopLoc_ItemLocation::~TopLoc_ItemLocation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopLoc_ItemLocation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopLoc_Location;
 class TopLoc_Location {
 	public:
@@ -404,7 +356,7 @@ class TopLoc_Location {
 
 	:rtype: Handle_TopLoc_Datum3D
 ") FirstDatum;
-		const Handle_TopLoc_Datum3D & FirstDatum ();
+		Handle_TopLoc_Datum3D FirstDatum ();
 		%feature("compactdefaultargs") FirstPower;
 		%feature("autodoc", "	* Returns the power elevation of the first elementary datum. Exceptions Standard_NoSuchObject if this location is empty.
 
@@ -546,20 +498,6 @@ class TopLoc_Location {
         };
 
 
-%feature("shadow") TopLoc_Location::~TopLoc_Location %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopLoc_Location {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopLoc_MapIteratorOfMapOfLocation;
 class TopLoc_MapIteratorOfMapOfLocation : public TCollection_BasicMapIterator {
 	public:
@@ -586,20 +524,6 @@ class TopLoc_MapIteratorOfMapOfLocation : public TCollection_BasicMapIterator {
 };
 
 
-%feature("shadow") TopLoc_MapIteratorOfMapOfLocation::~TopLoc_MapIteratorOfMapOfLocation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopLoc_MapIteratorOfMapOfLocation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class TopLoc_MapLocationHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -621,20 +545,6 @@ class TopLoc_MapLocationHasher {
 };
 
 
-%feature("shadow") TopLoc_MapLocationHasher::~TopLoc_MapLocationHasher %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopLoc_MapLocationHasher {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopLoc_MapOfLocation;
 class TopLoc_MapOfLocation : public TCollection_BasicMap {
 	public:
@@ -687,20 +597,6 @@ class TopLoc_MapOfLocation : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") TopLoc_MapOfLocation::~TopLoc_MapOfLocation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopLoc_MapOfLocation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopLoc_SListNodeOfSListOfItemLocation;
 class TopLoc_SListNodeOfSListOfItemLocation : public MMgt_TShared {
 	public:
@@ -723,25 +619,23 @@ class TopLoc_SListNodeOfSListOfItemLocation : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopLoc_SListNodeOfSListOfItemLocation::~TopLoc_SListNodeOfSListOfItemLocation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopLoc_SListNodeOfSListOfItemLocation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopLoc_SListNodeOfSListOfItemLocation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopLoc_SListNodeOfSListOfItemLocation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopLoc_SListNodeOfSListOfItemLocation {
-	Handle_TopLoc_SListNodeOfSListOfItemLocation GetHandle() {
-	return *(Handle_TopLoc_SListNodeOfSListOfItemLocation*) &$self;
-	}
-};
+%pythonappend Handle_TopLoc_SListNodeOfSListOfItemLocation::Handle_TopLoc_SListNodeOfSListOfItemLocation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopLoc_SListNodeOfSListOfItemLocation;
 class Handle_TopLoc_SListNodeOfSListOfItemLocation : public Handle_MMgt_TShared {
@@ -759,20 +653,6 @@ class Handle_TopLoc_SListNodeOfSListOfItemLocation : public Handle_MMgt_TShared 
 %extend Handle_TopLoc_SListNodeOfSListOfItemLocation {
     TopLoc_SListNodeOfSListOfItemLocation* GetObject() {
     return (TopLoc_SListNodeOfSListOfItemLocation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopLoc_SListNodeOfSListOfItemLocation::~Handle_TopLoc_SListNodeOfSListOfItemLocation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopLoc_SListNodeOfSListOfItemLocation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -878,20 +758,6 @@ class TopLoc_SListOfItemLocation {
 };
 
 
-%feature("shadow") TopLoc_SListOfItemLocation::~TopLoc_SListOfItemLocation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopLoc_SListOfItemLocation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopLoc_StdMapNodeOfMapOfLocation;
 class TopLoc_StdMapNodeOfMapOfLocation : public TCollection_MapNode {
 	public:
@@ -910,25 +776,23 @@ class TopLoc_StdMapNodeOfMapOfLocation : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TopLoc_StdMapNodeOfMapOfLocation::~TopLoc_StdMapNodeOfMapOfLocation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopLoc_StdMapNodeOfMapOfLocation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopLoc_StdMapNodeOfMapOfLocation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopLoc_StdMapNodeOfMapOfLocation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopLoc_StdMapNodeOfMapOfLocation {
-	Handle_TopLoc_StdMapNodeOfMapOfLocation GetHandle() {
-	return *(Handle_TopLoc_StdMapNodeOfMapOfLocation*) &$self;
-	}
-};
+%pythonappend Handle_TopLoc_StdMapNodeOfMapOfLocation::Handle_TopLoc_StdMapNodeOfMapOfLocation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopLoc_StdMapNodeOfMapOfLocation;
 class Handle_TopLoc_StdMapNodeOfMapOfLocation : public Handle_TCollection_MapNode {
@@ -946,20 +810,6 @@ class Handle_TopLoc_StdMapNodeOfMapOfLocation : public Handle_TCollection_MapNod
 %extend Handle_TopLoc_StdMapNodeOfMapOfLocation {
     TopLoc_StdMapNodeOfMapOfLocation* GetObject() {
     return (TopLoc_StdMapNodeOfMapOfLocation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopLoc_StdMapNodeOfMapOfLocation::~Handle_TopLoc_StdMapNodeOfMapOfLocation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopLoc_StdMapNodeOfMapOfLocation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include XCAFDoc_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -118,20 +130,6 @@ class XCAFDoc {
 };
 
 
-%feature("shadow") XCAFDoc::~XCAFDoc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFDoc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor XCAFDoc_Area;
 class XCAFDoc_Area : public TDF_Attribute {
 	public:
@@ -210,25 +208,23 @@ class XCAFDoc_Area : public TDF_Attribute {
         };
 
 
-%feature("shadow") XCAFDoc_Area::~XCAFDoc_Area %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_Area {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_Area(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_Area {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_Area {
-	Handle_XCAFDoc_Area GetHandle() {
-	return *(Handle_XCAFDoc_Area*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_Area::Handle_XCAFDoc_Area %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_Area;
 class Handle_XCAFDoc_Area : public Handle_TDF_Attribute {
@@ -246,20 +242,6 @@ class Handle_XCAFDoc_Area : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_Area {
     XCAFDoc_Area* GetObject() {
     return (XCAFDoc_Area*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_Area::~Handle_XCAFDoc_Area %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_Area {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -339,25 +321,23 @@ class XCAFDoc_Centroid : public TDF_Attribute {
         };
 
 
-%feature("shadow") XCAFDoc_Centroid::~XCAFDoc_Centroid %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_Centroid {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_Centroid(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_Centroid {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_Centroid {
-	Handle_XCAFDoc_Centroid GetHandle() {
-	return *(Handle_XCAFDoc_Centroid*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_Centroid::Handle_XCAFDoc_Centroid %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_Centroid;
 class Handle_XCAFDoc_Centroid : public Handle_TDF_Attribute {
@@ -375,20 +355,6 @@ class Handle_XCAFDoc_Centroid : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_Centroid {
     XCAFDoc_Centroid* GetObject() {
     return (XCAFDoc_Centroid*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_Centroid::~Handle_XCAFDoc_Centroid %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_Centroid {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -500,25 +466,23 @@ class XCAFDoc_Color : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_Color::~XCAFDoc_Color %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_Color {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_Color(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_Color {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_Color {
-	Handle_XCAFDoc_Color GetHandle() {
-	return *(Handle_XCAFDoc_Color*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_Color::Handle_XCAFDoc_Color %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_Color;
 class Handle_XCAFDoc_Color : public Handle_TDF_Attribute {
@@ -536,20 +500,6 @@ class Handle_XCAFDoc_Color : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_Color {
     XCAFDoc_Color* GetObject() {
     return (XCAFDoc_Color*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_Color::~Handle_XCAFDoc_Color %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_Color {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -583,7 +533,7 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 
 	:rtype: Handle_XCAFDoc_ShapeTool
 ") ShapeTool;
-		const Handle_XCAFDoc_ShapeTool & ShapeTool ();
+		Handle_XCAFDoc_ShapeTool ShapeTool ();
 		%feature("compactdefaultargs") IsColor;
 		%feature("autodoc", "	* Returns True if label belongs to a colortable and is a color definition
 
@@ -863,25 +813,23 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_ColorTool::~XCAFDoc_ColorTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_ColorTool {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_ColorTool(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_ColorTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_ColorTool {
-	Handle_XCAFDoc_ColorTool GetHandle() {
-	return *(Handle_XCAFDoc_ColorTool*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_ColorTool::Handle_XCAFDoc_ColorTool %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_ColorTool;
 class Handle_XCAFDoc_ColorTool : public Handle_TDF_Attribute {
@@ -899,20 +847,6 @@ class Handle_XCAFDoc_ColorTool : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_ColorTool {
     XCAFDoc_ColorTool* GetObject() {
     return (XCAFDoc_ColorTool*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_ColorTool::~Handle_XCAFDoc_ColorTool %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_ColorTool {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -946,20 +880,6 @@ class XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel : public TCollection_BasicMap
 };
 
 
-%feature("shadow") XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel::~XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor XCAFDoc_DataMapNodeOfDataMapOfShapeLabel;
 class XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public TCollection_MapNode {
 	public:
@@ -984,25 +904,23 @@ class XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public TCollection_MapNode {
 };
 
 
-%feature("shadow") XCAFDoc_DataMapNodeOfDataMapOfShapeLabel::~XCAFDoc_DataMapNodeOfDataMapOfShapeLabel %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
-	Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel GetHandle() {
-	return *(Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel::Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel;
 class Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public Handle_TCollection_MapNode {
@@ -1020,20 +938,6 @@ class Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public Handle_TCollectio
 %extend Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
     XCAFDoc_DataMapNodeOfDataMapOfShapeLabel* GetObject() {
     return (XCAFDoc_DataMapNodeOfDataMapOfShapeLabel*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel::~Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1115,20 +1019,6 @@ class XCAFDoc_DataMapOfShapeLabel : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") XCAFDoc_DataMapOfShapeLabel::~XCAFDoc_DataMapOfShapeLabel %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFDoc_DataMapOfShapeLabel {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor XCAFDoc_Datum;
 class XCAFDoc_Datum : public TDF_Attribute {
 	public:
@@ -1199,25 +1089,23 @@ class XCAFDoc_Datum : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_Datum::~XCAFDoc_Datum %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_Datum {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_Datum(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_Datum {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_Datum {
-	Handle_XCAFDoc_Datum GetHandle() {
-	return *(Handle_XCAFDoc_Datum*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_Datum::Handle_XCAFDoc_Datum %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_Datum;
 class Handle_XCAFDoc_Datum : public Handle_TDF_Attribute {
@@ -1235,20 +1123,6 @@ class Handle_XCAFDoc_Datum : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_Datum {
     XCAFDoc_Datum* GetObject() {
     return (XCAFDoc_Datum*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_Datum::~Handle_XCAFDoc_Datum %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_Datum {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1330,25 +1204,23 @@ class XCAFDoc_DimTol : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_DimTol::~XCAFDoc_DimTol %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_DimTol {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_DimTol(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_DimTol {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_DimTol {
-	Handle_XCAFDoc_DimTol GetHandle() {
-	return *(Handle_XCAFDoc_DimTol*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_DimTol::Handle_XCAFDoc_DimTol %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_DimTol;
 class Handle_XCAFDoc_DimTol : public Handle_TDF_Attribute {
@@ -1366,20 +1238,6 @@ class Handle_XCAFDoc_DimTol : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_DimTol {
     XCAFDoc_DimTol* GetObject() {
     return (XCAFDoc_DimTol*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_DimTol::~Handle_XCAFDoc_DimTol %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_DimTol {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1413,7 +1271,7 @@ class XCAFDoc_DimTolTool : public TDF_Attribute {
 
 	:rtype: Handle_XCAFDoc_ShapeTool
 ") ShapeTool;
-		const Handle_XCAFDoc_ShapeTool & ShapeTool ();
+		Handle_XCAFDoc_ShapeTool ShapeTool ();
 		%feature("compactdefaultargs") IsDimTol;
 		%feature("autodoc", "	* Returns True if label belongs to a dimtoltable and is a DimTol definition
 
@@ -1653,25 +1511,23 @@ class XCAFDoc_DimTolTool : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_DimTolTool::~XCAFDoc_DimTolTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_DimTolTool {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_DimTolTool(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_DimTolTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_DimTolTool {
-	Handle_XCAFDoc_DimTolTool GetHandle() {
-	return *(Handle_XCAFDoc_DimTolTool*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_DimTolTool::Handle_XCAFDoc_DimTolTool %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_DimTolTool;
 class Handle_XCAFDoc_DimTolTool : public Handle_TDF_Attribute {
@@ -1689,20 +1545,6 @@ class Handle_XCAFDoc_DimTolTool : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_DimTolTool {
     XCAFDoc_DimTolTool* GetObject() {
     return (XCAFDoc_DimTolTool*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_DimTolTool::~Handle_XCAFDoc_DimTolTool %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_DimTolTool {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1858,25 +1700,23 @@ class XCAFDoc_DocumentTool : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_DocumentTool::~XCAFDoc_DocumentTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_DocumentTool {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_DocumentTool(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_DocumentTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_DocumentTool {
-	Handle_XCAFDoc_DocumentTool GetHandle() {
-	return *(Handle_XCAFDoc_DocumentTool*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_DocumentTool::Handle_XCAFDoc_DocumentTool %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_DocumentTool;
 class Handle_XCAFDoc_DocumentTool : public Handle_TDF_Attribute {
@@ -1894,20 +1734,6 @@ class Handle_XCAFDoc_DocumentTool : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_DocumentTool {
     XCAFDoc_DocumentTool* GetObject() {
     return (XCAFDoc_DocumentTool*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_DocumentTool::~Handle_XCAFDoc_DocumentTool %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_DocumentTool {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2111,25 +1937,23 @@ class XCAFDoc_GraphNode : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_GraphNode::~XCAFDoc_GraphNode %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_GraphNode {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_GraphNode(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_GraphNode {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_GraphNode {
-	Handle_XCAFDoc_GraphNode GetHandle() {
-	return *(Handle_XCAFDoc_GraphNode*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_GraphNode::Handle_XCAFDoc_GraphNode %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_GraphNode;
 class Handle_XCAFDoc_GraphNode : public Handle_TDF_Attribute {
@@ -2147,20 +1971,6 @@ class Handle_XCAFDoc_GraphNode : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_GraphNode {
     XCAFDoc_GraphNode* GetObject() {
     return (XCAFDoc_GraphNode*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_GraphNode::~Handle_XCAFDoc_GraphNode %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_GraphNode {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2246,11 +2056,11 @@ class XCAFDoc_GraphNodeSequence : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_XCAFDoc_GraphNode
 ") First;
-		const Handle_XCAFDoc_GraphNode & First ();
+		Handle_XCAFDoc_GraphNode First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_XCAFDoc_GraphNode
 ") Last;
-		const Handle_XCAFDoc_GraphNode & Last ();
+		Handle_XCAFDoc_GraphNode Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2264,7 +2074,7 @@ class XCAFDoc_GraphNodeSequence : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_XCAFDoc_GraphNode
 ") Value;
-		const Handle_XCAFDoc_GraphNode & Value (const Standard_Integer Index);
+		Handle_XCAFDoc_GraphNode Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2278,7 +2088,7 @@ class XCAFDoc_GraphNodeSequence : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_XCAFDoc_GraphNode
 ") ChangeValue;
-		Handle_XCAFDoc_GraphNode & ChangeValue (const Standard_Integer Index);
+		Handle_XCAFDoc_GraphNode ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2296,20 +2106,6 @@ class XCAFDoc_GraphNodeSequence : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") XCAFDoc_GraphNodeSequence::~XCAFDoc_GraphNodeSequence %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend XCAFDoc_GraphNodeSequence {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor XCAFDoc_LayerTool;
 class XCAFDoc_LayerTool : public TDF_Attribute {
 	public:
@@ -2340,7 +2136,7 @@ class XCAFDoc_LayerTool : public TDF_Attribute {
 
 	:rtype: Handle_XCAFDoc_ShapeTool
 ") ShapeTool;
-		const Handle_XCAFDoc_ShapeTool & ShapeTool ();
+		Handle_XCAFDoc_ShapeTool ShapeTool ();
 		%feature("compactdefaultargs") IsLayer;
 		%feature("autodoc", "	* Returns True if label belongs to a Layertable and is a Layer definition
 
@@ -2654,25 +2450,23 @@ class XCAFDoc_LayerTool : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_LayerTool::~XCAFDoc_LayerTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_LayerTool {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_LayerTool(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_LayerTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_LayerTool {
-	Handle_XCAFDoc_LayerTool GetHandle() {
-	return *(Handle_XCAFDoc_LayerTool*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_LayerTool::Handle_XCAFDoc_LayerTool %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_LayerTool;
 class Handle_XCAFDoc_LayerTool : public Handle_TDF_Attribute {
@@ -2690,20 +2484,6 @@ class Handle_XCAFDoc_LayerTool : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_LayerTool {
     XCAFDoc_LayerTool* GetObject() {
     return (XCAFDoc_LayerTool*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_LayerTool::~Handle_XCAFDoc_LayerTool %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_LayerTool {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2767,25 +2547,23 @@ class XCAFDoc_Location : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_Location::~XCAFDoc_Location %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_Location {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_Location(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_Location {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_Location {
-	Handle_XCAFDoc_Location GetHandle() {
-	return *(Handle_XCAFDoc_Location*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_Location::Handle_XCAFDoc_Location %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_Location;
 class Handle_XCAFDoc_Location : public Handle_TDF_Attribute {
@@ -2803,20 +2581,6 @@ class Handle_XCAFDoc_Location : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_Location {
     XCAFDoc_Location* GetObject() {
     return (XCAFDoc_Location*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_Location::~Handle_XCAFDoc_Location %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_Location {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2906,25 +2670,23 @@ class XCAFDoc_Material : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_Material::~XCAFDoc_Material %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_Material {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_Material(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_Material {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_Material {
-	Handle_XCAFDoc_Material GetHandle() {
-	return *(Handle_XCAFDoc_Material*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_Material::Handle_XCAFDoc_Material %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_Material;
 class Handle_XCAFDoc_Material : public Handle_TDF_Attribute {
@@ -2942,20 +2704,6 @@ class Handle_XCAFDoc_Material : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_Material {
     XCAFDoc_Material* GetObject() {
     return (XCAFDoc_Material*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_Material::~Handle_XCAFDoc_Material %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_Material {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2989,7 +2737,7 @@ class XCAFDoc_MaterialTool : public TDF_Attribute {
 
 	:rtype: Handle_XCAFDoc_ShapeTool
 ") ShapeTool;
-		const Handle_XCAFDoc_ShapeTool & ShapeTool ();
+		Handle_XCAFDoc_ShapeTool ShapeTool ();
 		%feature("compactdefaultargs") IsMaterial;
 		%feature("autodoc", "	* Returns True if label belongs to a material table and is a Material definition
 
@@ -3101,25 +2849,23 @@ class XCAFDoc_MaterialTool : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_MaterialTool::~XCAFDoc_MaterialTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_MaterialTool {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_MaterialTool(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_MaterialTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_MaterialTool {
-	Handle_XCAFDoc_MaterialTool GetHandle() {
-	return *(Handle_XCAFDoc_MaterialTool*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_MaterialTool::Handle_XCAFDoc_MaterialTool %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_MaterialTool;
 class Handle_XCAFDoc_MaterialTool : public Handle_TDF_Attribute {
@@ -3139,20 +2885,6 @@ class Handle_XCAFDoc_MaterialTool : public Handle_TDF_Attribute {
     return (XCAFDoc_MaterialTool*)$self->Access();
     }
 };
-%feature("shadow") Handle_XCAFDoc_MaterialTool::~Handle_XCAFDoc_MaterialTool %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_MaterialTool {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor XCAFDoc_SequenceNodeOfGraphNodeSequence;
 class XCAFDoc_SequenceNodeOfGraphNodeSequence : public TCollection_SeqNode {
@@ -3170,29 +2902,27 @@ class XCAFDoc_SequenceNodeOfGraphNodeSequence : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_XCAFDoc_GraphNode
 ") Value;
-		Handle_XCAFDoc_GraphNode & Value ();
+		Handle_XCAFDoc_GraphNode Value ();
 };
 
 
-%feature("shadow") XCAFDoc_SequenceNodeOfGraphNodeSequence::~XCAFDoc_SequenceNodeOfGraphNodeSequence %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend XCAFDoc_SequenceNodeOfGraphNodeSequence {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence::Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend XCAFDoc_SequenceNodeOfGraphNodeSequence {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_SequenceNodeOfGraphNodeSequence {
-	Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence GetHandle() {
-	return *(Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence*) &$self;
-	}
-};
 
 %nodefaultctor Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence;
 class Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence : public Handle_TCollection_SeqNode {
@@ -3210,20 +2940,6 @@ class Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence : public Handle_TCollection
 %extend Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence {
     XCAFDoc_SequenceNodeOfGraphNodeSequence* GetObject() {
     return (XCAFDoc_SequenceNodeOfGraphNodeSequence*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence::~Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3293,25 +3009,23 @@ class XCAFDoc_ShapeMapTool : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_ShapeMapTool::~XCAFDoc_ShapeMapTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_ShapeMapTool {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_ShapeMapTool(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_ShapeMapTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_ShapeMapTool {
-	Handle_XCAFDoc_ShapeMapTool GetHandle() {
-	return *(Handle_XCAFDoc_ShapeMapTool*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_ShapeMapTool::Handle_XCAFDoc_ShapeMapTool %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_ShapeMapTool;
 class Handle_XCAFDoc_ShapeMapTool : public Handle_TDF_Attribute {
@@ -3329,20 +3043,6 @@ class Handle_XCAFDoc_ShapeMapTool : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_ShapeMapTool {
     XCAFDoc_ShapeMapTool* GetObject() {
     return (XCAFDoc_ShapeMapTool*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_ShapeMapTool::~Handle_XCAFDoc_ShapeMapTool %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_ShapeMapTool {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3932,25 +3632,23 @@ class XCAFDoc_ShapeTool : public TDF_Attribute {
 };
 
 
-%feature("shadow") XCAFDoc_ShapeTool::~XCAFDoc_ShapeTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_ShapeTool {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_ShapeTool(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_ShapeTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_ShapeTool {
-	Handle_XCAFDoc_ShapeTool GetHandle() {
-	return *(Handle_XCAFDoc_ShapeTool*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_ShapeTool::Handle_XCAFDoc_ShapeTool %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_ShapeTool;
 class Handle_XCAFDoc_ShapeTool : public Handle_TDF_Attribute {
@@ -3968,20 +3666,6 @@ class Handle_XCAFDoc_ShapeTool : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_ShapeTool {
     XCAFDoc_ShapeTool* GetObject() {
     return (XCAFDoc_ShapeTool*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_ShapeTool::~Handle_XCAFDoc_ShapeTool %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_ShapeTool {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4063,25 +3747,23 @@ class XCAFDoc_Volume : public TDF_Attribute {
         };
 
 
-%feature("shadow") XCAFDoc_Volume::~XCAFDoc_Volume %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFDoc_Volume {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFDoc_Volume(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFDoc_Volume {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFDoc_Volume {
-	Handle_XCAFDoc_Volume GetHandle() {
-	return *(Handle_XCAFDoc_Volume*) &$self;
-	}
-};
+%pythonappend Handle_XCAFDoc_Volume::Handle_XCAFDoc_Volume %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFDoc_Volume;
 class Handle_XCAFDoc_Volume : public Handle_TDF_Attribute {
@@ -4099,20 +3781,6 @@ class Handle_XCAFDoc_Volume : public Handle_TDF_Attribute {
 %extend Handle_XCAFDoc_Volume {
     XCAFDoc_Volume* GetObject() {
     return (XCAFDoc_Volume*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFDoc_Volume::~Handle_XCAFDoc_Volume %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFDoc_Volume {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Graphic3d_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef NCollection_Vec4 <Standard_Integer> Graphic3d_Vec4i;
@@ -330,20 +342,6 @@ class Graphic3d {
 };
 
 
-%feature("shadow") Graphic3d::~Graphic3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_Array1OfVector;
 class Graphic3d_Array1OfVector {
 	public:
@@ -426,20 +424,6 @@ class Graphic3d_Array1OfVector {
 };
 
 
-%feature("shadow") Graphic3d_Array1OfVector::~Graphic3d_Array1OfVector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_Array1OfVector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_Array1OfVertex;
 class Graphic3d_Array1OfVertex {
 	public:
@@ -522,20 +506,6 @@ class Graphic3d_Array1OfVertex {
 };
 
 
-%feature("shadow") Graphic3d_Array1OfVertex::~Graphic3d_Array1OfVertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_Array1OfVertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_Array2OfVertex;
 class Graphic3d_Array2OfVertex {
 	public:
@@ -640,20 +610,6 @@ class Graphic3d_Array2OfVertex {
 };
 
 
-%feature("shadow") Graphic3d_Array2OfVertex::~Graphic3d_Array2OfVertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_Array2OfVertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_ArrayOfPrimitives;
 class Graphic3d_ArrayOfPrimitives : public MMgt_TShared {
 	public:
@@ -1292,25 +1248,23 @@ class Graphic3d_ArrayOfPrimitives : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_ArrayOfPrimitives::~Graphic3d_ArrayOfPrimitives %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_ArrayOfPrimitives {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ArrayOfPrimitives(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_ArrayOfPrimitives {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ArrayOfPrimitives {
-	Handle_Graphic3d_ArrayOfPrimitives GetHandle() {
-	return *(Handle_Graphic3d_ArrayOfPrimitives*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_ArrayOfPrimitives::Handle_Graphic3d_ArrayOfPrimitives %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_ArrayOfPrimitives;
 class Handle_Graphic3d_ArrayOfPrimitives : public Handle_MMgt_TShared {
@@ -1328,20 +1282,6 @@ class Handle_Graphic3d_ArrayOfPrimitives : public Handle_MMgt_TShared {
 %extend Handle_Graphic3d_ArrayOfPrimitives {
     Graphic3d_ArrayOfPrimitives* GetObject() {
     return (Graphic3d_ArrayOfPrimitives*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ArrayOfPrimitives::~Handle_Graphic3d_ArrayOfPrimitives %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ArrayOfPrimitives {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1517,25 +1457,23 @@ class Graphic3d_AspectFillArea3d : public Aspect_AspectFillArea {
 };
 
 
-%feature("shadow") Graphic3d_AspectFillArea3d::~Graphic3d_AspectFillArea3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_AspectFillArea3d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_AspectFillArea3d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_AspectFillArea3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_AspectFillArea3d {
-	Handle_Graphic3d_AspectFillArea3d GetHandle() {
-	return *(Handle_Graphic3d_AspectFillArea3d*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_AspectFillArea3d::Handle_Graphic3d_AspectFillArea3d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_AspectFillArea3d;
 class Handle_Graphic3d_AspectFillArea3d : public Handle_Aspect_AspectFillArea {
@@ -1553,20 +1491,6 @@ class Handle_Graphic3d_AspectFillArea3d : public Handle_Aspect_AspectFillArea {
 %extend Handle_Graphic3d_AspectFillArea3d {
     Graphic3d_AspectFillArea3d* GetObject() {
     return (Graphic3d_AspectFillArea3d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_AspectFillArea3d::~Handle_Graphic3d_AspectFillArea3d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_AspectFillArea3d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1606,25 +1530,23 @@ class Graphic3d_AspectLine3d : public Aspect_AspectLine {
 };
 
 
-%feature("shadow") Graphic3d_AspectLine3d::~Graphic3d_AspectLine3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_AspectLine3d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_AspectLine3d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_AspectLine3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_AspectLine3d {
-	Handle_Graphic3d_AspectLine3d GetHandle() {
-	return *(Handle_Graphic3d_AspectLine3d*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_AspectLine3d::Handle_Graphic3d_AspectLine3d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_AspectLine3d;
 class Handle_Graphic3d_AspectLine3d : public Handle_Aspect_AspectLine {
@@ -1642,20 +1564,6 @@ class Handle_Graphic3d_AspectLine3d : public Handle_Aspect_AspectLine {
 %extend Handle_Graphic3d_AspectLine3d {
     Graphic3d_AspectLine3d* GetObject() {
     return (Graphic3d_AspectLine3d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_AspectLine3d::~Handle_Graphic3d_AspectLine3d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_AspectLine3d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1741,25 +1649,23 @@ class Graphic3d_AspectMarker3d : public Aspect_AspectMarker {
 };
 
 
-%feature("shadow") Graphic3d_AspectMarker3d::~Graphic3d_AspectMarker3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_AspectMarker3d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_AspectMarker3d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_AspectMarker3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_AspectMarker3d {
-	Handle_Graphic3d_AspectMarker3d GetHandle() {
-	return *(Handle_Graphic3d_AspectMarker3d*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_AspectMarker3d::Handle_Graphic3d_AspectMarker3d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_AspectMarker3d;
 class Handle_Graphic3d_AspectMarker3d : public Handle_Aspect_AspectMarker {
@@ -1777,20 +1683,6 @@ class Handle_Graphic3d_AspectMarker3d : public Handle_Aspect_AspectMarker {
 %extend Handle_Graphic3d_AspectMarker3d {
     Graphic3d_AspectMarker3d* GetObject() {
     return (Graphic3d_AspectMarker3d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_AspectMarker3d::~Handle_Graphic3d_AspectMarker3d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_AspectMarker3d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1934,25 +1826,23 @@ class Graphic3d_AspectText3d : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_AspectText3d::~Graphic3d_AspectText3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_AspectText3d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_AspectText3d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_AspectText3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_AspectText3d {
-	Handle_Graphic3d_AspectText3d GetHandle() {
-	return *(Handle_Graphic3d_AspectText3d*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_AspectText3d::Handle_Graphic3d_AspectText3d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_AspectText3d;
 class Handle_Graphic3d_AspectText3d : public Handle_MMgt_TShared {
@@ -1972,20 +1862,6 @@ class Handle_Graphic3d_AspectText3d : public Handle_MMgt_TShared {
     return (Graphic3d_AspectText3d*)$self->Access();
     }
 };
-%feature("shadow") Handle_Graphic3d_AspectText3d::~Handle_Graphic3d_AspectText3d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_AspectText3d {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Graphic3d_CBitFields16;
 class Graphic3d_CBitFields16 {
@@ -1993,80 +1869,24 @@ class Graphic3d_CBitFields16 {
 };
 
 
-%feature("shadow") Graphic3d_CBitFields16::~Graphic3d_CBitFields16 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_CBitFields16 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_CBitFields20;
 class Graphic3d_CBitFields20 {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_CBitFields20::~Graphic3d_CBitFields20 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_CBitFields20 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_CBitFields4;
 class Graphic3d_CBitFields4 {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_CBitFields4::~Graphic3d_CBitFields4 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_CBitFields4 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_CBitFields8;
 class Graphic3d_CBitFields8 {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_CBitFields8::~Graphic3d_CBitFields8 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_CBitFields8 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_CGraduatedTrihedron;
 class Graphic3d_CGraduatedTrihedron {
 	public:
@@ -2077,40 +1897,12 @@ class Graphic3d_CGraduatedTrihedron {
 };
 
 
-%feature("shadow") Graphic3d_CGraduatedTrihedron::~Graphic3d_CGraduatedTrihedron %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_CGraduatedTrihedron {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_CGroup;
 class Graphic3d_CGroup {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_CGroup::~Graphic3d_CGroup %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_CGroup {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_CLight;
 class Graphic3d_CLight {
 	public:
@@ -2173,40 +1965,12 @@ class Graphic3d_CLight {
 };
 
 
-%feature("shadow") Graphic3d_CLight::~Graphic3d_CLight %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_CLight {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_CStructure;
 class Graphic3d_CStructure {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_CStructure::~Graphic3d_CStructure %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_CStructure {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_CTexture;
 class Graphic3d_CTexture {
 	public:
@@ -2217,20 +1981,6 @@ class Graphic3d_CTexture {
 };
 
 
-%feature("shadow") Graphic3d_CTexture::~Graphic3d_CTexture %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_CTexture {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_CView;
 class Graphic3d_CView {
 	public:
@@ -2241,20 +1991,6 @@ class Graphic3d_CView {
 };
 
 
-%feature("shadow") Graphic3d_CView::~Graphic3d_CView %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_CView {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_DataStructureManager;
 class Graphic3d_DataStructureManager : public MMgt_TShared {
 	public:
@@ -2267,25 +2003,23 @@ class Graphic3d_DataStructureManager : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_DataStructureManager::~Graphic3d_DataStructureManager %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_DataStructureManager {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_DataStructureManager(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_DataStructureManager {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_DataStructureManager {
-	Handle_Graphic3d_DataStructureManager GetHandle() {
-	return *(Handle_Graphic3d_DataStructureManager*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_DataStructureManager::Handle_Graphic3d_DataStructureManager %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_DataStructureManager;
 class Handle_Graphic3d_DataStructureManager : public Handle_MMgt_TShared {
@@ -2303,20 +2037,6 @@ class Handle_Graphic3d_DataStructureManager : public Handle_MMgt_TShared {
 %extend Handle_Graphic3d_DataStructureManager {
     Graphic3d_DataStructureManager* GetObject() {
     return (Graphic3d_DataStructureManager*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_DataStructureManager::~Handle_Graphic3d_DataStructureManager %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_DataStructureManager {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3686,25 +3406,23 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_GraphicDriver::~Graphic3d_GraphicDriver %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_GraphicDriver {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_GraphicDriver(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_GraphicDriver {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_GraphicDriver {
-	Handle_Graphic3d_GraphicDriver GetHandle() {
-	return *(Handle_Graphic3d_GraphicDriver*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_GraphicDriver::Handle_Graphic3d_GraphicDriver %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_GraphicDriver;
 class Handle_Graphic3d_GraphicDriver : public Handle_MMgt_TShared {
@@ -3722,20 +3440,6 @@ class Handle_Graphic3d_GraphicDriver : public Handle_MMgt_TShared {
 %extend Handle_Graphic3d_GraphicDriver {
     Graphic3d_GraphicDriver* GetObject() {
     return (Graphic3d_GraphicDriver*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_GraphicDriver::~Handle_Graphic3d_GraphicDriver %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_GraphicDriver {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3995,25 +3699,23 @@ class Graphic3d_Group : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_Group::~Graphic3d_Group %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_Group {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_Group(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_Group {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_Group {
-	Handle_Graphic3d_Group GetHandle() {
-	return *(Handle_Graphic3d_Group*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_Group::Handle_Graphic3d_Group %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_Group;
 class Handle_Graphic3d_Group : public Handle_MMgt_TShared {
@@ -4031,20 +3733,6 @@ class Handle_Graphic3d_Group : public Handle_MMgt_TShared {
 %extend Handle_Graphic3d_Group {
     Graphic3d_Group* GetObject() {
     return (Graphic3d_Group*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_Group::~Handle_Graphic3d_Group %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_Group {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4154,13 +3842,13 @@ class Graphic3d_HSequenceOfGroup : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Graphic3d_Group
 ") Value;
-		const Handle_Graphic3d_Group & Value (const Standard_Integer anIndex);
+		Handle_Graphic3d_Group Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Graphic3d_Group
 ") ChangeValue;
-		Handle_Graphic3d_Group & ChangeValue (const Standard_Integer anIndex);
+		Handle_Graphic3d_Group ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -4190,25 +3878,23 @@ class Graphic3d_HSequenceOfGroup : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_HSequenceOfGroup::~Graphic3d_HSequenceOfGroup %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_HSequenceOfGroup {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_HSequenceOfGroup(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_HSequenceOfGroup {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_HSequenceOfGroup {
-	Handle_Graphic3d_HSequenceOfGroup GetHandle() {
-	return *(Handle_Graphic3d_HSequenceOfGroup*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_HSequenceOfGroup::Handle_Graphic3d_HSequenceOfGroup %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_HSequenceOfGroup;
 class Handle_Graphic3d_HSequenceOfGroup : public Handle_MMgt_TShared {
@@ -4226,20 +3912,6 @@ class Handle_Graphic3d_HSequenceOfGroup : public Handle_MMgt_TShared {
 %extend Handle_Graphic3d_HSequenceOfGroup {
     Graphic3d_HSequenceOfGroup* GetObject() {
     return (Graphic3d_HSequenceOfGroup*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_HSequenceOfGroup::~Handle_Graphic3d_HSequenceOfGroup %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_HSequenceOfGroup {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4349,13 +4021,13 @@ class Graphic3d_HSequenceOfStructure : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Graphic3d_Structure
 ") Value;
-		const Handle_Graphic3d_Structure & Value (const Standard_Integer anIndex);
+		Handle_Graphic3d_Structure Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Graphic3d_Structure
 ") ChangeValue;
-		Handle_Graphic3d_Structure & ChangeValue (const Standard_Integer anIndex);
+		Handle_Graphic3d_Structure ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -4385,25 +4057,23 @@ class Graphic3d_HSequenceOfStructure : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_HSequenceOfStructure::~Graphic3d_HSequenceOfStructure %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_HSequenceOfStructure {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_HSequenceOfStructure(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_HSequenceOfStructure {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_HSequenceOfStructure {
-	Handle_Graphic3d_HSequenceOfStructure GetHandle() {
-	return *(Handle_Graphic3d_HSequenceOfStructure*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_HSequenceOfStructure::Handle_Graphic3d_HSequenceOfStructure %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_HSequenceOfStructure;
 class Handle_Graphic3d_HSequenceOfStructure : public Handle_MMgt_TShared {
@@ -4421,20 +4091,6 @@ class Handle_Graphic3d_HSequenceOfStructure : public Handle_MMgt_TShared {
 %extend Handle_Graphic3d_HSequenceOfStructure {
     Graphic3d_HSequenceOfStructure* GetObject() {
     return (Graphic3d_HSequenceOfStructure*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_HSequenceOfStructure::~Handle_Graphic3d_HSequenceOfStructure %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_HSequenceOfStructure {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4520,25 +4176,23 @@ class Graphic3d_HSetOfGroup : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_HSetOfGroup::~Graphic3d_HSetOfGroup %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_HSetOfGroup {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_HSetOfGroup(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_HSetOfGroup {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_HSetOfGroup {
-	Handle_Graphic3d_HSetOfGroup GetHandle() {
-	return *(Handle_Graphic3d_HSetOfGroup*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_HSetOfGroup::Handle_Graphic3d_HSetOfGroup %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_HSetOfGroup;
 class Handle_Graphic3d_HSetOfGroup : public Handle_MMgt_TShared {
@@ -4556,20 +4210,6 @@ class Handle_Graphic3d_HSetOfGroup : public Handle_MMgt_TShared {
 %extend Handle_Graphic3d_HSetOfGroup {
     Graphic3d_HSetOfGroup* GetObject() {
     return (Graphic3d_HSetOfGroup*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_HSetOfGroup::~Handle_Graphic3d_HSetOfGroup %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_HSetOfGroup {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4603,24 +4243,10 @@ class Graphic3d_ListIteratorOfListOfPArray {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_ArrayOfPrimitives
 ") Value;
-		Handle_Graphic3d_ArrayOfPrimitives & Value ();
+		Handle_Graphic3d_ArrayOfPrimitives Value ();
 };
 
 
-%feature("shadow") Graphic3d_ListIteratorOfListOfPArray::~Graphic3d_ListIteratorOfListOfPArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_ListIteratorOfListOfPArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_ListIteratorOfListOfShortReal;
 class Graphic3d_ListIteratorOfListOfShortReal {
 	public:
@@ -4655,20 +4281,6 @@ class Graphic3d_ListIteratorOfListOfShortReal {
 };
 
 
-%feature("shadow") Graphic3d_ListIteratorOfListOfShortReal::~Graphic3d_ListIteratorOfListOfShortReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_ListIteratorOfListOfShortReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_ListIteratorOfSetListOfSetOfGroup;
 class Graphic3d_ListIteratorOfSetListOfSetOfGroup {
 	public:
@@ -4699,24 +4311,10 @@ class Graphic3d_ListIteratorOfSetListOfSetOfGroup {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
 ") Value;
-		Handle_Graphic3d_Group & Value ();
+		Handle_Graphic3d_Group Value ();
 };
 
 
-%feature("shadow") Graphic3d_ListIteratorOfSetListOfSetOfGroup::~Graphic3d_ListIteratorOfSetListOfSetOfGroup %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_ListIteratorOfSetListOfSetOfGroup {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_ListNodeOfListOfPArray;
 class Graphic3d_ListNodeOfListOfPArray : public TCollection_MapNode {
 	public:
@@ -4731,29 +4329,27 @@ class Graphic3d_ListNodeOfListOfPArray : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_ArrayOfPrimitives
 ") Value;
-		Handle_Graphic3d_ArrayOfPrimitives & Value ();
+		Handle_Graphic3d_ArrayOfPrimitives Value ();
 };
 
 
-%feature("shadow") Graphic3d_ListNodeOfListOfPArray::~Graphic3d_ListNodeOfListOfPArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Graphic3d_ListNodeOfListOfPArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ListNodeOfListOfPArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Graphic3d_ListNodeOfListOfPArray::Handle_Graphic3d_ListNodeOfListOfPArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Graphic3d_ListNodeOfListOfPArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ListNodeOfListOfPArray {
-	Handle_Graphic3d_ListNodeOfListOfPArray GetHandle() {
-	return *(Handle_Graphic3d_ListNodeOfListOfPArray*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Graphic3d_ListNodeOfListOfPArray;
 class Handle_Graphic3d_ListNodeOfListOfPArray : public Handle_TCollection_MapNode {
@@ -4771,20 +4367,6 @@ class Handle_Graphic3d_ListNodeOfListOfPArray : public Handle_TCollection_MapNod
 %extend Handle_Graphic3d_ListNodeOfListOfPArray {
     Graphic3d_ListNodeOfListOfPArray* GetObject() {
     return (Graphic3d_ListNodeOfListOfPArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ListNodeOfListOfPArray::~Handle_Graphic3d_ListNodeOfListOfPArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ListNodeOfListOfPArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4806,25 +4388,23 @@ class Graphic3d_ListNodeOfListOfShortReal : public TCollection_MapNode {
 };
 
 
-%feature("shadow") Graphic3d_ListNodeOfListOfShortReal::~Graphic3d_ListNodeOfListOfShortReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_ListNodeOfListOfShortReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ListNodeOfListOfShortReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_ListNodeOfListOfShortReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ListNodeOfListOfShortReal {
-	Handle_Graphic3d_ListNodeOfListOfShortReal GetHandle() {
-	return *(Handle_Graphic3d_ListNodeOfListOfShortReal*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_ListNodeOfListOfShortReal::Handle_Graphic3d_ListNodeOfListOfShortReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_ListNodeOfListOfShortReal;
 class Handle_Graphic3d_ListNodeOfListOfShortReal : public Handle_TCollection_MapNode {
@@ -4844,20 +4424,6 @@ class Handle_Graphic3d_ListNodeOfListOfShortReal : public Handle_TCollection_Map
     return (Graphic3d_ListNodeOfListOfShortReal*)$self->Access();
     }
 };
-%feature("shadow") Handle_Graphic3d_ListNodeOfListOfShortReal::~Handle_Graphic3d_ListNodeOfListOfShortReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ListNodeOfListOfShortReal {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Graphic3d_ListNodeOfSetListOfSetOfGroup;
 class Graphic3d_ListNodeOfSetListOfSetOfGroup : public TCollection_MapNode {
@@ -4873,29 +4439,27 @@ class Graphic3d_ListNodeOfSetListOfSetOfGroup : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
 ") Value;
-		Handle_Graphic3d_Group & Value ();
+		Handle_Graphic3d_Group Value ();
 };
 
 
-%feature("shadow") Graphic3d_ListNodeOfSetListOfSetOfGroup::~Graphic3d_ListNodeOfSetListOfSetOfGroup %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Graphic3d_ListNodeOfSetListOfSetOfGroup {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup::Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Graphic3d_ListNodeOfSetListOfSetOfGroup {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ListNodeOfSetListOfSetOfGroup {
-	Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup GetHandle() {
-	return *(Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup;
 class Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup : public Handle_TCollection_MapNode {
@@ -4913,20 +4477,6 @@ class Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup : public Handle_TCollection
 %extend Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup {
     Graphic3d_ListNodeOfSetListOfSetOfGroup* GetObject() {
     return (Graphic3d_ListNodeOfSetListOfSetOfGroup*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup::~Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ListNodeOfSetListOfSetOfGroup {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5004,11 +4554,11 @@ class Graphic3d_ListOfPArray {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_ArrayOfPrimitives
 ") First;
-		Handle_Graphic3d_ArrayOfPrimitives & First ();
+		Handle_Graphic3d_ArrayOfPrimitives First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_ArrayOfPrimitives
 ") Last;
-		Handle_Graphic3d_ArrayOfPrimitives & Last ();
+		Handle_Graphic3d_ArrayOfPrimitives Last ();
 		%feature("compactdefaultargs") RemoveFirst;
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
@@ -5054,20 +4604,6 @@ class Graphic3d_ListOfPArray {
 };
 
 
-%feature("shadow") Graphic3d_ListOfPArray::~Graphic3d_ListOfPArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_ListOfPArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_ListOfShortReal;
 class Graphic3d_ListOfShortReal {
 	public:
@@ -5192,20 +4728,6 @@ class Graphic3d_ListOfShortReal {
 };
 
 
-%feature("shadow") Graphic3d_ListOfShortReal::~Graphic3d_ListOfShortReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_ListOfShortReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_MapIteratorOfMapOfStructure;
 class Graphic3d_MapIteratorOfMapOfStructure : public TCollection_BasicMapIterator {
 	public:
@@ -5228,24 +4750,10 @@ class Graphic3d_MapIteratorOfMapOfStructure : public TCollection_BasicMapIterato
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
 ") Key;
-		const Handle_Graphic3d_Structure & Key ();
+		Handle_Graphic3d_Structure Key ();
 };
 
 
-%feature("shadow") Graphic3d_MapIteratorOfMapOfStructure::~Graphic3d_MapIteratorOfMapOfStructure %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_MapIteratorOfMapOfStructure {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_MapOfStructure;
 class Graphic3d_MapOfStructure : public TCollection_BasicMap {
 	public:
@@ -5298,20 +4806,6 @@ class Graphic3d_MapOfStructure : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") Graphic3d_MapOfStructure::~Graphic3d_MapOfStructure %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_MapOfStructure {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_MarkerImage;
 class Graphic3d_MarkerImage : public Standard_Transient {
 	public:
@@ -5348,13 +4842,13 @@ class Graphic3d_MarkerImage : public Standard_Transient {
 
 	:rtype: Handle_Image_PixMap
 ") GetImage;
-		const Handle_Image_PixMap & GetImage ();
+		Handle_Image_PixMap GetImage ();
 		%feature("compactdefaultargs") GetImageAlpha;
 		%feature("autodoc", "	* returns image alpha as grayscale image. Note that if an instance of the class has been initialized with a bitmap or with grayscale image this method will return exactly the same image as GetImage()
 
 	:rtype: Handle_Image_PixMap
 ") GetImageAlpha;
-		const Handle_Image_PixMap & GetImageAlpha ();
+		Handle_Image_PixMap GetImageAlpha ();
 		%feature("compactdefaultargs") GetImageId;
 		%feature("autodoc", "	* returns an unique ID. This ID will be used to manage resource in graphic driver.
 
@@ -5380,20 +4874,6 @@ class Graphic3d_MarkerImage : public Standard_Transient {
 };
 
 
-%feature("shadow") Graphic3d_MarkerImage::~Graphic3d_MarkerImage %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_MarkerImage {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_MaterialAspect;
 class Graphic3d_MaterialAspect {
 	public:
@@ -5726,20 +5206,6 @@ class Graphic3d_MaterialAspect {
 };
 
 
-%feature("shadow") Graphic3d_MaterialAspect::~Graphic3d_MaterialAspect %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_MaterialAspect {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_Plotter;
 class Graphic3d_Plotter : public MMgt_TShared {
 	public:
@@ -5770,25 +5236,23 @@ class Graphic3d_Plotter : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_Plotter::~Graphic3d_Plotter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_Plotter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_Plotter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_Plotter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_Plotter {
-	Handle_Graphic3d_Plotter GetHandle() {
-	return *(Handle_Graphic3d_Plotter*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_Plotter::Handle_Graphic3d_Plotter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_Plotter;
 class Handle_Graphic3d_Plotter : public Handle_MMgt_TShared {
@@ -5806,20 +5270,6 @@ class Handle_Graphic3d_Plotter : public Handle_MMgt_TShared {
 %extend Handle_Graphic3d_Plotter {
     Graphic3d_Plotter* GetObject() {
     return (Graphic3d_Plotter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_Plotter::~Handle_Graphic3d_Plotter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_Plotter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5843,25 +5293,23 @@ class Graphic3d_SequenceNodeOfSequenceOfAddress : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") Graphic3d_SequenceNodeOfSequenceOfAddress::~Graphic3d_SequenceNodeOfSequenceOfAddress %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_SequenceNodeOfSequenceOfAddress {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_SequenceNodeOfSequenceOfAddress(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_SequenceNodeOfSequenceOfAddress {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_SequenceNodeOfSequenceOfAddress {
-	Handle_Graphic3d_SequenceNodeOfSequenceOfAddress GetHandle() {
-	return *(Handle_Graphic3d_SequenceNodeOfSequenceOfAddress*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_SequenceNodeOfSequenceOfAddress::Handle_Graphic3d_SequenceNodeOfSequenceOfAddress %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_SequenceNodeOfSequenceOfAddress;
 class Handle_Graphic3d_SequenceNodeOfSequenceOfAddress : public Handle_TCollection_SeqNode {
@@ -5881,20 +5329,6 @@ class Handle_Graphic3d_SequenceNodeOfSequenceOfAddress : public Handle_TCollecti
     return (Graphic3d_SequenceNodeOfSequenceOfAddress*)$self->Access();
     }
 };
-%feature("shadow") Handle_Graphic3d_SequenceNodeOfSequenceOfAddress::~Handle_Graphic3d_SequenceNodeOfSequenceOfAddress %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_SequenceNodeOfSequenceOfAddress {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Graphic3d_SequenceNodeOfSequenceOfGroup;
 class Graphic3d_SequenceNodeOfSequenceOfGroup : public TCollection_SeqNode {
@@ -5912,29 +5346,27 @@ class Graphic3d_SequenceNodeOfSequenceOfGroup : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
 ") Value;
-		Handle_Graphic3d_Group & Value ();
+		Handle_Graphic3d_Group Value ();
 };
 
 
-%feature("shadow") Graphic3d_SequenceNodeOfSequenceOfGroup::~Graphic3d_SequenceNodeOfSequenceOfGroup %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Graphic3d_SequenceNodeOfSequenceOfGroup {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_SequenceNodeOfSequenceOfGroup(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Graphic3d_SequenceNodeOfSequenceOfGroup::Handle_Graphic3d_SequenceNodeOfSequenceOfGroup %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Graphic3d_SequenceNodeOfSequenceOfGroup {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_SequenceNodeOfSequenceOfGroup {
-	Handle_Graphic3d_SequenceNodeOfSequenceOfGroup GetHandle() {
-	return *(Handle_Graphic3d_SequenceNodeOfSequenceOfGroup*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Graphic3d_SequenceNodeOfSequenceOfGroup;
 class Handle_Graphic3d_SequenceNodeOfSequenceOfGroup : public Handle_TCollection_SeqNode {
@@ -5954,20 +5386,6 @@ class Handle_Graphic3d_SequenceNodeOfSequenceOfGroup : public Handle_TCollection
     return (Graphic3d_SequenceNodeOfSequenceOfGroup*)$self->Access();
     }
 };
-%feature("shadow") Handle_Graphic3d_SequenceNodeOfSequenceOfGroup::~Handle_Graphic3d_SequenceNodeOfSequenceOfGroup %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_SequenceNodeOfSequenceOfGroup {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Graphic3d_SequenceNodeOfSequenceOfStructure;
 class Graphic3d_SequenceNodeOfSequenceOfStructure : public TCollection_SeqNode {
@@ -5985,29 +5403,27 @@ class Graphic3d_SequenceNodeOfSequenceOfStructure : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
 ") Value;
-		Handle_Graphic3d_Structure & Value ();
+		Handle_Graphic3d_Structure Value ();
 };
 
 
-%feature("shadow") Graphic3d_SequenceNodeOfSequenceOfStructure::~Graphic3d_SequenceNodeOfSequenceOfStructure %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Graphic3d_SequenceNodeOfSequenceOfStructure {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_SequenceNodeOfSequenceOfStructure(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Graphic3d_SequenceNodeOfSequenceOfStructure::Handle_Graphic3d_SequenceNodeOfSequenceOfStructure %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Graphic3d_SequenceNodeOfSequenceOfStructure {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_SequenceNodeOfSequenceOfStructure {
-	Handle_Graphic3d_SequenceNodeOfSequenceOfStructure GetHandle() {
-	return *(Handle_Graphic3d_SequenceNodeOfSequenceOfStructure*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Graphic3d_SequenceNodeOfSequenceOfStructure;
 class Handle_Graphic3d_SequenceNodeOfSequenceOfStructure : public Handle_TCollection_SeqNode {
@@ -6025,20 +5441,6 @@ class Handle_Graphic3d_SequenceNodeOfSequenceOfStructure : public Handle_TCollec
 %extend Handle_Graphic3d_SequenceNodeOfSequenceOfStructure {
     Graphic3d_SequenceNodeOfSequenceOfStructure* GetObject() {
     return (Graphic3d_SequenceNodeOfSequenceOfStructure*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_SequenceNodeOfSequenceOfStructure::~Handle_Graphic3d_SequenceNodeOfSequenceOfStructure %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_SequenceNodeOfSequenceOfStructure {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6174,20 +5576,6 @@ class Graphic3d_SequenceOfAddress : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Graphic3d_SequenceOfAddress::~Graphic3d_SequenceOfAddress %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_SequenceOfAddress {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_SequenceOfGroup;
 class Graphic3d_SequenceOfGroup : public TCollection_BaseSequence {
 	public:
@@ -6270,11 +5658,11 @@ class Graphic3d_SequenceOfGroup : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
 ") First;
-		const Handle_Graphic3d_Group & First ();
+		Handle_Graphic3d_Group First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
 ") Last;
-		const Handle_Graphic3d_Group & Last ();
+		Handle_Graphic3d_Group Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -6288,7 +5676,7 @@ class Graphic3d_SequenceOfGroup : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Graphic3d_Group
 ") Value;
-		const Handle_Graphic3d_Group & Value (const Standard_Integer Index);
+		Handle_Graphic3d_Group Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -6302,7 +5690,7 @@ class Graphic3d_SequenceOfGroup : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Graphic3d_Group
 ") ChangeValue;
-		Handle_Graphic3d_Group & ChangeValue (const Standard_Integer Index);
+		Handle_Graphic3d_Group ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -6320,20 +5708,6 @@ class Graphic3d_SequenceOfGroup : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Graphic3d_SequenceOfGroup::~Graphic3d_SequenceOfGroup %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_SequenceOfGroup {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_SequenceOfStructure;
 class Graphic3d_SequenceOfStructure : public TCollection_BaseSequence {
 	public:
@@ -6416,11 +5790,11 @@ class Graphic3d_SequenceOfStructure : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
 ") First;
-		const Handle_Graphic3d_Structure & First ();
+		Handle_Graphic3d_Structure First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
 ") Last;
-		const Handle_Graphic3d_Structure & Last ();
+		Handle_Graphic3d_Structure Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -6434,7 +5808,7 @@ class Graphic3d_SequenceOfStructure : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Graphic3d_Structure
 ") Value;
-		const Handle_Graphic3d_Structure & Value (const Standard_Integer Index);
+		Handle_Graphic3d_Structure Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -6448,7 +5822,7 @@ class Graphic3d_SequenceOfStructure : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Graphic3d_Structure
 ") ChangeValue;
-		Handle_Graphic3d_Structure & ChangeValue (const Standard_Integer Index);
+		Handle_Graphic3d_Structure ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -6466,20 +5840,6 @@ class Graphic3d_SequenceOfStructure : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Graphic3d_SequenceOfStructure::~Graphic3d_SequenceOfStructure %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_SequenceOfStructure {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_SetIteratorOfSetOfGroup;
 class Graphic3d_SetIteratorOfSetOfGroup {
 	public:
@@ -6510,24 +5870,10 @@ class Graphic3d_SetIteratorOfSetOfGroup {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
 ") Value;
-		const Handle_Graphic3d_Group & Value ();
+		Handle_Graphic3d_Group Value ();
 };
 
 
-%feature("shadow") Graphic3d_SetIteratorOfSetOfGroup::~Graphic3d_SetIteratorOfSetOfGroup %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_SetIteratorOfSetOfGroup {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_SetListOfSetOfGroup;
 class Graphic3d_SetListOfSetOfGroup {
 	public:
@@ -6602,11 +5948,11 @@ class Graphic3d_SetListOfSetOfGroup {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
 ") First;
-		Handle_Graphic3d_Group & First ();
+		Handle_Graphic3d_Group First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
 ") Last;
-		Handle_Graphic3d_Group & Last ();
+		Handle_Graphic3d_Group Last ();
 		%feature("compactdefaultargs") RemoveFirst;
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
@@ -6652,20 +5998,6 @@ class Graphic3d_SetListOfSetOfGroup {
 };
 
 
-%feature("shadow") Graphic3d_SetListOfSetOfGroup::~Graphic3d_SetListOfSetOfGroup %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_SetListOfSetOfGroup {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_SetOfGroup;
 class Graphic3d_SetOfGroup {
 	public:
@@ -6736,20 +6068,6 @@ class Graphic3d_SetOfGroup {
 };
 
 
-%feature("shadow") Graphic3d_SetOfGroup::~Graphic3d_SetOfGroup %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_SetOfGroup {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_ShaderObject;
 class Graphic3d_ShaderObject : public Standard_Transient {
 	public:
@@ -6806,20 +6124,6 @@ class Graphic3d_ShaderObject : public Standard_Transient {
 };
 
 
-%feature("shadow") Graphic3d_ShaderObject::~Graphic3d_ShaderObject %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_ShaderObject {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_ShaderProgram;
 class Graphic3d_ShaderProgram : public Standard_Transient {
 /* public enums */
@@ -6906,20 +6210,6 @@ enum ShaderName {
 };
 
 
-%feature("shadow") Graphic3d_ShaderProgram::~Graphic3d_ShaderProgram %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_ShaderProgram {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_ShaderVariable;
 class Graphic3d_ShaderVariable : public Standard_Transient {
 	public:
@@ -6944,20 +6234,6 @@ class Graphic3d_ShaderVariable : public Standard_Transient {
 };
 
 
-%feature("shadow") Graphic3d_ShaderVariable::~Graphic3d_ShaderVariable %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_ShaderVariable {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_StdMapNodeOfMapOfStructure;
 class Graphic3d_StdMapNodeOfMapOfStructure : public TCollection_MapNode {
 	public:
@@ -6972,29 +6248,27 @@ class Graphic3d_StdMapNodeOfMapOfStructure : public TCollection_MapNode {
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
 ") Key;
-		Handle_Graphic3d_Structure & Key ();
+		Handle_Graphic3d_Structure Key ();
 };
 
 
-%feature("shadow") Graphic3d_StdMapNodeOfMapOfStructure::~Graphic3d_StdMapNodeOfMapOfStructure %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Graphic3d_StdMapNodeOfMapOfStructure {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_StdMapNodeOfMapOfStructure(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Graphic3d_StdMapNodeOfMapOfStructure::Handle_Graphic3d_StdMapNodeOfMapOfStructure %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Graphic3d_StdMapNodeOfMapOfStructure {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_StdMapNodeOfMapOfStructure {
-	Handle_Graphic3d_StdMapNodeOfMapOfStructure GetHandle() {
-	return *(Handle_Graphic3d_StdMapNodeOfMapOfStructure*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Graphic3d_StdMapNodeOfMapOfStructure;
 class Handle_Graphic3d_StdMapNodeOfMapOfStructure : public Handle_TCollection_MapNode {
@@ -7012,20 +6286,6 @@ class Handle_Graphic3d_StdMapNodeOfMapOfStructure : public Handle_TCollection_Ma
 %extend Handle_Graphic3d_StdMapNodeOfMapOfStructure {
     Graphic3d_StdMapNodeOfMapOfStructure* GetObject() {
     return (Graphic3d_StdMapNodeOfMapOfStructure*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_StdMapNodeOfMapOfStructure::~Handle_Graphic3d_StdMapNodeOfMapOfStructure %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_StdMapNodeOfMapOfStructure {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7703,25 +6963,23 @@ class Graphic3d_Structure : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_Structure::~Graphic3d_Structure %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_Structure {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_Structure(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_Structure {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_Structure {
-	Handle_Graphic3d_Structure GetHandle() {
-	return *(Handle_Graphic3d_Structure*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_Structure::Handle_Graphic3d_Structure %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_Structure;
 class Handle_Graphic3d_Structure : public Handle_MMgt_TShared {
@@ -7739,20 +6997,6 @@ class Handle_Graphic3d_Structure : public Handle_MMgt_TShared {
 %extend Handle_Graphic3d_Structure {
     Graphic3d_Structure* GetObject() {
     return (Graphic3d_Structure*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_Structure::~Handle_Graphic3d_Structure %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_Structure {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8070,7 +7314,7 @@ class Graphic3d_StructureManager : public MMgt_TShared {
 
 	:rtype: Handle_Graphic3d_GraphicDriver
 ") GraphicDriver;
-		const Handle_Graphic3d_GraphicDriver & GraphicDriver ();
+		Handle_Graphic3d_GraphicDriver GraphicDriver ();
 		%feature("compactdefaultargs") Identification;
 		%feature("autodoc", "	* Returns the identification number of the manager.
 
@@ -8106,25 +7350,23 @@ class Graphic3d_StructureManager : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_StructureManager::~Graphic3d_StructureManager %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_StructureManager {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_StructureManager(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_StructureManager {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_StructureManager {
-	Handle_Graphic3d_StructureManager GetHandle() {
-	return *(Handle_Graphic3d_StructureManager*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_StructureManager::Handle_Graphic3d_StructureManager %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_StructureManager;
 class Handle_Graphic3d_StructureManager : public Handle_MMgt_TShared {
@@ -8142,20 +7384,6 @@ class Handle_Graphic3d_StructureManager : public Handle_MMgt_TShared {
 %extend Handle_Graphic3d_StructureManager {
     Graphic3d_StructureManager* GetObject() {
     return (Graphic3d_StructureManager*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_StructureManager::~Handle_Graphic3d_StructureManager %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_StructureManager {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8303,25 +7531,23 @@ class Graphic3d_TextureParams : public Standard_Transient {
 };
 
 
-%feature("shadow") Graphic3d_TextureParams::~Graphic3d_TextureParams %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_TextureParams {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_TextureParams(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_TextureParams {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_TextureParams {
-	Handle_Graphic3d_TextureParams GetHandle() {
-	return *(Handle_Graphic3d_TextureParams*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_TextureParams::Handle_Graphic3d_TextureParams %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_TextureParams;
 class Handle_Graphic3d_TextureParams : public Handle_Standard_Transient {
@@ -8339,20 +7565,6 @@ class Handle_Graphic3d_TextureParams : public Handle_Standard_Transient {
 %extend Handle_Graphic3d_TextureParams {
     Graphic3d_TextureParams* GetObject() {
     return (Graphic3d_TextureParams*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_TextureParams::~Handle_Graphic3d_TextureParams %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_TextureParams {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8398,7 +7610,7 @@ class Graphic3d_TextureRoot : public MMgt_TShared {
 
 	:rtype: Handle_Graphic3d_TextureParams
 ") GetParams;
-		const Handle_Graphic3d_TextureParams & GetParams ();
+		Handle_Graphic3d_TextureParams GetParams ();
 		%feature("compactdefaultargs") TexturesFolder;
 		%feature("autodoc", "	* The path to textures determined from CSF_MDTVTexturesDirectory or CASROOT environment variables. returns the root folder with default textures.
 
@@ -8408,25 +7620,23 @@ class Graphic3d_TextureRoot : public MMgt_TShared {
 };
 
 
-%feature("shadow") Graphic3d_TextureRoot::~Graphic3d_TextureRoot %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_TextureRoot {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_TextureRoot(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_TextureRoot {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_TextureRoot {
-	Handle_Graphic3d_TextureRoot GetHandle() {
-	return *(Handle_Graphic3d_TextureRoot*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_TextureRoot::Handle_Graphic3d_TextureRoot %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_TextureRoot;
 class Handle_Graphic3d_TextureRoot : public Handle_MMgt_TShared {
@@ -8446,20 +7656,6 @@ class Handle_Graphic3d_TextureRoot : public Handle_MMgt_TShared {
     return (Graphic3d_TextureRoot*)$self->Access();
     }
 };
-%feature("shadow") Handle_Graphic3d_TextureRoot::~Handle_Graphic3d_TextureRoot %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_TextureRoot {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec2>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec2> {
@@ -8467,160 +7663,48 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec2> {
 };
 
 
-%feature("shadow") Graphic3d_UniformValueTypeID<Graphic3d_Vec2>::~Graphic3d_UniformValueTypeID<Graphic3d_Vec2> %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec2> {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec2i>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec2i> {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_UniformValueTypeID<Graphic3d_Vec2i>::~Graphic3d_UniformValueTypeID<Graphic3d_Vec2i> %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec2i> {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec3>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec3> {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_UniformValueTypeID<Graphic3d_Vec3>::~Graphic3d_UniformValueTypeID<Graphic3d_Vec3> %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec3> {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec3i>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec3i> {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_UniformValueTypeID<Graphic3d_Vec3i>::~Graphic3d_UniformValueTypeID<Graphic3d_Vec3i> %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec3i> {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec4>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec4> {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_UniformValueTypeID<Graphic3d_Vec4>::~Graphic3d_UniformValueTypeID<Graphic3d_Vec4> %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec4> {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec4i>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec4i> {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_UniformValueTypeID<Graphic3d_Vec4i>::~Graphic3d_UniformValueTypeID<Graphic3d_Vec4i> %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec4i> {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_UniformValueTypeID<Standard_Integer>;
 class Graphic3d_UniformValueTypeID<Standard_Integer> {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_UniformValueTypeID<Standard_Integer>::~Graphic3d_UniformValueTypeID<Standard_Integer> %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_UniformValueTypeID<Standard_Integer> {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_UniformValueTypeID<Standard_ShortReal>;
 class Graphic3d_UniformValueTypeID<Standard_ShortReal> {
 	public:
 };
 
 
-%feature("shadow") Graphic3d_UniformValueTypeID<Standard_ShortReal>::~Graphic3d_UniformValueTypeID<Standard_ShortReal> %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_UniformValueTypeID<Standard_ShortReal> {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_ValueInterface;
 class Graphic3d_ValueInterface {
 	public:
@@ -8633,20 +7717,6 @@ class Graphic3d_ValueInterface {
 };
 
 
-%feature("shadow") Graphic3d_ValueInterface::~Graphic3d_ValueInterface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_ValueInterface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_Vector;
 class Graphic3d_Vector {
 	public:
@@ -8795,20 +7865,6 @@ class Graphic3d_Vector {
 };
 
 
-%feature("shadow") Graphic3d_Vector::~Graphic3d_Vector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_Vector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_Vertex;
 class Graphic3d_Vertex : public TEL_POINT {
 	public:
@@ -8927,20 +7983,6 @@ class Graphic3d_Vertex : public TEL_POINT {
 };
 
 
-%feature("shadow") Graphic3d_Vertex::~Graphic3d_Vertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_Vertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_ZLayerSettings;
 class Graphic3d_ZLayerSettings {
 	public:
@@ -8987,20 +8029,6 @@ class Graphic3d_ZLayerSettings {
 };
 
 
-%feature("shadow") Graphic3d_ZLayerSettings::~Graphic3d_ZLayerSettings %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Graphic3d_ZLayerSettings {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Graphic3d_ArrayOfPoints;
 class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives {
 	public:
@@ -9017,25 +8045,23 @@ class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%feature("shadow") Graphic3d_ArrayOfPoints::~Graphic3d_ArrayOfPoints %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_ArrayOfPoints {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ArrayOfPoints(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_ArrayOfPoints {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ArrayOfPoints {
-	Handle_Graphic3d_ArrayOfPoints GetHandle() {
-	return *(Handle_Graphic3d_ArrayOfPoints*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_ArrayOfPoints::Handle_Graphic3d_ArrayOfPoints %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_ArrayOfPoints;
 class Handle_Graphic3d_ArrayOfPoints : public Handle_Graphic3d_ArrayOfPrimitives {
@@ -9053,20 +8079,6 @@ class Handle_Graphic3d_ArrayOfPoints : public Handle_Graphic3d_ArrayOfPrimitives
 %extend Handle_Graphic3d_ArrayOfPoints {
     Graphic3d_ArrayOfPoints* GetObject() {
     return (Graphic3d_ArrayOfPoints*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ArrayOfPoints::~Handle_Graphic3d_ArrayOfPoints %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ArrayOfPoints {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9098,25 +8110,23 @@ class Graphic3d_ArrayOfPolygons : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%feature("shadow") Graphic3d_ArrayOfPolygons::~Graphic3d_ArrayOfPolygons %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_ArrayOfPolygons {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ArrayOfPolygons(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_ArrayOfPolygons {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ArrayOfPolygons {
-	Handle_Graphic3d_ArrayOfPolygons GetHandle() {
-	return *(Handle_Graphic3d_ArrayOfPolygons*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_ArrayOfPolygons::Handle_Graphic3d_ArrayOfPolygons %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_ArrayOfPolygons;
 class Handle_Graphic3d_ArrayOfPolygons : public Handle_Graphic3d_ArrayOfPrimitives {
@@ -9134,20 +8144,6 @@ class Handle_Graphic3d_ArrayOfPolygons : public Handle_Graphic3d_ArrayOfPrimitiv
 %extend Handle_Graphic3d_ArrayOfPolygons {
     Graphic3d_ArrayOfPolygons* GetObject() {
     return (Graphic3d_ArrayOfPolygons*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ArrayOfPolygons::~Handle_Graphic3d_ArrayOfPolygons %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ArrayOfPolygons {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9175,25 +8171,23 @@ class Graphic3d_ArrayOfPolylines : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%feature("shadow") Graphic3d_ArrayOfPolylines::~Graphic3d_ArrayOfPolylines %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_ArrayOfPolylines {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ArrayOfPolylines(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_ArrayOfPolylines {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ArrayOfPolylines {
-	Handle_Graphic3d_ArrayOfPolylines GetHandle() {
-	return *(Handle_Graphic3d_ArrayOfPolylines*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_ArrayOfPolylines::Handle_Graphic3d_ArrayOfPolylines %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_ArrayOfPolylines;
 class Handle_Graphic3d_ArrayOfPolylines : public Handle_Graphic3d_ArrayOfPrimitives {
@@ -9211,20 +8205,6 @@ class Handle_Graphic3d_ArrayOfPolylines : public Handle_Graphic3d_ArrayOfPrimiti
 %extend Handle_Graphic3d_ArrayOfPolylines {
     Graphic3d_ArrayOfPolylines* GetObject() {
     return (Graphic3d_ArrayOfPolylines*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ArrayOfPolylines::~Handle_Graphic3d_ArrayOfPolylines %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ArrayOfPolylines {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9252,25 +8232,23 @@ class Graphic3d_ArrayOfQuadrangleStrips : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%feature("shadow") Graphic3d_ArrayOfQuadrangleStrips::~Graphic3d_ArrayOfQuadrangleStrips %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_ArrayOfQuadrangleStrips {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ArrayOfQuadrangleStrips(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_ArrayOfQuadrangleStrips {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ArrayOfQuadrangleStrips {
-	Handle_Graphic3d_ArrayOfQuadrangleStrips GetHandle() {
-	return *(Handle_Graphic3d_ArrayOfQuadrangleStrips*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_ArrayOfQuadrangleStrips::Handle_Graphic3d_ArrayOfQuadrangleStrips %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_ArrayOfQuadrangleStrips;
 class Handle_Graphic3d_ArrayOfQuadrangleStrips : public Handle_Graphic3d_ArrayOfPrimitives {
@@ -9288,20 +8266,6 @@ class Handle_Graphic3d_ArrayOfQuadrangleStrips : public Handle_Graphic3d_ArrayOf
 %extend Handle_Graphic3d_ArrayOfQuadrangleStrips {
     Graphic3d_ArrayOfQuadrangleStrips* GetObject() {
     return (Graphic3d_ArrayOfQuadrangleStrips*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ArrayOfQuadrangleStrips::~Handle_Graphic3d_ArrayOfQuadrangleStrips %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ArrayOfQuadrangleStrips {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9329,25 +8293,23 @@ class Graphic3d_ArrayOfQuadrangles : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%feature("shadow") Graphic3d_ArrayOfQuadrangles::~Graphic3d_ArrayOfQuadrangles %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_ArrayOfQuadrangles {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ArrayOfQuadrangles(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_ArrayOfQuadrangles {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ArrayOfQuadrangles {
-	Handle_Graphic3d_ArrayOfQuadrangles GetHandle() {
-	return *(Handle_Graphic3d_ArrayOfQuadrangles*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_ArrayOfQuadrangles::Handle_Graphic3d_ArrayOfQuadrangles %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_ArrayOfQuadrangles;
 class Handle_Graphic3d_ArrayOfQuadrangles : public Handle_Graphic3d_ArrayOfPrimitives {
@@ -9365,20 +8327,6 @@ class Handle_Graphic3d_ArrayOfQuadrangles : public Handle_Graphic3d_ArrayOfPrimi
 %extend Handle_Graphic3d_ArrayOfQuadrangles {
     Graphic3d_ArrayOfQuadrangles* GetObject() {
     return (Graphic3d_ArrayOfQuadrangles*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ArrayOfQuadrangles::~Handle_Graphic3d_ArrayOfQuadrangles %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ArrayOfQuadrangles {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9400,25 +8348,23 @@ class Graphic3d_ArrayOfSegments : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%feature("shadow") Graphic3d_ArrayOfSegments::~Graphic3d_ArrayOfSegments %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_ArrayOfSegments {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ArrayOfSegments(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_ArrayOfSegments {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ArrayOfSegments {
-	Handle_Graphic3d_ArrayOfSegments GetHandle() {
-	return *(Handle_Graphic3d_ArrayOfSegments*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_ArrayOfSegments::Handle_Graphic3d_ArrayOfSegments %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_ArrayOfSegments;
 class Handle_Graphic3d_ArrayOfSegments : public Handle_Graphic3d_ArrayOfPrimitives {
@@ -9436,20 +8382,6 @@ class Handle_Graphic3d_ArrayOfSegments : public Handle_Graphic3d_ArrayOfPrimitiv
 %extend Handle_Graphic3d_ArrayOfSegments {
     Graphic3d_ArrayOfSegments* GetObject() {
     return (Graphic3d_ArrayOfSegments*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ArrayOfSegments::~Handle_Graphic3d_ArrayOfSegments %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ArrayOfSegments {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9477,25 +8409,23 @@ class Graphic3d_ArrayOfTriangleFans : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%feature("shadow") Graphic3d_ArrayOfTriangleFans::~Graphic3d_ArrayOfTriangleFans %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_ArrayOfTriangleFans {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ArrayOfTriangleFans(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_ArrayOfTriangleFans {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ArrayOfTriangleFans {
-	Handle_Graphic3d_ArrayOfTriangleFans GetHandle() {
-	return *(Handle_Graphic3d_ArrayOfTriangleFans*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_ArrayOfTriangleFans::Handle_Graphic3d_ArrayOfTriangleFans %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_ArrayOfTriangleFans;
 class Handle_Graphic3d_ArrayOfTriangleFans : public Handle_Graphic3d_ArrayOfPrimitives {
@@ -9513,20 +8443,6 @@ class Handle_Graphic3d_ArrayOfTriangleFans : public Handle_Graphic3d_ArrayOfPrim
 %extend Handle_Graphic3d_ArrayOfTriangleFans {
     Graphic3d_ArrayOfTriangleFans* GetObject() {
     return (Graphic3d_ArrayOfTriangleFans*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ArrayOfTriangleFans::~Handle_Graphic3d_ArrayOfTriangleFans %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ArrayOfTriangleFans {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9554,25 +8470,23 @@ class Graphic3d_ArrayOfTriangleStrips : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%feature("shadow") Graphic3d_ArrayOfTriangleStrips::~Graphic3d_ArrayOfTriangleStrips %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_ArrayOfTriangleStrips {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ArrayOfTriangleStrips(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_ArrayOfTriangleStrips {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ArrayOfTriangleStrips {
-	Handle_Graphic3d_ArrayOfTriangleStrips GetHandle() {
-	return *(Handle_Graphic3d_ArrayOfTriangleStrips*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_ArrayOfTriangleStrips::Handle_Graphic3d_ArrayOfTriangleStrips %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_ArrayOfTriangleStrips;
 class Handle_Graphic3d_ArrayOfTriangleStrips : public Handle_Graphic3d_ArrayOfPrimitives {
@@ -9590,20 +8504,6 @@ class Handle_Graphic3d_ArrayOfTriangleStrips : public Handle_Graphic3d_ArrayOfPr
 %extend Handle_Graphic3d_ArrayOfTriangleStrips {
     Graphic3d_ArrayOfTriangleStrips* GetObject() {
     return (Graphic3d_ArrayOfTriangleStrips*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ArrayOfTriangleStrips::~Handle_Graphic3d_ArrayOfTriangleStrips %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ArrayOfTriangleStrips {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9631,25 +8531,23 @@ class Graphic3d_ArrayOfTriangles : public Graphic3d_ArrayOfPrimitives {
 };
 
 
-%feature("shadow") Graphic3d_ArrayOfTriangles::~Graphic3d_ArrayOfTriangles %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_ArrayOfTriangles {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ArrayOfTriangles(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_ArrayOfTriangles {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_ArrayOfTriangles {
-	Handle_Graphic3d_ArrayOfTriangles GetHandle() {
-	return *(Handle_Graphic3d_ArrayOfTriangles*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_ArrayOfTriangles::Handle_Graphic3d_ArrayOfTriangles %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_ArrayOfTriangles;
 class Handle_Graphic3d_ArrayOfTriangles : public Handle_Graphic3d_ArrayOfPrimitives {
@@ -9667,20 +8565,6 @@ class Handle_Graphic3d_ArrayOfTriangles : public Handle_Graphic3d_ArrayOfPrimiti
 %extend Handle_Graphic3d_ArrayOfTriangles {
     Graphic3d_ArrayOfTriangles* GetObject() {
     return (Graphic3d_ArrayOfTriangles*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_ArrayOfTriangles::~Handle_Graphic3d_ArrayOfTriangles %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_ArrayOfTriangles {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9726,25 +8610,23 @@ class Graphic3d_TextureEnv : public Graphic3d_TextureRoot {
 };
 
 
-%feature("shadow") Graphic3d_TextureEnv::~Graphic3d_TextureEnv %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_TextureEnv {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_TextureEnv(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_TextureEnv {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_TextureEnv {
-	Handle_Graphic3d_TextureEnv GetHandle() {
-	return *(Handle_Graphic3d_TextureEnv*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_TextureEnv::Handle_Graphic3d_TextureEnv %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_TextureEnv;
 class Handle_Graphic3d_TextureEnv : public Handle_Graphic3d_TextureRoot {
@@ -9762,20 +8644,6 @@ class Handle_Graphic3d_TextureEnv : public Handle_Graphic3d_TextureRoot {
 %extend Handle_Graphic3d_TextureEnv {
     Graphic3d_TextureEnv* GetObject() {
     return (Graphic3d_TextureEnv*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_TextureEnv::~Handle_Graphic3d_TextureEnv %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_TextureEnv {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9853,25 +8721,23 @@ class Graphic3d_TextureMap : public Graphic3d_TextureRoot {
 };
 
 
-%feature("shadow") Graphic3d_TextureMap::~Graphic3d_TextureMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_TextureMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_TextureMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_TextureMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_TextureMap {
-	Handle_Graphic3d_TextureMap GetHandle() {
-	return *(Handle_Graphic3d_TextureMap*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_TextureMap::Handle_Graphic3d_TextureMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_TextureMap;
 class Handle_Graphic3d_TextureMap : public Handle_Graphic3d_TextureRoot {
@@ -9889,20 +8755,6 @@ class Handle_Graphic3d_TextureMap : public Handle_Graphic3d_TextureRoot {
 %extend Handle_Graphic3d_TextureMap {
     Graphic3d_TextureMap* GetObject() {
     return (Graphic3d_TextureMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_TextureMap::~Handle_Graphic3d_TextureMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_TextureMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9932,25 +8784,23 @@ class Graphic3d_Texture1D : public Graphic3d_TextureMap {
 };
 
 
-%feature("shadow") Graphic3d_Texture1D::~Graphic3d_Texture1D %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_Texture1D {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_Texture1D(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_Texture1D {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_Texture1D {
-	Handle_Graphic3d_Texture1D GetHandle() {
-	return *(Handle_Graphic3d_Texture1D*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_Texture1D::Handle_Graphic3d_Texture1D %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_Texture1D;
 class Handle_Graphic3d_Texture1D : public Handle_Graphic3d_TextureMap {
@@ -9968,20 +8818,6 @@ class Handle_Graphic3d_Texture1D : public Handle_Graphic3d_TextureMap {
 %extend Handle_Graphic3d_Texture1D {
     Graphic3d_Texture1D* GetObject() {
     return (Graphic3d_Texture1D*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_Texture1D::~Handle_Graphic3d_Texture1D %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_Texture1D {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10011,25 +8847,23 @@ class Graphic3d_Texture2D : public Graphic3d_TextureMap {
 };
 
 
-%feature("shadow") Graphic3d_Texture2D::~Graphic3d_Texture2D %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_Texture2D {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_Texture2D(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_Texture2D {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_Texture2D {
-	Handle_Graphic3d_Texture2D GetHandle() {
-	return *(Handle_Graphic3d_Texture2D*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_Texture2D::Handle_Graphic3d_Texture2D %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_Texture2D;
 class Handle_Graphic3d_Texture2D : public Handle_Graphic3d_TextureMap {
@@ -10047,20 +8881,6 @@ class Handle_Graphic3d_Texture2D : public Handle_Graphic3d_TextureMap {
 %extend Handle_Graphic3d_Texture2D {
     Graphic3d_Texture2D* GetObject() {
     return (Graphic3d_Texture2D*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_Texture2D::~Handle_Graphic3d_Texture2D %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_Texture2D {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10094,25 +8914,23 @@ class Graphic3d_Texture1Dmanual : public Graphic3d_Texture1D {
 };
 
 
-%feature("shadow") Graphic3d_Texture1Dmanual::~Graphic3d_Texture1Dmanual %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_Texture1Dmanual {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_Texture1Dmanual(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_Texture1Dmanual {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_Texture1Dmanual {
-	Handle_Graphic3d_Texture1Dmanual GetHandle() {
-	return *(Handle_Graphic3d_Texture1Dmanual*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_Texture1Dmanual::Handle_Graphic3d_Texture1Dmanual %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_Texture1Dmanual;
 class Handle_Graphic3d_Texture1Dmanual : public Handle_Graphic3d_Texture1D {
@@ -10130,20 +8948,6 @@ class Handle_Graphic3d_Texture1Dmanual : public Handle_Graphic3d_Texture1D {
 %extend Handle_Graphic3d_Texture1Dmanual {
     Graphic3d_Texture1Dmanual* GetObject() {
     return (Graphic3d_Texture1Dmanual*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_Texture1Dmanual::~Handle_Graphic3d_Texture1Dmanual %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_Texture1Dmanual {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10213,25 +9017,23 @@ class Graphic3d_Texture1Dsegment : public Graphic3d_Texture1D {
 };
 
 
-%feature("shadow") Graphic3d_Texture1Dsegment::~Graphic3d_Texture1Dsegment %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_Texture1Dsegment {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_Texture1Dsegment(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_Texture1Dsegment {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_Texture1Dsegment {
-	Handle_Graphic3d_Texture1Dsegment GetHandle() {
-	return *(Handle_Graphic3d_Texture1Dsegment*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_Texture1Dsegment::Handle_Graphic3d_Texture1Dsegment %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_Texture1Dsegment;
 class Handle_Graphic3d_Texture1Dsegment : public Handle_Graphic3d_Texture1D {
@@ -10249,20 +9051,6 @@ class Handle_Graphic3d_Texture1Dsegment : public Handle_Graphic3d_Texture1D {
 %extend Handle_Graphic3d_Texture1Dsegment {
     Graphic3d_Texture1Dsegment* GetObject() {
     return (Graphic3d_Texture1Dsegment*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_Texture1Dsegment::~Handle_Graphic3d_Texture1Dsegment %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_Texture1Dsegment {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10296,25 +9084,23 @@ class Graphic3d_Texture2Dmanual : public Graphic3d_Texture2D {
 };
 
 
-%feature("shadow") Graphic3d_Texture2Dmanual::~Graphic3d_Texture2Dmanual %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_Texture2Dmanual {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_Texture2Dmanual(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_Texture2Dmanual {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_Texture2Dmanual {
-	Handle_Graphic3d_Texture2Dmanual GetHandle() {
-	return *(Handle_Graphic3d_Texture2Dmanual*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_Texture2Dmanual::Handle_Graphic3d_Texture2Dmanual %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_Texture2Dmanual;
 class Handle_Graphic3d_Texture2Dmanual : public Handle_Graphic3d_Texture2D {
@@ -10332,20 +9118,6 @@ class Handle_Graphic3d_Texture2Dmanual : public Handle_Graphic3d_Texture2D {
 %extend Handle_Graphic3d_Texture2Dmanual {
     Graphic3d_Texture2Dmanual* GetObject() {
     return (Graphic3d_Texture2Dmanual*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_Texture2Dmanual::~Handle_Graphic3d_Texture2Dmanual %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_Texture2Dmanual {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10529,25 +9301,23 @@ class Graphic3d_Texture2Dplane : public Graphic3d_Texture2D {
 };
 
 
-%feature("shadow") Graphic3d_Texture2Dplane::~Graphic3d_Texture2Dplane %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Graphic3d_Texture2Dplane {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_Texture2Dplane(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Graphic3d_Texture2Dplane {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Graphic3d_Texture2Dplane {
-	Handle_Graphic3d_Texture2Dplane GetHandle() {
-	return *(Handle_Graphic3d_Texture2Dplane*) &$self;
-	}
-};
+%pythonappend Handle_Graphic3d_Texture2Dplane::Handle_Graphic3d_Texture2Dplane %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Graphic3d_Texture2Dplane;
 class Handle_Graphic3d_Texture2Dplane : public Handle_Graphic3d_Texture2D {
@@ -10565,20 +9335,6 @@ class Handle_Graphic3d_Texture2Dplane : public Handle_Graphic3d_Texture2D {
 %extend Handle_Graphic3d_Texture2Dplane {
     Graphic3d_Texture2Dplane* GetObject() {
     return (Graphic3d_Texture2Dplane*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Graphic3d_Texture2Dplane::~Handle_Graphic3d_Texture2Dplane %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Graphic3d_Texture2Dplane {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
