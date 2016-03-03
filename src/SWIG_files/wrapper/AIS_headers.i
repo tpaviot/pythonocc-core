@@ -27,6 +27,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_Chamf3dDimension.hxx>
 #include<AIS_Circle.hxx>
 #include<AIS_ClearMode.hxx>
+#include<AIS_ColoredShape.hxx>
 #include<AIS_ConcentricRelation.hxx>
 #include<AIS_ConnectedInteractive.hxx>
 #include<AIS_ConnectStatus.hxx>
@@ -373,6 +374,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Quantity_CoefficientOfExpansion.hxx>
 #include<Quantity_Color.hxx>
 #include<Quantity_ColorDefinitionError.hxx>
+#include<Quantity_Color_1.hxx>
 #include<Quantity_Concentration.hxx>
 #include<Quantity_Conductivity.hxx>
 #include<Quantity_Constant.hxx>
@@ -850,10 +852,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<V3d_Light.hxx>
 #include<V3d_ListOfTransient.hxx>
 #include<V3d_Parameter.hxx>
+#include<V3d_Plane.hxx>
 #include<V3d_PositionalLight.hxx>
 #include<V3d_PositionLight.hxx>
 #include<V3d_RectangularGrid.hxx>
 #include<V3d_SpotLight.hxx>
+#include<V3d_Static.hxx>
 #include<V3d_StereoDumpOptions.hxx>
 #include<V3d_TypeOfAxe.hxx>
 #include<V3d_TypeOfBackfacingModel.hxx>

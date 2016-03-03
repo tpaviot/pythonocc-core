@@ -825,6 +825,177 @@ class PLib_DoubleJacobiPolynomial {
 };
 
 
+%nodefaultctor PLib_HermitJacobi;
+class PLib_HermitJacobi : public PLib_Base {
+	public:
+		%feature("compactdefaultargs") PLib_HermitJacobi;
+		%feature("autodoc", "	* Initialize the polynomial class Degree has to be <= 30 ConstraintOrder has to be GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
+
+	:param WorkDegree:
+	:type WorkDegree: int
+	:param ConstraintOrder:
+	:type ConstraintOrder: GeomAbs_Shape
+	:rtype: None
+") PLib_HermitJacobi;
+		 PLib_HermitJacobi (const Standard_Integer WorkDegree,const GeomAbs_Shape ConstraintOrder);
+		%feature("compactdefaultargs") MaxError;
+		%feature("autodoc", "	* This method computes the maximum error on the polynomial W(t) Q(t) obtained by missing the coefficients of JacCoeff from NewDegree +1 to Degree
+
+	:param Dimension:
+	:type Dimension: int
+	:param HermJacCoeff:
+	:type HermJacCoeff: float &
+	:param NewDegree:
+	:type NewDegree: int
+	:rtype: float
+") MaxError;
+		Standard_Real MaxError (const Standard_Integer Dimension,Standard_Real &OutValue,const Standard_Integer NewDegree);
+		%feature("compactdefaultargs") ReduceDegree;
+		%feature("autodoc", "	* Compute NewDegree <= MaxDegree so that MaxError is lower than Tol. MaxError can be greater than Tol if it is not possible to find a NewDegree <= MaxDegree. In this case NewDegree = MaxDegree
+
+	:param Dimension:
+	:type Dimension: int
+	:param MaxDegree:
+	:type MaxDegree: int
+	:param Tol:
+	:type Tol: float
+	:param HermJacCoeff:
+	:type HermJacCoeff: float &
+	:param NewDegree:
+	:type NewDegree: int &
+	:param MaxError:
+	:type MaxError: float &
+	:rtype: None
+") ReduceDegree;
+		void ReduceDegree (const Standard_Integer Dimension,const Standard_Integer MaxDegree,const Standard_Real Tol,Standard_Real &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") AverageError;
+		%feature("autodoc", "	:param Dimension:
+	:type Dimension: int
+	:param HermJacCoeff:
+	:type HermJacCoeff: float &
+	:param NewDegree:
+	:type NewDegree: int
+	:rtype: float
+") AverageError;
+		Standard_Real AverageError (const Standard_Integer Dimension,Standard_Real &OutValue,const Standard_Integer NewDegree);
+		%feature("compactdefaultargs") ToCoefficients;
+		%feature("autodoc", "	* Convert the polynomial P(t) = H(t) + W(t) Q(t) in the canonical base.
+
+	:param Dimension:
+	:type Dimension: int
+	:param Degree:
+	:type Degree: int
+	:param HermJacCoeff:
+	:type HermJacCoeff: TColStd_Array1OfReal &
+	:param Coefficients:
+	:type Coefficients: TColStd_Array1OfReal &
+	:rtype: None
+") ToCoefficients;
+		void ToCoefficients (const Standard_Integer Dimension,const Standard_Integer Degree,const TColStd_Array1OfReal & HermJacCoeff,TColStd_Array1OfReal & Coefficients);
+		%feature("compactdefaultargs") D0;
+		%feature("autodoc", "	* Compute the values of the basis functions in u
+
+	:param U:
+	:type U: float
+	:param BasisValue:
+	:type BasisValue: TColStd_Array1OfReal &
+	:rtype: None
+") D0;
+		void D0 (const Standard_Real U,TColStd_Array1OfReal & BasisValue);
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "	* Compute the values and the derivatives values of the basis functions in u
+
+	:param U:
+	:type U: float
+	:param BasisValue:
+	:type BasisValue: TColStd_Array1OfReal &
+	:param BasisD1:
+	:type BasisD1: TColStd_Array1OfReal &
+	:rtype: None
+") D1;
+		void D1 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1);
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "	* Compute the values and the derivatives values of the basis functions in u
+
+	:param U:
+	:type U: float
+	:param BasisValue:
+	:type BasisValue: TColStd_Array1OfReal &
+	:param BasisD1:
+	:type BasisD1: TColStd_Array1OfReal &
+	:param BasisD2:
+	:type BasisD2: TColStd_Array1OfReal &
+	:rtype: None
+") D2;
+		void D2 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1,TColStd_Array1OfReal & BasisD2);
+		%feature("compactdefaultargs") D3;
+		%feature("autodoc", "	* Compute the values and the derivatives values of the basis functions in u
+
+	:param U:
+	:type U: float
+	:param BasisValue:
+	:type BasisValue: TColStd_Array1OfReal &
+	:param BasisD1:
+	:type BasisD1: TColStd_Array1OfReal &
+	:param BasisD2:
+	:type BasisD2: TColStd_Array1OfReal &
+	:param BasisD3:
+	:type BasisD3: TColStd_Array1OfReal &
+	:rtype: None
+") D3;
+		void D3 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1,TColStd_Array1OfReal & BasisD2,TColStd_Array1OfReal & BasisD3);
+		%feature("compactdefaultargs") WorkDegree;
+		%feature("autodoc", "	* returns WorkDegree
+
+	:rtype: int
+") WorkDegree;
+		Standard_Integer WorkDegree ();
+		%feature("compactdefaultargs") NivConstr;
+		%feature("autodoc", "	* returns NivConstr
+
+	:rtype: int
+") NivConstr;
+		Standard_Integer NivConstr ();
+};
+
+
+%extend PLib_HermitJacobi {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_PLib_HermitJacobi(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_PLib_HermitJacobi::Handle_PLib_HermitJacobi %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_PLib_HermitJacobi;
+class Handle_PLib_HermitJacobi : public Handle_PLib_Base {
+
+    public:
+        // constructors
+        Handle_PLib_HermitJacobi();
+        Handle_PLib_HermitJacobi(const Handle_PLib_HermitJacobi &aHandle);
+        Handle_PLib_HermitJacobi(const PLib_HermitJacobi *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_PLib_HermitJacobi DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_PLib_HermitJacobi {
+    PLib_HermitJacobi* GetObject() {
+    return (PLib_HermitJacobi*)$self->Access();
+    }
+};
+
 %nodefaultctor PLib_JacobiPolynomial;
 class PLib_JacobiPolynomial : public PLib_Base {
 	public:
