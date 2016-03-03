@@ -788,6 +788,82 @@ class V3d_ListOfTransient : public TColStd_ListOfTransient {
 };
 
 
+%nodefaultctor V3d_Plane;
+class V3d_Plane : public MMgt_TShared {
+	public:
+		%feature("compactdefaultargs") V3d_Plane;
+		%feature("autodoc", "	* Creates a clipping plane from plane coefficients.
+
+	:param theA: default value is 0.0
+	:type theA: Quantity_Parameter
+	:param theB: default value is 0.0
+	:type theB: Quantity_Parameter
+	:param theC: default value is 1.0
+	:type theC: Quantity_Parameter
+	:param theD: default value is 0.0
+	:type theD: Quantity_Parameter
+	:rtype: None
+") V3d_Plane;
+		 V3d_Plane (const Quantity_Parameter theA = 0.0,const Quantity_Parameter theB = 0.0,const Quantity_Parameter theC = 1.0,const Quantity_Parameter theD = 0.0);
+		%feature("compactdefaultargs") SetPlane;
+		%feature("autodoc", "	* Change plane equation.
+
+	:param theA:
+	:type theA: Quantity_Parameter
+	:param theB:
+	:type theB: Quantity_Parameter
+	:param theC:
+	:type theC: Quantity_Parameter
+	:param theD:
+	:type theD: Quantity_Parameter
+	:rtype: None
+") SetPlane;
+		void SetPlane (const Quantity_Parameter theA,const Quantity_Parameter theB,const Quantity_Parameter theC,const Quantity_Parameter theD);
+		%feature("compactdefaultargs") Display;
+		%feature("autodoc", "	* Display the plane representation in the choosen view.
+
+	:param theView:
+	:type theView: Handle_V3d_View &
+	:param theColor: default value is Quantity_NOC_GRAY
+	:type theColor: Quantity_Color &
+	:rtype: void
+") Display;
+		virtual void Display (const Handle_V3d_View & theView,const Quantity_Color & theColor = Quantity_NOC_GRAY);
+		%feature("compactdefaultargs") Erase;
+		%feature("autodoc", "	* Erase the plane representation.
+
+	:rtype: None
+") Erase;
+		void Erase ();
+		%feature("compactdefaultargs") Plane;
+		%feature("autodoc", "	* Returns the parameters of the plane.
+
+	:param theA:
+	:type theA: Quantity_Parameter &
+	:param theB:
+	:type theB: Quantity_Parameter &
+	:param theC:
+	:type theC: Quantity_Parameter &
+	:param theD:
+	:type theD: Quantity_Parameter &
+	:rtype: None
+") Plane;
+		void Plane (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") IsDisplayed;
+		%feature("autodoc", "	* Returns True when the plane representation is displayed.
+
+	:rtype: bool
+") IsDisplayed;
+		Standard_Boolean IsDisplayed ();
+		%feature("compactdefaultargs") ClipPlane;
+		%feature("autodoc", "	* Use this method to pass clipping plane implementation for standard clipping workflow. returns clipping plane implementation handle.
+
+	:rtype: Handle_Graphic3d_ClipPlane
+") ClipPlane;
+		Handle_Graphic3d_ClipPlane ClipPlane ();
+};
+
+
 %nodefaultctor V3d_RectangularGrid;
 class V3d_RectangularGrid : public Aspect_RectangularGrid {
 	public:

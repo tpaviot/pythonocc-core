@@ -290,6 +290,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<PLib.hxx>
 #include<PLib_Base.hxx>
 #include<PLib_DoubleJacobiPolynomial.hxx>
+#include<PLib_HermitJacobi.hxx>
 #include<PLib_JacobiPolynomial.hxx>
 #include<PLib_JacobiPolynomial_0.hxx>
 #include<TCollection.hxx>

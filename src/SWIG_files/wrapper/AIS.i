@@ -7554,6 +7554,62 @@ class Handle_AIS_Circle : public Handle_AIS_InteractiveObject {
     }
 };
 
+%nodefaultctor AIS_ColoredDrawer;
+class AIS_ColoredDrawer : public AIS_Drawer {
+	public:
+		%feature("compactdefaultargs") AIS_ColoredDrawer;
+		%feature("autodoc", "	:param theLink:
+	:type theLink: Handle_AIS_Drawer &
+	:rtype: None
+") AIS_ColoredDrawer;
+		 AIS_ColoredDrawer (const Handle_AIS_Drawer & theLink);
+		%feature("compactdefaultargs") IsHidden;
+		%feature("autodoc", "	:rtype: bool
+") IsHidden;
+		Standard_Boolean IsHidden ();
+		%feature("compactdefaultargs") SetHidden;
+		%feature("autodoc", "	:param theToHide:
+	:type theToHide: bool
+	:rtype: None
+") SetHidden;
+		void SetHidden (const Standard_Boolean theToHide);
+		%feature("compactdefaultargs") HasOwnColor;
+		%feature("autodoc", "	:rtype: bool
+") HasOwnColor;
+		Standard_Boolean HasOwnColor ();
+		%feature("compactdefaultargs") UnsetOwnColor;
+		%feature("autodoc", "	:rtype: None
+") UnsetOwnColor;
+		void UnsetOwnColor ();
+		%feature("compactdefaultargs") SetOwnColor;
+		%feature("autodoc", "	:param &:
+	:type &: Quantity_Color
+	:rtype: None
+") SetOwnColor;
+		void SetOwnColor (const Quantity_Color &);
+		%feature("compactdefaultargs") HasOwnWidth;
+		%feature("autodoc", "	:rtype: bool
+") HasOwnWidth;
+		Standard_Boolean HasOwnWidth ();
+		%feature("compactdefaultargs") UnsetOwnWidth;
+		%feature("autodoc", "	:rtype: None
+") UnsetOwnWidth;
+		void UnsetOwnWidth ();
+		%feature("compactdefaultargs") SetOwnWidth;
+		%feature("autodoc", "	:param Standard_Real:
+	:type Standard_Real: 
+	:rtype: None
+") SetOwnWidth;
+		void SetOwnWidth (const Standard_Real);
+		%feature("compactdefaultargs") DEFINE_STANDARD_RTTI;
+		%feature("autodoc", "	:param :
+	:type : AIS_ColoredDrawer
+	:rtype: None
+") DEFINE_STANDARD_RTTI;
+		 DEFINE_STANDARD_RTTI (AIS_ColoredDrawer );
+};
+
+
 %nodefaultctor AIS_ConnectedInteractive;
 class AIS_ConnectedInteractive : public AIS_InteractiveObject {
 	public:
@@ -10191,6 +10247,102 @@ class Handle_AIS_Chamf3dDimension : public Handle_AIS_Relation {
     return (AIS_Chamf3dDimension*)$self->Access();
     }
 };
+
+%nodefaultctor AIS_ColoredShape;
+class AIS_ColoredShape : public AIS_Shape {
+	public:
+		%feature("compactdefaultargs") AIS_ColoredShape;
+		%feature("autodoc", "	* Default constructor
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") AIS_ColoredShape;
+		 AIS_ColoredShape (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") AIS_ColoredShape;
+		%feature("autodoc", "	* Copy constructor
+
+	:param theShape:
+	:type theShape: Handle_AIS_Shape &
+	:rtype: None
+") AIS_ColoredShape;
+		 AIS_ColoredShape (const Handle_AIS_Shape & theShape);
+		%feature("compactdefaultargs") CustomAspects;
+		%feature("autodoc", "	* @name sub-shape aspects Customize properties of specified sub-shape. The shape will be stored in the map but ignored, if it is not sub-shape of main Shape! This method can be used to mark sub-shapes with customizable properties.
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: Handle_AIS_ColoredDrawer
+") CustomAspects;
+		Handle_AIS_ColoredDrawer CustomAspects (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") ClearCustomAspects;
+		%feature("autodoc", "	* Reset the map of custom sub-shape aspects.
+
+	:rtype: None
+") ClearCustomAspects;
+		void ClearCustomAspects ();
+		%feature("compactdefaultargs") UnsetCustomAspects;
+		%feature("autodoc", "	* Reset custom properties of specified sub-shape. @param theToUnregister unregister or not sub-shape from the map
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theToUnregister: default value is Standard_False
+	:type theToUnregister: bool
+	:rtype: None
+") UnsetCustomAspects;
+		void UnsetCustomAspects (const TopoDS_Shape & theShape,const Standard_Boolean theToUnregister = Standard_False);
+		%feature("compactdefaultargs") SetCustomColor;
+		%feature("autodoc", "	* Customize color of specified sub-shape
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:rtype: None
+") SetCustomColor;
+		void SetCustomColor (const TopoDS_Shape & theShape,const Quantity_Color & theColor);
+		%feature("compactdefaultargs") SetCustomWidth;
+		%feature("autodoc", "	* Customize line width of specified sub-shape
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theLineWidth:
+	:type theLineWidth: float
+	:rtype: None
+") SetCustomWidth;
+		void SetCustomWidth (const TopoDS_Shape & theShape,const Standard_Real theLineWidth);
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "	* @name global aspects Setup color of entire shape.
+
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:rtype: void
+") SetColor;
+		virtual void SetColor (const Quantity_Color & theColor);
+		%feature("compactdefaultargs") SetWidth;
+		%feature("autodoc", "	* Setup line width of entire shape.
+
+	:param theLineWidth:
+	:type theLineWidth: float
+	:rtype: void
+") SetWidth;
+		virtual void SetWidth (const Standard_Real theLineWidth);
+		%feature("compactdefaultargs") SetTransparency;
+		%feature("autodoc", "	* Sets transparency value.
+
+	:param theValue:
+	:type theValue: float
+	:rtype: void
+") SetTransparency;
+		virtual void SetTransparency (const Standard_Real theValue);
+		%feature("compactdefaultargs") DEFINE_STANDARD_RTTI;
+		%feature("autodoc", "	:param :
+	:type : AIS_ColoredShape
+	:rtype: None
+") DEFINE_STANDARD_RTTI;
+		 DEFINE_STANDARD_RTTI (AIS_ColoredShape );
+};
+
 
 %nodefaultctor AIS_ConcentricRelation;
 class AIS_ConcentricRelation : public AIS_Relation {
