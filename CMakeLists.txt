@@ -125,6 +125,7 @@ set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKMeshVS TKOpenGl)
 set(OCE_DATAEXCHANGE_LIBRARIES TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209
     TKSTEP TKVRML)
 set(OCE_OCAF_LIBRARIES TKLCAF TKXCAF TKXDESTEP TKXDEIGES)
+set(OCE_VTK_LIBRARIES TKIVtk)
 
 ######################################################
 # Configure Build settings according to the platform #
@@ -198,6 +199,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
 option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" TRUE)
 option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" TRUE)
 option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" TRUE)
+option_with_default(PYTHONOCC_WRAP_VTK "Compile OCE/VTK wrapper" OFF)
 
 ###################
 # Wrapper Modules #
@@ -265,6 +267,18 @@ if(PYTHONOCC_WRAP_OCAF)
     swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_OCAF_LIBRARIES})
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
+
+#######
+# VTK #
+#######
+if(PYTHONOCC_WRAP_VTK)
+  foreach(OCE_MODULE ${OCE_TOOLKIT_VTK})
+    set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+    set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
+    swig_add_module(${OCE_MODULE} python ${FILE})
+    swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VTK_LIBRARIES})
+  endforeach(OCE_MODULE)
+endif(PYTHONOCC_WRAP_VTK)
 
 ################
 # Installation #
