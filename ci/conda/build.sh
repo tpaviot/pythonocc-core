@@ -24,7 +24,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
  .
 
 # Build step
-make -j 4
+make -j 4 VERBOSE=1
 
 # Install step
 make install
