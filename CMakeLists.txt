@@ -95,6 +95,9 @@ if(DEFINED OCE_INCLUDE_PATH)
   set(OCE_LIB_PATH ${OCE_LIB_PATH} CACHE PATH "OCE lib path")
   include_directories(${OCE_INCLUDE_PATH})
   link_directories(${OCE_LIB_PATH})
+  if(PYTHONOCC_WRAP_VTK)
+    link_directories(${VTK_LIBRARY_DIRS})
+  endif(PYTHONOCC_WRAP_VTK)
 # if OCE_INCLUDE_PATH is not passed at command line,
 # find OCE automatically
 else(OCE_INCLUDE_PATH)
@@ -200,6 +203,10 @@ option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" TRUE)
 option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" TRUE)
 option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" TRUE)
 option_with_default(PYTHONOCC_WRAP_VTK "Compile OCE/VTK wrapper" OFF)
+
+if(PYTHONOCC_WRAP_VTK)
+  find_package(VTK)
+endif(PYTHONOCC_WRAP_VTK)
 
 ###################
 # Wrapper Modules #
