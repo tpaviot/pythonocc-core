@@ -1856,7 +1856,7 @@ class BRepFill_Filling {
 ") BRepFill_Filling;
 		 BRepFill_Filling (const Standard_Integer Degree = 3,const Standard_Integer NbPtsOnCur = 15,const Standard_Integer NbIter = 2,const Standard_Boolean Anisotropie = Standard_False,const Standard_Real Tol2d = 0.00001,const Standard_Real Tol3d = 0.0001,const Standard_Real TolAng = 0.01,const Standard_Real TolCurv = 0.1,const Standard_Integer MaxDeg = 8,const Standard_Integer MaxSegments = 9);
 		%feature("compactdefaultargs") SetConstrParam;
-		%feature("autodoc", "	* Sets the values of Tolerances used to control the constraint. //!	Tol2d: //!	Tol3d: it is the maximum distance allowed between the support surface //!	 and the constraints //!	TolAng: it is the maximum angle allowed between the normal of the surface //!	 and the constraints //!	TolCurv: it is the maximum difference of curvature allowed between //!	 the surface and the constraint
+		%feature("autodoc", "	* Sets the values of Tolerances used to control the constraint. Tol2d: Tol3d: it is the maximum distance allowed between the support surface and the constraints TolAng: it is the maximum angle allowed between the normal of the surface and the constraints TolCurv: it is the maximum difference of curvature allowed between the surface and the constraint
 
 	:param Tol2d: default value is 0.00001
 	:type Tol2d: float
@@ -1870,7 +1870,7 @@ class BRepFill_Filling {
 ") SetConstrParam;
 		void SetConstrParam (const Standard_Real Tol2d = 0.00001,const Standard_Real Tol3d = 0.0001,const Standard_Real TolAng = 0.01,const Standard_Real TolCurv = 0.1);
 		%feature("compactdefaultargs") SetResolParam;
-		%feature("autodoc", "	* Sets the parameters used for resolution. //!	The default values of these parameters have been chosen for a good //!	ratio quality/performance. //!	Degree: it is the order of energy criterion to minimize for computing //!	 the deformation of the surface. //!	 The default value is 3 //!	 The recommanded value is i+2 where i is the maximum order of the //!	 constraints. //!	NbPtsOnCur: it is the average number of points for discretisation //!	 of the edges. //!	NbIter: it is the maximum number of iterations of the process. //!	 For each iteration the number of discretisation points is //!	 increased. //!	Anisotropie:
+		%feature("autodoc", "	* Sets the parameters used for resolution. The default values of these parameters have been chosen for a good ratio quality/performance. Degree: it is the order of energy criterion to minimize for computing the deformation of the surface. The default value is 3 The recommanded value is i+2 where i is the maximum order of the constraints. NbPtsOnCur: it is the average number of points for discretisation of the edges. NbIter: it is the maximum number of iterations of the process. For each iteration the number of discretisation points is increased. Anisotropie:
 
 	:param Degree: default value is 3
 	:type Degree: int
@@ -1894,7 +1894,7 @@ class BRepFill_Filling {
 ") SetApproxParam;
 		void SetApproxParam (const Standard_Integer MaxDeg = 8,const Standard_Integer MaxSegments = 9);
 		%feature("compactdefaultargs") LoadInitSurface;
-		%feature("autodoc", "	* Loads the initial Surface
+		%feature("autodoc", "	* Loads the initial Surface The initial surface must have orthogonal local coordinates, i.e. partial derivatives dS/du and dS/dv must be orthogonal at each point of surface. If this condition breaks, distortions of resulting surface are possible.
 
 	:param aFace:
 	:type aFace: TopoDS_Face &
@@ -1902,7 +1902,7 @@ class BRepFill_Filling {
 ") LoadInitSurface;
 		void LoadInitSurface (const TopoDS_Face & aFace);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds a new constraint which also defines an edge of the wire //!	 of the face //!	Order: Order of the constraint: //!	 GeomAbs_C0 : the surface has to pass by 3D representation //!	  of the edge //!	 GeomAbs_G1 : the surface has to pass by 3D representation //!	  of the edge and to respect tangency with the first //!	  face of the edge //!	 GeomAbs_G2 : the surface has to pass by 3D representation //!	  of the edge and to respect tangency and curvature //!	  with the first face of the edge.
+		%feature("autodoc", "	* Adds a new constraint which also defines an edge of the wire of the face Order: Order of the constraint: GeomAbs_C0 : the surface has to pass by 3D representation of the edge GeomAbs_G1 : the surface has to pass by 3D representation of the edge and to respect tangency with the first face of the edge GeomAbs_G2 : the surface has to pass by 3D representation of the edge and to respect tangency and curvature with the first face of the edge.
 
 	:param anEdge:
 	:type anEdge: TopoDS_Edge &
@@ -1914,7 +1914,7 @@ class BRepFill_Filling {
 ") Add;
 		Standard_Integer Add (const TopoDS_Edge & anEdge,const GeomAbs_Shape Order,const Standard_Boolean IsBound = Standard_True);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds a new constraint which also defines an edge of the wire //!	 of the face //!	Order: Order of the constraint: //!	 GeomAbs_C0 : the surface has to pass by 3D representation //!	  of the edge //!	 GeomAbs_G1 : the surface has to pass by 3D representation //!	  of the edge and to respect tangency with the //!	  given face //!	 GeomAbs_G2 : the surface has to pass by 3D representation //!	  of the edge and to respect tangency and curvature //!	  with the given face.
+		%feature("autodoc", "	* Adds a new constraint which also defines an edge of the wire of the face Order: Order of the constraint: GeomAbs_C0 : the surface has to pass by 3D representation of the edge GeomAbs_G1 : the surface has to pass by 3D representation of the edge and to respect tangency with the given face GeomAbs_G2 : the surface has to pass by 3D representation of the edge and to respect tangency and curvature with the given face.
 
 	:param anEdge:
 	:type anEdge: TopoDS_Edge &
@@ -1928,7 +1928,7 @@ class BRepFill_Filling {
 ") Add;
 		Standard_Integer Add (const TopoDS_Edge & anEdge,const TopoDS_Face & Support,const GeomAbs_Shape Order,const Standard_Boolean IsBound = Standard_True);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds a free constraint on a face. The corresponding edge has to //!	be automatically recomputed. //!	It is always a bound.
+		%feature("autodoc", "	* Adds a free constraint on a face. The corresponding edge has to be automatically recomputed. It is always a bound.
 
 	:param Support:
 	:type Support: TopoDS_Face &
@@ -2342,6 +2342,12 @@ class BRepFill_ListOfOffsetWire {
 		%feature("autodoc", "	:rtype: None
 ") BRepFill_ListOfOffsetWire;
 		 BRepFill_ListOfOffsetWire ();
+		%feature("compactdefaultargs") BRepFill_ListOfOffsetWire;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepFill_ListOfOffsetWire &
+	:rtype: None
+") BRepFill_ListOfOffsetWire;
+		 BRepFill_ListOfOffsetWire (const BRepFill_ListOfOffsetWire & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_ListOfOffsetWire &
@@ -2551,7 +2557,7 @@ class BRepFill_LocationLaw : public MMgt_TShared {
 ") PerformVertex;
 		void PerformVertex (const Standard_Integer Index,const TopoDS_Vertex & InputVertex,const Standard_Real TolMin,TopoDS_Vertex & OutputVertex,const Standard_Integer Location = 0);
 		%feature("compactdefaultargs") CurvilinearBounds;
-		%feature("autodoc", "	* //!Return the Curvilinear Bounds of the <Index> Law
+		%feature("autodoc", "	* Return the Curvilinear Bounds of the <Index> Law
 
 	:param Index:
 	:type Index: int
@@ -2601,7 +2607,7 @@ class BRepFill_LocationLaw : public MMgt_TShared {
 ") Parameter;
 		void Parameter (const Standard_Real Abscissa,Standard_Integer &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Abscissa;
-		%feature("autodoc", "	* //!Return the curvilinear abscissa corresponding to a point  of the path, defined by <Index> of Edge and a parameter on the edge.
+		%feature("autodoc", "	* Return the curvilinear abscissa corresponding to a point of the path, defined by <Index> of Edge and a parameter on the edge.
 
 	:param Index:
 	:type Index: int
@@ -2957,9 +2963,11 @@ class BRepFill_OffsetWire {
 	:type Spine: TopoDS_Face &
 	:param Join: default value is GeomAbs_Arc
 	:type Join: GeomAbs_JoinType
+	:param IsOpenResult: default value is Standard_False
+	:type IsOpenResult: bool
 	:rtype: None
 ") BRepFill_OffsetWire;
-		 BRepFill_OffsetWire (const TopoDS_Face & Spine,const GeomAbs_JoinType Join = GeomAbs_Arc);
+		 BRepFill_OffsetWire (const TopoDS_Face & Spine,const GeomAbs_JoinType Join = GeomAbs_Arc,const Standard_Boolean IsOpenResult = Standard_False);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initialize the evaluation of Offseting.
 
@@ -2967,9 +2975,11 @@ class BRepFill_OffsetWire {
 	:type Spine: TopoDS_Face &
 	:param Join: default value is GeomAbs_Arc
 	:type Join: GeomAbs_JoinType
+	:param IsOpenResult: default value is Standard_False
+	:type IsOpenResult: bool
 	:rtype: None
 ") Init;
-		void Init (const TopoDS_Face & Spine,const GeomAbs_JoinType Join = GeomAbs_Arc);
+		void Init (const TopoDS_Face & Spine,const GeomAbs_JoinType Join = GeomAbs_Arc,const Standard_Boolean IsOpenResult = Standard_False);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Performs an OffsetWire at an altitude <Alt> from the face ( According to the orientation of the face)
 
@@ -3070,6 +3080,10 @@ class BRepFill_Pipe {
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
 		const TopoDS_Shape  Shape ();
+		%feature("compactdefaultargs") ErrorOnSurface;
+		%feature("autodoc", "	:rtype: float
+") ErrorOnSurface;
+		Standard_Real ErrorOnSurface ();
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") FirstShape;
@@ -3121,7 +3135,7 @@ class BRepFill_Pipe {
 class BRepFill_PipeShell : public MMgt_TShared {
 	public:
 		%feature("compactdefaultargs") BRepFill_PipeShell;
-		%feature("autodoc", "	* Set an sweep's mode  If no mode are setted, the mode use in MakePipe is used
+		%feature("autodoc", "	* Set an sweep's mode If no mode are setted, the mode use in MakePipe is used
 
 	:param Spine:
 	:type Spine: TopoDS_Wire &
@@ -3143,7 +3157,7 @@ class BRepFill_PipeShell : public MMgt_TShared {
 ") SetDiscrete;
 		void SetDiscrete ();
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Set an fixed trihedron to perform the sweeping  all sections will be parallel.
+		%feature("autodoc", "	* Set an fixed trihedron to perform the sweeping all sections will be parallel.
 
 	:param Axe:
 	:type Axe: gp_Ax2
@@ -3178,8 +3192,24 @@ class BRepFill_PipeShell : public MMgt_TShared {
 	:rtype: None
 ") Set;
 		void Set (const TopoDS_Wire & AuxiliarySpine,const Standard_Boolean CurvilinearEquivalence = Standard_True,const BRepFill_TypeOfContact KeepContact = BRepFill_NoContact);
+		%feature("compactdefaultargs") SetMaxDegree;
+		%feature("autodoc", "	* Define the maximum V degree of resulting surface
+
+	:param NewMaxDegree:
+	:type NewMaxDegree: int
+	:rtype: None
+") SetMaxDegree;
+		void SetMaxDegree (const Standard_Integer NewMaxDegree);
+		%feature("compactdefaultargs") SetMaxSegments;
+		%feature("autodoc", "	* Define the maximum number of spans in V-direction on resulting surface
+
+	:param NewMaxSegments:
+	:type NewMaxSegments: int
+	:rtype: None
+") SetMaxSegments;
+		void SetMaxSegments (const Standard_Integer NewMaxSegments);
 		%feature("compactdefaultargs") SetForceApproxC1;
-		%feature("autodoc", "	* Set the flag that indicates attempt to approximate a C1-continuous surface if a swept surface proved to be C0. Give section to sweep. Possibilities are : //!	- Give one or sevral profile - Give one profile and an homotetic law. - Automatic compute of correspondance beetween profile, and section  on the sweeped shape - correspondance beetween profile, and section on the sweeped shape defined by a vertex of the spine
+		%feature("autodoc", "	* Set the flag that indicates attempt to approximate a C1-continuous surface if a swept surface proved to be C0. Give section to sweep. Possibilities are : - Give one or sevral profile - Give one profile and an homotetic law. - Automatic compute of correspondance beetween profile, and section on the sweeped shape - correspondance beetween profile, and section on the sweeped shape defined by a vertex of the spine
 
 	:param ForceApproxC1:
 	:type ForceApproxC1: bool
@@ -3285,7 +3315,7 @@ class BRepFill_PipeShell : public MMgt_TShared {
 ") SetTransition;
 		void SetTransition (const BRepFill_TransitionStyle Mode = BRepFill_Modified,const Standard_Real Angmin = 1.0e-2,const Standard_Real Angmax = 6.0);
 		%feature("compactdefaultargs") Simulate;
-		%feature("autodoc", "	* Perform simulation of the sweep :  Somes Section are returned.
+		%feature("autodoc", "	* Perform simulation of the sweep : Somes Section are returned.
 
 	:param NumberOfSection:
 	:type NumberOfSection: int
@@ -3312,6 +3342,10 @@ class BRepFill_PipeShell : public MMgt_TShared {
 	:rtype: TopoDS_Shape
 ") Shape;
 		const TopoDS_Shape  Shape ();
+		%feature("compactdefaultargs") ErrorOnSurface;
+		%feature("autodoc", "	:rtype: float
+") ErrorOnSurface;
+		Standard_Real ErrorOnSurface ();
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "	* Returns the TopoDS Shape of the bottom of the sweep.
 
@@ -3761,6 +3795,12 @@ class BRepFill_SequenceOfEdgeFaceAndOrder : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") BRepFill_SequenceOfEdgeFaceAndOrder;
 		 BRepFill_SequenceOfEdgeFaceAndOrder ();
+		%feature("compactdefaultargs") BRepFill_SequenceOfEdgeFaceAndOrder;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepFill_SequenceOfEdgeFaceAndOrder &
+	:rtype: None
+") BRepFill_SequenceOfEdgeFaceAndOrder;
+		 BRepFill_SequenceOfEdgeFaceAndOrder (const BRepFill_SequenceOfEdgeFaceAndOrder & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -3893,6 +3933,12 @@ class BRepFill_SequenceOfFaceAndOrder : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") BRepFill_SequenceOfFaceAndOrder;
 		 BRepFill_SequenceOfFaceAndOrder ();
+		%feature("compactdefaultargs") BRepFill_SequenceOfFaceAndOrder;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepFill_SequenceOfFaceAndOrder &
+	:rtype: None
+") BRepFill_SequenceOfFaceAndOrder;
+		 BRepFill_SequenceOfFaceAndOrder (const BRepFill_SequenceOfFaceAndOrder & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -4025,6 +4071,12 @@ class BRepFill_SequenceOfSection : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") BRepFill_SequenceOfSection;
 		 BRepFill_SequenceOfSection ();
+		%feature("compactdefaultargs") BRepFill_SequenceOfSection;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepFill_SequenceOfSection &
+	:rtype: None
+") BRepFill_SequenceOfSection;
+		 BRepFill_SequenceOfSection (const BRepFill_SequenceOfSection & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -4172,7 +4224,7 @@ class BRepFill_Sweep {
 ") SetBounds;
 		void SetBounds (const TopoDS_Wire & FirstShape,const TopoDS_Wire & LastShape);
 		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "	* Set Approximation Tolerance Tol3d : Tolerance to surface approximation Tol2d : Tolerance used to perform curve approximation  Normaly the 2d curve are approximated with a  tolerance given by the resolution on support surfaces,  but if this tolerance is too large Tol2d is used. TolAngular : Tolerance (in radian) to control the angle  beetween tangents on the section law and  tangent of iso-v on approximed surface
+		%feature("autodoc", "	* Set Approximation Tolerance Tol3d : Tolerance to surface approximation Tol2d : Tolerance used to perform curve approximation Normaly the 2d curve are approximated with a tolerance given by the resolution on support surfaces, but if this tolerance is too large Tol2d is used. TolAngular : Tolerance (in radian) to control the angle beetween tangents on the section law and tangent of iso-v on approximed surface
 
 	:param Tol3d:
 	:type Tol3d: float
@@ -4186,7 +4238,7 @@ class BRepFill_Sweep {
 ") SetTolerance;
 		void SetTolerance (const Standard_Real Tol3d,const Standard_Real BoundTol = 1.0,const Standard_Real Tol2d = 1.0e-5,const Standard_Real TolAngular = 1.0e-2);
 		%feature("compactdefaultargs") SetAngularControl;
-		%feature("autodoc", "	* Tolerance To controle Corner management. If the discontinuity is lesser than <AngleMin> in radian The Transition Performed will be alway 'Modified'
+		%feature("autodoc", "	* Tolerance To controle Corner management. //! If the discontinuity is lesser than <AngleMin> in radian The Transition Performed will be alway 'Modified'
 
 	:param AngleMin: default value is 0.01
 	:type AngleMin: float
@@ -4204,12 +4256,14 @@ class BRepFill_Sweep {
 ") SetForceApproxC1;
 		void SetForceApproxC1 (const Standard_Boolean ForceApproxC1);
 		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "	* Build the Sweeep Surface Transition define Transition strategy Approx define Approximation Strategy - GeomFill_Section : The composed Function Location X Section  is directly approximed. - GeomFill_Location : The location law is approximed, and the  SweepSurface is bulid algebric composition  of approximed location law and section law  This option is Ok, if Section.Surface() methode  is effective. Continuity : The continuity in v waiting on the surface Degmax : The maximum degree in v requiered on the surface Segmax : The maximum number of span in v requiered on  the surface.
+		%feature("autodoc", "	* Build the Sweeep Surface Transition define Transition strategy Approx define Approximation Strategy - GeomFill_Section : The composed Function Location X Section is directly approximed. - GeomFill_Location : The location law is approximed, and the SweepSurface is bulid algebric composition of approximed location law and section law This option is Ok, if Section.Surface() methode is effective. Continuity : The continuity in v waiting on the surface Degmax : The maximum degree in v requiered on the surface Segmax : The maximum number of span in v requiered on the surface.
 
 	:param ReversedEdges:
 	:type ReversedEdges: TopTools_MapOfShape &
 	:param Tapes:
 	:type Tapes: BRepFill_DataMapOfShapeHArray2OfShape &
+	:param Rails:
+	:type Rails: BRepFill_DataMapOfShapeHArray2OfShape &
 	:param Transition: default value is BRepFill_Modified
 	:type Transition: BRepFill_TransitionStyle
 	:param Continuity: default value is GeomAbs_C2
@@ -4222,7 +4276,7 @@ class BRepFill_Sweep {
 	:type Segmax: int
 	:rtype: None
 ") Build;
-		void Build (TopTools_MapOfShape & ReversedEdges,BRepFill_DataMapOfShapeHArray2OfShape & Tapes,const BRepFill_TransitionStyle Transition = BRepFill_Modified,const GeomAbs_Shape Continuity = GeomAbs_C2,const GeomFill_ApproxStyle Approx = GeomFill_Location,const Standard_Integer Degmax = 11,const Standard_Integer Segmax = 30);
+		void Build (TopTools_MapOfShape & ReversedEdges,BRepFill_DataMapOfShapeHArray2OfShape & Tapes,BRepFill_DataMapOfShapeHArray2OfShape & Rails,const BRepFill_TransitionStyle Transition = BRepFill_Modified,const GeomAbs_Shape Continuity = GeomAbs_C2,const GeomFill_ApproxStyle Approx = GeomFill_Location,const Standard_Integer Degmax = 11,const Standard_Integer Segmax = 30);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Say if the Shape is Build.
 

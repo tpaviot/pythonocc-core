@@ -54,6 +54,7 @@ def register_handle(handle, base_object):
 typedef Standard_Integer MeshVS_DisplayModeFlags;
 typedef Standard_Integer MeshVS_BuilderPriority;
 typedef MeshVS_Mesh * MeshVS_MeshPtr;
+typedef std::pair <Standard_Integer , Standard_Integer> MeshVS_NodePair;
 /* end typedefs declaration */
 
 /* public enums */
@@ -242,7 +243,7 @@ class MeshVS_Array1OfSequenceOfInteger {
 };
 
 
-class MeshVS_ColorHasher : public TColStd_MapIntegerHasher {
+class MeshVS_ColorHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "	:param K:
@@ -2913,6 +2914,12 @@ class MeshVS_MapOfTwoNodes : public TCollection_BasicMap {
 	:rtype: None
 ") MeshVS_MapOfTwoNodes;
 		 MeshVS_MapOfTwoNodes (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") MeshVS_MapOfTwoNodes;
+		%feature("autodoc", "	:param Other:
+	:type Other: MeshVS_MapOfTwoNodes &
+	:rtype: None
+") MeshVS_MapOfTwoNodes;
+		 MeshVS_MapOfTwoNodes (const MeshVS_MapOfTwoNodes & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_MapOfTwoNodes &
@@ -4174,6 +4181,12 @@ class MeshVS_SequenceOfPrsBuilder : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") MeshVS_SequenceOfPrsBuilder;
 		 MeshVS_SequenceOfPrsBuilder ();
+		%feature("compactdefaultargs") MeshVS_SequenceOfPrsBuilder;
+		%feature("autodoc", "	:param Other:
+	:type Other: MeshVS_SequenceOfPrsBuilder &
+	:rtype: None
+") MeshVS_SequenceOfPrsBuilder;
+		 MeshVS_SequenceOfPrsBuilder (const MeshVS_SequenceOfPrsBuilder & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -4353,6 +4366,28 @@ class Handle_MeshVS_StdMapNodeOfMapOfTwoNodes : public Handle_TCollection_MapNod
     return (MeshVS_StdMapNodeOfMapOfTwoNodes*)$self->Access();
     }
 };
+
+%nodefaultctor MeshVS_SymmetricPairHasher;
+class MeshVS_SymmetricPairHasher {
+	public:
+		%feature("compactdefaultargs") HashCode;
+		%feature("autodoc", "	:param thePair:
+	:type thePair: MeshVS_NodePair &
+	:param theMaxCode:
+	:type theMaxCode: int
+	:rtype: int
+") HashCode;
+		static Standard_Integer HashCode (const MeshVS_NodePair & thePair,const Standard_Integer theMaxCode);
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	:param thePair1:
+	:type thePair1: MeshVS_NodePair &
+	:param thePair2:
+	:type thePair2: MeshVS_NodePair &
+	:rtype: bool
+") IsEqual;
+		static Standard_Boolean IsEqual (const MeshVS_NodePair & thePair1,const MeshVS_NodePair & thePair2);
+};
+
 
 class MeshVS_Tool {
 	public:
@@ -5212,6 +5247,28 @@ class MeshVS_NodalColorPrsBuilder : public MeshVS_PrsBuilder {
 	:rtype: float
 ") GetTextureCoord;
 		Standard_Real GetTextureCoord (const Standard_Integer theID);
+		%feature("compactdefaultargs") AddVolumePrs;
+		%feature("autodoc", "	* Add to array polygons or polylines representing volume
+
+	:param theTopo:
+	:type theTopo: Handle_MeshVS_HArray1OfSequenceOfInteger &
+	:param theNodes:
+	:type theNodes: TColStd_Array1OfInteger &
+	:param theCoords:
+	:type theCoords: TColStd_Array1OfReal &
+	:param theArray:
+	:type theArray: Handle_Graphic3d_ArrayOfPrimitives &
+	:param theIsShaded:
+	:type theIsShaded: bool
+	:param theNbColors:
+	:type theNbColors: int
+	:param theNbTexColors:
+	:type theNbTexColors: int
+	:param theColorRatio:
+	:type theColorRatio: float
+	:rtype: None
+") AddVolumePrs;
+		void AddVolumePrs (const Handle_MeshVS_HArray1OfSequenceOfInteger & theTopo,const TColStd_Array1OfInteger & theNodes,const TColStd_Array1OfReal & theCoords,const Handle_Graphic3d_ArrayOfPrimitives & theArray,const Standard_Boolean theIsShaded,const Standard_Integer theNbColors,const Standard_Integer theNbTexColors,const Standard_Real theColorRatio);
 };
 
 

@@ -105,91 +105,18 @@ class XCAFPrs {
 
 
 %nodefaultctor XCAFPrs_AISObject;
-class XCAFPrs_AISObject : public AIS_Shape {
+class XCAFPrs_AISObject : public AIS_ColoredShape {
 	public:
 		%feature("compactdefaultargs") XCAFPrs_AISObject;
-		%feature("autodoc", "	* Creates an object to visualise the shape label
+		%feature("autodoc", "	* Creates an object to visualise the shape label.
 
-	:param lab:
-	:type lab: TDF_Label &
+	:param theLabel:
+	:type theLabel: TDF_Label &
 	:rtype: None
 ") XCAFPrs_AISObject;
-		 XCAFPrs_AISObject (const TDF_Label & lab);
-		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	:param aColor:
-	:type aColor: Quantity_Color &
-	:rtype: void
-") SetColor;
-		virtual void SetColor (const Quantity_Color & aColor);
-		%feature("compactdefaultargs") UnsetColor;
-		%feature("autodoc", "	:rtype: void
-") UnsetColor;
-		virtual void UnsetColor ();
-		%feature("compactdefaultargs") SetMaterial;
-		%feature("autodoc", "	:param aName:
-	:type aName: Graphic3d_NameOfMaterial
-	:rtype: void
-") SetMaterial;
-		virtual void SetMaterial (const Graphic3d_NameOfMaterial aName);
-		%feature("compactdefaultargs") SetMaterial;
-		%feature("autodoc", "	:param aName:
-	:type aName: Graphic3d_MaterialAspect &
-	:rtype: void
-") SetMaterial;
-		virtual void SetMaterial (const Graphic3d_MaterialAspect & aName);
-		%feature("compactdefaultargs") UnsetMaterial;
-		%feature("autodoc", "	:rtype: void
-") UnsetMaterial;
-		virtual void UnsetMaterial ();
-		%feature("compactdefaultargs") SetTransparency;
-		%feature("autodoc", "	:param aValue: default value is 0.6
-	:type aValue: float
-	:rtype: void
-") SetTransparency;
-		virtual void SetTransparency (const Standard_Real aValue = 0.6);
-		%feature("compactdefaultargs") UnsetTransparency;
-		%feature("autodoc", "	:rtype: void
-") UnsetTransparency;
-		virtual void UnsetTransparency ();
+		 XCAFPrs_AISObject (const TDF_Label & theLabel);
 };
 
-
-%extend XCAFPrs_AISObject {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_XCAFPrs_AISObject(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_XCAFPrs_AISObject::Handle_XCAFPrs_AISObject %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_XCAFPrs_AISObject;
-class Handle_XCAFPrs_AISObject : public Handle_AIS_Shape {
-
-    public:
-        // constructors
-        Handle_XCAFPrs_AISObject();
-        Handle_XCAFPrs_AISObject(const Handle_XCAFPrs_AISObject &aHandle);
-        Handle_XCAFPrs_AISObject(const XCAFPrs_AISObject *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_XCAFPrs_AISObject DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_XCAFPrs_AISObject {
-    XCAFPrs_AISObject* GetObject() {
-    return (XCAFPrs_AISObject*)$self->Access();
-    }
-};
 
 %nodefaultctor XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle;
 class XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle : public TCollection_BasicMapIterator {

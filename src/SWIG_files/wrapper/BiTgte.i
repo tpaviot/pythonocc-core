@@ -73,7 +73,7 @@ class BiTgte_Blend {
 ") BiTgte_Blend;
 		 BiTgte_Blend ();
 		%feature("compactdefaultargs") BiTgte_Blend;
-		%feature("autodoc", "	* <S>: Shape to be rounded <Radius>: radius of the fillet <Tol>: Tol3d used in approximations <NUBS>: if true, generate only NUBS surfaces,  if false, generate analytical surfaces if possible
+		%feature("autodoc", "	* <S>: Shape to be rounded <Radius>: radius of the fillet <Tol>: Tol3d used in approximations <NUBS>: if true, generate only NUBS surfaces, if false, generate analytical surfaces if possible
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -105,7 +105,7 @@ class BiTgte_Blend {
 ") Clear;
 		void Clear ();
 		%feature("compactdefaultargs") SetFaces;
-		%feature("autodoc", "	* Set two faces of <myShape> on which the Sphere  must roll.
+		%feature("autodoc", "	* Set two faces of <myShape> on which the Sphere must roll.
 
 	:param F1:
 	:type F1: TopoDS_Face &
@@ -271,7 +271,7 @@ class BiTgte_Blend {
 ") NbBranches;
 		Standard_Integer NbBranches ();
 		%feature("compactdefaultargs") IndicesOfBranche;
-		%feature("autodoc", "	* Set in <From>,<To> the indices of the faces of the branche <Index>. i.e: Branche<Index> = Face(From) + Face(From+1) + ..+ Face(To)
+		%feature("autodoc", "	* Set in <From>,<To> the indices of the faces of the branche <Index>. //! i.e: Branche<Index> = Face(From) + Face(From+1) + ..+ Face(To)
 
 	:param Index:
 	:type Index: int
@@ -335,7 +335,7 @@ class BiTgte_CurveOnEdge : public Adaptor3d_Curve {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -439,7 +439,7 @@ class BiTgte_CurveOnEdge : public Adaptor3d_Curve {
 ") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -543,7 +543,7 @@ class BiTgte_CurveOnVertex : public Adaptor3d_Curve {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -647,7 +647,7 @@ class BiTgte_CurveOnVertex : public Adaptor3d_Curve {
 ") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float

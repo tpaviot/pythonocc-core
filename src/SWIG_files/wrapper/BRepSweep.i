@@ -56,110 +56,6 @@ def register_handle(handle, base_object):
 /* public enums */
 /* end public enums declaration */
 
-%nodefaultctor BRepSweep_Array2OfShapesOfNumLinearRegularSweep;
-class BRepSweep_Array2OfShapesOfNumLinearRegularSweep {
-	public:
-		%feature("compactdefaultargs") BRepSweep_Array2OfShapesOfNumLinearRegularSweep;
-		%feature("autodoc", "	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:rtype: None
-") BRepSweep_Array2OfShapesOfNumLinearRegularSweep;
-		 BRepSweep_Array2OfShapesOfNumLinearRegularSweep (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("compactdefaultargs") BRepSweep_Array2OfShapesOfNumLinearRegularSweep;
-		%feature("autodoc", "	:param Item:
-	:type Item: TopoDS_Shape &
-	:param R1:
-	:type R1: int
-	:param R2:
-	:type R2: int
-	:param C1:
-	:type C1: int
-	:param C2:
-	:type C2: int
-	:rtype: None
-") BRepSweep_Array2OfShapesOfNumLinearRegularSweep;
-		 BRepSweep_Array2OfShapesOfNumLinearRegularSweep (const TopoDS_Shape & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: TopoDS_Shape &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Shape & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepSweep_Array2OfShapesOfNumLinearRegularSweep &
-	:rtype: BRepSweep_Array2OfShapesOfNumLinearRegularSweep
-") Assign;
-		const BRepSweep_Array2OfShapesOfNumLinearRegularSweep & Assign (const BRepSweep_Array2OfShapesOfNumLinearRegularSweep & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepSweep_Array2OfShapesOfNumLinearRegularSweep &
-	:rtype: BRepSweep_Array2OfShapesOfNumLinearRegularSweep
-") operator=;
-		const BRepSweep_Array2OfShapesOfNumLinearRegularSweep & operator = (const BRepSweep_Array2OfShapesOfNumLinearRegularSweep & Other);
-		%feature("compactdefaultargs") ColLength;
-		%feature("autodoc", "	:rtype: int
-") ColLength;
-		Standard_Integer ColLength ();
-		%feature("compactdefaultargs") RowLength;
-		%feature("autodoc", "	:rtype: int
-") RowLength;
-		Standard_Integer RowLength ();
-		%feature("compactdefaultargs") LowerCol;
-		%feature("autodoc", "	:rtype: int
-") LowerCol;
-		Standard_Integer LowerCol ();
-		%feature("compactdefaultargs") LowerRow;
-		%feature("autodoc", "	:rtype: int
-") LowerRow;
-		Standard_Integer LowerRow ();
-		%feature("compactdefaultargs") UpperCol;
-		%feature("autodoc", "	:rtype: int
-") UpperCol;
-		Standard_Integer UpperCol ();
-		%feature("compactdefaultargs") UpperRow;
-		%feature("autodoc", "	:rtype: int
-") UpperRow;
-		Standard_Integer UpperRow ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:param Value:
-	:type Value: TopoDS_Shape &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const TopoDS_Shape & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: TopoDS_Shape
-") Value;
-		const TopoDS_Shape  Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Row:
-	:type Row: int
-	:param Col:
-	:type Col: int
-	:rtype: TopoDS_Shape
-") ChangeValue;
-		TopoDS_Shape  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-};
-
-
 %nodefaultctor BRepSweep_Builder;
 class BRepSweep_Builder {
 	public:
@@ -290,7 +186,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") Delete;
 		virtual void Delete ();
 		%feature("compactdefaultargs") MakeEmptyVertex;
-		%feature("autodoc", "	:param aGenV:
+		%feature("autodoc", "	* Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents.
+
+	:param aGenV:
 	:type aGenV: TopoDS_Shape &
 	:param aDirV:
 	:type aDirV: Sweep_NumShape &
@@ -298,7 +196,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") MakeEmptyVertex;
 		virtual TopoDS_Shape MakeEmptyVertex (const TopoDS_Shape & aGenV,const Sweep_NumShape & aDirV);
 		%feature("compactdefaultargs") MakeEmptyDirectingEdge;
-		%feature("autodoc", "	:param aGenV:
+		%feature("autodoc", "	* Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without subcomponents.
+
+	:param aGenV:
 	:type aGenV: TopoDS_Shape &
 	:param aDirE:
 	:type aDirE: Sweep_NumShape &
@@ -306,7 +206,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") MakeEmptyDirectingEdge;
 		virtual TopoDS_Shape MakeEmptyDirectingEdge (const TopoDS_Shape & aGenV,const Sweep_NumShape & aDirE);
 		%feature("compactdefaultargs") MakeEmptyGeneratingEdge;
-		%feature("autodoc", "	:param aGenE:
+		%feature("autodoc", "	* Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without subcomponents.
+
+	:param aGenE:
 	:type aGenE: TopoDS_Shape &
 	:param aDirV:
 	:type aDirV: Sweep_NumShape &
@@ -314,7 +216,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") MakeEmptyGeneratingEdge;
 		virtual TopoDS_Shape MakeEmptyGeneratingEdge (const TopoDS_Shape & aGenE,const Sweep_NumShape & aDirV);
 		%feature("compactdefaultargs") SetParameters;
-		%feature("autodoc", "	:param aNewFace:
+		%feature("autodoc", "	* Sets the parameters of the new vertex on the new face. The new face and new vertex where generated from aGenF, aGenV and aDirV .
+
+	:param aNewFace:
 	:type aNewFace: TopoDS_Shape &
 	:param aNewVertex:
 	:type aNewVertex: TopoDS_Shape &
@@ -328,7 +232,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") SetParameters;
 		virtual void SetParameters (const TopoDS_Shape & aNewFace,TopoDS_Shape & aNewVertex,const TopoDS_Shape & aGenF,const TopoDS_Shape & aGenV,const Sweep_NumShape & aDirV);
 		%feature("compactdefaultargs") SetDirectingParameter;
-		%feature("autodoc", "	:param aNewEdge:
+		%feature("autodoc", "	* Sets the parameter of the new vertex on the new edge. The new edge and new vertex where generated from aGenV aDirE, and aDirV.
+
+	:param aNewEdge:
 	:type aNewEdge: TopoDS_Shape &
 	:param aNewVertex:
 	:type aNewVertex: TopoDS_Shape &
@@ -342,7 +248,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") SetDirectingParameter;
 		virtual void SetDirectingParameter (const TopoDS_Shape & aNewEdge,TopoDS_Shape & aNewVertex,const TopoDS_Shape & aGenV,const Sweep_NumShape & aDirE,const Sweep_NumShape & aDirV);
 		%feature("compactdefaultargs") SetGeneratingParameter;
-		%feature("autodoc", "	:param aNewEdge:
+		%feature("autodoc", "	* Sets the parameter of the new vertex on the new edge. The new edge and new vertex where generated from aGenE, aGenV and aDirV .
+
+	:param aNewEdge:
 	:type aNewEdge: TopoDS_Shape &
 	:param aNewVertex:
 	:type aNewVertex: TopoDS_Shape &
@@ -356,7 +264,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") SetGeneratingParameter;
 		virtual void SetGeneratingParameter (const TopoDS_Shape & aNewEdge,TopoDS_Shape & aNewVertex,const TopoDS_Shape & aGenE,const TopoDS_Shape & aGenV,const Sweep_NumShape & aDirV);
 		%feature("compactdefaultargs") MakeEmptyFace;
-		%feature("autodoc", "	:param aGenS:
+		%feature("autodoc", "	* Builds the face addressed by [aGenS,aDirS], with its geometric part, but without subcomponents. The couple aGenS, aDirS can be a 'generating face and a directing vertex' or 'a generating edge and a directing edge'.
+
+	:param aGenS:
 	:type aGenS: TopoDS_Shape &
 	:param aDirS:
 	:type aDirS: Sweep_NumShape &
@@ -364,7 +274,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") MakeEmptyFace;
 		virtual TopoDS_Shape MakeEmptyFace (const TopoDS_Shape & aGenS,const Sweep_NumShape & aDirS);
 		%feature("compactdefaultargs") SetPCurve;
-		%feature("autodoc", "	:param aNewFace:
+		%feature("autodoc", "	* Sets the PCurve for a new edge on a new face. The new edge and the new face were generated using aGenF, aGenE and aDirV.
+
+	:param aNewFace:
 	:type aNewFace: TopoDS_Shape &
 	:param aNewEdge:
 	:type aNewEdge: TopoDS_Shape &
@@ -380,7 +292,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") SetPCurve;
 		virtual void SetPCurve (const TopoDS_Shape & aNewFace,TopoDS_Shape & aNewEdge,const TopoDS_Shape & aGenF,const TopoDS_Shape & aGenE,const Sweep_NumShape & aDirV,const TopAbs_Orientation orien);
 		%feature("compactdefaultargs") SetGeneratingPCurve;
-		%feature("autodoc", "	:param aNewFace:
+		%feature("autodoc", "	* Sets the PCurve for a new edge on a new face. The new edge and the new face were generated using aGenE, aDirE and aDirV.
+
+	:param aNewFace:
 	:type aNewFace: TopoDS_Shape &
 	:param aNewEdge:
 	:type aNewEdge: TopoDS_Shape &
@@ -396,7 +310,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") SetGeneratingPCurve;
 		virtual void SetGeneratingPCurve (const TopoDS_Shape & aNewFace,TopoDS_Shape & aNewEdge,const TopoDS_Shape & aGenE,const Sweep_NumShape & aDirE,const Sweep_NumShape & aDirV,const TopAbs_Orientation orien);
 		%feature("compactdefaultargs") SetDirectingPCurve;
-		%feature("autodoc", "	:param aNewFace:
+		%feature("autodoc", "	* Sets the PCurve for a new edge on a new face. The new edge and the new face were generated using aGenE, aDirE and aGenV.
+
+	:param aNewFace:
 	:type aNewFace: TopoDS_Shape &
 	:param aNewEdge:
 	:type aNewEdge: TopoDS_Shape &
@@ -412,7 +328,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") SetDirectingPCurve;
 		virtual void SetDirectingPCurve (const TopoDS_Shape & aNewFace,TopoDS_Shape & aNewEdge,const TopoDS_Shape & aGenE,const TopoDS_Shape & aGenV,const Sweep_NumShape & aDirE,const TopAbs_Orientation orien);
 		%feature("compactdefaultargs") DirectSolid;
-		%feature("autodoc", "	:param aGenS:
+		%feature("autodoc", "	* Returns the Orientation of the shell in the solid generated by the face aGenS with the edge aDirS. It is REVERSED if the surface is swept in the direction of the normal.
+
+	:param aGenS:
 	:type aGenS: TopoDS_Shape &
 	:param aDirS:
 	:type aDirS: Sweep_NumShape &
@@ -420,7 +338,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") DirectSolid;
 		virtual TopAbs_Orientation DirectSolid (const TopoDS_Shape & aGenS,const Sweep_NumShape & aDirS);
 		%feature("compactdefaultargs") GGDShapeIsToAdd;
-		%feature("autodoc", "	:param aNewShape:
+		%feature("autodoc", "	* Returns true if aNewSubShape (addressed by aSubGenS and aDirS) must be added in aNewShape (addressed by aGenS and aDirS).
+
+	:param aNewShape:
 	:type aNewShape: TopoDS_Shape &
 	:param aNewSubShape:
 	:type aNewSubShape: TopoDS_Shape &
@@ -434,7 +354,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") GGDShapeIsToAdd;
 		virtual Standard_Boolean GGDShapeIsToAdd (const TopoDS_Shape & aNewShape,const TopoDS_Shape & aNewSubShape,const TopoDS_Shape & aGenS,const TopoDS_Shape & aSubGenS,const Sweep_NumShape & aDirS);
 		%feature("compactdefaultargs") GDDShapeIsToAdd;
-		%feature("autodoc", "	:param aNewShape:
+		%feature("autodoc", "	* Returns true if aNewSubShape (addressed by aGenS and aSubDirS) must be added in aNewShape (addressed by aGenS and aDirS).
+
+	:param aNewShape:
 	:type aNewShape: TopoDS_Shape &
 	:param aNewSubShape:
 	:type aNewSubShape: TopoDS_Shape &
@@ -448,7 +370,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") GDDShapeIsToAdd;
 		virtual Standard_Boolean GDDShapeIsToAdd (const TopoDS_Shape & aNewShape,const TopoDS_Shape & aNewSubShape,const TopoDS_Shape & aGenS,const Sweep_NumShape & aDirS,const Sweep_NumShape & aSubDirS);
 		%feature("compactdefaultargs") SeparatedWires;
-		%feature("autodoc", "	:param aNewShape:
+		%feature("autodoc", "	* In some particular cases the topology of a generated face must be composed of independant closed wires, in this case this function returns true.
+
+	:param aNewShape:
 	:type aNewShape: TopoDS_Shape &
 	:param aNewSubShape:
 	:type aNewSubShape: TopoDS_Shape &
@@ -462,13 +386,17 @@ class BRepSweep_NumLinearRegularSweep {
 ") SeparatedWires;
 		virtual Standard_Boolean SeparatedWires (const TopoDS_Shape & aNewShape,const TopoDS_Shape & aNewSubShape,const TopoDS_Shape & aGenS,const TopoDS_Shape & aSubGenS,const Sweep_NumShape & aDirS);
 		%feature("compactdefaultargs") SplitShell;
-		%feature("autodoc", "	:param aNewShape:
+		%feature("autodoc", "	* In some particular cases the topology of a generated Shell must be composed of independant closed Shells, in this case this function returns a Compound of independant Shells.
+
+	:param aNewShape:
 	:type aNewShape: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") SplitShell;
 		virtual TopoDS_Shape SplitShell (const TopoDS_Shape & aNewShape);
 		%feature("compactdefaultargs") SetContinuity;
-		%feature("autodoc", "	:param aGenS:
+		%feature("autodoc", "	* Called to propagate the continuity of every vertex between two edges of the generating wire aGenS on the generated edge and faces.
+
+	:param aGenS:
 	:type aGenS: TopoDS_Shape &
 	:param aDirS:
 	:type aDirS: Sweep_NumShape &
@@ -476,7 +404,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") SetContinuity;
 		virtual void SetContinuity (const TopoDS_Shape & aGenS,const Sweep_NumShape & aDirS);
 		%feature("compactdefaultargs") HasShape;
-		%feature("autodoc", "	:param aGenS:
+		%feature("autodoc", "	* Returns true if aDirS and aGenS addresses a resulting Shape. In some specific cases the shape can be geometrically inexsistant, then this function returns false.
+
+	:param aGenS:
 	:type aGenS: TopoDS_Shape &
 	:param aDirS:
 	:type aDirS: Sweep_NumShape &
@@ -484,7 +414,9 @@ class BRepSweep_NumLinearRegularSweep {
 ") HasShape;
 		virtual Standard_Boolean HasShape (const TopoDS_Shape & aGenS,const Sweep_NumShape & aDirS);
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "	:param aGenS:
+		%feature("autodoc", "	* Returns the resulting Shape indexed by aDirS and aGenS.
+
+	:param aGenS:
 	:type aGenS: TopoDS_Shape &
 	:param aDirS:
 	:type aDirS: Sweep_NumShape &
@@ -492,31 +424,43 @@ class BRepSweep_NumLinearRegularSweep {
 ") Shape;
 		TopoDS_Shape Shape (const TopoDS_Shape & aGenS,const Sweep_NumShape & aDirS);
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "	:param aGenS:
+		%feature("autodoc", "	* Returns the resulting Shape indexed by myDirWire and aGenS.
+
+	:param aGenS:
 	:type aGenS: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") Shape;
 		TopoDS_Shape Shape (const TopoDS_Shape & aGenS);
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
+		%feature("autodoc", "	* Returns the resulting Shape indexed by myDirWire and myGenShape.
+
+	:rtype: TopoDS_Shape
 ") Shape;
 		TopoDS_Shape Shape ();
 		%feature("compactdefaultargs") FirstShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
+		%feature("autodoc", "	* Returns the resulting Shape indexed by the first Vertex of myDirWire and myGenShape.
+
+	:rtype: TopoDS_Shape
 ") FirstShape;
 		TopoDS_Shape FirstShape ();
 		%feature("compactdefaultargs") LastShape;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
+		%feature("autodoc", "	* Returns the resulting Shape indexed by the last Vertex of myDirWire and myGenShape.
+
+	:rtype: TopoDS_Shape
 ") LastShape;
 		TopoDS_Shape LastShape ();
 		%feature("compactdefaultargs") FirstShape;
-		%feature("autodoc", "	:param aGenS:
+		%feature("autodoc", "	* Returns the resulting Shape indexed by the first Vertex of myDirWire and aGenS.
+
+	:param aGenS:
 	:type aGenS: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") FirstShape;
 		TopoDS_Shape FirstShape (const TopoDS_Shape & aGenS);
 		%feature("compactdefaultargs") LastShape;
-		%feature("autodoc", "	:param aGenS:
+		%feature("autodoc", "	* Returns the resulting Shape indexed by the last Vertex of myDirWire and aGenS.
+
+	:param aGenS:
 	:type aGenS: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") LastShape;
@@ -695,195 +639,6 @@ class BRepSweep_Revol {
 	:rtype: Quantity_PlaneAngle
 ") Angle;
 		Quantity_PlaneAngle Angle ();
-};
-
-
-%nodefaultctor BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep;
-class BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep;
-		%feature("autodoc", "	:param I:
-	:type I: TopoDS_Shape &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep;
-		 BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep (const TopoDS_Shape & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Value;
-		TopoDS_Shape  Value ();
-};
-
-
-%extend BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep::Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep;
-class Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep();
-        Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep(const Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep &aHandle);
-        Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep(const BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep {
-    BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep* GetObject() {
-    return (BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep*)$self->Access();
-    }
-};
-
-%nodefaultctor BRepSweep_SequenceOfShapesOfNumLinearRegularSweep;
-class BRepSweep_SequenceOfShapesOfNumLinearRegularSweep : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") BRepSweep_SequenceOfShapesOfNumLinearRegularSweep;
-		%feature("autodoc", "	:rtype: None
-") BRepSweep_SequenceOfShapesOfNumLinearRegularSweep;
-		 BRepSweep_SequenceOfShapesOfNumLinearRegularSweep ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepSweep_SequenceOfShapesOfNumLinearRegularSweep &
-	:rtype: BRepSweep_SequenceOfShapesOfNumLinearRegularSweep
-") Assign;
-		const BRepSweep_SequenceOfShapesOfNumLinearRegularSweep & Assign (const BRepSweep_SequenceOfShapesOfNumLinearRegularSweep & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepSweep_SequenceOfShapesOfNumLinearRegularSweep &
-	:rtype: BRepSweep_SequenceOfShapesOfNumLinearRegularSweep
-") operator=;
-		const BRepSweep_SequenceOfShapesOfNumLinearRegularSweep & operator = (const BRepSweep_SequenceOfShapesOfNumLinearRegularSweep & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: TopoDS_Shape &
-	:rtype: None
-") Append;
-		void Append (const TopoDS_Shape & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: BRepSweep_SequenceOfShapesOfNumLinearRegularSweep &
-	:rtype: None
-") Append;
-		void Append (BRepSweep_SequenceOfShapesOfNumLinearRegularSweep & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: TopoDS_Shape &
-	:rtype: None
-") Prepend;
-		void Prepend (const TopoDS_Shape & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: BRepSweep_SequenceOfShapesOfNumLinearRegularSweep &
-	:rtype: None
-") Prepend;
-		void Prepend (BRepSweep_SequenceOfShapesOfNumLinearRegularSweep & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: TopoDS_Shape &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const TopoDS_Shape & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: BRepSweep_SequenceOfShapesOfNumLinearRegularSweep &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,BRepSweep_SequenceOfShapesOfNumLinearRegularSweep & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: TopoDS_Shape &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const TopoDS_Shape & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: BRepSweep_SequenceOfShapesOfNumLinearRegularSweep &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,BRepSweep_SequenceOfShapesOfNumLinearRegularSweep & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") First;
-		const TopoDS_Shape  First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Last;
-		const TopoDS_Shape  Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: BRepSweep_SequenceOfShapesOfNumLinearRegularSweep &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,BRepSweep_SequenceOfShapesOfNumLinearRegularSweep & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: TopoDS_Shape
-") Value;
-		const TopoDS_Shape  Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: TopoDS_Shape &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const TopoDS_Shape & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: TopoDS_Shape
-") ChangeValue;
-		TopoDS_Shape  ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
 

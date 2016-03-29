@@ -466,6 +466,12 @@ class TopoDS_ListOfShape {
 		%feature("autodoc", "	:rtype: None
 ") TopoDS_ListOfShape;
 		 TopoDS_ListOfShape ();
+		%feature("compactdefaultargs") TopoDS_ListOfShape;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopoDS_ListOfShape &
+	:rtype: None
+") TopoDS_ListOfShape;
+		 TopoDS_ListOfShape (const TopoDS_ListOfShape & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopoDS_ListOfShape &
@@ -674,6 +680,20 @@ class TopoDS_Shape {
 	:rtype: None
 ") Free;
 		void Free (const Standard_Boolean F);
+		%feature("compactdefaultargs") Locked;
+		%feature("autodoc", "	* Returns the locked flag.
+
+	:rtype: bool
+") Locked;
+		Standard_Boolean Locked ();
+		%feature("compactdefaultargs") Locked;
+		%feature("autodoc", "	* Sets the locked flag.
+
+	:param F:
+	:type F: bool
+	:rtype: None
+") Locked;
+		void Locked (const Standard_Boolean F);
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "	* Returns the modification flag.
 
@@ -946,6 +966,20 @@ class TopoDS_TShape : public MMgt_TShared {
 	:rtype: None
 ") Free;
 		void Free (const Standard_Boolean F);
+		%feature("compactdefaultargs") Locked;
+		%feature("autodoc", "	* Returns the locked flag.
+
+	:rtype: bool
+") Locked;
+		Standard_Boolean Locked ();
+		%feature("compactdefaultargs") Locked;
+		%feature("autodoc", "	* Sets the locked flag.
+
+	:param F:
+	:type F: bool
+	:rtype: None
+") Locked;
+		void Locked (const Standard_Boolean F);
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "	* Returns the modification flag.
 

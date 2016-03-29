@@ -335,7 +335,7 @@ class Geom2d_Transformation : public MMgt_TShared {
 ") Trsf2d;
 		gp_Trsf2d Trsf2d ();
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the coefficients of the global matrix of tranformation. It is a 2 rows X 3 columns matrix. Raised if Row < 1 or Row > 2 or Col < 1 or Col > 2 Computes the reverse transformation.
+		%feature("autodoc", "	* Returns the coefficients of the global matrix of tranformation. It is a 2 rows X 3 columns matrix. //! Raised if Row < 1 or Row > 2 or Col < 1 or Col > 2 //! Computes the reverse transformation.
 
 	:param Row:
 	:type Row: int
@@ -345,7 +345,7 @@ class Geom2d_Transformation : public MMgt_TShared {
 ") Value;
 		Standard_Real Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("compactdefaultargs") Invert;
-		%feature("autodoc", "	* Computes the inverse of this transformation. and assigns the result to this transformatio Raised if the the transformation is singular. This means that the ScaleFactor is lower or equal to Resolution from package gp.
+		%feature("autodoc", "	* Computes the inverse of this transformation. and assigns the result to this transformatio //! Raised if the the transformation is singular. This means that the ScaleFactor is lower or equal to Resolution from package gp.
 
 	:rtype: None
 ") Invert;
@@ -371,7 +371,7 @@ class Geom2d_Transformation : public MMgt_TShared {
 ") operator*;
 		Handle_Geom2d_Transformation operator * (const Handle_Geom2d_Transformation & Other);
 		%feature("compactdefaultargs") Multiply;
-		%feature("autodoc", "	* Computes the transformation composed with Other and <self> . <self> = <self> * Other. Computes the following composition of transformations if N > 0 <self> * <self> * .......* <self>. if N = 0 Identity if N < 0 <self>.Invert() * .........* <self>.Invert()
+		%feature("autodoc", "	* Computes the transformation composed with Other and <self> . <self> = <self> * Other. //! Computes the following composition of transformations if N > 0 <self> * <self> * .......* <self>. if N = 0 Identity if N < 0 <self>.Invert() * .........* <self>.Invert()
 
 	:param Other:
 	:type Other: Handle_Geom2d_Transformation &
@@ -685,7 +685,7 @@ class Geom2d_Curve : public Geom2d_Geometry {
 ") IsCN;
 		virtual Standard_Boolean IsCN (const Standard_Integer N);
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	* Returns in P the point of parameter U. If the curve is periodic then the returned point is P(U) with U = Ustart + (U - Uend) where Ustart and Uend are the parametric bounds of the curve. Raised only for the 'OffsetCurve' if it is not possible to compute the current point. For example when the first derivative on the basis curve and the offset direction are parallel.
+		%feature("autodoc", "	* Returns in P the point of parameter U. If the curve is periodic then the returned point is P(U) with U = Ustart + (U - Uend) where Ustart and Uend are the parametric bounds of the curve. //! Raised only for the 'OffsetCurve' if it is not possible to compute the current point. For example when the first derivative on the basis curve and the offset direction are parallel.
 
 	:param U:
 	:type U: float
@@ -747,7 +747,7 @@ class Geom2d_Curve : public Geom2d_Geometry {
 ") DN;
 		virtual gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Computes the point of parameter U on <self>. If the curve is periodic then the returned point is P(U) with U = Ustart + (U - Uend) where Ustart and Uend are the parametric bounds of the curve. it is implemented with D0. Raised only for the 'OffsetCurve' if it is not possible to compute the current point. For example when the first derivative on the basis curve and the offset direction are parallel.
+		%feature("autodoc", "	* Computes the point of parameter U on <self>. If the curve is periodic then the returned point is P(U) with U = Ustart + (U - Uend) where Ustart and Uend are the parametric bounds of the curve. //! it is implemented with D0. //! Raised only for the 'OffsetCurve' if it is not possible to compute the current point. For example when the first derivative on the basis curve and the offset direction are parallel.
 
 	:param U:
 	:type U: float
@@ -1321,7 +1321,7 @@ class Handle_Geom2d_Conic : public Handle_Geom2d_Curve {
 class Geom2d_Direction : public Geom2d_Vector {
 	public:
 		%feature("compactdefaultargs") Geom2d_Direction;
-		%feature("autodoc", "	* Creates a unit vector with it 2 cartesian coordinates. Raised if Sqrt( X*X + Y*Y) <= Resolution from gp.
+		%feature("autodoc", "	* Creates a unit vector with it 2 cartesian coordinates. //! Raised if Sqrt( X*X + Y*Y) <= Resolution from gp.
 
 	:param X:
 	:type X: float
@@ -1785,7 +1785,7 @@ class Geom2d_OffsetCurve : public Geom2d_Curve {
 ") BasisCurve;
 		Handle_Geom2d_Curve BasisCurve ();
 		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Continuity of the Offset curve : C0 : only geometric continuity, C1 : continuity of the first derivative all along the Curve, C2 : continuity of the second derivative all along the Curve, C3 : continuity of the third derivative all along the Curve, G1 : tangency continuity all along the Curve, G2 : curvature continuity all along the Curve, CN : the order of continuity is infinite. Warnings : Returns the continuity of the basis curve - 1. The offset curve must have a unique normal direction defined at any point. Value and derivatives Warnings : The exception UndefinedValue or UndefinedDerivative is raised if it is not possible to compute a unique offset direction. If T is the first derivative with not null length and Z the direction normal to the plane of the curve, the relation ||T(U) ^ Z|| != 0 must be satisfied to evaluate the offset curve. No check is done at the creation time and we suppose in this package that the offset curve is well defined.
+		%feature("autodoc", "	* Continuity of the Offset curve : C0 : only geometric continuity, C1 : continuity of the first derivative all along the Curve, C2 : continuity of the second derivative all along the Curve, C3 : continuity of the third derivative all along the Curve, G1 : tangency continuity all along the Curve, G2 : curvature continuity all along the Curve, CN : the order of continuity is infinite. Warnings : Returns the continuity of the basis curve - 1. The offset curve must have a unique normal direction defined at any point. Value and derivatives //! Warnings : The exception UndefinedValue or UndefinedDerivative is raised if it is not possible to compute a unique offset direction. If T is the first derivative with not null length and Z the direction normal to the plane of the curve, the relation ||T(U) ^ Z|| != 0 must be satisfied to evaluate the offset curve. No check is done at the creation time and we suppose in this package that the offset curve is well defined.
 
 	:rtype: GeomAbs_Shape
 ") Continuity;
@@ -1957,7 +1957,7 @@ class Geom2d_OffsetCurve : public Geom2d_Curve {
 ") Transform;
 		void Transform (const gp_Trsf2d & T);
 		%feature("compactdefaultargs") TransformedParameter;
-		%feature("autodoc", "	* Returns the parameter on the transformed curve for the transform of the point of parameter U on <self>.  me->Transformed(T)->Value(me->TransformedParameter(U,T))  is the same point as  me->Value(U).Transformed(T)  This methods calls the basis curve method.
+		%feature("autodoc", "	* Returns the parameter on the transformed curve for the transform of the point of parameter U on <self>. //! me->Transformed(T)->Value(me->TransformedParameter(U,T)) //! is the same point as //! me->Value(U).Transformed(T) //! This methods calls the basis curve method.
 
 	:param U:
 	:type U: float
@@ -1967,7 +1967,7 @@ class Geom2d_OffsetCurve : public Geom2d_Curve {
 ") TransformedParameter;
 		virtual Standard_Real TransformedParameter (const Standard_Real U,const gp_Trsf2d & T);
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "	* Returns a coefficient to compute the parameter on the transformed curve for the transform of the point on <self>.  Transformed(T)->Value(U * ParametricTransformation(T))  is the same point as  Value(U).Transformed(T)  This methods calls the basis curve method.
+		%feature("autodoc", "	* Returns a coefficient to compute the parameter on the transformed curve for the transform of the point on <self>. //! Transformed(T)->Value(U * ParametricTransformation(T)) //! is the same point as //! Value(U).Transformed(T) //! This methods calls the basis curve method.
 
 	:param T:
 	:type T: gp_Trsf2d
@@ -2166,7 +2166,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 ") operator/;
 		Handle_Geom2d_VectorWithMagnitude operator / (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Multiplied;
-		%feature("autodoc", "	* Computes the product of the vector <self> by a scalar. A new vector is returned. -C++: alias operator * Collision with same operator defined for the class Vector!
+		%feature("autodoc", "	* Computes the product of the vector <self> by a scalar. A new vector is returned. //! -C++: alias operator * Collision with same operator defined for the class Vector!
 
 	:param Scalar:
 	:type Scalar: float
@@ -2188,13 +2188,13 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 ") operator*=;
 		void operator *= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Normalize;
-		%feature("autodoc", "	* Normalizes <self>. Raised if the magnitude of the vector is lower or equal to Resolution from package gp.
+		%feature("autodoc", "	* Normalizes <self>. //! Raised if the magnitude of the vector is lower or equal to Resolution from package gp.
 
 	:rtype: None
 ") Normalize;
 		void Normalize ();
 		%feature("compactdefaultargs") Normalized;
-		%feature("autodoc", "	* Returns a copy of <self> Normalized. Raised if the magnitude of the vector is lower or equal to Resolution from package gp.
+		%feature("autodoc", "	* Returns a copy of <self> Normalized. //! Raised if the magnitude of the vector is lower or equal to Resolution from package gp.
 
 	:rtype: Handle_Geom2d_VectorWithMagnitude
 ") Normalized;
@@ -2285,7 +2285,7 @@ class Handle_Geom2d_VectorWithMagnitude : public Handle_Geom2d_Vector {
 class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	public:
 		%feature("compactdefaultargs") Geom2d_BSplineCurve;
-		%feature("autodoc", "	* Creates a non-rational B_spline curve on the  basis <Knots, Multiplicities> of degree <Degree>. The following conditions must be verified. 0 < Degree <= MaxDegree. Knots.Length() == Mults.Length() >= 2 Knots(i) < Knots(i+1) (Knots are increasing) 1 <= Mults(i) <= Degree On a non periodic curve the first and last multiplicities may be Degree+1 (this is even recommanded if you want the curve to start and finish on the first and last pole). On a periodic curve the first and the last multicities must be the same. on non-periodic curves Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2 on periodic curves Poles.Length() == Sum(Mults(i)) except the first or last
+		%feature("autodoc", "	* Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>. The following conditions must be verified. 0 < Degree <= MaxDegree. //! Knots.Length() == Mults.Length() >= 2 //! Knots(i) < Knots(i+1) (Knots are increasing) //! 1 <= Mults(i) <= Degree //! On a non periodic curve the first and last multiplicities may be Degree+1 (this is even recommanded if you want the curve to start and finish on the first and last pole). //! On a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2 //! on periodic curves //! Poles.Length() == Sum(Mults(i)) except the first or last
 
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
@@ -2301,7 +2301,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") Geom2d_BSplineCurve;
 		 Geom2d_BSplineCurve (const TColgp_Array1OfPnt2d & Poles,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Multiplicities,const Standard_Integer Degree,const Standard_Boolean Periodic = Standard_False);
 		%feature("compactdefaultargs") Geom2d_BSplineCurve;
-		%feature("autodoc", "	* Creates a rational B_spline curve on the basis  <Knots, Multiplicities> of degree <Degree>. The following conditions must be verified. 0 < Degree <= MaxDegree. Knots.Length() == Mults.Length() >= 2 Knots(i) < Knots(i+1) (Knots are increasing) 1 <= Mults(i) <= Degree On a non periodic curve the first and last multiplicities may be Degree+1 (this is even recommanded if you want the curve to start and finish on the first and last pole). On a periodic curve the first and the last multicities must be the same. on non-periodic curves Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2 on periodic curves Poles.Length() == Sum(Mults(i)) except the first or last
+		%feature("autodoc", "	* Creates a rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>. The following conditions must be verified. 0 < Degree <= MaxDegree. //! Knots.Length() == Mults.Length() >= 2 //! Knots(i) < Knots(i+1) (Knots are increasing) //! 1 <= Mults(i) <= Degree //! On a non periodic curve the first and last multiplicities may be Degree+1 (this is even recommanded if you want the curve to start and finish on the first and last pole). //! On a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2 //! on periodic curves //! Poles.Length() == Sum(Mults(i)) except the first or last
 
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
@@ -2327,7 +2327,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") IncreaseDegree;
 		void IncreaseDegree (const Standard_Integer Degree);
 		%feature("compactdefaultargs") IncreaseMultiplicity;
-		%feature("autodoc", "	* //!Increases the multiplicity of the knot <Index> to  <M>. If <M> is lower or equal to the current  multiplicity nothing is done. If <M> is higher than  the degree the degree is used. If <Index> is not in [FirstUKnotIndex, LastUKnotIndex]
+		%feature("autodoc", "	* Increases the multiplicity of the knot <Index> to <M>. //! If <M> is lower or equal to the current multiplicity nothing is done. If <M> is higher than the degree the degree is used. If <Index> is not in [FirstUKnotIndex, LastUKnotIndex]
 
 	:param Index:
 	:type Index: int
@@ -2337,7 +2337,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") IncreaseMultiplicity;
 		void IncreaseMultiplicity (const Standard_Integer Index,const Standard_Integer M);
 		%feature("compactdefaultargs") IncreaseMultiplicity;
-		%feature("autodoc", "	* //!Increases the multiplicities of the knots in  [I1,I2] to <M>. For each knot if <M> is lower or equal to the  current multiplicity nothing is done. If <M> is  higher than the degree the degree is used. As a result, the poles and weights tables of this curve are modified. Warning It is forbidden to modify the multiplicity of the first or last knot of a non-periodic curve. Be careful as Geom2d does not protect against this. Exceptions Standard_OutOfRange if either Index, I1 or I2 is outside the bounds of the knots table.
+		%feature("autodoc", "	* Increases the multiplicities of the knots in [I1,I2] to <M>. //! For each knot if <M> is lower or equal to the current multiplicity nothing is done. If <M> is higher than the degree the degree is used. As a result, the poles and weights tables of this curve are modified. Warning It is forbidden to modify the multiplicity of the first or last knot of a non-periodic curve. Be careful as Geom2d does not protect against this. Exceptions Standard_OutOfRange if either Index, I1 or I2 is outside the bounds of the knots table.
 
 	:param I1:
 	:type I1: int
@@ -2361,7 +2361,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") IncrementMultiplicity;
 		void IncrementMultiplicity (const Standard_Integer I1,const Standard_Integer I2,const Standard_Integer M);
 		%feature("compactdefaultargs") InsertKnot;
-		%feature("autodoc", "	* Inserts a knot value in the sequence of knots. If <U> is an existing knot the multiplicity is increased by <M>.  If U is not on the parameter range nothing is done.  If the multiplicity is negative or null nothing is done. The new multiplicity is limited to the degree.  The tolerance criterion for knots equality is the max of Epsilon(U) and ParametricTolerance. Warning - If U is less than the first parameter or greater than the last parameter of this BSpline curve, nothing is done. - If M is negative or null, nothing is done. - The multiplicity of a knot is limited to the degree of this BSpline curve.
+		%feature("autodoc", "	* Inserts a knot value in the sequence of knots. If <U> is an existing knot the multiplicity is increased by <M>. //! If U is not on the parameter range nothing is done. //! If the multiplicity is negative or null nothing is done. The new multiplicity is limited to the degree. //! The tolerance criterion for knots equality is the max of Epsilon(U) and ParametricTolerance. Warning - If U is less than the first parameter or greater than the last parameter of this BSpline curve, nothing is done. - If M is negative or null, nothing is done. - The multiplicity of a knot is limited to the degree of this BSpline curve.
 
 	:param U:
 	:type U: float
@@ -2399,7 +2399,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") RemoveKnot;
 		Standard_Boolean RemoveKnot (const Standard_Integer Index,const Standard_Integer M,const Standard_Real Tolerance);
 		%feature("compactdefaultargs") InsertPoleAfter;
-		%feature("autodoc", "	* The new pole is inserted after the pole of range Index. If the curve was non rational it can become rational. Raised if the B-spline is NonUniform or PiecewiseBezier or if Weight <= 0.0 Raised if Index is not in the range [1, Number of Poles]
+		%feature("autodoc", "	* The new pole is inserted after the pole of range Index. If the curve was non rational it can become rational. //! Raised if the B-spline is NonUniform or PiecewiseBezier or if Weight <= 0.0 Raised if Index is not in the range [1, Number of Poles]
 
 	:param Index:
 	:type Index: int
@@ -2411,7 +2411,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") InsertPoleAfter;
 		void InsertPoleAfter (const Standard_Integer Index,const gp_Pnt2d & P,const Standard_Real Weight = 1.0);
 		%feature("compactdefaultargs") InsertPoleBefore;
-		%feature("autodoc", "	* The new pole is inserted before the pole of range Index. If the curve was non rational it can become rational. Raised if the B-spline is NonUniform or PiecewiseBezier or if Weight <= 0.0 Raised if Index is not in the range [1, Number of Poles]
+		%feature("autodoc", "	* The new pole is inserted before the pole of range Index. If the curve was non rational it can become rational. //! Raised if the B-spline is NonUniform or PiecewiseBezier or if Weight <= 0.0 Raised if Index is not in the range [1, Number of Poles]
 
 	:param Index:
 	:type Index: int
@@ -2423,7 +2423,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") InsertPoleBefore;
 		void InsertPoleBefore (const Standard_Integer Index,const gp_Pnt2d & P,const Standard_Real Weight = 1.0);
 		%feature("compactdefaultargs") RemovePole;
-		%feature("autodoc", "	* Removes the pole of range Index If the curve was rational it can become non rational. Raised if the B-spline is NonUniform or PiecewiseBezier. Raised if the number of poles of the B-spline curve is lower or equal to 2 before removing. Raised if Index is not in the range [1, Number of Poles]
+		%feature("autodoc", "	* Removes the pole of range Index If the curve was rational it can become non rational. //! Raised if the B-spline is NonUniform or PiecewiseBezier. Raised if the number of poles of the B-spline curve is lower or equal to 2 before removing. Raised if Index is not in the range [1, Number of Poles]
 
 	:param Index:
 	:type Index: int
@@ -2493,7 +2493,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") PeriodicNormalization;
 		void PeriodicNormalization (Standard_Real &OutValue);
 		%feature("compactdefaultargs") SetPeriodic;
-		%feature("autodoc", "	* //!Changes this BSpline curve into a periodic curve. To become periodic, the curve must first be closed. Next, the knot sequence must be periodic. For this, FirstUKnotIndex and LastUKnotIndex are used to compute I1 and I2, the indexes in the knots array of the knots corresponding to the first and last parameters of this BSpline curve. The period is therefore Knot(I2) - Knot(I1). Consequently, the knots and poles tables are modified. Exceptions Standard_ConstructionError if this BSpline curve is not closed.
+		%feature("autodoc", "	* Changes this BSpline curve into a periodic curve. To become periodic, the curve must first be closed. Next, the knot sequence must be periodic. For this, FirstUKnotIndex and LastUKnotIndex are used to compute I1 and I2, the indexes in the knots array of the knots corresponding to the first and last parameters of this BSpline curve. The period is therefore Knot(I2) - Knot(I1). Consequently, the knots and poles tables are modified. Exceptions Standard_ConstructionError if this BSpline curve is not closed.
 
 	:rtype: None
 ") SetPeriodic;
@@ -2681,7 +2681,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") LocalValue;
-		%feature("autodoc", "	* Raised if FromK1 = ToK2. Raised if FromK1 and ToK2 are not in the range [FirstUKnotIndex, LastUKnotIndex].
+		%feature("autodoc", "	* Raised if FromK1 = ToK2. //! Raised if FromK1 and ToK2 are not in the range [FirstUKnotIndex, LastUKnotIndex].
 
 	:param U:
 	:type U: float
@@ -2705,7 +2705,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") LocalD0;
 		void LocalD0 (const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2,gp_Pnt2d & P);
 		%feature("compactdefaultargs") LocalD1;
-		%feature("autodoc", "	* Raised if the local continuity of the curve is not C1 between the knot K1 and the knot K2. Raised if FromK1 = ToK2. Raised if FromK1 and ToK2 are not in the range [FirstUKnotIndex, LastUKnotIndex].
+		%feature("autodoc", "	* Raised if the local continuity of the curve is not C1 between the knot K1 and the knot K2. Raised if FromK1 = ToK2. //! Raised if FromK1 and ToK2 are not in the range [FirstUKnotIndex, LastUKnotIndex].
 
 	:param U:
 	:type U: float
@@ -2721,7 +2721,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") LocalD1;
 		void LocalD1 (const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2,gp_Pnt2d & P,gp_Vec2d & V1);
 		%feature("compactdefaultargs") LocalD2;
-		%feature("autodoc", "	* Raised if the local continuity of the curve is not C2 between the knot K1 and the knot K2. Raised if FromK1 = ToK2. Raised if FromK1 and ToK2 are not in the range [FirstUKnotIndex, LastUKnotIndex].
+		%feature("autodoc", "	* Raised if the local continuity of the curve is not C2 between the knot K1 and the knot K2. Raised if FromK1 = ToK2. //! Raised if FromK1 and ToK2 are not in the range [FirstUKnotIndex, LastUKnotIndex].
 
 	:param U:
 	:type U: float
@@ -2739,7 +2739,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") LocalD2;
 		void LocalD2 (const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
 		%feature("compactdefaultargs") LocalD3;
-		%feature("autodoc", "	* Raised if the local continuity of the curve is not C3 between the knot K1 and the knot K2. Raised if FromK1 = ToK2. Raised if FromK1 and ToK2 are not in the range [FirstUKnotIndex, LastUKnotIndex].
+		%feature("autodoc", "	* Raised if the local continuity of the curve is not C3 between the knot K1 and the knot K2. Raised if FromK1 = ToK2. //! Raised if FromK1 and ToK2 are not in the range [FirstUKnotIndex, LastUKnotIndex].
 
 	:param U:
 	:type U: float
@@ -2759,7 +2759,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") LocalD3;
 		void LocalD3 (const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
 		%feature("compactdefaultargs") LocalDN;
-		%feature("autodoc", "	* Raised if the local continuity of the curve is not CN between the knot K1 and the knot K2. Raised if FromK1 = ToK2. Raised if N < 1. Raises if FromK1 and ToK2 are not in the range [FirstUKnotIndex, LastUKnotIndex].
+		%feature("autodoc", "	* Raised if the local continuity of the curve is not CN between the knot K1 and the knot K2. Raised if FromK1 = ToK2. Raised if N < 1. //! Raises if FromK1 and ToK2 are not in the range [FirstUKnotIndex, LastUKnotIndex].
 
 	:param U:
 	:type U: float
@@ -2799,7 +2799,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") Knot;
 		Standard_Real Knot (const Standard_Integer Index);
 		%feature("compactdefaultargs") Knots;
-		%feature("autodoc", "	* returns the knot values of the B-spline curve; Raised if the length of K is not equal to the number of knots.
+		%feature("autodoc", "	* returns the knot values of the B-spline curve; //! Raised if the length of K is not equal to the number of knots.
 
 	:param K:
 	:type K: TColStd_Array1OfReal &
@@ -2807,7 +2807,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") Knots;
 		void Knots (TColStd_Array1OfReal & K);
 		%feature("compactdefaultargs") KnotSequence;
-		%feature("autodoc", "	* Returns the knots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : K = {k1, k1, k1, k2, k3, k3, k4, k4, k4} Raised if the length of K is not equal to NbPoles + Degree + 1
+		%feature("autodoc", "	* Returns the knots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : K = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of K is not equal to NbPoles + Degree + 1
 
 	:param K:
 	:type K: TColStd_Array1OfReal &
@@ -2857,7 +2857,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") Multiplicity;
 		Standard_Integer Multiplicity (const Standard_Integer Index);
 		%feature("compactdefaultargs") Multiplicities;
-		%feature("autodoc", "	* Returns the multiplicity of the knots of the curve. Raised if the length of M is not equal to NbKnots.
+		%feature("autodoc", "	* Returns the multiplicity of the knots of the curve. //! Raised if the length of M is not equal to NbKnots.
 
 	:param M:
 	:type M: TColStd_Array1OfInteger &
@@ -2885,7 +2885,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") Pole;
 		gp_Pnt2d Pole (const Standard_Integer Index);
 		%feature("compactdefaultargs") Poles;
-		%feature("autodoc", "	* Returns the poles of the B-spline curve; Raised if the length of P is not equal to the number of poles.
+		%feature("autodoc", "	* Returns the poles of the B-spline curve; //! Raised if the length of P is not equal to the number of poles.
 
 	:param P:
 	:type P: TColgp_Array1OfPnt2d
@@ -2907,7 +2907,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 ") Weight;
 		Standard_Real Weight (const Standard_Integer Index);
 		%feature("compactdefaultargs") Weights;
-		%feature("autodoc", "	* Returns the weights of the B-spline curve; Raised if the length of W is not equal to NbPoles.
+		%feature("autodoc", "	* Returns the weights of the B-spline curve; //! Raised if the length of W is not equal to NbPoles.
 
 	:param W:
 	:type W: TColStd_Array1OfReal &
@@ -3014,7 +3014,7 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 ") Increase;
 		void Increase (const Standard_Integer Degree);
 		%feature("compactdefaultargs") InsertPoleAfter;
-		%feature("autodoc", "	* Inserts a pole with its weight in the set of poles after the pole of range Index. If the curve was non rational it can become rational if all the weights are not identical. Raised if Index is not in the range [0, NbPoles] Raised if the resulting number of poles is greater than MaxDegree + 1.
+		%feature("autodoc", "	* Inserts a pole with its weight in the set of poles after the pole of range Index. If the curve was non rational it can become rational if all the weights are not identical. Raised if Index is not in the range [0, NbPoles] //! Raised if the resulting number of poles is greater than MaxDegree + 1.
 
 	:param Index:
 	:type Index: int
@@ -3026,7 +3026,7 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 ") InsertPoleAfter;
 		void InsertPoleAfter (const Standard_Integer Index,const gp_Pnt2d & P,const Standard_Real Weight = 1.0);
 		%feature("compactdefaultargs") InsertPoleBefore;
-		%feature("autodoc", "	* Inserts a pole with its weight in the set of poles after the pole of range Index. If the curve was non rational it can become rational if all the weights are not identical. Raised if Index is not in the range [1, NbPoles+1] Raised if the resulting number of poles is greater than MaxDegree + 1.
+		%feature("autodoc", "	* Inserts a pole with its weight in the set of poles after the pole of range Index. If the curve was non rational it can become rational if all the weights are not identical. Raised if Index is not in the range [1, NbPoles+1] //! Raised if the resulting number of poles is greater than MaxDegree + 1.
 
 	:param Index:
 	:type Index: int
@@ -3052,7 +3052,7 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 ") Reverse;
 		void Reverse ();
 		%feature("compactdefaultargs") ReversedParameter;
-		%feature("autodoc", "	* Returns the parameter on the reversed curve for the point of parameter U on <self>.  returns 1-U
+		%feature("autodoc", "	* Returns the parameter on the reversed curve for the point of parameter U on <self>. //! returns 1-U
 
 	:param U:
 	:type U: float
@@ -3226,7 +3226,7 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 ") Pole;
 		gp_Pnt2d Pole (const Standard_Integer Index);
 		%feature("compactdefaultargs") Poles;
-		%feature("autodoc", "	* Returns all the poles of the curve. Raised if the length of P is not equal to the number of poles.
+		%feature("autodoc", "	* Returns all the poles of the curve. //! Raised if the length of P is not equal to the number of poles.
 
 	:param P:
 	:type P: TColgp_Array1OfPnt2d
@@ -3248,7 +3248,7 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 ") Weight;
 		Standard_Real Weight (const Standard_Integer Index);
 		%feature("compactdefaultargs") Weights;
-		%feature("autodoc", "	* Returns all the weights of the curve. Raised if the length of W is not equal to the number of poles.
+		%feature("autodoc", "	* Returns all the weights of the curve. //! Raised if the length of W is not equal to the number of poles.
 
 	:param W:
 	:type W: TColStd_Array1OfReal &
@@ -4312,7 +4312,7 @@ class Geom2d_Parabola : public Geom2d_Conic {
 ") TransformedParameter;
 		Standard_Real TransformedParameter (const Standard_Real U,const gp_Trsf2d & T);
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "	* Returns a coefficient to compute the parameter on the transformed curve for the transform of the point on <self>.  Transformed(T)->Value(U * ParametricTransformation(T))  is the same point as  Value(U).Transformed(T)  This methods returns T.ScaleFactor()
+		%feature("autodoc", "	* Returns a coefficient to compute the parameter on the transformed curve for the transform of the point on <self>. //! Transformed(T)->Value(U * ParametricTransformation(T)) //! is the same point as //! Value(U).Transformed(T) //! This methods returns T.ScaleFactor()
 
 	:param T:
 	:type T: gp_Trsf2d
@@ -4369,7 +4369,7 @@ class Handle_Geom2d_Parabola : public Handle_Geom2d_Conic {
 class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 	public:
 		%feature("compactdefaultargs") Geom2d_TrimmedCurve;
-		%feature("autodoc", "	* Creates a trimmed curve from the basis curve C limited between U1 and U2. . U1 can be greater or lower than U2. . The returned curve is oriented from U1 to U2. . If the basis curve C is periodic there is an ambiguity because two parts are available. In this case by default the trimmed curve has the same orientation as the basis curve (Sense = True). If Sense = False then the orientation of the trimmed curve is opposite to the orientation of the basis curve C. If the curve is closed but not periodic it is not possible to keep the part of the curve including the junction point (except if the junction point is at the beginning or at the end of the trimmed curve) because you could lose the fundamental characteristics of the basis curve which are used for example to compute the derivatives of the trimmed curve. So for a closed curve the rules are the same as for a open curve. Warnings : In this package the entities are not shared. The TrimmedCurve is built with a copy of the curve C. So when C is modified the TrimmedCurve is not modified Warnings : If <C> is periodic, parametrics bounds of the TrimmedCurve, can be different to [<U1>;<U2>}, if <U1> or <U2> are not in the principal period. Include : For more explanation see the scheme given with this class. Raises ConstructionError the C is not periodic and U1 or U2 are out of the bounds of C. Raised if U1 = U2.
+		%feature("autodoc", "	* Creates a trimmed curve from the basis curve C limited between U1 and U2. //! . U1 can be greater or lower than U2. . The returned curve is oriented from U1 to U2. . If the basis curve C is periodic there is an ambiguity because two parts are available. In this case by default the trimmed curve has the same orientation as the basis curve (Sense = True). If Sense = False then the orientation of the trimmed curve is opposite to the orientation of the basis curve C. If the curve is closed but not periodic it is not possible to keep the part of the curve including the junction point (except if the junction point is at the beginning or at the end of the trimmed curve) because you could lose the fundamental characteristics of the basis curve which are used for example to compute the derivatives of the trimmed curve. So for a closed curve the rules are the same as for a open curve. Warnings : In this package the entities are not shared. The TrimmedCurve is built with a copy of the curve C. So when C is modified the TrimmedCurve is not modified Warnings : If <C> is periodic, parametrics bounds of the TrimmedCurve, can be different to [<U1>;<U2>}, if <U1> or <U2> are not in the principal period. Include : For more explanation see the scheme given with this class. Raises ConstructionError the C is not periodic and U1 or U2 are out of the bounds of C. Raised if U1 = U2.
 
 	:param C:
 	:type C: Handle_Geom2d_Curve &
@@ -4389,7 +4389,7 @@ class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 ") Reverse;
 		void Reverse ();
 		%feature("compactdefaultargs") ReversedParameter;
-		%feature("autodoc", "	* Returns the parameter on the reversed curve for the point of parameter U on <self>.  returns UFirst + ULast - U
+		%feature("autodoc", "	* Returns the parameter on the reversed curve for the point of parameter U on <self>. //! returns UFirst + ULast - U
 
 	:param U:
 	:type U: float
@@ -4421,7 +4421,7 @@ class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 ") Continuity;
 		GeomAbs_Shape Continuity ();
 		%feature("compactdefaultargs") IsCN;
-		%feature("autodoc", "	* //!--- Purpose Returns True if the order of continuity of the trimmed curve is N. A trimmed curve is at least 'C0' continuous. Warnings : The continuity of the trimmed curve can be greater than the continuity of the basis curve because you consider only a part of the basis curve. Raised if N < 0.
+		%feature("autodoc", "	* --- Purpose Returns True if the order of continuity of the trimmed curve is N. A trimmed curve is at least 'C0' continuous. Warnings : The continuity of the trimmed curve can be greater than the continuity of the basis curve because you consider only a part of the basis curve. Raised if N < 0.
 
 	:param N:
 	:type N: int
@@ -4541,7 +4541,7 @@ class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 ") Transform;
 		void Transform (const gp_Trsf2d & T);
 		%feature("compactdefaultargs") TransformedParameter;
-		%feature("autodoc", "	* Returns the parameter on the transformed curve for the transform of the point of parameter U on <self>.  me->Transformed(T)->Value(me->TransformedParameter(U,T))  is the same point as  me->Value(U).Transformed(T)  This methods calls the basis curve method.
+		%feature("autodoc", "	* Returns the parameter on the transformed curve for the transform of the point of parameter U on <self>. //! me->Transformed(T)->Value(me->TransformedParameter(U,T)) //! is the same point as //! me->Value(U).Transformed(T) //! This methods calls the basis curve method.
 
 	:param U:
 	:type U: float
@@ -4551,7 +4551,7 @@ class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 ") TransformedParameter;
 		virtual Standard_Real TransformedParameter (const Standard_Real U,const gp_Trsf2d & T);
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "	* Returns a coefficient to compute the parameter on the transformed curve for the transform of the point on <self>.  Transformed(T)->Value(U * ParametricTransformation(T))  is the same point as  Value(U).Transformed(T)  This methods calls the basis curve method.
+		%feature("autodoc", "	* Returns a coefficient to compute the parameter on the transformed curve for the transform of the point on <self>. //! Transformed(T)->Value(U * ParametricTransformation(T)) //! is the same point as //! Value(U).Transformed(T) //! This methods calls the basis curve method.
 
 	:param T:
 	:type T: gp_Trsf2d

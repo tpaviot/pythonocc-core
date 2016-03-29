@@ -216,7 +216,7 @@ class Blend_AppFunction : public math_FunctionSetWithDerivatives {
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals() raises 	OutOfRange from Standard
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -1116,6 +1116,12 @@ class Blend_SequenceOfPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Blend_SequenceOfPoint;
 		 Blend_SequenceOfPoint ();
+		%feature("compactdefaultargs") Blend_SequenceOfPoint;
+		%feature("autodoc", "	:param Other:
+	:type Other: Blend_SequenceOfPoint &
+	:rtype: None
+") Blend_SequenceOfPoint;
+		 Blend_SequenceOfPoint (const Blend_SequenceOfPoint & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2197,7 +2203,7 @@ class Blend_RstRstFunction : public Blend_AppFunction {
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -2521,7 +2527,7 @@ class Blend_SurfRstFunction : public Blend_AppFunction {
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &

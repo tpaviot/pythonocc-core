@@ -923,6 +923,12 @@ class IntAna_ListOfCurve {
 		%feature("autodoc", "	:rtype: None
 ") IntAna_ListOfCurve;
 		 IntAna_ListOfCurve ();
+		%feature("compactdefaultargs") IntAna_ListOfCurve;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntAna_ListOfCurve &
+	:rtype: None
+") IntAna_ListOfCurve;
+		 IntAna_ListOfCurve (const IntAna_ListOfCurve & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: IntAna_ListOfCurve &

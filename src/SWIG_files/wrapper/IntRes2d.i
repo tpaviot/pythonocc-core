@@ -626,6 +626,12 @@ class IntRes2d_SequenceOfIntersectionPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IntRes2d_SequenceOfIntersectionPoint;
 		 IntRes2d_SequenceOfIntersectionPoint ();
+		%feature("compactdefaultargs") IntRes2d_SequenceOfIntersectionPoint;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntRes2d_SequenceOfIntersectionPoint &
+	:rtype: None
+") IntRes2d_SequenceOfIntersectionPoint;
+		 IntRes2d_SequenceOfIntersectionPoint (const IntRes2d_SequenceOfIntersectionPoint & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -758,6 +764,12 @@ class IntRes2d_SequenceOfIntersectionSegment : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IntRes2d_SequenceOfIntersectionSegment;
 		 IntRes2d_SequenceOfIntersectionSegment ();
+		%feature("compactdefaultargs") IntRes2d_SequenceOfIntersectionSegment;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntRes2d_SequenceOfIntersectionSegment &
+	:rtype: None
+") IntRes2d_SequenceOfIntersectionSegment;
+		 IntRes2d_SequenceOfIntersectionSegment (const IntRes2d_SequenceOfIntersectionSegment & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

@@ -117,7 +117,7 @@ class BRep_Builder : public TopoDS_Builder {
 ") UpdateFace;
 		void UpdateFace (const TopoDS_Face & F,const Handle_Geom_Surface & S,const TopLoc_Location & L,const Standard_Real Tol);
 		%feature("compactdefaultargs") UpdateFace;
-		%feature("autodoc", "	* Changes a face triangulation.  A null Triangulation removes the triangulation.
+		%feature("autodoc", "	* Changes a face triangulation. //! A null Triangulation removes the triangulation.
 
 	:param F:
 	:type F: TopoDS_Face &
@@ -453,7 +453,7 @@ class BRep_Builder : public TopoDS_Builder {
 ") UpdateEdge;
 		void UpdateEdge (const TopoDS_Edge & E,const Handle_Poly_Polygon2D & P,const Handle_Geom_Surface & S,const TopLoc_Location & T);
 		%feature("compactdefaultargs") UpdateEdge;
-		%feature("autodoc", "	* Changes Edge polygons on a face.  A null Polygon removes the 2d Polygon.
+		%feature("autodoc", "	* Changes Edge polygons on a face. //! A null Polygon removes the 2d Polygon.
 
 	:param E:
 	:type E: TopoDS_Edge &
@@ -467,7 +467,7 @@ class BRep_Builder : public TopoDS_Builder {
 ") UpdateEdge;
 		void UpdateEdge (const TopoDS_Edge & E,const Handle_Poly_Polygon2D & P1,const Handle_Poly_Polygon2D & P2,const TopoDS_Face & S);
 		%feature("compactdefaultargs") UpdateEdge;
-		%feature("autodoc", "	* Changes Edge polygons on a face.  A null Polygon removes the 2d Polygon.
+		%feature("autodoc", "	* Changes Edge polygons on a face. //! A null Polygon removes the 2d Polygon.
 
 	:param E:
 	:type E: TopoDS_Edge &
@@ -1179,6 +1179,12 @@ class BRep_ListOfCurveRepresentation {
 		%feature("autodoc", "	:rtype: None
 ") BRep_ListOfCurveRepresentation;
 		 BRep_ListOfCurveRepresentation ();
+		%feature("compactdefaultargs") BRep_ListOfCurveRepresentation;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRep_ListOfCurveRepresentation &
+	:rtype: None
+") BRep_ListOfCurveRepresentation;
+		 BRep_ListOfCurveRepresentation (const BRep_ListOfCurveRepresentation & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: BRep_ListOfCurveRepresentation &
@@ -1303,6 +1309,12 @@ class BRep_ListOfPointRepresentation {
 		%feature("autodoc", "	:rtype: None
 ") BRep_ListOfPointRepresentation;
 		 BRep_ListOfPointRepresentation ();
+		%feature("compactdefaultargs") BRep_ListOfPointRepresentation;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRep_ListOfPointRepresentation &
+	:rtype: None
+") BRep_ListOfPointRepresentation;
+		 BRep_ListOfPointRepresentation (const BRep_ListOfPointRepresentation & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: BRep_ListOfPointRepresentation &
@@ -1881,7 +1893,7 @@ class Handle_BRep_TVertex : public Handle_TopoDS_TVertex {
 class BRep_Tool {
 	public:
 		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	* Returns <True> if S if flaged Closed, if S is a Solid,Shell or Compound returns <True> is S has no free boundaries.
+		%feature("autodoc", "	* If S is Solid or Shell, returns True if it has no free boundaries (edges). If S is Wire, returns True if it has no free ends (vertices). (Internal and External sub-shepes are ignored in this check.) For other shape types returns S.Closed().
 
 	:param S:
 	:type S: TopoDS_Shape &

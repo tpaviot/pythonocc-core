@@ -43,10 +43,19 @@ void Display3d::Init(long window_handle)
   printf("Aspect_DisplayConnection created.\n");
   if (GetGraphicDriver().IsNull())
   {
-  GetGraphicDriver() = Graphic3d::InitGraphicDriver (aDisplayConnection);
+  GetGraphicDriver() = new OpenGl_GraphicDriver (aDisplayConnection);
   }
   printf("Graphic_Driver created.\n");
-  // Create Graphic Device and Window
+  // Create V3dViewer and V3d_View
+  myV3dViewer = new V3d_Viewer(GetGraphicDriver(), (short* const)"viewer");
+  printf("V3d_Viewer created.\n");
+  // Create AISInteractiveViewer
+  myAISContext = new AIS_InteractiveContext(myV3dViewer);
+  printf("AIS_InteractiveContext created.\n");
+  // Create view
+  myV3dView = myV3dViewer->CreateView();	
+  printf("V3d_View created\n");
+  // Create Graphic Window
   #ifdef WNT
       myWindow = new WNT_Window((Aspect_Handle) window_handle);
       printf("WNT window created.\n");
@@ -54,19 +63,12 @@ void Display3d::Init(long window_handle)
       myWindow = new Cocoa_Window((NSView *) window_handle);
       printf("Cocoa window created.\n");
   #else
-      myWindow =new Xw_Window(aDisplayConnection, (Window) window_handle);
+      myWindow = new Xw_Window(myAISContext->CurrentViewer()->Driver()->GetDisplayConnection(),
+                               (Aspect_Handle) window_handle);
       printf("Xw_Window created.\n");
   #endif
-  // Create V3dViewer and V3d_View
-  myV3dViewer = new V3d_Viewer(GetGraphicDriver(), (short* const)"viewer");
-  printf("V3d_Viewer created.\n");
-  myV3dView = myV3dViewer->CreateView();	
-  printf("V3d_View created\n");
   myV3dView->SetWindow(myWindow);
   if (!myWindow->IsMapped()) myWindow->Map();
-	// Create AISInteractiveViewer
-	myAISContext = new AIS_InteractiveContext(myV3dViewer);
-	printf("AIS_InteractiveContext created.\n");
   printf("Display3d class successfully initialized.\n");
 	printf(" ########################################\n");
 }

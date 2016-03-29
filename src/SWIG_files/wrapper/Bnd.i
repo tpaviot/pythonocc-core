@@ -920,7 +920,7 @@ class Bnd_BoundSortBox {
 ") Initialize;
 		void Initialize (const Bnd_Box & CompleteBox,const Standard_Integer nbComponents);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds the bounding box theBox at position boxIndex in the array of boxes to be sorted by this comparison algorithm. This function is used only in conjunction with the third syntax described in the synopsis of Initialize. Exceptions: - Standard_OutOfRange if boxIndex is not in the range [ 1,nbComponents ] where nbComponents is the maximum number of bounding boxes declared for this comparison algorithm at initialization. - Standard_MultiplyDefined if a box already exists at position boxIndex in the array of boxes to be sorted by this comparison algorithm.
+		%feature("autodoc", "	* Adds the bounding box theBox at position boxIndex in the array of boxes to be sorted by this comparison algorithm. This function is used only in conjunction with the third syntax described in the synopsis of Initialize. //! Exceptions: //! - Standard_OutOfRange if boxIndex is not in the range [ 1,nbComponents ] where nbComponents is the maximum number of bounding boxes declared for this comparison algorithm at initialization. //! - Standard_MultiplyDefined if a box already exists at position boxIndex in the array of boxes to be sorted by this comparison algorithm.
 
 	:param theBox:
 	:type theBox: Bnd_Box &
@@ -1102,7 +1102,7 @@ class Bnd_Box {
 ") SetGap;
 		void SetGap (const Standard_Real Tol);
 		%feature("compactdefaultargs") Enlarge;
-		%feature("autodoc", "	* Enlarges the box with a tolerance value. (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>)) //!	This means that the minimum values of its X, Y and Z intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.
+		%feature("autodoc", "	* Enlarges the box with a tolerance value. (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>)) This means that the minimum values of its X, Y and Z intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.
 
 	:param Tol:
 	:type Tol: float
@@ -1110,23 +1110,35 @@ class Bnd_Box {
 ") Enlarge;
 		void Enlarge (const Standard_Real Tol);
 		%feature("compactdefaultargs") Get;
-		%feature("autodoc", "	* Returns the bounds of this bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). if IsVoid()
+		%feature("autodoc", "	* Returns the bounds of this bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()
 
-	:param aXmin:
-	:type aXmin: float &
-	:param aYmin:
-	:type aYmin: float &
-	:param aZmin:
-	:type aZmin: float &
-	:param aXmax:
-	:type aXmax: float &
-	:param aYmax:
-	:type aYmax: float &
-	:param aZmax:
-	:type aZmax: float &
+	:param theXmin:
+	:type theXmin: float &
+	:param theYmin:
+	:type theYmin: float &
+	:param theZmin:
+	:type theZmin: float &
+	:param theXmax:
+	:type theXmax: float &
+	:param theYmax:
+	:type theYmax: float &
+	:param theZmax:
+	:type theZmax: float &
 	:rtype: None
 ") Get;
 		void Get (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") CornerMin;
+		%feature("autodoc", "	* Returns the lower corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()
+
+	:rtype: gp_Pnt
+") CornerMin;
+		gp_Pnt CornerMin ();
+		%feature("compactdefaultargs") CornerMax;
+		%feature("autodoc", "	* Returns the upper corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()
+
+	:rtype: gp_Pnt
+") CornerMax;
+		gp_Pnt CornerMax ();
 		%feature("compactdefaultargs") OpenXmin;
 		%feature("autodoc", "	* The Box will be infinitely long in the Xmin direction.
 
@@ -1340,7 +1352,7 @@ class Bnd_Box {
 ") IsOut;
 		Standard_Boolean IsOut (const gp_Trsf & T1,const Bnd_Box & Other,const gp_Trsf & T2);
 		%feature("compactdefaultargs") IsOut;
-		%feature("autodoc", "	* Returns False if the flat band lying between two parallel 	 lines represented by their reference points <P1>, <P2> and direction <D> intersects the box.
+		%feature("autodoc", "	* Returns False if the flat band lying between two parallel lines represented by their reference points <P1>, <P2> and direction <D> intersects the box.
 
 	:param P1:
 	:type P1: gp_Pnt
@@ -1952,6 +1964,12 @@ class Bnd_SeqOfBox : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Bnd_SeqOfBox;
 		 Bnd_SeqOfBox ();
+		%feature("compactdefaultargs") Bnd_SeqOfBox;
+		%feature("autodoc", "	:param Other:
+	:type Other: Bnd_SeqOfBox &
+	:rtype: None
+") Bnd_SeqOfBox;
+		 Bnd_SeqOfBox (const Bnd_SeqOfBox & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2170,7 +2188,7 @@ class Bnd_Sphere {
 ") V;
 		Standard_Integer V ();
 		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "	* Returns validity status, indicating that this //!		sphere corresponds to a real entity
+		%feature("autodoc", "	* Returns validity status, indicating that this sphere corresponds to a real entity
 
 	:rtype: bool
 ") IsValid;
@@ -2194,7 +2212,7 @@ class Bnd_Sphere {
 ") Radius;
 		Standard_Real Radius ();
 		%feature("compactdefaultargs") Distances;
-		%feature("autodoc", "	* Calculate and return minimal and maximal distance to sphere. //!		NOTE: This function is tightly optimized; any modifications //!		may affect performance!
+		%feature("autodoc", "	* Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!
 
 	:param theXYZ:
 	:type theXYZ: gp_XYZ
@@ -2206,7 +2224,7 @@ class Bnd_Sphere {
 ") Distances;
 		void Distances (const gp_XYZ & theXYZ,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") SquareDistances;
-		%feature("autodoc", "	* Calculate and return minimal and maximal distance to sphere. //!		NOTE: This function is tightly optimized; any modifications //!		may affect performance!
+		%feature("autodoc", "	* Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!
 
 	:param theXYZ:
 	:type theXYZ: gp_XYZ
@@ -2218,7 +2236,7 @@ class Bnd_Sphere {
 ") SquareDistances;
 		void SquareDistances (const gp_XYZ & theXYZ,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "	* Projects a point on entity. //!		 Returns true if success
+		%feature("autodoc", "	* Projects a point on entity. Returns true if success
 
 	:param theNode:
 	:type theNode: gp_XYZ

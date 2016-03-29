@@ -1981,6 +1981,12 @@ class XCAFDoc_GraphNodeSequence : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") XCAFDoc_GraphNodeSequence;
 		 XCAFDoc_GraphNodeSequence ();
+		%feature("compactdefaultargs") XCAFDoc_GraphNodeSequence;
+		%feature("autodoc", "	:param Other:
+	:type Other: XCAFDoc_GraphNodeSequence &
+	:rtype: None
+") XCAFDoc_GraphNodeSequence;
+		 XCAFDoc_GraphNodeSequence (const XCAFDoc_GraphNodeSequence & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -3076,7 +3082,7 @@ class XCAFDoc_ShapeTool : public TDF_Attribute {
 ") IsTopLevel;
 		Standard_Boolean IsTopLevel (const TDF_Label & L);
 		%feature("compactdefaultargs") IsFree;
-		%feature("autodoc", "	* Returns True if the label is not used by any assembly, i.e. contains sublabels which are assembly components This is relevant only if IsShape() is True 	 	 (There is no Father TreeNode on this <L>)
+		%feature("autodoc", "	* Returns True if the label is not used by any assembly, i.e. contains sublabels which are assembly components This is relevant only if IsShape() is True (There is no Father TreeNode on this <L>)
 
 	:param L:
 	:type L: TDF_Label &
@@ -3450,14 +3456,18 @@ class XCAFDoc_ShapeTool : public TDF_Attribute {
 ") BaseLabel;
 		TDF_Label BaseLabel ();
 		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	:param deep: default value is Standard_False
+		%feature("autodoc", "	:param theDumpLog:
+	:type theDumpLog: Standard_OStream &
+	:param deep: default value is Standard_False
 	:type deep: bool
 	:rtype: None
 ") Dump;
-		void Dump (const Standard_Boolean deep = Standard_False);
+		void Dump (Standard_OStream & theDumpLog,const Standard_Boolean deep = Standard_False);
 		%feature("compactdefaultargs") DumpShape;
-		%feature("autodoc", "	* Print in cout type of shape found on <L> label and the entry of <L>, with <level> tabs before. If <deep>, print also TShape and Location addresses
+		%feature("autodoc", "	* Print to ostream <theDumpLog> type of shape found on <L> label and the entry of <L>, with <level> tabs before. If <deep>, print also TShape and Location addresses
 
+	:param theDumpLog:
+	:type theDumpLog: Standard_OStream &
 	:param L:
 	:type L: TDF_Label &
 	:param level: default value is 0
@@ -3466,7 +3476,7 @@ class XCAFDoc_ShapeTool : public TDF_Attribute {
 	:type deep: bool
 	:rtype: void
 ") DumpShape;
-		static void DumpShape (const TDF_Label & L,const Standard_Integer level = 0,const Standard_Boolean deep = Standard_False);
+		static void DumpShape (Standard_OStream & theDumpLog,const TDF_Label & L,const Standard_Integer level = 0,const Standard_Boolean deep = Standard_False);
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "	:rtype: Standard_GUID
 ") ID;
@@ -3556,7 +3566,7 @@ class XCAFDoc_ShapeTool : public TDF_Attribute {
 ") GetAllComponentSHUO;
 		static Standard_Boolean GetAllComponentSHUO (const TDF_Label & CompLabel,TDF_AttributeSequence & SHUOAttrs);
 		%feature("compactdefaultargs") GetSHUOUpperUsage;
-		%feature("autodoc", "	* Returns the sequence of labels of SHUO attributes, which is upper_usage for this next_usage SHUO attribute   (that indicated by label) NOTE: returns upper_usages only on one level (not recurse) NOTE: do not clear the sequence before filling
+		%feature("autodoc", "	* Returns the sequence of labels of SHUO attributes, which is upper_usage for this next_usage SHUO attribute (that indicated by label) NOTE: returns upper_usages only on one level (not recurse) NOTE: do not clear the sequence before filling
 
 	:param NextUsageL:
 	:type NextUsageL: TDF_Label &
@@ -3566,7 +3576,7 @@ class XCAFDoc_ShapeTool : public TDF_Attribute {
 ") GetSHUOUpperUsage;
 		static Standard_Boolean GetSHUOUpperUsage (const TDF_Label & NextUsageL,TDF_LabelSequence & Labels);
 		%feature("compactdefaultargs") GetSHUONextUsage;
-		%feature("autodoc", "	* Returns the sequence of labels of SHUO attributes, which is next_usage for this upper_usage SHUO attribute   (that indicated by label) NOTE: returns next_usages only on one level (not recurse) NOTE: do not clear the sequence before filling
+		%feature("autodoc", "	* Returns the sequence of labels of SHUO attributes, which is next_usage for this upper_usage SHUO attribute (that indicated by label) NOTE: returns next_usages only on one level (not recurse) NOTE: do not clear the sequence before filling
 
 	:param UpperUsageL:
 	:type UpperUsageL: TDF_Label &
@@ -3576,7 +3586,7 @@ class XCAFDoc_ShapeTool : public TDF_Attribute {
 ") GetSHUONextUsage;
 		static Standard_Boolean GetSHUONextUsage (const TDF_Label & UpperUsageL,TDF_LabelSequence & Labels);
 		%feature("compactdefaultargs") RemoveSHUO;
-		%feature("autodoc", "	* Remove SHUO from component sublabel,  remove all dependencies on other SHUO. Returns False if cannot remove SHUO dependencies. NOTE: remove any styles that associated with this SHUO.
+		%feature("autodoc", "	* Remove SHUO from component sublabel, remove all dependencies on other SHUO. Returns False if cannot remove SHUO dependencies. NOTE: remove any styles that associated with this SHUO.
 
 	:param SHUOLabel:
 	:type SHUOLabel: TDF_Label &

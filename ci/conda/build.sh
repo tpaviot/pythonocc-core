@@ -20,10 +20,11 @@ cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
  -DPYTHON_EXECUTABLE:FILEPATH=$PYTHON \
  -DPYTHON_INCLUDE_DIR:PATH=$PREFIX/include/python$MY_PY_VER \
  -DPYTHON_LIBRARY:FILEPATH=$PREFIX/lib/${PY_LIB} \
+ -DPYTHONOCC_WRAP_VTK:BOOL=True \
  .
 
 # Build step
-make -j 4
+make -j 4 VERBOSE=1
 
 # Install step
 make install

@@ -418,6 +418,34 @@ class BndLib_Add2dCurve {
 	:rtype: void
 ") Add;
 		static void Add (const Adaptor2d_Curve2d & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol,Bnd_Box2d & B);
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Adds to the bounding box B the curve C B is then enlarged by the tolerance value Tol. Note: depending on the type of curve, one of the following representations of the curve C is used to include it in the bounding box B: - an exact representation if C is built from a line, a circle or a conic curve, - the poles of the curve if C is built from a Bezier curve or a BSpline curve, - if not, the points of an approximation of the curve C.
+
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param Tol:
+	:type Tol: float
+	:param Box:
+	:type Box: Bnd_Box2d &
+	:rtype: void
+") Add;
+		static void Add (const Handle_Geom2d_Curve & C,const Standard_Real Tol,Bnd_Box2d & Box);
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Adds to the bounding box B the part of curve C B is then enlarged by the tolerance value Tol. U1, U2 - the parametric range to comute the bounding box; Note: depending on the type of curve, one of the following representations of the curve C is used to include it in the bounding box B: - an exact representation if C is built from a line, a circle or a conic curve, - the poles of the curve if C is built from a Bezier curve or a BSpline curve, - if not, the points of an approximation of the curve C.
+
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param U1:
+	:type U1: float
+	:param U2:
+	:type U2: float
+	:param Tol:
+	:type Tol: float
+	:param B:
+	:type B: Bnd_Box2d &
+	:rtype: void
+") Add;
+		static void Add (const Handle_Geom2d_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol,Bnd_Box2d & B);
 };
 
 

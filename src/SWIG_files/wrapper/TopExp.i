@@ -61,7 +61,7 @@ typedef TopoDS_Iterator * TopExp_Stack;
 class TopExp {
 	public:
 		%feature("compactdefaultargs") MapShapes;
-		%feature("autodoc", "	* Tool to explore a topological data structure. Stores in the map <M> all the sub-shapes of <S> of type <T>. Warning: The map is not cleared at first.
+		%feature("autodoc", "	* Tool to explore a topological data structure. Stores in the map <M> all the sub-shapes of <S> of type <T>. //! Warning: The map is not cleared at first.
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -143,7 +143,7 @@ class TopExp {
 ") Vertices;
 		static void Vertices (const TopoDS_Wire & W,TopoDS_Vertex & Vfirst,TopoDS_Vertex & Vlast);
 		%feature("compactdefaultargs") CommonVertex;
-		%feature("autodoc", "	* Finds the vertex <V> common to the two edges <E1,E2>, returns True if this vertex exists. Warning: <V> has sense only if the value <True> is returned
+		%feature("autodoc", "	* Finds the vertex <V> common to the two edges <E1,E2>, returns True if this vertex exists. //! Warning: <V> has sense only if the value <True> is returned
 
 	:param E1:
 	:type E1: TopoDS_Edge &
@@ -167,7 +167,7 @@ class TopExp_Explorer {
 ") TopExp_Explorer;
 		 TopExp_Explorer ();
 		%feature("compactdefaultargs") TopExp_Explorer;
-		%feature("autodoc", "	* Creates an Explorer on the Shape <S>.  <ToFind> is the type of shapes to search. TopAbs_VERTEX, TopAbs_EDGE, ...  <ToAvoid> is the type of shape to skip in the exploration. If <ToAvoid> is equal or less complex than <ToFind> or if <ToAVoid> is SHAPE it has no effect on the exploration.
+		%feature("autodoc", "	* Creates an Explorer on the Shape <S>. //! <ToFind> is the type of shapes to search. TopAbs_VERTEX, TopAbs_EDGE, ... //! <ToAvoid> is the type of shape to skip in the exploration. If <ToAvoid> is equal or less complex than <ToFind> or if <ToAVoid> is SHAPE it has no effect on the exploration.
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -230,147 +230,6 @@ class TopExp_Explorer {
 		%feature("autodoc", "	:rtype: None
 ") Destroy;
 		void Destroy ();
-};
-
-
-%nodefaultctor TopExp_StackIteratorOfStackOfIterator;
-class TopExp_StackIteratorOfStackOfIterator {
-	public:
-		%feature("compactdefaultargs") TopExp_StackIteratorOfStackOfIterator;
-		%feature("autodoc", "	:rtype: None
-") TopExp_StackIteratorOfStackOfIterator;
-		 TopExp_StackIteratorOfStackOfIterator ();
-		%feature("compactdefaultargs") TopExp_StackIteratorOfStackOfIterator;
-		%feature("autodoc", "	:param S:
-	:type S: TopExp_StackOfIterator &
-	:rtype: None
-") TopExp_StackIteratorOfStackOfIterator;
-		 TopExp_StackIteratorOfStackOfIterator (const TopExp_StackOfIterator & S);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param S:
-	:type S: TopExp_StackOfIterator &
-	:rtype: None
-") Initialize;
-		void Initialize (const TopExp_StackOfIterator & S);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: TopoDS_Iterator
-") Value;
-		const TopoDS_Iterator  Value ();
-};
-
-
-%nodefaultctor TopExp_StackNodeOfStackOfIterator;
-class TopExp_StackNodeOfStackOfIterator : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TopExp_StackNodeOfStackOfIterator;
-		%feature("autodoc", "	:param I:
-	:type I: TopoDS_Iterator &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") TopExp_StackNodeOfStackOfIterator;
-		 TopExp_StackNodeOfStackOfIterator (const TopoDS_Iterator & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: TopoDS_Iterator
-") Value;
-		TopoDS_Iterator  Value ();
-};
-
-
-%extend TopExp_StackNodeOfStackOfIterator {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TopExp_StackNodeOfStackOfIterator(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TopExp_StackNodeOfStackOfIterator::Handle_TopExp_StackNodeOfStackOfIterator %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TopExp_StackNodeOfStackOfIterator;
-class Handle_TopExp_StackNodeOfStackOfIterator : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TopExp_StackNodeOfStackOfIterator();
-        Handle_TopExp_StackNodeOfStackOfIterator(const Handle_TopExp_StackNodeOfStackOfIterator &aHandle);
-        Handle_TopExp_StackNodeOfStackOfIterator(const TopExp_StackNodeOfStackOfIterator *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TopExp_StackNodeOfStackOfIterator DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TopExp_StackNodeOfStackOfIterator {
-    TopExp_StackNodeOfStackOfIterator* GetObject() {
-    return (TopExp_StackNodeOfStackOfIterator*)$self->Access();
-    }
-};
-
-%nodefaultctor TopExp_StackOfIterator;
-class TopExp_StackOfIterator {
-	public:
-		%feature("compactdefaultargs") TopExp_StackOfIterator;
-		%feature("autodoc", "	:rtype: None
-") TopExp_StackOfIterator;
-		 TopExp_StackOfIterator ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TopExp_StackOfIterator &
-	:rtype: TopExp_StackOfIterator
-") Assign;
-		const TopExp_StackOfIterator & Assign (const TopExp_StackOfIterator & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TopExp_StackOfIterator &
-	:rtype: TopExp_StackOfIterator
-") operator=;
-		const TopExp_StackOfIterator & operator = (const TopExp_StackOfIterator & Other);
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Depth;
-		%feature("autodoc", "	:rtype: int
-") Depth;
-		Standard_Integer Depth ();
-		%feature("compactdefaultargs") Top;
-		%feature("autodoc", "	:rtype: TopoDS_Iterator
-") Top;
-		const TopoDS_Iterator  Top ();
-		%feature("compactdefaultargs") Push;
-		%feature("autodoc", "	:param I:
-	:type I: TopoDS_Iterator &
-	:rtype: None
-") Push;
-		void Push (const TopoDS_Iterator & I);
-		%feature("compactdefaultargs") Pop;
-		%feature("autodoc", "	:rtype: None
-") Pop;
-		void Pop ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") ChangeTop;
-		%feature("autodoc", "	:rtype: TopoDS_Iterator
-") ChangeTop;
-		TopoDS_Iterator  ChangeTop ();
 };
 
 

@@ -72,7 +72,7 @@ class IGESControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 ") Recognize;
 		virtual Standard_Boolean Recognize (const Handle_Transfer_Finder & start);
 		%feature("compactdefaultargs") Transfer;
-		%feature("autodoc", "	* Transfers Shape to IGES Entities ModeTrans may be : 0 -> groups of Faces or 1 -> BRep
+		%feature("autodoc", "	* Transfers Shape to IGES Entities //! ModeTrans may be : 0 -> groups of Faces or 1 -> BRep
 
 	:param start:
 	:type start: Handle_Transfer_Finder &
@@ -196,7 +196,7 @@ class IGESControl_Controller : public XSControl_Controller {
 ") ActorRead;
 		Handle_Transfer_ActorOfTransientProcess ActorRead (const Handle_Interface_InterfaceModel & model);
 		%feature("compactdefaultargs") TransferWriteShape;
-		%feature("autodoc", "	* Takes one Shape and transfers it to the InterfaceModel (already created by NewModel for instance) <modetrans> is to be interpreted by each kind of XstepAdaptor Returns a status : 0 OK 1 No result 2 Fail -1 bad modeshape  -2 bad model (requires an IGESModel) modeshape : 0 groupe of face (version < 5.1)  1 BREP-version 5.1 of IGES
+		%feature("autodoc", "	* Takes one Shape and transfers it to the InterfaceModel (already created by NewModel for instance) <modetrans> is to be interpreted by each kind of XstepAdaptor Returns a status : 0 OK 1 No result 2 Fail -1 bad modeshape -2 bad model (requires an IGESModel) modeshape : 0 groupe of face (version < 5.1) 1 BREP-version 5.1 of IGES
 
 	:param shape:
 	:type shape: TopoDS_Shape &

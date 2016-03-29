@@ -710,9 +710,11 @@ class BRepTools_Modifier {
 
 	:param M:
 	:type M: Handle_BRepTools_Modification &
+	:param aProgress: default value is NULL
+	:type aProgress: Handle_Message_ProgressIndicator &
 	:rtype: None
 ") Perform;
-		void Perform (const Handle_BRepTools_Modification & M);
+		void Perform (const Handle_BRepTools_Modification & M,const Handle_Message_ProgressIndicator & aProgress = NULL);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns Standard_True if the modification has been computed successfully.
 
@@ -738,7 +740,7 @@ class BRepTools_Quilt {
 ") BRepTools_Quilt;
 		 BRepTools_Quilt ();
 		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	* Binds <Enew> to be the new edge instead of <Eold>.  The faces of the added shape containing <Eold> will be copied to substitute <Eold> by <Enew>.  The vertices of <Eold> will be bound to the vertices of <Enew> with the same orientation.  If <Eold> and <Enew> have different orientations the curves are considered to be opposite and the pcurves of <Eold> will be copied and reversed in the new faces.  <Eold> must belong to the next added shape, <Enew> must belong to a Shape added before.
+		%feature("autodoc", "	* Binds <Enew> to be the new edge instead of <Eold>. //! The faces of the added shape containing <Eold> will be copied to substitute <Eold> by <Enew>. //! The vertices of <Eold> will be bound to the vertices of <Enew> with the same orientation. //! If <Eold> and <Enew> have different orientations the curves are considered to be opposite and the pcurves of <Eold> will be copied and reversed in the new faces. //! <Eold> must belong to the next added shape, <Enew> must belong to a Shape added before.
 
 	:param Eold:
 	:type Eold: TopoDS_Edge &
@@ -748,7 +750,7 @@ class BRepTools_Quilt {
 ") Bind;
 		void Bind (const TopoDS_Edge & Eold,const TopoDS_Edge & Enew);
 		%feature("compactdefaultargs") Bind;
-		%feature("autodoc", "	* Binds <VNew> to be a new vertex instead of <Vold>.  The faces of the added shape containing <Vold> will be copied to substitute <Vold> by <Vnew>.
+		%feature("autodoc", "	* Binds <VNew> to be a new vertex instead of <Vold>. //! The faces of the added shape containing <Vold> will be copied to substitute <Vold> by <Vnew>.
 
 	:param Vold:
 	:type Vold: TopoDS_Vertex &
@@ -856,7 +858,7 @@ class BRepTools_ReShape : public MMgt_TShared {
 ") Status;
 		virtual Standard_Integer Status (const TopoDS_Shape & shape,TopoDS_Shape & newsh,const Standard_Boolean last = Standard_False);
 		%feature("compactdefaultargs") Apply;
-		%feature("autodoc", "	* Applies the substitutions requests to a shape  <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and futher exploring are done. ACTUALLY, NOT IMPLEMENTED BELOW TopAbs_FACE  <buildmode> says how to do on a SOLID,SHELL ... if one of its sub-shapes has been changed: 0: at least one Replace or Remove -> COMPOUND, else as such 1: at least one Remove (Replace are ignored) -> COMPOUND 2: Replace and Remove are both ignored If Replace/Remove are ignored or absent, the result as same type as the starting shape
+		%feature("autodoc", "	* Applies the substitutions requests to a shape //! <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and futher exploring are done. ACTUALLY, NOT IMPLEMENTED BELOW TopAbs_FACE //! <buildmode> says how to do on a SOLID,SHELL ... if one of its sub-shapes has been changed: 0: at least one Replace or Remove -> COMPOUND, else as such 1: at least one Remove (Replace are ignored) -> COMPOUND 2: Replace and Remove are both ignored If Replace/Remove are ignored or absent, the result as same type as the starting shape
 
 	:param shape:
 	:type shape: TopoDS_Shape &
@@ -868,7 +870,7 @@ class BRepTools_ReShape : public MMgt_TShared {
 ") Apply;
 		virtual TopoDS_Shape Apply (const TopoDS_Shape & shape,const TopAbs_ShapeEnum until,const Standard_Integer buildmode);
 		%feature("compactdefaultargs") Apply;
-		%feature("autodoc", "	* Applies the substitutions requests to a shape.  <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and futher exploring are done.  NOTE: each subshape can be replaced by shape of the same type or by shape containing only shapes of that type (for example, TopoDS_Edge can be replaced by TopoDS_Edge, TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges). If incompatible shape type is encountered, it is ignored and flag FAIL1 is set in Status.
+		%feature("autodoc", "	* Applies the substitutions requests to a shape. //! <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and futher exploring are done. //! NOTE: each subshape can be replaced by shape of the same type or by shape containing only shapes of that type (for example, TopoDS_Edge can be replaced by TopoDS_Edge, TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges). If incompatible shape type is encountered, it is ignored and flag FAIL1 is set in Status.
 
 	:param shape:
 	:type shape: TopoDS_Shape &
@@ -1143,7 +1145,7 @@ class BRepTools_Substitution {
 ") Clear;
 		void Clear ();
 		%feature("compactdefaultargs") Substitute;
-		%feature("autodoc", "	* <Oldshape> will be replaced by <NewShapes>.  <NewShapes> can be empty , in this case <OldShape> will disparate from its ancestors.  if an item of <NewShapes> is oriented FORWARD. it will be oriented as <OldShape> in its ancestors. else it will be reversed.
+		%feature("autodoc", "	* <Oldshape> will be replaced by <NewShapes>. //! <NewShapes> can be empty , in this case <OldShape> will disparate from its ancestors. //! if an item of <NewShapes> is oriented FORWARD. it will be oriented as <OldShape> in its ancestors. else it will be reversed.
 
 	:param OldShape:
 	:type OldShape: TopoDS_Shape &
@@ -1153,7 +1155,7 @@ class BRepTools_Substitution {
 ") Substitute;
 		void Substitute (const TopoDS_Shape & OldShape,const TopTools_ListOfShape & NewShapes);
 		%feature("compactdefaultargs") Build;
-		%feature("autodoc", "	* Build NewShape from <S> if its subshapes has modified.  The methods <IsCopied> and <Copy> allows you to keep the resul of <Build>
+		%feature("autodoc", "	* Build NewShape from <S> if its subshapes has modified. //! The methods <IsCopied> and <Copy> allows you to keep the resul of <Build>
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -1355,7 +1357,7 @@ class BRepTools_GTrsfModification : public BRepTools_Modification {
 ") NewParameter;
 		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>.  <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
+		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 
 	:param E:
 	:type E: TopoDS_Edge &
@@ -1496,7 +1498,7 @@ class BRepTools_NurbsConvertModification : public BRepTools_Modification {
 ") NewParameter;
 		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>.  <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
+		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 
 	:param E:
 	:type E: TopoDS_Edge &
@@ -1645,7 +1647,7 @@ class BRepTools_TrsfModification : public BRepTools_Modification {
 ") NewParameter;
 		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>.  <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
+		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 
 	:param E:
 	:type E: TopoDS_Edge &
