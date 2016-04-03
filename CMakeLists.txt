@@ -19,10 +19,10 @@ project(PYTHONOCC)
 
 # set pythonOCC version
 set(PYTHONOCC_VERSION_MAJOR 0)
-set(PYTHONOCC_VERSION_MINOR 17)
-set(PYTHONOCC_VERSION_PATCH)
+set(PYTHONOCC_VERSION_MINOR 16)
+set(PYTHONOCC_VERSION_PATCH 4)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-set(PYTHONOCC_VERSION_DEVEL -dev)
+set(PYTHONOCC_VERSION_DEVEL)
 
 cmake_minimum_required(VERSION 2.6)
 
