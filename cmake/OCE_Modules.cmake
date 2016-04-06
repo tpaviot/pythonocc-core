@@ -265,3 +265,11 @@ LIST(APPEND OCE_TOOLKIT_OCAF
 # TKXDEIGES
         IGESCAFControl
         )
+
+LIST(APPEND OCE_TOOLKIT_VTK
+# TKIVtk
+        IVtk
+        IVtkOCC
+        IVtkVTK
+        IVtkTools
+        )
