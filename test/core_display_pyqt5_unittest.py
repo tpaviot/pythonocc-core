@@ -20,12 +20,12 @@
 from __future__ import print_function
 import sys
 
-from OCC.Display.backend import have_pyqt5
+from OCC.Display.backend import load_pyqt5
 from OCC.Display.SimpleGui import init_display
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 # check for pyqt5
-if not have_pyqt5():
+if not load_pyqt5():
     print("pyqt5 required to run this test")
     sys.exit()
 

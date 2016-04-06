@@ -63,13 +63,13 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         self.setAutoFillBackground(False)
 
         # Qt backend bookkeeping
-        from OCC.Display.backend import have_pyside, have_pyqt4, have_pyqt5, \
-            have_backend
+        from OCC.Display.backend import get_loaded_backend, loaded_backend, load_pyqt4, load_pyqt5, load_pyside
 
-        self._have_pyside = have_pyside()
-        self._have_pyqt4 = have_pyqt4()
-        self._have_pyqt5 = have_pyqt5()
-        self._have_backend = have_backend()
+        self._have_pyside = load_pyside()
+        self._have_pyqt4 = load_pyqt4()
+        self._have_pyqt5 = load_pyqt5()
+        self._have_backend = loaded_backend()
+        self._qt_backend = get_loaded_backend()
 
     def GetHandle(self):
         ''' returns an the identifier of the GUI widget.
