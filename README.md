@@ -13,20 +13,21 @@ pythonocc is a python library whose purpose is to provide 3D modeling
 features. It is intended to developers who aim at developing
 CAD/PDM/PLM applications.
 
-how do __oce__ and __pythonocc__ relate?
-----------------------------------------
+Latest release : [pythonocc-core 0.16.4 (april 2016)](https://github.com/tpaviot/pythonocc-core/releases/tag/0.16.4)
 
-The basis of pythonocc is python wrapper for the [oce C++ library / CAD kernel]
-(https://github.com/tpaviot/oce), aka pythonocc-core.
-pythonocc-core version number correspond to oce library releases its wrapping.
- 
-For example; the current pythonocc-core release, 0.16.x, requires [OCE
- 0.16.x](https://github.com/tpaviot/oce/releases) release. Here, the __Major__ 
- version name of either OCE or pythonocc-core release is __0__, the __Minor__ 
- version is __16__ and the __Patch__ version is __x__. pythonocc-core can be 
- built with any OCE version that has a corresponding __Major__ and __Minor__ version 
- number. That is pythonocc-core 0.16.0 can be built with OCE 0.16.1 and visa 
- versa.   
+How to quicky download/install binaries ?
+-----------------------------------------
+
+pythonocc provides precompiled [conda packages](https://anaconda.org/DLR-SC/pythonocc-core). 
+This will get you up & running in minutes whether you run win32/win64/linux64/osx64:
+
+```bash
+conda install -c https://conda.anaconda.org/dlr-sc pythonocc-core
+```
+
+How to compile ?
+----------------
+You can of course build pythonocc-core by your own. Read the [INSTALL.md](https://github.com/tpaviot/pythonocc-core/blob/master/INSTALL.md) instructions.
 
 Online resources
 ----------------
@@ -47,30 +48,21 @@ We use the following online resources:
   * twitter
        https://twitter.com/pythonocc
 
-How to create a local copy of the repository?
----------------------------------------------
+how do __oce__ and __pythonocc__ relate?
+----------------------------------------
 
-    git clone git://github.com/tpaviot/pythonocc-core.git
+The basis of pythonocc is python wrapper for the [oce C++ library / CAD kernel]
+(https://github.com/tpaviot/oce), aka pythonocc-core.
+pythonocc-core version number correspond to oce library releases its wrapping.
+ 
+For example; the current pythonocc-core release, 0.16.x, requires [OCE
+ 0.16.x](https://github.com/tpaviot/oce/releases) release. Here, the __Major__ 
+ version name of either OCE or pythonocc-core release is __0__, the __Minor__ 
+ version is __16__ and the __Patch__ version is __x__. pythonocc-core can be 
+ built with any OCE version that has a corresponding __Major__ and __Minor__ version 
+ number. That is pythonocc-core 0.16.0 can be built with OCE 0.16.1 and visa 
+ versa.   
 
-How to stay up to date with latest developements?
--------------------------------------------------
-
-    cd pythonocc-core
-    git pull
-
-How to install ?
-----------------
-
-pythonocc provides [conda packages](https://anaconda.org/DLR-SC/pythonocc-core). 
-this will get you up & running in minutes:
-
-conda install -c https://conda.anaconda.org/dlr-sc pythonocc-core
-
-How to compile ?
-----------------
-
-Read INSTALL.md file for instructions on compiling for both Windows, Linux and
-OSX.
 
 License
 -------

@@ -1,4 +1,17 @@
 =============================
+Version 0.16.4 - April 2016
+
+This release requires oce-0.16.0 or oce-0.16.1
+
+* New memeory management system : previous pythonocc released
+suffered from memory issues (leaks). The release introduces a
+much better way to deal with the OCE handles
+
+* wx and pyqt5 fixes
+
+* minor fixes to the webgl renderers
+
+=============================
 Version 0.16.3 - January 2016
 
 This release requires oce-0.16.0 or oce-0.16.1
