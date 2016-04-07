@@ -44,7 +44,12 @@ class Display3d
 public:
 	Standard_EXPORT Display3d();
 	Standard_EXPORT virtual ~Display3d();
-	Standard_EXPORT void Init(long window_handle);
+	//Standard_EXPORT void Init(long window_handle);
+	Standard_EXPORT void Init(long window_handle,
+                              bool ffpEnabled=1,
+                              bool buffersNoSwapEnabled=0,
+                              bool glslWarningsEnabled=0);
+
 	Standard_EXPORT Handle_V3d_View& GetView() {return myV3dView;};
 	Standard_EXPORT Handle_V3d_Viewer& GetViewer() {return myV3dViewer;};
 	Standard_EXPORT Handle_AIS_InteractiveContext GetContext() {return myAISContext;};
