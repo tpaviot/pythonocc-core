@@ -22,13 +22,13 @@ logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 
-def have_pyqt5():
+def load_pyqt5():
     """ returns True is PyQt5 found, else False
     """
     global HAVE_PYQT5, QtCore, QtGui, QtWidgets, QtOpenGL
 
     # backend already loaded, dont load another one
-    if have_backend():
+    if loaded_backend():
         return False
 
     try:
@@ -39,13 +39,13 @@ def have_pyqt5():
     return HAVE_PYQT5
 
 
-def have_pyqt4():
+def load_pyqt4():
     """ returns True is PyQt4 found, else False
     """
     global HAVE_PYQT4, QtCore, QtGui, QtWidgets, QtOpenGL
 
     # backend already loaded, dont load another one
-    if have_backend():
+    if loaded_backend():
         return False
 
     try:
@@ -57,13 +57,13 @@ def have_pyqt4():
     return HAVE_PYQT4
 
 
-def have_pyside():
+def load_pyside():
     """ returns True is PySide found, else False
     """
     global HAVE_PYSIDE, QtCore, QtGui, QtWidgets, QtOpenGL
 
     # backend already loaded, dont load another one
-    if have_backend():
+    if loaded_backend():
         return False
 
     try:
@@ -75,12 +75,12 @@ def have_pyside():
     return HAVE_PYSIDE
 
 
-def have_wx():
+def load_wx():
     """ returns True is wxPython found, else False
     """
 
     # backend already loaded, dont load another one
-    if have_backend():
+    if loaded_backend():
         return False
 
     global HAVE_WX
@@ -92,7 +92,7 @@ def have_wx():
     return HAVE_WX
 
 
-def have_backend():
+def loaded_backend():
     return HAVE_BACKEND
 
 
@@ -159,7 +159,7 @@ def get_backend(backend_str=None):
             raise ValueError(msg)
 
     if backend_str == PYQT5 or backend_str is None:
-        if have_pyqt5():
+        if load_pyqt5():
             HAVE_BACKEND = True
             BACKEND_MODULE = 'qt-pyqt5'
             log.info("backend loaded: {0}".format(BACKEND_MODULE))
@@ -172,7 +172,7 @@ def get_backend(backend_str=None):
             pass
 
     if backend_str == PYQT4 or (backend_str is None and not HAVE_BACKEND):
-        if have_pyqt4():
+        if load_pyqt4():
             HAVE_BACKEND = True
             BACKEND_MODULE = 'qt-pyqt4'
             log.info("backend loaded: {0}".format(BACKEND_MODULE))
@@ -186,7 +186,7 @@ def get_backend(backend_str=None):
             pass
 
     if backend_str == PYSIDE or (backend_str is None and not HAVE_BACKEND):
-        if have_pyside():
+        if load_pyside():
             HAVE_BACKEND = True
             BACKEND_MODULE = 'qt-pyside'
             log.info("backend loaded: {0}".format(BACKEND_MODULE))
@@ -199,7 +199,7 @@ def get_backend(backend_str=None):
             pass
 
     if backend_str == WX or (backend_str is None and not HAVE_BACKEND):
-        if have_wx():
+        if load_wx():
             HAVE_BACKEND = True
             BACKEND_MODULE = 'wx'
             log.info("backend loaded: {0}".format(BACKEND_MODULE))
