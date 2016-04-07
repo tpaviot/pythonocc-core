@@ -118,9 +118,33 @@ class qtViewer3d(qtBaseViewer):
         self._selection = None
         self._drawtext = True
 
-    def InitDriver(self):
+    def InitDriver(self,
+                   create_default_lights=True,
+                   ffpEnabled=True,
+                   buffersNoSwapEnabled=False,
+                   glslWarningsEnabled=False):
+
+        """
+
+        Parameters
+        ----------
+
+        create_default_lights : enable default lights in scen
+        ffpEnabled : toggle fixed function pipeline
+            this is a conservative setting, ffpEnabled=False, will enable modern OpenGL / a shader pipeline
+
+        buffersNoSwapEnabled :
+            allows GUI frameworks, like Qt to invoke swapping the OpenGL buffer
+            this is required for QML
+
+        glslWarningsEnabled:
+            toggles printing of GLSL warnings, useful for working with GLSL shaders
+        """
         self._display = OCCViewer.Viewer3d(self.GetHandle())
-        self._display.Create()
+        self._display.Create(ffpEnabled=ffpEnabled,
+                             buffersNoSwapEnabled=buffersNoSwapEnabled,
+                             glslWarningsEnabled=glslWarningsEnabled,
+                             create_default_lights=create_default_lights)
         # background gradient
         self._display.set_bg_gradient_color(206, 215, 222, 128, 128, 128)
         # background gradient
