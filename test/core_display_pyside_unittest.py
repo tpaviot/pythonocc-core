@@ -20,12 +20,12 @@
 from __future__ import print_function
 import sys
 
-from OCC.Display.backend import have_pyside
+from OCC.Display.backend import load_pyside
 from OCC.Display.SimpleGui import init_display
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 # check for pyside
-if not have_pyside():
+if not load_pyside():
     print("pyside required to run this test")
     sys.exit()
 
