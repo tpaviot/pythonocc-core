@@ -46,6 +46,7 @@ suite5 = core_webgl_unittest.suite()
 suite6 = core_topology_unittest.suite()
 
 tests.append(suite5)
+tests.append(suite6)
 # Add test cases
 suite.addTests(tests)
 
