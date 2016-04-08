@@ -86,9 +86,9 @@ class Display3d {
 	~Display3d();
 	%feature("autodoc", "1");
 	void Init(const long handle,
-             bool ffpEnabled=1,
-             bool buffersNoSwapEnabled=0,
-             bool glslWarningsEnabled=0);
+             bool ffpEnabled=true,
+             bool buffersNoSwapEnabled=false,
+             bool glslWarningsEnabled=false);
 	%feature("autodoc", "1");
 	Handle_V3d_View& GetView();
 	%feature("autodoc", "1");
