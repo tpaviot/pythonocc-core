@@ -46,10 +46,19 @@ void Display3d::Init(long window_handle,
   printf("Aspect_DisplayConnection created.\n");
   if (GetGraphicDriver().IsNull())
   {
-    GetGraphicDriver() = new OpenGl_GraphicDriver (Handle(Aspect_DisplayConnection)());
+  GetGraphicDriver() = new OpenGl_GraphicDriver (aDisplayConnection);
   }
   printf("Graphic_Driver created.\n");
-  // Create Graphic Device and Window
+  // Create V3dViewer and V3d_View
+  myV3dViewer = new V3d_Viewer(GetGraphicDriver(), (short* const)"viewer");
+  printf("V3d_Viewer created.\n");
+  // Create AISInteractiveViewer
+  myAISContext = new AIS_InteractiveContext(myV3dViewer);
+  printf("AIS_InteractiveContext created.\n");
+  // Create view
+  myV3dView = myV3dViewer->CreateView();
+  printf("V3d_View created\n");
+  // Create Graphic Window
   #ifdef WNT
       myWindow = new WNT_Window((Aspect_Handle) window_handle);
       printf("WNT window created.\n");
@@ -57,21 +66,25 @@ void Display3d::Init(long window_handle,
       myWindow = new Cocoa_Window((NSView *) window_handle);
       printf("Cocoa window created.\n");
   #else
-      myWindow =new Xw_Window(aDisplayConnection, (Window) window_handle);
+      myWindow = new Xw_Window(myAISContext->CurrentViewer()->Driver()->GetDisplayConnection(),
+                               (Aspect_Handle) window_handle);
       printf("Xw_Window created.\n");
   #endif
 
-  // Create V3dViewer and V3d_View
+  // set OpenGL variables
   myV3dViewer = new V3d_Viewer(GetGraphicDriver(), (short* const)"viewer");
   Handle(OpenGl_GraphicDriver) aDriver = Handle(OpenGl_GraphicDriver)::DownCast (myV3dViewer->Driver());
+
   // Enables FFP (fixed-function pipeline), do not use built-in GLSL programs
   // (ON by default on desktop OpenGL and OFF on OpenGL ES)
   aDriver->ChangeOptions().ffpEnable = ffpEnabled;
+
   // Specify that driver should not swap back/front buffers at the end of frame
   // Useful when OCCT Viewer is integrated into existing OpenGL rendering pipeline as part
   // thus swapping part is performed outside ( eg, let Qt handle this )
   // Standard_False by default.
   aDriver->ChangeOptions().buffersNoSwap = buffersNoSwapEnabled;
+
   // Print GLSL program compilation/linkage warnings, if any
   aDriver->ChangeOptions().glslWarnings = glslWarningsEnabled;
 
