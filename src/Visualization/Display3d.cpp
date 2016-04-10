@@ -100,6 +100,29 @@ void Display3d::Init(long window_handle,
 	printf(" ########################################\n");
 }
 
+//void Display3d::ChangeRenderingParams( // Specifies rendering mode
+//                            // - Graphic3d_RM_RASTERIZATION: enables OpenGL rasterization mode;
+//                            // - Graphic3d_RM_RAYTRACING: enables GPU ray-tracing mode.
+//                            int RenderingMethod,
+//                            // Maximum ray-tracing depth.
+//                            int RaytracingDepth,
+//                            // Enables/disables shadows rendering.
+//                            bool IsShadowEnabled,
+//                            // Enables/disables specular reflections.
+//                            bool IsReflectionEnabled,
+//                            // Enables/disables adaptive anti-aliasing.
+//                            bool IsAntialiasingEnabled,
+//                            // Enables/disables light propagation through transparent media.
+//                            bool IsTransparentShadowEnabled)
+//{
+//  myV3dView->ChangeRenderingParams().Method = RenderingMethod
+//  myV3dView->ChangeRenderingParams().RaytracingDepth = RaytracingDepth
+//  myV3dView->ChangeRenderingParams().IsShadowEnabled = IsShadowEnabled
+//  myV3dView->ChangeRenderingParams().IsReflectionEnabled = IsReflectionEnabled
+//  myV3dView->ChangeRenderingParams().IsAntialiasingEnabled = IsAntialiasingEnabled
+//  myV3dView->ChangeRenderingParams().IsTransparentShadowEnabled = IsTransparentShadowEnabled
+//}
+
 void Display3d::Test()
 {
       BRepPrimAPI_MakeBox S(100,50,40);
