@@ -30,6 +30,11 @@ can compile/use it :
 
 **Important**: the OCE version has to match the pythonocc-core version, which is currently **0.16**
 
+Create a local copy of the repository
+-------------------------------------
+
+    git clone git://github.com/tpaviot/pythonocc-core.git
+
 pythonocc-core compilation
 --------------------------
 
@@ -67,21 +72,12 @@ You may require admin privileges to install
 
     sudo make install
 
-install with conda
-------------------
-pythonocc-core can be installed using conda on win32/win64/linux64/osx64.
-
-```bash
-conda install -c https://conda.anaconda.org/dlr-sc pythonocc-core
-```
-
 test
 ----
 In order to check that everything is ok, run the pythonocc unittest suite:
 
     cd ../test
     python run_tests.py
-
 
 You can also run the examples avalaible in the pythonocc-core/examples
 directory.
