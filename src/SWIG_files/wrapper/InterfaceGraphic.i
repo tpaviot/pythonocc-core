@@ -67,20 +67,8 @@ typedef char Tbool;
 /* end typedefs declaration */
 
 /* public enums */
-enum TelPrimitivesArrayType {
-	TelUnknownArrayType = 0,
-	TelPointsArrayType = 1,
-	TelPolylinesArrayType = 2,
-	TelSegmentsArrayType = 3,
-	TelPolygonsArrayType = 4,
-	TelTrianglesArrayType = 5,
-	TelQuadranglesArrayType = 6,
-	TelTriangleStripsArrayType = 7,
-	TelQuadrangleStripsArrayType = 8,
-	TelTriangleFansArrayType = 9,
-};
-
 enum TelCullMode {
+	TelCullUndefined = - 1,
 	TelCullNone = 0,
 	TelCullFront = 1,
 	TelCullBack = 2,

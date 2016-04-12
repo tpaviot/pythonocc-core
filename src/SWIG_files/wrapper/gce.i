@@ -734,7 +734,7 @@ class gce_MakeCone : public gce_Root {
 class gce_MakeCylinder : public gce_Root {
 	public:
 		%feature("compactdefaultargs") gce_MakeCylinder;
-		%feature("autodoc", "	* //!<A2> is the local cartesian coordinate system of <self>. The status is 'NegativeRadius' if R < 0.0
+		%feature("autodoc", "	* <A2> is the local cartesian coordinate system of <self>. The status is 'NegativeRadius' if R < 0.0
 
 	:param A2:
 	:type A2: gp_Ax2
@@ -814,7 +814,7 @@ class gce_MakeCylinder : public gce_Root {
 class gce_MakeDir : public gce_Root {
 	public:
 		%feature("compactdefaultargs") gce_MakeDir;
-		%feature("autodoc", "	* Normalizes the vector V and creates a direction.  Status is 'NullVector' if V.Magnitude() <= Resolution.
+		%feature("autodoc", "	* Normalizes the vector V and creates a direction. Status is 'NullVector' if V.Magnitude() <= Resolution.
 
 	:param V:
 	:type V: gp_Vec
@@ -822,7 +822,7 @@ class gce_MakeDir : public gce_Root {
 ") gce_MakeDir;
 		 gce_MakeDir (const gp_Vec & V);
 		%feature("compactdefaultargs") gce_MakeDir;
-		%feature("autodoc", "	* Creates a direction from a triplet of coordinates.  Status is 'NullVector' if Coord.Modulus() <=  Resolution from gp.
+		%feature("autodoc", "	* Creates a direction from a triplet of coordinates. Status is 'NullVector' if Coord.Modulus() <= Resolution from gp.
 
 	:param Coord:
 	:type Coord: gp_XYZ
@@ -830,7 +830,7 @@ class gce_MakeDir : public gce_Root {
 ") gce_MakeDir;
 		 gce_MakeDir (const gp_XYZ & Coord);
 		%feature("compactdefaultargs") gce_MakeDir;
-		%feature("autodoc", "	* Creates a direction with its 3 cartesian coordinates.  Status is 'NullVector' if Sqrt(Xv*Xv + Yv*Yv + Zv*Zv)  <= Resolution
+		%feature("autodoc", "	* Creates a direction with its 3 cartesian coordinates. Status is 'NullVector' if Sqrt(Xv*Xv + Yv*Yv + Zv*Zv) <= Resolution
 
 	:param Xv:
 	:type Xv: float
@@ -872,7 +872,7 @@ class gce_MakeDir : public gce_Root {
 class gce_MakeDir2d : public gce_Root {
 	public:
 		%feature("compactdefaultargs") gce_MakeDir2d;
-		%feature("autodoc", "	* Normalizes the vector V and creates a direction.  Status is 'NullVector' if V.Magnitude() <= Resolution.
+		%feature("autodoc", "	* Normalizes the vector V and creates a direction. Status is 'NullVector' if V.Magnitude() <= Resolution.
 
 	:param V:
 	:type V: gp_Vec2d
@@ -880,7 +880,7 @@ class gce_MakeDir2d : public gce_Root {
 ") gce_MakeDir2d;
 		 gce_MakeDir2d (const gp_Vec2d & V);
 		%feature("compactdefaultargs") gce_MakeDir2d;
-		%feature("autodoc", "	* Creates a direction from a triplet of coordinates.  Status is 'NullVector' if Coord.Modulus() <=  Resolution from gp.
+		%feature("autodoc", "	* Creates a direction from a triplet of coordinates. Status is 'NullVector' if Coord.Modulus() <= Resolution from gp.
 
 	:param Coord:
 	:type Coord: gp_XY
@@ -888,7 +888,7 @@ class gce_MakeDir2d : public gce_Root {
 ") gce_MakeDir2d;
 		 gce_MakeDir2d (const gp_XY & Coord);
 		%feature("compactdefaultargs") gce_MakeDir2d;
-		%feature("autodoc", "	* Creates a direction with its 3 cartesian coordinates.  Status is 'NullVector' if Sqrt(Xv*Xv + Yv*Yv )  <= Resolution
+		%feature("autodoc", "	* Creates a direction with its 3 cartesian coordinates. Status is 'NullVector' if Sqrt(Xv*Xv + Yv*Yv ) <= Resolution
 
 	:param Xv:
 	:type Xv: float
@@ -928,7 +928,7 @@ class gce_MakeDir2d : public gce_Root {
 class gce_MakeElips : public gce_Root {
 	public:
 		%feature("compactdefaultargs") gce_MakeElips;
-		%feature("autodoc", "	* //!The major radius of the ellipse is on the 'XAxis' and the minor radius is on the 'YAxis' of the ellipse. The 'XAxis' is defined with the 'XDirection' of A2 and the 'YAxis' is defined with the 'YDirection' of A2. Warnings : It is not forbidden to create an ellipse with MajorRadius = MinorRadius.
+		%feature("autodoc", "	* The major radius of the ellipse is on the 'XAxis' and the minor radius is on the 'YAxis' of the ellipse. The 'XAxis' is defined with the 'XDirection' of A2 and the 'YAxis' is defined with the 'YDirection' of A2. Warnings : It is not forbidden to create an ellipse with MajorRadius = MinorRadius.
 
 	:param A2:
 	:type A2: gp_Ax2
@@ -1042,7 +1042,7 @@ class gce_MakeHypr : public gce_Root {
 ") gce_MakeHypr;
 		 gce_MakeHypr (const gp_Ax2 & A2,const Standard_Real MajorRadius,const Standard_Real MinorRadius);
 		%feature("compactdefaultargs") gce_MakeHypr;
-		%feature("autodoc", "	* Constructs a hyperbola - centered on the point Center, where: - the plane of the hyperbola is defined by Center, S1 and S2, - its major axis is defined by Center and S1, - its major radius is the distance between Center and S1, and - its minor radius is the distance between S2 and the major axis. //!	Warning If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NegativeRadius if MajorRadius is less than 0.0; - gce_InvertRadius if: - the major radius (computed with Center, S1) is less than the minor radius (computed with Center, S1 and S2), or - MajorRadius is less than MinorRadius; or - gce_ColinearPoints if S1, S2 and Center are collinear.
+		%feature("autodoc", "	* Constructs a hyperbola - centered on the point Center, where: - the plane of the hyperbola is defined by Center, S1 and S2, - its major axis is defined by Center and S1, - its major radius is the distance between Center and S1, and - its minor radius is the distance between S2 and the major axis. Warning If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NegativeRadius if MajorRadius is less than 0.0; - gce_InvertRadius if: - the major radius (computed with Center, S1) is less than the minor radius (computed with Center, S1 and S2), or - MajorRadius is less than MinorRadius; or - gce_ColinearPoints if S1, S2 and Center are collinear.
 
 	:param S1:
 	:type S1: gp_Pnt
@@ -1100,7 +1100,7 @@ class gce_MakeHypr2d : public gce_Root {
 ") gce_MakeHypr2d;
 		 gce_MakeHypr2d (const gp_Ax2d & MajorAxis,const Standard_Real MajorRadius,const Standard_Real MinorRadius,const Standard_Boolean Sense);
 		%feature("compactdefaultargs") gce_MakeHypr2d;
-		%feature("autodoc", "	* //!Creates a Hypr2d centered on the origin of the coordinate system A, with major and minor radii MajorRadius and MinorRadius, where its major axis is the 'X Axis' of A (A is the local coordinate system of the hyperbola).
+		%feature("autodoc", "	* Creates a Hypr2d centered on the origin of the coordinate system A, with major and minor radii MajorRadius and MinorRadius, where its major axis is the 'X Axis' of A (A is the local coordinate system of the hyperbola).
 
 	:param A:
 	:type A: gp_Ax22d
@@ -1270,7 +1270,7 @@ class gce_MakeLin2d : public gce_Root {
 class gce_MakeParab : public gce_Root {
 	public:
 		%feature("compactdefaultargs") gce_MakeParab;
-		%feature("autodoc", "	* //!--- Purpose ; Creates a parabola with its local coordinate system 'A2' and it's focal length 'Focal'. The XDirection of A2 defines the axis of symmetry of the parabola. The YDirection of A2 is parallel to the directrix of the parabola. The Location point of A2 is the vertex of the parabola The status is 'NullFocusLength' if Focal < 0.0
+		%feature("autodoc", "	* --- Purpose ; Creates a parabola with its local coordinate system 'A2' and it's focal length 'Focal'. The XDirection of A2 defines the axis of symmetry of the parabola. The YDirection of A2 is parallel to the directrix of the parabola. The Location point of A2 is the vertex of the parabola The status is 'NullFocusLength' if Focal < 0.0
 
 	:param A2:
 	:type A2: gp_Ax2
@@ -1354,7 +1354,7 @@ class gce_MakeParab2d : public gce_Root {
 ") gce_MakeParab2d;
 		 gce_MakeParab2d (const gp_Ax22d & D,const gp_Pnt2d & F);
 		%feature("compactdefaultargs") gce_MakeParab2d;
-		%feature("autodoc", "	* Make an Parab2d with S1 as the Focal point and Center as the apex of the parabola //!	Warning The MakeParab2d class does not prevent the construction of a parabola with a null focal distance. If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NullFocusLength if Focal is less than 0.0, or - gce_NullAxis if S1 and Center are coincident.
+		%feature("autodoc", "	* Make an Parab2d with S1 as the Focal point and Center as the apex of the parabola Warning The MakeParab2d class does not prevent the construction of a parabola with a null focal distance. If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NullFocusLength if Focal is less than 0.0, or - gce_NullAxis if S1 and Center are coincident.
 
 	:param S1:
 	:type S1: gp_Pnt2d
@@ -1404,7 +1404,7 @@ class gce_MakePln : public gce_Root {
 ") gce_MakePln;
 		 gce_MakePln (const gp_Pnt & P,const gp_Dir & V);
 		%feature("compactdefaultargs") gce_MakePln;
-		%feature("autodoc", "	* Creates a plane from its cartesian equation : A * X + B * Y + C * Z + D = 0.0 the status is 'BadEquation' if Sqrt (A*A + B*B + C*C) <= Resolution from gp.
+		%feature("autodoc", "	* Creates a plane from its cartesian equation : A * X + B * Y + C * Z + D = 0.0 //! the status is 'BadEquation' if Sqrt (A*A + B*B + C*C) <= Resolution from gp.
 
 	:param A:
 	:type A: float

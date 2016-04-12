@@ -81,7 +81,7 @@ enum FilletSurf_StatusType {
 class FilletSurf_Builder {
 	public:
 		%feature("compactdefaultargs") FilletSurf_Builder;
-		%feature("autodoc", "	* initialize of the informations necessary for the computation of the fillet on the Shape S from a list of edges E and a radius R. Ta is the angular tolerance //!		 Tapp3d is the 3d approximation tolerance //!		 Tapp2d is the 2d approximation tolerance
+		%feature("autodoc", "	* initialize of the informations necessary for the computation of the fillet on the Shape S from a list of edges E and a radius R. //! Ta is the angular tolerance Tapp3d is the 3d approximation tolerance Tapp2d is the 2d approximation tolerance
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -99,7 +99,7 @@ class FilletSurf_Builder {
 ") FilletSurf_Builder;
 		 FilletSurf_Builder (const TopoDS_Shape & S,const TopTools_ListOfShape & E,const Standard_Real R,const Standard_Real Ta = 1.0e-2,const Standard_Real Tapp3d = 1.0e-4,const Standard_Real Tapp2d = 1.0e-5);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* //!---Purpose computation of the fillet (list of NUBS)
+		%feature("autodoc", "	* ---Purpose computation of the fillet (list of NUBS)
 
 	:rtype: None
 ") Perform;
@@ -143,7 +143,7 @@ class FilletSurf_Builder {
 ") TolApp3d;
 		Standard_Real TolApp3d (const Standard_Integer Index);
 		%feature("compactdefaultargs") SupportFace1;
-		%feature("autodoc", "	* //!gives the first support face relative to SurfaceFillet(Index);
+		%feature("autodoc", "	* gives the first support face relative to SurfaceFillet(Index);
 
 	:param Index:
 	:type Index: int
@@ -151,7 +151,7 @@ class FilletSurf_Builder {
 ") SupportFace1;
 		const TopoDS_Face  SupportFace1 (const Standard_Integer Index);
 		%feature("compactdefaultargs") SupportFace2;
-		%feature("autodoc", "	* //!gives the second support face relative to SurfaceFillet(Index);
+		%feature("autodoc", "	* gives the second support face relative to SurfaceFillet(Index);
 
 	:param Index:
 	:type Index: int
@@ -175,7 +175,7 @@ class FilletSurf_Builder {
 ") CurveOnFace2;
 		Handle_Geom_Curve CurveOnFace2 (const Standard_Integer Index);
 		%feature("compactdefaultargs") PCurveOnFace1;
-		%feature("autodoc", "	* //!gives the PCurve associated to CurvOnSup1(Index) on the support face
+		%feature("autodoc", "	* gives the PCurve associated to CurvOnSup1(Index) on the support face
 
 	:param Index:
 	:type Index: int
@@ -207,7 +207,7 @@ class FilletSurf_Builder {
 ") PCurve2OnFillet;
 		Handle_Geom2d_Curve PCurve2OnFillet (const Standard_Integer Index);
 		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	* //!gives the parameter of the fillet on the first edge.
+		%feature("autodoc", "	* gives the parameter of the fillet on the first edge.
 
 	:rtype: float
 ") FirstParameter;
@@ -303,7 +303,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 ") TolApp3d;
 		Standard_Real TolApp3d (const Standard_Integer Index);
 		%feature("compactdefaultargs") SupportFace1;
-		%feature("autodoc", "	* //!gives the first support face relative to SurfaceFillet(Index);
+		%feature("autodoc", "	* gives the first support face relative to SurfaceFillet(Index);
 
 	:param Index:
 	:type Index: int
@@ -311,7 +311,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 ") SupportFace1;
 		const TopoDS_Face  SupportFace1 (const Standard_Integer Index);
 		%feature("compactdefaultargs") SupportFace2;
-		%feature("autodoc", "	* //!gives the second support face relative to SurfaceFillet(Index);
+		%feature("autodoc", "	* gives the second support face relative to SurfaceFillet(Index);
 
 	:param Index:
 	:type Index: int
@@ -335,7 +335,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 ") CurveOnFace2;
 		Handle_Geom_Curve CurveOnFace2 (const Standard_Integer Index);
 		%feature("compactdefaultargs") PCurveOnFace1;
-		%feature("autodoc", "	* //!gives the PCurve associated to CurvOnSup1(Index) on the support face
+		%feature("autodoc", "	* gives the PCurve associated to CurvOnSup1(Index) on the support face
 
 	:param Index:
 	:type Index: int
@@ -367,7 +367,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 ") PCurve2OnFillet;
 		Handle_Geom2d_Curve PCurve2OnFillet (const Standard_Integer Index);
 		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	* //!gives the parameter of the fillet on the first edge.
+		%feature("autodoc", "	* gives the parameter of the fillet on the first edge.
 
 	:rtype: float
 ") FirstParameter;

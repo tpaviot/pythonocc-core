@@ -780,7 +780,7 @@ class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 ") RecordModification;
 		void RecordModification (const Handle_ShapeBuild_ReShape & repl);
 		%feature("compactdefaultargs") RecordModification;
-		%feature("autodoc", "	* Records modifications and resets result accordingly NOTE: modification of resulting shape should be explicitly defined in the maps along with modifications of subshapes  In the last function, sh is the shape on which Modifier was run. It can be different from the whole shape, but in that case result as a whole should be reset later either by call to SetResult(), or by another call to RecordModification() which contains mapping of current result to a new one explicitly
+		%feature("autodoc", "	* Records modifications and resets result accordingly NOTE: modification of resulting shape should be explicitly defined in the maps along with modifications of subshapes //! In the last function, sh is the shape on which Modifier was run. It can be different from the whole shape, but in that case result as a whole should be reset later either by call to SetResult(), or by another call to RecordModification() which contains mapping of current result to a new one explicitly
 
 	:param sh:
 	:type sh: TopoDS_Shape &

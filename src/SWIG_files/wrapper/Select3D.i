@@ -286,6 +286,12 @@ class Select3D_ListOfSensitive {
 		%feature("autodoc", "	:rtype: None
 ") Select3D_ListOfSensitive;
 		 Select3D_ListOfSensitive ();
+		%feature("compactdefaultargs") Select3D_ListOfSensitive;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitive &
+	:rtype: None
+") Select3D_ListOfSensitive;
+		 Select3D_ListOfSensitive (const Select3D_ListOfSensitive & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Select3D_ListOfSensitive &
@@ -410,6 +416,12 @@ class Select3D_ListOfSensitiveTriangle {
 		%feature("autodoc", "	:rtype: None
 ") Select3D_ListOfSensitiveTriangle;
 		 Select3D_ListOfSensitiveTriangle ();
+		%feature("compactdefaultargs") Select3D_ListOfSensitiveTriangle;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitiveTriangle &
+	:rtype: None
+") Select3D_ListOfSensitiveTriangle;
+		 Select3D_ListOfSensitiveTriangle (const Select3D_ListOfSensitiveTriangle & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Select3D_ListOfSensitiveTriangle &
@@ -631,197 +643,225 @@ class Select3D_PointData {
 class Select3D_Projector : public Standard_Transient {
 	public:
 		%feature("compactdefaultargs") Select3D_Projector;
-		%feature("autodoc", "	* Constructs the 3D projector object defined by the 3D view aView.
+		%feature("autodoc", "	* Constructs the 3D projector object from the passed view. The projector captures current model-view and projection transformation of the passed view.
 
-	:param aView:
-	:type aView: Handle_V3d_View &
+	:param theView:
+	:type theView: Handle_V3d_View &
 	:rtype: None
 ") Select3D_Projector;
-		 Select3D_Projector (const Handle_V3d_View & aView);
+		 Select3D_Projector (const Handle_V3d_View & theView);
 		%feature("compactdefaultargs") Select3D_Projector;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Constructs identity projector.
+
+	:rtype: None
 ") Select3D_Projector;
 		 Select3D_Projector ();
 		%feature("compactdefaultargs") Select3D_Projector;
-		%feature("autodoc", "	* Creates an axonometric projector. <CS> represents viewing coordinate system and could be constructed from x direction, view plane normal direction, and view point location in world-coordinate space.
+		%feature("autodoc", "	* Builds the Projector from the model-view transformation specified by the passed viewing coordinate system <theCS>. The Projector has identity projection transformation, is orthogonal. The viewing coordinate system could be constructed from x direction, view plane normal direction, and view point location in world-coordinate space.
 
-	:param CS:
-	:type CS: gp_Ax2
+	:param theCS:
+	:type theCS: gp_Ax2
 	:rtype: None
 ") Select3D_Projector;
-		 Select3D_Projector (const gp_Ax2 & CS);
+		 Select3D_Projector (const gp_Ax2 & theCS);
 		%feature("compactdefaultargs") Select3D_Projector;
-		%feature("autodoc", "	* Creates a perspective projector. <CS> represents viewing coordinate system and could be constructed from x direction, view plane normal direction, and focal point location in world-coordinate space. <Focus> should represent distance of an eye from view plane in world-coordinate space (focal distance).
+		%feature("autodoc", "	* Builds the Projector from the model-view transformation specified by the passed view coordinate system <theCS> and simplified perspective projection transformation defined by <theFocus> parameter. The viewing coordinate system could be constructed from x direction, view plane normal direction, and focal point location in world-coordinate space. <theFocus> should represent distance of an eye from view plane in world-coordinate space (focal distance).
 
-	:param CS:
-	:type CS: gp_Ax2
-	:param Focus:
-	:type Focus: float
+	:param theCS:
+	:type theCS: gp_Ax2
+	:param theFocus:
+	:type theFocus: float
 	:rtype: None
 ") Select3D_Projector;
-		 Select3D_Projector (const gp_Ax2 & CS,const Standard_Real Focus);
+		 Select3D_Projector (const gp_Ax2 & theCS,const Standard_Real theFocus);
 		%feature("compactdefaultargs") Select3D_Projector;
-		%feature("autodoc", "	* build a Projector from the given transformation. In case, when <T> transformation should represent custom view projection, it could be constructed from two separate components: transposed view orientation matrix and translation of focal point in view-coordiante system. <T> could be built up from x direction, up direction, view plane normal direction vectors and translation with SetValues(...) method, where first row arguments (a11, a12, a13, a14) are x, y, z component of x direction vector, and x value of reversed translation vector. Second row arguments, are x y z for up direction and y value of reversed translation, and the third row defined in the same manner. This also suits for simple perspective view, where <Focus> is the focale distance of an eye from view plane in world-space coordiantes. Note, that in that case amount of perspective distortion (perspective angle) should be defined through focal distance.
+		%feature("autodoc", "	* Build the Projector from the model-view transformation passed as <theViewTrsf> and simplified perspective projection transformation parameters passed as <theIsPersp> and <theFocus>. In case, when <theViewTrsf> transformation should represent custom view projection, it could be constructed from two separate components: transposed view orientation matrix and translation of focal point in view-coordinate system. <theViewTrsf> could be built up from x direction, up direction, view plane normal direction vectors and translation with SetValues(...) method, where first row arguments (a11, a12, a13, a14) are x, y, z component of x direction vector, and x value of reversed translation vector. Second row arguments, are x y z for up direction and y value of reversed translation, and the third row defined in the same manner. This also suits for simple perspective view, where <theFocus> is the focale distance of an eye from view plane in world-space coordinates. Note, that in that case amount of perspective distortion (perspective angle) should be defined through focal distance.
 
-	:param T:
-	:type T: gp_Trsf
-	:param Persp:
-	:type Persp: bool
-	:param Focus:
-	:type Focus: float
+	:param theViewTrsf:
+	:type theViewTrsf: gp_Trsf
+	:param theIsPersp:
+	:type theIsPersp: bool
+	:param theFocus:
+	:type theFocus: float
 	:rtype: None
 ") Select3D_Projector;
-		 Select3D_Projector (const gp_Trsf & T,const Standard_Boolean Persp,const Standard_Real Focus);
+		 Select3D_Projector (const gp_Trsf & theViewTrsf,const Standard_Boolean theIsPersp,const Standard_Real theFocus);
 		%feature("compactdefaultargs") Select3D_Projector;
-		%feature("autodoc", "	* build a Projector from the given transformation. In case, when <GT> transformation should represent custom view projection, it could be constructed from two separate components: transposed view orientation matrix and translation of a focal point in view-coordinate system. This also suits for perspective view, with <Focus> that could be equal to distance from an eye to a view plane in world-coordinates (focal distance). The 3x3 transformation matrix is built up from three vectors: x direction, up direction and view plane normal vectors, where each vector is a matrix row. Then <GT> is constructed from matrix and reversed translation with methods SetTranslationPart(..) and SetVectorialPart(..). Note, that in that case amount of perspective distortion (perspective angle) should be defined through focal distance.
+		%feature("autodoc", "	* Builds the Projector from the model-view transformation passed as <theViewTrsf> and projection transformation for <theIsPersp> and <theFocus> parameters. In case, when <theViewTrsf> transformation should represent custom view projection, it could be constructed from two separate components: transposed view orientation matrix and translation of a focal point in view-coordinate system. This also suits for perspective view, with <theFocus> that could be equal to distance from an eye to a view plane in world-coordinates (focal distance). The 3x3 transformation matrix is built up from three vectors: x direction, up direction and view plane normal vectors, where each vector is a matrix row. Then <theViewTrsf> is constructed from matrix and reversed translation with methods SetTranslationPart(..) and SetVectorialPart(..). Note, that in that case amount of perspective distortion (perspective angle) should be defined through focal distance.
 
-	:param GT:
-	:type GT: gp_GTrsf
-	:param Persp:
-	:type Persp: bool
-	:param Focus:
-	:type Focus: float
+	:param theViewTrsf:
+	:type theViewTrsf: gp_GTrsf
+	:param theIsPersp:
+	:type theIsPersp: bool
+	:param theFocus:
+	:type theFocus: float
 	:rtype: None
 ") Select3D_Projector;
-		 Select3D_Projector (const gp_GTrsf & GT,const Standard_Boolean Persp,const Standard_Real Focus);
+		 Select3D_Projector (const gp_GTrsf & theViewTrsf,const Standard_Boolean theIsPersp,const Standard_Real theFocus);
+		%feature("compactdefaultargs") Select3D_Projector;
+		%feature("autodoc", "	* Builds the Projector from the passed model-view <theViewTrsf> and projection <theProjTrsf> transformation matrices.
+
+	:param theViewTrsf:
+	:type theViewTrsf: Graphic3d_Mat4d &
+	:param theProjTrsf:
+	:type theProjTrsf: Graphic3d_Mat4d &
+	:rtype: None
+") Select3D_Projector;
+		 Select3D_Projector (const Graphic3d_Mat4d & theViewTrsf,const Graphic3d_Mat4d & theProjTrsf);
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	:param T:
-	:type T: gp_Trsf
-	:param Persp:
-	:type Persp: bool
-	:param Focus:
-	:type Focus: float
+		%feature("autodoc", "	* Sets new parameters for the Projector.
+
+	:param theViewTrsf:
+	:type theViewTrsf: gp_Trsf
+	:param theIsPersp:
+	:type theIsPersp: bool
+	:param theFocus:
+	:type theFocus: float
 	:rtype: None
 ") Set;
-		void Set (const gp_Trsf & T,const Standard_Boolean Persp,const Standard_Real Focus);
-		%feature("compactdefaultargs") SetView;
-		%feature("autodoc", "	* Sets the 3D view V used at the time of construction.
+		void Set (const gp_Trsf & theViewTrsf,const Standard_Boolean theIsPersp,const Standard_Real theFocus);
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "	* Sets new parameters for the Projector.
 
-	:param V:
-	:type V: Handle_V3d_View &
+	:param theViewTrsf:
+	:type theViewTrsf: Graphic3d_Mat4d &
+	:param theProjTrsf:
+	:type theProjTrsf: Graphic3d_Mat4d &
+	:rtype: None
+") Set;
+		void Set (const Graphic3d_Mat4d & theViewTrsf,const Graphic3d_Mat4d & theProjTrsf);
+		%feature("compactdefaultargs") SetView;
+		%feature("autodoc", "	* Sets new parameters for the Projector captured from the passed view.
+
+	:param theView:
+	:type theView: Handle_V3d_View &
 	:rtype: None
 ") SetView;
-		void SetView (const Handle_V3d_View & V);
-		%feature("compactdefaultargs") View;
-		%feature("autodoc", "	* Returns the 3D view used at the time of construction.
-
-	:rtype: Handle_V3d_View
-") View;
-		Handle_V3d_View View ();
+		void SetView (const Handle_V3d_View & theView);
 		%feature("compactdefaultargs") Scaled;
-		%feature("autodoc", "	* to compute with the given scale and translation.
+		%feature("autodoc", "	* Pre-compute inverse transformation and ensure whether it is possible to use optimized transformation for the common view-orientation type or not if <theToCheckOptimized> is True.
 
-	:param On: default value is Standard_False
-	:type On: bool
+	:param theToCheckOptimized: default value is Standard_False
+	:type theToCheckOptimized: bool
 	:rtype: void
 ") Scaled;
-		virtual void Scaled (const Standard_Boolean On = Standard_False);
+		virtual void Scaled (const Standard_Boolean theToCheckOptimized = Standard_False);
 		%feature("compactdefaultargs") Perspective;
-		%feature("autodoc", "	* Returns True if there is a perspective transformation.
+		%feature("autodoc", "	* Returns True if there is simplified perspective projection approach is used. Distortion defined by Focus.
 
 	:rtype: bool
 ") Perspective;
 		Standard_Boolean Perspective ();
+		%feature("compactdefaultargs") Focus;
+		%feature("autodoc", "	* Returns the focal length of simplified perspective projection approach. Raises program error exception if the the projection transformation is not specified as simplified Perspective (for example, custom projection transformation is defined or the orthogonal Projector is defined).
+
+	:rtype: float
+") Focus;
+		Standard_Real Focus ();
+		%feature("compactdefaultargs") Projection;
+		%feature("autodoc", "	* Returns projection transformation. Please note that for simplified perspective projection approach, defined by Focus, the returned transformation is identity.
+
+	:rtype: Graphic3d_Mat4d
+") Projection;
+		const Graphic3d_Mat4d & Projection ();
 		%feature("compactdefaultargs") Transformation;
-		%feature("autodoc", "	* Returns the active transformation.
+		%feature("autodoc", "	* Returns the view transformation.
 
 	:rtype: gp_GTrsf
 ") Transformation;
 		const gp_GTrsf  Transformation ();
 		%feature("compactdefaultargs") InvertedTransformation;
-		%feature("autodoc", "	* Returns the active inverted transformation.
+		%feature("autodoc", "	* Returns the inverted view transformation.
 
 	:rtype: gp_GTrsf
 ") InvertedTransformation;
 		const gp_GTrsf  InvertedTransformation ();
 		%feature("compactdefaultargs") FullTransformation;
-		%feature("autodoc", "	* Returns the original transformation.
+		%feature("autodoc", "	* Returns the uniform-scaled view transformation.
 
 	:rtype: gp_Trsf
 ") FullTransformation;
 		const gp_Trsf  FullTransformation ();
-		%feature("compactdefaultargs") Focus;
-		%feature("autodoc", "	* Returns the focal length.
-
-	:rtype: float
-") Focus;
-		Standard_Real Focus ();
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	:param D:
-	:type D: gp_Vec
+		%feature("autodoc", "	* Transforms the vector into view-coordinate space.
+
+	:param theD:
+	:type theD: gp_Vec
 	:rtype: None
 ") Transform;
-		void Transform (gp_Vec & D);
+		void Transform (gp_Vec & theD);
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	:param Pnt:
-	:type Pnt: gp_Pnt
+		%feature("autodoc", "	* Transforms the point into view-coordinate space.
+
+	:param thePnt:
+	:type thePnt: gp_Pnt
 	:rtype: None
 ") Transform;
-		void Transform (gp_Pnt & Pnt);
+		void Transform (gp_Pnt & thePnt);
 		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "	* Transform and apply perspective if needed.
+		%feature("autodoc", "	* Transforms the point into view-coordinate space and applies projection transformation.
 
-	:param P:
-	:type P: gp_Pnt
-	:param Pout:
-	:type Pout: gp_Pnt2d
+	:param theP:
+	:type theP: gp_Pnt
+	:param thePout:
+	:type thePout: gp_Pnt2d
 	:rtype: void
 ") Project;
-		virtual void Project (const gp_Pnt & P,gp_Pnt2d & Pout);
+		virtual void Project (const gp_Pnt & theP,gp_Pnt2d & thePout);
 		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "	* Transform and apply perspective if needed.
+		%feature("autodoc", "	* Transforms the point into view-coordinate space and applies projection transformation.
 
-	:param P:
-	:type P: gp_Pnt
-	:param X:
-	:type X: float &
-	:param Y:
-	:type Y: float &
-	:param Z:
-	:type Z: float &
+	:param theP:
+	:type theP: gp_Pnt
+	:param theX:
+	:type theX: float &
+	:param theY:
+	:type theY: float &
+	:param theZ:
+	:type theZ: float &
 	:rtype: None
 ") Project;
-		void Project (const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		void Project (const gp_Pnt & theP,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "	* Transform and apply perspective if needed.
+		%feature("autodoc", "	* Transforms the point and vector passed from its location into view-coordinate space and applies projection transformation.
 
-	:param P:
-	:type P: gp_Pnt
-	:param D1:
-	:type D1: gp_Vec
-	:param Pout:
-	:type Pout: gp_Pnt2d
-	:param D1out:
-	:type D1out: gp_Vec2d
+	:param theP:
+	:type theP: gp_Pnt
+	:param theD1:
+	:type theD1: gp_Vec
+	:param thePout:
+	:type thePout: gp_Pnt2d
+	:param theD1out:
+	:type theD1out: gp_Vec2d
 	:rtype: void
 ") Project;
-		virtual void Project (const gp_Pnt & P,const gp_Vec & D1,gp_Pnt2d & Pout,gp_Vec2d & D1out);
+		virtual void Project (const gp_Pnt & theP,const gp_Vec & theD1,gp_Pnt2d & thePout,gp_Vec2d & theD1out);
 		%feature("compactdefaultargs") Shoot;
-		%feature("autodoc", "	* return a line going through the eye towards the 2d point <X,Y>.
+		%feature("autodoc", "	* Return projection line going through the 2d point <theX, theY>
 
-	:param X:
-	:type X: float
-	:param Y:
-	:type Y: float
+	:param theX:
+	:type theX: float
+	:param theY:
+	:type theY: float
 	:rtype: gp_Lin
 ") Shoot;
-		virtual gp_Lin Shoot (const Standard_Real X,const Standard_Real Y);
+		virtual gp_Lin Shoot (const Standard_Real theX,const Standard_Real theY);
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	:param P:
-	:type P: gp_Pnt
-	:param T:
-	:type T: gp_GTrsf
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_Pnt
+	:param theTrsf:
+	:type theTrsf: gp_GTrsf
 	:rtype: None
 ") Transform;
-		void Transform (gp_Pnt & P,const gp_GTrsf & T);
+		void Transform (gp_Pnt & thePnt,const gp_GTrsf & theTrsf);
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	:param D:
-	:type D: gp_Lin
-	:param T:
-	:type T: gp_GTrsf
+		%feature("autodoc", "	:param theLin:
+	:type theLin: gp_Lin
+	:param theTrsf:
+	:type theTrsf: gp_GTrsf
 	:rtype: None
 ") Transform;
-		void Transform (gp_Lin & D,const gp_GTrsf & T);
+		void Transform (gp_Lin & theLin,const gp_GTrsf & theTrsf);
 };
 
 
@@ -936,7 +976,7 @@ class Select3D_SensitiveEntity : public SelectBasics_SensitiveEntity {
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "	:rtype: TopLoc_Location
 ") Location;
-		virtual const TopLoc_Location & Location ();
+		virtual const TopLoc_Location Location ();
 		%feature("compactdefaultargs") ResetLocation;
 		%feature("autodoc", "	* sets the location to Identity
 
@@ -950,7 +990,7 @@ class Select3D_SensitiveEntity : public SelectBasics_SensitiveEntity {
 ") SetLocation;
 		virtual void SetLocation (const TopLoc_Location & aLoc);
 		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	* 2 options : <FullDump> = False -> general information //!	 <FullDump> = True -> whole informtion 3D +2d ...
+		%feature("autodoc", "	* 2 options : <FullDump> = False -> general information <FullDump> = True -> whole informtion 3D +2d ...
 
 	:param S:
 	:type S: Standard_OStream &
@@ -1020,6 +1060,12 @@ class Select3D_SensitiveEntitySequence : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Select3D_SensitiveEntitySequence;
 		 Select3D_SensitiveEntitySequence ();
+		%feature("compactdefaultargs") Select3D_SensitiveEntitySequence;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_SensitiveEntitySequence &
+	:rtype: None
+") Select3D_SensitiveEntitySequence;
+		 Select3D_SensitiveEntitySequence (const Select3D_SensitiveEntitySequence & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1572,7 +1618,7 @@ class Select3D_SensitivePoint : public Select3D_SensitiveEntity {
 ") Select3D_SensitivePoint;
 		 Select3D_SensitivePoint (const Handle_SelectBasics_EntityOwner & OwnerId,const gp_Pnt & Point);
 		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "	* //!Converts the stored 3D point into a 2D point according  to <aProjector> ; this method is called by the selection Manager.
+		%feature("autodoc", "	* Converts the stored 3D point into a 2D point according to <aProjector> ; this method is called by the selection Manager.
 
 	:param aProjector:
 	:type aProjector: Handle_Select3D_Projector &
@@ -1894,7 +1940,7 @@ class Select3D_SensitiveSegment : public Select3D_SensitiveEntity {
 ") ComputeDepth;
 		Standard_Real ComputeDepth (const gp_Lin & EyeLine);
 		%feature("compactdefaultargs") MaxBoxes;
-		%feature("autodoc", "	* //!returns <mymaxrect>
+		%feature("autodoc", "	* returns <mymaxrect>
 
 	:rtype: int
 ") MaxBoxes;
@@ -2049,7 +2095,7 @@ class Select3D_SensitiveWire : public Select3D_SensitiveEntity {
 ") Matches;
 		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
 		%feature("compactdefaultargs") MaxBoxes;
-		%feature("autodoc", "	* //!returns <mymaxrect>
+		%feature("autodoc", "	* returns <mymaxrect>
 
 	:rtype: int
 ") MaxBoxes;
@@ -2071,7 +2117,7 @@ class Select3D_SensitiveWire : public Select3D_SensitiveEntity {
 ") Set;
 		void Set (const Handle_SelectBasics_EntityOwner & TheOwnerId);
 		%feature("compactdefaultargs") GetLastDetected;
-		%feature("autodoc", "	* //!returns <mymaxrect>
+		%feature("autodoc", "	* returns <mymaxrect>
 
 	:rtype: Handle_Select3D_SensitiveEntity
 ") GetLastDetected;

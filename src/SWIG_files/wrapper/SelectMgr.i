@@ -51,7 +51,6 @@ def register_handle(handle, base_object):
 };
 
 /* typedefs */
-typedef SelectMgr_DataMapOfObjectOwners::Iterator SelectMgr_DataMapIteratorOfMapOfObjectOwners;
 typedef SelectMgr_SelectableObject * SelectMgr_SOPtr;
 /* end typedefs declaration */
 

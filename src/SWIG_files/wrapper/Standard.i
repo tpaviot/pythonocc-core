@@ -53,13 +53,15 @@ def register_handle(handle, base_object):
 /* typedefs */
 typedef bool Standard_Boolean;
 typedef const char * Standard_CString;
+typedef std::istream Standard_IStream;
 typedef Standard_ExtCharacter * Standard_PExtCharacter;
 typedef std::time_t Standard_Time;
 typedef unsigned char Standard_Byte;
 typedef void * Standard_Address;
-typedef Standard_Byte * Standard_PByte;
+typedef uint16_t Standard_Utf16Char;
 typedef GUID Standard_UUID;
 typedef short Standard_ExtCharacter;
+typedef unsigned __int8 uint8_t;
 typedef double Standard_Real;
 typedef Standard_ErrorHandler * Standard_PErrorHandler;
 typedef int Standard_Integer;
@@ -71,13 +73,13 @@ typedef wchar_t Standard_WideChar;
 typedef char Standard_Character;
 typedef unsigned char Standard_Utf8UChar;
 typedef uint32_t Standard_Utf32Char;
-typedef Standard_Persistent * Standard_OId;
-typedef strstream Standard_SStream;
-typedef uint16_t Standard_Utf16Char;
+typedef std::stringstream Standard_SStream;
+typedef Standard_Byte * Standard_PByte;
 typedef const short * Standard_ExtString;
 typedef unsigned __int32 uint32_t;
 typedef size_t Standard_Size;
-typedef ostream Standard_OStream;
+typedef std::ostream Standard_OStream;
+typedef unsigned __int64 uint64_t;
 typedef unsigned __int16 uint16_t;
 /* end typedefs declaration */
 
@@ -145,6 +147,16 @@ class Standard {
 	:rtype: Standard_Address
 ") Reallocate;
 		static Standard_Address Reallocate (const Standard_Address aStorage,const Standard_Size aNewSize);
+		%feature("compactdefaultargs") AllocateAligned;
+		%feature("autodoc", "	* Allocates aligned memory blocks. Should be used with CPU instructions which require specific alignment. For example: SSE requires 16 bytes, AVX requires 32 bytes. @param theSize bytes to allocate @param theAlign alignment in bytes
+
+	:param theSize:
+	:type theSize: Standard_Size
+	:param theAlign:
+	:type theAlign: Standard_Size
+	:rtype: Standard_Address
+") AllocateAligned;
+		static Standard_Address AllocateAligned (const Standard_Size theSize,const Standard_Size theAlign);
 		%feature("compactdefaultargs") Purge;
 		%feature("autodoc", "	* Deallocates the storage retained on the free list and clears the list. Returns non-zero if some memory has been actually freed.
 
@@ -250,7 +262,7 @@ class Standard_GUID {
 ") Standard_GUID;
 		 Standard_GUID (const char * aGuid);
 		%feature("compactdefaultargs") Standard_GUID;
-		%feature("autodoc", "	* build a GUID from an unicode string with the following format:  '00000000-0000-0000-0000-000000000000'
+		%feature("autodoc", "	* build a GUID from an unicode string with the following format: //! '00000000-0000-0000-0000-000000000000'
 
 	:param aGuid:
 	:type aGuid: Standard_ExtString
@@ -298,7 +310,7 @@ class Standard_GUID {
 ") ToUUID;
 		Standard_UUID ToUUID ();
 		%feature("compactdefaultargs") ToCString;
-		%feature("autodoc", "	* translate the GUID into ascii string the aStrGuid is allocated by user. the guid have the following format:  '00000000-0000-0000-0000-000000000000'
+		%feature("autodoc", "	* translate the GUID into ascii string the aStrGuid is allocated by user. the guid have the following format: //! '00000000-0000-0000-0000-000000000000'
 
 	:param aStrGuid:
 	:type aStrGuid: Standard_PCharacter
@@ -306,7 +318,7 @@ class Standard_GUID {
 ") ToCString;
 		void ToCString (const Standard_PCharacter aStrGuid);
 		%feature("compactdefaultargs") ToExtString;
-		%feature("autodoc", "	* translate the GUID into unicode string the aStrGuid is allocated by user. the guid have the following format:  '00000000-0000-0000-0000-000000000000'
+		%feature("autodoc", "	* translate the GUID into unicode string the aStrGuid is allocated by user. the guid have the following format: //! '00000000-0000-0000-0000-000000000000'
 
 	:param aStrGuid:
 	:type aStrGuid: Standard_PExtCharacter
@@ -581,7 +593,7 @@ class Standard_Storable {
 ") Delete;
 		virtual void Delete ();
 		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "	* Returns a hashed value denoting <self>. This value is in  the range 1..<Upper>.
+		%feature("autodoc", "	* Returns a hashed value denoting <self>. This value is in the range 1..<Upper>.
 
 	:param Upper:
 	:type Upper: int
@@ -595,7 +607,7 @@ class Standard_Storable {
             }
         };
         		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "	* Returns true if the direct contents of <self> and  <Other> are memberwise equal.
+		%feature("autodoc", "	* Returns true if the direct contents of <self> and <Other> are memberwise equal.
 
 	:param Other:
 	:type Other: Standard_Storable &
@@ -617,22 +629,14 @@ class Standard_Storable {
                 return False
         }
         		%feature("compactdefaultargs") IsSimilar;
-		%feature("autodoc", "	* Returns true if the Deep contents of <self> and  <Other> are memberwise equal.
+		%feature("autodoc", "	* Returns true if the Deep contents of <self> and <Other> are memberwise equal.
 
 	:param Other:
 	:type Other: Standard_Storable &
 	:rtype: bool
 ") IsSimilar;
 		Standard_Boolean IsSimilar (const Standard_Storable & Other);
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
-        };
+};
 
 
 %nodefaultctor Standard_Transient;
@@ -666,15 +670,7 @@ class Standard_Transient {
 	:rtype: void
 ") Delete;
 		virtual void Delete ();
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
-        		%feature("compactdefaultargs") DynamicType;
+		%feature("compactdefaultargs") DynamicType;
 		%feature("autodoc", "	* Returns a type information object about this object.
 
 	:rtype: Handle_Standard_Type
@@ -1101,21 +1097,7 @@ class Standard_Type : public Standard_Transient {
 	:rtype: int
 ") NumberOfAncestor;
 		Standard_Integer NumberOfAncestor ();
-		%feature("compactdefaultargs") ShallowDump;
-		%feature("autodoc", "	* Prints the Information about type.
 
-	:rtype: None
-") ShallowDump;
-		void ShallowDump ();
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
-        
         %feature("autodoc", "1");
         %extend{
             std::string PrintToString() {

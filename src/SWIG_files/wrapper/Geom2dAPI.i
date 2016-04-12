@@ -356,7 +356,7 @@ class Geom2dAPI_PointsToBSpline {
 ") Geom2dAPI_PointsToBSpline;
 		 Geom2dAPI_PointsToBSpline (const TColgp_Array1OfPnt2d & Points,const Standard_Integer DegMin = 3,const Standard_Integer DegMax = 8,const GeomAbs_Shape Continuity = GeomAbs_C2,const Standard_Real Tol2D = 1.0e-6);
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
-		%feature("autodoc", "	* Approximate a BSpline Curve passing through an array of Point. Of coordinates :  X = X0 + DX * (i-YValues.Lower()) Y = YValues(i)  With i in the range YValues.Lower(), YValues.Upper()  The BSpline will be parametrized from t = X0 to X0 + DX * (YValues.Upper() - YValues.Lower())  And will satisfy X(t) = t  The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D
+		%feature("autodoc", "	* Approximate a BSpline Curve passing through an array of Point. Of coordinates : //! X = X0 + DX * (i-YValues.Lower()) Y = YValues(i) //! With i in the range YValues.Lower(), YValues.Upper() //! The BSpline will be parametrized from t = X0 to X0 + DX * (YValues.Upper() - YValues.Lower()) //! And will satisfy X(t) = t //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D
 
 	:param YValues:
 	:type YValues: TColStd_Array1OfReal &
@@ -448,7 +448,7 @@ class Geom2dAPI_PointsToBSpline {
 ") Init;
 		void Init (const TColgp_Array1OfPnt2d & Points,const Standard_Integer DegMin = 3,const Standard_Integer DegMax = 8,const GeomAbs_Shape Continuity = GeomAbs_C2,const Standard_Real Tol2D = 1.0e-6);
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Approximate a BSpline Curve passing through an array of Point. Of coordinates :  X = X0 + DX * (i-YValues.Lower()) Y = YValues(i)  With i in the range YValues.Lower(), YValues.Upper()  The BSpline will be parametrized from t = X0 to X0 + DX * (YValues.Upper() - YValues.Lower())  And will satisfy X(t) = t  The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D
+		%feature("autodoc", "	* Approximate a BSpline Curve passing through an array of Point. Of coordinates : //! X = X0 + DX * (i-YValues.Lower()) Y = YValues(i) //! With i in the range YValues.Lower(), YValues.Upper() //! The BSpline will be parametrized from t = X0 to X0 + DX * (YValues.Upper() - YValues.Lower()) //! And will satisfy X(t) = t //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D
 
 	:param YValues:
 	:type YValues: TColStd_Array1OfReal &

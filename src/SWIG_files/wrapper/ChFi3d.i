@@ -176,7 +176,7 @@ class ChFi3d_Builder {
 ") Contains;
 		Standard_Integer Contains (const TopoDS_Edge & E);
 		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	* gives the number of the contour containing E or 0 if E does not belong to any contour. //!	 Sets in IndexInSpine the index of E in the contour if it's found
+		%feature("autodoc", "	* gives the number of the contour containing E or 0 if E does not belong to any contour. Sets in IndexInSpine the index of E in the contour if it's found
 
 	:param E:
 	:type E: TopoDS_Edge &

@@ -190,7 +190,7 @@ class GeomLib {
 ") AxeOfInertia;
 		static void AxeOfInertia (const TColgp_Array1OfPnt & Points,gp_Ax2 & Axe,Standard_Boolean &OutValue,const Standard_Real Tol = 1.0e-7);
 		%feature("compactdefaultargs") Inertia;
-		%feature("autodoc", "	* Compute principale axes of inertia, and dispertion  value of some points.
+		%feature("autodoc", "	* Compute principale axes of inertia, and dispertion value of some points.
 
 	:param Points:
 	:type Points: TColgp_Array1OfPnt
@@ -210,7 +210,7 @@ class GeomLib {
 ") Inertia;
 		static void Inertia (const TColgp_Array1OfPnt & Points,gp_Pnt & Bary,gp_Dir & XDir,gp_Dir & YDir,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") RemovePointsFromArray;
-		%feature("autodoc", "	* Warning! This assume that the InParameter is an increasing sequence of real number and it will not check for that : Unpredictable result can happen if this is not satisfied. It is the caller responsability to check for that property. This method makes uniform NumPoints segments S1,...SNumPoints out of the segment defined by the first parameter and the last parameter ofthe InParameter ; keeps only one point of the InParameters set of parameter in each of the uniform segments taking care of the first and the last parameters. For the ith segment the element of the InParameter is the one that is the first to exceed the midpoint of the segment and to fall before the midpoint of the next segment  There will be at the end at most NumPoints + 1 if NumPoints > 2 in the OutParameters Array
+		%feature("autodoc", "	* Warning! This assume that the InParameter is an increasing sequence of real number and it will not check for that : Unpredictable result can happen if this is not satisfied. It is the caller responsability to check for that property. //! This method makes uniform NumPoints segments S1,...SNumPoints out of the segment defined by the first parameter and the last parameter ofthe InParameter ; keeps only one point of the InParameters set of parameter in each of the uniform segments taking care of the first and the last parameters. For the ith segment the element of the InParameter is the one that is the first to exceed the midpoint of the segment and to fall before the midpoint of the next segment There will be at the end at most NumPoints + 1 if NumPoints > 2 in the OutParameters Array
 
 	:param NumPoints:
 	:type NumPoints: int
@@ -420,7 +420,7 @@ class GeomLib_Check2dBSplineCurve {
 ") FixTangent;
 		void FixTangent (const Standard_Boolean FirstFlag,const Standard_Boolean LastFlag);
 		%feature("compactdefaultargs") FixedTangent;
-		%feature("autodoc", "	* modifies the curve by fixing the first or the last tangencies if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done
+		%feature("autodoc", "	* modifies the curve by fixing the first or the last tangencies //! if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done
 
 	:param FirstFlag:
 	:type FirstFlag: bool
@@ -466,7 +466,7 @@ class GeomLib_CheckBSplineCurve {
 ") FixTangent;
 		void FixTangent (const Standard_Boolean FirstFlag,const Standard_Boolean LastFlag);
 		%feature("compactdefaultargs") FixedTangent;
-		%feature("autodoc", "	* modifies the curve by fixing the first or the last tangencies if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done
+		%feature("autodoc", "	* modifies the curve by fixing the first or the last tangencies //! if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done
 
 	:param FirstFlag:
 	:type FirstFlag: bool
@@ -482,7 +482,7 @@ class GeomLib_CheckBSplineCurve {
 class GeomLib_DenominatorMultiplier {
 	public:
 		%feature("compactdefaultargs") GeomLib_DenominatorMultiplier;
-		%feature("autodoc", "	* if the surface is rational this will define the evaluator of a real function of 2 variables a(u,v) such that if we define a new surface by :  a(u,v) * N(u,v) NewF(u,v) = ----------------  a(u,v) * D(u,v)
+		%feature("autodoc", "	* if the surface is rational this will define the evaluator of a real function of 2 variables a(u,v) such that if we define a new surface by : a(u,v) * N(u,v) NewF(u,v) = ---------------- a(u,v) * D(u,v)
 
 	:param Surface:
 	:type Surface: Handle_Geom_BSplineSurface &
@@ -492,7 +492,7 @@ class GeomLib_DenominatorMultiplier {
 ") GeomLib_DenominatorMultiplier;
 		 GeomLib_DenominatorMultiplier (const Handle_Geom_BSplineSurface & Surface,const TColStd_Array1OfReal & KnotVector);
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the value of a(UParameter,VParameter)= H0(UParameter)/Denominator(Umin,Vparameter) D Denominator(Umin,Vparameter) - ------------------------------[H1(u)]/(Denominator(Umin,Vparameter)^2)  D U  + H3(UParameter)/Denominator(Umax,Vparameter) D Denominator(Umax,Vparameter) - ------------------------------[H2(u)]/(Denominator(Umax,Vparameter)^2)  D U
+		%feature("autodoc", "	* Returns the value of a(UParameter,VParameter)= //! H0(UParameter)/Denominator(Umin,Vparameter) //! D Denominator(Umin,Vparameter) - ------------------------------[H1(u)]/(Denominator(Umin,Vparameter)^2) D U //! + H3(UParameter)/Denominator(Umax,Vparameter) //! D Denominator(Umax,Vparameter) - ------------------------------[H2(u)]/(Denominator(Umax,Vparameter)^2) D U
 
 	:param UParameter:
 	:type UParameter: float

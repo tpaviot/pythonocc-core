@@ -64,35 +64,51 @@ class BRepMAT2d_BisectingLocus {
 ") BRepMAT2d_BisectingLocus;
 		 BRepMAT2d_BisectingLocus ();
 		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	:param anExplo:
+		%feature("autodoc", "	* Computation of the Bisector_Locus in a set of Lines defined in <anExplo>. The bisecting locus are computed on the side <aSide> from the line <LineIndex> in <anExplo>.
+
+	:param anExplo:
 	:type anExplo: BRepMAT2d_Explorer &
 	:param LineIndex: default value is 1
 	:type LineIndex: int
 	:param aSide: default value is MAT_Left
 	:type aSide: MAT_Side
+	:param aJoinType: default value is GeomAbs_Arc
+	:type aJoinType: GeomAbs_JoinType
+	:param IsOpenResult: default value is Standard_False
+	:type IsOpenResult: bool
 	:rtype: None
 ") Compute;
-		void Compute (BRepMAT2d_Explorer & anExplo,const Standard_Integer LineIndex = 1,const MAT_Side aSide = MAT_Left);
+		void Compute (BRepMAT2d_Explorer & anExplo,const Standard_Integer LineIndex = 1,const MAT_Side aSide = MAT_Left,const GeomAbs_JoinType aJoinType = GeomAbs_Arc,const Standard_Boolean IsOpenResult = Standard_False);
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns True if Compute has succeeded.
+
+	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") Graph;
-		%feature("autodoc", "	:rtype: Handle_MAT_Graph
+		%feature("autodoc", "	* Returns <theGraph> of <self>.
+
+	:rtype: Handle_MAT_Graph
 ") Graph;
 		Handle_MAT_Graph Graph ();
 		%feature("compactdefaultargs") NumberOfContours;
-		%feature("autodoc", "	:rtype: int
+		%feature("autodoc", "	* Returns the number of contours.
+
+	:rtype: int
 ") NumberOfContours;
 		Standard_Integer NumberOfContours ();
 		%feature("compactdefaultargs") NumberOfElts;
-		%feature("autodoc", "	:param IndLine:
+		%feature("autodoc", "	* Returns the number of BasicElts on the line <IndLine>.
+
+	:param IndLine:
 	:type IndLine: int
 	:rtype: int
 ") NumberOfElts;
 		Standard_Integer NumberOfElts (const Standard_Integer IndLine);
 		%feature("compactdefaultargs") NumberOfSections;
-		%feature("autodoc", "	:param IndLine:
+		%feature("autodoc", "	* Returns the number of sections of a curve. this curve is the Indexth curve in the IndLineth contour given by anExplo.
+
+	:param IndLine:
 	:type IndLine: int
 	:param Index:
 	:type Index: int
@@ -100,7 +116,9 @@ class BRepMAT2d_BisectingLocus {
 ") NumberOfSections;
 		Standard_Integer NumberOfSections (const Standard_Integer IndLine,const Standard_Integer Index);
 		%feature("compactdefaultargs") BasicElt;
-		%feature("autodoc", "	:param IndLine:
+		%feature("autodoc", "	* Returns the BasicElts located at the position <Index> on the contour designed by <IndLine>. Remark: the BasicElts on a contour are sorted.
+
+	:param IndLine:
 	:type IndLine: int
 	:param Index:
 	:type Index: int
@@ -108,19 +126,25 @@ class BRepMAT2d_BisectingLocus {
 ") BasicElt;
 		Handle_MAT_BasicElt BasicElt (const Standard_Integer IndLine,const Standard_Integer Index);
 		%feature("compactdefaultargs") GeomElt;
-		%feature("autodoc", "	:param aBasicElt:
+		%feature("autodoc", "	* Returns the geometry linked to the <BasicElt>.
+
+	:param aBasicElt:
 	:type aBasicElt: Handle_MAT_BasicElt &
 	:rtype: Handle_Geom2d_Geometry
 ") GeomElt;
 		Handle_Geom2d_Geometry GeomElt (const Handle_MAT_BasicElt & aBasicElt);
 		%feature("compactdefaultargs") GeomElt;
-		%feature("autodoc", "	:param aNode:
+		%feature("autodoc", "	* Returns the geometry of type <gp> linked to the <Node>.
+
+	:param aNode:
 	:type aNode: Handle_MAT_Node &
 	:rtype: gp_Pnt2d
 ") GeomElt;
 		gp_Pnt2d GeomElt (const Handle_MAT_Node & aNode);
 		%feature("compactdefaultargs") GeomBis;
-		%feature("autodoc", "	:param anArc:
+		%feature("autodoc", "	* Returns the geometry of type <Bissec> linked to the arc <ARC>. <Reverse> is False when the FirstNode of <anArc> correspond to the first point of geometry.
+
+	:param anArc:
 	:type anArc: Handle_MAT_Arc &
 	:param Reverse:
 	:type Reverse: bool
@@ -184,9 +208,9 @@ class BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt : public TColl
 ") Key;
 		const TopoDS_Shape  Key ();
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: BRepMAT2d_SequenceOfBasicElt
+		%feature("autodoc", "	:rtype: MAT_SequenceOfBasicElt
 ") Value;
-		const BRepMAT2d_SequenceOfBasicElt & Value ();
+		const MAT_SequenceOfBasicElt & Value ();
 };
 
 
@@ -258,20 +282,20 @@ class BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt : public TCollecti
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:param I:
-	:type I: BRepMAT2d_SequenceOfBasicElt &
+	:type I: MAT_SequenceOfBasicElt &
 	:param n:
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt;
-		 BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt (const TopoDS_Shape & K,const BRepMAT2d_SequenceOfBasicElt & I,const TCollection_MapNodePtr & n);
+		 BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt (const TopoDS_Shape & K,const MAT_SequenceOfBasicElt & I,const TCollection_MapNodePtr & n);
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
 		TopoDS_Shape  Key ();
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: BRepMAT2d_SequenceOfBasicElt
+		%feature("autodoc", "	:rtype: MAT_SequenceOfBasicElt
 ") Value;
-		BRepMAT2d_SequenceOfBasicElt & Value ();
+		MAT_SequenceOfBasicElt & Value ();
 };
 
 
@@ -425,10 +449,10 @@ class BRepMAT2d_DataMapOfShapeSequenceOfBasicElt : public TCollection_BasicMap {
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:param I:
-	:type I: BRepMAT2d_SequenceOfBasicElt &
+	:type I: MAT_SequenceOfBasicElt &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (const TopoDS_Shape & K,const BRepMAT2d_SequenceOfBasicElt & I);
+		Standard_Boolean Bind (const TopoDS_Shape & K,const MAT_SequenceOfBasicElt & I);
 		%feature("compactdefaultargs") IsBound;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
@@ -444,15 +468,15 @@ class BRepMAT2d_DataMapOfShapeSequenceOfBasicElt : public TCollection_BasicMap {
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
-	:rtype: BRepMAT2d_SequenceOfBasicElt
+	:rtype: MAT_SequenceOfBasicElt
 ") Find;
-		const BRepMAT2d_SequenceOfBasicElt & Find (const TopoDS_Shape & K);
+		const MAT_SequenceOfBasicElt & Find (const TopoDS_Shape & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
-	:rtype: BRepMAT2d_SequenceOfBasicElt
+	:rtype: MAT_SequenceOfBasicElt
 ") ChangeFind;
-		BRepMAT2d_SequenceOfBasicElt & ChangeFind (const TopoDS_Shape & K);
+		MAT_SequenceOfBasicElt & ChangeFind (const TopoDS_Shape & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
@@ -500,7 +524,7 @@ class BRepMAT2d_Explorer {
 ") NumberOfContours;
 		Standard_Integer NumberOfContours ();
 		%feature("compactdefaultargs") NumberOfCurves;
-		%feature("autodoc", "	* Returns the Number of Curves in the Contour number  <IndexContour>.
+		%feature("autodoc", "	* Returns the Number of Curves in the Contour number <IndexContour>.
 
 	:param IndexContour:
 	:type IndexContour: int
@@ -508,7 +532,7 @@ class BRepMAT2d_Explorer {
 ") NumberOfCurves;
 		Standard_Integer NumberOfCurves (const Standard_Integer IndexContour);
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialisation of an Iterator on the curves of  the Contour number <IndexContour>.
+		%feature("autodoc", "	* Initialisation of an Iterator on the curves of the Contour number <IndexContour>.
 
 	:param IndexContour:
 	:type IndexContour: int
@@ -516,7 +540,7 @@ class BRepMAT2d_Explorer {
 ") Init;
 		void Init (const Standard_Integer IndexContour);
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	* Return False if there is no more curves on the Contour  initialised by the method Init.
+		%feature("autodoc", "	* Return False if there is no more curves on the Contour initialised by the method Init.
 
 	:rtype: bool
 ") More;
@@ -572,7 +596,7 @@ class BRepMAT2d_LinkTopoBilo {
 ") BRepMAT2d_LinkTopoBilo;
 		 BRepMAT2d_LinkTopoBilo ();
 		%feature("compactdefaultargs") BRepMAT2d_LinkTopoBilo;
-		%feature("autodoc", "	* Constructs the links Between S and BiLo. raises if <S> is not a face.
+		%feature("autodoc", "	* Constructs the links Between S and BiLo. //! raises if <S> is not a face.
 
 	:param Explo:
 	:type Explo: BRepMAT2d_Explorer &
@@ -582,7 +606,7 @@ class BRepMAT2d_LinkTopoBilo {
 ") BRepMAT2d_LinkTopoBilo;
 		 BRepMAT2d_LinkTopoBilo (const BRepMAT2d_Explorer & Explo,const BRepMAT2d_BisectingLocus & BiLo);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Constructs the links Between S and BiLo. raises if <S> is not a face or a wire.
+		%feature("autodoc", "	* Constructs the links Between S and BiLo. //! raises if <S> is not a face or a wire.
 
 	:param Explo:
 	:type Explo: BRepMAT2d_Explorer &
@@ -625,195 +649,6 @@ class BRepMAT2d_LinkTopoBilo {
 	:rtype: TopoDS_Shape
 ") GeneratingShape;
 		TopoDS_Shape GeneratingShape (const Handle_MAT_BasicElt & aBE);
-};
-
-
-%nodefaultctor BRepMAT2d_SequenceNodeOfSequenceOfBasicElt;
-class BRepMAT2d_SequenceNodeOfSequenceOfBasicElt : public TCollection_SeqNode {
-	public:
-		%feature("compactdefaultargs") BRepMAT2d_SequenceNodeOfSequenceOfBasicElt;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_MAT_BasicElt &
-	:param n:
-	:type n: TCollection_SeqNodePtr &
-	:param p:
-	:type p: TCollection_SeqNodePtr &
-	:rtype: None
-") BRepMAT2d_SequenceNodeOfSequenceOfBasicElt;
-		 BRepMAT2d_SequenceNodeOfSequenceOfBasicElt (const Handle_MAT_BasicElt & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
-") Value;
-		Handle_MAT_BasicElt Value ();
-};
-
-
-%extend BRepMAT2d_SequenceNodeOfSequenceOfBasicElt {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt::Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt;
-class Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt : public Handle_TCollection_SeqNode {
-
-    public:
-        // constructors
-        Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt();
-        Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt(const Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt &aHandle);
-        Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt(const BRepMAT2d_SequenceNodeOfSequenceOfBasicElt *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_BRepMAT2d_SequenceNodeOfSequenceOfBasicElt {
-    BRepMAT2d_SequenceNodeOfSequenceOfBasicElt* GetObject() {
-    return (BRepMAT2d_SequenceNodeOfSequenceOfBasicElt*)$self->Access();
-    }
-};
-
-%nodefaultctor BRepMAT2d_SequenceOfBasicElt;
-class BRepMAT2d_SequenceOfBasicElt : public TCollection_BaseSequence {
-	public:
-		%feature("compactdefaultargs") BRepMAT2d_SequenceOfBasicElt;
-		%feature("autodoc", "	:rtype: None
-") BRepMAT2d_SequenceOfBasicElt;
-		 BRepMAT2d_SequenceOfBasicElt ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepMAT2d_SequenceOfBasicElt &
-	:rtype: BRepMAT2d_SequenceOfBasicElt
-") Assign;
-		const BRepMAT2d_SequenceOfBasicElt & Assign (const BRepMAT2d_SequenceOfBasicElt & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: BRepMAT2d_SequenceOfBasicElt &
-	:rtype: BRepMAT2d_SequenceOfBasicElt
-") operator=;
-		const BRepMAT2d_SequenceOfBasicElt & operator = (const BRepMAT2d_SequenceOfBasicElt & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_MAT_BasicElt &
-	:rtype: None
-") Append;
-		void Append (const Handle_MAT_BasicElt & T);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param S:
-	:type S: BRepMAT2d_SequenceOfBasicElt &
-	:rtype: None
-") Append;
-		void Append (BRepMAT2d_SequenceOfBasicElt & S);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_MAT_BasicElt &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_MAT_BasicElt & T);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param S:
-	:type S: BRepMAT2d_SequenceOfBasicElt &
-	:rtype: None
-") Prepend;
-		void Prepend (BRepMAT2d_SequenceOfBasicElt & S);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Handle_MAT_BasicElt &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,const Handle_MAT_BasicElt & T);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: BRepMAT2d_SequenceOfBasicElt &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,BRepMAT2d_SequenceOfBasicElt & S);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param T:
-	:type T: Handle_MAT_BasicElt &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,const Handle_MAT_BasicElt & T);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param S:
-	:type S: BRepMAT2d_SequenceOfBasicElt &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,BRepMAT2d_SequenceOfBasicElt & S);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
-") First;
-		Handle_MAT_BasicElt First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
-") Last;
-		Handle_MAT_BasicElt Last ();
-		%feature("compactdefaultargs") Split;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Sub:
-	:type Sub: BRepMAT2d_SequenceOfBasicElt &
-	:rtype: None
-") Split;
-		void Split (const Standard_Integer Index,BRepMAT2d_SequenceOfBasicElt & Sub);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_MAT_BasicElt
-") Value;
-		Handle_MAT_BasicElt Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param I:
-	:type I: Handle_MAT_BasicElt &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Handle_MAT_BasicElt & I);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Handle_MAT_BasicElt
-") ChangeValue;
-		Handle_MAT_BasicElt ChangeValue (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer Index);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: int
-	:param ToIndex:
-	:type ToIndex: int
-	:rtype: None
-") Remove;
-		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
 

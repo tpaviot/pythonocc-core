@@ -138,7 +138,7 @@ class GProp_GProps {
 ") CentreOfMass;
 		gp_Pnt CentreOfMass ();
 		%feature("compactdefaultargs") MatrixOfInertia;
-		%feature("autodoc", "	* returns the matrix of inertia. It is a symmetrical matrix. The coefficients of the matrix are the quadratic moments of inertia.  | Ixx Ixy Ixz | matrix = | Ixy Iyy Iyz |  | Ixz Iyz Izz | The moments of inertia are denoted by Ixx, Iyy, Izz. The products of inertia are denoted by Ixy, Ixz, Iyz. The matrix of inertia is returned in the central coordinate system (G, Gx, Gy, Gz) where G is the centre of mass of the system and Gx, Gy, Gz the directions parallel to the X(1,0,0) Y(0,1,0) Z(0,0,1) directions of the absolute cartesian coordinate system. It is possible to compute the matrix of inertia at another location point using the Huyghens theorem (you can use the method of package GProp : HOperator).
+		%feature("autodoc", "	* returns the matrix of inertia. It is a symmetrical matrix. The coefficients of the matrix are the quadratic moments of inertia. //! | Ixx Ixy Ixz | matrix = | Ixy Iyy Iyz | | Ixz Iyz Izz | //! The moments of inertia are denoted by Ixx, Iyy, Izz. The products of inertia are denoted by Ixy, Ixz, Iyz. The matrix of inertia is returned in the central coordinate system (G, Gx, Gy, Gz) where G is the centre of mass of the system and Gx, Gy, Gz the directions parallel to the X(1,0,0) Y(0,1,0) Z(0,0,1) directions of the absolute cartesian coordinate system. It is possible to compute the matrix of inertia at another location point using the Huyghens theorem (you can use the method of package GProp : HOperator).
 
 	:rtype: gp_Mat
 ") MatrixOfInertia;
@@ -302,19 +302,19 @@ class GProp_PrincipalProps {
 ") Moments;
 		void Moments (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") FirstAxisOfInertia;
-		%feature("autodoc", "	* returns the first axis of inertia. if the system has a point of symmetry there is an infinity of solutions. It is not possible to defines the three axis of inertia.
+		%feature("autodoc", "	* returns the first axis of inertia. //! if the system has a point of symmetry there is an infinity of solutions. It is not possible to defines the three axis of inertia.
 
 	:rtype: gp_Vec
 ") FirstAxisOfInertia;
 		const gp_Vec  FirstAxisOfInertia ();
 		%feature("compactdefaultargs") SecondAxisOfInertia;
-		%feature("autodoc", "	* returns the second axis of inertia. if the system has a point of symmetry or an axis of symmetry the second and the third axis of symmetry are undefined.
+		%feature("autodoc", "	* returns the second axis of inertia. //! if the system has a point of symmetry or an axis of symmetry the second and the third axis of symmetry are undefined.
 
 	:rtype: gp_Vec
 ") SecondAxisOfInertia;
 		const gp_Vec  SecondAxisOfInertia ();
 		%feature("compactdefaultargs") ThirdAxisOfInertia;
-		%feature("autodoc", "	* returns the third axis of inertia. This and the above functions return the first, second or third eigen vector of the matrix of inertia of the current system. The first, second and third principal axis of inertia pass through the center of mass of the current system. They are respectively parallel to these three eigen vectors. Note that: - If the current system has an axis of symmetry, any axis is an axis of principal inertia if it passes through the center of mass of the system, and runs parallel to a linear combination of the two eigen vectors of the matrix of inertia, corresponding to the two eigen values which are equal. If the current system has a center of symmetry, any axis passing through the center of mass of the system is an axis of principal inertia. Use the functions HasSymmetryAxis and HasSymmetryPoint to check these particular cases, where the returned eigen vectors define an infinity of principal axis of inertia. - The Moments function can be used to know which of the three eigen vectors corresponds to the two eigen values which are equal. if the system has a point of symmetry or an axis of symmetry the second and the third axis of symmetry are undefined.
+		%feature("autodoc", "	* returns the third axis of inertia. This and the above functions return the first, second or third eigen vector of the matrix of inertia of the current system. The first, second and third principal axis of inertia pass through the center of mass of the current system. They are respectively parallel to these three eigen vectors. Note that: - If the current system has an axis of symmetry, any axis is an axis of principal inertia if it passes through the center of mass of the system, and runs parallel to a linear combination of the two eigen vectors of the matrix of inertia, corresponding to the two eigen values which are equal. If the current system has a center of symmetry, any axis passing through the center of mass of the system is an axis of principal inertia. Use the functions HasSymmetryAxis and HasSymmetryPoint to check these particular cases, where the returned eigen vectors define an infinity of principal axis of inertia. - The Moments function can be used to know which of the three eigen vectors corresponds to the two eigen values which are equal. //! if the system has a point of symmetry or an axis of symmetry the second and the third axis of symmetry are undefined.
 
 	:rtype: gp_Vec
 ") ThirdAxisOfInertia;
@@ -446,7 +446,7 @@ class GProp_PGProps : public GProp_GProps {
 ") GProp_PGProps;
 		 GProp_PGProps (const TColgp_Array2OfPnt & Pnts);
 		%feature("compactdefaultargs") GProp_PGProps;
-		%feature("autodoc", "	* computes the global properties of the system of points Pnts. A density is associated with each point. raises if a density is lower or equal to Resolution from package gp. raises if the length of Pnts and the length of Density is not the same.
+		%feature("autodoc", "	* computes the global properties of the system of points Pnts. A density is associated with each point. //! raises if a density is lower or equal to Resolution from package gp. //! raises if the length of Pnts and the length of Density is not the same.
 
 	:param Pnts:
 	:type Pnts: TColgp_Array1OfPnt
@@ -456,7 +456,7 @@ class GProp_PGProps : public GProp_GProps {
 ") GProp_PGProps;
 		 GProp_PGProps (const TColgp_Array1OfPnt & Pnts,const TColStd_Array1OfReal & Density);
 		%feature("compactdefaultargs") GProp_PGProps;
-		%feature("autodoc", "	* computes the global properties of the system of points Pnts. A density is associated with each point. Raised if a density is lower or equal to Resolution from package gp. Raised if the length of Pnts and the length of Density is not the same.
+		%feature("autodoc", "	* computes the global properties of the system of points Pnts. A density is associated with each point. //! Raised if a density is lower or equal to Resolution from package gp. //! Raised if the length of Pnts and the length of Density is not the same.
 
 	:param Pnts:
 	:type Pnts: TColgp_Array2OfPnt
@@ -482,7 +482,7 @@ class GProp_PGProps : public GProp_GProps {
 ") Barycentre;
 		static gp_Pnt Barycentre (const TColgp_Array2OfPnt & Pnts);
 		%feature("compactdefaultargs") Barycentre;
-		%feature("autodoc", "	* Computes the barycentre of a set of points. A density is associated with each point. raises if a density is lower or equal to Resolution from package gp. Raised if the length of Pnts and the length of Density is not the same.
+		%feature("autodoc", "	* Computes the barycentre of a set of points. A density is associated with each point. //! raises if a density is lower or equal to Resolution from package gp. //! Raised if the length of Pnts and the length of Density is not the same.
 
 	:param Pnts:
 	:type Pnts: TColgp_Array1OfPnt
@@ -496,7 +496,7 @@ class GProp_PGProps : public GProp_GProps {
 ") Barycentre;
 		static void Barycentre (const TColgp_Array1OfPnt & Pnts,const TColStd_Array1OfReal & Density,Standard_Real &OutValue,gp_Pnt & G);
 		%feature("compactdefaultargs") Barycentre;
-		%feature("autodoc", "	* Computes the barycentre of a set of points. A density is associated with each point. Raised if a density is lower or equal to Resolution from package gp. Raised if the length of Pnts and the length of Density is not the same.
+		%feature("autodoc", "	* Computes the barycentre of a set of points. A density is associated with each point. //! Raised if a density is lower or equal to Resolution from package gp. //! Raised if the length of Pnts and the length of Density is not the same.
 
 	:param Pnts:
 	:type Pnts: TColgp_Array2OfPnt

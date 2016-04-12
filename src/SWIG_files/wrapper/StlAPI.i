@@ -60,7 +60,7 @@ def register_handle(handle, base_object):
 class StlAPI {
 	public:
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "	* Convert and write shape to STL format.  file is written in binary if aAsciiMode is False  otherwise it is written in Ascii (by default)
+		%feature("autodoc", "	* Convert and write shape to STL format. file is written in binary if aAsciiMode is False otherwise it is written in Ascii (by default)
 
 	:param aShape:
 	:type aShape: TopoDS_Shape &

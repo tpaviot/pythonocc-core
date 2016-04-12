@@ -41,6 +41,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopoDS_ListIteratorOfListOfShape.hxx>
 #include<TopoDS_ListNodeOfListOfShape.hxx>
 #include<TopoDS_ListOfShape.hxx>
+#include<TopoDS_LockedShape.hxx>
 #include<TopoDS_Shape.hxx>
 #include<TopoDS_Shell.hxx>
 #include<TopoDS_Solid.hxx>
@@ -135,6 +136,32 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopTools_ShapeSet.hxx>
 #include<TopTools_StdMapNodeOfMapOfOrientedShape.hxx>
 #include<TopTools_StdMapNodeOfMapOfShape.hxx>
+#include<Message.hxx>
+#include<Message_Algorithm.hxx>
+#include<Message_ExecStatus.hxx>
+#include<Message_Gravity.hxx>
+#include<Message_HArrayOfMsg.hxx>
+#include<Message_ListIteratorOfListOfMsg.hxx>
+#include<Message_ListNodeOfListOfMsg.hxx>
+#include<Message_ListOfMsg.hxx>
+#include<Message_Messenger.hxx>
+#include<Message_Msg.hxx>
+#include<Message_MsgFile.hxx>
+#include<Message_Printer.hxx>
+#include<Message_PrinterOStream.hxx>
+#include<Message_ProgressIndicator.hxx>
+#include<Message_ProgressScale.hxx>
+#include<Message_ProgressSentry.hxx>
+#include<Message_SequenceNodeOfSequenceOfPrinters.hxx>
+#include<Message_SequenceNodeOfSequenceOfProgressScale.hxx>
+#include<Message_SequenceOfPrinters.hxx>
+#include<Message_SequenceOfProgressScale.hxx>
+#include<Message_Status.hxx>
+#include<Message_StatusType.hxx>
+#include<ShapeBuild.hxx>
+#include<ShapeBuild_Edge.hxx>
+#include<ShapeBuild_ReShape.hxx>
+#include<ShapeBuild_Vertex.hxx>
 #include<Standard.hxx>
 #include<Standard_AbortiveTransaction.hxx>
 #include<Standard_Address.hxx>
@@ -144,7 +171,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_Boolean.hxx>
 #include<Standard_Byte.hxx>
 #include<Standard_Character.hxx>
-#include<Standard_CLocaleSentry.hxx>
 #include<Standard_ConstructionError.hxx>
 #include<Standard_CString.hxx>
 #include<Standard_DefineAlloc.hxx>
@@ -184,7 +210,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_NullObject.hxx>
 #include<Standard_NullValue.hxx>
 #include<Standard_NumericError.hxx>
-#include<Standard_OId.hxx>
 #include<Standard_OStream.hxx>
 #include<Standard_OutOfMemory.hxx>
 #include<Standard_OutOfRange.hxx>
@@ -246,7 +271,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Geom_Ellipse.hxx>
 #include<Geom_Geometry.hxx>
 #include<Geom_HSequenceOfBSplineSurface.hxx>
-#include<Geom_HSequenceOfSurface.hxx>
 #include<Geom_Hyperbola.hxx>
 #include<Geom_Line.hxx>
 #include<Geom_OffsetCurve.hxx>
@@ -257,9 +281,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Geom_Point.hxx>
 #include<Geom_RectangularTrimmedSurface.hxx>
 #include<Geom_SequenceNodeOfSequenceOfBSplineSurface.hxx>
-#include<Geom_SequenceNodeOfSequenceOfSurface.hxx>
 #include<Geom_SequenceOfBSplineSurface.hxx>
-#include<Geom_SequenceOfSurface.hxx>
 #include<Geom_SphericalSurface.hxx>
 #include<Geom_Surface.hxx>
 #include<Geom_SurfaceOfLinearExtrusion.hxx>
@@ -280,7 +302,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopLoc_MapIteratorOfMapOfLocation.hxx>
 #include<TopLoc_MapLocationHasher.hxx>
 #include<TopLoc_MapOfLocation.hxx>
-#include<TopLoc_SListNodeOfSListOfItemLocation.hxx>
+#include<TopLoc_SListNodeOfItemLocation.hxx>
 #include<TopLoc_SListOfItemLocation.hxx>
 #include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
 #include<TopLoc_TrsfPtr.hxx>
@@ -367,9 +389,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_Array2OfVec2d.hxx>
 #include<TColgp_Array2OfXY.hxx>
 #include<TColgp_Array2OfXYZ.hxx>
-#include<TColgp_DataMapIteratorOfDataMapOfIntegerCirc2d.hxx>
-#include<TColgp_DataMapNodeOfDataMapOfIntegerCirc2d.hxx>
-#include<TColgp_DataMapOfIntegerCirc2d.hxx>
 #include<TColgp_HArray1OfCirc2d.hxx>
 #include<TColgp_HArray1OfDir.hxx>
 #include<TColgp_HArray1OfDir2d.hxx>
@@ -506,6 +525,40 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Bnd_SeqOfBox.hxx>
 #include<Bnd_SequenceNodeOfSeqOfBox.hxx>
 #include<Bnd_Sphere.hxx>
+#include<TColGeom_Array1OfBezierCurve.hxx>
+#include<TColGeom_Array1OfBSplineCurve.hxx>
+#include<TColGeom_Array1OfCurve.hxx>
+#include<TColGeom_Array1OfSurface.hxx>
+#include<TColGeom_Array2OfBezierSurface.hxx>
+#include<TColGeom_Array2OfSurface.hxx>
+#include<TColGeom_HArray1OfBezierCurve.hxx>
+#include<TColGeom_HArray1OfBSplineCurve.hxx>
+#include<TColGeom_HArray1OfCurve.hxx>
+#include<TColGeom_HArray1OfSurface.hxx>
+#include<TColGeom_HArray2OfSurface.hxx>
+#include<TColGeom_HSequenceOfBoundedCurve.hxx>
+#include<TColGeom_HSequenceOfCurve.hxx>
+#include<TColGeom_SequenceNodeOfSequenceOfBoundedCurve.hxx>
+#include<TColGeom_SequenceNodeOfSequenceOfCurve.hxx>
+#include<TColGeom_SequenceNodeOfSequenceOfSurface.hxx>
+#include<TColGeom_SequenceOfBoundedCurve.hxx>
+#include<TColGeom_SequenceOfCurve.hxx>
+#include<TColGeom_SequenceOfSurface.hxx>
+#include<ShapeExtend.hxx>
+#include<ShapeExtend_BasicMsgRegistrator.hxx>
+#include<ShapeExtend_ComplexCurve.hxx>
+#include<ShapeExtend_CompositeSurface.hxx>
+#include<ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg.hxx>
+#include<ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg.hxx>
+#include<ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg.hxx>
+#include<ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg.hxx>
+#include<ShapeExtend_DataMapOfShapeListOfMsg.hxx>
+#include<ShapeExtend_DataMapOfTransientListOfMsg.hxx>
+#include<ShapeExtend_Explorer.hxx>
+#include<ShapeExtend_MsgRegistrator.hxx>
+#include<ShapeExtend_Parametrisation.hxx>
+#include<ShapeExtend_Status.hxx>
+#include<ShapeExtend_WireData.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
@@ -526,9 +579,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_Array2OfVec2d.hxx>
 #include<TColgp_Array2OfXY.hxx>
 #include<TColgp_Array2OfXYZ.hxx>
-#include<TColgp_DataMapIteratorOfDataMapOfIntegerCirc2d.hxx>
-#include<TColgp_DataMapNodeOfDataMapOfIntegerCirc2d.hxx>
-#include<TColgp_DataMapOfIntegerCirc2d.hxx>
 #include<TColgp_HArray1OfCirc2d.hxx>
 #include<TColgp_HArray1OfDir.hxx>
 #include<TColgp_HArray1OfDir2d.hxx>
@@ -632,9 +682,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColStd_HSequenceOfInteger.hxx>
 #include<TColStd_HSequenceOfReal.hxx>
 #include<TColStd_HSequenceOfTransient.hxx>
-#include<TColStd_HSetOfInteger.hxx>
-#include<TColStd_HSetOfReal.hxx>
-#include<TColStd_HSetOfTransient.hxx>
 #include<TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient.hxx>
 #include<TColStd_IndexedDataMapOfTransientTransient.hxx>
 #include<TColStd_IndexedMapNodeOfIndexedMapOfInteger.hxx>
@@ -647,16 +694,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColStd_ListIteratorOfListOfInteger.hxx>
 #include<TColStd_ListIteratorOfListOfReal.hxx>
 #include<TColStd_ListIteratorOfListOfTransient.hxx>
-#include<TColStd_ListIteratorOfSetListOfSetOfInteger.hxx>
-#include<TColStd_ListIteratorOfSetListOfSetOfReal.hxx>
-#include<TColStd_ListIteratorOfSetListOfSetOfTransient.hxx>
 #include<TColStd_ListNodeOfListOfAsciiString.hxx>
 #include<TColStd_ListNodeOfListOfInteger.hxx>
 #include<TColStd_ListNodeOfListOfReal.hxx>
 #include<TColStd_ListNodeOfListOfTransient.hxx>
-#include<TColStd_ListNodeOfSetListOfSetOfInteger.hxx>
-#include<TColStd_ListNodeOfSetListOfSetOfReal.hxx>
-#include<TColStd_ListNodeOfSetListOfSetOfTransient.hxx>
 #include<TColStd_ListOfAsciiString.hxx>
 #include<TColStd_ListOfInteger.hxx>
 #include<TColStd_ListOfReal.hxx>
@@ -674,12 +715,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColStd_MapRealHasher.hxx>
 #include<TColStd_MapTransientHasher.hxx>
 #include<TColStd_PackedMapOfInteger.hxx>
-#include<TColStd_QueueNodeOfQueueOfInteger.hxx>
-#include<TColStd_QueueNodeOfQueueOfReal.hxx>
-#include<TColStd_QueueNodeOfQueueOfTransient.hxx>
-#include<TColStd_QueueOfInteger.hxx>
-#include<TColStd_QueueOfReal.hxx>
-#include<TColStd_QueueOfTransient.hxx>
 #include<TColStd_SequenceNodeOfSequenceOfAddress.hxx>
 #include<TColStd_SequenceNodeOfSequenceOfAsciiString.hxx>
 #include<TColStd_SequenceNodeOfSequenceOfBoolean.hxx>
@@ -698,34 +733,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColStd_SequenceOfInteger.hxx>
 #include<TColStd_SequenceOfReal.hxx>
 #include<TColStd_SequenceOfTransient.hxx>
-#include<TColStd_SetIteratorOfSetOfInteger.hxx>
-#include<TColStd_SetIteratorOfSetOfReal.hxx>
-#include<TColStd_SetIteratorOfSetOfTransient.hxx>
-#include<TColStd_SetListOfSetOfInteger.hxx>
-#include<TColStd_SetListOfSetOfReal.hxx>
-#include<TColStd_SetListOfSetOfTransient.hxx>
-#include<TColStd_SetOfInteger.hxx>
-#include<TColStd_SetOfReal.hxx>
-#include<TColStd_SetOfTransient.hxx>
-#include<TColStd_StackIteratorOfStackOfInteger.hxx>
-#include<TColStd_StackIteratorOfStackOfReal.hxx>
-#include<TColStd_StackIteratorOfStackOfTransient.hxx>
-#include<TColStd_StackNodeOfStackOfInteger.hxx>
-#include<TColStd_StackNodeOfStackOfReal.hxx>
-#include<TColStd_StackNodeOfStackOfTransient.hxx>
-#include<TColStd_StackOfInteger.hxx>
-#include<TColStd_StackOfReal.hxx>
-#include<TColStd_StackOfTransient.hxx>
 #include<TColStd_StdMapNodeOfMapOfAsciiString.hxx>
 #include<TColStd_StdMapNodeOfMapOfInteger.hxx>
 #include<TColStd_StdMapNodeOfMapOfReal.hxx>
 #include<TColStd_StdMapNodeOfMapOfTransient.hxx>
 #include<TCollection.hxx>
-#include<TCollection_Array1Descriptor.hxx>
-#include<TCollection_Array2Descriptor.hxx>
 #include<TCollection_AsciiString.hxx>
-#include<TCollection_AVLBaseNode.hxx>
-#include<TCollection_AVLBaseNodePtr.hxx>
 #include<TCollection_BaseSequence.hxx>
 #include<TCollection_BasicMap.hxx>
 #include<TCollection_BasicMapIterator.hxx>
@@ -759,15 +772,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_HArrayOfSchema.hxx>
 #include<Storage_HeaderData.hxx>
 #include<Storage_HPArray.hxx>
-#include<Storage_HSeqOfCallBack.hxx>
-#include<Storage_HSeqOfPersistent.hxx>
 #include<Storage_HSeqOfRoot.hxx>
 #include<Storage_IndexedDataMapNodeOfPType.hxx>
 #include<Storage_InternalData.hxx>
 #include<Storage_Macros.hxx>
 #include<Storage_MapOfCallBack.hxx>
 #include<Storage_MapOfPers.hxx>
-#include<Storage_MapPSDHasher.hxx>
 #include<Storage_OpenMode.hxx>
 #include<Storage_PArray.hxx>
 #include<Storage_Position.hxx>
@@ -775,11 +785,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_Root.hxx>
 #include<Storage_RootData.hxx>
 #include<Storage_Schema.hxx>
-#include<Storage_SeqOfCallBack.hxx>
-#include<Storage_SeqOfPersistent.hxx>
 #include<Storage_SeqOfRoot.hxx>
-#include<Storage_SequenceNodeOfSeqOfCallBack.hxx>
-#include<Storage_SequenceNodeOfSeqOfPersistent.hxx>
 #include<Storage_SequenceNodeOfSeqOfRoot.hxx>
 #include<Storage_SolveMode.hxx>
 #include<Storage_stCONSTclCOM.hxx>
@@ -795,6 +801,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import TopoDS.i
 %import BRepTools.i
 %import TopTools.i
+%import Message.i
+%import ShapeBuild.i
 %import Standard.i
 %import GeomAbs.i
 %import Geom.i

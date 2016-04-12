@@ -2271,6 +2271,12 @@ class AdvApp2Var_SequenceOfNode : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") AdvApp2Var_SequenceOfNode;
 		 AdvApp2Var_SequenceOfNode ();
+		%feature("compactdefaultargs") AdvApp2Var_SequenceOfNode;
+		%feature("autodoc", "	:param Other:
+	:type Other: AdvApp2Var_SequenceOfNode &
+	:rtype: None
+") AdvApp2Var_SequenceOfNode;
+		 AdvApp2Var_SequenceOfNode (const AdvApp2Var_SequenceOfNode & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2403,6 +2409,12 @@ class AdvApp2Var_SequenceOfPatch : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") AdvApp2Var_SequenceOfPatch;
 		 AdvApp2Var_SequenceOfPatch ();
+		%feature("compactdefaultargs") AdvApp2Var_SequenceOfPatch;
+		%feature("autodoc", "	:param Other:
+	:type Other: AdvApp2Var_SequenceOfPatch &
+	:rtype: None
+") AdvApp2Var_SequenceOfPatch;
+		 AdvApp2Var_SequenceOfPatch (const AdvApp2Var_SequenceOfPatch & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2535,6 +2547,12 @@ class AdvApp2Var_SequenceOfStrip : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") AdvApp2Var_SequenceOfStrip;
 		 AdvApp2Var_SequenceOfStrip ();
+		%feature("compactdefaultargs") AdvApp2Var_SequenceOfStrip;
+		%feature("autodoc", "	:param Other:
+	:type Other: AdvApp2Var_SequenceOfStrip &
+	:rtype: None
+") AdvApp2Var_SequenceOfStrip;
+		 AdvApp2Var_SequenceOfStrip (const AdvApp2Var_SequenceOfStrip & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2667,6 +2685,12 @@ class AdvApp2Var_Strip : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") AdvApp2Var_Strip;
 		 AdvApp2Var_Strip ();
+		%feature("compactdefaultargs") AdvApp2Var_Strip;
+		%feature("autodoc", "	:param Other:
+	:type Other: AdvApp2Var_Strip &
+	:rtype: None
+") AdvApp2Var_Strip;
+		 AdvApp2Var_Strip (const AdvApp2Var_Strip & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
