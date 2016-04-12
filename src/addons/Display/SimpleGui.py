@@ -18,6 +18,7 @@
 # along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
+import os
 import sys
 
 from OCC import VERSION
@@ -31,8 +32,64 @@ def check_callable(_callable):
 
 
 def init_display(backend_str=None, size=(1024, 768)):
-    used_backend = load_backend(backend_str)
+    """ This function loads and initialize a GUI using either wx, pyq4, pyqt5 or pyside.
+    If ever the environment variable PYTHONOCC_SHUNT_GUI, then the GUI is simply ignored.
+    It can be useful to test some algorithms without being polluted by GUI statements.
+    This feature is used for running the examples suite as tests for
+    pythonocc-core development.
+    """
+    if os.getenv("PYTHONOCC_SHUNT_GUI") == "1":
+        # define a dumb class and an empty method
+        from OCC.Display import OCCViewer
 
+        def do_nothing(*kargs, **kwargs):
+            """ A method that does nothing
+            """
+            pass
+
+        def call_function(s, func):
+            """ A function that calls another function.
+            Helpfull to bypass add_function_to_menu. s should be a string
+            """
+            check_callable(func)
+            print(s, func.__name__)
+            func()
+
+        class BlindViewer(OCCViewer.Viewer3d):
+            def __init__(self, *kargs):
+                self._window_handle = 0
+                self._inited = False
+                self._local_context_opened = False
+                self.Context_handle = Dumb()
+                self.Viewer_handle = Dumb()
+                self.View_handle = Dumb()
+                self.Context = Dumb()
+                self.Viewer = Dumb()
+                self.View = Dumb()
+                self.selected_shapes = []
+                self._select_callbacks = []
+                self._struc_mgr = Dumb()
+
+            def GetContext(self):
+                return Dumb()
+
+            def DisplayMessage(self, *kargs):
+                pass
+
+        class Dumb(object):
+            """ A class the does nothing whatever the method
+            or property is called
+            """
+            def __getattr__(self, name):
+                if name in ['Context']:
+                    return Dumb()
+                elif name in ['GetContext', 'GetObject']:
+                    return Dumb
+                else:
+                    return do_nothing
+        # returns empty classes and functions
+        return BlindViewer(), do_nothing, do_nothing, call_function
+    used_backend = load_backend(backend_str)
     log.info("GUI backend set to: {0}".format(used_backend))
     # wxPython based simple GUI
     if used_backend == 'wx':
