@@ -84,7 +84,10 @@ class Display3d {
 	%feature("autodoc", "1");
 	~Display3d();
 	%feature("autodoc", "1");
-	void Init(const long handle);
+	void Init(const long handle,
+             bool ffpEnabled=true,
+             bool buffersNoSwapEnabled=false,
+             bool glslWarningsEnabled=false);
 	%feature("autodoc", "1");
 	Handle_V3d_View& GetView();
 	%feature("autodoc", "1");
@@ -92,6 +95,12 @@ class Display3d {
 	%feature("autodoc", "1");
 	Handle_AIS_InteractiveContext GetContext();
 	%feature("autodoc", "1");
-	void Test();
+  void ChangeRenderingParams(Graphic3d_RenderingMode RenderingMethod,
+                             int RaytracingDepth,
+                             bool IsShadowEnabled,
+                             bool IsReflectionEnabled,
+                             bool IsAntialiasingEnabled,
+                             bool IsTransparentShadowEnabled);
+  %feature("autodoc", "1");
+  void Test();
 };
-
