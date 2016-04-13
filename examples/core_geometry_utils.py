@@ -132,7 +132,7 @@ def midpoint(pntA, pntB):
     """
     vec1 = gp_Vec(pntA.XYZ())
     vec2 = gp_Vec(pntB.XYZ())
-    veccie = (vec1 + vec2) / 2.
+    veccie = (vec1 + vec2) * 0.5
     return gp_Pnt(veccie.XYZ())
 
 
