@@ -25,7 +25,7 @@ import itertools
 
 from OCC.AIS import AIS_MultipleConnectedInteractive, AIS_Shape
 from OCC.TopoDS import TopoDS_Shape
-from OCC.gp import gp_Dir, gp_Pnt, gp_Pnt2d
+from OCC.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
 from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                 BRepBuilderAPI_MakeEdge,
                                 BRepBuilderAPI_MakeEdge2d,
@@ -247,10 +247,14 @@ class Viewer3d(OCC.Visualization.Display3d):
     def DisplayVector(self, vec, pnt, update=False):
         if self._inited:
             aPresentation = Prs3d_Presentation(self._struc_mgr)
-            arrow = Prs3d_Arrow()
-            arrow.Draw(
+
+            pnt_as_vec = gp_Vec(pnt.X(), pnt.Y(), pnt.Z())
+            start = pnt_as_vec + vec
+            pnt_start = gp_Pnt(start.X(), start.Y(), start.Z())
+
+            Prs3d_Arrow.Draw(
                 aPresentation.GetHandle(),
-                (pnt.as_vec() + vec).as_pnt(),
+                pnt_start,
                 gp_Dir(vec),
                 math.radians(20),
                 vec.Magnitude()
