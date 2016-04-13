@@ -22,6 +22,8 @@ import unittest
 import core_wrapper_features_unittest
 import core_geometry_unittest
 import core_visualization_unittest
+import core_topology_unittest
+
 try:
     import core_ocaf_unittest
     HAVE_OCAF = True
@@ -41,7 +43,10 @@ if HAVE_OCAF:
     suite4 = core_ocaf_unittest.suite()
     tests.append(suite4)
 suite5 = core_webgl_unittest.suite()
+suite6 = core_topology_unittest.suite()
+
 tests.append(suite5)
+tests.append(suite6)
 # Add test cases
 suite.addTests(tests)
 
