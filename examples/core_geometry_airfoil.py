@@ -21,7 +21,10 @@
 # Explanations for this script can be found at
 # http://pythonocc.wordpress.com/2013/04/01/using-external-airfoil-data-to-create-a-solid-wing/
 #
-import urllib2
+try:
+    import urllib.request as urllib2  # Python3
+except ImportError:
+    import urllib2  # Python2
 
 from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeFace
 from OCC.BRepPrimAPI import BRepPrimAPI_MakePrism
@@ -53,9 +56,7 @@ class UiucAirfoil(object):
 
         for line in f.readlines()[1:]:  # The first line contains info only
             # 2 - do some cleanup on the data (mostly dealing with spaces)
-            line = line.lstrip().rstrip().replace('    ', ' ').replace('   ', ' ').replace('  ', ' ')
-            data = line.split(' ')  # data[0] = x coord.    data[1] = y coord.
-
+            data = line.split()
             # 3 - create an array of points
             if len(data) == 2:  # two coordinates for each point
                 section_pts_2d.append(gp_Pnt2d(float(data[0])*self.chord,

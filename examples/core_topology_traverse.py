@@ -533,6 +533,7 @@ def get_test_sphere_shape():
 topo = Topo(get_test_box_shape())
 assert topo
 
+
 def test_loop_faces():
     i = 0
     for face in topo.faces():
@@ -540,12 +541,14 @@ def test_loop_faces():
         assert(isinstance(face, TopoDS_Face))
     assert(i == 6)
 
+
 def test_loop_edges():
     i = 0
     for face in topo.edges():
         i += 1
         assert(isinstance(face, TopoDS_Edge))
     assert(i == 12)
+
 
 def number_of_topological_entities():
     assert(topo.number_of_faces() == 6)
@@ -557,12 +560,14 @@ def number_of_topological_entities():
     assert(topo.number_of_compounds() == 0)
     assert(topo.number_of_comp_solids() == 0)
 
+
 def test_nested_iteration():
     '''check nested looping'''
     for f in topo.faces():
         for e in topo.edges():
             assert isinstance(f, TopoDS_Face)
             assert isinstance(e, TopoDS_Edge)
+
 
 def test_kept_reference():
     '''did we keep a reference after looping several time through a list
@@ -575,66 +580,74 @@ def test_kept_reference():
         _tmp.append(0 == f.IsNull())
     assert(all(_tmp))
 
+
 def test_edge_face():
-    edg = topo.edges().next()
-    face = topo.faces().next()
+    edg = next(topo.edges())
+    face = next(topo.faces())
     faces_from_edge = [i for i in topo.faces_from_edge(edg)]
     assert(len(faces_from_edge) == topo.number_of_faces_from_edge(edg))
     edges_from_face = [i for i in topo.edges_from_face(face)]
     assert(len(edges_from_face) == topo.number_of_edges_from_face(face))
 
+
 def test_edge_wire():
-    edg = topo.edges().next()
-    wire = topo.wires().next()
+    edg = next(topo.edges())
+    wire = next(topo.wires())
     wires_from_edge = [i for i in topo.wires_from_edge(edg)]
     assert(len(wires_from_edge) == topo.number_of_wires_from_edge(edg))
     edges_from_wire = [i for i in topo.edges_from_wire(wire)]
     assert(len(edges_from_wire) == topo.number_of_edges_from_wire(wire))
 
+
 def test_vertex_edge():
-    vert = topo.vertices().next()
-    edge = topo.edges().next()
+    vert = next(topo.vertices())
+    edge = next(topo.edges())
     verts_from_edge = [i for i in topo.vertices_from_edge(edge)]
     assert(len(verts_from_edge) == topo.number_of_vertices_from_edge(edge))
     edges_from_vert = [i for i in topo.edges_from_vertex(vert)]
     assert(len(edges_from_vert) == topo.number_of_edges_from_vertex(vert))
 
+
 def test_vertex_face():
-    vert = topo.vertices().next()
-    face = topo.faces().next()
+    vert = next(topo.vertices())
+    face = next(topo.faces())
     faces_from_vertex = [i for i in topo.faces_from_vertex(vert)]
     assert(len(faces_from_vertex) == topo.number_of_faces_from_vertex(vert))
     verts_from_face = [i for i in topo.vertices_from_face(face)]
     assert(len(verts_from_face) == topo.number_of_vertices_from_face(face))
 
+
 def test_face_solid():
-    face = topo.faces().next()
-    solid = topo.solids().next()
+    face = next(topo.faces())
+    solid = next(topo.solids())
     faces_from_solid = [i for i in topo.faces_from_solids(solid)]
     assert(len(faces_from_solid) == topo.number_of_faces_from_solids(solid))
     solids_from_face = [i for i in topo.solids_from_face(face)]
     assert(len(solids_from_face) == topo.number_of_solids_from_face(face))
 
+
 def test_wire_face():
-    wire = topo.wires().next()
-    face = topo.faces().next()
+    wire = next(topo.wires())
+    face = next(topo.faces())
     faces_from_wire = [i for i in topo.faces_from_wire(wire)]
     assert(len(faces_from_wire) == topo.number_of_faces_from_wires(wire))
     wires_from_face = [i for i in topo.wires_from_face(face)]
     assert(len(wires_from_face) == topo.number_of_wires_from_face(face))
 
+
 def test_edges_out_of_scope():
     # check pointers going out of scope
-    face = topo.faces().next()
+    face = next(topo.faces())
     _edges = []
     for edg in Topo(face).edges():
         _edges.append(edg)
     for edg in _edges:
         assert not edg.IsNull()
 
+
 def test_wires_out_of_scope():
     # check pointers going out of scope
-    wire = topo.wires().next()
+    wire = next(topo.wires())
     _edges, _vertices = [], []
     for edg in WireExplorer(wire).ordered_edges():
         _edges.append(edg)
@@ -658,4 +671,3 @@ if __name__ == "__main__":
     test_loop_faces()
     test_edges_out_of_scope()
     test_wires_out_of_scope()
-

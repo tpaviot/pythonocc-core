@@ -82,7 +82,7 @@ def run(n_procs, compare_by_number_of_processors=False):
         z_slices = drange(z_min, z_max, z_delta/n_slices)
 
         slices = []
-        n = len(z_slices) / n_procs
+        n = len(z_slices) // n_procs
 
         _str_slices = []
         for i in range(1, n_procs+1):

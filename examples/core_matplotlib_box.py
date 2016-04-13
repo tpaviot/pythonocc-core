@@ -20,12 +20,17 @@
 # Small example how to use the Tesselator interface to draw
 # a shape with matplotlib
 
+import sys
+
 from OCC.Visualization import Tesselator
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import pyplot as plt
-from mpl_toolkits.mplot3d.art3d import Poly3DCollection, Line3DCollection
-
+try:
+    from mpl_toolkits.mplot3d import Axes3D
+    from matplotlib import pyplot as plt
+    from mpl_toolkits.mplot3d.art3d import Poly3DCollection, Line3DCollection
+except ImportError:
+    print("This example requires matplotlib.")
+    sys.exit(0)
 
 def draw_shape_mpl(shape):
     """

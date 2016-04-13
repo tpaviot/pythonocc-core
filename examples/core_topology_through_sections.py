@@ -36,7 +36,12 @@ def through_sections():
     wire_4 = BRepBuilderAPI_MakeWire(BRepBuilderAPI_MakeEdge(circle_4).Edge()).Wire()
 
     generatorA = BRepOffsetAPI_ThruSections(False, True)
-    map(generatorA.AddWire, [wire_1, wire_2, wire_3, wire_4])
+    # the use of the map function fails at producing the ThruSection
+    # on py3k. Why ?
+    # map(generatorA.AddWire, [wire_1, wire_2, wire_3, wire_4])
+    # we have to use a loop
+    for wir in [wire_1, wire_2, wire_3, wire_4]:
+        generatorA.AddWire(wir)
     generatorA.Build()
     display.DisplayShape(generatorA.Shape())
 
@@ -50,7 +55,10 @@ def through_sections():
     circle_4b = gp_Circ(gp_Ax2(gp_Pnt(200., 0., 200.), gp_Dir(0., 0., 1.)), 40.)
     wire_4b = BRepBuilderAPI_MakeWire(BRepBuilderAPI_MakeEdge(circle_4b).Edge()).Wire()
     generatorB = BRepOffsetAPI_ThruSections(True, False)
-    map(generatorB.AddWire, [wire_1b, wire_2b, wire_3b, wire_4b])
+    # same here, the following line fails
+    # map(generatorB.AddWire, [wire_1b, wire_2b, wire_3b, wire_4b])
+    for wir in [wire_1b, wire_2b, wire_3b, wire_4b]:
+        generatorB.AddWire(wir)
     generatorB.Build()
     display.DisplayShape(generatorB.Shape(), update=True)
 
