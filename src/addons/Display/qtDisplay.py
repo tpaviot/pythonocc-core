@@ -62,24 +62,11 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         self.setAttribute(QtCore.Qt.WA_NoSystemBackground)
         self.setAutoFillBackground(False)
 
-        # Qt backend bookkeeping
-        from OCC.Display.backend import get_loaded_backend, loaded_backend, load_pyqt4, load_pyqt5, load_pyside
-
-        self._have_pyside = load_pyside()
-        self._have_pyqt4 = load_pyqt4()
-        self._have_pyqt5 = load_pyqt5()
-        self._have_backend = loaded_backend()
-        self._qt_backend = get_loaded_backend()
-
     def GetHandle(self):
         ''' returns an the identifier of the GUI widget.
         It must be an integer
         '''
         win_id = self.winId()  # this returns either an int or voitptr
-
-        if not self._have_backend:
-            raise ValueError("no backend has been loaded yet... use "
-                             "``get_backend`` first")
 
         if "%s"%type(win_id) == "<type 'PyCObject'>":  # PySide
             ### with PySide, self.winId() does not return an integer
@@ -187,11 +174,10 @@ class qtViewer3d(qtBaseViewer):
         self._display.FitAll()
 
     def wheelEvent(self, event):
-        if self._have_pyqt5:
-            delta = event.angleDelta().y()
-        else:
+        try:  # PyQt4/PySide
             delta = event.delta()
-
+        except:  # PyQt5
+            delta = event.angleDelta().y()
         if delta > 0:
             zoom_factor = 2
         else:
