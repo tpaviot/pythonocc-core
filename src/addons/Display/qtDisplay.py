@@ -81,7 +81,7 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
             raise ValueError("no backend has been loaded yet... use "
                              "``get_backend`` first")
 
-        if self._have_pyside:
+        if "%s"%type(win_id) == "<type 'PyCObject'>":  # PySide
             ### with PySide, self.winId() does not return an integer
             if sys.platform == "win32":
                 ## Be careful, this hack is py27 specific
@@ -92,12 +92,11 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
                 ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [
                     ctypes.py_object]
                 win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(win_id)
-        elif self._have_pyqt4 or self._have_pyqt5:
+        elif type(win_id) is not int:  #PyQt4 or 5
             ## below integer cast may be required because self.winId() can
             ## returns a sip.voitptr according to the PyQt version used
             ## as well as the python version
-            if type(win_id) is not int:  # cast to int using the int() funtion
-                win_id = int(win_id)
+            win_id = int(win_id)
         return win_id
 
     def resizeEvent(self, event):
