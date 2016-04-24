@@ -21,7 +21,7 @@ import logging
 import sys
 
 from OCC import VERSION
-from OCC.Display.backend import get_backend, get_qt_modules
+from OCC.Display.backend import load_backend, get_qt_modules
 
 log = logging.getLogger(__name__)
 
@@ -31,7 +31,7 @@ def check_callable(_callable):
 
 
 def init_display(backend_str=None, size=(1024, 768)):
-    used_backend = get_backend(backend_str)
+    used_backend = load_backend(backend_str)
 
     log.info("GUI backend set to: {0}".format(used_backend))
     # wxPython based simple GUI
