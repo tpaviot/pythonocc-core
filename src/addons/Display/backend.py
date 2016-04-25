@@ -100,11 +100,10 @@ def get_loaded_backend():
     return BACKEND_MODULE
 
 
-def get_backend(backend_str=None):
+def load_backend(backend_str=None):
     """ loads a gui backend
 
-    A backend is preferable a Qt backend, such as PyQt5, PyQt4 or PySide
-    If no Qt backend is found, wx is loaded
+    If no Qt (such as PyQt5, PyQt4 or PySide) backend is found, wx is loaded
 
     The search order for pythonocc compatible gui modules is:
         PyQt5, PyQt4, PySide, Wx
@@ -144,10 +143,10 @@ def get_backend(backend_str=None):
     global HAVE_BACKEND, BACKEND_MODULE
 
     if HAVE_BACKEND:
-        msg = "a backend is already loaded..." \
-              "``get_backend`` can only be called once"
-        log.critical(msg)
-        raise ImportError(msg)
+        msg = "The {0} backend is already loaded..." \
+              "``load_backend`` can only be called once per session".format(BACKEND_MODULE)
+        log.info(msg)
+        return BACKEND_MODULE
 
     if backend_str is not None:
         compatible_backends = (PYQT5, PYQT4, PYSIDE, WX)
@@ -231,13 +230,13 @@ def get_qt_modules():
 
     ValueError
         when no Qt backend has been yet loaded
-        informs the user to call `get_backend` or that no Qt python module
+        informs the user to call `load_backend` or that no Qt python module
         ( PyQt5, PyQt4 or PySide ) is found
 
     """
     if not HAVE_BACKEND:
         raise ValueError("no backend has been imported yet with "
-                         "``get_backend``... ")
+                         "``load_backend``... ")
 
     if HAVE_PYQT5 or HAVE_PYQT4 or HAVE_PYSIDE:
         return QtCore, QtGui, QtWidgets, QtOpenGL
@@ -247,5 +246,5 @@ def get_qt_modules():
         msg = ("no Qt backend is loaded, hence cannot return any modules\n"
                "either you havent got PyQt5, PyQt4 or PySide installed\n"
                "or you havent yet loaded a backend with the "
-               "`OCC.Display.backend.get_backend` function")
+               "`OCC.Display.backend.load_backend` function")
         raise ValueError(msg)
