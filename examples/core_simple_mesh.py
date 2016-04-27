@@ -19,7 +19,7 @@ from OCC.BRep import BRep_Builder, BRep_Tool
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
 from OCC.BRepAlgoAPI import BRepAlgoAPI_Fuse
 from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
-from OCC.BRepMesh import brepmesh_Mesh
+from OCC.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.TopExp import TopExp_Explorer
 from OCC.TopoDS import TopoDS_Compound, topods_Face, topods_Edge
 from OCC.TopAbs import TopAbs_FACE
@@ -42,7 +42,7 @@ def simple_mesh():
     #
     # Mesh the shape
     #
-    brepmesh_Mesh(shape, 0.8)
+    BRepMesh_IncrementalMesh(shape, 0.8)
     builder = BRep_Builder()
     comp = TopoDS_Compound()
     builder.MakeCompound(comp)
