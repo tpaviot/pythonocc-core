@@ -51,6 +51,13 @@ def tag_faces(_shape, _color, shape_name):
         display.DisplayMessage(center_pt, "{0}_nr_{1}".format(shape_name, n))
 
 
+def tag_edge(_edge, msg, _color=(1, 0, 0)):
+    """ tag an edge
+    """
+    pt = center_boundingbox(_edge)
+    display.DisplayMessage(pt, msg, None, _color, False)
+
+
 def glue_solids(event=None):
     display.EraseAll()
     display.Context.RemoveAll()
@@ -126,12 +133,8 @@ def glue_solids_edges(event=None):
         edge_from = common_edges.EdgeFrom()
         edge_to = common_edges.EdgeTo()
 
-        center_pt_edge_to = center_boundingbox(edge_to)
-        center_pt_edge_from = center_boundingbox(edge_from)
-
-        red = (1, 0, 0)
-        display.DisplayMessage(center_pt_edge_from, "edge_{0}_from".format(n), message_color=red)
-        display.DisplayMessage(center_pt_edge_to, "edge_{0}_to".format(n), message_color=red)
+        tag_edge(edge_from, "edge_{0}_from".format(n))
+        tag_edge(edge_to, "edge_{0}_to".format(n))
 
         glue2.Bind(edge_from, edge_to)
         common_edges.Next()

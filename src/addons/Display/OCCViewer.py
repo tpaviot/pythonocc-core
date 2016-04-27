@@ -444,7 +444,7 @@ class Viewer3d(OCC.Visualization.Display3d):
     def SetSelectionMode(self, mode=None):
         self.Context.CloseAllContexts()
         self.Context.OpenLocalContext()
-        topo_level = modes.next()
+        topo_level = next(modes)
         if mode is None:
             self.Context.ActivateStandardMode(topo_level)
         else:
