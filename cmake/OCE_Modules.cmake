@@ -250,6 +250,11 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
         )
 
 LIST(APPEND OCE_TOOLKIT_OCAF
+# TKCAF
+        TDataXtd
+        TNaming
+        TPrsStd
+        AppStd
 # TKLCAF
         TDF
         TDataStd
