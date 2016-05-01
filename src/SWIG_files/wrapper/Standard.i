@@ -213,18 +213,6 @@ class Standard_ErrorHandler {
 %nodefaultctor Standard_ErrorHandlerCallback;
 class Standard_ErrorHandlerCallback {
 	public:
-		%feature("compactdefaultargs") RegisterCallback;
-		%feature("autodoc", "	* Registers this callback object in the current error handler (if found).
-
-	:rtype: None
-") RegisterCallback;
-		void RegisterCallback ();
-		%feature("compactdefaultargs") UnregisterCallback;
-		%feature("autodoc", "	* Unregisters this callback object from the error handler.
-
-	:rtype: None
-") UnregisterCallback;
-		void UnregisterCallback ();
 		%feature("compactdefaultargs") DestroyCallback;
 		%feature("autodoc", "	* The callback function to perform necessary callback action. Called by the exception handler when it is being destroyed but still has this callback registered.
 
@@ -807,6 +795,115 @@ class Handle_Standard_Transient {
 %extend Handle_Standard_Transient {
     Standard_Transient* GetObject() {
     return (Standard_Transient*)$self->Access();
+    }
+};
+
+%nodefaultctor Standard_Failure;
+class Standard_Failure : public Standard_Transient {
+	public:
+		%feature("compactdefaultargs") Standard_Failure;
+		%feature("autodoc", "	* Creates a status object of type 'Failure'.
+
+	:rtype: None
+") Standard_Failure;
+		 Standard_Failure ();
+		%feature("compactdefaultargs") Standard_Failure;
+		%feature("autodoc", "	:param f:
+	:type f: Standard_Failure &
+	:rtype: None
+") Standard_Failure;
+		 Standard_Failure (const Standard_Failure & f);
+		%feature("compactdefaultargs") Standard_Failure;
+		%feature("autodoc", "	* Creates a status object of type 'Failure'.
+
+	:param aString:
+	:type aString: char *
+	:rtype: None
+") Standard_Failure;
+		 Standard_Failure (const char * aString);
+		%feature("compactdefaultargs") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
+		void Destroy ();
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		%feature("compactdefaultargs") GetMessageString;
+		%feature("autodoc", "	* Returns error message
+
+	:rtype: char *
+") GetMessageString;
+		char * GetMessageString ();
+		%feature("compactdefaultargs") SetMessageString;
+		%feature("autodoc", "	* Sets error message
+
+	:param aMessage:
+	:type aMessage: char *
+	:rtype: None
+") SetMessageString;
+		void SetMessageString (const char * aMessage);
+		%feature("compactdefaultargs") NewInstance;
+		%feature("autodoc", "	* Used to construct an instance of the exception object as a handle. Shall be used to protect against possible construction of exception object in C stack -- that is dangerous since some of methods require that object was allocated dynamically.
+
+	:param aMessage:
+	:type aMessage: char *
+	:rtype: Handle_Standard_Failure
+") NewInstance;
+		static Handle_Standard_Failure NewInstance (const char * aMessage);
+		%feature("compactdefaultargs") Jump;
+		%feature("autodoc", "	* Used to throw CASCADE exception from C signal handler. On platforms that do not allow throwing C++ exceptions from this handler (e.g. Linux), uses longjump to get to the current active signal handler, and only then is converted to C++ exception.
+
+	:rtype: None
+") Jump;
+		void Jump ();
+		%feature("compactdefaultargs") Caught;
+		%feature("autodoc", "	* Returns the last caught exception. Needed when exceptions are emulated by C longjumps, in other cases is also provided for compatibility.
+
+	:rtype: Handle_Standard_Failure
+") Caught;
+		static Handle_Standard_Failure Caught ();
+};
+
+
+%extend Standard_Failure {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Standard_Failure(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Standard_Failure::Handle_Standard_Failure %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_Standard_Failure;
+class Handle_Standard_Failure : public Handle_Standard_Transient {
+
+    public:
+        // constructors
+        Handle_Standard_Failure();
+        Handle_Standard_Failure(const Handle_Standard_Failure &aHandle);
+        Handle_Standard_Failure(const Standard_Failure *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_Standard_Failure DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_Standard_Failure {
+    Standard_Failure* GetObject() {
+    return (Standard_Failure*)$self->Access();
     }
 };
 
