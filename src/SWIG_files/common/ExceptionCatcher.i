@@ -39,13 +39,11 @@ Exception handling
 	    Handle(Standard_Failure) error = Standard_Failure::Caught ();
 	    char *error_name = (char*) error->DynamicType()->Name();
 	    char *error_message = (char*) error->GetMessageString();
-	    // concatenate the two strings
-        char *message = (char *)malloc(strlen(error_name) + strlen(error_message) + 1);
-	    strcpy(message, error_name);
-	    strcat(message,"\n");
-        strcat(message, error_message);
-        // raise the python exception
-        PyErr_SetString(PyExc_RuntimeError, message);
+	    std::string message;
+	    if (error_name) message += std::string(error_name) + "\n";
+	    if (error_message) message += std::string(error_message);
+	    // raise the python exception
+	    PyErr_SetString(PyExc_RuntimeError, message.c_str());
 	    return NULL;
     }
 }
