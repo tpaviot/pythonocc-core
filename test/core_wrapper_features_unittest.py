@@ -387,6 +387,19 @@ class TestWrapperFeatures(unittest.TestCase):
         TopoDS_Builder()
         ShapeAnalysis_Curve()
 
+    def test_handling_exceptions(self):
+        """ asserts that handling of OCC exceptions is handled correctly in pythonocc
+
+        See Also
+        --------
+
+        issue #259 -- Standard errors like Standard_OutOfRange not caught
+
+        """
+        d = gp_Dir(0,0,1)
+        with self.assertRaises(RuntimeError):
+            d.Coord(-1) # Standard_OutOfRange
+
 
 def suite():
     test_suite = unittest.TestSuite()
