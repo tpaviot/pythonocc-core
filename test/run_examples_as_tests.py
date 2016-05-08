@@ -33,6 +33,10 @@ tests_to_exclude = ['core_visualization_overpaint_viewer.py',
                     'core_display_quality.py',
                     'core_display_export_to_EF.py',
                     'core_matplotlib_box.py']
+# for OSX travis-ci.org, remove tests that take too long
+if sys.platform == 'darwin':
+    tests_to_exclude.extend(['core_geometry_splinecage.py',  # buggy
+                             'core_parallel_slicer.py'])
 # remove examples to excludes
 for test_name in tests_to_exclude:
     test_fullpath = os.path.join('..', 'examples', test_name)
