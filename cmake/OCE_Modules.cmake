@@ -239,8 +239,29 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
         StlAPI
         StlTransfer
         RWStl
+# TKSTEPBase
+        StepBasic
+        RWStepBasic
+        StepRepr
+        RWStepRepr
+        StepGeom
+        RWStepGeom
+        StepShape
+        RWStepShape
 # TKSTEP
+        StepAP214
+        RWStepAP214
+        StepAP203
+        RWStepAP203
+        STEPConstruct
+        STEPEdit
+        GeomToStep
+        StepToGeom
+        StepToTopoDS
+        TopoDSToStep
         STEPControl
+        STEPSelections
+        StepAP209
 # TKIGES
         IGESControl
 # TKXSBase
@@ -250,6 +271,11 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
         )
 
 LIST(APPEND OCE_TOOLKIT_OCAF
+# TKCAF
+        TDataXtd
+        TNaming
+        TPrsStd
+        AppStd
 # TKLCAF
         TDF
         TDataStd
