@@ -132,7 +132,9 @@ class Viewer3d(OCC.Visualization.Display3d):
         self.View.FitAll()
 
     def Create(self, create_default_lights=True, ffpEnabled=True, buffersNoSwapEnabled=False, glslWarningsEnabled=False):
-        self.Init(self._window_handle, ffpEnabled, buffersNoSwapEnabled, glslWarningsEnabled)
+        #self.Init(self._window_handle, ffpEnabled, buffersNoSwapEnabled, glslWarningsEnabled)
+        # hardcode required settings required for GLSL support
+        self.Init(self._window_handle, False, buffersNoSwapEnabled, True)
         self.Context_handle = self.GetContext()
         self.Viewer_handle = self.GetViewer()
         self.View_handle = self.GetView()
