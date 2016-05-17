@@ -13,7 +13,7 @@ pythonocc is a python library whose purpose is to provide 3D modeling
 features. It is intended to developers who aim at developing
 CAD/PDM/PLM applications.
 
-Latest release : [pythonocc-core 0.16.4 (april 2016)](https://github.com/tpaviot/pythonocc-core/releases/tag/0.16.4)
+Latest release : [pythonocc-core 0.16.5 (may 2016)](https://github.com/tpaviot/pythonocc-core/releases/tag/0.16.5)
 
 How to quicky download/install binaries ?
 -----------------------------------------

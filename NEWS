@@ -1,4 +1,20 @@
-=============================
+=========================
+Version 0.16.5 - May 2016
+
+This release requires oce-0.16.0 or oce-0.16.1
+
+* Exception handling fix
+
+* pyqt 4 and 5 fixes
+
+* OCCViewer fixes (py3k, DisplayVector)
+
+* New examples : minimal distance, boolean operations,
+fillet operations, splinecage, topology_traverse
+
+* New modules made available from TKCAF, TKSTEP and TKSTEPBase
+
+===========================
 Version 0.16.4 - April 2016
 
 This release requires oce-0.16.0 or oce-0.16.1
