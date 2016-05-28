@@ -155,13 +155,13 @@ class qtViewer3d(qtBaseViewer):
     def paintEvent(self, event):
         if self._inited:
             self._display.Context.UpdateCurrentViewer()
-            # important to allow overpainting of the OCC OpenGL context in Qt
-            self.swapBuffers()
 
         if self._drawbox:
             self.makeCurrent()
             painter = QtGui.QPainter(self)
             painter.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0), 1))
+            # important to allow overpainting of the OCC OpenGL context in Qt
+            self.swapBuffers()
             rect = QtCore.QRect(*self._drawbox)
             painter.drawRect(rect)
             painter.end()
