@@ -361,7 +361,7 @@ class Message_Algorithm : public MMgt_TShared {
 ") GetMessenger;
 		Handle_Message_Messenger GetMessenger ();
 		%feature("compactdefaultargs") SendStatusMessages;
-		%feature("autodoc", "	* Print messages for all status flags that have been set during algorithm execution, excluding statuses that are NOT set in theFilter.  The messages are taken from resource file, names being constructed as {dynamic class type}.{status name}, for instance, 'Message_Algorithm.Fail5'. If message is not found in resources for this class and all its base types, surrogate text is printed.  For the statuses having number or string parameters, theMaxCount defines maximal number of numbers or strings to be included in the message  Note that this method is virtual; this allows descendant classes to customize message output (e.g. by adding messages from other sub-algorithms)
+		%feature("autodoc", "	* Print messages for all status flags that have been set during algorithm execution, excluding statuses that are NOT set in theFilter. //! The messages are taken from resource file, names being constructed as {dynamic class type}.{status name}, for instance, 'Message_Algorithm.Fail5'. If message is not found in resources for this class and all its base types, surrogate text is printed. //! For the statuses having number or string parameters, theMaxCount defines maximal number of numbers or strings to be included in the message //! Note that this method is virtual; this allows descendant classes to customize message output (e.g. by adding messages from other sub-algorithms)
 
 	:param theFilter:
 	:type theFilter: Message_ExecStatus &
@@ -572,6 +572,12 @@ class Message_ListOfMsg {
 		%feature("autodoc", "	:rtype: None
 ") Message_ListOfMsg;
 		 Message_ListOfMsg ();
+		%feature("compactdefaultargs") Message_ListOfMsg;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_ListOfMsg &
+	:rtype: None
+") Message_ListOfMsg;
+		 Message_ListOfMsg (const Message_ListOfMsg & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Message_ListOfMsg &
@@ -860,6 +866,14 @@ class Message_MsgFile {
 	:rtype: bool
 ") AddMsg;
 		static Standard_Boolean AddMsg (const TCollection_AsciiString & key,const TCollection_ExtendedString & text);
+		%feature("compactdefaultargs") HasMsg;
+		%feature("autodoc", "	* Returns True if message with specified keyword is registered
+
+	:param key:
+	:type key: TCollection_AsciiString &
+	:rtype: bool
+") HasMsg;
+		static Standard_Boolean HasMsg (const TCollection_AsciiString & key);
 		%feature("compactdefaultargs") Msg;
 		%feature("autodoc", "	:param key:
 	:type key: char *
@@ -880,42 +894,56 @@ class Message_MsgFile {
 %nodefaultctor Message_Printer;
 class Message_Printer : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") GetTraceLevel;
+		%feature("autodoc", "	* Return trace level used for filtering messages; messages with lover gravity will be ignored.
+
+	:rtype: Message_Gravity
+") GetTraceLevel;
+		Message_Gravity GetTraceLevel ();
+		%feature("compactdefaultargs") SetTraceLevel;
+		%feature("autodoc", "	* Set trace level used for filtering messages. By default, trace level is Message_Info, so that all messages are output
+
+	:param theTraceLevel:
+	:type theTraceLevel: Message_Gravity
+	:rtype: None
+") SetTraceLevel;
+		void SetTraceLevel (const Message_Gravity theTraceLevel);
 		%feature("compactdefaultargs") Send;
-		%feature("autodoc", "	* Send a string message with specified trace level. The parameter putEndl specified whether end-of-line should be added to the end of the message. This method must be redefined in descentant.
+		%feature("autodoc", "	* Send a string message with specified trace level. The parameter theToPutEol specified whether end-of-line should be added to the end of the message. This method must be redefined in descentant.
 
 	:param theString:
 	:type theString: TCollection_ExtendedString &
 	:param theGravity:
 	:type theGravity: Message_Gravity
-	:param putEndl:
-	:type putEndl: bool
+	:param theToPutEol:
+	:type theToPutEol: bool
 	:rtype: void
 ") Send;
-		virtual void Send (const TCollection_ExtendedString & theString,const Message_Gravity theGravity,const Standard_Boolean putEndl);
+		virtual void Send (const TCollection_ExtendedString & theString,const Message_Gravity theGravity,const Standard_Boolean theToPutEol);
 		%feature("compactdefaultargs") Send;
-		%feature("autodoc", "	* Send a string message with specified trace level. The parameter putEndl specified whether end-of-line should be added to the end of the message. Default implementation calls first method Send().
+		%feature("autodoc", "	* Send a string message with specified trace level. The parameter theToPutEol specified whether end-of-line should be added to the end of the message. Default implementation calls first method Send().
 
 	:param theString:
 	:type theString: char *
 	:param theGravity:
 	:type theGravity: Message_Gravity
-	:param putEndl:
-	:type putEndl: bool
+	:param theToPutEol:
+	:type theToPutEol: bool
 	:rtype: void
 ") Send;
-		virtual void Send (const char * theString,const Message_Gravity theGravity,const Standard_Boolean putEndl);
+		virtual void Send (const char * theString,const Message_Gravity theGravity,const Standard_Boolean theToPutEol);
 		%feature("compactdefaultargs") Send;
-		%feature("autodoc", "	* Send a string message with specified trace level. The parameter putEndl specified whether end-of-line should be added to the end of the message. Default implementation calls first method Send().
+		%feature("autodoc", "	* Send a string message with specified trace level. The parameter theToPutEol specified whether end-of-line should be added to the end of the message. Default implementation calls first method Send().
 
 	:param theString:
 	:type theString: TCollection_AsciiString &
 	:param theGravity:
 	:type theGravity: Message_Gravity
-	:param putEndl:
-	:type putEndl: bool
+	:param theToPutEol:
+	:type theToPutEol: bool
 	:rtype: void
 ") Send;
-		virtual void Send (const TCollection_AsciiString & theString,const Message_Gravity theGravity,const Standard_Boolean putEndl);
+		virtual void Send (const TCollection_AsciiString & theString,const Message_Gravity theGravity,const Standard_Boolean theToPutEol);
 };
 
 
@@ -1550,6 +1578,12 @@ class Message_SequenceOfPrinters : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Message_SequenceOfPrinters;
 		 Message_SequenceOfPrinters ();
+		%feature("compactdefaultargs") Message_SequenceOfPrinters;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_SequenceOfPrinters &
+	:rtype: None
+") Message_SequenceOfPrinters;
+		 Message_SequenceOfPrinters (const Message_SequenceOfPrinters & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1682,6 +1716,12 @@ class Message_SequenceOfProgressScale : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Message_SequenceOfProgressScale;
 		 Message_SequenceOfProgressScale ();
+		%feature("compactdefaultargs") Message_SequenceOfProgressScale;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_SequenceOfProgressScale &
+	:rtype: None
+") Message_SequenceOfProgressScale;
+		 Message_SequenceOfProgressScale (const Message_SequenceOfProgressScale & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1836,20 +1876,6 @@ class Message_PrinterOStream : public Message_Printer {
 	:rtype: None
 ") Close;
 		void Close ();
-		%feature("compactdefaultargs") GetTraceLevel;
-		%feature("autodoc", "	* Return trace level used for filtering messages; messages with lover gravity will be ignored.
-
-	:rtype: Message_Gravity
-") GetTraceLevel;
-		Message_Gravity GetTraceLevel ();
-		%feature("compactdefaultargs") SetTraceLevel;
-		%feature("autodoc", "	* Set trace level used for filtering messages. By default, trace level is Message_Info, so that all messages are output
-
-	:param theTraceLevel:
-	:type theTraceLevel: Message_Gravity
-	:rtype: None
-") SetTraceLevel;
-		void SetTraceLevel (const Message_Gravity theTraceLevel);
 		%feature("compactdefaultargs") GetUseUtf8;
 		%feature("autodoc", "	* Returns option to convert non-Ascii symbols to UTF8 encoding
 

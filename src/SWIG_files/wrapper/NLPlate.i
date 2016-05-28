@@ -209,6 +209,95 @@ class Handle_NLPlate_HGPPConstraint : public Handle_MMgt_TShared {
     }
 };
 
+%nodefaultctor NLPlate_ListIteratorOfStackOfPlate;
+class NLPlate_ListIteratorOfStackOfPlate {
+	public:
+		%feature("compactdefaultargs") NLPlate_ListIteratorOfStackOfPlate;
+		%feature("autodoc", "	:rtype: None
+") NLPlate_ListIteratorOfStackOfPlate;
+		 NLPlate_ListIteratorOfStackOfPlate ();
+		%feature("compactdefaultargs") NLPlate_ListIteratorOfStackOfPlate;
+		%feature("autodoc", "	:param L:
+	:type L: NLPlate_StackOfPlate &
+	:rtype: None
+") NLPlate_ListIteratorOfStackOfPlate;
+		 NLPlate_ListIteratorOfStackOfPlate (const NLPlate_StackOfPlate & L);
+		%feature("compactdefaultargs") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: NLPlate_StackOfPlate &
+	:rtype: None
+") Initialize;
+		void Initialize (const NLPlate_StackOfPlate & L);
+		%feature("compactdefaultargs") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
+		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
+		void Next ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	:rtype: Plate_Plate
+") Value;
+		Plate_Plate & Value ();
+};
+
+
+%nodefaultctor NLPlate_ListNodeOfStackOfPlate;
+class NLPlate_ListNodeOfStackOfPlate : public TCollection_MapNode {
+	public:
+		%feature("compactdefaultargs") NLPlate_ListNodeOfStackOfPlate;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_Plate &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") NLPlate_ListNodeOfStackOfPlate;
+		 NLPlate_ListNodeOfStackOfPlate (const Plate_Plate & I,const TCollection_MapNodePtr & n);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	:rtype: Plate_Plate
+") Value;
+		Plate_Plate & Value ();
+};
+
+
+%extend NLPlate_ListNodeOfStackOfPlate {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_NLPlate_ListNodeOfStackOfPlate(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_NLPlate_ListNodeOfStackOfPlate::Handle_NLPlate_ListNodeOfStackOfPlate %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_NLPlate_ListNodeOfStackOfPlate;
+class Handle_NLPlate_ListNodeOfStackOfPlate : public Handle_TCollection_MapNode {
+
+    public:
+        // constructors
+        Handle_NLPlate_ListNodeOfStackOfPlate();
+        Handle_NLPlate_ListNodeOfStackOfPlate(const Handle_NLPlate_ListNodeOfStackOfPlate &aHandle);
+        Handle_NLPlate_ListNodeOfStackOfPlate(const NLPlate_ListNodeOfStackOfPlate *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_NLPlate_ListNodeOfStackOfPlate DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_NLPlate_ListNodeOfStackOfPlate {
+    NLPlate_ListNodeOfStackOfPlate* GetObject() {
+    return (NLPlate_ListNodeOfStackOfPlate*)$self->Access();
+    }
+};
+
 %nodefaultctor NLPlate_NLPlate;
 class NLPlate_NLPlate {
 	public:
@@ -365,6 +454,12 @@ class NLPlate_SequenceOfHGPPConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") NLPlate_SequenceOfHGPPConstraint;
 		 NLPlate_SequenceOfHGPPConstraint ();
+		%feature("compactdefaultargs") NLPlate_SequenceOfHGPPConstraint;
+		%feature("autodoc", "	:param Other:
+	:type Other: NLPlate_SequenceOfHGPPConstraint &
+	:rtype: None
+") NLPlate_SequenceOfHGPPConstraint;
+		 NLPlate_SequenceOfHGPPConstraint (const NLPlate_SequenceOfHGPPConstraint & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -490,95 +585,6 @@ class NLPlate_SequenceOfHGPPConstraint : public TCollection_BaseSequence {
 };
 
 
-%nodefaultctor NLPlate_StackIteratorOfStackOfPlate;
-class NLPlate_StackIteratorOfStackOfPlate {
-	public:
-		%feature("compactdefaultargs") NLPlate_StackIteratorOfStackOfPlate;
-		%feature("autodoc", "	:rtype: None
-") NLPlate_StackIteratorOfStackOfPlate;
-		 NLPlate_StackIteratorOfStackOfPlate ();
-		%feature("compactdefaultargs") NLPlate_StackIteratorOfStackOfPlate;
-		%feature("autodoc", "	:param S:
-	:type S: NLPlate_StackOfPlate &
-	:rtype: None
-") NLPlate_StackIteratorOfStackOfPlate;
-		 NLPlate_StackIteratorOfStackOfPlate (const NLPlate_StackOfPlate & S);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param S:
-	:type S: NLPlate_StackOfPlate &
-	:rtype: None
-") Initialize;
-		void Initialize (const NLPlate_StackOfPlate & S);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Plate_Plate
-") Value;
-		const Plate_Plate & Value ();
-};
-
-
-%nodefaultctor NLPlate_StackNodeOfStackOfPlate;
-class NLPlate_StackNodeOfStackOfPlate : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") NLPlate_StackNodeOfStackOfPlate;
-		%feature("autodoc", "	:param I:
-	:type I: Plate_Plate &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") NLPlate_StackNodeOfStackOfPlate;
-		 NLPlate_StackNodeOfStackOfPlate (const Plate_Plate & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Plate_Plate
-") Value;
-		Plate_Plate & Value ();
-};
-
-
-%extend NLPlate_StackNodeOfStackOfPlate {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_NLPlate_StackNodeOfStackOfPlate(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_NLPlate_StackNodeOfStackOfPlate::Handle_NLPlate_StackNodeOfStackOfPlate %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_NLPlate_StackNodeOfStackOfPlate;
-class Handle_NLPlate_StackNodeOfStackOfPlate : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_NLPlate_StackNodeOfStackOfPlate();
-        Handle_NLPlate_StackNodeOfStackOfPlate(const Handle_NLPlate_StackNodeOfStackOfPlate &aHandle);
-        Handle_NLPlate_StackNodeOfStackOfPlate(const NLPlate_StackNodeOfStackOfPlate *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_NLPlate_StackNodeOfStackOfPlate DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_NLPlate_StackNodeOfStackOfPlate {
-    NLPlate_StackNodeOfStackOfPlate* GetObject() {
-    return (NLPlate_StackNodeOfStackOfPlate*)$self->Access();
-    }
-};
-
 %nodefaultctor NLPlate_StackOfPlate;
 class NLPlate_StackOfPlate {
 	public:
@@ -586,48 +592,126 @@ class NLPlate_StackOfPlate {
 		%feature("autodoc", "	:rtype: None
 ") NLPlate_StackOfPlate;
 		 NLPlate_StackOfPlate ();
+		%feature("compactdefaultargs") NLPlate_StackOfPlate;
+		%feature("autodoc", "	:param Other:
+	:type Other: NLPlate_StackOfPlate &
+	:rtype: None
+") NLPlate_StackOfPlate;
+		 NLPlate_StackOfPlate (const NLPlate_StackOfPlate & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: NLPlate_StackOfPlate &
-	:rtype: NLPlate_StackOfPlate
+	:rtype: None
 ") Assign;
-		const NLPlate_StackOfPlate & Assign (const NLPlate_StackOfPlate & Other);
+		void Assign (const NLPlate_StackOfPlate & Other);
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: NLPlate_StackOfPlate &
-	:rtype: NLPlate_StackOfPlate
-") operator=;
-		const NLPlate_StackOfPlate & operator = (const NLPlate_StackOfPlate & Other);
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Depth;
-		%feature("autodoc", "	:rtype: int
-") Depth;
-		Standard_Integer Depth ();
-		%feature("compactdefaultargs") Top;
-		%feature("autodoc", "	:rtype: Plate_Plate
-") Top;
-		const Plate_Plate & Top ();
-		%feature("compactdefaultargs") Push;
-		%feature("autodoc", "	:param I:
-	:type I: Plate_Plate &
 	:rtype: None
-") Push;
-		void Push (const Plate_Plate & I);
-		%feature("compactdefaultargs") Pop;
-		%feature("autodoc", "	:rtype: None
-") Pop;
-		void Pop ();
+") operator=;
+		void operator = (const NLPlate_StackOfPlate & Other);
+		%feature("compactdefaultargs") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
+		Standard_Integer Extent ();
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
-		%feature("compactdefaultargs") ChangeTop;
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
+		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_Plate &
+	:rtype: None
+") Prepend;
+		void Prepend (const Plate_Plate & I);
+		%feature("compactdefaultargs") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_Plate &
+	:param theIt:
+	:type theIt: NLPlate_ListIteratorOfStackOfPlate &
+	:rtype: None
+") Prepend;
+		void Prepend (const Plate_Plate & I,NLPlate_ListIteratorOfStackOfPlate & theIt);
+		%feature("compactdefaultargs") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: NLPlate_StackOfPlate &
+	:rtype: None
+") Prepend;
+		void Prepend (NLPlate_StackOfPlate & Other);
+		%feature("compactdefaultargs") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_Plate &
+	:rtype: None
+") Append;
+		void Append (const Plate_Plate & I);
+		%feature("compactdefaultargs") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_Plate &
+	:param theIt:
+	:type theIt: NLPlate_ListIteratorOfStackOfPlate &
+	:rtype: None
+") Append;
+		void Append (const Plate_Plate & I,NLPlate_ListIteratorOfStackOfPlate & theIt);
+		%feature("compactdefaultargs") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: NLPlate_StackOfPlate &
+	:rtype: None
+") Append;
+		void Append (NLPlate_StackOfPlate & Other);
+		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Plate_Plate
-") ChangeTop;
-		Plate_Plate & ChangeTop ();
+") First;
+		Plate_Plate & First ();
+		%feature("compactdefaultargs") Last;
+		%feature("autodoc", "	:rtype: Plate_Plate
+") Last;
+		Plate_Plate & Last ();
+		%feature("compactdefaultargs") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
+		void RemoveFirst ();
+		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: NLPlate_ListIteratorOfStackOfPlate &
+	:rtype: None
+") Remove;
+		void Remove (NLPlate_ListIteratorOfStackOfPlate & It);
+		%feature("compactdefaultargs") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_Plate &
+	:param It:
+	:type It: NLPlate_ListIteratorOfStackOfPlate &
+	:rtype: None
+") InsertBefore;
+		void InsertBefore (const Plate_Plate & I,NLPlate_ListIteratorOfStackOfPlate & It);
+		%feature("compactdefaultargs") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: NLPlate_StackOfPlate &
+	:param It:
+	:type It: NLPlate_ListIteratorOfStackOfPlate &
+	:rtype: None
+") InsertBefore;
+		void InsertBefore (NLPlate_StackOfPlate & Other,NLPlate_ListIteratorOfStackOfPlate & It);
+		%feature("compactdefaultargs") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_Plate &
+	:param It:
+	:type It: NLPlate_ListIteratorOfStackOfPlate &
+	:rtype: None
+") InsertAfter;
+		void InsertAfter (const Plate_Plate & I,NLPlate_ListIteratorOfStackOfPlate & It);
+		%feature("compactdefaultargs") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: NLPlate_StackOfPlate &
+	:param It:
+	:type It: NLPlate_ListIteratorOfStackOfPlate &
+	:rtype: None
+") InsertAfter;
+		void InsertAfter (NLPlate_StackOfPlate & Other,NLPlate_ListIteratorOfStackOfPlate & It);
 };
 
 

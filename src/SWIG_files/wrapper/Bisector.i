@@ -78,7 +78,7 @@ class Bisector_Bisec {
 ") Bisector_Bisec;
 		 Bisector_Bisec ();
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs the bisecting line between the curves  <Cu1> and <Cu2>.  <oncurve> is True if the point <P> is common to <Cu1>  and <Cu2>.
+		%feature("autodoc", "	* Performs the bisecting line between the curves <Cu1> and <Cu2>. <oncurve> is True if the point <P> is common to <Cu1> and <Cu2>.
 
 	:param Cu1:
 	:type Cu1: Handle_Geom2d_Curve &
@@ -100,7 +100,7 @@ class Bisector_Bisec {
 ") Perform;
 		void Perform (const Handle_Geom2d_Curve & Cu1,const Handle_Geom2d_Curve & Cu2,const gp_Pnt2d & P,const gp_Vec2d & V1,const gp_Vec2d & V2,const Standard_Real Sense,const Standard_Real Tolerance,const Standard_Boolean oncurve = Standard_True);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs the bisecting line between the curve  <Cu1> and the point <Pnt>.  <oncurve> is True if the point <P> is the point <Pnt>.
+		%feature("autodoc", "	* Performs the bisecting line between the curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 
 	:param Cu:
 	:type Cu: Handle_Geom2d_Curve &
@@ -122,7 +122,7 @@ class Bisector_Bisec {
 ") Perform;
 		void Perform (const Handle_Geom2d_Curve & Cu,const Handle_Geom2d_Point & Pnt,const gp_Pnt2d & P,const gp_Vec2d & V1,const gp_Vec2d & V2,const Standard_Real Sense,const Standard_Real Tolerance,const Standard_Boolean oncurve = Standard_True);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs the bisecting line between the curve  <Cu> and the point <Pnt>.  <oncurve> is True if the point <P> is the point <Pnt>.
+		%feature("autodoc", "	* Performs the bisecting line between the curve <Cu> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 
 	:param Pnt:
 	:type Pnt: Handle_Geom2d_Point &
@@ -144,7 +144,7 @@ class Bisector_Bisec {
 ") Perform;
 		void Perform (const Handle_Geom2d_Point & Pnt,const Handle_Geom2d_Curve & Cu,const gp_Pnt2d & P,const gp_Vec2d & V1,const gp_Vec2d & V2,const Standard_Real Sense,const Standard_Real Tolerance,const Standard_Boolean oncurve = Standard_True);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs the bisecting line between the two points  <Pnt1> and <Pnt2>.
+		%feature("autodoc", "	* Performs the bisecting line between the two points <Pnt1> and <Pnt2>.
 
 	:param Pnt1:
 	:type Pnt1: Handle_Geom2d_Point &
@@ -561,7 +561,7 @@ class Bisector_BisecAna : public Bisector_Curve {
 ") Bisector_BisecAna;
 		 Bisector_BisecAna ();
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs the bisecting line between the curves  <Cu1> and <Cu2>.  <oncurve> is True if the point <P> is common to <Cu1>  and <Cu2>.
+		%feature("autodoc", "	* Performs the bisecting line between the curves <Cu1> and <Cu2>. <oncurve> is True if the point <P> is common to <Cu1> and <Cu2>.
 
 	:param Cu1:
 	:type Cu1: Handle_Geom2d_Curve &
@@ -583,7 +583,7 @@ class Bisector_BisecAna : public Bisector_Curve {
 ") Perform;
 		void Perform (const Handle_Geom2d_Curve & Cu1,const Handle_Geom2d_Curve & Cu2,const gp_Pnt2d & P,const gp_Vec2d & V1,const gp_Vec2d & V2,const Standard_Real Sense,const Standard_Real Tolerance,const Standard_Boolean oncurve = Standard_True);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs the bisecting line between the curve  <Cu1> and the point <Pnt>.  <oncurve> is True if the point <P> is the point <Pnt>.
+		%feature("autodoc", "	* Performs the bisecting line between the curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 
 	:param Cu:
 	:type Cu: Handle_Geom2d_Curve &
@@ -605,7 +605,7 @@ class Bisector_BisecAna : public Bisector_Curve {
 ") Perform;
 		void Perform (const Handle_Geom2d_Curve & Cu,const Handle_Geom2d_Point & Pnt,const gp_Pnt2d & P,const gp_Vec2d & V1,const gp_Vec2d & V2,const Standard_Real Sense,const Standard_Real Tolerance,const Standard_Boolean oncurve = Standard_True);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs the bisecting line between the curve  <Cu> and the point <Pnt>.  <oncurve> is True if the point <P> is the point <Pnt>.
+		%feature("autodoc", "	* Performs the bisecting line between the curve <Cu> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 
 	:param Pnt:
 	:type Pnt: Handle_Geom2d_Point &
@@ -627,7 +627,7 @@ class Bisector_BisecAna : public Bisector_Curve {
 ") Perform;
 		void Perform (const Handle_Geom2d_Point & Pnt,const Handle_Geom2d_Curve & Cu,const gp_Pnt2d & P,const gp_Vec2d & V1,const gp_Vec2d & V2,const Standard_Real Sense,const Standard_Real Tolerance,const Standard_Boolean oncurve = Standard_True);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs the bisecting line between the two points  <Pnt1> and <Pnt2>.
+		%feature("autodoc", "	* Performs the bisecting line between the two points <Pnt1> and <Pnt2>.
 
 	:param Pnt1:
 	:type Pnt1: Handle_Geom2d_Point &
@@ -663,7 +663,7 @@ class Bisector_BisecAna : public Bisector_Curve {
 ") IsExtendAtEnd;
 		Standard_Boolean IsExtendAtEnd ();
 		%feature("compactdefaultargs") SetTrim;
-		%feature("autodoc", "	* Trim <self> by a domain defined by the curve <Cu>.  This domain is the set of the points which are  nearest from <Cu> than the extremitis of <Cu>.
+		%feature("autodoc", "	* Trim <self> by a domain defined by the curve <Cu>. This domain is the set of the points which are nearest from <Cu> than the extremitis of <Cu>.
 
 	:param Cu:
 	:type Cu: Handle_Geom2d_Curve &
@@ -876,7 +876,7 @@ class Bisector_BisecCC : public Bisector_Curve {
 ") Bisector_BisecCC;
 		 Bisector_BisecCC ();
 		%feature("compactdefaultargs") Bisector_BisecCC;
-		%feature("autodoc", "	* Constructs the bisector between the curves <Cu1> and <Cu2>.  <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1.  the Bisector is trimmed by the Point <Origin>. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
+		%feature("autodoc", "	* Constructs the bisector between the curves <Cu1> and <Cu2>. //! <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1. //! the Bisector is trimmed by the Point <Origin>. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 
 	:param Cu1:
 	:type Cu1: Handle_Geom2d_Curve &
@@ -894,7 +894,7 @@ class Bisector_BisecCC : public Bisector_Curve {
 ") Bisector_BisecCC;
 		 Bisector_BisecCC (const Handle_Geom2d_Curve & Cu1,const Handle_Geom2d_Curve & Cu2,const Standard_Real Side1,const Standard_Real Side2,const gp_Pnt2d & Origin,const Standard_Real DistMax = 500);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Computes the bisector between the curves <Cu1> and <Cu2>.  <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1.  the Bisector is trimmed by the Point <Origin>.  <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
+		%feature("autodoc", "	* Computes the bisector between the curves <Cu1> and <Cu2>. //! <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1. //! the Bisector is trimmed by the Point <Origin>. //! <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 
 	:param Cu1:
 	:type Cu1: Handle_Geom2d_Curve &

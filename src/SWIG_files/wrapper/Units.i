@@ -296,7 +296,7 @@ class Units_Explorer {
 ") Unit;
 		TCollection_AsciiString Unit ();
 		%feature("compactdefaultargs") IsActive;
-		%feature("autodoc", "	* If the units system to explore is a user system, returns True if the current unit is active, False otherwise.  If the units system to explore is the units dictionary, returns True if the current unit is the S.I. unit.
+		%feature("autodoc", "	* If the units system to explore is a user system, returns True if the current unit is active, False otherwise. //! If the units system to explore is the units dictionary, returns True if the current unit is the S.I. unit.
 
 	:rtype: bool
 ") IsActive;
@@ -570,6 +570,12 @@ class Units_QtsSequence : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Units_QtsSequence;
 		 Units_QtsSequence ();
+		%feature("compactdefaultargs") Units_QtsSequence;
+		%feature("autodoc", "	:param Other:
+	:type Other: Units_QtsSequence &
+	:rtype: None
+") Units_QtsSequence;
+		 Units_QtsSequence (const Units_QtsSequence & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -830,10 +836,6 @@ class Units_QuantitiesSequence : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: Units_QtsSequence
 ") ChangeSequence;
 		Units_QtsSequence & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_Units_QuantitiesSequence
-") ShallowCopy;
-		Handle_Units_QuantitiesSequence ShallowCopy ();
 };
 
 
@@ -1106,6 +1108,12 @@ class Units_TksSequence : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Units_TksSequence;
 		 Units_TksSequence ();
+		%feature("compactdefaultargs") Units_TksSequence;
+		%feature("autodoc", "	:param Other:
+	:type Other: Units_TksSequence &
+	:rtype: None
+") Units_TksSequence;
+		 Units_TksSequence (const Units_TksSequence & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1693,10 +1701,6 @@ class Units_TokensSequence : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: Units_TksSequence
 ") ChangeSequence;
 		Units_TksSequence & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_Units_TokensSequence
-") ShallowCopy;
-		Handle_Units_TokensSequence ShallowCopy ();
 };
 
 
@@ -2112,10 +2116,6 @@ class Units_UnitsSequence : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: Units_UtsSequence
 ") ChangeSequence;
 		Units_UtsSequence & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_Units_UnitsSequence
-") ShallowCopy;
-		Handle_Units_UnitsSequence ShallowCopy ();
 };
 
 
@@ -2166,7 +2166,7 @@ class Units_UnitsSystem : public MMgt_TShared {
 ") Units_UnitsSystem;
 		 Units_UnitsSystem ();
 		%feature("compactdefaultargs") Units_UnitsSystem;
-		%feature("autodoc", "	* Returns an instance of UnitsSystem initialized to the S.I. units system upgraded by the base system units decription //!	 	file. Attempts to find the four following files: $CSF_`aName`Defaults/.aName $CSF_`aName`SiteDefaults/.aName $CSF_`aName`GroupDefaults/.aName $CSF_`aName`UserDefaults/.aName //!		See : Resource_Manager for the description of this file.
+		%feature("autodoc", "	* Returns an instance of UnitsSystem initialized to the S.I. units system upgraded by the base system units decription file. Attempts to find the four following files: $CSF_`aName`Defaults/.aName $CSF_`aName`SiteDefaults/.aName $CSF_`aName`GroupDefaults/.aName $CSF_`aName`UserDefaults/.aName See : Resource_Manager for the description of this file.
 
 	:param aName:
 	:type aName: char *
@@ -2320,6 +2320,12 @@ class Units_UtsSequence : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Units_UtsSequence;
 		 Units_UtsSequence ();
+		%feature("compactdefaultargs") Units_UtsSequence;
+		%feature("autodoc", "	:param Other:
+	:type Other: Units_UtsSequence &
+	:rtype: None
+") Units_UtsSequence;
+		 Units_UtsSequence (const Units_UtsSequence & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2564,7 +2570,7 @@ class Handle_Units_ShiftedToken : public Handle_Units_Token {
 class Units_ShiftedUnit : public Units_Unit {
 	public:
 		%feature("compactdefaultargs") Units_ShiftedUnit;
-		%feature("autodoc", "	* Creates and returns a shifted unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, <avalue> is the value in relation to the International System of Units, and <amove> is the gap in relation to another unit.  For example Celcius dregee of temperature is an instance of ShiftedUnit with <avalue> equal to 1. and <amove> equal to 273.15.
+		%feature("autodoc", "	* Creates and returns a shifted unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, <avalue> is the value in relation to the International System of Units, and <amove> is the gap in relation to another unit. //! For example Celcius dregee of temperature is an instance of ShiftedUnit with <avalue> equal to 1. and <amove> equal to 273.15.
 
 	:param aname:
 	:type aname: char *

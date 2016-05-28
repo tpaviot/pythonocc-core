@@ -430,7 +430,7 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 ") ShapeExtend_CompositeSurface;
 		 ShapeExtend_CompositeSurface (const Handle_TColGeom_HArray2OfSurface & GridSurf,const TColStd_Array1OfReal & UJoints,const TColStd_Array1OfReal & VJoints);
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initializes by a grid of surfaces. All the Surfaces of the grid must have geometrical connectivity as stated above. If geometrical connectivity is not satisfied, method returns False. However, class is initialized even in that case.  Last parameter defines how global parametrisation (joint values) will be computed: ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc. ShapeExtend_Uniform: Ui = i-1, Vj = j-1 ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv
+		%feature("autodoc", "	* Initializes by a grid of surfaces. All the Surfaces of the grid must have geometrical connectivity as stated above. If geometrical connectivity is not satisfied, method returns False. However, class is initialized even in that case. //! Last parameter defines how global parametrisation (joint values) will be computed: ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc. ShapeExtend_Uniform: Ui = i-1, Vj = j-1 ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv
 
 	:param GridSurf:
 	:type GridSurf: Handle_TColGeom_HArray2OfSurface &

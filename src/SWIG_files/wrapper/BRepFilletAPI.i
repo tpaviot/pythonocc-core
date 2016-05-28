@@ -808,7 +808,7 @@ class BRepFilletAPI_MakeFillet : public BRepFilletAPI_LocalOperation {
 ") Add;
 		void Add (const Standard_Real Radius,const TopoDS_Edge & E);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds a fillet description in the builder - builds a contour of tangent edges, - sets a linear radius evolution law between  the first and last vertex of the spine.
+		%feature("autodoc", "	* Adds a fillet description in the builder - builds a contour of tangent edges, - sets a linear radius evolution law between the first and last vertex of the spine.
 
 	:param R1:
 	:type R1: float
@@ -830,7 +830,7 @@ class BRepFilletAPI_MakeFillet : public BRepFilletAPI_LocalOperation {
 ") Add;
 		void Add (const Handle_Law_Function & L,const TopoDS_Edge & E);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds a fillet description in the builder - builds a contour of tangent edges, - sets the radius evolution law interpolating the values given in the array UandR :  p2d.X() = relative parameter on the spine [0,1] p2d.Y() = value of the radius.
+		%feature("autodoc", "	* Adds a fillet description in the builder - builds a contour of tangent edges, - sets the radius evolution law interpolating the values given in the array UandR : //! p2d.X() = relative parameter on the spine [0,1] p2d.Y() = value of the radius.
 
 	:param UandR:
 	:type UandR: TColgp_Array1OfPnt2d
@@ -1232,7 +1232,7 @@ class BRepFilletAPI_MakeFillet : public BRepFilletAPI_LocalOperation {
 ") BadShape;
 		TopoDS_Shape BadShape ();
 		%feature("compactdefaultargs") StripeStatus;
-		%feature("autodoc", "	* returns the status concerning the contour IC in case of error ChFiDS_Ok : the computation is Ok ChFiDS_StartsolFailure : the computation can't start, perhaps the  the radius is too big ChFiDS_TwistedSurface : the computation failed because of a twisted  surface ChFiDS_WalkingFailure : there is a problem in the walking ChFiDS_Error: other error different from above
+		%feature("autodoc", "	* returns the status concerning the contour IC in case of error ChFiDS_Ok : the computation is Ok ChFiDS_StartsolFailure : the computation can't start, perhaps the the radius is too big ChFiDS_TwistedSurface : the computation failed because of a twisted surface ChFiDS_WalkingFailure : there is a problem in the walking ChFiDS_Error: other error different from above
 
 	:param IC:
 	:type IC: int

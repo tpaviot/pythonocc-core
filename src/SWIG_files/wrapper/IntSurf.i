@@ -465,6 +465,12 @@ class IntSurf_ListOfPntOn2S {
 		%feature("autodoc", "	:rtype: None
 ") IntSurf_ListOfPntOn2S;
 		 IntSurf_ListOfPntOn2S ();
+		%feature("compactdefaultargs") IntSurf_ListOfPntOn2S;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntSurf_ListOfPntOn2S &
+	:rtype: None
+") IntSurf_ListOfPntOn2S;
+		 IntSurf_ListOfPntOn2S (const IntSurf_ListOfPntOn2S & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: IntSurf_ListOfPntOn2S &
@@ -721,7 +727,7 @@ class IntSurf_PathPointTool {
 ") IsTangent;
 		static Standard_Boolean IsTangent (const IntSurf_PathPoint & PStart);
 		%feature("compactdefaultargs") Direction3d;
-		%feature("autodoc", "	* returns the tangent at the intersection in 3d space associated to <P>  an exception is raised if IsTangent is true.
+		%feature("autodoc", "	* returns the tangent at the intersection in 3d space associated to <P> an exception is raised if IsTangent is true.
 
 	:param PStart:
 	:type PStart: IntSurf_PathPoint &
@@ -1290,6 +1296,12 @@ class IntSurf_SequenceOfCouple : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IntSurf_SequenceOfCouple;
 		 IntSurf_SequenceOfCouple ();
+		%feature("compactdefaultargs") IntSurf_SequenceOfCouple;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntSurf_SequenceOfCouple &
+	:rtype: None
+") IntSurf_SequenceOfCouple;
+		 IntSurf_SequenceOfCouple (const IntSurf_SequenceOfCouple & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1422,6 +1434,12 @@ class IntSurf_SequenceOfInteriorPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IntSurf_SequenceOfInteriorPoint;
 		 IntSurf_SequenceOfInteriorPoint ();
+		%feature("compactdefaultargs") IntSurf_SequenceOfInteriorPoint;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntSurf_SequenceOfInteriorPoint &
+	:rtype: None
+") IntSurf_SequenceOfInteriorPoint;
+		 IntSurf_SequenceOfInteriorPoint (const IntSurf_SequenceOfInteriorPoint & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1554,6 +1572,12 @@ class IntSurf_SequenceOfPathPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IntSurf_SequenceOfPathPoint;
 		 IntSurf_SequenceOfPathPoint ();
+		%feature("compactdefaultargs") IntSurf_SequenceOfPathPoint;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntSurf_SequenceOfPathPoint &
+	:rtype: None
+") IntSurf_SequenceOfPathPoint;
+		 IntSurf_SequenceOfPathPoint (const IntSurf_SequenceOfPathPoint & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

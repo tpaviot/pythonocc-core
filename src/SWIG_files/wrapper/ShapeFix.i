@@ -377,7 +377,7 @@ class ShapeFix_Edge : public MMgt_TShared {
 ") FixAddPCurve;
 		Standard_Boolean FixAddPCurve (const TopoDS_Edge & edge,const TopoDS_Face & face,const Standard_Boolean isSeam,const Handle_ShapeAnalysis_Surface & surfana,const Standard_Real prec = 0.0);
 		%feature("compactdefaultargs") FixAddPCurve;
-		%feature("autodoc", "	* Adds pcurve(s) of the edge if missing (by projecting 3d curve) Parameter isSeam indicates if the edge is a seam. The parameter <prec> defines the precision for calculations. If it is 0 (default), the tolerance of the edge is taken. Remark : This method is rather for internal use since it accepts parameter <surfana> for optimization of computations Use : It is to be called after FixRemovePCurve (if removed) or in any case when edge can have no pcurve Returns: True if pcurve was added, else False Status : OK : Pcurve exists FAIL1: No 3d curve FAIL2: fail during projecting DONE1: Pcurve was added DONE2: specific case of pcurve going through degenerated point on  sphere encountered during projection (see class  ShapeConstruct_ProjectCurveOnSurface for more info)
+		%feature("autodoc", "	* Adds pcurve(s) of the edge if missing (by projecting 3d curve) Parameter isSeam indicates if the edge is a seam. The parameter <prec> defines the precision for calculations. If it is 0 (default), the tolerance of the edge is taken. Remark : This method is rather for internal use since it accepts parameter <surfana> for optimization of computations Use : It is to be called after FixRemovePCurve (if removed) or in any case when edge can have no pcurve Returns: True if pcurve was added, else False Status : OK : Pcurve exists FAIL1: No 3d curve FAIL2: fail during projecting DONE1: Pcurve was added DONE2: specific case of pcurve going through degenerated point on sphere encountered during projection (see class ShapeConstruct_ProjectCurveOnSurface for more info)
 
 	:param edge:
 	:type edge: TopoDS_Edge &
@@ -439,7 +439,7 @@ class ShapeFix_Edge : public MMgt_TShared {
 ") FixReversed2d;
 		Standard_Boolean FixReversed2d (const TopoDS_Edge & edge,const Handle_Geom_Surface & surface,const TopLoc_Location & location);
 		%feature("compactdefaultargs") FixSameParameter;
-		%feature("autodoc", "	* Tries to make edge SameParameter and sets corresponding tolerance and SameParameter flag. First, it makes edge same range if SameRange flag is not set.  If flag SameParameter is set, this method calls the function ShapeAnalysis_Edge::CheckSameParameter() that calculates the maximal deviation of pcurves of the edge from its 3d curve. If deviation > tolerance, the tolerance of edge is increased to a value of deviation. If deviation < tolerance nothing happens.  If flag SameParameter is not set, this method chooses the best variant (one that has minimal tolerance), either a. only after computing deviation (as above) or b. after calling standard procedure BRepLib::SameParameter and computing deviation (as above). If <tolerance> > 0, it is used as parameter for BRepLib::SameParameter, otherwise, tolerance of the edge is used. Use : Is to be called after all pcurves and 3d curve of the edge are correctly computed Remark : SameParameter flag is always set to True after this method Returns: True, if something done, else False Status : OK - edge was initially SameParameter, nothing is done FAIL1 - computation of deviation of pcurves from 3d curve has failed FAIL2 - BRepLib::SameParameter() has failed DONE1 - tolerance of the edge was increased DONE2 - flag SameParameter was set to True (only if  BRepLib::SameParameter() did not set it) DONE3 - edge was modified by BRepLib::SameParameter() to SameParameter DONE4 - not used anymore DONE5 - if the edge resulting from BRepLib has been chosen, i.e. variant b. above  (only for edges with not set SameParameter)
+		%feature("autodoc", "	* Tries to make edge SameParameter and sets corresponding tolerance and SameParameter flag. First, it makes edge same range if SameRange flag is not set. //! If flag SameParameter is set, this method calls the function ShapeAnalysis_Edge::CheckSameParameter() that calculates the maximal deviation of pcurves of the edge from its 3d curve. If deviation > tolerance, the tolerance of edge is increased to a value of deviation. If deviation < tolerance nothing happens. //! If flag SameParameter is not set, this method chooses the best variant (one that has minimal tolerance), either a. only after computing deviation (as above) or b. after calling standard procedure BRepLib::SameParameter and computing deviation (as above). If <tolerance> > 0, it is used as parameter for BRepLib::SameParameter, otherwise, tolerance of the edge is used. //! Use : Is to be called after all pcurves and 3d curve of the edge are correctly computed Remark : SameParameter flag is always set to True after this method Returns: True, if something done, else False Status : OK - edge was initially SameParameter, nothing is done FAIL1 - computation of deviation of pcurves from 3d curve has failed FAIL2 - BRepLib::SameParameter() has failed DONE1 - tolerance of the edge was increased DONE2 - flag SameParameter was set to True (only if BRepLib::SameParameter() did not set it) DONE3 - edge was modified by BRepLib::SameParameter() to SameParameter DONE4 - not used anymore DONE5 - if the edge resulting from BRepLib has been chosen, i.e. variant b. above (only for edges with not set SameParameter)
 
 	:param edge:
 	:type edge: TopoDS_Edge &
@@ -1058,6 +1058,12 @@ class ShapeFix_SequenceOfWireSegment : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") ShapeFix_SequenceOfWireSegment;
 		 ShapeFix_SequenceOfWireSegment ();
+		%feature("compactdefaultargs") ShapeFix_SequenceOfWireSegment;
+		%feature("autodoc", "	:param Other:
+	:type Other: ShapeFix_SequenceOfWireSegment &
+	:rtype: None
+") ShapeFix_SequenceOfWireSegment;
+		 ShapeFix_SequenceOfWireSegment (const ShapeFix_SequenceOfWireSegment & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1432,7 +1438,7 @@ class ShapeFix_ComposeShell : public ShapeFix_Root {
 ") Perform;
 		virtual Standard_Boolean Perform ();
 		%feature("compactdefaultargs") SplitEdges;
-		%feature("autodoc", "	* Splits edges in the original shape by grid. This is a part of Perform() which does not produce any resulting shape; the only result is filled context where splittings are recorded.  NOTE: If edge is splitted, it is replaced by wire, and order of edges in the wire corresponds to FORWARD orientation of the edge.
+		%feature("autodoc", "	* Splits edges in the original shape by grid. This is a part of Perform() which does not produce any resulting shape; the only result is filled context where splittings are recorded. //! NOTE: If edge is splitted, it is replaced by wire, and order of edges in the wire corresponds to FORWARD orientation of the edge.
 
 	:rtype: None
 ") SplitEdges;
@@ -1773,7 +1779,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 ") FixOrientation;
 		Standard_Boolean FixOrientation (TopTools_DataMapOfShapeListOfShape & MapWires);
 		%feature("compactdefaultargs") FixAddNaturalBound;
-		%feature("autodoc", "	* Adds natural boundary on face if it is missing. Two cases are supported: - face has no wires - face lies on geometrically double-closed surface  (sphere or torus) and none of wires is left-oriented Returns True if natural boundary was added
+		%feature("autodoc", "	* Adds natural boundary on face if it is missing. Two cases are supported: - face has no wires - face lies on geometrically double-closed surface (sphere or torus) and none of wires is left-oriented Returns True if natural boundary was added
 
 	:rtype: bool
 ") FixAddNaturalBound;
@@ -1785,7 +1791,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 ") FixMissingSeam;
 		Standard_Boolean FixMissingSeam ();
 		%feature("compactdefaultargs") FixSmallAreaWire;
-		%feature("autodoc", "	* Detects wires with small area (that is less than 100*Precision::PConfusion(). Removes these wires if they are internal. Returns : True if at least one small wire removed, 	 False if does nothing.
+		%feature("autodoc", "	* Detects wires with small area (that is less than 100*Precision::PConfusion(). Removes these wires if they are internal. Returns : True if at least one small wire removed, False if does nothing.
 
 	:rtype: bool
 ") FixSmallAreaWire;
@@ -1968,9 +1974,7 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 ") ComputeSharedEdgeForStripFace;
 		TopoDS_Edge ComputeSharedEdgeForStripFace (const TopoDS_Face & F,const TopoDS_Edge & E1,const TopoDS_Edge & E2,const TopoDS_Face & F1,const Standard_Real tol);
 		%feature("compactdefaultargs") FixSplitFace;
-		%feature("autodoc", "	* 
-
-	:param S:
+		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") FixSplitFace;
@@ -2318,7 +2322,7 @@ class ShapeFix_Shell : public ShapeFix_Root {
 ") Perform;
 		Standard_Boolean Perform (const Handle_Message_ProgressIndicator & theProgress = 0);
 		%feature("compactdefaultargs") FixFaceOrientation;
-		%feature("autodoc", "	* Fixes orientation of faces in shell. Changes orientation of face in the shell, if it is oriented opposite to neigbouring faces. If it is not possible to orient all faces in the shell (like in case of mebious band), this method orients only subset of faces. Other faces are stored in Error compound. Modes : 	 isAccountMultiConex - mode for account cases of multiconnexity. If this mode is equal to Standard_True, separate shells will be created in the cases of multiconnexity. If this mode is equal to Standard_False, one shell will be created without account of multiconnexity.By defautt - Standard_True; NonManifold - mode for creation of non-manifold shells. If this mode is equal to Standard_True one non-manifold will be created from shell contains multishared edges. Else if this mode is equal to Standard_False only manifold shells will be created. By default - Standard_False.
+		%feature("autodoc", "	* Fixes orientation of faces in shell. Changes orientation of face in the shell, if it is oriented opposite to neigbouring faces. If it is not possible to orient all faces in the shell (like in case of mebious band), this method orients only subset of faces. Other faces are stored in Error compound. Modes : isAccountMultiConex - mode for account cases of multiconnexity. If this mode is equal to Standard_True, separate shells will be created in the cases of multiconnexity. If this mode is equal to Standard_False, one shell will be created without account of multiconnexity.By defautt - Standard_True; NonManifold - mode for creation of non-manifold shells. If this mode is equal to Standard_True one non-manifold will be created from shell contains multishared edges. Else if this mode is equal to Standard_False only manifold shells will be created. By default - Standard_False.
 
 	:param shell:
 	:type shell: TopoDS_Shell &
@@ -3207,7 +3211,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 }
             };
             		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* This method performs all the available fixes. If some fix is turned on or off explicitly by the Fix..Mode() flag, this fix is either called or not depending on that flag. Else (i.e. if flag is default) fix is called depending on the situation: some fixes are not called or are limited if order of edges in the wire is not OK, or depending on modes  The order of the fixes and default behaviour of Perform() are: FixReorder FixSmall (with lockvtx true if ! TopoMode or if wire is not ordered) FixConnected (if wire is ordered) FixEdgeCurves (without FixShifted if wire is not ordered) FixDegenerated (if wire is ordered) FixSelfIntersection (if wire is ordered and ClosedMode is True) FixLacking (if wire is ordered)
+		%feature("autodoc", "	* This method performs all the available fixes. If some fix is turned on or off explicitly by the Fix..Mode() flag, this fix is either called or not depending on that flag. Else (i.e. if flag is default) fix is called depending on the situation: some fixes are not called or are limited if order of edges in the wire is not OK, or depending on modes //! The order of the fixes and default behaviour of Perform() are: FixReorder FixSmall (with lockvtx true if ! TopoMode or if wire is not ordered) FixConnected (if wire is ordered) FixEdgeCurves (without FixShifted if wire is not ordered) FixDegenerated (if wire is ordered) FixSelfIntersection (if wire is ordered and ClosedMode is True) FixLacking (if wire is ordered)
 
 	:rtype: bool
 ") Perform;
@@ -3313,7 +3317,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
 ") FixConnected;
 		Standard_Boolean FixConnected (const Standard_Integer num,const Standard_Real prec);
 		%feature("compactdefaultargs") FixSeam;
-		%feature("autodoc", "	* Fixes a seam edge A Seam edge has two pcurves, one for forward. one for reversed The forward pcurve must be set as first  NOTE that correct order of pcurves in the seam edge depends on its orientation (i.e., on orientation of the wire, method of exploration of edges etc.). Since wire represented by the ShapeExtend_WireData is always forward (orientation is accounted by edges), it will work correct if: 1. Wire created from ShapeExtend_WireData with methods ShapeExtend_WireData::Wire..() is added into the FORWARD face (orientation can be applied later) 2. Wire is extracted from the face with orientation not composed with orientation of the face
+		%feature("autodoc", "	* Fixes a seam edge A Seam edge has two pcurves, one for forward. one for reversed The forward pcurve must be set as first //! NOTE that correct order of pcurves in the seam edge depends on its orientation (i.e., on orientation of the wire, method of exploration of edges etc.). Since wire represented by the ShapeExtend_WireData is always forward (orientation is accounted by edges), it will work correct if: 1. Wire created from ShapeExtend_WireData with methods ShapeExtend_WireData::Wire..() is added into the FORWARD face (orientation can be applied later) 2. Wire is extracted from the face with orientation not composed with orientation of the face
 
 	:param num:
 	:type num: int
@@ -3599,7 +3603,7 @@ class ShapeFix_Wireframe : public ShapeFix_Root {
                 }
             };
             		%feature("compactdefaultargs") SetLimitAngle;
-		%feature("autodoc", "	* //!Set limit angle for merging edges.
+		%feature("autodoc", "	* Set limit angle for merging edges.
 
 	:param theLimitAngle:
 	:type theLimitAngle: float
@@ -3607,7 +3611,7 @@ class ShapeFix_Wireframe : public ShapeFix_Root {
 ") SetLimitAngle;
 		void SetLimitAngle (const Standard_Real theLimitAngle);
 		%feature("compactdefaultargs") LimitAngle;
-		%feature("autodoc", "	* //!Get limit angle for merging edges.
+		%feature("autodoc", "	* Get limit angle for merging edges.
 
 	:rtype: float
 ") LimitAngle;

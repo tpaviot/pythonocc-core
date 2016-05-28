@@ -383,7 +383,7 @@ class Handle_TPrsStd_AISPresentation : public Handle_TDF_Attribute {
 class TPrsStd_AISViewer : public TDF_Attribute {
 	public:
 		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "	* class methods  =============
+		%feature("autodoc", "	* class methods =============
 
 	:rtype: Standard_GUID
 ") GetID;

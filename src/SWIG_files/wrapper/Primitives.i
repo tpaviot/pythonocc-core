@@ -54,14 +54,5 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum Primitives_Direction {
-	Primitives_XMin = 0,
-	Primitives_XMax = 1,
-	Primitives_YMin = 2,
-	Primitives_YMax = 3,
-	Primitives_ZMin = 4,
-	Primitives_ZMax = 5,
-};
-
 /* end public enums declaration */
 

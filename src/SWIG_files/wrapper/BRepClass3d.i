@@ -171,7 +171,7 @@ class BRepClass3d_Intersector3d {
 ") BRepClass3d_Intersector3d;
 		 BRepClass3d_Intersector3d ();
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Perform the intersection between the segment L(0) ... L(Prm) and the Shape <Sh>.  Only the point with the smallest parameter on the line is returned.  The Tolerance <Tol> is used to determine if the first point of the segment is near the face. In that case, the parameter of the intersection point on the line can be a negative value (greater than -Tol).
+		%feature("autodoc", "	* Perform the intersection between the segment L(0) ... L(Prm) and the Shape <Sh>. //! Only the point with the smallest parameter on the line is returned. //! The Tolerance <Tol> is used to determine if the first point of the segment is near the face. In that case, the parameter of the intersection point on the line can be a negative value (greater than -Tol).
 
 	:param L:
 	:type L: gp_Lin
@@ -381,7 +381,7 @@ class BRepClass3d_SClassifier {
 ") IsOnAFace;
 		Standard_Boolean IsOnAFace ();
 		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "	* Returns the face used to determine the classification. When the state is ON, this is the face containing the point.  When Rejected() returns True, Face() has no signification.
+		%feature("autodoc", "	* Returns the face used to determine the classification. When the state is ON, this is the face containing the point. //! When Rejected() returns True, Face() has no signification.
 
 	:rtype: TopoDS_Face
 ") Face;
@@ -429,7 +429,7 @@ class BRepClass3d_SolidExplorer {
 ") Reject;
 		virtual Standard_Boolean Reject (const gp_Pnt & P);
 		%feature("compactdefaultargs") FindAPointInTheFace;
-		%feature("autodoc", "	* compute a point P in the face F. Param is a Real in  ]0,1[ and is used to initialise the algorithm. For  different values , different points are returned.
+		%feature("autodoc", "	* compute a point P in the face F. Param is a Real in ]0,1[ and is used to initialise the algorithm. For different values , different points are returned.
 
 	:param F:
 	:type F: TopoDS_Face &
@@ -653,7 +653,7 @@ class BRepClass3d_SolidExplorer {
 ") Segment;
 		Standard_Integer Segment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
 		%feature("compactdefaultargs") OtherSegment;
-		%feature("autodoc", "	* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections.  The First Call to this method returns a line which point to a point of the first face of the shape. The Second Call provide a line to the second face and so on.
+		%feature("autodoc", "	* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections. //! The First Call to this method returns a line which point to a point of the first face of the shape. The Second Call provide a line to the second face and so on.
 
 	:param P:
 	:type P: gp_Pnt

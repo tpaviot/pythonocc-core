@@ -604,7 +604,7 @@ class TDataStd_ByteArray : public TDF_Attribute {
             return s.str();}
         };
         		%feature("compactdefaultargs") DeltaOnModification;
-		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and  <anOldAttribute>.
+		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and <anOldAttribute>.
 
 	:param anOldAttribute:
 	:type anOldAttribute: Handle_TDF_Attribute &
@@ -2326,7 +2326,7 @@ class TDataStd_ExtStringArray : public TDF_Attribute {
 ") GetID;
 		static const Standard_GUID & GetID ();
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Finds, or creates, an ExtStringArray attribute with <lower> and <upper> bounds. The ExtStringArray attribute is returned. If <isDelta> == False, DefaultDeltaOnModification is used. 	 If attribute is already set, all input parameters are refused and the found attribute is returned.
+		%feature("autodoc", "	* Finds, or creates, an ExtStringArray attribute with <lower> and <upper> bounds. The ExtStringArray attribute is returned. If <isDelta> == False, DefaultDeltaOnModification is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
 
 	:param label:
 	:type label: TDF_Label &
@@ -2448,7 +2448,7 @@ class TDataStd_ExtStringArray : public TDF_Attribute {
             return s.str();}
         };
         		%feature("compactdefaultargs") DeltaOnModification;
-		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and  <anOldAttribute>.
+		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and <anOldAttribute>.
 
 	:param anOldAttribute:
 	:type anOldAttribute: Handle_TDF_Attribute &
@@ -3245,7 +3245,7 @@ class TDataStd_IntPackedMap : public TDF_Attribute {
             return s.str();}
         };
         		%feature("compactdefaultargs") DeltaOnModification;
-		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and  <anOldAttribute>.
+		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and <anOldAttribute>.
 
 	:param anOldAttribute:
 	:type anOldAttribute: Handle_TDF_Attribute &
@@ -3537,7 +3537,7 @@ class TDataStd_IntegerArray : public TDF_Attribute {
             return s.str();}
         };
         		%feature("compactdefaultargs") DeltaOnModification;
-		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and  <anOldAttribute>.
+		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and <anOldAttribute>.
 
 	:param anOldAttribute:
 	:type anOldAttribute: Handle_TDF_Attribute &
@@ -4006,6 +4006,12 @@ class TDataStd_ListOfByte {
 		%feature("autodoc", "	:rtype: None
 ") TDataStd_ListOfByte;
 		 TDataStd_ListOfByte ();
+		%feature("compactdefaultargs") TDataStd_ListOfByte;
+		%feature("autodoc", "	:param Other:
+	:type Other: TDataStd_ListOfByte &
+	:rtype: None
+") TDataStd_ListOfByte;
+		 TDataStd_ListOfByte (const TDataStd_ListOfByte & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TDataStd_ListOfByte &
@@ -4130,6 +4136,12 @@ class TDataStd_ListOfExtendedString {
 		%feature("autodoc", "	:rtype: None
 ") TDataStd_ListOfExtendedString;
 		 TDataStd_ListOfExtendedString ();
+		%feature("compactdefaultargs") TDataStd_ListOfExtendedString;
+		%feature("autodoc", "	:param Other:
+	:type Other: TDataStd_ListOfExtendedString &
+	:rtype: None
+") TDataStd_ListOfExtendedString;
+		 TDataStd_ListOfExtendedString (const TDataStd_ListOfExtendedString & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TDataStd_ListOfExtendedString &
@@ -4257,7 +4269,7 @@ class TDataStd_Name : public TDF_Attribute {
 ") GetID;
 		static const Standard_GUID & GetID ();
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Creates (if does not exist) and sets the name in the name attribute. from any label <L> search in father labels (L is not concerned) the first name attribute.if found set it in <father>. class methods working on the name tree ====================================== Search in the whole TDF_Data the Name attribute which fit with <fullPath>. Returns True if found. Search under <currentLabel> a label which fit with <name>. Returns True if found. Shortcut which avoids building a ListOfExtendedStrin. Search in the whole TDF_Data the label which fit with name Returns True if found. tools methods to translate path <-> pathlist =========================================== move to draw For Draw test we may provide this tool method which convert a path in a //!	 	sequence of string to call after the FindLabel methods. Example: if it's given 'Assembly:Part_1:Sketch_5' it will return in <pathlist> the list of 3 strings: 'Assembly','Part_1','Sketch_5'. move to draw from <pathlist> build the string path Name methods ============
+		%feature("autodoc", "	* Creates (if does not exist) and sets the name in the name attribute. from any label <L> search in father labels (L is not concerned) the first name attribute.if found set it in <father>. class methods working on the name tree ====================================== Search in the whole TDF_Data the Name attribute which fit with <fullPath>. Returns True if found. Search under <currentLabel> a label which fit with <name>. Returns True if found. Shortcut which avoids building a ListOfExtendedStrin. Search in the whole TDF_Data the label which fit with name Returns True if found. tools methods to translate path <-> pathlist =========================================== move to draw For Draw test we may provide this tool method which convert a path in a sequence of string to call after the FindLabel methods. Example: if it's given 'Assembly:Part_1:Sketch_5' it will return in <pathlist> the list of 3 strings: 'Assembly','Part_1','Sketch_5'. move to draw from <pathlist> build the string path Name methods ============
 
 	:param label:
 	:type label: TDF_Label &
@@ -5099,7 +5111,7 @@ class TDataStd_RealArray : public TDF_Attribute {
             return s.str();}
         };
         		%feature("compactdefaultargs") DeltaOnModification;
-		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and  <anOldAttribute>.
+		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and <anOldAttribute>.
 
 	:param anOldAttribute:
 	:type anOldAttribute: Handle_TDF_Attribute &
@@ -5865,7 +5877,7 @@ class TDataStd_TreeNode : public TDF_Attribute {
 ") TDataStd_TreeNode;
 		 TDataStd_TreeNode ();
 		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	* Insert the TreeNode <Child> as last child of <self>. If  the insertion is successful <self> becomes the Father of <Child>.
+		%feature("autodoc", "	* Insert the TreeNode <Child> as last child of <self>. If the insertion is successful <self> becomes the Father of <Child>.
 
 	:param Child:
 	:type Child: Handle_TDataStd_TreeNode &

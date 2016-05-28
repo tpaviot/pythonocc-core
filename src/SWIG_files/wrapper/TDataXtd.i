@@ -216,7 +216,7 @@ class TDataXtd_Array1OfTrsf {
 class TDataXtd_Axis : public TDF_Attribute {
 	public:
 		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "	* class methods  ============= 	Returns the GUID for an axis.
+		%feature("autodoc", "	* class methods ============= Returns the GUID for an axis.
 
 	:rtype: Standard_GUID
 ") GetID;
@@ -594,7 +594,7 @@ class Handle_TDataXtd_Constraint : public Handle_TDF_Attribute {
 class TDataXtd_Geometry : public TDF_Attribute {
 	public:
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* API class methods  ================= Finds, or creates, a Geometry attribute defined by the label label. The default type of geometry is the value ANY_GEOM of the enumeration TDataXtd_GeometryEnum. To specify another value of this enumeration, use the function SetType.
+		%feature("autodoc", "	* API class methods ================= Finds, or creates, a Geometry attribute defined by the label label. The default type of geometry is the value ANY_GEOM of the enumeration TDataXtd_GeometryEnum. To specify another value of this enumeration, use the function SetType.
 
 	:param label:
 	:type label: TDF_Label &
@@ -1128,7 +1128,7 @@ class Handle_TDataXtd_Placement : public Handle_TDF_Attribute {
 class TDataXtd_Plane : public TDF_Attribute {
 	public:
 		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "	* class methods ============= Returns the GUID for plane attributes.
+		%feature("autodoc", "	* class methods ============= //! Returns the GUID for plane attributes.
 
 	:rtype: Standard_GUID
 ") GetID;
@@ -1142,7 +1142,7 @@ class TDataXtd_Plane : public TDF_Attribute {
 ") Set;
 		static Handle_TDataXtd_Plane Set (const TDF_Label & label);
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Finds, or creates, a Plane attribute and sets <P> as generated the associated NamedShape. Plane methods  =============
+		%feature("autodoc", "	* Finds, or creates, a Plane attribute and sets <P> as generated the associated NamedShape. Plane methods =============
 
 	:param label:
 	:type label: TDF_Label &
@@ -1229,7 +1229,7 @@ class Handle_TDataXtd_Plane : public Handle_TDF_Attribute {
 class TDataXtd_Point : public TDF_Attribute {
 	public:
 		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "	* class methods ============= Returns the GUID for point attributes.
+		%feature("autodoc", "	* class methods ============= //! Returns the GUID for point attributes.
 
 	:rtype: Standard_GUID
 ") GetID;
@@ -1340,7 +1340,7 @@ class TDataXtd_Position : public TDF_Attribute {
 ") Set;
 		static void Set (const TDF_Label & aLabel,const gp_Pnt & aPos);
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Find an existing, or create an empty, Position.  the Position attribute is returned.
+		%feature("autodoc", "	* Find an existing, or create an empty, Position. the Position attribute is returned.
 
 	:param aLabel:
 	:type aLabel: TDF_Label &
@@ -1479,7 +1479,7 @@ class TDataXtd_Shape : public TDF_Attribute {
 ") Set;
 		static Handle_TDataXtd_Shape Set (const TDF_Label & label,const TopoDS_Shape & shape);
 		%feature("compactdefaultargs") Get;
-		%feature("autodoc", "	* the Shape from associated NamedShape attribute  is returned.
+		%feature("autodoc", "	* the Shape from associated NamedShape attribute is returned.
 
 	:param label:
 	:type label: TDF_Label &

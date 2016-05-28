@@ -804,6 +804,12 @@ class Expr_MapOfNamedUnknown : public TCollection_BasicMap {
 	:rtype: None
 ") Expr_MapOfNamedUnknown;
 		 Expr_MapOfNamedUnknown (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") Expr_MapOfNamedUnknown;
+		%feature("autodoc", "	:param Other:
+	:type Other: Expr_MapOfNamedUnknown &
+	:rtype: None
+") Expr_MapOfNamedUnknown;
+		 Expr_MapOfNamedUnknown (const Expr_MapOfNamedUnknown & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Expr_MapOfNamedUnknown &
@@ -1044,6 +1050,12 @@ class Expr_SequenceOfGeneralExpression : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Expr_SequenceOfGeneralExpression;
 		 Expr_SequenceOfGeneralExpression ();
+		%feature("compactdefaultargs") Expr_SequenceOfGeneralExpression;
+		%feature("autodoc", "	:param Other:
+	:type Other: Expr_SequenceOfGeneralExpression &
+	:rtype: None
+") Expr_SequenceOfGeneralExpression;
+		 Expr_SequenceOfGeneralExpression (const Expr_SequenceOfGeneralExpression & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1176,6 +1188,12 @@ class Expr_SequenceOfGeneralRelation : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Expr_SequenceOfGeneralRelation;
 		 Expr_SequenceOfGeneralRelation ();
+		%feature("compactdefaultargs") Expr_SequenceOfGeneralRelation;
+		%feature("autodoc", "	:param Other:
+	:type Other: Expr_SequenceOfGeneralRelation &
+	:rtype: None
+") Expr_SequenceOfGeneralRelation;
+		 Expr_SequenceOfGeneralRelation (const Expr_SequenceOfGeneralRelation & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

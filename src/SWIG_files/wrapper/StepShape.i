@@ -1017,7 +1017,7 @@ class StepShape_BooleanOperand {
 ") TypeOfContent;
 		Standard_Integer TypeOfContent ();
 		%feature("compactdefaultargs") SolidModel;
-		%feature("autodoc", "	* returns Value as a SolidModel (Null if another  type)
+		%feature("autodoc", "	* returns Value as a SolidModel (Null if another type)
 
 	:rtype: Handle_StepShape_SolidModel
 ") SolidModel;
@@ -1029,7 +1029,7 @@ class StepShape_BooleanOperand {
 ") SetSolidModel;
 		void SetSolidModel (const Handle_StepShape_SolidModel & aSolidModel);
 		%feature("compactdefaultargs") HalfSpaceSolid;
-		%feature("autodoc", "	* returns Value as a HalfSpaceSolid (Null if  another type)
+		%feature("autodoc", "	* returns Value as a HalfSpaceSolid (Null if another type)
 
 	:rtype: Handle_StepShape_HalfSpaceSolid
 ") HalfSpaceSolid;
@@ -6350,16 +6350,24 @@ class StepShape_ManifoldSolidBrep : public StepShape_SolidModel {
 	:rtype: void
 ") Init;
 		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepShape_ClosedShell & aOuter);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param aName:
+	:type aName: Handle_TCollection_HAsciiString &
+	:param aOuter:
+	:type aOuter: Handle_StepShape_ConnectedFaceSet &
+	:rtype: void
+") Init;
+		virtual void Init (const Handle_TCollection_HAsciiString & aName,const Handle_StepShape_ConnectedFaceSet & aOuter);
 		%feature("compactdefaultargs") SetOuter;
 		%feature("autodoc", "	:param aOuter:
-	:type aOuter: Handle_StepShape_ClosedShell &
+	:type aOuter: Handle_StepShape_ConnectedFaceSet &
 	:rtype: None
 ") SetOuter;
-		void SetOuter (const Handle_StepShape_ClosedShell & aOuter);
+		void SetOuter (const Handle_StepShape_ConnectedFaceSet & aOuter);
 		%feature("compactdefaultargs") Outer;
-		%feature("autodoc", "	:rtype: Handle_StepShape_ClosedShell
+		%feature("autodoc", "	:rtype: Handle_StepShape_ConnectedFaceSet
 ") Outer;
-		Handle_StepShape_ClosedShell Outer ();
+		Handle_StepShape_ConnectedFaceSet Outer ();
 };
 
 

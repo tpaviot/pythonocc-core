@@ -84,7 +84,7 @@ class Adaptor2d_Curve2d {
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -188,7 +188,7 @@ class Adaptor2d_Curve2d {
 ") DN;
 		virtual gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -586,7 +586,7 @@ class Adaptor2d_Line2d : public Adaptor2d_Curve2d {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &

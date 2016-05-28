@@ -2999,12 +2999,6 @@ class StepAP214_AutoDesignGroupAssignment : public StepBasic_GroupAssignment {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param aAssignedGroup:
 	:type aAssignedGroup: Handle_StepBasic_Group &
-	:rtype: None
-") Init;
-		void Init (const Handle_StepBasic_Group & aAssignedGroup);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param aAssignedGroup:
-	:type aAssignedGroup: Handle_StepBasic_Group &
 	:param aItems:
 	:type aItems: Handle_StepAP214_HArray1OfAutoDesignGroupedItem &
 	:rtype: void
@@ -5927,7 +5921,7 @@ class StepAP214_Protocol : public StepData_Protocol {
 ") StepAP214_Protocol;
 		 StepAP214_Protocol ();
 		%feature("compactdefaultargs") TypeNumber;
-		%feature("autodoc", "	* //!Returns a Case Number for each of the StepAP214 Entities
+		%feature("autodoc", "	* Returns a Case Number for each of the StepAP214 Entities
 
 	:param atype:
 	:type atype: Handle_Standard_Type &
@@ -6103,7 +6097,7 @@ class StepAP214_DateAndTimeItem : public StepAP214_ApprovalItem {
 ") StepAP214_DateAndTimeItem;
 		 StepAP214_DateAndTimeItem ();
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a DateAndTimeItem Kind Entity that is : 1 -> ApprovalPersonOrganization 2 -> AppliedDateAndPersonAssignment 3 -> AppliedOrganizationAssignment 4 -> AssemblyComponentUsageSubstitute 5 -> DocumentFile 6 -> Effectivity 7 -> MaterialDesignation 8 -> MechanicalDesignGeometricPresentationRepresentation 9 -> PresentationArea 10 -> Product 11 -> ProductDefinition 12 -> ProductDefinitionFormation 13 -> ProductDefinitionRelationship 	 14 -> PropertyDefinition 15 -> ShapeRepresentation 16 -> SecurityClassification 0 else
+		%feature("autodoc", "	* Recognizes a DateAndTimeItem Kind Entity that is : 1 -> ApprovalPersonOrganization 2 -> AppliedDateAndPersonAssignment 3 -> AppliedOrganizationAssignment 4 -> AssemblyComponentUsageSubstitute 5 -> DocumentFile 6 -> Effectivity 7 -> MaterialDesignation 8 -> MechanicalDesignGeometricPresentationRepresentation 9 -> PresentationArea 10 -> Product 11 -> ProductDefinition 12 -> ProductDefinitionFormation 13 -> ProductDefinitionRelationship 14 -> PropertyDefinition 15 -> ShapeRepresentation 16 -> SecurityClassification 0 else
 
 	:param ent:
 	:type ent: Handle_Standard_Transient &
@@ -6147,7 +6141,7 @@ class StepAP214_DateItem : public StepAP214_ApprovalItem {
 ") StepAP214_DateItem;
 		 StepAP214_DateItem ();
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a DateItem Kind Entity that is : 1 -> ApprovalPersonOrganization 2 -> AppliedDateAndPersonAssignment 3 -> AppliedOrganizationAssignment 4 -> AssemblyComponentUsageSubstitute 5 -> DocumentFile 6 -> Effectivity 7 -> MaterialDesignation 8 -> MechanicalDesignGeometricPresentationRepresentation 9 -> PresentationArea 10 -> Product 11 -> ProductDefinition 12 -> ProductDefinitionFormation 13 -> ProductDefinitionRelationship 	 14 -> PropertyDefinition 15 -> ShapeRepresentation 0 else
+		%feature("autodoc", "	* Recognizes a DateItem Kind Entity that is : 1 -> ApprovalPersonOrganization 2 -> AppliedDateAndPersonAssignment 3 -> AppliedOrganizationAssignment 4 -> AssemblyComponentUsageSubstitute 5 -> DocumentFile 6 -> Effectivity 7 -> MaterialDesignation 8 -> MechanicalDesignGeometricPresentationRepresentation 9 -> PresentationArea 10 -> Product 11 -> ProductDefinition 12 -> ProductDefinitionFormation 13 -> ProductDefinitionRelationship 14 -> PropertyDefinition 15 -> ShapeRepresentation 0 else
 
 	:param ent:
 	:type ent: Handle_Standard_Transient &
@@ -6302,7 +6296,7 @@ class StepAP214_PersonAndOrganizationItem : public StepAP214_ApprovalItem {
 ") StepAP214_PersonAndOrganizationItem;
 		 StepAP214_PersonAndOrganizationItem ();
 		%feature("compactdefaultargs") CaseNum;
-		%feature("autodoc", "	* Recognizes a APersonAndOrganizationItem Kind Entity that is : 1 -> AppliedOrganizationAssignment 2 -> AssemblyComponentUsageSubstitute 3 -> DocumentFile 4 -> MaterialDesignation 5 -> MechanicalDesignGeometricPresentationRepresentation 6 -> PresentationArea 7 -> Product 8 -> ProductDefinition 9 -> ProductDefinitionFormation 	 10 -> ProductDefinitionRelationship 11 -> PropertyDefinition 12 -> ShapeRepresentation 13 -> SecurityClassification 0 else
+		%feature("autodoc", "	* Recognizes a APersonAndOrganizationItem Kind Entity that is : 1 -> AppliedOrganizationAssignment 2 -> AssemblyComponentUsageSubstitute 3 -> DocumentFile 4 -> MaterialDesignation 5 -> MechanicalDesignGeometricPresentationRepresentation 6 -> PresentationArea 7 -> Product 8 -> ProductDefinition 9 -> ProductDefinitionFormation 10 -> ProductDefinitionRelationship 11 -> PropertyDefinition 12 -> ShapeRepresentation 13 -> SecurityClassification 0 else
 
 	:param ent:
 	:type ent: Handle_Standard_Transient &

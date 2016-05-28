@@ -88,7 +88,7 @@ class IGESCAFControl_Reader : public IGESControl_Reader {
 ") IGESCAFControl_Reader;
 		 IGESCAFControl_Reader ();
 		%feature("compactdefaultargs") IGESCAFControl_Reader;
-		%feature("autodoc", "	* Creates a reader tool and attaches it to an already existing Session 	 Clears the session if it was not yet set for IGES
+		%feature("autodoc", "	* Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for IGES
 
 	:param WS:
 	:type WS: Handle_XSControl_WorkSession &

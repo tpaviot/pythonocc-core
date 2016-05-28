@@ -83,7 +83,7 @@ class MAT_Arc : public MMgt_TShared {
 ") Index;
 		Standard_Integer Index ();
 		%feature("compactdefaultargs") GeomIndex;
-		%feature("autodoc", "	* Returns the index associated of the geometric  representation of <self>.
+		%feature("autodoc", "	* Returns the index associated of the geometric representation of <self>.
 
 	:rtype: int
 ") GeomIndex;
@@ -113,7 +113,7 @@ class MAT_Arc : public MMgt_TShared {
 ") SecondNode;
 		Handle_MAT_Node SecondNode ();
 		%feature("compactdefaultargs") TheOtherNode;
-		%feature("autodoc", "	* an Arc has two Node, if <aNode> egal one  Returns the other. if <aNode> is not oh <self>
+		%feature("autodoc", "	* an Arc has two Node, if <aNode> egal one Returns the other. //! if <aNode> is not oh <self>
 
 	:param aNode:
 	:type aNode: Handle_MAT_Node &
@@ -121,7 +121,7 @@ class MAT_Arc : public MMgt_TShared {
 ") TheOtherNode;
 		Handle_MAT_Node TheOtherNode (const Handle_MAT_Node & aNode);
 		%feature("compactdefaultargs") HasNeighbour;
-		%feature("autodoc", "	* Returnst True is there is an arc linked to  the Node <aNode> located on the side <aSide> of <self>; if <aNode> is not on <self>
+		%feature("autodoc", "	* Returnst True is there is an arc linked to the Node <aNode> located on the side <aSide> of <self>; if <aNode> is not on <self>
 
 	:param aNode:
 	:type aNode: Handle_MAT_Node &
@@ -131,7 +131,7 @@ class MAT_Arc : public MMgt_TShared {
 ") HasNeighbour;
 		Standard_Boolean HasNeighbour (const Handle_MAT_Node & aNode,const MAT_Side aSide);
 		%feature("compactdefaultargs") Neighbour;
-		%feature("autodoc", "	* Returns the first arc linked to the Node <aNode>  located on the side <aSide> of <self>; if HasNeighbour() returns False.
+		%feature("autodoc", "	* Returns the first arc linked to the Node <aNode> located on the side <aSide> of <self>; if HasNeighbour() returns False.
 
 	:param aNode:
 	:type aNode: Handle_MAT_Node &
@@ -254,13 +254,13 @@ class MAT_BasicElt : public MMgt_TShared {
 ") MAT_BasicElt;
 		 MAT_BasicElt (const Standard_Integer anInteger);
 		%feature("compactdefaultargs") StartArc;
-		%feature("autodoc", "	* Return <startArcLeft> or <startArcRight> corresponding  to <aSide>.
+		%feature("autodoc", "	* Return <startArcLeft> or <startArcRight> corresponding to <aSide>.
 
 	:rtype: Handle_MAT_Arc
 ") StartArc;
 		Handle_MAT_Arc StartArc ();
 		%feature("compactdefaultargs") EndArc;
-		%feature("autodoc", "	* Return <endArcLeft> or <endArcRight> corresponding  to <aSide>.
+		%feature("autodoc", "	* Return <endArcLeft> or <endArcRight> corresponding to <aSide>.
 
 	:rtype: Handle_MAT_Arc
 ") EndArc;
@@ -1361,7 +1361,7 @@ class MAT_Graph : public MMgt_TShared {
 ") MAT_Graph;
 		 MAT_Graph ();
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Construct <self> from the result of the method  <CreateMat> of the class <MAT> from <MAT>. <SemiInfinite> : if some bisector are infinites.  <TheRoots> : Set of the bisectors.  <NbBasicElts> : Number of Basic Elements.  <NbArcs> : Number of Arcs = Number of Bisectors.
+		%feature("autodoc", "	* Construct <self> from the result of the method <CreateMat> of the class <MAT> from <MAT>. //! <SemiInfinite> : if some bisector are infinites. <TheRoots> : Set of the bisectors. <NbBasicElts> : Number of Basic Elements. <NbArcs> : Number of Arcs = Number of Bisectors.
 
 	:param SemiInfinite:
 	:type SemiInfinite: bool
@@ -1423,7 +1423,7 @@ class MAT_Graph : public MMgt_TShared {
 ") NumberOfInfiniteNodes;
 		Standard_Integer NumberOfInfiniteNodes ();
 		%feature("compactdefaultargs") FusionOfBasicElts;
-		%feature("autodoc", "	* Merge two BasicElts. The End of the BasicElt Elt1 of IndexElt1 becomes The End of the BasicElt Elt2 of IndexElt2. Elt2 is replaced in the arcs by Elt1, Elt2 is eliminated.  <MergeArc1> is True if the fusion of the BasicElts => a fusion of two Arcs which separated the same elements. In this case <GeomIndexArc1> and <GeomIndexArc2> are the Geometric Index of this arcs.  If the BasicElt corresponds to a close line , the StartArc and the EndArc of Elt1 can separate the same elements . In this case there is a fusion of this arcs, <MergeArc2> is true and <GeomIndexArc3> and <GeomIndexArc4> are the Geometric Index of this arcs.
+		%feature("autodoc", "	* Merge two BasicElts. The End of the BasicElt Elt1 of IndexElt1 becomes The End of the BasicElt Elt2 of IndexElt2. Elt2 is replaced in the arcs by Elt1, Elt2 is eliminated. //! <MergeArc1> is True if the fusion of the BasicElts => a fusion of two Arcs which separated the same elements. In this case <GeomIndexArc1> and <GeomIndexArc2> are the Geometric Index of this arcs. //! If the BasicElt corresponds to a close line , the StartArc and the EndArc of Elt1 can separate the same elements . In this case there is a fusion of this arcs, <MergeArc2> is true and <GeomIndexArc3> and <GeomIndexArc4> are the Geometric Index of this arcs.
 
 	:param IndexElt1:
 	:type IndexElt1: int
@@ -1840,7 +1840,7 @@ class MAT_Node : public MMgt_TShared {
 ") MAT_Node;
 		 MAT_Node (const Standard_Integer GeomIndex,const Handle_MAT_Arc & LinkedArc,const Standard_Real Distance);
 		%feature("compactdefaultargs") GeomIndex;
-		%feature("autodoc", "	* Returns the index associated of the geometric  representation of <self>.
+		%feature("autodoc", "	* Returns the index associated of the geometric representation of <self>.
 
 	:rtype: int
 ") GeomIndex;
@@ -1872,7 +1872,7 @@ class MAT_Node : public MMgt_TShared {
 ") Distance;
 		Standard_Real Distance ();
 		%feature("compactdefaultargs") PendingNode;
-		%feature("autodoc", "	* //!Returns True if <self> is a pending Node. (ie : the number of Arc Linked = 1)
+		%feature("autodoc", "	* Returns True if <self> is a pending Node. (ie : the number of Arc Linked = 1)
 
 	:rtype: bool
 ") PendingNode;
@@ -2064,6 +2064,12 @@ class MAT_SequenceOfArc : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") MAT_SequenceOfArc;
 		 MAT_SequenceOfArc ();
+		%feature("compactdefaultargs") MAT_SequenceOfArc;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_SequenceOfArc &
+	:rtype: None
+") MAT_SequenceOfArc;
+		 MAT_SequenceOfArc (const MAT_SequenceOfArc & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2196,6 +2202,12 @@ class MAT_SequenceOfBasicElt : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") MAT_SequenceOfBasicElt;
 		 MAT_SequenceOfBasicElt ();
+		%feature("compactdefaultargs") MAT_SequenceOfBasicElt;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_SequenceOfBasicElt &
+	:rtype: None
+") MAT_SequenceOfBasicElt;
+		 MAT_SequenceOfBasicElt (const MAT_SequenceOfBasicElt & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
