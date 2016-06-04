@@ -20,6 +20,7 @@
 import pickle
 import unittest
 import os
+from math import sqrt
 
 from OCC.Standard import Standard_Transient, Handle_Standard_Transient
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
@@ -124,6 +125,29 @@ class TestWrapperFeatures(unittest.TestCase):
             return shape
         returned_shape = get_shape()
         self.assertEqual(returned_shape.IsNull(), False)
+
+    def test_gp_Vec_operators(self):
+        '''
+        Test gp_Vec division by a float number or an integer
+        This test fails on py3k with SWIG versions older than 3.0.8
+        SWIG 3.0.9 fixes this issue.
+        See https://github.com/tpaviot/pythonocc-core/issues/257
+        '''
+        # division by a float
+        v1 = gp_Vec(2., 2., 2.)
+        v2 = v1 / 2.
+        self.assertEqual(v2.Magnitude(), sqrt(3.))
+        # division by an integer
+        v3 = gp_Vec(4, 4, 4)
+        v4 = v3 / 2
+        self.assertEqual((v4.X(), v4.Y(), v4.Z()), (2, 2, 2))
+        # adding two gp_Vec
+        v5 = gp_Vec(1, 2, 3) + gp_Vec(4, 5, 6)
+        self.assertEqual((v5.X(), v5.Y(), v5.Z()), (5, 7, 9))
+        # substracting two gp_Vec
+        v6 = gp_Vec(1, 2, 3) - gp_Vec(6, 5, 4)
+        self.assertEqual((v6.X(), v6.Y(), v6.Z()), (-5, -3, -1))
+
 
     def test_traverse_box_topology(self):
         '''
