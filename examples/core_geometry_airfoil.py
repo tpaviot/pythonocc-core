@@ -48,9 +48,10 @@ class UiucAirfoil(object):
 
     def make_shape(self):
         # 1 - retrieve the data from the UIUC airfoil data page
-        foil_dat_url = 'http://www.ae.illinois.edu/m-selig/ads/coord_seligFmt/%s.dat' % self.profile
+        foil_dat_url = 'http://m-selig.ae.illinois.edu/ads/coord_seligFmt/%s.dat' % self.profile
+        print("Connecting to m-selig, retrieving foil data")
         f = urllib2.urlopen(foil_dat_url)
-
+        print("Building foil geometry")
         plan = gp_Pln(gp_Pnt(0., 0., 0.), gp_Dir(0., 0., 1.))  # Z=0 plan / XY plan
         section_pts_2d = []
 
@@ -104,8 +105,8 @@ def _Tcol_dim_1(li, _type):
     return pts
 
 if __name__ == '__main__':
+    airfoil = UiucAirfoil(50., 200., 'b737a')
     from OCC.Display.SimpleGui import init_display
     display, start_display, add_menu, add_function_to_menu = init_display()
-    airfoil = UiucAirfoil(50., 200., 'b737a')
     display.DisplayShape(airfoil.shape, update=True)
     start_display()
