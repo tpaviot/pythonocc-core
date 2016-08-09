@@ -27,6 +27,7 @@ from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                 BRepBuilderAPI_MakeEdge)
 from OCC.gp import gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir
+from OCC.GC import GC_MakeSegment
 from OCC.STEPControl import STEPControl_Writer
 from OCC.Interface import Interface_Static_SetCVal, Interface_Static_CVal
 from OCC.GCE2d import GCE2d_MakeSegment
@@ -420,10 +421,31 @@ class TestWrapperFeatures(unittest.TestCase):
         issue #259 -- Standard errors like Standard_OutOfRange not caught
 
         """
-        d = gp_Dir(0,0,1)
+        d = gp_Dir(0, 0, 1)
         with self.assertRaises(RuntimeError):
-            d.Coord(-1) # Standard_OutOfRange
+            d.Coord(-1)  # Standard_OutOfRange
 
+    def test_memory_handle_getobject(self):
+        """
+        See https://github.com/tpaviot/pythonocc-generator/pull/24
+        This commit tries to fix the issue tpaviot/pythonocc-core#292.
+        When we got a handle from ann API function and called GetObject()
+        the lifetime of the object was determined only by the handle.
+        This lead to crashes, when only a reference to the object was stored.
+        The commit registers the handle with its object to prevent premature
+        destruction.
+        This test case ensures everything is ok. Following lines used to crash
+        on pythonocc-0.16.5
+        """
+        a = gp_Pnt(0., 0., 0.)
+        b = gp_Pnt(100., 100., 100.)
+        line3 = GC_MakeSegment(a, b).Value().GetObject()
+        assert line3.FirstParameter() == 0.
+        assert GC_MakeSegment(a, b).Value().GetObject().FirstParameter() == 0.
+        assert GC_MakeSegment(a, b).Value().GetObject().GetHandle().GetObject().GetHandle().GetObject().FirstParameter() == 0.
+        assert b.IsEqual(line3.EndPoint(), 0.01)
+        assert b.IsEqual(GC_MakeSegment(a, b).Value().GetObject().EndPoint(), 0.01)
+        assert b.IsEqual(GC_MakeSegment(a, b).Value().GetObject().GetHandle().GetObject().GetHandle().GetObject().EndPoint(), 0.01)
 
 def suite():
     test_suite = unittest.TestSuite()
