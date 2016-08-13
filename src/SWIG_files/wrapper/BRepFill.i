@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -414,8 +414,17 @@ class Handle_BRepFill_CurveConstraint : public Handle_GeomPlate_CurveConstraint 
 
 };
 %extend Handle_BRepFill_CurveConstraint {
-    BRepFill_CurveConstraint* GetObject() {
+    BRepFill_CurveConstraint* _get_reference() {
     return (BRepFill_CurveConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_CurveConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -685,8 +694,17 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape : public Han
 
 };
 %extend Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape {
-    BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape* GetObject() {
+    BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape* _get_reference() {
     return (BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -746,8 +764,17 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape : public Handle_TCollectio
 
 };
 %extend Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape {
-    BRepFill_DataMapNodeOfDataMapOfNodeShape* GetObject() {
+    BRepFill_DataMapNodeOfDataMapOfNodeShape* _get_reference() {
     return (BRepFill_DataMapNodeOfDataMapOfNodeShape*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -807,8 +834,17 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape : public Ha
 
 };
 %extend Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape {
-    BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape* GetObject() {
+    BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape* _get_reference() {
     return (BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -868,8 +904,17 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape : pub
 
 };
 %extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape {
-    BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape* GetObject() {
+    BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape* _get_reference() {
     return (BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -929,8 +974,17 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape : public Handle_
 
 };
 %extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape {
-    BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape* GetObject() {
+    BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape* _get_reference() {
     return (BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -990,8 +1044,17 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt : public Handle_T
 
 };
 %extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt {
-    BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt* GetObject() {
+    BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt* _get_reference() {
     return (BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1051,8 +1114,17 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal : public Handle_
 
 };
 %extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal {
-    BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal* GetObject() {
+    BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal* _get_reference() {
     return (BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2131,8 +2203,17 @@ class Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfSha
 
 };
 %extend Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape {
-    BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape* GetObject() {
+    BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape* _get_reference() {
     return (BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2330,8 +2411,17 @@ class Handle_BRepFill_ListNodeOfListOfOffsetWire : public Handle_TCollection_Map
 
 };
 %extend Handle_BRepFill_ListNodeOfListOfOffsetWire {
-    BRepFill_ListNodeOfListOfOffsetWire* GetObject() {
+    BRepFill_ListNodeOfListOfOffsetWire* _get_reference() {
     return (BRepFill_ListNodeOfListOfOffsetWire*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_ListNodeOfListOfOffsetWire {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2651,8 +2741,17 @@ class Handle_BRepFill_LocationLaw : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRepFill_LocationLaw {
-    BRepFill_LocationLaw* GetObject() {
+    BRepFill_LocationLaw* _get_reference() {
     return (BRepFill_LocationLaw*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_LocationLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3403,8 +3502,17 @@ class Handle_BRepFill_PipeShell : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRepFill_PipeShell {
-    BRepFill_PipeShell* GetObject() {
+    BRepFill_PipeShell* _get_reference() {
     return (BRepFill_PipeShell*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_PipeShell {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3568,8 +3676,17 @@ class Handle_BRepFill_SectionLaw : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRepFill_SectionLaw {
-    BRepFill_SectionLaw* GetObject() {
+    BRepFill_SectionLaw* _get_reference() {
     return (BRepFill_SectionLaw*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_SectionLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3669,8 +3786,17 @@ class Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder : public Handle_T
 
 };
 %extend Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder {
-    BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder* GetObject() {
+    BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder* _get_reference() {
     return (BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3726,8 +3852,17 @@ class Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder : public Handle_TColl
 
 };
 %extend Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder {
-    BRepFill_SequenceNodeOfSequenceOfFaceAndOrder* GetObject() {
+    BRepFill_SequenceNodeOfSequenceOfFaceAndOrder* _get_reference() {
     return (BRepFill_SequenceNodeOfSequenceOfFaceAndOrder*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3783,8 +3918,17 @@ class Handle_BRepFill_SequenceNodeOfSequenceOfSection : public Handle_TCollectio
 
 };
 %extend Handle_BRepFill_SequenceNodeOfSequenceOfSection {
-    BRepFill_SequenceNodeOfSequenceOfSection* GetObject() {
+    BRepFill_SequenceNodeOfSequenceOfSection* _get_reference() {
     return (BRepFill_SequenceNodeOfSequenceOfSection*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_SequenceNodeOfSequenceOfSection {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4542,8 +4686,17 @@ class Handle_BRepFill_ACRLaw : public Handle_BRepFill_LocationLaw {
 
 };
 %extend Handle_BRepFill_ACRLaw {
-    BRepFill_ACRLaw* GetObject() {
+    BRepFill_ACRLaw* _get_reference() {
     return (BRepFill_ACRLaw*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_ACRLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4593,8 +4746,17 @@ class Handle_BRepFill_Edge3DLaw : public Handle_BRepFill_LocationLaw {
 
 };
 %extend Handle_BRepFill_Edge3DLaw {
-    BRepFill_Edge3DLaw* GetObject() {
+    BRepFill_Edge3DLaw* _get_reference() {
     return (BRepFill_Edge3DLaw*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_Edge3DLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4650,8 +4812,17 @@ class Handle_BRepFill_EdgeOnSurfLaw : public Handle_BRepFill_LocationLaw {
 
 };
 %extend Handle_BRepFill_EdgeOnSurfLaw {
-    BRepFill_EdgeOnSurfLaw* GetObject() {
+    BRepFill_EdgeOnSurfLaw* _get_reference() {
     return (BRepFill_EdgeOnSurfLaw*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_EdgeOnSurfLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4771,8 +4942,17 @@ class Handle_BRepFill_NSections : public Handle_BRepFill_SectionLaw {
 
 };
 %extend Handle_BRepFill_NSections {
-    BRepFill_NSections* GetObject() {
+    BRepFill_NSections* _get_reference() {
     return (BRepFill_NSections*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_NSections {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4902,8 +5082,17 @@ class Handle_BRepFill_ShapeLaw : public Handle_BRepFill_SectionLaw {
 
 };
 %extend Handle_BRepFill_ShapeLaw {
-    BRepFill_ShapeLaw* GetObject() {
+    BRepFill_ShapeLaw* _get_reference() {
     return (BRepFill_ShapeLaw*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_ShapeLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4961,8 +5150,17 @@ class Handle_BRepFill_DraftLaw : public Handle_BRepFill_Edge3DLaw {
 
 };
 %extend Handle_BRepFill_DraftLaw {
-    BRepFill_DraftLaw* GetObject() {
+    BRepFill_DraftLaw* _get_reference() {
     return (BRepFill_DraftLaw*)$self->Access();
+    }
+};
+
+%extend Handle_BRepFill_DraftLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -390,8 +390,17 @@ class Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI : public Handle_TCollection_M
 
 };
 %extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI {
-    StepToTopoDS_DataMapNodeOfDataMapOfRI* GetObject() {
+    StepToTopoDS_DataMapNodeOfDataMapOfRI* _get_reference() {
     return (StepToTopoDS_DataMapNodeOfDataMapOfRI*)$self->Access();
+    }
+};
+
+%extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -451,8 +460,17 @@ class Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames : public Handle_TCollect
 
 };
 %extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames {
-    StepToTopoDS_DataMapNodeOfDataMapOfRINames* GetObject() {
+    StepToTopoDS_DataMapNodeOfDataMapOfRINames* _get_reference() {
     return (StepToTopoDS_DataMapNodeOfDataMapOfRINames*)$self->Access();
+    }
+};
+
+%extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -512,8 +530,17 @@ class Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI : public Handle_TCollection_
 
 };
 %extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI {
-    StepToTopoDS_DataMapNodeOfDataMapOfTRI* GetObject() {
+    StepToTopoDS_DataMapNodeOfDataMapOfTRI* _get_reference() {
     return (StepToTopoDS_DataMapNodeOfDataMapOfTRI*)$self->Access();
+    }
+};
+
+%extend Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -573,8 +600,17 @@ class Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap : public Handle_TCollection_
 
 };
 %extend Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap {
-    StepToTopoDS_DataMapNodeOfPointEdgeMap* GetObject() {
+    StepToTopoDS_DataMapNodeOfPointEdgeMap* _get_reference() {
     return (StepToTopoDS_DataMapNodeOfPointEdgeMap*)$self->Access();
+    }
+};
+
+%extend Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -634,8 +670,17 @@ class Handle_StepToTopoDS_DataMapNodeOfPointVertexMap : public Handle_TCollectio
 
 };
 %extend Handle_StepToTopoDS_DataMapNodeOfPointVertexMap {
-    StepToTopoDS_DataMapNodeOfPointVertexMap* GetObject() {
+    StepToTopoDS_DataMapNodeOfPointVertexMap* _get_reference() {
     return (StepToTopoDS_DataMapNodeOfPointVertexMap*)$self->Access();
+    }
+};
+
+%extend Handle_StepToTopoDS_DataMapNodeOfPointVertexMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

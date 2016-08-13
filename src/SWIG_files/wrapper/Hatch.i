@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -376,8 +376,17 @@ class Handle_Hatch_SequenceNodeOfSequenceOfLine : public Handle_TCollection_SeqN
 
 };
 %extend Handle_Hatch_SequenceNodeOfSequenceOfLine {
-    Hatch_SequenceNodeOfSequenceOfLine* GetObject() {
+    Hatch_SequenceNodeOfSequenceOfLine* _get_reference() {
     return (Hatch_SequenceNodeOfSequenceOfLine*)$self->Access();
+    }
+};
+
+%extend Handle_Hatch_SequenceNodeOfSequenceOfLine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -433,8 +442,17 @@ class Handle_Hatch_SequenceNodeOfSequenceOfParameter : public Handle_TCollection
 
 };
 %extend Handle_Hatch_SequenceNodeOfSequenceOfParameter {
-    Hatch_SequenceNodeOfSequenceOfParameter* GetObject() {
+    Hatch_SequenceNodeOfSequenceOfParameter* _get_reference() {
     return (Hatch_SequenceNodeOfSequenceOfParameter*)$self->Access();
+    }
+};
+
+%extend Handle_Hatch_SequenceNodeOfSequenceOfParameter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

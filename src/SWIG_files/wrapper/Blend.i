@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1104,8 +1104,17 @@ class Handle_Blend_SequenceNodeOfSequenceOfPoint : public Handle_TCollection_Seq
 
 };
 %extend Handle_Blend_SequenceNodeOfSequenceOfPoint {
-    Blend_SequenceNodeOfSequenceOfPoint* GetObject() {
+    Blend_SequenceNodeOfSequenceOfPoint* _get_reference() {
     return (Blend_SequenceNodeOfSequenceOfPoint*)$self->Access();
+    }
+};
+
+%extend Handle_Blend_SequenceNodeOfSequenceOfPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

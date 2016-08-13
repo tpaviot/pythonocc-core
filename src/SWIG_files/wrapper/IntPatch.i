@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1387,8 +1387,17 @@ class Handle_IntPatch_Line : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IntPatch_Line {
-    IntPatch_Line* GetObject() {
+    IntPatch_Line* _get_reference() {
     return (IntPatch_Line*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_Line {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2227,8 +2236,17 @@ class Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public Handl
 
 };
 %extend Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
-    IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking* GetObject() {
+    IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking* _get_reference() {
     return (IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2284,8 +2302,17 @@ class Handle_IntPatch_SequenceNodeOfSequenceOfLine : public Handle_TCollection_S
 
 };
 %extend Handle_IntPatch_SequenceNodeOfSequenceOfLine {
-    IntPatch_SequenceNodeOfSequenceOfLine* GetObject() {
+    IntPatch_SequenceNodeOfSequenceOfLine* _get_reference() {
     return (IntPatch_SequenceNodeOfSequenceOfLine*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_SequenceNodeOfSequenceOfLine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2341,8 +2368,17 @@ class Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds : public H
 
 };
 %extend Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds {
-    IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds* GetObject() {
+    IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds* _get_reference() {
     return (IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2398,8 +2434,17 @@ class Handle_IntPatch_SequenceNodeOfSequenceOfPoint : public Handle_TCollection_
 
 };
 %extend Handle_IntPatch_SequenceNodeOfSequenceOfPoint {
-    IntPatch_SequenceNodeOfSequenceOfPoint* GetObject() {
+    IntPatch_SequenceNodeOfSequenceOfPoint* _get_reference() {
     return (IntPatch_SequenceNodeOfSequenceOfPoint*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_SequenceNodeOfSequenceOfPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2455,8 +2500,17 @@ class Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds : public Han
 
 };
 %extend Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds {
-    IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds* GetObject() {
+    IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds* _get_reference() {
     return (IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3352,8 +3406,17 @@ class Handle_IntPatch_TheIWLineOfTheIWalking : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IntPatch_TheIWLineOfTheIWalking {
-    IntPatch_TheIWLineOfTheIWalking* GetObject() {
+    IntPatch_TheIWLineOfTheIWalking* _get_reference() {
     return (IntPatch_TheIWLineOfTheIWalking*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_TheIWLineOfTheIWalking {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3983,8 +4046,17 @@ class Handle_IntPatch_ALine : public Handle_IntPatch_Line {
 
 };
 %extend Handle_IntPatch_ALine {
-    IntPatch_ALine* GetObject() {
+    IntPatch_ALine* _get_reference() {
     return (IntPatch_ALine*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_ALine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4320,8 +4392,17 @@ class Handle_IntPatch_GLine : public Handle_IntPatch_Line {
 
 };
 %extend Handle_IntPatch_GLine {
-    IntPatch_GLine* GetObject() {
+    IntPatch_GLine* _get_reference() {
     return (IntPatch_GLine*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_GLine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4651,8 +4732,17 @@ class Handle_IntPatch_RLine : public Handle_IntPatch_Line {
 
 };
 %extend Handle_IntPatch_RLine {
-    IntPatch_RLine* GetObject() {
+    IntPatch_RLine* _get_reference() {
     return (IntPatch_RLine*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_RLine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4930,8 +5020,17 @@ class Handle_IntPatch_WLine : public Handle_IntPatch_Line {
 
 };
 %extend Handle_IntPatch_WLine {
-    IntPatch_WLine* GetObject() {
+    IntPatch_WLine* _get_reference() {
     return (IntPatch_WLine*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_WLine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

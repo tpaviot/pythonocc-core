@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -450,8 +450,17 @@ class Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d : public Handle_TCollection
 
 };
 %extend Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d {
-    BRepTools_DataMapNodeOfMapOfVertexPnt2d* GetObject() {
+    BRepTools_DataMapNodeOfMapOfVertexPnt2d* _get_reference() {
     return (BRepTools_DataMapNodeOfMapOfVertexPnt2d*)$self->Access();
+    }
+};
+
+%extend Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -665,8 +674,17 @@ class Handle_BRepTools_Modification : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRepTools_Modification {
-    BRepTools_Modification* GetObject() {
+    BRepTools_Modification* _get_reference() {
     return (BRepTools_Modification*)$self->Access();
+    }
+};
+
+%extend Handle_BRepTools_Modification {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -940,8 +958,17 @@ class Handle_BRepTools_ReShape : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRepTools_ReShape {
-    BRepTools_ReShape* GetObject() {
+    BRepTools_ReShape* _get_reference() {
     return (BRepTools_ReShape*)$self->Access();
+    }
+};
+
+%extend Handle_BRepTools_ReShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1409,8 +1436,17 @@ class Handle_BRepTools_GTrsfModification : public Handle_BRepTools_Modification 
 
 };
 %extend Handle_BRepTools_GTrsfModification {
-    BRepTools_GTrsfModification* GetObject() {
+    BRepTools_GTrsfModification* _get_reference() {
     return (BRepTools_GTrsfModification*)$self->Access();
+    }
+};
+
+%extend Handle_BRepTools_GTrsfModification {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1550,8 +1586,17 @@ class Handle_BRepTools_NurbsConvertModification : public Handle_BRepTools_Modifi
 
 };
 %extend Handle_BRepTools_NurbsConvertModification {
-    BRepTools_NurbsConvertModification* GetObject() {
+    BRepTools_NurbsConvertModification* _get_reference() {
     return (BRepTools_NurbsConvertModification*)$self->Access();
+    }
+};
+
+%extend Handle_BRepTools_NurbsConvertModification {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1699,8 +1744,17 @@ class Handle_BRepTools_TrsfModification : public Handle_BRepTools_Modification {
 
 };
 %extend Handle_BRepTools_TrsfModification {
-    BRepTools_TrsfModification* GetObject() {
+    BRepTools_TrsfModification* _get_reference() {
     return (BRepTools_TrsfModification*)$self->Access();
+    }
+};
+
+%extend Handle_BRepTools_TrsfModification {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

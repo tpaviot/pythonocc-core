@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -393,8 +393,17 @@ class Handle_ShapeBuild_ReShape : public Handle_BRepTools_ReShape {
 
 };
 %extend Handle_ShapeBuild_ReShape {
-    ShapeBuild_ReShape* GetObject() {
+    ShapeBuild_ReShape* _get_reference() {
     return (ShapeBuild_ReShape*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeBuild_ReShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

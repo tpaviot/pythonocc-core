@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -989,8 +989,17 @@ class Handle_BRep_CurveRepresentation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRep_CurveRepresentation {
-    BRep_CurveRepresentation* GetObject() {
+    BRep_CurveRepresentation* _get_reference() {
     return (BRep_CurveRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_CurveRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1112,8 +1121,17 @@ class Handle_BRep_ListNodeOfListOfCurveRepresentation : public Handle_TCollectio
 
 };
 %extend Handle_BRep_ListNodeOfListOfCurveRepresentation {
-    BRep_ListNodeOfListOfCurveRepresentation* GetObject() {
+    BRep_ListNodeOfListOfCurveRepresentation* _get_reference() {
     return (BRep_ListNodeOfListOfCurveRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_ListNodeOfListOfCurveRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1167,8 +1185,17 @@ class Handle_BRep_ListNodeOfListOfPointRepresentation : public Handle_TCollectio
 
 };
 %extend Handle_BRep_ListNodeOfListOfPointRepresentation {
-    BRep_ListNodeOfListOfPointRepresentation* GetObject() {
+    BRep_ListNodeOfListOfPointRepresentation* _get_reference() {
     return (BRep_ListNodeOfListOfPointRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_ListNodeOfListOfPointRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1580,8 +1607,17 @@ class Handle_BRep_PointRepresentation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRep_PointRepresentation {
-    BRep_PointRepresentation* GetObject() {
+    BRep_PointRepresentation* _get_reference() {
     return (BRep_PointRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_PointRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1691,8 +1727,17 @@ class Handle_BRep_TEdge : public Handle_TopoDS_TEdge {
 
 };
 %extend Handle_BRep_TEdge {
-    BRep_TEdge* GetObject() {
+    BRep_TEdge* _get_reference() {
     return (BRep_TEdge*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_TEdge {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1796,8 +1841,17 @@ class Handle_BRep_TFace : public Handle_TopoDS_TFace {
 
 };
 %extend Handle_BRep_TFace {
-    BRep_TFace* GetObject() {
+    BRep_TFace* _get_reference() {
     return (BRep_TFace*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_TFace {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1885,8 +1939,17 @@ class Handle_BRep_TVertex : public Handle_TopoDS_TVertex {
 
 };
 %extend Handle_BRep_TVertex {
-    BRep_TVertex* GetObject() {
+    BRep_TVertex* _get_reference() {
     return (BRep_TVertex*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_TVertex {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2555,8 +2618,17 @@ class Handle_BRep_CurveOn2Surfaces : public Handle_BRep_CurveRepresentation {
 
 };
 %extend Handle_BRep_CurveOn2Surfaces {
-    BRep_CurveOn2Surfaces* GetObject() {
+    BRep_CurveOn2Surfaces* _get_reference() {
     return (BRep_CurveOn2Surfaces*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_CurveOn2Surfaces {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2650,8 +2722,17 @@ class Handle_BRep_GCurve : public Handle_BRep_CurveRepresentation {
 
 };
 %extend Handle_BRep_GCurve {
-    BRep_GCurve* GetObject() {
+    BRep_GCurve* _get_reference() {
     return (BRep_GCurve*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_GCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2727,8 +2808,17 @@ class Handle_BRep_PointOnCurve : public Handle_BRep_PointRepresentation {
 
 };
 %extend Handle_BRep_PointOnCurve {
-    BRep_PointOnCurve* GetObject() {
+    BRep_PointOnCurve* _get_reference() {
     return (BRep_PointOnCurve*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_PointOnCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2780,8 +2870,17 @@ class Handle_BRep_PointsOnSurface : public Handle_BRep_PointRepresentation {
 
 };
 %extend Handle_BRep_PointsOnSurface {
-    BRep_PointsOnSurface* GetObject() {
+    BRep_PointsOnSurface* _get_reference() {
     return (BRep_PointsOnSurface*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_PointsOnSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2853,8 +2952,17 @@ class Handle_BRep_Polygon3D : public Handle_BRep_CurveRepresentation {
 
 };
 %extend Handle_BRep_Polygon3D {
-    BRep_Polygon3D* GetObject() {
+    BRep_Polygon3D* _get_reference() {
     return (BRep_Polygon3D*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_Polygon3D {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2942,8 +3050,17 @@ class Handle_BRep_PolygonOnSurface : public Handle_BRep_CurveRepresentation {
 
 };
 %extend Handle_BRep_PolygonOnSurface {
-    BRep_PolygonOnSurface* GetObject() {
+    BRep_PolygonOnSurface* _get_reference() {
     return (BRep_PolygonOnSurface*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_PolygonOnSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3033,8 +3150,17 @@ class Handle_BRep_PolygonOnTriangulation : public Handle_BRep_CurveRepresentatio
 
 };
 %extend Handle_BRep_PolygonOnTriangulation {
-    BRep_PolygonOnTriangulation* GetObject() {
+    BRep_PolygonOnTriangulation* _get_reference() {
     return (BRep_PolygonOnTriangulation*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_PolygonOnTriangulation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3116,8 +3242,17 @@ class Handle_BRep_Curve3D : public Handle_BRep_GCurve {
 
 };
 %extend Handle_BRep_Curve3D {
-    BRep_Curve3D* GetObject() {
+    BRep_Curve3D* _get_reference() {
     return (BRep_Curve3D*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_Curve3D {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3237,8 +3372,17 @@ class Handle_BRep_CurveOnSurface : public Handle_BRep_GCurve {
 
 };
 %extend Handle_BRep_CurveOnSurface {
-    BRep_CurveOnSurface* GetObject() {
+    BRep_CurveOnSurface* _get_reference() {
     return (BRep_CurveOnSurface*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_CurveOnSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3318,8 +3462,17 @@ class Handle_BRep_PointOnCurveOnSurface : public Handle_BRep_PointsOnSurface {
 
 };
 %extend Handle_BRep_PointOnCurveOnSurface {
-    BRep_PointOnCurveOnSurface* GetObject() {
+    BRep_PointOnCurveOnSurface* _get_reference() {
     return (BRep_PointOnCurveOnSurface*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_PointOnCurveOnSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3395,8 +3548,17 @@ class Handle_BRep_PointOnSurface : public Handle_BRep_PointsOnSurface {
 
 };
 %extend Handle_BRep_PointOnSurface {
-    BRep_PointOnSurface* GetObject() {
+    BRep_PointOnSurface* _get_reference() {
     return (BRep_PointOnSurface*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_PointOnSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3472,8 +3634,17 @@ class Handle_BRep_PolygonOnClosedSurface : public Handle_BRep_PolygonOnSurface {
 
 };
 %extend Handle_BRep_PolygonOnClosedSurface {
-    BRep_PolygonOnClosedSurface* GetObject() {
+    BRep_PolygonOnClosedSurface* _get_reference() {
     return (BRep_PolygonOnClosedSurface*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_PolygonOnClosedSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3549,8 +3720,17 @@ class Handle_BRep_PolygonOnClosedTriangulation : public Handle_BRep_PolygonOnTri
 
 };
 %extend Handle_BRep_PolygonOnClosedTriangulation {
-    BRep_PolygonOnClosedTriangulation* GetObject() {
+    BRep_PolygonOnClosedTriangulation* _get_reference() {
     return (BRep_PolygonOnClosedTriangulation*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_PolygonOnClosedTriangulation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3692,8 +3872,17 @@ class Handle_BRep_CurveOnClosedSurface : public Handle_BRep_CurveOnSurface {
 
 };
 %extend Handle_BRep_CurveOnClosedSurface {
-    BRep_CurveOnClosedSurface* GetObject() {
+    BRep_CurveOnClosedSurface* _get_reference() {
     return (BRep_CurveOnClosedSurface*)$self->Access();
+    }
+};
+
+%extend Handle_BRep_CurveOnClosedSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

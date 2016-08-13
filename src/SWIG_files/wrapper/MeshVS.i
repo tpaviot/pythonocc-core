@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -650,8 +650,17 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger : public Handle_TCol
 
 };
 %extend Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger {
-    MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger* GetObject() {
+    MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger* _get_reference() {
     return (MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -720,8 +729,17 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger : public Ha
 
 };
 %extend Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger {
-    MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger* GetObject() {
+    MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger* _get_reference() {
     return (MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -790,8 +808,17 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString : public Handle_TCo
 
 };
 %extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString {
-    MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString* GetObject() {
+    MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString* _get_reference() {
     return (MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -869,8 +896,17 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean : public Handle_TCollec
 
 };
 %extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean {
-    MeshVS_DataMapNodeOfDataMapOfIntegerBoolean* GetObject() {
+    MeshVS_DataMapNodeOfDataMapOfIntegerBoolean* _get_reference() {
     return (MeshVS_DataMapNodeOfDataMapOfIntegerBoolean*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -939,8 +975,17 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor : public Handle_TCollecti
 
 };
 %extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor {
-    MeshVS_DataMapNodeOfDataMapOfIntegerColor* GetObject() {
+    MeshVS_DataMapNodeOfDataMapOfIntegerColor* _get_reference() {
     return (MeshVS_DataMapNodeOfDataMapOfIntegerColor*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1009,8 +1054,17 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial : public Handle_TColle
 
 };
 %extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial {
-    MeshVS_DataMapNodeOfDataMapOfIntegerMaterial* GetObject() {
+    MeshVS_DataMapNodeOfDataMapOfIntegerMaterial* _get_reference() {
     return (MeshVS_DataMapNodeOfDataMapOfIntegerMaterial*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1079,8 +1133,17 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner : public Handle
 
 };
 %extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner {
-    MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner* GetObject() {
+    MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner* _get_reference() {
     return (MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1149,8 +1212,17 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner : public Handle_TCollecti
 
 };
 %extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner {
-    MeshVS_DataMapNodeOfDataMapOfIntegerOwner* GetObject() {
+    MeshVS_DataMapNodeOfDataMapOfIntegerOwner* _get_reference() {
     return (MeshVS_DataMapNodeOfDataMapOfIntegerOwner*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1219,8 +1291,17 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors : public Handle_TColl
 
 };
 %extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors {
-    MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors* GetObject() {
+    MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors* _get_reference() {
     return (MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1289,8 +1370,17 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector : public Handle_TCollect
 
 };
 %extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector {
-    MeshVS_DataMapNodeOfDataMapOfIntegerVector* GetObject() {
+    MeshVS_DataMapNodeOfDataMapOfIntegerVector* _get_reference() {
     return (MeshVS_DataMapNodeOfDataMapOfIntegerVector*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1350,8 +1440,17 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger : public Handle_
 
 };
 %extend Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger {
-    MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger* GetObject() {
+    MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger* _get_reference() {
     return (MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2483,8 +2582,17 @@ class Handle_MeshVS_DataSource : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MeshVS_DataSource {
-    MeshVS_DataSource* GetObject() {
+    MeshVS_DataSource* _get_reference() {
     return (MeshVS_DataSource*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataSource {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2666,8 +2774,17 @@ class Handle_MeshVS_Drawer : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MeshVS_Drawer {
-    MeshVS_Drawer* GetObject() {
+    MeshVS_Drawer* _get_reference() {
     return (MeshVS_Drawer*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_Drawer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2767,8 +2884,17 @@ class Handle_MeshVS_DummySensitiveEntity : public Handle_SelectBasics_SensitiveE
 
 };
 %extend Handle_MeshVS_DummySensitiveEntity {
-    MeshVS_DummySensitiveEntity* GetObject() {
+    MeshVS_DummySensitiveEntity* _get_reference() {
     return (MeshVS_DummySensitiveEntity*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DummySensitiveEntity {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2874,8 +3000,17 @@ class Handle_MeshVS_HArray1OfSequenceOfInteger : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MeshVS_HArray1OfSequenceOfInteger {
-    MeshVS_HArray1OfSequenceOfInteger* GetObject() {
+    MeshVS_HArray1OfSequenceOfInteger* _get_reference() {
     return (MeshVS_HArray1OfSequenceOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_HArray1OfSequenceOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3293,8 +3428,17 @@ class Handle_MeshVS_Mesh : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_MeshVS_Mesh {
-    MeshVS_Mesh* GetObject() {
+    MeshVS_Mesh* _get_reference() {
     return (MeshVS_Mesh*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_Mesh {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3432,8 +3576,17 @@ class Handle_MeshVS_MeshEntityOwner : public Handle_SelectMgr_EntityOwner {
 
 };
 %extend Handle_MeshVS_MeshEntityOwner {
-    MeshVS_MeshEntityOwner* GetObject() {
+    MeshVS_MeshEntityOwner* _get_reference() {
     return (MeshVS_MeshEntityOwner*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_MeshEntityOwner {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3561,8 +3714,17 @@ class Handle_MeshVS_MeshOwner : public Handle_SelectMgr_EntityOwner {
 
 };
 %extend Handle_MeshVS_MeshOwner {
-    MeshVS_MeshOwner* GetObject() {
+    MeshVS_MeshOwner* _get_reference() {
     return (MeshVS_MeshOwner*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_MeshOwner {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3726,8 +3888,17 @@ class Handle_MeshVS_PrsBuilder : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MeshVS_PrsBuilder {
-    MeshVS_PrsBuilder* GetObject() {
+    MeshVS_PrsBuilder* _get_reference() {
     return (MeshVS_PrsBuilder*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_PrsBuilder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3809,8 +3980,17 @@ class Handle_MeshVS_SensitiveFace : public Handle_Select3D_SensitiveFace {
 
 };
 %extend Handle_MeshVS_SensitiveFace {
-    MeshVS_SensitiveFace* GetObject() {
+    MeshVS_SensitiveFace* _get_reference() {
     return (MeshVS_SensitiveFace*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_SensitiveFace {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3916,8 +4096,17 @@ class Handle_MeshVS_SensitiveMesh : public Handle_Select3D_SensitiveEntity {
 
 };
 %extend Handle_MeshVS_SensitiveMesh {
-    MeshVS_SensitiveMesh* GetObject() {
+    MeshVS_SensitiveMesh* _get_reference() {
     return (MeshVS_SensitiveMesh*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_SensitiveMesh {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4027,8 +4216,17 @@ class Handle_MeshVS_SensitivePolyhedron : public Handle_Select3D_SensitiveEntity
 
 };
 %extend Handle_MeshVS_SensitivePolyhedron {
-    MeshVS_SensitivePolyhedron* GetObject() {
+    MeshVS_SensitivePolyhedron* _get_reference() {
     return (MeshVS_SensitivePolyhedron*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_SensitivePolyhedron {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4112,8 +4310,17 @@ class Handle_MeshVS_SensitiveSegment : public Handle_Select3D_SensitiveSegment {
 
 };
 %extend Handle_MeshVS_SensitiveSegment {
-    MeshVS_SensitiveSegment* GetObject() {
+    MeshVS_SensitiveSegment* _get_reference() {
     return (MeshVS_SensitiveSegment*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_SensitiveSegment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4169,8 +4376,17 @@ class Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder : public Handle_TCollecti
 
 };
 %extend Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder {
-    MeshVS_SequenceNodeOfSequenceOfPrsBuilder* GetObject() {
+    MeshVS_SequenceNodeOfSequenceOfPrsBuilder* _get_reference() {
     return (MeshVS_SequenceNodeOfSequenceOfPrsBuilder*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4362,8 +4578,17 @@ class Handle_MeshVS_StdMapNodeOfMapOfTwoNodes : public Handle_TCollection_MapNod
 
 };
 %extend Handle_MeshVS_StdMapNodeOfMapOfTwoNodes {
-    MeshVS_StdMapNodeOfMapOfTwoNodes* GetObject() {
+    MeshVS_StdMapNodeOfMapOfTwoNodes* _get_reference() {
     return (MeshVS_StdMapNodeOfMapOfTwoNodes*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_StdMapNodeOfMapOfTwoNodes {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4590,8 +4815,17 @@ class Handle_MeshVS_DataSource3D : public Handle_MeshVS_DataSource {
 
 };
 %extend Handle_MeshVS_DataSource3D {
-    MeshVS_DataSource3D* GetObject() {
+    MeshVS_DataSource3D* _get_reference() {
     return (MeshVS_DataSource3D*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DataSource3D {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4761,8 +4995,17 @@ class Handle_MeshVS_DeformedDataSource : public Handle_MeshVS_DataSource {
 
 };
 %extend Handle_MeshVS_DeformedDataSource {
-    MeshVS_DeformedDataSource* GetObject() {
+    MeshVS_DeformedDataSource* _get_reference() {
     return (MeshVS_DeformedDataSource*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_DeformedDataSource {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4940,8 +5183,17 @@ class Handle_MeshVS_ElementalColorPrsBuilder : public Handle_MeshVS_PrsBuilder {
 
 };
 %extend Handle_MeshVS_ElementalColorPrsBuilder {
-    MeshVS_ElementalColorPrsBuilder* GetObject() {
+    MeshVS_ElementalColorPrsBuilder* _get_reference() {
     return (MeshVS_ElementalColorPrsBuilder*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_ElementalColorPrsBuilder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5095,8 +5347,17 @@ class Handle_MeshVS_MeshPrsBuilder : public Handle_MeshVS_PrsBuilder {
 
 };
 %extend Handle_MeshVS_MeshPrsBuilder {
-    MeshVS_MeshPrsBuilder* GetObject() {
+    MeshVS_MeshPrsBuilder* _get_reference() {
     return (MeshVS_MeshPrsBuilder*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_MeshPrsBuilder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5304,8 +5565,17 @@ class Handle_MeshVS_NodalColorPrsBuilder : public Handle_MeshVS_PrsBuilder {
 
 };
 %extend Handle_MeshVS_NodalColorPrsBuilder {
-    MeshVS_NodalColorPrsBuilder* GetObject() {
+    MeshVS_NodalColorPrsBuilder* _get_reference() {
     return (MeshVS_NodalColorPrsBuilder*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_NodalColorPrsBuilder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5431,8 +5701,17 @@ class Handle_MeshVS_TextPrsBuilder : public Handle_MeshVS_PrsBuilder {
 
 };
 %extend Handle_MeshVS_TextPrsBuilder {
-    MeshVS_TextPrsBuilder* GetObject() {
+    MeshVS_TextPrsBuilder* _get_reference() {
     return (MeshVS_TextPrsBuilder*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_TextPrsBuilder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5624,8 +5903,17 @@ class Handle_MeshVS_VectorPrsBuilder : public Handle_MeshVS_PrsBuilder {
 
 };
 %extend Handle_MeshVS_VectorPrsBuilder {
-    MeshVS_VectorPrsBuilder* GetObject() {
+    MeshVS_VectorPrsBuilder* _get_reference() {
     return (MeshVS_VectorPrsBuilder*)$self->Access();
+    }
+};
+
+%extend Handle_MeshVS_VectorPrsBuilder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

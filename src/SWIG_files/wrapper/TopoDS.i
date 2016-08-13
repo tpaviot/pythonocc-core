@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -311,8 +311,17 @@ class Handle_TopoDS_HShape : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopoDS_HShape {
-    TopoDS_HShape* GetObject() {
+    TopoDS_HShape* _get_reference() {
     return (TopoDS_HShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopoDS_HShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -454,8 +463,17 @@ class Handle_TopoDS_ListNodeOfListOfShape : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TopoDS_ListNodeOfListOfShape {
-    TopoDS_ListNodeOfListOfShape* GetObject() {
+    TopoDS_ListNodeOfListOfShape* _get_reference() {
     return (TopoDS_ListNodeOfListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopoDS_ListNodeOfListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1111,8 +1129,17 @@ class Handle_TopoDS_TShape : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopoDS_TShape {
-    TopoDS_TShape* GetObject() {
+    TopoDS_TShape* _get_reference() {
     return (TopoDS_TShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopoDS_TShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1244,8 +1271,17 @@ class Handle_TopoDS_TCompSolid : public Handle_TopoDS_TShape {
 
 };
 %extend Handle_TopoDS_TCompSolid {
-    TopoDS_TCompSolid* GetObject() {
+    TopoDS_TCompSolid* _get_reference() {
     return (TopoDS_TCompSolid*)$self->Access();
+    }
+};
+
+%extend Handle_TopoDS_TCompSolid {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1305,8 +1341,17 @@ class Handle_TopoDS_TCompound : public Handle_TopoDS_TShape {
 
 };
 %extend Handle_TopoDS_TCompound {
-    TopoDS_TCompound* GetObject() {
+    TopoDS_TCompound* _get_reference() {
     return (TopoDS_TCompound*)$self->Access();
+    }
+};
+
+%extend Handle_TopoDS_TCompound {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1354,8 +1399,17 @@ class Handle_TopoDS_TEdge : public Handle_TopoDS_TShape {
 
 };
 %extend Handle_TopoDS_TEdge {
-    TopoDS_TEdge* GetObject() {
+    TopoDS_TEdge* _get_reference() {
     return (TopoDS_TEdge*)$self->Access();
+    }
+};
+
+%extend Handle_TopoDS_TEdge {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1415,8 +1469,17 @@ class Handle_TopoDS_TFace : public Handle_TopoDS_TShape {
 
 };
 %extend Handle_TopoDS_TFace {
-    TopoDS_TFace* GetObject() {
+    TopoDS_TFace* _get_reference() {
     return (TopoDS_TFace*)$self->Access();
+    }
+};
+
+%extend Handle_TopoDS_TFace {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1476,8 +1539,17 @@ class Handle_TopoDS_TShell : public Handle_TopoDS_TShape {
 
 };
 %extend Handle_TopoDS_TShell {
-    TopoDS_TShell* GetObject() {
+    TopoDS_TShell* _get_reference() {
     return (TopoDS_TShell*)$self->Access();
+    }
+};
+
+%extend Handle_TopoDS_TShell {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1537,8 +1609,17 @@ class Handle_TopoDS_TSolid : public Handle_TopoDS_TShape {
 
 };
 %extend Handle_TopoDS_TSolid {
-    TopoDS_TSolid* GetObject() {
+    TopoDS_TSolid* _get_reference() {
     return (TopoDS_TSolid*)$self->Access();
+    }
+};
+
+%extend Handle_TopoDS_TSolid {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1586,8 +1667,17 @@ class Handle_TopoDS_TVertex : public Handle_TopoDS_TShape {
 
 };
 %extend Handle_TopoDS_TVertex {
-    TopoDS_TVertex* GetObject() {
+    TopoDS_TVertex* _get_reference() {
     return (TopoDS_TVertex*)$self->Access();
+    }
+};
+
+%extend Handle_TopoDS_TVertex {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1647,8 +1737,17 @@ class Handle_TopoDS_TWire : public Handle_TopoDS_TShape {
 
 };
 %extend Handle_TopoDS_TWire {
-    TopoDS_TWire* GetObject() {
+    TopoDS_TWire* _get_reference() {
     return (TopoDS_TWire*)$self->Access();
+    }
+};
+
+%extend Handle_TopoDS_TWire {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

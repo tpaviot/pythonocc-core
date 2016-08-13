@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -541,8 +541,17 @@ class Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape :
 
 };
 %extend Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape {
-    TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape* GetObject() {
+    TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape* _get_reference() {
     return (TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1515,8 +1524,17 @@ class Handle_TopOpeBRepBuild_HBuilder : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRepBuild_HBuilder {
-    TopOpeBRepBuild_HBuilder* GetObject() {
+    TopOpeBRepBuild_HBuilder* _get_reference() {
     return (TopOpeBRepBuild_HBuilder*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepBuild_HBuilder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1597,8 +1615,17 @@ class Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo
 
 };
 %extend Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo {
-    TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo* GetObject() {
+    TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo* _get_reference() {
     return (TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1898,8 +1925,17 @@ class Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop : public Handle_TCollect
 
 };
 %extend Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop {
-    TopOpeBRepBuild_ListNodeOfListOfListOfLoop* GetObject() {
+    TopOpeBRepBuild_ListNodeOfListOfListOfLoop* _get_reference() {
     return (TopOpeBRepBuild_ListNodeOfListOfListOfLoop*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1953,8 +1989,17 @@ class Handle_TopOpeBRepBuild_ListNodeOfListOfLoop : public Handle_TCollection_Ma
 
 };
 %extend Handle_TopOpeBRepBuild_ListNodeOfListOfLoop {
-    TopOpeBRepBuild_ListNodeOfListOfLoop* GetObject() {
+    TopOpeBRepBuild_ListNodeOfListOfLoop* _get_reference() {
     return (TopOpeBRepBuild_ListNodeOfListOfLoop*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepBuild_ListNodeOfListOfLoop {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2008,8 +2053,17 @@ class Handle_TopOpeBRepBuild_ListNodeOfListOfPave : public Handle_TCollection_Ma
 
 };
 %extend Handle_TopOpeBRepBuild_ListNodeOfListOfPave {
-    TopOpeBRepBuild_ListNodeOfListOfPave* GetObject() {
+    TopOpeBRepBuild_ListNodeOfListOfPave* _get_reference() {
     return (TopOpeBRepBuild_ListNodeOfListOfPave*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepBuild_ListNodeOfListOfPave {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2063,8 +2117,17 @@ class Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape : public Handle_TC
 
 };
 %extend Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape {
-    TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape* GetObject() {
+    TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape* _get_reference() {
     return (TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2654,8 +2717,17 @@ class Handle_TopOpeBRepBuild_Loop : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRepBuild_Loop {
-    TopOpeBRepBuild_Loop* GetObject() {
+    TopOpeBRepBuild_Loop* _get_reference() {
     return (TopOpeBRepBuild_Loop*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepBuild_Loop {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4053,8 +4125,17 @@ class Handle_TopOpeBRepBuild_Pave : public Handle_TopOpeBRepBuild_Loop {
 
 };
 %extend Handle_TopOpeBRepBuild_Pave {
-    TopOpeBRepBuild_Pave* GetObject() {
+    TopOpeBRepBuild_Pave* _get_reference() {
     return (TopOpeBRepBuild_Pave*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepBuild_Pave {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

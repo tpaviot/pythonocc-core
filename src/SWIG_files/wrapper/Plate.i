@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -526,8 +526,17 @@ class Handle_Plate_HArray1OfPinpointConstraint : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Plate_HArray1OfPinpointConstraint {
-    Plate_HArray1OfPinpointConstraint* GetObject() {
+    Plate_HArray1OfPinpointConstraint* _get_reference() {
     return (Plate_HArray1OfPinpointConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_Plate_HArray1OfPinpointConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -975,8 +984,17 @@ class Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint : public Handl
 
 };
 %extend Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
-    Plate_SequenceNodeOfSequenceOfLinearScalarConstraint* GetObject() {
+    Plate_SequenceNodeOfSequenceOfLinearScalarConstraint* _get_reference() {
     return (Plate_SequenceNodeOfSequenceOfLinearScalarConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1032,8 +1050,17 @@ class Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint : public Handle_T
 
 };
 %extend Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
-    Plate_SequenceNodeOfSequenceOfLinearXYZConstraint* GetObject() {
+    Plate_SequenceNodeOfSequenceOfLinearXYZConstraint* _get_reference() {
     return (Plate_SequenceNodeOfSequenceOfLinearXYZConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1089,8 +1116,17 @@ class Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint : public Handle_TC
 
 };
 %extend Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint {
-    Plate_SequenceNodeOfSequenceOfPinpointConstraint* GetObject() {
+    Plate_SequenceNodeOfSequenceOfPinpointConstraint* _get_reference() {
     return (Plate_SequenceNodeOfSequenceOfPinpointConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

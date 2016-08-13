@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -410,8 +410,17 @@ class Handle_FEmTool_Curve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_FEmTool_Curve {
-    FEmTool_Curve* GetObject() {
+    FEmTool_Curve* _get_reference() {
     return (FEmTool_Curve*)$self->Access();
+    }
+};
+
+%extend Handle_FEmTool_Curve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -505,8 +514,17 @@ class Handle_FEmTool_ElementaryCriterion : public Handle_MMgt_TShared {
 
 };
 %extend Handle_FEmTool_ElementaryCriterion {
-    FEmTool_ElementaryCriterion* GetObject() {
+    FEmTool_ElementaryCriterion* _get_reference() {
     return (FEmTool_ElementaryCriterion*)$self->Access();
+    }
+};
+
+%extend Handle_FEmTool_ElementaryCriterion {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -674,8 +692,17 @@ class Handle_FEmTool_HAssemblyTable : public Handle_MMgt_TShared {
 
 };
 %extend Handle_FEmTool_HAssemblyTable {
-    FEmTool_HAssemblyTable* GetObject() {
+    FEmTool_HAssemblyTable* _get_reference() {
     return (FEmTool_HAssemblyTable*)$self->Access();
+    }
+};
+
+%extend Handle_FEmTool_HAssemblyTable {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -763,8 +790,17 @@ class Handle_FEmTool_ListNodeOfListOfVectors : public Handle_TCollection_MapNode
 
 };
 %extend Handle_FEmTool_ListNodeOfListOfVectors {
-    FEmTool_ListNodeOfListOfVectors* GetObject() {
+    FEmTool_ListNodeOfListOfVectors* _get_reference() {
     return (FEmTool_ListNodeOfListOfVectors*)$self->Access();
+    }
+};
+
+%extend Handle_FEmTool_ListNodeOfListOfVectors {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1088,8 +1124,17 @@ class Handle_FEmTool_SequenceNodeOfSeqOfLinConstr : public Handle_TCollection_Se
 
 };
 %extend Handle_FEmTool_SequenceNodeOfSeqOfLinConstr {
-    FEmTool_SequenceNodeOfSeqOfLinConstr* GetObject() {
+    FEmTool_SequenceNodeOfSeqOfLinConstr* _get_reference() {
     return (FEmTool_SequenceNodeOfSeqOfLinConstr*)$self->Access();
+    }
+};
+
+%extend Handle_FEmTool_SequenceNodeOfSeqOfLinConstr {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1207,8 +1252,17 @@ class Handle_FEmTool_SparseMatrix : public Handle_MMgt_TShared {
 
 };
 %extend Handle_FEmTool_SparseMatrix {
-    FEmTool_SparseMatrix* GetObject() {
+    FEmTool_SparseMatrix* _get_reference() {
     return (FEmTool_SparseMatrix*)$self->Access();
+    }
+};
+
+%extend Handle_FEmTool_SparseMatrix {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1284,8 +1338,17 @@ class Handle_FEmTool_LinearFlexion : public Handle_FEmTool_ElementaryCriterion {
 
 };
 %extend Handle_FEmTool_LinearFlexion {
-    FEmTool_LinearFlexion* GetObject() {
+    FEmTool_LinearFlexion* _get_reference() {
     return (FEmTool_LinearFlexion*)$self->Access();
+    }
+};
+
+%extend Handle_FEmTool_LinearFlexion {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1361,8 +1424,17 @@ class Handle_FEmTool_LinearJerk : public Handle_FEmTool_ElementaryCriterion {
 
 };
 %extend Handle_FEmTool_LinearJerk {
-    FEmTool_LinearJerk* GetObject() {
+    FEmTool_LinearJerk* _get_reference() {
     return (FEmTool_LinearJerk*)$self->Access();
+    }
+};
+
+%extend Handle_FEmTool_LinearJerk {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1438,8 +1510,17 @@ class Handle_FEmTool_LinearTension : public Handle_FEmTool_ElementaryCriterion {
 
 };
 %extend Handle_FEmTool_LinearTension {
-    FEmTool_LinearTension* GetObject() {
+    FEmTool_LinearTension* _get_reference() {
     return (FEmTool_LinearTension*)$self->Access();
+    }
+};
+
+%extend Handle_FEmTool_LinearTension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1579,8 +1660,17 @@ class Handle_FEmTool_ProfileMatrix : public Handle_FEmTool_SparseMatrix {
 
 };
 %extend Handle_FEmTool_ProfileMatrix {
-    FEmTool_ProfileMatrix* GetObject() {
+    FEmTool_ProfileMatrix* _get_reference() {
     return (FEmTool_ProfileMatrix*)$self->Access();
+    }
+};
+
+%extend Handle_FEmTool_ProfileMatrix {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

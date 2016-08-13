@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -752,8 +752,17 @@ class Handle_ChFiDS_HData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ChFiDS_HData {
-    ChFiDS_HData* GetObject() {
+    ChFiDS_HData* _get_reference() {
     return (ChFiDS_HData*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_HData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -823,8 +832,17 @@ class Handle_ChFiDS_HElSpine : public Handle_Adaptor3d_HCurve {
 
 };
 %extend Handle_ChFiDS_HElSpine {
-    ChFiDS_HElSpine* GetObject() {
+    ChFiDS_HElSpine* _get_reference() {
     return (ChFiDS_HElSpine*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_HElSpine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -905,8 +923,17 @@ class Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe : pub
 
 };
 %extend Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe {
-    ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe* GetObject() {
+    ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe* _get_reference() {
     return (ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1172,8 +1199,17 @@ class Handle_ChFiDS_ListNodeOfListOfHElSpine : public Handle_TCollection_MapNode
 
 };
 %extend Handle_ChFiDS_ListNodeOfListOfHElSpine {
-    ChFiDS_ListNodeOfListOfHElSpine* GetObject() {
+    ChFiDS_ListNodeOfListOfHElSpine* _get_reference() {
     return (ChFiDS_ListNodeOfListOfHElSpine*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_ListNodeOfListOfHElSpine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1227,8 +1263,17 @@ class Handle_ChFiDS_ListNodeOfListOfStripe : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_ChFiDS_ListNodeOfListOfStripe {
-    ChFiDS_ListNodeOfListOfStripe* GetObject() {
+    ChFiDS_ListNodeOfListOfStripe* _get_reference() {
     return (ChFiDS_ListNodeOfListOfStripe*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_ListNodeOfListOfStripe {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1282,8 +1327,17 @@ class Handle_ChFiDS_ListNodeOfRegularities : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_ChFiDS_ListNodeOfRegularities {
-    ChFiDS_ListNodeOfRegularities* GetObject() {
+    ChFiDS_ListNodeOfRegularities* _get_reference() {
     return (ChFiDS_ListNodeOfRegularities*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_ListNodeOfRegularities {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1955,8 +2009,17 @@ class Handle_ChFiDS_SecHArray1 : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ChFiDS_SecHArray1 {
-    ChFiDS_SecHArray1* GetObject() {
+    ChFiDS_SecHArray1* _get_reference() {
     return (ChFiDS_SecHArray1*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_SecHArray1 {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2012,8 +2075,17 @@ class Handle_ChFiDS_SequenceNodeOfSequenceOfSpine : public Handle_TCollection_Se
 
 };
 %extend Handle_ChFiDS_SequenceNodeOfSequenceOfSpine {
-    ChFiDS_SequenceNodeOfSequenceOfSpine* GetObject() {
+    ChFiDS_SequenceNodeOfSequenceOfSpine* _get_reference() {
     return (ChFiDS_SequenceNodeOfSequenceOfSpine*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_SequenceNodeOfSequenceOfSpine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2069,8 +2141,17 @@ class Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData : public Handle_TCollection
 
 };
 %extend Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData {
-    ChFiDS_SequenceNodeOfSequenceOfSurfData* GetObject() {
+    ChFiDS_SequenceNodeOfSequenceOfSurfData* _get_reference() {
     return (ChFiDS_SequenceNodeOfSequenceOfSurfData*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2774,8 +2855,17 @@ class Handle_ChFiDS_Spine : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ChFiDS_Spine {
-    ChFiDS_Spine* GetObject() {
+    ChFiDS_Spine* _get_reference() {
     return (ChFiDS_Spine*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_Spine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3121,8 +3211,17 @@ class Handle_ChFiDS_Stripe : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ChFiDS_Stripe {
-    ChFiDS_Stripe* GetObject() {
+    ChFiDS_Stripe* _get_reference() {
     return (ChFiDS_Stripe*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_Stripe {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3570,8 +3669,17 @@ class Handle_ChFiDS_SurfData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ChFiDS_SurfData {
-    ChFiDS_SurfData* GetObject() {
+    ChFiDS_SurfData* _get_reference() {
     return (ChFiDS_SurfData*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_SurfData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3677,8 +3785,17 @@ class Handle_ChFiDS_ChamfSpine : public Handle_ChFiDS_Spine {
 
 };
 %extend Handle_ChFiDS_ChamfSpine {
-    ChFiDS_ChamfSpine* GetObject() {
+    ChFiDS_ChamfSpine* _get_reference() {
     return (ChFiDS_ChamfSpine*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_ChamfSpine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3862,8 +3979,17 @@ class Handle_ChFiDS_FilSpine : public Handle_ChFiDS_Spine {
 
 };
 %extend Handle_ChFiDS_FilSpine {
-    ChFiDS_FilSpine* GetObject() {
+    ChFiDS_FilSpine* _get_reference() {
     return (ChFiDS_FilSpine*)$self->Access();
+    }
+};
+
+%extend Handle_ChFiDS_FilSpine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

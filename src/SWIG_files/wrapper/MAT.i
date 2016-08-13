@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -237,8 +237,17 @@ class Handle_MAT_Arc : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT_Arc {
-    MAT_Arc* GetObject() {
+    MAT_Arc* _get_reference() {
     return (MAT_Arc*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_Arc {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -336,8 +345,17 @@ class Handle_MAT_BasicElt : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT_BasicElt {
-    MAT_BasicElt* GetObject() {
+    MAT_BasicElt* _get_reference() {
     return (MAT_BasicElt*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_BasicElt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -529,8 +547,17 @@ class Handle_MAT_Bisector : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT_Bisector {
-    MAT_Bisector* GetObject() {
+    MAT_Bisector* _get_reference() {
     return (MAT_Bisector*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_Bisector {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -719,8 +746,17 @@ class Handle_MAT_DataMapNodeOfDataMapOfIntegerArc : public Handle_TCollection_Ma
 
 };
 %extend Handle_MAT_DataMapNodeOfDataMapOfIntegerArc {
-    MAT_DataMapNodeOfDataMapOfIntegerArc* GetObject() {
+    MAT_DataMapNodeOfDataMapOfIntegerArc* _get_reference() {
     return (MAT_DataMapNodeOfDataMapOfIntegerArc*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerArc {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -789,8 +825,17 @@ class Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt : public Handle_TCollecti
 
 };
 %extend Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt {
-    MAT_DataMapNodeOfDataMapOfIntegerBasicElt* GetObject() {
+    MAT_DataMapNodeOfDataMapOfIntegerBasicElt* _get_reference() {
     return (MAT_DataMapNodeOfDataMapOfIntegerBasicElt*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -859,8 +904,17 @@ class Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector : public Handle_TCollecti
 
 };
 %extend Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector {
-    MAT_DataMapNodeOfDataMapOfIntegerBisector* GetObject() {
+    MAT_DataMapNodeOfDataMapOfIntegerBisector* _get_reference() {
     return (MAT_DataMapNodeOfDataMapOfIntegerBisector*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -929,8 +983,17 @@ class Handle_MAT_DataMapNodeOfDataMapOfIntegerNode : public Handle_TCollection_M
 
 };
 %extend Handle_MAT_DataMapNodeOfDataMapOfIntegerNode {
-    MAT_DataMapNodeOfDataMapOfIntegerNode* GetObject() {
+    MAT_DataMapNodeOfDataMapOfIntegerNode* _get_reference() {
     return (MAT_DataMapNodeOfDataMapOfIntegerNode*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_DataMapNodeOfDataMapOfIntegerNode {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1346,8 +1409,17 @@ class Handle_MAT_Edge : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT_Edge {
-    MAT_Edge* GetObject() {
+    MAT_Edge* _get_reference() {
     return (MAT_Edge*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_Edge {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1499,8 +1571,17 @@ class Handle_MAT_Graph : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT_Graph {
-    MAT_Graph* GetObject() {
+    MAT_Graph* _get_reference() {
     return (MAT_Graph*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_Graph {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1660,8 +1741,17 @@ class Handle_MAT_ListOfBisector : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT_ListOfBisector {
-    MAT_ListOfBisector* GetObject() {
+    MAT_ListOfBisector* _get_reference() {
     return (MAT_ListOfBisector*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_ListOfBisector {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1821,8 +1911,17 @@ class Handle_MAT_ListOfEdge : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT_ListOfEdge {
-    MAT_ListOfEdge* GetObject() {
+    MAT_ListOfEdge* _get_reference() {
     return (MAT_ListOfEdge*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_ListOfEdge {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1938,8 +2037,17 @@ class Handle_MAT_Node : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT_Node {
-    MAT_Node* GetObject() {
+    MAT_Node* _get_reference() {
     return (MAT_Node*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_Node {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1995,8 +2103,17 @@ class Handle_MAT_SequenceNodeOfSequenceOfArc : public Handle_TCollection_SeqNode
 
 };
 %extend Handle_MAT_SequenceNodeOfSequenceOfArc {
-    MAT_SequenceNodeOfSequenceOfArc* GetObject() {
+    MAT_SequenceNodeOfSequenceOfArc* _get_reference() {
     return (MAT_SequenceNodeOfSequenceOfArc*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_SequenceNodeOfSequenceOfArc {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2052,8 +2169,17 @@ class Handle_MAT_SequenceNodeOfSequenceOfBasicElt : public Handle_TCollection_Se
 
 };
 %extend Handle_MAT_SequenceNodeOfSequenceOfBasicElt {
-    MAT_SequenceNodeOfSequenceOfBasicElt* GetObject() {
+    MAT_SequenceNodeOfSequenceOfBasicElt* _get_reference() {
     return (MAT_SequenceNodeOfSequenceOfBasicElt*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_SequenceNodeOfSequenceOfBasicElt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2415,8 +2541,17 @@ class Handle_MAT_TListNodeOfListOfBisector : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT_TListNodeOfListOfBisector {
-    MAT_TListNodeOfListOfBisector* GetObject() {
+    MAT_TListNodeOfListOfBisector* _get_reference() {
     return (MAT_TListNodeOfListOfBisector*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_TListNodeOfListOfBisector {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2502,8 +2637,17 @@ class Handle_MAT_TListNodeOfListOfEdge : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT_TListNodeOfListOfEdge {
-    MAT_TListNodeOfListOfEdge* GetObject() {
+    MAT_TListNodeOfListOfEdge* _get_reference() {
     return (MAT_TListNodeOfListOfEdge*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_TListNodeOfListOfEdge {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2591,8 +2735,17 @@ class Handle_MAT_Zone : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT_Zone {
-    MAT_Zone* GetObject() {
+    MAT_Zone* _get_reference() {
     return (MAT_Zone*)$self->Access();
+    }
+};
+
+%extend Handle_MAT_Zone {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

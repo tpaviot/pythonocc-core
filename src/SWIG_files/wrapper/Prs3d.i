@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -168,8 +168,17 @@ class Handle_Prs3d_BasicAspect : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Prs3d_BasicAspect {
-    Prs3d_BasicAspect* GetObject() {
+    Prs3d_BasicAspect* _get_reference() {
     return (Prs3d_BasicAspect*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_BasicAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -821,8 +830,17 @@ class Handle_Prs3d_Drawer : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Prs3d_Drawer {
-    Prs3d_Drawer* GetObject() {
+    Prs3d_Drawer* _get_reference() {
     return (Prs3d_Drawer*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_Drawer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -936,8 +954,17 @@ class Handle_Prs3d_PlaneSet : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Prs3d_PlaneSet {
-    Prs3d_PlaneSet* GetObject() {
+    Prs3d_PlaneSet* _get_reference() {
     return (Prs3d_PlaneSet*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_PlaneSet {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1133,8 +1160,17 @@ class Handle_Prs3d_Presentation : public Handle_Graphic3d_Structure {
 
 };
 %extend Handle_Prs3d_Presentation {
-    Prs3d_Presentation* GetObject() {
+    Prs3d_Presentation* _get_reference() {
     return (Prs3d_Presentation*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_Presentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1216,8 +1252,17 @@ class Handle_Prs3d_Projector : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Prs3d_Projector {
-    Prs3d_Projector* GetObject() {
+    Prs3d_Projector* _get_reference() {
     return (Prs3d_Projector*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_Projector {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1491,8 +1536,17 @@ class Handle_Prs3d_ArrowAspect : public Handle_Prs3d_BasicAspect {
 
 };
 %extend Handle_Prs3d_ArrowAspect {
-    Prs3d_ArrowAspect* GetObject() {
+    Prs3d_ArrowAspect* _get_reference() {
     return (Prs3d_ArrowAspect*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_ArrowAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1616,8 +1670,17 @@ class Handle_Prs3d_DatumAspect : public Handle_Prs3d_BasicAspect {
 
 };
 %extend Handle_Prs3d_DatumAspect {
-    Prs3d_DatumAspect* GetObject() {
+    Prs3d_DatumAspect* _get_reference() {
     return (Prs3d_DatumAspect*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_DatumAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1855,8 +1918,17 @@ class Handle_Prs3d_DimensionAspect : public Handle_Prs3d_BasicAspect {
 
 };
 %extend Handle_Prs3d_DimensionAspect {
-    Prs3d_DimensionAspect* GetObject() {
+    Prs3d_DimensionAspect* _get_reference() {
     return (Prs3d_DimensionAspect*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_DimensionAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1956,8 +2028,17 @@ class Handle_Prs3d_LineAspect : public Handle_Prs3d_BasicAspect {
 
 };
 %extend Handle_Prs3d_LineAspect {
-    Prs3d_LineAspect* GetObject() {
+    Prs3d_LineAspect* _get_reference() {
     return (Prs3d_LineAspect*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_LineAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2149,8 +2230,17 @@ class Handle_Prs3d_PlaneAspect : public Handle_Prs3d_BasicAspect {
 
 };
 %extend Handle_Prs3d_PlaneAspect {
-    Prs3d_PlaneAspect* GetObject() {
+    Prs3d_PlaneAspect* _get_reference() {
     return (Prs3d_PlaneAspect*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_PlaneAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2276,8 +2366,17 @@ class Handle_Prs3d_PointAspect : public Handle_Prs3d_BasicAspect {
 
 };
 %extend Handle_Prs3d_PointAspect {
-    Prs3d_PointAspect* GetObject() {
+    Prs3d_PointAspect* _get_reference() {
     return (Prs3d_PointAspect*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_PointAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2427,8 +2526,17 @@ class Handle_Prs3d_ShadingAspect : public Handle_Prs3d_BasicAspect {
 
 };
 %extend Handle_Prs3d_ShadingAspect {
-    Prs3d_ShadingAspect* GetObject() {
+    Prs3d_ShadingAspect* _get_reference() {
     return (Prs3d_ShadingAspect*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_ShadingAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2623,8 +2731,17 @@ class Handle_Prs3d_TextAspect : public Handle_Prs3d_BasicAspect {
 
 };
 %extend Handle_Prs3d_TextAspect {
-    Prs3d_TextAspect* GetObject() {
+    Prs3d_TextAspect* _get_reference() {
     return (Prs3d_TextAspect*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_TextAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2706,8 +2823,17 @@ class Handle_Prs3d_IsoAspect : public Handle_Prs3d_LineAspect {
 
 };
 %extend Handle_Prs3d_IsoAspect {
-    Prs3d_IsoAspect* GetObject() {
+    Prs3d_IsoAspect* _get_reference() {
     return (Prs3d_IsoAspect*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_IsoAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

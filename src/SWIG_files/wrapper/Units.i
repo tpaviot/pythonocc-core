@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -392,8 +392,17 @@ class Handle_Units_Lexicon : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Units_Lexicon {
-    Units_Lexicon* GetObject() {
+    Units_Lexicon* _get_reference() {
     return (Units_Lexicon*)$self->Access();
+    }
+};
+
+%extend Handle_Units_Lexicon {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -871,8 +880,17 @@ class Handle_Units_QuantitiesSequence : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Units_QuantitiesSequence {
-    Units_QuantitiesSequence* GetObject() {
+    Units_QuantitiesSequence* _get_reference() {
     return (Units_QuantitiesSequence*)$self->Access();
+    }
+};
+
+%extend Handle_Units_QuantitiesSequence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -982,8 +1000,17 @@ class Handle_Units_SequenceNodeOfQtsSequence : public Handle_TCollection_SeqNode
 
 };
 %extend Handle_Units_SequenceNodeOfQtsSequence {
-    Units_SequenceNodeOfQtsSequence* GetObject() {
+    Units_SequenceNodeOfQtsSequence* _get_reference() {
     return (Units_SequenceNodeOfQtsSequence*)$self->Access();
+    }
+};
+
+%extend Handle_Units_SequenceNodeOfQtsSequence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1039,8 +1066,17 @@ class Handle_Units_SequenceNodeOfTksSequence : public Handle_TCollection_SeqNode
 
 };
 %extend Handle_Units_SequenceNodeOfTksSequence {
-    Units_SequenceNodeOfTksSequence* GetObject() {
+    Units_SequenceNodeOfTksSequence* _get_reference() {
     return (Units_SequenceNodeOfTksSequence*)$self->Access();
+    }
+};
+
+%extend Handle_Units_SequenceNodeOfTksSequence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1096,8 +1132,17 @@ class Handle_Units_SequenceNodeOfUtsSequence : public Handle_TCollection_SeqNode
 
 };
 %extend Handle_Units_SequenceNodeOfUtsSequence {
-    Units_SequenceNodeOfUtsSequence* GetObject() {
+    Units_SequenceNodeOfUtsSequence* _get_reference() {
     return (Units_SequenceNodeOfUtsSequence*)$self->Access();
+    }
+};
+
+%extend Handle_Units_SequenceNodeOfUtsSequence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1561,8 +1606,17 @@ class Handle_Units_Token : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Units_Token {
-    Units_Token* GetObject() {
+    Units_Token* _get_reference() {
     return (Units_Token*)$self->Access();
+    }
+};
+
+%extend Handle_Units_Token {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1736,8 +1790,17 @@ class Handle_Units_TokensSequence : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Units_TokensSequence {
-    Units_TokensSequence* GetObject() {
+    Units_TokensSequence* _get_reference() {
     return (Units_TokensSequence*)$self->Access();
+    }
+};
+
+%extend Handle_Units_TokensSequence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1883,8 +1946,17 @@ class Handle_Units_Unit : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Units_Unit {
-    Units_Unit* GetObject() {
+    Units_Unit* _get_reference() {
     return (Units_Unit*)$self->Access();
+    }
+};
+
+%extend Handle_Units_Unit {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1976,8 +2048,17 @@ class Handle_Units_UnitsDictionary : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Units_UnitsDictionary {
-    Units_UnitsDictionary* GetObject() {
+    Units_UnitsDictionary* _get_reference() {
     return (Units_UnitsDictionary*)$self->Access();
+    }
+};
+
+%extend Handle_Units_UnitsDictionary {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2151,8 +2232,17 @@ class Handle_Units_UnitsSequence : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Units_UnitsSequence {
-    Units_UnitsSequence* GetObject() {
+    Units_UnitsSequence* _get_reference() {
     return (Units_UnitsSequence*)$self->Access();
+    }
+};
+
+%extend Handle_Units_UnitsSequence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2308,8 +2398,17 @@ class Handle_Units_UnitsSystem : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Units_UnitsSystem {
-    Units_UnitsSystem* GetObject() {
+    Units_UnitsSystem* _get_reference() {
     return (Units_UnitsSystem*)$self->Access();
+    }
+};
+
+%extend Handle_Units_UnitsSystem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2561,8 +2660,17 @@ class Handle_Units_ShiftedToken : public Handle_Units_Token {
 
 };
 %extend Handle_Units_ShiftedToken {
-    Units_ShiftedToken* GetObject() {
+    Units_ShiftedToken* _get_reference() {
     return (Units_ShiftedToken*)$self->Access();
+    }
+};
+
+%extend Handle_Units_ShiftedToken {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2666,8 +2774,17 @@ class Handle_Units_ShiftedUnit : public Handle_Units_Unit {
 
 };
 %extend Handle_Units_ShiftedUnit {
-    Units_ShiftedUnit* GetObject() {
+    Units_ShiftedUnit* _get_reference() {
     return (Units_ShiftedUnit*)$self->Access();
+    }
+};
+
+%extend Handle_Units_ShiftedUnit {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2783,8 +2900,17 @@ class Handle_Units_UnitsLexicon : public Handle_Units_Lexicon {
 
 };
 %extend Handle_Units_UnitsLexicon {
-    Units_UnitsLexicon* GetObject() {
+    Units_UnitsLexicon* _get_reference() {
     return (Units_UnitsLexicon*)$self->Access();
+    }
+};
+
+%extend Handle_Units_UnitsLexicon {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

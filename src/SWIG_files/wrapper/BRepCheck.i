@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -290,8 +290,17 @@ class Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus : public Handle_T
 
 };
 %extend Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus {
-    BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus* GetObject() {
+    BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus* _get_reference() {
     return (BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus*)$self->Access();
+    }
+};
+
+%extend Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -351,8 +360,17 @@ class Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult : public Handle_TCollec
 
 };
 %extend Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult {
-    BRepCheck_DataMapNodeOfDataMapOfShapeResult* GetObject() {
+    BRepCheck_DataMapNodeOfDataMapOfShapeResult* _get_reference() {
     return (BRepCheck_DataMapNodeOfDataMapOfShapeResult*)$self->Access();
+    }
+};
+
+%extend Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -596,8 +614,17 @@ class Handle_BRepCheck_ListNodeOfListOfStatus : public Handle_TCollection_MapNod
 
 };
 %extend Handle_BRepCheck_ListNodeOfListOfStatus {
-    BRepCheck_ListNodeOfListOfStatus* GetObject() {
+    BRepCheck_ListNodeOfListOfStatus* _get_reference() {
     return (BRepCheck_ListNodeOfListOfStatus*)$self->Access();
+    }
+};
+
+%extend Handle_BRepCheck_ListNodeOfListOfStatus {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -835,8 +862,17 @@ class Handle_BRepCheck_Result : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRepCheck_Result {
-    BRepCheck_Result* GetObject() {
+    BRepCheck_Result* _get_reference() {
     return (BRepCheck_Result*)$self->Access();
+    }
+};
+
+%extend Handle_BRepCheck_Result {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -928,8 +964,17 @@ class Handle_BRepCheck_Edge : public Handle_BRepCheck_Result {
 
 };
 %extend Handle_BRepCheck_Edge {
-    BRepCheck_Edge* GetObject() {
+    BRepCheck_Edge* _get_reference() {
     return (BRepCheck_Edge*)$self->Access();
+    }
+};
+
+%extend Handle_BRepCheck_Edge {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1035,8 +1080,17 @@ class Handle_BRepCheck_Face : public Handle_BRepCheck_Result {
 
 };
 %extend Handle_BRepCheck_Face {
-    BRepCheck_Face* GetObject() {
+    BRepCheck_Face* _get_reference() {
     return (BRepCheck_Face*)$self->Access();
+    }
+};
+
+%extend Handle_BRepCheck_Face {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1128,8 +1182,17 @@ class Handle_BRepCheck_Shell : public Handle_BRepCheck_Result {
 
 };
 %extend Handle_BRepCheck_Shell {
-    BRepCheck_Shell* GetObject() {
+    BRepCheck_Shell* _get_reference() {
     return (BRepCheck_Shell*)$self->Access();
+    }
+};
+
+%extend Handle_BRepCheck_Shell {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1195,8 +1258,17 @@ class Handle_BRepCheck_Vertex : public Handle_BRepCheck_Result {
 
 };
 %extend Handle_BRepCheck_Vertex {
-    BRepCheck_Vertex* GetObject() {
+    BRepCheck_Vertex* _get_reference() {
     return (BRepCheck_Vertex*)$self->Access();
+    }
+};
+
+%extend Handle_BRepCheck_Vertex {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1328,8 +1400,17 @@ class Handle_BRepCheck_Wire : public Handle_BRepCheck_Result {
 
 };
 %extend Handle_BRepCheck_Wire {
-    BRepCheck_Wire* GetObject() {
+    BRepCheck_Wire* _get_reference() {
     return (BRepCheck_Wire*)$self->Access();
+    }
+};
+
+%extend Handle_BRepCheck_Wire {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

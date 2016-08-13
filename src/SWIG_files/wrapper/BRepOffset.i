@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -390,8 +390,17 @@ class Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval : public Handl
 
 };
 %extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval {
-    BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval* GetObject() {
+    BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval* _get_reference() {
     return (BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval*)$self->Access();
+    }
+};
+
+%extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -451,8 +460,17 @@ class Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape : public Handle_TC
 
 };
 %extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape {
-    BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape* GetObject() {
+    BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape* _get_reference() {
     return (BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -512,8 +530,17 @@ class Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset : public Handle_TColle
 
 };
 %extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset {
-    BRepOffset_DataMapNodeOfDataMapOfShapeOffset* GetObject() {
+    BRepOffset_DataMapNodeOfDataMapOfShapeOffset* _get_reference() {
     return (BRepOffset_DataMapNodeOfDataMapOfShapeOffset*)$self->Access();
+    }
+};
+
+%extend Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1050,8 +1077,17 @@ class Handle_BRepOffset_ListNodeOfListOfInterval : public Handle_TCollection_Map
 
 };
 %extend Handle_BRepOffset_ListNodeOfListOfInterval {
-    BRepOffset_ListNodeOfListOfInterval* GetObject() {
+    BRepOffset_ListNodeOfListOfInterval* _get_reference() {
     return (BRepOffset_ListNodeOfListOfInterval*)$self->Access();
+    }
+};
+
+%extend Handle_BRepOffset_ListNodeOfListOfInterval {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

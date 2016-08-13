@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -471,8 +471,17 @@ class Handle_Message_Algorithm : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Message_Algorithm {
-    Message_Algorithm* GetObject() {
+    Message_Algorithm* _get_reference() {
     return (Message_Algorithm*)$self->Access();
+    }
+};
+
+%extend Handle_Message_Algorithm {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -560,8 +569,17 @@ class Handle_Message_ListNodeOfListOfMsg : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_Message_ListNodeOfListOfMsg {
-    Message_ListNodeOfListOfMsg* GetObject() {
+    Message_ListNodeOfListOfMsg* _get_reference() {
     return (Message_ListNodeOfListOfMsg*)$self->Access();
+    }
+};
+
+%extend Handle_Message_ListNodeOfListOfMsg {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -819,8 +837,17 @@ class Handle_Message_Messenger : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Message_Messenger {
-    Message_Messenger* GetObject() {
+    Message_Messenger* _get_reference() {
     return (Message_Messenger*)$self->Access();
+    }
+};
+
+%extend Handle_Message_Messenger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -979,8 +1006,17 @@ class Handle_Message_Printer : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Message_Printer {
-    Message_Printer* GetObject() {
+    Message_Printer* _get_reference() {
     return (Message_Printer*)$self->Access();
+    }
+};
+
+%extend Handle_Message_Printer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1220,8 +1256,17 @@ class Handle_Message_ProgressIndicator : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Message_ProgressIndicator {
-    Message_ProgressIndicator* GetObject() {
+    Message_ProgressIndicator* _get_reference() {
     return (Message_ProgressIndicator*)$self->Access();
+    }
+};
+
+%extend Handle_Message_ProgressIndicator {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1509,8 +1554,17 @@ class Handle_Message_SequenceNodeOfSequenceOfPrinters : public Handle_TCollectio
 
 };
 %extend Handle_Message_SequenceNodeOfSequenceOfPrinters {
-    Message_SequenceNodeOfSequenceOfPrinters* GetObject() {
+    Message_SequenceNodeOfSequenceOfPrinters* _get_reference() {
     return (Message_SequenceNodeOfSequenceOfPrinters*)$self->Access();
+    }
+};
+
+%extend Handle_Message_SequenceNodeOfSequenceOfPrinters {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1566,8 +1620,17 @@ class Handle_Message_SequenceNodeOfSequenceOfProgressScale : public Handle_TColl
 
 };
 %extend Handle_Message_SequenceNodeOfSequenceOfProgressScale {
-    Message_SequenceNodeOfSequenceOfProgressScale* GetObject() {
+    Message_SequenceNodeOfSequenceOfProgressScale* _get_reference() {
     return (Message_SequenceNodeOfSequenceOfProgressScale*)$self->Access();
+    }
+};
+
+%extend Handle_Message_SequenceNodeOfSequenceOfProgressScale {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1967,8 +2030,17 @@ class Handle_Message_PrinterOStream : public Handle_Message_Printer {
 
 };
 %extend Handle_Message_PrinterOStream {
-    Message_PrinterOStream* GetObject() {
+    Message_PrinterOStream* _get_reference() {
     return (Message_PrinterOStream*)$self->Access();
+    }
+};
+
+%extend Handle_Message_PrinterOStream {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

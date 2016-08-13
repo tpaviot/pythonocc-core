@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -600,8 +600,17 @@ class Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt : public Handle_TCollection_M
 
 };
 %extend Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt {
-    LocOpe_DataMapNodeOfDataMapOfShapePnt* GetObject() {
+    LocOpe_DataMapNodeOfDataMapOfShapePnt* _get_reference() {
     return (LocOpe_DataMapNodeOfDataMapOfShapePnt*)$self->Access();
+    }
+};
+
+%extend Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -835,8 +844,17 @@ class Handle_LocOpe_GeneratedShape : public Handle_MMgt_TShared {
 
 };
 %extend Handle_LocOpe_GeneratedShape {
-    LocOpe_GeneratedShape* GetObject() {
+    LocOpe_GeneratedShape* _get_reference() {
     return (LocOpe_GeneratedShape*)$self->Access();
+    }
+};
+
+%extend Handle_LocOpe_GeneratedShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1032,8 +1050,17 @@ class Handle_LocOpe_HBuilder : public Handle_TopOpeBRepBuild_HBuilder {
 
 };
 %extend Handle_LocOpe_HBuilder {
-    LocOpe_HBuilder* GetObject() {
+    LocOpe_HBuilder* _get_reference() {
     return (LocOpe_HBuilder*)$self->Access();
+    }
+};
+
+%extend Handle_LocOpe_HBuilder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1349,8 +1376,17 @@ class Handle_LocOpe_SequenceNodeOfSequenceOfCirc : public Handle_TCollection_Seq
 
 };
 %extend Handle_LocOpe_SequenceNodeOfSequenceOfCirc {
-    LocOpe_SequenceNodeOfSequenceOfCirc* GetObject() {
+    LocOpe_SequenceNodeOfSequenceOfCirc* _get_reference() {
     return (LocOpe_SequenceNodeOfSequenceOfCirc*)$self->Access();
+    }
+};
+
+%extend Handle_LocOpe_SequenceNodeOfSequenceOfCirc {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1406,8 +1442,17 @@ class Handle_LocOpe_SequenceNodeOfSequenceOfLin : public Handle_TCollection_SeqN
 
 };
 %extend Handle_LocOpe_SequenceNodeOfSequenceOfLin {
-    LocOpe_SequenceNodeOfSequenceOfLin* GetObject() {
+    LocOpe_SequenceNodeOfSequenceOfLin* _get_reference() {
     return (LocOpe_SequenceNodeOfSequenceOfLin*)$self->Access();
+    }
+};
+
+%extend Handle_LocOpe_SequenceNodeOfSequenceOfLin {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1463,8 +1508,17 @@ class Handle_LocOpe_SequenceNodeOfSequenceOfPntFace : public Handle_TCollection_
 
 };
 %extend Handle_LocOpe_SequenceNodeOfSequenceOfPntFace {
-    LocOpe_SequenceNodeOfSequenceOfPntFace* GetObject() {
+    LocOpe_SequenceNodeOfSequenceOfPntFace* _get_reference() {
     return (LocOpe_SequenceNodeOfSequenceOfPntFace*)$self->Access();
+    }
+};
+
+%extend Handle_LocOpe_SequenceNodeOfSequenceOfPntFace {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2308,8 +2362,17 @@ class Handle_LocOpe_WiresOnShape : public Handle_MMgt_TShared {
 
 };
 %extend Handle_LocOpe_WiresOnShape {
-    LocOpe_WiresOnShape* GetObject() {
+    LocOpe_WiresOnShape* _get_reference() {
     return (LocOpe_WiresOnShape*)$self->Access();
+    }
+};
+
+%extend Handle_LocOpe_WiresOnShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2399,8 +2462,17 @@ class Handle_LocOpe_GluedShape : public Handle_LocOpe_GeneratedShape {
 
 };
 %extend Handle_LocOpe_GluedShape {
-    LocOpe_GluedShape* GetObject() {
+    LocOpe_GluedShape* _get_reference() {
     return (LocOpe_GluedShape*)$self->Access();
+    }
+};
+
+%extend Handle_LocOpe_GluedShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

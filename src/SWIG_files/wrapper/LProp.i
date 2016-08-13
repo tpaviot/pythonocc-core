@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -197,8 +197,17 @@ class Handle_LProp_SequenceNodeOfSequenceOfCIType : public Handle_TCollection_Se
 
 };
 %extend Handle_LProp_SequenceNodeOfSequenceOfCIType {
-    LProp_SequenceNodeOfSequenceOfCIType* GetObject() {
+    LProp_SequenceNodeOfSequenceOfCIType* _get_reference() {
     return (LProp_SequenceNodeOfSequenceOfCIType*)$self->Access();
+    }
+};
+
+%extend Handle_LProp_SequenceNodeOfSequenceOfCIType {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

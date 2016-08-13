@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -179,8 +179,17 @@ class Handle_STEPControl_ActorRead : public Handle_Transfer_ActorOfTransientProc
 
 };
 %extend Handle_STEPControl_ActorRead {
-    STEPControl_ActorRead* GetObject() {
+    STEPControl_ActorRead* _get_reference() {
     return (STEPControl_ActorRead*)$self->Access();
+    }
+};
+
+%extend Handle_STEPControl_ActorRead {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -314,8 +323,17 @@ class Handle_STEPControl_ActorWrite : public Handle_Transfer_ActorOfFinderProces
 
 };
 %extend Handle_STEPControl_ActorWrite {
-    STEPControl_ActorWrite* GetObject() {
+    STEPControl_ActorWrite* _get_reference() {
     return (STEPControl_ActorWrite*)$self->Access();
+    }
+};
+
+%extend Handle_STEPControl_ActorWrite {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -403,8 +421,17 @@ class Handle_STEPControl_Controller : public Handle_XSControl_Controller {
 
 };
 %extend Handle_STEPControl_Controller {
-    STEPControl_Controller* GetObject() {
+    STEPControl_Controller* _get_reference() {
     return (STEPControl_Controller*)$self->Access();
+    }
+};
+
+%extend Handle_STEPControl_Controller {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

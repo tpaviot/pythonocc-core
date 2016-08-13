@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -314,8 +314,17 @@ class Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt : public Handle_TCollec
 
 };
 %extend Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt {
-    IntCurveSurface_SequenceNodeOfSequenceOfPnt* GetObject() {
+    IntCurveSurface_SequenceNodeOfSequenceOfPnt* _get_reference() {
     return (IntCurveSurface_SequenceNodeOfSequenceOfPnt*)$self->Access();
+    }
+};
+
+%extend Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -371,8 +380,17 @@ class Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg : public Handle_TCollec
 
 };
 %extend Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg {
-    IntCurveSurface_SequenceNodeOfSequenceOfSeg* GetObject() {
+    IntCurveSurface_SequenceNodeOfSequenceOfSeg* _get_reference() {
     return (IntCurveSurface_SequenceNodeOfSequenceOfSeg*)$self->Access();
+    }
+};
+
+%extend Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

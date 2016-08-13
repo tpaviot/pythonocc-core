@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -251,8 +251,17 @@ class Handle_BRepAlgo_AsDes : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRepAlgo_AsDes {
-    BRepAlgo_AsDes* GetObject() {
+    BRepAlgo_AsDes* _get_reference() {
     return (BRepAlgo_AsDes*)$self->Access();
+    }
+};
+
+%extend Handle_BRepAlgo_AsDes {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -755,8 +764,17 @@ class Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public Handle_TCollec
 
 };
 %extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
-    BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean* GetObject() {
+    BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean* _get_reference() {
     return (BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean*)$self->Access();
+    }
+};
+
+%extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -816,8 +834,17 @@ class Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference : public Handle_TC
 
 };
 %extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
-    BRepAlgo_DataMapNodeOfDataMapOfShapeInterference* GetObject() {
+    BRepAlgo_DataMapNodeOfDataMapOfShapeInterference* _get_reference() {
     return (BRepAlgo_DataMapNodeOfDataMapOfShapeInterference*)$self->Access();
+    }
+};
+
+%extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1071,8 +1098,17 @@ class Handle_BRepAlgo_EdgeConnector : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRepAlgo_EdgeConnector {
-    BRepAlgo_EdgeConnector* GetObject() {
+    BRepAlgo_EdgeConnector* _get_reference() {
     return (BRepAlgo_EdgeConnector*)$self->Access();
+    }
+};
+
+%extend Handle_BRepAlgo_EdgeConnector {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1552,8 +1588,17 @@ class Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger : public Handle_
 
 };
 %extend Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
-    BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger* GetObject() {
+    BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger* _get_reference() {
     return (BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

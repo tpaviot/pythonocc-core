@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -324,8 +324,17 @@ class Handle_BRepBlend_AppFuncRoot : public Handle_Approx_SweepFunction {
 
 };
 %extend Handle_BRepBlend_AppFuncRoot {
-    BRepBlend_AppFuncRoot* GetObject() {
+    BRepBlend_AppFuncRoot* _get_reference() {
     return (BRepBlend_AppFuncRoot*)$self->Access();
+    }
+};
+
+%extend Handle_BRepBlend_AppFuncRoot {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1394,8 +1403,17 @@ class Handle_BRepBlend_Line : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRepBlend_Line {
-    BRepBlend_Line* GetObject() {
+    BRepBlend_Line* _get_reference() {
     return (BRepBlend_Line*)$self->Access();
+    }
+};
+
+%extend Handle_BRepBlend_Line {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2415,8 +2433,17 @@ class Handle_BRepBlend_SequenceNodeOfSequenceOfLine : public Handle_TCollection_
 
 };
 %extend Handle_BRepBlend_SequenceNodeOfSequenceOfLine {
-    BRepBlend_SequenceNodeOfSequenceOfLine* GetObject() {
+    BRepBlend_SequenceNodeOfSequenceOfLine* _get_reference() {
     return (BRepBlend_SequenceNodeOfSequenceOfLine*)$self->Access();
+    }
+};
+
+%extend Handle_BRepBlend_SequenceNodeOfSequenceOfLine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2472,8 +2499,17 @@ class Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst : public Handle_TColle
 
 };
 %extend Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
-    BRepBlend_SequenceNodeOfSequenceOfPointOnRst* GetObject() {
+    BRepBlend_SequenceNodeOfSequenceOfPointOnRst* _get_reference() {
     return (BRepBlend_SequenceNodeOfSequenceOfPointOnRst*)$self->Access();
+    }
+};
+
+%extend Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4227,8 +4263,17 @@ class Handle_BRepBlend_AppFunc : public Handle_BRepBlend_AppFuncRoot {
 
 };
 %extend Handle_BRepBlend_AppFunc {
-    BRepBlend_AppFunc* GetObject() {
+    BRepBlend_AppFunc* _get_reference() {
     return (BRepBlend_AppFunc*)$self->Access();
+    }
+};
+
+%extend Handle_BRepBlend_AppFunc {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4302,8 +4347,17 @@ class Handle_BRepBlend_AppFuncRst : public Handle_BRepBlend_AppFuncRoot {
 
 };
 %extend Handle_BRepBlend_AppFuncRst {
-    BRepBlend_AppFuncRst* GetObject() {
+    BRepBlend_AppFuncRst* _get_reference() {
     return (BRepBlend_AppFuncRst*)$self->Access();
+    }
+};
+
+%extend Handle_BRepBlend_AppFuncRst {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4377,8 +4431,17 @@ class Handle_BRepBlend_AppFuncRstRst : public Handle_BRepBlend_AppFuncRoot {
 
 };
 %extend Handle_BRepBlend_AppFuncRstRst {
-    BRepBlend_AppFuncRstRst* GetObject() {
+    BRepBlend_AppFuncRstRst* _get_reference() {
     return (BRepBlend_AppFuncRstRst*)$self->Access();
+    }
+};
+
+%extend Handle_BRepBlend_AppFuncRstRst {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

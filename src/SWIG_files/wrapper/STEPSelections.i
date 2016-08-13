@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -126,8 +126,17 @@ class Handle_STEPSelections_AssemblyComponent : public Handle_MMgt_TShared {
 
 };
 %extend Handle_STEPSelections_AssemblyComponent {
-    STEPSelections_AssemblyComponent* GetObject() {
+    STEPSelections_AssemblyComponent* _get_reference() {
     return (STEPSelections_AssemblyComponent*)$self->Access();
+    }
+};
+
+%extend Handle_STEPSelections_AssemblyComponent {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -271,8 +280,17 @@ class Handle_STEPSelections_AssemblyLink : public Handle_MMgt_TShared {
 
 };
 %extend Handle_STEPSelections_AssemblyLink {
-    STEPSelections_AssemblyLink* GetObject() {
+    STEPSelections_AssemblyLink* _get_reference() {
     return (STEPSelections_AssemblyLink*)$self->Access();
+    }
+};
+
+%extend Handle_STEPSelections_AssemblyLink {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -508,8 +526,17 @@ class Handle_STEPSelections_HSequenceOfAssemblyLink : public Handle_MMgt_TShared
 
 };
 %extend Handle_STEPSelections_HSequenceOfAssemblyLink {
-    STEPSelections_HSequenceOfAssemblyLink* GetObject() {
+    STEPSelections_HSequenceOfAssemblyLink* _get_reference() {
     return (STEPSelections_HSequenceOfAssemblyLink*)$self->Access();
+    }
+};
+
+%extend Handle_STEPSelections_HSequenceOfAssemblyLink {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -575,8 +602,17 @@ class Handle_STEPSelections_SelectAssembly : public Handle_IFSelect_SelectExplor
 
 };
 %extend Handle_STEPSelections_SelectAssembly {
-    STEPSelections_SelectAssembly* GetObject() {
+    STEPSelections_SelectAssembly* _get_reference() {
     return (STEPSelections_SelectAssembly*)$self->Access();
+    }
+};
+
+%extend Handle_STEPSelections_SelectAssembly {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -634,8 +670,17 @@ class Handle_STEPSelections_SelectDerived : public Handle_StepSelect_StepType {
 
 };
 %extend Handle_STEPSelections_SelectDerived {
-    STEPSelections_SelectDerived* GetObject() {
+    STEPSelections_SelectDerived* _get_reference() {
     return (STEPSelections_SelectDerived*)$self->Access();
+    }
+};
+
+%extend Handle_STEPSelections_SelectDerived {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -701,8 +746,17 @@ class Handle_STEPSelections_SelectFaces : public Handle_IFSelect_SelectExplore {
 
 };
 %extend Handle_STEPSelections_SelectFaces {
-    STEPSelections_SelectFaces* GetObject() {
+    STEPSelections_SelectFaces* _get_reference() {
     return (STEPSelections_SelectFaces*)$self->Access();
+    }
+};
+
+%extend Handle_STEPSelections_SelectFaces {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -760,8 +814,17 @@ class Handle_STEPSelections_SelectForTransfer : public Handle_XSControl_SelectFo
 
 };
 %extend Handle_STEPSelections_SelectForTransfer {
-    STEPSelections_SelectForTransfer* GetObject() {
+    STEPSelections_SelectForTransfer* _get_reference() {
     return (STEPSelections_SelectForTransfer*)$self->Access();
+    }
+};
+
+%extend Handle_STEPSelections_SelectForTransfer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -825,8 +888,17 @@ class Handle_STEPSelections_SelectGSCurves : public Handle_IFSelect_SelectExplor
 
 };
 %extend Handle_STEPSelections_SelectGSCurves {
-    STEPSelections_SelectGSCurves* GetObject() {
+    STEPSelections_SelectGSCurves* _get_reference() {
     return (STEPSelections_SelectGSCurves*)$self->Access();
+    }
+};
+
+%extend Handle_STEPSelections_SelectGSCurves {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -896,8 +968,17 @@ class Handle_STEPSelections_SelectInstances : public Handle_IFSelect_SelectExplo
 
 };
 %extend Handle_STEPSelections_SelectInstances {
-    STEPSelections_SelectInstances* GetObject() {
+    STEPSelections_SelectInstances* _get_reference() {
     return (STEPSelections_SelectInstances*)$self->Access();
+    }
+};
+
+%extend Handle_STEPSelections_SelectInstances {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -953,8 +1034,17 @@ class Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent : public H
 
 };
 %extend Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent {
-    STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent* GetObject() {
+    STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent* _get_reference() {
     return (STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent*)$self->Access();
+    }
+};
+
+%extend Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1010,8 +1100,17 @@ class Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink : public Handle
 
 };
 %extend Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink {
-    STEPSelections_SequenceNodeOfSequenceOfAssemblyLink* GetObject() {
+    STEPSelections_SequenceNodeOfSequenceOfAssemblyLink* _get_reference() {
     return (STEPSelections_SequenceNodeOfSequenceOfAssemblyLink*)$self->Access();
+    }
+};
+
+%extend Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

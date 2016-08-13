@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -239,8 +239,17 @@ class Handle_ExprIntrp_Generator : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ExprIntrp_Generator {
-    ExprIntrp_Generator* GetObject() {
+    ExprIntrp_Generator* _get_reference() {
     return (ExprIntrp_Generator*)$self->Access();
+    }
+};
+
+%extend Handle_ExprIntrp_Generator {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -396,8 +405,17 @@ class Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression : public Handle_TColle
 
 };
 %extend Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression {
-    ExprIntrp_ListNodeOfStackOfGeneralExpression* GetObject() {
+    ExprIntrp_ListNodeOfStackOfGeneralExpression* _get_reference() {
     return (ExprIntrp_ListNodeOfStackOfGeneralExpression*)$self->Access();
+    }
+};
+
+%extend Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -451,8 +469,17 @@ class Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction : public Handle_TCollect
 
 };
 %extend Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction {
-    ExprIntrp_ListNodeOfStackOfGeneralFunction* GetObject() {
+    ExprIntrp_ListNodeOfStackOfGeneralFunction* _get_reference() {
     return (ExprIntrp_ListNodeOfStackOfGeneralFunction*)$self->Access();
+    }
+};
+
+%extend Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -506,8 +533,17 @@ class Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation : public Handle_TCollect
 
 };
 %extend Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation {
-    ExprIntrp_ListNodeOfStackOfGeneralRelation* GetObject() {
+    ExprIntrp_ListNodeOfStackOfGeneralRelation* _get_reference() {
     return (ExprIntrp_ListNodeOfStackOfGeneralRelation*)$self->Access();
+    }
+};
+
+%extend Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -563,8 +599,17 @@ class Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public Handle_T
 
 };
 %extend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression {
-    ExprIntrp_SequenceNodeOfSequenceOfNamedExpression* GetObject() {
+    ExprIntrp_SequenceNodeOfSequenceOfNamedExpression* _get_reference() {
     return (ExprIntrp_SequenceNodeOfSequenceOfNamedExpression*)$self->Access();
+    }
+};
+
+%extend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -620,8 +665,17 @@ class Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction : public Handle_TCo
 
 };
 %extend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
-    ExprIntrp_SequenceNodeOfSequenceOfNamedFunction* GetObject() {
+    ExprIntrp_SequenceNodeOfSequenceOfNamedFunction* _get_reference() {
     return (ExprIntrp_SequenceNodeOfSequenceOfNamedFunction*)$self->Access();
+    }
+};
+
+%extend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1353,8 +1407,17 @@ class Handle_ExprIntrp_GenExp : public Handle_ExprIntrp_Generator {
 
 };
 %extend Handle_ExprIntrp_GenExp {
-    ExprIntrp_GenExp* GetObject() {
+    ExprIntrp_GenExp* _get_reference() {
     return (ExprIntrp_GenExp*)$self->Access();
+    }
+};
+
+%extend Handle_ExprIntrp_GenExp {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1410,8 +1473,17 @@ class Handle_ExprIntrp_GenFct : public Handle_ExprIntrp_Generator {
 
 };
 %extend Handle_ExprIntrp_GenFct {
-    ExprIntrp_GenFct* GetObject() {
+    ExprIntrp_GenFct* _get_reference() {
     return (ExprIntrp_GenFct*)$self->Access();
+    }
+};
+
+%extend Handle_ExprIntrp_GenFct {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1477,8 +1549,17 @@ class Handle_ExprIntrp_GenRel : public Handle_ExprIntrp_Generator {
 
 };
 %extend Handle_ExprIntrp_GenRel {
-    ExprIntrp_GenRel* GetObject() {
+    ExprIntrp_GenRel* _get_reference() {
     return (ExprIntrp_GenRel*)$self->Access();
+    }
+};
+
+%extend Handle_ExprIntrp_GenRel {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

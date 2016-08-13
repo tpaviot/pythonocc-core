@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -116,8 +116,17 @@ class Handle_IGESControl_ActorWrite : public Handle_Transfer_ActorOfFinderProces
 
 };
 %extend Handle_IGESControl_ActorWrite {
-    IGESControl_ActorWrite* GetObject() {
+    IGESControl_ActorWrite* _get_reference() {
     return (IGESControl_ActorWrite*)$self->Access();
+    }
+};
+
+%extend Handle_IGESControl_ActorWrite {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -165,8 +174,17 @@ class Handle_IGESControl_AlgoContainer : public Handle_IGESToBRep_AlgoContainer 
 
 };
 %extend Handle_IGESControl_AlgoContainer {
-    IGESControl_AlgoContainer* GetObject() {
+    IGESControl_AlgoContainer* _get_reference() {
     return (IGESControl_AlgoContainer*)$self->Access();
+    }
+};
+
+%extend Handle_IGESControl_AlgoContainer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -256,8 +274,17 @@ class Handle_IGESControl_Controller : public Handle_XSControl_Controller {
 
 };
 %extend Handle_IGESControl_Controller {
-    IGESControl_Controller* GetObject() {
+    IGESControl_Controller* _get_reference() {
     return (IGESControl_Controller*)$self->Access();
+    }
+};
+
+%extend Handle_IGESControl_Controller {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -327,8 +354,17 @@ class Handle_IGESControl_IGESBoundary : public Handle_IGESToBRep_IGESBoundary {
 
 };
 %extend Handle_IGESControl_IGESBoundary {
-    IGESControl_IGESBoundary* GetObject() {
+    IGESControl_IGESBoundary* _get_reference() {
     return (IGESControl_IGESBoundary*)$self->Access();
+    }
+};
+
+%extend Handle_IGESControl_IGESBoundary {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -438,8 +474,17 @@ class Handle_IGESControl_ToolContainer : public Handle_IGESToBRep_ToolContainer 
 
 };
 %extend Handle_IGESControl_ToolContainer {
-    IGESControl_ToolContainer* GetObject() {
+    IGESControl_ToolContainer* _get_reference() {
     return (IGESControl_ToolContainer*)$self->Access();
+    }
+};
+
+%extend Handle_IGESControl_ToolContainer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

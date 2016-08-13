@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -435,8 +435,17 @@ class Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public Handle_TCo
 
 };
 %extend Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
-    HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData* GetObject() {
+    HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData* _get_reference() {
     return (HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData*)$self->Access();
+    }
+};
+
+%extend Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -496,8 +505,17 @@ class Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData : public Handle_TCol
 
 };
 %extend Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
-    HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData* GetObject() {
+    HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData* _get_reference() {
     return (HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData*)$self->Access();
+    }
+};
+
+%extend Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -748,8 +766,17 @@ class Handle_HLRTopoBRep_ListNodeOfListOfVData : public Handle_TCollection_MapNo
 
 };
 %extend Handle_HLRTopoBRep_ListNodeOfListOfVData {
-    HLRTopoBRep_ListNodeOfListOfVData* GetObject() {
+    HLRTopoBRep_ListNodeOfListOfVData* _get_reference() {
     return (HLRTopoBRep_ListNodeOfListOfVData*)$self->Access();
+    }
+};
+
+%extend Handle_HLRTopoBRep_ListNodeOfListOfVData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1051,8 +1078,17 @@ class Handle_HLRTopoBRep_OutLiner : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRTopoBRep_OutLiner {
-    HLRTopoBRep_OutLiner* GetObject() {
+    HLRTopoBRep_OutLiner* _get_reference() {
     return (HLRTopoBRep_OutLiner*)$self->Access();
+    }
+};
+
+%extend Handle_HLRTopoBRep_OutLiner {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

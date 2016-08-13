@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -364,8 +364,17 @@ class Handle_IntSurf_LineOn2S : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IntSurf_LineOn2S {
-    IntSurf_LineOn2S* GetObject() {
+    IntSurf_LineOn2S* _get_reference() {
     return (IntSurf_LineOn2S*)$self->Access();
+    }
+};
+
+%extend Handle_IntSurf_LineOn2S {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -453,8 +462,17 @@ class Handle_IntSurf_ListNodeOfListOfPntOn2S : public Handle_TCollection_MapNode
 
 };
 %extend Handle_IntSurf_ListNodeOfListOfPntOn2S {
-    IntSurf_ListNodeOfListOfPntOn2S* GetObject() {
+    IntSurf_ListNodeOfListOfPntOn2S* _get_reference() {
     return (IntSurf_ListNodeOfListOfPntOn2S*)$self->Access();
+    }
+};
+
+%extend Handle_IntSurf_ListNodeOfListOfPntOn2S {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1170,8 +1188,17 @@ class Handle_IntSurf_SequenceNodeOfSequenceOfCouple : public Handle_TCollection_
 
 };
 %extend Handle_IntSurf_SequenceNodeOfSequenceOfCouple {
-    IntSurf_SequenceNodeOfSequenceOfCouple* GetObject() {
+    IntSurf_SequenceNodeOfSequenceOfCouple* _get_reference() {
     return (IntSurf_SequenceNodeOfSequenceOfCouple*)$self->Access();
+    }
+};
+
+%extend Handle_IntSurf_SequenceNodeOfSequenceOfCouple {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1227,8 +1254,17 @@ class Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint : public Handle_TColl
 
 };
 %extend Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint {
-    IntSurf_SequenceNodeOfSequenceOfInteriorPoint* GetObject() {
+    IntSurf_SequenceNodeOfSequenceOfInteriorPoint* _get_reference() {
     return (IntSurf_SequenceNodeOfSequenceOfInteriorPoint*)$self->Access();
+    }
+};
+
+%extend Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1284,8 +1320,17 @@ class Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint : public Handle_TCollecti
 
 };
 %extend Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint {
-    IntSurf_SequenceNodeOfSequenceOfPathPoint* GetObject() {
+    IntSurf_SequenceNodeOfSequenceOfPathPoint* _get_reference() {
     return (IntSurf_SequenceNodeOfSequenceOfPathPoint*)$self->Access();
+    }
+};
+
+%extend Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

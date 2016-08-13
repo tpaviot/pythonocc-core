@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -597,8 +597,17 @@ class Handle_AppParCurves_HArray1OfConstraintCouple : public Handle_MMgt_TShared
 
 };
 %extend Handle_AppParCurves_HArray1OfConstraintCouple {
-    AppParCurves_HArray1OfConstraintCouple* GetObject() {
+    AppParCurves_HArray1OfConstraintCouple* _get_reference() {
     return (AppParCurves_HArray1OfConstraintCouple*)$self->Access();
+    }
+};
+
+%extend Handle_AppParCurves_HArray1OfConstraintCouple {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -704,8 +713,17 @@ class Handle_AppParCurves_HArray1OfMultiBSpCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_AppParCurves_HArray1OfMultiBSpCurve {
-    AppParCurves_HArray1OfMultiBSpCurve* GetObject() {
+    AppParCurves_HArray1OfMultiBSpCurve* _get_reference() {
     return (AppParCurves_HArray1OfMultiBSpCurve*)$self->Access();
+    }
+};
+
+%extend Handle_AppParCurves_HArray1OfMultiBSpCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -811,8 +829,17 @@ class Handle_AppParCurves_HArray1OfMultiCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_AppParCurves_HArray1OfMultiCurve {
-    AppParCurves_HArray1OfMultiCurve* GetObject() {
+    AppParCurves_HArray1OfMultiCurve* _get_reference() {
     return (AppParCurves_HArray1OfMultiCurve*)$self->Access();
+    }
+};
+
+%extend Handle_AppParCurves_HArray1OfMultiCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -918,8 +945,17 @@ class Handle_AppParCurves_HArray1OfMultiPoint : public Handle_MMgt_TShared {
 
 };
 %extend Handle_AppParCurves_HArray1OfMultiPoint {
-    AppParCurves_HArray1OfMultiPoint* GetObject() {
+    AppParCurves_HArray1OfMultiPoint* _get_reference() {
     return (AppParCurves_HArray1OfMultiPoint*)$self->Access();
+    }
+};
+
+%extend Handle_AppParCurves_HArray1OfMultiPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1379,8 +1415,17 @@ class Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve : public Handle_
 
 };
 %extend Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve {
-    AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve* GetObject() {
+    AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve* _get_reference() {
     return (AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve*)$self->Access();
+    }
+};
+
+%extend Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1436,8 +1481,17 @@ class Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve : public Handle_TCo
 
 };
 %extend Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve {
-    AppParCurves_SequenceNodeOfSequenceOfMultiCurve* GetObject() {
+    AppParCurves_SequenceNodeOfSequenceOfMultiCurve* _get_reference() {
     return (AppParCurves_SequenceNodeOfSequenceOfMultiCurve*)$self->Access();
+    }
+};
+
+%extend Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

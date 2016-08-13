@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -565,8 +565,17 @@ class Handle_GeomTools_UndefinedTypeHandler : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomTools_UndefinedTypeHandler {
-    GeomTools_UndefinedTypeHandler* GetObject() {
+    GeomTools_UndefinedTypeHandler* _get_reference() {
     return (GeomTools_UndefinedTypeHandler*)$self->Access();
+    }
+};
+
+%extend Handle_GeomTools_UndefinedTypeHandler {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

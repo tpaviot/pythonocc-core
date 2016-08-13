@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -697,8 +697,17 @@ class Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles : public Handle_TColl
 
 };
 %extend Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles {
-    Convert_SequenceNodeOfSequenceOfArray1OfPoles* GetObject() {
+    Convert_SequenceNodeOfSequenceOfArray1OfPoles* _get_reference() {
     return (Convert_SequenceNodeOfSequenceOfArray1OfPoles*)$self->Access();
+    }
+};
+
+%extend Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -396,8 +396,17 @@ class Handle_StepRepr_AssemblyComponentUsageSubstitute : public Handle_MMgt_TSha
 
 };
 %extend Handle_StepRepr_AssemblyComponentUsageSubstitute {
-    StepRepr_AssemblyComponentUsageSubstitute* GetObject() {
+    StepRepr_AssemblyComponentUsageSubstitute* _get_reference() {
     return (StepRepr_AssemblyComponentUsageSubstitute*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_AssemblyComponentUsageSubstitute {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -545,8 +554,17 @@ class Handle_StepRepr_ConfigurationDesign : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_ConfigurationDesign {
-    StepRepr_ConfigurationDesign* GetObject() {
+    StepRepr_ConfigurationDesign* _get_reference() {
     return (StepRepr_ConfigurationDesign*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ConfigurationDesign {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -652,8 +670,17 @@ class Handle_StepRepr_ConfigurationEffectivity : public Handle_StepBasic_Product
 
 };
 %extend Handle_StepRepr_ConfigurationEffectivity {
-    StepRepr_ConfigurationEffectivity* GetObject() {
+    StepRepr_ConfigurationEffectivity* _get_reference() {
     return (StepRepr_ConfigurationEffectivity*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ConfigurationEffectivity {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -803,8 +830,17 @@ class Handle_StepRepr_ConfigurationItem : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_ConfigurationItem {
-    StepRepr_ConfigurationItem* GetObject() {
+    StepRepr_ConfigurationItem* _get_reference() {
     return (StepRepr_ConfigurationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ConfigurationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -906,8 +942,17 @@ class Handle_StepRepr_DataEnvironment : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_DataEnvironment {
-    StepRepr_DataEnvironment* GetObject() {
+    StepRepr_DataEnvironment* _get_reference() {
     return (StepRepr_DataEnvironment*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_DataEnvironment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -983,8 +1028,17 @@ class Handle_StepRepr_FunctionallyDefinedTransformation : public Handle_MMgt_TSh
 
 };
 %extend Handle_StepRepr_FunctionallyDefinedTransformation {
-    StepRepr_FunctionallyDefinedTransformation* GetObject() {
+    StepRepr_FunctionallyDefinedTransformation* _get_reference() {
     return (StepRepr_FunctionallyDefinedTransformation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_FunctionallyDefinedTransformation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1090,8 +1144,17 @@ class Handle_StepRepr_HArray1OfMaterialPropertyRepresentation : public Handle_MM
 
 };
 %extend Handle_StepRepr_HArray1OfMaterialPropertyRepresentation {
-    StepRepr_HArray1OfMaterialPropertyRepresentation* GetObject() {
+    StepRepr_HArray1OfMaterialPropertyRepresentation* _get_reference() {
     return (StepRepr_HArray1OfMaterialPropertyRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_HArray1OfMaterialPropertyRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1197,8 +1260,17 @@ class Handle_StepRepr_HArray1OfPropertyDefinitionRepresentation : public Handle_
 
 };
 %extend Handle_StepRepr_HArray1OfPropertyDefinitionRepresentation {
-    StepRepr_HArray1OfPropertyDefinitionRepresentation* GetObject() {
+    StepRepr_HArray1OfPropertyDefinitionRepresentation* _get_reference() {
     return (StepRepr_HArray1OfPropertyDefinitionRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_HArray1OfPropertyDefinitionRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1304,8 +1376,17 @@ class Handle_StepRepr_HArray1OfRepresentationItem : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_HArray1OfRepresentationItem {
-    StepRepr_HArray1OfRepresentationItem* GetObject() {
+    StepRepr_HArray1OfRepresentationItem* _get_reference() {
     return (StepRepr_HArray1OfRepresentationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_HArray1OfRepresentationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1479,8 +1560,17 @@ class Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation : public Handle_
 
 };
 %extend Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation {
-    StepRepr_HSequenceOfMaterialPropertyRepresentation* GetObject() {
+    StepRepr_HSequenceOfMaterialPropertyRepresentation* _get_reference() {
     return (StepRepr_HSequenceOfMaterialPropertyRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1654,8 +1744,17 @@ class Handle_StepRepr_HSequenceOfRepresentationItem : public Handle_MMgt_TShared
 
 };
 %extend Handle_StepRepr_HSequenceOfRepresentationItem {
-    StepRepr_HSequenceOfRepresentationItem* GetObject() {
+    StepRepr_HSequenceOfRepresentationItem* _get_reference() {
     return (StepRepr_HSequenceOfRepresentationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_HSequenceOfRepresentationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1753,8 +1852,17 @@ class Handle_StepRepr_ItemDefinedTransformation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_ItemDefinedTransformation {
-    StepRepr_ItemDefinedTransformation* GetObject() {
+    StepRepr_ItemDefinedTransformation* _get_reference() {
     return (StepRepr_ItemDefinedTransformation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ItemDefinedTransformation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1828,8 +1936,17 @@ class Handle_StepRepr_MaterialDesignation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_MaterialDesignation {
-    StepRepr_MaterialDesignation* GetObject() {
+    StepRepr_MaterialDesignation* _get_reference() {
     return (StepRepr_MaterialDesignation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_MaterialDesignation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1955,8 +2072,17 @@ class Handle_StepRepr_ProductConcept : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_ProductConcept {
-    StepRepr_ProductConcept* GetObject() {
+    StepRepr_ProductConcept* _get_reference() {
     return (StepRepr_ProductConcept*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ProductConcept {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2004,8 +2130,17 @@ class Handle_StepRepr_ProductDefinitionUsage : public Handle_StepBasic_ProductDe
 
 };
 %extend Handle_StepRepr_ProductDefinitionUsage {
-    StepRepr_ProductDefinitionUsage* GetObject() {
+    StepRepr_ProductDefinitionUsage* _get_reference() {
     return (StepRepr_ProductDefinitionUsage*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ProductDefinitionUsage {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2115,8 +2250,17 @@ class Handle_StepRepr_PropertyDefinition : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_PropertyDefinition {
-    StepRepr_PropertyDefinition* GetObject() {
+    StepRepr_PropertyDefinition* _get_reference() {
     return (StepRepr_PropertyDefinition*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_PropertyDefinition {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2234,8 +2378,17 @@ class Handle_StepRepr_PropertyDefinitionRelationship : public Handle_MMgt_TShare
 
 };
 %extend Handle_StepRepr_PropertyDefinitionRelationship {
-    StepRepr_PropertyDefinitionRelationship* GetObject() {
+    StepRepr_PropertyDefinitionRelationship* _get_reference() {
     return (StepRepr_PropertyDefinitionRelationship*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_PropertyDefinitionRelationship {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2321,8 +2474,17 @@ class Handle_StepRepr_PropertyDefinitionRepresentation : public Handle_MMgt_TSha
 
 };
 %extend Handle_StepRepr_PropertyDefinitionRepresentation {
-    StepRepr_PropertyDefinitionRepresentation* GetObject() {
+    StepRepr_PropertyDefinitionRepresentation* _get_reference() {
     return (StepRepr_PropertyDefinitionRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_PropertyDefinitionRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2420,8 +2582,17 @@ class Handle_StepRepr_Representation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_Representation {
-    StepRepr_Representation* GetObject() {
+    StepRepr_Representation* _get_reference() {
     return (StepRepr_Representation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_Representation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2497,8 +2668,17 @@ class Handle_StepRepr_RepresentationContext : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_RepresentationContext {
-    StepRepr_RepresentationContext* GetObject() {
+    StepRepr_RepresentationContext* _get_reference() {
     return (StepRepr_RepresentationContext*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_RepresentationContext {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2562,8 +2742,17 @@ class Handle_StepRepr_RepresentationItem : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_RepresentationItem {
-    StepRepr_RepresentationItem* GetObject() {
+    StepRepr_RepresentationItem* _get_reference() {
     return (StepRepr_RepresentationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_RepresentationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2639,8 +2828,17 @@ class Handle_StepRepr_RepresentationMap : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_RepresentationMap {
-    StepRepr_RepresentationMap* GetObject() {
+    StepRepr_RepresentationMap* _get_reference() {
     return (StepRepr_RepresentationMap*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_RepresentationMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2740,8 +2938,17 @@ class Handle_StepRepr_RepresentationRelationship : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_RepresentationRelationship {
-    StepRepr_RepresentationRelationship* GetObject() {
+    StepRepr_RepresentationRelationship* _get_reference() {
     return (StepRepr_RepresentationRelationship*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_RepresentationRelationship {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2847,8 +3054,17 @@ class Handle_StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation : p
 
 };
 %extend Handle_StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation {
-    StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation* GetObject() {
+    StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation* _get_reference() {
     return (StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2904,8 +3120,17 @@ class Handle_StepRepr_SequenceNodeOfSequenceOfRepresentationItem : public Handle
 
 };
 %extend Handle_StepRepr_SequenceNodeOfSequenceOfRepresentationItem {
-    StepRepr_SequenceNodeOfSequenceOfRepresentationItem* GetObject() {
+    StepRepr_SequenceNodeOfSequenceOfRepresentationItem* _get_reference() {
     return (StepRepr_SequenceNodeOfSequenceOfRepresentationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_SequenceNodeOfSequenceOfRepresentationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3281,8 +3506,17 @@ class Handle_StepRepr_ShapeAspect : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_ShapeAspect {
-    StepRepr_ShapeAspect* GetObject() {
+    StepRepr_ShapeAspect* _get_reference() {
     return (StepRepr_ShapeAspect*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ShapeAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3408,8 +3642,17 @@ class Handle_StepRepr_ShapeAspectRelationship : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepRepr_ShapeAspectRelationship {
-    StepRepr_ShapeAspectRelationship* GetObject() {
+    StepRepr_ShapeAspectRelationship* _get_reference() {
     return (StepRepr_ShapeAspectRelationship*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ShapeAspectRelationship {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3493,8 +3736,17 @@ class Handle_StepRepr_SuppliedPartRelationship : public Handle_StepBasic_Product
 
 };
 %extend Handle_StepRepr_SuppliedPartRelationship {
-    StepRepr_SuppliedPartRelationship* GetObject() {
+    StepRepr_SuppliedPartRelationship* _get_reference() {
     return (StepRepr_SuppliedPartRelationship*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_SuppliedPartRelationship {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3616,8 +3868,17 @@ class Handle_StepRepr_AssemblyComponentUsage : public Handle_StepRepr_ProductDef
 
 };
 %extend Handle_StepRepr_AssemblyComponentUsage {
-    StepRepr_AssemblyComponentUsage* GetObject() {
+    StepRepr_AssemblyComponentUsage* _get_reference() {
     return (StepRepr_AssemblyComponentUsage*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_AssemblyComponentUsage {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3663,8 +3924,17 @@ class Handle_StepRepr_CompositeShapeAspect : public Handle_StepRepr_ShapeAspect 
 
 };
 %extend Handle_StepRepr_CompositeShapeAspect {
-    StepRepr_CompositeShapeAspect* GetObject() {
+    StepRepr_CompositeShapeAspect* _get_reference() {
     return (StepRepr_CompositeShapeAspect*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_CompositeShapeAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3746,8 +4016,17 @@ class Handle_StepRepr_CompoundRepresentationItem : public Handle_StepRepr_Repres
 
 };
 %extend Handle_StepRepr_CompoundRepresentationItem {
-    StepRepr_CompoundRepresentationItem* GetObject() {
+    StepRepr_CompoundRepresentationItem* _get_reference() {
     return (StepRepr_CompoundRepresentationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_CompoundRepresentationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3795,8 +4074,17 @@ class Handle_StepRepr_DefinitionalRepresentation : public Handle_StepRepr_Repres
 
 };
 %extend Handle_StepRepr_DefinitionalRepresentation {
-    StepRepr_DefinitionalRepresentation* GetObject() {
+    StepRepr_DefinitionalRepresentation* _get_reference() {
     return (StepRepr_DefinitionalRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_DefinitionalRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3842,8 +4130,17 @@ class Handle_StepRepr_DerivedShapeAspect : public Handle_StepRepr_ShapeAspect {
 
 };
 %extend Handle_StepRepr_DerivedShapeAspect {
-    StepRepr_DerivedShapeAspect* GetObject() {
+    StepRepr_DerivedShapeAspect* _get_reference() {
     return (StepRepr_DerivedShapeAspect*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_DerivedShapeAspect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3915,8 +4212,17 @@ class Handle_StepRepr_DescriptiveRepresentationItem : public Handle_StepRepr_Rep
 
 };
 %extend Handle_StepRepr_DescriptiveRepresentationItem {
-    StepRepr_DescriptiveRepresentationItem* GetObject() {
+    StepRepr_DescriptiveRepresentationItem* _get_reference() {
     return (StepRepr_DescriptiveRepresentationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_DescriptiveRepresentationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3962,8 +4268,17 @@ class Handle_StepRepr_ExternallyDefinedRepresentation : public Handle_StepRepr_R
 
 };
 %extend Handle_StepRepr_ExternallyDefinedRepresentation {
-    StepRepr_ExternallyDefinedRepresentation* GetObject() {
+    StepRepr_ExternallyDefinedRepresentation* _get_reference() {
     return (StepRepr_ExternallyDefinedRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ExternallyDefinedRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4049,8 +4364,17 @@ class Handle_StepRepr_GlobalUncertaintyAssignedContext : public Handle_StepRepr_
 
 };
 %extend Handle_StepRepr_GlobalUncertaintyAssignedContext {
-    StepRepr_GlobalUncertaintyAssignedContext* GetObject() {
+    StepRepr_GlobalUncertaintyAssignedContext* _get_reference() {
     return (StepRepr_GlobalUncertaintyAssignedContext*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_GlobalUncertaintyAssignedContext {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4136,8 +4460,17 @@ class Handle_StepRepr_GlobalUnitAssignedContext : public Handle_StepRepr_Represe
 
 };
 %extend Handle_StepRepr_GlobalUnitAssignedContext {
-    StepRepr_GlobalUnitAssignedContext* GetObject() {
+    StepRepr_GlobalUnitAssignedContext* _get_reference() {
     return (StepRepr_GlobalUnitAssignedContext*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_GlobalUnitAssignedContext {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4251,8 +4584,17 @@ class Handle_StepRepr_MakeFromUsageOption : public Handle_StepRepr_ProductDefini
 
 };
 %extend Handle_StepRepr_MakeFromUsageOption {
-    StepRepr_MakeFromUsageOption* GetObject() {
+    StepRepr_MakeFromUsageOption* _get_reference() {
     return (StepRepr_MakeFromUsageOption*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_MakeFromUsageOption {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4336,8 +4678,17 @@ class Handle_StepRepr_MappedItem : public Handle_StepRepr_RepresentationItem {
 
 };
 %extend Handle_StepRepr_MappedItem {
-    StepRepr_MappedItem* GetObject() {
+    StepRepr_MappedItem* _get_reference() {
     return (StepRepr_MappedItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_MappedItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4385,8 +4736,17 @@ class Handle_StepRepr_MaterialProperty : public Handle_StepRepr_PropertyDefiniti
 
 };
 %extend Handle_StepRepr_MaterialProperty {
-    StepRepr_MaterialProperty* GetObject() {
+    StepRepr_MaterialProperty* _get_reference() {
     return (StepRepr_MaterialProperty*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_MaterialProperty {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4460,8 +4820,17 @@ class Handle_StepRepr_MaterialPropertyRepresentation : public Handle_StepRepr_Pr
 
 };
 %extend Handle_StepRepr_MaterialPropertyRepresentation {
-    StepRepr_MaterialPropertyRepresentation* GetObject() {
+    StepRepr_MaterialPropertyRepresentation* _get_reference() {
     return (StepRepr_MaterialPropertyRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_MaterialPropertyRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4531,8 +4900,17 @@ class Handle_StepRepr_MeasureRepresentationItem : public Handle_StepRepr_Represe
 
 };
 %extend Handle_StepRepr_MeasureRepresentationItem {
-    StepRepr_MeasureRepresentationItem* GetObject() {
+    StepRepr_MeasureRepresentationItem* _get_reference() {
     return (StepRepr_MeasureRepresentationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_MeasureRepresentationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4580,8 +4958,17 @@ class Handle_StepRepr_ParametricRepresentationContext : public Handle_StepRepr_R
 
 };
 %extend Handle_StepRepr_ParametricRepresentationContext {
-    StepRepr_ParametricRepresentationContext* GetObject() {
+    StepRepr_ParametricRepresentationContext* _get_reference() {
     return (StepRepr_ParametricRepresentationContext*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ParametricRepresentationContext {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4629,8 +5016,17 @@ class Handle_StepRepr_ProductDefinitionShape : public Handle_StepRepr_PropertyDe
 
 };
 %extend Handle_StepRepr_ProductDefinitionShape {
-    StepRepr_ProductDefinitionShape* GetObject() {
+    StepRepr_ProductDefinitionShape* _get_reference() {
     return (StepRepr_ProductDefinitionShape*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ProductDefinitionShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4712,8 +5108,17 @@ class Handle_StepRepr_ReprItemAndLengthMeasureWithUnit : public Handle_StepRepr_
 
 };
 %extend Handle_StepRepr_ReprItemAndLengthMeasureWithUnit {
-    StepRepr_ReprItemAndLengthMeasureWithUnit* GetObject() {
+    StepRepr_ReprItemAndLengthMeasureWithUnit* _get_reference() {
     return (StepRepr_ReprItemAndLengthMeasureWithUnit*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ReprItemAndLengthMeasureWithUnit {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4759,8 +5164,17 @@ class Handle_StepRepr_ShapeAspectDerivingRelationship : public Handle_StepRepr_S
 
 };
 %extend Handle_StepRepr_ShapeAspectDerivingRelationship {
-    StepRepr_ShapeAspectDerivingRelationship* GetObject() {
+    StepRepr_ShapeAspectDerivingRelationship* _get_reference() {
     return (StepRepr_ShapeAspectDerivingRelationship*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ShapeAspectDerivingRelationship {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4808,8 +5222,17 @@ class Handle_StepRepr_ShapeAspectTransition : public Handle_StepRepr_ShapeAspect
 
 };
 %extend Handle_StepRepr_ShapeAspectTransition {
-    StepRepr_ShapeAspectTransition* GetObject() {
+    StepRepr_ShapeAspectTransition* _get_reference() {
     return (StepRepr_ShapeAspectTransition*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ShapeAspectTransition {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4855,8 +5278,17 @@ class Handle_StepRepr_ShapeRepresentationRelationship : public Handle_StepRepr_R
 
 };
 %extend Handle_StepRepr_ShapeRepresentationRelationship {
-    StepRepr_ShapeRepresentationRelationship* GetObject() {
+    StepRepr_ShapeRepresentationRelationship* _get_reference() {
     return (StepRepr_ShapeRepresentationRelationship*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ShapeRepresentationRelationship {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4904,8 +5336,17 @@ class Handle_StepRepr_StructuralResponseProperty : public Handle_StepRepr_Proper
 
 };
 %extend Handle_StepRepr_StructuralResponseProperty {
-    StepRepr_StructuralResponseProperty* GetObject() {
+    StepRepr_StructuralResponseProperty* _get_reference() {
     return (StepRepr_StructuralResponseProperty*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_StructuralResponseProperty {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4953,8 +5394,17 @@ class Handle_StepRepr_StructuralResponsePropertyDefinitionRepresentation : publi
 
 };
 %extend Handle_StepRepr_StructuralResponsePropertyDefinitionRepresentation {
-    StepRepr_StructuralResponsePropertyDefinitionRepresentation* GetObject() {
+    StepRepr_StructuralResponsePropertyDefinitionRepresentation* _get_reference() {
     return (StepRepr_StructuralResponsePropertyDefinitionRepresentation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_StructuralResponsePropertyDefinitionRepresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5000,8 +5450,17 @@ class Handle_StepRepr_Extension : public Handle_StepRepr_DerivedShapeAspect {
 
 };
 %extend Handle_StepRepr_Extension {
-    StepRepr_Extension* GetObject() {
+    StepRepr_Extension* _get_reference() {
     return (StepRepr_Extension*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_Extension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5049,8 +5508,17 @@ class Handle_StepRepr_NextAssemblyUsageOccurrence : public Handle_StepRepr_Assem
 
 };
 %extend Handle_StepRepr_NextAssemblyUsageOccurrence {
-    StepRepr_NextAssemblyUsageOccurrence* GetObject() {
+    StepRepr_NextAssemblyUsageOccurrence* _get_reference() {
     return (StepRepr_NextAssemblyUsageOccurrence*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_NextAssemblyUsageOccurrence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5096,8 +5564,17 @@ class Handle_StepRepr_PromissoryUsageOccurrence : public Handle_StepRepr_Assembl
 
 };
 %extend Handle_StepRepr_PromissoryUsageOccurrence {
-    StepRepr_PromissoryUsageOccurrence* GetObject() {
+    StepRepr_PromissoryUsageOccurrence* _get_reference() {
     return (StepRepr_PromissoryUsageOccurrence*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_PromissoryUsageOccurrence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5183,8 +5660,17 @@ class Handle_StepRepr_QuantifiedAssemblyComponentUsage : public Handle_StepRepr_
 
 };
 %extend Handle_StepRepr_QuantifiedAssemblyComponentUsage {
-    StepRepr_QuantifiedAssemblyComponentUsage* GetObject() {
+    StepRepr_QuantifiedAssemblyComponentUsage* _get_reference() {
     return (StepRepr_QuantifiedAssemblyComponentUsage*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_QuantifiedAssemblyComponentUsage {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5254,8 +5740,17 @@ class Handle_StepRepr_RepresentationRelationshipWithTransformation : public Hand
 
 };
 %extend Handle_StepRepr_RepresentationRelationshipWithTransformation {
-    StepRepr_RepresentationRelationshipWithTransformation* GetObject() {
+    StepRepr_RepresentationRelationshipWithTransformation* _get_reference() {
     return (StepRepr_RepresentationRelationshipWithTransformation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_RepresentationRelationshipWithTransformation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5357,8 +5852,17 @@ class Handle_StepRepr_SpecifiedHigherUsageOccurrence : public Handle_StepRepr_As
 
 };
 %extend Handle_StepRepr_SpecifiedHigherUsageOccurrence {
-    StepRepr_SpecifiedHigherUsageOccurrence* GetObject() {
+    StepRepr_SpecifiedHigherUsageOccurrence* _get_reference() {
     return (StepRepr_SpecifiedHigherUsageOccurrence*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_SpecifiedHigherUsageOccurrence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5404,8 +5908,17 @@ class Handle_StepRepr_ValueRange : public Handle_StepRepr_CompoundRepresentation
 
 };
 %extend Handle_StepRepr_ValueRange {
-    StepRepr_ValueRange* GetObject() {
+    StepRepr_ValueRange* _get_reference() {
     return (StepRepr_ValueRange*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ValueRange {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5451,8 +5964,17 @@ class Handle_StepRepr_ShapeRepresentationRelationshipWithTransformation : public
 
 };
 %extend Handle_StepRepr_ShapeRepresentationRelationshipWithTransformation {
-    StepRepr_ShapeRepresentationRelationshipWithTransformation* GetObject() {
+    StepRepr_ShapeRepresentationRelationshipWithTransformation* _get_reference() {
     return (StepRepr_ShapeRepresentationRelationshipWithTransformation*)$self->Access();
+    }
+};
+
+%extend Handle_StepRepr_ShapeRepresentationRelationshipWithTransformation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

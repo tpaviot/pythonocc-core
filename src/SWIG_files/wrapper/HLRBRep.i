@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -226,8 +226,17 @@ class Handle_HLRBRep_AreaLimit : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRBRep_AreaLimit {
-    HLRBRep_AreaLimit* GetObject() {
+    HLRBRep_AreaLimit* _get_reference() {
     return (HLRBRep_AreaLimit*)$self->Access();
+    }
+};
+
+%extend Handle_HLRBRep_AreaLimit {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2082,8 +2091,17 @@ class Handle_HLRBRep_Data : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRBRep_Data {
-    HLRBRep_Data* GetObject() {
+    HLRBRep_Data* _get_reference() {
     return (HLRBRep_Data*)$self->Access();
+    }
+};
+
+%extend Handle_HLRBRep_Data {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3573,8 +3591,17 @@ class Handle_HLRBRep_InternalAlgo : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRBRep_InternalAlgo {
-    HLRBRep_InternalAlgo* GetObject() {
+    HLRBRep_InternalAlgo* _get_reference() {
     return (HLRBRep_InternalAlgo*)$self->Access();
+    }
+};
+
+%extend Handle_HLRBRep_InternalAlgo {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4115,8 +4142,17 @@ class Handle_HLRBRep_ListNodeOfListOfBPnt2D : public Handle_TCollection_MapNode 
 
 };
 %extend Handle_HLRBRep_ListNodeOfListOfBPnt2D {
-    HLRBRep_ListNodeOfListOfBPnt2D* GetObject() {
+    HLRBRep_ListNodeOfListOfBPnt2D* _get_reference() {
     return (HLRBRep_ListNodeOfListOfBPnt2D*)$self->Access();
+    }
+};
+
+%extend Handle_HLRBRep_ListNodeOfListOfBPnt2D {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4170,8 +4206,17 @@ class Handle_HLRBRep_ListNodeOfListOfBPoint : public Handle_TCollection_MapNode 
 
 };
 %extend Handle_HLRBRep_ListNodeOfListOfBPoint {
-    HLRBRep_ListNodeOfListOfBPoint* GetObject() {
+    HLRBRep_ListNodeOfListOfBPoint* _get_reference() {
     return (HLRBRep_ListNodeOfListOfBPoint*)$self->Access();
+    }
+};
+
+%extend Handle_HLRBRep_ListNodeOfListOfBPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4787,8 +4832,17 @@ class Handle_HLRBRep_PolyAlgo : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRBRep_PolyAlgo {
-    HLRBRep_PolyAlgo* GetObject() {
+    HLRBRep_PolyAlgo* _get_reference() {
     return (HLRBRep_PolyAlgo*)$self->Access();
+    }
+};
+
+%extend Handle_HLRBRep_PolyAlgo {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5473,8 +5527,17 @@ class Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds : public Handle_TCollection_
 
 };
 %extend Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds {
-    HLRBRep_SequenceNodeOfSeqOfShapeBounds* GetObject() {
+    HLRBRep_SequenceNodeOfSeqOfShapeBounds* _get_reference() {
     return (HLRBRep_SequenceNodeOfSeqOfShapeBounds*)$self->Access();
+    }
+};
+
+%extend Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5530,8 +5593,17 @@ class Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfC
 
 };
 %extend Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
-    HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* GetObject() {
+    HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* _get_reference() {
     return (HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter*)$self->Access();
+    }
+};
+
+%extend Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7360,8 +7432,17 @@ class Handle_HLRBRep_Algo : public Handle_HLRBRep_InternalAlgo {
 
 };
 %extend Handle_HLRBRep_Algo {
-    HLRBRep_Algo* GetObject() {
+    HLRBRep_Algo* _get_reference() {
     return (HLRBRep_Algo*)$self->Access();
+    }
+};
+
+%extend Handle_HLRBRep_Algo {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

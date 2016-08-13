@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -303,8 +303,17 @@ class Handle_ShapeProcess_Context : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeProcess_Context {
-    ShapeProcess_Context* GetObject() {
+    ShapeProcess_Context* _get_reference() {
     return (ShapeProcess_Context*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeProcess_Context {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -484,8 +493,17 @@ class Handle_ShapeProcess_DictionaryOfOperator : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeProcess_DictionaryOfOperator {
-    ShapeProcess_DictionaryOfOperator* GetObject() {
+    ShapeProcess_DictionaryOfOperator* _get_reference() {
     return (ShapeProcess_DictionaryOfOperator*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeProcess_DictionaryOfOperator {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -608,8 +626,17 @@ class Handle_ShapeProcess_Operator : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeProcess_Operator {
-    ShapeProcess_Operator* GetObject() {
+    ShapeProcess_Operator* _get_reference() {
     return (ShapeProcess_Operator*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeProcess_Operator {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -675,8 +702,17 @@ class Handle_ShapeProcess_StackItemOfDictionaryOfOperator : public Handle_MMgt_T
 
 };
 %extend Handle_ShapeProcess_StackItemOfDictionaryOfOperator {
-    ShapeProcess_StackItemOfDictionaryOfOperator* GetObject() {
+    ShapeProcess_StackItemOfDictionaryOfOperator* _get_reference() {
     return (ShapeProcess_StackItemOfDictionaryOfOperator*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeProcess_StackItemOfDictionaryOfOperator {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -862,8 +898,17 @@ class Handle_ShapeProcess_ShapeContext : public Handle_ShapeProcess_Context {
 
 };
 %extend Handle_ShapeProcess_ShapeContext {
-    ShapeProcess_ShapeContext* GetObject() {
+    ShapeProcess_ShapeContext* _get_reference() {
     return (ShapeProcess_ShapeContext*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeProcess_ShapeContext {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -921,8 +966,17 @@ class Handle_ShapeProcess_UOperator : public Handle_ShapeProcess_Operator {
 
 };
 %extend Handle_ShapeProcess_UOperator {
-    ShapeProcess_UOperator* GetObject() {
+    ShapeProcess_UOperator* _get_reference() {
     return (ShapeProcess_UOperator*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeProcess_UOperator {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

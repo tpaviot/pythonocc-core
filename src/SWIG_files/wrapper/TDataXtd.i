@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -308,8 +308,17 @@ class Handle_TDataXtd_Axis : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataXtd_Axis {
-    TDataXtd_Axis* GetObject() {
+    TDataXtd_Axis* _get_reference() {
     return (TDataXtd_Axis*)$self->Access();
+    }
+};
+
+%extend Handle_TDataXtd_Axis {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -585,8 +594,17 @@ class Handle_TDataXtd_Constraint : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataXtd_Constraint {
-    TDataXtd_Constraint* GetObject() {
+    TDataXtd_Constraint* _get_reference() {
     return (TDataXtd_Constraint*)$self->Access();
+    }
+};
+
+%extend Handle_TDataXtd_Constraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -848,8 +866,17 @@ class Handle_TDataXtd_Geometry : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataXtd_Geometry {
-    TDataXtd_Geometry* GetObject() {
+    TDataXtd_Geometry* _get_reference() {
     return (TDataXtd_Geometry*)$self->Access();
+    }
+};
+
+%extend Handle_TDataXtd_Geometry {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -955,8 +982,17 @@ class Handle_TDataXtd_HArray1OfTrsf : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDataXtd_HArray1OfTrsf {
-    TDataXtd_HArray1OfTrsf* GetObject() {
+    TDataXtd_HArray1OfTrsf* _get_reference() {
     return (TDataXtd_HArray1OfTrsf*)$self->Access();
+    }
+};
+
+%extend Handle_TDataXtd_HArray1OfTrsf {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1028,8 +1064,17 @@ class Handle_TDataXtd_Pattern : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataXtd_Pattern {
-    TDataXtd_Pattern* GetObject() {
+    TDataXtd_Pattern* _get_reference() {
     return (TDataXtd_Pattern*)$self->Access();
+    }
+};
+
+%extend Handle_TDataXtd_Pattern {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1119,8 +1164,17 @@ class Handle_TDataXtd_Placement : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataXtd_Placement {
-    TDataXtd_Placement* GetObject() {
+    TDataXtd_Placement* _get_reference() {
     return (TDataXtd_Placement*)$self->Access();
+    }
+};
+
+%extend Handle_TDataXtd_Placement {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1220,8 +1274,17 @@ class Handle_TDataXtd_Plane : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataXtd_Plane {
-    TDataXtd_Plane* GetObject() {
+    TDataXtd_Plane* _get_reference() {
     return (TDataXtd_Plane*)$self->Access();
+    }
+};
+
+%extend Handle_TDataXtd_Plane {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1321,8 +1384,17 @@ class Handle_TDataXtd_Point : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataXtd_Point {
-    TDataXtd_Point* GetObject() {
+    TDataXtd_Point* _get_reference() {
     return (TDataXtd_Point*)$self->Access();
+    }
+};
+
+%extend Handle_TDataXtd_Point {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1442,8 +1514,17 @@ class Handle_TDataXtd_Position : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataXtd_Position {
-    TDataXtd_Position* GetObject() {
+    TDataXtd_Position* _get_reference() {
     return (TDataXtd_Position*)$self->Access();
+    }
+};
+
+%extend Handle_TDataXtd_Position {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1567,8 +1648,17 @@ class Handle_TDataXtd_Shape : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataXtd_Shape {
-    TDataXtd_Shape* GetObject() {
+    TDataXtd_Shape* _get_reference() {
     return (TDataXtd_Shape*)$self->Access();
+    }
+};
+
+%extend Handle_TDataXtd_Shape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1772,8 +1862,17 @@ class Handle_TDataXtd_PatternStd : public Handle_TDataXtd_Pattern {
 
 };
 %extend Handle_TDataXtd_PatternStd {
-    TDataXtd_PatternStd* GetObject() {
+    TDataXtd_PatternStd* _get_reference() {
     return (TDataXtd_PatternStd*)$self->Access();
+    }
+};
+
+%extend Handle_TDataXtd_PatternStd {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

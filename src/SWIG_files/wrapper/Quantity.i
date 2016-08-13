@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1765,8 +1765,17 @@ class Handle_Quantity_HArray1OfColor : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Quantity_HArray1OfColor {
-    Quantity_HArray1OfColor* GetObject() {
+    Quantity_HArray1OfColor* _get_reference() {
     return (Quantity_HArray1OfColor*)$self->Access();
+    }
+};
+
+%extend Handle_Quantity_HArray1OfColor {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

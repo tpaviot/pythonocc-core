@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -610,8 +610,17 @@ class Handle_ProjLib_HCompProjectedCurve : public Handle_Adaptor2d_HCurve2d {
 
 };
 %extend Handle_ProjLib_HCompProjectedCurve {
-    ProjLib_HCompProjectedCurve* GetObject() {
+    ProjLib_HCompProjectedCurve* _get_reference() {
     return (ProjLib_HCompProjectedCurve*)$self->Access();
+    }
+};
+
+%extend Handle_ProjLib_HCompProjectedCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -677,8 +686,17 @@ class Handle_ProjLib_HProjectedCurve : public Handle_Adaptor2d_HCurve2d {
 
 };
 %extend Handle_ProjLib_HProjectedCurve {
-    ProjLib_HProjectedCurve* GetObject() {
+    ProjLib_HProjectedCurve* _get_reference() {
     return (ProjLib_HProjectedCurve*)$self->Access();
+    }
+};
+
+%extend Handle_ProjLib_HProjectedCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -852,8 +870,17 @@ class Handle_ProjLib_HSequenceOfHSequenceOfPnt : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ProjLib_HSequenceOfHSequenceOfPnt {
-    ProjLib_HSequenceOfHSequenceOfPnt* GetObject() {
+    ProjLib_HSequenceOfHSequenceOfPnt* _get_reference() {
     return (ProjLib_HSequenceOfHSequenceOfPnt*)$self->Access();
+    }
+};
+
+%extend Handle_ProjLib_HSequenceOfHSequenceOfPnt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1675,8 +1702,17 @@ class Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public Handle_TCol
 
 };
 %extend Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
-    ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt* GetObject() {
+    ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt* _get_reference() {
     return (ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt*)$self->Access();
+    }
+};
+
+%extend Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

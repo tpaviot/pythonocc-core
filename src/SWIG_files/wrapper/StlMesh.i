@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -248,8 +248,17 @@ class Handle_StlMesh_Mesh : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StlMesh_Mesh {
-    StlMesh_Mesh* GetObject() {
+    StlMesh_Mesh* _get_reference() {
     return (StlMesh_Mesh*)$self->Access();
+    }
+};
+
+%extend Handle_StlMesh_Mesh {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -377,8 +386,17 @@ class Handle_StlMesh_MeshDomain : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StlMesh_MeshDomain {
-    StlMesh_MeshDomain* GetObject() {
+    StlMesh_MeshDomain* _get_reference() {
     return (StlMesh_MeshDomain*)$self->Access();
+    }
+};
+
+%extend Handle_StlMesh_MeshDomain {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -576,8 +594,17 @@ class Handle_StlMesh_MeshTriangle : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StlMesh_MeshTriangle {
-    StlMesh_MeshTriangle* GetObject() {
+    StlMesh_MeshTriangle* _get_reference() {
     return (StlMesh_MeshTriangle*)$self->Access();
+    }
+};
+
+%extend Handle_StlMesh_MeshTriangle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -633,8 +660,17 @@ class Handle_StlMesh_SequenceNodeOfSequenceOfMesh : public Handle_TCollection_Se
 
 };
 %extend Handle_StlMesh_SequenceNodeOfSequenceOfMesh {
-    StlMesh_SequenceNodeOfSequenceOfMesh* GetObject() {
+    StlMesh_SequenceNodeOfSequenceOfMesh* _get_reference() {
     return (StlMesh_SequenceNodeOfSequenceOfMesh*)$self->Access();
+    }
+};
+
+%extend Handle_StlMesh_SequenceNodeOfSequenceOfMesh {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -690,8 +726,17 @@ class Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain : public Handle_TCollect
 
 };
 %extend Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain {
-    StlMesh_SequenceNodeOfSequenceOfMeshDomain* GetObject() {
+    StlMesh_SequenceNodeOfSequenceOfMeshDomain* _get_reference() {
     return (StlMesh_SequenceNodeOfSequenceOfMeshDomain*)$self->Access();
+    }
+};
+
+%extend Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -747,8 +792,17 @@ class Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle : public Handle_TColle
 
 };
 %extend Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle {
-    StlMesh_SequenceNodeOfSequenceOfMeshTriangle* GetObject() {
+    StlMesh_SequenceNodeOfSequenceOfMeshTriangle* _get_reference() {
     return (StlMesh_SequenceNodeOfSequenceOfMeshTriangle*)$self->Access();
+    }
+};
+
+%extend Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

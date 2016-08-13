@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -158,8 +158,17 @@ class Handle_PrsMgr_Presentation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_PrsMgr_Presentation {
-    PrsMgr_Presentation* GetObject() {
+    PrsMgr_Presentation* _get_reference() {
     return (PrsMgr_Presentation*)$self->Access();
+    }
+};
+
+%extend Handle_PrsMgr_Presentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -471,8 +480,17 @@ class Handle_PrsMgr_PresentationManager : public Handle_MMgt_TShared {
 
 };
 %extend Handle_PrsMgr_PresentationManager {
-    PrsMgr_PresentationManager* GetObject() {
+    PrsMgr_PresentationManager* _get_reference() {
     return (PrsMgr_PresentationManager*)$self->Access();
+    }
+};
+
+%extend Handle_PrsMgr_PresentationManager {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -704,8 +722,17 @@ class Handle_PrsMgr_Prs : public Handle_Prs3d_Presentation {
 
 };
 %extend Handle_PrsMgr_Prs {
-    PrsMgr_Prs* GetObject() {
+    PrsMgr_Prs* _get_reference() {
     return (PrsMgr_Prs*)$self->Access();
+    }
+};
+
+%extend Handle_PrsMgr_Prs {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -761,8 +788,17 @@ class Handle_PrsMgr_SequenceNodeOfPresentations : public Handle_TCollection_SeqN
 
 };
 %extend Handle_PrsMgr_SequenceNodeOfPresentations {
-    PrsMgr_SequenceNodeOfPresentations* GetObject() {
+    PrsMgr_SequenceNodeOfPresentations* _get_reference() {
     return (PrsMgr_SequenceNodeOfPresentations*)$self->Access();
+    }
+};
+
+%extend Handle_PrsMgr_SequenceNodeOfPresentations {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

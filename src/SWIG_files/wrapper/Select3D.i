@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -219,8 +219,17 @@ class Handle_Select3D_ListNodeOfListOfSensitive : public Handle_TCollection_MapN
 
 };
 %extend Handle_Select3D_ListNodeOfListOfSensitive {
-    Select3D_ListNodeOfListOfSensitive* GetObject() {
+    Select3D_ListNodeOfListOfSensitive* _get_reference() {
     return (Select3D_ListNodeOfListOfSensitive*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_ListNodeOfListOfSensitive {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -274,8 +283,17 @@ class Handle_Select3D_ListNodeOfListOfSensitiveTriangle : public Handle_TCollect
 
 };
 %extend Handle_Select3D_ListNodeOfListOfSensitiveTriangle {
-    Select3D_ListNodeOfListOfSensitiveTriangle* GetObject() {
+    Select3D_ListNodeOfListOfSensitiveTriangle* _get_reference() {
     return (Select3D_ListNodeOfListOfSensitiveTriangle*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_ListNodeOfListOfSensitiveTriangle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -897,8 +915,17 @@ class Handle_Select3D_Projector : public Handle_Standard_Transient {
 
 };
 %extend Handle_Select3D_Projector {
-    Select3D_Projector* GetObject() {
+    Select3D_Projector* _get_reference() {
     return (Select3D_Projector*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_Projector {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1048,8 +1075,17 @@ class Handle_Select3D_SensitiveEntity : public Handle_SelectBasics_SensitiveEnti
 
 };
 %extend Handle_Select3D_SensitiveEntity {
-    Select3D_SensitiveEntity* GetObject() {
+    Select3D_SensitiveEntity* _get_reference() {
     return (Select3D_SensitiveEntity*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SensitiveEntity {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1243,8 +1279,17 @@ class Handle_Select3D_SequenceNodeOfSensitiveEntitySequence : public Handle_TCol
 
 };
 %extend Handle_Select3D_SequenceNodeOfSensitiveEntitySequence {
-    Select3D_SequenceNodeOfSensitiveEntitySequence* GetObject() {
+    Select3D_SequenceNodeOfSensitiveEntitySequence* _get_reference() {
     return (Select3D_SequenceNodeOfSensitiveEntitySequence*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SequenceNodeOfSensitiveEntitySequence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1394,8 +1439,17 @@ class Handle_Select3D_SensitiveBox : public Handle_Select3D_SensitiveEntity {
 
 };
 %extend Handle_Select3D_SensitiveBox {
-    Select3D_SensitiveBox* GetObject() {
+    Select3D_SensitiveBox* _get_reference() {
     return (Select3D_SensitiveBox*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SensitiveBox {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1599,8 +1653,17 @@ class Handle_Select3D_SensitiveGroup : public Handle_Select3D_SensitiveEntity {
 
 };
 %extend Handle_Select3D_SensitiveGroup {
-    Select3D_SensitiveGroup* GetObject() {
+    Select3D_SensitiveGroup* _get_reference() {
     return (Select3D_SensitiveGroup*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SensitiveGroup {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1730,8 +1793,17 @@ class Handle_Select3D_SensitivePoint : public Handle_Select3D_SensitiveEntity {
 
 };
 %extend Handle_Select3D_SensitivePoint {
-    Select3D_SensitivePoint* GetObject() {
+    Select3D_SensitivePoint* _get_reference() {
     return (Select3D_SensitivePoint*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SensitivePoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1805,8 +1877,17 @@ class Handle_Select3D_SensitivePoly : public Handle_Select3D_SensitiveEntity {
 
 };
 %extend Handle_Select3D_SensitivePoly {
-    Select3D_SensitivePoly* GetObject() {
+    Select3D_SensitivePoly* _get_reference() {
     return (Select3D_SensitivePoly*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SensitivePoly {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1988,8 +2069,17 @@ class Handle_Select3D_SensitiveSegment : public Handle_Select3D_SensitiveEntity 
 
 };
 %extend Handle_Select3D_SensitiveSegment {
-    Select3D_SensitiveSegment* GetObject() {
+    Select3D_SensitiveSegment* _get_reference() {
     return (Select3D_SensitiveSegment*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SensitiveSegment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2157,8 +2247,17 @@ class Handle_Select3D_SensitiveWire : public Handle_Select3D_SensitiveEntity {
 
 };
 %extend Handle_Select3D_SensitiveWire {
-    Select3D_SensitiveWire* GetObject() {
+    Select3D_SensitiveWire* _get_reference() {
     return (Select3D_SensitiveWire*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SensitiveWire {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2338,8 +2437,17 @@ class Handle_Select3D_SensitiveCircle : public Handle_Select3D_SensitivePoly {
 
 };
 %extend Handle_Select3D_SensitiveCircle {
-    Select3D_SensitiveCircle* GetObject() {
+    Select3D_SensitiveCircle* _get_reference() {
     return (Select3D_SensitiveCircle*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SensitiveCircle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2481,8 +2589,17 @@ class Handle_Select3D_SensitiveCurve : public Handle_Select3D_SensitivePoly {
 
 };
 %extend Handle_Select3D_SensitiveCurve {
-    Select3D_SensitiveCurve* GetObject() {
+    Select3D_SensitiveCurve* _get_reference() {
     return (Select3D_SensitiveCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SensitiveCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2612,8 +2729,17 @@ class Handle_Select3D_SensitiveFace : public Handle_Select3D_SensitivePoly {
 
 };
 %extend Handle_Select3D_SensitiveFace {
-    Select3D_SensitiveFace* GetObject() {
+    Select3D_SensitiveFace* _get_reference() {
     return (Select3D_SensitiveFace*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SensitiveFace {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2783,8 +2909,17 @@ class Handle_Select3D_SensitiveTriangle : public Handle_Select3D_SensitivePoly {
 
 };
 %extend Handle_Select3D_SensitiveTriangle {
-    Select3D_SensitiveTriangle* GetObject() {
+    Select3D_SensitiveTriangle* _get_reference() {
     return (Select3D_SensitiveTriangle*)$self->Access();
+    }
+};
+
+%extend Handle_Select3D_SensitiveTriangle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -911,8 +911,17 @@ class Handle_IntAna_ListNodeOfListOfCurve : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_IntAna_ListNodeOfListOfCurve {
-    IntAna_ListNodeOfListOfCurve* GetObject() {
+    IntAna_ListNodeOfListOfCurve* _get_reference() {
     return (IntAna_ListNodeOfListOfCurve*)$self->Access();
+    }
+};
+
+%extend Handle_IntAna_ListNodeOfListOfCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -752,8 +752,17 @@ class Handle_AIS_AttributeFilter : public Handle_SelectMgr_Filter {
 
 };
 %extend Handle_AIS_AttributeFilter {
-    AIS_AttributeFilter* GetObject() {
+    AIS_AttributeFilter* _get_reference() {
     return (AIS_AttributeFilter*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_AttributeFilter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -839,8 +848,17 @@ class Handle_AIS_BadEdgeFilter : public Handle_SelectMgr_Filter {
 
 };
 %extend Handle_AIS_BadEdgeFilter {
-    AIS_BadEdgeFilter* GetObject() {
+    AIS_BadEdgeFilter* _get_reference() {
     return (AIS_BadEdgeFilter*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_BadEdgeFilter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -900,8 +918,17 @@ class Handle_AIS_C0RegularityFilter : public Handle_SelectMgr_Filter {
 
 };
 %extend Handle_AIS_C0RegularityFilter {
-    AIS_C0RegularityFilter* GetObject() {
+    AIS_C0RegularityFilter* _get_reference() {
     return (AIS_C0RegularityFilter*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_C0RegularityFilter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1090,8 +1117,17 @@ class Handle_AIS_DataMapNodeOfDataMapOfILC : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_AIS_DataMapNodeOfDataMapOfILC {
-    AIS_DataMapNodeOfDataMapOfILC* GetObject() {
+    AIS_DataMapNodeOfDataMapOfILC* _get_reference() {
     return (AIS_DataMapNodeOfDataMapOfILC*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_DataMapNodeOfDataMapOfILC {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1151,8 +1187,17 @@ class Handle_AIS_DataMapNodeOfDataMapOfIOStatus : public Handle_TCollection_MapN
 
 };
 %extend Handle_AIS_DataMapNodeOfDataMapOfIOStatus {
-    AIS_DataMapNodeOfDataMapOfIOStatus* GetObject() {
+    AIS_DataMapNodeOfDataMapOfIOStatus* _get_reference() {
     return (AIS_DataMapNodeOfDataMapOfIOStatus*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_DataMapNodeOfDataMapOfIOStatus {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1212,8 +1257,17 @@ class Handle_AIS_DataMapNodeOfDataMapOfSelStat : public Handle_TCollection_MapNo
 
 };
 %extend Handle_AIS_DataMapNodeOfDataMapOfSelStat {
-    AIS_DataMapNodeOfDataMapOfSelStat* GetObject() {
+    AIS_DataMapNodeOfDataMapOfSelStat* _get_reference() {
     return (AIS_DataMapNodeOfDataMapOfSelStat*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_DataMapNodeOfDataMapOfSelStat {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1282,8 +1336,17 @@ class Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive : public Handle_
 
 };
 %extend Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive {
-    AIS_DataMapNodeOfDataMapofIntegerListOfinteractive* GetObject() {
+    AIS_DataMapNodeOfDataMapofIntegerListOfinteractive* _get_reference() {
     return (AIS_DataMapNodeOfDataMapofIntegerListOfinteractive*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1691,8 +1754,17 @@ class Handle_AIS_DimensionOwner : public Handle_SelectMgr_EntityOwner {
 
 };
 %extend Handle_AIS_DimensionOwner {
-    AIS_DimensionOwner* GetObject() {
+    AIS_DimensionOwner* _get_reference() {
     return (AIS_DimensionOwner*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_DimensionOwner {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2258,8 +2330,17 @@ class Handle_AIS_Drawer : public Handle_Prs3d_Drawer {
 
 };
 %extend Handle_AIS_Drawer {
-    AIS_Drawer* GetObject() {
+    AIS_Drawer* _get_reference() {
     return (AIS_Drawer*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Drawer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2401,8 +2482,17 @@ class Handle_AIS_ExclusionFilter : public Handle_SelectMgr_Filter {
 
 };
 %extend Handle_AIS_ExclusionFilter {
-    AIS_ExclusionFilter* GetObject() {
+    AIS_ExclusionFilter* _get_reference() {
     return (AIS_ExclusionFilter*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_ExclusionFilter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2564,8 +2654,17 @@ class Handle_AIS_GlobalStatus : public Handle_MMgt_TShared {
 
 };
 %extend Handle_AIS_GlobalStatus {
-    AIS_GlobalStatus* GetObject() {
+    AIS_GlobalStatus* _get_reference() {
     return (AIS_GlobalStatus*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_GlobalStatus {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2719,8 +2818,17 @@ class Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public Handle_TC
 
 };
 %extend Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs {
-    AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs* GetObject() {
+    AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs* _get_reference() {
     return (AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4776,8 +4884,17 @@ class Handle_AIS_InteractiveContext : public Handle_MMgt_TShared {
 
 };
 %extend Handle_AIS_InteractiveContext {
-    AIS_InteractiveContext* GetObject() {
+    AIS_InteractiveContext* _get_reference() {
     return (AIS_InteractiveContext*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_InteractiveContext {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5259,8 +5376,17 @@ class Handle_AIS_InteractiveObject : public Handle_SelectMgr_SelectableObject {
 
 };
 %extend Handle_AIS_InteractiveObject {
-    AIS_InteractiveObject* GetObject() {
+    AIS_InteractiveObject* _get_reference() {
     return (AIS_InteractiveObject*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_InteractiveObject {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5348,8 +5474,17 @@ class Handle_AIS_ListNodeOfListOfInteractive : public Handle_TCollection_MapNode
 
 };
 %extend Handle_AIS_ListNodeOfListOfInteractive {
-    AIS_ListNodeOfListOfInteractive* GetObject() {
+    AIS_ListNodeOfListOfInteractive* _get_reference() {
     return (AIS_ListNodeOfListOfInteractive*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_ListNodeOfListOfInteractive {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6253,8 +6388,17 @@ class Handle_AIS_LocalContext : public Handle_MMgt_TShared {
 
 };
 %extend Handle_AIS_LocalContext {
-    AIS_LocalContext* GetObject() {
+    AIS_LocalContext* _get_reference() {
     return (AIS_LocalContext*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_LocalContext {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6428,8 +6572,17 @@ class Handle_AIS_LocalStatus : public Handle_MMgt_TShared {
 
 };
 %extend Handle_AIS_LocalStatus {
-    AIS_LocalStatus* GetObject() {
+    AIS_LocalStatus* _get_reference() {
     return (AIS_LocalStatus*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_LocalStatus {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6687,8 +6840,17 @@ class Handle_AIS_Selection : public Handle_MMgt_TShared {
 
 };
 %extend Handle_AIS_Selection {
-    AIS_Selection* GetObject() {
+    AIS_Selection* _get_reference() {
     return (AIS_Selection*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Selection {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6744,8 +6906,17 @@ class Handle_AIS_SequenceNodeOfSequenceOfDimension : public Handle_TCollection_S
 
 };
 %extend Handle_AIS_SequenceNodeOfSequenceOfDimension {
-    AIS_SequenceNodeOfSequenceOfDimension* GetObject() {
+    AIS_SequenceNodeOfSequenceOfDimension* _get_reference() {
     return (AIS_SequenceNodeOfSequenceOfDimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_SequenceNodeOfSequenceOfDimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6801,8 +6972,17 @@ class Handle_AIS_SequenceNodeOfSequenceOfInteractive : public Handle_TCollection
 
 };
 %extend Handle_AIS_SequenceNodeOfSequenceOfInteractive {
-    AIS_SequenceNodeOfSequenceOfInteractive* GetObject() {
+    AIS_SequenceNodeOfSequenceOfInteractive* _get_reference() {
     return (AIS_SequenceNodeOfSequenceOfInteractive*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_SequenceNodeOfSequenceOfInteractive {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7132,8 +7312,17 @@ class Handle_AIS_StdMapNodeOfMapOfInteractive : public Handle_TCollection_MapNod
 
 };
 %extend Handle_AIS_StdMapNodeOfMapOfInteractive {
-    AIS_StdMapNodeOfMapOfInteractive* GetObject() {
+    AIS_StdMapNodeOfMapOfInteractive* _get_reference() {
     return (AIS_StdMapNodeOfMapOfInteractive*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_StdMapNodeOfMapOfInteractive {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7191,8 +7380,17 @@ class Handle_AIS_TypeFilter : public Handle_SelectMgr_Filter {
 
 };
 %extend Handle_AIS_TypeFilter {
-    AIS_TypeFilter* GetObject() {
+    AIS_TypeFilter* _get_reference() {
     return (AIS_TypeFilter*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_TypeFilter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7372,8 +7570,17 @@ class Handle_AIS_Axis : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_AIS_Axis {
-    AIS_Axis* GetObject() {
+    AIS_Axis* _get_reference() {
     return (AIS_Axis*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Axis {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7549,8 +7756,17 @@ class Handle_AIS_Circle : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_AIS_Circle {
-    AIS_Circle* GetObject() {
+    AIS_Circle* _get_reference() {
     return (AIS_Circle*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Circle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7710,8 +7926,17 @@ class Handle_AIS_ConnectedInteractive : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_AIS_ConnectedInteractive {
-    AIS_ConnectedInteractive* GetObject() {
+    AIS_ConnectedInteractive* _get_reference() {
     return (AIS_ConnectedInteractive*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_ConnectedInteractive {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8068,8 +8293,17 @@ class Handle_AIS_Line : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_AIS_Line {
-    AIS_Line* GetObject() {
+    AIS_Line* _get_reference() {
     return (AIS_Line*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Line {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8203,8 +8437,17 @@ class Handle_AIS_MultipleConnectedInteractive : public Handle_AIS_InteractiveObj
 
 };
 %extend Handle_AIS_MultipleConnectedInteractive {
-    AIS_MultipleConnectedInteractive* GetObject() {
+    AIS_MultipleConnectedInteractive* _get_reference() {
     return (AIS_MultipleConnectedInteractive*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_MultipleConnectedInteractive {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8500,8 +8743,17 @@ class Handle_AIS_Plane : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_AIS_Plane {
-    AIS_Plane* GetObject() {
+    AIS_Plane* _get_reference() {
     return (AIS_Plane*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Plane {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8653,8 +8905,17 @@ class Handle_AIS_PlaneTrihedron : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_AIS_PlaneTrihedron {
-    AIS_PlaneTrihedron* GetObject() {
+    AIS_PlaneTrihedron* _get_reference() {
     return (AIS_PlaneTrihedron*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_PlaneTrihedron {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8796,8 +9057,17 @@ class Handle_AIS_Point : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_AIS_Point {
-    AIS_Point* GetObject() {
+    AIS_Point* _get_reference() {
     return (AIS_Point*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Point {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9131,8 +9401,17 @@ class Handle_AIS_Relation : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_AIS_Relation {
-    AIS_Relation* GetObject() {
+    AIS_Relation* _get_reference() {
     return (AIS_Relation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Relation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9462,8 +9741,17 @@ class Handle_AIS_Shape : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_AIS_Shape {
-    AIS_Shape* GetObject() {
+    AIS_Shape* _get_reference() {
     return (AIS_Shape*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Shape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9523,8 +9811,17 @@ class Handle_AIS_SignatureFilter : public Handle_AIS_TypeFilter {
 
 };
 %extend Handle_AIS_SignatureFilter {
-    AIS_SignatureFilter* GetObject() {
+    AIS_SignatureFilter* _get_reference() {
     return (AIS_SignatureFilter*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_SignatureFilter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9600,8 +9897,17 @@ class Handle_AIS_Triangulation : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_AIS_Triangulation {
-    AIS_Triangulation* GetObject() {
+    AIS_Triangulation* _get_reference() {
     return (AIS_Triangulation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Triangulation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9839,8 +10145,17 @@ class Handle_AIS_Trihedron : public Handle_AIS_InteractiveObject {
 
 };
 %extend Handle_AIS_Trihedron {
-    AIS_Trihedron* GetObject() {
+    AIS_Trihedron* _get_reference() {
     return (AIS_Trihedron*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Trihedron {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10146,8 +10461,17 @@ class Handle_AIS_Chamf2dDimension : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_Chamf2dDimension {
-    AIS_Chamf2dDimension* GetObject() {
+    AIS_Chamf2dDimension* _get_reference() {
     return (AIS_Chamf2dDimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Chamf2dDimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10243,8 +10567,17 @@ class Handle_AIS_Chamf3dDimension : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_Chamf3dDimension {
-    AIS_Chamf3dDimension* GetObject() {
+    AIS_Chamf3dDimension* _get_reference() {
     return (AIS_Chamf3dDimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Chamf3dDimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10406,8 +10739,17 @@ class Handle_AIS_ConcentricRelation : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_ConcentricRelation {
-    AIS_ConcentricRelation* GetObject() {
+    AIS_ConcentricRelation* _get_reference() {
     return (AIS_ConcentricRelation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_ConcentricRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10571,8 +10913,17 @@ class Handle_AIS_EllipseRadiusDimension : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_EllipseRadiusDimension {
-    AIS_EllipseRadiusDimension* GetObject() {
+    AIS_EllipseRadiusDimension* _get_reference() {
     return (AIS_EllipseRadiusDimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_EllipseRadiusDimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10780,8 +11131,17 @@ class Handle_AIS_EqualDistanceRelation : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_EqualDistanceRelation {
-    AIS_EqualDistanceRelation* GetObject() {
+    AIS_EqualDistanceRelation* _get_reference() {
     return (AIS_EqualDistanceRelation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_EqualDistanceRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10847,8 +11207,17 @@ class Handle_AIS_EqualRadiusRelation : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_EqualRadiusRelation {
-    AIS_EqualRadiusRelation* GetObject() {
+    AIS_EqualRadiusRelation* _get_reference() {
     return (AIS_EqualRadiusRelation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_EqualRadiusRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10974,8 +11343,17 @@ class Handle_AIS_FixRelation : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_FixRelation {
-    AIS_FixRelation* GetObject() {
+    AIS_FixRelation* _get_reference() {
     return (AIS_FixRelation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_FixRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -11047,8 +11425,17 @@ class Handle_AIS_IdenticRelation : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_IdenticRelation {
-    AIS_IdenticRelation* GetObject() {
+    AIS_IdenticRelation* _get_reference() {
     return (AIS_IdenticRelation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_IdenticRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -11298,8 +11685,17 @@ class Handle_AIS_MidPointRelation : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_MidPointRelation {
-    AIS_MidPointRelation* GetObject() {
+    AIS_MidPointRelation* _get_reference() {
     return (AIS_MidPointRelation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_MidPointRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -11387,8 +11783,17 @@ class Handle_AIS_OffsetDimension : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_OffsetDimension {
-    AIS_OffsetDimension* GetObject() {
+    AIS_OffsetDimension* _get_reference() {
     return (AIS_OffsetDimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_OffsetDimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -11478,8 +11883,17 @@ class Handle_AIS_ParallelRelation : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_ParallelRelation {
-    AIS_ParallelRelation* GetObject() {
+    AIS_ParallelRelation* _get_reference() {
     return (AIS_ParallelRelation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_ParallelRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -11555,8 +11969,17 @@ class Handle_AIS_PerpendicularRelation : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_PerpendicularRelation {
-    AIS_PerpendicularRelation* GetObject() {
+    AIS_PerpendicularRelation* _get_reference() {
     return (AIS_PerpendicularRelation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_PerpendicularRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -11754,8 +12177,17 @@ class Handle_AIS_SymmetricRelation : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_SymmetricRelation {
-    AIS_SymmetricRelation* GetObject() {
+    AIS_SymmetricRelation* _get_reference() {
     return (AIS_SymmetricRelation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_SymmetricRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -11837,8 +12269,17 @@ class Handle_AIS_TangentRelation : public Handle_AIS_Relation {
 
 };
 %extend Handle_AIS_TangentRelation {
-    AIS_TangentRelation* GetObject() {
+    AIS_TangentRelation* _get_reference() {
     return (AIS_TangentRelation*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_TangentRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -12124,8 +12565,17 @@ class Handle_AIS_MaxRadiusDimension : public Handle_AIS_EllipseRadiusDimension {
 
 };
 %extend Handle_AIS_MaxRadiusDimension {
-    AIS_MaxRadiusDimension* GetObject() {
+    AIS_MaxRadiusDimension* _get_reference() {
     return (AIS_MaxRadiusDimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_MaxRadiusDimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -12209,8 +12659,17 @@ class Handle_AIS_MinRadiusDimension : public Handle_AIS_EllipseRadiusDimension {
 
 };
 %extend Handle_AIS_MinRadiusDimension {
-    AIS_MinRadiusDimension* GetObject() {
+    AIS_MinRadiusDimension* _get_reference() {
     return (AIS_MinRadiusDimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_MinRadiusDimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

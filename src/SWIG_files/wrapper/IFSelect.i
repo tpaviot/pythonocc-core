@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -302,8 +302,17 @@ class Handle_IFSelect_Activator : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_Activator {
-    IFSelect_Activator* GetObject() {
+    IFSelect_Activator* _get_reference() {
     return (IFSelect_Activator*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_Activator {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -409,8 +418,17 @@ class Handle_IFSelect_AppliedModifiers : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_AppliedModifiers {
-    IFSelect_AppliedModifiers* GetObject() {
+    IFSelect_AppliedModifiers* _get_reference() {
     return (IFSelect_AppliedModifiers*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_AppliedModifiers {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -964,8 +982,17 @@ class Handle_IFSelect_Dispatch : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_Dispatch {
-    IFSelect_Dispatch* GetObject() {
+    IFSelect_Dispatch* _get_reference() {
     return (IFSelect_Dispatch*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_Dispatch {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1360,8 +1387,17 @@ class Handle_IFSelect_EditForm : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_EditForm {
-    IFSelect_EditForm* GetObject() {
+    IFSelect_EditForm* _get_reference() {
     return (IFSelect_EditForm*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_EditForm {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1609,8 +1645,17 @@ class Handle_IFSelect_Editor : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_Editor {
-    IFSelect_Editor* GetObject() {
+    IFSelect_Editor* _get_reference() {
     return (IFSelect_Editor*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_Editor {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1767,8 +1812,17 @@ class Handle_IFSelect_GeneralModifier : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_GeneralModifier {
-    IFSelect_GeneralModifier* GetObject() {
+    IFSelect_GeneralModifier* _get_reference() {
     return (IFSelect_GeneralModifier*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_GeneralModifier {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1942,8 +1996,17 @@ class Handle_IFSelect_HSeqOfSelection : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_HSeqOfSelection {
-    IFSelect_HSeqOfSelection* GetObject() {
+    IFSelect_HSeqOfSelection* _get_reference() {
     return (IFSelect_HSeqOfSelection*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_HSeqOfSelection {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2013,8 +2076,17 @@ class Handle_IFSelect_IntParam : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_IntParam {
-    IFSelect_IntParam* GetObject() {
+    IFSelect_IntParam* _get_reference() {
     return (IFSelect_IntParam*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_IntParam {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2198,8 +2270,17 @@ class Handle_IFSelect_ListEditor : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_ListEditor {
-    IFSelect_ListEditor* GetObject() {
+    IFSelect_ListEditor* _get_reference() {
     return (IFSelect_ListEditor*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_ListEditor {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2447,8 +2528,17 @@ class Handle_IFSelect_ModelCopier : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_ModelCopier {
-    IFSelect_ModelCopier* GetObject() {
+    IFSelect_ModelCopier* _get_reference() {
     return (IFSelect_ModelCopier*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_ModelCopier {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2588,8 +2678,17 @@ class Handle_IFSelect_PacketList : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_PacketList {
-    IFSelect_PacketList* GetObject() {
+    IFSelect_PacketList* _get_reference() {
     return (IFSelect_PacketList*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_PacketList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2669,8 +2768,17 @@ class Handle_IFSelect_Selection : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_Selection {
-    IFSelect_Selection* GetObject() {
+    IFSelect_Selection* _get_reference() {
     return (IFSelect_Selection*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_Selection {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2788,8 +2896,17 @@ class Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers : public Handle_T
 
 };
 %extend Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers {
-    IFSelect_SequenceNodeOfSequenceOfAppliedModifiers* GetObject() {
+    IFSelect_SequenceNodeOfSequenceOfAppliedModifiers* _get_reference() {
     return (IFSelect_SequenceNodeOfSequenceOfAppliedModifiers*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2845,8 +2962,17 @@ class Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier : public Handle_TC
 
 };
 %extend Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier {
-    IFSelect_SequenceNodeOfSequenceOfGeneralModifier* GetObject() {
+    IFSelect_SequenceNodeOfSequenceOfGeneralModifier* _get_reference() {
     return (IFSelect_SequenceNodeOfSequenceOfGeneralModifier*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2902,8 +3028,17 @@ class Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel : public Handle_TCo
 
 };
 %extend Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel {
-    IFSelect_SequenceNodeOfSequenceOfInterfaceModel* GetObject() {
+    IFSelect_SequenceNodeOfSequenceOfInterfaceModel* _get_reference() {
     return (IFSelect_SequenceNodeOfSequenceOfInterfaceModel*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2959,8 +3094,17 @@ class Handle_IFSelect_SequenceNodeOfTSeqOfDispatch : public Handle_TCollection_S
 
 };
 %extend Handle_IFSelect_SequenceNodeOfTSeqOfDispatch {
-    IFSelect_SequenceNodeOfTSeqOfDispatch* GetObject() {
+    IFSelect_SequenceNodeOfTSeqOfDispatch* _get_reference() {
     return (IFSelect_SequenceNodeOfTSeqOfDispatch*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SequenceNodeOfTSeqOfDispatch {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3016,8 +3160,17 @@ class Handle_IFSelect_SequenceNodeOfTSeqOfSelection : public Handle_TCollection_
 
 };
 %extend Handle_IFSelect_SequenceNodeOfTSeqOfSelection {
-    IFSelect_SequenceNodeOfTSeqOfSelection* GetObject() {
+    IFSelect_SequenceNodeOfTSeqOfSelection* _get_reference() {
     return (IFSelect_SequenceNodeOfTSeqOfSelection*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SequenceNodeOfTSeqOfSelection {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3507,8 +3660,17 @@ class Handle_IFSelect_SessionDumper : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_SessionDumper {
-    IFSelect_SessionDumper* GetObject() {
+    IFSelect_SessionDumper* _get_reference() {
     return (IFSelect_SessionDumper*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SessionDumper {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4094,8 +4256,17 @@ class Handle_IFSelect_ShareOut : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_ShareOut {
-    IFSelect_ShareOut* GetObject() {
+    IFSelect_ShareOut* _get_reference() {
     return (IFSelect_ShareOut*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_ShareOut {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4373,8 +4544,17 @@ class Handle_IFSelect_Signature : public Handle_Interface_SignType {
 
 };
 %extend Handle_IFSelect_Signature {
-    IFSelect_Signature* GetObject() {
+    IFSelect_Signature* _get_reference() {
     return (IFSelect_Signature*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_Signature {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4557,8 +4737,17 @@ class Handle_IFSelect_SignatureList : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_SignatureList {
-    IFSelect_SignatureList* GetObject() {
+    IFSelect_SignatureList* _get_reference() {
     return (IFSelect_SignatureList*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SignatureList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4914,8 +5103,17 @@ class Handle_IFSelect_Transformer : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_Transformer {
-    IFSelect_Transformer* GetObject() {
+    IFSelect_Transformer* _get_reference() {
     return (IFSelect_Transformer*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_Transformer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5059,8 +5257,17 @@ class Handle_IFSelect_WorkLibrary : public Handle_Standard_Transient {
 
 };
 %extend Handle_IFSelect_WorkLibrary {
-    IFSelect_WorkLibrary* GetObject() {
+    IFSelect_WorkLibrary* _get_reference() {
     return (IFSelect_WorkLibrary*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_WorkLibrary {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6454,8 +6661,17 @@ class Handle_IFSelect_WorkSession : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IFSelect_WorkSession {
-    IFSelect_WorkSession* GetObject() {
+    IFSelect_WorkSession* _get_reference() {
     return (IFSelect_WorkSession*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_WorkSession {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6561,8 +6777,17 @@ class Handle_IFSelect_Act : public Handle_IFSelect_Activator {
 
 };
 %extend Handle_IFSelect_Act {
-    IFSelect_Act* GetObject() {
+    IFSelect_Act* _get_reference() {
     return (IFSelect_Act*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_Act {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6632,8 +6857,17 @@ class Handle_IFSelect_BasicDumper : public Handle_IFSelect_SessionDumper {
 
 };
 %extend Handle_IFSelect_BasicDumper {
-    IFSelect_BasicDumper* GetObject() {
+    IFSelect_BasicDumper* _get_reference() {
     return (IFSelect_BasicDumper*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_BasicDumper {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6711,8 +6945,17 @@ class Handle_IFSelect_CheckCounter : public Handle_IFSelect_SignatureList {
 
 };
 %extend Handle_IFSelect_CheckCounter {
-    IFSelect_CheckCounter* GetObject() {
+    IFSelect_CheckCounter* _get_reference() {
     return (IFSelect_CheckCounter*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_CheckCounter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6796,8 +7039,17 @@ class Handle_IFSelect_DispGlobal : public Handle_IFSelect_Dispatch {
 
 };
 %extend Handle_IFSelect_DispGlobal {
-    IFSelect_DispGlobal* GetObject() {
+    IFSelect_DispGlobal* _get_reference() {
     return (IFSelect_DispGlobal*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_DispGlobal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6901,8 +7153,17 @@ class Handle_IFSelect_DispPerCount : public Handle_IFSelect_Dispatch {
 
 };
 %extend Handle_IFSelect_DispPerCount {
-    IFSelect_DispPerCount* GetObject() {
+    IFSelect_DispPerCount* _get_reference() {
     return (IFSelect_DispPerCount*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_DispPerCount {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7006,8 +7267,17 @@ class Handle_IFSelect_DispPerFiles : public Handle_IFSelect_Dispatch {
 
 };
 %extend Handle_IFSelect_DispPerFiles {
-    IFSelect_DispPerFiles* GetObject() {
+    IFSelect_DispPerFiles* _get_reference() {
     return (IFSelect_DispPerFiles*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_DispPerFiles {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7091,8 +7361,17 @@ class Handle_IFSelect_DispPerOne : public Handle_IFSelect_Dispatch {
 
 };
 %extend Handle_IFSelect_DispPerOne {
-    IFSelect_DispPerOne* GetObject() {
+    IFSelect_DispPerOne* _get_reference() {
     return (IFSelect_DispPerOne*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_DispPerOne {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7186,8 +7465,17 @@ class Handle_IFSelect_DispPerSignature : public Handle_IFSelect_Dispatch {
 
 };
 %extend Handle_IFSelect_DispPerSignature {
-    IFSelect_DispPerSignature* GetObject() {
+    IFSelect_DispPerSignature* _get_reference() {
     return (IFSelect_DispPerSignature*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_DispPerSignature {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7243,8 +7531,17 @@ class Handle_IFSelect_Modifier : public Handle_IFSelect_GeneralModifier {
 
 };
 %extend Handle_IFSelect_Modifier {
-    IFSelect_Modifier* GetObject() {
+    IFSelect_Modifier* _get_reference() {
     return (IFSelect_Modifier*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_Modifier {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7366,8 +7663,17 @@ class Handle_IFSelect_ParamEditor : public Handle_IFSelect_Editor {
 
 };
 %extend Handle_IFSelect_ParamEditor {
-    IFSelect_ParamEditor* GetObject() {
+    IFSelect_ParamEditor* _get_reference() {
     return (IFSelect_ParamEditor*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_ParamEditor {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7417,8 +7723,17 @@ class Handle_IFSelect_SelectBase : public Handle_IFSelect_Selection {
 
 };
 %extend Handle_IFSelect_SelectBase {
-    IFSelect_SelectBase* GetObject() {
+    IFSelect_SelectBase* _get_reference() {
     return (IFSelect_SelectBase*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectBase {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7516,8 +7831,17 @@ class Handle_IFSelect_SelectCombine : public Handle_IFSelect_Selection {
 
 };
 %extend Handle_IFSelect_SelectCombine {
-    IFSelect_SelectCombine* GetObject() {
+    IFSelect_SelectCombine* _get_reference() {
     return (IFSelect_SelectCombine*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectCombine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7601,8 +7925,17 @@ class Handle_IFSelect_SelectControl : public Handle_IFSelect_Selection {
 
 };
 %extend Handle_IFSelect_SelectControl {
-    IFSelect_SelectControl* GetObject() {
+    IFSelect_SelectControl* _get_reference() {
     return (IFSelect_SelectControl*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectControl {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7692,8 +8025,17 @@ class Handle_IFSelect_SelectDeduct : public Handle_IFSelect_Selection {
 
 };
 %extend Handle_IFSelect_SelectDeduct {
-    IFSelect_SelectDeduct* GetObject() {
+    IFSelect_SelectDeduct* _get_reference() {
     return (IFSelect_SelectDeduct*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectDeduct {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7939,8 +8281,17 @@ class Handle_IFSelect_SessionPilot : public Handle_IFSelect_Activator {
 
 };
 %extend Handle_IFSelect_SessionPilot {
-    IFSelect_SessionPilot* GetObject() {
+    IFSelect_SessionPilot* _get_reference() {
     return (IFSelect_SessionPilot*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SessionPilot {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7998,8 +8349,17 @@ class Handle_IFSelect_SignCategory : public Handle_IFSelect_Signature {
 
 };
 %extend Handle_IFSelect_SignCategory {
-    IFSelect_SignCategory* GetObject() {
+    IFSelect_SignCategory* _get_reference() {
     return (IFSelect_SignCategory*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SignCategory {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8193,8 +8553,17 @@ class Handle_IFSelect_SignCounter : public Handle_IFSelect_SignatureList {
 
 };
 %extend Handle_IFSelect_SignCounter {
-    IFSelect_SignCounter* GetObject() {
+    IFSelect_SignCounter* _get_reference() {
     return (IFSelect_SignCounter*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SignCounter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8280,8 +8649,17 @@ class Handle_IFSelect_SignMultiple : public Handle_IFSelect_Signature {
 
 };
 %extend Handle_IFSelect_SignMultiple {
-    IFSelect_SignMultiple* GetObject() {
+    IFSelect_SignMultiple* _get_reference() {
     return (IFSelect_SignMultiple*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SignMultiple {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8341,8 +8719,17 @@ class Handle_IFSelect_SignType : public Handle_IFSelect_Signature {
 
 };
 %extend Handle_IFSelect_SignType {
-    IFSelect_SignType* GetObject() {
+    IFSelect_SignType* _get_reference() {
     return (IFSelect_SignType*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SignType {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8410,8 +8797,17 @@ class Handle_IFSelect_SignValidity : public Handle_IFSelect_Signature {
 
 };
 %extend Handle_IFSelect_SignValidity {
-    IFSelect_SignValidity* GetObject() {
+    IFSelect_SignValidity* _get_reference() {
     return (IFSelect_SignValidity*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SignValidity {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8617,8 +9013,17 @@ class Handle_IFSelect_TransformStandard : public Handle_IFSelect_Transformer {
 
 };
 %extend Handle_IFSelect_TransformStandard {
-    IFSelect_TransformStandard* GetObject() {
+    IFSelect_TransformStandard* _get_reference() {
     return (IFSelect_TransformStandard*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_TransformStandard {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8694,8 +9099,17 @@ class Handle_IFSelect_GraphCounter : public Handle_IFSelect_SignCounter {
 
 };
 %extend Handle_IFSelect_GraphCounter {
-    IFSelect_GraphCounter* GetObject() {
+    IFSelect_GraphCounter* _get_reference() {
     return (IFSelect_GraphCounter*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_GraphCounter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8771,8 +9185,17 @@ class Handle_IFSelect_ModifEditForm : public Handle_IFSelect_Modifier {
 
 };
 %extend Handle_IFSelect_ModifEditForm {
-    IFSelect_ModifEditForm* GetObject() {
+    IFSelect_ModifEditForm* _get_reference() {
     return (IFSelect_ModifEditForm*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_ModifEditForm {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8842,8 +9265,17 @@ class Handle_IFSelect_ModifReorder : public Handle_IFSelect_Modifier {
 
 };
 %extend Handle_IFSelect_ModifReorder {
-    IFSelect_ModifReorder* GetObject() {
+    IFSelect_ModifReorder* _get_reference() {
     return (IFSelect_ModifReorder*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_ModifReorder {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9005,8 +9437,17 @@ class Handle_IFSelect_SelectAnyList : public Handle_IFSelect_SelectDeduct {
 
 };
 %extend Handle_IFSelect_SelectAnyList {
-    IFSelect_SelectAnyList* GetObject() {
+    IFSelect_SelectAnyList* _get_reference() {
     return (IFSelect_SelectAnyList*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectAnyList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9068,8 +9509,17 @@ class Handle_IFSelect_SelectDiff : public Handle_IFSelect_SelectControl {
 
 };
 %extend Handle_IFSelect_SelectDiff {
-    IFSelect_SelectDiff* GetObject() {
+    IFSelect_SelectDiff* _get_reference() {
     return (IFSelect_SelectDiff*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectDiff {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9145,8 +9595,17 @@ class Handle_IFSelect_SelectEntityNumber : public Handle_IFSelect_SelectBase {
 
 };
 %extend Handle_IFSelect_SelectEntityNumber {
-    IFSelect_SelectEntityNumber* GetObject() {
+    IFSelect_SelectEntityNumber* _get_reference() {
     return (IFSelect_SelectEntityNumber*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectEntityNumber {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9228,8 +9687,17 @@ class Handle_IFSelect_SelectExplore : public Handle_IFSelect_SelectDeduct {
 
 };
 %extend Handle_IFSelect_SelectExplore {
-    IFSelect_SelectExplore* GetObject() {
+    IFSelect_SelectExplore* _get_reference() {
     return (IFSelect_SelectExplore*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectExplore {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9329,8 +9797,17 @@ class Handle_IFSelect_SelectExtract : public Handle_IFSelect_SelectDeduct {
 
 };
 %extend Handle_IFSelect_SelectExtract {
-    IFSelect_SelectExtract* GetObject() {
+    IFSelect_SelectExtract* _get_reference() {
     return (IFSelect_SelectExtract*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectExtract {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9392,8 +9869,17 @@ class Handle_IFSelect_SelectIntersection : public Handle_IFSelect_SelectCombine 
 
 };
 %extend Handle_IFSelect_SelectIntersection {
-    IFSelect_SelectIntersection* GetObject() {
+    IFSelect_SelectIntersection* _get_reference() {
     return (IFSelect_SelectIntersection*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectIntersection {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9463,8 +9949,17 @@ class Handle_IFSelect_SelectModelEntities : public Handle_IFSelect_SelectBase {
 
 };
 %extend Handle_IFSelect_SelectModelEntities {
-    IFSelect_SelectModelEntities* GetObject() {
+    IFSelect_SelectModelEntities* _get_reference() {
     return (IFSelect_SelectModelEntities*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectModelEntities {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9526,8 +10021,17 @@ class Handle_IFSelect_SelectModelRoots : public Handle_IFSelect_SelectBase {
 
 };
 %extend Handle_IFSelect_SelectModelRoots {
-    IFSelect_SelectModelRoots* GetObject() {
+    IFSelect_SelectModelRoots* _get_reference() {
     return (IFSelect_SelectModelRoots*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectModelRoots {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9703,8 +10207,17 @@ class Handle_IFSelect_SelectPointed : public Handle_IFSelect_SelectBase {
 
 };
 %extend Handle_IFSelect_SelectPointed {
-    IFSelect_SelectPointed* GetObject() {
+    IFSelect_SelectPointed* _get_reference() {
     return (IFSelect_SelectPointed*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectPointed {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9766,8 +10279,17 @@ class Handle_IFSelect_SelectShared : public Handle_IFSelect_SelectDeduct {
 
 };
 %extend Handle_IFSelect_SelectShared {
-    IFSelect_SelectShared* GetObject() {
+    IFSelect_SelectShared* _get_reference() {
     return (IFSelect_SelectShared*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectShared {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9829,8 +10351,17 @@ class Handle_IFSelect_SelectSharing : public Handle_IFSelect_SelectDeduct {
 
 };
 %extend Handle_IFSelect_SelectSharing {
-    IFSelect_SelectSharing* GetObject() {
+    IFSelect_SelectSharing* _get_reference() {
     return (IFSelect_SelectSharing*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectSharing {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9938,8 +10469,17 @@ class Handle_IFSelect_SelectSuite : public Handle_IFSelect_SelectDeduct {
 
 };
 %extend Handle_IFSelect_SelectSuite {
-    IFSelect_SelectSuite* GetObject() {
+    IFSelect_SelectSuite* _get_reference() {
     return (IFSelect_SelectSuite*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectSuite {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10001,8 +10541,17 @@ class Handle_IFSelect_SelectUnion : public Handle_IFSelect_SelectCombine {
 
 };
 %extend Handle_IFSelect_SelectUnion {
-    IFSelect_SelectUnion* GetObject() {
+    IFSelect_SelectUnion* _get_reference() {
     return (IFSelect_SelectUnion*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectUnion {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10062,8 +10611,17 @@ class Handle_IFSelect_SignAncestor : public Handle_IFSelect_SignType {
 
 };
 %extend Handle_IFSelect_SignAncestor {
-    IFSelect_SignAncestor* GetObject() {
+    IFSelect_SignAncestor* _get_reference() {
     return (IFSelect_SignAncestor*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SignAncestor {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10123,8 +10681,17 @@ class Handle_IFSelect_SelectAnyType : public Handle_IFSelect_SelectExtract {
 
 };
 %extend Handle_IFSelect_SelectAnyType {
-    IFSelect_SelectAnyType* GetObject() {
+    IFSelect_SelectAnyType* _get_reference() {
     return (IFSelect_SelectAnyType*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectAnyType {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10190,8 +10757,17 @@ class Handle_IFSelect_SelectErrorEntities : public Handle_IFSelect_SelectExtract
 
 };
 %extend Handle_IFSelect_SelectErrorEntities {
-    IFSelect_SelectErrorEntities* GetObject() {
+    IFSelect_SelectErrorEntities* _get_reference() {
     return (IFSelect_SelectErrorEntities*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectErrorEntities {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10273,8 +10849,17 @@ class Handle_IFSelect_SelectFlag : public Handle_IFSelect_SelectExtract {
 
 };
 %extend Handle_IFSelect_SelectFlag {
-    IFSelect_SelectFlag* GetObject() {
+    IFSelect_SelectFlag* _get_reference() {
     return (IFSelect_SelectFlag*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectFlag {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10340,8 +10925,17 @@ class Handle_IFSelect_SelectInList : public Handle_IFSelect_SelectAnyList {
 
 };
 %extend Handle_IFSelect_SelectInList {
-    IFSelect_SelectInList* GetObject() {
+    IFSelect_SelectInList* _get_reference() {
     return (IFSelect_SelectInList*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectInList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10477,8 +11071,17 @@ class Handle_IFSelect_SelectRange : public Handle_IFSelect_SelectExtract {
 
 };
 %extend Handle_IFSelect_SelectRange {
-    IFSelect_SelectRange* GetObject() {
+    IFSelect_SelectRange* _get_reference() {
     return (IFSelect_SelectRange*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectRange {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10552,8 +11155,17 @@ class Handle_IFSelect_SelectRootComps : public Handle_IFSelect_SelectExtract {
 
 };
 %extend Handle_IFSelect_SelectRootComps {
-    IFSelect_SelectRootComps* GetObject() {
+    IFSelect_SelectRootComps* _get_reference() {
     return (IFSelect_SelectRootComps*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectRootComps {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10627,8 +11239,17 @@ class Handle_IFSelect_SelectRoots : public Handle_IFSelect_SelectExtract {
 
 };
 %extend Handle_IFSelect_SelectRoots {
-    IFSelect_SelectRoots* GetObject() {
+    IFSelect_SelectRoots* _get_reference() {
     return (IFSelect_SelectRoots*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectRoots {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10718,8 +11339,17 @@ class Handle_IFSelect_SelectSent : public Handle_IFSelect_SelectExtract {
 
 };
 %extend Handle_IFSelect_SelectSent {
-    IFSelect_SelectSent* GetObject() {
+    IFSelect_SelectSent* _get_reference() {
     return (IFSelect_SelectSent*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectSent {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10851,8 +11481,17 @@ class Handle_IFSelect_SelectSignature : public Handle_IFSelect_SelectExtract {
 
 };
 %extend Handle_IFSelect_SelectSignature {
-    IFSelect_SelectSignature* GetObject() {
+    IFSelect_SelectSignature* _get_reference() {
     return (IFSelect_SelectSignature*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectSignature {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10946,8 +11585,17 @@ class Handle_IFSelect_SelectSignedShared : public Handle_IFSelect_SelectExplore 
 
 };
 %extend Handle_IFSelect_SelectSignedShared {
-    IFSelect_SelectSignedShared* GetObject() {
+    IFSelect_SelectSignedShared* _get_reference() {
     return (IFSelect_SelectSignedShared*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectSignedShared {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -11041,8 +11689,17 @@ class Handle_IFSelect_SelectSignedSharing : public Handle_IFSelect_SelectExplore
 
 };
 %extend Handle_IFSelect_SelectSignedSharing {
-    IFSelect_SelectSignedSharing* GetObject() {
+    IFSelect_SelectSignedSharing* _get_reference() {
     return (IFSelect_SelectSignedSharing*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectSignedSharing {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -11108,8 +11765,17 @@ class Handle_IFSelect_SelectUnknownEntities : public Handle_IFSelect_SelectExtra
 
 };
 %extend Handle_IFSelect_SelectUnknownEntities {
-    IFSelect_SelectUnknownEntities* GetObject() {
+    IFSelect_SelectUnknownEntities* _get_reference() {
     return (IFSelect_SelectUnknownEntities*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectUnknownEntities {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -11157,8 +11823,17 @@ class Handle_IFSelect_SelectIncorrectEntities : public Handle_IFSelect_SelectFla
 
 };
 %extend Handle_IFSelect_SelectIncorrectEntities {
-    IFSelect_SelectIncorrectEntities* GetObject() {
+    IFSelect_SelectIncorrectEntities* _get_reference() {
     return (IFSelect_SelectIncorrectEntities*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectIncorrectEntities {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -11234,8 +11909,17 @@ class Handle_IFSelect_SelectType : public Handle_IFSelect_SelectAnyType {
 
 };
 %extend Handle_IFSelect_SelectType {
-    IFSelect_SelectType* GetObject() {
+    IFSelect_SelectType* _get_reference() {
     return (IFSelect_SelectType*)$self->Access();
+    }
+};
+
+%extend Handle_IFSelect_SelectType {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

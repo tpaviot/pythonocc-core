@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -235,8 +235,17 @@ class Handle_Geom2dHatch_DataMapNodeOfHatchings : public Handle_TCollection_MapN
 
 };
 %extend Handle_Geom2dHatch_DataMapNodeOfHatchings {
-    Geom2dHatch_DataMapNodeOfHatchings* GetObject() {
+    Geom2dHatch_DataMapNodeOfHatchings* _get_reference() {
     return (Geom2dHatch_DataMapNodeOfHatchings*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2dHatch_DataMapNodeOfHatchings {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -305,8 +314,17 @@ class Handle_Geom2dHatch_DataMapNodeOfMapOfElements : public Handle_TCollection_
 
 };
 %extend Handle_Geom2dHatch_DataMapNodeOfMapOfElements {
-    Geom2dHatch_DataMapNodeOfMapOfElements* GetObject() {
+    Geom2dHatch_DataMapNodeOfMapOfElements* _get_reference() {
     return (Geom2dHatch_DataMapNodeOfMapOfElements*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2dHatch_DataMapNodeOfMapOfElements {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

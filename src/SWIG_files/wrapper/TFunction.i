@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -262,8 +262,17 @@ class Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver : public Handle_TCollect
 
 };
 %extend Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver {
-    TFunction_DataMapNodeOfDataMapOfGUIDDriver* GetObject() {
+    TFunction_DataMapNodeOfDataMapOfGUIDDriver* _get_reference() {
     return (TFunction_DataMapNodeOfDataMapOfGUIDDriver*)$self->Access();
+    }
+};
+
+%extend Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -323,8 +332,17 @@ class Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel : public Handle_TC
 
 };
 %extend Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel {
-    TFunction_DataMapNodeOfDataMapOfLabelListOfLabel* GetObject() {
+    TFunction_DataMapNodeOfDataMapOfLabelListOfLabel* _get_reference() {
     return (TFunction_DataMapNodeOfDataMapOfLabelListOfLabel*)$self->Access();
+    }
+};
+
+%extend Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -585,8 +603,17 @@ class Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel : public Handle_TC
 
 };
 %extend Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel {
-    TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel* GetObject() {
+    TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel* _get_reference() {
     return (TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel*)$self->Access();
+    }
+};
+
+%extend Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -768,8 +795,17 @@ class Handle_TFunction_Driver : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TFunction_Driver {
-    TFunction_Driver* GetObject() {
+    TFunction_Driver* _get_reference() {
     return (TFunction_Driver*)$self->Access();
+    }
+};
+
+%extend Handle_TFunction_Driver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -881,8 +917,17 @@ class Handle_TFunction_DriverTable : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TFunction_DriverTable {
-    TFunction_DriverTable* GetObject() {
+    TFunction_DriverTable* _get_reference() {
     return (TFunction_DriverTable*)$self->Access();
+    }
+};
+
+%extend Handle_TFunction_DriverTable {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1022,8 +1067,17 @@ class Handle_TFunction_Function : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TFunction_Function {
-    TFunction_Function* GetObject() {
+    TFunction_Function* _get_reference() {
     return (TFunction_Function*)$self->Access();
+    }
+};
+
+%extend Handle_TFunction_Function {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1221,8 +1275,17 @@ class Handle_TFunction_GraphNode : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TFunction_GraphNode {
-    TFunction_GraphNode* GetObject() {
+    TFunction_GraphNode* _get_reference() {
     return (TFunction_GraphNode*)$self->Access();
+    }
+};
+
+%extend Handle_TFunction_GraphNode {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1328,8 +1391,17 @@ class Handle_TFunction_HArray1OfDataMapOfGUIDDriver : public Handle_MMgt_TShared
 
 };
 %extend Handle_TFunction_HArray1OfDataMapOfGUIDDriver {
-    TFunction_HArray1OfDataMapOfGUIDDriver* GetObject() {
+    TFunction_HArray1OfDataMapOfGUIDDriver* _get_reference() {
     return (TFunction_HArray1OfDataMapOfGUIDDriver*)$self->Access();
+    }
+};
+
+%extend Handle_TFunction_HArray1OfDataMapOfGUIDDriver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1838,8 +1910,17 @@ class Handle_TFunction_Scope : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TFunction_Scope {
-    TFunction_Scope* GetObject() {
+    TFunction_Scope* _get_reference() {
     return (TFunction_Scope*)$self->Access();
+    }
+};
+
+%extend Handle_TFunction_Scope {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

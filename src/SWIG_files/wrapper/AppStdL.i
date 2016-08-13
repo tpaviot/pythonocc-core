@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -116,8 +116,17 @@ class Handle_AppStdL_Application : public Handle_TDocStd_Application {
 
 };
 %extend Handle_AppStdL_Application {
-    AppStdL_Application* GetObject() {
+    AppStdL_Application* _get_reference() {
     return (AppStdL_Application*)$self->Access();
+    }
+};
+
+%extend Handle_AppStdL_Application {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

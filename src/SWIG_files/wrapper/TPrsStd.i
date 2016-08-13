@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -374,8 +374,17 @@ class Handle_TPrsStd_AISPresentation : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TPrsStd_AISPresentation {
-    TPrsStd_AISPresentation* GetObject() {
+    TPrsStd_AISPresentation* _get_reference() {
     return (TPrsStd_AISPresentation*)$self->Access();
+    }
+};
+
+%extend Handle_TPrsStd_AISPresentation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -531,8 +540,17 @@ class Handle_TPrsStd_AISViewer : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TPrsStd_AISViewer {
-    TPrsStd_AISViewer* GetObject() {
+    TPrsStd_AISViewer* _get_reference() {
     return (TPrsStd_AISViewer*)$self->Access();
+    }
+};
+
+%extend Handle_TPrsStd_AISViewer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -815,8 +833,17 @@ class Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver : public Handle_TCollectio
 
 };
 %extend Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver {
-    TPrsStd_DataMapNodeOfDataMapOfGUIDDriver* GetObject() {
+    TPrsStd_DataMapNodeOfDataMapOfGUIDDriver* _get_reference() {
     return (TPrsStd_DataMapNodeOfDataMapOfGUIDDriver*)$self->Access();
+    }
+};
+
+%extend Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -946,8 +973,17 @@ class Handle_TPrsStd_Driver : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TPrsStd_Driver {
-    TPrsStd_Driver* GetObject() {
+    TPrsStd_Driver* _get_reference() {
     return (TPrsStd_Driver*)$self->Access();
+    }
+};
+
+%extend Handle_TPrsStd_Driver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1041,8 +1077,17 @@ class Handle_TPrsStd_DriverTable : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TPrsStd_DriverTable {
-    TPrsStd_DriverTable* GetObject() {
+    TPrsStd_DriverTable* _get_reference() {
     return (TPrsStd_DriverTable*)$self->Access();
+    }
+};
+
+%extend Handle_TPrsStd_DriverTable {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1100,8 +1145,17 @@ class Handle_TPrsStd_AxisDriver : public Handle_TPrsStd_Driver {
 
 };
 %extend Handle_TPrsStd_AxisDriver {
-    TPrsStd_AxisDriver* GetObject() {
+    TPrsStd_AxisDriver* _get_reference() {
     return (TPrsStd_AxisDriver*)$self->Access();
+    }
+};
+
+%extend Handle_TPrsStd_AxisDriver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1159,8 +1213,17 @@ class Handle_TPrsStd_ConstraintDriver : public Handle_TPrsStd_Driver {
 
 };
 %extend Handle_TPrsStd_ConstraintDriver {
-    TPrsStd_ConstraintDriver* GetObject() {
+    TPrsStd_ConstraintDriver* _get_reference() {
     return (TPrsStd_ConstraintDriver*)$self->Access();
+    }
+};
+
+%extend Handle_TPrsStd_ConstraintDriver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1218,8 +1281,17 @@ class Handle_TPrsStd_GeometryDriver : public Handle_TPrsStd_Driver {
 
 };
 %extend Handle_TPrsStd_GeometryDriver {
-    TPrsStd_GeometryDriver* GetObject() {
+    TPrsStd_GeometryDriver* _get_reference() {
     return (TPrsStd_GeometryDriver*)$self->Access();
+    }
+};
+
+%extend Handle_TPrsStd_GeometryDriver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1277,8 +1349,17 @@ class Handle_TPrsStd_NamedShapeDriver : public Handle_TPrsStd_Driver {
 
 };
 %extend Handle_TPrsStd_NamedShapeDriver {
-    TPrsStd_NamedShapeDriver* GetObject() {
+    TPrsStd_NamedShapeDriver* _get_reference() {
     return (TPrsStd_NamedShapeDriver*)$self->Access();
+    }
+};
+
+%extend Handle_TPrsStd_NamedShapeDriver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1336,8 +1417,17 @@ class Handle_TPrsStd_PlaneDriver : public Handle_TPrsStd_Driver {
 
 };
 %extend Handle_TPrsStd_PlaneDriver {
-    TPrsStd_PlaneDriver* GetObject() {
+    TPrsStd_PlaneDriver* _get_reference() {
     return (TPrsStd_PlaneDriver*)$self->Access();
+    }
+};
+
+%extend Handle_TPrsStd_PlaneDriver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1395,8 +1485,17 @@ class Handle_TPrsStd_PointDriver : public Handle_TPrsStd_Driver {
 
 };
 %extend Handle_TPrsStd_PointDriver {
-    TPrsStd_PointDriver* GetObject() {
+    TPrsStd_PointDriver* _get_reference() {
     return (TPrsStd_PointDriver*)$self->Access();
+    }
+};
+
+%extend Handle_TPrsStd_PointDriver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

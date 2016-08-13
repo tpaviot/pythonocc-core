@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -826,8 +826,17 @@ class Handle_BRepAdaptor_HArray1OfCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRepAdaptor_HArray1OfCurve {
-    BRepAdaptor_HArray1OfCurve* GetObject() {
+    BRepAdaptor_HArray1OfCurve* _get_reference() {
     return (BRepAdaptor_HArray1OfCurve*)$self->Access();
+    }
+};
+
+%extend Handle_BRepAdaptor_HArray1OfCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -897,8 +906,17 @@ class Handle_BRepAdaptor_HCompCurve : public Handle_Adaptor3d_HCurve {
 
 };
 %extend Handle_BRepAdaptor_HCompCurve {
-    BRepAdaptor_HCompCurve* GetObject() {
+    BRepAdaptor_HCompCurve* _get_reference() {
     return (BRepAdaptor_HCompCurve*)$self->Access();
+    }
+};
+
+%extend Handle_BRepAdaptor_HCompCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -968,8 +986,17 @@ class Handle_BRepAdaptor_HCurve : public Handle_Adaptor3d_HCurve {
 
 };
 %extend Handle_BRepAdaptor_HCurve {
-    BRepAdaptor_HCurve* GetObject() {
+    BRepAdaptor_HCurve* _get_reference() {
     return (BRepAdaptor_HCurve*)$self->Access();
+    }
+};
+
+%extend Handle_BRepAdaptor_HCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1035,8 +1062,17 @@ class Handle_BRepAdaptor_HCurve2d : public Handle_Adaptor2d_HCurve2d {
 
 };
 %extend Handle_BRepAdaptor_HCurve2d {
-    BRepAdaptor_HCurve2d* GetObject() {
+    BRepAdaptor_HCurve2d* _get_reference() {
     return (BRepAdaptor_HCurve2d*)$self->Access();
+    }
+};
+
+%extend Handle_BRepAdaptor_HCurve2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1102,8 +1138,17 @@ class Handle_BRepAdaptor_HSurface : public Handle_Adaptor3d_HSurface {
 
 };
 %extend Handle_BRepAdaptor_HSurface {
-    BRepAdaptor_HSurface* GetObject() {
+    BRepAdaptor_HSurface* _get_reference() {
     return (BRepAdaptor_HSurface*)$self->Access();
+    }
+};
+
+%extend Handle_BRepAdaptor_HSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

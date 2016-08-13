@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -388,8 +388,17 @@ class Handle_GeomAdaptor_GHCurve : public Handle_Adaptor3d_HCurve {
 
 };
 %extend Handle_GeomAdaptor_GHCurve {
-    GeomAdaptor_GHCurve* GetObject() {
+    GeomAdaptor_GHCurve* _get_reference() {
     return (GeomAdaptor_GHCurve*)$self->Access();
+    }
+};
+
+%extend Handle_GeomAdaptor_GHCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -455,8 +464,17 @@ class Handle_GeomAdaptor_GHSurface : public Handle_Adaptor3d_HSurface {
 
 };
 %extend Handle_GeomAdaptor_GHSurface {
-    GeomAdaptor_GHSurface* GetObject() {
+    GeomAdaptor_GHSurface* _get_reference() {
     return (GeomAdaptor_GHSurface*)$self->Access();
+    }
+};
+
+%extend Handle_GeomAdaptor_GHSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -910,8 +928,17 @@ class Handle_GeomAdaptor_HCurve : public Handle_GeomAdaptor_GHCurve {
 
 };
 %extend Handle_GeomAdaptor_HCurve {
-    GeomAdaptor_HCurve* GetObject() {
+    GeomAdaptor_HCurve* _get_reference() {
     return (GeomAdaptor_HCurve*)$self->Access();
+    }
+};
+
+%extend Handle_GeomAdaptor_HCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -989,8 +1016,17 @@ class Handle_GeomAdaptor_HSurface : public Handle_GeomAdaptor_GHSurface {
 
 };
 %extend Handle_GeomAdaptor_HSurface {
-    GeomAdaptor_HSurface* GetObject() {
+    GeomAdaptor_HSurface* _get_reference() {
     return (GeomAdaptor_HSurface*)$self->Access();
+    }
+};
+
+%extend Handle_GeomAdaptor_HSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

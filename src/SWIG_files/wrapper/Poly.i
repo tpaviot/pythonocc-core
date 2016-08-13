@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -759,8 +759,17 @@ class Handle_Poly_HArray1OfTriangle : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Poly_HArray1OfTriangle {
-    Poly_HArray1OfTriangle* GetObject() {
+    Poly_HArray1OfTriangle* _get_reference() {
     return (Poly_HArray1OfTriangle*)$self->Access();
+    }
+};
+
+%extend Handle_Poly_HArray1OfTriangle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -836,8 +845,17 @@ class Handle_Poly_Polygon2D : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Poly_Polygon2D {
-    Poly_Polygon2D* GetObject() {
+    Poly_Polygon2D* _get_reference() {
     return (Poly_Polygon2D*)$self->Access();
+    }
+};
+
+%extend Handle_Poly_Polygon2D {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -941,8 +959,17 @@ class Handle_Poly_Polygon3D : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Poly_Polygon3D {
-    Poly_Polygon3D* GetObject() {
+    Poly_Polygon3D* _get_reference() {
     return (Poly_Polygon3D*)$self->Access();
+    }
+};
+
+%extend Handle_Poly_Polygon3D {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1040,8 +1067,17 @@ class Handle_Poly_PolygonOnTriangulation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Poly_PolygonOnTriangulation {
-    Poly_PolygonOnTriangulation* GetObject() {
+    Poly_PolygonOnTriangulation* _get_reference() {
     return (Poly_PolygonOnTriangulation*)$self->Access();
+    }
+};
+
+%extend Handle_Poly_PolygonOnTriangulation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1285,8 +1321,17 @@ class Handle_Poly_Triangulation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Poly_Triangulation {
-    Poly_Triangulation* GetObject() {
+    Poly_Triangulation* _get_reference() {
     return (Poly_Triangulation*)$self->Access();
+    }
+};
+
+%extend Handle_Poly_Triangulation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -593,8 +593,17 @@ class Handle_ShapeConstruct_ProjectCurveOnSurface : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeConstruct_ProjectCurveOnSurface {
-    ShapeConstruct_ProjectCurveOnSurface* GetObject() {
+    ShapeConstruct_ProjectCurveOnSurface* _get_reference() {
     return (ShapeConstruct_ProjectCurveOnSurface*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeConstruct_ProjectCurveOnSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

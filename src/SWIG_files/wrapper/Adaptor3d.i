@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -464,8 +464,17 @@ class Handle_Adaptor3d_HCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Adaptor3d_HCurve {
-    Adaptor3d_HCurve* GetObject() {
+    Adaptor3d_HCurve* _get_reference() {
     return (Adaptor3d_HCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Adaptor3d_HCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -531,8 +540,17 @@ class Handle_Adaptor3d_HOffsetCurve : public Handle_Adaptor2d_HCurve2d {
 
 };
 %extend Handle_Adaptor3d_HOffsetCurve {
-    Adaptor3d_HOffsetCurve* GetObject() {
+    Adaptor3d_HOffsetCurve* _get_reference() {
     return (Adaptor3d_HOffsetCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Adaptor3d_HOffsetCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -864,8 +882,17 @@ class Handle_Adaptor3d_HSurface : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Adaptor3d_HSurface {
-    Adaptor3d_HSurface* GetObject() {
+    Adaptor3d_HSurface* _get_reference() {
     return (Adaptor3d_HSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Adaptor3d_HSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1308,8 +1335,17 @@ class Handle_Adaptor3d_HVertex : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Adaptor3d_HVertex {
-    Adaptor3d_HVertex* GetObject() {
+    Adaptor3d_HVertex* _get_reference() {
     return (Adaptor3d_HVertex*)$self->Access();
+    }
+};
+
+%extend Handle_Adaptor3d_HVertex {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2206,8 +2242,17 @@ class Handle_Adaptor3d_TopolTool : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Adaptor3d_TopolTool {
-    Adaptor3d_TopolTool* GetObject() {
+    Adaptor3d_TopolTool* _get_reference() {
     return (Adaptor3d_TopolTool*)$self->Access();
+    }
+};
+
+%extend Handle_Adaptor3d_TopolTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2517,8 +2562,17 @@ class Handle_Adaptor3d_HCurveOnSurface : public Handle_Adaptor3d_HCurve {
 
 };
 %extend Handle_Adaptor3d_HCurveOnSurface {
-    Adaptor3d_HCurveOnSurface* GetObject() {
+    Adaptor3d_HCurveOnSurface* _get_reference() {
     return (Adaptor3d_HCurveOnSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Adaptor3d_HCurveOnSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2588,8 +2642,17 @@ class Handle_Adaptor3d_HIsoCurve : public Handle_Adaptor3d_HCurve {
 
 };
 %extend Handle_Adaptor3d_HIsoCurve {
-    Adaptor3d_HIsoCurve* GetObject() {
+    Adaptor3d_HIsoCurve* _get_reference() {
     return (Adaptor3d_HIsoCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Adaptor3d_HIsoCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2655,8 +2718,17 @@ class Handle_Adaptor3d_HSurfaceOfLinearExtrusion : public Handle_Adaptor3d_HSurf
 
 };
 %extend Handle_Adaptor3d_HSurfaceOfLinearExtrusion {
-    Adaptor3d_HSurfaceOfLinearExtrusion* GetObject() {
+    Adaptor3d_HSurfaceOfLinearExtrusion* _get_reference() {
     return (Adaptor3d_HSurfaceOfLinearExtrusion*)$self->Access();
+    }
+};
+
+%extend Handle_Adaptor3d_HSurfaceOfLinearExtrusion {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2722,8 +2794,17 @@ class Handle_Adaptor3d_HSurfaceOfRevolution : public Handle_Adaptor3d_HSurface {
 
 };
 %extend Handle_Adaptor3d_HSurfaceOfRevolution {
-    Adaptor3d_HSurfaceOfRevolution* GetObject() {
+    Adaptor3d_HSurfaceOfRevolution* _get_reference() {
     return (Adaptor3d_HSurfaceOfRevolution*)$self->Access();
+    }
+};
+
+%extend Handle_Adaptor3d_HSurfaceOfRevolution {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

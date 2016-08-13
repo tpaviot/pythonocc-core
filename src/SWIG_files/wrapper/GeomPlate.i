@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -796,8 +796,17 @@ class Handle_GeomPlate_CurveConstraint : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomPlate_CurveConstraint {
-    GeomPlate_CurveConstraint* GetObject() {
+    GeomPlate_CurveConstraint* _get_reference() {
     return (GeomPlate_CurveConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_GeomPlate_CurveConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -903,8 +912,17 @@ class Handle_GeomPlate_HArray1OfHCurveOnSurface : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomPlate_HArray1OfHCurveOnSurface {
-    GeomPlate_HArray1OfHCurveOnSurface* GetObject() {
+    GeomPlate_HArray1OfHCurveOnSurface* _get_reference() {
     return (GeomPlate_HArray1OfHCurveOnSurface*)$self->Access();
+    }
+};
+
+%extend Handle_GeomPlate_HArray1OfHCurveOnSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1010,8 +1028,17 @@ class Handle_GeomPlate_HArray1OfSequenceOfReal : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomPlate_HArray1OfSequenceOfReal {
-    GeomPlate_HArray1OfSequenceOfReal* GetObject() {
+    GeomPlate_HArray1OfSequenceOfReal* _get_reference() {
     return (GeomPlate_HArray1OfSequenceOfReal*)$self->Access();
+    }
+};
+
+%extend Handle_GeomPlate_HArray1OfSequenceOfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1185,8 +1212,17 @@ class Handle_GeomPlate_HSequenceOfCurveConstraint : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomPlate_HSequenceOfCurveConstraint {
-    GeomPlate_HSequenceOfCurveConstraint* GetObject() {
+    GeomPlate_HSequenceOfCurveConstraint* _get_reference() {
     return (GeomPlate_HSequenceOfCurveConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_GeomPlate_HSequenceOfCurveConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1360,8 +1396,17 @@ class Handle_GeomPlate_HSequenceOfPointConstraint : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomPlate_HSequenceOfPointConstraint {
-    GeomPlate_HSequenceOfPointConstraint* GetObject() {
+    GeomPlate_HSequenceOfPointConstraint* _get_reference() {
     return (GeomPlate_HSequenceOfPointConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_GeomPlate_HSequenceOfPointConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1673,8 +1718,17 @@ class Handle_GeomPlate_PointConstraint : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomPlate_PointConstraint {
-    GeomPlate_PointConstraint* GetObject() {
+    GeomPlate_PointConstraint* _get_reference() {
     return (GeomPlate_PointConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_GeomPlate_PointConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1730,8 +1784,17 @@ class Handle_GeomPlate_SequenceNodeOfSequenceOfAij : public Handle_TCollection_S
 
 };
 %extend Handle_GeomPlate_SequenceNodeOfSequenceOfAij {
-    GeomPlate_SequenceNodeOfSequenceOfAij* GetObject() {
+    GeomPlate_SequenceNodeOfSequenceOfAij* _get_reference() {
     return (GeomPlate_SequenceNodeOfSequenceOfAij*)$self->Access();
+    }
+};
+
+%extend Handle_GeomPlate_SequenceNodeOfSequenceOfAij {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1787,8 +1850,17 @@ class Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint : public Handle_T
 
 };
 %extend Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint {
-    GeomPlate_SequenceNodeOfSequenceOfCurveConstraint* GetObject() {
+    GeomPlate_SequenceNodeOfSequenceOfCurveConstraint* _get_reference() {
     return (GeomPlate_SequenceNodeOfSequenceOfCurveConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1844,8 +1916,17 @@ class Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint : public Handle_T
 
 };
 %extend Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint {
-    GeomPlate_SequenceNodeOfSequenceOfPointConstraint* GetObject() {
+    GeomPlate_SequenceNodeOfSequenceOfPointConstraint* _get_reference() {
     return (GeomPlate_SequenceNodeOfSequenceOfPointConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2583,8 +2664,17 @@ class Handle_GeomPlate_Surface : public Handle_Geom_Surface {
 
 };
 %extend Handle_GeomPlate_Surface {
-    GeomPlate_Surface* GetObject() {
+    GeomPlate_Surface* _get_reference() {
     return (GeomPlate_Surface*)$self->Access();
+    }
+};
+
+%extend Handle_GeomPlate_Surface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

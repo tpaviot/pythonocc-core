@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -714,8 +714,17 @@ class Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public Handle_T
 
 };
 %extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
-    TopTools_DataMapNodeOfDataMapOfIntegerListOfShape* GetObject() {
+    TopTools_DataMapNodeOfDataMapOfIntegerListOfShape* _get_reference() {
     return (TopTools_DataMapNodeOfDataMapOfIntegerListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -784,8 +793,17 @@ class Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape : public Handle_TCollec
 
 };
 %extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape {
-    TopTools_DataMapNodeOfDataMapOfIntegerShape* GetObject() {
+    TopTools_DataMapNodeOfDataMapOfIntegerShape* _get_reference() {
     return (TopTools_DataMapNodeOfDataMapOfIntegerShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -854,8 +872,17 @@ class Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public Handle
 
 };
 %extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
-    TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger* GetObject() {
+    TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger* _get_reference() {
     return (TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -915,8 +942,17 @@ class Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape : public Handle_T
 
 };
 %extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
-    TopTools_DataMapNodeOfDataMapOfOrientedShapeShape* GetObject() {
+    TopTools_DataMapNodeOfDataMapOfOrientedShapeShape* _get_reference() {
     return (TopTools_DataMapNodeOfDataMapOfOrientedShapeShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -985,8 +1021,17 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger : public Handle_TCollec
 
 };
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger {
-    TopTools_DataMapNodeOfDataMapOfShapeInteger* GetObject() {
+    TopTools_DataMapNodeOfDataMapOfShapeInteger* _get_reference() {
     return (TopTools_DataMapNodeOfDataMapOfShapeInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1046,8 +1091,17 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger : public Handle_T
 
 };
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
-    TopTools_DataMapNodeOfDataMapOfShapeListOfInteger* GetObject() {
+    TopTools_DataMapNodeOfDataMapOfShapeListOfInteger* _get_reference() {
     return (TopTools_DataMapNodeOfDataMapOfShapeListOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1107,8 +1161,17 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape : public Handle_TCo
 
 };
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
-    TopTools_DataMapNodeOfDataMapOfShapeListOfShape* GetObject() {
+    TopTools_DataMapNodeOfDataMapOfShapeListOfShape* _get_reference() {
     return (TopTools_DataMapNodeOfDataMapOfShapeListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1177,8 +1240,17 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeReal : public Handle_TCollectio
 
 };
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeReal {
-    TopTools_DataMapNodeOfDataMapOfShapeReal* GetObject() {
+    TopTools_DataMapNodeOfDataMapOfShapeReal* _get_reference() {
     return (TopTools_DataMapNodeOfDataMapOfShapeReal*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1238,8 +1310,17 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public Handle
 
 };
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
-    TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape* GetObject() {
+    TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape* _get_reference() {
     return (TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1299,8 +1380,17 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeShape : public Handle_TCollecti
 
 };
 %extend Handle_TopTools_DataMapNodeOfDataMapOfShapeShape {
-    TopTools_DataMapNodeOfDataMapOfShapeShape* GetObject() {
+    TopTools_DataMapNodeOfDataMapOfShapeShape* _get_reference() {
     return (TopTools_DataMapNodeOfDataMapOfShapeShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_DataMapNodeOfDataMapOfShapeShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2186,8 +2276,17 @@ class Handle_TopTools_HArray1OfListOfShape : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopTools_HArray1OfListOfShape {
-    TopTools_HArray1OfListOfShape* GetObject() {
+    TopTools_HArray1OfListOfShape* _get_reference() {
     return (TopTools_HArray1OfListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_HArray1OfListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2293,8 +2392,17 @@ class Handle_TopTools_HArray1OfShape : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopTools_HArray1OfShape {
-    TopTools_HArray1OfShape* GetObject() {
+    TopTools_HArray1OfShape* _get_reference() {
     return (TopTools_HArray1OfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_HArray1OfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2426,8 +2534,17 @@ class Handle_TopTools_HArray2OfShape : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopTools_HArray2OfShape {
-    TopTools_HArray2OfShape* GetObject() {
+    TopTools_HArray2OfShape* _get_reference() {
     return (TopTools_HArray2OfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_HArray2OfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2601,8 +2718,17 @@ class Handle_TopTools_HSequenceOfShape : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopTools_HSequenceOfShape {
-    TopTools_HSequenceOfShape* GetObject() {
+    TopTools_HSequenceOfShape* _get_reference() {
     return (TopTools_HSequenceOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_HSequenceOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2683,8 +2809,17 @@ class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress : public 
 
 };
 %extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
-    TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress* GetObject() {
+    TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress* _get_reference() {
     return (TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2765,8 +2900,17 @@ class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape : pub
 
 };
 %extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
-    TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape* GetObject() {
+    TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape* _get_reference() {
     return (TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2847,8 +2991,17 @@ class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape : public Ha
 
 };
 %extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
-    TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape* GetObject() {
+    TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape* _get_reference() {
     return (TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3253,8 +3406,17 @@ class Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public Handle_
 
 };
 %extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
-    TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape* GetObject() {
+    TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape* _get_reference() {
     return (TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3329,8 +3491,17 @@ class Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape : public Handle_TCollect
 
 };
 %extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape {
-    TopTools_IndexedMapNodeOfIndexedMapOfShape* GetObject() {
+    TopTools_IndexedMapNodeOfIndexedMapOfShape* _get_reference() {
     return (TopTools_IndexedMapNodeOfIndexedMapOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3570,8 +3741,17 @@ class Handle_TopTools_ListNodeOfListOfShape : public Handle_TCollection_MapNode 
 
 };
 %extend Handle_TopTools_ListNodeOfListOfShape {
-    TopTools_ListNodeOfListOfShape* GetObject() {
+    TopTools_ListNodeOfListOfShape* _get_reference() {
     return (TopTools_ListNodeOfListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_ListNodeOfListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4069,8 +4249,17 @@ class Handle_TopTools_SequenceNodeOfSequenceOfShape : public Handle_TCollection_
 
 };
 %extend Handle_TopTools_SequenceNodeOfSequenceOfShape {
-    TopTools_SequenceNodeOfSequenceOfShape* GetObject() {
+    TopTools_SequenceNodeOfSequenceOfShape* _get_reference() {
     return (TopTools_SequenceNodeOfSequenceOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_SequenceNodeOfSequenceOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4521,8 +4710,17 @@ class Handle_TopTools_StdMapNodeOfMapOfOrientedShape : public Handle_TCollection
 
 };
 %extend Handle_TopTools_StdMapNodeOfMapOfOrientedShape {
-    TopTools_StdMapNodeOfMapOfOrientedShape* GetObject() {
+    TopTools_StdMapNodeOfMapOfOrientedShape* _get_reference() {
     return (TopTools_StdMapNodeOfMapOfOrientedShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_StdMapNodeOfMapOfOrientedShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4576,8 +4774,17 @@ class Handle_TopTools_StdMapNodeOfMapOfShape : public Handle_TCollection_MapNode
 
 };
 %extend Handle_TopTools_StdMapNodeOfMapOfShape {
-    TopTools_StdMapNodeOfMapOfShape* GetObject() {
+    TopTools_StdMapNodeOfMapOfShape* _get_reference() {
     return (TopTools_StdMapNodeOfMapOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopTools_StdMapNodeOfMapOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -2088,8 +2088,17 @@ class Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode : public Handle_TCollection
 
 };
 %extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode {
-    AdvApp2Var_SequenceNodeOfSequenceOfNode* GetObject() {
+    AdvApp2Var_SequenceNodeOfSequenceOfNode* _get_reference() {
     return (AdvApp2Var_SequenceNodeOfSequenceOfNode*)$self->Access();
+    }
+};
+
+%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2145,8 +2154,17 @@ class Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch : public Handle_TCollectio
 
 };
 %extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch {
-    AdvApp2Var_SequenceNodeOfSequenceOfPatch* GetObject() {
+    AdvApp2Var_SequenceNodeOfSequenceOfPatch* _get_reference() {
     return (AdvApp2Var_SequenceNodeOfSequenceOfPatch*)$self->Access();
+    }
+};
+
+%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2202,8 +2220,17 @@ class Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip : public Handle_TCollectio
 
 };
 %extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip {
-    AdvApp2Var_SequenceNodeOfSequenceOfStrip* GetObject() {
+    AdvApp2Var_SequenceNodeOfSequenceOfStrip* _get_reference() {
     return (AdvApp2Var_SequenceNodeOfSequenceOfStrip*)$self->Access();
+    }
+};
+
+%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2259,8 +2286,17 @@ class Handle_AdvApp2Var_SequenceNodeOfStrip : public Handle_TCollection_SeqNode 
 
 };
 %extend Handle_AdvApp2Var_SequenceNodeOfStrip {
-    AdvApp2Var_SequenceNodeOfStrip* GetObject() {
+    AdvApp2Var_SequenceNodeOfStrip* _get_reference() {
     return (AdvApp2Var_SequenceNodeOfStrip*)$self->Access();
+    }
+};
+
+%extend Handle_AdvApp2Var_SequenceNodeOfStrip {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1164,8 +1164,17 @@ class Handle_HLRAlgo_EdgesBlock : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRAlgo_EdgesBlock {
-    HLRAlgo_EdgesBlock* GetObject() {
+    HLRAlgo_EdgesBlock* _get_reference() {
     return (HLRAlgo_EdgesBlock*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_EdgesBlock {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1271,8 +1280,17 @@ class Handle_HLRAlgo_HArray1OfPHDat : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRAlgo_HArray1OfPHDat {
-    HLRAlgo_HArray1OfPHDat* GetObject() {
+    HLRAlgo_HArray1OfPHDat* _get_reference() {
     return (HLRAlgo_HArray1OfPHDat*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_HArray1OfPHDat {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1378,8 +1396,17 @@ class Handle_HLRAlgo_HArray1OfPINod : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRAlgo_HArray1OfPINod {
-    HLRAlgo_HArray1OfPINod* GetObject() {
+    HLRAlgo_HArray1OfPINod* _get_reference() {
     return (HLRAlgo_HArray1OfPINod*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_HArray1OfPINod {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1485,8 +1512,17 @@ class Handle_HLRAlgo_HArray1OfPISeg : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRAlgo_HArray1OfPISeg {
-    HLRAlgo_HArray1OfPISeg* GetObject() {
+    HLRAlgo_HArray1OfPISeg* _get_reference() {
     return (HLRAlgo_HArray1OfPISeg*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_HArray1OfPISeg {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1592,8 +1628,17 @@ class Handle_HLRAlgo_HArray1OfTData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRAlgo_HArray1OfTData {
-    HLRAlgo_HArray1OfTData* GetObject() {
+    HLRAlgo_HArray1OfTData* _get_reference() {
     return (HLRAlgo_HArray1OfTData*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_HArray1OfTData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2025,8 +2070,17 @@ class Handle_HLRAlgo_ListNodeOfInterferenceList : public Handle_TCollection_MapN
 
 };
 %extend Handle_HLRAlgo_ListNodeOfInterferenceList {
-    HLRAlgo_ListNodeOfInterferenceList* GetObject() {
+    HLRAlgo_ListNodeOfInterferenceList* _get_reference() {
     return (HLRAlgo_ListNodeOfInterferenceList*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_ListNodeOfInterferenceList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2080,8 +2134,17 @@ class Handle_HLRAlgo_ListNodeOfListOfBPoint : public Handle_TCollection_MapNode 
 
 };
 %extend Handle_HLRAlgo_ListNodeOfListOfBPoint {
-    HLRAlgo_ListNodeOfListOfBPoint* GetObject() {
+    HLRAlgo_ListNodeOfListOfBPoint* _get_reference() {
     return (HLRAlgo_ListNodeOfListOfBPoint*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_ListNodeOfListOfBPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2339,8 +2402,17 @@ class Handle_HLRAlgo_PolyAlgo : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRAlgo_PolyAlgo {
-    HLRAlgo_PolyAlgo* GetObject() {
+    HLRAlgo_PolyAlgo* _get_reference() {
     return (HLRAlgo_PolyAlgo*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_PolyAlgo {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2456,8 +2528,17 @@ class Handle_HLRAlgo_PolyData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRAlgo_PolyData {
-    HLRAlgo_PolyData* GetObject() {
+    HLRAlgo_PolyData* _get_reference() {
     return (HLRAlgo_PolyData*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_PolyData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2679,8 +2760,17 @@ class Handle_HLRAlgo_PolyInternalData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRAlgo_PolyInternalData {
-    HLRAlgo_PolyInternalData* GetObject() {
+    HLRAlgo_PolyInternalData* _get_reference() {
     return (HLRAlgo_PolyInternalData*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_PolyInternalData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2734,8 +2824,17 @@ class Handle_HLRAlgo_PolyInternalNode : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRAlgo_PolyInternalNode {
-    HLRAlgo_PolyInternalNode* GetObject() {
+    HLRAlgo_PolyInternalNode* _get_reference() {
     return (HLRAlgo_PolyInternalNode*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_PolyInternalNode {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2829,8 +2928,17 @@ class Handle_HLRAlgo_PolyShellData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRAlgo_PolyShellData {
-    HLRAlgo_PolyShellData* GetObject() {
+    HLRAlgo_PolyShellData* _get_reference() {
     return (HLRAlgo_PolyShellData*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_PolyShellData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3098,8 +3206,17 @@ class Handle_HLRAlgo_WiresBlock : public Handle_MMgt_TShared {
 
 };
 %extend Handle_HLRAlgo_WiresBlock {
-    HLRAlgo_WiresBlock* GetObject() {
+    HLRAlgo_WiresBlock* _get_reference() {
     return (HLRAlgo_WiresBlock*)$self->Access();
+    }
+};
+
+%extend Handle_HLRAlgo_WiresBlock {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
