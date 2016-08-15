@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -411,8 +411,17 @@ class Handle_TDF_Attribute : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDF_Attribute {
-    TDF_Attribute* GetObject() {
+    TDF_Attribute* _get_reference() {
     return (TDF_Attribute*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_Attribute {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -646,8 +655,17 @@ class Handle_TDF_AttributeDelta : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDF_AttributeDelta {
-    TDF_AttributeDelta* GetObject() {
+    TDF_AttributeDelta* _get_reference() {
     return (TDF_AttributeDelta*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_AttributeDelta {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1828,8 +1846,17 @@ class Handle_TDF_Data : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDF_Data {
-    TDF_Data* GetObject() {
+    TDF_Data* _get_reference() {
     return (TDF_Data*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_Data {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1979,8 +2006,17 @@ class Handle_TDF_DataMapNodeOfAttributeDataMap : public Handle_TCollection_MapNo
 
 };
 %extend Handle_TDF_DataMapNodeOfAttributeDataMap {
-    TDF_DataMapNodeOfAttributeDataMap* GetObject() {
+    TDF_DataMapNodeOfAttributeDataMap* _get_reference() {
     return (TDF_DataMapNodeOfAttributeDataMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DataMapNodeOfAttributeDataMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2040,8 +2076,17 @@ class Handle_TDF_DataMapNodeOfLabelDataMap : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TDF_DataMapNodeOfLabelDataMap {
-    TDF_DataMapNodeOfLabelDataMap* GetObject() {
+    TDF_DataMapNodeOfLabelDataMap* _get_reference() {
     return (TDF_DataMapNodeOfLabelDataMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DataMapNodeOfLabelDataMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2110,8 +2155,17 @@ class Handle_TDF_DataMapNodeOfLabelIntegerMap : public Handle_TCollection_MapNod
 
 };
 %extend Handle_TDF_DataMapNodeOfLabelIntegerMap {
-    TDF_DataMapNodeOfLabelIntegerMap* GetObject() {
+    TDF_DataMapNodeOfLabelIntegerMap* _get_reference() {
     return (TDF_DataMapNodeOfLabelIntegerMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DataMapNodeOfLabelIntegerMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2237,8 +2291,17 @@ class Handle_TDF_DataSet : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDF_DataSet {
-    TDF_DataSet* GetObject() {
+    TDF_DataSet* _get_reference() {
     return (TDF_DataSet*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DataSet {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2348,8 +2411,17 @@ class Handle_TDF_Delta : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDF_Delta {
-    TDF_Delta* GetObject() {
+    TDF_Delta* _get_reference() {
     return (TDF_Delta*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_Delta {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2635,8 +2707,17 @@ class Handle_TDF_DoubleMapNodeOfAttributeDoubleMap : public Handle_TCollection_M
 
 };
 %extend Handle_TDF_DoubleMapNodeOfAttributeDoubleMap {
-    TDF_DoubleMapNodeOfAttributeDoubleMap* GetObject() {
+    TDF_DoubleMapNodeOfAttributeDoubleMap* _get_reference() {
     return (TDF_DoubleMapNodeOfAttributeDoubleMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DoubleMapNodeOfAttributeDoubleMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2702,8 +2783,17 @@ class Handle_TDF_DoubleMapNodeOfGUIDProgIDMap : public Handle_TCollection_MapNod
 
 };
 %extend Handle_TDF_DoubleMapNodeOfGUIDProgIDMap {
-    TDF_DoubleMapNodeOfGUIDProgIDMap* GetObject() {
+    TDF_DoubleMapNodeOfGUIDProgIDMap* _get_reference() {
     return (TDF_DoubleMapNodeOfGUIDProgIDMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DoubleMapNodeOfGUIDProgIDMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2769,8 +2859,17 @@ class Handle_TDF_DoubleMapNodeOfLabelDoubleMap : public Handle_TCollection_MapNo
 
 };
 %extend Handle_TDF_DoubleMapNodeOfLabelDoubleMap {
-    TDF_DoubleMapNodeOfLabelDoubleMap* GetObject() {
+    TDF_DoubleMapNodeOfLabelDoubleMap* _get_reference() {
     return (TDF_DoubleMapNodeOfLabelDoubleMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DoubleMapNodeOfLabelDoubleMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2962,8 +3061,17 @@ class Handle_TDF_HAttributeArray1 : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDF_HAttributeArray1 {
-    TDF_HAttributeArray1* GetObject() {
+    TDF_HAttributeArray1* _get_reference() {
     return (TDF_HAttributeArray1*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_HAttributeArray1 {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3342,8 +3450,17 @@ class Handle_TDF_IndexedMapNodeOfAttributeIndexedMap : public Handle_TCollection
 
 };
 %extend Handle_TDF_IndexedMapNodeOfAttributeIndexedMap {
-    TDF_IndexedMapNodeOfAttributeIndexedMap* GetObject() {
+    TDF_IndexedMapNodeOfAttributeIndexedMap* _get_reference() {
     return (TDF_IndexedMapNodeOfAttributeIndexedMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_IndexedMapNodeOfAttributeIndexedMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3418,8 +3535,17 @@ class Handle_TDF_IndexedMapNodeOfLabelIndexedMap : public Handle_TCollection_Map
 
 };
 %extend Handle_TDF_IndexedMapNodeOfLabelIndexedMap {
-    TDF_IndexedMapNodeOfLabelIndexedMap* GetObject() {
+    TDF_IndexedMapNodeOfLabelIndexedMap* _get_reference() {
     return (TDF_IndexedMapNodeOfLabelIndexedMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_IndexedMapNodeOfLabelIndexedMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4581,8 +4707,17 @@ class Handle_TDF_ListNodeOfAttributeDeltaList : public Handle_TCollection_MapNod
 
 };
 %extend Handle_TDF_ListNodeOfAttributeDeltaList {
-    TDF_ListNodeOfAttributeDeltaList* GetObject() {
+    TDF_ListNodeOfAttributeDeltaList* _get_reference() {
     return (TDF_ListNodeOfAttributeDeltaList*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_ListNodeOfAttributeDeltaList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4636,8 +4771,17 @@ class Handle_TDF_ListNodeOfAttributeList : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TDF_ListNodeOfAttributeList {
-    TDF_ListNodeOfAttributeList* GetObject() {
+    TDF_ListNodeOfAttributeList* _get_reference() {
     return (TDF_ListNodeOfAttributeList*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_ListNodeOfAttributeList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4691,8 +4835,17 @@ class Handle_TDF_ListNodeOfDeltaList : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TDF_ListNodeOfDeltaList {
-    TDF_ListNodeOfDeltaList* GetObject() {
+    TDF_ListNodeOfDeltaList* _get_reference() {
     return (TDF_ListNodeOfDeltaList*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_ListNodeOfDeltaList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4746,8 +4899,17 @@ class Handle_TDF_ListNodeOfIDList : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TDF_ListNodeOfIDList {
-    TDF_ListNodeOfIDList* GetObject() {
+    TDF_ListNodeOfIDList* _get_reference() {
     return (TDF_ListNodeOfIDList*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_ListNodeOfIDList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4801,8 +4963,17 @@ class Handle_TDF_ListNodeOfLabelList : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TDF_ListNodeOfLabelList {
-    TDF_ListNodeOfLabelList* GetObject() {
+    TDF_ListNodeOfLabelList* _get_reference() {
     return (TDF_ListNodeOfLabelList*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_ListNodeOfLabelList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5070,8 +5241,17 @@ class Handle_TDF_RelocationTable : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDF_RelocationTable {
-    TDF_RelocationTable* GetObject() {
+    TDF_RelocationTable* _get_reference() {
     return (TDF_RelocationTable*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_RelocationTable {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5127,8 +5307,17 @@ class Handle_TDF_SequenceNodeOfAttributeSequence : public Handle_TCollection_Seq
 
 };
 %extend Handle_TDF_SequenceNodeOfAttributeSequence {
-    TDF_SequenceNodeOfAttributeSequence* GetObject() {
+    TDF_SequenceNodeOfAttributeSequence* _get_reference() {
     return (TDF_SequenceNodeOfAttributeSequence*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_SequenceNodeOfAttributeSequence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5184,8 +5373,17 @@ class Handle_TDF_SequenceNodeOfLabelSequence : public Handle_TCollection_SeqNode
 
 };
 %extend Handle_TDF_SequenceNodeOfLabelSequence {
-    TDF_SequenceNodeOfLabelSequence* GetObject() {
+    TDF_SequenceNodeOfLabelSequence* _get_reference() {
     return (TDF_SequenceNodeOfLabelSequence*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_SequenceNodeOfLabelSequence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5239,8 +5437,17 @@ class Handle_TDF_StdMapNodeOfAttributeMap : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TDF_StdMapNodeOfAttributeMap {
-    TDF_StdMapNodeOfAttributeMap* GetObject() {
+    TDF_StdMapNodeOfAttributeMap* _get_reference() {
     return (TDF_StdMapNodeOfAttributeMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_StdMapNodeOfAttributeMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5294,8 +5501,17 @@ class Handle_TDF_StdMapNodeOfIDMap : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TDF_StdMapNodeOfIDMap {
-    TDF_StdMapNodeOfIDMap* GetObject() {
+    TDF_StdMapNodeOfIDMap* _get_reference() {
     return (TDF_StdMapNodeOfIDMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_StdMapNodeOfIDMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5349,8 +5565,17 @@ class Handle_TDF_StdMapNodeOfLabelMap : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TDF_StdMapNodeOfLabelMap {
-    TDF_StdMapNodeOfLabelMap* GetObject() {
+    TDF_StdMapNodeOfLabelMap* _get_reference() {
     return (TDF_StdMapNodeOfLabelMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_StdMapNodeOfLabelMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5731,8 +5956,17 @@ class Handle_TDF_DeltaOnAddition : public Handle_TDF_AttributeDelta {
 
 };
 %extend Handle_TDF_DeltaOnAddition {
-    TDF_DeltaOnAddition* GetObject() {
+    TDF_DeltaOnAddition* _get_reference() {
     return (TDF_DeltaOnAddition*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DeltaOnAddition {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5788,8 +6022,17 @@ class Handle_TDF_DeltaOnForget : public Handle_TDF_AttributeDelta {
 
 };
 %extend Handle_TDF_DeltaOnForget {
-    TDF_DeltaOnForget* GetObject() {
+    TDF_DeltaOnForget* _get_reference() {
     return (TDF_DeltaOnForget*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DeltaOnForget {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5837,8 +6080,17 @@ class Handle_TDF_DeltaOnModification : public Handle_TDF_AttributeDelta {
 
 };
 %extend Handle_TDF_DeltaOnModification {
-    TDF_DeltaOnModification* GetObject() {
+    TDF_DeltaOnModification* _get_reference() {
     return (TDF_DeltaOnModification*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DeltaOnModification {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5880,8 +6132,17 @@ class Handle_TDF_DeltaOnRemoval : public Handle_TDF_AttributeDelta {
 
 };
 %extend Handle_TDF_DeltaOnRemoval {
-    TDF_DeltaOnRemoval* GetObject() {
+    TDF_DeltaOnRemoval* _get_reference() {
     return (TDF_DeltaOnRemoval*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DeltaOnRemoval {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5937,8 +6198,17 @@ class Handle_TDF_DeltaOnResume : public Handle_TDF_AttributeDelta {
 
 };
 %extend Handle_TDF_DeltaOnResume {
-    TDF_DeltaOnResume* GetObject() {
+    TDF_DeltaOnResume* _get_reference() {
     return (TDF_DeltaOnResume*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DeltaOnResume {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6042,8 +6312,17 @@ class Handle_TDF_Reference : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDF_Reference {
-    TDF_Reference* GetObject() {
+    TDF_Reference* _get_reference() {
     return (TDF_Reference*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_Reference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6153,8 +6432,17 @@ class Handle_TDF_TagSource : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDF_TagSource {
-    TDF_TagSource* GetObject() {
+    TDF_TagSource* _get_reference() {
     return (TDF_TagSource*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_TagSource {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6210,8 +6498,17 @@ class Handle_TDF_DefaultDeltaOnModification : public Handle_TDF_DeltaOnModificat
 
 };
 %extend Handle_TDF_DefaultDeltaOnModification {
-    TDF_DefaultDeltaOnModification* GetObject() {
+    TDF_DefaultDeltaOnModification* _get_reference() {
     return (TDF_DefaultDeltaOnModification*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DefaultDeltaOnModification {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6267,8 +6564,17 @@ class Handle_TDF_DefaultDeltaOnRemoval : public Handle_TDF_DeltaOnRemoval {
 
 };
 %extend Handle_TDF_DefaultDeltaOnRemoval {
-    TDF_DefaultDeltaOnRemoval* GetObject() {
+    TDF_DefaultDeltaOnRemoval* _get_reference() {
     return (TDF_DefaultDeltaOnRemoval*)$self->Access();
+    }
+};
+
+%extend Handle_TDF_DefaultDeltaOnRemoval {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

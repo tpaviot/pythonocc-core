@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -634,8 +634,17 @@ class Handle_BRepBuilderAPI_Sewing : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BRepBuilderAPI_Sewing {
-    BRepBuilderAPI_Sewing* GetObject() {
+    BRepBuilderAPI_Sewing* _get_reference() {
     return (BRepBuilderAPI_Sewing*)$self->Access();
+    }
+};
+
+%extend Handle_BRepBuilderAPI_Sewing {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

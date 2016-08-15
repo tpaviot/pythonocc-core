@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -102,8 +102,17 @@ class Handle_IntStart_SITopolTool : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IntStart_SITopolTool {
-    IntStart_SITopolTool* GetObject() {
+    IntStart_SITopolTool* _get_reference() {
     return (IntStart_SITopolTool*)$self->Access();
+    }
+};
+
+%extend Handle_IntStart_SITopolTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -458,8 +458,17 @@ class Handle_Adaptor2d_HCurve2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Adaptor2d_HCurve2d {
-    Adaptor2d_HCurve2d* GetObject() {
+    Adaptor2d_HCurve2d* _get_reference() {
     return (Adaptor2d_HCurve2d*)$self->Access();
+    }
+};
+
+%extend Handle_Adaptor2d_HCurve2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -525,8 +534,17 @@ class Handle_Adaptor2d_HLine2d : public Handle_Adaptor2d_HCurve2d {
 
 };
 %extend Handle_Adaptor2d_HLine2d {
-    Adaptor2d_HLine2d* GetObject() {
+    Adaptor2d_HLine2d* _get_reference() {
     return (Adaptor2d_HLine2d*)$self->Access();
+    }
+};
+
+%extend Handle_Adaptor2d_HLine2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

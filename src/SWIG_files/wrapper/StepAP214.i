@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -146,8 +146,17 @@ class Handle_StepAP214_AppliedApprovalAssignment : public Handle_StepBasic_Appro
 
 };
 %extend Handle_StepAP214_AppliedApprovalAssignment {
-    StepAP214_AppliedApprovalAssignment* GetObject() {
+    StepAP214_AppliedApprovalAssignment* _get_reference() {
     return (StepAP214_AppliedApprovalAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AppliedApprovalAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -233,8 +242,17 @@ class Handle_StepAP214_AppliedDateAndTimeAssignment : public Handle_StepBasic_Da
 
 };
 %extend Handle_StepAP214_AppliedDateAndTimeAssignment {
-    StepAP214_AppliedDateAndTimeAssignment* GetObject() {
+    StepAP214_AppliedDateAndTimeAssignment* _get_reference() {
     return (StepAP214_AppliedDateAndTimeAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AppliedDateAndTimeAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -320,8 +338,17 @@ class Handle_StepAP214_AppliedDateAssignment : public Handle_StepBasic_DateAssig
 
 };
 %extend Handle_StepAP214_AppliedDateAssignment {
-    StepAP214_AppliedDateAssignment* GetObject() {
+    StepAP214_AppliedDateAssignment* _get_reference() {
     return (StepAP214_AppliedDateAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AppliedDateAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -397,8 +424,17 @@ class Handle_StepAP214_AppliedDocumentReference : public Handle_StepBasic_Docume
 
 };
 %extend Handle_StepAP214_AppliedDocumentReference {
-    StepAP214_AppliedDocumentReference* GetObject() {
+    StepAP214_AppliedDocumentReference* _get_reference() {
     return (StepAP214_AppliedDocumentReference*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AppliedDocumentReference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -474,8 +510,17 @@ class Handle_StepAP214_AppliedExternalIdentificationAssignment : public Handle_S
 
 };
 %extend Handle_StepAP214_AppliedExternalIdentificationAssignment {
-    StepAP214_AppliedExternalIdentificationAssignment* GetObject() {
+    StepAP214_AppliedExternalIdentificationAssignment* _get_reference() {
     return (StepAP214_AppliedExternalIdentificationAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AppliedExternalIdentificationAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -547,8 +592,17 @@ class Handle_StepAP214_AppliedGroupAssignment : public Handle_StepBasic_GroupAss
 
 };
 %extend Handle_StepAP214_AppliedGroupAssignment {
-    StepAP214_AppliedGroupAssignment* GetObject() {
+    StepAP214_AppliedGroupAssignment* _get_reference() {
     return (StepAP214_AppliedGroupAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AppliedGroupAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -634,8 +688,17 @@ class Handle_StepAP214_AppliedOrganizationAssignment : public Handle_StepBasic_O
 
 };
 %extend Handle_StepAP214_AppliedOrganizationAssignment {
-    StepAP214_AppliedOrganizationAssignment* GetObject() {
+    StepAP214_AppliedOrganizationAssignment* _get_reference() {
     return (StepAP214_AppliedOrganizationAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AppliedOrganizationAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -721,8 +784,17 @@ class Handle_StepAP214_AppliedPersonAndOrganizationAssignment : public Handle_St
 
 };
 %extend Handle_StepAP214_AppliedPersonAndOrganizationAssignment {
-    StepAP214_AppliedPersonAndOrganizationAssignment* GetObject() {
+    StepAP214_AppliedPersonAndOrganizationAssignment* _get_reference() {
     return (StepAP214_AppliedPersonAndOrganizationAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AppliedPersonAndOrganizationAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -796,8 +868,17 @@ class Handle_StepAP214_AppliedPresentedItem : public Handle_StepVisual_Presented
 
 };
 %extend Handle_StepAP214_AppliedPresentedItem {
-    StepAP214_AppliedPresentedItem* GetObject() {
+    StepAP214_AppliedPresentedItem* _get_reference() {
     return (StepAP214_AppliedPresentedItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AppliedPresentedItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -879,8 +960,17 @@ class Handle_StepAP214_AppliedSecurityClassificationAssignment : public Handle_S
 
 };
 %extend Handle_StepAP214_AppliedSecurityClassificationAssignment {
-    StepAP214_AppliedSecurityClassificationAssignment* GetObject() {
+    StepAP214_AppliedSecurityClassificationAssignment* _get_reference() {
     return (StepAP214_AppliedSecurityClassificationAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AppliedSecurityClassificationAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2452,8 +2542,17 @@ class Handle_StepAP214_AutoDesignActualDateAndTimeAssignment : public Handle_Ste
 
 };
 %extend Handle_StepAP214_AutoDesignActualDateAndTimeAssignment {
-    StepAP214_AutoDesignActualDateAndTimeAssignment* GetObject() {
+    StepAP214_AutoDesignActualDateAndTimeAssignment* _get_reference() {
     return (StepAP214_AutoDesignActualDateAndTimeAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignActualDateAndTimeAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2539,8 +2638,17 @@ class Handle_StepAP214_AutoDesignActualDateAssignment : public Handle_StepBasic_
 
 };
 %extend Handle_StepAP214_AutoDesignActualDateAssignment {
-    StepAP214_AutoDesignActualDateAssignment* GetObject() {
+    StepAP214_AutoDesignActualDateAssignment* _get_reference() {
     return (StepAP214_AutoDesignActualDateAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignActualDateAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2622,8 +2730,17 @@ class Handle_StepAP214_AutoDesignApprovalAssignment : public Handle_StepBasic_Ap
 
 };
 %extend Handle_StepAP214_AutoDesignApprovalAssignment {
-    StepAP214_AutoDesignApprovalAssignment* GetObject() {
+    StepAP214_AutoDesignApprovalAssignment* _get_reference() {
     return (StepAP214_AutoDesignApprovalAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignApprovalAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2709,8 +2826,17 @@ class Handle_StepAP214_AutoDesignDateAndPersonAssignment : public Handle_StepBas
 
 };
 %extend Handle_StepAP214_AutoDesignDateAndPersonAssignment {
-    StepAP214_AutoDesignDateAndPersonAssignment* GetObject() {
+    StepAP214_AutoDesignDateAndPersonAssignment* _get_reference() {
     return (StepAP214_AutoDesignDateAndPersonAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignDateAndPersonAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2916,8 +3042,17 @@ class Handle_StepAP214_AutoDesignDocumentReference : public Handle_StepBasic_Doc
 
 };
 %extend Handle_StepAP214_AutoDesignDocumentReference {
-    StepAP214_AutoDesignDocumentReference* GetObject() {
+    StepAP214_AutoDesignDocumentReference* _get_reference() {
     return (StepAP214_AutoDesignDocumentReference*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignDocumentReference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3059,8 +3194,17 @@ class Handle_StepAP214_AutoDesignGroupAssignment : public Handle_StepBasic_Group
 
 };
 %extend Handle_StepAP214_AutoDesignGroupAssignment {
-    StepAP214_AutoDesignGroupAssignment* GetObject() {
+    StepAP214_AutoDesignGroupAssignment* _get_reference() {
     return (StepAP214_AutoDesignGroupAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignGroupAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3232,8 +3376,17 @@ class Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment : public Handle_St
 
 };
 %extend Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment {
-    StepAP214_AutoDesignNominalDateAndTimeAssignment* GetObject() {
+    StepAP214_AutoDesignNominalDateAndTimeAssignment* _get_reference() {
     return (StepAP214_AutoDesignNominalDateAndTimeAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3319,8 +3472,17 @@ class Handle_StepAP214_AutoDesignNominalDateAssignment : public Handle_StepBasic
 
 };
 %extend Handle_StepAP214_AutoDesignNominalDateAssignment {
-    StepAP214_AutoDesignNominalDateAssignment* GetObject() {
+    StepAP214_AutoDesignNominalDateAssignment* _get_reference() {
     return (StepAP214_AutoDesignNominalDateAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignNominalDateAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3406,8 +3568,17 @@ class Handle_StepAP214_AutoDesignOrganizationAssignment : public Handle_StepBasi
 
 };
 %extend Handle_StepAP214_AutoDesignOrganizationAssignment {
-    StepAP214_AutoDesignOrganizationAssignment* GetObject() {
+    StepAP214_AutoDesignOrganizationAssignment* _get_reference() {
     return (StepAP214_AutoDesignOrganizationAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignOrganizationAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3493,8 +3664,17 @@ class Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment : public Handle
 
 };
 %extend Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment {
-    StepAP214_AutoDesignPersonAndOrganizationAssignment* GetObject() {
+    StepAP214_AutoDesignPersonAndOrganizationAssignment* _get_reference() {
     return (StepAP214_AutoDesignPersonAndOrganizationAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3568,8 +3748,17 @@ class Handle_StepAP214_AutoDesignPresentedItem : public Handle_StepVisual_Presen
 
 };
 %extend Handle_StepAP214_AutoDesignPresentedItem {
-    StepAP214_AutoDesignPresentedItem* GetObject() {
+    StepAP214_AutoDesignPresentedItem* _get_reference() {
     return (StepAP214_AutoDesignPresentedItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignPresentedItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3783,8 +3972,17 @@ class Handle_StepAP214_AutoDesignSecurityClassificationAssignment : public Handl
 
 };
 %extend Handle_StepAP214_AutoDesignSecurityClassificationAssignment {
-    StepAP214_AutoDesignSecurityClassificationAssignment* GetObject() {
+    StepAP214_AutoDesignSecurityClassificationAssignment* _get_reference() {
     return (StepAP214_AutoDesignSecurityClassificationAssignment*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_AutoDesignSecurityClassificationAssignment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3832,8 +4030,17 @@ class Handle_StepAP214_Class : public Handle_StepBasic_Group {
 
 };
 %extend Handle_StepAP214_Class {
-    StepAP214_Class* GetObject() {
+    StepAP214_Class* _get_reference() {
     return (StepAP214_Class*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_Class {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4031,8 +4238,17 @@ class Handle_StepAP214_ExternallyDefinedGeneralProperty : public Handle_StepBasi
 
 };
 %extend Handle_StepAP214_ExternallyDefinedGeneralProperty {
-    StepAP214_ExternallyDefinedGeneralProperty* GetObject() {
+    StepAP214_ExternallyDefinedGeneralProperty* _get_reference() {
     return (StepAP214_ExternallyDefinedGeneralProperty*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_ExternallyDefinedGeneralProperty {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4164,8 +4380,17 @@ class Handle_StepAP214_HArray1OfApprovalItem : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepAP214_HArray1OfApprovalItem {
-    StepAP214_HArray1OfApprovalItem* GetObject() {
+    StepAP214_HArray1OfApprovalItem* _get_reference() {
     return (StepAP214_HArray1OfApprovalItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfApprovalItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4271,8 +4496,17 @@ class Handle_StepAP214_HArray1OfAutoDesignDateAndPersonItem : public Handle_MMgt
 
 };
 %extend Handle_StepAP214_HArray1OfAutoDesignDateAndPersonItem {
-    StepAP214_HArray1OfAutoDesignDateAndPersonItem* GetObject() {
+    StepAP214_HArray1OfAutoDesignDateAndPersonItem* _get_reference() {
     return (StepAP214_HArray1OfAutoDesignDateAndPersonItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfAutoDesignDateAndPersonItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4378,8 +4612,17 @@ class Handle_StepAP214_HArray1OfAutoDesignDateAndTimeItem : public Handle_MMgt_T
 
 };
 %extend Handle_StepAP214_HArray1OfAutoDesignDateAndTimeItem {
-    StepAP214_HArray1OfAutoDesignDateAndTimeItem* GetObject() {
+    StepAP214_HArray1OfAutoDesignDateAndTimeItem* _get_reference() {
     return (StepAP214_HArray1OfAutoDesignDateAndTimeItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfAutoDesignDateAndTimeItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4485,8 +4728,17 @@ class Handle_StepAP214_HArray1OfAutoDesignDatedItem : public Handle_MMgt_TShared
 
 };
 %extend Handle_StepAP214_HArray1OfAutoDesignDatedItem {
-    StepAP214_HArray1OfAutoDesignDatedItem* GetObject() {
+    StepAP214_HArray1OfAutoDesignDatedItem* _get_reference() {
     return (StepAP214_HArray1OfAutoDesignDatedItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfAutoDesignDatedItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4592,8 +4844,17 @@ class Handle_StepAP214_HArray1OfAutoDesignGeneralOrgItem : public Handle_MMgt_TS
 
 };
 %extend Handle_StepAP214_HArray1OfAutoDesignGeneralOrgItem {
-    StepAP214_HArray1OfAutoDesignGeneralOrgItem* GetObject() {
+    StepAP214_HArray1OfAutoDesignGeneralOrgItem* _get_reference() {
     return (StepAP214_HArray1OfAutoDesignGeneralOrgItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfAutoDesignGeneralOrgItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4699,8 +4960,17 @@ class Handle_StepAP214_HArray1OfAutoDesignGroupedItem : public Handle_MMgt_TShar
 
 };
 %extend Handle_StepAP214_HArray1OfAutoDesignGroupedItem {
-    StepAP214_HArray1OfAutoDesignGroupedItem* GetObject() {
+    StepAP214_HArray1OfAutoDesignGroupedItem* _get_reference() {
     return (StepAP214_HArray1OfAutoDesignGroupedItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfAutoDesignGroupedItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4806,8 +5076,17 @@ class Handle_StepAP214_HArray1OfAutoDesignPresentedItemSelect : public Handle_MM
 
 };
 %extend Handle_StepAP214_HArray1OfAutoDesignPresentedItemSelect {
-    StepAP214_HArray1OfAutoDesignPresentedItemSelect* GetObject() {
+    StepAP214_HArray1OfAutoDesignPresentedItemSelect* _get_reference() {
     return (StepAP214_HArray1OfAutoDesignPresentedItemSelect*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfAutoDesignPresentedItemSelect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4913,8 +5192,17 @@ class Handle_StepAP214_HArray1OfAutoDesignReferencingItem : public Handle_MMgt_T
 
 };
 %extend Handle_StepAP214_HArray1OfAutoDesignReferencingItem {
-    StepAP214_HArray1OfAutoDesignReferencingItem* GetObject() {
+    StepAP214_HArray1OfAutoDesignReferencingItem* _get_reference() {
     return (StepAP214_HArray1OfAutoDesignReferencingItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfAutoDesignReferencingItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5020,8 +5308,17 @@ class Handle_StepAP214_HArray1OfDateAndTimeItem : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepAP214_HArray1OfDateAndTimeItem {
-    StepAP214_HArray1OfDateAndTimeItem* GetObject() {
+    StepAP214_HArray1OfDateAndTimeItem* _get_reference() {
     return (StepAP214_HArray1OfDateAndTimeItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfDateAndTimeItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5127,8 +5424,17 @@ class Handle_StepAP214_HArray1OfDateItem : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepAP214_HArray1OfDateItem {
-    StepAP214_HArray1OfDateItem* GetObject() {
+    StepAP214_HArray1OfDateItem* _get_reference() {
     return (StepAP214_HArray1OfDateItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfDateItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5234,8 +5540,17 @@ class Handle_StepAP214_HArray1OfDocumentReferenceItem : public Handle_MMgt_TShar
 
 };
 %extend Handle_StepAP214_HArray1OfDocumentReferenceItem {
-    StepAP214_HArray1OfDocumentReferenceItem* GetObject() {
+    StepAP214_HArray1OfDocumentReferenceItem* _get_reference() {
     return (StepAP214_HArray1OfDocumentReferenceItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfDocumentReferenceItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5341,8 +5656,17 @@ class Handle_StepAP214_HArray1OfExternalIdentificationItem : public Handle_MMgt_
 
 };
 %extend Handle_StepAP214_HArray1OfExternalIdentificationItem {
-    StepAP214_HArray1OfExternalIdentificationItem* GetObject() {
+    StepAP214_HArray1OfExternalIdentificationItem* _get_reference() {
     return (StepAP214_HArray1OfExternalIdentificationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfExternalIdentificationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5448,8 +5772,17 @@ class Handle_StepAP214_HArray1OfGroupItem : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepAP214_HArray1OfGroupItem {
-    StepAP214_HArray1OfGroupItem* GetObject() {
+    StepAP214_HArray1OfGroupItem* _get_reference() {
     return (StepAP214_HArray1OfGroupItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfGroupItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5555,8 +5888,17 @@ class Handle_StepAP214_HArray1OfOrganizationItem : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepAP214_HArray1OfOrganizationItem {
-    StepAP214_HArray1OfOrganizationItem* GetObject() {
+    StepAP214_HArray1OfOrganizationItem* _get_reference() {
     return (StepAP214_HArray1OfOrganizationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfOrganizationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5662,8 +6004,17 @@ class Handle_StepAP214_HArray1OfPersonAndOrganizationItem : public Handle_MMgt_T
 
 };
 %extend Handle_StepAP214_HArray1OfPersonAndOrganizationItem {
-    StepAP214_HArray1OfPersonAndOrganizationItem* GetObject() {
+    StepAP214_HArray1OfPersonAndOrganizationItem* _get_reference() {
     return (StepAP214_HArray1OfPersonAndOrganizationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfPersonAndOrganizationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5769,8 +6120,17 @@ class Handle_StepAP214_HArray1OfPresentedItemSelect : public Handle_MMgt_TShared
 
 };
 %extend Handle_StepAP214_HArray1OfPresentedItemSelect {
-    StepAP214_HArray1OfPresentedItemSelect* GetObject() {
+    StepAP214_HArray1OfPresentedItemSelect* _get_reference() {
     return (StepAP214_HArray1OfPresentedItemSelect*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfPresentedItemSelect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5876,8 +6236,17 @@ class Handle_StepAP214_HArray1OfSecurityClassificationItem : public Handle_MMgt_
 
 };
 %extend Handle_StepAP214_HArray1OfSecurityClassificationItem {
-    StepAP214_HArray1OfSecurityClassificationItem* GetObject() {
+    StepAP214_HArray1OfSecurityClassificationItem* _get_reference() {
     return (StepAP214_HArray1OfSecurityClassificationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_HArray1OfSecurityClassificationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5981,8 +6350,17 @@ class Handle_StepAP214_Protocol : public Handle_StepData_Protocol {
 
 };
 %extend Handle_StepAP214_Protocol {
-    StepAP214_Protocol* GetObject() {
+    StepAP214_Protocol* _get_reference() {
     return (StepAP214_Protocol*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_Protocol {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6058,8 +6436,17 @@ class Handle_StepAP214_RepItemGroup : public Handle_StepBasic_Group {
 
 };
 %extend Handle_StepAP214_RepItemGroup {
-    StepAP214_RepItemGroup* GetObject() {
+    StepAP214_RepItemGroup* _get_reference() {
     return (StepAP214_RepItemGroup*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_RepItemGroup {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6249,8 +6636,17 @@ class Handle_StepAP214_ExternallyDefinedClass : public Handle_StepAP214_Class {
 
 };
 %extend Handle_StepAP214_ExternallyDefinedClass {
-    StepAP214_ExternallyDefinedClass* GetObject() {
+    StepAP214_ExternallyDefinedClass* _get_reference() {
     return (StepAP214_ExternallyDefinedClass*)$self->Access();
+    }
+};
+
+%extend Handle_StepAP214_ExternallyDefinedClass {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

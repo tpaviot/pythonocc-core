@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -320,8 +320,17 @@ class Handle_MAT2d_Circuit : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT2d_Circuit {
-    MAT2d_Circuit* GetObject() {
+    MAT2d_Circuit* _get_reference() {
     return (MAT2d_Circuit*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_Circuit {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -523,8 +532,17 @@ class Handle_MAT2d_Connexion : public Handle_MMgt_TShared {
 
 };
 %extend Handle_MAT2d_Connexion {
-    MAT2d_Connexion* GetObject() {
+    MAT2d_Connexion* _get_reference() {
     return (MAT2d_Connexion*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_Connexion {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -803,8 +821,17 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger : public Handle_TCollectio
 
 };
 %extend Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger {
-    MAT2d_DataMapNodeOfDataMapOfBiIntInteger* GetObject() {
+    MAT2d_DataMapNodeOfDataMapOfBiIntInteger* _get_reference() {
     return (MAT2d_DataMapNodeOfDataMapOfBiIntInteger*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -864,8 +891,17 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger : public Handle_
 
 };
 %extend Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger {
-    MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger* GetObject() {
+    MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger* _get_reference() {
     return (MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -934,8 +970,17 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec : public Handle_TCollectio
 
 };
 %extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec {
-    MAT2d_DataMapNodeOfDataMapOfIntegerBisec* GetObject() {
+    MAT2d_DataMapNodeOfDataMapOfIntegerBisec* _get_reference() {
     return (MAT2d_DataMapNodeOfDataMapOfIntegerBisec*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1004,8 +1049,17 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion : public Handle_TColle
 
 };
 %extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion {
-    MAT2d_DataMapNodeOfDataMapOfIntegerConnexion* GetObject() {
+    MAT2d_DataMapNodeOfDataMapOfIntegerConnexion* _get_reference() {
     return (MAT2d_DataMapNodeOfDataMapOfIntegerConnexion*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1074,8 +1128,17 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d : public Handle_TCollectio
 
 };
 %extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d {
-    MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d* GetObject() {
+    MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d* _get_reference() {
     return (MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1144,8 +1207,17 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion : public Han
 
 };
 %extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion {
-    MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion* GetObject() {
+    MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion* _get_reference() {
     return (MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1214,8 +1286,17 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d : public Handle_TCollectio
 
 };
 %extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d {
-    MAT2d_DataMapNodeOfDataMapOfIntegerVec2d* GetObject() {
+    MAT2d_DataMapNodeOfDataMapOfIntegerVec2d* _get_reference() {
     return (MAT2d_DataMapNodeOfDataMapOfIntegerVec2d*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1976,8 +2057,17 @@ class Handle_MAT2d_SequenceNodeOfSequenceOfConnexion : public Handle_TCollection
 
 };
 %extend Handle_MAT2d_SequenceNodeOfSequenceOfConnexion {
-    MAT2d_SequenceNodeOfSequenceOfConnexion* GetObject() {
+    MAT2d_SequenceNodeOfSequenceOfConnexion* _get_reference() {
     return (MAT2d_SequenceNodeOfSequenceOfConnexion*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_SequenceNodeOfSequenceOfConnexion {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2033,8 +2123,17 @@ class Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve : public Handle_TColl
 
 };
 %extend Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve {
-    MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve* GetObject() {
+    MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve* _get_reference() {
     return (MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2090,8 +2189,17 @@ class Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry : public Handle_TC
 
 };
 %extend Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry {
-    MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry* GetObject() {
+    MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry* _get_reference() {
     return (MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry*)$self->Access();
+    }
+};
+
+%extend Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

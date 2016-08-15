@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -704,8 +704,17 @@ class Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public Handle
 
 };
 %extend Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
-    ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal* GetObject() {
+    ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal* _get_reference() {
     return (ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1297,8 +1306,17 @@ class Handle_ShapeAnalysis_FreeBoundData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeAnalysis_FreeBoundData {
-    ShapeAnalysis_FreeBoundData* GetObject() {
+    ShapeAnalysis_FreeBoundData* _get_reference() {
     return (ShapeAnalysis_FreeBoundData*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeAnalysis_FreeBoundData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1805,8 +1823,17 @@ class Handle_ShapeAnalysis_HSequenceOfFreeBounds : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeAnalysis_HSequenceOfFreeBounds {
-    ShapeAnalysis_HSequenceOfFreeBounds* GetObject() {
+    ShapeAnalysis_HSequenceOfFreeBounds* _get_reference() {
     return (ShapeAnalysis_HSequenceOfFreeBounds*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeAnalysis_HSequenceOfFreeBounds {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1862,8 +1889,17 @@ class Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds : public Handle_TC
 
 };
 %extend Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
-    ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds* GetObject() {
+    ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds* _get_reference() {
     return (ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2774,8 +2810,17 @@ class Handle_ShapeAnalysis_Surface : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeAnalysis_Surface {
-    ShapeAnalysis_Surface* GetObject() {
+    ShapeAnalysis_Surface* _get_reference() {
     return (ShapeAnalysis_Surface*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeAnalysis_Surface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2891,8 +2936,17 @@ class Handle_ShapeAnalysis_TransferParameters : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeAnalysis_TransferParameters {
-    ShapeAnalysis_TransferParameters* GetObject() {
+    ShapeAnalysis_TransferParameters* _get_reference() {
     return (ShapeAnalysis_TransferParameters*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeAnalysis_TransferParameters {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3526,8 +3580,17 @@ class Handle_ShapeAnalysis_Wire : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeAnalysis_Wire {
-    ShapeAnalysis_Wire* GetObject() {
+    ShapeAnalysis_Wire* _get_reference() {
     return (ShapeAnalysis_Wire*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeAnalysis_Wire {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4069,8 +4132,17 @@ class Handle_ShapeAnalysis_TransferParametersProj : public Handle_ShapeAnalysis_
 
 };
 %extend Handle_ShapeAnalysis_TransferParametersProj {
-    ShapeAnalysis_TransferParametersProj* GetObject() {
+    ShapeAnalysis_TransferParametersProj* _get_reference() {
     return (ShapeAnalysis_TransferParametersProj*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeAnalysis_TransferParametersProj {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

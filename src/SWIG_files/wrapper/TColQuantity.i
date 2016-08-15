@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -344,8 +344,17 @@ class Handle_TColQuantity_HArray1OfLength : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColQuantity_HArray1OfLength {
-    TColQuantity_HArray1OfLength* GetObject() {
+    TColQuantity_HArray1OfLength* _get_reference() {
     return (TColQuantity_HArray1OfLength*)$self->Access();
+    }
+};
+
+%extend Handle_TColQuantity_HArray1OfLength {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -477,8 +486,17 @@ class Handle_TColQuantity_HArray2OfLength : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColQuantity_HArray2OfLength {
-    TColQuantity_HArray2OfLength* GetObject() {
+    TColQuantity_HArray2OfLength* _get_reference() {
     return (TColQuantity_HArray2OfLength*)$self->Access();
+    }
+};
+
+%extend Handle_TColQuantity_HArray2OfLength {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

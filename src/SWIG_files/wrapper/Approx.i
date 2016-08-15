@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -698,8 +698,17 @@ class Handle_Approx_CurvlinFunc : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Approx_CurvlinFunc {
-    Approx_CurvlinFunc* GetObject() {
+    Approx_CurvlinFunc* _get_reference() {
     return (Approx_CurvlinFunc*)$self->Access();
+    }
+};
+
+%extend Handle_Approx_CurvlinFunc {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1029,8 +1038,17 @@ class Handle_Approx_HArray1OfAdHSurface : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Approx_HArray1OfAdHSurface {
-    Approx_HArray1OfAdHSurface* GetObject() {
+    Approx_HArray1OfAdHSurface* _get_reference() {
     return (Approx_HArray1OfAdHSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Approx_HArray1OfAdHSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1136,8 +1154,17 @@ class Handle_Approx_HArray1OfGTrsf2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Approx_HArray1OfGTrsf2d {
-    Approx_HArray1OfGTrsf2d* GetObject() {
+    Approx_HArray1OfGTrsf2d* _get_reference() {
     return (Approx_HArray1OfGTrsf2d*)$self->Access();
+    }
+};
+
+%extend Handle_Approx_HArray1OfGTrsf2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1385,8 +1412,17 @@ class Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal : public Handle_TColle
 
 };
 %extend Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal {
-    Approx_SequenceNodeOfSequenceOfHArray1OfReal* GetObject() {
+    Approx_SequenceNodeOfSequenceOfHArray1OfReal* _get_reference() {
     return (Approx_SequenceNodeOfSequenceOfHArray1OfReal*)$self->Access();
+    }
+};
+
+%extend Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1974,8 +2010,17 @@ class Handle_Approx_SweepFunction : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Approx_SweepFunction {
-    Approx_SweepFunction* GetObject() {
+    Approx_SweepFunction* _get_reference() {
     return (Approx_SweepFunction*)$self->Access();
+    }
+};
+
+%extend Handle_Approx_SweepFunction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

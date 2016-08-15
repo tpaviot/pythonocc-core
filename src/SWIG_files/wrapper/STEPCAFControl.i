@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -128,8 +128,17 @@ class Handle_STEPCAFControl_ActorWrite : public Handle_STEPControl_ActorWrite {
 
 };
 %extend Handle_STEPCAFControl_ActorWrite {
-    STEPCAFControl_ActorWrite* GetObject() {
+    STEPCAFControl_ActorWrite* _get_reference() {
     return (STEPCAFControl_ActorWrite*)$self->Access();
+    }
+};
+
+%extend Handle_STEPCAFControl_ActorWrite {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -183,8 +192,17 @@ class Handle_STEPCAFControl_Controller : public Handle_STEPControl_Controller {
 
 };
 %extend Handle_STEPCAFControl_Controller {
-    STEPCAFControl_Controller* GetObject() {
+    STEPCAFControl_Controller* _get_reference() {
     return (STEPCAFControl_Controller*)$self->Access();
+    }
+};
+
+%extend Handle_STEPCAFControl_Controller {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -424,8 +442,17 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public Handl
 
 };
 %extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
-    STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile* GetObject() {
+    STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile* _get_reference() {
     return (STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile*)$self->Access();
+    }
+};
+
+%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -485,8 +512,17 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public Handle_TCo
 
 };
 %extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
-    STEPCAFControl_DataMapNodeOfDataMapOfLabelShape* GetObject() {
+    STEPCAFControl_DataMapNodeOfDataMapOfLabelShape* _get_reference() {
     return (STEPCAFControl_DataMapNodeOfDataMapOfLabelShape*)$self->Access();
+    }
+};
+
+%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -546,8 +582,17 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public Handle_T
 
 };
 %extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
-    STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile* GetObject() {
+    STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile* _get_reference() {
     return (STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile*)$self->Access();
+    }
+};
+
+%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -607,8 +652,17 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public Handle_
 
 };
 %extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
-    STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile* GetObject() {
+    STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile* _get_reference() {
     return (STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile*)$self->Access();
+    }
+};
+
+%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -668,8 +722,17 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public Handle_TColle
 
 };
 %extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
-    STEPCAFControl_DataMapNodeOfDataMapOfShapePD* GetObject() {
+    STEPCAFControl_DataMapNodeOfDataMapOfShapePD* _get_reference() {
     return (STEPCAFControl_DataMapNodeOfDataMapOfShapePD*)$self->Access();
+    }
+};
+
+%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -729,8 +792,17 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public Handle_TColl
 
 };
 %extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
-    STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR* GetObject() {
+    STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR* _get_reference() {
     return (STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR*)$self->Access();
+    }
+};
+
+%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1378,8 +1450,17 @@ class Handle_STEPCAFControl_DictionaryOfExternFile : public Handle_MMgt_TShared 
 
 };
 %extend Handle_STEPCAFControl_DictionaryOfExternFile {
-    STEPCAFControl_DictionaryOfExternFile* GetObject() {
+    STEPCAFControl_DictionaryOfExternFile* _get_reference() {
     return (STEPCAFControl_DictionaryOfExternFile*)$self->Access();
+    }
+};
+
+%extend Handle_STEPCAFControl_DictionaryOfExternFile {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1487,8 +1568,17 @@ class Handle_STEPCAFControl_ExternFile : public Handle_MMgt_TShared {
 
 };
 %extend Handle_STEPCAFControl_ExternFile {
-    STEPCAFControl_ExternFile* GetObject() {
+    STEPCAFControl_ExternFile* _get_reference() {
     return (STEPCAFControl_ExternFile*)$self->Access();
+    }
+};
+
+%extend Handle_STEPCAFControl_ExternFile {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1812,8 +1902,17 @@ class Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile : public Handle_MM
 
 };
 %extend Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile {
-    STEPCAFControl_StackItemOfDictionaryOfExternFile* GetObject() {
+    STEPCAFControl_StackItemOfDictionaryOfExternFile* _get_reference() {
     return (STEPCAFControl_StackItemOfDictionaryOfExternFile*)$self->Access();
+    }
+};
+
+%extend Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

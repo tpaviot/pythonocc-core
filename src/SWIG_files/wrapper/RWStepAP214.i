@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -182,8 +182,17 @@ class Handle_RWStepAP214_GeneralModule : public Handle_StepData_GeneralModule {
 
 };
 %extend Handle_RWStepAP214_GeneralModule {
-    RWStepAP214_GeneralModule* GetObject() {
+    RWStepAP214_GeneralModule* _get_reference() {
     return (RWStepAP214_GeneralModule*)$self->Access();
+    }
+};
+
+%extend Handle_RWStepAP214_GeneralModule {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1329,8 +1338,17 @@ class Handle_RWStepAP214_ReadWriteModule : public Handle_StepData_ReadWriteModul
 
 };
 %extend Handle_RWStepAP214_ReadWriteModule {
-    RWStepAP214_ReadWriteModule* GetObject() {
+    RWStepAP214_ReadWriteModule* _get_reference() {
     return (RWStepAP214_ReadWriteModule*)$self->Access();
+    }
+};
+
+%extend Handle_RWStepAP214_ReadWriteModule {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

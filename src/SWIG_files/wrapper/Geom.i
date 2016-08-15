@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -224,8 +224,17 @@ class Handle_Geom_Geometry : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Geom_Geometry {
-    Geom_Geometry* GetObject() {
+    Geom_Geometry* _get_reference() {
     return (Geom_Geometry*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Geometry {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -399,8 +408,17 @@ class Handle_Geom_HSequenceOfBSplineSurface : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Geom_HSequenceOfBSplineSurface {
-    Geom_HSequenceOfBSplineSurface* GetObject() {
+    Geom_HSequenceOfBSplineSurface* _get_reference() {
     return (Geom_HSequenceOfBSplineSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_HSequenceOfBSplineSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -520,8 +538,17 @@ class Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface : public Handle_TCollec
 
 };
 %extend Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface {
-    Geom_SequenceNodeOfSequenceOfBSplineSurface* GetObject() {
+    Geom_SequenceNodeOfSequenceOfBSplineSurface* _get_reference() {
     return (Geom_SequenceNodeOfSequenceOfBSplineSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -907,8 +934,17 @@ class Handle_Geom_Transformation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Geom_Transformation {
-    Geom_Transformation* GetObject() {
+    Geom_Transformation* _get_reference() {
     return (Geom_Transformation*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Transformation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1000,8 +1036,17 @@ class Handle_Geom_AxisPlacement : public Handle_Geom_Geometry {
 
 };
 %extend Handle_Geom_AxisPlacement {
-    Geom_AxisPlacement* GetObject() {
+    Geom_AxisPlacement* _get_reference() {
     return (Geom_AxisPlacement*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_AxisPlacement {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1195,8 +1240,17 @@ class Handle_Geom_Curve : public Handle_Geom_Geometry {
 
 };
 %extend Handle_Geom_Curve {
-    Geom_Curve* GetObject() {
+    Geom_Curve* _get_reference() {
     return (Geom_Curve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Curve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1290,8 +1344,17 @@ class Handle_Geom_Point : public Handle_Geom_Geometry {
 
 };
 %extend Handle_Geom_Point {
-    Geom_Point* GetObject() {
+    Geom_Point* _get_reference() {
     return (Geom_Point*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Point {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1585,8 +1648,17 @@ class Handle_Geom_Surface : public Handle_Geom_Geometry {
 
 };
 %extend Handle_Geom_Surface {
-    Geom_Surface* GetObject() {
+    Geom_Surface* _get_reference() {
     return (Geom_Surface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Surface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1760,8 +1832,17 @@ class Handle_Geom_Vector : public Handle_Geom_Geometry {
 
 };
 %extend Handle_Geom_Vector {
-    Geom_Vector* GetObject() {
+    Geom_Vector* _get_reference() {
     return (Geom_Vector*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Vector {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1861,8 +1942,17 @@ class Handle_Geom_Axis1Placement : public Handle_Geom_AxisPlacement {
 
 };
 %extend Handle_Geom_Axis1Placement {
-    Geom_Axis1Placement* GetObject() {
+    Geom_Axis1Placement* _get_reference() {
     return (Geom_Axis1Placement*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Axis1Placement {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1988,8 +2078,17 @@ class Handle_Geom_Axis2Placement : public Handle_Geom_AxisPlacement {
 
 };
 %extend Handle_Geom_Axis2Placement {
-    Geom_Axis2Placement* GetObject() {
+    Geom_Axis2Placement* _get_reference() {
     return (Geom_Axis2Placement*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Axis2Placement {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2043,8 +2142,17 @@ class Handle_Geom_BoundedCurve : public Handle_Geom_Curve {
 
 };
 %extend Handle_Geom_BoundedCurve {
-    Geom_BoundedCurve* GetObject() {
+    Geom_BoundedCurve* _get_reference() {
     return (Geom_BoundedCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_BoundedCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2086,8 +2194,17 @@ class Handle_Geom_BoundedSurface : public Handle_Geom_Surface {
 
 };
 %extend Handle_Geom_BoundedSurface {
-    Geom_BoundedSurface* GetObject() {
+    Geom_BoundedSurface* _get_reference() {
     return (Geom_BoundedSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_BoundedSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2243,8 +2360,17 @@ class Handle_Geom_CartesianPoint : public Handle_Geom_Point {
 
 };
 %extend Handle_Geom_CartesianPoint {
-    Geom_CartesianPoint* GetObject() {
+    Geom_CartesianPoint* _get_reference() {
     return (Geom_CartesianPoint*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_CartesianPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2374,8 +2500,17 @@ class Handle_Geom_Conic : public Handle_Geom_Curve {
 
 };
 %extend Handle_Geom_Conic {
-    Geom_Conic* GetObject() {
+    Geom_Conic* _get_reference() {
     return (Geom_Conic*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Conic {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2549,8 +2684,17 @@ class Handle_Geom_Direction : public Handle_Geom_Vector {
 
 };
 %extend Handle_Geom_Direction {
-    Geom_Direction* GetObject() {
+    Geom_Direction* _get_reference() {
     return (Geom_Direction*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Direction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2684,8 +2828,17 @@ class Handle_Geom_ElementarySurface : public Handle_Geom_Surface {
 
 };
 %extend Handle_Geom_ElementarySurface {
-    Geom_ElementarySurface* GetObject() {
+    Geom_ElementarySurface* _get_reference() {
     return (Geom_ElementarySurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_ElementarySurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2943,8 +3096,17 @@ class Handle_Geom_Line : public Handle_Geom_Curve {
 
 };
 %extend Handle_Geom_Line {
-    Geom_Line* GetObject() {
+    Geom_Line* _get_reference() {
     return (Geom_Line*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Line {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3256,8 +3418,17 @@ class Handle_Geom_OffsetCurve : public Handle_Geom_Curve {
 
 };
 %extend Handle_Geom_OffsetCurve {
-    Geom_OffsetCurve* GetObject() {
+    Geom_OffsetCurve* _get_reference() {
     return (Geom_OffsetCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_OffsetCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3807,8 +3978,17 @@ class Handle_Geom_OffsetSurface : public Handle_Geom_Surface {
 
 };
 %extend Handle_Geom_OffsetSurface {
-    Geom_OffsetSurface* GetObject() {
+    Geom_OffsetSurface* _get_reference() {
     return (Geom_OffsetSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_OffsetSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3868,8 +4048,17 @@ class Handle_Geom_SweptSurface : public Handle_Geom_Surface {
 
 };
 %extend Handle_Geom_SweptSurface {
-    Geom_SweptSurface* GetObject() {
+    Geom_SweptSurface* _get_reference() {
     return (Geom_SweptSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_SweptSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4123,8 +4312,17 @@ class Handle_Geom_VectorWithMagnitude : public Handle_Geom_Vector {
 
 };
 %extend Handle_Geom_VectorWithMagnitude {
-    Geom_VectorWithMagnitude* GetObject() {
+    Geom_VectorWithMagnitude* _get_reference() {
     return (Geom_VectorWithMagnitude*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_VectorWithMagnitude {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4822,8 +5020,17 @@ class Handle_Geom_BSplineCurve : public Handle_Geom_BoundedCurve {
 
 };
 %extend Handle_Geom_BSplineCurve {
-    Geom_BSplineCurve* GetObject() {
+    Geom_BSplineCurve* _get_reference() {
     return (Geom_BSplineCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_BSplineCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5979,8 +6186,17 @@ class Handle_Geom_BSplineSurface : public Handle_Geom_BoundedSurface {
 
 };
 %extend Handle_Geom_BSplineSurface {
-    Geom_BSplineSurface* GetObject() {
+    Geom_BSplineSurface* _get_reference() {
     return (Geom_BSplineSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_BSplineSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6342,8 +6558,17 @@ class Handle_Geom_BezierCurve : public Handle_Geom_BoundedCurve {
 
 };
 %extend Handle_Geom_BezierCurve {
-    Geom_BezierCurve* GetObject() {
+    Geom_BezierCurve* _get_reference() {
     return (Geom_BezierCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_BezierCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6935,8 +7160,17 @@ class Handle_Geom_BezierSurface : public Handle_Geom_BoundedSurface {
 
 };
 %extend Handle_Geom_BezierSurface {
-    Geom_BezierSurface* GetObject() {
+    Geom_BezierSurface* _get_reference() {
     return (Geom_BezierSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_BezierSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7138,8 +7372,17 @@ class Handle_Geom_Circle : public Handle_Geom_Conic {
 
 };
 %extend Handle_Geom_Circle {
-    Geom_Circle* GetObject() {
+    Geom_Circle* _get_reference() {
     return (Geom_Circle*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Circle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7479,8 +7722,17 @@ class Handle_Geom_ConicalSurface : public Handle_Geom_ElementarySurface {
 
 };
 %extend Handle_Geom_ConicalSurface {
-    Geom_ConicalSurface* GetObject() {
+    Geom_ConicalSurface* _get_reference() {
     return (Geom_ConicalSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_ConicalSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7792,8 +8044,17 @@ class Handle_Geom_CylindricalSurface : public Handle_Geom_ElementarySurface {
 
 };
 %extend Handle_Geom_CylindricalSurface {
-    Geom_CylindricalSurface* GetObject() {
+    Geom_CylindricalSurface* _get_reference() {
     return (Geom_CylindricalSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_CylindricalSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8045,8 +8306,17 @@ class Handle_Geom_Ellipse : public Handle_Geom_Conic {
 
 };
 %extend Handle_Geom_Ellipse {
-    Geom_Ellipse* GetObject() {
+    Geom_Ellipse* _get_reference() {
     return (Geom_Ellipse*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Ellipse {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8330,8 +8600,17 @@ class Handle_Geom_Hyperbola : public Handle_Geom_Conic {
 
 };
 %extend Handle_Geom_Hyperbola {
-    Geom_Hyperbola* GetObject() {
+    Geom_Hyperbola* _get_reference() {
     return (Geom_Hyperbola*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Hyperbola {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8579,8 +8858,17 @@ class Handle_Geom_Parabola : public Handle_Geom_Conic {
 
 };
 %extend Handle_Geom_Parabola {
-    Geom_Parabola* GetObject() {
+    Geom_Parabola* _get_reference() {
     return (Geom_Parabola*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Parabola {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8900,8 +9188,17 @@ class Handle_Geom_Plane : public Handle_Geom_ElementarySurface {
 
 };
 %extend Handle_Geom_Plane {
-    Geom_Plane* GetObject() {
+    Geom_Plane* _get_reference() {
     return (Geom_Plane*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_Plane {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9261,8 +9558,17 @@ class Handle_Geom_RectangularTrimmedSurface : public Handle_Geom_BoundedSurface 
 
 };
 %extend Handle_Geom_RectangularTrimmedSurface {
-    Geom_RectangularTrimmedSurface* GetObject() {
+    Geom_RectangularTrimmedSurface* _get_reference() {
     return (Geom_RectangularTrimmedSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_RectangularTrimmedSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9566,8 +9872,17 @@ class Handle_Geom_SphericalSurface : public Handle_Geom_ElementarySurface {
 
 };
 %extend Handle_Geom_SphericalSurface {
-    Geom_SphericalSurface* GetObject() {
+    Geom_SphericalSurface* _get_reference() {
     return (Geom_SphericalSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_SphericalSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9957,8 +10272,17 @@ class Handle_Geom_SurfaceOfLinearExtrusion : public Handle_Geom_SweptSurface {
 
 };
 %extend Handle_Geom_SurfaceOfLinearExtrusion {
-    Geom_SurfaceOfLinearExtrusion* GetObject() {
+    Geom_SurfaceOfLinearExtrusion* _get_reference() {
     return (Geom_SurfaceOfLinearExtrusion*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_SurfaceOfLinearExtrusion {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10380,8 +10704,17 @@ class Handle_Geom_SurfaceOfRevolution : public Handle_Geom_SweptSurface {
 
 };
 %extend Handle_Geom_SurfaceOfRevolution {
-    Geom_SurfaceOfRevolution* GetObject() {
+    Geom_SurfaceOfRevolution* _get_reference() {
     return (Geom_SurfaceOfRevolution*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_SurfaceOfRevolution {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10683,8 +11016,17 @@ class Handle_Geom_ToroidalSurface : public Handle_Geom_ElementarySurface {
 
 };
 %extend Handle_Geom_ToroidalSurface {
-    Geom_ToroidalSurface* GetObject() {
+    Geom_ToroidalSurface* _get_reference() {
     return (Geom_ToroidalSurface*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_ToroidalSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -10922,8 +11264,17 @@ class Handle_Geom_TrimmedCurve : public Handle_Geom_BoundedCurve {
 
 };
 %extend Handle_Geom_TrimmedCurve {
-    Geom_TrimmedCurve* GetObject() {
+    Geom_TrimmedCurve* _get_reference() {
     return (Geom_TrimmedCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom_TrimmedCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

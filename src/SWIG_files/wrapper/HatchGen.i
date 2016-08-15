@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -757,8 +757,17 @@ class Handle_HatchGen_SequenceNodeOfDomains : public Handle_TCollection_SeqNode 
 
 };
 %extend Handle_HatchGen_SequenceNodeOfDomains {
-    HatchGen_SequenceNodeOfDomains* GetObject() {
+    HatchGen_SequenceNodeOfDomains* _get_reference() {
     return (HatchGen_SequenceNodeOfDomains*)$self->Access();
+    }
+};
+
+%extend Handle_HatchGen_SequenceNodeOfDomains {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -814,8 +823,17 @@ class Handle_HatchGen_SequenceNodeOfPointsOnElement : public Handle_TCollection_
 
 };
 %extend Handle_HatchGen_SequenceNodeOfPointsOnElement {
-    HatchGen_SequenceNodeOfPointsOnElement* GetObject() {
+    HatchGen_SequenceNodeOfPointsOnElement* _get_reference() {
     return (HatchGen_SequenceNodeOfPointsOnElement*)$self->Access();
+    }
+};
+
+%extend Handle_HatchGen_SequenceNodeOfPointsOnElement {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -871,8 +889,17 @@ class Handle_HatchGen_SequenceNodeOfPointsOnHatching : public Handle_TCollection
 
 };
 %extend Handle_HatchGen_SequenceNodeOfPointsOnHatching {
-    HatchGen_SequenceNodeOfPointsOnHatching* GetObject() {
+    HatchGen_SequenceNodeOfPointsOnHatching* _get_reference() {
     return (HatchGen_SequenceNodeOfPointsOnHatching*)$self->Access();
+    }
+};
+
+%extend Handle_HatchGen_SequenceNodeOfPointsOnHatching {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

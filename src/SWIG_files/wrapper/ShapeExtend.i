@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -192,8 +192,17 @@ class Handle_ShapeExtend_BasicMsgRegistrator : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeExtend_BasicMsgRegistrator {
-    ShapeExtend_BasicMsgRegistrator* GetObject() {
+    ShapeExtend_BasicMsgRegistrator* _get_reference() {
     return (ShapeExtend_BasicMsgRegistrator*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeExtend_BasicMsgRegistrator {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -393,8 +402,17 @@ class Handle_ShapeExtend_ComplexCurve : public Handle_Geom_Curve {
 
 };
 %extend Handle_ShapeExtend_ComplexCurve {
-    ShapeExtend_ComplexCurve* GetObject() {
+    ShapeExtend_ComplexCurve* _get_reference() {
     return (ShapeExtend_ComplexCurve*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeExtend_ComplexCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -942,8 +960,17 @@ class Handle_ShapeExtend_CompositeSurface : public Handle_Geom_Surface {
 
 };
 %extend Handle_ShapeExtend_CompositeSurface {
-    ShapeExtend_CompositeSurface* GetObject() {
+    ShapeExtend_CompositeSurface* _get_reference() {
     return (ShapeExtend_CompositeSurface*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeExtend_CompositeSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1063,8 +1090,17 @@ class Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public Handle_TC
 
 };
 %extend Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg {
-    ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg* GetObject() {
+    ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg* _get_reference() {
     return (ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1124,8 +1160,17 @@ class Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public Handl
 
 };
 %extend Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
-    ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg* GetObject() {
+    ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg* _get_reference() {
     return (ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1664,8 +1709,17 @@ class Handle_ShapeExtend_WireData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeExtend_WireData {
-    ShapeExtend_WireData* GetObject() {
+    ShapeExtend_WireData* _get_reference() {
     return (ShapeExtend_WireData*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeExtend_WireData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1749,8 +1803,17 @@ class Handle_ShapeExtend_MsgRegistrator : public Handle_ShapeExtend_BasicMsgRegi
 
 };
 %extend Handle_ShapeExtend_MsgRegistrator {
-    ShapeExtend_MsgRegistrator* GetObject() {
+    ShapeExtend_MsgRegistrator* _get_reference() {
     return (ShapeExtend_MsgRegistrator*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeExtend_MsgRegistrator {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

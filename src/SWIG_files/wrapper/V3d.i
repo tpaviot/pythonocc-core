@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -367,8 +367,17 @@ class Handle_V3d_CircularGrid : public Handle_Aspect_CircularGrid {
 
 };
 %extend Handle_V3d_CircularGrid {
-    V3d_CircularGrid* GetObject() {
+    V3d_CircularGrid* _get_reference() {
     return (V3d_CircularGrid*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_CircularGrid {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -488,8 +497,17 @@ class Handle_V3d_ColorScale : public Handle_Aspect_ColorScale {
 
 };
 %extend Handle_V3d_ColorScale {
-    V3d_ColorScale* GetObject() {
+    V3d_ColorScale* _get_reference() {
     return (V3d_ColorScale*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_ColorScale {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -551,8 +569,17 @@ class Handle_V3d_ColorScaleLayerItem : public Handle_Visual3d_LayerItem {
 
 };
 %extend Handle_V3d_ColorScaleLayerItem {
-    V3d_ColorScaleLayerItem* GetObject() {
+    V3d_ColorScaleLayerItem* _get_reference() {
     return (V3d_ColorScaleLayerItem*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_ColorScaleLayerItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -634,8 +661,17 @@ class Handle_V3d_LayerMgr : public Handle_MMgt_TShared {
 
 };
 %extend Handle_V3d_LayerMgr {
-    V3d_LayerMgr* GetObject() {
+    V3d_LayerMgr* _get_reference() {
     return (V3d_LayerMgr*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_LayerMgr {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -761,8 +797,17 @@ class Handle_V3d_Light : public Handle_MMgt_TShared {
 
 };
 %extend Handle_V3d_Light {
-    V3d_Light* GetObject() {
+    V3d_Light* _get_reference() {
     return (V3d_Light*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_Light {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -952,8 +997,17 @@ class Handle_V3d_RectangularGrid : public Handle_Aspect_RectangularGrid {
 
 };
 %extend Handle_V3d_RectangularGrid {
-    V3d_RectangularGrid* GetObject() {
+    V3d_RectangularGrid* _get_reference() {
     return (V3d_RectangularGrid*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_RectangularGrid {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2779,8 +2833,17 @@ class Handle_V3d_View : public Handle_MMgt_TShared {
 
 };
 %extend Handle_V3d_View {
-    V3d_View* GetObject() {
+    V3d_View* _get_reference() {
     return (V3d_View*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_View {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3584,8 +3647,17 @@ class Handle_V3d_Viewer : public Handle_MMgt_TShared {
 
 };
 %extend Handle_V3d_Viewer {
-    V3d_Viewer* GetObject() {
+    V3d_Viewer* _get_reference() {
     return (V3d_Viewer*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_Viewer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3637,8 +3709,17 @@ class Handle_V3d_AmbientLight : public Handle_V3d_Light {
 
 };
 %extend Handle_V3d_AmbientLight {
-    V3d_AmbientLight* GetObject() {
+    V3d_AmbientLight* _get_reference() {
     return (V3d_AmbientLight*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_AmbientLight {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3796,8 +3877,17 @@ class Handle_V3d_PositionLight : public Handle_V3d_Light {
 
 };
 %extend Handle_V3d_PositionLight {
-    V3d_PositionLight* GetObject() {
+    V3d_PositionLight* _get_reference() {
     return (V3d_PositionLight*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_PositionLight {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3967,8 +4057,17 @@ class Handle_V3d_DirectionalLight : public Handle_V3d_PositionLight {
 
 };
 %extend Handle_V3d_DirectionalLight {
-    V3d_DirectionalLight* GetObject() {
+    V3d_DirectionalLight* _get_reference() {
     return (V3d_DirectionalLight*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_DirectionalLight {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4110,8 +4209,17 @@ class Handle_V3d_PositionalLight : public Handle_V3d_PositionLight {
 
 };
 %extend Handle_V3d_PositionalLight {
-    V3d_PositionalLight* GetObject() {
+    V3d_PositionalLight* _get_reference() {
     return (V3d_PositionalLight*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_PositionalLight {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4321,8 +4429,17 @@ class Handle_V3d_SpotLight : public Handle_V3d_PositionLight {
 
 };
 %extend Handle_V3d_SpotLight {
-    V3d_SpotLight* GetObject() {
+    V3d_SpotLight* _get_reference() {
     return (V3d_SpotLight*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_SpotLight {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

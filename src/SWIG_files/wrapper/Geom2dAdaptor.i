@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -366,8 +366,17 @@ class Handle_Geom2dAdaptor_GHCurve : public Handle_Adaptor2d_HCurve2d {
 
 };
 %extend Handle_Geom2dAdaptor_GHCurve {
-    Geom2dAdaptor_GHCurve* GetObject() {
+    Geom2dAdaptor_GHCurve* _get_reference() {
     return (Geom2dAdaptor_GHCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2dAdaptor_GHCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -437,8 +446,17 @@ class Handle_Geom2dAdaptor_HCurve : public Handle_Geom2dAdaptor_GHCurve {
 
 };
 %extend Handle_Geom2dAdaptor_HCurve {
-    Geom2dAdaptor_HCurve* GetObject() {
+    Geom2dAdaptor_HCurve* _get_reference() {
     return (Geom2dAdaptor_HCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2dAdaptor_HCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -557,8 +557,17 @@ class Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint : public Handle_
 
 };
 %extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
-    IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint* GetObject() {
+    IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint* _get_reference() {
     return (IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint*)$self->Access();
+    }
+};
+
+%extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -614,8 +623,17 @@ class Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment : public Handl
 
 };
 %extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
-    IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment* GetObject() {
+    IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment* _get_reference() {
     return (IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment*)$self->Access();
+    }
+};
+
+%extend Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

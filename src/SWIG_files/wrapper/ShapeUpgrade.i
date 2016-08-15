@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -162,8 +162,17 @@ class Handle_ShapeUpgrade_RemoveLocations : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeUpgrade_RemoveLocations {
-    ShapeUpgrade_RemoveLocations* GetObject() {
+    ShapeUpgrade_RemoveLocations* _get_reference() {
     return (ShapeUpgrade_RemoveLocations*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_RemoveLocations {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -401,8 +410,17 @@ class Handle_ShapeUpgrade_SplitCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeUpgrade_SplitCurve {
-    ShapeUpgrade_SplitCurve* GetObject() {
+    ShapeUpgrade_SplitCurve* _get_reference() {
     return (ShapeUpgrade_SplitCurve*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_SplitCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -540,8 +558,17 @@ class Handle_ShapeUpgrade_SplitSurface : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeUpgrade_SplitSurface {
-    ShapeUpgrade_SplitSurface* GetObject() {
+    ShapeUpgrade_SplitSurface* _get_reference() {
     return (ShapeUpgrade_SplitSurface*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_SplitSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -661,8 +688,17 @@ class Handle_ShapeUpgrade_Tool : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeUpgrade_Tool {
-    ShapeUpgrade_Tool* GetObject() {
+    ShapeUpgrade_Tool* _get_reference() {
     return (ShapeUpgrade_Tool*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_Tool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -770,8 +806,17 @@ class Handle_ShapeUpgrade_UnifySameDomain : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeUpgrade_UnifySameDomain {
-    ShapeUpgrade_UnifySameDomain* GetObject() {
+    ShapeUpgrade_UnifySameDomain* _get_reference() {
     return (ShapeUpgrade_UnifySameDomain*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_UnifySameDomain {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -897,8 +942,17 @@ class Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis : public Handle_ShapeUpgra
 
 };
 %extend Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis {
-    ShapeUpgrade_ConvertSurfaceToBezierBasis* GetObject() {
+    ShapeUpgrade_ConvertSurfaceToBezierBasis* _get_reference() {
     return (ShapeUpgrade_ConvertSurfaceToBezierBasis*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1008,8 +1062,17 @@ class Handle_ShapeUpgrade_EdgeDivide : public Handle_ShapeUpgrade_Tool {
 
 };
 %extend Handle_ShapeUpgrade_EdgeDivide {
-    ShapeUpgrade_EdgeDivide* GetObject() {
+    ShapeUpgrade_EdgeDivide* _get_reference() {
     return (ShapeUpgrade_EdgeDivide*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_EdgeDivide {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1141,8 +1204,17 @@ class Handle_ShapeUpgrade_FaceDivide : public Handle_ShapeUpgrade_Tool {
 
 };
 %extend Handle_ShapeUpgrade_FaceDivide {
-    ShapeUpgrade_FaceDivide* GetObject() {
+    ShapeUpgrade_FaceDivide* _get_reference() {
     return (ShapeUpgrade_FaceDivide*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_FaceDivide {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1234,8 +1306,17 @@ class Handle_ShapeUpgrade_FixSmallCurves : public Handle_ShapeUpgrade_Tool {
 
 };
 %extend Handle_ShapeUpgrade_FixSmallCurves {
-    ShapeUpgrade_FixSmallCurves* GetObject() {
+    ShapeUpgrade_FixSmallCurves* _get_reference() {
     return (ShapeUpgrade_FixSmallCurves*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_FixSmallCurves {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1363,8 +1444,17 @@ class Handle_ShapeUpgrade_RemoveInternalWires : public Handle_ShapeUpgrade_Tool 
 
 };
 %extend Handle_ShapeUpgrade_RemoveInternalWires {
-    ShapeUpgrade_RemoveInternalWires* GetObject() {
+    ShapeUpgrade_RemoveInternalWires* _get_reference() {
     return (ShapeUpgrade_RemoveInternalWires*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_RemoveInternalWires {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1791,8 +1881,17 @@ class Handle_ShapeUpgrade_SplitCurve2d : public Handle_ShapeUpgrade_SplitCurve {
 
 };
 %extend Handle_ShapeUpgrade_SplitCurve2d {
-    ShapeUpgrade_SplitCurve2d* GetObject() {
+    ShapeUpgrade_SplitCurve2d* _get_reference() {
     return (ShapeUpgrade_SplitCurve2d*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_SplitCurve2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1872,8 +1971,17 @@ class Handle_ShapeUpgrade_SplitCurve3d : public Handle_ShapeUpgrade_SplitCurve {
 
 };
 %extend Handle_ShapeUpgrade_SplitCurve3d {
-    ShapeUpgrade_SplitCurve3d* GetObject() {
+    ShapeUpgrade_SplitCurve3d* _get_reference() {
     return (ShapeUpgrade_SplitCurve3d*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_SplitCurve3d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1945,8 +2053,17 @@ class Handle_ShapeUpgrade_SplitSurfaceAngle : public Handle_ShapeUpgrade_SplitSu
 
 };
 %extend Handle_ShapeUpgrade_SplitSurfaceAngle {
-    ShapeUpgrade_SplitSurfaceAngle* GetObject() {
+    ShapeUpgrade_SplitSurfaceAngle* _get_reference() {
     return (ShapeUpgrade_SplitSurfaceAngle*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_SplitSurfaceAngle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2013,8 +2130,17 @@ class Handle_ShapeUpgrade_SplitSurfaceArea : public Handle_ShapeUpgrade_SplitSur
 
 };
 %extend Handle_ShapeUpgrade_SplitSurfaceArea {
-    ShapeUpgrade_SplitSurfaceArea* GetObject() {
+    ShapeUpgrade_SplitSurfaceArea* _get_reference() {
     return (ShapeUpgrade_SplitSurfaceArea*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_SplitSurfaceArea {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2084,8 +2210,17 @@ class Handle_ShapeUpgrade_SplitSurfaceContinuity : public Handle_ShapeUpgrade_Sp
 
 };
 %extend Handle_ShapeUpgrade_SplitSurfaceContinuity {
-    ShapeUpgrade_SplitSurfaceContinuity* GetObject() {
+    ShapeUpgrade_SplitSurfaceContinuity* _get_reference() {
     return (ShapeUpgrade_SplitSurfaceContinuity*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_SplitSurfaceContinuity {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2281,8 +2416,17 @@ class Handle_ShapeUpgrade_WireDivide : public Handle_ShapeUpgrade_Tool {
 
 };
 %extend Handle_ShapeUpgrade_WireDivide {
-    ShapeUpgrade_WireDivide* GetObject() {
+    ShapeUpgrade_WireDivide* _get_reference() {
     return (ShapeUpgrade_WireDivide*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_WireDivide {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2336,8 +2480,17 @@ class Handle_ShapeUpgrade_ClosedEdgeDivide : public Handle_ShapeUpgrade_EdgeDivi
 
 };
 %extend Handle_ShapeUpgrade_ClosedEdgeDivide {
-    ShapeUpgrade_ClosedEdgeDivide* GetObject() {
+    ShapeUpgrade_ClosedEdgeDivide* _get_reference() {
     return (ShapeUpgrade_ClosedEdgeDivide*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_ClosedEdgeDivide {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2413,8 +2566,17 @@ class Handle_ShapeUpgrade_ClosedFaceDivide : public Handle_ShapeUpgrade_FaceDivi
 
 };
 %extend Handle_ShapeUpgrade_ClosedFaceDivide {
-    ShapeUpgrade_ClosedFaceDivide* GetObject() {
+    ShapeUpgrade_ClosedFaceDivide* _get_reference() {
     return (ShapeUpgrade_ClosedFaceDivide*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_ClosedFaceDivide {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2482,8 +2644,17 @@ class Handle_ShapeUpgrade_ConvertCurve2dToBezier : public Handle_ShapeUpgrade_Sp
 
 };
 %extend Handle_ShapeUpgrade_ConvertCurve2dToBezier {
-    ShapeUpgrade_ConvertCurve2dToBezier* GetObject() {
+    ShapeUpgrade_ConvertCurve2dToBezier* _get_reference() {
     return (ShapeUpgrade_ConvertCurve2dToBezier*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_ConvertCurve2dToBezier {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2593,8 +2764,17 @@ class Handle_ShapeUpgrade_ConvertCurve3dToBezier : public Handle_ShapeUpgrade_Sp
 
 };
 %extend Handle_ShapeUpgrade_ConvertCurve3dToBezier {
-    ShapeUpgrade_ConvertCurve3dToBezier* GetObject() {
+    ShapeUpgrade_ConvertCurve3dToBezier* _get_reference() {
     return (ShapeUpgrade_ConvertCurve3dToBezier*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_ConvertCurve3dToBezier {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2667,8 +2847,17 @@ class Handle_ShapeUpgrade_FaceDivideArea : public Handle_ShapeUpgrade_FaceDivide
 
 };
 %extend Handle_ShapeUpgrade_FaceDivideArea {
-    ShapeUpgrade_FaceDivideArea* GetObject() {
+    ShapeUpgrade_FaceDivideArea* _get_reference() {
     return (ShapeUpgrade_FaceDivideArea*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_FaceDivideArea {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2728,8 +2917,17 @@ class Handle_ShapeUpgrade_FixSmallBezierCurves : public Handle_ShapeUpgrade_FixS
 
 };
 %extend Handle_ShapeUpgrade_FixSmallBezierCurves {
-    ShapeUpgrade_FixSmallBezierCurves* GetObject() {
+    ShapeUpgrade_FixSmallBezierCurves* _get_reference() {
     return (ShapeUpgrade_FixSmallBezierCurves*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_FixSmallBezierCurves {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2799,8 +2997,17 @@ class Handle_ShapeUpgrade_SplitCurve2dContinuity : public Handle_ShapeUpgrade_Sp
 
 };
 %extend Handle_ShapeUpgrade_SplitCurve2dContinuity {
-    ShapeUpgrade_SplitCurve2dContinuity* GetObject() {
+    ShapeUpgrade_SplitCurve2dContinuity* _get_reference() {
     return (ShapeUpgrade_SplitCurve2dContinuity*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_SplitCurve2dContinuity {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2874,8 +3081,17 @@ class Handle_ShapeUpgrade_SplitCurve3dContinuity : public Handle_ShapeUpgrade_Sp
 
 };
 %extend Handle_ShapeUpgrade_SplitCurve3dContinuity {
-    ShapeUpgrade_SplitCurve3dContinuity* GetObject() {
+    ShapeUpgrade_SplitCurve3dContinuity* _get_reference() {
     return (ShapeUpgrade_SplitCurve3dContinuity*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeUpgrade_SplitCurve3dContinuity {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -324,8 +324,17 @@ class Handle_ShapeCustom_ConvertToBSpline : public Handle_BRepTools_Modification
 
 };
 %extend Handle_ShapeCustom_ConvertToBSpline {
-    ShapeCustom_ConvertToBSpline* GetObject() {
+    ShapeCustom_ConvertToBSpline* _get_reference() {
     return (ShapeCustom_ConvertToBSpline*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeCustom_ConvertToBSpline {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -544,8 +553,17 @@ class Handle_ShapeCustom_DirectModification : public Handle_BRepTools_Modificati
 
 };
 %extend Handle_ShapeCustom_DirectModification {
-    ShapeCustom_DirectModification* GetObject() {
+    ShapeCustom_DirectModification* _get_reference() {
     return (ShapeCustom_DirectModification*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeCustom_DirectModification {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -801,8 +819,17 @@ class Handle_ShapeCustom_RestrictionParameters : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeCustom_RestrictionParameters {
-    ShapeCustom_RestrictionParameters* GetObject() {
+    ShapeCustom_RestrictionParameters* _get_reference() {
     return (ShapeCustom_RestrictionParameters*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeCustom_RestrictionParameters {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -976,8 +1003,17 @@ class Handle_ShapeCustom_TrsfModification : public Handle_BRepTools_TrsfModifica
 
 };
 %extend Handle_ShapeCustom_TrsfModification {
-    ShapeCustom_TrsfModification* GetObject() {
+    ShapeCustom_TrsfModification* _get_reference() {
     return (ShapeCustom_TrsfModification*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeCustom_TrsfModification {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

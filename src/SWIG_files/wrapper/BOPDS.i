@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -267,8 +267,17 @@ class Handle_BOPDS_CommonBlock : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BOPDS_CommonBlock {
-    BOPDS_CommonBlock* GetObject() {
+    BOPDS_CommonBlock* _get_reference() {
     return (BOPDS_CommonBlock*)$self->Access();
+    }
+};
+
+%extend Handle_BOPDS_CommonBlock {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1803,8 +1812,17 @@ class Handle_BOPDS_PaveBlock : public Handle_MMgt_TShared {
 
 };
 %extend Handle_BOPDS_PaveBlock {
-    BOPDS_PaveBlock* GetObject() {
+    BOPDS_PaveBlock* _get_reference() {
     return (BOPDS_PaveBlock*)$self->Access();
+    }
+};
+
+%extend Handle_BOPDS_PaveBlock {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -270,8 +270,17 @@ class Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape : public Handle_TColl
 
 };
 %extend Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape {
-    BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape* GetObject() {
+    BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape* _get_reference() {
     return (BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape*)$self->Access();
+    }
+};
+
+%extend Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -331,8 +340,17 @@ class Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt : public Ha
 
 };
 %extend Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt {
-    BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt* GetObject() {
+    BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt* _get_reference() {
     return (BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt*)$self->Access();
+    }
+};
+
+%extend Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -486,8 +486,17 @@ class Handle_Expr_GeneralExpression : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Expr_GeneralExpression {
-    Expr_GeneralExpression* GetObject() {
+    Expr_GeneralExpression* _get_reference() {
     return (Expr_GeneralExpression*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_GeneralExpression {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -597,8 +606,17 @@ class Handle_Expr_GeneralFunction : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Expr_GeneralFunction {
-    Expr_GeneralFunction* GetObject() {
+    Expr_GeneralFunction* _get_reference() {
     return (Expr_GeneralFunction*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_GeneralFunction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -714,8 +732,17 @@ class Handle_Expr_GeneralRelation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Expr_GeneralRelation {
-    Expr_GeneralRelation* GetObject() {
+    Expr_GeneralRelation* _get_reference() {
     return (Expr_GeneralRelation*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_GeneralRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -790,8 +817,17 @@ class Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown : public Handle_TCollection_
 
 };
 %extend Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown {
-    Expr_IndexedMapNodeOfMapOfNamedUnknown* GetObject() {
+    Expr_IndexedMapNodeOfMapOfNamedUnknown* _get_reference() {
     return (Expr_IndexedMapNodeOfMapOfNamedUnknown*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -981,8 +1017,17 @@ class Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression : public Handle_TCol
 
 };
 %extend Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression {
-    Expr_SequenceNodeOfSequenceOfGeneralExpression* GetObject() {
+    Expr_SequenceNodeOfSequenceOfGeneralExpression* _get_reference() {
     return (Expr_SequenceNodeOfSequenceOfGeneralExpression*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1038,8 +1083,17 @@ class Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation : public Handle_TColle
 
 };
 %extend Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation {
-    Expr_SequenceNodeOfSequenceOfGeneralRelation* GetObject() {
+    Expr_SequenceNodeOfSequenceOfGeneralRelation* _get_reference() {
     return (Expr_SequenceNodeOfSequenceOfGeneralRelation*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1449,8 +1503,17 @@ class Handle_Expr_BinaryExpression : public Handle_Expr_GeneralExpression {
 
 };
 %extend Handle_Expr_BinaryExpression {
-    Expr_BinaryExpression* GetObject() {
+    Expr_BinaryExpression* _get_reference() {
     return (Expr_BinaryExpression*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_BinaryExpression {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1598,8 +1661,17 @@ class Handle_Expr_FunctionDerivative : public Handle_Expr_GeneralFunction {
 
 };
 %extend Handle_Expr_FunctionDerivative {
-    Expr_FunctionDerivative* GetObject() {
+    Expr_FunctionDerivative* _get_reference() {
     return (Expr_FunctionDerivative*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_FunctionDerivative {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1671,8 +1743,17 @@ class Handle_Expr_NamedExpression : public Handle_Expr_GeneralExpression {
 
 };
 %extend Handle_Expr_NamedExpression {
-    Expr_NamedExpression* GetObject() {
+    Expr_NamedExpression* _get_reference() {
     return (Expr_NamedExpression*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_NamedExpression {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1822,8 +1903,17 @@ class Handle_Expr_NamedFunction : public Handle_Expr_GeneralFunction {
 
 };
 %extend Handle_Expr_NamedFunction {
-    Expr_NamedFunction* GetObject() {
+    Expr_NamedFunction* _get_reference() {
     return (Expr_NamedFunction*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_NamedFunction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1983,8 +2073,17 @@ class Handle_Expr_NumericValue : public Handle_Expr_GeneralExpression {
 
 };
 %extend Handle_Expr_NumericValue {
-    Expr_NumericValue* GetObject() {
+    Expr_NumericValue* _get_reference() {
     return (Expr_NumericValue*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_NumericValue {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2094,8 +2193,17 @@ class Handle_Expr_PolyExpression : public Handle_Expr_GeneralExpression {
 
 };
 %extend Handle_Expr_PolyExpression {
-    Expr_PolyExpression* GetObject() {
+    Expr_PolyExpression* _get_reference() {
     return (Expr_PolyExpression*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_PolyExpression {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2209,8 +2317,17 @@ class Handle_Expr_SingleRelation : public Handle_Expr_GeneralRelation {
 
 };
 %extend Handle_Expr_SingleRelation {
-    Expr_SingleRelation* GetObject() {
+    Expr_SingleRelation* _get_reference() {
     return (Expr_SingleRelation*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_SingleRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2346,8 +2463,17 @@ class Handle_Expr_SystemRelation : public Handle_Expr_GeneralRelation {
 
 };
 %extend Handle_Expr_SystemRelation {
-    Expr_SystemRelation* GetObject() {
+    Expr_SystemRelation* _get_reference() {
     return (Expr_SystemRelation*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_SystemRelation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2447,8 +2573,17 @@ class Handle_Expr_UnaryExpression : public Handle_Expr_GeneralExpression {
 
 };
 %extend Handle_Expr_UnaryExpression {
-    Expr_UnaryExpression* GetObject() {
+    Expr_UnaryExpression* _get_reference() {
     return (Expr_UnaryExpression*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_UnaryExpression {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2546,8 +2681,17 @@ class Handle_Expr_Absolute : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_Absolute {
-    Expr_Absolute* GetObject() {
+    Expr_Absolute* _get_reference() {
     return (Expr_Absolute*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Absolute {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2645,8 +2789,17 @@ class Handle_Expr_ArcCosine : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_ArcCosine {
-    Expr_ArcCosine* GetObject() {
+    Expr_ArcCosine* _get_reference() {
     return (Expr_ArcCosine*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_ArcCosine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2744,8 +2897,17 @@ class Handle_Expr_ArcSine : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_ArcSine {
-    Expr_ArcSine* GetObject() {
+    Expr_ArcSine* _get_reference() {
     return (Expr_ArcSine*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_ArcSine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2843,8 +3005,17 @@ class Handle_Expr_ArcTangent : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_ArcTangent {
-    Expr_ArcTangent* GetObject() {
+    Expr_ArcTangent* _get_reference() {
     return (Expr_ArcTangent*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_ArcTangent {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2942,8 +3113,17 @@ class Handle_Expr_ArgCosh : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_ArgCosh {
-    Expr_ArgCosh* GetObject() {
+    Expr_ArgCosh* _get_reference() {
     return (Expr_ArgCosh*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_ArgCosh {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3041,8 +3221,17 @@ class Handle_Expr_ArgSinh : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_ArgSinh {
-    Expr_ArgSinh* GetObject() {
+    Expr_ArgSinh* _get_reference() {
     return (Expr_ArgSinh*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_ArgSinh {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3140,8 +3329,17 @@ class Handle_Expr_ArgTanh : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_ArgTanh {
-    Expr_ArgTanh* GetObject() {
+    Expr_ArgTanh* _get_reference() {
     return (Expr_ArgTanh*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_ArgTanh {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3249,8 +3447,17 @@ class Handle_Expr_BinaryFunction : public Handle_Expr_BinaryExpression {
 
 };
 %extend Handle_Expr_BinaryFunction {
-    Expr_BinaryFunction* GetObject() {
+    Expr_BinaryFunction* _get_reference() {
     return (Expr_BinaryFunction*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_BinaryFunction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3348,8 +3555,17 @@ class Handle_Expr_Cosh : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_Cosh {
-    Expr_Cosh* GetObject() {
+    Expr_Cosh* _get_reference() {
     return (Expr_Cosh*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Cosh {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3447,8 +3663,17 @@ class Handle_Expr_Cosine : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_Cosine {
-    Expr_Cosine* GetObject() {
+    Expr_Cosine* _get_reference() {
     return (Expr_Cosine*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Cosine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3558,8 +3783,17 @@ class Handle_Expr_Difference : public Handle_Expr_BinaryExpression {
 
 };
 %extend Handle_Expr_Difference {
-    Expr_Difference* GetObject() {
+    Expr_Difference* _get_reference() {
     return (Expr_Difference*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Difference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3639,8 +3873,17 @@ class Handle_Expr_Different : public Handle_Expr_SingleRelation {
 
 };
 %extend Handle_Expr_Different {
-    Expr_Different* GetObject() {
+    Expr_Different* _get_reference() {
     return (Expr_Different*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Different {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3740,8 +3983,17 @@ class Handle_Expr_Division : public Handle_Expr_BinaryExpression {
 
 };
 %extend Handle_Expr_Division {
-    Expr_Division* GetObject() {
+    Expr_Division* _get_reference() {
     return (Expr_Division*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Division {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3821,8 +4073,17 @@ class Handle_Expr_Equal : public Handle_Expr_SingleRelation {
 
 };
 %extend Handle_Expr_Equal {
-    Expr_Equal* GetObject() {
+    Expr_Equal* _get_reference() {
     return (Expr_Equal*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Equal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3920,8 +4181,17 @@ class Handle_Expr_Exponential : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_Exponential {
-    Expr_Exponential* GetObject() {
+    Expr_Exponential* _get_reference() {
     return (Expr_Exponential*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Exponential {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4021,8 +4291,17 @@ class Handle_Expr_Exponentiate : public Handle_Expr_BinaryExpression {
 
 };
 %extend Handle_Expr_Exponentiate {
-    Expr_Exponentiate* GetObject() {
+    Expr_Exponentiate* _get_reference() {
     return (Expr_Exponentiate*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Exponentiate {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4102,8 +4381,17 @@ class Handle_Expr_GreaterThan : public Handle_Expr_SingleRelation {
 
 };
 %extend Handle_Expr_GreaterThan {
-    Expr_GreaterThan* GetObject() {
+    Expr_GreaterThan* _get_reference() {
     return (Expr_GreaterThan*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_GreaterThan {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4183,8 +4471,17 @@ class Handle_Expr_GreaterThanOrEqual : public Handle_Expr_SingleRelation {
 
 };
 %extend Handle_Expr_GreaterThanOrEqual {
-    Expr_GreaterThanOrEqual* GetObject() {
+    Expr_GreaterThanOrEqual* _get_reference() {
     return (Expr_GreaterThanOrEqual*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_GreaterThanOrEqual {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4264,8 +4561,17 @@ class Handle_Expr_LessThan : public Handle_Expr_SingleRelation {
 
 };
 %extend Handle_Expr_LessThan {
-    Expr_LessThan* GetObject() {
+    Expr_LessThan* _get_reference() {
     return (Expr_LessThan*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_LessThan {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4345,8 +4651,17 @@ class Handle_Expr_LessThanOrEqual : public Handle_Expr_SingleRelation {
 
 };
 %extend Handle_Expr_LessThanOrEqual {
-    Expr_LessThanOrEqual* GetObject() {
+    Expr_LessThanOrEqual* _get_reference() {
     return (Expr_LessThanOrEqual*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_LessThanOrEqual {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4444,8 +4759,17 @@ class Handle_Expr_LogOf10 : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_LogOf10 {
-    Expr_LogOf10* GetObject() {
+    Expr_LogOf10* _get_reference() {
     return (Expr_LogOf10*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_LogOf10 {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4543,8 +4867,17 @@ class Handle_Expr_LogOfe : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_LogOfe {
-    Expr_LogOfe* GetObject() {
+    Expr_LogOfe* _get_reference() {
     return (Expr_LogOfe*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_LogOfe {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4688,8 +5021,17 @@ class Handle_Expr_NamedConstant : public Handle_Expr_NamedExpression {
 
 };
 %extend Handle_Expr_NamedConstant {
-    Expr_NamedConstant* GetObject() {
+    Expr_NamedConstant* _get_reference() {
     return (Expr_NamedConstant*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_NamedConstant {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4841,8 +5183,17 @@ class Handle_Expr_NamedUnknown : public Handle_Expr_NamedExpression {
 
 };
 %extend Handle_Expr_NamedUnknown {
-    Expr_NamedUnknown* GetObject() {
+    Expr_NamedUnknown* _get_reference() {
     return (Expr_NamedUnknown*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_NamedUnknown {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4948,8 +5299,17 @@ class Handle_Expr_PolyFunction : public Handle_Expr_PolyExpression {
 
 };
 %extend Handle_Expr_PolyFunction {
-    Expr_PolyFunction* GetObject() {
+    Expr_PolyFunction* _get_reference() {
     return (Expr_PolyFunction*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_PolyFunction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5057,8 +5417,17 @@ class Handle_Expr_Product : public Handle_Expr_PolyExpression {
 
 };
 %extend Handle_Expr_Product {
-    Expr_Product* GetObject() {
+    Expr_Product* _get_reference() {
     return (Expr_Product*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Product {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5156,8 +5525,17 @@ class Handle_Expr_Sine : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_Sine {
-    Expr_Sine* GetObject() {
+    Expr_Sine* _get_reference() {
     return (Expr_Sine*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Sine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5255,8 +5633,17 @@ class Handle_Expr_Sinh : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_Sinh {
-    Expr_Sinh* GetObject() {
+    Expr_Sinh* _get_reference() {
     return (Expr_Sinh*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Sinh {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5354,8 +5741,17 @@ class Handle_Expr_Square : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_Square {
-    Expr_Square* GetObject() {
+    Expr_Square* _get_reference() {
     return (Expr_Square*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Square {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5453,8 +5849,17 @@ class Handle_Expr_SquareRoot : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_SquareRoot {
-    Expr_SquareRoot* GetObject() {
+    Expr_SquareRoot* _get_reference() {
     return (Expr_SquareRoot*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_SquareRoot {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5572,8 +5977,17 @@ class Handle_Expr_Sum : public Handle_Expr_PolyExpression {
 
 };
 %extend Handle_Expr_Sum {
-    Expr_Sum* GetObject() {
+    Expr_Sum* _get_reference() {
     return (Expr_Sum*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Sum {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5671,8 +6085,17 @@ class Handle_Expr_Tangent : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_Tangent {
-    Expr_Tangent* GetObject() {
+    Expr_Tangent* _get_reference() {
     return (Expr_Tangent*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Tangent {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5770,8 +6193,17 @@ class Handle_Expr_Tanh : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_Tanh {
-    Expr_Tanh* GetObject() {
+    Expr_Tanh* _get_reference() {
     return (Expr_Tanh*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_Tanh {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5877,8 +6309,17 @@ class Handle_Expr_UnaryFunction : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_UnaryFunction {
-    Expr_UnaryFunction* GetObject() {
+    Expr_UnaryFunction* _get_reference() {
     return (Expr_UnaryFunction*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_UnaryFunction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5986,8 +6427,17 @@ class Handle_Expr_UnaryMinus : public Handle_Expr_UnaryExpression {
 
 };
 %extend Handle_Expr_UnaryMinus {
-    Expr_UnaryMinus* GetObject() {
+    Expr_UnaryMinus* _get_reference() {
     return (Expr_UnaryMinus*)$self->Access();
+    }
+};
+
+%extend Handle_Expr_UnaryMinus {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

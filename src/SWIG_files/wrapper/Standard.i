@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -789,8 +789,17 @@ class Handle_Standard_Transient {
 
 };
 %extend Handle_Standard_Transient {
-    Standard_Transient* GetObject() {
+    Standard_Transient* _get_reference() {
     return (Standard_Transient*)$self->Access();
+    }
+};
+
+%extend Handle_Standard_Transient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -898,8 +907,17 @@ class Handle_Standard_Failure : public Handle_Standard_Transient {
 
 };
 %extend Handle_Standard_Failure {
-    Standard_Failure* GetObject() {
+    Standard_Failure* _get_reference() {
     return (Standard_Failure*)$self->Access();
+    }
+};
+
+%extend Handle_Standard_Failure {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1237,8 +1255,17 @@ class Handle_Standard_Type : public Handle_Standard_Transient {
 
 };
 %extend Handle_Standard_Type {
-    Standard_Type* GetObject() {
+    Standard_Type* _get_reference() {
     return (Standard_Type*)$self->Access();
+    }
+};
+
+%extend Handle_Standard_Type {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -782,8 +782,17 @@ class Handle_Storage_CallBack : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_CallBack {
-    Storage_CallBack* GetObject() {
+    Storage_CallBack* _get_reference() {
     return (Storage_CallBack*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_CallBack {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1021,8 +1030,17 @@ class Handle_Storage_Data : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_Data {
-    Storage_Data* GetObject() {
+    Storage_Data* _get_reference() {
     return (Storage_Data*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_Data {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1142,8 +1160,17 @@ class Handle_Storage_DataMapNodeOfMapOfCallBack : public Handle_TCollection_MapN
 
 };
 %extend Handle_Storage_DataMapNodeOfMapOfCallBack {
-    Storage_DataMapNodeOfMapOfCallBack* GetObject() {
+    Storage_DataMapNodeOfMapOfCallBack* _get_reference() {
     return (Storage_DataMapNodeOfMapOfCallBack*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_DataMapNodeOfMapOfCallBack {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1203,8 +1230,17 @@ class Handle_Storage_DataMapNodeOfMapOfPers : public Handle_TCollection_MapNode 
 
 };
 %extend Handle_Storage_DataMapNodeOfMapOfPers {
-    Storage_DataMapNodeOfMapOfPers* GetObject() {
+    Storage_DataMapNodeOfMapOfPers* _get_reference() {
     return (Storage_DataMapNodeOfMapOfPers*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_DataMapNodeOfMapOfPers {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1310,8 +1346,17 @@ class Handle_Storage_HArrayOfCallBack : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_HArrayOfCallBack {
-    Storage_HArrayOfCallBack* GetObject() {
+    Storage_HArrayOfCallBack* _get_reference() {
     return (Storage_HArrayOfCallBack*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_HArrayOfCallBack {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1417,8 +1462,17 @@ class Handle_Storage_HArrayOfSchema : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_HArrayOfSchema {
-    Storage_HArrayOfSchema* GetObject() {
+    Storage_HArrayOfSchema* _get_reference() {
     return (Storage_HArrayOfSchema*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_HArrayOfSchema {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1524,8 +1578,17 @@ class Handle_Storage_HPArray : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_HPArray {
-    Storage_HPArray* GetObject() {
+    Storage_HPArray* _get_reference() {
     return (Storage_HPArray*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_HPArray {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1699,8 +1762,17 @@ class Handle_Storage_HSeqOfRoot : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_HSeqOfRoot {
-    Storage_HSeqOfRoot* GetObject() {
+    Storage_HSeqOfRoot* _get_reference() {
     return (Storage_HSeqOfRoot*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_HSeqOfRoot {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1858,8 +1930,17 @@ class Handle_Storage_HeaderData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_HeaderData {
-    Storage_HeaderData* GetObject() {
+    Storage_HeaderData* _get_reference() {
     return (Storage_HeaderData*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_HeaderData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1949,8 +2030,17 @@ class Handle_Storage_IndexedDataMapNodeOfPType : public Handle_TCollection_MapNo
 
 };
 %extend Handle_Storage_IndexedDataMapNodeOfPType {
-    Storage_IndexedDataMapNodeOfPType* GetObject() {
+    Storage_IndexedDataMapNodeOfPType* _get_reference() {
     return (Storage_IndexedDataMapNodeOfPType*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_IndexedDataMapNodeOfPType {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2000,8 +2090,17 @@ class Handle_Storage_InternalData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_InternalData {
-    Storage_InternalData* GetObject() {
+    Storage_InternalData* _get_reference() {
     return (Storage_InternalData*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_InternalData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2433,8 +2532,17 @@ class Handle_Storage_Root : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_Root {
-    Storage_Root* GetObject() {
+    Storage_Root* _get_reference() {
     return (Storage_Root*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_Root {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2534,8 +2642,17 @@ class Handle_Storage_RootData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_RootData {
-    Storage_RootData* GetObject() {
+    Storage_RootData* _get_reference() {
     return (Storage_RootData*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_RootData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2829,8 +2946,17 @@ class Handle_Storage_Schema : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_Schema {
-    Storage_Schema* GetObject() {
+    Storage_Schema* _get_reference() {
     return (Storage_Schema*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_Schema {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3024,8 +3150,17 @@ class Handle_Storage_SequenceNodeOfSeqOfRoot : public Handle_TCollection_SeqNode
 
 };
 %extend Handle_Storage_SequenceNodeOfSeqOfRoot {
-    Storage_SequenceNodeOfSeqOfRoot* GetObject() {
+    Storage_SequenceNodeOfSeqOfRoot* _get_reference() {
     return (Storage_SequenceNodeOfSeqOfRoot*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_SequenceNodeOfSeqOfRoot {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3101,8 +3236,17 @@ class Handle_Storage_TypeData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_TypeData {
-    Storage_TypeData* GetObject() {
+    Storage_TypeData* _get_reference() {
     return (Storage_TypeData*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_TypeData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3186,8 +3330,17 @@ class Handle_Storage_TypedCallBack : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Storage_TypedCallBack {
-    Storage_TypedCallBack* GetObject() {
+    Storage_TypedCallBack* _get_reference() {
     return (Storage_TypedCallBack*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_TypedCallBack {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3271,8 +3424,17 @@ class Handle_Storage_DefaultCallBack : public Handle_Storage_CallBack {
 
 };
 %extend Handle_Storage_DefaultCallBack {
-    Storage_DefaultCallBack* GetObject() {
+    Storage_DefaultCallBack* _get_reference() {
     return (Storage_DefaultCallBack*)$self->Access();
+    }
+};
+
+%extend Handle_Storage_DefaultCallBack {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

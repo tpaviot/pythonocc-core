@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -820,8 +820,17 @@ class Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints : public Handle_TCollection
 
 };
 %extend Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints {
-    IntPolyh_SequenceNodeOfSeqOfStartPoints* GetObject() {
+    IntPolyh_SequenceNodeOfSeqOfStartPoints* _get_reference() {
     return (IntPolyh_SequenceNodeOfSeqOfStartPoints*)$self->Access();
+    }
+};
+
+%extend Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

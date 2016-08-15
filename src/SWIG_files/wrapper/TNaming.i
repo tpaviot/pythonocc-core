@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -495,8 +495,17 @@ class Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape : public Handle_TCol
 
 };
 %extend Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape {
-    TNaming_DataMapNodeOfDataMapOfShapePtrRefShape* GetObject() {
+    TNaming_DataMapNodeOfDataMapOfShapePtrRefShape* _get_reference() {
     return (TNaming_DataMapNodeOfDataMapOfShapePtrRefShape*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -556,8 +565,17 @@ class Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet : public Handle_TColle
 
 };
 %extend Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet {
-    TNaming_DataMapNodeOfDataMapOfShapeShapesSet* GetObject() {
+    TNaming_DataMapNodeOfDataMapOfShapeShapesSet* _get_reference() {
     return (TNaming_DataMapNodeOfDataMapOfShapeShapesSet*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -769,8 +787,17 @@ class Handle_TNaming_DeltaOnModification : public Handle_TDF_DeltaOnModification
 
 };
 %extend Handle_TNaming_DeltaOnModification {
-    TNaming_DeltaOnModification* GetObject() {
+    TNaming_DeltaOnModification* _get_reference() {
     return (TNaming_DeltaOnModification*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_DeltaOnModification {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -826,8 +853,17 @@ class Handle_TNaming_DeltaOnRemoval : public Handle_TDF_DeltaOnRemoval {
 
 };
 %extend Handle_TNaming_DeltaOnRemoval {
-    TNaming_DeltaOnRemoval* GetObject() {
+    TNaming_DeltaOnRemoval* _get_reference() {
     return (TNaming_DeltaOnRemoval*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_DeltaOnRemoval {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1199,8 +1235,17 @@ class Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape : public H
 
 };
 %extend Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape {
-    TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape* GetObject() {
+    TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape* _get_reference() {
     return (TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1254,8 +1299,17 @@ class Handle_TNaming_ListNodeOfListOfMapOfShape : public Handle_TCollection_MapN
 
 };
 %extend Handle_TNaming_ListNodeOfListOfMapOfShape {
-    TNaming_ListNodeOfListOfMapOfShape* GetObject() {
+    TNaming_ListNodeOfListOfMapOfShape* _get_reference() {
     return (TNaming_ListNodeOfListOfMapOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_ListNodeOfListOfMapOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1309,8 +1363,17 @@ class Handle_TNaming_ListNodeOfListOfNamedShape : public Handle_TCollection_MapN
 
 };
 %extend Handle_TNaming_ListNodeOfListOfNamedShape {
-    TNaming_ListNodeOfListOfNamedShape* GetObject() {
+    TNaming_ListNodeOfListOfNamedShape* _get_reference() {
     return (TNaming_ListNodeOfListOfNamedShape*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_ListNodeOfListOfNamedShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2184,8 +2247,17 @@ class Handle_TNaming_NamedShape : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TNaming_NamedShape {
-    TNaming_NamedShape* GetObject() {
+    TNaming_NamedShape* _get_reference() {
     return (TNaming_NamedShape*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_NamedShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2358,8 +2430,17 @@ class Handle_TNaming_Naming : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TNaming_Naming {
-    TNaming_Naming* GetObject() {
+    TNaming_Naming* _get_reference() {
     return (TNaming_Naming*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_Naming {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2911,8 +2992,17 @@ class Handle_TNaming_StdMapNodeOfMapOfNamedShape : public Handle_TCollection_Map
 
 };
 %extend Handle_TNaming_StdMapNodeOfMapOfNamedShape {
-    TNaming_StdMapNodeOfMapOfNamedShape* GetObject() {
+    TNaming_StdMapNodeOfMapOfNamedShape* _get_reference() {
     return (TNaming_StdMapNodeOfMapOfNamedShape*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_StdMapNodeOfMapOfNamedShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3193,8 +3283,17 @@ class Handle_TNaming_TranslateTool : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TNaming_TranslateTool {
-    TNaming_TranslateTool* GetObject() {
+    TNaming_TranslateTool* _get_reference() {
     return (TNaming_TranslateTool*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_TranslateTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3374,8 +3473,17 @@ class Handle_TNaming_UsedShapes : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TNaming_UsedShapes {
-    TNaming_UsedShapes* GetObject() {
+    TNaming_UsedShapes* _get_reference() {
     return (TNaming_UsedShapes*)$self->Access();
+    }
+};
+
+%extend Handle_TNaming_UsedShapes {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

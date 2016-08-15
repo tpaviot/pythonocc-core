@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1283,8 +1283,17 @@ class Handle_Graphic3d_ArrayOfPrimitives : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Graphic3d_ArrayOfPrimitives {
-    Graphic3d_ArrayOfPrimitives* GetObject() {
+    Graphic3d_ArrayOfPrimitives* _get_reference() {
     return (Graphic3d_ArrayOfPrimitives*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ArrayOfPrimitives {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1492,8 +1501,17 @@ class Handle_Graphic3d_AspectFillArea3d : public Handle_Aspect_AspectFillArea {
 
 };
 %extend Handle_Graphic3d_AspectFillArea3d {
-    Graphic3d_AspectFillArea3d* GetObject() {
+    Graphic3d_AspectFillArea3d* _get_reference() {
     return (Graphic3d_AspectFillArea3d*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_AspectFillArea3d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1565,8 +1583,17 @@ class Handle_Graphic3d_AspectLine3d : public Handle_Aspect_AspectLine {
 
 };
 %extend Handle_Graphic3d_AspectLine3d {
-    Graphic3d_AspectLine3d* GetObject() {
+    Graphic3d_AspectLine3d* _get_reference() {
     return (Graphic3d_AspectLine3d*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_AspectLine3d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1692,8 +1719,17 @@ class Handle_Graphic3d_AspectMarker3d : public Handle_Aspect_AspectMarker {
 
 };
 %extend Handle_Graphic3d_AspectMarker3d {
-    Graphic3d_AspectMarker3d* GetObject() {
+    Graphic3d_AspectMarker3d* _get_reference() {
     return (Graphic3d_AspectMarker3d*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_AspectMarker3d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1869,8 +1905,17 @@ class Handle_Graphic3d_AspectText3d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Graphic3d_AspectText3d {
-    Graphic3d_AspectText3d* GetObject() {
+    Graphic3d_AspectText3d* _get_reference() {
     return (Graphic3d_AspectText3d*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_AspectText3d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2703,8 +2748,17 @@ class Handle_Graphic3d_DataStructureManager : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Graphic3d_DataStructureManager {
-    Graphic3d_DataStructureManager* GetObject() {
+    Graphic3d_DataStructureManager* _get_reference() {
     return (Graphic3d_DataStructureManager*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_DataStructureManager {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3694,8 +3748,17 @@ class Handle_Graphic3d_GraphicDriver : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Graphic3d_GraphicDriver {
-    Graphic3d_GraphicDriver* GetObject() {
+    Graphic3d_GraphicDriver* _get_reference() {
     return (Graphic3d_GraphicDriver*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_GraphicDriver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4045,8 +4108,17 @@ class Handle_Graphic3d_Group : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Graphic3d_Group {
-    Graphic3d_Group* GetObject() {
+    Graphic3d_Group* _get_reference() {
     return (Graphic3d_Group*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_Group {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4220,8 +4292,17 @@ class Handle_Graphic3d_HSequenceOfStructure : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Graphic3d_HSequenceOfStructure {
-    Graphic3d_HSequenceOfStructure* GetObject() {
+    Graphic3d_HSequenceOfStructure* _get_reference() {
     return (Graphic3d_HSequenceOfStructure*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_HSequenceOfStructure {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4309,8 +4390,17 @@ class Handle_Graphic3d_ListNodeOfListOfShortReal : public Handle_TCollection_Map
 
 };
 %extend Handle_Graphic3d_ListNodeOfListOfShortReal {
-    Graphic3d_ListNodeOfListOfShortReal* GetObject() {
+    Graphic3d_ListNodeOfListOfShortReal* _get_reference() {
     return (Graphic3d_ListNodeOfListOfShortReal*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ListNodeOfListOfShortReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5006,8 +5096,17 @@ class Handle_Graphic3d_SequenceNodeOfSequenceOfStructure : public Handle_TCollec
 
 };
 %extend Handle_Graphic3d_SequenceNodeOfSequenceOfStructure {
-    Graphic3d_SequenceNodeOfSequenceOfStructure* GetObject() {
+    Graphic3d_SequenceNodeOfSequenceOfStructure* _get_reference() {
     return (Graphic3d_SequenceNodeOfSequenceOfStructure*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_SequenceNodeOfSequenceOfStructure {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5365,8 +5464,17 @@ class Handle_Graphic3d_StdMapNodeOfMapOfStructure : public Handle_TCollection_Ma
 
 };
 %extend Handle_Graphic3d_StdMapNodeOfMapOfStructure {
-    Graphic3d_StdMapNodeOfMapOfStructure* GetObject() {
+    Graphic3d_StdMapNodeOfMapOfStructure* _get_reference() {
     return (Graphic3d_StdMapNodeOfMapOfStructure*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_StdMapNodeOfMapOfStructure {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6094,8 +6202,17 @@ class Handle_Graphic3d_Structure : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Graphic3d_Structure {
-    Graphic3d_Structure* GetObject() {
+    Graphic3d_Structure* _get_reference() {
     return (Graphic3d_Structure*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_Structure {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6477,8 +6594,17 @@ class Handle_Graphic3d_StructureManager : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Graphic3d_StructureManager {
-    Graphic3d_StructureManager* GetObject() {
+    Graphic3d_StructureManager* _get_reference() {
     return (Graphic3d_StructureManager*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_StructureManager {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6658,8 +6784,17 @@ class Handle_Graphic3d_TextureParams : public Handle_Standard_Transient {
 
 };
 %extend Handle_Graphic3d_TextureParams {
-    Graphic3d_TextureParams* GetObject() {
+    Graphic3d_TextureParams* _get_reference() {
     return (Graphic3d_TextureParams*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_TextureParams {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6747,8 +6882,17 @@ class Handle_Graphic3d_TextureRoot : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Graphic3d_TextureRoot {
-    Graphic3d_TextureRoot* GetObject() {
+    Graphic3d_TextureRoot* _get_reference() {
     return (Graphic3d_TextureRoot*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_TextureRoot {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7174,8 +7318,17 @@ class Handle_Graphic3d_ArrayOfPoints : public Handle_Graphic3d_ArrayOfPrimitives
 
 };
 %extend Handle_Graphic3d_ArrayOfPoints {
-    Graphic3d_ArrayOfPoints* GetObject() {
+    Graphic3d_ArrayOfPoints* _get_reference() {
     return (Graphic3d_ArrayOfPoints*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ArrayOfPoints {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7237,8 +7390,17 @@ class Handle_Graphic3d_ArrayOfPolygons : public Handle_Graphic3d_ArrayOfPrimitiv
 
 };
 %extend Handle_Graphic3d_ArrayOfPolygons {
-    Graphic3d_ArrayOfPolygons* GetObject() {
+    Graphic3d_ArrayOfPolygons* _get_reference() {
     return (Graphic3d_ArrayOfPolygons*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ArrayOfPolygons {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7296,8 +7458,17 @@ class Handle_Graphic3d_ArrayOfPolylines : public Handle_Graphic3d_ArrayOfPrimiti
 
 };
 %extend Handle_Graphic3d_ArrayOfPolylines {
-    Graphic3d_ArrayOfPolylines* GetObject() {
+    Graphic3d_ArrayOfPolylines* _get_reference() {
     return (Graphic3d_ArrayOfPolylines*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ArrayOfPolylines {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7357,8 +7528,17 @@ class Handle_Graphic3d_ArrayOfQuadrangleStrips : public Handle_Graphic3d_ArrayOf
 
 };
 %extend Handle_Graphic3d_ArrayOfQuadrangleStrips {
-    Graphic3d_ArrayOfQuadrangleStrips* GetObject() {
+    Graphic3d_ArrayOfQuadrangleStrips* _get_reference() {
     return (Graphic3d_ArrayOfQuadrangleStrips*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ArrayOfQuadrangleStrips {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7416,8 +7596,17 @@ class Handle_Graphic3d_ArrayOfQuadrangles : public Handle_Graphic3d_ArrayOfPrimi
 
 };
 %extend Handle_Graphic3d_ArrayOfQuadrangles {
-    Graphic3d_ArrayOfQuadrangles* GetObject() {
+    Graphic3d_ArrayOfQuadrangles* _get_reference() {
     return (Graphic3d_ArrayOfQuadrangles*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ArrayOfQuadrangles {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7471,8 +7660,17 @@ class Handle_Graphic3d_ArrayOfSegments : public Handle_Graphic3d_ArrayOfPrimitiv
 
 };
 %extend Handle_Graphic3d_ArrayOfSegments {
-    Graphic3d_ArrayOfSegments* GetObject() {
+    Graphic3d_ArrayOfSegments* _get_reference() {
     return (Graphic3d_ArrayOfSegments*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ArrayOfSegments {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7532,8 +7730,17 @@ class Handle_Graphic3d_ArrayOfTriangleFans : public Handle_Graphic3d_ArrayOfPrim
 
 };
 %extend Handle_Graphic3d_ArrayOfTriangleFans {
-    Graphic3d_ArrayOfTriangleFans* GetObject() {
+    Graphic3d_ArrayOfTriangleFans* _get_reference() {
     return (Graphic3d_ArrayOfTriangleFans*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ArrayOfTriangleFans {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7593,8 +7800,17 @@ class Handle_Graphic3d_ArrayOfTriangleStrips : public Handle_Graphic3d_ArrayOfPr
 
 };
 %extend Handle_Graphic3d_ArrayOfTriangleStrips {
-    Graphic3d_ArrayOfTriangleStrips* GetObject() {
+    Graphic3d_ArrayOfTriangleStrips* _get_reference() {
     return (Graphic3d_ArrayOfTriangleStrips*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ArrayOfTriangleStrips {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7652,8 +7868,17 @@ class Handle_Graphic3d_ArrayOfTriangles : public Handle_Graphic3d_ArrayOfPrimiti
 
 };
 %extend Handle_Graphic3d_ArrayOfTriangles {
-    Graphic3d_ArrayOfTriangles* GetObject() {
+    Graphic3d_ArrayOfTriangles* _get_reference() {
     return (Graphic3d_ArrayOfTriangles*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ArrayOfTriangles {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7731,8 +7956,17 @@ class Handle_Graphic3d_TextureEnv : public Handle_Graphic3d_TextureRoot {
 
 };
 %extend Handle_Graphic3d_TextureEnv {
-    Graphic3d_TextureEnv* GetObject() {
+    Graphic3d_TextureEnv* _get_reference() {
     return (Graphic3d_TextureEnv*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_TextureEnv {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7842,8 +8076,17 @@ class Handle_Graphic3d_TextureMap : public Handle_Graphic3d_TextureRoot {
 
 };
 %extend Handle_Graphic3d_TextureMap {
-    Graphic3d_TextureMap* GetObject() {
+    Graphic3d_TextureMap* _get_reference() {
     return (Graphic3d_TextureMap*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_TextureMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7905,8 +8148,17 @@ class Handle_Graphic3d_Texture1D : public Handle_Graphic3d_TextureMap {
 
 };
 %extend Handle_Graphic3d_Texture1D {
-    Graphic3d_Texture1D* GetObject() {
+    Graphic3d_Texture1D* _get_reference() {
     return (Graphic3d_Texture1D*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_Texture1D {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7968,8 +8220,17 @@ class Handle_Graphic3d_Texture2D : public Handle_Graphic3d_TextureMap {
 
 };
 %extend Handle_Graphic3d_Texture2D {
-    Graphic3d_Texture2D* GetObject() {
+    Graphic3d_Texture2D* _get_reference() {
     return (Graphic3d_Texture2D*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_Texture2D {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8035,8 +8296,17 @@ class Handle_Graphic3d_Texture1Dmanual : public Handle_Graphic3d_Texture1D {
 
 };
 %extend Handle_Graphic3d_Texture1Dmanual {
-    Graphic3d_Texture1Dmanual* GetObject() {
+    Graphic3d_Texture1Dmanual* _get_reference() {
     return (Graphic3d_Texture1Dmanual*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_Texture1Dmanual {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8138,8 +8408,17 @@ class Handle_Graphic3d_Texture1Dsegment : public Handle_Graphic3d_Texture1D {
 
 };
 %extend Handle_Graphic3d_Texture1Dsegment {
-    Graphic3d_Texture1Dsegment* GetObject() {
+    Graphic3d_Texture1Dsegment* _get_reference() {
     return (Graphic3d_Texture1Dsegment*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_Texture1Dsegment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8205,8 +8484,17 @@ class Handle_Graphic3d_Texture2Dmanual : public Handle_Graphic3d_Texture2D {
 
 };
 %extend Handle_Graphic3d_Texture2Dmanual {
-    Graphic3d_Texture2Dmanual* GetObject() {
+    Graphic3d_Texture2Dmanual* _get_reference() {
     return (Graphic3d_Texture2Dmanual*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_Texture2Dmanual {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8422,8 +8710,17 @@ class Handle_Graphic3d_Texture2Dplane : public Handle_Graphic3d_Texture2D {
 
 };
 %extend Handle_Graphic3d_Texture2Dplane {
-    Graphic3d_Texture2Dplane* GetObject() {
+    Graphic3d_Texture2Dplane* _get_reference() {
     return (Graphic3d_Texture2Dplane*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_Texture2Dplane {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

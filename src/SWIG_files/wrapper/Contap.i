@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1156,8 +1156,17 @@ class Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public Handle_
 
 };
 %extend Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
-    Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking* GetObject() {
+    Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking* _get_reference() {
     return (Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking*)$self->Access();
+    }
+};
+
+%extend Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1213,8 +1222,17 @@ class Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch : public Handle
 
 };
 %extend Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch {
-    Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch* GetObject() {
+    Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch* _get_reference() {
     return (Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch*)$self->Access();
+    }
+};
+
+%extend Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1270,8 +1288,17 @@ class Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch : public Handle_T
 
 };
 %extend Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch {
-    Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch* GetObject() {
+    Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch* _get_reference() {
     return (Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch*)$self->Access();
+    }
+};
+
+%extend Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1327,8 +1354,17 @@ class Handle_Contap_SequenceNodeOfTheSequenceOfLine : public Handle_TCollection_
 
 };
 %extend Handle_Contap_SequenceNodeOfTheSequenceOfLine {
-    Contap_SequenceNodeOfTheSequenceOfLine* GetObject() {
+    Contap_SequenceNodeOfTheSequenceOfLine* _get_reference() {
     return (Contap_SequenceNodeOfTheSequenceOfLine*)$self->Access();
+    }
+};
+
+%extend Handle_Contap_SequenceNodeOfTheSequenceOfLine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1384,8 +1420,17 @@ class Handle_Contap_SequenceNodeOfTheSequenceOfPoint : public Handle_TCollection
 
 };
 %extend Handle_Contap_SequenceNodeOfTheSequenceOfPoint {
-    Contap_SequenceNodeOfTheSequenceOfPoint* GetObject() {
+    Contap_SequenceNodeOfTheSequenceOfPoint* _get_reference() {
     return (Contap_SequenceNodeOfTheSequenceOfPoint*)$self->Access();
+    }
+};
+
+%extend Handle_Contap_SequenceNodeOfTheSequenceOfPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2176,8 +2221,17 @@ class Handle_Contap_TheHSequenceOfPoint : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Contap_TheHSequenceOfPoint {
-    Contap_TheHSequenceOfPoint* GetObject() {
+    Contap_TheHSequenceOfPoint* _get_reference() {
     return (Contap_TheHSequenceOfPoint*)$self->Access();
+    }
+};
+
+%extend Handle_Contap_TheHSequenceOfPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2383,8 +2437,17 @@ class Handle_Contap_TheIWLineOfTheIWalking : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Contap_TheIWLineOfTheIWalking {
-    Contap_TheIWLineOfTheIWalking* GetObject() {
+    Contap_TheIWLineOfTheIWalking* _get_reference() {
     return (Contap_TheIWLineOfTheIWalking*)$self->Access();
+    }
+};
+
+%extend Handle_Contap_TheIWLineOfTheIWalking {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

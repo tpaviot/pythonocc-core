@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -549,8 +549,17 @@ class Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public Handle_TCollect
 
 };
 %extend Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
-    TopOpeBRep_DataMapNodeOfDataMapOfTopolTool* GetObject() {
+    TopOpeBRep_DataMapNodeOfDataMapOfTopolTool* _get_reference() {
     return (TopOpeBRep_DataMapNodeOfDataMapOfTopolTool*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -952,8 +961,17 @@ class Handle_TopOpeBRep_FFDumper : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRep_FFDumper {
-    TopOpeBRep_FFDumper* GetObject() {
+    TopOpeBRep_FFDumper* _get_reference() {
     return (TopOpeBRep_FFDumper*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRep_FFDumper {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1873,8 +1891,17 @@ class Handle_TopOpeBRep_HArray1OfLineInter : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRep_HArray1OfLineInter {
-    TopOpeBRep_HArray1OfLineInter* GetObject() {
+    TopOpeBRep_HArray1OfLineInter* _get_reference() {
     return (TopOpeBRep_HArray1OfLineInter*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRep_HArray1OfLineInter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1980,8 +2007,17 @@ class Handle_TopOpeBRep_HArray1OfVPointInter : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRep_HArray1OfVPointInter {
-    TopOpeBRep_HArray1OfVPointInter* GetObject() {
+    TopOpeBRep_HArray1OfVPointInter* _get_reference() {
     return (TopOpeBRep_HArray1OfVPointInter*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRep_HArray1OfVPointInter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2057,8 +2093,17 @@ class Handle_TopOpeBRep_Hctxee2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRep_Hctxee2d {
-    TopOpeBRep_Hctxee2d* GetObject() {
+    TopOpeBRep_Hctxee2d* _get_reference() {
     return (TopOpeBRep_Hctxee2d*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRep_Hctxee2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2166,8 +2211,17 @@ class Handle_TopOpeBRep_Hctxff2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRep_Hctxff2d {
-    TopOpeBRep_Hctxff2d* GetObject() {
+    TopOpeBRep_Hctxff2d* _get_reference() {
     return (TopOpeBRep_Hctxff2d*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRep_Hctxff2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2511,8 +2565,17 @@ class Handle_TopOpeBRep_ListNodeOfListOfBipoint : public Handle_TCollection_MapN
 
 };
 %extend Handle_TopOpeBRep_ListNodeOfListOfBipoint {
-    TopOpeBRep_ListNodeOfListOfBipoint* GetObject() {
+    TopOpeBRep_ListNodeOfListOfBipoint* _get_reference() {
     return (TopOpeBRep_ListNodeOfListOfBipoint*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRep_ListNodeOfListOfBipoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2981,8 +3044,17 @@ class Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public Handle_TCollect
 
 };
 %extend Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
-    TopOpeBRep_SequenceNodeOfSequenceOfPoint2d* GetObject() {
+    TopOpeBRep_SequenceNodeOfSequenceOfPoint2d* _get_reference() {
     return (TopOpeBRep_SequenceNodeOfSequenceOfPoint2d*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

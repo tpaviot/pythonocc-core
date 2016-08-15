@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -145,8 +145,17 @@ class Handle_GccInt_Bisec : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GccInt_Bisec {
-    GccInt_Bisec* GetObject() {
+    GccInt_Bisec* _get_reference() {
     return (GccInt_Bisec*)$self->Access();
+    }
+};
+
+%extend Handle_GccInt_Bisec {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -208,8 +217,17 @@ class Handle_GccInt_BCirc : public Handle_GccInt_Bisec {
 
 };
 %extend Handle_GccInt_BCirc {
-    GccInt_BCirc* GetObject() {
+    GccInt_BCirc* _get_reference() {
     return (GccInt_BCirc*)$self->Access();
+    }
+};
+
+%extend Handle_GccInt_BCirc {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -271,8 +289,17 @@ class Handle_GccInt_BElips : public Handle_GccInt_Bisec {
 
 };
 %extend Handle_GccInt_BElips {
-    GccInt_BElips* GetObject() {
+    GccInt_BElips* _get_reference() {
     return (GccInt_BElips*)$self->Access();
+    }
+};
+
+%extend Handle_GccInt_BElips {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -334,8 +361,17 @@ class Handle_GccInt_BHyper : public Handle_GccInt_Bisec {
 
 };
 %extend Handle_GccInt_BHyper {
-    GccInt_BHyper* GetObject() {
+    GccInt_BHyper* _get_reference() {
     return (GccInt_BHyper*)$self->Access();
+    }
+};
+
+%extend Handle_GccInt_BHyper {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -397,8 +433,17 @@ class Handle_GccInt_BLine : public Handle_GccInt_Bisec {
 
 };
 %extend Handle_GccInt_BLine {
-    GccInt_BLine* GetObject() {
+    GccInt_BLine* _get_reference() {
     return (GccInt_BLine*)$self->Access();
+    }
+};
+
+%extend Handle_GccInt_BLine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -460,8 +505,17 @@ class Handle_GccInt_BParab : public Handle_GccInt_Bisec {
 
 };
 %extend Handle_GccInt_BParab {
-    GccInt_BParab* GetObject() {
+    GccInt_BParab* _get_reference() {
     return (GccInt_BParab*)$self->Access();
+    }
+};
+
+%extend Handle_GccInt_BParab {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -523,8 +577,17 @@ class Handle_GccInt_BPoint : public Handle_GccInt_Bisec {
 
 };
 %extend Handle_GccInt_BPoint {
-    GccInt_BPoint* GetObject() {
+    GccInt_BPoint* _get_reference() {
     return (GccInt_BPoint*)$self->Access();
+    }
+};
+
+%extend Handle_GccInt_BPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

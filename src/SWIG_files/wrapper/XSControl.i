@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -170,8 +170,17 @@ class Handle_XSControl_ConnectedShapes : public Handle_IFSelect_SelectExplore {
 
 };
 %extend Handle_XSControl_ConnectedShapes {
-    XSControl_ConnectedShapes* GetObject() {
+    XSControl_ConnectedShapes* _get_reference() {
     return (XSControl_ConnectedShapes*)$self->Access();
+    }
+};
+
+%extend Handle_XSControl_ConnectedShapes {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -557,8 +566,17 @@ class Handle_XSControl_Controller : public Handle_MMgt_TShared {
 
 };
 %extend Handle_XSControl_Controller {
-    XSControl_Controller* GetObject() {
+    XSControl_Controller* _get_reference() {
     return (XSControl_Controller*)$self->Access();
+    }
+};
+
+%extend Handle_XSControl_Controller {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -922,8 +940,17 @@ class Handle_XSControl_SelectForTransfer : public Handle_IFSelect_SelectExtract 
 
 };
 %extend Handle_XSControl_SelectForTransfer {
-    XSControl_SelectForTransfer* GetObject() {
+    XSControl_SelectForTransfer* _get_reference() {
     return (XSControl_SelectForTransfer*)$self->Access();
+    }
+};
+
+%extend Handle_XSControl_SelectForTransfer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1017,8 +1044,17 @@ class Handle_XSControl_SignTransferStatus : public Handle_IFSelect_Signature {
 
 };
 %extend Handle_XSControl_SignTransferStatus {
-    XSControl_SignTransferStatus* GetObject() {
+    XSControl_SignTransferStatus* _get_reference() {
     return (XSControl_SignTransferStatus*)$self->Access();
+    }
+};
+
+%extend Handle_XSControl_SignTransferStatus {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1458,8 +1494,17 @@ class Handle_XSControl_TransferReader : public Handle_MMgt_TShared {
 
 };
 %extend Handle_XSControl_TransferReader {
-    XSControl_TransferReader* GetObject() {
+    XSControl_TransferReader* _get_reference() {
     return (XSControl_TransferReader*)$self->Access();
+    }
+};
+
+%extend Handle_XSControl_TransferReader {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1629,8 +1674,17 @@ class Handle_XSControl_TransferWriter : public Handle_MMgt_TShared {
 
 };
 %extend Handle_XSControl_TransferWriter {
-    XSControl_TransferWriter* GetObject() {
+    XSControl_TransferWriter* _get_reference() {
     return (XSControl_TransferWriter*)$self->Access();
+    }
+};
+
+%extend Handle_XSControl_TransferWriter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2236,8 +2290,17 @@ class Handle_XSControl_WorkSession : public Handle_IFSelect_WorkSession {
 
 };
 %extend Handle_XSControl_WorkSession {
-    XSControl_WorkSession* GetObject() {
+    XSControl_WorkSession* _get_reference() {
     return (XSControl_WorkSession*)$self->Access();
+    }
+};
+
+%extend Handle_XSControl_WorkSession {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -208,8 +208,17 @@ class Handle_Geom2d_Geometry : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Geom2d_Geometry {
-    Geom2d_Geometry* GetObject() {
+    Geom2d_Geometry* _get_reference() {
     return (Geom2d_Geometry*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Geometry {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -459,8 +468,17 @@ class Handle_Geom2d_Transformation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Geom2d_Transformation {
-    Geom2d_Transformation* GetObject() {
+    Geom2d_Transformation* _get_reference() {
     return (Geom2d_Transformation*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Transformation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -594,8 +612,17 @@ class Handle_Geom2d_AxisPlacement : public Handle_Geom2d_Geometry {
 
 };
 %extend Handle_Geom2d_AxisPlacement {
-    Geom2d_AxisPlacement* GetObject() {
+    Geom2d_AxisPlacement* _get_reference() {
     return (Geom2d_AxisPlacement*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_AxisPlacement {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -789,8 +816,17 @@ class Handle_Geom2d_Curve : public Handle_Geom2d_Geometry {
 
 };
 %extend Handle_Geom2d_Curve {
-    Geom2d_Curve* GetObject() {
+    Geom2d_Curve* _get_reference() {
     return (Geom2d_Curve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Curve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -876,8 +912,17 @@ class Handle_Geom2d_Point : public Handle_Geom2d_Geometry {
 
 };
 %extend Handle_Geom2d_Point {
-    Geom2d_Point* GetObject() {
+    Geom2d_Point* _get_reference() {
     return (Geom2d_Point*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Point {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -995,8 +1040,17 @@ class Handle_Geom2d_Vector : public Handle_Geom2d_Geometry {
 
 };
 %extend Handle_Geom2d_Vector {
-    Geom2d_Vector* GetObject() {
+    Geom2d_Vector* _get_reference() {
     return (Geom2d_Vector*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Vector {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1050,8 +1104,17 @@ class Handle_Geom2d_BoundedCurve : public Handle_Geom2d_Curve {
 
 };
 %extend Handle_Geom2d_BoundedCurve {
-    Geom2d_BoundedCurve* GetObject() {
+    Geom2d_BoundedCurve* _get_reference() {
     return (Geom2d_BoundedCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_BoundedCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1181,8 +1244,17 @@ class Handle_Geom2d_CartesianPoint : public Handle_Geom2d_Point {
 
 };
 %extend Handle_Geom2d_CartesianPoint {
-    Geom2d_CartesianPoint* GetObject() {
+    Geom2d_CartesianPoint* _get_reference() {
     return (Geom2d_CartesianPoint*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_CartesianPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1312,8 +1384,17 @@ class Handle_Geom2d_Conic : public Handle_Geom2d_Curve {
 
 };
 %extend Handle_Geom2d_Conic {
-    Geom2d_Conic* GetObject() {
+    Geom2d_Conic* _get_reference() {
     return (Geom2d_Conic*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Conic {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1453,8 +1534,17 @@ class Handle_Geom2d_Direction : public Handle_Geom2d_Vector {
 
 };
 %extend Handle_Geom2d_Direction {
-    Geom2d_Direction* GetObject() {
+    Geom2d_Direction* _get_reference() {
     return (Geom2d_Direction*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Direction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1730,8 +1820,17 @@ class Handle_Geom2d_Line : public Handle_Geom2d_Curve {
 
 };
 %extend Handle_Geom2d_Line {
-    Geom2d_Line* GetObject() {
+    Geom2d_Line* _get_reference() {
     return (Geom2d_Line*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Line {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2015,8 +2114,17 @@ class Handle_Geom2d_OffsetCurve : public Handle_Geom2d_Curve {
 
 };
 %extend Handle_Geom2d_OffsetCurve {
-    Geom2d_OffsetCurve* GetObject() {
+    Geom2d_OffsetCurve* _get_reference() {
     return (Geom2d_OffsetCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_OffsetCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2276,8 +2384,17 @@ class Handle_Geom2d_VectorWithMagnitude : public Handle_Geom2d_Vector {
 
 };
 %extend Handle_Geom2d_VectorWithMagnitude {
-    Geom2d_VectorWithMagnitude* GetObject() {
+    Geom2d_VectorWithMagnitude* _get_reference() {
     return (Geom2d_VectorWithMagnitude*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_VectorWithMagnitude {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2979,8 +3096,17 @@ class Handle_Geom2d_BSplineCurve : public Handle_Geom2d_BoundedCurve {
 
 };
 %extend Handle_Geom2d_BSplineCurve {
-    Geom2d_BSplineCurve* GetObject() {
+    Geom2d_BSplineCurve* _get_reference() {
     return (Geom2d_BSplineCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_BSplineCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3320,8 +3446,17 @@ class Handle_Geom2d_BezierCurve : public Handle_Geom2d_BoundedCurve {
 
 };
 %extend Handle_Geom2d_BezierCurve {
-    Geom2d_BezierCurve* GetObject() {
+    Geom2d_BezierCurve* _get_reference() {
     return (Geom2d_BezierCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_BezierCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3533,8 +3668,17 @@ class Handle_Geom2d_Circle : public Handle_Geom2d_Conic {
 
 };
 %extend Handle_Geom2d_Circle {
-    Geom2d_Circle* GetObject() {
+    Geom2d_Circle* _get_reference() {
     return (Geom2d_Circle*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Circle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3800,8 +3944,17 @@ class Handle_Geom2d_Ellipse : public Handle_Geom2d_Conic {
 
 };
 %extend Handle_Geom2d_Ellipse {
-    Geom2d_Ellipse* GetObject() {
+    Geom2d_Ellipse* _get_reference() {
     return (Geom2d_Ellipse*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Ellipse {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4099,8 +4252,17 @@ class Handle_Geom2d_Hyperbola : public Handle_Geom2d_Conic {
 
 };
 %extend Handle_Geom2d_Hyperbola {
-    Geom2d_Hyperbola* GetObject() {
+    Geom2d_Hyperbola* _get_reference() {
     return (Geom2d_Hyperbola*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Hyperbola {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4360,8 +4522,17 @@ class Handle_Geom2d_Parabola : public Handle_Geom2d_Conic {
 
 };
 %extend Handle_Geom2d_Parabola {
-    Geom2d_Parabola* GetObject() {
+    Geom2d_Parabola* _get_reference() {
     return (Geom2d_Parabola*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_Parabola {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4599,8 +4770,17 @@ class Handle_Geom2d_TrimmedCurve : public Handle_Geom2d_BoundedCurve {
 
 };
 %extend Handle_Geom2d_TrimmedCurve {
-    Geom2d_TrimmedCurve* GetObject() {
+    Geom2d_TrimmedCurve* _get_reference() {
     return (Geom2d_TrimmedCurve*)$self->Access();
+    }
+};
+
+%extend Handle_Geom2d_TrimmedCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

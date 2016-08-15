@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -593,8 +593,17 @@ class Handle_Visual3d_HSequenceOfLight : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Visual3d_HSequenceOfLight {
-    Visual3d_HSequenceOfLight* GetObject() {
+    Visual3d_HSequenceOfLight* _get_reference() {
     return (Visual3d_HSequenceOfLight*)$self->Access();
+    }
+};
+
+%extend Handle_Visual3d_HSequenceOfLight {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -768,8 +777,17 @@ class Handle_Visual3d_HSequenceOfView : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Visual3d_HSequenceOfView {
-    Visual3d_HSequenceOfView* GetObject() {
+    Visual3d_HSequenceOfView* _get_reference() {
     return (Visual3d_HSequenceOfView*)$self->Access();
+    }
+};
+
+%extend Handle_Visual3d_HSequenceOfView {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1013,8 +1031,17 @@ class Handle_Visual3d_Layer : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Visual3d_Layer {
-    Visual3d_Layer* GetObject() {
+    Visual3d_Layer* _get_reference() {
     return (Visual3d_Layer*)$self->Access();
+    }
+};
+
+%extend Handle_Visual3d_Layer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1084,8 +1111,17 @@ class Handle_Visual3d_LayerItem : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Visual3d_LayerItem {
-    Visual3d_LayerItem* GetObject() {
+    Visual3d_LayerItem* _get_reference() {
     return (Visual3d_LayerItem*)$self->Access();
+    }
+};
+
+%extend Handle_Visual3d_LayerItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1327,8 +1363,17 @@ class Handle_Visual3d_Light : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Visual3d_Light {
-    Visual3d_Light* GetObject() {
+    Visual3d_Light* _get_reference() {
     return (Visual3d_Light*)$self->Access();
+    }
+};
+
+%extend Handle_Visual3d_Light {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1384,8 +1429,17 @@ class Handle_Visual3d_SequenceNodeOfSequenceOfLight : public Handle_TCollection_
 
 };
 %extend Handle_Visual3d_SequenceNodeOfSequenceOfLight {
-    Visual3d_SequenceNodeOfSequenceOfLight* GetObject() {
+    Visual3d_SequenceNodeOfSequenceOfLight* _get_reference() {
     return (Visual3d_SequenceNodeOfSequenceOfLight*)$self->Access();
+    }
+};
+
+%extend Handle_Visual3d_SequenceNodeOfSequenceOfLight {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1441,8 +1495,17 @@ class Handle_Visual3d_SequenceNodeOfSequenceOfView : public Handle_TCollection_S
 
 };
 %extend Handle_Visual3d_SequenceNodeOfSequenceOfView {
-    Visual3d_SequenceNodeOfSequenceOfView* GetObject() {
+    Visual3d_SequenceNodeOfSequenceOfView* _get_reference() {
     return (Visual3d_SequenceNodeOfSequenceOfView*)$self->Access();
+    }
+};
+
+%extend Handle_Visual3d_SequenceNodeOfSequenceOfView {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2620,8 +2683,17 @@ class Handle_Visual3d_View : public Handle_Graphic3d_DataStructureManager {
 
 };
 %extend Handle_Visual3d_View {
-    Visual3d_View* GetObject() {
+    Visual3d_View* _get_reference() {
     return (Visual3d_View*)$self->Access();
+    }
+};
+
+%extend Handle_Visual3d_View {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2991,8 +3063,17 @@ class Handle_Visual3d_ViewManager : public Handle_Graphic3d_StructureManager {
 
 };
 %extend Handle_Visual3d_ViewManager {
-    Visual3d_ViewManager* GetObject() {
+    Visual3d_ViewManager* _get_reference() {
     return (Visual3d_ViewManager*)$self->Access();
+    }
+};
+
+%extend Handle_Visual3d_ViewManager {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -987,8 +987,17 @@ class Handle_Interface_Check : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_Check {
-    Interface_Check* GetObject() {
+    Interface_Check* _get_reference() {
     return (Interface_Check*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_Check {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1408,8 +1417,17 @@ class Handle_Interface_CopyControl : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_CopyControl {
-    Interface_CopyControl* GetObject() {
+    Interface_CopyControl* _get_reference() {
     return (Interface_CopyControl*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_CopyControl {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1670,8 +1688,17 @@ class Handle_Interface_DataMapNodeOfDataMapOfTransientInteger : public Handle_TC
 
 };
 %extend Handle_Interface_DataMapNodeOfDataMapOfTransientInteger {
-    Interface_DataMapNodeOfDataMapOfTransientInteger* GetObject() {
+    Interface_DataMapNodeOfDataMapOfTransientInteger* _get_reference() {
     return (Interface_DataMapNodeOfDataMapOfTransientInteger*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_DataMapNodeOfDataMapOfTransientInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1879,8 +1906,17 @@ class Handle_Interface_EntityCluster : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_EntityCluster {
-    Interface_EntityCluster* GetObject() {
+    Interface_EntityCluster* _get_reference() {
     return (Interface_EntityCluster*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_EntityCluster {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2432,8 +2468,17 @@ class Handle_Interface_FileReaderData : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_FileReaderData {
-    Interface_FileReaderData* GetObject() {
+    Interface_FileReaderData* _get_reference() {
     return (Interface_FileReaderData*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_FileReaderData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2851,8 +2896,17 @@ class Handle_Interface_GTool : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_GTool {
-    Interface_GTool* GetObject() {
+    Interface_GTool* _get_reference() {
     return (Interface_GTool*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_GTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3149,8 +3203,17 @@ class Handle_Interface_GeneralModule : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_GeneralModule {
-    Interface_GeneralModule* GetObject() {
+    Interface_GeneralModule* _get_reference() {
     return (Interface_GeneralModule*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_GeneralModule {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3216,8 +3279,17 @@ class Handle_Interface_GlobalNodeOfGeneralLib : public Handle_Standard_Transient
 
 };
 %extend Handle_Interface_GlobalNodeOfGeneralLib {
-    Interface_GlobalNodeOfGeneralLib* GetObject() {
+    Interface_GlobalNodeOfGeneralLib* _get_reference() {
     return (Interface_GlobalNodeOfGeneralLib*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_GlobalNodeOfGeneralLib {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3283,8 +3355,17 @@ class Handle_Interface_GlobalNodeOfReaderLib : public Handle_Standard_Transient 
 
 };
 %extend Handle_Interface_GlobalNodeOfReaderLib {
-    Interface_GlobalNodeOfReaderLib* GetObject() {
+    Interface_GlobalNodeOfReaderLib* _get_reference() {
     return (Interface_GlobalNodeOfReaderLib*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_GlobalNodeOfReaderLib {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3722,8 +3803,17 @@ class Handle_Interface_HArray1OfHAsciiString : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_HArray1OfHAsciiString {
-    Interface_HArray1OfHAsciiString* GetObject() {
+    Interface_HArray1OfHAsciiString* _get_reference() {
     return (Interface_HArray1OfHAsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_HArray1OfHAsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3831,8 +3921,17 @@ class Handle_Interface_HGraph : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_HGraph {
-    Interface_HGraph* GetObject() {
+    Interface_HGraph* _get_reference() {
     return (Interface_HGraph*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_HGraph {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4006,8 +4105,17 @@ class Handle_Interface_HSequenceOfCheck : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_HSequenceOfCheck {
-    Interface_HSequenceOfCheck* GetObject() {
+    Interface_HSequenceOfCheck* _get_reference() {
     return (Interface_HSequenceOfCheck*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_HSequenceOfCheck {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4082,8 +4190,17 @@ class Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString : public Handle_T
 
 };
 %extend Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString {
-    Interface_IndexedMapNodeOfIndexedMapOfAsciiString* GetObject() {
+    Interface_IndexedMapNodeOfIndexedMapOfAsciiString* _get_reference() {
     return (Interface_IndexedMapNodeOfIndexedMapOfAsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4378,8 +4495,17 @@ class Handle_Interface_IntVal : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_IntVal {
-    Interface_IntVal* GetObject() {
+    Interface_IntVal* _get_reference() {
     return (Interface_IntVal*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_IntVal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4936,8 +5062,17 @@ class Handle_Interface_InterfaceModel : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_InterfaceModel {
-    Interface_InterfaceModel* GetObject() {
+    Interface_InterfaceModel* _get_reference() {
     return (Interface_InterfaceModel*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_InterfaceModel {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5417,8 +5552,17 @@ class Handle_Interface_NodeOfGeneralLib : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_NodeOfGeneralLib {
-    Interface_NodeOfGeneralLib* GetObject() {
+    Interface_NodeOfGeneralLib* _get_reference() {
     return (Interface_NodeOfGeneralLib*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_NodeOfGeneralLib {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5482,8 +5626,17 @@ class Handle_Interface_NodeOfReaderLib : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_NodeOfReaderLib {
-    Interface_NodeOfReaderLib* GetObject() {
+    Interface_NodeOfReaderLib* _get_reference() {
     return (Interface_NodeOfReaderLib*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_NodeOfReaderLib {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5581,8 +5734,17 @@ class Handle_Interface_ParamList : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_ParamList {
-    Interface_ParamList* GetObject() {
+    Interface_ParamList* _get_reference() {
     return (Interface_ParamList*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_ParamList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5704,8 +5866,17 @@ class Handle_Interface_ParamSet : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_ParamSet {
-    Interface_ParamSet* GetObject() {
+    Interface_ParamSet* _get_reference() {
     return (Interface_ParamSet*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_ParamSet {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5861,8 +6032,17 @@ class Handle_Interface_Protocol : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_Protocol {
-    Interface_Protocol* GetObject() {
+    Interface_Protocol* _get_reference() {
     return (Interface_Protocol*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_Protocol {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6013,8 +6193,17 @@ class Handle_Interface_ReaderModule : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_ReaderModule {
-    Interface_ReaderModule* GetObject() {
+    Interface_ReaderModule* _get_reference() {
     return (Interface_ReaderModule*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_ReaderModule {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6130,8 +6319,17 @@ class Handle_Interface_ReportEntity : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_ReportEntity {
-    Interface_ReportEntity* GetObject() {
+    Interface_ReportEntity* _get_reference() {
     return (Interface_ReportEntity*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_ReportEntity {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6187,8 +6385,17 @@ class Handle_Interface_SequenceNodeOfSequenceOfCheck : public Handle_TCollection
 
 };
 %extend Handle_Interface_SequenceNodeOfSequenceOfCheck {
-    Interface_SequenceNodeOfSequenceOfCheck* GetObject() {
+    Interface_SequenceNodeOfSequenceOfCheck* _get_reference() {
     return (Interface_SequenceNodeOfSequenceOfCheck*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_SequenceNodeOfSequenceOfCheck {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6616,8 +6823,17 @@ class Handle_Interface_SignLabel : public Handle_MoniTool_SignText {
 
 };
 %extend Handle_Interface_SignLabel {
-    Interface_SignLabel* GetObject() {
+    Interface_SignLabel* _get_reference() {
     return (Interface_SignLabel*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_SignLabel {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6687,8 +6903,17 @@ class Handle_Interface_SignType : public Handle_MoniTool_SignText {
 
 };
 %extend Handle_Interface_SignType {
-    Interface_SignType* GetObject() {
+    Interface_SignType* _get_reference() {
     return (Interface_SignType*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_SignType {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6764,8 +6989,17 @@ class Handle_Interface_TypedValue : public Handle_MoniTool_TypedValue {
 
 };
 %extend Handle_Interface_TypedValue {
-    Interface_TypedValue* GetObject() {
+    Interface_TypedValue* _get_reference() {
     return (Interface_TypedValue*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_TypedValue {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6959,8 +7193,17 @@ class Handle_Interface_UndefinedContent : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Interface_UndefinedContent {
-    Interface_UndefinedContent* GetObject() {
+    Interface_UndefinedContent* _get_reference() {
     return (Interface_UndefinedContent*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_UndefinedContent {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7042,8 +7285,17 @@ class Handle_Interface_CopyMap : public Handle_Interface_CopyControl {
 
 };
 %extend Handle_Interface_CopyMap {
-    Interface_CopyMap* GetObject() {
+    Interface_CopyMap* _get_reference() {
     return (Interface_CopyMap*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_CopyMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7387,8 +7639,17 @@ class Handle_Interface_Static : public Handle_Interface_TypedValue {
 
 };
 %extend Handle_Interface_Static {
-    Interface_Static* GetObject() {
+    Interface_Static* _get_reference() {
     return (Interface_Static*)$self->Access();
+    }
+};
+
+%extend Handle_Interface_Static {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

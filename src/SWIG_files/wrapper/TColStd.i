@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1589,8 +1589,17 @@ class Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger : public Handle_TC
 
 };
 %extend Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
-    TColStd_DataMapNodeOfDataMapOfAsciiStringInteger* GetObject() {
+    TColStd_DataMapNodeOfDataMapOfAsciiStringInteger* _get_reference() {
     return (TColStd_DataMapNodeOfDataMapOfAsciiStringInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1668,8 +1677,17 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger : public Handle_TColle
 
 };
 %extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger {
-    TColStd_DataMapNodeOfDataMapOfIntegerInteger* GetObject() {
+    TColStd_DataMapNodeOfDataMapOfIntegerInteger* _get_reference() {
     return (TColStd_DataMapNodeOfDataMapOfIntegerInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1738,8 +1756,17 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public Handle_
 
 };
 %extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
-    TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger* GetObject() {
+    TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger* _get_reference() {
     return (TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1817,8 +1844,17 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal : public Handle_TCollecti
 
 };
 %extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal {
-    TColStd_DataMapNodeOfDataMapOfIntegerReal* GetObject() {
+    TColStd_DataMapNodeOfDataMapOfIntegerReal* _get_reference() {
     return (TColStd_DataMapNodeOfDataMapOfIntegerReal*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1887,8 +1923,17 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient : public Handle_TCol
 
 };
 %extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient {
-    TColStd_DataMapNodeOfDataMapOfIntegerTransient* GetObject() {
+    TColStd_DataMapNodeOfDataMapOfIntegerTransient* _get_reference() {
     return (TColStd_DataMapNodeOfDataMapOfIntegerTransient*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1957,8 +2002,17 @@ class Handle_TColStd_DataMapNodeOfDataMapOfStringInteger : public Handle_TCollec
 
 };
 %extend Handle_TColStd_DataMapNodeOfDataMapOfStringInteger {
-    TColStd_DataMapNodeOfDataMapOfStringInteger* GetObject() {
+    TColStd_DataMapNodeOfDataMapOfStringInteger* _get_reference() {
     return (TColStd_DataMapNodeOfDataMapOfStringInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_DataMapNodeOfDataMapOfStringInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2018,8 +2072,17 @@ class Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient : public Handle_TC
 
 };
 %extend Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient {
-    TColStd_DataMapNodeOfDataMapOfTransientTransient* GetObject() {
+    TColStd_DataMapNodeOfDataMapOfTransientTransient* _get_reference() {
     return (TColStd_DataMapNodeOfDataMapOfTransientTransient*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2671,8 +2734,17 @@ class Handle_TColStd_HArray1OfAsciiString : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray1OfAsciiString {
-    TColStd_HArray1OfAsciiString* GetObject() {
+    TColStd_HArray1OfAsciiString* _get_reference() {
     return (TColStd_HArray1OfAsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray1OfAsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2778,8 +2850,17 @@ class Handle_TColStd_HArray1OfBoolean : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray1OfBoolean {
-    TColStd_HArray1OfBoolean* GetObject() {
+    TColStd_HArray1OfBoolean* _get_reference() {
     return (TColStd_HArray1OfBoolean*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray1OfBoolean {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2885,8 +2966,17 @@ class Handle_TColStd_HArray1OfByte : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray1OfByte {
-    TColStd_HArray1OfByte* GetObject() {
+    TColStd_HArray1OfByte* _get_reference() {
     return (TColStd_HArray1OfByte*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray1OfByte {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2992,8 +3082,17 @@ class Handle_TColStd_HArray1OfCharacter : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray1OfCharacter {
-    TColStd_HArray1OfCharacter* GetObject() {
+    TColStd_HArray1OfCharacter* _get_reference() {
     return (TColStd_HArray1OfCharacter*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray1OfCharacter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3099,8 +3198,17 @@ class Handle_TColStd_HArray1OfExtendedString : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray1OfExtendedString {
-    TColStd_HArray1OfExtendedString* GetObject() {
+    TColStd_HArray1OfExtendedString* _get_reference() {
     return (TColStd_HArray1OfExtendedString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray1OfExtendedString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3206,8 +3314,17 @@ class Handle_TColStd_HArray1OfInteger : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray1OfInteger {
-    TColStd_HArray1OfInteger* GetObject() {
+    TColStd_HArray1OfInteger* _get_reference() {
     return (TColStd_HArray1OfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray1OfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3313,8 +3430,17 @@ class Handle_TColStd_HArray1OfListOfInteger : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray1OfListOfInteger {
-    TColStd_HArray1OfListOfInteger* GetObject() {
+    TColStd_HArray1OfListOfInteger* _get_reference() {
     return (TColStd_HArray1OfListOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray1OfListOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3420,8 +3546,17 @@ class Handle_TColStd_HArray1OfReal : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray1OfReal {
-    TColStd_HArray1OfReal* GetObject() {
+    TColStd_HArray1OfReal* _get_reference() {
     return (TColStd_HArray1OfReal*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray1OfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3527,8 +3662,17 @@ class Handle_TColStd_HArray1OfTransient : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray1OfTransient {
-    TColStd_HArray1OfTransient* GetObject() {
+    TColStd_HArray1OfTransient* _get_reference() {
     return (TColStd_HArray1OfTransient*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray1OfTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3660,8 +3804,17 @@ class Handle_TColStd_HArray2OfBoolean : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray2OfBoolean {
-    TColStd_HArray2OfBoolean* GetObject() {
+    TColStd_HArray2OfBoolean* _get_reference() {
     return (TColStd_HArray2OfBoolean*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray2OfBoolean {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3793,8 +3946,17 @@ class Handle_TColStd_HArray2OfCharacter : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray2OfCharacter {
-    TColStd_HArray2OfCharacter* GetObject() {
+    TColStd_HArray2OfCharacter* _get_reference() {
     return (TColStd_HArray2OfCharacter*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray2OfCharacter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3926,8 +4088,17 @@ class Handle_TColStd_HArray2OfInteger : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray2OfInteger {
-    TColStd_HArray2OfInteger* GetObject() {
+    TColStd_HArray2OfInteger* _get_reference() {
     return (TColStd_HArray2OfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray2OfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4059,8 +4230,17 @@ class Handle_TColStd_HArray2OfReal : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray2OfReal {
-    TColStd_HArray2OfReal* GetObject() {
+    TColStd_HArray2OfReal* _get_reference() {
     return (TColStd_HArray2OfReal*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray2OfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4192,8 +4372,17 @@ class Handle_TColStd_HArray2OfTransient : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HArray2OfTransient {
-    TColStd_HArray2OfTransient* GetObject() {
+    TColStd_HArray2OfTransient* _get_reference() {
     return (TColStd_HArray2OfTransient*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HArray2OfTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4255,8 +4444,17 @@ class Handle_TColStd_HPackedMapOfInteger : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HPackedMapOfInteger {
-    TColStd_HPackedMapOfInteger* GetObject() {
+    TColStd_HPackedMapOfInteger* _get_reference() {
     return (TColStd_HPackedMapOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HPackedMapOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4430,8 +4628,17 @@ class Handle_TColStd_HSequenceOfAsciiString : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HSequenceOfAsciiString {
-    TColStd_HSequenceOfAsciiString* GetObject() {
+    TColStd_HSequenceOfAsciiString* _get_reference() {
     return (TColStd_HSequenceOfAsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HSequenceOfAsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4605,8 +4812,17 @@ class Handle_TColStd_HSequenceOfExtendedString : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HSequenceOfExtendedString {
-    TColStd_HSequenceOfExtendedString* GetObject() {
+    TColStd_HSequenceOfExtendedString* _get_reference() {
     return (TColStd_HSequenceOfExtendedString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HSequenceOfExtendedString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4780,8 +4996,17 @@ class Handle_TColStd_HSequenceOfHAsciiString : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HSequenceOfHAsciiString {
-    TColStd_HSequenceOfHAsciiString* GetObject() {
+    TColStd_HSequenceOfHAsciiString* _get_reference() {
     return (TColStd_HSequenceOfHAsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HSequenceOfHAsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4955,8 +5180,17 @@ class Handle_TColStd_HSequenceOfHExtendedString : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HSequenceOfHExtendedString {
-    TColStd_HSequenceOfHExtendedString* GetObject() {
+    TColStd_HSequenceOfHExtendedString* _get_reference() {
     return (TColStd_HSequenceOfHExtendedString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HSequenceOfHExtendedString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5130,8 +5364,17 @@ class Handle_TColStd_HSequenceOfInteger : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HSequenceOfInteger {
-    TColStd_HSequenceOfInteger* GetObject() {
+    TColStd_HSequenceOfInteger* _get_reference() {
     return (TColStd_HSequenceOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HSequenceOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5305,8 +5548,17 @@ class Handle_TColStd_HSequenceOfReal : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HSequenceOfReal {
-    TColStd_HSequenceOfReal* GetObject() {
+    TColStd_HSequenceOfReal* _get_reference() {
     return (TColStd_HSequenceOfReal*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HSequenceOfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5480,8 +5732,17 @@ class Handle_TColStd_HSequenceOfTransient : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColStd_HSequenceOfTransient {
-    TColStd_HSequenceOfTransient* GetObject() {
+    TColStd_HSequenceOfTransient* _get_reference() {
     return (TColStd_HSequenceOfTransient*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_HSequenceOfTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5562,8 +5823,17 @@ class Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient : pu
 
 };
 %extend Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
-    TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient* GetObject() {
+    TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient* _get_reference() {
     return (TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5757,8 +6027,17 @@ class Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger : public Handle_TCollec
 
 };
 %extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger {
-    TColStd_IndexedMapNodeOfIndexedMapOfInteger* GetObject() {
+    TColStd_IndexedMapNodeOfIndexedMapOfInteger* _get_reference() {
     return (TColStd_IndexedMapNodeOfIndexedMapOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5842,8 +6121,17 @@ class Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal : public Handle_TCollectio
 
 };
 %extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal {
-    TColStd_IndexedMapNodeOfIndexedMapOfReal* GetObject() {
+    TColStd_IndexedMapNodeOfIndexedMapOfReal* _get_reference() {
     return (TColStd_IndexedMapNodeOfIndexedMapOfReal*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5918,8 +6206,17 @@ class Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient : public Handle_TColl
 
 };
 %extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient {
-    TColStd_IndexedMapNodeOfIndexedMapOfTransient* GetObject() {
+    TColStd_IndexedMapNodeOfIndexedMapOfTransient* _get_reference() {
     return (TColStd_IndexedMapNodeOfIndexedMapOfTransient*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6355,8 +6652,17 @@ class Handle_TColStd_ListNodeOfListOfAsciiString : public Handle_TCollection_Map
 
 };
 %extend Handle_TColStd_ListNodeOfListOfAsciiString {
-    TColStd_ListNodeOfListOfAsciiString* GetObject() {
+    TColStd_ListNodeOfListOfAsciiString* _get_reference() {
     return (TColStd_ListNodeOfListOfAsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_ListNodeOfListOfAsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6419,8 +6725,17 @@ class Handle_TColStd_ListNodeOfListOfInteger : public Handle_TCollection_MapNode
 
 };
 %extend Handle_TColStd_ListNodeOfListOfInteger {
-    TColStd_ListNodeOfListOfInteger* GetObject() {
+    TColStd_ListNodeOfListOfInteger* _get_reference() {
     return (TColStd_ListNodeOfListOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_ListNodeOfListOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6483,8 +6798,17 @@ class Handle_TColStd_ListNodeOfListOfReal : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TColStd_ListNodeOfListOfReal {
-    TColStd_ListNodeOfListOfReal* GetObject() {
+    TColStd_ListNodeOfListOfReal* _get_reference() {
     return (TColStd_ListNodeOfListOfReal*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_ListNodeOfListOfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6538,8 +6862,17 @@ class Handle_TColStd_ListNodeOfListOfTransient : public Handle_TCollection_MapNo
 
 };
 %extend Handle_TColStd_ListNodeOfListOfTransient {
-    TColStd_ListNodeOfListOfTransient* GetObject() {
+    TColStd_ListNodeOfListOfTransient* _get_reference() {
     return (TColStd_ListNodeOfListOfTransient*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_ListNodeOfListOfTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7596,8 +7929,17 @@ class Handle_TColStd_SequenceNodeOfSequenceOfAddress : public Handle_TCollection
 
 };
 %extend Handle_TColStd_SequenceNodeOfSequenceOfAddress {
-    TColStd_SequenceNodeOfSequenceOfAddress* GetObject() {
+    TColStd_SequenceNodeOfSequenceOfAddress* _get_reference() {
     return (TColStd_SequenceNodeOfSequenceOfAddress*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_SequenceNodeOfSequenceOfAddress {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7653,8 +7995,17 @@ class Handle_TColStd_SequenceNodeOfSequenceOfAsciiString : public Handle_TCollec
 
 };
 %extend Handle_TColStd_SequenceNodeOfSequenceOfAsciiString {
-    TColStd_SequenceNodeOfSequenceOfAsciiString* GetObject() {
+    TColStd_SequenceNodeOfSequenceOfAsciiString* _get_reference() {
     return (TColStd_SequenceNodeOfSequenceOfAsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_SequenceNodeOfSequenceOfAsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7719,8 +8070,17 @@ class Handle_TColStd_SequenceNodeOfSequenceOfBoolean : public Handle_TCollection
 
 };
 %extend Handle_TColStd_SequenceNodeOfSequenceOfBoolean {
-    TColStd_SequenceNodeOfSequenceOfBoolean* GetObject() {
+    TColStd_SequenceNodeOfSequenceOfBoolean* _get_reference() {
     return (TColStd_SequenceNodeOfSequenceOfBoolean*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_SequenceNodeOfSequenceOfBoolean {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7776,8 +8136,17 @@ class Handle_TColStd_SequenceNodeOfSequenceOfExtendedString : public Handle_TCol
 
 };
 %extend Handle_TColStd_SequenceNodeOfSequenceOfExtendedString {
-    TColStd_SequenceNodeOfSequenceOfExtendedString* GetObject() {
+    TColStd_SequenceNodeOfSequenceOfExtendedString* _get_reference() {
     return (TColStd_SequenceNodeOfSequenceOfExtendedString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_SequenceNodeOfSequenceOfExtendedString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7833,8 +8202,17 @@ class Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString : public Handle_TColle
 
 };
 %extend Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString {
-    TColStd_SequenceNodeOfSequenceOfHAsciiString* GetObject() {
+    TColStd_SequenceNodeOfSequenceOfHAsciiString* _get_reference() {
     return (TColStd_SequenceNodeOfSequenceOfHAsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7890,8 +8268,17 @@ class Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString : public Handle_TCo
 
 };
 %extend Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString {
-    TColStd_SequenceNodeOfSequenceOfHExtendedString* GetObject() {
+    TColStd_SequenceNodeOfSequenceOfHExtendedString* _get_reference() {
     return (TColStd_SequenceNodeOfSequenceOfHExtendedString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7956,8 +8343,17 @@ class Handle_TColStd_SequenceNodeOfSequenceOfInteger : public Handle_TCollection
 
 };
 %extend Handle_TColStd_SequenceNodeOfSequenceOfInteger {
-    TColStd_SequenceNodeOfSequenceOfInteger* GetObject() {
+    TColStd_SequenceNodeOfSequenceOfInteger* _get_reference() {
     return (TColStd_SequenceNodeOfSequenceOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_SequenceNodeOfSequenceOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8022,8 +8418,17 @@ class Handle_TColStd_SequenceNodeOfSequenceOfReal : public Handle_TCollection_Se
 
 };
 %extend Handle_TColStd_SequenceNodeOfSequenceOfReal {
-    TColStd_SequenceNodeOfSequenceOfReal* GetObject() {
+    TColStd_SequenceNodeOfSequenceOfReal* _get_reference() {
     return (TColStd_SequenceNodeOfSequenceOfReal*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_SequenceNodeOfSequenceOfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8079,8 +8484,17 @@ class Handle_TColStd_SequenceNodeOfSequenceOfTransient : public Handle_TCollecti
 
 };
 %extend Handle_TColStd_SequenceNodeOfSequenceOfTransient {
-    TColStd_SequenceNodeOfSequenceOfTransient* GetObject() {
+    TColStd_SequenceNodeOfSequenceOfTransient* _get_reference() {
     return (TColStd_SequenceNodeOfSequenceOfTransient*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_SequenceNodeOfSequenceOfTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9376,8 +9790,17 @@ class Handle_TColStd_StdMapNodeOfMapOfAsciiString : public Handle_TCollection_Ma
 
 };
 %extend Handle_TColStd_StdMapNodeOfMapOfAsciiString {
-    TColStd_StdMapNodeOfMapOfAsciiString* GetObject() {
+    TColStd_StdMapNodeOfMapOfAsciiString* _get_reference() {
     return (TColStd_StdMapNodeOfMapOfAsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_StdMapNodeOfMapOfAsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9440,8 +9863,17 @@ class Handle_TColStd_StdMapNodeOfMapOfInteger : public Handle_TCollection_MapNod
 
 };
 %extend Handle_TColStd_StdMapNodeOfMapOfInteger {
-    TColStd_StdMapNodeOfMapOfInteger* GetObject() {
+    TColStd_StdMapNodeOfMapOfInteger* _get_reference() {
     return (TColStd_StdMapNodeOfMapOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_StdMapNodeOfMapOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9504,8 +9936,17 @@ class Handle_TColStd_StdMapNodeOfMapOfReal : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TColStd_StdMapNodeOfMapOfReal {
-    TColStd_StdMapNodeOfMapOfReal* GetObject() {
+    TColStd_StdMapNodeOfMapOfReal* _get_reference() {
     return (TColStd_StdMapNodeOfMapOfReal*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_StdMapNodeOfMapOfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9559,8 +10000,17 @@ class Handle_TColStd_StdMapNodeOfMapOfTransient : public Handle_TCollection_MapN
 
 };
 %extend Handle_TColStd_StdMapNodeOfMapOfTransient {
-    TColStd_StdMapNodeOfMapOfTransient* GetObject() {
+    TColStd_StdMapNodeOfMapOfTransient* _get_reference() {
     return (TColStd_StdMapNodeOfMapOfTransient*)$self->Access();
+    }
+};
+
+%extend Handle_TColStd_StdMapNodeOfMapOfTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

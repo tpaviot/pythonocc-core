@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -793,8 +793,17 @@ class Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox : public Handle_TCollection_M
 
 };
 %extend Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox {
-    BiTgte_DataMapNodeOfDataMapOfShapeBox* GetObject() {
+    BiTgte_DataMapNodeOfDataMapOfShapeBox* _get_reference() {
     return (BiTgte_DataMapNodeOfDataMapOfShapeBox*)$self->Access();
+    }
+};
+
+%extend Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -942,8 +951,17 @@ class Handle_BiTgte_HCurveOnEdge : public Handle_Adaptor3d_HCurve {
 
 };
 %extend Handle_BiTgte_HCurveOnEdge {
-    BiTgte_HCurveOnEdge* GetObject() {
+    BiTgte_HCurveOnEdge* _get_reference() {
     return (BiTgte_HCurveOnEdge*)$self->Access();
+    }
+};
+
+%extend Handle_BiTgte_HCurveOnEdge {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1013,8 +1031,17 @@ class Handle_BiTgte_HCurveOnVertex : public Handle_Adaptor3d_HCurve {
 
 };
 %extend Handle_BiTgte_HCurveOnVertex {
-    BiTgte_HCurveOnVertex* GetObject() {
+    BiTgte_HCurveOnVertex* _get_reference() {
     return (BiTgte_HCurveOnVertex*)$self->Access();
+    }
+};
+
+%extend Handle_BiTgte_HCurveOnVertex {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -379,8 +379,17 @@ class Handle_TopOpeBRepDS_Association : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRepDS_Association {
-    TopOpeBRepDS_Association* GetObject() {
+    TopOpeBRepDS_Association* _get_reference() {
     return (TopOpeBRepDS_Association*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_Association {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -928,8 +937,17 @@ class Handle_TopOpeBRepDS_Check : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRepDS_Check {
-    TopOpeBRepDS_Check* GetObject() {
+    TopOpeBRepDS_Check* _get_reference() {
     return (TopOpeBRepDS_Check*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_Check {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1594,8 +1612,17 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus : public Handle_TCol
 
 };
 %extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus* GetObject() {
+    TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus* _get_reference() {
     return (TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1664,8 +1691,17 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference : publ
 
 };
 %extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference* GetObject() {
+    TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference* _get_reference() {
     return (TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1725,8 +1761,17 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference :
 
 };
 %extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference* GetObject() {
+    TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference* _get_reference() {
     return (TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1786,8 +1831,17 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape : public Handl
 
 };
 %extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape* GetObject() {
+    TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape* _get_reference() {
     return (TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1847,8 +1901,17 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State : publi
 
 };
 %extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State* GetObject() {
+    TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State* _get_reference() {
     return (TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1908,8 +1971,17 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState : public Handle_TColl
 
 };
 %extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState {
-    TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState* GetObject() {
+    TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState* _get_reference() {
     return (TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1978,8 +2050,17 @@ class Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve : public Handle_TCollection_Ma
 
 };
 %extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve {
-    TopOpeBRepDS_DataMapNodeOfMapOfCurve* GetObject() {
+    TopOpeBRepDS_DataMapNodeOfMapOfCurve* _get_reference() {
     return (TopOpeBRepDS_DataMapNodeOfMapOfCurve*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2048,8 +2129,17 @@ class Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData : public Handle_TCo
 
 };
 %extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData {
-    TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData* GetObject() {
+    TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData* _get_reference() {
     return (TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2118,8 +2208,17 @@ class Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint : public Handle_TCollection_Ma
 
 };
 %extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint {
-    TopOpeBRepDS_DataMapNodeOfMapOfPoint* GetObject() {
+    TopOpeBRepDS_DataMapNodeOfMapOfPoint* _get_reference() {
     return (TopOpeBRepDS_DataMapNodeOfMapOfPoint*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2188,8 +2287,17 @@ class Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface : public Handle_TCollection_
 
 };
 %extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface {
-    TopOpeBRepDS_DataMapNodeOfMapOfSurface* GetObject() {
+    TopOpeBRepDS_DataMapNodeOfMapOfSurface* _get_reference() {
     return (TopOpeBRepDS_DataMapNodeOfMapOfSurface*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2249,8 +2357,17 @@ class Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface : public Handle_TCollection_
 
 };
 %extend Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface {
-    TopOpeBRepDS_DataMapNodeOfShapeSurface* GetObject() {
+    TopOpeBRepDS_DataMapNodeOfShapeSurface* _get_reference() {
     return (TopOpeBRepDS_DataMapNodeOfShapeSurface*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3501,8 +3618,17 @@ class Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape : public Handle
 
 };
 %extend Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape {
-    TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape* GetObject() {
+    TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape* _get_reference() {
     return (TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4380,8 +4506,17 @@ class Handle_TopOpeBRepDS_GapTool : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRepDS_GapTool {
-    TopOpeBRepDS_GapTool* GetObject() {
+    TopOpeBRepDS_GapTool* _get_reference() {
     return (TopOpeBRepDS_GapTool*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_GapTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4529,8 +4664,17 @@ class Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public H
 
 };
 %extend Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference {
-    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* GetObject() {
+    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* _get_reference() {
     return (TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4611,8 +4755,17 @@ class Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState : p
 
 };
 %extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState {
-    TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState* GetObject() {
+    TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState* _get_reference() {
     return (TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4693,8 +4846,17 @@ class Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint : publ
 
 };
 %extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint {
-    TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint* GetObject() {
+    TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint* _get_reference() {
     return (TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4775,8 +4937,17 @@ class Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData : public Handle_TCo
 
 };
 %extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData {
-    TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData* GetObject() {
+    TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData* _get_reference() {
     return (TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5182,8 +5353,17 @@ class Handle_TopOpeBRepDS_Interference : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRepDS_Interference {
-    TopOpeBRepDS_Interference* GetObject() {
+    TopOpeBRepDS_Interference* _get_reference() {
     return (TopOpeBRepDS_Interference*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_Interference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5476,8 +5656,17 @@ class Handle_TopOpeBRepDS_ListNodeOfListOfInterference : public Handle_TCollecti
 
 };
 %extend Handle_TopOpeBRepDS_ListNodeOfListOfInterference {
-    TopOpeBRepDS_ListNodeOfListOfInterference* GetObject() {
+    TopOpeBRepDS_ListNodeOfListOfInterference* _get_reference() {
     return (TopOpeBRepDS_ListNodeOfListOfInterference*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_ListNodeOfListOfInterference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6141,8 +6330,17 @@ class Handle_TopOpeBRepDS_Marker : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRepDS_Marker {
-    TopOpeBRepDS_Marker* GetObject() {
+    TopOpeBRepDS_Marker* _get_reference() {
     return (TopOpeBRepDS_Marker*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_Marker {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7107,8 +7305,17 @@ class Handle_TopOpeBRepDS_CurvePointInterference : public Handle_TopOpeBRepDS_In
 
 };
 %extend Handle_TopOpeBRepDS_CurvePointInterference {
-    TopOpeBRepDS_CurvePointInterference* GetObject() {
+    TopOpeBRepDS_CurvePointInterference* _get_reference() {
     return (TopOpeBRepDS_CurvePointInterference*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_CurvePointInterference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7292,8 +7499,17 @@ class Handle_TopOpeBRepDS_ShapeShapeInterference : public Handle_TopOpeBRepDS_In
 
 };
 %extend Handle_TopOpeBRepDS_ShapeShapeInterference {
-    TopOpeBRepDS_ShapeShapeInterference* GetObject() {
+    TopOpeBRepDS_ShapeShapeInterference* _get_reference() {
     return (TopOpeBRepDS_ShapeShapeInterference*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_ShapeShapeInterference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7357,8 +7573,17 @@ class Handle_TopOpeBRepDS_SolidSurfaceInterference : public Handle_TopOpeBRepDS_
 
 };
 %extend Handle_TopOpeBRepDS_SolidSurfaceInterference {
-    TopOpeBRepDS_SolidSurfaceInterference* GetObject() {
+    TopOpeBRepDS_SolidSurfaceInterference* _get_reference() {
     return (TopOpeBRepDS_SolidSurfaceInterference*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_SolidSurfaceInterference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7452,8 +7677,17 @@ class Handle_TopOpeBRepDS_SurfaceCurveInterference : public Handle_TopOpeBRepDS_
 
 };
 %extend Handle_TopOpeBRepDS_SurfaceCurveInterference {
-    TopOpeBRepDS_SurfaceCurveInterference* GetObject() {
+    TopOpeBRepDS_SurfaceCurveInterference* _get_reference() {
     return (TopOpeBRepDS_SurfaceCurveInterference*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_SurfaceCurveInterference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7593,8 +7827,17 @@ class Handle_TopOpeBRepDS_EdgeVertexInterference : public Handle_TopOpeBRepDS_Sh
 
 };
 %extend Handle_TopOpeBRepDS_EdgeVertexInterference {
-    TopOpeBRepDS_EdgeVertexInterference* GetObject() {
+    TopOpeBRepDS_EdgeVertexInterference* _get_reference() {
     return (TopOpeBRepDS_EdgeVertexInterference*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_EdgeVertexInterference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7660,8 +7903,17 @@ class Handle_TopOpeBRepDS_FaceEdgeInterference : public Handle_TopOpeBRepDS_Shap
 
 };
 %extend Handle_TopOpeBRepDS_FaceEdgeInterference {
-    TopOpeBRepDS_FaceEdgeInterference* GetObject() {
+    TopOpeBRepDS_FaceEdgeInterference* _get_reference() {
     return (TopOpeBRepDS_FaceEdgeInterference*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepDS_FaceEdgeInterference {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

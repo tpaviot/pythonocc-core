@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -204,8 +204,17 @@ class Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d : public Handle_TCollecti
 
 };
 %extend Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d {
-    ShapeFix_DataMapNodeOfDataMapOfShapeBox2d* GetObject() {
+    ShapeFix_DataMapNodeOfDataMapOfShapeBox2d* _get_reference() {
     return (ShapeFix_DataMapNodeOfDataMapOfShapeBox2d*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -491,8 +500,17 @@ class Handle_ShapeFix_Edge : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeFix_Edge {
-    ShapeFix_Edge* GetObject() {
+    ShapeFix_Edge* _get_reference() {
     return (ShapeFix_Edge*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_Edge {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -622,8 +640,17 @@ class Handle_ShapeFix_EdgeProjAux : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeFix_EdgeProjAux {
-    ShapeFix_EdgeProjAux* GetObject() {
+    ShapeFix_EdgeProjAux* _get_reference() {
     return (ShapeFix_EdgeProjAux*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_EdgeProjAux {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -989,8 +1016,17 @@ class Handle_ShapeFix_Root : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeFix_Root {
-    ShapeFix_Root* GetObject() {
+    ShapeFix_Root* _get_reference() {
     return (ShapeFix_Root*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_Root {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1046,8 +1082,17 @@ class Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment : public Handle_TColle
 
 };
 %extend Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment {
-    ShapeFix_SequenceNodeOfSequenceOfWireSegment* GetObject() {
+    ShapeFix_SequenceNodeOfSequenceOfWireSegment* _get_reference() {
     return (ShapeFix_SequenceNodeOfSequenceOfWireSegment*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1516,8 +1561,17 @@ class Handle_ShapeFix_ComposeShell : public Handle_ShapeFix_Root {
 
 };
 %extend Handle_ShapeFix_ComposeShell {
-    ShapeFix_ComposeShell* GetObject() {
+    ShapeFix_ComposeShell* _get_reference() {
     return (ShapeFix_ComposeShell*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_ComposeShell {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1879,8 +1933,17 @@ class Handle_ShapeFix_Face : public Handle_ShapeFix_Root {
 
 };
 %extend Handle_ShapeFix_Face {
-    ShapeFix_Face* GetObject() {
+    ShapeFix_Face* _get_reference() {
     return (ShapeFix_Face*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_Face {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2056,8 +2119,17 @@ class Handle_ShapeFix_FixSmallFace : public Handle_ShapeFix_Root {
 
 };
 %extend Handle_ShapeFix_FixSmallFace {
-    ShapeFix_FixSmallFace* GetObject() {
+    ShapeFix_FixSmallFace* _get_reference() {
     return (ShapeFix_FixSmallFace*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_FixSmallFace {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2283,8 +2355,17 @@ class Handle_ShapeFix_Shape : public Handle_ShapeFix_Root {
 
 };
 %extend Handle_ShapeFix_Shape {
-    ShapeFix_Shape* GetObject() {
+    ShapeFix_Shape* _get_reference() {
     return (ShapeFix_Shape*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_Shape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2464,8 +2545,17 @@ class Handle_ShapeFix_Shell : public Handle_ShapeFix_Root {
 
 };
 %extend Handle_ShapeFix_Shell {
-    ShapeFix_Shell* GetObject() {
+    ShapeFix_Shell* _get_reference() {
     return (ShapeFix_Shell*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_Shell {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2629,8 +2719,17 @@ class Handle_ShapeFix_Solid : public Handle_ShapeFix_Root {
 
 };
 %extend Handle_ShapeFix_Solid {
-    ShapeFix_Solid* GetObject() {
+    ShapeFix_Solid* _get_reference() {
     return (ShapeFix_Solid*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_Solid {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2690,8 +2789,17 @@ class Handle_ShapeFix_SplitCommonVertex : public Handle_ShapeFix_Root {
 
 };
 %extend Handle_ShapeFix_SplitCommonVertex {
-    ShapeFix_SplitCommonVertex* GetObject() {
+    ShapeFix_SplitCommonVertex* _get_reference() {
     return (ShapeFix_SplitCommonVertex*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_SplitCommonVertex {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3493,8 +3601,17 @@ class Handle_ShapeFix_Wire : public Handle_ShapeFix_Root {
 
 };
 %extend Handle_ShapeFix_Wire {
-    ShapeFix_Wire* GetObject() {
+    ShapeFix_Wire* _get_reference() {
     return (ShapeFix_Wire*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_Wire {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3651,8 +3768,17 @@ class Handle_ShapeFix_Wireframe : public Handle_ShapeFix_Root {
 
 };
 %extend Handle_ShapeFix_Wireframe {
-    ShapeFix_Wireframe* GetObject() {
+    ShapeFix_Wireframe* _get_reference() {
     return (ShapeFix_Wireframe*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_Wireframe {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

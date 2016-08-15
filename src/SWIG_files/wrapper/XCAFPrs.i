@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -264,8 +264,17 @@ class Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle : public Handle_TCollectio
 
 };
 %extend Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
-    XCAFPrs_DataMapNodeOfDataMapOfShapeStyle* GetObject() {
+    XCAFPrs_DataMapNodeOfDataMapOfShapeStyle* _get_reference() {
     return (XCAFPrs_DataMapNodeOfDataMapOfShapeStyle*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -325,8 +334,17 @@ class Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape : public Handle_TCollectio
 
 };
 %extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
-    XCAFPrs_DataMapNodeOfDataMapOfStyleShape* GetObject() {
+    XCAFPrs_DataMapNodeOfDataMapOfStyleShape* _get_reference() {
     return (XCAFPrs_DataMapNodeOfDataMapOfStyleShape*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -386,8 +404,17 @@ class Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient : public Handle_TColle
 
 };
 %extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
-    XCAFPrs_DataMapNodeOfDataMapOfStyleTransient* GetObject() {
+    XCAFPrs_DataMapNodeOfDataMapOfStyleTransient* _get_reference() {
     return (XCAFPrs_DataMapNodeOfDataMapOfStyleTransient*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -677,8 +704,17 @@ class Handle_XCAFPrs_Driver : public Handle_TPrsStd_Driver {
 
 };
 %extend Handle_XCAFPrs_Driver {
-    XCAFPrs_Driver* GetObject() {
+    XCAFPrs_Driver* _get_reference() {
     return (XCAFPrs_Driver*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFPrs_Driver {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

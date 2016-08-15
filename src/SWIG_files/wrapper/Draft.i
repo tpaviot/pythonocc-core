@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -225,8 +225,17 @@ class Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo : public Handle_TCollectio
 
 };
 %extend Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo {
-    Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo* GetObject() {
+    Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo* _get_reference() {
     return (Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo*)$self->Access();
+    }
+};
+
+%extend Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -286,8 +295,17 @@ class Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo : public Handle_TCollectio
 
 };
 %extend Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo {
-    Draft_DataMapNodeOfDataMapOfFaceFaceInfo* GetObject() {
+    Draft_DataMapNodeOfDataMapOfFaceFaceInfo* _get_reference() {
     return (Draft_DataMapNodeOfDataMapOfFaceFaceInfo*)$self->Access();
+    }
+};
+
+%extend Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -347,8 +365,17 @@ class Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo : public Handle_TColle
 
 };
 %extend Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo {
-    Draft_DataMapNodeOfDataMapOfVertexVertexInfo* GetObject() {
+    Draft_DataMapNodeOfDataMapOfVertexVertexInfo* _get_reference() {
     return (Draft_DataMapNodeOfDataMapOfVertexVertexInfo*)$self->Access();
+    }
+};
+
+%extend Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -956,8 +983,17 @@ class Handle_Draft_Modification : public Handle_BRepTools_Modification {
 
 };
 %extend Handle_Draft_Modification {
-    Draft_Modification* GetObject() {
+    Draft_Modification* _get_reference() {
     return (Draft_Modification*)$self->Access();
+    }
+};
+
+%extend Handle_Draft_Modification {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

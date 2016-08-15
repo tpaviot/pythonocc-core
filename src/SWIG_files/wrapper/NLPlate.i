@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -204,8 +204,17 @@ class Handle_NLPlate_HGPPConstraint : public Handle_MMgt_TShared {
 
 };
 %extend Handle_NLPlate_HGPPConstraint {
-    NLPlate_HGPPConstraint* GetObject() {
+    NLPlate_HGPPConstraint* _get_reference() {
     return (NLPlate_HGPPConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_NLPlate_HGPPConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -293,8 +302,17 @@ class Handle_NLPlate_ListNodeOfStackOfPlate : public Handle_TCollection_MapNode 
 
 };
 %extend Handle_NLPlate_ListNodeOfStackOfPlate {
-    NLPlate_ListNodeOfStackOfPlate* GetObject() {
+    NLPlate_ListNodeOfStackOfPlate* _get_reference() {
     return (NLPlate_ListNodeOfStackOfPlate*)$self->Access();
+    }
+};
+
+%extend Handle_NLPlate_ListNodeOfStackOfPlate {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -442,8 +460,17 @@ class Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint : public Handle_TCol
 
 };
 %extend Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint {
-    NLPlate_SequenceNodeOfSequenceOfHGPPConstraint* GetObject() {
+    NLPlate_SequenceNodeOfSequenceOfHGPPConstraint* _get_reference() {
     return (NLPlate_SequenceNodeOfSequenceOfHGPPConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -793,8 +820,17 @@ class Handle_NLPlate_HPG0Constraint : public Handle_NLPlate_HGPPConstraint {
 
 };
 %extend Handle_NLPlate_HPG0Constraint {
-    NLPlate_HPG0Constraint* GetObject() {
+    NLPlate_HPG0Constraint* _get_reference() {
     return (NLPlate_HPG0Constraint*)$self->Access();
+    }
+};
+
+%extend Handle_NLPlate_HPG0Constraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -876,8 +912,17 @@ class Handle_NLPlate_HPG1Constraint : public Handle_NLPlate_HGPPConstraint {
 
 };
 %extend Handle_NLPlate_HPG1Constraint {
-    NLPlate_HPG1Constraint* GetObject() {
+    NLPlate_HPG1Constraint* _get_reference() {
     return (NLPlate_HPG1Constraint*)$self->Access();
+    }
+};
+
+%extend Handle_NLPlate_HPG1Constraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -947,8 +992,17 @@ class Handle_NLPlate_HPG0G1Constraint : public Handle_NLPlate_HPG0Constraint {
 
 };
 %extend Handle_NLPlate_HPG0G1Constraint {
-    NLPlate_HPG0G1Constraint* GetObject() {
+    NLPlate_HPG0G1Constraint* _get_reference() {
     return (NLPlate_HPG0G1Constraint*)$self->Access();
+    }
+};
+
+%extend Handle_NLPlate_HPG0G1Constraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1008,8 +1062,17 @@ class Handle_NLPlate_HPG2Constraint : public Handle_NLPlate_HPG1Constraint {
 
 };
 %extend Handle_NLPlate_HPG2Constraint {
-    NLPlate_HPG2Constraint* GetObject() {
+    NLPlate_HPG2Constraint* _get_reference() {
     return (NLPlate_HPG2Constraint*)$self->Access();
+    }
+};
+
+%extend Handle_NLPlate_HPG2Constraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1071,8 +1134,17 @@ class Handle_NLPlate_HPG0G2Constraint : public Handle_NLPlate_HPG0G1Constraint {
 
 };
 %extend Handle_NLPlate_HPG0G2Constraint {
-    NLPlate_HPG0G2Constraint* GetObject() {
+    NLPlate_HPG0G2Constraint* _get_reference() {
     return (NLPlate_HPG0G2Constraint*)$self->Access();
+    }
+};
+
+%extend Handle_NLPlate_HPG0G2Constraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1134,8 +1206,17 @@ class Handle_NLPlate_HPG3Constraint : public Handle_NLPlate_HPG2Constraint {
 
 };
 %extend Handle_NLPlate_HPG3Constraint {
-    NLPlate_HPG3Constraint* GetObject() {
+    NLPlate_HPG3Constraint* _get_reference() {
     return (NLPlate_HPG3Constraint*)$self->Access();
+    }
+};
+
+%extend Handle_NLPlate_HPG3Constraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1199,8 +1280,17 @@ class Handle_NLPlate_HPG0G3Constraint : public Handle_NLPlate_HPG0G2Constraint {
 
 };
 %extend Handle_NLPlate_HPG0G3Constraint {
-    NLPlate_HPG0G3Constraint* GetObject() {
+    NLPlate_HPG0G3Constraint* _get_reference() {
     return (NLPlate_HPG0G3Constraint*)$self->Access();
+    }
+};
+
+%extend Handle_NLPlate_HPG0G3Constraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

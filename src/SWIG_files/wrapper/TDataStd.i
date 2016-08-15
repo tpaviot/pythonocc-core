@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -189,8 +189,17 @@ class Handle_TDataStd_AsciiString : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_AsciiString {
-    TDataStd_AsciiString* GetObject() {
+    TDataStd_AsciiString* _get_reference() {
     return (TDataStd_AsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_AsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -340,8 +349,17 @@ class Handle_TDataStd_BooleanArray : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_BooleanArray {
-    TDataStd_BooleanArray* GetObject() {
+    TDataStd_BooleanArray* _get_reference() {
     return (TDataStd_BooleanArray*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_BooleanArray {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -469,8 +487,17 @@ class Handle_TDataStd_BooleanList : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_BooleanList {
-    TDataStd_BooleanList* GetObject() {
+    TDataStd_BooleanList* _get_reference() {
     return (TDataStd_BooleanList*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_BooleanList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -646,8 +673,17 @@ class Handle_TDataStd_ByteArray : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_ByteArray {
-    TDataStd_ByteArray* GetObject() {
+    TDataStd_ByteArray* _get_reference() {
     return (TDataStd_ByteArray*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_ByteArray {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -821,8 +857,17 @@ class Handle_TDataStd_Comment : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_Comment {
-    TDataStd_Comment* GetObject() {
+    TDataStd_Comment* _get_reference() {
     return (TDataStd_Comment*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_Comment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -938,8 +983,17 @@ class Handle_TDataStd_Current : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_Current {
-    TDataStd_Current* GetObject() {
+    TDataStd_Current* _get_reference() {
     return (TDataStd_Current*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_Current {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1149,8 +1203,17 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringByte : public Handle_TCollecti
 
 };
 %extend Handle_TDataStd_DataMapNodeOfDataMapOfStringByte {
-    TDataStd_DataMapNodeOfDataMapOfStringByte* GetObject() {
+    TDataStd_DataMapNodeOfDataMapOfStringByte* _get_reference() {
     return (TDataStd_DataMapNodeOfDataMapOfStringByte*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringByte {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1210,8 +1273,17 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger : public Hand
 
 };
 %extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
-    TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger* GetObject() {
+    TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger* _get_reference() {
     return (TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1271,8 +1343,17 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal : public Handle_
 
 };
 %extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
-    TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal* GetObject() {
+    TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal* _get_reference() {
     return (TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1341,8 +1422,17 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringReal : public Handle_TCollecti
 
 };
 %extend Handle_TDataStd_DataMapNodeOfDataMapOfStringReal {
-    TDataStd_DataMapNodeOfDataMapOfStringReal* GetObject() {
+    TDataStd_DataMapNodeOfDataMapOfStringReal* _get_reference() {
     return (TDataStd_DataMapNodeOfDataMapOfStringReal*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1402,8 +1492,17 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringString : public Handle_TCollec
 
 };
 %extend Handle_TDataStd_DataMapNodeOfDataMapOfStringString {
-    TDataStd_DataMapNodeOfDataMapOfStringString* GetObject() {
+    TDataStd_DataMapNodeOfDataMapOfStringString* _get_reference() {
     return (TDataStd_DataMapNodeOfDataMapOfStringString*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_DataMapNodeOfDataMapOfStringString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1849,8 +1948,17 @@ class Handle_TDataStd_DeltaOnModificationOfByteArray : public Handle_TDF_DeltaOn
 
 };
 %extend Handle_TDataStd_DeltaOnModificationOfByteArray {
-    TDataStd_DeltaOnModificationOfByteArray* GetObject() {
+    TDataStd_DeltaOnModificationOfByteArray* _get_reference() {
     return (TDataStd_DeltaOnModificationOfByteArray*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_DeltaOnModificationOfByteArray {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1906,8 +2014,17 @@ class Handle_TDataStd_DeltaOnModificationOfExtStringArray : public Handle_TDF_De
 
 };
 %extend Handle_TDataStd_DeltaOnModificationOfExtStringArray {
-    TDataStd_DeltaOnModificationOfExtStringArray* GetObject() {
+    TDataStd_DeltaOnModificationOfExtStringArray* _get_reference() {
     return (TDataStd_DeltaOnModificationOfExtStringArray*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_DeltaOnModificationOfExtStringArray {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1963,8 +2080,17 @@ class Handle_TDataStd_DeltaOnModificationOfIntArray : public Handle_TDF_DeltaOnM
 
 };
 %extend Handle_TDataStd_DeltaOnModificationOfIntArray {
-    TDataStd_DeltaOnModificationOfIntArray* GetObject() {
+    TDataStd_DeltaOnModificationOfIntArray* _get_reference() {
     return (TDataStd_DeltaOnModificationOfIntArray*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_DeltaOnModificationOfIntArray {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2020,8 +2146,17 @@ class Handle_TDataStd_DeltaOnModificationOfIntPackedMap : public Handle_TDF_Delt
 
 };
 %extend Handle_TDataStd_DeltaOnModificationOfIntPackedMap {
-    TDataStd_DeltaOnModificationOfIntPackedMap* GetObject() {
+    TDataStd_DeltaOnModificationOfIntPackedMap* _get_reference() {
     return (TDataStd_DeltaOnModificationOfIntPackedMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_DeltaOnModificationOfIntPackedMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2077,8 +2212,17 @@ class Handle_TDataStd_DeltaOnModificationOfRealArray : public Handle_TDF_DeltaOn
 
 };
 %extend Handle_TDataStd_DeltaOnModificationOfRealArray {
-    TDataStd_DeltaOnModificationOfRealArray* GetObject() {
+    TDataStd_DeltaOnModificationOfRealArray* _get_reference() {
     return (TDataStd_DeltaOnModificationOfRealArray*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_DeltaOnModificationOfRealArray {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2200,8 +2344,17 @@ class Handle_TDataStd_Directory : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_Directory {
-    TDataStd_Directory* GetObject() {
+    TDataStd_Directory* _get_reference() {
     return (TDataStd_Directory*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_Directory {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2311,8 +2464,17 @@ class Handle_TDataStd_Expression : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_Expression {
-    TDataStd_Expression* GetObject() {
+    TDataStd_Expression* _get_reference() {
     return (TDataStd_Expression*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_Expression {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2490,8 +2652,17 @@ class Handle_TDataStd_ExtStringArray : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_ExtStringArray {
-    TDataStd_ExtStringArray* GetObject() {
+    TDataStd_ExtStringArray* _get_reference() {
     return (TDataStd_ExtStringArray*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_ExtStringArray {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2645,8 +2816,17 @@ class Handle_TDataStd_ExtStringList : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_ExtStringList {
-    TDataStd_ExtStringList* GetObject() {
+    TDataStd_ExtStringList* _get_reference() {
     return (TDataStd_ExtStringList*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_ExtStringList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2708,8 +2888,17 @@ class Handle_TDataStd_HDataMapOfStringByte : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDataStd_HDataMapOfStringByte {
-    TDataStd_HDataMapOfStringByte* GetObject() {
+    TDataStd_HDataMapOfStringByte* _get_reference() {
     return (TDataStd_HDataMapOfStringByte*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_HDataMapOfStringByte {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2771,8 +2960,17 @@ class Handle_TDataStd_HDataMapOfStringHArray1OfInteger : public Handle_MMgt_TSha
 
 };
 %extend Handle_TDataStd_HDataMapOfStringHArray1OfInteger {
-    TDataStd_HDataMapOfStringHArray1OfInteger* GetObject() {
+    TDataStd_HDataMapOfStringHArray1OfInteger* _get_reference() {
     return (TDataStd_HDataMapOfStringHArray1OfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_HDataMapOfStringHArray1OfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2834,8 +3032,17 @@ class Handle_TDataStd_HDataMapOfStringHArray1OfReal : public Handle_MMgt_TShared
 
 };
 %extend Handle_TDataStd_HDataMapOfStringHArray1OfReal {
-    TDataStd_HDataMapOfStringHArray1OfReal* GetObject() {
+    TDataStd_HDataMapOfStringHArray1OfReal* _get_reference() {
     return (TDataStd_HDataMapOfStringHArray1OfReal*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_HDataMapOfStringHArray1OfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2897,8 +3104,17 @@ class Handle_TDataStd_HDataMapOfStringInteger : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDataStd_HDataMapOfStringInteger {
-    TDataStd_HDataMapOfStringInteger* GetObject() {
+    TDataStd_HDataMapOfStringInteger* _get_reference() {
     return (TDataStd_HDataMapOfStringInteger*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_HDataMapOfStringInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2960,8 +3176,17 @@ class Handle_TDataStd_HDataMapOfStringReal : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDataStd_HDataMapOfStringReal {
-    TDataStd_HDataMapOfStringReal* GetObject() {
+    TDataStd_HDataMapOfStringReal* _get_reference() {
     return (TDataStd_HDataMapOfStringReal*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_HDataMapOfStringReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3023,8 +3248,17 @@ class Handle_TDataStd_HDataMapOfStringString : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDataStd_HDataMapOfStringString {
-    TDataStd_HDataMapOfStringString* GetObject() {
+    TDataStd_HDataMapOfStringString* _get_reference() {
     return (TDataStd_HDataMapOfStringString*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_HDataMapOfStringString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3130,8 +3364,17 @@ class Handle_TDataStd_HLabelArray1 : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDataStd_HLabelArray1 {
-    TDataStd_HLabelArray1* GetObject() {
+    TDataStd_HLabelArray1* _get_reference() {
     return (TDataStd_HLabelArray1*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_HLabelArray1 {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3287,8 +3530,17 @@ class Handle_TDataStd_IntPackedMap : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_IntPackedMap {
-    TDataStd_IntPackedMap* GetObject() {
+    TDataStd_IntPackedMap* _get_reference() {
     return (TDataStd_IntPackedMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_IntPackedMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3398,8 +3650,17 @@ class Handle_TDataStd_Integer : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_Integer {
-    TDataStd_Integer* GetObject() {
+    TDataStd_Integer* _get_reference() {
     return (TDataStd_Integer*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_Integer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3579,8 +3840,17 @@ class Handle_TDataStd_IntegerArray : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_IntegerArray {
-    TDataStd_IntegerArray* GetObject() {
+    TDataStd_IntegerArray* _get_reference() {
     return (TDataStd_IntegerArray*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_IntegerArray {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3734,8 +4004,17 @@ class Handle_TDataStd_IntegerList : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_IntegerList {
-    TDataStd_IntegerList* GetObject() {
+    TDataStd_IntegerList* _get_reference() {
     return (TDataStd_IntegerList*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_IntegerList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3939,8 +4218,17 @@ class Handle_TDataStd_ListNodeOfListOfByte : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_TDataStd_ListNodeOfListOfByte {
-    TDataStd_ListNodeOfListOfByte* GetObject() {
+    TDataStd_ListNodeOfListOfByte* _get_reference() {
     return (TDataStd_ListNodeOfListOfByte*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_ListNodeOfListOfByte {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3994,8 +4282,17 @@ class Handle_TDataStd_ListNodeOfListOfExtendedString : public Handle_TCollection
 
 };
 %extend Handle_TDataStd_ListNodeOfListOfExtendedString {
-    TDataStd_ListNodeOfListOfExtendedString* GetObject() {
+    TDataStd_ListNodeOfListOfExtendedString* _get_reference() {
     return (TDataStd_ListNodeOfListOfExtendedString*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_ListNodeOfListOfExtendedString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4361,8 +4658,17 @@ class Handle_TDataStd_Name : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_Name {
-    TDataStd_Name* GetObject() {
+    TDataStd_Name* _get_reference() {
     return (TDataStd_Name*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_Name {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4728,8 +5034,17 @@ class Handle_TDataStd_NamedData : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_NamedData {
-    TDataStd_NamedData* GetObject() {
+    TDataStd_NamedData* _get_reference() {
     return (TDataStd_NamedData*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_NamedData {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4849,8 +5164,17 @@ class Handle_TDataStd_NoteBook : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_NoteBook {
-    TDataStd_NoteBook* GetObject() {
+    TDataStd_NoteBook* _get_reference() {
     return (TDataStd_NoteBook*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_NoteBook {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4972,8 +5296,17 @@ class Handle_TDataStd_Real : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_Real {
-    TDataStd_Real* GetObject() {
+    TDataStd_Real* _get_reference() {
     return (TDataStd_Real*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_Real {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5153,8 +5486,17 @@ class Handle_TDataStd_RealArray : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_RealArray {
-    TDataStd_RealArray* GetObject() {
+    TDataStd_RealArray* _get_reference() {
     return (TDataStd_RealArray*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_RealArray {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5308,8 +5650,17 @@ class Handle_TDataStd_RealList : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_RealList {
-    TDataStd_RealList* GetObject() {
+    TDataStd_RealList* _get_reference() {
     return (TDataStd_RealList*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_RealList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5467,8 +5818,17 @@ class Handle_TDataStd_ReferenceArray : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_ReferenceArray {
-    TDataStd_ReferenceArray* GetObject() {
+    TDataStd_ReferenceArray* _get_reference() {
     return (TDataStd_ReferenceArray*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_ReferenceArray {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5628,8 +5988,17 @@ class Handle_TDataStd_ReferenceList : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_ReferenceList {
-    TDataStd_ReferenceList* GetObject() {
+    TDataStd_ReferenceList* _get_reference() {
     return (TDataStd_ReferenceList*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_ReferenceList {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5739,8 +6108,17 @@ class Handle_TDataStd_Relation : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_Relation {
-    TDataStd_Relation* GetObject() {
+    TDataStd_Relation* _get_reference() {
     return (TDataStd_Relation*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_Relation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5830,8 +6208,17 @@ class Handle_TDataStd_Tick : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_Tick {
-    TDataStd_Tick* GetObject() {
+    TDataStd_Tick* _get_reference() {
     return (TDataStd_Tick*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_Tick {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6187,8 +6574,17 @@ class Handle_TDataStd_TreeNode : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_TreeNode {
-    TDataStd_TreeNode* GetObject() {
+    TDataStd_TreeNode* _get_reference() {
     return (TDataStd_TreeNode*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_TreeNode {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6286,8 +6682,17 @@ class Handle_TDataStd_UAttribute : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_UAttribute {
-    TDataStd_UAttribute* GetObject() {
+    TDataStd_UAttribute* _get_reference() {
     return (TDataStd_UAttribute*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_UAttribute {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6483,8 +6888,17 @@ class Handle_TDataStd_Variable : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDataStd_Variable {
-    TDataStd_Variable* GetObject() {
+    TDataStd_Variable* _get_reference() {
     return (TDataStd_Variable*)$self->Access();
+    }
+};
+
+%extend Handle_TDataStd_Variable {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

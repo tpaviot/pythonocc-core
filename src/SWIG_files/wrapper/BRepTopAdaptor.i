@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -143,8 +143,17 @@ class Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool : public Handle_TCollect
 
 };
 %extend Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool {
-    BRepTopAdaptor_DataMapNodeOfMapOfShapeTool* GetObject() {
+    BRepTopAdaptor_DataMapNodeOfMapOfShapeTool* _get_reference() {
     return (BRepTopAdaptor_DataMapNodeOfMapOfShapeTool*)$self->Access();
+    }
+};
+
+%extend Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -284,8 +293,17 @@ class Handle_BRepTopAdaptor_HVertex : public Handle_Adaptor3d_HVertex {
 
 };
 %extend Handle_BRepTopAdaptor_HVertex {
-    BRepTopAdaptor_HVertex* GetObject() {
+    BRepTopAdaptor_HVertex* _get_reference() {
     return (BRepTopAdaptor_HVertex*)$self->Access();
+    }
+};
+
+%extend Handle_BRepTopAdaptor_HVertex {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -635,8 +653,17 @@ class Handle_BRepTopAdaptor_TopolTool : public Handle_Adaptor3d_TopolTool {
 
 };
 %extend Handle_BRepTopAdaptor_TopolTool {
-    BRepTopAdaptor_TopolTool* GetObject() {
+    BRepTopAdaptor_TopolTool* _get_reference() {
     return (BRepTopAdaptor_TopolTool*)$self->Access();
+    }
+};
+
+%extend Handle_BRepTopAdaptor_TopolTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

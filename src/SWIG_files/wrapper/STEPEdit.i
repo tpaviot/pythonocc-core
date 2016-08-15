@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -178,8 +178,17 @@ class Handle_STEPEdit_EditContext : public Handle_IFSelect_Editor {
 
 };
 %extend Handle_STEPEdit_EditContext {
-    STEPEdit_EditContext* GetObject() {
+    STEPEdit_EditContext* _get_reference() {
     return (STEPEdit_EditContext*)$self->Access();
+    }
+};
+
+%extend Handle_STEPEdit_EditContext {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -263,8 +272,17 @@ class Handle_STEPEdit_EditSDR : public Handle_IFSelect_Editor {
 
 };
 %extend Handle_STEPEdit_EditSDR {
-    STEPEdit_EditSDR* GetObject() {
+    STEPEdit_EditSDR* _get_reference() {
     return (STEPEdit_EditSDR*)$self->Access();
+    }
+};
+
+%extend Handle_STEPEdit_EditSDR {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

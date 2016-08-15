@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -876,8 +876,17 @@ class Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF : public Han
 
 };
 %extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF {
-    TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF* GetObject() {
+    TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF* _get_reference() {
     return (TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -937,8 +946,17 @@ class Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF : public Handl
 
 };
 %extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF {
-    TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF* GetObject() {
+    TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF* _get_reference() {
     return (TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -998,8 +1016,17 @@ class Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface : public Handle_TCol
 
 };
 %extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface {
-    TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface* GetObject() {
+    TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface* _get_reference() {
     return (TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1553,8 +1580,17 @@ class Handle_TopOpeBRepTool_HBoxTool : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopOpeBRepTool_HBoxTool {
-    TopOpeBRepTool_HBoxTool* GetObject() {
+    TopOpeBRepTool_HBoxTool* _get_reference() {
     return (TopOpeBRepTool_HBoxTool*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepTool_HBoxTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1635,8 +1671,17 @@ class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox : publi
 
 };
 %extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox {
-    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox* GetObject() {
+    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox* _get_reference() {
     return (TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1717,8 +1762,17 @@ class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d : pub
 
 };
 %extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d {
-    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d* GetObject() {
+    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d* _get_reference() {
     return (TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1799,8 +1853,17 @@ class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity :
 
 };
 %extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity {
-    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity* GetObject() {
+    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity* _get_reference() {
     return (TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1881,8 +1944,17 @@ class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier 
 
 };
 %extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier {
-    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier* GetObject() {
+    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier* _get_reference() {
     return (TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2410,8 +2482,17 @@ class Handle_TopOpeBRepTool_ListNodeOfListOfC2DF : public Handle_TCollection_Map
 
 };
 %extend Handle_TopOpeBRepTool_ListNodeOfListOfC2DF {
-    TopOpeBRepTool_ListNodeOfListOfC2DF* GetObject() {
+    TopOpeBRepTool_ListNodeOfListOfC2DF* _get_reference() {
     return (TopOpeBRepTool_ListNodeOfListOfC2DF*)$self->Access();
+    }
+};
+
+%extend Handle_TopOpeBRepTool_ListNodeOfListOfC2DF {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

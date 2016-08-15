@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -138,8 +138,17 @@ class Handle_ShapeAlgo_ToolContainer : public Handle_MMgt_TShared {
 
 };
 %extend Handle_ShapeAlgo_ToolContainer {
-    ShapeAlgo_ToolContainer* GetObject() {
+    ShapeAlgo_ToolContainer* _get_reference() {
     return (ShapeAlgo_ToolContainer*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeAlgo_ToolContainer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

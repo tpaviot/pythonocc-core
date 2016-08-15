@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -235,8 +235,17 @@ class Handle_TDocStd_Application : public Handle_CDF_Application {
 
 };
 %extend Handle_TDocStd_Application {
-    TDocStd_Application* GetObject() {
+    TDocStd_Application* _get_reference() {
     return (TDocStd_Application*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_Application {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -304,8 +313,17 @@ class Handle_TDocStd_ApplicationDelta : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDocStd_ApplicationDelta {
-    TDocStd_ApplicationDelta* GetObject() {
+    TDocStd_ApplicationDelta* _get_reference() {
     return (TDocStd_ApplicationDelta*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_ApplicationDelta {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -353,8 +371,17 @@ class Handle_TDocStd_CompoundDelta : public Handle_TDF_Delta {
 
 };
 %extend Handle_TDocStd_CompoundDelta {
-    TDocStd_CompoundDelta* GetObject() {
+    TDocStd_CompoundDelta* _get_reference() {
     return (TDocStd_CompoundDelta*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_CompoundDelta {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -464,8 +491,17 @@ class Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap : public Handle_TCollection_
 
 };
 %extend Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap {
-    TDocStd_DataMapNodeOfLabelIDMapDataMap* GetObject() {
+    TDocStd_DataMapNodeOfLabelIDMapDataMap* _get_reference() {
     return (TDocStd_DataMapNodeOfLabelIDMapDataMap*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -793,8 +829,17 @@ class Handle_TDocStd_Document : public Handle_CDM_Document {
 
 };
 %extend Handle_TDocStd_Document {
-    TDocStd_Document* GetObject() {
+    TDocStd_Document* _get_reference() {
     return (TDocStd_Document*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_Document {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1026,8 +1071,17 @@ class Handle_TDocStd_Modified : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDocStd_Modified {
-    TDocStd_Modified* GetObject() {
+    TDocStd_Modified* _get_reference() {
     return (TDocStd_Modified*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_Modified {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1221,8 +1275,17 @@ class Handle_TDocStd_MultiTransactionManager : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TDocStd_MultiTransactionManager {
-    TDocStd_MultiTransactionManager* GetObject() {
+    TDocStd_MultiTransactionManager* _get_reference() {
     return (TDocStd_MultiTransactionManager*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_MultiTransactionManager {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1330,8 +1393,17 @@ class Handle_TDocStd_Owner : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDocStd_Owner {
-    TDocStd_Owner* GetObject() {
+    TDocStd_Owner* _get_reference() {
     return (TDocStd_Owner*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_Owner {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1423,8 +1495,17 @@ class Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta : public Handle_TC
 
 };
 %extend Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta {
-    TDocStd_SequenceNodeOfSequenceOfApplicationDelta* GetObject() {
+    TDocStd_SequenceNodeOfSequenceOfApplicationDelta* _get_reference() {
     return (TDocStd_SequenceNodeOfSequenceOfApplicationDelta*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1480,8 +1561,17 @@ class Handle_TDocStd_SequenceNodeOfSequenceOfDocument : public Handle_TCollectio
 
 };
 %extend Handle_TDocStd_SequenceNodeOfSequenceOfDocument {
-    TDocStd_SequenceNodeOfSequenceOfDocument* GetObject() {
+    TDocStd_SequenceNodeOfSequenceOfDocument* _get_reference() {
     return (TDocStd_SequenceNodeOfSequenceOfDocument*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_SequenceNodeOfSequenceOfDocument {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1937,8 +2027,17 @@ class Handle_TDocStd_XLink : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDocStd_XLink {
-    TDocStd_XLink* GetObject() {
+    TDocStd_XLink* _get_reference() {
     return (TDocStd_XLink*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_XLink {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2100,8 +2199,17 @@ class Handle_TDocStd_XLinkRoot : public Handle_TDF_Attribute {
 
 };
 %extend Handle_TDocStd_XLinkRoot {
-    TDocStd_XLinkRoot* GetObject() {
+    TDocStd_XLinkRoot* _get_reference() {
     return (TDocStd_XLinkRoot*)$self->Access();
+    }
+};
+
+%extend Handle_TDocStd_XLinkRoot {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -156,8 +156,17 @@ class Handle_BRepClass3d_DataMapNodeOfMapOfInter : public Handle_TCollection_Map
 
 };
 %extend Handle_BRepClass3d_DataMapNodeOfMapOfInter {
-    BRepClass3d_DataMapNodeOfMapOfInter* GetObject() {
+    BRepClass3d_DataMapNodeOfMapOfInter* _get_reference() {
     return (BRepClass3d_DataMapNodeOfMapOfInter*)$self->Access();
+    }
+};
+
+%extend Handle_BRepClass3d_DataMapNodeOfMapOfInter {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -201,8 +201,17 @@ class Handle_SelectBasics_EntityOwner : public Handle_MMgt_TShared {
 
 };
 %extend Handle_SelectBasics_EntityOwner {
-    SelectBasics_EntityOwner* GetObject() {
+    SelectBasics_EntityOwner* _get_reference() {
     return (SelectBasics_EntityOwner*)$self->Access();
+    }
+};
+
+%extend Handle_SelectBasics_EntityOwner {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -324,8 +333,17 @@ class Handle_SelectBasics_ListNodeOfListOfBox2d : public Handle_TCollection_MapN
 
 };
 %extend Handle_SelectBasics_ListNodeOfListOfBox2d {
-    SelectBasics_ListNodeOfListOfBox2d* GetObject() {
+    SelectBasics_ListNodeOfListOfBox2d* _get_reference() {
     return (SelectBasics_ListNodeOfListOfBox2d*)$self->Access();
+    }
+};
+
+%extend Handle_SelectBasics_ListNodeOfListOfBox2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -379,8 +397,17 @@ class Handle_SelectBasics_ListNodeOfListOfSensitive : public Handle_TCollection_
 
 };
 %extend Handle_SelectBasics_ListNodeOfListOfSensitive {
-    SelectBasics_ListNodeOfListOfSensitive* GetObject() {
+    SelectBasics_ListNodeOfListOfSensitive* _get_reference() {
     return (SelectBasics_ListNodeOfListOfSensitive*)$self->Access();
+    }
+};
+
+%extend Handle_SelectBasics_ListNodeOfListOfSensitive {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -824,8 +851,17 @@ class Handle_SelectBasics_SensitiveEntity : public Handle_MMgt_TShared {
 
 };
 %extend Handle_SelectBasics_SensitiveEntity {
-    SelectBasics_SensitiveEntity* GetObject() {
+    SelectBasics_SensitiveEntity* _get_reference() {
     return (SelectBasics_SensitiveEntity*)$self->Access();
+    }
+};
+
+%extend Handle_SelectBasics_SensitiveEntity {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -881,8 +917,17 @@ class Handle_SelectBasics_SequenceNodeOfSequenceOfOwner : public Handle_TCollect
 
 };
 %extend Handle_SelectBasics_SequenceNodeOfSequenceOfOwner {
-    SelectBasics_SequenceNodeOfSequenceOfOwner* GetObject() {
+    SelectBasics_SequenceNodeOfSequenceOfOwner* _get_reference() {
     return (SelectBasics_SequenceNodeOfSequenceOfOwner*)$self->Access();
+    }
+};
+
+%extend Handle_SelectBasics_SequenceNodeOfSequenceOfOwner {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

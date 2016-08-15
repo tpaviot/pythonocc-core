@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -344,8 +344,17 @@ class Handle_TShort_HArray1OfShortReal : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TShort_HArray1OfShortReal {
-    TShort_HArray1OfShortReal* GetObject() {
+    TShort_HArray1OfShortReal* _get_reference() {
     return (TShort_HArray1OfShortReal*)$self->Access();
+    }
+};
+
+%extend Handle_TShort_HArray1OfShortReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -477,8 +486,17 @@ class Handle_TShort_HArray2OfShortReal : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TShort_HArray2OfShortReal {
-    TShort_HArray2OfShortReal* GetObject() {
+    TShort_HArray2OfShortReal* _get_reference() {
     return (TShort_HArray2OfShortReal*)$self->Access();
+    }
+};
+
+%extend Handle_TShort_HArray2OfShortReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -652,8 +670,17 @@ class Handle_TShort_HSequenceOfShortReal : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TShort_HSequenceOfShortReal {
-    TShort_HSequenceOfShortReal* GetObject() {
+    TShort_HSequenceOfShortReal* _get_reference() {
     return (TShort_HSequenceOfShortReal*)$self->Access();
+    }
+};
+
+%extend Handle_TShort_HSequenceOfShortReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -709,8 +736,17 @@ class Handle_TShort_SequenceNodeOfSequenceOfShortReal : public Handle_TCollectio
 
 };
 %extend Handle_TShort_SequenceNodeOfSequenceOfShortReal {
-    TShort_SequenceNodeOfSequenceOfShortReal* GetObject() {
+    TShort_SequenceNodeOfSequenceOfShortReal* _get_reference() {
     return (TShort_SequenceNodeOfSequenceOfShortReal*)$self->Access();
+    }
+};
+
+%extend Handle_TShort_SequenceNodeOfSequenceOfShortReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

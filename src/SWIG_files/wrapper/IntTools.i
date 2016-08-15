@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1080,8 +1080,17 @@ class Handle_IntTools_Context : public Handle_MMgt_TShared {
 
 };
 %extend Handle_IntTools_Context {
-    IntTools_Context* GetObject() {
+    IntTools_Context* _get_reference() {
     return (IntTools_Context*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_Context {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1371,8 +1380,17 @@ class Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public Handle_TColl
 
 };
 %extend Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
-    IntTools_DataMapNodeOfDataMapOfCurveSampleBox* GetObject() {
+    IntTools_DataMapNodeOfDataMapOfCurveSampleBox* _get_reference() {
     return (IntTools_DataMapNodeOfDataMapOfCurveSampleBox*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1432,8 +1450,17 @@ class Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox : public Handle_TCo
 
 };
 %extend Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
-    IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox* GetObject() {
+    IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox* _get_reference() {
     return (IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2160,8 +2187,17 @@ class Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : pub
 
 };
 %extend Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
-    IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress* GetObject() {
+    IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress* _get_reference() {
     return (IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2427,8 +2463,17 @@ class Handle_IntTools_ListNodeOfListOfBox : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_IntTools_ListNodeOfListOfBox {
-    IntTools_ListNodeOfListOfBox* GetObject() {
+    IntTools_ListNodeOfListOfBox* _get_reference() {
     return (IntTools_ListNodeOfListOfBox*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_ListNodeOfListOfBox {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2482,8 +2527,17 @@ class Handle_IntTools_ListNodeOfListOfCurveRangeSample : public Handle_TCollecti
 
 };
 %extend Handle_IntTools_ListNodeOfListOfCurveRangeSample {
-    IntTools_ListNodeOfListOfCurveRangeSample* GetObject() {
+    IntTools_ListNodeOfListOfCurveRangeSample* _get_reference() {
     return (IntTools_ListNodeOfListOfCurveRangeSample*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_ListNodeOfListOfCurveRangeSample {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2537,8 +2591,17 @@ class Handle_IntTools_ListNodeOfListOfSurfaceRangeSample : public Handle_TCollec
 
 };
 %extend Handle_IntTools_ListNodeOfListOfSurfaceRangeSample {
-    IntTools_ListNodeOfListOfSurfaceRangeSample* GetObject() {
+    IntTools_ListNodeOfListOfSurfaceRangeSample* _get_reference() {
     return (IntTools_ListNodeOfListOfSurfaceRangeSample*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_ListNodeOfListOfSurfaceRangeSample {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3670,8 +3733,17 @@ class Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts : public Handle_TCollec
 
 };
 %extend Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts {
-    IntTools_SequenceNodeOfSequenceOfCommonPrts* GetObject() {
+    IntTools_SequenceNodeOfSequenceOfCommonPrts* _get_reference() {
     return (IntTools_SequenceNodeOfSequenceOfCommonPrts*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3727,8 +3799,17 @@ class Handle_IntTools_SequenceNodeOfSequenceOfCurves : public Handle_TCollection
 
 };
 %extend Handle_IntTools_SequenceNodeOfSequenceOfCurves {
-    IntTools_SequenceNodeOfSequenceOfCurves* GetObject() {
+    IntTools_SequenceNodeOfSequenceOfCurves* _get_reference() {
     return (IntTools_SequenceNodeOfSequenceOfCurves*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_SequenceNodeOfSequenceOfCurves {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3784,8 +3865,17 @@ class Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces : public Handle_TColle
 
 };
 %extend Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
-    IntTools_SequenceNodeOfSequenceOfPntOn2Faces* GetObject() {
+    IntTools_SequenceNodeOfSequenceOfPntOn2Faces* _get_reference() {
     return (IntTools_SequenceNodeOfSequenceOfPntOn2Faces*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3841,8 +3931,17 @@ class Handle_IntTools_SequenceNodeOfSequenceOfRanges : public Handle_TCollection
 
 };
 %extend Handle_IntTools_SequenceNodeOfSequenceOfRanges {
-    IntTools_SequenceNodeOfSequenceOfRanges* GetObject() {
+    IntTools_SequenceNodeOfSequenceOfRanges* _get_reference() {
     return (IntTools_SequenceNodeOfSequenceOfRanges*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_SequenceNodeOfSequenceOfRanges {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3898,8 +3997,17 @@ class Handle_IntTools_SequenceNodeOfSequenceOfRoots : public Handle_TCollection_
 
 };
 %extend Handle_IntTools_SequenceNodeOfSequenceOfRoots {
-    IntTools_SequenceNodeOfSequenceOfRoots* GetObject() {
+    IntTools_SequenceNodeOfSequenceOfRoots* _get_reference() {
     return (IntTools_SequenceNodeOfSequenceOfRoots*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_SequenceNodeOfSequenceOfRoots {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4711,8 +4819,17 @@ class Handle_IntTools_StdMapNodeOfMapOfCurveSample : public Handle_TCollection_M
 
 };
 %extend Handle_IntTools_StdMapNodeOfMapOfCurveSample {
-    IntTools_StdMapNodeOfMapOfCurveSample* GetObject() {
+    IntTools_StdMapNodeOfMapOfCurveSample* _get_reference() {
     return (IntTools_StdMapNodeOfMapOfCurveSample*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_StdMapNodeOfMapOfCurveSample {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4766,8 +4883,17 @@ class Handle_IntTools_StdMapNodeOfMapOfSurfaceSample : public Handle_TCollection
 
 };
 %extend Handle_IntTools_StdMapNodeOfMapOfSurfaceSample {
-    IntTools_StdMapNodeOfMapOfSurfaceSample* GetObject() {
+    IntTools_StdMapNodeOfMapOfSurfaceSample* _get_reference() {
     return (IntTools_StdMapNodeOfMapOfSurfaceSample*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_StdMapNodeOfMapOfSurfaceSample {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5597,8 +5723,17 @@ class Handle_IntTools_TopolTool : public Handle_Adaptor3d_TopolTool {
 
 };
 %extend Handle_IntTools_TopolTool {
-    IntTools_TopolTool* GetObject() {
+    IntTools_TopolTool* _get_reference() {
     return (IntTools_TopolTool*)$self->Access();
+    }
+};
+
+%extend Handle_IntTools_TopolTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

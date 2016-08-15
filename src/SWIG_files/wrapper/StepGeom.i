@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1003,8 +1003,17 @@ class Handle_StepGeom_CompositeCurveSegment : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepGeom_CompositeCurveSegment {
-    StepGeom_CompositeCurveSegment* GetObject() {
+    StepGeom_CompositeCurveSegment* _get_reference() {
     return (StepGeom_CompositeCurveSegment*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_CompositeCurveSegment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1204,8 +1213,17 @@ class Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : 
 
 };
 %extend Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
-    StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* GetObject() {
+    StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* _get_reference() {
     return (StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1281,8 +1299,17 @@ class Handle_StepGeom_GeometricRepresentationContext : public Handle_StepRepr_Re
 
 };
 %extend Handle_StepGeom_GeometricRepresentationContext {
-    StepGeom_GeometricRepresentationContext* GetObject() {
+    StepGeom_GeometricRepresentationContext* _get_reference() {
     return (StepGeom_GeometricRepresentationContext*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_GeometricRepresentationContext {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1412,8 +1439,17 @@ class Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext
 
 };
 %extend Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext {
-    StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext* GetObject() {
+    StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext* _get_reference() {
     return (StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1521,8 +1557,17 @@ class Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationC
 
 };
 %extend Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext {
-    StepGeom_GeometricRepresentationContextAndParametricRepresentationContext* GetObject() {
+    StepGeom_GeometricRepresentationContextAndParametricRepresentationContext* _get_reference() {
     return (StepGeom_GeometricRepresentationContextAndParametricRepresentationContext*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1570,8 +1615,17 @@ class Handle_StepGeom_GeometricRepresentationItem : public Handle_StepRepr_Repre
 
 };
 %extend Handle_StepGeom_GeometricRepresentationItem {
-    StepGeom_GeometricRepresentationItem* GetObject() {
+    StepGeom_GeometricRepresentationItem* _get_reference() {
     return (StepGeom_GeometricRepresentationItem*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_GeometricRepresentationItem {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1677,8 +1731,17 @@ class Handle_StepGeom_HArray1OfBoundaryCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepGeom_HArray1OfBoundaryCurve {
-    StepGeom_HArray1OfBoundaryCurve* GetObject() {
+    StepGeom_HArray1OfBoundaryCurve* _get_reference() {
     return (StepGeom_HArray1OfBoundaryCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_HArray1OfBoundaryCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1784,8 +1847,17 @@ class Handle_StepGeom_HArray1OfCartesianPoint : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepGeom_HArray1OfCartesianPoint {
-    StepGeom_HArray1OfCartesianPoint* GetObject() {
+    StepGeom_HArray1OfCartesianPoint* _get_reference() {
     return (StepGeom_HArray1OfCartesianPoint*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_HArray1OfCartesianPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1891,8 +1963,17 @@ class Handle_StepGeom_HArray1OfCompositeCurveSegment : public Handle_MMgt_TShare
 
 };
 %extend Handle_StepGeom_HArray1OfCompositeCurveSegment {
-    StepGeom_HArray1OfCompositeCurveSegment* GetObject() {
+    StepGeom_HArray1OfCompositeCurveSegment* _get_reference() {
     return (StepGeom_HArray1OfCompositeCurveSegment*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_HArray1OfCompositeCurveSegment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1998,8 +2079,17 @@ class Handle_StepGeom_HArray1OfCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepGeom_HArray1OfCurve {
-    StepGeom_HArray1OfCurve* GetObject() {
+    StepGeom_HArray1OfCurve* _get_reference() {
     return (StepGeom_HArray1OfCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_HArray1OfCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2105,8 +2195,17 @@ class Handle_StepGeom_HArray1OfPcurveOrSurface : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepGeom_HArray1OfPcurveOrSurface {
-    StepGeom_HArray1OfPcurveOrSurface* GetObject() {
+    StepGeom_HArray1OfPcurveOrSurface* _get_reference() {
     return (StepGeom_HArray1OfPcurveOrSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_HArray1OfPcurveOrSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2212,8 +2311,17 @@ class Handle_StepGeom_HArray1OfSurfaceBoundary : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepGeom_HArray1OfSurfaceBoundary {
-    StepGeom_HArray1OfSurfaceBoundary* GetObject() {
+    StepGeom_HArray1OfSurfaceBoundary* _get_reference() {
     return (StepGeom_HArray1OfSurfaceBoundary*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_HArray1OfSurfaceBoundary {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2319,8 +2427,17 @@ class Handle_StepGeom_HArray1OfTrimmingSelect : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepGeom_HArray1OfTrimmingSelect {
-    StepGeom_HArray1OfTrimmingSelect* GetObject() {
+    StepGeom_HArray1OfTrimmingSelect* _get_reference() {
     return (StepGeom_HArray1OfTrimmingSelect*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_HArray1OfTrimmingSelect {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2452,8 +2569,17 @@ class Handle_StepGeom_HArray2OfCartesianPoint : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepGeom_HArray2OfCartesianPoint {
-    StepGeom_HArray2OfCartesianPoint* GetObject() {
+    StepGeom_HArray2OfCartesianPoint* _get_reference() {
     return (StepGeom_HArray2OfCartesianPoint*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_HArray2OfCartesianPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2585,8 +2711,17 @@ class Handle_StepGeom_HArray2OfSurfacePatch : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepGeom_HArray2OfSurfacePatch {
-    StepGeom_HArray2OfSurfacePatch* GetObject() {
+    StepGeom_HArray2OfSurfacePatch* _get_reference() {
     return (StepGeom_HArray2OfSurfacePatch*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_HArray2OfSurfacePatch {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2762,8 +2897,17 @@ class Handle_StepGeom_SurfacePatch : public Handle_MMgt_TShared {
 
 };
 %extend Handle_StepGeom_SurfacePatch {
-    StepGeom_SurfacePatch* GetObject() {
+    StepGeom_SurfacePatch* _get_reference() {
     return (StepGeom_SurfacePatch*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_SurfacePatch {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2823,8 +2967,17 @@ class Handle_StepGeom_TrimmingMember : public Handle_StepData_SelectReal {
 
 };
 %extend Handle_StepGeom_TrimmingMember {
-    StepGeom_TrimmingMember* GetObject() {
+    StepGeom_TrimmingMember* _get_reference() {
     return (StepGeom_TrimmingMember*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_TrimmingMember {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3048,8 +3201,17 @@ class Handle_StepGeom_CartesianTransformationOperator : public Handle_StepGeom_G
 
 };
 %extend Handle_StepGeom_CartesianTransformationOperator {
-    StepGeom_CartesianTransformationOperator* GetObject() {
+    StepGeom_CartesianTransformationOperator* _get_reference() {
     return (StepGeom_CartesianTransformationOperator*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_CartesianTransformationOperator {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3097,8 +3259,17 @@ class Handle_StepGeom_Curve : public Handle_StepGeom_GeometricRepresentationItem
 
 };
 %extend Handle_StepGeom_Curve {
-    StepGeom_Curve* GetObject() {
+    StepGeom_Curve* _get_reference() {
     return (StepGeom_Curve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Curve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3180,8 +3351,17 @@ class Handle_StepGeom_Direction : public Handle_StepGeom_GeometricRepresentation
 
 };
 %extend Handle_StepGeom_Direction {
-    StepGeom_Direction* GetObject() {
+    StepGeom_Direction* _get_reference() {
     return (StepGeom_Direction*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Direction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3253,8 +3433,17 @@ class Handle_StepGeom_Placement : public Handle_StepGeom_GeometricRepresentation
 
 };
 %extend Handle_StepGeom_Placement {
-    StepGeom_Placement* GetObject() {
+    StepGeom_Placement* _get_reference() {
     return (StepGeom_Placement*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Placement {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3302,8 +3491,17 @@ class Handle_StepGeom_Point : public Handle_StepGeom_GeometricRepresentationItem
 
 };
 %extend Handle_StepGeom_Point {
-    StepGeom_Point* GetObject() {
+    StepGeom_Point* _get_reference() {
     return (StepGeom_Point*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Point {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3383,8 +3581,17 @@ class Handle_StepGeom_ReparametrisedCompositeCurveSegment : public Handle_StepGe
 
 };
 %extend Handle_StepGeom_ReparametrisedCompositeCurveSegment {
-    StepGeom_ReparametrisedCompositeCurveSegment* GetObject() {
+    StepGeom_ReparametrisedCompositeCurveSegment* _get_reference() {
     return (StepGeom_ReparametrisedCompositeCurveSegment*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_ReparametrisedCompositeCurveSegment {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3432,8 +3639,17 @@ class Handle_StepGeom_Surface : public Handle_StepGeom_GeometricRepresentationIt
 
 };
 %extend Handle_StepGeom_Surface {
-    StepGeom_Surface* GetObject() {
+    StepGeom_Surface* _get_reference() {
     return (StepGeom_Surface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Surface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3517,8 +3733,17 @@ class Handle_StepGeom_Vector : public Handle_StepGeom_GeometricRepresentationIte
 
 };
 %extend Handle_StepGeom_Vector {
-    StepGeom_Vector* GetObject() {
+    StepGeom_Vector* _get_reference() {
     return (StepGeom_Vector*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Vector {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3604,8 +3829,17 @@ class Handle_StepGeom_Axis1Placement : public Handle_StepGeom_Placement {
 
 };
 %extend Handle_StepGeom_Axis1Placement {
-    StepGeom_Axis1Placement* GetObject() {
+    StepGeom_Axis1Placement* _get_reference() {
     return (StepGeom_Axis1Placement*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Axis1Placement {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3691,8 +3925,17 @@ class Handle_StepGeom_Axis2Placement2d : public Handle_StepGeom_Placement {
 
 };
 %extend Handle_StepGeom_Axis2Placement2d {
-    StepGeom_Axis2Placement2d* GetObject() {
+    StepGeom_Axis2Placement2d* _get_reference() {
     return (StepGeom_Axis2Placement2d*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Axis2Placement2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3800,8 +4043,17 @@ class Handle_StepGeom_Axis2Placement3d : public Handle_StepGeom_Placement {
 
 };
 %extend Handle_StepGeom_Axis2Placement3d {
-    StepGeom_Axis2Placement3d* GetObject() {
+    StepGeom_Axis2Placement3d* _get_reference() {
     return (StepGeom_Axis2Placement3d*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Axis2Placement3d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3849,8 +4101,17 @@ class Handle_StepGeom_BoundedCurve : public Handle_StepGeom_Curve {
 
 };
 %extend Handle_StepGeom_BoundedCurve {
-    StepGeom_BoundedCurve* GetObject() {
+    StepGeom_BoundedCurve* _get_reference() {
     return (StepGeom_BoundedCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BoundedCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3898,8 +4159,17 @@ class Handle_StepGeom_BoundedSurface : public Handle_StepGeom_Surface {
 
 };
 %extend Handle_StepGeom_BoundedSurface {
-    StepGeom_BoundedSurface* GetObject() {
+    StepGeom_BoundedSurface* _get_reference() {
     return (StepGeom_BoundedSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BoundedSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4003,8 +4273,17 @@ class Handle_StepGeom_CartesianPoint : public Handle_StepGeom_Point {
 
 };
 %extend Handle_StepGeom_CartesianPoint {
-    StepGeom_CartesianPoint* GetObject() {
+    StepGeom_CartesianPoint* _get_reference() {
     return (StepGeom_CartesianPoint*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_CartesianPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4050,8 +4329,17 @@ class Handle_StepGeom_CartesianTransformationOperator2d : public Handle_StepGeom
 
 };
 %extend Handle_StepGeom_CartesianTransformationOperator2d {
-    StepGeom_CartesianTransformationOperator2d* GetObject() {
+    StepGeom_CartesianTransformationOperator2d* _get_reference() {
     return (StepGeom_CartesianTransformationOperator2d*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_CartesianTransformationOperator2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4161,8 +4449,17 @@ class Handle_StepGeom_CartesianTransformationOperator3d : public Handle_StepGeom
 
 };
 %extend Handle_StepGeom_CartesianTransformationOperator3d {
-    StepGeom_CartesianTransformationOperator3d* GetObject() {
+    StepGeom_CartesianTransformationOperator3d* _get_reference() {
     return (StepGeom_CartesianTransformationOperator3d*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_CartesianTransformationOperator3d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4234,8 +4531,17 @@ class Handle_StepGeom_Conic : public Handle_StepGeom_Curve {
 
 };
 %extend Handle_StepGeom_Conic {
-    StepGeom_Conic* GetObject() {
+    StepGeom_Conic* _get_reference() {
     return (StepGeom_Conic*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Conic {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4319,8 +4625,17 @@ class Handle_StepGeom_CurveReplica : public Handle_StepGeom_Curve {
 
 };
 %extend Handle_StepGeom_CurveReplica {
-    StepGeom_CurveReplica* GetObject() {
+    StepGeom_CurveReplica* _get_reference() {
     return (StepGeom_CurveReplica*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_CurveReplica {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4404,8 +4719,17 @@ class Handle_StepGeom_DegeneratePcurve : public Handle_StepGeom_Point {
 
 };
 %extend Handle_StepGeom_DegeneratePcurve {
-    StepGeom_DegeneratePcurve* GetObject() {
+    StepGeom_DegeneratePcurve* _get_reference() {
     return (StepGeom_DegeneratePcurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_DegeneratePcurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4477,8 +4801,17 @@ class Handle_StepGeom_ElementarySurface : public Handle_StepGeom_Surface {
 
 };
 %extend Handle_StepGeom_ElementarySurface {
-    StepGeom_ElementarySurface* GetObject() {
+    StepGeom_ElementarySurface* _get_reference() {
     return (StepGeom_ElementarySurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_ElementarySurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4562,8 +4895,17 @@ class Handle_StepGeom_Line : public Handle_StepGeom_Curve {
 
 };
 %extend Handle_StepGeom_Line {
-    StepGeom_Line* GetObject() {
+    StepGeom_Line* _get_reference() {
     return (StepGeom_Line*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Line {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4671,8 +5013,17 @@ class Handle_StepGeom_OffsetCurve3d : public Handle_StepGeom_Curve {
 
 };
 %extend Handle_StepGeom_OffsetCurve3d {
-    StepGeom_OffsetCurve3d* GetObject() {
+    StepGeom_OffsetCurve3d* _get_reference() {
     return (StepGeom_OffsetCurve3d*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_OffsetCurve3d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4768,8 +5119,17 @@ class Handle_StepGeom_OffsetSurface : public Handle_StepGeom_Surface {
 
 };
 %extend Handle_StepGeom_OffsetSurface {
-    StepGeom_OffsetSurface* GetObject() {
+    StepGeom_OffsetSurface* _get_reference() {
     return (StepGeom_OffsetSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_OffsetSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4841,8 +5201,17 @@ class Handle_StepGeom_OrientedSurface : public Handle_StepGeom_Surface {
 
 };
 %extend Handle_StepGeom_OrientedSurface {
-    StepGeom_OrientedSurface* GetObject() {
+    StepGeom_OrientedSurface* _get_reference() {
     return (StepGeom_OrientedSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_OrientedSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4926,8 +5295,17 @@ class Handle_StepGeom_Pcurve : public Handle_StepGeom_Curve {
 
 };
 %extend Handle_StepGeom_Pcurve {
-    StepGeom_Pcurve* GetObject() {
+    StepGeom_Pcurve* _get_reference() {
     return (StepGeom_Pcurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Pcurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5011,8 +5389,17 @@ class Handle_StepGeom_PointOnCurve : public Handle_StepGeom_Point {
 
 };
 %extend Handle_StepGeom_PointOnCurve {
-    StepGeom_PointOnCurve* GetObject() {
+    StepGeom_PointOnCurve* _get_reference() {
     return (StepGeom_PointOnCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_PointOnCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5108,8 +5495,17 @@ class Handle_StepGeom_PointOnSurface : public Handle_StepGeom_Point {
 
 };
 %extend Handle_StepGeom_PointOnSurface {
-    StepGeom_PointOnSurface* GetObject() {
+    StepGeom_PointOnSurface* _get_reference() {
     return (StepGeom_PointOnSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_PointOnSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5193,8 +5589,17 @@ class Handle_StepGeom_PointReplica : public Handle_StepGeom_Point {
 
 };
 %extend Handle_StepGeom_PointReplica {
-    StepGeom_PointReplica* GetObject() {
+    StepGeom_PointReplica* _get_reference() {
     return (StepGeom_PointReplica*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_PointReplica {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5300,8 +5705,17 @@ class Handle_StepGeom_SurfaceCurve : public Handle_StepGeom_Curve {
 
 };
 %extend Handle_StepGeom_SurfaceCurve {
-    StepGeom_SurfaceCurve* GetObject() {
+    StepGeom_SurfaceCurve* _get_reference() {
     return (StepGeom_SurfaceCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_SurfaceCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5385,8 +5799,17 @@ class Handle_StepGeom_SurfaceReplica : public Handle_StepGeom_Surface {
 
 };
 %extend Handle_StepGeom_SurfaceReplica {
-    StepGeom_SurfaceReplica* GetObject() {
+    StepGeom_SurfaceReplica* _get_reference() {
     return (StepGeom_SurfaceReplica*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_SurfaceReplica {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5458,8 +5881,17 @@ class Handle_StepGeom_SweptSurface : public Handle_StepGeom_Surface {
 
 };
 %extend Handle_StepGeom_SweptSurface {
-    StepGeom_SweptSurface* GetObject() {
+    StepGeom_SweptSurface* _get_reference() {
     return (StepGeom_SweptSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_SweptSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5589,8 +6021,17 @@ class Handle_StepGeom_BSplineCurve : public Handle_StepGeom_BoundedCurve {
 
 };
 %extend Handle_StepGeom_BSplineCurve {
-    StepGeom_BSplineCurve* GetObject() {
+    StepGeom_BSplineCurve* _get_reference() {
     return (StepGeom_BSplineCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BSplineCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5750,8 +6191,17 @@ class Handle_StepGeom_BSplineSurface : public Handle_StepGeom_BoundedSurface {
 
 };
 %extend Handle_StepGeom_BSplineSurface {
-    StepGeom_BSplineSurface* GetObject() {
+    StepGeom_BSplineSurface* _get_reference() {
     return (StepGeom_BSplineSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BSplineSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5827,8 +6277,17 @@ class Handle_StepGeom_Circle : public Handle_StepGeom_Conic {
 
 };
 %extend Handle_StepGeom_Circle {
-    StepGeom_Circle* GetObject() {
+    StepGeom_Circle* _get_reference() {
     return (StepGeom_Circle*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Circle {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5922,8 +6381,17 @@ class Handle_StepGeom_CompositeCurve : public Handle_StepGeom_BoundedCurve {
 
 };
 %extend Handle_StepGeom_CompositeCurve {
-    StepGeom_CompositeCurve* GetObject() {
+    StepGeom_CompositeCurve* _get_reference() {
     return (StepGeom_CompositeCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_CompositeCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6011,8 +6479,17 @@ class Handle_StepGeom_ConicalSurface : public Handle_StepGeom_ElementarySurface 
 
 };
 %extend Handle_StepGeom_ConicalSurface {
-    StepGeom_ConicalSurface* GetObject() {
+    StepGeom_ConicalSurface* _get_reference() {
     return (StepGeom_ConicalSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_ConicalSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6116,8 +6593,17 @@ class Handle_StepGeom_CurveBoundedSurface : public Handle_StepGeom_BoundedSurfac
 
 };
 %extend Handle_StepGeom_CurveBoundedSurface {
-    StepGeom_CurveBoundedSurface* GetObject() {
+    StepGeom_CurveBoundedSurface* _get_reference() {
     return (StepGeom_CurveBoundedSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_CurveBoundedSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6193,8 +6679,17 @@ class Handle_StepGeom_CylindricalSurface : public Handle_StepGeom_ElementarySurf
 
 };
 %extend Handle_StepGeom_CylindricalSurface {
-    StepGeom_CylindricalSurface* GetObject() {
+    StepGeom_CylindricalSurface* _get_reference() {
     return (StepGeom_CylindricalSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_CylindricalSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6282,8 +6777,17 @@ class Handle_StepGeom_Ellipse : public Handle_StepGeom_Conic {
 
 };
 %extend Handle_StepGeom_Ellipse {
-    StepGeom_Ellipse* GetObject() {
+    StepGeom_Ellipse* _get_reference() {
     return (StepGeom_Ellipse*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Ellipse {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6363,8 +6867,17 @@ class Handle_StepGeom_EvaluatedDegeneratePcurve : public Handle_StepGeom_Degener
 
 };
 %extend Handle_StepGeom_EvaluatedDegeneratePcurve {
-    StepGeom_EvaluatedDegeneratePcurve* GetObject() {
+    StepGeom_EvaluatedDegeneratePcurve* _get_reference() {
     return (StepGeom_EvaluatedDegeneratePcurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_EvaluatedDegeneratePcurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6452,8 +6965,17 @@ class Handle_StepGeom_Hyperbola : public Handle_StepGeom_Conic {
 
 };
 %extend Handle_StepGeom_Hyperbola {
-    StepGeom_Hyperbola* GetObject() {
+    StepGeom_Hyperbola* _get_reference() {
     return (StepGeom_Hyperbola*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Hyperbola {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6501,8 +7023,17 @@ class Handle_StepGeom_IntersectionCurve : public Handle_StepGeom_SurfaceCurve {
 
 };
 %extend Handle_StepGeom_IntersectionCurve {
-    StepGeom_IntersectionCurve* GetObject() {
+    StepGeom_IntersectionCurve* _get_reference() {
     return (StepGeom_IntersectionCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_IntersectionCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6578,8 +7109,17 @@ class Handle_StepGeom_Parabola : public Handle_StepGeom_Conic {
 
 };
 %extend Handle_StepGeom_Parabola {
-    StepGeom_Parabola* GetObject() {
+    StepGeom_Parabola* _get_reference() {
     return (StepGeom_Parabola*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Parabola {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6627,8 +7167,17 @@ class Handle_StepGeom_Plane : public Handle_StepGeom_ElementarySurface {
 
 };
 %extend Handle_StepGeom_Plane {
-    StepGeom_Plane* GetObject() {
+    StepGeom_Plane* _get_reference() {
     return (StepGeom_Plane*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Plane {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6710,8 +7259,17 @@ class Handle_StepGeom_Polyline : public Handle_StepGeom_BoundedCurve {
 
 };
 %extend Handle_StepGeom_Polyline {
-    StepGeom_Polyline* GetObject() {
+    StepGeom_Polyline* _get_reference() {
     return (StepGeom_Polyline*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_Polyline {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6799,8 +7357,17 @@ class Handle_StepGeom_RectangularCompositeSurface : public Handle_StepGeom_Bound
 
 };
 %extend Handle_StepGeom_RectangularCompositeSurface {
-    StepGeom_RectangularCompositeSurface* GetObject() {
+    StepGeom_RectangularCompositeSurface* _get_reference() {
     return (StepGeom_RectangularCompositeSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_RectangularCompositeSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6944,8 +7511,17 @@ class Handle_StepGeom_RectangularTrimmedSurface : public Handle_StepGeom_Bounded
 
 };
 %extend Handle_StepGeom_RectangularTrimmedSurface {
-    StepGeom_RectangularTrimmedSurface* GetObject() {
+    StepGeom_RectangularTrimmedSurface* _get_reference() {
     return (StepGeom_RectangularTrimmedSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_RectangularTrimmedSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6993,8 +7569,17 @@ class Handle_StepGeom_SeamCurve : public Handle_StepGeom_SurfaceCurve {
 
 };
 %extend Handle_StepGeom_SeamCurve {
-    StepGeom_SeamCurve* GetObject() {
+    StepGeom_SeamCurve* _get_reference() {
     return (StepGeom_SeamCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_SeamCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7070,8 +7655,17 @@ class Handle_StepGeom_SphericalSurface : public Handle_StepGeom_ElementarySurfac
 
 };
 %extend Handle_StepGeom_SphericalSurface {
-    StepGeom_SphericalSurface* GetObject() {
+    StepGeom_SphericalSurface* _get_reference() {
     return (StepGeom_SphericalSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_SphericalSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7125,8 +7719,17 @@ class Handle_StepGeom_SurfaceCurveAndBoundedCurve : public Handle_StepGeom_Surfa
 
 };
 %extend Handle_StepGeom_SurfaceCurveAndBoundedCurve {
-    StepGeom_SurfaceCurveAndBoundedCurve* GetObject() {
+    StepGeom_SurfaceCurveAndBoundedCurve* _get_reference() {
     return (StepGeom_SurfaceCurveAndBoundedCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_SurfaceCurveAndBoundedCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7202,8 +7805,17 @@ class Handle_StepGeom_SurfaceOfLinearExtrusion : public Handle_StepGeom_SweptSur
 
 };
 %extend Handle_StepGeom_SurfaceOfLinearExtrusion {
-    StepGeom_SurfaceOfLinearExtrusion* GetObject() {
+    StepGeom_SurfaceOfLinearExtrusion* _get_reference() {
     return (StepGeom_SurfaceOfLinearExtrusion*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_SurfaceOfLinearExtrusion {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7279,8 +7891,17 @@ class Handle_StepGeom_SurfaceOfRevolution : public Handle_StepGeom_SweptSurface 
 
 };
 %extend Handle_StepGeom_SurfaceOfRevolution {
-    StepGeom_SurfaceOfRevolution* GetObject() {
+    StepGeom_SurfaceOfRevolution* _get_reference() {
     return (StepGeom_SurfaceOfRevolution*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_SurfaceOfRevolution {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7368,8 +7989,17 @@ class Handle_StepGeom_ToroidalSurface : public Handle_StepGeom_ElementarySurface
 
 };
 %extend Handle_StepGeom_ToroidalSurface {
-    StepGeom_ToroidalSurface* GetObject() {
+    StepGeom_ToroidalSurface* _get_reference() {
     return (StepGeom_ToroidalSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_ToroidalSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7509,8 +8139,17 @@ class Handle_StepGeom_TrimmedCurve : public Handle_StepGeom_BoundedCurve {
 
 };
 %extend Handle_StepGeom_TrimmedCurve {
-    StepGeom_TrimmedCurve* GetObject() {
+    StepGeom_TrimmedCurve* _get_reference() {
     return (StepGeom_TrimmedCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_TrimmedCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7646,8 +8285,17 @@ class Handle_StepGeom_BSplineCurveWithKnots : public Handle_StepGeom_BSplineCurv
 
 };
 %extend Handle_StepGeom_BSplineCurveWithKnots {
-    StepGeom_BSplineCurveWithKnots* GetObject() {
+    StepGeom_BSplineCurveWithKnots* _get_reference() {
     return (StepGeom_BSplineCurveWithKnots*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BSplineCurveWithKnots {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7845,8 +8493,17 @@ class Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public Hand
 
 };
 %extend Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve {
-    StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* GetObject() {
+    StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* _get_reference() {
     return (StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8034,8 +8691,17 @@ class Handle_StepGeom_BSplineSurfaceWithKnots : public Handle_StepGeom_BSplineSu
 
 };
 %extend Handle_StepGeom_BSplineSurfaceWithKnots {
-    StepGeom_BSplineSurfaceWithKnots* GetObject() {
+    StepGeom_BSplineSurfaceWithKnots* _get_reference() {
     return (StepGeom_BSplineSurfaceWithKnots*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BSplineSurfaceWithKnots {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8295,8 +8961,17 @@ class Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public 
 
 };
 %extend Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface {
-    StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* GetObject() {
+    StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* _get_reference() {
     return (StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8344,8 +9019,17 @@ class Handle_StepGeom_BezierCurve : public Handle_StepGeom_BSplineCurve {
 
 };
 %extend Handle_StepGeom_BezierCurve {
-    StepGeom_BezierCurve* GetObject() {
+    StepGeom_BezierCurve* _get_reference() {
     return (StepGeom_BezierCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BezierCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8487,8 +9171,17 @@ class Handle_StepGeom_BezierCurveAndRationalBSplineCurve : public Handle_StepGeo
 
 };
 %extend Handle_StepGeom_BezierCurveAndRationalBSplineCurve {
-    StepGeom_BezierCurveAndRationalBSplineCurve* GetObject() {
+    StepGeom_BezierCurveAndRationalBSplineCurve* _get_reference() {
     return (StepGeom_BezierCurveAndRationalBSplineCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BezierCurveAndRationalBSplineCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8536,8 +9229,17 @@ class Handle_StepGeom_BezierSurface : public Handle_StepGeom_BSplineSurface {
 
 };
 %extend Handle_StepGeom_BezierSurface {
-    StepGeom_BezierSurface* GetObject() {
+    StepGeom_BezierSurface* _get_reference() {
     return (StepGeom_BezierSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BezierSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8697,8 +9399,17 @@ class Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface : public Handle_Ste
 
 };
 %extend Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface {
-    StepGeom_BezierSurfaceAndRationalBSplineSurface* GetObject() {
+    StepGeom_BezierSurfaceAndRationalBSplineSurface* _get_reference() {
     return (StepGeom_BezierSurfaceAndRationalBSplineSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8746,8 +9457,17 @@ class Handle_StepGeom_CompositeCurveOnSurface : public Handle_StepGeom_Composite
 
 };
 %extend Handle_StepGeom_CompositeCurveOnSurface {
-    StepGeom_CompositeCurveOnSurface* GetObject() {
+    StepGeom_CompositeCurveOnSurface* _get_reference() {
     return (StepGeom_CompositeCurveOnSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_CompositeCurveOnSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8831,8 +9551,17 @@ class Handle_StepGeom_DegenerateToroidalSurface : public Handle_StepGeom_Toroida
 
 };
 %extend Handle_StepGeom_DegenerateToroidalSurface {
-    StepGeom_DegenerateToroidalSurface* GetObject() {
+    StepGeom_DegenerateToroidalSurface* _get_reference() {
     return (StepGeom_DegenerateToroidalSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_DegenerateToroidalSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8880,8 +9609,17 @@ class Handle_StepGeom_QuasiUniformCurve : public Handle_StepGeom_BSplineCurve {
 
 };
 %extend Handle_StepGeom_QuasiUniformCurve {
-    StepGeom_QuasiUniformCurve* GetObject() {
+    StepGeom_QuasiUniformCurve* _get_reference() {
     return (StepGeom_QuasiUniformCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_QuasiUniformCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9023,8 +9761,17 @@ class Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve : public Handle_S
 
 };
 %extend Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve {
-    StepGeom_QuasiUniformCurveAndRationalBSplineCurve* GetObject() {
+    StepGeom_QuasiUniformCurveAndRationalBSplineCurve* _get_reference() {
     return (StepGeom_QuasiUniformCurveAndRationalBSplineCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9072,8 +9819,17 @@ class Handle_StepGeom_QuasiUniformSurface : public Handle_StepGeom_BSplineSurfac
 
 };
 %extend Handle_StepGeom_QuasiUniformSurface {
-    StepGeom_QuasiUniformSurface* GetObject() {
+    StepGeom_QuasiUniformSurface* _get_reference() {
     return (StepGeom_QuasiUniformSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_QuasiUniformSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9233,8 +9989,17 @@ class Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public Hand
 
 };
 %extend Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface {
-    StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* GetObject() {
+    StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* _get_reference() {
     return (StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9336,8 +10101,17 @@ class Handle_StepGeom_RationalBSplineCurve : public Handle_StepGeom_BSplineCurve
 
 };
 %extend Handle_StepGeom_RationalBSplineCurve {
-    StepGeom_RationalBSplineCurve* GetObject() {
+    StepGeom_RationalBSplineCurve* _get_reference() {
     return (StepGeom_RationalBSplineCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_RationalBSplineCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9453,8 +10227,17 @@ class Handle_StepGeom_RationalBSplineSurface : public Handle_StepGeom_BSplineSur
 
 };
 %extend Handle_StepGeom_RationalBSplineSurface {
-    StepGeom_RationalBSplineSurface* GetObject() {
+    StepGeom_RationalBSplineSurface* _get_reference() {
     return (StepGeom_RationalBSplineSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_RationalBSplineSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9502,8 +10285,17 @@ class Handle_StepGeom_UniformCurve : public Handle_StepGeom_BSplineCurve {
 
 };
 %extend Handle_StepGeom_UniformCurve {
-    StepGeom_UniformCurve* GetObject() {
+    StepGeom_UniformCurve* _get_reference() {
     return (StepGeom_UniformCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_UniformCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9645,8 +10437,17 @@ class Handle_StepGeom_UniformCurveAndRationalBSplineCurve : public Handle_StepGe
 
 };
 %extend Handle_StepGeom_UniformCurveAndRationalBSplineCurve {
-    StepGeom_UniformCurveAndRationalBSplineCurve* GetObject() {
+    StepGeom_UniformCurveAndRationalBSplineCurve* _get_reference() {
     return (StepGeom_UniformCurveAndRationalBSplineCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_UniformCurveAndRationalBSplineCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9694,8 +10495,17 @@ class Handle_StepGeom_UniformSurface : public Handle_StepGeom_BSplineSurface {
 
 };
 %extend Handle_StepGeom_UniformSurface {
-    StepGeom_UniformSurface* GetObject() {
+    StepGeom_UniformSurface* _get_reference() {
     return (StepGeom_UniformSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_UniformSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9855,8 +10665,17 @@ class Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface : public Handle_St
 
 };
 %extend Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface {
-    StepGeom_UniformSurfaceAndRationalBSplineSurface* GetObject() {
+    StepGeom_UniformSurfaceAndRationalBSplineSurface* _get_reference() {
     return (StepGeom_UniformSurfaceAndRationalBSplineSurface*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9904,8 +10723,17 @@ class Handle_StepGeom_BoundaryCurve : public Handle_StepGeom_CompositeCurveOnSur
 
 };
 %extend Handle_StepGeom_BoundaryCurve {
-    StepGeom_BoundaryCurve* GetObject() {
+    StepGeom_BoundaryCurve* _get_reference() {
     return (StepGeom_BoundaryCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_BoundaryCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9953,8 +10781,17 @@ class Handle_StepGeom_OuterBoundaryCurve : public Handle_StepGeom_BoundaryCurve 
 
 };
 %extend Handle_StepGeom_OuterBoundaryCurve {
-    StepGeom_OuterBoundaryCurve* GetObject() {
+    StepGeom_OuterBoundaryCurve* _get_reference() {
     return (StepGeom_OuterBoundaryCurve*)$self->Access();
+    }
+};
+
+%extend Handle_StepGeom_OuterBoundaryCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

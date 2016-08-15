@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -694,8 +694,17 @@ class Handle_TColGeom_HArray1OfBSplineCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColGeom_HArray1OfBSplineCurve {
-    TColGeom_HArray1OfBSplineCurve* GetObject() {
+    TColGeom_HArray1OfBSplineCurve* _get_reference() {
     return (TColGeom_HArray1OfBSplineCurve*)$self->Access();
+    }
+};
+
+%extend Handle_TColGeom_HArray1OfBSplineCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -801,8 +810,17 @@ class Handle_TColGeom_HArray1OfBezierCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColGeom_HArray1OfBezierCurve {
-    TColGeom_HArray1OfBezierCurve* GetObject() {
+    TColGeom_HArray1OfBezierCurve* _get_reference() {
     return (TColGeom_HArray1OfBezierCurve*)$self->Access();
+    }
+};
+
+%extend Handle_TColGeom_HArray1OfBezierCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -908,8 +926,17 @@ class Handle_TColGeom_HArray1OfCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColGeom_HArray1OfCurve {
-    TColGeom_HArray1OfCurve* GetObject() {
+    TColGeom_HArray1OfCurve* _get_reference() {
     return (TColGeom_HArray1OfCurve*)$self->Access();
+    }
+};
+
+%extend Handle_TColGeom_HArray1OfCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1015,8 +1042,17 @@ class Handle_TColGeom_HArray1OfSurface : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColGeom_HArray1OfSurface {
-    TColGeom_HArray1OfSurface* GetObject() {
+    TColGeom_HArray1OfSurface* _get_reference() {
     return (TColGeom_HArray1OfSurface*)$self->Access();
+    }
+};
+
+%extend Handle_TColGeom_HArray1OfSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1148,8 +1184,17 @@ class Handle_TColGeom_HArray2OfSurface : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColGeom_HArray2OfSurface {
-    TColGeom_HArray2OfSurface* GetObject() {
+    TColGeom_HArray2OfSurface* _get_reference() {
     return (TColGeom_HArray2OfSurface*)$self->Access();
+    }
+};
+
+%extend Handle_TColGeom_HArray2OfSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1323,8 +1368,17 @@ class Handle_TColGeom_HSequenceOfBoundedCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColGeom_HSequenceOfBoundedCurve {
-    TColGeom_HSequenceOfBoundedCurve* GetObject() {
+    TColGeom_HSequenceOfBoundedCurve* _get_reference() {
     return (TColGeom_HSequenceOfBoundedCurve*)$self->Access();
+    }
+};
+
+%extend Handle_TColGeom_HSequenceOfBoundedCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1498,8 +1552,17 @@ class Handle_TColGeom_HSequenceOfCurve : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColGeom_HSequenceOfCurve {
-    TColGeom_HSequenceOfCurve* GetObject() {
+    TColGeom_HSequenceOfCurve* _get_reference() {
     return (TColGeom_HSequenceOfCurve*)$self->Access();
+    }
+};
+
+%extend Handle_TColGeom_HSequenceOfCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1555,8 +1618,17 @@ class Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve : public Handle_TColl
 
 };
 %extend Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve {
-    TColGeom_SequenceNodeOfSequenceOfBoundedCurve* GetObject() {
+    TColGeom_SequenceNodeOfSequenceOfBoundedCurve* _get_reference() {
     return (TColGeom_SequenceNodeOfSequenceOfBoundedCurve*)$self->Access();
+    }
+};
+
+%extend Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1612,8 +1684,17 @@ class Handle_TColGeom_SequenceNodeOfSequenceOfCurve : public Handle_TCollection_
 
 };
 %extend Handle_TColGeom_SequenceNodeOfSequenceOfCurve {
-    TColGeom_SequenceNodeOfSequenceOfCurve* GetObject() {
+    TColGeom_SequenceNodeOfSequenceOfCurve* _get_reference() {
     return (TColGeom_SequenceNodeOfSequenceOfCurve*)$self->Access();
+    }
+};
+
+%extend Handle_TColGeom_SequenceNodeOfSequenceOfCurve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1669,8 +1750,17 @@ class Handle_TColGeom_SequenceNodeOfSequenceOfSurface : public Handle_TCollectio
 
 };
 %extend Handle_TColGeom_SequenceNodeOfSequenceOfSurface {
-    TColGeom_SequenceNodeOfSequenceOfSurface* GetObject() {
+    TColGeom_SequenceNodeOfSequenceOfSurface* _get_reference() {
     return (TColGeom_SequenceNodeOfSequenceOfSurface*)$self->Access();
+    }
+};
+
+%extend Handle_TColGeom_SequenceNodeOfSequenceOfSurface {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

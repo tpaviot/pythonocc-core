@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -240,8 +240,17 @@ class Handle_XCAFDoc_Area : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_Area {
-    XCAFDoc_Area* GetObject() {
+    XCAFDoc_Area* _get_reference() {
     return (XCAFDoc_Area*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_Area {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -353,8 +362,17 @@ class Handle_XCAFDoc_Centroid : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_Centroid {
-    XCAFDoc_Centroid* GetObject() {
+    XCAFDoc_Centroid* _get_reference() {
     return (XCAFDoc_Centroid*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_Centroid {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -498,8 +516,17 @@ class Handle_XCAFDoc_Color : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_Color {
-    XCAFDoc_Color* GetObject() {
+    XCAFDoc_Color* _get_reference() {
     return (XCAFDoc_Color*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_Color {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -845,8 +872,17 @@ class Handle_XCAFDoc_ColorTool : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_ColorTool {
-    XCAFDoc_ColorTool* GetObject() {
+    XCAFDoc_ColorTool* _get_reference() {
     return (XCAFDoc_ColorTool*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_ColorTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -936,8 +972,17 @@ class Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public Handle_TCollectio
 
 };
 %extend Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
-    XCAFDoc_DataMapNodeOfDataMapOfShapeLabel* GetObject() {
+    XCAFDoc_DataMapNodeOfDataMapOfShapeLabel* _get_reference() {
     return (XCAFDoc_DataMapNodeOfDataMapOfShapeLabel*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1121,8 +1166,17 @@ class Handle_XCAFDoc_Datum : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_Datum {
-    XCAFDoc_Datum* GetObject() {
+    XCAFDoc_Datum* _get_reference() {
     return (XCAFDoc_Datum*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_Datum {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1236,8 +1290,17 @@ class Handle_XCAFDoc_DimTol : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_DimTol {
-    XCAFDoc_DimTol* GetObject() {
+    XCAFDoc_DimTol* _get_reference() {
     return (XCAFDoc_DimTol*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_DimTol {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1543,8 +1606,17 @@ class Handle_XCAFDoc_DimTolTool : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_DimTolTool {
-    XCAFDoc_DimTolTool* GetObject() {
+    XCAFDoc_DimTolTool* _get_reference() {
     return (XCAFDoc_DimTolTool*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_DimTolTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1732,8 +1804,17 @@ class Handle_XCAFDoc_DocumentTool : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_DocumentTool {
-    XCAFDoc_DocumentTool* GetObject() {
+    XCAFDoc_DocumentTool* _get_reference() {
     return (XCAFDoc_DocumentTool*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_DocumentTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1969,8 +2050,17 @@ class Handle_XCAFDoc_GraphNode : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_GraphNode {
-    XCAFDoc_GraphNode* GetObject() {
+    XCAFDoc_GraphNode* _get_reference() {
     return (XCAFDoc_GraphNode*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_GraphNode {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2488,8 +2578,17 @@ class Handle_XCAFDoc_LayerTool : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_LayerTool {
-    XCAFDoc_LayerTool* GetObject() {
+    XCAFDoc_LayerTool* _get_reference() {
     return (XCAFDoc_LayerTool*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_LayerTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2585,8 +2684,17 @@ class Handle_XCAFDoc_Location : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_Location {
-    XCAFDoc_Location* GetObject() {
+    XCAFDoc_Location* _get_reference() {
     return (XCAFDoc_Location*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_Location {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2708,8 +2816,17 @@ class Handle_XCAFDoc_Material : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_Material {
-    XCAFDoc_Material* GetObject() {
+    XCAFDoc_Material* _get_reference() {
     return (XCAFDoc_Material*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_Material {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2887,8 +3004,17 @@ class Handle_XCAFDoc_MaterialTool : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_MaterialTool {
-    XCAFDoc_MaterialTool* GetObject() {
+    XCAFDoc_MaterialTool* _get_reference() {
     return (XCAFDoc_MaterialTool*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_MaterialTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2944,8 +3070,17 @@ class Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence : public Handle_TCollection
 
 };
 %extend Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence {
-    XCAFDoc_SequenceNodeOfGraphNodeSequence* GetObject() {
+    XCAFDoc_SequenceNodeOfGraphNodeSequence* _get_reference() {
     return (XCAFDoc_SequenceNodeOfGraphNodeSequence*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3047,8 +3182,17 @@ class Handle_XCAFDoc_ShapeMapTool : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_ShapeMapTool {
-    XCAFDoc_ShapeMapTool* GetObject() {
+    XCAFDoc_ShapeMapTool* _get_reference() {
     return (XCAFDoc_ShapeMapTool*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_ShapeMapTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3674,8 +3818,17 @@ class Handle_XCAFDoc_ShapeTool : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_ShapeTool {
-    XCAFDoc_ShapeTool* GetObject() {
+    XCAFDoc_ShapeTool* _get_reference() {
     return (XCAFDoc_ShapeTool*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_ShapeTool {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3789,8 +3942,17 @@ class Handle_XCAFDoc_Volume : public Handle_TDF_Attribute {
 
 };
 %extend Handle_XCAFDoc_Volume {
-    XCAFDoc_Volume* GetObject() {
+    XCAFDoc_Volume* _get_reference() {
     return (XCAFDoc_Volume*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFDoc_Volume {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

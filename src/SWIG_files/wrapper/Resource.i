@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -179,8 +179,17 @@ class Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString : public Hand
 
 };
 %extend Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString {
-    Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString* GetObject() {
+    Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString* _get_reference() {
     return (Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString*)$self->Access();
+    }
+};
+
+%extend Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -240,8 +249,17 @@ class Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString : public H
 
 };
 %extend Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString {
-    Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString* GetObject() {
+    Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString* _get_reference() {
     return (Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString*)$self->Access();
+    }
+};
+
+%extend Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -567,8 +585,17 @@ class Handle_Resource_Manager : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Resource_Manager {
-    Resource_Manager* GetObject() {
+    Resource_Manager* _get_reference() {
     return (Resource_Manager*)$self->Access();
+    }
+};
+
+%extend Handle_Resource_Manager {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

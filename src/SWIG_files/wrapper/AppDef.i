@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1058,8 +1058,17 @@ class Handle_AppDef_HArray1OfMultiPointConstraint : public Handle_MMgt_TShared {
 
 };
 %extend Handle_AppDef_HArray1OfMultiPointConstraint {
-    AppDef_HArray1OfMultiPointConstraint* GetObject() {
+    AppDef_HArray1OfMultiPointConstraint* _get_reference() {
     return (AppDef_HArray1OfMultiPointConstraint*)$self->Access();
+    }
+};
+
+%extend Handle_AppDef_HArray1OfMultiPointConstraint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2934,8 +2943,17 @@ class Handle_AppDef_SmoothCriterion : public Handle_MMgt_TShared {
 
 };
 %extend Handle_AppDef_SmoothCriterion {
-    AppDef_SmoothCriterion* GetObject() {
+    AppDef_SmoothCriterion* _get_reference() {
     return (AppDef_SmoothCriterion*)$self->Access();
+    }
+};
+
+%extend Handle_AppDef_SmoothCriterion {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3812,8 +3830,17 @@ class Handle_AppDef_LinearCriteria : public Handle_AppDef_SmoothCriterion {
 
 };
 %extend Handle_AppDef_LinearCriteria {
-    AppDef_LinearCriteria* GetObject() {
+    AppDef_LinearCriteria* _get_reference() {
     return (AppDef_LinearCriteria*)$self->Access();
+    }
+};
+
+%extend Handle_AppDef_LinearCriteria {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

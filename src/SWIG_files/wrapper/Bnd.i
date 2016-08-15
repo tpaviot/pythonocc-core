@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1738,8 +1738,17 @@ class Handle_Bnd_HArray1OfBox : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Bnd_HArray1OfBox {
-    Bnd_HArray1OfBox* GetObject() {
+    Bnd_HArray1OfBox* _get_reference() {
     return (Bnd_HArray1OfBox*)$self->Access();
+    }
+};
+
+%extend Handle_Bnd_HArray1OfBox {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1845,8 +1854,17 @@ class Handle_Bnd_HArray1OfBox2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Bnd_HArray1OfBox2d {
-    Bnd_HArray1OfBox2d* GetObject() {
+    Bnd_HArray1OfBox2d* _get_reference() {
     return (Bnd_HArray1OfBox2d*)$self->Access();
+    }
+};
+
+%extend Handle_Bnd_HArray1OfBox2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1952,8 +1970,17 @@ class Handle_Bnd_HArray1OfSphere : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Bnd_HArray1OfSphere {
-    Bnd_HArray1OfSphere* GetObject() {
+    Bnd_HArray1OfSphere* _get_reference() {
     return (Bnd_HArray1OfSphere*)$self->Access();
+    }
+};
+
+%extend Handle_Bnd_HArray1OfSphere {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2147,8 +2174,17 @@ class Handle_Bnd_SequenceNodeOfSeqOfBox : public Handle_TCollection_SeqNode {
 
 };
 %extend Handle_Bnd_SequenceNodeOfSeqOfBox {
-    Bnd_SequenceNodeOfSeqOfBox* GetObject() {
+    Bnd_SequenceNodeOfSeqOfBox* _get_reference() {
     return (Bnd_SequenceNodeOfSeqOfBox*)$self->Access();
+    }
+};
+
+%extend Handle_Bnd_SequenceNodeOfSeqOfBox {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1290,8 +1290,17 @@ class Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal : public Handl
 
 };
 %extend Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal {
-    BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal* GetObject() {
+    BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal* _get_reference() {
     return (BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal*)$self->Access();
+    }
+};
+
+%extend Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1347,8 +1356,17 @@ class Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape : public Hand
 
 };
 %extend Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape {
-    BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape* GetObject() {
+    BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape* _get_reference() {
     return (BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape*)$self->Access();
+    }
+};
+
+%extend Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

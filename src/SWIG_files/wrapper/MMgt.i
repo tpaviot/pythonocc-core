@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -98,8 +98,17 @@ class Handle_MMgt_TShared : public Handle_Standard_Transient {
 
 };
 %extend Handle_MMgt_TShared {
-    MMgt_TShared* GetObject() {
+    MMgt_TShared* _get_reference() {
     return (MMgt_TShared*)$self->Access();
+    }
+};
+
+%extend Handle_MMgt_TShared {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

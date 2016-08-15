@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -621,8 +621,17 @@ class Handle_Aspect_AspectFillArea : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Aspect_AspectFillArea {
-    Aspect_AspectFillArea* GetObject() {
+    Aspect_AspectFillArea* _get_reference() {
     return (Aspect_AspectFillArea*)$self->Access();
+    }
+};
+
+%extend Handle_Aspect_AspectFillArea {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -700,8 +709,17 @@ class Handle_Aspect_AspectLine : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Aspect_AspectLine {
-    Aspect_AspectLine* GetObject() {
+    Aspect_AspectLine* _get_reference() {
     return (Aspect_AspectLine*)$self->Access();
+    }
+};
+
+%extend Handle_Aspect_AspectLine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -779,8 +797,17 @@ class Handle_Aspect_AspectMarker : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Aspect_AspectMarker {
-    Aspect_AspectMarker* GetObject() {
+    Aspect_AspectMarker* _get_reference() {
     return (Aspect_AspectMarker*)$self->Access();
+    }
+};
+
+%extend Handle_Aspect_AspectMarker {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1268,8 +1295,17 @@ class Handle_Aspect_ColorScale : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Aspect_ColorScale {
-    Aspect_ColorScale* GetObject() {
+    Aspect_ColorScale* _get_reference() {
     return (Aspect_ColorScale*)$self->Access();
+    }
+};
+
+%extend Handle_Aspect_ColorScale {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1611,8 +1647,17 @@ class Handle_Aspect_Grid : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Aspect_Grid {
-    Aspect_Grid* GetObject() {
+    Aspect_Grid* _get_reference() {
     return (Aspect_Grid*)$self->Access();
+    }
+};
+
+%extend Handle_Aspect_Grid {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1668,8 +1713,17 @@ class Handle_Aspect_SequenceNodeOfSequenceOfColor : public Handle_TCollection_Se
 
 };
 %extend Handle_Aspect_SequenceNodeOfSequenceOfColor {
-    Aspect_SequenceNodeOfSequenceOfColor* GetObject() {
+    Aspect_SequenceNodeOfSequenceOfColor* _get_reference() {
     return (Aspect_SequenceNodeOfSequenceOfColor*)$self->Access();
+    }
+};
+
+%extend Handle_Aspect_SequenceNodeOfSequenceOfColor {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1991,8 +2045,17 @@ class Handle_Aspect_Window : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Aspect_Window {
-    Aspect_Window* GetObject() {
+    Aspect_Window* _get_reference() {
     return (Aspect_Window*)$self->Access();
+    }
+};
+
+%extend Handle_Aspect_Window {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2110,8 +2173,17 @@ class Handle_Aspect_CircularGrid : public Handle_Aspect_Grid {
 
 };
 %extend Handle_Aspect_CircularGrid {
-    Aspect_CircularGrid* GetObject() {
+    Aspect_CircularGrid* _get_reference() {
     return (Aspect_CircularGrid*)$self->Access();
+    }
+};
+
+%extend Handle_Aspect_CircularGrid {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2307,8 +2379,17 @@ class Handle_Aspect_RectangularGrid : public Handle_Aspect_Grid {
 
 };
 %extend Handle_Aspect_RectangularGrid {
-    Aspect_RectangularGrid* GetObject() {
+    Aspect_RectangularGrid* _get_reference() {
     return (Aspect_RectangularGrid*)$self->Access();
+    }
+};
+
+%extend Handle_Aspect_RectangularGrid {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

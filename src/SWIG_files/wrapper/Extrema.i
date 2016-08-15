@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -4477,8 +4477,17 @@ class Handle_Extrema_ExtPExtS : public Handle_Standard_Transient {
 
 };
 %extend Handle_Extrema_ExtPExtS {
-    Extrema_ExtPExtS* GetObject() {
+    Extrema_ExtPExtS* _get_reference() {
     return (Extrema_ExtPExtS*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_ExtPExtS {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4612,8 +4621,17 @@ class Handle_Extrema_ExtPRevS : public Handle_Standard_Transient {
 
 };
 %extend Handle_Extrema_ExtPRevS {
-    Extrema_ExtPRevS* GetObject() {
+    Extrema_ExtPRevS* _get_reference() {
     return (Extrema_ExtPRevS*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_ExtPRevS {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6165,8 +6183,17 @@ class Handle_Extrema_HArray1OfPOnCurv : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Extrema_HArray1OfPOnCurv {
-    Extrema_HArray1OfPOnCurv* GetObject() {
+    Extrema_HArray1OfPOnCurv* _get_reference() {
     return (Extrema_HArray1OfPOnCurv*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_HArray1OfPOnCurv {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6272,8 +6299,17 @@ class Handle_Extrema_HArray1OfPOnCurv2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Extrema_HArray1OfPOnCurv2d {
-    Extrema_HArray1OfPOnCurv2d* GetObject() {
+    Extrema_HArray1OfPOnCurv2d* _get_reference() {
     return (Extrema_HArray1OfPOnCurv2d*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_HArray1OfPOnCurv2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6379,8 +6415,17 @@ class Handle_Extrema_HArray1OfPOnSurf : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Extrema_HArray1OfPOnSurf {
-    Extrema_HArray1OfPOnSurf* GetObject() {
+    Extrema_HArray1OfPOnSurf* _get_reference() {
     return (Extrema_HArray1OfPOnSurf*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_HArray1OfPOnSurf {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6512,8 +6557,17 @@ class Handle_Extrema_HArray2OfPOnCurv : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Extrema_HArray2OfPOnCurv {
-    Extrema_HArray2OfPOnCurv* GetObject() {
+    Extrema_HArray2OfPOnCurv* _get_reference() {
     return (Extrema_HArray2OfPOnCurv*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_HArray2OfPOnCurv {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6645,8 +6699,17 @@ class Handle_Extrema_HArray2OfPOnCurv2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Extrema_HArray2OfPOnCurv2d {
-    Extrema_HArray2OfPOnCurv2d* GetObject() {
+    Extrema_HArray2OfPOnCurv2d* _get_reference() {
     return (Extrema_HArray2OfPOnCurv2d*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_HArray2OfPOnCurv2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6778,8 +6841,17 @@ class Handle_Extrema_HArray2OfPOnSurf : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Extrema_HArray2OfPOnSurf {
-    Extrema_HArray2OfPOnSurf* GetObject() {
+    Extrema_HArray2OfPOnSurf* _get_reference() {
     return (Extrema_HArray2OfPOnSurf*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_HArray2OfPOnSurf {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6911,8 +6983,17 @@ class Handle_Extrema_HArray2OfPOnSurfParams : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Extrema_HArray2OfPOnSurfParams {
-    Extrema_HArray2OfPOnSurfParams* GetObject() {
+    Extrema_HArray2OfPOnSurfParams* _get_reference() {
     return (Extrema_HArray2OfPOnSurfParams*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_HArray2OfPOnSurfParams {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9228,8 +9309,17 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC : public H
 
 };
 %extend Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC {
-    Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC* GetObject() {
+    Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC* _get_reference() {
     return (Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9285,8 +9375,17 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d : public
 
 };
 %extend Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d {
-    Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d* GetObject() {
+    Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d* _get_reference() {
     return (Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9342,8 +9441,17 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC : public Handle_TColle
 
 };
 %extend Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC {
-    Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC* GetObject() {
+    Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC* _get_reference() {
     return (Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9399,8 +9507,17 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d : public Handle_TCol
 
 };
 %extend Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d {
-    Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d* GetObject() {
+    Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d* _get_reference() {
     return (Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9456,8 +9573,17 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC : public H
 
 };
 %extend Handle_Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC {
-    Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC* GetObject() {
+    Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC* _get_reference() {
     return (Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9513,8 +9639,17 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC2d : public
 
 };
 %extend Handle_Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC2d {
-    Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC2d* GetObject() {
+    Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC2d* _get_reference() {
     return (Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC2d*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9570,8 +9705,17 @@ class Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC : public Handle_TColl
 
 };
 %extend Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC {
-    Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC* GetObject() {
+    Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC* _get_reference() {
     return (Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9627,8 +9771,17 @@ class Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d : public Handle_TCo
 
 };
 %extend Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d {
-    Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d* GetObject() {
+    Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d* _get_reference() {
     return (Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9684,8 +9837,17 @@ class Handle_Extrema_SequenceNodeOfSequenceOfPOnCurv : public Handle_TCollection
 
 };
 %extend Handle_Extrema_SequenceNodeOfSequenceOfPOnCurv {
-    Extrema_SequenceNodeOfSequenceOfPOnCurv* GetObject() {
+    Extrema_SequenceNodeOfSequenceOfPOnCurv* _get_reference() {
     return (Extrema_SequenceNodeOfSequenceOfPOnCurv*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_SequenceNodeOfSequenceOfPOnCurv {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9741,8 +9903,17 @@ class Handle_Extrema_SequenceNodeOfSequenceOfPOnCurv2d : public Handle_TCollecti
 
 };
 %extend Handle_Extrema_SequenceNodeOfSequenceOfPOnCurv2d {
-    Extrema_SequenceNodeOfSequenceOfPOnCurv2d* GetObject() {
+    Extrema_SequenceNodeOfSequenceOfPOnCurv2d* _get_reference() {
     return (Extrema_SequenceNodeOfSequenceOfPOnCurv2d*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_SequenceNodeOfSequenceOfPOnCurv2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -9798,8 +9969,17 @@ class Handle_Extrema_SequenceNodeOfSequenceOfPOnSurf : public Handle_TCollection
 
 };
 %extend Handle_Extrema_SequenceNodeOfSequenceOfPOnSurf {
-    Extrema_SequenceNodeOfSequenceOfPOnSurf* GetObject() {
+    Extrema_SequenceNodeOfSequenceOfPOnSurf* _get_reference() {
     return (Extrema_SequenceNodeOfSequenceOfPOnSurf*)$self->Access();
+    }
+};
+
+%extend Handle_Extrema_SequenceNodeOfSequenceOfPOnSurf {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

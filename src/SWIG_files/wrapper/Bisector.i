@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -254,8 +254,17 @@ class Handle_Bisector_Curve : public Handle_Geom2d_Curve {
 
 };
 %extend Handle_Bisector_Curve {
-    Bisector_Curve* GetObject() {
+    Bisector_Curve* _get_reference() {
     return (Bisector_Curve*)$self->Access();
+    }
+};
+
+%extend Handle_Bisector_Curve {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -863,8 +872,17 @@ class Handle_Bisector_BisecAna : public Handle_Bisector_Curve {
 
 };
 %extend Handle_Bisector_BisecAna {
-    Bisector_BisecAna* GetObject() {
+    Bisector_BisecAna* _get_reference() {
     return (Bisector_BisecAna*)$self->Access();
+    }
+};
+
+%extend Handle_Bisector_BisecAna {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1160,8 +1178,17 @@ class Handle_Bisector_BisecCC : public Handle_Bisector_Curve {
 
 };
 %extend Handle_Bisector_BisecCC {
-    Bisector_BisecCC* GetObject() {
+    Bisector_BisecCC* _get_reference() {
     return (Bisector_BisecCC*)$self->Access();
+    }
+};
+
+%extend Handle_Bisector_BisecCC {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1445,8 +1472,17 @@ class Handle_Bisector_BisecPC : public Handle_Bisector_Curve {
 
 };
 %extend Handle_Bisector_BisecPC {
-    Bisector_BisecPC* GetObject() {
+    Bisector_BisecPC* _get_reference() {
     return (Bisector_BisecPC*)$self->Access();
+    }
+};
+
+%extend Handle_Bisector_BisecPC {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

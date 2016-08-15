@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -2018,8 +2018,17 @@ class Handle_TColgp_HArray1OfCirc2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray1OfCirc2d {
-    TColgp_HArray1OfCirc2d* GetObject() {
+    TColgp_HArray1OfCirc2d* _get_reference() {
     return (TColgp_HArray1OfCirc2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray1OfCirc2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2125,8 +2134,17 @@ class Handle_TColgp_HArray1OfDir : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray1OfDir {
-    TColgp_HArray1OfDir* GetObject() {
+    TColgp_HArray1OfDir* _get_reference() {
     return (TColgp_HArray1OfDir*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray1OfDir {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2232,8 +2250,17 @@ class Handle_TColgp_HArray1OfDir2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray1OfDir2d {
-    TColgp_HArray1OfDir2d* GetObject() {
+    TColgp_HArray1OfDir2d* _get_reference() {
     return (TColgp_HArray1OfDir2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray1OfDir2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2339,8 +2366,17 @@ class Handle_TColgp_HArray1OfLin2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray1OfLin2d {
-    TColgp_HArray1OfLin2d* GetObject() {
+    TColgp_HArray1OfLin2d* _get_reference() {
     return (TColgp_HArray1OfLin2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray1OfLin2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2446,8 +2482,17 @@ class Handle_TColgp_HArray1OfPnt : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray1OfPnt {
-    TColgp_HArray1OfPnt* GetObject() {
+    TColgp_HArray1OfPnt* _get_reference() {
     return (TColgp_HArray1OfPnt*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray1OfPnt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2553,8 +2598,17 @@ class Handle_TColgp_HArray1OfPnt2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray1OfPnt2d {
-    TColgp_HArray1OfPnt2d* GetObject() {
+    TColgp_HArray1OfPnt2d* _get_reference() {
     return (TColgp_HArray1OfPnt2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray1OfPnt2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2660,8 +2714,17 @@ class Handle_TColgp_HArray1OfVec : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray1OfVec {
-    TColgp_HArray1OfVec* GetObject() {
+    TColgp_HArray1OfVec* _get_reference() {
     return (TColgp_HArray1OfVec*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray1OfVec {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2767,8 +2830,17 @@ class Handle_TColgp_HArray1OfVec2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray1OfVec2d {
-    TColgp_HArray1OfVec2d* GetObject() {
+    TColgp_HArray1OfVec2d* _get_reference() {
     return (TColgp_HArray1OfVec2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray1OfVec2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2874,8 +2946,17 @@ class Handle_TColgp_HArray1OfXY : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray1OfXY {
-    TColgp_HArray1OfXY* GetObject() {
+    TColgp_HArray1OfXY* _get_reference() {
     return (TColgp_HArray1OfXY*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray1OfXY {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2981,8 +3062,17 @@ class Handle_TColgp_HArray1OfXYZ : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray1OfXYZ {
-    TColgp_HArray1OfXYZ* GetObject() {
+    TColgp_HArray1OfXYZ* _get_reference() {
     return (TColgp_HArray1OfXYZ*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray1OfXYZ {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3114,8 +3204,17 @@ class Handle_TColgp_HArray2OfCirc2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray2OfCirc2d {
-    TColgp_HArray2OfCirc2d* GetObject() {
+    TColgp_HArray2OfCirc2d* _get_reference() {
     return (TColgp_HArray2OfCirc2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray2OfCirc2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3247,8 +3346,17 @@ class Handle_TColgp_HArray2OfDir : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray2OfDir {
-    TColgp_HArray2OfDir* GetObject() {
+    TColgp_HArray2OfDir* _get_reference() {
     return (TColgp_HArray2OfDir*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray2OfDir {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3380,8 +3488,17 @@ class Handle_TColgp_HArray2OfDir2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray2OfDir2d {
-    TColgp_HArray2OfDir2d* GetObject() {
+    TColgp_HArray2OfDir2d* _get_reference() {
     return (TColgp_HArray2OfDir2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray2OfDir2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3513,8 +3630,17 @@ class Handle_TColgp_HArray2OfLin2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray2OfLin2d {
-    TColgp_HArray2OfLin2d* GetObject() {
+    TColgp_HArray2OfLin2d* _get_reference() {
     return (TColgp_HArray2OfLin2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray2OfLin2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3646,8 +3772,17 @@ class Handle_TColgp_HArray2OfPnt : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray2OfPnt {
-    TColgp_HArray2OfPnt* GetObject() {
+    TColgp_HArray2OfPnt* _get_reference() {
     return (TColgp_HArray2OfPnt*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray2OfPnt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3779,8 +3914,17 @@ class Handle_TColgp_HArray2OfPnt2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray2OfPnt2d {
-    TColgp_HArray2OfPnt2d* GetObject() {
+    TColgp_HArray2OfPnt2d* _get_reference() {
     return (TColgp_HArray2OfPnt2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray2OfPnt2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3912,8 +4056,17 @@ class Handle_TColgp_HArray2OfVec : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray2OfVec {
-    TColgp_HArray2OfVec* GetObject() {
+    TColgp_HArray2OfVec* _get_reference() {
     return (TColgp_HArray2OfVec*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray2OfVec {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4045,8 +4198,17 @@ class Handle_TColgp_HArray2OfVec2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray2OfVec2d {
-    TColgp_HArray2OfVec2d* GetObject() {
+    TColgp_HArray2OfVec2d* _get_reference() {
     return (TColgp_HArray2OfVec2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray2OfVec2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4178,8 +4340,17 @@ class Handle_TColgp_HArray2OfXY : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray2OfXY {
-    TColgp_HArray2OfXY* GetObject() {
+    TColgp_HArray2OfXY* _get_reference() {
     return (TColgp_HArray2OfXY*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray2OfXY {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4311,8 +4482,17 @@ class Handle_TColgp_HArray2OfXYZ : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HArray2OfXYZ {
-    TColgp_HArray2OfXYZ* GetObject() {
+    TColgp_HArray2OfXYZ* _get_reference() {
     return (TColgp_HArray2OfXYZ*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HArray2OfXYZ {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4486,8 +4666,17 @@ class Handle_TColgp_HSequenceOfDir : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HSequenceOfDir {
-    TColgp_HSequenceOfDir* GetObject() {
+    TColgp_HSequenceOfDir* _get_reference() {
     return (TColgp_HSequenceOfDir*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HSequenceOfDir {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4661,8 +4850,17 @@ class Handle_TColgp_HSequenceOfDir2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HSequenceOfDir2d {
-    TColgp_HSequenceOfDir2d* GetObject() {
+    TColgp_HSequenceOfDir2d* _get_reference() {
     return (TColgp_HSequenceOfDir2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HSequenceOfDir2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4836,8 +5034,17 @@ class Handle_TColgp_HSequenceOfPnt : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HSequenceOfPnt {
-    TColgp_HSequenceOfPnt* GetObject() {
+    TColgp_HSequenceOfPnt* _get_reference() {
     return (TColgp_HSequenceOfPnt*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HSequenceOfPnt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5011,8 +5218,17 @@ class Handle_TColgp_HSequenceOfPnt2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HSequenceOfPnt2d {
-    TColgp_HSequenceOfPnt2d* GetObject() {
+    TColgp_HSequenceOfPnt2d* _get_reference() {
     return (TColgp_HSequenceOfPnt2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HSequenceOfPnt2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5186,8 +5402,17 @@ class Handle_TColgp_HSequenceOfVec : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HSequenceOfVec {
-    TColgp_HSequenceOfVec* GetObject() {
+    TColgp_HSequenceOfVec* _get_reference() {
     return (TColgp_HSequenceOfVec*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HSequenceOfVec {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5361,8 +5586,17 @@ class Handle_TColgp_HSequenceOfVec2d : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HSequenceOfVec2d {
-    TColgp_HSequenceOfVec2d* GetObject() {
+    TColgp_HSequenceOfVec2d* _get_reference() {
     return (TColgp_HSequenceOfVec2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HSequenceOfVec2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5536,8 +5770,17 @@ class Handle_TColgp_HSequenceOfXY : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HSequenceOfXY {
-    TColgp_HSequenceOfXY* GetObject() {
+    TColgp_HSequenceOfXY* _get_reference() {
     return (TColgp_HSequenceOfXY*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HSequenceOfXY {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5711,8 +5954,17 @@ class Handle_TColgp_HSequenceOfXYZ : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TColgp_HSequenceOfXYZ {
-    TColgp_HSequenceOfXYZ* GetObject() {
+    TColgp_HSequenceOfXYZ* _get_reference() {
     return (TColgp_HSequenceOfXYZ*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_HSequenceOfXYZ {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5768,8 +6020,17 @@ class Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d : public Handle_TColle
 
 };
 %extend Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d {
-    TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d* GetObject() {
+    TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d* _get_reference() {
     return (TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5825,8 +6086,17 @@ class Handle_TColgp_SequenceNodeOfSequenceOfDir : public Handle_TCollection_SeqN
 
 };
 %extend Handle_TColgp_SequenceNodeOfSequenceOfDir {
-    TColgp_SequenceNodeOfSequenceOfDir* GetObject() {
+    TColgp_SequenceNodeOfSequenceOfDir* _get_reference() {
     return (TColgp_SequenceNodeOfSequenceOfDir*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_SequenceNodeOfSequenceOfDir {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5882,8 +6152,17 @@ class Handle_TColgp_SequenceNodeOfSequenceOfDir2d : public Handle_TCollection_Se
 
 };
 %extend Handle_TColgp_SequenceNodeOfSequenceOfDir2d {
-    TColgp_SequenceNodeOfSequenceOfDir2d* GetObject() {
+    TColgp_SequenceNodeOfSequenceOfDir2d* _get_reference() {
     return (TColgp_SequenceNodeOfSequenceOfDir2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_SequenceNodeOfSequenceOfDir2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5939,8 +6218,17 @@ class Handle_TColgp_SequenceNodeOfSequenceOfPnt : public Handle_TCollection_SeqN
 
 };
 %extend Handle_TColgp_SequenceNodeOfSequenceOfPnt {
-    TColgp_SequenceNodeOfSequenceOfPnt* GetObject() {
+    TColgp_SequenceNodeOfSequenceOfPnt* _get_reference() {
     return (TColgp_SequenceNodeOfSequenceOfPnt*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_SequenceNodeOfSequenceOfPnt {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5996,8 +6284,17 @@ class Handle_TColgp_SequenceNodeOfSequenceOfPnt2d : public Handle_TCollection_Se
 
 };
 %extend Handle_TColgp_SequenceNodeOfSequenceOfPnt2d {
-    TColgp_SequenceNodeOfSequenceOfPnt2d* GetObject() {
+    TColgp_SequenceNodeOfSequenceOfPnt2d* _get_reference() {
     return (TColgp_SequenceNodeOfSequenceOfPnt2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_SequenceNodeOfSequenceOfPnt2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6053,8 +6350,17 @@ class Handle_TColgp_SequenceNodeOfSequenceOfVec : public Handle_TCollection_SeqN
 
 };
 %extend Handle_TColgp_SequenceNodeOfSequenceOfVec {
-    TColgp_SequenceNodeOfSequenceOfVec* GetObject() {
+    TColgp_SequenceNodeOfSequenceOfVec* _get_reference() {
     return (TColgp_SequenceNodeOfSequenceOfVec*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_SequenceNodeOfSequenceOfVec {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6110,8 +6416,17 @@ class Handle_TColgp_SequenceNodeOfSequenceOfVec2d : public Handle_TCollection_Se
 
 };
 %extend Handle_TColgp_SequenceNodeOfSequenceOfVec2d {
-    TColgp_SequenceNodeOfSequenceOfVec2d* GetObject() {
+    TColgp_SequenceNodeOfSequenceOfVec2d* _get_reference() {
     return (TColgp_SequenceNodeOfSequenceOfVec2d*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_SequenceNodeOfSequenceOfVec2d {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6167,8 +6482,17 @@ class Handle_TColgp_SequenceNodeOfSequenceOfXY : public Handle_TCollection_SeqNo
 
 };
 %extend Handle_TColgp_SequenceNodeOfSequenceOfXY {
-    TColgp_SequenceNodeOfSequenceOfXY* GetObject() {
+    TColgp_SequenceNodeOfSequenceOfXY* _get_reference() {
     return (TColgp_SequenceNodeOfSequenceOfXY*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_SequenceNodeOfSequenceOfXY {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6224,8 +6548,17 @@ class Handle_TColgp_SequenceNodeOfSequenceOfXYZ : public Handle_TCollection_SeqN
 
 };
 %extend Handle_TColgp_SequenceNodeOfSequenceOfXYZ {
-    TColgp_SequenceNodeOfSequenceOfXYZ* GetObject() {
+    TColgp_SequenceNodeOfSequenceOfXYZ* _get_reference() {
     return (TColgp_SequenceNodeOfSequenceOfXYZ*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_SequenceNodeOfSequenceOfXYZ {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

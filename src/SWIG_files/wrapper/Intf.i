@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1085,8 +1085,17 @@ class Handle_Intf_SequenceNodeOfSeqOfSectionLine : public Handle_TCollection_Seq
 
 };
 %extend Handle_Intf_SequenceNodeOfSeqOfSectionLine {
-    Intf_SequenceNodeOfSeqOfSectionLine* GetObject() {
+    Intf_SequenceNodeOfSeqOfSectionLine* _get_reference() {
     return (Intf_SequenceNodeOfSeqOfSectionLine*)$self->Access();
+    }
+};
+
+%extend Handle_Intf_SequenceNodeOfSeqOfSectionLine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1142,8 +1151,17 @@ class Handle_Intf_SequenceNodeOfSeqOfSectionPoint : public Handle_TCollection_Se
 
 };
 %extend Handle_Intf_SequenceNodeOfSeqOfSectionPoint {
-    Intf_SequenceNodeOfSeqOfSectionPoint* GetObject() {
+    Intf_SequenceNodeOfSeqOfSectionPoint* _get_reference() {
     return (Intf_SequenceNodeOfSeqOfSectionPoint*)$self->Access();
+    }
+};
+
+%extend Handle_Intf_SequenceNodeOfSeqOfSectionPoint {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1199,8 +1217,17 @@ class Handle_Intf_SequenceNodeOfSeqOfTangentZone : public Handle_TCollection_Seq
 
 };
 %extend Handle_Intf_SequenceNodeOfSeqOfTangentZone {
-    Intf_SequenceNodeOfSeqOfTangentZone* GetObject() {
+    Intf_SequenceNodeOfSeqOfTangentZone* _get_reference() {
     return (Intf_SequenceNodeOfSeqOfTangentZone*)$self->Access();
+    }
+};
+
+%extend Handle_Intf_SequenceNodeOfSeqOfTangentZone {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

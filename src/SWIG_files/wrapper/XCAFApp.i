@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -120,8 +120,17 @@ class Handle_XCAFApp_Application : public Handle_TDocStd_Application {
 
 };
 %extend Handle_XCAFApp_Application {
-    XCAFApp_Application* GetObject() {
+    XCAFApp_Application* _get_reference() {
     return (XCAFApp_Application*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFApp_Application {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

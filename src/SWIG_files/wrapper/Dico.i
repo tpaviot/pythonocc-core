@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -232,8 +232,17 @@ class Handle_Dico_DictionaryOfInteger : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Dico_DictionaryOfInteger {
-    Dico_DictionaryOfInteger* GetObject() {
+    Dico_DictionaryOfInteger* _get_reference() {
     return (Dico_DictionaryOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_Dico_DictionaryOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -413,8 +422,17 @@ class Handle_Dico_DictionaryOfTransient : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Dico_DictionaryOfTransient {
-    Dico_DictionaryOfTransient* GetObject() {
+    Dico_DictionaryOfTransient* _get_reference() {
     return (Dico_DictionaryOfTransient*)$self->Access();
+    }
+};
+
+%extend Handle_Dico_DictionaryOfTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -576,8 +594,17 @@ class Handle_Dico_StackItemOfDictionaryOfInteger : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Dico_StackItemOfDictionaryOfInteger {
-    Dico_StackItemOfDictionaryOfInteger* GetObject() {
+    Dico_StackItemOfDictionaryOfInteger* _get_reference() {
     return (Dico_StackItemOfDictionaryOfInteger*)$self->Access();
+    }
+};
+
+%extend Handle_Dico_StackItemOfDictionaryOfInteger {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -643,8 +670,17 @@ class Handle_Dico_StackItemOfDictionaryOfTransient : public Handle_MMgt_TShared 
 
 };
 %extend Handle_Dico_StackItemOfDictionaryOfTransient {
-    Dico_StackItemOfDictionaryOfTransient* GetObject() {
+    Dico_StackItemOfDictionaryOfTransient* _get_reference() {
     return (Dico_StackItemOfDictionaryOfTransient*)$self->Access();
+    }
+};
+
+%extend Handle_Dico_StackItemOfDictionaryOfTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

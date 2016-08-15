@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -676,8 +676,17 @@ class Handle_PLib_Base : public Handle_MMgt_TShared {
 
 };
 %extend Handle_PLib_Base {
-    PLib_Base* GetObject() {
+    PLib_Base* _get_reference() {
     return (PLib_Base*)$self->Access();
+    }
+};
+
+%extend Handle_PLib_Base {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -991,8 +1000,17 @@ class Handle_PLib_HermitJacobi : public Handle_PLib_Base {
 
 };
 %extend Handle_PLib_HermitJacobi {
-    PLib_HermitJacobi* GetObject() {
+    PLib_HermitJacobi* _get_reference() {
     return (PLib_HermitJacobi*)$self->Access();
+    }
+};
+
+%extend Handle_PLib_HermitJacobi {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1190,8 +1208,17 @@ class Handle_PLib_JacobiPolynomial : public Handle_PLib_Base {
 
 };
 %extend Handle_PLib_JacobiPolynomial {
-    PLib_JacobiPolynomial* GetObject() {
+    PLib_JacobiPolynomial* _get_reference() {
     return (PLib_JacobiPolynomial*)$self->Access();
+    }
+};
+
+%extend Handle_PLib_JacobiPolynomial {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

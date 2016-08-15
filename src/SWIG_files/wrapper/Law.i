@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -788,8 +788,17 @@ class Handle_Law_BSpline : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Law_BSpline {
-    Law_BSpline* GetObject() {
+    Law_BSpline* _get_reference() {
     return (Law_BSpline*)$self->Access();
+    }
+};
+
+%extend Handle_Law_BSpline {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -947,8 +956,17 @@ class Handle_Law_Function : public Handle_MMgt_TShared {
 
 };
 %extend Handle_Law_Function {
-    Law_Function* GetObject() {
+    Law_Function* _get_reference() {
     return (Law_Function*)$self->Access();
+    }
+};
+
+%extend Handle_Law_Function {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1232,8 +1250,17 @@ class Handle_Law_ListNodeOfLaws : public Handle_TCollection_MapNode {
 
 };
 %extend Handle_Law_ListNodeOfLaws {
-    Law_ListNodeOfLaws* GetObject() {
+    Law_ListNodeOfLaws* _get_reference() {
     return (Law_ListNodeOfLaws*)$self->Access();
+    }
+};
+
+%extend Handle_Law_ListNodeOfLaws {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1369,8 +1396,17 @@ class Handle_Law_BSpFunc : public Handle_Law_Function {
 
 };
 %extend Handle_Law_BSpFunc {
-    Law_BSpFunc* GetObject() {
+    Law_BSpFunc* _get_reference() {
     return (Law_BSpFunc*)$self->Access();
+    }
+};
+
+%extend Handle_Law_BSpFunc {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1528,8 +1564,17 @@ class Handle_Law_Composite : public Handle_Law_Function {
 
 };
 %extend Handle_Law_Composite {
-    Law_Composite* GetObject() {
+    Law_Composite* _get_reference() {
     return (Law_Composite*)$self->Access();
+    }
+};
+
+%extend Handle_Law_Composite {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1663,8 +1708,17 @@ class Handle_Law_Constant : public Handle_Law_Function {
 
 };
 %extend Handle_Law_Constant {
-    Law_Constant* GetObject() {
+    Law_Constant* _get_reference() {
     return (Law_Constant*)$self->Access();
+    }
+};
+
+%extend Handle_Law_Constant {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1804,8 +1858,17 @@ class Handle_Law_Linear : public Handle_Law_Function {
 
 };
 %extend Handle_Law_Linear {
-    Law_Linear* GetObject() {
+    Law_Linear* _get_reference() {
     return (Law_Linear*)$self->Access();
+    }
+};
+
+%extend Handle_Law_Linear {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1905,8 +1968,17 @@ class Handle_Law_Interpol : public Handle_Law_BSpFunc {
 
 };
 %extend Handle_Law_Interpol {
-    Law_Interpol* GetObject() {
+    Law_Interpol* _get_reference() {
     return (Law_Interpol*)$self->Access();
+    }
+};
+
+%extend Handle_Law_Interpol {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1986,8 +2058,17 @@ class Handle_Law_S : public Handle_Law_BSpFunc {
 
 };
 %extend Handle_Law_S {
-    Law_S* GetObject() {
+    Law_S* _get_reference() {
     return (Law_S*)$self->Access();
+    }
+};
+
+%extend Handle_Law_S {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

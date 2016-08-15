@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -123,8 +123,17 @@ class Handle_TopLoc_Datum3D : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopLoc_Datum3D {
-    TopLoc_Datum3D* GetObject() {
+    TopLoc_Datum3D* _get_reference() {
     return (TopLoc_Datum3D*)$self->Access();
+    }
+};
+
+%extend Handle_TopLoc_Datum3D {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -199,8 +208,17 @@ class Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation : public Handle_TCollec
 
 };
 %extend Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
-    TopLoc_IndexedMapNodeOfIndexedMapOfLocation* GetObject() {
+    TopLoc_IndexedMapNodeOfIndexedMapOfLocation* _get_reference() {
     return (TopLoc_IndexedMapNodeOfIndexedMapOfLocation*)$self->Access();
+    }
+};
+
+%extend Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -663,8 +681,17 @@ class Handle_TopLoc_SListNodeOfItemLocation : public Handle_MMgt_TShared {
 
 };
 %extend Handle_TopLoc_SListNodeOfItemLocation {
-    TopLoc_SListNodeOfItemLocation* GetObject() {
+    TopLoc_SListNodeOfItemLocation* _get_reference() {
     return (TopLoc_SListNodeOfItemLocation*)$self->Access();
+    }
+};
+
+%extend Handle_TopLoc_SListNodeOfItemLocation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -854,8 +881,17 @@ class Handle_TopLoc_StdMapNodeOfMapOfLocation : public Handle_TCollection_MapNod
 
 };
 %extend Handle_TopLoc_StdMapNodeOfMapOfLocation {
-    TopLoc_StdMapNodeOfMapOfLocation* GetObject() {
+    TopLoc_StdMapNodeOfMapOfLocation* _get_reference() {
     return (TopLoc_StdMapNodeOfMapOfLocation*)$self->Access();
+    }
+};
+
+%extend Handle_TopLoc_StdMapNodeOfMapOfLocation {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

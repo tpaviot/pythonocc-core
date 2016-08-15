@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1255,8 +1255,17 @@ class Handle_GeomFill_Boundary : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomFill_Boundary {
-    GeomFill_Boundary* GetObject() {
+    GeomFill_Boundary* _get_reference() {
     return (GeomFill_Boundary*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_Boundary {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1498,8 +1507,17 @@ class Handle_GeomFill_CircularBlendFunc : public Handle_Approx_SweepFunction {
 
 };
 %extend Handle_GeomFill_CircularBlendFunc {
-    GeomFill_CircularBlendFunc* GetObject() {
+    GeomFill_CircularBlendFunc* _get_reference() {
     return (GeomFill_CircularBlendFunc*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_CircularBlendFunc {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -1751,8 +1769,17 @@ class Handle_GeomFill_CoonsAlgPatch : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomFill_CoonsAlgPatch {
-    GeomFill_CoonsAlgPatch* GetObject() {
+    GeomFill_CoonsAlgPatch* _get_reference() {
     return (GeomFill_CoonsAlgPatch*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_CoonsAlgPatch {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2154,8 +2181,17 @@ class Handle_GeomFill_HArray1OfLocationLaw : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomFill_HArray1OfLocationLaw {
-    GeomFill_HArray1OfLocationLaw* GetObject() {
+    GeomFill_HArray1OfLocationLaw* _get_reference() {
     return (GeomFill_HArray1OfLocationLaw*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_HArray1OfLocationLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2261,8 +2297,17 @@ class Handle_GeomFill_HArray1OfSectionLaw : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomFill_HArray1OfSectionLaw {
-    GeomFill_HArray1OfSectionLaw* GetObject() {
+    GeomFill_HArray1OfSectionLaw* _get_reference() {
     return (GeomFill_HArray1OfSectionLaw*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_HArray1OfSectionLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2436,8 +2481,17 @@ class Handle_GeomFill_HSequenceOfAx2 : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomFill_HSequenceOfAx2 {
-    GeomFill_HSequenceOfAx2* GetObject() {
+    GeomFill_HSequenceOfAx2* _get_reference() {
     return (GeomFill_HSequenceOfAx2*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_HSequenceOfAx2 {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2499,8 +2553,17 @@ class Handle_GeomFill_Line : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomFill_Line {
-    GeomFill_Line* GetObject() {
+    GeomFill_Line* _get_reference() {
     return (GeomFill_Line*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_Line {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -2840,8 +2903,17 @@ class Handle_GeomFill_LocationLaw : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomFill_LocationLaw {
-    GeomFill_LocationLaw* GetObject() {
+    GeomFill_LocationLaw* _get_reference() {
     return (GeomFill_LocationLaw*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_LocationLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3745,8 +3817,17 @@ class Handle_GeomFill_SectionLaw : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomFill_SectionLaw {
-    GeomFill_SectionLaw* GetObject() {
+    GeomFill_SectionLaw* _get_reference() {
     return (GeomFill_SectionLaw*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_SectionLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3890,8 +3971,17 @@ class Handle_GeomFill_SequenceNodeOfSequenceOfAx2 : public Handle_TCollection_Se
 
 };
 %extend Handle_GeomFill_SequenceNodeOfSequenceOfAx2 {
-    GeomFill_SequenceNodeOfSequenceOfAx2* GetObject() {
+    GeomFill_SequenceNodeOfSequenceOfAx2* _get_reference() {
     return (GeomFill_SequenceNodeOfSequenceOfAx2*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_SequenceNodeOfSequenceOfAx2 {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -3947,8 +4037,17 @@ class Handle_GeomFill_SequenceNodeOfSequenceOfTrsf : public Handle_TCollection_S
 
 };
 %extend Handle_GeomFill_SequenceNodeOfSequenceOfTrsf {
-    GeomFill_SequenceNodeOfSequenceOfTrsf* GetObject() {
+    GeomFill_SequenceNodeOfSequenceOfTrsf* _get_reference() {
     return (GeomFill_SequenceNodeOfSequenceOfTrsf*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_SequenceNodeOfSequenceOfTrsf {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4754,8 +4853,17 @@ class Handle_GeomFill_SweepFunction : public Handle_Approx_SweepFunction {
 
 };
 %extend Handle_GeomFill_SweepFunction {
-    GeomFill_SweepFunction* GetObject() {
+    GeomFill_SweepFunction* _get_reference() {
     return (GeomFill_SweepFunction*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_SweepFunction {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -4891,8 +4999,17 @@ class Handle_GeomFill_TgtField : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomFill_TgtField {
-    GeomFill_TgtField* GetObject() {
+    GeomFill_TgtField* _get_reference() {
     return (GeomFill_TgtField*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_TgtField {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5072,8 +5189,17 @@ class Handle_GeomFill_TrihedronLaw : public Handle_MMgt_TShared {
 
 };
 %extend Handle_GeomFill_TrihedronLaw {
-    GeomFill_TrihedronLaw* GetObject() {
+    GeomFill_TrihedronLaw* _get_reference() {
     return (GeomFill_TrihedronLaw*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_TrihedronLaw {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5193,8 +5319,17 @@ class Handle_GeomFill_BoundWithSurf : public Handle_GeomFill_Boundary {
 
 };
 %extend Handle_GeomFill_BoundWithSurf {
-    GeomFill_BoundWithSurf* GetObject() {
+    GeomFill_BoundWithSurf* _get_reference() {
     return (GeomFill_BoundWithSurf*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_BoundWithSurf {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5354,8 +5489,17 @@ class Handle_GeomFill_ConstantBiNormal : public Handle_GeomFill_TrihedronLaw {
 
 };
 %extend Handle_GeomFill_ConstantBiNormal {
-    GeomFill_ConstantBiNormal* GetObject() {
+    GeomFill_ConstantBiNormal* _get_reference() {
     return (GeomFill_ConstantBiNormal*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_ConstantBiNormal {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5607,8 +5751,17 @@ class Handle_GeomFill_CorrectedFrenet : public Handle_GeomFill_TrihedronLaw {
 
 };
 %extend Handle_GeomFill_CorrectedFrenet {
-    GeomFill_CorrectedFrenet* GetObject() {
+    GeomFill_CorrectedFrenet* _get_reference() {
     return (GeomFill_CorrectedFrenet*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_CorrectedFrenet {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -5836,8 +5989,17 @@ class Handle_GeomFill_CurveAndTrihedron : public Handle_GeomFill_LocationLaw {
 
 };
 %extend Handle_GeomFill_CurveAndTrihedron {
-    GeomFill_CurveAndTrihedron* GetObject() {
+    GeomFill_CurveAndTrihedron* _get_reference() {
     return (GeomFill_CurveAndTrihedron*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_CurveAndTrihedron {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6155,8 +6317,17 @@ class Handle_GeomFill_Darboux : public Handle_GeomFill_TrihedronLaw {
 
 };
 %extend Handle_GeomFill_Darboux {
-    GeomFill_Darboux* GetObject() {
+    GeomFill_Darboux* _get_reference() {
     return (GeomFill_Darboux*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_Darboux {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6258,8 +6429,17 @@ class Handle_GeomFill_DegeneratedBound : public Handle_GeomFill_Boundary {
 
 };
 %extend Handle_GeomFill_DegeneratedBound {
-    GeomFill_DegeneratedBound* GetObject() {
+    GeomFill_DegeneratedBound* _get_reference() {
     return (GeomFill_DegeneratedBound*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_DegeneratedBound {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6421,8 +6601,17 @@ class Handle_GeomFill_DiscreteTrihedron : public Handle_GeomFill_TrihedronLaw {
 
 };
 %extend Handle_GeomFill_DiscreteTrihedron {
-    GeomFill_DiscreteTrihedron* GetObject() {
+    GeomFill_DiscreteTrihedron* _get_reference() {
     return (GeomFill_DiscreteTrihedron*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_DiscreteTrihedron {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6582,8 +6771,17 @@ class Handle_GeomFill_DraftTrihedron : public Handle_GeomFill_TrihedronLaw {
 
 };
 %extend Handle_GeomFill_DraftTrihedron {
-    GeomFill_DraftTrihedron* GetObject() {
+    GeomFill_DraftTrihedron* _get_reference() {
     return (GeomFill_DraftTrihedron*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_DraftTrihedron {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6831,8 +7029,17 @@ class Handle_GeomFill_EvolvedSection : public Handle_GeomFill_SectionLaw {
 
 };
 %extend Handle_GeomFill_EvolvedSection {
-    GeomFill_EvolvedSection* GetObject() {
+    GeomFill_EvolvedSection* _get_reference() {
     return (GeomFill_EvolvedSection*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_EvolvedSection {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -6982,8 +7189,17 @@ class Handle_GeomFill_Fixed : public Handle_GeomFill_TrihedronLaw {
 
 };
 %extend Handle_GeomFill_Fixed {
-    GeomFill_Fixed* GetObject() {
+    GeomFill_Fixed* _get_reference() {
     return (GeomFill_Fixed*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_Fixed {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7145,8 +7361,17 @@ class Handle_GeomFill_Frenet : public Handle_GeomFill_TrihedronLaw {
 
 };
 %extend Handle_GeomFill_Frenet {
-    GeomFill_Frenet* GetObject() {
+    GeomFill_Frenet* _get_reference() {
     return (GeomFill_Frenet*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_Frenet {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7450,8 +7675,17 @@ class Handle_GeomFill_LocationDraft : public Handle_GeomFill_LocationLaw {
 
 };
 %extend Handle_GeomFill_LocationDraft {
-    GeomFill_LocationDraft* GetObject() {
+    GeomFill_LocationDraft* _get_reference() {
     return (GeomFill_LocationDraft*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_LocationDraft {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7767,8 +8001,17 @@ class Handle_GeomFill_LocationGuide : public Handle_GeomFill_LocationLaw {
 
 };
 %extend Handle_GeomFill_LocationGuide {
-    GeomFill_LocationGuide* GetObject() {
+    GeomFill_LocationGuide* _get_reference() {
     return (GeomFill_LocationGuide*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_LocationGuide {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -7948,8 +8191,17 @@ class Handle_GeomFill_SimpleBound : public Handle_GeomFill_Boundary {
 
 };
 %extend Handle_GeomFill_SimpleBound {
-    GeomFill_SimpleBound* GetObject() {
+    GeomFill_SimpleBound* _get_reference() {
     return (GeomFill_SimpleBound*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_SimpleBound {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8101,8 +8353,17 @@ class Handle_GeomFill_TgtOnCoons : public Handle_GeomFill_TgtField {
 
 };
 %extend Handle_GeomFill_TgtOnCoons {
-    GeomFill_TgtOnCoons* GetObject() {
+    GeomFill_TgtOnCoons* _get_reference() {
     return (GeomFill_TgtOnCoons*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_TgtOnCoons {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8162,8 +8423,17 @@ class Handle_GeomFill_TrihedronWithGuide : public Handle_GeomFill_TrihedronLaw {
 
 };
 %extend Handle_GeomFill_TrihedronWithGuide {
-    GeomFill_TrihedronWithGuide* GetObject() {
+    GeomFill_TrihedronWithGuide* _get_reference() {
     return (GeomFill_TrihedronWithGuide*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_TrihedronWithGuide {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8413,8 +8683,17 @@ class Handle_GeomFill_UniformSection : public Handle_GeomFill_SectionLaw {
 
 };
 %extend Handle_GeomFill_UniformSection {
-    GeomFill_UniformSection* GetObject() {
+    GeomFill_UniformSection* _get_reference() {
     return (GeomFill_UniformSection*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_UniformSection {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8590,8 +8869,17 @@ class Handle_GeomFill_GuideTrihedronAC : public Handle_GeomFill_TrihedronWithGui
 
 };
 %extend Handle_GeomFill_GuideTrihedronAC {
-    GeomFill_GuideTrihedronAC* GetObject() {
+    GeomFill_GuideTrihedronAC* _get_reference() {
     return (GeomFill_GuideTrihedronAC*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_GuideTrihedronAC {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -8773,8 +9061,17 @@ class Handle_GeomFill_GuideTrihedronPlan : public Handle_GeomFill_TrihedronWithG
 
 };
 %extend Handle_GeomFill_GuideTrihedronPlan {
-    GeomFill_GuideTrihedronPlan* GetObject() {
+    GeomFill_GuideTrihedronPlan* _get_reference() {
     return (GeomFill_GuideTrihedronPlan*)$self->Access();
+    }
+};
+
+%extend Handle_GeomFill_GuideTrihedronPlan {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 

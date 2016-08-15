@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -644,8 +644,17 @@ class Handle_STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient : public H
 
 };
 %extend Handle_STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient {
-    STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient* GetObject() {
+    STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient* _get_reference() {
     return (STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient*)$self->Access();
+    }
+};
+
+%extend Handle_STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
@@ -705,8 +714,17 @@ class Handle_STEPConstruct_DataMapNodeOfDataMapOfPointTransient : public Handle_
 
 };
 %extend Handle_STEPConstruct_DataMapNodeOfDataMapOfPointTransient {
-    STEPConstruct_DataMapNodeOfDataMapOfPointTransient* GetObject() {
+    STEPConstruct_DataMapNodeOfDataMapOfPointTransient* _get_reference() {
     return (STEPConstruct_DataMapNodeOfDataMapOfPointTransient*)$self->Access();
+    }
+};
+
+%extend Handle_STEPConstruct_DataMapNodeOfDataMapOfPointTransient {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
     }
 };
 
