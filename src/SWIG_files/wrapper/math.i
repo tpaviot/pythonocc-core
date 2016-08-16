@@ -1949,10 +1949,6 @@ class math_GlobOptMin {
 	:rtype: None
 ") Points;
 		void Points (const Standard_Integer theIndex,math_Vector & theSol);
-		%feature("compactdefaultargs") isDone;
-		%feature("autodoc", "	:rtype: bool
-") isDone;
-		Standard_Boolean isDone ();
 };
 
 

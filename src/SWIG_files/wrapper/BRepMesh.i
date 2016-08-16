@@ -795,34 +795,6 @@ class BRepMesh_EdgeChecker {
 };
 
 
-%nodefaultctor BRepMesh_EdgeParameterProvider;
-class BRepMesh_EdgeParameterProvider {
-	public:
-		%feature("compactdefaultargs") BRepMesh_EdgeParameterProvider;
-		%feature("autodoc", "	* Constructor. @param theEdge edge which parameters should be processed. @param theFace face the parametric values are defined for. @param theParameters parameters corresponded to discretization points.
-
-	:param theEdge:
-	:type theEdge: TopoDS_Edge &
-	:param theFace:
-	:type theFace: TopoDS_Face &
-	:param theParameters:
-	:type theParameters: Handle_TColStd_HArray1OfReal &
-	:rtype: None
-") BRepMesh_EdgeParameterProvider;
-		 BRepMesh_EdgeParameterProvider (const TopoDS_Edge & theEdge,const TopoDS_Face & theFace,const Handle_TColStd_HArray1OfReal & theParameters);
-		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	* Returns parameter according to SameParameter flag of the edge. If SameParameter is True returns value from parameters w/o changes, elsewhere scales initial parameter and tries to determine resulting value using projection of the corresponded 3D point on PCurve.
-
-	:param theIndex:
-	:type theIndex: int
-	:param thePoint3d:
-	:type thePoint3d: gp_Pnt
-	:rtype: float
-") Parameter;
-		Standard_Real Parameter (const Standard_Integer theIndex,const gp_Pnt & thePoint3d);
-};
-
-
 %nodefaultctor BRepMesh_FaceChecker;
 class BRepMesh_FaceChecker {
 	public:
@@ -1112,42 +1084,6 @@ enum IntFlag {
 	:rtype: bool
 ") Value;
 		Standard_Boolean Value (const Standard_Integer theIndex,const Handle_BRepAdaptor_HSurface & theSurface,Standard_Real &OutValue,gp_Pnt & thePoint,gp_Pnt2d & theUV);
-		%feature("compactdefaultargs") Normal;
-		%feature("autodoc", "	* @name static API @param theSurface surface the nomal should be found for. @param theParamU U parameter in parametric space of the surface. @param theParamV V parameter in parametric space of the surface. @param[out] thePoint 3d point corresponding to the given parameters. @param[out] theNormal normal vector at the point specified by the parameters. returns False if the normal can not be computed, True elsewhere.
-
-	:param theSurface:
-	:type theSurface: Handle_BRepAdaptor_HSurface &
-	:param theParamU:
-	:type theParamU: float
-	:param theParamV:
-	:type theParamV: float
-	:param thePoint:
-	:type thePoint: gp_Pnt
-	:param theNormal:
-	:type theNormal: gp_Dir
-	:rtype: bool
-") Normal;
-		static Standard_Boolean Normal (const Handle_BRepAdaptor_HSurface & theSurface,const Standard_Real theParamU,const Standard_Real theParamV,gp_Pnt & thePoint,gp_Dir & theNormal);
-		%feature("compactdefaultargs") IntSegSeg;
-		%feature("autodoc", "	* Checks intersection between the two segments. Checks that intersection point lies within ranges of both segments. @param theStartPnt1 start point of first segment. @param theEndPnt1 end point of first segment. @param theStartPnt2 start point of second segment. @param theEndPnt2 end point of second segment. @param isConsiderEndPointTouch if True EndPointTouch status will be returned in case if segments are touching by end points, if False returns NoIntersection flag. @param isConsiderPointOnSegment if True PointOnSegment status will be returned in case if end point of one segment lies onto another one, if False returns NoIntersection flag. @param[out] theIntPnt point of intersection. returns status of intersection check.
-
-	:param theStartPnt1:
-	:type theStartPnt1: gp_XY
-	:param theEndPnt1:
-	:type theEndPnt1: gp_XY
-	:param theStartPnt2:
-	:type theStartPnt2: gp_XY
-	:param theEndPnt2:
-	:type theEndPnt2: gp_XY
-	:param isConsiderEndPointTouch:
-	:type isConsiderEndPointTouch: bool
-	:param isConsiderPointOnSegment:
-	:type isConsiderPointOnSegment: bool
-	:param theIntPnt:
-	:type theIntPnt: gp_Pnt2d
-	:rtype: IntFlag
-") IntSegSeg;
-		static IntFlag IntSegSeg (const gp_XY & theStartPnt1,const gp_XY & theEndPnt1,const gp_XY & theStartPnt2,const gp_XY & theEndPnt2,const Standard_Boolean isConsiderEndPointTouch,const Standard_Boolean isConsiderPointOnSegment,gp_Pnt2d & theIntPnt);
 };
 
 
@@ -2094,92 +2030,6 @@ class BRepMesh_Edge : public BRepMesh_OrientedEdge {
                 return False
         }
         };
-
-
-%nodefaultctor BRepMesh_EdgeTessellationExtractor;
-class BRepMesh_EdgeTessellationExtractor : public BRepMesh_IEdgeTool {
-	public:
-		%feature("compactdefaultargs") BRepMesh_EdgeTessellationExtractor;
-		%feature("autodoc", "	* Constructor. Initializes extractor.
-
-	:param theEdge:
-	:type theEdge: TopoDS_Edge &
-	:param thePCurve:
-	:type thePCurve: Handle_Geom2d_Curve &
-	:param theFace:
-	:type theFace: TopoDS_Face &
-	:param theTriangulation:
-	:type theTriangulation: Handle_Poly_Triangulation &
-	:param thePolygon:
-	:type thePolygon: Handle_Poly_PolygonOnTriangulation &
-	:param theLocation:
-	:type theLocation: TopLoc_Location &
-	:rtype: None
-") BRepMesh_EdgeTessellationExtractor;
-		 BRepMesh_EdgeTessellationExtractor (const TopoDS_Edge & theEdge,const Handle_Geom2d_Curve & thePCurve,const TopoDS_Face & theFace,const Handle_Poly_Triangulation & theTriangulation,const Handle_Poly_PolygonOnTriangulation & thePolygon,const TopLoc_Location & theLocation);
-		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* Returns number of dicretization points.
-
-	:rtype: int
-") NbPoints;
-		Standard_Integer NbPoints ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns parameters of solution with the given index. @param theIndex index of tessellation point. @param theParameter parameters on PCurve corresponded to the solution. @param thePoint tessellation point. @param theUV coordinates of tessellation point in parametric space of face.
-
-	:param theIndex:
-	:type theIndex: int
-	:param theParameter:
-	:type theParameter: float &
-	:param thePoint:
-	:type thePoint: gp_Pnt
-	:param theUV:
-	:type theUV: gp_Pnt2d
-	:rtype: None
-") Value;
-		void Value (const Standard_Integer theIndex,Standard_Real &OutValue,gp_Pnt & thePoint,gp_Pnt2d & theUV);
-};
-
-
-%nodefaultctor BRepMesh_EdgeTessellator;
-class BRepMesh_EdgeTessellator : public BRepMesh_IEdgeTool {
-	public:
-		%feature("compactdefaultargs") BRepMesh_EdgeTessellator;
-		%feature("autodoc", "	* Constructor. Automatically performs tessellation of the edge according to the given parameters.
-
-	:param theEdge:
-	:type theEdge: TopoDS_Edge &
-	:param theFaceAttribute:
-	:type theFaceAttribute: Handle_BRepMesh_FaceAttribute &
-	:param theMapOfSharedFaces:
-	:type theMapOfSharedFaces: TopTools_IndexedDataMapOfShapeListOfShape &
-	:param theLinDeflection:
-	:type theLinDeflection: float
-	:param theAngDeflection:
-	:type theAngDeflection: float
-	:rtype: None
-") BRepMesh_EdgeTessellator;
-		 BRepMesh_EdgeTessellator (const TopoDS_Edge & theEdge,const Handle_BRepMesh_FaceAttribute & theFaceAttribute,const TopTools_IndexedDataMapOfShapeListOfShape & theMapOfSharedFaces,const Standard_Real theLinDeflection,const Standard_Real theAngDeflection);
-		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* Returns number of dicretization points.
-
-	:rtype: int
-") NbPoints;
-		Standard_Integer NbPoints ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns parameters of solution with the given index. @param theIndex index of tessellation point. @param theParameter parameters on PCurve corresponded to the solution. @param thePoint tessellation point. @param theUV coordinates of tessellation point in parametric space of face.
-
-	:param theIndex:
-	:type theIndex: int
-	:param theParameter:
-	:type theParameter: float &
-	:param thePoint:
-	:type thePoint: gp_Pnt
-	:param theUV:
-	:type theUV: gp_Pnt2d
-	:rtype: None
-") Value;
-		void Value (const Standard_Integer theIndex,Standard_Real &OutValue,gp_Pnt & thePoint,gp_Pnt2d & theUV);
-};
 
 
 %nodefaultctor BRepMesh_IncrementalMesh;
