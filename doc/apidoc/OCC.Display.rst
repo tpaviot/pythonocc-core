@@ -15,8 +15,8 @@ Submodules
 
    OCC.Display.OCCViewer
    OCC.Display.SimpleGui
-   OCC.Display.pyqt4Display
-   OCC.Display.pysideDisplay
+   OCC.Display.backend
+   OCC.Display.qtDisplay
    OCC.Display.wxDisplay
 
 Module contents
