@@ -2,28 +2,64 @@ sudo: false
 
 language: cpp
 
-os: 
-  - osx
-  - linux
+#os: 
+#  - osx
+#  - linux
 
-compiler:
-  - gcc
-  - clang
+#compiler: REMOVE comments to test both gcc and clang compilers
+  #- gcc
+  #- clang
+# Install packages for cross-compilation to 32 Bit
+addons:
+  apt:
+    packages:
+    - gcc-multilib
+    - g++-multilib
+    - lib32z1
 
-env:
-  matrix:
-    - python_version=2.7
-    - python_version=3.5m
+matrix:
+  include:
+    #- env: PYTHON="2.7" CONDA_PY=27 ARCH="x86"
+    #  os: linux
+    - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
+      os: linux
+    - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
+      os: osx
+    #- env: PYTHON="3.4" CONDA_PY=34 ARCH="x86"
+    #  os: linux
+    - env: PYTHON="3.4" CONDA_PY=34 ARCH="x86_64"
+      os: linux
+    - env: PYTHON="3.4" CONDA_PY=34 ARCH="x86_64"
+      os: osx
+    #- env: PYTHON="3.5" CONDA_PY=35 ARCH="x86"
+    #  os: linux
+    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
+      os: linux
+    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
+      os: osx
 
-install:
-  # We do this conditionally because it saves us some downloading if the
-  # version is the same.
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-      wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
-    else
-      wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
+# Use miniconda to install binary versions of numpy etc. from continuum
+# analytic's repository. Follows an approach described by Dan Blanchard:
+# https://gist.github.com/dan-blanchard/7045057
+before_install:
+  - if [ ${PYTHON:0:1} == "2" ]; then
+      if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-$ARCH.sh -O miniconda.sh;
+      else
+      wget http://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-$ARCH.sh -O miniconda.sh;
+      fi;
+      else
+      if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-$ARCH.sh -O miniconda.sh;
+      else
+      wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-$ARCH.sh -O miniconda.sh;
+      fi;
     fi
-  - bash miniconda.sh -b -p $HOME/miniconda
+  - chmod +x miniconda.sh
+  # When we are installing the 32 Bit conda on a 64 Bit system, the miniconda
+  # installer will ask for a "yes" despite the -b flag, so we pipe in a yes
+  - yes | ./miniconda.sh -b -p $HOME/miniconda
+  #- bash miniconda.sh -b -p -f $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$HOME/miniconda/lib:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
@@ -37,11 +73,6 @@ install:
 
 
 script:
-  - if [[ "$python_version" == "2.7" ]]; then
-      export CONDA_PY=27;
-    else
-      export CONDA_PY=35;
-    fi
   - conda build ci/conda
 
 branches:
