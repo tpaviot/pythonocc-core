@@ -1,3 +1,14 @@
+=============================
+Version 0.17 - Septembre 2016
+
+This release requires oce-0.17.0 or oce-0.17.1 or oce-0.17.2. Prefer the latter.
+
+* port to oce-0.17.x
+
+* memory management fixes
+
+* New examples: AIS_ColoredShape, 2d_fillet, inertia properties, edge_color, 
+
 =========================
 Version 0.16.5 - May 2016
 

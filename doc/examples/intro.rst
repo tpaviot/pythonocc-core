@@ -15,7 +15,7 @@ From a python prompt, type the following::
 
   In [1]: import OCC
   In [2]: OCC.VERSION
-  Out[2]: '0.16.0'
+  Out[2]: '0.17'
 
 About this Document
 -------------------
@@ -28,4 +28,3 @@ and quickly become as autonomous as possible to dive into further details.
 
 Each subtopic is related to a python example that can be found in the /examples
 subfolder.
-

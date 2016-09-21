@@ -1,11 +1,12 @@
 ﻿package:
   name: pythonocc-core
-  version: {{ environ.get('GIT_DESCRIBE_TAG', '0.17.dev') }}
+  version: "0.17"
 
 source:
   path: ../..
   patches:
     - fix_graphicshr_location.patch [win]
+    - fix_GeomFill_BSplineCurves_Init_method.patch
 
 build:
 
@@ -25,7 +26,7 @@ requirements:
   build:
     - patch             [win]
     - python
-    - oce 0.17.*
+    - oce ==0.17.2
     - cmake
     - ninja             [win]
     - swig
@@ -34,7 +35,7 @@ requirements:
     - pyqt
     - wxpython          [py27]
     - pyside            [py27]
-    - oce 0.17.*
+    - oce ==0.17.2
     - python
 
 

@@ -22,7 +22,7 @@ set(PYTHONOCC_VERSION_MAJOR 0)
 set(PYTHONOCC_VERSION_MINOR 17)
 set(PYTHONOCC_VERSION_PATCH)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-set(PYTHONOCC_VERSION_DEVEL -dev)
+set(PYTHONOCC_VERSION_DEVEL)
 
 cmake_minimum_required(VERSION 2.6)
 
@@ -308,8 +308,6 @@ install(FILES ${BUILD_DIR}/Visualization.py DESTINATION ${PYTHONOCC_INSTALL_DIRE
 install(FILES ${BUILD_DIR}/_Visualization.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 endif(PYTHONOCC_WRAP_VISU)
 
-# install GC
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/GarbageCollector.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 # install addons
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/addons/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 # install LICENSE file
