@@ -20,18 +20,6 @@ environment:
       CONDA_PY: "27"
       CONDA_NPY: "18"
 
-    - PYTHON: "C:\\Python34_32"
-      PYTHON_VERSION: "3.4"
-      PYTHON_ARCH: "32"
-      CONDA_PY: "34"
-      CONDA_NPY: "18"
-
-    - PYTHON: "C:\\Python34_64"
-      PYTHON_VERSION: "3.4"
-      PYTHON_ARCH: "64"
-      CONDA_PY: "34"
-      CONDA_NPY: "18"
-
     - PYTHON: "C:\\Python35_32"
       PYTHON_VERSION: "3.5"
       PYTHON_ARCH: "32"
@@ -65,11 +53,4 @@ test_script:
   # doesn't really work.
   #
   - "%CMD_IN_ENV% conda build .\\ci\\conda --quiet"
-  # Move the conda package into the current directory, to register it
-  # as an "artifact" for Appveyor. cmd.exe does't have good globbing, so
-  # we'll use a simple python script.
-  - python ci\move-conda-package.py
 
-artifacts:
-  # Archive the generated conda package in the ci.appveyor.com build report.
-  - path: '*.tar.bz2'
