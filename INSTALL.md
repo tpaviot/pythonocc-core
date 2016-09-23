@@ -22,9 +22,9 @@ can compile/use it :
 - the python programming language (http://www.python.org). Python 2.7 and 3.x
  are officially supported,
 
-- OpenCascade Community Edition 0.16 (https://github.com/tpaviot/oce),
+- OpenCascade Community Edition 0.17.x (https://github.com/tpaviot/oce),
 
-- SWIG 2.0.10 or higher (http://www.swig.org),
+- SWIG 3.0.9 or higher (http://www.swig.org),
 
 - CMake 2.8 or higher (http://www.cmake.org).
 
