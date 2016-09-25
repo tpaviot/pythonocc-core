@@ -212,7 +212,7 @@ def load_backend(backend_str=None):
 
     if not HAVE_BACKEND:
         raise ImportError("No compliant GUI library could be imported.\n"
-                          "Either PyQt5, PyQt4, PySide, or wxPython"
+                          "Either PyQt5, PyQt4, PySide, or wxPython "
                           "is required")
 
 
