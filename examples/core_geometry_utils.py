@@ -19,7 +19,7 @@ from OCC.BRepBndLib import brepbndlib_Add
 from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                 BRepBuilderAPI_MakeVertex,
                                 BRepBuilderAPI_MakeWire,
-                                BRepBuilderAPI_MakeFace)
+                                BRepBuilderAPI_MakeFace, BRepBuilderAPI_MakeEdge2d)
 from OCC.BRepFill import BRepFill_Filling
 from OCC.Bnd import Bnd_Box
 from OCC.GeomAbs import GeomAbs_C0
@@ -33,6 +33,11 @@ def make_edge(*args):
     result = edge.Edge()
     return result
 
+def make_edge2d(*args):
+    edge = BRepBuilderAPI_MakeEdge2d(*args)
+    result = edge.Edge()
+    edge.Delete()
+    return result
 
 def make_vertex(*args):
     vert = BRepBuilderAPI_MakeVertex(*args)
