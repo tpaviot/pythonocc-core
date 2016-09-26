@@ -95,6 +95,7 @@ class Display3d {
              bool ffpEnabled=true,
              bool buffersNoSwapEnabled=false,
              bool glslWarningsEnabled=false);
+
 	%feature("autodoc", "1");
 	Handle_V3d_View& GetView();
 	%feature("autodoc", "1");
@@ -103,5 +104,14 @@ class Display3d {
 	Handle_AIS_InteractiveContext GetContext();
 	%feature("autodoc", "1");
 	void Test();
+
+	//%feature("autodoc", "1");
+    void ChangeRenderingParams(int RenderingMethod,
+                               int RaytracingDepth,
+                               bool IsShadowEnabled,
+                               bool IsReflectionEnabled,
+                               bool IsAntialiasingEnabled,
+                               bool IsTransparentShadowEnabled);
+
 };
 
