@@ -23,6 +23,8 @@ import logging
 import os
 import sys
 
+from OCC.TopoDS import TopoDS_Shape
+
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
@@ -93,8 +95,14 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
 
 
 class qtViewer3d(qtBaseViewer):
+
+    sig_topods_selected = QtCore.pyqtSignal(list)
+
     def __init__(self, *kargs):
         qtBaseViewer.__init__(self, *kargs)
+
+        self.setObjectName("qt_viewer_3d")
+
         self._drawbox = False
         self._zoom_area = False
         self._select_area = False
@@ -257,6 +265,10 @@ class qtViewer3d(qtBaseViewer):
                 else:
                     # single select otherwise
                     self._display.Select(pt.x, pt.y)
+
+                    if self._display.selected_shapes is not None:
+                        self.sig_topods_selected.emit(self._display.selected_shapes)
+
 
         elif event.button() == QtCore.Qt.RightButton:
             if self._zoom_area:
