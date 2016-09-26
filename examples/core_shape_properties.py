@@ -38,7 +38,7 @@ def cube_inertia_properties():
     matrix_of_inertia = props.MatrixOfInertia()
     # Display inertia properties
     print("Cube mass = %s" % mass)
-    cog_x, cog_y, cog_z = cog.Coord().X(), cog.Coord().Y(), cog.Coord().Z()
+    cog_x, cog_y, cog_z = cog.Coord()
     print("Center of mass: x = %f;y = %f;z = %f;" % (cog_x, cog_y, cog_z))
 
 

@@ -221,9 +221,9 @@ class TestWrapperFeatures(unittest.TestCase):
         """ Test: Standard_Integer & by reference transformator """
         p = gp_Pnt(1, 2, 3.2)
         p_coord = p.Coord()
-        self.assertEqual(p_coord.X(), 1.)
-        self.assertEqual(p_coord.Y(), 2.)
-        self.assertEqual(p_coord.Z(), 3.2)
+        self.assertEqual(p_coord[0], 1.)
+        self.assertEqual(p_coord[1], 2.)
+        self.assertEqual(p_coord[2], 3.2)
 
     # TODO : add a testStandardRealByRefPassedReturned
     def test_standard_integer_by_ref_passed_returned(self):
@@ -310,9 +310,9 @@ class TestWrapperFeatures(unittest.TestCase):
         # Create the first point
         point1 = MyPoint(1., 2., 3.)
         point1_coord = point1.Coord()
-        self.assertEqual(point1_coord.X(), 1.)
-        self.assertEqual(point1_coord.Y(), 2.)
-        self.assertEqual(point1_coord.Z(), 3.)
+        self.assertEqual(point1_coord[0], 1.)
+        self.assertEqual(point1_coord[1], 2.)
+        self.assertEqual(point1_coord[2], 3.)
         self.assertEqual(point1.get_x(), 4.)
         # Create the second point
         point2 = MyPoint(2., 2., 3.)
