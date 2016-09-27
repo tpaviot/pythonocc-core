@@ -33,7 +33,7 @@ def generate_points(spread, n):
         n_ = n / 100
         warnings.warn("Numpy could not be imported... this example will run very SLOW"
                       "drawing {} rather than {} lines".format(n_, n))
-        for i in xrange(n_):
+        for i in range(n_):
             a = random.uniform(-spread / 2.0, spread / 2.0)
             b = random.uniform(-spread / 2.0, spread / 2.0)
             c = random.uniform(-spread / 2.0, spread / 2.0)
