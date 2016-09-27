@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2013 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2009-2016 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -26,7 +26,8 @@ from OCC.Standard import Standard_Transient, Handle_Standard_Transient
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                 BRepBuilderAPI_MakeEdge)
-from OCC.gp import gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir
+from OCC.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir,
+                    gp_Quaternion, gp_QuaternionSLerp)
 from OCC.GC import GC_MakeSegment
 from OCC.STEPControl import STEPControl_Writer
 from OCC.Interface import Interface_Static_SetCVal, Interface_Static_CVal
@@ -148,6 +149,34 @@ class TestWrapperFeatures(unittest.TestCase):
         # substracting two gp_Vec
         v6 = gp_Vec(1, 2, 3) - gp_Vec(6, 5, 4)
         self.assertEqual((v6.X(), v6.Y(), v6.Z()), (-5, -3, -1))
+
+
+    def test_gp_Quaternion(self):
+        '''
+        Test Interpolate method of qp_QuaternionSLerp.
+        This method takes a by ref parameter q.
+        '''
+        vX = gp_Vec(12, 0, 0)
+        vY = gp_Vec(0, 12, 0)
+        v45 = (gp_Vec(1, 1, 1).Normalized() * 12)
+        q = gp_Quaternion()
+        q1 = gp_Quaternion(vX, vX)
+        q2 = gp_Quaternion(vX, vY)
+        interp = gp_QuaternionSLerp(q1, q2)
+        interp.Init(q1, q2)
+        for i in range(10):
+            i__ = i / 10.
+            interp.Interpolate(i__, q)
+            if i == 0:
+                self.assertEqual(q.X(), 0.)
+                self.assertEqual(q.Y(), 0.)
+                self.assertEqual(q.Z(), 0.)
+                self.assertEqual(q.W(), 1.)
+            else:
+                self.assertEqual(q.X(), 0.)
+                self.assertEqual(q.Y(), 0.)
+                assert q.Z() > 0.
+                assert q.W() < 1.
 
 
     def test_traverse_box_topology(self):
