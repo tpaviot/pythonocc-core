@@ -63,11 +63,15 @@ aProgram.AttachShader(Graphic3d_ShaderObject.CreateFromFile(Graphic3d_TOS_VERTEX
 
 # attach the shader to the AIS_Shape representation that renders the sphere
 aspect = anIO.Attributes().GetObject().ShadingAspect().GetObject().aspect().GetObject()
-# aspect.SetShaderProgram(aspect.ShaderProgram())
+aspect.SetShaderProgram(aspect.ShaderProgram())
 
 # type(aspect.ShaderProgram())
 # Out[76]: SwigPyObject
 
+
+dd = display.Context.DefaultDrawer().GetObject()
+dd.SetFaceBoundaryDraw(True)
+dd.SetDeviationAngle(0.001)
 
 display.Context.Redisplay(anIO.GetHandle())
 display.FitAll()
