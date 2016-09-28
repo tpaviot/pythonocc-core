@@ -33,11 +33,9 @@ mkdir -p $PREFIX/src
 mkdir -p $PREFIX/src/pythonocc-core
 cp -r src $PREFIX/src/pythonocc-core
 
-# fix python and freetype loader path in all modules
+# fix rpaths
 if [ `uname` == Darwin ]; then
     for lib in `ls $SP_DIR/OCC/_*.so`; do
-      install_name_tool -change $PY_LIB @rpath/$PY_LIB $lib
-      install_name_tool -change libfreetype.6.dylib @rpath/libfreetype.6.dylib $lib
       install_name_tool -rpath $PREFIX/lib @loader_path/../../../ $lib
     done
 fi
