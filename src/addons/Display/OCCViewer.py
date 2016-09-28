@@ -131,7 +131,7 @@ class Viewer3d(OCC.Visualization.Display3d):
         self.View.ZFitAll()
         self.View.FitAll()
 
-    def Create(self, create_default_lights=True):
+    def Create(self, create_default_lights=True, draw_face_boundaries=True, phong_shading=True):
         self.Init(self._window_handle)
         self.Context_handle = self.GetContext()
         self.Viewer_handle = self.GetViewer()
@@ -142,12 +142,27 @@ class Viewer3d(OCC.Visualization.Display3d):
             self.Viewer.SetDefaultLights()
             self.Viewer.SetLightOn()
         self.View = self.View_handle.GetObject()
-        self._inited = True
-        # some preferences;
-        # the selected elements gray by default
-        #self.Context.SelectionColor(Quantity_NOC_ORANGE)
+
+        self.default_drawer = self.Context.DefaultDrawer().GetObject()
+
+        # draw black contour edges, like Catia
+        if draw_face_boundaries:
+            self.default_drawer.SetFaceBoundaryDraw(True)
+
+        # turn up tesselation defaults, which are too conversative...
+        chord_dev = self.default_drawer.MaximalChordialDeviation() / 10.
+        self.default_drawer.SetMaximalChordialDeviation(chord_dev)
+
+        if phong_shading:
+            # gouraud shading by defauly, prefer phong instead
+            self.View.SetShadingModel(OCC.V3d.V3d_PHONG)
+
+        # the selected elements gray by default, better to use orange...
+        # self.Context.SelectionColor(Quantity_NOC_ORANGE)
+
         # nessecary for text rendering
         self._struc_mgr = self.Context.MainPrsMgr().GetObject().StructureManager()
+        self._inited = True
 
     def SetDoubleBuffer(self, on_or_off):
         """enables double buffering when shapes are moved in the viewer
