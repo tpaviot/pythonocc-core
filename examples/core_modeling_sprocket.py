@@ -212,7 +212,7 @@ def round_tooth(wedge):
     round_circle_2d_1 = round_circle.ThisSolution(1)
     round_circle_2d_2 = round_circle.ThisSolution(2)
 
-    if (round_circle_2d_1.Position().Location().Coord().Y() >= 0):
+    if (round_circle_2d_1.Position().Location().Coord()[1] >= 0):
         round_circle_2d = round_circle_2d_1
     else:
         round_circle_2d = round_circle_2d_2
