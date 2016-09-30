@@ -22,10 +22,12 @@
 
 from math import pi as M_PI, sin, cos, pow, atan
 
-from OCC.gp import *
+from OCC.gp import gp_Pnt2d, gp_Ax2d, gp_Dir2d, gp_Circ2d, gp_Origin2d, gp_DX2d, \
+    gp_Ax2, gp_OX2d, gp_Lin2d, gp_Trsf, gp_XOY, \
+    gp_Pnt, gp_Vec, gp_Ax3, gp_Pln, gp_Origin, gp_DX, gp_DY, gp_DZ, gp_OZ
 from OCC.GCE2d import GCE2d_MakeArcOfCircle, GCE2d_MakeCircle, GCE2d_MakeLine
 from OCC.Geom2dAPI import Geom2dAPI_InterCurveCurve
-from OCC.Geom2d import Geom2d_TrimmedCurve, Handle_Geom2d_TrimmedCurve
+from OCC.Geom2d import Handle_Geom2d_TrimmedCurve
 from OCC.GeomAPI import geomapi_To3d
 from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                 BRepBuilderAPI_MakeWire,
@@ -74,16 +76,12 @@ hole_radius = 8.5 / 2.
 
 
 class Proxy(object):
-    __slots__ = ['obj', 'proxyType']
-
     def __init__(self, obj):
-        self.obj = obj
-        self.proxyType = obj.GetObject()
+        self.obj = obj.GetObject()
 
     def __getattribute__(self, attr):
         obj = object.__getattribute__(self, 'obj')
-        proxyType = object.__getattribute__(self, 'proxyType')
-        return getattr(proxyType, attr).__get__(obj, proxyType)
+        return getattr(obj, attr).__get__(obj)
 
 
 def build_tooth():
@@ -92,10 +90,9 @@ def build_tooth():
     trimmed_base = GCE2d_MakeArcOfCircle(base_circle,
                                          M_PI - (roller_contact_angle / 2.),
                                          M_PI).Value()
-    proxy_trimmed_base = Proxy(trimmed_base)  # just a trick
-    proxy_trimmed_base.Reverse()
-    p0 = proxy_trimmed_base.StartPoint()
-    p1 = proxy_trimmed_base.EndPoint()
+    Proxy(trimmed_base).Reverse()  # just a trick
+    p0 = Proxy(trimmed_base).StartPoint()
+    p1 = Proxy(trimmed_base).EndPoint()
 
     # Determine the center of the profile circle
     x_distance = cos(roller_contact_angle / 2.) * (profile_radius + tooth_radius)
@@ -126,7 +123,6 @@ def build_tooth():
 
     # Trim the profile circle and mirror
     trimmed_profile = GCE2d_MakeArcOfCircle(profile_circle, p1, p2).Value()
-    proxy_trimmed_profile = Proxy(trimmed_profile)
 
     # Calculate the outermost point
     p3 = gp_Pnt2d(cos(tooth_angle / 2.) * top_radius,
@@ -134,31 +130,26 @@ def build_tooth():
 
     # and use it to create the third arc
     trimmed_outer = GCE2d_MakeArcOfCircle(outer_circle, p2, p3).Value()
-    proxy_trimmed_outer = Proxy(trimmed_outer)
 
     # Mirror and reverse the three arcs
     mirror_axis = gp_Ax2d(gp_Origin2d(), gp_DX2d().Rotated(tooth_angle / 2.))
 
-    mirror_base = Handle_Geom2d_TrimmedCurve.DownCast(proxy_trimmed_base.Copy())
-    mirror_profile = Handle_Geom2d_TrimmedCurve.DownCast(proxy_trimmed_profile.Copy())
-    mirror_outer = Handle_Geom2d_TrimmedCurve.DownCast(proxy_trimmed_outer.Copy())
+    mirror_base = Handle_Geom2d_TrimmedCurve.DownCast(Proxy(trimmed_base).Copy())
+    mirror_profile = Handle_Geom2d_TrimmedCurve.DownCast(Proxy(trimmed_profile).Copy())
+    mirror_outer = Handle_Geom2d_TrimmedCurve.DownCast(Proxy(trimmed_outer).Copy())
 
-    proxy_mirror_base = Proxy(mirror_base)
-    proxy_mirror_profile = Proxy(mirror_profile)
-    proxy_mirror_outer = Proxy(mirror_outer)
+    Proxy(mirror_base).Mirror(mirror_axis)
+    Proxy(mirror_profile).Mirror(mirror_axis)
+    Proxy(mirror_outer).Mirror(mirror_axis)
 
-    proxy_mirror_base.Mirror(mirror_axis)
-    proxy_mirror_profile.Mirror(mirror_axis)
-    proxy_mirror_outer.Mirror(mirror_axis)
-
-    proxy_mirror_base.Reverse()
-    proxy_mirror_profile.Reverse()
-    proxy_mirror_outer.Reverse()
+    Proxy(mirror_base).Reverse()
+    Proxy(mirror_profile).Reverse()
+    Proxy(mirror_outer).Reverse()
 
     # Replace the two outer arcs with a single one
-    outer_start = proxy_trimmed_outer.StartPoint()
-    outer_mid = proxy_trimmed_outer.EndPoint()
-    outer_end = proxy_mirror_outer.EndPoint()
+    outer_start = Proxy(trimmed_outer).StartPoint()
+    outer_mid = Proxy(trimmed_outer).EndPoint()
+    outer_end = Proxy(mirror_outer).EndPoint()
 
     outer_arc = GCE2d_MakeArcOfCircle(outer_start, outer_mid, outer_end).Value()
 
@@ -167,8 +158,7 @@ def build_tooth():
                              top_radius - roller_diameter)
     inner_start = gp_Pnt2d(top_radius - roller_diameter, 0)
     inner_arc = GCE2d_MakeArcOfCircle(inner_circle, inner_start, tooth_angle).Value()
-    proxy_inner_arc = Proxy(inner_arc)
-    proxy_inner_arc.Reverse()
+    Proxy(inner_arc).Reverse()
 
     # Convert the 2D arcs and two extra lines to 3D edges
     plane = gp_Pln(gp_Origin(), gp_DZ())
@@ -178,14 +168,14 @@ def build_tooth():
     arc4 = BRepBuilderAPI_MakeEdge(geomapi_To3d(mirror_profile, plane)).Edge()
     arc5 = BRepBuilderAPI_MakeEdge(geomapi_To3d(mirror_base, plane)).Edge()
 
-    p4 = proxy_mirror_base.EndPoint()
-    p5 = proxy_inner_arc.StartPoint()
+    p4 = Proxy(mirror_base).EndPoint()
+    p5 = Proxy(inner_arc).StartPoint()
 
     lin1 = BRepBuilderAPI_MakeEdge(gp_Pnt(p4.X(), p4.Y(), 0),
                                    gp_Pnt(p5.X(), p5.Y(), 0)).Edge()
     arc6 = BRepBuilderAPI_MakeEdge(geomapi_To3d(inner_arc, plane)).Edge()
 
-    p6 = proxy_inner_arc.EndPoint()
+    p6 = Proxy(inner_arc).EndPoint()
     lin2 = BRepBuilderAPI_MakeEdge(gp_Pnt(p6.X(), p6.Y(), 0),
                                    gp_Pnt(p0.X(), p0.Y(), 0)).Edge()
 
@@ -222,7 +212,7 @@ def round_tooth(wedge):
     round_circle_2d_1 = round_circle.ThisSolution(1)
     round_circle_2d_2 = round_circle.ThisSolution(2)
 
-    if (round_circle_2d_1.Position().Location().Coord()[1] >= 0):
+    if (round_circle_2d_1.Position().Location().Coord().Y() >= 0):
         round_circle_2d = round_circle_2d_1
     else:
         round_circle_2d = round_circle_2d_2
@@ -339,8 +329,7 @@ def cut_out(base):
 
     geom_outer = GCE2d_MakeCircle(outer).Value()
     geom_inner = GCE2d_MakeCircle(inner).Value()
-    proxy_geom_inner = Proxy(geom_inner)
-    proxy_geom_inner.Reverse()
+    Proxy(geom_inner).Reverse()
 
     base_angle = (2. * M_PI) / mounting_hole_count
     hole_angle = atan(hole_radius / mounting_radius)
@@ -440,4 +429,4 @@ sprocket_model = build_sprocket()
 display, start_display, add_menu, add_function_to_menu = init_display()
 display.DisplayShape(sprocket_model, update=True)
 display.FitAll()
-start_display() 
+start_display()
