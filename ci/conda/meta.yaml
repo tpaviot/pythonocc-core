@@ -1,6 +1,6 @@
 ﻿package:
   name: pythonocc-core
-  version: "0.17"
+  version: "0.17.1dev"
 
 source:
   path: ../..
