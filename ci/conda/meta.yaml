@@ -38,7 +38,9 @@ requirements:
     - oce ==0.17.2
     - python
 
-
+test:
+  requires:
+    - scipy
 about:
   home: https://github.com/tpaviot/pythonocc-core
   license: LGPL
