@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2014 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2009-2016 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -21,5 +21,6 @@ from OCC.Display.WebGl import threejs_renderer
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeTorus
 
 torus_shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
-my_renderer = threejs_renderer.ThreejsRenderer(background_color="#123345")
+my_renderer = threejs_renderer.ThreejsRenderer()
 my_renderer.DisplayShape(torus_shp)
+my_renderer.render()

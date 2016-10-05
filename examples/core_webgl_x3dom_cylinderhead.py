@@ -30,3 +30,4 @@ breptools_Read(cylinder_head, './models/cylinder_head.brep', builder)
 # render cylinder head in x3dom
 my_renderer = x3dom_renderer.X3DomRenderer()
 my_renderer.DisplayShape(cylinder_head)
+my_renderer.render()
