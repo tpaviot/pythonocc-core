@@ -1,5 +1,5 @@
 /*
-##Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -61,6 +61,8 @@ class Tesselator {
                float aScaleV,
                float aRotationAngle);
     Tesselator(TopoDS_Shape aShape);
+    %feature("kwargs") Compute;
+    void Compute(bool uv_coords=true, bool compute_edges=false, float mesh_quality=1.0);
     void GetVertex(int ivert, float& x, float& y, float& z);
     void GetNormal(int inorm, float& x, float& y, float& z);
     void GetTriangleIndex(int triangleIdx, int& v1, int& v2, int& v3);
@@ -72,9 +74,13 @@ class Tesselator {
 	int ObjGetEdgeCount();
 	int ObjEdgeGetVertexCount(int iEdge);
     std::string ExportShapeToX3DIndexedFaceSet();
-	void ExportShapeToThreejs(char *filename);
+	void ExportShapeToThreejs(char *shape_function_name, char *filename);
+	std::string ExportShapeToThreejsString(char *shape_function_name);
+	std::string ExportShapeToThreejsJSONString(char *shape_function_name);
+	std::string ExportShapeToThreejsBufferGeometryString(char *shape_function_name);
+	%feature("kwargs") ExportShapeToX3D;
 	void ExportShapeToX3D(char *filename, int diffR=1, int diffG=0, int diffB=0);
-	void SetDeviation(float aDeviation);
+	std::string ExportToSharedVertices();
 };
 
 class Display3d {

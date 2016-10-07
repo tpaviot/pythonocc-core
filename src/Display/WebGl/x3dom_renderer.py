@@ -15,7 +15,7 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function
+from __future__ import print_function, absolute_import
 
 import os
 import tempfile
@@ -24,7 +24,7 @@ from OCC.Visualization import Tesselator
 from OCC.gp import gp_Vec
 from OCC import VERSION as OCC_VERSION
 
-from simple_server import start_server
+from .simple_server import start_server
 
 HEADER = """
 <head>
@@ -313,82 +313,10 @@ class X3DomRenderer(object):
         fp.write("</html>\n")
         fp.close()
 
-def translate_topods_from_vector(brep_or_iterable, vec, copy=False):
-    '''
-    translate a brep over a vector
-    @param brep:    the Topo_DS to translate
-    @param vec:     the vector defining the translation
-    @param copy:    copies to brep if True
-    '''
-    from OCC.gp import gp_Trsf
-    from OCC.BRepBuilderAPI import BRepBuilderAPI_Transform
-    trns = gp_Trsf()
-    trns.SetTranslation(vec)
-    brep_trns = BRepBuilderAPI_Transform(brep_or_iterable, trns, copy)
-    shp = brep_trns.Shape()
-    return shp
-
-def rotate_shape_3_axis(shape, rx, ry, rz, unite="deg"):
-    """ Rotate a shape around (O,x), (O,y) and (O,z).
-
-    @param rx_degree : rotation around (O,x)
-    @param ry_degree : rotation around (O,y)
-    @param rz_degree : rotation around (O,z)
-
-    @return : the rotated shape.
-    """
-    from math import radians
-    from OCC.gp import gp_OX, gp_OY, gp_OZ
-    from OCC.gp import gp_Trsf
-    from OCC.BRepBuilderAPI import BRepBuilderAPI_Transform
-
-    if unite == "deg":  # convert angle to radians
-        rx = radians(rx)
-        ry = radians(ry)
-        rz = radians(rz)
-    alpha = gp_Trsf()
-    alpha.SetRotation(gp_OX(), rx)
-    beta = gp_Trsf()
-    beta.SetRotation(gp_OY(), ry)
-    gamma = gp_Trsf()
-    gamma.SetRotation(gp_OZ(), rz)
-    brep_trns = BRepBuilderAPI_Transform(shape, alpha*beta*gamma, False)
-    shp = brep_trns.Shape()
-    return shp
 
 if __name__ == "__main__":
-    from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeSphere
-    # the simpliest example
-    from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
-    #box = BRepPrimAPI_MakeBox(1., 2., 3.).Shape()
-    #shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
-    #my_ren = X3DomRenderer()
-    #my_ren.DisplayShape(box, export_edges=True)
-    #my_ren.DisplayShape(shp, export_edges=True)
-    #my_ren.render()
-    # box_shp = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
-    # rotated_box = rotate_shape_3_axis(box_shp, 45,0,0,'deg')
-    # torus_shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
-    # sphere_shp = BRepPrimAPI_MakeSphere(2).Shape()
+    from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+    box = BRepPrimAPI_MakeBox(1., 2., 3.).Shape()
     my_ren = X3DomRenderer()
-    # my_ren.DisplayShape(rotated_box, shape_color=(0.8,0.1,0.1), export_edges=True)
-    # my_ren.DisplayShape(torus_shp, export_edges=False)
-    # my_ren.DisplayShape(translate_topods_from_vector(sphere_shp, gp_Vec(1,0,0)), export_edges=False)
-    # my_ren.render()
-    # a cool example just to show asynchronous load:
-    #
-    import random
-    for i in range(100):
-        box_shp = BRepPrimAPI_MakeBox(random.random()*20, random.random()*20, random.random()*20).Shape()
-        # random position and orientation and color
-        angle_x = random.random()*360
-        angle_y = random.random()*360
-        angle_z = random.random()*360
-        rotated_box = rotate_shape_3_axis(box_shp, angle_x, angle_y, angle_z, 'deg')
-        tr_x = random.uniform(-10, 10)
-        tr_y = random.uniform(-10, 10)
-        tr_z = random.uniform(-10, 10)
-        trans_box = translate_topods_from_vector(rotated_box, gp_Vec(tr_x, tr_y, tr_z))
-        rnd_color = (random.random(), random.random(), random.random())
-        my_ren.DisplayShape(trans_box, export_edges=True, color=rnd_color, transparency=random.random())
+    my_ren.DisplayShape(box, export_edges=True)
     my_ren.render()
