@@ -53,6 +53,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPCol_SequenceOfShape.hxx>
 #include<BOPCol_TBB.hxx>
 #include<BOPCol_VectorOfInteger.hxx>
+#include<Bnd_Array1OfBox.hxx>
+#include<Bnd_Array1OfBox2d.hxx>
+#include<Bnd_Array1OfSphere.hxx>
+#include<Bnd_B2d.hxx>
+#include<Bnd_B2f.hxx>
+#include<Bnd_B3d.hxx>
+#include<Bnd_B3f.hxx>
+#include<Bnd_BoundSortBox.hxx>
+#include<Bnd_BoundSortBox2d.hxx>
+#include<Bnd_Box.hxx>
+#include<Bnd_Box2d.hxx>
+#include<Bnd_HArray1OfBox.hxx>
+#include<Bnd_HArray1OfBox2d.hxx>
+#include<Bnd_HArray1OfSphere.hxx>
+#include<Bnd_SeqOfBox.hxx>
+#include<Bnd_SequenceNodeOfSeqOfBox.hxx>
+#include<Bnd_Sphere.hxx>
 #include<Standard.hxx>
 #include<Standard_AbortiveTransaction.hxx>
 #include<Standard_Address.hxx>
@@ -372,4 +389,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_TypeData.hxx>
 #include<Storage_TypedCallBack.hxx>
 %};
+%import Bnd.i
 %import Standard.i
