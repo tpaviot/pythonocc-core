@@ -45,34 +45,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPAlgo_Tools.hxx>
 #include<BOPAlgo_WireEdgeSet.hxx>
 #include<BOPAlgo_WireSplitter.hxx>
-#include<TopoDS.hxx>
-#include<TopoDS_Builder.hxx>
-#include<TopoDS_Compound.hxx>
-#include<TopoDS_CompSolid.hxx>
-#include<TopoDS_Edge.hxx>
-#include<TopoDS_Face.hxx>
-#include<TopoDS_FrozenShape.hxx>
-#include<TopoDS_HShape.hxx>
-#include<TopoDS_Iterator.hxx>
-#include<TopoDS_ListIteratorOfListOfShape.hxx>
-#include<TopoDS_ListNodeOfListOfShape.hxx>
-#include<TopoDS_ListOfShape.hxx>
-#include<TopoDS_LockedShape.hxx>
-#include<TopoDS_Shape.hxx>
-#include<TopoDS_Shell.hxx>
-#include<TopoDS_Solid.hxx>
-#include<TopoDS_TCompound.hxx>
-#include<TopoDS_TCompSolid.hxx>
-#include<TopoDS_TEdge.hxx>
-#include<TopoDS_TFace.hxx>
-#include<TopoDS_TShape.hxx>
-#include<TopoDS_TShell.hxx>
-#include<TopoDS_TSolid.hxx>
-#include<TopoDS_TVertex.hxx>
-#include<TopoDS_TWire.hxx>
-#include<TopoDS_UnCompatibleShapes.hxx>
-#include<TopoDS_Vertex.hxx>
-#include<TopoDS_Wire.hxx>
 #include<Standard.hxx>
 #include<Standard_AbortiveTransaction.hxx>
 #include<Standard_Address.hxx>
@@ -188,6 +160,56 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPCol_SequenceOfShape.hxx>
 #include<BOPCol_TBB.hxx>
 #include<BOPCol_VectorOfInteger.hxx>
+#include<Message.hxx>
+#include<Message_Algorithm.hxx>
+#include<Message_ExecStatus.hxx>
+#include<Message_Gravity.hxx>
+#include<Message_HArrayOfMsg.hxx>
+#include<Message_ListIteratorOfListOfMsg.hxx>
+#include<Message_ListNodeOfListOfMsg.hxx>
+#include<Message_ListOfMsg.hxx>
+#include<Message_Messenger.hxx>
+#include<Message_Msg.hxx>
+#include<Message_MsgFile.hxx>
+#include<Message_Printer.hxx>
+#include<Message_PrinterOStream.hxx>
+#include<Message_ProgressIndicator.hxx>
+#include<Message_ProgressScale.hxx>
+#include<Message_ProgressSentry.hxx>
+#include<Message_SequenceNodeOfSequenceOfPrinters.hxx>
+#include<Message_SequenceNodeOfSequenceOfProgressScale.hxx>
+#include<Message_SequenceOfPrinters.hxx>
+#include<Message_SequenceOfProgressScale.hxx>
+#include<Message_Status.hxx>
+#include<Message_StatusType.hxx>
+#include<TopoDS.hxx>
+#include<TopoDS_Builder.hxx>
+#include<TopoDS_Compound.hxx>
+#include<TopoDS_CompSolid.hxx>
+#include<TopoDS_Edge.hxx>
+#include<TopoDS_Face.hxx>
+#include<TopoDS_FrozenShape.hxx>
+#include<TopoDS_HShape.hxx>
+#include<TopoDS_Iterator.hxx>
+#include<TopoDS_ListIteratorOfListOfShape.hxx>
+#include<TopoDS_ListNodeOfListOfShape.hxx>
+#include<TopoDS_ListOfShape.hxx>
+#include<TopoDS_LockedShape.hxx>
+#include<TopoDS_Shape.hxx>
+#include<TopoDS_Shell.hxx>
+#include<TopoDS_Solid.hxx>
+#include<TopoDS_TCompound.hxx>
+#include<TopoDS_TCompSolid.hxx>
+#include<TopoDS_TEdge.hxx>
+#include<TopoDS_TFace.hxx>
+#include<TopoDS_TShape.hxx>
+#include<TopoDS_TShell.hxx>
+#include<TopoDS_TSolid.hxx>
+#include<TopoDS_TVertex.hxx>
+#include<TopoDS_TWire.hxx>
+#include<TopoDS_UnCompatibleShapes.hxx>
+#include<TopoDS_Vertex.hxx>
+#include<TopoDS_Wire.hxx>
 #include<BOPDS_CommonBlock.hxx>
 #include<BOPDS_CoupleOfPaveBlocks.hxx>
 #include<BOPDS_Curve.hxx>
@@ -311,20 +333,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntTools_SurfaceRangeSampleMapHasher.hxx>
 #include<IntTools_Tools.hxx>
 #include<IntTools_TopolTool.hxx>
-#include<BOPTools.hxx>
-#include<BOPTools_AlgoTools.hxx>
-#include<BOPTools_AlgoTools2D.hxx>
-#include<BOPTools_AlgoTools3D.hxx>
-#include<BOPTools_ConnexityBlock.hxx>
-#include<BOPTools_EdgeSet.hxx>
-#include<BOPTools_ListOfConnexityBlock.hxx>
-#include<BOPTools_ListOfCoupleOfShape.hxx>
-#include<BOPTools_ListOfEdgeSet.hxx>
-#include<BOPTools_ListOfShapeSet.hxx>
-#include<BOPTools_MapOfSet.hxx>
-#include<BOPTools_Set.hxx>
-#include<BOPTools_SetMapHasher.hxx>
-#include<BOPTools_ShapeSet.hxx>
 #include<TopTools.hxx>
 #include<TopTools_Array1OfListOfShape.hxx>
 #include<TopTools_Array1OfShape.hxx>
@@ -390,6 +398,20 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopTools_ShapeSet.hxx>
 #include<TopTools_StdMapNodeOfMapOfOrientedShape.hxx>
 #include<TopTools_StdMapNodeOfMapOfShape.hxx>
+#include<BOPTools.hxx>
+#include<BOPTools_AlgoTools.hxx>
+#include<BOPTools_AlgoTools2D.hxx>
+#include<BOPTools_AlgoTools3D.hxx>
+#include<BOPTools_ConnexityBlock.hxx>
+#include<BOPTools_EdgeSet.hxx>
+#include<BOPTools_ListOfConnexityBlock.hxx>
+#include<BOPTools_ListOfCoupleOfShape.hxx>
+#include<BOPTools_ListOfEdgeSet.hxx>
+#include<BOPTools_ListOfShapeSet.hxx>
+#include<BOPTools_MapOfSet.hxx>
+#include<BOPTools_Set.hxx>
+#include<BOPTools_SetMapHasher.hxx>
+#include<BOPTools_ShapeSet.hxx>
 #include<TopAbs.hxx>
 #include<TopAbs_Orientation.hxx>
 #include<TopAbs_ShapeEnum.hxx>
@@ -633,11 +655,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_TypeData.hxx>
 #include<Storage_TypedCallBack.hxx>
 %};
-%import TopoDS.i
 %import Standard.i
 %import BOPCol.i
+%import Message.i
+%import TopoDS.i
 %import BOPDS.i
 %import IntTools.i
-%import BOPTools.i
 %import TopTools.i
+%import BOPTools.i
 %import TopAbs.i

@@ -105,3 +105,75 @@ typedef NCollection_Map <TopoDS_Shape , TopTools_OrientedShapeMapHasher> BOPCol_
 /* public enums */
 /* end public enums declaration */
 
+%nodefaultctor BOPCol_Box2DBndTreeSelector;
+class BOPCol_Box2DBndTreeSelector : public BOPCol_Box2DBndTree::Selector {
+	public:
+		%feature("compactdefaultargs") BOPCol_Box2DBndTreeSelector;
+		%feature("autodoc", "	:rtype: None
+") BOPCol_Box2DBndTreeSelector;
+		 BOPCol_Box2DBndTreeSelector ();
+		%feature("compactdefaultargs") Reject;
+		%feature("autodoc", "	:param &:
+	:type &: Bnd_Box2d
+	:rtype: bool
+") Reject;
+		virtual Standard_Boolean Reject (const Bnd_Box2d &);
+		%feature("compactdefaultargs") Accept;
+		%feature("autodoc", "	:param &:
+	:type &: int
+	:rtype: bool
+") Accept;
+		virtual Standard_Boolean Accept (const Standard_Integer &);
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("compactdefaultargs") SetBox;
+		%feature("autodoc", "	:param &:
+	:type &: Bnd_Box2d
+	:rtype: None
+") SetBox;
+		void SetBox (const Bnd_Box2d &);
+		%feature("compactdefaultargs") Indices;
+		%feature("autodoc", "	:rtype: BOPCol_ListOfInteger
+") Indices;
+		const BOPCol_ListOfInteger & Indices ();
+};
+
+
+%nodefaultctor BOPCol_BoxBndTreeSelector;
+class BOPCol_BoxBndTreeSelector : public BOPCol_BoxBndTree::Selector {
+	public:
+		%feature("compactdefaultargs") BOPCol_BoxBndTreeSelector;
+		%feature("autodoc", "	:rtype: None
+") BOPCol_BoxBndTreeSelector;
+		 BOPCol_BoxBndTreeSelector ();
+		%feature("compactdefaultargs") Reject;
+		%feature("autodoc", "	:param &:
+	:type &: Bnd_Box
+	:rtype: bool
+") Reject;
+		virtual Standard_Boolean Reject (const Bnd_Box &);
+		%feature("compactdefaultargs") Accept;
+		%feature("autodoc", "	:param &:
+	:type &: int
+	:rtype: bool
+") Accept;
+		virtual Standard_Boolean Accept (const Standard_Integer &);
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("compactdefaultargs") SetBox;
+		%feature("autodoc", "	:param &:
+	:type &: Bnd_Box
+	:rtype: None
+") SetBox;
+		void SetBox (const Bnd_Box &);
+		%feature("compactdefaultargs") Indices;
+		%feature("autodoc", "	:rtype: BOPCol_ListOfInteger
+") Indices;
+		const BOPCol_ListOfInteger & Indices ();
+};
+
+

@@ -88,6 +88,61 @@ enum BOPAlgo_Operation {
 
 /* end public enums declaration */
 
+%nodefaultctor BOPAlgo_Algo;
+%ignore BOPAlgo_Algo::~BOPAlgo_Algo();
+class BOPAlgo_Algo {
+	public:
+		%feature("compactdefaultargs") GetParallelMode;
+		%feature("autodoc", "	:rtype: bool
+") GetParallelMode;
+		static Standard_Boolean GetParallelMode ();
+		%feature("compactdefaultargs") SetParallelMode;
+		%feature("autodoc", "	:param theNewMode:
+	:type theNewMode: bool
+	:rtype: void
+") SetParallelMode;
+		static void SetParallelMode (const Standard_Boolean theNewMode);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	:rtype: void
+") Perform;
+		virtual void Perform ();
+		%feature("compactdefaultargs") ErrorStatus;
+		%feature("autodoc", "	:rtype: int
+") ErrorStatus;
+		Standard_Integer ErrorStatus ();
+		%feature("compactdefaultargs") WarningStatus;
+		%feature("autodoc", "	:rtype: int
+") WarningStatus;
+		Standard_Integer WarningStatus ();
+		%feature("compactdefaultargs") Allocator;
+		%feature("autodoc", "	:rtype: BOPCol_BaseAllocator
+") Allocator;
+		const BOPCol_BaseAllocator & Allocator ();
+		%feature("compactdefaultargs") SetRunParallel;
+		%feature("autodoc", "	* Set the flag of parallel processing if <theFlag> is true the parallel processing is switched on if <theFlag> is false the parallel processing is switched off
+
+	:param theFlag:
+	:type theFlag: bool
+	:rtype: None
+") SetRunParallel;
+		void SetRunParallel (const Standard_Boolean theFlag);
+		%feature("compactdefaultargs") RunParallel;
+		%feature("autodoc", "	* Returns the flag of parallel processing
+
+	:rtype: bool
+") RunParallel;
+		Standard_Boolean RunParallel ();
+		%feature("compactdefaultargs") SetProgressIndicator;
+		%feature("autodoc", "	* Set the Progress Indicator object.
+
+	:param theObj:
+	:type theObj: Handle_Message_ProgressIndicator &
+	:rtype: None
+") SetProgressIndicator;
+		void SetProgressIndicator (const Handle_Message_ProgressIndicator & theObj);
+};
+
+
 %nodefaultctor BOPAlgo_ArgumentAnalyzer;
 class BOPAlgo_ArgumentAnalyzer {
 	public:
@@ -608,6 +663,96 @@ class BOPAlgo_WireEdgeSet {
 		%feature("autodoc", "	:rtype: BOPCol_ListOfShape
 ") Shapes;
 		const BOPCol_ListOfShape & Shapes ();
+};
+
+
+%nodefaultctor BOPAlgo_BuilderArea;
+%ignore BOPAlgo_BuilderArea::~BOPAlgo_BuilderArea();
+class BOPAlgo_BuilderArea : public BOPAlgo_Algo {
+	public:
+		%feature("compactdefaultargs") SetContext;
+		%feature("autodoc", "	:param theContext:
+	:type theContext: Handle_IntTools_Context &
+	:rtype: None
+") SetContext;
+		void SetContext (const Handle_IntTools_Context & theContext);
+		%feature("compactdefaultargs") Shapes;
+		%feature("autodoc", "	:rtype: BOPCol_ListOfShape
+") Shapes;
+		const BOPCol_ListOfShape & Shapes ();
+		%feature("compactdefaultargs") SetShapes;
+		%feature("autodoc", "	:param theLS:
+	:type theLS: BOPCol_ListOfShape &
+	:rtype: None
+") SetShapes;
+		void SetShapes (const BOPCol_ListOfShape & theLS);
+		%feature("compactdefaultargs") Loops;
+		%feature("autodoc", "	:rtype: BOPCol_ListOfShape
+") Loops;
+		const BOPCol_ListOfShape & Loops ();
+		%feature("compactdefaultargs") Areas;
+		%feature("autodoc", "	:rtype: BOPCol_ListOfShape
+") Areas;
+		const BOPCol_ListOfShape & Areas ();
+};
+
+
+%nodefaultctor BOPAlgo_BuilderShape;
+%ignore BOPAlgo_BuilderShape::~BOPAlgo_BuilderShape();
+class BOPAlgo_BuilderShape : public BOPAlgo_Algo {
+	public:
+		%feature("compactdefaultargs") Shape;
+		%feature("autodoc", "	* Returns the result of algorithm
+
+	:rtype: TopoDS_Shape
+") Shape;
+		const TopoDS_Shape  Shape ();
+		%feature("compactdefaultargs") Generated;
+		%feature("autodoc", "	* Returns the list of shapes generated from the shape theS.
+
+	:param theS:
+	:type theS: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Generated;
+		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & theS);
+		%feature("compactdefaultargs") Modified;
+		%feature("autodoc", "	* Returns the list of shapes modified from the shape theS.
+
+	:param theS:
+	:type theS: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Modified;
+		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & theS);
+		%feature("compactdefaultargs") IsDeleted;
+		%feature("autodoc", "	* Returns true if the shape theS has been deleted.
+
+	:param theS:
+	:type theS: TopoDS_Shape &
+	:rtype: bool
+") IsDeleted;
+		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & theS);
+		%feature("compactdefaultargs") HasDeleted;
+		%feature("autodoc", "	* Returns true if the at least one shape(or subshape) of arguments has been deleted.
+
+	:rtype: bool
+") HasDeleted;
+		Standard_Boolean HasDeleted ();
+		%feature("compactdefaultargs") HasGenerated;
+		%feature("autodoc", "	* Returns true if the at least one shape(or subshape) of arguments has generated shapes.
+
+	:rtype: bool
+") HasGenerated;
+		Standard_Boolean HasGenerated ();
+		%feature("compactdefaultargs") HasModified;
+		%feature("autodoc", "	* Returns true if the at least one shape(or subshape) of arguments has modified shapes.
+
+	:rtype: bool
+") HasModified;
+		Standard_Boolean HasModified ();
+		%feature("compactdefaultargs") ImagesResult;
+		%feature("autodoc", "	:rtype: BOPCol_IndexedDataMapOfShapeListOfShape
+") ImagesResult;
+		const BOPCol_IndexedDataMapOfShapeListOfShape & ImagesResult ();
 };
 
 
