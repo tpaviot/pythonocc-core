@@ -199,6 +199,7 @@ def init_display(backend_str=None, size=(1024, 768)):
         win = MainWindow()
         win.show()
         win.canva.InitDriver()
+        win.canva.qApp = app
         display = win.canva._display
         if sys.platform != "linux2":
             display.EnableAntiAliasing()

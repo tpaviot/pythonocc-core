@@ -20,6 +20,7 @@
 from __future__ import print_function
 
 import logging
+import os
 import sys
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
@@ -68,7 +69,7 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         '''
         win_id = self.winId()  # this returns either an int or voitptr
 
-        if "%s"%type(win_id) == "<type 'PyCObject'>":  # PySide
+        if "%s" % type(win_id) == "<type 'PyCObject'>":  # PySide
             ### with PySide, self.winId() does not return an integer
             if sys.platform == "win32":
                 ## Be careful, this hack is py27 specific
@@ -79,7 +80,7 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
                 ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [
                     ctypes.py_object]
                 win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(win_id)
-        elif type(win_id) is not int:  #PyQt4 or 5
+        elif type(win_id) is not int:  # PyQt4 or 5
             ## below integer cast may be required because self.winId() can
             ## returns a sip.voitptr according to the PyQt version used
             ## as well as the python version
@@ -103,6 +104,16 @@ class qtViewer3d(qtBaseViewer):
         self._rightisdown = False
         self._selection = None
         self._drawtext = True
+        self._qApp = None
+
+    @property
+    def qApp(self):
+        # reference to QApplication instance
+        return self._qApp
+
+    @qApp.setter
+    def qApp(self, value):
+        self._qApp = value
 
     def InitDriver(self):
         self._display = OCCViewer.Viewer3d(self.GetHandle())
@@ -118,6 +129,26 @@ class qtViewer3d(qtBaseViewer):
         self._SetupKeyMap()
         #
         self._display.thisown = False
+        self.createCursors()
+
+    def createCursors(self):
+        module_pth = os.path.abspath(os.path.dirname(__file__))
+        icon_pth = os.path.join(module_pth, "icons")
+
+        _CURSOR_PIX_ROT = QtGui.QPixmap(os.path.join(icon_pth, "cursor-rotate.png"))
+        _CURSOR_PIX_PAN = QtGui.QPixmap(os.path.join(icon_pth, "cursor-pan.png"))
+        _CURSOR_PIX_ZOOM = QtGui.QPixmap(os.path.join(icon_pth, "cursor-magnify.png"))
+        _CURSOR_PIX_ZOOM_AREA = QtGui.QPixmap(os.path.join(icon_pth, "cursor-magnify-area.png"))
+
+        self.CURSORS = {
+            "arrow": QtGui.QCursor(QtCore.Qt.ArrowCursor),  # default
+            "pan": QtGui.QCursor(_CURSOR_PIX_PAN),
+            "rotate": QtGui.QCursor(_CURSOR_PIX_ROT),
+            "zoom": QtGui.QCursor(_CURSOR_PIX_ZOOM),
+            "zoom-area": QtGui.QCursor(_CURSOR_PIX_ZOOM_AREA),
+        }
+
+        self._cursor = "arrow"
 
     def _SetupKeyMap(self):
         def set_shade_mode():
@@ -188,6 +219,22 @@ class qtViewer3d(qtBaseViewer):
     def dragMoveEvent(self, event):
         pass
 
+    @property
+    def cursor(self):
+        return self._cursor
+
+    @cursor.setter
+    def cursor(self, value):
+        if not self._cursor == value:
+
+            self._cursor = value
+            cursor = self.CURSORS.get(value)
+
+            if cursor:
+                self.qApp.setOverrideCursor(cursor)
+            else:
+                self.qApp.restoreOverrideCursor()
+
     def mousePressEvent(self, event):
         self.setFocus()
         self.dragStartPos = point(event.pos())
@@ -210,11 +257,14 @@ class qtViewer3d(qtBaseViewer):
                 else:
                     # single select otherwise
                     self._display.Select(pt.x, pt.y)
+
         elif event.button() == QtCore.Qt.RightButton:
             if self._zoom_area:
                 [Xmin, Ymin, dx, dy] = self._drawbox
                 self._display.ZoomArea(Xmin, Ymin, Xmin + dx, Ymin + dy)
                 self._zoom_area = False
+
+        self.cursor = "arrow"
 
     def DrawBox(self, event):
         tolerance = 2
@@ -235,11 +285,13 @@ class qtViewer3d(qtBaseViewer):
                 not modifiers == QtCore.Qt.ShiftModifier):
             dx = pt.x - self.dragStartPos.x
             dy = pt.y - self.dragStartPos.y
+            self.cursor = "rotate"
             self._display.Rotation(pt.x, pt.y)
             self._drawbox = False
         # DYNAMIC ZOOM
         elif (buttons == QtCore.Qt.RightButton and
-              not modifiers == QtCore.Qt.ShiftModifier):
+                  not modifiers == QtCore.Qt.ShiftModifier):
+            self.cursor = "zoom"
             self._display.Repaint()
             self._display.DynamicZoom(abs(self.dragStartPos.x),
                                       abs(self.dragStartPos.y), abs(pt.x),
@@ -253,19 +305,22 @@ class qtViewer3d(qtBaseViewer):
             dy = pt.y - self.dragStartPos.y
             self.dragStartPos.x = pt.x
             self.dragStartPos.y = pt.y
+            self.cursor = "pan"
             self._display.Pan(dx, -dy)
             self._drawbox = False
         # DRAW BOX
         # ZOOM WINDOW
         elif (buttons == QtCore.Qt.RightButton and
-              modifiers == QtCore.Qt.ShiftModifier):
+                      modifiers == QtCore.Qt.ShiftModifier):
             self._zoom_area = True
+            self.cursor = "zoom-area"
             self.DrawBox(evt)
         # SELECT AREA
         elif (buttons == QtCore.Qt.LeftButton and
-              modifiers == QtCore.Qt.ShiftModifier):
+                      modifiers == QtCore.Qt.ShiftModifier):
             self._select_area = True
             self.DrawBox(evt)
         else:
             self._drawbox = False
             self._display.MoveTo(pt.x, pt.y)
+            self.cursor = "arrow"
