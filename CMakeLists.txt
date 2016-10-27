@@ -89,6 +89,14 @@ endif(MINGW)
 find_package(SWIG)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
+
+
+############
+# FreeType #
+############
+find_package(Freetype REQUIRED)
+include_directories(${FREETYPE_INCLUDE_DIRS})
+link_directories(${FREETYPE_LIBRARIES})
     
 ################################
 # OCE include and lib location #
@@ -250,6 +258,19 @@ if(PYTHONOCC_WRAP_VISU)
   endif(APPLE)
 endif(PYTHONOCC_WRAP_VISU)
 
+##########
+# Addons #
+##########
+execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Addons)
+set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i PROPERTIES CPLUSPLUS ON)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons)
+set(ADDONS_SOURCE_FILES
+${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i
+${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Font3d.cpp
+)
+swig_add_module(Addons python ${ADDONS_SOURCE_FILES})
+swig_link_libraries(Addons ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
+
 ################
 # DataExchange #
 ################
@@ -315,7 +336,9 @@ install(TARGETS _Visualization DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 endif(PYTHONOCC_WRAP_VISU)
 
 # install addons
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/addons/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(FILES ${BUILD_DIR}/Addons.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(TARGETS _Addons DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 # install LICENSE file
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 # install AUTHORS file
