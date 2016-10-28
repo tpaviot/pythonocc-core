@@ -18,17 +18,18 @@
 from functools import wraps
 
 from OCC.BRepBndLib import brepbndlib_Add
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
 from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                 BRepBuilderAPI_MakeVertex,
                                 BRepBuilderAPI_MakeWire,
-                                BRepBuilderAPI_MakeFace, BRepBuilderAPI_MakeEdge2d)
+                                BRepBuilderAPI_MakeFace, BRepBuilderAPI_MakeEdge2d,
+                                BRepBuilderAPI_Transform)
 from OCC.BRepFill import BRepFill_Filling
 from OCC.Bnd import Bnd_Box
 from OCC.GeomAbs import GeomAbs_C0
 from OCC.GeomAPI import GeomAPI_PointsToBSpline
 from OCC.TColgp import TColgp_Array1OfPnt
-from OCC.gp import gp_Vec, gp_Pnt
+from OCC.gp import gp_Vec, gp_Pnt, gp_Trsf
 
 
 def make_edge(*args):
@@ -49,7 +50,7 @@ def make_vertex(*args):
 
 
 def make_n_sided(edges, continuity=GeomAbs_C0):
-    n_sided = BRepFill_Filling()  # TODO Checck optional NbIter=6)
+    n_sided = BRepFill_Filling()
     for edg in edges:
         n_sided.Add(edg, continuity)
     n_sided.Build()
@@ -71,7 +72,7 @@ def make_wire(*args):
 
 def make_face(*args):
     face = BRepBuilderAPI_MakeFace(*args)
-    assert (face.IsDone())
+    assert face.IsDone()
     result = face.Face()
     return result
 
@@ -189,3 +190,22 @@ def center_boundingbox(shape):
     """
     xmin, ymin, zmin, xmax, ymax, zmax = get_boundingbox(shape, 1e-6)
     return midpoint(gp_Pnt(xmin, ymin, zmin), gp_Pnt(xmax, ymax, zmax))
+
+
+def translate_shp(shp, vec, copy=False):
+    trns = gp_Trsf()
+    trns.SetTranslation(vec)
+    brep_trns = BRepBuilderAPI_Transform(shp, trns, copy)
+    brep_trns.Build()
+    return brep_trns.Shape()
+
+
+def make_extrusion(face, length, vector=gp_Vec(0., 0., 1.)):
+    ''' creates a extrusion from a face, along the vector vector.
+    with a distance legnth. Note that the normal vector does not
+    necessary be normalized.
+    By default, the extrusion is along the z axis.
+    '''
+    vector.Normalize()
+    vector.Scale(length)
+    return BRepPrimAPI_MakePrism(face, vector).Shape()
