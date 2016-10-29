@@ -96,6 +96,8 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
 
 class qtViewer3d(qtBaseViewer):
 
+    # emit signal when selection is changed
+    # is a list of TopoDS_*
     sig_topods_selected = QtCore.pyqtSignal(list)
 
     def __init__(self, *kargs):

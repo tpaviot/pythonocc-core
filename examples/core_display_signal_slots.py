@@ -2,11 +2,13 @@ from __future__ import print_function
 import sys
 
 from OCC.BRepGProp import brepgprop_LinearProperties
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
 from OCC.Display.SimpleGui import init_display
 from OCC.Display.backend import get_qt_modules
 from OCC.GProp import GProp_GProps
 from OCC.TopAbs import TopAbs_SOLID, TopAbs_EDGE, TopAbs_FACE
+from OCC.TopLoc import TopLoc_Location
+from OCC.gp import gp_Trsf, gp_Vec
 
 display, start_display, add_menu, add_function_to_menu = init_display("qt-pyqt5")
 QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
@@ -67,9 +69,18 @@ def also_on_select(shapes):
         if shape.ShapeType() == TopAbs_FACE:
             print("face selected")
 
+def location_from_vector(x, y, z):
+    trsf = gp_Trsf()
+    trsf.SetTranslation(gp_Vec(500, 0, 0))
+    loc = TopLoc_Location(trsf)
+    return loc
 
 cube = BRepPrimAPI_MakeBox(100, 100, 100).Shape()
+sphere = BRepPrimAPI_MakeSphere(100).Shape()
+sphere.Move(location_from_vector(500,0,0))
+
 display.DisplayShape(cube)
+display.DisplayShape(sphere)
 
 viewer = get_occ_viewer()
 viewer.sig_topods_selected.connect(on_select)
