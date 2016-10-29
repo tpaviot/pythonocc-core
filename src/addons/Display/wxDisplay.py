@@ -105,6 +105,8 @@ class wxViewer3d(wxBaseViewer):
         self._rightisdown = False
         self._selection = None
         self._scrollwheel = False
+        self._key_map = {}
+        self.dragStartPos = None
 
     def InitDriver(self):
         self._display = OCCViewer.Viewer3d(self.GetHandle())
@@ -126,7 +128,7 @@ class wxViewer3d(wxBaseViewer):
                          ord('B'): self._display.DisableAntiAliasing,
                          ord('H'): self._display.SetModeHLR,
                          ord('G'): self._display.SetSelectionModeVertex
-                         }
+                        }
 
     def OnKeyDown(self, evt):
         code = evt.GetKeyCode()
@@ -206,13 +208,11 @@ class wxViewer3d(wxBaseViewer):
     def OnWheelScroll(self, evt):
         # Zooming by wheel
         if evt.GetWheelRotation() > 0:
-            zoom_factor = 2
+            zoom_factor = 2.
         else:
             zoom_factor = 0.5
-            
         self._display.Repaint()
         self._display.ZoomFactor(zoom_factor)
-  
 
     def DrawBox(self, event):
         tolerance = 2
@@ -236,16 +236,15 @@ class wxViewer3d(wxBaseViewer):
 
     def OnMotion(self, evt):
         pt = evt.GetPosition()
-        
+
         # ROTATE
-        if (evt.LeftIsDown() and not evt.ShiftDown()):
+        if evt.LeftIsDown() and not evt.ShiftDown():
             dx = pt.x - self.dragStartPos.x
             dy = pt.y - self.dragStartPos.y
             self._display.Rotation(pt.x, pt.y)
             self._drawbox = False
         # DYNAMIC ZOOM
-			
-        elif (evt.RightIsDown() and not evt.ShiftDown()):
+        elif evt.RightIsDown() and not evt.ShiftDown():
             self._display.Repaint()
             self._display.DynamicZoom(abs(self.dragStartPos.x), abs(self.dragStartPos.y), abs(pt.x), abs(pt.y))
             self.dragStartPos.x = pt.x
@@ -260,10 +259,10 @@ class wxViewer3d(wxBaseViewer):
             self._display.Pan(dx, -dy)
             self._drawbox = False
         # DRAW BOX
-        elif (evt.RightIsDown() and evt.ShiftDown()):  # ZOOM WINDOW
+        elif evt.RightIsDown() and evt.ShiftDown():  # ZOOM WINDOW
             self._zoom_area = True
             self.DrawBox(evt)
-        elif (evt.LeftIsDown() and evt.ShiftDown()):  # SELECT AREA
+        elif evt.LeftIsDown() and evt.ShiftDown():  # SELECT AREA
             self._select_area = True
             self.DrawBox(evt)
         else:
@@ -271,7 +270,7 @@ class wxViewer3d(wxBaseViewer):
             self._display.MoveTo(pt.x, pt.y)
 
 
-def Test3d():
+def TestWxDisplay():
     class AppFrame(wx.Frame):
         def __init__(self, parent):
             wx.Frame.__init__(self, parent, -1, "wxDisplay3d sample",
@@ -281,7 +280,7 @@ def Test3d():
         def runTests(self):
             self.canva._display.Test()
 
-    app = wx.App(False) 
+    app = wx.App(False)
     wx.InitAllImageHandlers()
     frame = AppFrame(None)
     frame.Show(True)
@@ -292,4 +291,4 @@ def Test3d():
     app.MainLoop()
 
 if __name__ == "__main__":
-    Test3d()
+    TestWxDisplay()

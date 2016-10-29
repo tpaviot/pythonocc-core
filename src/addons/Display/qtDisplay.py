@@ -23,8 +23,6 @@ import logging
 import os
 import sys
 
-from OCC.TopoDS import TopoDS_Shape
-
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
@@ -32,6 +30,8 @@ from OCC.Display import OCCViewer
 from OCC.Display.backend import get_qt_modules
 
 QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+log = logging.getLogger(__name__)
 
 
 class point(object):
@@ -82,7 +82,7 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
                 ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [
                     ctypes.py_object]
                 win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(win_id)
-        elif type(win_id) is not int:  # PyQt4 or 5
+        elif not isinstance(win_id, int):  # PyQt4 or 5
             ## below integer cast may be required because self.winId() can
             ## returns a sip.voitptr according to the PyQt version used
             ## as well as the python version
@@ -115,6 +115,9 @@ class qtViewer3d(qtBaseViewer):
         self._selection = None
         self._drawtext = True
         self._qApp = None
+        self._key_map = {}
+        self._current_cursor = "arrow"
+        self._available_cursors = {}
 
     @property
     def qApp(self):
@@ -150,7 +153,7 @@ class qtViewer3d(qtBaseViewer):
         _CURSOR_PIX_ZOOM = QtGui.QPixmap(os.path.join(icon_pth, "cursor-magnify.png"))
         _CURSOR_PIX_ZOOM_AREA = QtGui.QPixmap(os.path.join(icon_pth, "cursor-magnify-area.png"))
 
-        self.CURSORS = {
+        self._available_cursors = {
             "arrow": QtGui.QCursor(QtCore.Qt.ArrowCursor),  # default
             "pan": QtGui.QCursor(_CURSOR_PIX_PAN),
             "rotate": QtGui.QCursor(_CURSOR_PIX_ROT),
@@ -158,7 +161,7 @@ class qtViewer3d(qtBaseViewer):
             "zoom-area": QtGui.QCursor(_CURSOR_PIX_ZOOM_AREA),
         }
 
-        self._cursor = "arrow"
+        self._current_cursor = "arrow"
 
     def _SetupKeyMap(self):
         def set_shade_mode():
@@ -178,8 +181,7 @@ class qtViewer3d(qtBaseViewer):
         if code in self._key_map:
             self._key_map[code]()
         else:
-            msg = "key: {0}\nnot mapped to any function".format(code)
-            log.info(msg)
+            log.info("key: %s \nnot mapped to any function", code)
 
     def Test(self):
         if self._inited:
@@ -220,7 +222,7 @@ class qtViewer3d(qtBaseViewer):
         except:  # PyQt5
             delta = event.angleDelta().y()
         if delta > 0:
-            zoom_factor = 2
+            zoom_factor = 2.
         else:
             zoom_factor = 0.5
         self._display.Repaint()
@@ -231,14 +233,14 @@ class qtViewer3d(qtBaseViewer):
 
     @property
     def cursor(self):
-        return self._cursor
+        return self._current_cursor
 
     @cursor.setter
     def cursor(self, value):
-        if not self._cursor == value:
+        if not self._current_cursor == value:
 
-            self._cursor = value
-            cursor = self.CURSORS.get(value)
+            self._current_cursor = value
+            cursor = self._available_cursors.get(value)
 
             if cursor:
                 self.qApp.setOverrideCursor(cursor)
@@ -304,7 +306,7 @@ class qtViewer3d(qtBaseViewer):
             self._drawbox = False
         # DYNAMIC ZOOM
         elif (buttons == QtCore.Qt.RightButton and
-                  not modifiers == QtCore.Qt.ShiftModifier):
+              not modifiers == QtCore.Qt.ShiftModifier):
             self.cursor = "zoom"
             self._display.Repaint()
             self._display.DynamicZoom(abs(self.dragStartPos.x),
@@ -325,13 +327,13 @@ class qtViewer3d(qtBaseViewer):
         # DRAW BOX
         # ZOOM WINDOW
         elif (buttons == QtCore.Qt.RightButton and
-                      modifiers == QtCore.Qt.ShiftModifier):
+              modifiers == QtCore.Qt.ShiftModifier):
             self._zoom_area = True
             self.cursor = "zoom-area"
             self.DrawBox(evt)
         # SELECT AREA
         elif (buttons == QtCore.Qt.LeftButton and
-                      modifiers == QtCore.Qt.ShiftModifier):
+              modifiers == QtCore.Qt.ShiftModifier):
             self._select_area = True
             self.DrawBox(evt)
         else:

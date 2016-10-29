@@ -90,7 +90,7 @@ def init_display(backend_str=None, size=(1024, 768)):
         # returns empty classes and functions
         return BlindViewer(), do_nothing, do_nothing, call_function
     used_backend = load_backend(backend_str)
-    log.info("GUI backend set to: {0}".format(used_backend))
+    log.info("GUI backend set to: %s", used_backend)
     # wxPython based simple GUI
     if used_backend == 'wx':
         import wx
@@ -153,7 +153,7 @@ def init_display(backend_str=None, size=(1024, 768)):
                 self.setWindowTitle("pythonOCC-%s 3d viewer ('%s' backend)" % (VERSION, used_backend))
                 self.resize(size[0], size[1])
                 self.setCentralWidget(self.canva)
-                if not sys.platform == 'darwin':
+                if sys.platform != 'darwin':
                     self.menu_bar = self.menuBar()
                 else:
                     # create a parentless menubar
