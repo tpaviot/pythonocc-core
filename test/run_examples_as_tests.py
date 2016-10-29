@@ -27,7 +27,8 @@ from subprocess import check_output
 all_examples_file_names = glob.glob(os.path.join('..', 'examples', 'core_*.py'))
 # some tests have to be excluded from the automatic
 # run.
-tests_to_exclude = ['core_visualization_overpaint_viewer.py',
+tests_to_exclude = ['core_display_signal_slots.py',
+                    'core_visualization_overpaint_viewer.py',
                     'core_display_customize_prs3d.py',
                     'core_visualization_graphic3d_custom_opengl.py',
                     'core_display_quality.py',
