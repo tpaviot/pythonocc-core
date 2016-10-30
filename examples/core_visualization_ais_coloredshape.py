@@ -26,7 +26,7 @@ from random import random
 
 from OCC.AIS import AIS_ColoredShape
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-from OCC.Display.OCCViewer import color
+from OCC.Display.OCCViewer import rgb_color
 from OCC.Display.SimpleGui import init_display
 
 from core_topology_traverse import Topo
@@ -39,7 +39,7 @@ ais = AIS_ColoredShape(my_box)
 
 for fc in Topo(my_box).faces():
     # set a custom color per-face
-    ais.SetCustomColor(fc, color(random(), random(), random()))
+    ais.SetCustomColor(fc, rgb_color(random(), random(), random()))
 
 display.Context.Display(ais.GetHandle())
 display.FitAll()

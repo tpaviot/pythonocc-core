@@ -31,16 +31,14 @@ from OCC.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.TopAbs import TopAbs_FACE, TopAbs_EDGE
 
 from OCC.Display.SimpleGui import init_display
+from OCC.Display.OCCViewer import rgb_color
 from core_topology_traverse import Topo
 from core_load_step_ap203 import read_step_file
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 
-def color(r,g,b):
-    return Quantity_Color(r,g,b, Quantity_TOC_RGB)
-
 def random_color():
-    return color(random.random(),random.random(),random.random())
+    return rgb_color(random.random(),random.random(),random.random())
 
 def length_from_edge(edg):
     curve_adapt = BRepAdaptor_Curve(edg)

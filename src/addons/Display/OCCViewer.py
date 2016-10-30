@@ -20,6 +20,7 @@
 from __future__ import print_function
 
 import os
+import sys
 import math
 import itertools
 
@@ -53,7 +54,6 @@ from OCC.Aspect import Aspect_TOTP_RIGHT_LOWER
 # On Windows, the CSF_GraphicShr env variable must be set up
 # and point to the TKOpenGl.dll library.
 #
-import sys
 if sys.platform == "win32":  # all of this is win specific
     # if the CSF_GraphicShr variable is not set
     # it should point to the TKOpenGl.dll library that is shipped with pythonocc binary
@@ -61,7 +61,7 @@ if sys.platform == "win32":  # all of this is win specific
         os.environ["CSF_GraphicShr"] = os.path.join(os.path.dirname(OCC.Aspect.__file__), "TKOpenGl.dll")
 
 
-def color(r, g, b):
+def rgb_color(r, g, b):
     return Quantity_Color(r, g, b, Quantity_TOC_RGB)
 
 
@@ -105,6 +105,8 @@ class Viewer3d(OCC.Visualization.Display3d):
         self.Viewer = None
         self.View = None
         self.selected_shape = None
+        self.default_drawer = None
+        self._struc_mgr = None
         self.selected_shapes = []
         self._select_callbacks = []
 
@@ -243,12 +245,8 @@ class Viewer3d(OCC.Visualization.Display3d):
         """ set a bg vertical gradient color.
         R, G and B are floats.
         """
-        aColor1 = Quantity_Color(float(R1)/255.,
-                                 float(G1)/255.,
-                                 float(B1)/255., Quantity_TOC_RGB)
-        aColor2 = Quantity_Color(float(R2)/255.,
-                                 float(G2)/255.,
-                                 float(B2)/255., Quantity_TOC_RGB)
+        aColor1 = rgb_color(float(R1)/255., float(G1)/255., float(B1)/255.)
+        aColor2 = rgb_color(float(R2)/255., float(G2)/255., float(B2)/255.)
         self.View.SetBgGradientColors(aColor1, aColor2, 2, True)
 
     def SetBackgroundImage(self, image_filename, stretch=True):
@@ -291,7 +289,7 @@ class Viewer3d(OCC.Visualization.Display3d):
         text_aspect = Prs3d_TextAspect()
 
         if message_color is not None:
-            text_aspect.SetColor(color(*message_color))
+            text_aspect.SetColor(rgb_color(*message_color))
         if height is not None:
             text_aspect.SetHeight(height)
         if isinstance(point, gp_Pnt2d):
@@ -445,7 +443,6 @@ class Viewer3d(OCC.Visualization.Display3d):
         self.Repaint()
 
     def EraseAll(self):
-        self._objects_displayed = []
         # nessecary to remove text added by DisplayMessage
         self.Context.PurgeDisplay()
         self.Context.EraseAll()
