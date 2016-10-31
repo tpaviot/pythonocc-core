@@ -30,6 +30,7 @@ requirements:
     - cmake
     - ninja             [win]
     - swig
+    - freetype
 
   run:
     - pyqt
@@ -37,6 +38,7 @@ requirements:
     - pyside            [py27]
     - oce ==0.17.2
     - python
+    - freetype
 
 test:
   requires:
