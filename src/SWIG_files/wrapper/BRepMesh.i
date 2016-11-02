@@ -179,6 +179,7 @@ class BRepMesh_Circle {
 
 %nodefaultctor BRepMesh_CircleInspector;
 class BRepMesh_CircleInspector : public NCollection_CellFilter_InspectorXY {
+typedef Standard_Integer Target;
 	public:
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "	* Adds the circle to vector of circles at the given position. @param theIndex position of circle in the vector. @param theCircle circle to be added.
@@ -1686,6 +1687,7 @@ class BRepMesh_Vertex {
 
 %nodefaultctor BRepMesh_VertexInspector;
 class BRepMesh_VertexInspector : public NCollection_CellFilter_InspectorXY {
+typedef Standard_Integer Target;
 	public:
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "	* Sets the tolerance to be used for identification of coincident vertices equal for both dimensions.
