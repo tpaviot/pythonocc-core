@@ -2842,6 +2842,243 @@ class Handle_Graphic3d_Camera : public Handle_Standard_Transient {
     }
 };
 
+%nodefaultctor Graphic3d_ClipPlane;
+class Graphic3d_ClipPlane : public Standard_Transient {
+typedef NCollection_Vec4 <Standard_Real> Equation;
+	public:
+		%feature("compactdefaultargs") Graphic3d_ClipPlane;
+		%feature("autodoc", "	* Default constructor. Initializes clip plane container with the following properties: - Equation (0.0, 0.0, 1.0, 0) - IsOn (True), - IsCapping (False), - Material (Graphic3d_NOM_DEFAULT), - Texture (NULL), - HatchStyle (Aspect_HS_HORIZONTAL), - IsHatchOn (False)
+
+	:rtype: None
+") Graphic3d_ClipPlane;
+		 Graphic3d_ClipPlane ();
+		%feature("compactdefaultargs") Graphic3d_ClipPlane;
+		%feature("autodoc", "	* Copy constructor. @param theOther [in] the copied plane.
+
+	:param theOther:
+	:type theOther: Graphic3d_ClipPlane &
+	:rtype: None
+") Graphic3d_ClipPlane;
+		 Graphic3d_ClipPlane (const Graphic3d_ClipPlane & theOther);
+		%feature("compactdefaultargs") Graphic3d_ClipPlane;
+		%feature("autodoc", "	* Construct clip plane for the passed equation. By default the plane is on, capping is turned off. @param theEquation [in] the plane equation.
+
+	:param theEquation:
+	:type theEquation: Equation &
+	:rtype: None
+") Graphic3d_ClipPlane;
+		 Graphic3d_ClipPlane (const Equation & theEquation);
+		%feature("compactdefaultargs") Graphic3d_ClipPlane;
+		%feature("autodoc", "	* Construct clip plane from the passed geometrical definition. By default the plane is on, capping is turned off. @param thePlane [in] the plane.
+
+	:param thePlane:
+	:type thePlane: gp_Pln
+	:rtype: None
+") Graphic3d_ClipPlane;
+		 Graphic3d_ClipPlane (const gp_Pln & thePlane);
+		%feature("compactdefaultargs") SetEquation;
+		%feature("autodoc", "	* Set plane equation by its geometrical definition. The equation is specified in 'world' coordinate system. @param thePlane [in] the plane.
+
+	:param thePlane:
+	:type thePlane: gp_Pln
+	:rtype: None
+") SetEquation;
+		void SetEquation (const gp_Pln & thePlane);
+		%feature("compactdefaultargs") SetEquation;
+		%feature("autodoc", "	* Set 4-component equation vector for clipping plane. The equation is specified in 'world' coordinate system. @param theEquation [in] the XYZW (or 'ABCD') equation vector.
+
+	:param theEquation:
+	:type theEquation: Equation &
+	:rtype: None
+") SetEquation;
+		void SetEquation (const Equation & theEquation);
+		%feature("compactdefaultargs") GetEquation;
+		%feature("autodoc", "	* Get 4-component equation vector for clipping plane. returns clipping plane equation vector.
+
+	:rtype: Equation
+") GetEquation;
+		const Equation & GetEquation ();
+		%feature("compactdefaultargs") IsOn;
+		%feature("autodoc", "	* Check that the clipping plane is turned on. returns boolean flag indicating whether the plane is in on or off state.
+
+	:rtype: bool
+") IsOn;
+		Standard_Boolean IsOn ();
+		%feature("compactdefaultargs") SetOn;
+		%feature("autodoc", "	* Change state of the clipping plane. @param theIsOn [in] the flag specifying whether the graphic driver clipping by this plane should be turned on or off.
+
+	:param theIsOn:
+	:type theIsOn: bool
+	:rtype: None
+") SetOn;
+		void SetOn (const Standard_Boolean theIsOn);
+		%feature("compactdefaultargs") SetCapping;
+		%feature("autodoc", "	* Change state of capping surface rendering. @param theIsOn [in] the flag specifying whether the graphic driver should perform rendering of capping surface produced by this plane. The graphic driver produces this surface for convex graphics by means of stencil-test and multi-pass rendering.
+
+	:param theIsOn:
+	:type theIsOn: bool
+	:rtype: None
+") SetCapping;
+		void SetCapping (const Standard_Boolean theIsOn);
+		%feature("compactdefaultargs") IsCapping;
+		%feature("autodoc", "	* Check state of capping surface rendering. returns true (turned on) or false depending on the state.
+
+	:rtype: bool
+") IsCapping;
+		Standard_Boolean IsCapping ();
+		%feature("compactdefaultargs") ToPlane;
+		%feature("autodoc", "	* Get geometrical definition. The plane is built up from the equation clipping plane equation vector. returns geometrical definition of clipping plane.
+
+	:rtype: gp_Pln
+") ToPlane;
+		gp_Pln ToPlane ();
+		%feature("compactdefaultargs") Clone;
+		%feature("autodoc", "	* Clone plane. Virtual method to simplify copying procedure if plane class is redefined at application level to add specific fields to it e.g. id, name, etc. returns new instance of clipping plane with same properties and attributes.
+
+	:rtype: Handle_Graphic3d_ClipPlane
+") Clone;
+		virtual Handle_Graphic3d_ClipPlane Clone ();
+		%feature("compactdefaultargs") SetCappingMaterial;
+		%feature("autodoc", "	* Set material for rendering capping surface. @param theMat [in] the material.
+
+	:param theMat:
+	:type theMat: Graphic3d_MaterialAspect &
+	:rtype: None
+") SetCappingMaterial;
+		void SetCappingMaterial (const Graphic3d_MaterialAspect & theMat);
+		%feature("compactdefaultargs") CappingMaterial;
+		%feature("autodoc", "	* returns capping material.
+
+	:rtype: Graphic3d_MaterialAspect
+") CappingMaterial;
+		const Graphic3d_MaterialAspect & CappingMaterial ();
+		%feature("compactdefaultargs") SetCappingTexture;
+		%feature("autodoc", "	* Set texture to be applied on capping surface. @param theTexture [in] the texture.
+
+	:param theTexture:
+	:type theTexture: Handle_Graphic3d_TextureMap &
+	:rtype: None
+") SetCappingTexture;
+		void SetCappingTexture (const Handle_Graphic3d_TextureMap & theTexture);
+		%feature("compactdefaultargs") CappingTexture;
+		%feature("autodoc", "	* returns capping texture map.
+
+	:rtype: Handle_Graphic3d_TextureMap
+") CappingTexture;
+		Handle_Graphic3d_TextureMap CappingTexture ();
+		%feature("compactdefaultargs") SetCappingHatch;
+		%feature("autodoc", "	* Set hatch style (stipple) and turn hatching on. @param theStyle [in] the hatch style.
+
+	:param theStyle:
+	:type theStyle: Aspect_HatchStyle
+	:rtype: None
+") SetCappingHatch;
+		void SetCappingHatch (const Aspect_HatchStyle theStyle);
+		%feature("compactdefaultargs") CappingHatch;
+		%feature("autodoc", "	* returns hatching style.
+
+	:rtype: Aspect_HatchStyle
+") CappingHatch;
+		Aspect_HatchStyle CappingHatch ();
+		%feature("compactdefaultargs") SetCappingHatchOn;
+		%feature("autodoc", "	* Turn on hatching.
+
+	:rtype: None
+") SetCappingHatchOn;
+		void SetCappingHatchOn ();
+		%feature("compactdefaultargs") SetCappingHatchOff;
+		%feature("autodoc", "	* Turn off hatching.
+
+	:rtype: None
+") SetCappingHatchOff;
+		void SetCappingHatchOff ();
+		%feature("compactdefaultargs") IsHatchOn;
+		%feature("autodoc", "	* returns True if hatching mask is turned on.
+
+	:rtype: bool
+") IsHatchOn;
+		Standard_Boolean IsHatchOn ();
+		%feature("compactdefaultargs") GetId;
+		%feature("autodoc", "	* This ID is used for managing associated resources in graphical driver. The clip plane can be assigned within a range of IO which can be displayed in separate OpenGl contexts. For each of the context an associated OpenGl resource for graphical aspects should be created and kept. The resources are stored in graphical driver for each of individual groups of shared context under the clip plane identifier. returns clip plane resource identifier string.
+
+	:rtype: TCollection_AsciiString
+") GetId;
+		const TCollection_AsciiString & GetId ();
+		%feature("compactdefaultargs") CappingAspect;
+		%feature("autodoc", "	* Compute and return capping aspect from the graphical attributes. returns capping surface rendering aspect.
+
+	:rtype: Handle_Graphic3d_AspectFillArea3d
+") CappingAspect;
+		Handle_Graphic3d_AspectFillArea3d CappingAspect ();
+		%feature("compactdefaultargs") MCountEquation;
+		%feature("autodoc", "	* returns modification counter for equation.
+
+	:rtype: unsigned int
+") MCountEquation;
+		unsigned int MCountEquation ();
+		%feature("compactdefaultargs") MCountAspect;
+		%feature("autodoc", "	* returns modification counter for aspect.
+
+	:rtype: unsigned int
+") MCountAspect;
+		unsigned int MCountAspect ();
+		%feature("compactdefaultargs") DEFINE_STANDARD_RTTI;
+		%feature("autodoc", "	* //!< Modification counter of aspect.
+
+	:param :
+	:type : Graphic3d_ClipPlane
+	:rtype: None
+") DEFINE_STANDARD_RTTI;
+		 DEFINE_STANDARD_RTTI (Graphic3d_ClipPlane );
+};
+
+
+%extend Graphic3d_ClipPlane {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ClipPlane(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Graphic3d_ClipPlane::Handle_Graphic3d_ClipPlane %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_Graphic3d_ClipPlane;
+class Handle_Graphic3d_ClipPlane : public Handle_Standard_Transient {
+
+    public:
+        // constructors
+        Handle_Graphic3d_ClipPlane();
+        Handle_Graphic3d_ClipPlane(const Handle_Graphic3d_ClipPlane &aHandle);
+        Handle_Graphic3d_ClipPlane(const Graphic3d_ClipPlane *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_Graphic3d_ClipPlane DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_Graphic3d_ClipPlane {
+    Graphic3d_ClipPlane* _get_reference() {
+    return (Graphic3d_ClipPlane*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ClipPlane {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
 %nodefaultctor Graphic3d_DataStructureManager;
 class Graphic3d_DataStructureManager : public MMgt_TShared {
 	public:
