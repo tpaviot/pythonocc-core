@@ -2006,6 +2006,8 @@ class Handle_Graphic3d_AspectText3d : public Handle_MMgt_TShared {
 %nodefaultctor Graphic3d_Attribute;
 class Graphic3d_Attribute {
 	public:
+		Graphic3d_TypeOfAttribute Id;
+		Graphic3d_TypeOfData DataType;
 		%feature("compactdefaultargs") Stride;
 		%feature("autodoc", "	* //!< vec2,vec3,vec4,vec4ub
 
@@ -2026,6 +2028,9 @@ class Graphic3d_Attribute {
 %nodefaultctor Graphic3d_BoundBuffer;
 class Graphic3d_BoundBuffer : public NCollection_Buffer {
 	public:
+		Graphic3d_Vec4 * Colors;
+		int * Bounds;
+		int NbBounds;
 		%feature("compactdefaultargs") Graphic3d_BoundBuffer;
 		%feature("autodoc", "	* Empty constructor.
 
@@ -2096,6 +2101,25 @@ class Handle_Graphic3d_BoundBuffer : public Handle_NCollection_Buffer {
 %nodefaultctor Graphic3d_CAspectFillArea;
 class Graphic3d_CAspectFillArea {
 	public:
+		int IsDef;
+		int IsSet;
+		int Style;
+		CALL_DEF_COLOR IntColor;
+		CALL_DEF_COLOR BackIntColor;
+		CALL_DEF_COLOR EdgeColor;
+		int LineType;
+		float Width;
+		int Hatch;
+		int Distinguish;
+		int BackFace;
+		int Edge;
+		CALL_DEF_MATERIAL Front;
+		CALL_DEF_MATERIAL Back;
+		Graphic3d_CTexture Texture;
+		int PolygonOffsetMode;
+		float PolygonOffsetFactor;
+		float PolygonOffsetUnits;
+		Handle_Graphic3d_ShaderProgram ShaderProgram;
 		%feature("compactdefaultargs") Graphic3d_CAspectFillArea;
 		%feature("autodoc", "	:rtype: None
 ") Graphic3d_CAspectFillArea;
@@ -2106,12 +2130,25 @@ class Graphic3d_CAspectFillArea {
 %nodefaultctor Graphic3d_CAspectLine;
 class Graphic3d_CAspectLine {
 	public:
+		int IsDef;
+		int IsSet;
+		CALL_DEF_COLOR Color;
+		int LineType;
+		float Width;
+		Handle_Graphic3d_ShaderProgram ShaderProgram;
 };
 
 
 %nodefaultctor Graphic3d_CAspectMarker;
 class Graphic3d_CAspectMarker {
 	public:
+		int IsDef;
+		int IsSet;
+		CALL_DEF_COLOR Color;
+		Aspect_TypeOfMarker MarkerType;
+		Standard_ShortReal Scale;
+		Handle_Graphic3d_MarkerImage MarkerImage;
+		Handle_Graphic3d_ShaderProgram ShaderProgram;
 		%feature("compactdefaultargs") Graphic3d_CAspectMarker;
 		%feature("autodoc", "	:rtype: None
 ") Graphic3d_CAspectMarker;
@@ -2122,36 +2159,136 @@ class Graphic3d_CAspectMarker {
 %nodefaultctor Graphic3d_CAspectText;
 class Graphic3d_CAspectText {
 	public:
+		int IsDef;
+		int IsSet;
+		float Space;
+		float Expan;
+		CALL_DEF_COLOR Color;
+		int Style;
+		int DisplayType;
+		CALL_DEF_COLOR ColorSubTitle;
+		int TextZoomable;
+		float TextAngle;
+		int TextFontAspect;
+		Handle_Graphic3d_ShaderProgram ShaderProgram;
 };
 
 
 %nodefaultctor Graphic3d_CBitFields16;
 class Graphic3d_CBitFields16 {
 	public:
+		unsigned bool1;
+		unsigned bool2;
+		unsigned bool3;
+		unsigned bool4;
+		unsigned bool5;
+		unsigned bool6;
+		unsigned bool7;
+		unsigned bool8;
+		unsigned bool9;
+		unsigned bool10;
+		unsigned bool11;
+		unsigned bool12;
+		unsigned bool13;
+		unsigned bool14;
+		unsigned bool15;
+		unsigned bool16;
 };
 
 
 %nodefaultctor Graphic3d_CBitFields20;
 class Graphic3d_CBitFields20 {
 	public:
+		unsigned bool1;
+		unsigned bool2;
+		unsigned bool3;
+		unsigned bool4;
+		unsigned bool5;
+		unsigned bool6;
+		unsigned bool7;
+		unsigned bool8;
+		unsigned bool9;
+		unsigned bool10;
+		unsigned bool11;
+		unsigned bool12;
+		unsigned bool13;
+		unsigned bool14;
+		unsigned bool15;
+		unsigned bool16;
+		unsigned bool17;
+		unsigned bool18;
+		unsigned bool19;
+		unsigned bool20;
 };
 
 
 %nodefaultctor Graphic3d_CBitFields4;
 class Graphic3d_CBitFields4 {
 	public:
+		unsigned bool1;
+		unsigned bool2;
+		unsigned bool3;
+		unsigned bool4;
 };
 
 
 %nodefaultctor Graphic3d_CBitFields8;
 class Graphic3d_CBitFields8 {
 	public:
+		unsigned bool1;
+		unsigned bool2;
+		unsigned bool3;
+		unsigned bool4;
+		unsigned bool5;
+		unsigned bool6;
+		unsigned bool7;
+		unsigned bool8;
 };
 
 
 %nodefaultctor Graphic3d_CGraduatedTrihedron;
 class Graphic3d_CGraduatedTrihedron {
 	public:
+		TCollection_ExtendedString xname;
+		TCollection_ExtendedString yname;
+		TCollection_ExtendedString zname;
+		bool xdrawname;
+		bool ydrawname;
+		bool zdrawname;
+		bool xdrawvalues;
+		bool ydrawvalues;
+		bool zdrawvalues;
+		bool drawgrid;
+		bool drawaxes;
+		int nbx;
+		int nby;
+		int nbz;
+		int xoffset;
+		int yoffset;
+		int zoffset;
+		int xaxisoffset;
+		int yaxisoffset;
+		int zaxisoffset;
+		bool xdrawtickmarks;
+		bool ydrawtickmarks;
+		bool zdrawtickmarks;
+		int xtickmarklength;
+		int ytickmarklength;
+		int ztickmarklength;
+		Quantity_Color gridcolor;
+		Quantity_Color xnamecolor;
+		Quantity_Color ynamecolor;
+		Quantity_Color znamecolor;
+		Quantity_Color xcolor;
+		Quantity_Color ycolor;
+		Quantity_Color zcolor;
+		TCollection_AsciiString fontOfNames;
+		Font_FontAspect styleOfNames;
+		int sizeOfNames;
+		TCollection_AsciiString fontOfValues;
+		Font_FontAspect styleOfValues;
+		int sizeOfValues;
+		Visual3d_View * ptrVisual3dView;
 		%feature("compactdefaultargs") Graphic3d_CGraduatedTrihedron;
 		%feature("autodoc", "	:rtype: None
 ") Graphic3d_CGraduatedTrihedron;
@@ -2162,6 +2299,12 @@ class Graphic3d_CGraduatedTrihedron {
 %nodefaultctor Graphic3d_CLight;
 class Graphic3d_CLight {
 	public:
+		Graphic3d_Vec4 Color;
+		Graphic3d_Vec4 Position;
+		Graphic3d_Vec4 Direction;
+		Graphic3d_Vec4 Params;
+		int Type;
+		bool IsHeadlight;
 		%feature("compactdefaultargs") ConstAttenuation;
 		%feature("autodoc", "	* //!< flag to mark head light Const attenuation factor of positional light source
 
@@ -2224,6 +2367,27 @@ class Graphic3d_CLight {
 %nodefaultctor Graphic3d_CStructure;
 class Graphic3d_CStructure : public Standard_Transient {
 	public:
+		int Id;
+		int Priority;
+		int PreviousPriority;
+		CALL_DEF_CONTEXTLINE ContextLine;
+		CALL_DEF_CONTEXTFILLAREA ContextFillArea;
+		CALL_DEF_CONTEXTMARKER ContextMarker;
+		CALL_DEF_CONTEXTTEXT ContextText;
+		CALL_DEF_COLOR HighlightColor;
+		float Transformation[16];
+		Graphic3d_TypeOfComposition Composition;
+		int ContainsFacet;
+		unsigned IsInfinite;
+		unsigned stick;
+		unsigned highlight;
+		unsigned visible;
+		unsigned pick;
+		unsigned HLRValidation;
+		unsigned IsForHighlight;
+		unsigned IsMutable;
+		unsigned Is2dText;
+		CALL_DEF_TRANSFORM_PERSISTENCE TransformPersistence;
 		%feature("compactdefaultargs") GraphicDriver;
 		%feature("autodoc", "	* returns graphic driver created this structure
 
@@ -2398,6 +2562,8 @@ class Handle_Graphic3d_CStructure : public Handle_Standard_Transient {
 %nodefaultctor Graphic3d_CTexture;
 class Graphic3d_CTexture {
 	public:
+		Handle_Graphic3d_TextureMap TextureMap;
+		int doTextureMap;
 		%feature("compactdefaultargs") Graphic3d_CTexture;
 		%feature("autodoc", "	:rtype: None
 ") Graphic3d_CTexture;
@@ -2408,6 +2574,23 @@ class Graphic3d_CTexture {
 %nodefaultctor Graphic3d_CView;
 class Graphic3d_CView {
 	public:
+		int WsId;
+		int ViewId;
+		void * ptrView;
+		int IsDeleted;
+		int IsOpen;
+		int Active;
+		CALL_DEF_VIEWCONTEXT Context;
+		CALL_DEF_WINDOW DefWindow;
+		void * ptrUnderLayer;
+		void * ptrOverLayer;
+		int Backfacing;
+		Aspect_RenderingContext GContext;
+		void * GClientData;
+		void * ptrFBO;
+		mutable int WasRedrawnGL;
+		Graphic3d_RenderingParams RenderParams;
+		bool IsCullingEnabled;
 		%feature("compactdefaultargs") Graphic3d_CView;
 		%feature("autodoc", "	:rtype: None
 ") Graphic3d_CView;
@@ -2417,6 +2600,7 @@ class Graphic3d_CView {
 
 %nodefaultctor Graphic3d_Camera;
 class Graphic3d_Camera : public Standard_Transient {
+	public:
 /* public enums */
 enum Projection {
 	Projection_Orthographic = 0,
@@ -2438,7 +2622,6 @@ enum IODType {
 
 /* end public enums declaration */
 
-	public:
 		%feature("compactdefaultargs") Graphic3d_Camera;
 		%feature("autodoc", "	* Default constructor. Initializes camera with the following properties: Eye (0, 0, -2); Center (0, 0, 0); Up (0, 1, 0); Type (Orthographic); FOVy (45); Scale (1000); IsStereo(false); ZNear (0.001); ZFar (3000.0); Aspect(1); ZFocus(1.0); ZFocusType(Relative); IOD(0.05); IODType(Relative)
 
@@ -2928,8 +3111,8 @@ class Handle_Graphic3d_Camera : public Handle_Standard_Transient {
 
 %nodefaultctor Graphic3d_ClipPlane;
 class Graphic3d_ClipPlane : public Standard_Transient {
-typedef NCollection_Vec4 <Standard_Real> Equation;
 	public:
+typedef NCollection_Vec4 <Standard_Real> Equation;
 		%feature("compactdefaultargs") Graphic3d_ClipPlane;
 		%feature("autodoc", "	* Default constructor. Initializes clip plane container with the following properties: - Equation (0.0, 0.0, 1.0, 0) - IsOn (True), - IsCapping (False), - Material (Graphic3d_NOM_DEFAULT), - Texture (NULL), - HatchStyle (Aspect_HS_HORIZONTAL), - IsHatchOn (False)
 
@@ -5540,6 +5723,12 @@ class Graphic3d_MaterialAspect {
 %nodefaultctor Graphic3d_RenderingParams;
 class Graphic3d_RenderingParams {
 	public:
+		Graphic3d_RenderingMode Method;
+		int RaytracingDepth;
+		bool IsShadowEnabled;
+		bool IsReflectionEnabled;
+		bool IsAntialiasingEnabled;
+		bool IsTransparentShadowEnabled;
 		%feature("compactdefaultargs") Graphic3d_RenderingParams;
 		%feature("autodoc", "	* Creates default rendering parameters.
 
@@ -5857,6 +6046,7 @@ class Handle_Graphic3d_ShaderObject : public Handle_Standard_Transient {
 
 %nodefaultctor Graphic3d_ShaderProgram;
 class Graphic3d_ShaderProgram : public Standard_Transient {
+	public:
 /* public enums */
 enum ShaderName {
 	ShaderName_UNKNOWN = 0,
@@ -5865,7 +6055,6 @@ enum ShaderName {
 
 /* end public enums declaration */
 
-	public:
 		%feature("compactdefaultargs") Graphic3d_ShaderProgram;
 		%feature("autodoc", "	* Creates new empty program object.
 
@@ -7868,6 +8057,9 @@ class Graphic3d_Vertex : public TEL_POINT {
 %nodefaultctor Graphic3d_ZLayerSettings;
 class Graphic3d_ZLayerSettings {
 	public:
+		Standard_ShortReal DepthOffsetFactor;
+		Standard_ShortReal DepthOffsetUnits;
+		int Flags;
 		%feature("compactdefaultargs") Graphic3d_ZLayerSettings;
 		%feature("autodoc", "	:rtype: None
 ") Graphic3d_ZLayerSettings;

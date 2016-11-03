@@ -7773,6 +7773,9 @@ class Handle_AIS_Circle : public Handle_AIS_InteractiveObject {
 %nodefaultctor AIS_ColoredDrawer;
 class AIS_ColoredDrawer : public AIS_Drawer {
 	public:
+		bool myIsHidden;
+		bool myHasOwnColor;
+		bool myHasOwnWidth;
 		%feature("compactdefaultargs") AIS_ColoredDrawer;
 		%feature("autodoc", "	:param theLink:
 	:type theLink: Handle_AIS_Drawer &
@@ -7942,6 +7945,7 @@ class Handle_AIS_ConnectedInteractive : public Handle_AIS_InteractiveObject {
 
 %nodefaultctor AIS_Dimension;
 class AIS_Dimension : public AIS_InteractiveObject {
+	public:
 /* public enums */
 enum ComputeMode {
 	ComputeMode_All = 0,
@@ -7951,7 +7955,6 @@ enum ComputeMode {
 
 /* end public enums declaration */
 
-	public:
 		%feature("compactdefaultargs") AIS_Dimension;
 		%feature("autodoc", "	* Constructor with default parameters values. @param theType [in] the type of dimension.
 
@@ -9073,6 +9076,7 @@ class Handle_AIS_Point : public Handle_AIS_InteractiveObject {
 
 %nodefaultctor AIS_PointCloud;
 class AIS_PointCloud : public AIS_InteractiveObject {
+	public:
 /* public enums */
 enum DisplayMode {
 	DM_Points = 0,
@@ -9081,7 +9085,6 @@ enum DisplayMode {
 
 /* end public enums declaration */
 
-	public:
 		%feature("compactdefaultargs") AIS_PointCloud;
 		%feature("autodoc", "	* Constructor.
 

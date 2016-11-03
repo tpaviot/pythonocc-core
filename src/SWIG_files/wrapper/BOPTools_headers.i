@@ -22,6 +22,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPTools_AlgoTools2D.hxx>
 #include<BOPTools_AlgoTools3D.hxx>
 #include<BOPTools_ConnexityBlock.hxx>
+#include<BOPTools_CoupleOfShape.hxx>
 #include<BOPTools_EdgeSet.hxx>
 #include<BOPTools_ListOfConnexityBlock.hxx>
 #include<BOPTools_ListOfCoupleOfShape.hxx>

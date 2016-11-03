@@ -1161,6 +1161,36 @@ class BOPTools_ConnexityBlock {
 };
 
 
+%nodefaultctor BOPTools_CoupleOfShape;
+class BOPTools_CoupleOfShape {
+	public:
+		%feature("compactdefaultargs") BOPTools_CoupleOfShape;
+		%feature("autodoc", "	:rtype: None
+") BOPTools_CoupleOfShape;
+		 BOPTools_CoupleOfShape ();
+		%feature("compactdefaultargs") SetShape1;
+		%feature("autodoc", "	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") SetShape1;
+		void SetShape1 (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") Shape1;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape1;
+		const TopoDS_Shape  Shape1 ();
+		%feature("compactdefaultargs") SetShape2;
+		%feature("autodoc", "	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") SetShape2;
+		void SetShape2 (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") Shape2;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape2;
+		const TopoDS_Shape  Shape2 ();
+};
+
+
 %nodefaultctor BOPTools_EdgeSet;
 class BOPTools_EdgeSet {
 	public:

@@ -179,8 +179,8 @@ class BRepMesh_Circle {
 
 %nodefaultctor BRepMesh_CircleInspector;
 class BRepMesh_CircleInspector : public NCollection_CellFilter_InspectorXY {
-typedef Standard_Integer Target;
 	public:
+typedef Standard_Integer Target;
 		%feature("compactdefaultargs") BRepMesh_CircleInspector;
 		%feature("autodoc", "	* Constructor. @param theTolerance tolerance to be used for identification of shot circles. @param theReservedSize size to be reserved for vector of circles. @param theAllocator memory allocator to be used by internal collections.
 
@@ -1087,6 +1087,7 @@ class BRepMesh_FastDiscretFace : public Standard_Transient {
 
 %nodefaultctor BRepMesh_GeomTool;
 class BRepMesh_GeomTool {
+	public:
 /* public enums */
 enum IntFlag {
 	NoIntersection = 0,
@@ -1099,7 +1100,6 @@ enum IntFlag {
 
 /* end public enums declaration */
 
-	public:
 		%feature("compactdefaultargs") BRepMesh_GeomTool;
 		%feature("autodoc", "	* Constructor. Initiates discretization of the given geometric curve. @param theCurve curve to be discretized. @param theFirstParam first parameter of the curve. @param theLastParam last parameter of the curve. @param theLinDeflection linear deflection. @param theAngDeflection angular deflection. @param theMinPointsNb minimum nuber of points to be produced.
 
@@ -1888,8 +1888,8 @@ class BRepMesh_Vertex {
 
 %nodefaultctor BRepMesh_VertexInspector;
 class BRepMesh_VertexInspector : public NCollection_CellFilter_InspectorXY {
-typedef Standard_Integer Target;
 	public:
+typedef Standard_Integer Target;
 		%feature("compactdefaultargs") BRepMesh_VertexInspector;
 		%feature("autodoc", "	* Constructor. @param theReservedSize size to be reserved for vector of vertices. @param theAllocator memory allocator to be used by internal collections.
 
