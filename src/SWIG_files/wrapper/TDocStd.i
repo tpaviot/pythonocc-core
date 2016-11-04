@@ -91,7 +91,7 @@ class TDocStd_Application : public CDF_Application {
 
 	:rtype: char *
 ") ResourcesName;
-		virtual char * ResourcesName ();
+		virtual const char * ResourcesName ();
 		%feature("compactdefaultargs") NbDocuments;
 		%feature("autodoc", "	* returns the number of documents handled by the current applicative session.
 

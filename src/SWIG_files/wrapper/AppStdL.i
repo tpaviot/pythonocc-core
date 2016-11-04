@@ -80,7 +80,7 @@ class AppStdL_Application : public TDocStd_Application {
 
 	:rtype: char *
 ") ResourcesName;
-		char * ResourcesName ();
+		const char * ResourcesName ();
 };
 
 

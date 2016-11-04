@@ -4766,7 +4766,7 @@ class AIS_InteractiveContext : public MMgt_TShared {
 
 	:rtype: char *
 ") DomainOfMainViewer;
-		char * DomainOfMainViewer ();
+		const char * DomainOfMainViewer ();
 		%feature("compactdefaultargs") LocalContext;
 		%feature("autodoc", "	* This method is only intended for advanced operation, particularly with the aim to improve performance when many objects have to be selected together. Otherwise, you should use other (non-internal) methods of class AIS_InteractiveContext without trying to obtain an instance of AIS_LocalContext.
 
@@ -12333,7 +12333,7 @@ class AIS_TexturedShape : public AIS_Shape {
 
 	:rtype: char *
 ") TextureFile;
-		char * TextureFile ();
+		const char * TextureFile ();
 		%feature("compactdefaultargs") TexturePixMap;
 		%feature("autodoc", "	* returns the source pixmap for texture map
 

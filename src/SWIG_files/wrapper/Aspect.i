@@ -385,7 +385,7 @@ class Aspect {
 	:type aHeight: Quantity_Length &
 	:rtype: char *
 ") ValuesOfFOSP;
-		static char * ValuesOfFOSP (const Aspect_FormatOfSheetPaper aFOSP,Standard_Real &OutValue,Standard_Real &OutValue);
+		static const char * ValuesOfFOSP (const Aspect_FormatOfSheetPaper aFOSP,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") ToCString;
 		%feature("autodoc", "	* Translates an ExtendedString to a CString depending of the local format.
 
@@ -393,7 +393,7 @@ class Aspect {
 	:type aString: TCollection_ExtendedString &
 	:rtype: char *
 ") ToCString;
-		static char * ToCString (const TCollection_ExtendedString & aString);
+		static const char * ToCString (const TCollection_ExtendedString & aString);
 		%feature("compactdefaultargs") Inverse;
 		%feature("autodoc", "	* Inverses <aMat> a 4x4 matrix.
 

@@ -234,7 +234,7 @@ class XSControl_Controller : public MMgt_TShared {
 	:type rsc: bool
 	:rtype: char *
 ") Name;
-		char * Name (const Standard_Boolean rsc = Standard_False);
+		const char * Name (const Standard_Boolean rsc = Standard_False);
 		%feature("compactdefaultargs") Profile;
 		%feature("autodoc", "	* Returns the Profile It starts with a first configuration Base (empty) and the following options : protocol for the Protocol sign-type for the SignType (Default Signature for Type) access for the WorkLibrary tr-read for ActorRead (import processor) tr-write for ActorWrite (export processor)
 
@@ -388,7 +388,7 @@ class XSControl_Controller : public MMgt_TShared {
 	:type shape: bool
 	:rtype: char *
 ") ModeWriteHelp;
-		char * ModeWriteHelp (const Standard_Integer modetrans,const Standard_Boolean shape = Standard_True);
+		const char * ModeWriteHelp (const Standard_Integer modetrans,const Standard_Boolean shape = Standard_True);
 		%feature("compactdefaultargs") RecognizeWriteTransient;
 		%feature("autodoc", "	* Tells if <obj> (an application object) is a valid candidate for a transfer to a Model. By default, asks the ActorWrite if known (through a TransientMapper). Can be redefined
 
@@ -1008,7 +1008,7 @@ class XSControl_SignTransferStatus : public IFSelect_Signature {
 	:type model: Handle_Interface_InterfaceModel &
 	:rtype: char *
 ") Value;
-		char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
+		const char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
 };
 
 
@@ -1152,7 +1152,7 @@ class XSControl_TransferReader : public MMgt_TShared {
 
 	:rtype: char *
 ") FileName;
-		char * FileName ();
+		const char * FileName ();
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	* Clears data, according mode : -1 all 0 nothing done +1 final results +2 working data (model, context, transfer process)
 
@@ -1244,7 +1244,7 @@ class XSControl_TransferReader : public MMgt_TShared {
 	:type ent: Handle_Standard_Transient &
 	:rtype: char *
 ") FinalEntityLabel;
-		char * FinalEntityLabel (const Handle_Standard_Transient & ent);
+		const char * FinalEntityLabel (const Handle_Standard_Transient & ent);
 		%feature("compactdefaultargs") FinalEntityNumber;
 		%feature("autodoc", "	* Returns the number attached to the entity recorded for final, or zero if not recorded (looks in the ResultFromModel)
 
@@ -1730,7 +1730,7 @@ class XSControl_Utils {
 	:type nopk: bool
 	:rtype: char *
 ") TypeName;
-		char * TypeName (const Handle_Standard_Transient & item,const Standard_Boolean nopk = Standard_False);
+		const char * TypeName (const Handle_Standard_Transient & item,const Standard_Boolean nopk = Standard_False);
 		%feature("compactdefaultargs") TraValue;
 		%feature("autodoc", "	:param list:
 	:type list: Handle_Standard_Transient &
@@ -1766,7 +1766,7 @@ class XSControl_Utils {
 	:type ss: int
 	:rtype: char *
 ") DateString;
-		char * DateString (const Standard_Integer yy,const Standard_Integer mm,const Standard_Integer dd,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss);
+		const char * DateString (const Standard_Integer yy,const Standard_Integer mm,const Standard_Integer dd,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss);
 		%feature("compactdefaultargs") DateValues;
 		%feature("autodoc", "	:param text:
 	:type text: char *
@@ -1790,13 +1790,13 @@ class XSControl_Utils {
 	:type strval: Handle_TCollection_HAsciiString &
 	:rtype: char *
 ") ToCString;
-		char * ToCString (const Handle_TCollection_HAsciiString & strval);
+		const char * ToCString (const Handle_TCollection_HAsciiString & strval);
 		%feature("compactdefaultargs") ToCString;
 		%feature("autodoc", "	:param strval:
 	:type strval: TCollection_AsciiString &
 	:rtype: char *
 ") ToCString;
-		char * ToCString (const TCollection_AsciiString & strval);
+		const char * ToCString (const TCollection_AsciiString & strval);
 		%feature("compactdefaultargs") ToHString;
 		%feature("autodoc", "	:param strcon:
 	:type strcon: char *
@@ -1850,7 +1850,7 @@ class XSControl_Utils {
 	:type str: Standard_ExtString
 	:rtype: char *
 ") ExtendedToAscii;
-		char * ExtendedToAscii (const Standard_ExtString str);
+		const char * ExtendedToAscii (const Standard_ExtString str);
 		%feature("compactdefaultargs") CStrValue;
 		%feature("autodoc", "	:param list:
 	:type list: Handle_Standard_Transient &
@@ -1858,7 +1858,7 @@ class XSControl_Utils {
 	:type num: int
 	:rtype: char *
 ") CStrValue;
-		char * CStrValue (const Handle_Standard_Transient & list,const Standard_Integer num);
+		const char * CStrValue (const Handle_Standard_Transient & list,const Standard_Integer num);
 		%feature("compactdefaultargs") EStrValue;
 		%feature("autodoc", "	:param list:
 	:type list: Handle_Standard_Transient &
@@ -2080,7 +2080,7 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 	:type rsc: bool
 	:rtype: char *
 ") SelectedNorm;
-		char * SelectedNorm (const Standard_Boolean rsc = Standard_False);
+		const char * SelectedNorm (const Standard_Boolean rsc = Standard_False);
 		%feature("compactdefaultargs") NormAdaptor;
 		%feature("autodoc", "	* Returns the norm controller itself
 

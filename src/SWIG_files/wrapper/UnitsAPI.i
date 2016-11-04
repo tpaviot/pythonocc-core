@@ -256,7 +256,7 @@ class UnitsAPI {
 	:type aQuantity: char *
 	:rtype: char *
 ") CurrentUnit;
-		static char * CurrentUnit (const char * aQuantity);
+		static const char * CurrentUnit (const char * aQuantity);
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "	* saves the units in the file .CurrentUnits of the directory pointed by the CSF_CurrentUnitsUserDefaults environment variable.
 

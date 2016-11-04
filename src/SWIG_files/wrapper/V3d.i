@@ -3611,7 +3611,7 @@ class V3d_Viewer : public MMgt_TShared {
 		%feature("compactdefaultargs") Domain;
 		%feature("autodoc", "	:rtype: char *
 ") Domain;
-		char * Domain ();
+		const char * Domain ();
 };
 
 

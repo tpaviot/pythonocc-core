@@ -1059,7 +1059,7 @@ class Graphic3d_ArrayOfPrimitives : public MMgt_TShared {
 
 	:rtype: char *
 ") StringType;
-		char * StringType ();
+		const char * StringType ();
 		%feature("compactdefaultargs") HasVertexNormals;
 		%feature("autodoc", "	* Returns True when vertex normals array is defined.
 
@@ -1866,6 +1866,90 @@ class Graphic3d_AspectText3d : public MMgt_TShared {
 	:rtype: None
 ") SetShaderProgram;
 		void SetShaderProgram (const Graphic3d_ShaderProgram_Handle & theProgram);
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "	* Returns the current values of the group <self>.
+
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:param AFont:
+	:type AFont: char * &
+	:param AnExpansionFactor:
+	:type AnExpansionFactor: float &
+	:param ASpace:
+	:type ASpace: float &
+	:rtype: None
+") Values;
+		void Values (Quantity_Color & AColor,const char * & AFont,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "	* Returns the current values of the group <self>.
+
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:param AFont:
+	:type AFont: char * &
+	:param AnExpansionFactor:
+	:type AnExpansionFactor: float &
+	:param ASpace:
+	:type ASpace: float &
+	:param AStyle:
+	:type AStyle: Aspect_TypeOfStyleText &
+	:param ADisplayType:
+	:type ADisplayType: Aspect_TypeOfDisplayText &
+	:param AColorSubTitle:
+	:type AColorSubTitle: Quantity_Color &
+	:rtype: None
+") Values;
+		void Values (Quantity_Color & AColor,const char * & AFont,Standard_Real &OutValue,Standard_Real &OutValue,Aspect_TypeOfStyleText & AStyle,Aspect_TypeOfDisplayText & ADisplayType,Quantity_Color & AColorSubTitle);
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "	* Returns the current values of the group <self>.
+
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:param AFont:
+	:type AFont: char * &
+	:param AnExpansionFactor:
+	:type AnExpansionFactor: float &
+	:param ASpace:
+	:type ASpace: float &
+	:param AStyle:
+	:type AStyle: Aspect_TypeOfStyleText &
+	:param ADisplayType:
+	:type ADisplayType: Aspect_TypeOfDisplayText &
+	:param AColorSubTitle:
+	:type AColorSubTitle: Quantity_Color &
+	:param ATextZoomable:
+	:type ATextZoomable: bool
+	:param ATextAngle:
+	:type ATextAngle: float &
+	:rtype: None
+") Values;
+		void Values (Quantity_Color & AColor,const char * & AFont,Standard_Real &OutValue,Standard_Real &OutValue,Aspect_TypeOfStyleText & AStyle,Aspect_TypeOfDisplayText & ADisplayType,Quantity_Color & AColorSubTitle,Standard_Boolean &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Values;
+		%feature("autodoc", "	* Returns the current values of the group <self>.
+
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:param AFont:
+	:type AFont: char * &
+	:param AnExpansionFactor:
+	:type AnExpansionFactor: float &
+	:param ASpace:
+	:type ASpace: float &
+	:param AStyle:
+	:type AStyle: Aspect_TypeOfStyleText &
+	:param ADisplayType:
+	:type ADisplayType: Aspect_TypeOfDisplayText &
+	:param AColorSubTitle:
+	:type AColorSubTitle: Quantity_Color &
+	:param ATextZoomable:
+	:type ATextZoomable: bool
+	:param ATextAngle:
+	:type ATextAngle: float &
+	:param ATextFontAspect:
+	:type ATextFontAspect: Font_FontAspect &
+	:rtype: None
+") Values;
+		void Values (Quantity_Color & AColor,const char * & AFont,Standard_Real &OutValue,Standard_Real &OutValue,Aspect_TypeOfStyleText & AStyle,Aspect_TypeOfDisplayText & ADisplayType,Quantity_Color & AColorSubTitle,Standard_Boolean &OutValue,Standard_Real &OutValue,Font_FontAspect & ATextFontAspect);
 		%feature("compactdefaultargs") ShaderProgram;
 		%feature("autodoc", "	:rtype: Graphic3d_ShaderProgram_Handle
 ") ShaderProgram;
@@ -5427,13 +5511,13 @@ class Graphic3d_MaterialAspect {
 	:type aRank: int
 	:rtype: char *
 ") MaterialName;
-		static char * MaterialName (const Standard_Integer aRank);
+		static const char * MaterialName (const Standard_Integer aRank);
 		%feature("compactdefaultargs") MaterialName;
 		%feature("autodoc", "	* Returns the name of this material
 
 	:rtype: char *
 ") MaterialName;
-		char * MaterialName ();
+		const char * MaterialName ();
 		%feature("compactdefaultargs") MaterialType;
 		%feature("autodoc", "	* Returns the type of the predefined material of rank <aRank> Trigger: when <aRank> is < 1 or > NumberOfMaterials.
 

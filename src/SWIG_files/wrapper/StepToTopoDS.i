@@ -155,7 +155,7 @@ class StepToTopoDS {
 	:type Error: StepToTopoDS_GeometricToolError
 	:rtype: char *
 ") DecodeGeometricToolError;
-		static char * DecodeGeometricToolError (const StepToTopoDS_GeometricToolError Error);
+		static const char * DecodeGeometricToolError (const StepToTopoDS_GeometricToolError Error);
 };
 
 

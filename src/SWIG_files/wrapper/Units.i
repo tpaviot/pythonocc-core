@@ -98,7 +98,7 @@ class Units {
 	:type aunit: char *
 	:rtype: char *
 ") FirstQuantity;
-		static char * FirstQuantity (const char * aunit);
+		static const char * FirstQuantity (const char * aunit);
 		%feature("compactdefaultargs") LexiconUnits;
 		%feature("autodoc", "	* Returns a unique instance of the Units_Lexicon. If <amode> is True, it forces the recomputation of the dictionary of units, and by consequence the completion of the Units_Lexicon.
 

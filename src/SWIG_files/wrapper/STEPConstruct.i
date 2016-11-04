@@ -1315,7 +1315,7 @@ class STEPConstruct_UnitContext {
 	:type status: int
 	:rtype: char *
 ") StatusMessage;
-		char * StatusMessage (const Standard_Integer status);
+		const char * StatusMessage (const Standard_Integer status);
 		%feature("compactdefaultargs") ConvertSiPrefix;
 		%feature("autodoc", "	* Convert SI prefix defined by enumertaion to corresponding real factor (e.g. 1e6 for mega)
 
@@ -1377,7 +1377,7 @@ class STEPConstruct_ExternRefs : public STEPConstruct_Tool {
 	:type num: int
 	:rtype: char *
 ") FileName;
-		char * FileName (const Standard_Integer num);
+		const char * FileName (const Standard_Integer num);
 		%feature("compactdefaultargs") ProdDef;
 		%feature("autodoc", "	* Returns ProductDefinition to which numth extern reference is associated. Returns Null if cannot be detected or if extern reference is not associated to SDR in a proper way.
 

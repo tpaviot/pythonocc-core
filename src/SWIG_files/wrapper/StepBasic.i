@@ -7290,7 +7290,7 @@ class StepBasic_MeasureValueMember : public StepData_SelectReal {
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	:rtype: char *
 ") Name;
-		virtual char * Name ();
+		virtual const char * Name ();
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "	:param name:
 	:type name: char *
@@ -9784,7 +9784,7 @@ class StepBasic_SizeMember : public StepData_SelectReal {
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	:rtype: char *
 ") Name;
-		virtual char * Name ();
+		virtual const char * Name ();
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "	:param name:
 	:type name: char *
