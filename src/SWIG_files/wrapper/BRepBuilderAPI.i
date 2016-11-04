@@ -688,6 +688,14 @@ typedef Standard_Integer Target;
 	:rtype: TColStd_ListOfInteger
 ") ResInd;
 		const TColStd_ListOfInteger & ResInd ();
+		%feature("compactdefaultargs") Inspect;
+		%feature("autodoc", "	* Implementation of inspection method
+
+	:param theTarget:
+	:type theTarget: int
+	:rtype: NCollection_CellFilter_Action
+") Inspect;
+		NCollection_CellFilter_Action Inspect (const Standard_Integer theTarget);
 };
 
 

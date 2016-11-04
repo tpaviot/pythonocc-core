@@ -181,6 +181,18 @@ class BRepMesh_Circle {
 class BRepMesh_CircleInspector : public NCollection_CellFilter_InspectorXY {
 typedef Standard_Integer Target;
 	public:
+		%feature("compactdefaultargs") BRepMesh_CircleInspector;
+		%feature("autodoc", "	* Constructor. @param theTolerance tolerance to be used for identification of shot circles. @param theReservedSize size to be reserved for vector of circles. @param theAllocator memory allocator to be used by internal collections.
+
+	:param theTolerance:
+	:type theTolerance: float
+	:param theReservedSize:
+	:type theReservedSize: int
+	:param theAllocator:
+	:type theAllocator: Handle_NCollection_IncAllocator &
+	:rtype: None
+") BRepMesh_CircleInspector;
+		 BRepMesh_CircleInspector (const Standard_Real theTolerance,const Standard_Integer theReservedSize,const Handle_NCollection_IncAllocator & theAllocator);
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "	* Adds the circle to vector of circles at the given position. @param theIndex position of circle in the vector. @param theCircle circle to be added.
 
@@ -219,6 +231,14 @@ typedef Standard_Integer Target;
 	:rtype: inline BRepMesh::ListOfInteger
 ") GetShotCircles;
 		inline BRepMesh::ListOfInteger & GetShotCircles ();
+		%feature("compactdefaultargs") Inspect;
+		%feature("autodoc", "	* Performs inspection of a circle with the given index. @param theTargetIndex index of a circle to be checked. returns status of the check.
+
+	:param theTargetIndex:
+	:type theTargetIndex: int
+	:rtype: NCollection_CellFilter_Action
+") Inspect;
+		NCollection_CellFilter_Action Inspect (const Standard_Integer theTargetIndex);
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "	* Checks indices for equlity.
 
@@ -575,6 +595,16 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 	:rtype: None
 ") RemoveElement;
 		void RemoveElement (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") ElementNodes;
+		%feature("autodoc", "	* Returns indices of nodes forming the given element. @param theElement element which nodes should be retrieved. @param[out] theNodes nodes of the given element.
+
+	:param theElement:
+	:type theElement: BRepMesh_Triangle &
+	:param :
+	:type : int(&theNodes)
+	:rtype: None
+") ElementNodes;
+		void ElementNodes (const BRepMesh_Triangle & theElement,Standard_Integer(&theNodes) [3]);
 
         %feature("autodoc", "1");
         %extend{
@@ -715,6 +745,81 @@ class BRepMesh_Delaun {
 	:rtype: bool
 ") Contains;
 		Standard_Boolean Contains (const Standard_Integer theTriangleId,const BRepMesh_Vertex & theVertex,Standard_Integer &OutValue);
+};
+
+
+%nodefaultctor BRepMesh_DiscretFactory;
+%ignore BRepMesh_DiscretFactory::~BRepMesh_DiscretFactory();
+class BRepMesh_DiscretFactory {
+	public:
+		%feature("compactdefaultargs") Get;
+		%feature("autodoc", "	* Returns the global factory instance.
+
+	:rtype: BRepMesh_DiscretFactory
+") Get;
+		static BRepMesh_DiscretFactory & Get ();
+		%feature("compactdefaultargs") Names;
+		%feature("autodoc", "	* Returns the list of registered meshing algorithms.
+
+	:rtype: inline  TColStd_MapOfAsciiString
+") Names;
+		inline const TColStd_MapOfAsciiString & Names ();
+		%feature("compactdefaultargs") SetDefaultName;
+		%feature("autodoc", "	* Setup meshing algorithm by name. Returns True if requested tool is available. On fail Factory will continue to use previous algo.
+
+	:param theName:
+	:type theName: TCollection_AsciiString &
+	:rtype: bool
+") SetDefaultName;
+		Standard_Boolean SetDefaultName (const TCollection_AsciiString & theName);
+		%feature("compactdefaultargs") DefaultName;
+		%feature("autodoc", "	* Returns name for current meshing algorithm.
+
+	:rtype: inline  TCollection_AsciiString
+") DefaultName;
+		inline const TCollection_AsciiString & DefaultName ();
+		%feature("compactdefaultargs") SetFunctionName;
+		%feature("autodoc", "	* Advanced function. Changes function name to retrieve from plugin. Returns True if requested tool is available. On fail Factory will continue to use previous algo.
+
+	:param theFuncName:
+	:type theFuncName: TCollection_AsciiString &
+	:rtype: bool
+") SetFunctionName;
+		Standard_Boolean SetFunctionName (const TCollection_AsciiString & theFuncName);
+		%feature("compactdefaultargs") FunctionName;
+		%feature("autodoc", "	* Returns function name that should be exported by plugin.
+
+	:rtype: inline  TCollection_AsciiString
+") FunctionName;
+		inline const TCollection_AsciiString & FunctionName ();
+		%feature("compactdefaultargs") ErrorStatus;
+		%feature("autodoc", "	* Returns error status for last meshing algorithm switch.
+
+	:rtype: inline BRepMesh_FactoryError
+") ErrorStatus;
+		inline BRepMesh_FactoryError ErrorStatus ();
+		%feature("compactdefaultargs") SetDefault;
+		%feature("autodoc", "	* Setup meshing algorithm that should be created by this Factory. Returns True if requested tool is available. On fail Factory will continue to use previous algo. Call ::ErrorStatus() method to retrieve fault reason.
+
+	:param theName:
+	:type theName: TCollection_AsciiString &
+	:param theFuncName: default value is 'DISCRETALGO'
+	:type theFuncName: TCollection_AsciiString &
+	:rtype: bool
+") SetDefault;
+		Standard_Boolean SetDefault (const TCollection_AsciiString & theName,const TCollection_AsciiString & theFuncName = "DISCRETALGO");
+		%feature("compactdefaultargs") Discret;
+		%feature("autodoc", "	* Returns triangulation algorithm instance. @param theShape shape to be meshed. @param theLinDeflection linear deflection to be used for meshing. @param theAngDeflection angular deflection to be used for meshing.
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theLinDeflection:
+	:type theLinDeflection: float
+	:param theAngDeflection:
+	:type theAngDeflection: float
+	:rtype: Handle_BRepMesh_DiscretRoot
+") Discret;
+		Handle_BRepMesh_DiscretRoot Discret (const TopoDS_Shape & theShape,const Standard_Real theLinDeflection,const Standard_Real theAngDeflection);
 };
 
 
@@ -1569,6 +1674,102 @@ class BRepMesh_ShapeTool {
 };
 
 
+%nodefaultctor BRepMesh_Triangle;
+class BRepMesh_Triangle {
+	public:
+		%feature("compactdefaultargs") BRepMesh_Triangle;
+		%feature("autodoc", "	* Default constructor.
+
+	:rtype: None
+") BRepMesh_Triangle;
+		 BRepMesh_Triangle ();
+		%feature("compactdefaultargs") BRepMesh_Triangle;
+		%feature("autodoc", "	* Constructor. @param theEdges array of edges of triangle. @param theOrientations array of edge's orientations. @param theMovability movability of triangle.
+
+	:param Standard_Integer(&theEdges):
+	:type Standard_Integer(&theEdges): 
+	:param Standard_Boolean(&theOrientations):
+	:type Standard_Boolean(&theOrientations): 
+	:param theMovability:
+	:type theMovability: BRepMesh_DegreeOfFreedom
+	:rtype: None
+") BRepMesh_Triangle;
+		 BRepMesh_Triangle (const Standard_Integer(&theEdges)[3],const Standard_Boolean(&theOrientations)[3],const BRepMesh_DegreeOfFreedom theMovability);
+		%feature("compactdefaultargs") Initialize;
+		%feature("autodoc", "	* Initializes the triangle by the given parameters. @param theEdges array of edges of triangle. @param theOrientations array of edge's orientations. @param theMovability movability of triangle.
+
+	:param Standard_Integer(&theEdges):
+	:type Standard_Integer(&theEdges): 
+	:param Standard_Boolean(&theOrientations):
+	:type Standard_Boolean(&theOrientations): 
+	:param theMovability:
+	:type theMovability: BRepMesh_DegreeOfFreedom
+	:rtype: inline void
+") Initialize;
+		inline void Initialize (const Standard_Integer(&theEdges)[3],const Standard_Boolean(&theOrientations)[3],const BRepMesh_DegreeOfFreedom theMovability);
+		%feature("compactdefaultargs") Edges;
+		%feature("autodoc", "	* Gets edges with orientations composing the triangle. @param[out] theEdges array edges are stored to. @param[out] theOrientations array orientations are stored to.
+
+	:param :
+	:type : int(&theEdges)
+	:param :
+	:type : bool(&theOrientations)
+	:rtype: inline void
+") Edges;
+		inline void Edges (Standard_Integer(&theEdges) [3],Standard_Boolean(&theOrientations) [3]);
+		%feature("compactdefaultargs") Movability;
+		%feature("autodoc", "	* Returns movability of the triangle.
+
+	:rtype: inline BRepMesh_DegreeOfFreedom
+") Movability;
+		inline BRepMesh_DegreeOfFreedom Movability ();
+		%feature("compactdefaultargs") SetMovability;
+		%feature("autodoc", "	* Sets movability of the triangle.
+
+	:param theMovability:
+	:type theMovability: BRepMesh_DegreeOfFreedom
+	:rtype: inline void
+") SetMovability;
+		inline void SetMovability (const BRepMesh_DegreeOfFreedom theMovability);
+		%feature("compactdefaultargs") HashCode;
+		%feature("autodoc", "	* Returns hash code for this triangle. @param theUpper upper index in the container. returns hash code.
+
+	:param theUpper:
+	:type theUpper: int
+	:rtype: int
+") HashCode;
+		Standard_Integer HashCode (const Standard_Integer theUpper);
+
+        %extend {
+            Standard_Integer __hash__() {
+            return $self->HashCode(2147483647);
+            }
+        };
+        		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Checks for equality with another triangle. @param theOther triangle to be checked against this one. returns True if equal, False if not.
+
+	:param theOther:
+	:type theOther: BRepMesh_Triangle &
+	:rtype: bool
+") IsEqual;
+		Standard_Boolean IsEqual (const BRepMesh_Triangle & theOther);
+
+        %extend{
+            bool __eq_wrapper__(const BRepMesh_Triangle  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        };
+
+
 %nodefaultctor BRepMesh_Vertex;
 class BRepMesh_Vertex {
 	public:
@@ -1689,6 +1890,24 @@ class BRepMesh_Vertex {
 class BRepMesh_VertexInspector : public NCollection_CellFilter_InspectorXY {
 typedef Standard_Integer Target;
 	public:
+		%feature("compactdefaultargs") BRepMesh_VertexInspector;
+		%feature("autodoc", "	* Constructor. @param theReservedSize size to be reserved for vector of vertices. @param theAllocator memory allocator to be used by internal collections.
+
+	:param theReservedSize:
+	:type theReservedSize: int
+	:param theAllocator:
+	:type theAllocator: Handle_NCollection_IncAllocator &
+	:rtype: None
+") BRepMesh_VertexInspector;
+		 BRepMesh_VertexInspector (const Standard_Integer theReservedSize,const Handle_NCollection_IncAllocator & theAllocator);
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Registers the given vertex. @param theVertex vertex to be registered.
+
+	:param theVertex:
+	:type theVertex: BRepMesh_Vertex &
+	:rtype: int
+") Add;
+		Standard_Integer Add (const BRepMesh_Vertex & theVertex);
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "	* Sets the tolerance to be used for identification of coincident vertices equal for both dimensions.
 
@@ -1767,6 +1986,14 @@ typedef Standard_Integer Target;
 	:rtype: inline BRepMesh::HVectorOfVertex
 ") ChangeVertices;
 		inline BRepMesh::HVectorOfVertex & ChangeVertices ();
+		%feature("compactdefaultargs") Inspect;
+		%feature("autodoc", "	* Performs inspection of a point with the given index. @param theTargetIndex index of a circle to be checked. returns status of the check.
+
+	:param theTargetIndex:
+	:type theTargetIndex: int
+	:rtype: NCollection_CellFilter_Action
+") Inspect;
+		NCollection_CellFilter_Action Inspect (const Standard_Integer theTargetIndex);
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "	* Checks indices for equlity.
 
