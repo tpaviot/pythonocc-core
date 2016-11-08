@@ -843,7 +843,7 @@ class Standard_Failure : public Standard_Transient {
 
 	:rtype: char *
 ") GetMessageString;
-		char * GetMessageString ();
+		const char * GetMessageString ();
 		%feature("compactdefaultargs") SetMessageString;
 		%feature("autodoc", "	* Sets error message
 
@@ -1095,7 +1095,7 @@ class Standard_Type : public Standard_Transient {
 
 	:rtype: char *
 ") Name;
-		char * Name ();
+		const char * Name ();
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "	* Returns the size of <self> in bytes.
 

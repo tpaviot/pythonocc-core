@@ -225,7 +225,7 @@ class ShapeProcess_Context : public MMgt_TShared {
 	:type def: char *
 	:rtype: char *
 ") StringVal;
-		char * StringVal (const char * param,const char * def);
+		const char * StringVal (const char * param,const char * def);
 		%feature("compactdefaultargs") SetMessenger;
 		%feature("autodoc", "	* Sets Messenger used for outputting messages.
 

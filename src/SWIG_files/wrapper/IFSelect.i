@@ -248,15 +248,15 @@ class IFSelect_Activator : public MMgt_TShared {
 	:type number: int
 	:rtype: char *
 ") Help;
-		virtual char * Help (const Standard_Integer number);
+		virtual const char * Help (const Standard_Integer number);
 		%feature("compactdefaultargs") Group;
 		%feature("autodoc", "	:rtype: char *
 ") Group;
-		char * Group ();
+		const char * Group ();
 		%feature("compactdefaultargs") File;
 		%feature("autodoc", "	:rtype: char *
 ") File;
-		char * File ();
+		const char * File ();
 		%feature("compactdefaultargs") SetForGroup;
 		%feature("autodoc", "	* Group and SetGroup define a 'Group of commands' which correspond to an Activator. Default is 'XSTEP' Also a file may be attached
 
@@ -502,7 +502,7 @@ class IFSelect_ContextModif {
 
 	:rtype: char *
 ") FileName;
-		char * FileName ();
+		const char * FileName ();
 		%feature("compactdefaultargs") Control;
 		%feature("autodoc", "	* Returns the map for a direct use, if required
 
@@ -706,7 +706,7 @@ class IFSelect_ContextWrite {
 
 	:rtype: char *
 ") FileName;
-		char * FileName ();
+		const char * FileName ();
 		%feature("compactdefaultargs") AppliedModifiers;
 		%feature("autodoc", "	* Returns the object AppliedModifiers
 
@@ -1045,7 +1045,7 @@ class IFSelect_EditForm : public MMgt_TShared {
             		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "	:rtype: char *
 ") Label;
-		char * Label ();
+		const char * Label ();
 		%feature("compactdefaultargs") IsLoaded;
 		%feature("autodoc", "	* Tells if the EditForm is loaded now
 
@@ -1467,7 +1467,7 @@ class IFSelect_Editor : public MMgt_TShared {
 	:type isshort: bool
 	:rtype: char *
 ") Name;
-		char * Name (const Standard_Integer num,const Standard_Boolean isshort = Standard_False);
+		const char * Name (const Standard_Integer num,const Standard_Boolean isshort = Standard_False);
 		%feature("compactdefaultargs") EditMode;
 		%feature("autodoc", "	* Returns the edit mode of a Value
 
@@ -2566,7 +2566,7 @@ class IFSelect_PacketList : public MMgt_TShared {
 
 	:rtype: char *
 ") Name;
-		char * Name ();
+		const char * Name ();
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "	* Returns the Model of reference
 
@@ -4468,7 +4468,7 @@ class IFSelect_Signature : public Interface_SignType {
 
 	:rtype: char *
 ") Name;
-		char * Name ();
+		const char * Name ();
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "	* The label of a Signature uses its name as follow : 'Signature : <name>'
 
@@ -4508,7 +4508,7 @@ class IFSelect_Signature : public Interface_SignType {
 	:type val: int
 	:rtype: char *
 ") IntValue;
-		static char * IntValue (const Standard_Integer val);
+		static const char * IntValue (const Standard_Integer val);
 };
 
 
@@ -4609,7 +4609,7 @@ class IFSelect_SignatureList : public MMgt_TShared {
 
 	:rtype: char *
 ") LastValue;
-		char * LastValue ();
+		const char * LastValue ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Aknowledges the list in once. Name identifies the Signature
 
@@ -4673,7 +4673,7 @@ class IFSelect_SignatureList : public MMgt_TShared {
 
 	:rtype: char *
 ") Name;
-		virtual char * Name ();
+		virtual const char * Name ();
 		%feature("compactdefaultargs") PrintCount;
 		%feature("autodoc", "	* Prints the counts of items (not the list)
 
@@ -5221,7 +5221,7 @@ class IFSelect_WorkLibrary : public Standard_Transient {
 	:type level: int
 	:rtype: char *
 ") DumpHelp;
-		char * DumpHelp (const Standard_Integer level);
+		const char * DumpHelp (const Standard_Integer level);
 };
 
 
@@ -5385,7 +5385,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 
 	:rtype: char *
 ") LoadedFile;
-		char * LoadedFile ();
+		const char * LoadedFile ();
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "	* Reads a file with the WorkLibrary (sets Model and LoadedFile) Returns a integer status which can be : RetDone if OK, RetVoid if no Protocol not defined, RetError for file not found, RetFail if fail during read
 
@@ -5457,7 +5457,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 	:type ent: Handle_Standard_Transient &
 	:rtype: char *
 ") CategoryName;
-		char * CategoryName (const Handle_Standard_Transient & ent);
+		const char * CategoryName (const Handle_Standard_Transient & ent);
 		%feature("compactdefaultargs") ValidityName;
 		%feature("autodoc", "	* Returns the Validity Name determined for an entity it is computed by the class SignValidity Remark : an unknown entity gives an empty string
 
@@ -5465,7 +5465,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 	:type ent: Handle_Standard_Transient &
 	:rtype: char *
 ") ValidityName;
-		char * ValidityName (const Handle_Standard_Transient & ent);
+		const char * ValidityName (const Handle_Standard_Transient & ent);
 		%feature("compactdefaultargs") ClearData;
 		%feature("autodoc", "	* Clears recorded data (not the items) according mode : 1 : all Data : Model, Graph, CheckList, + ClearData 4 2 : Graph and CheckList (they will then be recomputed later) 3 : CheckList (it will be recomputed by ComputeCheck) 4 : just content of SelectPointed and Counters Plus 0 : does nothing but called by SetModel ClearData is virtual, hence it can be redefined to clear other data of a specialised Work Session
 
@@ -5811,7 +5811,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 	:type ent: Handle_Standard_Transient &
 	:rtype: char *
 ") SignValue;
-		char * SignValue (const Handle_IFSelect_Signature & sign,const Handle_Standard_Transient & ent);
+		const char * SignValue (const Handle_IFSelect_Signature & sign,const Handle_Standard_Transient & ent);
 		%feature("compactdefaultargs") Selection;
 		%feature("autodoc", "	* Returns a Selection, given its Ident in the Session Null result if <id> is not suitable for a Selection (undefined, or defined for another kind of variable)
 
@@ -6163,7 +6163,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 	:type file: char *
 	:rtype: char *
 ") GiveFileRoot;
-		char * GiveFileRoot (const char * file);
+		const char * GiveFileRoot (const char * file);
 		%feature("compactdefaultargs") GiveFileComplete;
 		%feature("autodoc", "	* Completes a file name as required, with Prefix and Extension (if defined; for a non-defined item, completes nothing)
 
@@ -6171,7 +6171,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 	:type file: char *
 	:rtype: char *
 ") GiveFileComplete;
-		char * GiveFileComplete (const char * file);
+		const char * GiveFileComplete (const char * file);
 		%feature("compactdefaultargs") ClearFile;
 		%feature("autodoc", "	* Erases all stored data from the File Evaluation (i.e. ALL former naming informations are lost)
 
@@ -6707,7 +6707,7 @@ class IFSelect_Act : public IFSelect_Activator {
 	:type number: int
 	:rtype: char *
 ") Help;
-		char * Help (const Standard_Integer number);
+		const char * Help (const Standard_Integer number);
 		%feature("compactdefaultargs") SetGroup;
 		%feature("autodoc", "	* Changes the default group name for the following Acts group empty means to come back to default from Activator Also a file name can be precised (to query by getsource)
 
@@ -7403,7 +7403,7 @@ class IFSelect_DispPerSignature : public IFSelect_Dispatch {
 
 	:rtype: char *
 ") SignName;
-		char * SignName ();
+		const char * SignName ();
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "	* Returns as Label, 'One File per Signature <name>'
 
@@ -8113,7 +8113,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 	:type numarg: int
 	:rtype: char *
 ") CommandPart;
-		char * CommandPart (const Standard_Integer numarg = 0);
+		const char * CommandPart (const Standard_Integer numarg = 0);
 		%feature("compactdefaultargs") NbWords;
 		%feature("autodoc", "	* Returns the count of words of the Command Line, separated by blanks : 0 if empty, one if a command without args, else it gives the count of args minus one. Warning : limited to 10 (command title + 9 args)
 
@@ -8135,7 +8135,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 	:type num: int
 	:rtype: char *
 ") Arg;
-		char * Arg (const Standard_Integer num);
+		const char * Arg (const Standard_Integer num);
 		%feature("compactdefaultargs") RemoveWord;
 		%feature("autodoc", "	* Removes a word given its rank. Returns True if Done, False if <num> is out of range
 
@@ -8245,7 +8245,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 	:type number: int
 	:rtype: char *
 ") Help;
-		char * Help (const Standard_Integer number);
+		const char * Help (const Standard_Integer number);
 };
 
 
@@ -8313,7 +8313,7 @@ class IFSelect_SignCategory : public IFSelect_Signature {
 	:type model: Handle_Interface_InterfaceModel &
 	:rtype: char *
 ") Value;
-		char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
+		const char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
 };
 
 
@@ -8517,7 +8517,7 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 	:type G: Interface_Graph &
 	:rtype: char *
 ") ComputedSign;
-		char * ComputedSign (const Handle_Standard_Transient & ent,const Interface_Graph & G);
+		const char * ComputedSign (const Handle_Standard_Transient & ent,const Interface_Graph & G);
 };
 
 
@@ -8599,7 +8599,7 @@ class IFSelect_SignMultiple : public IFSelect_Signature {
 	:type model: Handle_Interface_InterfaceModel &
 	:rtype: char *
 ") Value;
-		char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
+		const char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "	* Specialized Match Rule If <exact> is False, simply checks if at least one sub-item matches If <exact> is True, standard match with Value (i.e. tabulations must be respected)
 
@@ -8683,7 +8683,7 @@ class IFSelect_SignType : public IFSelect_Signature {
 	:type model: Handle_Interface_InterfaceModel &
 	:rtype: char *
 ") Value;
-		char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
+		const char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
 };
 
 
@@ -8751,7 +8751,7 @@ class IFSelect_SignValidity : public IFSelect_Signature {
 	:type model: Handle_Interface_InterfaceModel &
 	:rtype: char *
 ") CVal;
-		static char * CVal (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
+		static const char * CVal (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the Signature for a Transient object, as a validity deducted from data (reports) stored in the model Calls the class method CVal
 
@@ -8761,7 +8761,7 @@ class IFSelect_SignValidity : public IFSelect_Signature {
 	:type model: Handle_Interface_InterfaceModel &
 	:rtype: char *
 ") Value;
-		char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
+		const char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
 };
 
 
@@ -10787,7 +10787,7 @@ class IFSelect_SelectFlag : public IFSelect_SelectExtract {
 
 	:rtype: char *
 ") FlagName;
-		char * FlagName ();
+		const char * FlagName ();
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "	* Returns the list of selected entities. It is redefined to work on the graph itself (not queried by sort) //! An entity is selected if its flag is True on Direct mode, False on Reversed mode //! If flag does not exist for the given name, returns an empty result, whatever the Direct/Reversed sense
 

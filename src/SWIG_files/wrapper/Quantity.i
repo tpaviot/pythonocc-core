@@ -1243,7 +1243,7 @@ class Quantity_Color {
 	:type AColor: Quantity_NameOfColor
 	:rtype: char *
 ") StringName;
-		static char * StringName (const Quantity_NameOfColor AColor);
+		static const char * StringName (const Quantity_NameOfColor AColor);
 		%feature("compactdefaultargs") ColorFromName;
 		%feature("autodoc", "	* Finds color from predefined names. For example, the name of the color which corresponds to 'BLACK' is Quantity_NOC_BLACK. Returns false if name is unknown.
 

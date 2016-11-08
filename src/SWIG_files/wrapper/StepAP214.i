@@ -6300,7 +6300,7 @@ class StepAP214_Protocol : public StepData_Protocol {
 		%feature("compactdefaultargs") SchemaName;
 		%feature("autodoc", "	:rtype: char *
 ") SchemaName;
-		virtual char * SchemaName ();
+		virtual const char * SchemaName ();
 		%feature("compactdefaultargs") NbResources;
 		%feature("autodoc", "	* Returns count of Protocol used as Resources (level one)
 

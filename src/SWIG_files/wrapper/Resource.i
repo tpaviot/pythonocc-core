@@ -501,7 +501,7 @@ class Resource_Manager : public MMgt_TShared {
 	:type aResourceName: char *
 	:rtype: char *
 ") Value;
-		virtual char * Value (const char * aResourceName);
+		virtual const char * Value (const char * aResourceName);
 		%feature("compactdefaultargs") ExtValue;
 		%feature("autodoc", "	* Gets the value of an ExtString resource according to its instance and its type.
 

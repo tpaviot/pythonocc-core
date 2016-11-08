@@ -389,7 +389,7 @@ class Interface_BitMap {
 	:type num: int
 	:rtype: char *
 ") FlagName;
-		char * FlagName (const Standard_Integer num);
+		const char * FlagName (const Standard_Integer num);
 		%feature("compactdefaultargs") FlagNumber;
 		%feature("autodoc", "	* Returns the number or a flag given its name, or zero
 
@@ -567,7 +567,7 @@ class Interface_Category {
 	:type num: int
 	:rtype: char *
 ") Name;
-		static char * Name (const Standard_Integer num);
+		static const char * Name (const Standard_Integer num);
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "	* Returns the number of a category, according to its name
 
@@ -677,7 +677,7 @@ class Interface_Check : public MMgt_TShared {
 	:type final: bool
 	:rtype: char *
 ") CFail;
-		char * CFail (const Standard_Integer num,const Standard_Boolean final = Standard_True);
+		const char * CFail (const Standard_Integer num,const Standard_Boolean final = Standard_True);
 		%feature("compactdefaultargs") Fails;
 		%feature("autodoc", "	* Returns the list of Fails, for a frontal-engine logic Final forms by default, Original forms if <final> is False Can be empty
 
@@ -761,7 +761,7 @@ class Interface_Check : public MMgt_TShared {
 	:type final: bool
 	:rtype: char *
 ") CWarning;
-		char * CWarning (const Standard_Integer num,const Standard_Boolean final = Standard_True);
+		const char * CWarning (const Standard_Integer num,const Standard_Boolean final = Standard_True);
 		%feature("compactdefaultargs") Warnings;
 		%feature("autodoc", "	* Returns the list of Warnings, for a frontal-engine logic Final forms by default, Original forms if <final> is False Can be empty
 
@@ -803,7 +803,7 @@ class Interface_Check : public MMgt_TShared {
 	:type final: bool
 	:rtype: char *
 ") CInfoMsg;
-		char * CInfoMsg (const Standard_Integer num,const Standard_Boolean final = Standard_True);
+		const char * CInfoMsg (const Standard_Integer num,const Standard_Boolean final = Standard_True);
 		%feature("compactdefaultargs") InfoMsgs;
 		%feature("autodoc", "	* Returns the list of Info Msg, for a frontal-engine logic Final forms by default, Original forms if <final> is False Can be empty
 
@@ -1031,7 +1031,7 @@ class Interface_CheckIterator {
 
 	:rtype: char *
 ") Name;
-		char * Name ();
+		const char * Name ();
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "	* Defines a Model, used to locate entities (not required, if it is absent, entities are simply less documented)
 
@@ -2170,7 +2170,7 @@ class Interface_FileParameter {
 
 	:rtype: char *
 ") CValue;
-		char * CValue ();
+		const char * CValue ();
 		%feature("compactdefaultargs") ParamType;
 		%feature("autodoc", "	* Returns the type of the parameter
 
@@ -2342,7 +2342,7 @@ class Interface_FileReaderData : public MMgt_TShared {
 	:type nump: int
 	:rtype: char *
 ") ParamCValue;
-		char * ParamCValue (const Standard_Integer num,const Standard_Integer nump);
+		const char * ParamCValue (const Standard_Integer num,const Standard_Integer nump);
 		%feature("compactdefaultargs") IsParamDefined;
 		%feature("autodoc", "	* Returns True if parameter 'nump' of record 'num' is defined (it is not if its type is ParamVoid)
 
@@ -2720,13 +2720,13 @@ class Interface_FloatWriter {
 
 	:rtype: char *
 ") MainFormat;
-		char * MainFormat ();
+		const char * MainFormat ();
 		%feature("compactdefaultargs") FormatForRange;
 		%feature("autodoc", "	* Returns the format for range, if set Meaningful only if <range> from Options is True was C++ : return const
 
 	:rtype: char *
 ") FormatForRange;
-		char * FormatForRange ();
+		const char * FormatForRange ();
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "	* Writes a Real value <val> to a string <text> by using the options. Returns the useful Length of produced string. It calls the class method Convert. Warning : <text> is assumed to be wide enough (20-30 is correct) And, even if declared in, its content will be modified
 
@@ -2802,13 +2802,13 @@ class Interface_GTool : public MMgt_TShared {
 	:type model: Handle_Interface_InterfaceModel &
 	:rtype: char *
 ") SignValue;
-		char * SignValue (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
+		const char * SignValue (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
 		%feature("compactdefaultargs") SignName;
 		%feature("autodoc", "	* Returns the Name of the SignType, or 'Class Name'
 
 	:rtype: char *
 ") SignName;
-		char * SignName ();
+		const char * SignName ();
 		%feature("compactdefaultargs") SetProtocol;
 		%feature("autodoc", "	* Sets a new Protocol if <enforce> is False and the new Protocol equates the old one then nothing is done
 
@@ -4640,7 +4640,7 @@ class Interface_InterfaceModel : public MMgt_TShared {
 	:type complete: bool
 	:rtype: char *
 ") TypeName;
-		char * TypeName (const Handle_Standard_Transient & ent,const Standard_Boolean complete = Standard_True);
+		const char * TypeName (const Handle_Standard_Transient & ent,const Standard_Boolean complete = Standard_True);
 		%feature("compactdefaultargs") ClassName;
 		%feature("autodoc", "	* From a CDL Type Name, returns the Class part (package dropped) WARNING : buffered, to be immediately copied or printed
 
@@ -4648,7 +4648,7 @@ class Interface_InterfaceModel : public MMgt_TShared {
 	:type typnam: char *
 	:rtype: char *
 ") ClassName;
-		static char * ClassName (const char * typnam);
+		static const char * ClassName (const char * typnam);
 		%feature("compactdefaultargs") EntityState;
 		%feature("autodoc", "	* Returns the State of an entity, given its number
 
@@ -5122,7 +5122,7 @@ class Interface_LineBuffer {
 
 	:rtype: char *
 ") Content;
-		char * Content ();
+		const char * Content ();
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	* Returns the Length of the LineBuffer
 
@@ -5278,7 +5278,7 @@ class Interface_MSG {
 
 	:rtype: char *
 ") Value;
-		char * Value ();
+		const char * Value ();
 		%feature("compactdefaultargs") operator Standard_CString;
 		%feature("autodoc", "	:rtype: None
 ") operatorStandard_CString;
@@ -5323,7 +5323,7 @@ class Interface_MSG {
 	:type key: char *
 	:rtype: char *
 ") Translated;
-		static char * Translated (const char * key);
+		static const char * Translated (const char * key);
 		%feature("compactdefaultargs") Record;
 		%feature("autodoc", "	* Fills the dictionary with a couple (key-item) If a key is already recorded, it is possible to : - keep the last definition, and activate the trace system
 
@@ -5435,7 +5435,7 @@ class Interface_MSG {
 	:type max: int
 	:rtype: char *
 ") Blanks;
-		static char * Blanks (const Standard_Integer val,const Standard_Integer max);
+		static const char * Blanks (const Standard_Integer val,const Standard_Integer max);
 		%feature("compactdefaultargs") Blanks;
 		%feature("autodoc", "	* Returns a blank string, to complete a given string <val> up to <max> characters : If strlen(val) is 0, max blanks If strlen(val) is 5, max-5 blanks etc...
 
@@ -5445,7 +5445,7 @@ class Interface_MSG {
 	:type max: int
 	:rtype: char *
 ") Blanks;
-		static char * Blanks (const char * val,const Standard_Integer max);
+		static const char * Blanks (const char * val,const Standard_Integer max);
 		%feature("compactdefaultargs") Blanks;
 		%feature("autodoc", "	* Returns a blank string of <count> blanks (mini 0, maxi 76)
 
@@ -5453,7 +5453,7 @@ class Interface_MSG {
 	:type count: int
 	:rtype: char *
 ") Blanks;
-		static char * Blanks (const Standard_Integer count);
+		static const char * Blanks (const Standard_Integer count);
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "	* Prints a String on an Output Stream, as follows : Accompagned with blanks, to give up to <max> charis at all, justified according just : -1 (D) : left 0 : center 1 : right Maximum 76 characters
 
@@ -6777,7 +6777,7 @@ class Interface_SignLabel : public MoniTool_SignText {
 
 	:rtype: char *
 ") Name;
-		char * Name ();
+		const char * Name ();
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "	* Considers context as an InterfaceModel and returns the Label computed by it
 
@@ -6859,7 +6859,7 @@ class Interface_SignType : public MoniTool_SignText {
 	:type model: Handle_Interface_InterfaceModel &
 	:rtype: char *
 ") Value;
-		virtual char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
+		virtual const char * Value (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
 		%feature("compactdefaultargs") ClassName;
 		%feature("autodoc", "	* From a CDL Type Name, returns the Class part (package dropped) WARNING : buffered, to be immediately copied or printed
 
@@ -6867,7 +6867,7 @@ class Interface_SignType : public MoniTool_SignText {
 	:type typnam: char *
 	:rtype: char *
 ") ClassName;
-		static char * ClassName (const char * typnam);
+		static const char * ClassName (const char * typnam);
 };
 
 
@@ -7417,7 +7417,7 @@ class Interface_Static : public Interface_TypedValue {
 
 	:rtype: char *
 ") Family;
-		char * Family ();
+		const char * Family ();
 		%feature("compactdefaultargs") SetWild;
 		%feature("autodoc", "	* Sets a 'wild-card' static : its value will be considered if <self> is not properly set. (reset by set a null one)
 
@@ -7497,7 +7497,7 @@ class Interface_Static : public Interface_TypedValue {
 	:type part: char *
 	:rtype: char *
 ") CDef;
-		static char * CDef (const char * name,const char * part);
+		static const char * CDef (const char * name,const char * part);
 		%feature("compactdefaultargs") IDef;
 		%feature("autodoc", "	* Returns a part of the definition of a Static, as an Integer The part is designated by its name, as a CString If the required value is not a string, returns zero For a Boolean, 0 for false, 1 for true If <name> is not present, or <part> not defined for <name>, this function returns zero //! Allowed parts for IDef : imin, imax : minimum or maximum integer value estart : starting number for enum ecount : count of enum values (starting from estart) ematch : exact match status eval val : case determined from a string
 
@@ -7525,7 +7525,7 @@ class Interface_Static : public Interface_TypedValue {
 	:type name: char *
 	:rtype: char *
 ") CVal;
-		static char * CVal (const char * name);
+		static const char * CVal (const char * name);
 		%feature("compactdefaultargs") IVal;
 		%feature("autodoc", "	* Returns the integer value of the translation parameter identified by the string name. Returns the value 0 if the parameter does not exist. Example Interface_Static::IVal('write.step.schema'); which could return: 3
 

@@ -70,7 +70,7 @@ class XCAFApp_Application : public TDocStd_Application {
 
 	:rtype: char *
 ") ResourcesName;
-		virtual char * ResourcesName ();
+		virtual const char * ResourcesName ();
 		%feature("compactdefaultargs") InitDocument;
 		%feature("autodoc", "	* Set XCAFDoc_DocumentTool attribute
 
