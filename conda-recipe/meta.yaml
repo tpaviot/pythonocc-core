@@ -1,0 +1,48 @@
+package:
+  name: pythonocc-core
+  version: 0.16.3dev
+
+source:
+    git_url: https://github.com/tpaviot/pythonocc-core.git             [unix]
+    git_tag: master # only master contains important fixes             [unix]
+    fn: pythonocc-core-master.zip                                      [win]
+    url: https://github.com/tpaviot/pythonocc-core/archive/master.zip  [win]
+    patches:
+      - fix_graphicshr_location.patch
+
+build:
+  number: 1
+  binary_relocation: true
+
+requirements:
+  build:
+    - ninja             [win]
+    - patch             [win]
+    - cmake
+    - python
+    - opencascade_community_edition ==0.16.1
+    - swig
+    - gcc               [linux]
+    # remove the following line as soon as pip 9.0.1 is available in the official channel
+    - pip ==8.1.2  # to prevent anaconda to use the buggy 9.0.0 version
+
+  run:
+    - python
+    - opencascade_community_edition ==0.16.1
+    # remove the following line as soon as pip 9.0.1 is available in the official channel
+    - pip ==8.1.2  # to prevent anaconda to use the buggy 9.0.0 version
+
+test:
+  imports:
+    - OCC
+    - OCC.BRepPrimAPI
+
+
+about:
+  home: https://github.com/tpaviot/pythonocc-core
+  summary: https://github.com/tpaviot/pythonocc-core/blob/master/README.md
+  license: LGPL
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
