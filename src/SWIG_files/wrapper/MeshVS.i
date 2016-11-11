@@ -4694,6 +4694,12 @@ class MeshVS_Tool {
 %nodefaultctor MeshVS_TwoColors;
 class MeshVS_TwoColors {
 	public:
+		unsigned int r1;
+		unsigned int g1;
+		unsigned int b1;
+		unsigned int r2;
+		unsigned int g2;
+		unsigned int b2;
 };
 
 
@@ -4721,6 +4727,8 @@ class MeshVS_TwoColorsHasher {
 %nodefaultctor MeshVS_TwoNodes;
 class MeshVS_TwoNodes {
 	public:
+		int First;
+		int Second;
 		%feature("compactdefaultargs") MeshVS_TwoNodes;
 		%feature("autodoc", "	:param aFirst: default value is 0
 	:type aFirst: int

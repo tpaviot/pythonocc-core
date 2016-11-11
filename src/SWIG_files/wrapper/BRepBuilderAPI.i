@@ -650,8 +650,8 @@ class Handle_BRepBuilderAPI_Sewing : public Handle_MMgt_TShared {
 
 %nodefaultctor BRepBuilderAPI_VertexInspector;
 class BRepBuilderAPI_VertexInspector : public NCollection_CellFilter_InspectorXYZ {
-typedef Standard_Integer Target;
 	public:
+typedef Standard_Integer Target;
 		%feature("compactdefaultargs") BRepBuilderAPI_VertexInspector;
 		%feature("autodoc", "	* Constructor; remembers the tolerance
 
