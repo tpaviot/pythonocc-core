@@ -7829,6 +7829,52 @@ class AIS_ColoredDrawer : public AIS_Drawer {
 };
 
 
+%extend AIS_ColoredDrawer {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_ColoredDrawer(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_ColoredDrawer::Handle_AIS_ColoredDrawer %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_AIS_ColoredDrawer;
+class Handle_AIS_ColoredDrawer : public Handle_AIS_Drawer {
+
+    public:
+        // constructors
+        Handle_AIS_ColoredDrawer();
+        Handle_AIS_ColoredDrawer(const Handle_AIS_ColoredDrawer &aHandle);
+        Handle_AIS_ColoredDrawer(const AIS_ColoredDrawer *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_AIS_ColoredDrawer DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_AIS_ColoredDrawer {
+    AIS_ColoredDrawer* _get_reference() {
+    return (AIS_ColoredDrawer*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_ColoredDrawer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
 %nodefaultctor AIS_ConnectedInteractive;
 class AIS_ConnectedInteractive : public AIS_InteractiveObject {
 	public:
@@ -8147,6 +8193,52 @@ enum ComputeMode {
 		Standard_Boolean IsValid ();
 };
 
+
+%extend AIS_Dimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_Dimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_Dimension::Handle_AIS_Dimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_AIS_Dimension;
+class Handle_AIS_Dimension : public Handle_AIS_InteractiveObject {
+
+    public:
+        // constructors
+        Handle_AIS_Dimension();
+        Handle_AIS_Dimension(const Handle_AIS_Dimension &aHandle);
+        Handle_AIS_Dimension(const AIS_Dimension *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_AIS_Dimension DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_AIS_Dimension {
+    AIS_Dimension* _get_reference() {
+    return (AIS_Dimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_Dimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
 
 %nodefaultctor AIS_Line;
 class AIS_Line : public AIS_InteractiveObject {
@@ -9169,6 +9261,52 @@ enum DisplayMode {
 		virtual void UnsetMaterial ();
 };
 
+
+%extend AIS_PointCloud {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_PointCloud(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_PointCloud::Handle_AIS_PointCloud %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_AIS_PointCloud;
+class Handle_AIS_PointCloud : public Handle_AIS_InteractiveObject {
+
+    public:
+        // constructors
+        Handle_AIS_PointCloud();
+        Handle_AIS_PointCloud(const Handle_AIS_PointCloud &aHandle);
+        Handle_AIS_PointCloud(const AIS_PointCloud *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_AIS_PointCloud DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_AIS_PointCloud {
+    AIS_PointCloud* _get_reference() {
+    return (AIS_PointCloud*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_PointCloud {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
 
 %nodefaultctor AIS_Relation;
 class AIS_Relation : public AIS_InteractiveObject {
@@ -10368,6 +10506,52 @@ class AIS_AngleDimension : public AIS_Dimension {
 };
 
 
+%extend AIS_AngleDimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_AngleDimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_AngleDimension::Handle_AIS_AngleDimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_AIS_AngleDimension;
+class Handle_AIS_AngleDimension : public Handle_AIS_Dimension {
+
+    public:
+        // constructors
+        Handle_AIS_AngleDimension();
+        Handle_AIS_AngleDimension(const Handle_AIS_AngleDimension &aHandle);
+        Handle_AIS_AngleDimension(const AIS_AngleDimension *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_AIS_AngleDimension DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_AIS_AngleDimension {
+    AIS_AngleDimension* _get_reference() {
+    return (AIS_AngleDimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_AngleDimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
 %nodefaultctor AIS_Chamf2dDimension;
 class AIS_Chamf2dDimension : public AIS_Relation {
 	public:
@@ -10680,6 +10864,52 @@ class AIS_ColoredShape : public AIS_Shape {
 };
 
 
+%extend AIS_ColoredShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_ColoredShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_ColoredShape::Handle_AIS_ColoredShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_AIS_ColoredShape;
+class Handle_AIS_ColoredShape : public Handle_AIS_Shape {
+
+    public:
+        // constructors
+        Handle_AIS_ColoredShape();
+        Handle_AIS_ColoredShape(const Handle_AIS_ColoredShape &aHandle);
+        Handle_AIS_ColoredShape(const AIS_ColoredShape *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_AIS_ColoredShape DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_AIS_ColoredShape {
+    AIS_ColoredShape* _get_reference() {
+    return (AIS_ColoredShape*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_ColoredShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
 %nodefaultctor AIS_ConcentricRelation;
 class AIS_ConcentricRelation : public AIS_Relation {
 	public:
@@ -10865,6 +11095,52 @@ class AIS_DiameterDimension : public AIS_Dimension {
 		virtual const gp_Pnt GetTextPosition ();
 };
 
+
+%extend AIS_DiameterDimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_DiameterDimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_DiameterDimension::Handle_AIS_DiameterDimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_AIS_DiameterDimension;
+class Handle_AIS_DiameterDimension : public Handle_AIS_Dimension {
+
+    public:
+        // constructors
+        Handle_AIS_DiameterDimension();
+        Handle_AIS_DiameterDimension(const Handle_AIS_DiameterDimension &aHandle);
+        Handle_AIS_DiameterDimension(const AIS_DiameterDimension *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_AIS_DiameterDimension DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_AIS_DiameterDimension {
+    AIS_DiameterDimension* _get_reference() {
+    return (AIS_DiameterDimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_DiameterDimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
 
 %nodefaultctor AIS_EllipseRadiusDimension;
 class AIS_EllipseRadiusDimension : public AIS_Relation {
@@ -11612,6 +11888,52 @@ class AIS_LengthDimension : public AIS_Dimension {
 };
 
 
+%extend AIS_LengthDimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_LengthDimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_LengthDimension::Handle_AIS_LengthDimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_AIS_LengthDimension;
+class Handle_AIS_LengthDimension : public Handle_AIS_Dimension {
+
+    public:
+        // constructors
+        Handle_AIS_LengthDimension();
+        Handle_AIS_LengthDimension(const Handle_AIS_LengthDimension &aHandle);
+        Handle_AIS_LengthDimension(const AIS_LengthDimension *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_AIS_LengthDimension DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_AIS_LengthDimension {
+    AIS_LengthDimension* _get_reference() {
+    return (AIS_LengthDimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_LengthDimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
 %nodefaultctor AIS_MidPointRelation;
 class AIS_MidPointRelation : public AIS_Relation {
 	public:
@@ -12096,6 +12418,52 @@ class AIS_RadiusDimension : public AIS_Dimension {
 };
 
 
+%extend AIS_RadiusDimension {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_RadiusDimension(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_RadiusDimension::Handle_AIS_RadiusDimension %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_AIS_RadiusDimension;
+class Handle_AIS_RadiusDimension : public Handle_AIS_Dimension {
+
+    public:
+        // constructors
+        Handle_AIS_RadiusDimension();
+        Handle_AIS_RadiusDimension(const Handle_AIS_RadiusDimension &aHandle);
+        Handle_AIS_RadiusDimension(const AIS_RadiusDimension *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_AIS_RadiusDimension DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_AIS_RadiusDimension {
+    AIS_RadiusDimension* _get_reference() {
+    return (AIS_RadiusDimension*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_RadiusDimension {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
 %nodefaultctor AIS_SymmetricRelation;
 class AIS_SymmetricRelation : public AIS_Relation {
 	public:
@@ -12487,6 +12855,52 @@ class AIS_TexturedShape : public AIS_Shape {
 		Standard_Boolean TextureModulate ();
 };
 
+
+%extend AIS_TexturedShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_TexturedShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_TexturedShape::Handle_AIS_TexturedShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_AIS_TexturedShape;
+class Handle_AIS_TexturedShape : public Handle_AIS_Shape {
+
+    public:
+        // constructors
+        Handle_AIS_TexturedShape();
+        Handle_AIS_TexturedShape(const Handle_AIS_TexturedShape &aHandle);
+        Handle_AIS_TexturedShape(const AIS_TexturedShape *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_AIS_TexturedShape DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_AIS_TexturedShape {
+    AIS_TexturedShape* _get_reference() {
+    return (AIS_TexturedShape*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_TexturedShape {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
 
 %nodefaultctor AIS_MaxRadiusDimension;
 class AIS_MaxRadiusDimension : public AIS_EllipseRadiusDimension {
