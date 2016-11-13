@@ -909,6 +909,52 @@ class V3d_Plane : public MMgt_TShared {
 };
 
 
+%extend V3d_Plane {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_V3d_Plane(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_V3d_Plane::Handle_V3d_Plane %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_V3d_Plane;
+class Handle_V3d_Plane : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_V3d_Plane();
+        Handle_V3d_Plane(const Handle_V3d_Plane &aHandle);
+        Handle_V3d_Plane(const V3d_Plane *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_V3d_Plane DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_V3d_Plane {
+    V3d_Plane* _get_reference() {
+    return (V3d_Plane*)$self->Access();
+    }
+};
+
+%extend Handle_V3d_Plane {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
 %nodefaultctor V3d_RectangularGrid;
 class V3d_RectangularGrid : public Aspect_RectangularGrid {
 	public:

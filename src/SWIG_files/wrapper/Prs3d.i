@@ -2396,6 +2396,52 @@ class Prs3d_PresentationShadow : public Prs3d_Presentation {
 };
 
 
+%extend Prs3d_PresentationShadow {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Prs3d_PresentationShadow(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Prs3d_PresentationShadow::Handle_Prs3d_PresentationShadow %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_Prs3d_PresentationShadow;
+class Handle_Prs3d_PresentationShadow : public Handle_Prs3d_Presentation {
+
+    public:
+        // constructors
+        Handle_Prs3d_PresentationShadow();
+        Handle_Prs3d_PresentationShadow(const Handle_Prs3d_PresentationShadow &aHandle);
+        Handle_Prs3d_PresentationShadow(const Prs3d_PresentationShadow *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_Prs3d_PresentationShadow DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_Prs3d_PresentationShadow {
+    Prs3d_PresentationShadow* _get_reference() {
+    return (Prs3d_PresentationShadow*)$self->Access();
+    }
+};
+
+%extend Handle_Prs3d_PresentationShadow {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
 %nodefaultctor Prs3d_ShadingAspect;
 class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 	public:

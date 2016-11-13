@@ -118,6 +118,52 @@ class XCAFPrs_AISObject : public AIS_ColoredShape {
 };
 
 
+%extend XCAFPrs_AISObject {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFPrs_AISObject(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_XCAFPrs_AISObject::Handle_XCAFPrs_AISObject %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_XCAFPrs_AISObject;
+class Handle_XCAFPrs_AISObject : public Handle_AIS_ColoredShape {
+
+    public:
+        // constructors
+        Handle_XCAFPrs_AISObject();
+        Handle_XCAFPrs_AISObject(const Handle_XCAFPrs_AISObject &aHandle);
+        Handle_XCAFPrs_AISObject(const XCAFPrs_AISObject *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_XCAFPrs_AISObject DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_XCAFPrs_AISObject {
+    XCAFPrs_AISObject* _get_reference() {
+    return (XCAFPrs_AISObject*)$self->Access();
+    }
+};
+
+%extend Handle_XCAFPrs_AISObject {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
 %nodefaultctor XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle;
 class XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle : public TCollection_BasicMapIterator {
 	public:
