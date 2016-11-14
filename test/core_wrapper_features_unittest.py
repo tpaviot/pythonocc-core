@@ -43,6 +43,7 @@ from OCC.BRepGProp import brepgprop_LinearProperties
 from OCC.ShapeAnalysis import ShapeAnalysis_Curve
 from OCC.BRep import BRep_Builder
 from OCC.ChFiDS import ChFiDS_ChamfSpine
+from OCC.Graphic3d import Graphic3d_RenderingParams
 
 
 class TestWrapperFeatures(unittest.TestCase):
@@ -475,6 +476,15 @@ class TestWrapperFeatures(unittest.TestCase):
         assert b.IsEqual(line3.EndPoint(), 0.01)
         assert b.IsEqual(GC_MakeSegment(a, b).Value().GetObject().EndPoint(), 0.01)
         assert b.IsEqual(GC_MakeSegment(a, b).Value().GetObject().GetHandle().GetObject().GetHandle().GetObject().EndPoint(), 0.01)
+
+
+    def test_local_properties(self):
+        """ Get and modify class local properties
+        """
+        graphic_params = Graphic3d_RenderingParams()
+        assert graphic_params.RaytracingDepth == 3
+        graphic_params.RaytracingDepth = 5
+        assert graphic_params.RaytracingDepth == 5
 
 def suite():
     test_suite = unittest.TestSuite()
