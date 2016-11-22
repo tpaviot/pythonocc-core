@@ -90,6 +90,7 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         return win_id
 
     def resizeEvent(self, event):
+        super(qtBaseViewer,self).resizeEvent(event)
         if self._inited:
             self._display.OnResize()
 
