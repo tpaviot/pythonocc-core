@@ -22,7 +22,7 @@ from __future__ import print_function
 import os
 import glob
 import sys
-from subprocess import check_output
+import subprocess
 
 all_examples_file_names = glob.glob(os.path.join('..', 'examples', 'core_*.py'))
 # some tests have to be excluded from the automatic
@@ -42,23 +42,21 @@ if sys.platform == 'darwin':
 # remove examples to excludes
 for test_name in tests_to_exclude:
     test_fullpath = os.path.join('..', 'examples', test_name)
-    all_examples_file_names.remove(test_fullpath)
+    if test_fullpath in all_examples_file_names:
+        all_examples_file_names.remove(test_fullpath)
 
-#    for example in all_examples_file_names:
-#    for test_to_exclude in tests_to_exclude:
-#        if test_to_exclude in example:
-#            all_examples_file_names.remove(example)
 nbr_examples = len(all_examples_file_names)
 succeed = 0
 failed = 0
 
 os.environ["PYTHONOCC_SHUNT_GUI"] = "1"
+os.environ["PYTHONOCC_SHUNT_WEB_SERVER"] = "1"
+
 os.chdir(os.path.join('..', 'examples'))
-#python_major_version = sys.version_info[0]
 for example in all_examples_file_names:
     print("running %s ..." % example, end="")
     try:
-        out = check_output([sys.executable, example])
+        out = subprocess.check_output([sys.executable, example])
         succeed += 1
         print("[passed]")
     except:
@@ -68,7 +66,8 @@ for example in all_examples_file_names:
 print("Test examples results :")
 print("\t %i/%i tests passed" % (succeed, nbr_examples))
 
-del(os.environ["PYTHONOCC_SHUNT_GUI"])
+del os.environ["PYTHONOCC_SHUNT_GUI"]
+del os.environ["PYTHONOCC_SHUNT_WEB_SERVER"]
 
 if failed > 0:
     raise AssertionError("%i tests failed" % (failed))
