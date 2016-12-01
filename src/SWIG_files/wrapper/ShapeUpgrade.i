@@ -82,6 +82,11 @@ class ShapeUpgrade {
 };
 
 
+%extend ShapeUpgrade {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_RemoveLocations;
 class ShapeUpgrade_RemoveLocations : public MMgt_TShared {
 	public:
@@ -176,6 +181,11 @@ class Handle_ShapeUpgrade_RemoveLocations : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeUpgrade_RemoveLocations {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ShapeDivide;
 class ShapeUpgrade_ShapeDivide {
 	public:
@@ -290,6 +300,11 @@ class ShapeUpgrade_ShapeDivide {
 };
 
 
+%extend ShapeUpgrade_ShapeDivide {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ShellSewing;
 class ShapeUpgrade_ShellSewing {
 	public:
@@ -312,6 +327,11 @@ class ShapeUpgrade_ShellSewing {
 };
 
 
+%extend ShapeUpgrade_ShellSewing {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_SplitCurve;
 class ShapeUpgrade_SplitCurve : public MMgt_TShared {
 	public:
@@ -424,6 +444,11 @@ class Handle_ShapeUpgrade_SplitCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeUpgrade_SplitCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_SplitSurface;
 class ShapeUpgrade_SplitSurface : public MMgt_TShared {
 	public:
@@ -572,6 +597,11 @@ class Handle_ShapeUpgrade_SplitSurface : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeUpgrade_SplitSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_Tool;
 class ShapeUpgrade_Tool : public MMgt_TShared {
 	public:
@@ -702,6 +732,11 @@ class Handle_ShapeUpgrade_Tool : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeUpgrade_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_UnifySameDomain;
 class ShapeUpgrade_UnifySameDomain : public MMgt_TShared {
 	public:
@@ -820,6 +855,11 @@ class Handle_ShapeUpgrade_UnifySameDomain : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeUpgrade_UnifySameDomain {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ConvertSurfaceToBezierBasis;
 class ShapeUpgrade_ConvertSurfaceToBezierBasis : public ShapeUpgrade_SplitSurface {
 	public:
@@ -956,6 +996,11 @@ class Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis : public Handle_ShapeUpgra
     }
 };
 
+%extend ShapeUpgrade_ConvertSurfaceToBezierBasis {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_EdgeDivide;
 class ShapeUpgrade_EdgeDivide : public ShapeUpgrade_Tool {
 	public:
@@ -1076,6 +1121,11 @@ class Handle_ShapeUpgrade_EdgeDivide : public Handle_ShapeUpgrade_Tool {
     }
 };
 
+%extend ShapeUpgrade_EdgeDivide {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_FaceDivide;
 class ShapeUpgrade_FaceDivide : public ShapeUpgrade_Tool {
 	public:
@@ -1218,6 +1268,11 @@ class Handle_ShapeUpgrade_FaceDivide : public Handle_ShapeUpgrade_Tool {
     }
 };
 
+%extend ShapeUpgrade_FaceDivide {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_FixSmallCurves;
 class ShapeUpgrade_FixSmallCurves : public ShapeUpgrade_Tool {
 	public:
@@ -1320,6 +1375,11 @@ class Handle_ShapeUpgrade_FixSmallCurves : public Handle_ShapeUpgrade_Tool {
     }
 };
 
+%extend ShapeUpgrade_FixSmallCurves {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_RemoveInternalWires;
 class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
 	public:
@@ -1458,6 +1518,11 @@ class Handle_ShapeUpgrade_RemoveInternalWires : public Handle_ShapeUpgrade_Tool 
     }
 };
 
+%extend ShapeUpgrade_RemoveInternalWires {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ShapeConvertToBezier;
 class ShapeUpgrade_ShapeConvertToBezier : public ShapeUpgrade_ShapeDivide {
 	public:
@@ -1626,6 +1691,11 @@ class ShapeUpgrade_ShapeConvertToBezier : public ShapeUpgrade_ShapeDivide {
 };
 
 
+%extend ShapeUpgrade_ShapeConvertToBezier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ShapeDivideAngle;
 class ShapeUpgrade_ShapeDivideAngle : public ShapeUpgrade_ShapeDivide {
 	public:
@@ -1672,6 +1742,11 @@ class ShapeUpgrade_ShapeDivideAngle : public ShapeUpgrade_ShapeDivide {
 };
 
 
+%extend ShapeUpgrade_ShapeDivideAngle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ShapeDivideArea;
 class ShapeUpgrade_ShapeDivideArea : public ShapeUpgrade_ShapeDivide {
 	public:
@@ -1703,6 +1778,11 @@ class ShapeUpgrade_ShapeDivideArea : public ShapeUpgrade_ShapeDivide {
             };
 
 
+%extend ShapeUpgrade_ShapeDivideArea {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ShapeDivideClosed;
 class ShapeUpgrade_ShapeDivideClosed : public ShapeUpgrade_ShapeDivide {
 	public:
@@ -1725,6 +1805,11 @@ class ShapeUpgrade_ShapeDivideClosed : public ShapeUpgrade_ShapeDivide {
 };
 
 
+%extend ShapeUpgrade_ShapeDivideClosed {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ShapeDivideClosedEdges;
 class ShapeUpgrade_ShapeDivideClosedEdges : public ShapeUpgrade_ShapeDivide {
 	public:
@@ -1747,6 +1832,11 @@ class ShapeUpgrade_ShapeDivideClosedEdges : public ShapeUpgrade_ShapeDivide {
 };
 
 
+%extend ShapeUpgrade_ShapeDivideClosedEdges {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ShapeDivideContinuity;
 class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 	public:
@@ -1805,6 +1895,11 @@ class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 };
 
 
+%extend ShapeUpgrade_ShapeDivideContinuity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_SplitCurve2d;
 class ShapeUpgrade_SplitCurve2d : public ShapeUpgrade_SplitCurve {
 	public:
@@ -1895,6 +1990,11 @@ class Handle_ShapeUpgrade_SplitCurve2d : public Handle_ShapeUpgrade_SplitCurve {
     }
 };
 
+%extend ShapeUpgrade_SplitCurve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_SplitCurve3d;
 class ShapeUpgrade_SplitCurve3d : public ShapeUpgrade_SplitCurve {
 	public:
@@ -1985,6 +2085,11 @@ class Handle_ShapeUpgrade_SplitCurve3d : public Handle_ShapeUpgrade_SplitCurve {
     }
 };
 
+%extend ShapeUpgrade_SplitCurve3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_SplitSurfaceAngle;
 class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface {
 	public:
@@ -2067,6 +2172,11 @@ class Handle_ShapeUpgrade_SplitSurfaceAngle : public Handle_ShapeUpgrade_SplitSu
     }
 };
 
+%extend ShapeUpgrade_SplitSurfaceAngle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_SplitSurfaceArea;
 class ShapeUpgrade_SplitSurfaceArea : public ShapeUpgrade_SplitSurface {
 	public:
@@ -2144,6 +2254,11 @@ class Handle_ShapeUpgrade_SplitSurfaceArea : public Handle_ShapeUpgrade_SplitSur
     }
 };
 
+%extend ShapeUpgrade_SplitSurfaceArea {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_SplitSurfaceContinuity;
 class ShapeUpgrade_SplitSurfaceContinuity : public ShapeUpgrade_SplitSurface {
 	public:
@@ -2224,6 +2339,11 @@ class Handle_ShapeUpgrade_SplitSurfaceContinuity : public Handle_ShapeUpgrade_Sp
     }
 };
 
+%extend ShapeUpgrade_SplitSurfaceContinuity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_WireDivide;
 class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 	public:
@@ -2430,6 +2550,11 @@ class Handle_ShapeUpgrade_WireDivide : public Handle_ShapeUpgrade_Tool {
     }
 };
 
+%extend ShapeUpgrade_WireDivide {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ClosedEdgeDivide;
 class ShapeUpgrade_ClosedEdgeDivide : public ShapeUpgrade_EdgeDivide {
 	public:
@@ -2494,6 +2619,11 @@ class Handle_ShapeUpgrade_ClosedEdgeDivide : public Handle_ShapeUpgrade_EdgeDivi
     }
 };
 
+%extend ShapeUpgrade_ClosedEdgeDivide {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ClosedFaceDivide;
 class ShapeUpgrade_ClosedFaceDivide : public ShapeUpgrade_FaceDivide {
 	public:
@@ -2580,6 +2710,11 @@ class Handle_ShapeUpgrade_ClosedFaceDivide : public Handle_ShapeUpgrade_FaceDivi
     }
 };
 
+%extend ShapeUpgrade_ClosedFaceDivide {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ConvertCurve2dToBezier;
 class ShapeUpgrade_ConvertCurve2dToBezier : public ShapeUpgrade_SplitCurve2d {
 	public:
@@ -2658,6 +2793,11 @@ class Handle_ShapeUpgrade_ConvertCurve2dToBezier : public Handle_ShapeUpgrade_Sp
     }
 };
 
+%extend ShapeUpgrade_ConvertCurve2dToBezier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_ConvertCurve3dToBezier;
 class ShapeUpgrade_ConvertCurve3dToBezier : public ShapeUpgrade_SplitCurve3d {
 	public:
@@ -2778,6 +2918,11 @@ class Handle_ShapeUpgrade_ConvertCurve3dToBezier : public Handle_ShapeUpgrade_Sp
     }
 };
 
+%extend ShapeUpgrade_ConvertCurve3dToBezier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_FaceDivideArea;
 class ShapeUpgrade_FaceDivideArea : public ShapeUpgrade_FaceDivide {
 	public:
@@ -2861,6 +3006,11 @@ class Handle_ShapeUpgrade_FaceDivideArea : public Handle_ShapeUpgrade_FaceDivide
     }
 };
 
+%extend ShapeUpgrade_FaceDivideArea {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_FixSmallBezierCurves;
 class ShapeUpgrade_FixSmallBezierCurves : public ShapeUpgrade_FixSmallCurves {
 	public:
@@ -2931,6 +3081,11 @@ class Handle_ShapeUpgrade_FixSmallBezierCurves : public Handle_ShapeUpgrade_FixS
     }
 };
 
+%extend ShapeUpgrade_FixSmallBezierCurves {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_SplitCurve2dContinuity;
 class ShapeUpgrade_SplitCurve2dContinuity : public ShapeUpgrade_SplitCurve2d {
 	public:
@@ -3011,6 +3166,11 @@ class Handle_ShapeUpgrade_SplitCurve2dContinuity : public Handle_ShapeUpgrade_Sp
     }
 };
 
+%extend ShapeUpgrade_SplitCurve2dContinuity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeUpgrade_SplitCurve3dContinuity;
 class ShapeUpgrade_SplitCurve3dContinuity : public ShapeUpgrade_SplitCurve3d {
 	public:
@@ -3095,3 +3255,8 @@ class Handle_ShapeUpgrade_SplitCurve3dContinuity : public Handle_ShapeUpgrade_Sp
     }
 };
 
+%extend ShapeUpgrade_SplitCurve3dContinuity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

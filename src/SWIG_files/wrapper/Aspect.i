@@ -407,6 +407,11 @@ class Aspect {
 };
 
 
+%extend Aspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_Array1OfEdge;
 class Aspect_Array1OfEdge {
 	public:
@@ -489,6 +494,11 @@ class Aspect_Array1OfEdge {
 };
 
 
+%extend Aspect_Array1OfEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_AspectFillArea;
 class Aspect_AspectFillArea : public MMgt_TShared {
 	public:
@@ -635,6 +645,11 @@ class Handle_Aspect_AspectFillArea : public Handle_MMgt_TShared {
     }
 };
 
+%extend Aspect_AspectFillArea {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_AspectLine;
 class Aspect_AspectLine : public MMgt_TShared {
 	public:
@@ -723,6 +738,11 @@ class Handle_Aspect_AspectLine : public Handle_MMgt_TShared {
     }
 };
 
+%extend Aspect_AspectLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_AspectMarker;
 class Aspect_AspectMarker : public MMgt_TShared {
 	public:
@@ -811,6 +831,11 @@ class Handle_Aspect_AspectMarker : public Handle_MMgt_TShared {
     }
 };
 
+%extend Aspect_AspectMarker {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_Background;
 class Aspect_Background {
 	public:
@@ -845,6 +870,11 @@ class Aspect_Background {
 };
 
 
+%extend Aspect_Background {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_ColorScale;
 class Aspect_ColorScale : public MMgt_TShared {
 	public:
@@ -1309,6 +1339,11 @@ class Handle_Aspect_ColorScale : public Handle_MMgt_TShared {
     }
 };
 
+%extend Aspect_ColorScale {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_Edge;
 class Aspect_Edge {
 	public:
@@ -1375,6 +1410,11 @@ class Aspect_Edge {
 };
 
 
+%extend Aspect_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_GenId;
 class Aspect_GenId {
 	public:
@@ -1441,6 +1481,11 @@ class Aspect_GenId {
 };
 
 
+%extend Aspect_GenId {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_GraphicCallbackStruct;
 class Aspect_GraphicCallbackStruct {
 	public:
@@ -1451,6 +1496,11 @@ class Aspect_GraphicCallbackStruct {
 };
 
 
+%extend Aspect_GraphicCallbackStruct {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_Grid;
 class Aspect_Grid : public MMgt_TShared {
 	public:
@@ -1665,6 +1715,11 @@ class Handle_Aspect_Grid : public Handle_MMgt_TShared {
     }
 };
 
+%extend Aspect_Grid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_SequenceNodeOfSequenceOfColor;
 class Aspect_SequenceNodeOfSequenceOfColor : public TCollection_SeqNode {
 	public:
@@ -1731,6 +1786,11 @@ class Handle_Aspect_SequenceNodeOfSequenceOfColor : public Handle_TCollection_Se
     }
 };
 
+%extend Aspect_SequenceNodeOfSequenceOfColor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_SequenceOfColor;
 class Aspect_SequenceOfColor : public TCollection_BaseSequence {
 	public:
@@ -1869,6 +1929,11 @@ class Aspect_SequenceOfColor : public TCollection_BaseSequence {
 };
 
 
+%extend Aspect_SequenceOfColor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_Window;
 class Aspect_Window : public MMgt_TShared {
 	public:
@@ -2063,6 +2128,11 @@ class Handle_Aspect_Window : public Handle_MMgt_TShared {
     }
 };
 
+%extend Aspect_Window {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_CircularGrid;
 class Aspect_CircularGrid : public Aspect_Grid {
 	public:
@@ -2191,6 +2261,11 @@ class Handle_Aspect_CircularGrid : public Handle_Aspect_Grid {
     }
 };
 
+%extend Aspect_CircularGrid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_GradientBackground;
 class Aspect_GradientBackground : public Aspect_Background {
 	public:
@@ -2243,6 +2318,11 @@ class Aspect_GradientBackground : public Aspect_Background {
 };
 
 
+%extend Aspect_GradientBackground {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Aspect_RectangularGrid;
 class Aspect_RectangularGrid : public Aspect_Grid {
 	public:
@@ -2397,3 +2477,8 @@ class Handle_Aspect_RectangularGrid : public Handle_Aspect_Grid {
     }
 };
 
+%extend Aspect_RectangularGrid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

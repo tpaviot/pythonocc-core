@@ -137,6 +137,11 @@ class Handle_TopLoc_Datum3D : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopLoc_Datum3D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopLoc_IndexedMapNodeOfIndexedMapOfLocation;
 class TopLoc_IndexedMapNodeOfIndexedMapOfLocation : public TCollection_MapNode {
 	public:
@@ -222,6 +227,11 @@ class Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation : public Handle_TCollec
     }
 };
 
+%extend TopLoc_IndexedMapNodeOfIndexedMapOfLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopLoc_IndexedMapOfLocation;
 class TopLoc_IndexedMapOfLocation : public TCollection_BasicMap {
 	public:
@@ -298,6 +308,11 @@ class TopLoc_IndexedMapOfLocation : public TCollection_BasicMap {
 };
 
 
+%extend TopLoc_IndexedMapOfLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopLoc_ItemLocation;
 class TopLoc_ItemLocation {
 	public:
@@ -338,6 +353,11 @@ class TopLoc_ItemLocation {
 };
 
 
+%extend TopLoc_ItemLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopLoc_Location;
 class TopLoc_Location {
 	public:
@@ -522,6 +542,11 @@ class TopLoc_Location {
         };
 
 
+%extend TopLoc_Location {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopLoc_MapIteratorOfMapOfLocation;
 class TopLoc_MapIteratorOfMapOfLocation : public TCollection_BasicMapIterator {
 	public:
@@ -548,6 +573,11 @@ class TopLoc_MapIteratorOfMapOfLocation : public TCollection_BasicMapIterator {
 };
 
 
+%extend TopLoc_MapIteratorOfMapOfLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopLoc_MapLocationHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -569,6 +599,11 @@ class TopLoc_MapLocationHasher {
 };
 
 
+%extend TopLoc_MapLocationHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopLoc_MapOfLocation;
 class TopLoc_MapOfLocation : public TCollection_BasicMap {
 	public:
@@ -627,6 +662,11 @@ class TopLoc_MapOfLocation : public TCollection_BasicMap {
 };
 
 
+%extend TopLoc_MapOfLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopLoc_SListNodeOfItemLocation;
 class TopLoc_SListNodeOfItemLocation : public MMgt_TShared {
 	public:
@@ -695,6 +735,11 @@ class Handle_TopLoc_SListNodeOfItemLocation : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopLoc_SListNodeOfItemLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopLoc_SListOfItemLocation;
 class TopLoc_SListOfItemLocation {
 	public:
@@ -831,6 +876,11 @@ class TopLoc_SListOfItemLocation {
 };
 
 
+%extend TopLoc_SListOfItemLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopLoc_StdMapNodeOfMapOfLocation;
 class TopLoc_StdMapNodeOfMapOfLocation : public TCollection_MapNode {
 	public:
@@ -895,3 +945,8 @@ class Handle_TopLoc_StdMapNodeOfMapOfLocation : public Handle_TCollection_MapNod
     }
 };
 
+%extend TopLoc_StdMapNodeOfMapOfLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

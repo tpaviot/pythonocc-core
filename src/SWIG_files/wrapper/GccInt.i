@@ -159,6 +159,11 @@ class Handle_GccInt_Bisec : public Handle_MMgt_TShared {
     }
 };
 
+%extend GccInt_Bisec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccInt_BCirc;
 class GccInt_BCirc : public GccInt_Bisec {
 	public:
@@ -231,6 +236,11 @@ class Handle_GccInt_BCirc : public Handle_GccInt_Bisec {
     }
 };
 
+%extend GccInt_BCirc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccInt_BElips;
 class GccInt_BElips : public GccInt_Bisec {
 	public:
@@ -303,6 +313,11 @@ class Handle_GccInt_BElips : public Handle_GccInt_Bisec {
     }
 };
 
+%extend GccInt_BElips {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccInt_BHyper;
 class GccInt_BHyper : public GccInt_Bisec {
 	public:
@@ -375,6 +390,11 @@ class Handle_GccInt_BHyper : public Handle_GccInt_Bisec {
     }
 };
 
+%extend GccInt_BHyper {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccInt_BLine;
 class GccInt_BLine : public GccInt_Bisec {
 	public:
@@ -447,6 +467,11 @@ class Handle_GccInt_BLine : public Handle_GccInt_Bisec {
     }
 };
 
+%extend GccInt_BLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccInt_BParab;
 class GccInt_BParab : public GccInt_Bisec {
 	public:
@@ -519,6 +544,11 @@ class Handle_GccInt_BParab : public Handle_GccInt_Bisec {
     }
 };
 
+%extend GccInt_BParab {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccInt_BPoint;
 class GccInt_BPoint : public GccInt_Bisec {
 	public:
@@ -591,3 +621,8 @@ class Handle_GccInt_BPoint : public Handle_GccInt_Bisec {
     }
 };
 
+%extend GccInt_BPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

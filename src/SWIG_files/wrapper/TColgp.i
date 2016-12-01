@@ -138,6 +138,11 @@ class TColgp_Array1OfCirc2d {
 };
 
 
+%extend TColgp_Array1OfCirc2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array1OfDir;
 class TColgp_Array1OfDir {
 	public:
@@ -220,6 +225,11 @@ class TColgp_Array1OfDir {
 };
 
 
+%extend TColgp_Array1OfDir {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array1OfDir2d;
 class TColgp_Array1OfDir2d {
 	public:
@@ -302,6 +312,11 @@ class TColgp_Array1OfDir2d {
 };
 
 
+%extend TColgp_Array1OfDir2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array1OfLin2d;
 class TColgp_Array1OfLin2d {
 	public:
@@ -384,6 +399,11 @@ class TColgp_Array1OfLin2d {
 };
 
 
+%extend TColgp_Array1OfLin2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array1OfPnt;
 class TColgp_Array1OfPnt {
 	public:
@@ -466,6 +486,11 @@ class TColgp_Array1OfPnt {
 };
 
 
+%extend TColgp_Array1OfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array1OfPnt2d;
 class TColgp_Array1OfPnt2d {
 	public:
@@ -548,6 +573,11 @@ class TColgp_Array1OfPnt2d {
 };
 
 
+%extend TColgp_Array1OfPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array1OfVec;
 class TColgp_Array1OfVec {
 	public:
@@ -630,6 +660,11 @@ class TColgp_Array1OfVec {
 };
 
 
+%extend TColgp_Array1OfVec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array1OfVec2d;
 class TColgp_Array1OfVec2d {
 	public:
@@ -712,6 +747,11 @@ class TColgp_Array1OfVec2d {
 };
 
 
+%extend TColgp_Array1OfVec2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array1OfXY;
 class TColgp_Array1OfXY {
 	public:
@@ -794,6 +834,11 @@ class TColgp_Array1OfXY {
 };
 
 
+%extend TColgp_Array1OfXY {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array1OfXYZ;
 class TColgp_Array1OfXYZ {
 	public:
@@ -876,6 +921,11 @@ class TColgp_Array1OfXYZ {
 };
 
 
+%extend TColgp_Array1OfXYZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array2OfCirc2d;
 class TColgp_Array2OfCirc2d {
 	public:
@@ -980,6 +1030,11 @@ class TColgp_Array2OfCirc2d {
 };
 
 
+%extend TColgp_Array2OfCirc2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array2OfDir;
 class TColgp_Array2OfDir {
 	public:
@@ -1084,6 +1139,11 @@ class TColgp_Array2OfDir {
 };
 
 
+%extend TColgp_Array2OfDir {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array2OfDir2d;
 class TColgp_Array2OfDir2d {
 	public:
@@ -1188,6 +1248,11 @@ class TColgp_Array2OfDir2d {
 };
 
 
+%extend TColgp_Array2OfDir2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array2OfLin2d;
 class TColgp_Array2OfLin2d {
 	public:
@@ -1292,6 +1357,11 @@ class TColgp_Array2OfLin2d {
 };
 
 
+%extend TColgp_Array2OfLin2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array2OfPnt;
 class TColgp_Array2OfPnt {
 	public:
@@ -1396,6 +1466,11 @@ class TColgp_Array2OfPnt {
 };
 
 
+%extend TColgp_Array2OfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array2OfPnt2d;
 class TColgp_Array2OfPnt2d {
 	public:
@@ -1500,6 +1575,11 @@ class TColgp_Array2OfPnt2d {
 };
 
 
+%extend TColgp_Array2OfPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array2OfVec;
 class TColgp_Array2OfVec {
 	public:
@@ -1604,6 +1684,11 @@ class TColgp_Array2OfVec {
 };
 
 
+%extend TColgp_Array2OfVec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array2OfVec2d;
 class TColgp_Array2OfVec2d {
 	public:
@@ -1708,6 +1793,11 @@ class TColgp_Array2OfVec2d {
 };
 
 
+%extend TColgp_Array2OfVec2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array2OfXY;
 class TColgp_Array2OfXY {
 	public:
@@ -1812,6 +1902,11 @@ class TColgp_Array2OfXY {
 };
 
 
+%extend TColgp_Array2OfXY {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_Array2OfXYZ;
 class TColgp_Array2OfXYZ {
 	public:
@@ -1916,6 +2011,11 @@ class TColgp_Array2OfXYZ {
 };
 
 
+%extend TColgp_Array2OfXYZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray1OfCirc2d;
 class TColgp_HArray1OfCirc2d : public MMgt_TShared {
 	public:
@@ -2032,6 +2132,11 @@ class Handle_TColgp_HArray1OfCirc2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray1OfCirc2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray1OfDir;
 class TColgp_HArray1OfDir : public MMgt_TShared {
 	public:
@@ -2148,6 +2253,11 @@ class Handle_TColgp_HArray1OfDir : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray1OfDir {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray1OfDir2d;
 class TColgp_HArray1OfDir2d : public MMgt_TShared {
 	public:
@@ -2264,6 +2374,11 @@ class Handle_TColgp_HArray1OfDir2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray1OfDir2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray1OfLin2d;
 class TColgp_HArray1OfLin2d : public MMgt_TShared {
 	public:
@@ -2380,6 +2495,11 @@ class Handle_TColgp_HArray1OfLin2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray1OfLin2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray1OfPnt;
 class TColgp_HArray1OfPnt : public MMgt_TShared {
 	public:
@@ -2496,6 +2616,11 @@ class Handle_TColgp_HArray1OfPnt : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray1OfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray1OfPnt2d;
 class TColgp_HArray1OfPnt2d : public MMgt_TShared {
 	public:
@@ -2612,6 +2737,11 @@ class Handle_TColgp_HArray1OfPnt2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray1OfPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray1OfVec;
 class TColgp_HArray1OfVec : public MMgt_TShared {
 	public:
@@ -2728,6 +2858,11 @@ class Handle_TColgp_HArray1OfVec : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray1OfVec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray1OfVec2d;
 class TColgp_HArray1OfVec2d : public MMgt_TShared {
 	public:
@@ -2844,6 +2979,11 @@ class Handle_TColgp_HArray1OfVec2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray1OfVec2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray1OfXY;
 class TColgp_HArray1OfXY : public MMgt_TShared {
 	public:
@@ -2960,6 +3100,11 @@ class Handle_TColgp_HArray1OfXY : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray1OfXY {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray1OfXYZ;
 class TColgp_HArray1OfXYZ : public MMgt_TShared {
 	public:
@@ -3076,6 +3221,11 @@ class Handle_TColgp_HArray1OfXYZ : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray1OfXYZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray2OfCirc2d;
 class TColgp_HArray2OfCirc2d : public MMgt_TShared {
 	public:
@@ -3218,6 +3368,11 @@ class Handle_TColgp_HArray2OfCirc2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray2OfCirc2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray2OfDir;
 class TColgp_HArray2OfDir : public MMgt_TShared {
 	public:
@@ -3360,6 +3515,11 @@ class Handle_TColgp_HArray2OfDir : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray2OfDir {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray2OfDir2d;
 class TColgp_HArray2OfDir2d : public MMgt_TShared {
 	public:
@@ -3502,6 +3662,11 @@ class Handle_TColgp_HArray2OfDir2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray2OfDir2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray2OfLin2d;
 class TColgp_HArray2OfLin2d : public MMgt_TShared {
 	public:
@@ -3644,6 +3809,11 @@ class Handle_TColgp_HArray2OfLin2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray2OfLin2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray2OfPnt;
 class TColgp_HArray2OfPnt : public MMgt_TShared {
 	public:
@@ -3786,6 +3956,11 @@ class Handle_TColgp_HArray2OfPnt : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray2OfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray2OfPnt2d;
 class TColgp_HArray2OfPnt2d : public MMgt_TShared {
 	public:
@@ -3928,6 +4103,11 @@ class Handle_TColgp_HArray2OfPnt2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray2OfPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray2OfVec;
 class TColgp_HArray2OfVec : public MMgt_TShared {
 	public:
@@ -4070,6 +4250,11 @@ class Handle_TColgp_HArray2OfVec : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray2OfVec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray2OfVec2d;
 class TColgp_HArray2OfVec2d : public MMgt_TShared {
 	public:
@@ -4212,6 +4397,11 @@ class Handle_TColgp_HArray2OfVec2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray2OfVec2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray2OfXY;
 class TColgp_HArray2OfXY : public MMgt_TShared {
 	public:
@@ -4354,6 +4544,11 @@ class Handle_TColgp_HArray2OfXY : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray2OfXY {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HArray2OfXYZ;
 class TColgp_HArray2OfXYZ : public MMgt_TShared {
 	public:
@@ -4496,6 +4691,11 @@ class Handle_TColgp_HArray2OfXYZ : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HArray2OfXYZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HSequenceOfDir;
 class TColgp_HSequenceOfDir : public MMgt_TShared {
 	public:
@@ -4680,6 +4880,11 @@ class Handle_TColgp_HSequenceOfDir : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HSequenceOfDir {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HSequenceOfDir2d;
 class TColgp_HSequenceOfDir2d : public MMgt_TShared {
 	public:
@@ -4864,6 +5069,11 @@ class Handle_TColgp_HSequenceOfDir2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HSequenceOfDir2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HSequenceOfPnt;
 class TColgp_HSequenceOfPnt : public MMgt_TShared {
 	public:
@@ -5048,6 +5258,11 @@ class Handle_TColgp_HSequenceOfPnt : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HSequenceOfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HSequenceOfPnt2d;
 class TColgp_HSequenceOfPnt2d : public MMgt_TShared {
 	public:
@@ -5232,6 +5447,11 @@ class Handle_TColgp_HSequenceOfPnt2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HSequenceOfPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HSequenceOfVec;
 class TColgp_HSequenceOfVec : public MMgt_TShared {
 	public:
@@ -5416,6 +5636,11 @@ class Handle_TColgp_HSequenceOfVec : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HSequenceOfVec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HSequenceOfVec2d;
 class TColgp_HSequenceOfVec2d : public MMgt_TShared {
 	public:
@@ -5600,6 +5825,11 @@ class Handle_TColgp_HSequenceOfVec2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HSequenceOfVec2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HSequenceOfXY;
 class TColgp_HSequenceOfXY : public MMgt_TShared {
 	public:
@@ -5784,6 +6014,11 @@ class Handle_TColgp_HSequenceOfXY : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HSequenceOfXY {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_HSequenceOfXYZ;
 class TColgp_HSequenceOfXYZ : public MMgt_TShared {
 	public:
@@ -5968,6 +6203,11 @@ class Handle_TColgp_HSequenceOfXYZ : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColgp_HSequenceOfXYZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d;
 class TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d : public TCollection_SeqNode {
 	public:
@@ -6034,6 +6274,11 @@ class Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d : public Handle_TColle
     }
 };
 
+%extend TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceNodeOfSequenceOfDir;
 class TColgp_SequenceNodeOfSequenceOfDir : public TCollection_SeqNode {
 	public:
@@ -6100,6 +6345,11 @@ class Handle_TColgp_SequenceNodeOfSequenceOfDir : public Handle_TCollection_SeqN
     }
 };
 
+%extend TColgp_SequenceNodeOfSequenceOfDir {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceNodeOfSequenceOfDir2d;
 class TColgp_SequenceNodeOfSequenceOfDir2d : public TCollection_SeqNode {
 	public:
@@ -6166,6 +6416,11 @@ class Handle_TColgp_SequenceNodeOfSequenceOfDir2d : public Handle_TCollection_Se
     }
 };
 
+%extend TColgp_SequenceNodeOfSequenceOfDir2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceNodeOfSequenceOfPnt;
 class TColgp_SequenceNodeOfSequenceOfPnt : public TCollection_SeqNode {
 	public:
@@ -6232,6 +6487,11 @@ class Handle_TColgp_SequenceNodeOfSequenceOfPnt : public Handle_TCollection_SeqN
     }
 };
 
+%extend TColgp_SequenceNodeOfSequenceOfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceNodeOfSequenceOfPnt2d;
 class TColgp_SequenceNodeOfSequenceOfPnt2d : public TCollection_SeqNode {
 	public:
@@ -6298,6 +6558,11 @@ class Handle_TColgp_SequenceNodeOfSequenceOfPnt2d : public Handle_TCollection_Se
     }
 };
 
+%extend TColgp_SequenceNodeOfSequenceOfPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceNodeOfSequenceOfVec;
 class TColgp_SequenceNodeOfSequenceOfVec : public TCollection_SeqNode {
 	public:
@@ -6364,6 +6629,11 @@ class Handle_TColgp_SequenceNodeOfSequenceOfVec : public Handle_TCollection_SeqN
     }
 };
 
+%extend TColgp_SequenceNodeOfSequenceOfVec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceNodeOfSequenceOfVec2d;
 class TColgp_SequenceNodeOfSequenceOfVec2d : public TCollection_SeqNode {
 	public:
@@ -6430,6 +6700,11 @@ class Handle_TColgp_SequenceNodeOfSequenceOfVec2d : public Handle_TCollection_Se
     }
 };
 
+%extend TColgp_SequenceNodeOfSequenceOfVec2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceNodeOfSequenceOfXY;
 class TColgp_SequenceNodeOfSequenceOfXY : public TCollection_SeqNode {
 	public:
@@ -6496,6 +6771,11 @@ class Handle_TColgp_SequenceNodeOfSequenceOfXY : public Handle_TCollection_SeqNo
     }
 };
 
+%extend TColgp_SequenceNodeOfSequenceOfXY {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceNodeOfSequenceOfXYZ;
 class TColgp_SequenceNodeOfSequenceOfXYZ : public TCollection_SeqNode {
 	public:
@@ -6562,6 +6842,11 @@ class Handle_TColgp_SequenceNodeOfSequenceOfXYZ : public Handle_TCollection_SeqN
     }
 };
 
+%extend TColgp_SequenceNodeOfSequenceOfXYZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceOfArray1OfPnt2d;
 class TColgp_SequenceOfArray1OfPnt2d : public TCollection_BaseSequence {
 	public:
@@ -6700,6 +6985,11 @@ class TColgp_SequenceOfArray1OfPnt2d : public TCollection_BaseSequence {
 };
 
 
+%extend TColgp_SequenceOfArray1OfPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceOfDir;
 class TColgp_SequenceOfDir : public TCollection_BaseSequence {
 	public:
@@ -6838,6 +7128,11 @@ class TColgp_SequenceOfDir : public TCollection_BaseSequence {
 };
 
 
+%extend TColgp_SequenceOfDir {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceOfDir2d;
 class TColgp_SequenceOfDir2d : public TCollection_BaseSequence {
 	public:
@@ -6976,6 +7271,11 @@ class TColgp_SequenceOfDir2d : public TCollection_BaseSequence {
 };
 
 
+%extend TColgp_SequenceOfDir2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceOfPnt;
 class TColgp_SequenceOfPnt : public TCollection_BaseSequence {
 	public:
@@ -7114,6 +7414,11 @@ class TColgp_SequenceOfPnt : public TCollection_BaseSequence {
 };
 
 
+%extend TColgp_SequenceOfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceOfPnt2d;
 class TColgp_SequenceOfPnt2d : public TCollection_BaseSequence {
 	public:
@@ -7252,6 +7557,11 @@ class TColgp_SequenceOfPnt2d : public TCollection_BaseSequence {
 };
 
 
+%extend TColgp_SequenceOfPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceOfVec;
 class TColgp_SequenceOfVec : public TCollection_BaseSequence {
 	public:
@@ -7390,6 +7700,11 @@ class TColgp_SequenceOfVec : public TCollection_BaseSequence {
 };
 
 
+%extend TColgp_SequenceOfVec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceOfVec2d;
 class TColgp_SequenceOfVec2d : public TCollection_BaseSequence {
 	public:
@@ -7528,6 +7843,11 @@ class TColgp_SequenceOfVec2d : public TCollection_BaseSequence {
 };
 
 
+%extend TColgp_SequenceOfVec2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceOfXY;
 class TColgp_SequenceOfXY : public TCollection_BaseSequence {
 	public:
@@ -7666,6 +7986,11 @@ class TColgp_SequenceOfXY : public TCollection_BaseSequence {
 };
 
 
+%extend TColgp_SequenceOfXY {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceOfXYZ;
 class TColgp_SequenceOfXYZ : public TCollection_BaseSequence {
 	public:
@@ -7804,3 +8129,8 @@ class TColgp_SequenceOfXYZ : public TCollection_BaseSequence {
 };
 
 
+%extend TColgp_SequenceOfXYZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

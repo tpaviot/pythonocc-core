@@ -71,6 +71,11 @@ class TDocStd {
 };
 
 
+%extend TDocStd {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_Application;
 class TDocStd_Application : public CDF_Application {
 	public:
@@ -249,6 +254,11 @@ class Handle_TDocStd_Application : public Handle_CDF_Application {
     }
 };
 
+%extend TDocStd_Application {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_ApplicationDelta;
 class TDocStd_ApplicationDelta : public MMgt_TShared {
 	public:
@@ -327,6 +337,11 @@ class Handle_TDocStd_ApplicationDelta : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDocStd_ApplicationDelta {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_CompoundDelta;
 class TDocStd_CompoundDelta : public TDF_Delta {
 	public:
@@ -385,6 +400,11 @@ class Handle_TDocStd_CompoundDelta : public Handle_TDF_Delta {
     }
 };
 
+%extend TDocStd_CompoundDelta {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_Context;
 class TDocStd_Context {
 	public:
@@ -405,6 +425,11 @@ class TDocStd_Context {
 };
 
 
+%extend TDocStd_Context {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_DataMapIteratorOfLabelIDMapDataMap;
 class TDocStd_DataMapIteratorOfLabelIDMapDataMap : public TCollection_BasicMapIterator {
 	public:
@@ -435,6 +460,11 @@ class TDocStd_DataMapIteratorOfLabelIDMapDataMap : public TCollection_BasicMapIt
 };
 
 
+%extend TDocStd_DataMapIteratorOfLabelIDMapDataMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_DataMapNodeOfLabelIDMapDataMap;
 class TDocStd_DataMapNodeOfLabelIDMapDataMap : public TCollection_MapNode {
 	public:
@@ -505,6 +535,11 @@ class Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap : public Handle_TCollection_
     }
 };
 
+%extend TDocStd_DataMapNodeOfLabelIDMapDataMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_Document;
 class TDocStd_Document : public CDM_Document {
 	public:
@@ -843,6 +878,11 @@ class Handle_TDocStd_Document : public Handle_CDM_Document {
     }
 };
 
+%extend TDocStd_Document {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_LabelIDMapDataMap;
 class TDocStd_LabelIDMapDataMap : public TCollection_BasicMap {
 	public:
@@ -921,6 +961,11 @@ class TDocStd_LabelIDMapDataMap : public TCollection_BasicMap {
 };
 
 
+%extend TDocStd_LabelIDMapDataMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_Modified;
 class TDocStd_Modified : public TDF_Attribute {
 	public:
@@ -1085,6 +1130,11 @@ class Handle_TDocStd_Modified : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDocStd_Modified {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_MultiTransactionManager;
 class TDocStd_MultiTransactionManager : public MMgt_TShared {
 	public:
@@ -1289,6 +1339,11 @@ class Handle_TDocStd_MultiTransactionManager : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDocStd_MultiTransactionManager {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_Owner;
 class TDocStd_Owner : public TDF_Attribute {
 	public:
@@ -1407,6 +1462,11 @@ class Handle_TDocStd_Owner : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDocStd_Owner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_PathParser;
 class TDocStd_PathParser {
 	public:
@@ -1443,6 +1503,11 @@ class TDocStd_PathParser {
 };
 
 
+%extend TDocStd_PathParser {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_SequenceNodeOfSequenceOfApplicationDelta;
 class TDocStd_SequenceNodeOfSequenceOfApplicationDelta : public TCollection_SeqNode {
 	public:
@@ -1509,6 +1574,11 @@ class Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta : public Handle_TC
     }
 };
 
+%extend TDocStd_SequenceNodeOfSequenceOfApplicationDelta {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_SequenceNodeOfSequenceOfDocument;
 class TDocStd_SequenceNodeOfSequenceOfDocument : public TCollection_SeqNode {
 	public:
@@ -1575,6 +1645,11 @@ class Handle_TDocStd_SequenceNodeOfSequenceOfDocument : public Handle_TCollectio
     }
 };
 
+%extend TDocStd_SequenceNodeOfSequenceOfDocument {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_SequenceOfApplicationDelta;
 class TDocStd_SequenceOfApplicationDelta : public TCollection_BaseSequence {
 	public:
@@ -1713,6 +1788,11 @@ class TDocStd_SequenceOfApplicationDelta : public TCollection_BaseSequence {
 };
 
 
+%extend TDocStd_SequenceOfApplicationDelta {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_SequenceOfDocument;
 class TDocStd_SequenceOfDocument : public TCollection_BaseSequence {
 	public:
@@ -1851,6 +1931,11 @@ class TDocStd_SequenceOfDocument : public TCollection_BaseSequence {
 };
 
 
+%extend TDocStd_SequenceOfDocument {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_XLink;
 class TDocStd_XLink : public TDF_Attribute {
 	public:
@@ -2041,6 +2126,11 @@ class Handle_TDocStd_XLink : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDocStd_XLink {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_XLinkIterator;
 class TDocStd_XLinkIterator {
 	public:
@@ -2087,6 +2177,11 @@ class TDocStd_XLinkIterator {
 };
 
 
+%extend TDocStd_XLinkIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_XLinkRoot;
 class TDocStd_XLinkRoot : public TDF_Attribute {
 	public:
@@ -2213,6 +2308,11 @@ class Handle_TDocStd_XLinkRoot : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDocStd_XLinkRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDocStd_XLinkTool;
 class TDocStd_XLinkTool {
 	public:
@@ -2263,3 +2363,8 @@ class TDocStd_XLinkTool {
 };
 
 
+%extend TDocStd_XLinkTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

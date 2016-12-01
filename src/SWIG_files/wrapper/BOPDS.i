@@ -281,6 +281,11 @@ class Handle_BOPDS_CommonBlock : public Handle_MMgt_TShared {
     }
 };
 
+%extend BOPDS_CommonBlock {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_CoupleOfPaveBlocks;
 class BOPDS_CoupleOfPaveBlocks {
 	public:
@@ -379,6 +384,11 @@ class BOPDS_CoupleOfPaveBlocks {
 };
 
 
+%extend BOPDS_CoupleOfPaveBlocks {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_Curve;
 class BOPDS_Curve {
 	public:
@@ -481,6 +491,11 @@ class BOPDS_Curve {
 };
 
 
+%extend BOPDS_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_DS;
 class BOPDS_DS {
 	public:
@@ -1031,6 +1046,11 @@ class BOPDS_DS {
 };
 
 
+%extend BOPDS_DS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_FaceInfo;
 class BOPDS_FaceInfo {
 	public:
@@ -1141,6 +1161,11 @@ class BOPDS_FaceInfo {
 };
 
 
+%extend BOPDS_FaceInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_IndexRange;
 class BOPDS_IndexRange {
 	public:
@@ -1213,6 +1238,11 @@ class BOPDS_IndexRange {
 };
 
 
+%extend BOPDS_IndexRange {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_Iterator;
 class BOPDS_Iterator {
 	public:
@@ -1313,6 +1343,11 @@ class BOPDS_Iterator {
 };
 
 
+%extend BOPDS_Iterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_PassKey;
 class BOPDS_PassKey {
 	public:
@@ -1457,6 +1492,11 @@ class BOPDS_PassKey {
 };
 
 
+%extend BOPDS_PassKey {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BOPDS_PassKeyMapHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -1478,6 +1518,11 @@ class BOPDS_PassKeyMapHasher {
 };
 
 
+%extend BOPDS_PassKeyMapHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_Pave;
 class BOPDS_Pave {
 	public:
@@ -1568,6 +1613,11 @@ class BOPDS_Pave {
 };
 
 
+%extend BOPDS_Pave {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_PaveBlock;
 class BOPDS_PaveBlock : public MMgt_TShared {
 	public:
@@ -1826,6 +1876,11 @@ class Handle_BOPDS_PaveBlock : public Handle_MMgt_TShared {
     }
 };
 
+%extend BOPDS_PaveBlock {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BOPDS_PaveMapHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -1847,6 +1902,11 @@ class BOPDS_PaveMapHasher {
 };
 
 
+%extend BOPDS_PaveMapHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_Point;
 class BOPDS_Point {
 	public:
@@ -1915,6 +1975,11 @@ class BOPDS_Point {
 };
 
 
+%extend BOPDS_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_ShapeInfo;
 class BOPDS_ShapeInfo {
 	public:
@@ -2065,6 +2130,11 @@ class BOPDS_ShapeInfo {
 };
 
 
+%extend BOPDS_ShapeInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_SubIterator;
 class BOPDS_SubIterator {
 	public:
@@ -2161,6 +2231,11 @@ class BOPDS_SubIterator {
 };
 
 
+%extend BOPDS_SubIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BOPDS_Tools {
 	public:
 		%feature("compactdefaultargs") TypeToInteger;
@@ -2200,6 +2275,11 @@ class BOPDS_Tools {
 };
 
 
+%extend BOPDS_Tools {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_InterfEE;
 class BOPDS_InterfEE : public BOPDS_Interf {
 	public:
@@ -2234,6 +2314,11 @@ class BOPDS_InterfEE : public BOPDS_Interf {
 };
 
 
+%extend BOPDS_InterfEE {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_InterfEF;
 class BOPDS_InterfEF : public BOPDS_Interf {
 	public:
@@ -2268,6 +2353,11 @@ class BOPDS_InterfEF : public BOPDS_Interf {
 };
 
 
+%extend BOPDS_InterfEF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_InterfEZ;
 class BOPDS_InterfEZ : public BOPDS_Interf {
 	public:
@@ -2288,6 +2378,11 @@ class BOPDS_InterfEZ : public BOPDS_Interf {
 };
 
 
+%extend BOPDS_InterfEZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_InterfFF;
 class BOPDS_InterfFF : public BOPDS_Interf {
 	public:
@@ -2376,6 +2471,11 @@ class BOPDS_InterfFF : public BOPDS_Interf {
 };
 
 
+%extend BOPDS_InterfFF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_InterfFZ;
 class BOPDS_InterfFZ : public BOPDS_Interf {
 	public:
@@ -2396,6 +2496,11 @@ class BOPDS_InterfFZ : public BOPDS_Interf {
 };
 
 
+%extend BOPDS_InterfFZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_InterfVE;
 class BOPDS_InterfVE : public BOPDS_Interf {
 	public:
@@ -2430,6 +2535,11 @@ class BOPDS_InterfVE : public BOPDS_Interf {
 };
 
 
+%extend BOPDS_InterfVE {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_InterfVF;
 class BOPDS_InterfVF : public BOPDS_Interf {
 	public:
@@ -2470,6 +2580,11 @@ class BOPDS_InterfVF : public BOPDS_Interf {
 };
 
 
+%extend BOPDS_InterfVF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_InterfVV;
 class BOPDS_InterfVV : public BOPDS_Interf {
 	public:
@@ -2490,6 +2605,11 @@ class BOPDS_InterfVV : public BOPDS_Interf {
 };
 
 
+%extend BOPDS_InterfVV {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_InterfVZ;
 class BOPDS_InterfVZ : public BOPDS_Interf {
 	public:
@@ -2510,6 +2630,11 @@ class BOPDS_InterfVZ : public BOPDS_Interf {
 };
 
 
+%extend BOPDS_InterfVZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_InterfZZ;
 class BOPDS_InterfZZ : public BOPDS_Interf {
 	public:
@@ -2530,6 +2655,11 @@ class BOPDS_InterfZZ : public BOPDS_Interf {
 };
 
 
+%extend BOPDS_InterfZZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_IteratorSI;
 class BOPDS_IteratorSI : public BOPDS_Iterator {
 	public:
@@ -2558,6 +2688,11 @@ class BOPDS_IteratorSI : public BOPDS_Iterator {
 };
 
 
+%extend BOPDS_IteratorSI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPDS_PassKeyBoolean;
 class BOPDS_PassKeyBoolean : public BOPDS_PassKey {
 	public:
@@ -2596,3 +2731,8 @@ class BOPDS_PassKeyBoolean : public BOPDS_PassKey {
 };
 
 
+%extend BOPDS_PassKeyBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

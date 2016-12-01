@@ -272,6 +272,11 @@ class TNaming {
 };
 
 
+%extend TNaming {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_Builder;
 class TNaming_Builder {
 	public:
@@ -338,6 +343,11 @@ class TNaming_Builder {
 };
 
 
+%extend TNaming_Builder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TNaming_CopyShape {
 	public:
 		%feature("compactdefaultargs") CopyTool;
@@ -379,6 +389,11 @@ class TNaming_CopyShape {
 };
 
 
+%extend TNaming_CopyShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape;
 class TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape : public TCollection_BasicMapIterator {
 	public:
@@ -409,6 +424,11 @@ class TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape : public TCollection_Ba
 };
 
 
+%extend TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_DataMapIteratorOfDataMapOfShapeShapesSet;
 class TNaming_DataMapIteratorOfDataMapOfShapeShapesSet : public TCollection_BasicMapIterator {
 	public:
@@ -439,6 +459,11 @@ class TNaming_DataMapIteratorOfDataMapOfShapeShapesSet : public TCollection_Basi
 };
 
 
+%extend TNaming_DataMapIteratorOfDataMapOfShapeShapesSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_DataMapNodeOfDataMapOfShapePtrRefShape;
 class TNaming_DataMapNodeOfDataMapOfShapePtrRefShape : public TCollection_MapNode {
 	public:
@@ -509,6 +534,11 @@ class Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape : public Handle_TCol
     }
 };
 
+%extend TNaming_DataMapNodeOfDataMapOfShapePtrRefShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_DataMapNodeOfDataMapOfShapeShapesSet;
 class TNaming_DataMapNodeOfDataMapOfShapeShapesSet : public TCollection_MapNode {
 	public:
@@ -579,6 +609,11 @@ class Handle_TNaming_DataMapNodeOfDataMapOfShapeShapesSet : public Handle_TColle
     }
 };
 
+%extend TNaming_DataMapNodeOfDataMapOfShapeShapesSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_DataMapOfShapePtrRefShape;
 class TNaming_DataMapOfShapePtrRefShape : public TCollection_BasicMap {
 	public:
@@ -657,6 +692,11 @@ class TNaming_DataMapOfShapePtrRefShape : public TCollection_BasicMap {
 };
 
 
+%extend TNaming_DataMapOfShapePtrRefShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_DataMapOfShapeShapesSet;
 class TNaming_DataMapOfShapeShapesSet : public TCollection_BasicMap {
 	public:
@@ -735,6 +775,11 @@ class TNaming_DataMapOfShapeShapesSet : public TCollection_BasicMap {
 };
 
 
+%extend TNaming_DataMapOfShapeShapesSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_DeltaOnModification;
 class TNaming_DeltaOnModification : public TDF_DeltaOnModification {
 	public:
@@ -801,6 +846,11 @@ class Handle_TNaming_DeltaOnModification : public Handle_TDF_DeltaOnModification
     }
 };
 
+%extend TNaming_DeltaOnModification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_DeltaOnRemoval;
 class TNaming_DeltaOnRemoval : public TDF_DeltaOnRemoval {
 	public:
@@ -867,6 +917,11 @@ class Handle_TNaming_DeltaOnRemoval : public Handle_TDF_DeltaOnRemoval {
     }
 };
 
+%extend TNaming_DeltaOnRemoval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_Identifier;
 class TNaming_Identifier {
 	public:
@@ -977,6 +1032,11 @@ class TNaming_Identifier {
 };
 
 
+%extend TNaming_Identifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_Iterator;
 class TNaming_Iterator {
 	public:
@@ -1043,6 +1103,11 @@ class TNaming_Iterator {
 };
 
 
+%extend TNaming_Iterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_IteratorOnShapesSet;
 class TNaming_IteratorOnShapesSet {
 	public:
@@ -1083,6 +1148,11 @@ class TNaming_IteratorOnShapesSet {
 };
 
 
+%extend TNaming_IteratorOnShapesSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape;
 class TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape {
 	public:
@@ -1117,6 +1187,11 @@ class TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape {
 };
 
 
+%extend TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_ListIteratorOfListOfMapOfShape;
 class TNaming_ListIteratorOfListOfMapOfShape {
 	public:
@@ -1151,6 +1226,11 @@ class TNaming_ListIteratorOfListOfMapOfShape {
 };
 
 
+%extend TNaming_ListIteratorOfListOfMapOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_ListIteratorOfListOfNamedShape;
 class TNaming_ListIteratorOfListOfNamedShape {
 	public:
@@ -1185,6 +1265,11 @@ class TNaming_ListIteratorOfListOfNamedShape {
 };
 
 
+%extend TNaming_ListIteratorOfListOfNamedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape;
 class TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape : public TCollection_MapNode {
 	public:
@@ -1249,6 +1334,11 @@ class Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape : public H
     }
 };
 
+%extend TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_ListNodeOfListOfMapOfShape;
 class TNaming_ListNodeOfListOfMapOfShape : public TCollection_MapNode {
 	public:
@@ -1313,6 +1403,11 @@ class Handle_TNaming_ListNodeOfListOfMapOfShape : public Handle_TCollection_MapN
     }
 };
 
+%extend TNaming_ListNodeOfListOfMapOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_ListNodeOfListOfNamedShape;
 class TNaming_ListNodeOfListOfNamedShape : public TCollection_MapNode {
 	public:
@@ -1377,6 +1472,11 @@ class Handle_TNaming_ListNodeOfListOfNamedShape : public Handle_TCollection_MapN
     }
 };
 
+%extend TNaming_ListNodeOfListOfNamedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_ListOfIndexedDataMapOfShapeListOfShape;
 class TNaming_ListOfIndexedDataMapOfShapeListOfShape {
 	public:
@@ -1507,6 +1607,11 @@ class TNaming_ListOfIndexedDataMapOfShapeListOfShape {
 };
 
 
+%extend TNaming_ListOfIndexedDataMapOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_ListOfMapOfShape;
 class TNaming_ListOfMapOfShape {
 	public:
@@ -1637,6 +1742,11 @@ class TNaming_ListOfMapOfShape {
 };
 
 
+%extend TNaming_ListOfMapOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_ListOfNamedShape;
 class TNaming_ListOfNamedShape {
 	public:
@@ -1767,6 +1877,11 @@ class TNaming_ListOfNamedShape {
 };
 
 
+%extend TNaming_ListOfNamedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_Localizer;
 class TNaming_Localizer {
 	public:
@@ -1877,6 +1992,11 @@ class TNaming_Localizer {
 };
 
 
+%extend TNaming_Localizer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_MapIteratorOfMapOfNamedShape;
 class TNaming_MapIteratorOfMapOfNamedShape : public TCollection_BasicMapIterator {
 	public:
@@ -1903,6 +2023,11 @@ class TNaming_MapIteratorOfMapOfNamedShape : public TCollection_BasicMapIterator
 };
 
 
+%extend TNaming_MapIteratorOfMapOfNamedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_MapOfNamedShape;
 class TNaming_MapOfNamedShape : public TCollection_BasicMap {
 	public:
@@ -1961,6 +2086,11 @@ class TNaming_MapOfNamedShape : public TCollection_BasicMap {
 };
 
 
+%extend TNaming_MapOfNamedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_Name;
 class TNaming_Name {
 	public:
@@ -2067,6 +2197,11 @@ class TNaming_Name {
 };
 
 
+%extend TNaming_Name {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_NamedShape;
 class TNaming_NamedShape : public TDF_Attribute {
 	public:
@@ -2261,6 +2396,11 @@ class Handle_TNaming_NamedShape : public Handle_TDF_Attribute {
     }
 };
 
+%extend TNaming_NamedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TNaming_NamedShapeHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -2282,6 +2422,11 @@ class TNaming_NamedShapeHasher {
 };
 
 
+%extend TNaming_NamedShapeHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_Naming;
 class TNaming_Naming : public TDF_Attribute {
 	public:
@@ -2444,6 +2589,11 @@ class Handle_TNaming_Naming : public Handle_TDF_Attribute {
     }
 };
 
+%extend TNaming_Naming {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TNaming_NamingTool {
 	public:
 		%feature("compactdefaultargs") CurrentShape;
@@ -2483,6 +2633,11 @@ class TNaming_NamingTool {
 };
 
 
+%extend TNaming_NamingTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_NewShapeIterator;
 class TNaming_NewShapeIterator {
 	public:
@@ -2551,6 +2706,11 @@ class TNaming_NewShapeIterator {
 };
 
 
+%extend TNaming_NewShapeIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_OldShapeIterator;
 class TNaming_OldShapeIterator {
 	public:
@@ -2617,6 +2777,11 @@ class TNaming_OldShapeIterator {
 };
 
 
+%extend TNaming_OldShapeIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_RefShape;
 class TNaming_RefShape {
 	public:
@@ -2661,6 +2826,11 @@ class TNaming_RefShape {
 };
 
 
+%extend TNaming_RefShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_SameShapeIterator;
 class TNaming_SameShapeIterator {
 	public:
@@ -2687,6 +2857,11 @@ class TNaming_SameShapeIterator {
 };
 
 
+%extend TNaming_SameShapeIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_Scope;
 class TNaming_Scope {
 	public:
@@ -2779,6 +2954,11 @@ class TNaming_Scope {
 };
 
 
+%extend TNaming_Scope {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TNaming_Selector {
 	public:
 		%feature("compactdefaultargs") IsIdentified;
@@ -2854,6 +3034,11 @@ class TNaming_Selector {
 };
 
 
+%extend TNaming_Selector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_ShapesSet;
 class TNaming_ShapesSet {
 	public:
@@ -2942,6 +3127,11 @@ class TNaming_ShapesSet {
 };
 
 
+%extend TNaming_ShapesSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_StdMapNodeOfMapOfNamedShape;
 class TNaming_StdMapNodeOfMapOfNamedShape : public TCollection_MapNode {
 	public:
@@ -3006,6 +3196,11 @@ class Handle_TNaming_StdMapNodeOfMapOfNamedShape : public Handle_TCollection_Map
     }
 };
 
+%extend TNaming_StdMapNodeOfMapOfNamedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TNaming_Tool {
 	public:
 		%feature("compactdefaultargs") CurrentShape;
@@ -3151,6 +3346,11 @@ class TNaming_Tool {
 };
 
 
+%extend TNaming_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_TranslateTool;
 class TNaming_TranslateTool : public MMgt_TShared {
 	public:
@@ -3297,6 +3497,11 @@ class Handle_TNaming_TranslateTool : public Handle_MMgt_TShared {
     }
 };
 
+%extend TNaming_TranslateTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_Translator;
 class TNaming_Translator {
 	public:
@@ -3341,6 +3546,11 @@ class TNaming_Translator {
 };
 
 
+%extend TNaming_Translator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TNaming_UsedShapes;
 class TNaming_UsedShapes : public TDF_Attribute {
 	public:
@@ -3487,3 +3697,8 @@ class Handle_TNaming_UsedShapes : public Handle_TDF_Attribute {
     }
 };
 
+%extend TNaming_UsedShapes {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

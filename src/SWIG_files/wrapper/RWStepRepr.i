@@ -102,6 +102,11 @@ class RWStepRepr_RWAssemblyComponentUsage {
 };
 
 
+%extend RWStepRepr_RWAssemblyComponentUsage {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWAssemblyComponentUsageSubstitute;
 class RWStepRepr_RWAssemblyComponentUsageSubstitute {
 	public:
@@ -140,6 +145,11 @@ class RWStepRepr_RWAssemblyComponentUsageSubstitute {
 };
 
 
+%extend RWStepRepr_RWAssemblyComponentUsageSubstitute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWCompositeShapeAspect;
 class RWStepRepr_RWCompositeShapeAspect {
 	public:
@@ -186,6 +196,11 @@ class RWStepRepr_RWCompositeShapeAspect {
 };
 
 
+%extend RWStepRepr_RWCompositeShapeAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWCompoundRepresentationItem;
 class RWStepRepr_RWCompoundRepresentationItem {
 	public:
@@ -226,6 +241,11 @@ class RWStepRepr_RWCompoundRepresentationItem {
 };
 
 
+%extend RWStepRepr_RWCompoundRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWConfigurationDesign;
 class RWStepRepr_RWConfigurationDesign {
 	public:
@@ -272,6 +292,11 @@ class RWStepRepr_RWConfigurationDesign {
 };
 
 
+%extend RWStepRepr_RWConfigurationDesign {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWConfigurationEffectivity;
 class RWStepRepr_RWConfigurationEffectivity {
 	public:
@@ -318,6 +343,11 @@ class RWStepRepr_RWConfigurationEffectivity {
 };
 
 
+%extend RWStepRepr_RWConfigurationEffectivity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWConfigurationItem;
 class RWStepRepr_RWConfigurationItem {
 	public:
@@ -364,6 +394,11 @@ class RWStepRepr_RWConfigurationItem {
 };
 
 
+%extend RWStepRepr_RWConfigurationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWDataEnvironment;
 class RWStepRepr_RWDataEnvironment {
 	public:
@@ -410,6 +445,11 @@ class RWStepRepr_RWDataEnvironment {
 };
 
 
+%extend RWStepRepr_RWDataEnvironment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWDefinitionalRepresentation;
 class RWStepRepr_RWDefinitionalRepresentation {
 	public:
@@ -448,6 +488,11 @@ class RWStepRepr_RWDefinitionalRepresentation {
 };
 
 
+%extend RWStepRepr_RWDefinitionalRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWDerivedShapeAspect;
 class RWStepRepr_RWDerivedShapeAspect {
 	public:
@@ -494,6 +539,11 @@ class RWStepRepr_RWDerivedShapeAspect {
 };
 
 
+%extend RWStepRepr_RWDerivedShapeAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWDescriptiveRepresentationItem;
 class RWStepRepr_RWDescriptiveRepresentationItem {
 	public:
@@ -524,6 +574,11 @@ class RWStepRepr_RWDescriptiveRepresentationItem {
 };
 
 
+%extend RWStepRepr_RWDescriptiveRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWExtension;
 class RWStepRepr_RWExtension {
 	public:
@@ -570,6 +625,11 @@ class RWStepRepr_RWExtension {
 };
 
 
+%extend RWStepRepr_RWExtension {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWFunctionallyDefinedTransformation;
 class RWStepRepr_RWFunctionallyDefinedTransformation {
 	public:
@@ -600,6 +660,11 @@ class RWStepRepr_RWFunctionallyDefinedTransformation {
 };
 
 
+%extend RWStepRepr_RWFunctionallyDefinedTransformation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWGlobalUncertaintyAssignedContext;
 class RWStepRepr_RWGlobalUncertaintyAssignedContext {
 	public:
@@ -638,6 +703,11 @@ class RWStepRepr_RWGlobalUncertaintyAssignedContext {
 };
 
 
+%extend RWStepRepr_RWGlobalUncertaintyAssignedContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWGlobalUnitAssignedContext;
 class RWStepRepr_RWGlobalUnitAssignedContext {
 	public:
@@ -676,6 +746,11 @@ class RWStepRepr_RWGlobalUnitAssignedContext {
 };
 
 
+%extend RWStepRepr_RWGlobalUnitAssignedContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWItemDefinedTransformation;
 class RWStepRepr_RWItemDefinedTransformation {
 	public:
@@ -714,6 +789,11 @@ class RWStepRepr_RWItemDefinedTransformation {
 };
 
 
+%extend RWStepRepr_RWItemDefinedTransformation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWMakeFromUsageOption;
 class RWStepRepr_RWMakeFromUsageOption {
 	public:
@@ -760,6 +840,11 @@ class RWStepRepr_RWMakeFromUsageOption {
 };
 
 
+%extend RWStepRepr_RWMakeFromUsageOption {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWMappedItem;
 class RWStepRepr_RWMappedItem {
 	public:
@@ -798,6 +883,11 @@ class RWStepRepr_RWMappedItem {
 };
 
 
+%extend RWStepRepr_RWMappedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWMaterialDesignation;
 class RWStepRepr_RWMaterialDesignation {
 	public:
@@ -836,6 +926,11 @@ class RWStepRepr_RWMaterialDesignation {
 };
 
 
+%extend RWStepRepr_RWMaterialDesignation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWMaterialProperty;
 class RWStepRepr_RWMaterialProperty {
 	public:
@@ -882,6 +977,11 @@ class RWStepRepr_RWMaterialProperty {
 };
 
 
+%extend RWStepRepr_RWMaterialProperty {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWMaterialPropertyRepresentation;
 class RWStepRepr_RWMaterialPropertyRepresentation {
 	public:
@@ -928,6 +1028,11 @@ class RWStepRepr_RWMaterialPropertyRepresentation {
 };
 
 
+%extend RWStepRepr_RWMaterialPropertyRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWMeasureRepresentationItem;
 class RWStepRepr_RWMeasureRepresentationItem {
 	public:
@@ -966,6 +1071,11 @@ class RWStepRepr_RWMeasureRepresentationItem {
 };
 
 
+%extend RWStepRepr_RWMeasureRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWParametricRepresentationContext;
 class RWStepRepr_RWParametricRepresentationContext {
 	public:
@@ -996,6 +1106,11 @@ class RWStepRepr_RWParametricRepresentationContext {
 };
 
 
+%extend RWStepRepr_RWParametricRepresentationContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWProductConcept;
 class RWStepRepr_RWProductConcept {
 	public:
@@ -1042,6 +1157,11 @@ class RWStepRepr_RWProductConcept {
 };
 
 
+%extend RWStepRepr_RWProductConcept {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWProductDefinitionShape;
 class RWStepRepr_RWProductDefinitionShape {
 	public:
@@ -1088,6 +1208,11 @@ class RWStepRepr_RWProductDefinitionShape {
 };
 
 
+%extend RWStepRepr_RWProductDefinitionShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWPropertyDefinition;
 class RWStepRepr_RWPropertyDefinition {
 	public:
@@ -1134,6 +1259,11 @@ class RWStepRepr_RWPropertyDefinition {
 };
 
 
+%extend RWStepRepr_RWPropertyDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWPropertyDefinitionRelationship;
 class RWStepRepr_RWPropertyDefinitionRelationship {
 	public:
@@ -1180,6 +1310,11 @@ class RWStepRepr_RWPropertyDefinitionRelationship {
 };
 
 
+%extend RWStepRepr_RWPropertyDefinitionRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWPropertyDefinitionRepresentation;
 class RWStepRepr_RWPropertyDefinitionRepresentation {
 	public:
@@ -1226,6 +1361,11 @@ class RWStepRepr_RWPropertyDefinitionRepresentation {
 };
 
 
+%extend RWStepRepr_RWPropertyDefinitionRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWQuantifiedAssemblyComponentUsage;
 class RWStepRepr_RWQuantifiedAssemblyComponentUsage {
 	public:
@@ -1272,6 +1412,11 @@ class RWStepRepr_RWQuantifiedAssemblyComponentUsage {
 };
 
 
+%extend RWStepRepr_RWQuantifiedAssemblyComponentUsage {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWReprItemAndLengthMeasureWithUnit;
 class RWStepRepr_RWReprItemAndLengthMeasureWithUnit {
 	public:
@@ -1302,6 +1447,11 @@ class RWStepRepr_RWReprItemAndLengthMeasureWithUnit {
 };
 
 
+%extend RWStepRepr_RWReprItemAndLengthMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWRepresentation;
 class RWStepRepr_RWRepresentation {
 	public:
@@ -1340,6 +1490,11 @@ class RWStepRepr_RWRepresentation {
 };
 
 
+%extend RWStepRepr_RWRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWRepresentationContext;
 class RWStepRepr_RWRepresentationContext {
 	public:
@@ -1370,6 +1525,11 @@ class RWStepRepr_RWRepresentationContext {
 };
 
 
+%extend RWStepRepr_RWRepresentationContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWRepresentationItem;
 class RWStepRepr_RWRepresentationItem {
 	public:
@@ -1400,6 +1560,11 @@ class RWStepRepr_RWRepresentationItem {
 };
 
 
+%extend RWStepRepr_RWRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWRepresentationMap;
 class RWStepRepr_RWRepresentationMap {
 	public:
@@ -1438,6 +1603,11 @@ class RWStepRepr_RWRepresentationMap {
 };
 
 
+%extend RWStepRepr_RWRepresentationMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWRepresentationRelationship;
 class RWStepRepr_RWRepresentationRelationship {
 	public:
@@ -1476,6 +1646,11 @@ class RWStepRepr_RWRepresentationRelationship {
 };
 
 
+%extend RWStepRepr_RWRepresentationRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWRepresentationRelationshipWithTransformation;
 class RWStepRepr_RWRepresentationRelationshipWithTransformation {
 	public:
@@ -1514,6 +1689,11 @@ class RWStepRepr_RWRepresentationRelationshipWithTransformation {
 };
 
 
+%extend RWStepRepr_RWRepresentationRelationshipWithTransformation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWShapeAspect;
 class RWStepRepr_RWShapeAspect {
 	public:
@@ -1552,6 +1732,11 @@ class RWStepRepr_RWShapeAspect {
 };
 
 
+%extend RWStepRepr_RWShapeAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWShapeAspectDerivingRelationship;
 class RWStepRepr_RWShapeAspectDerivingRelationship {
 	public:
@@ -1598,6 +1783,11 @@ class RWStepRepr_RWShapeAspectDerivingRelationship {
 };
 
 
+%extend RWStepRepr_RWShapeAspectDerivingRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWShapeAspectRelationship;
 class RWStepRepr_RWShapeAspectRelationship {
 	public:
@@ -1644,6 +1834,11 @@ class RWStepRepr_RWShapeAspectRelationship {
 };
 
 
+%extend RWStepRepr_RWShapeAspectRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWShapeAspectTransition;
 class RWStepRepr_RWShapeAspectTransition {
 	public:
@@ -1690,6 +1885,11 @@ class RWStepRepr_RWShapeAspectTransition {
 };
 
 
+%extend RWStepRepr_RWShapeAspectTransition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWShapeRepresentationRelationshipWithTransformation;
 class RWStepRepr_RWShapeRepresentationRelationshipWithTransformation {
 	public:
@@ -1728,6 +1928,11 @@ class RWStepRepr_RWShapeRepresentationRelationshipWithTransformation {
 };
 
 
+%extend RWStepRepr_RWShapeRepresentationRelationshipWithTransformation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWSpecifiedHigherUsageOccurrence;
 class RWStepRepr_RWSpecifiedHigherUsageOccurrence {
 	public:
@@ -1774,6 +1979,11 @@ class RWStepRepr_RWSpecifiedHigherUsageOccurrence {
 };
 
 
+%extend RWStepRepr_RWSpecifiedHigherUsageOccurrence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWStructuralResponseProperty;
 class RWStepRepr_RWStructuralResponseProperty {
 	public:
@@ -1820,6 +2030,11 @@ class RWStepRepr_RWStructuralResponseProperty {
 };
 
 
+%extend RWStepRepr_RWStructuralResponseProperty {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepRepr_RWStructuralResponsePropertyDefinitionRepresentation;
 class RWStepRepr_RWStructuralResponsePropertyDefinitionRepresentation {
 	public:
@@ -1866,3 +2081,8 @@ class RWStepRepr_RWStructuralResponsePropertyDefinitionRepresentation {
 };
 
 
+%extend RWStepRepr_RWStructuralResponsePropertyDefinitionRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

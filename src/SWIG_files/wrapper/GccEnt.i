@@ -126,6 +126,11 @@ class GccEnt {
 };
 
 
+%extend GccEnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccEnt_Array1OfPosition;
 class GccEnt_Array1OfPosition {
 	public:
@@ -208,6 +213,11 @@ class GccEnt_Array1OfPosition {
 };
 
 
+%extend GccEnt_Array1OfPosition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccEnt_QualifiedCirc;
 class GccEnt_QualifiedCirc {
 	public:
@@ -278,6 +288,11 @@ class GccEnt_QualifiedCirc {
 };
 
 
+%extend GccEnt_QualifiedCirc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccEnt_QualifiedLin;
 class GccEnt_QualifiedLin {
 	public:
@@ -342,3 +357,8 @@ class GccEnt_QualifiedLin {
 };
 
 
+%extend GccEnt_QualifiedLin {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

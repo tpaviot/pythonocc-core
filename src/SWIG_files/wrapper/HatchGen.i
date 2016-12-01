@@ -179,6 +179,11 @@ class HatchGen_Domain {
 };
 
 
+%extend HatchGen_Domain {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HatchGen_Domains;
 class HatchGen_Domains : public TCollection_BaseSequence {
 	public:
@@ -317,6 +322,11 @@ class HatchGen_Domains : public TCollection_BaseSequence {
 };
 
 
+%extend HatchGen_Domains {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HatchGen_IntersectionPoint;
 class HatchGen_IntersectionPoint {
 	public:
@@ -429,6 +439,11 @@ class HatchGen_IntersectionPoint {
 };
 
 
+%extend HatchGen_IntersectionPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HatchGen_PointsOnElement;
 class HatchGen_PointsOnElement : public TCollection_BaseSequence {
 	public:
@@ -567,6 +582,11 @@ class HatchGen_PointsOnElement : public TCollection_BaseSequence {
 };
 
 
+%extend HatchGen_PointsOnElement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HatchGen_PointsOnHatching;
 class HatchGen_PointsOnHatching : public TCollection_BaseSequence {
 	public:
@@ -705,6 +725,11 @@ class HatchGen_PointsOnHatching : public TCollection_BaseSequence {
 };
 
 
+%extend HatchGen_PointsOnHatching {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HatchGen_SequenceNodeOfDomains;
 class HatchGen_SequenceNodeOfDomains : public TCollection_SeqNode {
 	public:
@@ -771,6 +796,11 @@ class Handle_HatchGen_SequenceNodeOfDomains : public Handle_TCollection_SeqNode 
     }
 };
 
+%extend HatchGen_SequenceNodeOfDomains {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HatchGen_SequenceNodeOfPointsOnElement;
 class HatchGen_SequenceNodeOfPointsOnElement : public TCollection_SeqNode {
 	public:
@@ -837,6 +867,11 @@ class Handle_HatchGen_SequenceNodeOfPointsOnElement : public Handle_TCollection_
     }
 };
 
+%extend HatchGen_SequenceNodeOfPointsOnElement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HatchGen_SequenceNodeOfPointsOnHatching;
 class HatchGen_SequenceNodeOfPointsOnHatching : public TCollection_SeqNode {
 	public:
@@ -903,6 +938,11 @@ class Handle_HatchGen_SequenceNodeOfPointsOnHatching : public Handle_TCollection
     }
 };
 
+%extend HatchGen_SequenceNodeOfPointsOnHatching {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HatchGen_PointOnElement;
 class HatchGen_PointOnElement : public HatchGen_IntersectionPoint {
 	public:
@@ -973,6 +1013,11 @@ class HatchGen_PointOnElement : public HatchGen_IntersectionPoint {
 };
 
 
+%extend HatchGen_PointOnElement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HatchGen_PointOnHatching;
 class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 	public:
@@ -1083,3 +1128,8 @@ class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 };
 
 
+%extend HatchGen_PointOnHatching {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

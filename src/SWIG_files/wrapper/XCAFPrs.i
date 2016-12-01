@@ -104,6 +104,11 @@ class XCAFPrs {
 };
 
 
+%extend XCAFPrs {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_AISObject;
 class XCAFPrs_AISObject : public AIS_ColoredShape {
 	public:
@@ -164,6 +169,11 @@ class Handle_XCAFPrs_AISObject : public Handle_AIS_ColoredShape {
     }
 };
 
+%extend XCAFPrs_AISObject {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle;
 class XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle : public TCollection_BasicMapIterator {
 	public:
@@ -194,6 +204,11 @@ class XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle : public TCollection_BasicMap
 };
 
 
+%extend XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
 class XCAFPrs_DataMapIteratorOfDataMapOfStyleShape : public TCollection_BasicMapIterator {
 	public:
@@ -224,6 +239,11 @@ class XCAFPrs_DataMapIteratorOfDataMapOfStyleShape : public TCollection_BasicMap
 };
 
 
+%extend XCAFPrs_DataMapIteratorOfDataMapOfStyleShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
 class XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient : public TCollection_BasicMapIterator {
 	public:
@@ -254,6 +274,11 @@ class XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient : public TCollection_Basi
 };
 
 
+%extend XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_DataMapNodeOfDataMapOfShapeStyle;
 class XCAFPrs_DataMapNodeOfDataMapOfShapeStyle : public TCollection_MapNode {
 	public:
@@ -324,6 +349,11 @@ class Handle_XCAFPrs_DataMapNodeOfDataMapOfShapeStyle : public Handle_TCollectio
     }
 };
 
+%extend XCAFPrs_DataMapNodeOfDataMapOfShapeStyle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_DataMapNodeOfDataMapOfStyleShape;
 class XCAFPrs_DataMapNodeOfDataMapOfStyleShape : public TCollection_MapNode {
 	public:
@@ -394,6 +424,11 @@ class Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape : public Handle_TCollectio
     }
 };
 
+%extend XCAFPrs_DataMapNodeOfDataMapOfStyleShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_DataMapNodeOfDataMapOfStyleTransient;
 class XCAFPrs_DataMapNodeOfDataMapOfStyleTransient : public TCollection_MapNode {
 	public:
@@ -464,6 +499,11 @@ class Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient : public Handle_TColle
     }
 };
 
+%extend XCAFPrs_DataMapNodeOfDataMapOfStyleTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_DataMapOfShapeStyle;
 class XCAFPrs_DataMapOfShapeStyle : public TCollection_BasicMap {
 	public:
@@ -542,6 +582,11 @@ class XCAFPrs_DataMapOfShapeStyle : public TCollection_BasicMap {
 };
 
 
+%extend XCAFPrs_DataMapOfShapeStyle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_DataMapOfStyleShape;
 class XCAFPrs_DataMapOfStyleShape : public TCollection_BasicMap {
 	public:
@@ -620,6 +665,11 @@ class XCAFPrs_DataMapOfStyleShape : public TCollection_BasicMap {
 };
 
 
+%extend XCAFPrs_DataMapOfStyleShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_DataMapOfStyleTransient;
 class XCAFPrs_DataMapOfStyleTransient : public TCollection_BasicMap {
 	public:
@@ -698,6 +748,11 @@ class XCAFPrs_DataMapOfStyleTransient : public TCollection_BasicMap {
 };
 
 
+%extend XCAFPrs_DataMapOfStyleTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_Driver;
 class XCAFPrs_Driver : public TPrsStd_Driver {
 	public:
@@ -764,6 +819,11 @@ class Handle_XCAFPrs_Driver : public Handle_TPrsStd_Driver {
     }
 };
 
+%extend XCAFPrs_Driver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFPrs_Style;
 class XCAFPrs_Style {
 	public:
@@ -868,3 +928,8 @@ class XCAFPrs_Style {
 };
 
 
+%extend XCAFPrs_Style {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

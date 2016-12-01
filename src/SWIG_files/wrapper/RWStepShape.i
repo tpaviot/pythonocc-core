@@ -94,6 +94,11 @@ class RWStepShape_RWAdvancedBrepShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWAdvancedBrepShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWAdvancedFace;
 class RWStepShape_RWAdvancedFace {
 	public:
@@ -132,6 +137,11 @@ class RWStepShape_RWAdvancedFace {
 };
 
 
+%extend RWStepShape_RWAdvancedFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWAngularLocation;
 class RWStepShape_RWAngularLocation {
 	public:
@@ -178,6 +188,11 @@ class RWStepShape_RWAngularLocation {
 };
 
 
+%extend RWStepShape_RWAngularLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWAngularSize;
 class RWStepShape_RWAngularSize {
 	public:
@@ -224,6 +239,11 @@ class RWStepShape_RWAngularSize {
 };
 
 
+%extend RWStepShape_RWAngularSize {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWBlock;
 class RWStepShape_RWBlock {
 	public:
@@ -262,6 +282,11 @@ class RWStepShape_RWBlock {
 };
 
 
+%extend RWStepShape_RWBlock {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWBooleanResult;
 class RWStepShape_RWBooleanResult {
 	public:
@@ -300,6 +325,11 @@ class RWStepShape_RWBooleanResult {
 };
 
 
+%extend RWStepShape_RWBooleanResult {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWBoxDomain;
 class RWStepShape_RWBoxDomain {
 	public:
@@ -338,6 +368,11 @@ class RWStepShape_RWBoxDomain {
 };
 
 
+%extend RWStepShape_RWBoxDomain {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWBoxedHalfSpace;
 class RWStepShape_RWBoxedHalfSpace {
 	public:
@@ -376,6 +411,11 @@ class RWStepShape_RWBoxedHalfSpace {
 };
 
 
+%extend RWStepShape_RWBoxedHalfSpace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWBrepWithVoids;
 class RWStepShape_RWBrepWithVoids {
 	public:
@@ -424,6 +464,11 @@ class RWStepShape_RWBrepWithVoids {
 };
 
 
+%extend RWStepShape_RWBrepWithVoids {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWClosedShell;
 class RWStepShape_RWClosedShell {
 	public:
@@ -462,6 +507,11 @@ class RWStepShape_RWClosedShell {
 };
 
 
+%extend RWStepShape_RWClosedShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWCompoundShapeRepresentation;
 class RWStepShape_RWCompoundShapeRepresentation {
 	public:
@@ -508,6 +558,11 @@ class RWStepShape_RWCompoundShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWCompoundShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWConnectedEdgeSet;
 class RWStepShape_RWConnectedEdgeSet {
 	public:
@@ -554,6 +609,11 @@ class RWStepShape_RWConnectedEdgeSet {
 };
 
 
+%extend RWStepShape_RWConnectedEdgeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWConnectedFaceSet;
 class RWStepShape_RWConnectedFaceSet {
 	public:
@@ -592,6 +652,11 @@ class RWStepShape_RWConnectedFaceSet {
 };
 
 
+%extend RWStepShape_RWConnectedFaceSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWConnectedFaceShapeRepresentation;
 class RWStepShape_RWConnectedFaceShapeRepresentation {
 	public:
@@ -638,6 +703,11 @@ class RWStepShape_RWConnectedFaceShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWConnectedFaceShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWConnectedFaceSubSet;
 class RWStepShape_RWConnectedFaceSubSet {
 	public:
@@ -684,6 +754,11 @@ class RWStepShape_RWConnectedFaceSubSet {
 };
 
 
+%extend RWStepShape_RWConnectedFaceSubSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWContextDependentShapeRepresentation;
 class RWStepShape_RWContextDependentShapeRepresentation {
 	public:
@@ -722,6 +797,11 @@ class RWStepShape_RWContextDependentShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWContextDependentShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWCsgShapeRepresentation;
 class RWStepShape_RWCsgShapeRepresentation {
 	public:
@@ -760,6 +840,11 @@ class RWStepShape_RWCsgShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWCsgShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWCsgSolid;
 class RWStepShape_RWCsgSolid {
 	public:
@@ -798,6 +883,11 @@ class RWStepShape_RWCsgSolid {
 };
 
 
+%extend RWStepShape_RWCsgSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation;
 class RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation {
 	public:
@@ -836,6 +926,11 @@ class RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWDimensionalCharacteristicRepresentation;
 class RWStepShape_RWDimensionalCharacteristicRepresentation {
 	public:
@@ -882,6 +977,11 @@ class RWStepShape_RWDimensionalCharacteristicRepresentation {
 };
 
 
+%extend RWStepShape_RWDimensionalCharacteristicRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWDimensionalLocation;
 class RWStepShape_RWDimensionalLocation {
 	public:
@@ -928,6 +1028,11 @@ class RWStepShape_RWDimensionalLocation {
 };
 
 
+%extend RWStepShape_RWDimensionalLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWDimensionalLocationWithPath;
 class RWStepShape_RWDimensionalLocationWithPath {
 	public:
@@ -974,6 +1079,11 @@ class RWStepShape_RWDimensionalLocationWithPath {
 };
 
 
+%extend RWStepShape_RWDimensionalLocationWithPath {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWDimensionalSize;
 class RWStepShape_RWDimensionalSize {
 	public:
@@ -1020,6 +1130,11 @@ class RWStepShape_RWDimensionalSize {
 };
 
 
+%extend RWStepShape_RWDimensionalSize {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWDimensionalSizeWithPath;
 class RWStepShape_RWDimensionalSizeWithPath {
 	public:
@@ -1066,6 +1181,11 @@ class RWStepShape_RWDimensionalSizeWithPath {
 };
 
 
+%extend RWStepShape_RWDimensionalSizeWithPath {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWEdge;
 class RWStepShape_RWEdge {
 	public:
@@ -1104,6 +1224,11 @@ class RWStepShape_RWEdge {
 };
 
 
+%extend RWStepShape_RWEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWEdgeBasedWireframeModel;
 class RWStepShape_RWEdgeBasedWireframeModel {
 	public:
@@ -1150,6 +1275,11 @@ class RWStepShape_RWEdgeBasedWireframeModel {
 };
 
 
+%extend RWStepShape_RWEdgeBasedWireframeModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWEdgeBasedWireframeShapeRepresentation;
 class RWStepShape_RWEdgeBasedWireframeShapeRepresentation {
 	public:
@@ -1196,6 +1326,11 @@ class RWStepShape_RWEdgeBasedWireframeShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWEdgeBasedWireframeShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWEdgeCurve;
 class RWStepShape_RWEdgeCurve {
 	public:
@@ -1244,6 +1379,11 @@ class RWStepShape_RWEdgeCurve {
 };
 
 
+%extend RWStepShape_RWEdgeCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWEdgeLoop;
 class RWStepShape_RWEdgeLoop {
 	public:
@@ -1292,6 +1432,11 @@ class RWStepShape_RWEdgeLoop {
 };
 
 
+%extend RWStepShape_RWEdgeLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWExtrudedAreaSolid;
 class RWStepShape_RWExtrudedAreaSolid {
 	public:
@@ -1330,6 +1475,11 @@ class RWStepShape_RWExtrudedAreaSolid {
 };
 
 
+%extend RWStepShape_RWExtrudedAreaSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWExtrudedFaceSolid;
 class RWStepShape_RWExtrudedFaceSolid {
 	public:
@@ -1368,6 +1518,11 @@ class RWStepShape_RWExtrudedFaceSolid {
 };
 
 
+%extend RWStepShape_RWExtrudedFaceSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWFace;
 class RWStepShape_RWFace {
 	public:
@@ -1406,6 +1561,11 @@ class RWStepShape_RWFace {
 };
 
 
+%extend RWStepShape_RWFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWFaceBasedSurfaceModel;
 class RWStepShape_RWFaceBasedSurfaceModel {
 	public:
@@ -1452,6 +1612,11 @@ class RWStepShape_RWFaceBasedSurfaceModel {
 };
 
 
+%extend RWStepShape_RWFaceBasedSurfaceModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWFaceBound;
 class RWStepShape_RWFaceBound {
 	public:
@@ -1500,6 +1665,11 @@ class RWStepShape_RWFaceBound {
 };
 
 
+%extend RWStepShape_RWFaceBound {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWFaceOuterBound;
 class RWStepShape_RWFaceOuterBound {
 	public:
@@ -1538,6 +1708,11 @@ class RWStepShape_RWFaceOuterBound {
 };
 
 
+%extend RWStepShape_RWFaceOuterBound {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWFaceSurface;
 class RWStepShape_RWFaceSurface {
 	public:
@@ -1576,6 +1751,11 @@ class RWStepShape_RWFaceSurface {
 };
 
 
+%extend RWStepShape_RWFaceSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWFacetedBrep;
 class RWStepShape_RWFacetedBrep {
 	public:
@@ -1614,6 +1794,11 @@ class RWStepShape_RWFacetedBrep {
 };
 
 
+%extend RWStepShape_RWFacetedBrep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWFacetedBrepAndBrepWithVoids;
 class RWStepShape_RWFacetedBrepAndBrepWithVoids {
 	public:
@@ -1652,6 +1837,11 @@ class RWStepShape_RWFacetedBrepAndBrepWithVoids {
 };
 
 
+%extend RWStepShape_RWFacetedBrepAndBrepWithVoids {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWFacetedBrepShapeRepresentation;
 class RWStepShape_RWFacetedBrepShapeRepresentation {
 	public:
@@ -1690,6 +1880,11 @@ class RWStepShape_RWFacetedBrepShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWFacetedBrepShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWGeometricCurveSet;
 class RWStepShape_RWGeometricCurveSet {
 	public:
@@ -1728,6 +1923,11 @@ class RWStepShape_RWGeometricCurveSet {
 };
 
 
+%extend RWStepShape_RWGeometricCurveSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWGeometricSet;
 class RWStepShape_RWGeometricSet {
 	public:
@@ -1766,6 +1966,11 @@ class RWStepShape_RWGeometricSet {
 };
 
 
+%extend RWStepShape_RWGeometricSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation;
 class RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation {
 	public:
@@ -1804,6 +2009,11 @@ class RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation;
 class RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation {
 	public:
@@ -1842,6 +2052,11 @@ class RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWHalfSpaceSolid;
 class RWStepShape_RWHalfSpaceSolid {
 	public:
@@ -1880,6 +2095,11 @@ class RWStepShape_RWHalfSpaceSolid {
 };
 
 
+%extend RWStepShape_RWHalfSpaceSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWLimitsAndFits;
 class RWStepShape_RWLimitsAndFits {
 	public:
@@ -1910,6 +2130,11 @@ class RWStepShape_RWLimitsAndFits {
 };
 
 
+%extend RWStepShape_RWLimitsAndFits {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWLoop;
 class RWStepShape_RWLoop {
 	public:
@@ -1940,6 +2165,11 @@ class RWStepShape_RWLoop {
 };
 
 
+%extend RWStepShape_RWLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWLoopAndPath;
 class RWStepShape_RWLoopAndPath {
 	public:
@@ -1978,6 +2208,11 @@ class RWStepShape_RWLoopAndPath {
 };
 
 
+%extend RWStepShape_RWLoopAndPath {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWManifoldSolidBrep;
 class RWStepShape_RWManifoldSolidBrep {
 	public:
@@ -2016,6 +2251,11 @@ class RWStepShape_RWManifoldSolidBrep {
 };
 
 
+%extend RWStepShape_RWManifoldSolidBrep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWManifoldSurfaceShapeRepresentation;
 class RWStepShape_RWManifoldSurfaceShapeRepresentation {
 	public:
@@ -2054,6 +2294,11 @@ class RWStepShape_RWManifoldSurfaceShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWManifoldSurfaceShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWMeasureQualification;
 class RWStepShape_RWMeasureQualification {
 	public:
@@ -2092,6 +2337,11 @@ class RWStepShape_RWMeasureQualification {
 };
 
 
+%extend RWStepShape_RWMeasureQualification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem;
 class RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem {
 	public:
@@ -2130,6 +2380,11 @@ class RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem {
 };
 
 
+%extend RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWNonManifoldSurfaceShapeRepresentation;
 class RWStepShape_RWNonManifoldSurfaceShapeRepresentation {
 	public:
@@ -2176,6 +2431,11 @@ class RWStepShape_RWNonManifoldSurfaceShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWNonManifoldSurfaceShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWOpenShell;
 class RWStepShape_RWOpenShell {
 	public:
@@ -2214,6 +2474,11 @@ class RWStepShape_RWOpenShell {
 };
 
 
+%extend RWStepShape_RWOpenShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWOrientedClosedShell;
 class RWStepShape_RWOrientedClosedShell {
 	public:
@@ -2252,6 +2517,11 @@ class RWStepShape_RWOrientedClosedShell {
 };
 
 
+%extend RWStepShape_RWOrientedClosedShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWOrientedEdge;
 class RWStepShape_RWOrientedEdge {
 	public:
@@ -2290,6 +2560,11 @@ class RWStepShape_RWOrientedEdge {
 };
 
 
+%extend RWStepShape_RWOrientedEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWOrientedFace;
 class RWStepShape_RWOrientedFace {
 	public:
@@ -2328,6 +2603,11 @@ class RWStepShape_RWOrientedFace {
 };
 
 
+%extend RWStepShape_RWOrientedFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWOrientedOpenShell;
 class RWStepShape_RWOrientedOpenShell {
 	public:
@@ -2366,6 +2646,11 @@ class RWStepShape_RWOrientedOpenShell {
 };
 
 
+%extend RWStepShape_RWOrientedOpenShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWOrientedPath;
 class RWStepShape_RWOrientedPath {
 	public:
@@ -2404,6 +2689,11 @@ class RWStepShape_RWOrientedPath {
 };
 
 
+%extend RWStepShape_RWOrientedPath {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWPath;
 class RWStepShape_RWPath {
 	public:
@@ -2442,6 +2732,11 @@ class RWStepShape_RWPath {
 };
 
 
+%extend RWStepShape_RWPath {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWPlusMinusTolerance;
 class RWStepShape_RWPlusMinusTolerance {
 	public:
@@ -2480,6 +2775,11 @@ class RWStepShape_RWPlusMinusTolerance {
 };
 
 
+%extend RWStepShape_RWPlusMinusTolerance {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWPointRepresentation;
 class RWStepShape_RWPointRepresentation {
 	public:
@@ -2526,6 +2826,11 @@ class RWStepShape_RWPointRepresentation {
 };
 
 
+%extend RWStepShape_RWPointRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWPolyLoop;
 class RWStepShape_RWPolyLoop {
 	public:
@@ -2564,6 +2869,11 @@ class RWStepShape_RWPolyLoop {
 };
 
 
+%extend RWStepShape_RWPolyLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWPrecisionQualifier;
 class RWStepShape_RWPrecisionQualifier {
 	public:
@@ -2594,6 +2904,11 @@ class RWStepShape_RWPrecisionQualifier {
 };
 
 
+%extend RWStepShape_RWPrecisionQualifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWQualifiedRepresentationItem;
 class RWStepShape_RWQualifiedRepresentationItem {
 	public:
@@ -2632,6 +2947,11 @@ class RWStepShape_RWQualifiedRepresentationItem {
 };
 
 
+%extend RWStepShape_RWQualifiedRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWRevolvedAreaSolid;
 class RWStepShape_RWRevolvedAreaSolid {
 	public:
@@ -2670,6 +2990,11 @@ class RWStepShape_RWRevolvedAreaSolid {
 };
 
 
+%extend RWStepShape_RWRevolvedAreaSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWRevolvedFaceSolid;
 class RWStepShape_RWRevolvedFaceSolid {
 	public:
@@ -2708,6 +3033,11 @@ class RWStepShape_RWRevolvedFaceSolid {
 };
 
 
+%extend RWStepShape_RWRevolvedFaceSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWRightAngularWedge;
 class RWStepShape_RWRightAngularWedge {
 	public:
@@ -2746,6 +3076,11 @@ class RWStepShape_RWRightAngularWedge {
 };
 
 
+%extend RWStepShape_RWRightAngularWedge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWRightCircularCone;
 class RWStepShape_RWRightCircularCone {
 	public:
@@ -2784,6 +3119,11 @@ class RWStepShape_RWRightCircularCone {
 };
 
 
+%extend RWStepShape_RWRightCircularCone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWRightCircularCylinder;
 class RWStepShape_RWRightCircularCylinder {
 	public:
@@ -2822,6 +3162,11 @@ class RWStepShape_RWRightCircularCylinder {
 };
 
 
+%extend RWStepShape_RWRightCircularCylinder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWSeamEdge;
 class RWStepShape_RWSeamEdge {
 	public:
@@ -2868,6 +3213,11 @@ class RWStepShape_RWSeamEdge {
 };
 
 
+%extend RWStepShape_RWSeamEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWShapeDefinitionRepresentation;
 class RWStepShape_RWShapeDefinitionRepresentation {
 	public:
@@ -2914,6 +3264,11 @@ class RWStepShape_RWShapeDefinitionRepresentation {
 };
 
 
+%extend RWStepShape_RWShapeDefinitionRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWShapeDimensionRepresentation;
 class RWStepShape_RWShapeDimensionRepresentation {
 	public:
@@ -2960,6 +3315,11 @@ class RWStepShape_RWShapeDimensionRepresentation {
 };
 
 
+%extend RWStepShape_RWShapeDimensionRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWShapeRepresentation;
 class RWStepShape_RWShapeRepresentation {
 	public:
@@ -2998,6 +3358,11 @@ class RWStepShape_RWShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWShapeRepresentationWithParameters;
 class RWStepShape_RWShapeRepresentationWithParameters {
 	public:
@@ -3044,6 +3409,11 @@ class RWStepShape_RWShapeRepresentationWithParameters {
 };
 
 
+%extend RWStepShape_RWShapeRepresentationWithParameters {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWShellBasedSurfaceModel;
 class RWStepShape_RWShellBasedSurfaceModel {
 	public:
@@ -3082,6 +3452,11 @@ class RWStepShape_RWShellBasedSurfaceModel {
 };
 
 
+%extend RWStepShape_RWShellBasedSurfaceModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWSolidModel;
 class RWStepShape_RWSolidModel {
 	public:
@@ -3112,6 +3487,11 @@ class RWStepShape_RWSolidModel {
 };
 
 
+%extend RWStepShape_RWSolidModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWSolidReplica;
 class RWStepShape_RWSolidReplica {
 	public:
@@ -3150,6 +3530,11 @@ class RWStepShape_RWSolidReplica {
 };
 
 
+%extend RWStepShape_RWSolidReplica {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWSphere;
 class RWStepShape_RWSphere {
 	public:
@@ -3188,6 +3573,11 @@ class RWStepShape_RWSphere {
 };
 
 
+%extend RWStepShape_RWSphere {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWSubedge;
 class RWStepShape_RWSubedge {
 	public:
@@ -3234,6 +3624,11 @@ class RWStepShape_RWSubedge {
 };
 
 
+%extend RWStepShape_RWSubedge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWSubface;
 class RWStepShape_RWSubface {
 	public:
@@ -3280,6 +3675,11 @@ class RWStepShape_RWSubface {
 };
 
 
+%extend RWStepShape_RWSubface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWSweptAreaSolid;
 class RWStepShape_RWSweptAreaSolid {
 	public:
@@ -3318,6 +3718,11 @@ class RWStepShape_RWSweptAreaSolid {
 };
 
 
+%extend RWStepShape_RWSweptAreaSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWSweptFaceSolid;
 class RWStepShape_RWSweptFaceSolid {
 	public:
@@ -3356,6 +3761,11 @@ class RWStepShape_RWSweptFaceSolid {
 };
 
 
+%extend RWStepShape_RWSweptFaceSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWToleranceValue;
 class RWStepShape_RWToleranceValue {
 	public:
@@ -3394,6 +3804,11 @@ class RWStepShape_RWToleranceValue {
 };
 
 
+%extend RWStepShape_RWToleranceValue {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWTopologicalRepresentationItem;
 class RWStepShape_RWTopologicalRepresentationItem {
 	public:
@@ -3424,6 +3839,11 @@ class RWStepShape_RWTopologicalRepresentationItem {
 };
 
 
+%extend RWStepShape_RWTopologicalRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWTorus;
 class RWStepShape_RWTorus {
 	public:
@@ -3462,6 +3882,11 @@ class RWStepShape_RWTorus {
 };
 
 
+%extend RWStepShape_RWTorus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWTransitionalShapeRepresentation;
 class RWStepShape_RWTransitionalShapeRepresentation {
 	public:
@@ -3500,6 +3925,11 @@ class RWStepShape_RWTransitionalShapeRepresentation {
 };
 
 
+%extend RWStepShape_RWTransitionalShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWTypeQualifier;
 class RWStepShape_RWTypeQualifier {
 	public:
@@ -3530,6 +3960,11 @@ class RWStepShape_RWTypeQualifier {
 };
 
 
+%extend RWStepShape_RWTypeQualifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWVertex;
 class RWStepShape_RWVertex {
 	public:
@@ -3560,6 +3995,11 @@ class RWStepShape_RWVertex {
 };
 
 
+%extend RWStepShape_RWVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWVertexLoop;
 class RWStepShape_RWVertexLoop {
 	public:
@@ -3598,6 +4038,11 @@ class RWStepShape_RWVertexLoop {
 };
 
 
+%extend RWStepShape_RWVertexLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepShape_RWVertexPoint;
 class RWStepShape_RWVertexPoint {
 	public:
@@ -3636,3 +4081,8 @@ class RWStepShape_RWVertexPoint {
 };
 
 
+%extend RWStepShape_RWVertexPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

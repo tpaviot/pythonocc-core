@@ -80,6 +80,11 @@ class BRepAlgoAPI {
 };
 
 
+%extend BRepAlgoAPI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgoAPI_BooleanOperation;
 class BRepAlgoAPI_BooleanOperation : public BRepBuilderAPI_MakeShape {
 	public:
@@ -192,6 +197,11 @@ class BRepAlgoAPI_BooleanOperation : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepAlgoAPI_BooleanOperation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgoAPI_Check;
 class BRepAlgoAPI_Check {
 	public:
@@ -278,6 +288,11 @@ class BRepAlgoAPI_Check {
 };
 
 
+%extend BRepAlgoAPI_Check {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgoAPI_Common;
 class BRepAlgoAPI_Common : public BRepAlgoAPI_BooleanOperation {
 	public:
@@ -304,6 +319,11 @@ class BRepAlgoAPI_Common : public BRepAlgoAPI_BooleanOperation {
 };
 
 
+%extend BRepAlgoAPI_Common {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgoAPI_Cut;
 class BRepAlgoAPI_Cut : public BRepAlgoAPI_BooleanOperation {
 	public:
@@ -334,6 +354,11 @@ class BRepAlgoAPI_Cut : public BRepAlgoAPI_BooleanOperation {
 };
 
 
+%extend BRepAlgoAPI_Cut {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgoAPI_Fuse;
 class BRepAlgoAPI_Fuse : public BRepAlgoAPI_BooleanOperation {
 	public:
@@ -362,6 +387,11 @@ class BRepAlgoAPI_Fuse : public BRepAlgoAPI_BooleanOperation {
 };
 
 
+%extend BRepAlgoAPI_Fuse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgoAPI_Section;
 class BRepAlgoAPI_Section : public BRepAlgoAPI_BooleanOperation {
 	public:
@@ -538,3 +568,8 @@ class BRepAlgoAPI_Section : public BRepAlgoAPI_BooleanOperation {
 };
 
 
+%extend BRepAlgoAPI_Section {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

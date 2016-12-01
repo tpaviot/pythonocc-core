@@ -130,6 +130,11 @@ class TDataXtd {
 };
 
 
+%extend TDataXtd {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_Array1OfTrsf;
 class TDataXtd_Array1OfTrsf {
 	public:
@@ -212,6 +217,11 @@ class TDataXtd_Array1OfTrsf {
 };
 
 
+%extend TDataXtd_Array1OfTrsf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_Axis;
 class TDataXtd_Axis : public TDF_Attribute {
 	public:
@@ -322,6 +332,11 @@ class Handle_TDataXtd_Axis : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataXtd_Axis {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_Constraint;
 class TDataXtd_Constraint : public TDF_Attribute {
 	public:
@@ -608,6 +623,11 @@ class Handle_TDataXtd_Constraint : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataXtd_Constraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_Geometry;
 class TDataXtd_Geometry : public TDF_Attribute {
 	public:
@@ -880,6 +900,11 @@ class Handle_TDataXtd_Geometry : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataXtd_Geometry {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_HArray1OfTrsf;
 class TDataXtd_HArray1OfTrsf : public MMgt_TShared {
 	public:
@@ -996,6 +1021,11 @@ class Handle_TDataXtd_HArray1OfTrsf : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDataXtd_HArray1OfTrsf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_Pattern;
 class TDataXtd_Pattern : public TDF_Attribute {
 	public:
@@ -1078,6 +1108,11 @@ class Handle_TDataXtd_Pattern : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataXtd_Pattern {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_Placement;
 class TDataXtd_Placement : public TDF_Attribute {
 	public:
@@ -1178,6 +1213,11 @@ class Handle_TDataXtd_Placement : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataXtd_Placement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_Plane;
 class TDataXtd_Plane : public TDF_Attribute {
 	public:
@@ -1288,6 +1328,11 @@ class Handle_TDataXtd_Plane : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataXtd_Plane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_Point;
 class TDataXtd_Point : public TDF_Attribute {
 	public:
@@ -1398,6 +1443,11 @@ class Handle_TDataXtd_Point : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataXtd_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_Position;
 class TDataXtd_Position : public TDF_Attribute {
 	public:
@@ -1528,6 +1578,11 @@ class Handle_TDataXtd_Position : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataXtd_Position {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_Shape;
 class TDataXtd_Shape : public TDF_Attribute {
 	public:
@@ -1662,6 +1717,11 @@ class Handle_TDataXtd_Shape : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataXtd_Shape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataXtd_PatternStd;
 class TDataXtd_PatternStd : public TDataXtd_Pattern {
 	public:
@@ -1876,3 +1936,8 @@ class Handle_TDataXtd_PatternStd : public Handle_TDataXtd_Pattern {
     }
 };
 
+%extend TDataXtd_PatternStd {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

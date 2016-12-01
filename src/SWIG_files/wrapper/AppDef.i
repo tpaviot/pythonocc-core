@@ -138,6 +138,11 @@ class AppDef_Array1OfMultiPointConstraint {
 };
 
 
+%extend AppDef_Array1OfMultiPointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute;
 class AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute : public math_BFGS {
 	public:
@@ -166,6 +171,11 @@ class AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute : public math_BFGS
 };
 
 
+%extend AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute;
 class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -286,6 +296,11 @@ class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute : public math_Multip
 };
 
 
+%extend AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 	public:
@@ -482,6 +497,11 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 };
 
 
+%extend AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_BSplineCompute;
 class AppDef_BSplineCompute {
 	public:
@@ -682,6 +702,11 @@ class AppDef_BSplineCompute {
 };
 
 
+%extend AppDef_BSplineCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_Compute;
 class AppDef_Compute {
 	public:
@@ -872,6 +897,11 @@ class AppDef_Compute {
 };
 
 
+%extend AppDef_Compute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_Gradient_BFGSOfMyGradientOfCompute;
 class AppDef_Gradient_BFGSOfMyGradientOfCompute : public math_BFGS {
 	public:
@@ -900,6 +930,11 @@ class AppDef_Gradient_BFGSOfMyGradientOfCompute : public math_BFGS {
 };
 
 
+%extend AppDef_Gradient_BFGSOfMyGradientOfCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute;
 class AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute : public math_BFGS {
 	public:
@@ -928,6 +963,11 @@ class AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute : public math_BFGS {
 };
 
 
+%extend AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_Gradient_BFGSOfTheGradient;
 class AppDef_Gradient_BFGSOfTheGradient : public math_BFGS {
 	public:
@@ -956,6 +996,11 @@ class AppDef_Gradient_BFGSOfTheGradient : public math_BFGS {
 };
 
 
+%extend AppDef_Gradient_BFGSOfTheGradient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_HArray1OfMultiPointConstraint;
 class AppDef_HArray1OfMultiPointConstraint : public MMgt_TShared {
 	public:
@@ -1072,6 +1117,11 @@ class Handle_AppDef_HArray1OfMultiPointConstraint : public Handle_MMgt_TShared {
     }
 };
 
+%extend AppDef_HArray1OfMultiPointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_MultiLine;
 class AppDef_MultiLine {
 	public:
@@ -1154,6 +1204,11 @@ class AppDef_MultiLine {
         };
 
 
+%extend AppDef_MultiLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_MultiPointConstraint;
 class AppDef_MultiPointConstraint : public AppParCurves_MultiPoint {
 	public:
@@ -1370,6 +1425,11 @@ class AppDef_MultiPointConstraint : public AppParCurves_MultiPoint {
         };
 
 
+%extend AppDef_MultiPointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_MyBSplGradientOfBSplineCompute;
 class AppDef_MyBSplGradientOfBSplineCompute {
 	public:
@@ -1458,6 +1518,11 @@ class AppDef_MyBSplGradientOfBSplineCompute {
 };
 
 
+%extend AppDef_MyBSplGradientOfBSplineCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_MyGradientOfCompute;
 class AppDef_MyGradientOfCompute {
 	public:
@@ -1512,6 +1577,11 @@ class AppDef_MyGradientOfCompute {
 };
 
 
+%extend AppDef_MyGradientOfCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_MyGradientbisOfBSplineCompute;
 class AppDef_MyGradientbisOfBSplineCompute {
 	public:
@@ -1566,6 +1636,11 @@ class AppDef_MyGradientbisOfBSplineCompute {
 };
 
 
+%extend AppDef_MyGradientbisOfBSplineCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class AppDef_MyLineTool {
 	public:
 		%feature("compactdefaultargs") FirstPoint;
@@ -1743,6 +1818,11 @@ class AppDef_MyLineTool {
 };
 
 
+%extend AppDef_MyLineTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_ParFunctionOfMyGradientOfCompute;
 class AppDef_ParFunctionOfMyGradientOfCompute : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -1835,6 +1915,11 @@ class AppDef_ParFunctionOfMyGradientOfCompute : public math_MultipleVarFunctionW
 };
 
 
+%extend AppDef_ParFunctionOfMyGradientOfCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_ParFunctionOfMyGradientbisOfBSplineCompute;
 class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -1927,6 +2012,11 @@ class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute : public math_MultipleVa
 };
 
 
+%extend AppDef_ParFunctionOfMyGradientbisOfBSplineCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_ParFunctionOfTheGradient;
 class AppDef_ParFunctionOfTheGradient : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -2019,6 +2109,11 @@ class AppDef_ParFunctionOfTheGradient : public math_MultipleVarFunctionWithGradi
 };
 
 
+%extend AppDef_ParFunctionOfTheGradient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_ParLeastSquareOfMyGradientOfCompute;
 class AppDef_ParLeastSquareOfMyGradientOfCompute {
 	public:
@@ -2215,6 +2310,11 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 };
 
 
+%extend AppDef_ParLeastSquareOfMyGradientOfCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 	public:
@@ -2411,6 +2511,11 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 };
 
 
+%extend AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_ParLeastSquareOfTheGradient;
 class AppDef_ParLeastSquareOfTheGradient {
 	public:
@@ -2607,6 +2712,11 @@ class AppDef_ParLeastSquareOfTheGradient {
 };
 
 
+%extend AppDef_ParLeastSquareOfTheGradient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_ResConstraintOfMyGradientOfCompute;
 class AppDef_ResConstraintOfMyGradientOfCompute {
 	public:
@@ -2661,6 +2771,11 @@ class AppDef_ResConstraintOfMyGradientOfCompute {
 };
 
 
+%extend AppDef_ResConstraintOfMyGradientOfCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_ResConstraintOfMyGradientbisOfBSplineCompute;
 class AppDef_ResConstraintOfMyGradientbisOfBSplineCompute {
 	public:
@@ -2715,6 +2830,11 @@ class AppDef_ResConstraintOfMyGradientbisOfBSplineCompute {
 };
 
 
+%extend AppDef_ResConstraintOfMyGradientbisOfBSplineCompute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_ResConstraintOfTheGradient;
 class AppDef_ResConstraintOfTheGradient {
 	public:
@@ -2769,6 +2889,11 @@ class AppDef_ResConstraintOfTheGradient {
 };
 
 
+%extend AppDef_ResConstraintOfTheGradient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_SmoothCriterion;
 class AppDef_SmoothCriterion : public MMgt_TShared {
 	public:
@@ -2957,6 +3082,11 @@ class Handle_AppDef_SmoothCriterion : public Handle_MMgt_TShared {
     }
 };
 
+%extend AppDef_SmoothCriterion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_TheFunction;
 class AppDef_TheFunction : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -3049,6 +3179,11 @@ class AppDef_TheFunction : public math_MultipleVarFunctionWithGradient {
 };
 
 
+%extend AppDef_TheFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_TheGradient;
 class AppDef_TheGradient {
 	public:
@@ -3103,6 +3238,11 @@ class AppDef_TheGradient {
 };
 
 
+%extend AppDef_TheGradient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_TheLeastSquares;
 class AppDef_TheLeastSquares {
 	public:
@@ -3299,6 +3439,11 @@ class AppDef_TheLeastSquares {
 };
 
 
+%extend AppDef_TheLeastSquares {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_TheResol;
 class AppDef_TheResol {
 	public:
@@ -3353,6 +3498,11 @@ class AppDef_TheResol {
 };
 
 
+%extend AppDef_TheResol {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_Variational;
 class AppDef_Variational {
 	public:
@@ -3637,6 +3787,11 @@ class AppDef_Variational {
 };
 
 
+%extend AppDef_Variational {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppDef_LinearCriteria;
 class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 	public:
@@ -3844,3 +3999,8 @@ class Handle_AppDef_LinearCriteria : public Handle_AppDef_SmoothCriterion {
     }
 };
 
+%extend AppDef_LinearCriteria {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

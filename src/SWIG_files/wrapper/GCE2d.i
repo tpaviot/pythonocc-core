@@ -100,6 +100,11 @@ class GCE2d_MakeMirror {
 };
 
 
+%extend GCE2d_MakeMirror {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeRotation;
 class GCE2d_MakeRotation {
 	public:
@@ -126,6 +131,11 @@ class GCE2d_MakeRotation {
 };
 
 
+%extend GCE2d_MakeRotation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeScale;
 class GCE2d_MakeScale {
 	public:
@@ -152,6 +162,11 @@ class GCE2d_MakeScale {
 };
 
 
+%extend GCE2d_MakeScale {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeTranslation;
 class GCE2d_MakeTranslation {
 	public:
@@ -186,6 +201,11 @@ class GCE2d_MakeTranslation {
 };
 
 
+%extend GCE2d_MakeTranslation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class GCE2d_Root {
 	public:
 		%feature("compactdefaultargs") IsDone;
@@ -203,6 +223,11 @@ class GCE2d_Root {
 };
 
 
+%extend GCE2d_Root {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeArcOfCircle;
 class GCE2d_MakeArcOfCircle : public GCE2d_Root {
 	public:
@@ -285,6 +310,11 @@ class GCE2d_MakeArcOfCircle : public GCE2d_Root {
 };
 
 
+%extend GCE2d_MakeArcOfCircle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeArcOfEllipse;
 class GCE2d_MakeArcOfEllipse : public GCE2d_Root {
 	public:
@@ -343,6 +373,11 @@ class GCE2d_MakeArcOfEllipse : public GCE2d_Root {
 };
 
 
+%extend GCE2d_MakeArcOfEllipse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeArcOfHyperbola;
 class GCE2d_MakeArcOfHyperbola : public GCE2d_Root {
 	public:
@@ -401,6 +436,11 @@ class GCE2d_MakeArcOfHyperbola : public GCE2d_Root {
 };
 
 
+%extend GCE2d_MakeArcOfHyperbola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeArcOfParabola;
 class GCE2d_MakeArcOfParabola : public GCE2d_Root {
 	public:
@@ -459,6 +499,11 @@ class GCE2d_MakeArcOfParabola : public GCE2d_Root {
 };
 
 
+%extend GCE2d_MakeArcOfParabola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeCircle;
 class GCE2d_MakeCircle : public GCE2d_Root {
 	public:
@@ -561,6 +606,11 @@ class GCE2d_MakeCircle : public GCE2d_Root {
 };
 
 
+%extend GCE2d_MakeCircle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeEllipse;
 class GCE2d_MakeEllipse : public GCE2d_Root {
 	public:
@@ -623,6 +673,11 @@ class GCE2d_MakeEllipse : public GCE2d_Root {
 };
 
 
+%extend GCE2d_MakeEllipse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeHyperbola;
 class GCE2d_MakeHyperbola : public GCE2d_Root {
 	public:
@@ -685,6 +740,11 @@ class GCE2d_MakeHyperbola : public GCE2d_Root {
 };
 
 
+%extend GCE2d_MakeHyperbola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeLine;
 class GCE2d_MakeLine : public GCE2d_Root {
 	public:
@@ -757,6 +817,11 @@ class GCE2d_MakeLine : public GCE2d_Root {
 };
 
 
+%extend GCE2d_MakeLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeParabola;
 class GCE2d_MakeParabola : public GCE2d_Root {
 	public:
@@ -835,6 +900,11 @@ class GCE2d_MakeParabola : public GCE2d_Root {
 };
 
 
+%extend GCE2d_MakeParabola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCE2d_MakeSegment;
 class GCE2d_MakeSegment : public GCE2d_Root {
 	public:
@@ -909,3 +979,8 @@ class GCE2d_MakeSegment : public GCE2d_Root {
 };
 
 
+%extend GCE2d_MakeSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

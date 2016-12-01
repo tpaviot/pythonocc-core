@@ -177,6 +177,11 @@ class TopOpeBRepTool {
 };
 
 
+%extend TopOpeBRepTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopOpeBRepTool_AncestorsTool {
 	public:
 		%feature("compactdefaultargs") MakeAncestors;
@@ -196,6 +201,11 @@ class TopOpeBRepTool_AncestorsTool {
 };
 
 
+%extend TopOpeBRepTool_AncestorsTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_BoxSort;
 class TopOpeBRepTool_BoxSort {
 	public:
@@ -306,6 +316,11 @@ class TopOpeBRepTool_BoxSort {
 };
 
 
+%extend TopOpeBRepTool_BoxSort {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_C2DF;
 class TopOpeBRepTool_C2DF {
 	public:
@@ -374,6 +389,11 @@ class TopOpeBRepTool_C2DF {
 };
 
 
+%extend TopOpeBRepTool_C2DF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_CLASSI;
 class TopOpeBRepTool_CLASSI {
 	public:
@@ -446,6 +466,11 @@ class TopOpeBRepTool_CLASSI {
 };
 
 
+%extend TopOpeBRepTool_CLASSI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_CORRISO;
 class TopOpeBRepTool_CORRISO {
 	public:
@@ -630,6 +655,11 @@ class TopOpeBRepTool_CORRISO {
 };
 
 
+%extend TopOpeBRepTool_CORRISO {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_CurveTool;
 class TopOpeBRepTool_CurveTool {
 	public:
@@ -730,6 +760,11 @@ class TopOpeBRepTool_CurveTool {
 };
 
 
+%extend TopOpeBRepTool_CurveTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_DataMapIteratorOfDataMapOfOrientedShapeC2DF;
 class TopOpeBRepTool_DataMapIteratorOfDataMapOfOrientedShapeC2DF : public TCollection_BasicMapIterator {
 	public:
@@ -760,6 +795,11 @@ class TopOpeBRepTool_DataMapIteratorOfDataMapOfOrientedShapeC2DF : public TColle
 };
 
 
+%extend TopOpeBRepTool_DataMapIteratorOfDataMapOfOrientedShapeC2DF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF;
 class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF : public TCollection_BasicMapIterator {
 	public:
@@ -790,6 +830,11 @@ class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF : public TCollect
 };
 
 
+%extend TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface;
 class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface : public TCollection_BasicMapIterator {
 	public:
@@ -820,6 +865,11 @@ class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface : public TCollection_Ba
 };
 
 
+%extend TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF;
 class TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF : public TCollection_MapNode {
 	public:
@@ -890,6 +940,11 @@ class Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF : public Han
     }
 };
 
+%extend TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF;
 class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF : public TCollection_MapNode {
 	public:
@@ -960,6 +1015,11 @@ class Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF : public Handl
     }
 };
 
+%extend TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface;
 class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface : public TCollection_MapNode {
 	public:
@@ -1030,6 +1090,11 @@ class Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface : public Handle_TCol
     }
 };
 
+%extend TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_DataMapOfOrientedShapeC2DF;
 class TopOpeBRepTool_DataMapOfOrientedShapeC2DF : public TCollection_BasicMap {
 	public:
@@ -1108,6 +1173,11 @@ class TopOpeBRepTool_DataMapOfOrientedShapeC2DF : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepTool_DataMapOfOrientedShapeC2DF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_DataMapOfShapeListOfC2DF;
 class TopOpeBRepTool_DataMapOfShapeListOfC2DF : public TCollection_BasicMap {
 	public:
@@ -1186,6 +1256,11 @@ class TopOpeBRepTool_DataMapOfShapeListOfC2DF : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepTool_DataMapOfShapeListOfC2DF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_DataMapOfShapeface;
 class TopOpeBRepTool_DataMapOfShapeface : public TCollection_BasicMap {
 	public:
@@ -1264,6 +1339,11 @@ class TopOpeBRepTool_DataMapOfShapeface : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepTool_DataMapOfShapeface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_FuseEdges;
 class TopOpeBRepTool_FuseEdges {
 	public:
@@ -1330,6 +1410,11 @@ class TopOpeBRepTool_FuseEdges {
 };
 
 
+%extend TopOpeBRepTool_FuseEdges {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_GeomTool;
 class TopOpeBRepTool_GeomTool {
 	public:
@@ -1454,6 +1539,11 @@ class TopOpeBRepTool_GeomTool {
 };
 
 
+%extend TopOpeBRepTool_GeomTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_HBoxTool;
 class TopOpeBRepTool_HBoxTool : public MMgt_TShared {
 	public:
@@ -1594,6 +1684,11 @@ class Handle_TopOpeBRepTool_HBoxTool : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRepTool_HBoxTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox;
 class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox : public TCollection_MapNode {
 	public:
@@ -1685,6 +1780,11 @@ class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox : publi
     }
 };
 
+%extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d;
 class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d : public TCollection_MapNode {
 	public:
@@ -1776,6 +1876,11 @@ class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d : pub
     }
 };
 
+%extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity;
 class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity : public TCollection_MapNode {
 	public:
@@ -1867,6 +1972,11 @@ class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity :
     }
 };
 
+%extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier;
 class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier : public TCollection_MapNode {
 	public:
@@ -1958,6 +2068,11 @@ class Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier 
     }
 };
 
+%extend TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_IndexedDataMapOfShapeBox;
 class TopOpeBRepTool_IndexedDataMapOfShapeBox : public TCollection_BasicMap {
 	public:
@@ -2068,6 +2183,11 @@ class TopOpeBRepTool_IndexedDataMapOfShapeBox : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepTool_IndexedDataMapOfShapeBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_IndexedDataMapOfShapeBox2d;
 class TopOpeBRepTool_IndexedDataMapOfShapeBox2d : public TCollection_BasicMap {
 	public:
@@ -2178,6 +2298,11 @@ class TopOpeBRepTool_IndexedDataMapOfShapeBox2d : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepTool_IndexedDataMapOfShapeBox2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_IndexedDataMapOfShapeconnexity;
 class TopOpeBRepTool_IndexedDataMapOfShapeconnexity : public TCollection_BasicMap {
 	public:
@@ -2288,6 +2413,11 @@ class TopOpeBRepTool_IndexedDataMapOfShapeconnexity : public TCollection_BasicMa
 };
 
 
+%extend TopOpeBRepTool_IndexedDataMapOfShapeconnexity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_IndexedDataMapOfSolidClassifier;
 class TopOpeBRepTool_IndexedDataMapOfSolidClassifier : public TCollection_BasicMap {
 	public:
@@ -2398,6 +2528,11 @@ class TopOpeBRepTool_IndexedDataMapOfSolidClassifier : public TCollection_BasicM
 };
 
 
+%extend TopOpeBRepTool_IndexedDataMapOfSolidClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_ListIteratorOfListOfC2DF;
 class TopOpeBRepTool_ListIteratorOfListOfC2DF {
 	public:
@@ -2432,6 +2567,11 @@ class TopOpeBRepTool_ListIteratorOfListOfC2DF {
 };
 
 
+%extend TopOpeBRepTool_ListIteratorOfListOfC2DF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_ListNodeOfListOfC2DF;
 class TopOpeBRepTool_ListNodeOfListOfC2DF : public TCollection_MapNode {
 	public:
@@ -2496,6 +2636,11 @@ class Handle_TopOpeBRepTool_ListNodeOfListOfC2DF : public Handle_TCollection_Map
     }
 };
 
+%extend TopOpeBRepTool_ListNodeOfListOfC2DF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_ListOfC2DF;
 class TopOpeBRepTool_ListOfC2DF {
 	public:
@@ -2626,6 +2771,11 @@ class TopOpeBRepTool_ListOfC2DF {
 };
 
 
+%extend TopOpeBRepTool_ListOfC2DF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_PurgeInternalEdges;
 class TopOpeBRepTool_PurgeInternalEdges {
 	public:
@@ -2674,6 +2824,11 @@ class TopOpeBRepTool_PurgeInternalEdges {
 };
 
 
+%extend TopOpeBRepTool_PurgeInternalEdges {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_REGUS;
 class TopOpeBRepTool_REGUS {
 	public:
@@ -2766,6 +2921,11 @@ class TopOpeBRepTool_REGUS {
 };
 
 
+%extend TopOpeBRepTool_REGUS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_REGUW;
 class TopOpeBRepTool_REGUW {
 	public:
@@ -2898,6 +3058,11 @@ class TopOpeBRepTool_REGUW {
 };
 
 
+%extend TopOpeBRepTool_REGUW {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_ShapeClassifier;
 class TopOpeBRepTool_ShapeClassifier {
 	public:
@@ -3038,6 +3203,11 @@ class TopOpeBRepTool_ShapeClassifier {
 };
 
 
+%extend TopOpeBRepTool_ShapeClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_ShapeExplorer;
 class TopOpeBRepTool_ShapeExplorer {
 	public:
@@ -3106,6 +3276,11 @@ class TopOpeBRepTool_ShapeExplorer {
         };
 
 
+%extend TopOpeBRepTool_ShapeExplorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopOpeBRepTool_ShapeTool {
 	public:
 		%feature("compactdefaultargs") Tolerance;
@@ -3323,6 +3498,11 @@ class TopOpeBRepTool_ShapeTool {
 };
 
 
+%extend TopOpeBRepTool_ShapeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_SolidClassifier;
 class TopOpeBRepTool_SolidClassifier {
 	public:
@@ -3381,6 +3561,11 @@ class TopOpeBRepTool_SolidClassifier {
 };
 
 
+%extend TopOpeBRepTool_SolidClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopOpeBRepTool_TOOL {
 	public:
 		%feature("compactdefaultargs") OriinSor;
@@ -3960,6 +4145,11 @@ class TopOpeBRepTool_TOOL {
 };
 
 
+%extend TopOpeBRepTool_TOOL {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_connexity;
 class TopOpeBRepTool_connexity {
 	public:
@@ -4050,6 +4240,11 @@ class TopOpeBRepTool_connexity {
 };
 
 
+%extend TopOpeBRepTool_connexity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_face;
 class TopOpeBRepTool_face {
 	public:
@@ -4088,6 +4283,11 @@ class TopOpeBRepTool_face {
 };
 
 
+%extend TopOpeBRepTool_face {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepTool_makeTransition;
 class TopOpeBRepTool_makeTransition {
 	public:
@@ -4174,3 +4374,8 @@ class TopOpeBRepTool_makeTransition {
 };
 
 
+%extend TopOpeBRepTool_makeTransition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

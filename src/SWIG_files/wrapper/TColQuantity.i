@@ -138,6 +138,11 @@ class TColQuantity_Array1OfLength {
 };
 
 
+%extend TColQuantity_Array1OfLength {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColQuantity_Array2OfLength;
 class TColQuantity_Array2OfLength {
 	public:
@@ -242,6 +247,11 @@ class TColQuantity_Array2OfLength {
 };
 
 
+%extend TColQuantity_Array2OfLength {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColQuantity_HArray1OfLength;
 class TColQuantity_HArray1OfLength : public MMgt_TShared {
 	public:
@@ -358,6 +368,11 @@ class Handle_TColQuantity_HArray1OfLength : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColQuantity_HArray1OfLength {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColQuantity_HArray2OfLength;
 class TColQuantity_HArray2OfLength : public MMgt_TShared {
 	public:
@@ -500,3 +515,8 @@ class Handle_TColQuantity_HArray2OfLength : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColQuantity_HArray2OfLength {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

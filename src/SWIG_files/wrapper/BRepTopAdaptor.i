@@ -87,6 +87,11 @@ class BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool : public TCollection_BasicM
 };
 
 
+%extend BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTopAdaptor_DataMapNodeOfMapOfShapeTool;
 class BRepTopAdaptor_DataMapNodeOfMapOfShapeTool : public TCollection_MapNode {
 	public:
@@ -157,6 +162,11 @@ class Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool : public Handle_TCollect
     }
 };
 
+%extend BRepTopAdaptor_DataMapNodeOfMapOfShapeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTopAdaptor_FClass2d;
 class BRepTopAdaptor_FClass2d {
 	public:
@@ -211,6 +221,11 @@ class BRepTopAdaptor_FClass2d {
 };
 
 
+%extend BRepTopAdaptor_FClass2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTopAdaptor_HVertex;
 class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 	public:
@@ -307,6 +322,11 @@ class Handle_BRepTopAdaptor_HVertex : public Handle_Adaptor3d_HVertex {
     }
 };
 
+%extend BRepTopAdaptor_HVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTopAdaptor_MapOfShapeTool;
 class BRepTopAdaptor_MapOfShapeTool : public TCollection_BasicMap {
 	public:
@@ -385,6 +405,11 @@ class BRepTopAdaptor_MapOfShapeTool : public TCollection_BasicMap {
 };
 
 
+%extend BRepTopAdaptor_MapOfShapeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTopAdaptor_Tool;
 class BRepTopAdaptor_Tool {
 	public:
@@ -445,6 +470,11 @@ class BRepTopAdaptor_Tool {
 };
 
 
+%extend BRepTopAdaptor_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTopAdaptor_TopolTool;
 class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 	public:
@@ -667,3 +697,8 @@ class Handle_BRepTopAdaptor_TopolTool : public Handle_Adaptor3d_TopolTool {
     }
 };
 
+%extend BRepTopAdaptor_TopolTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

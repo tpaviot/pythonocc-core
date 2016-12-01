@@ -222,6 +222,11 @@ class Handle_Geom2d_Geometry : public Handle_MMgt_TShared {
     }
 };
 
+%extend Geom2d_Geometry {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_Transformation;
 class Geom2d_Transformation : public MMgt_TShared {
 	public:
@@ -482,6 +487,11 @@ class Handle_Geom2d_Transformation : public Handle_MMgt_TShared {
     }
 };
 
+%extend Geom2d_Transformation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_AxisPlacement;
 class Geom2d_AxisPlacement : public Geom2d_Geometry {
 	public:
@@ -626,6 +636,11 @@ class Handle_Geom2d_AxisPlacement : public Handle_Geom2d_Geometry {
     }
 };
 
+%extend Geom2d_AxisPlacement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_Curve;
 class Geom2d_Curve : public Geom2d_Geometry {
 	public:
@@ -830,6 +845,11 @@ class Handle_Geom2d_Curve : public Handle_Geom2d_Geometry {
     }
 };
 
+%extend Geom2d_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_Point;
 class Geom2d_Point : public Geom2d_Geometry {
 	public:
@@ -926,6 +946,11 @@ class Handle_Geom2d_Point : public Handle_Geom2d_Geometry {
     }
 };
 
+%extend Geom2d_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_Vector;
 class Geom2d_Vector : public Geom2d_Geometry {
 	public:
@@ -1054,6 +1079,11 @@ class Handle_Geom2d_Vector : public Handle_Geom2d_Geometry {
     }
 };
 
+%extend Geom2d_Vector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_BoundedCurve;
 class Geom2d_BoundedCurve : public Geom2d_Curve {
 	public:
@@ -1118,6 +1148,11 @@ class Handle_Geom2d_BoundedCurve : public Handle_Geom2d_Curve {
     }
 };
 
+%extend Geom2d_BoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_CartesianPoint;
 class Geom2d_CartesianPoint : public Geom2d_Point {
 	public:
@@ -1258,6 +1293,11 @@ class Handle_Geom2d_CartesianPoint : public Handle_Geom2d_Point {
     }
 };
 
+%extend Geom2d_CartesianPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_Conic;
 class Geom2d_Conic : public Geom2d_Curve {
 	public:
@@ -1398,6 +1438,11 @@ class Handle_Geom2d_Conic : public Handle_Geom2d_Curve {
     }
 };
 
+%extend Geom2d_Conic {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_Direction;
 class Geom2d_Direction : public Geom2d_Vector {
 	public:
@@ -1548,6 +1593,11 @@ class Handle_Geom2d_Direction : public Handle_Geom2d_Vector {
     }
 };
 
+%extend Geom2d_Direction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_Line;
 class Geom2d_Line : public Geom2d_Curve {
 	public:
@@ -1834,6 +1884,11 @@ class Handle_Geom2d_Line : public Handle_Geom2d_Curve {
     }
 };
 
+%extend Geom2d_Line {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_OffsetCurve;
 class Geom2d_OffsetCurve : public Geom2d_Curve {
 	public:
@@ -2128,6 +2183,11 @@ class Handle_Geom2d_OffsetCurve : public Handle_Geom2d_Curve {
     }
 };
 
+%extend Geom2d_OffsetCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_VectorWithMagnitude;
 class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 	public:
@@ -2398,6 +2458,11 @@ class Handle_Geom2d_VectorWithMagnitude : public Handle_Geom2d_Vector {
     }
 };
 
+%extend Geom2d_VectorWithMagnitude {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_BSplineCurve;
 class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	public:
@@ -3110,6 +3175,11 @@ class Handle_Geom2d_BSplineCurve : public Handle_Geom2d_BoundedCurve {
     }
 };
 
+%extend Geom2d_BSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_BezierCurve;
 class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 	public:
@@ -3460,6 +3530,11 @@ class Handle_Geom2d_BezierCurve : public Handle_Geom2d_BoundedCurve {
     }
 };
 
+%extend Geom2d_BezierCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_Circle;
 class Geom2d_Circle : public Geom2d_Conic {
 	public:
@@ -3682,6 +3757,11 @@ class Handle_Geom2d_Circle : public Handle_Geom2d_Conic {
     }
 };
 
+%extend Geom2d_Circle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_Ellipse;
 class Geom2d_Ellipse : public Geom2d_Conic {
 	public:
@@ -3958,6 +4038,11 @@ class Handle_Geom2d_Ellipse : public Handle_Geom2d_Conic {
     }
 };
 
+%extend Geom2d_Ellipse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_Hyperbola;
 class Geom2d_Hyperbola : public Geom2d_Conic {
 	public:
@@ -4266,6 +4351,11 @@ class Handle_Geom2d_Hyperbola : public Handle_Geom2d_Conic {
     }
 };
 
+%extend Geom2d_Hyperbola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_Parabola;
 class Geom2d_Parabola : public Geom2d_Conic {
 	public:
@@ -4536,6 +4626,11 @@ class Handle_Geom2d_Parabola : public Handle_Geom2d_Conic {
     }
 };
 
+%extend Geom2d_Parabola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2d_TrimmedCurve;
 class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 	public:
@@ -4784,3 +4879,8 @@ class Handle_Geom2d_TrimmedCurve : public Handle_Geom2d_BoundedCurve {
     }
 };
 
+%extend Geom2d_TrimmedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

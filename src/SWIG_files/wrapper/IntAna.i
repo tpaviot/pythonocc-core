@@ -269,6 +269,11 @@ class IntAna_Curve {
 };
 
 
+%extend IntAna_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntAna_Int3Pln;
 class IntAna_Int3Pln {
 	public:
@@ -321,6 +326,11 @@ class IntAna_Int3Pln {
 };
 
 
+%extend IntAna_Int3Pln {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntAna_IntConicQuad;
 class IntAna_IntConicQuad {
 	public:
@@ -609,6 +619,11 @@ class IntAna_IntConicQuad {
 };
 
 
+%extend IntAna_IntConicQuad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntAna_IntLinTorus;
 class IntAna_IntLinTorus {
 	public:
@@ -679,6 +694,11 @@ class IntAna_IntLinTorus {
 };
 
 
+%extend IntAna_IntLinTorus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntAna_IntQuadQuad;
 class IntAna_IntQuadQuad {
 	public:
@@ -827,6 +847,11 @@ class IntAna_IntQuadQuad {
 };
 
 
+%extend IntAna_IntQuadQuad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntAna_ListIteratorOfListOfCurve;
 class IntAna_ListIteratorOfListOfCurve {
 	public:
@@ -861,6 +886,11 @@ class IntAna_ListIteratorOfListOfCurve {
 };
 
 
+%extend IntAna_ListIteratorOfListOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntAna_ListNodeOfListOfCurve;
 class IntAna_ListNodeOfListOfCurve : public TCollection_MapNode {
 	public:
@@ -925,6 +955,11 @@ class Handle_IntAna_ListNodeOfListOfCurve : public Handle_TCollection_MapNode {
     }
 };
 
+%extend IntAna_ListNodeOfListOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntAna_ListOfCurve;
 class IntAna_ListOfCurve {
 	public:
@@ -1055,6 +1090,11 @@ class IntAna_ListOfCurve {
 };
 
 
+%extend IntAna_ListOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntAna_QuadQuadGeo;
 class IntAna_QuadQuadGeo {
 	public:
@@ -1513,6 +1553,11 @@ class IntAna_QuadQuadGeo {
 };
 
 
+%extend IntAna_QuadQuadGeo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntAna_Quadric;
 class IntAna_Quadric {
 	public:
@@ -1643,3 +1688,8 @@ class IntAna_Quadric {
 };
 
 
+%extend IntAna_Quadric {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

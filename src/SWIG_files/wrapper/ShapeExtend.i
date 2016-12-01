@@ -114,6 +114,11 @@ class ShapeExtend {
 };
 
 
+%extend ShapeExtend {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_BasicMsgRegistrator;
 class ShapeExtend_BasicMsgRegistrator : public MMgt_TShared {
 	public:
@@ -206,6 +211,11 @@ class Handle_ShapeExtend_BasicMsgRegistrator : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeExtend_BasicMsgRegistrator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_ComplexCurve;
 class ShapeExtend_ComplexCurve : public Geom_Curve {
 	public:
@@ -416,6 +426,11 @@ class Handle_ShapeExtend_ComplexCurve : public Handle_Geom_Curve {
     }
 };
 
+%extend ShapeExtend_ComplexCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_CompositeSurface;
 class ShapeExtend_CompositeSurface : public Geom_Surface {
 	public:
@@ -974,6 +989,11 @@ class Handle_ShapeExtend_CompositeSurface : public Handle_Geom_Surface {
     }
 };
 
+%extend ShapeExtend_CompositeSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg;
 class ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg : public TCollection_BasicMapIterator {
 	public:
@@ -1004,6 +1024,11 @@ class ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg : public TCollection_
 };
 
 
+%extend ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg;
 class ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg : public TCollection_BasicMapIterator {
 	public:
@@ -1034,6 +1059,11 @@ class ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg : public TCollect
 };
 
 
+%extend ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg;
 class ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public TCollection_MapNode {
 	public:
@@ -1104,6 +1134,11 @@ class Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public Handle_TC
     }
 };
 
+%extend ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg;
 class ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public TCollection_MapNode {
 	public:
@@ -1174,6 +1209,11 @@ class Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public Handl
     }
 };
 
+%extend ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_DataMapOfShapeListOfMsg;
 class ShapeExtend_DataMapOfShapeListOfMsg : public TCollection_BasicMap {
 	public:
@@ -1252,6 +1292,11 @@ class ShapeExtend_DataMapOfShapeListOfMsg : public TCollection_BasicMap {
 };
 
 
+%extend ShapeExtend_DataMapOfShapeListOfMsg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_DataMapOfTransientListOfMsg;
 class ShapeExtend_DataMapOfTransientListOfMsg : public TCollection_BasicMap {
 	public:
@@ -1330,6 +1375,11 @@ class ShapeExtend_DataMapOfTransientListOfMsg : public TCollection_BasicMap {
 };
 
 
+%extend ShapeExtend_DataMapOfTransientListOfMsg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_Explorer;
 class ShapeExtend_Explorer {
 	public:
@@ -1428,6 +1478,11 @@ class ShapeExtend_Explorer {
 };
 
 
+%extend ShapeExtend_Explorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_WireData;
 class ShapeExtend_WireData : public MMgt_TShared {
 	public:
@@ -1723,6 +1778,11 @@ class Handle_ShapeExtend_WireData : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeExtend_WireData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeExtend_MsgRegistrator;
 class ShapeExtend_MsgRegistrator : public ShapeExtend_BasicMsgRegistrator {
 	public:
@@ -1817,3 +1877,8 @@ class Handle_ShapeExtend_MsgRegistrator : public Handle_ShapeExtend_BasicMsgRegi
     }
 };
 
+%extend ShapeExtend_MsgRegistrator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

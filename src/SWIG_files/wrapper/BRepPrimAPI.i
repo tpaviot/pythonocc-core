@@ -180,6 +180,11 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepPrimAPI_MakeBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrimAPI_MakeHalfSpace;
 class BRepPrimAPI_MakeHalfSpace : public BRepBuilderAPI_MakeShape {
 	public:
@@ -216,6 +221,11 @@ class BRepPrimAPI_MakeHalfSpace : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepPrimAPI_MakeHalfSpace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrimAPI_MakeOneAxis;
 class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 	public:
@@ -264,6 +274,11 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepPrimAPI_MakeOneAxis {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrimAPI_MakeSweep;
 class BRepPrimAPI_MakeSweep : public BRepBuilderAPI_MakeShape {
 	public:
@@ -282,6 +297,11 @@ class BRepPrimAPI_MakeSweep : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepPrimAPI_MakeSweep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrimAPI_MakeWedge;
 class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 	public:
@@ -392,6 +412,11 @@ class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepPrimAPI_MakeWedge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrimAPI_MakeCone;
 class BRepPrimAPI_MakeCone : public BRepPrimAPI_MakeOneAxis {
 	public:
@@ -466,6 +491,11 @@ class BRepPrimAPI_MakeCone : public BRepPrimAPI_MakeOneAxis {
 };
 
 
+%extend BRepPrimAPI_MakeCone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrimAPI_MakeCylinder;
 class BRepPrimAPI_MakeCylinder : public BRepPrimAPI_MakeOneAxis {
 	public:
@@ -532,6 +562,11 @@ class BRepPrimAPI_MakeCylinder : public BRepPrimAPI_MakeOneAxis {
 };
 
 
+%extend BRepPrimAPI_MakeCylinder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrimAPI_MakePrism;
 class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 	public:
@@ -616,6 +651,11 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 };
 
 
+%extend BRepPrimAPI_MakePrism {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrimAPI_MakeRevol;
 class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 	public:
@@ -704,6 +744,11 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 };
 
 
+%extend BRepPrimAPI_MakeRevol {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrimAPI_MakeRevolution;
 class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 	public:
@@ -818,6 +863,11 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 };
 
 
+%extend BRepPrimAPI_MakeRevolution {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrimAPI_MakeSphere;
 class BRepPrimAPI_MakeSphere : public BRepPrimAPI_MakeOneAxis {
 	public:
@@ -984,6 +1034,11 @@ class BRepPrimAPI_MakeSphere : public BRepPrimAPI_MakeOneAxis {
 };
 
 
+%extend BRepPrimAPI_MakeSphere {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrimAPI_MakeTorus;
 class BRepPrimAPI_MakeTorus : public BRepPrimAPI_MakeOneAxis {
 	public:
@@ -1114,3 +1169,8 @@ class BRepPrimAPI_MakeTorus : public BRepPrimAPI_MakeOneAxis {
 };
 
 
+%extend BRepPrimAPI_MakeTorus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

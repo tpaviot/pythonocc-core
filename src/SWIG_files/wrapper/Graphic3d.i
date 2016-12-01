@@ -449,6 +449,11 @@ class Graphic3d_Array1OfVector {
 };
 
 
+%extend Graphic3d_Array1OfVector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Array1OfVertex;
 class Graphic3d_Array1OfVertex {
 	public:
@@ -531,6 +536,11 @@ class Graphic3d_Array1OfVertex {
 };
 
 
+%extend Graphic3d_Array1OfVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Array2OfVertex;
 class Graphic3d_Array2OfVertex {
 	public:
@@ -635,6 +645,11 @@ class Graphic3d_Array2OfVertex {
 };
 
 
+%extend Graphic3d_Array2OfVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ArrayOfPrimitives;
 class Graphic3d_ArrayOfPrimitives : public MMgt_TShared {
 	public:
@@ -1297,6 +1312,11 @@ class Handle_Graphic3d_ArrayOfPrimitives : public Handle_MMgt_TShared {
     }
 };
 
+%extend Graphic3d_ArrayOfPrimitives {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_AspectFillArea3d;
 class Graphic3d_AspectFillArea3d : public Aspect_AspectFillArea {
 	public:
@@ -1515,6 +1535,11 @@ class Handle_Graphic3d_AspectFillArea3d : public Handle_Aspect_AspectFillArea {
     }
 };
 
+%extend Graphic3d_AspectFillArea3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_AspectLine3d;
 class Graphic3d_AspectLine3d : public Aspect_AspectLine {
 	public:
@@ -1597,6 +1622,11 @@ class Handle_Graphic3d_AspectLine3d : public Handle_Aspect_AspectLine {
     }
 };
 
+%extend Graphic3d_AspectLine3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_AspectMarker3d;
 class Graphic3d_AspectMarker3d : public Aspect_AspectMarker {
 	public:
@@ -1733,6 +1763,11 @@ class Handle_Graphic3d_AspectMarker3d : public Handle_Aspect_AspectMarker {
     }
 };
 
+%extend Graphic3d_AspectMarker3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_AspectText3d;
 class Graphic3d_AspectText3d : public MMgt_TShared {
 	public:
@@ -2003,6 +2038,11 @@ class Handle_Graphic3d_AspectText3d : public Handle_MMgt_TShared {
     }
 };
 
+%extend Graphic3d_AspectText3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Attribute;
 class Graphic3d_Attribute {
 	public:
@@ -2025,6 +2065,11 @@ class Graphic3d_Attribute {
 };
 
 
+%extend Graphic3d_Attribute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_BoundBuffer;
 class Graphic3d_BoundBuffer : public NCollection_Buffer {
 	public:
@@ -2098,6 +2143,11 @@ class Handle_Graphic3d_BoundBuffer : public Handle_NCollection_Buffer {
     }
 };
 
+%extend Graphic3d_BoundBuffer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CAspectFillArea;
 class Graphic3d_CAspectFillArea {
 	public:
@@ -2127,6 +2177,11 @@ class Graphic3d_CAspectFillArea {
 };
 
 
+%extend Graphic3d_CAspectFillArea {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CAspectLine;
 class Graphic3d_CAspectLine {
 	public:
@@ -2139,6 +2194,11 @@ class Graphic3d_CAspectLine {
 };
 
 
+%extend Graphic3d_CAspectLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CAspectMarker;
 class Graphic3d_CAspectMarker {
 	public:
@@ -2156,6 +2216,11 @@ class Graphic3d_CAspectMarker {
 };
 
 
+%extend Graphic3d_CAspectMarker {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CAspectText;
 class Graphic3d_CAspectText {
 	public:
@@ -2174,6 +2239,11 @@ class Graphic3d_CAspectText {
 };
 
 
+%extend Graphic3d_CAspectText {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CBitFields16;
 class Graphic3d_CBitFields16 {
 	public:
@@ -2196,6 +2266,11 @@ class Graphic3d_CBitFields16 {
 };
 
 
+%extend Graphic3d_CBitFields16 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CBitFields20;
 class Graphic3d_CBitFields20 {
 	public:
@@ -2222,6 +2297,11 @@ class Graphic3d_CBitFields20 {
 };
 
 
+%extend Graphic3d_CBitFields20 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CBitFields4;
 class Graphic3d_CBitFields4 {
 	public:
@@ -2232,6 +2312,11 @@ class Graphic3d_CBitFields4 {
 };
 
 
+%extend Graphic3d_CBitFields4 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CBitFields8;
 class Graphic3d_CBitFields8 {
 	public:
@@ -2246,6 +2331,11 @@ class Graphic3d_CBitFields8 {
 };
 
 
+%extend Graphic3d_CBitFields8 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CGraduatedTrihedron;
 class Graphic3d_CGraduatedTrihedron {
 	public:
@@ -2296,6 +2386,11 @@ class Graphic3d_CGraduatedTrihedron {
 };
 
 
+%extend Graphic3d_CGraduatedTrihedron {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CLight;
 class Graphic3d_CLight {
 	public:
@@ -2364,6 +2459,11 @@ class Graphic3d_CLight {
 };
 
 
+%extend Graphic3d_CLight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CStructure;
 class Graphic3d_CStructure : public Standard_Transient {
 	public:
@@ -2559,6 +2659,11 @@ class Handle_Graphic3d_CStructure : public Handle_Standard_Transient {
     }
 };
 
+%extend Graphic3d_CStructure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CTexture;
 class Graphic3d_CTexture {
 	public:
@@ -2571,6 +2676,11 @@ class Graphic3d_CTexture {
 };
 
 
+%extend Graphic3d_CTexture {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_CView;
 class Graphic3d_CView {
 	public:
@@ -2598,6 +2708,11 @@ class Graphic3d_CView {
 };
 
 
+%extend Graphic3d_CView {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Camera;
 class Graphic3d_Camera : public Standard_Transient {
 	public:
@@ -3109,6 +3224,11 @@ class Handle_Graphic3d_Camera : public Handle_Standard_Transient {
     }
 };
 
+%extend Graphic3d_Camera {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ClipPlane;
 class Graphic3d_ClipPlane : public Standard_Transient {
 	public:
@@ -3346,6 +3466,11 @@ class Handle_Graphic3d_ClipPlane : public Handle_Standard_Transient {
     }
 };
 
+%extend Graphic3d_ClipPlane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_DataStructureManager;
 class Graphic3d_DataStructureManager : public MMgt_TShared {
 	public:
@@ -3404,6 +3529,11 @@ class Handle_Graphic3d_DataStructureManager : public Handle_MMgt_TShared {
     }
 };
 
+%extend Graphic3d_DataStructureManager {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_GraphicDriver;
 class Graphic3d_GraphicDriver : public MMgt_TShared {
 	public:
@@ -4404,6 +4534,11 @@ class Handle_Graphic3d_GraphicDriver : public Handle_MMgt_TShared {
     }
 };
 
+%extend Graphic3d_GraphicDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Group;
 class Graphic3d_Group : public MMgt_TShared {
 	public:
@@ -4764,6 +4899,11 @@ class Handle_Graphic3d_Group : public Handle_MMgt_TShared {
     }
 };
 
+%extend Graphic3d_Group {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_HSequenceOfStructure;
 class Graphic3d_HSequenceOfStructure : public MMgt_TShared {
 	public:
@@ -4948,6 +5088,11 @@ class Handle_Graphic3d_HSequenceOfStructure : public Handle_MMgt_TShared {
     }
 };
 
+%extend Graphic3d_HSequenceOfStructure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ListIteratorOfListOfShortReal;
 class Graphic3d_ListIteratorOfListOfShortReal {
 	public:
@@ -4982,6 +5127,11 @@ class Graphic3d_ListIteratorOfListOfShortReal {
 };
 
 
+%extend Graphic3d_ListIteratorOfListOfShortReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ListNodeOfListOfShortReal;
 class Graphic3d_ListNodeOfListOfShortReal : public TCollection_MapNode {
 	public:
@@ -5046,6 +5196,11 @@ class Handle_Graphic3d_ListNodeOfListOfShortReal : public Handle_TCollection_Map
     }
 };
 
+%extend Graphic3d_ListNodeOfListOfShortReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ListOfShortReal;
 class Graphic3d_ListOfShortReal {
 	public:
@@ -5176,6 +5331,11 @@ class Graphic3d_ListOfShortReal {
 };
 
 
+%extend Graphic3d_ListOfShortReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_MapIteratorOfMapOfStructure;
 class Graphic3d_MapIteratorOfMapOfStructure : public TCollection_BasicMapIterator {
 	public:
@@ -5202,6 +5362,11 @@ class Graphic3d_MapIteratorOfMapOfStructure : public TCollection_BasicMapIterato
 };
 
 
+%extend Graphic3d_MapIteratorOfMapOfStructure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_MapOfStructure;
 class Graphic3d_MapOfStructure : public TCollection_BasicMap {
 	public:
@@ -5260,6 +5425,11 @@ class Graphic3d_MapOfStructure : public TCollection_BasicMap {
 };
 
 
+%extend Graphic3d_MapOfStructure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_MarkerImage;
 class Graphic3d_MarkerImage : public Standard_Transient {
 	public:
@@ -5374,6 +5544,11 @@ class Handle_Graphic3d_MarkerImage : public Handle_Standard_Transient {
     }
 };
 
+%extend Graphic3d_MarkerImage {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_MaterialAspect;
 class Graphic3d_MaterialAspect {
 	public:
@@ -5720,6 +5895,11 @@ class Graphic3d_MaterialAspect {
 };
 
 
+%extend Graphic3d_MaterialAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_RenderingParams;
 class Graphic3d_RenderingParams {
 	public:
@@ -5738,6 +5918,11 @@ class Graphic3d_RenderingParams {
 };
 
 
+%extend Graphic3d_RenderingParams {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_SequenceNodeOfSequenceOfStructure;
 class Graphic3d_SequenceNodeOfSequenceOfStructure : public TCollection_SeqNode {
 	public:
@@ -5804,6 +5989,11 @@ class Handle_Graphic3d_SequenceNodeOfSequenceOfStructure : public Handle_TCollec
     }
 };
 
+%extend Graphic3d_SequenceNodeOfSequenceOfStructure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_SequenceOfStructure;
 class Graphic3d_SequenceOfStructure : public TCollection_BaseSequence {
 	public:
@@ -5942,6 +6132,11 @@ class Graphic3d_SequenceOfStructure : public TCollection_BaseSequence {
 };
 
 
+%extend Graphic3d_SequenceOfStructure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ShaderObject;
 class Graphic3d_ShaderObject : public Standard_Transient {
 	public:
@@ -6044,6 +6239,11 @@ class Handle_Graphic3d_ShaderObject : public Handle_Standard_Transient {
     }
 };
 
+%extend Graphic3d_ShaderObject {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ShaderProgram;
 class Graphic3d_ShaderProgram : public Standard_Transient {
 	public:
@@ -6176,6 +6376,11 @@ class Handle_Graphic3d_ShaderProgram : public Handle_Standard_Transient {
     }
 };
 
+%extend Graphic3d_ShaderProgram {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ShaderVariable;
 class Graphic3d_ShaderVariable : public Standard_Transient {
 	public:
@@ -6246,6 +6451,11 @@ class Handle_Graphic3d_ShaderVariable : public Handle_Standard_Transient {
     }
 };
 
+%extend Graphic3d_ShaderVariable {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_StdMapNodeOfMapOfStructure;
 class Graphic3d_StdMapNodeOfMapOfStructure : public TCollection_MapNode {
 	public:
@@ -6310,6 +6520,11 @@ class Handle_Graphic3d_StdMapNodeOfMapOfStructure : public Handle_TCollection_Ma
     }
 };
 
+%extend Graphic3d_StdMapNodeOfMapOfStructure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Structure;
 class Graphic3d_Structure : public MMgt_TShared {
 	public:
@@ -7048,6 +7263,11 @@ class Handle_Graphic3d_Structure : public Handle_MMgt_TShared {
     }
 };
 
+%extend Graphic3d_Structure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_StructureManager;
 class Graphic3d_StructureManager : public MMgt_TShared {
 	public:
@@ -7440,6 +7660,11 @@ class Handle_Graphic3d_StructureManager : public Handle_MMgt_TShared {
     }
 };
 
+%extend Graphic3d_StructureManager {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_TextureParams;
 class Graphic3d_TextureParams : public Standard_Transient {
 	public:
@@ -7630,6 +7855,11 @@ class Handle_Graphic3d_TextureParams : public Handle_Standard_Transient {
     }
 };
 
+%extend Graphic3d_TextureParams {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_TextureRoot;
 class Graphic3d_TextureRoot : public MMgt_TShared {
 	public:
@@ -7728,54 +7958,99 @@ class Handle_Graphic3d_TextureRoot : public Handle_MMgt_TShared {
     }
 };
 
+%extend Graphic3d_TextureRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec2>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec2> {
 	public:
 };
 
 
+%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec2> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec2i>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec2i> {
 	public:
 };
 
 
+%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec2i> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec3>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec3> {
 	public:
 };
 
 
+%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec3> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec3i>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec3i> {
 	public:
 };
 
 
+%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec3i> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec4>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec4> {
 	public:
 };
 
 
+%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec4> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec4i>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec4i> {
 	public:
 };
 
 
+%extend Graphic3d_UniformValueTypeID<Graphic3d_Vec4i> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_UniformValueTypeID<Standard_Integer>;
 class Graphic3d_UniformValueTypeID<Standard_Integer> {
 	public:
 };
 
 
+%extend Graphic3d_UniformValueTypeID<Standard_Integer> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_UniformValueTypeID<Standard_ShortReal>;
 class Graphic3d_UniformValueTypeID<Standard_ShortReal> {
 	public:
 };
 
 
+%extend Graphic3d_UniformValueTypeID<Standard_ShortReal> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ValueInterface;
 class Graphic3d_ValueInterface {
 	public:
@@ -7788,6 +8063,11 @@ class Graphic3d_ValueInterface {
 };
 
 
+%extend Graphic3d_ValueInterface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Vector;
 class Graphic3d_Vector {
 	public:
@@ -7936,6 +8216,11 @@ class Graphic3d_Vector {
 };
 
 
+%extend Graphic3d_Vector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Vertex;
 class Graphic3d_Vertex : public TEL_POINT {
 	public:
@@ -8054,6 +8339,11 @@ class Graphic3d_Vertex : public TEL_POINT {
 };
 
 
+%extend Graphic3d_Vertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ZLayerSettings;
 class Graphic3d_ZLayerSettings {
 	public:
@@ -8103,6 +8393,11 @@ class Graphic3d_ZLayerSettings {
 };
 
 
+%extend Graphic3d_ZLayerSettings {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ArrayOfPoints;
 class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives {
 	public:
@@ -8167,6 +8462,11 @@ class Handle_Graphic3d_ArrayOfPoints : public Handle_Graphic3d_ArrayOfPrimitives
     }
 };
 
+%extend Graphic3d_ArrayOfPoints {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ArrayOfPolygons;
 class Graphic3d_ArrayOfPolygons : public Graphic3d_ArrayOfPrimitives {
 	public:
@@ -8239,6 +8539,11 @@ class Handle_Graphic3d_ArrayOfPolygons : public Handle_Graphic3d_ArrayOfPrimitiv
     }
 };
 
+%extend Graphic3d_ArrayOfPolygons {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ArrayOfPolylines;
 class Graphic3d_ArrayOfPolylines : public Graphic3d_ArrayOfPrimitives {
 	public:
@@ -8307,6 +8612,11 @@ class Handle_Graphic3d_ArrayOfPolylines : public Handle_Graphic3d_ArrayOfPrimiti
     }
 };
 
+%extend Graphic3d_ArrayOfPolylines {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ArrayOfQuadrangleStrips;
 class Graphic3d_ArrayOfQuadrangleStrips : public Graphic3d_ArrayOfPrimitives {
 	public:
@@ -8377,6 +8687,11 @@ class Handle_Graphic3d_ArrayOfQuadrangleStrips : public Handle_Graphic3d_ArrayOf
     }
 };
 
+%extend Graphic3d_ArrayOfQuadrangleStrips {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ArrayOfQuadrangles;
 class Graphic3d_ArrayOfQuadrangles : public Graphic3d_ArrayOfPrimitives {
 	public:
@@ -8445,6 +8760,11 @@ class Handle_Graphic3d_ArrayOfQuadrangles : public Handle_Graphic3d_ArrayOfPrimi
     }
 };
 
+%extend Graphic3d_ArrayOfQuadrangles {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ArrayOfSegments;
 class Graphic3d_ArrayOfSegments : public Graphic3d_ArrayOfPrimitives {
 	public:
@@ -8509,6 +8829,11 @@ class Handle_Graphic3d_ArrayOfSegments : public Handle_Graphic3d_ArrayOfPrimitiv
     }
 };
 
+%extend Graphic3d_ArrayOfSegments {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ArrayOfTriangleFans;
 class Graphic3d_ArrayOfTriangleFans : public Graphic3d_ArrayOfPrimitives {
 	public:
@@ -8579,6 +8904,11 @@ class Handle_Graphic3d_ArrayOfTriangleFans : public Handle_Graphic3d_ArrayOfPrim
     }
 };
 
+%extend Graphic3d_ArrayOfTriangleFans {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ArrayOfTriangleStrips;
 class Graphic3d_ArrayOfTriangleStrips : public Graphic3d_ArrayOfPrimitives {
 	public:
@@ -8649,6 +8979,11 @@ class Handle_Graphic3d_ArrayOfTriangleStrips : public Handle_Graphic3d_ArrayOfPr
     }
 };
 
+%extend Graphic3d_ArrayOfTriangleStrips {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ArrayOfTriangles;
 class Graphic3d_ArrayOfTriangles : public Graphic3d_ArrayOfPrimitives {
 	public:
@@ -8717,6 +9052,11 @@ class Handle_Graphic3d_ArrayOfTriangles : public Handle_Graphic3d_ArrayOfPrimiti
     }
 };
 
+%extend Graphic3d_ArrayOfTriangles {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_TextureEnv;
 class Graphic3d_TextureEnv : public Graphic3d_TextureRoot {
 	public:
@@ -8805,6 +9145,11 @@ class Handle_Graphic3d_TextureEnv : public Handle_Graphic3d_TextureRoot {
     }
 };
 
+%extend Graphic3d_TextureEnv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_TextureMap;
 class Graphic3d_TextureMap : public Graphic3d_TextureRoot {
 	public:
@@ -8925,6 +9270,11 @@ class Handle_Graphic3d_TextureMap : public Handle_Graphic3d_TextureRoot {
     }
 };
 
+%extend Graphic3d_TextureMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Texture1D;
 class Graphic3d_Texture1D : public Graphic3d_TextureMap {
 	public:
@@ -8997,6 +9347,11 @@ class Handle_Graphic3d_Texture1D : public Handle_Graphic3d_TextureMap {
     }
 };
 
+%extend Graphic3d_Texture1D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Texture2D;
 class Graphic3d_Texture2D : public Graphic3d_TextureMap {
 	public:
@@ -9069,6 +9424,11 @@ class Handle_Graphic3d_Texture2D : public Handle_Graphic3d_TextureMap {
     }
 };
 
+%extend Graphic3d_Texture2D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Texture1Dmanual;
 class Graphic3d_Texture1Dmanual : public Graphic3d_Texture1D {
 	public:
@@ -9145,6 +9505,11 @@ class Handle_Graphic3d_Texture1Dmanual : public Handle_Graphic3d_Texture1D {
     }
 };
 
+%extend Graphic3d_Texture1Dmanual {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Texture1Dsegment;
 class Graphic3d_Texture1Dsegment : public Graphic3d_Texture1D {
 	public:
@@ -9257,6 +9622,11 @@ class Handle_Graphic3d_Texture1Dsegment : public Handle_Graphic3d_Texture1D {
     }
 };
 
+%extend Graphic3d_Texture1Dsegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Texture2Dmanual;
 class Graphic3d_Texture2Dmanual : public Graphic3d_Texture2D {
 	public:
@@ -9333,6 +9703,11 @@ class Handle_Graphic3d_Texture2Dmanual : public Handle_Graphic3d_Texture2D {
     }
 };
 
+%extend Graphic3d_Texture2Dmanual {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_Texture2Dplane;
 class Graphic3d_Texture2Dplane : public Graphic3d_Texture2D {
 	public:
@@ -9559,3 +9934,8 @@ class Handle_Graphic3d_Texture2Dplane : public Handle_Graphic3d_Texture2D {
     }
 };
 
+%extend Graphic3d_Texture2Dplane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

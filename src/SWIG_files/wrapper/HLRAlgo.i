@@ -150,6 +150,11 @@ class HLRAlgo {
 };
 
 
+%extend HLRAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_Array1OfPHDat;
 class HLRAlgo_Array1OfPHDat {
 	public:
@@ -232,6 +237,11 @@ class HLRAlgo_Array1OfPHDat {
 };
 
 
+%extend HLRAlgo_Array1OfPHDat {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_Array1OfPINod;
 class HLRAlgo_Array1OfPINod {
 	public:
@@ -314,6 +324,11 @@ class HLRAlgo_Array1OfPINod {
 };
 
 
+%extend HLRAlgo_Array1OfPINod {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_Array1OfPISeg;
 class HLRAlgo_Array1OfPISeg {
 	public:
@@ -396,6 +411,11 @@ class HLRAlgo_Array1OfPISeg {
 };
 
 
+%extend HLRAlgo_Array1OfPISeg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_Array1OfTData;
 class HLRAlgo_Array1OfTData {
 	public:
@@ -478,6 +498,11 @@ class HLRAlgo_Array1OfTData {
 };
 
 
+%extend HLRAlgo_Array1OfTData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_BiPoint;
 class HLRAlgo_BiPoint {
 	public:
@@ -792,6 +817,11 @@ class HLRAlgo_BiPoint {
 };
 
 
+%extend HLRAlgo_BiPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_Coincidence;
 class HLRAlgo_Coincidence {
 	public:
@@ -834,6 +864,11 @@ class HLRAlgo_Coincidence {
 };
 
 
+%extend HLRAlgo_Coincidence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_EdgeIterator;
 class HLRAlgo_EdgeIterator {
 	public:
@@ -902,6 +937,11 @@ class HLRAlgo_EdgeIterator {
 };
 
 
+%extend HLRAlgo_EdgeIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_EdgeStatus;
 class HLRAlgo_EdgeStatus {
 	public:
@@ -1020,6 +1060,11 @@ class HLRAlgo_EdgeStatus {
 };
 
 
+%extend HLRAlgo_EdgeStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_EdgesBlock;
 class HLRAlgo_EdgesBlock : public MMgt_TShared {
 	public:
@@ -1178,6 +1223,11 @@ class Handle_HLRAlgo_EdgesBlock : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRAlgo_EdgesBlock {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_HArray1OfPHDat;
 class HLRAlgo_HArray1OfPHDat : public MMgt_TShared {
 	public:
@@ -1294,6 +1344,11 @@ class Handle_HLRAlgo_HArray1OfPHDat : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRAlgo_HArray1OfPHDat {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_HArray1OfPINod;
 class HLRAlgo_HArray1OfPINod : public MMgt_TShared {
 	public:
@@ -1410,6 +1465,11 @@ class Handle_HLRAlgo_HArray1OfPINod : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRAlgo_HArray1OfPINod {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_HArray1OfPISeg;
 class HLRAlgo_HArray1OfPISeg : public MMgt_TShared {
 	public:
@@ -1526,6 +1586,11 @@ class Handle_HLRAlgo_HArray1OfPISeg : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRAlgo_HArray1OfPISeg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_HArray1OfTData;
 class HLRAlgo_HArray1OfTData : public MMgt_TShared {
 	public:
@@ -1642,6 +1707,11 @@ class Handle_HLRAlgo_HArray1OfTData : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRAlgo_HArray1OfTData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_Interference;
 class HLRAlgo_Interference {
 	public:
@@ -1724,6 +1794,11 @@ class HLRAlgo_Interference {
 };
 
 
+%extend HLRAlgo_Interference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_InterferenceList;
 class HLRAlgo_InterferenceList {
 	public:
@@ -1854,6 +1929,11 @@ class HLRAlgo_InterferenceList {
 };
 
 
+%extend HLRAlgo_InterferenceList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_Intersection;
 class HLRAlgo_Intersection {
 	public:
@@ -1952,6 +2032,11 @@ class HLRAlgo_Intersection {
 };
 
 
+%extend HLRAlgo_Intersection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_ListIteratorOfInterferenceList;
 class HLRAlgo_ListIteratorOfInterferenceList {
 	public:
@@ -1986,6 +2071,11 @@ class HLRAlgo_ListIteratorOfInterferenceList {
 };
 
 
+%extend HLRAlgo_ListIteratorOfInterferenceList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_ListIteratorOfListOfBPoint;
 class HLRAlgo_ListIteratorOfListOfBPoint {
 	public:
@@ -2020,6 +2110,11 @@ class HLRAlgo_ListIteratorOfListOfBPoint {
 };
 
 
+%extend HLRAlgo_ListIteratorOfListOfBPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_ListNodeOfInterferenceList;
 class HLRAlgo_ListNodeOfInterferenceList : public TCollection_MapNode {
 	public:
@@ -2084,6 +2179,11 @@ class Handle_HLRAlgo_ListNodeOfInterferenceList : public Handle_TCollection_MapN
     }
 };
 
+%extend HLRAlgo_ListNodeOfInterferenceList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_ListNodeOfListOfBPoint;
 class HLRAlgo_ListNodeOfListOfBPoint : public TCollection_MapNode {
 	public:
@@ -2148,6 +2248,11 @@ class Handle_HLRAlgo_ListNodeOfListOfBPoint : public Handle_TCollection_MapNode 
     }
 };
 
+%extend HLRAlgo_ListNodeOfListOfBPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_ListOfBPoint;
 class HLRAlgo_ListOfBPoint {
 	public:
@@ -2278,6 +2383,11 @@ class HLRAlgo_ListOfBPoint {
 };
 
 
+%extend HLRAlgo_ListOfBPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_PolyAlgo;
 class HLRAlgo_PolyAlgo : public MMgt_TShared {
 	public:
@@ -2416,6 +2526,11 @@ class Handle_HLRAlgo_PolyAlgo : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRAlgo_PolyAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_PolyData;
 class HLRAlgo_PolyData : public MMgt_TShared {
 	public:
@@ -2542,6 +2657,11 @@ class Handle_HLRAlgo_PolyData : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRAlgo_PolyData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_PolyHidingData;
 class HLRAlgo_PolyHidingData {
 	public:
@@ -2578,6 +2698,11 @@ class HLRAlgo_PolyHidingData {
 };
 
 
+%extend HLRAlgo_PolyHidingData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_PolyInternalData;
 class HLRAlgo_PolyInternalData : public MMgt_TShared {
 	public:
@@ -2774,6 +2899,11 @@ class Handle_HLRAlgo_PolyInternalData : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRAlgo_PolyInternalData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_PolyInternalNode;
 class HLRAlgo_PolyInternalNode : public MMgt_TShared {
 	public:
@@ -2838,6 +2968,11 @@ class Handle_HLRAlgo_PolyInternalNode : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRAlgo_PolyInternalNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_PolyInternalSegment;
 class HLRAlgo_PolyInternalSegment {
 	public:
@@ -2852,6 +2987,11 @@ class HLRAlgo_PolyInternalSegment {
 };
 
 
+%extend HLRAlgo_PolyInternalSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_PolyShellData;
 class HLRAlgo_PolyShellData : public MMgt_TShared {
 	public:
@@ -2942,6 +3082,11 @@ class Handle_HLRAlgo_PolyShellData : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRAlgo_PolyShellData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_Projector;
 class HLRAlgo_Projector {
 	public:
@@ -3118,6 +3263,11 @@ class HLRAlgo_Projector {
 };
 
 
+%extend HLRAlgo_Projector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_TriangleData;
 class HLRAlgo_TriangleData {
 	public:
@@ -3132,6 +3282,11 @@ class HLRAlgo_TriangleData {
 };
 
 
+%extend HLRAlgo_TriangleData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRAlgo_WiresBlock;
 class HLRAlgo_WiresBlock : public MMgt_TShared {
 	public:
@@ -3220,3 +3375,8 @@ class Handle_HLRAlgo_WiresBlock : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRAlgo_WiresBlock {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -338,6 +338,11 @@ class Handle_BRepBlend_AppFuncRoot : public Handle_Approx_SweepFunction {
     }
 };
 
+%extend BRepBlend_AppFuncRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_AppSurf;
 class BRepBlend_AppSurf : public AppBlend_Approx {
 	public:
@@ -574,6 +579,11 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 };
 
 
+%extend BRepBlend_AppSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_AppSurface;
 class BRepBlend_AppSurface : public AppBlend_Approx {
 	public:
@@ -752,6 +762,11 @@ class BRepBlend_AppSurface : public AppBlend_Approx {
         };
 
 
+%extend BRepBlend_AppSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BRepBlend_BlendTool {
 	public:
 		%feature("compactdefaultargs") Project;
@@ -873,6 +888,11 @@ class BRepBlend_BlendTool {
 };
 
 
+%extend BRepBlend_BlendTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_CSWalking;
 class BRepBlend_CSWalking {
 	public:
@@ -927,6 +947,11 @@ class BRepBlend_CSWalking {
 };
 
 
+%extend BRepBlend_CSWalking {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_CurvPointRadInv;
 class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 	public:
@@ -1023,6 +1048,11 @@ class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 };
 
 
+%extend BRepBlend_CurvPointRadInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_Extremity;
 class BRepBlend_Extremity {
 	public:
@@ -1225,6 +1255,11 @@ class BRepBlend_Extremity {
 };
 
 
+%extend BRepBlend_Extremity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_Line;
 class BRepBlend_Line : public MMgt_TShared {
 	public:
@@ -1417,6 +1452,11 @@ class Handle_BRepBlend_Line : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepBlend_Line {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_PointOnRst;
 class BRepBlend_PointOnRst {
 	public:
@@ -1481,6 +1521,11 @@ class BRepBlend_PointOnRst {
 };
 
 
+%extend BRepBlend_PointOnRst {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_RstRstConstRad;
 class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 	public:
@@ -1867,6 +1912,11 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 };
 
 
+%extend BRepBlend_RstRstConstRad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_RstRstEvolRad;
 class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 	public:
@@ -2253,6 +2303,11 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 };
 
 
+%extend BRepBlend_RstRstEvolRad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_RstRstLineBuilder;
 class BRepBlend_RstRstLineBuilder {
 	public:
@@ -2381,6 +2436,11 @@ class BRepBlend_RstRstLineBuilder {
 };
 
 
+%extend BRepBlend_RstRstLineBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_SequenceNodeOfSequenceOfLine;
 class BRepBlend_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
 	public:
@@ -2447,6 +2507,11 @@ class Handle_BRepBlend_SequenceNodeOfSequenceOfLine : public Handle_TCollection_
     }
 };
 
+%extend BRepBlend_SequenceNodeOfSequenceOfLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_SequenceNodeOfSequenceOfPointOnRst;
 class BRepBlend_SequenceNodeOfSequenceOfPointOnRst : public TCollection_SeqNode {
 	public:
@@ -2513,6 +2578,11 @@ class Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst : public Handle_TColle
     }
 };
 
+%extend BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_SequenceOfLine;
 class BRepBlend_SequenceOfLine : public TCollection_BaseSequence {
 	public:
@@ -2651,6 +2721,11 @@ class BRepBlend_SequenceOfLine : public TCollection_BaseSequence {
 };
 
 
+%extend BRepBlend_SequenceOfLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_SequenceOfPointOnRst;
 class BRepBlend_SequenceOfPointOnRst : public TCollection_BaseSequence {
 	public:
@@ -2789,6 +2864,11 @@ class BRepBlend_SequenceOfPointOnRst : public TCollection_BaseSequence {
 };
 
 
+%extend BRepBlend_SequenceOfPointOnRst {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_SurfCurvConstRadInv;
 class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 	public:
@@ -2889,6 +2969,11 @@ class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 };
 
 
+%extend BRepBlend_SurfCurvConstRadInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_SurfCurvEvolRadInv;
 class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 	public:
@@ -2989,6 +3074,11 @@ class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 };
 
 
+%extend BRepBlend_SurfCurvEvolRadInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_SurfPointConstRadInv;
 class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 	public:
@@ -3087,6 +3177,11 @@ class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 };
 
 
+%extend BRepBlend_SurfPointConstRadInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_SurfPointEvolRadInv;
 class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 	public:
@@ -3185,6 +3280,11 @@ class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 };
 
 
+%extend BRepBlend_SurfPointEvolRadInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_SurfRstConstRad;
 class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 	public:
@@ -3541,6 +3641,11 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 };
 
 
+%extend BRepBlend_SurfRstConstRad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_SurfRstEvolRad;
 class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 	public:
@@ -3897,6 +4002,11 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 };
 
 
+%extend BRepBlend_SurfRstEvolRad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_SurfRstLineBuilder;
 class BRepBlend_SurfRstLineBuilder {
 	public:
@@ -4021,6 +4131,11 @@ class BRepBlend_SurfRstLineBuilder {
 };
 
 
+%extend BRepBlend_SurfRstLineBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_Walking;
 class BRepBlend_Walking {
 	public:
@@ -4193,6 +4308,11 @@ class BRepBlend_Walking {
 };
 
 
+%extend BRepBlend_Walking {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_AppFunc;
 class BRepBlend_AppFunc : public BRepBlend_AppFuncRoot {
 	public:
@@ -4277,6 +4397,11 @@ class Handle_BRepBlend_AppFunc : public Handle_BRepBlend_AppFuncRoot {
     }
 };
 
+%extend BRepBlend_AppFunc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_AppFuncRst;
 class BRepBlend_AppFuncRst : public BRepBlend_AppFuncRoot {
 	public:
@@ -4361,6 +4486,11 @@ class Handle_BRepBlend_AppFuncRst : public Handle_BRepBlend_AppFuncRoot {
     }
 };
 
+%extend BRepBlend_AppFuncRst {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBlend_AppFuncRstRst;
 class BRepBlend_AppFuncRstRst : public BRepBlend_AppFuncRoot {
 	public:
@@ -4445,3 +4575,8 @@ class Handle_BRepBlend_AppFuncRstRst : public Handle_BRepBlend_AppFuncRoot {
     }
 };
 
+%extend BRepBlend_AppFuncRstRst {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

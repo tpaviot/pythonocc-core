@@ -72,6 +72,11 @@ class StlMesh {
 };
 
 
+%extend StlMesh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlMesh_Mesh;
 class StlMesh_Mesh : public MMgt_TShared {
 	public:
@@ -262,6 +267,11 @@ class Handle_StlMesh_Mesh : public Handle_MMgt_TShared {
     }
 };
 
+%extend StlMesh_Mesh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlMesh_MeshDomain;
 class StlMesh_MeshDomain : public MMgt_TShared {
 	public:
@@ -400,6 +410,11 @@ class Handle_StlMesh_MeshDomain : public Handle_MMgt_TShared {
     }
 };
 
+%extend StlMesh_MeshDomain {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlMesh_MeshExplorer;
 class StlMesh_MeshExplorer {
 	public:
@@ -472,6 +487,11 @@ class StlMesh_MeshExplorer {
 };
 
 
+%extend StlMesh_MeshExplorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlMesh_MeshTriangle;
 class StlMesh_MeshTriangle : public MMgt_TShared {
 	public:
@@ -608,6 +628,11 @@ class Handle_StlMesh_MeshTriangle : public Handle_MMgt_TShared {
     }
 };
 
+%extend StlMesh_MeshTriangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlMesh_SequenceNodeOfSequenceOfMesh;
 class StlMesh_SequenceNodeOfSequenceOfMesh : public TCollection_SeqNode {
 	public:
@@ -674,6 +699,11 @@ class Handle_StlMesh_SequenceNodeOfSequenceOfMesh : public Handle_TCollection_Se
     }
 };
 
+%extend StlMesh_SequenceNodeOfSequenceOfMesh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlMesh_SequenceNodeOfSequenceOfMeshDomain;
 class StlMesh_SequenceNodeOfSequenceOfMeshDomain : public TCollection_SeqNode {
 	public:
@@ -740,6 +770,11 @@ class Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain : public Handle_TCollect
     }
 };
 
+%extend StlMesh_SequenceNodeOfSequenceOfMeshDomain {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlMesh_SequenceNodeOfSequenceOfMeshTriangle;
 class StlMesh_SequenceNodeOfSequenceOfMeshTriangle : public TCollection_SeqNode {
 	public:
@@ -806,6 +841,11 @@ class Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle : public Handle_TColle
     }
 };
 
+%extend StlMesh_SequenceNodeOfSequenceOfMeshTriangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlMesh_SequenceOfMesh;
 class StlMesh_SequenceOfMesh : public TCollection_BaseSequence {
 	public:
@@ -944,6 +984,11 @@ class StlMesh_SequenceOfMesh : public TCollection_BaseSequence {
 };
 
 
+%extend StlMesh_SequenceOfMesh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlMesh_SequenceOfMeshDomain;
 class StlMesh_SequenceOfMeshDomain : public TCollection_BaseSequence {
 	public:
@@ -1082,6 +1127,11 @@ class StlMesh_SequenceOfMeshDomain : public TCollection_BaseSequence {
 };
 
 
+%extend StlMesh_SequenceOfMeshDomain {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlMesh_SequenceOfMeshTriangle;
 class StlMesh_SequenceOfMeshTriangle : public TCollection_BaseSequence {
 	public:
@@ -1220,3 +1270,8 @@ class StlMesh_SequenceOfMeshTriangle : public TCollection_BaseSequence {
 };
 
 
+%extend StlMesh_SequenceOfMeshTriangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

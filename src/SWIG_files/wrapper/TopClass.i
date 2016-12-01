@@ -100,6 +100,11 @@ class TopClass_Intersection3d {
 };
 
 
+%extend TopClass_Intersection3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopClass_SolidExplorer;
 class TopClass_SolidExplorer {
 	public:
@@ -200,3 +205,8 @@ class TopClass_SolidExplorer {
 };
 
 
+%extend TopClass_SolidExplorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

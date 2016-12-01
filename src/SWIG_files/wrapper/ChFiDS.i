@@ -130,6 +130,11 @@ class ChFiDS_CircSection {
 };
 
 
+%extend ChFiDS_CircSection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_CommonPoint;
 class ChFiDS_CommonPoint {
 	public:
@@ -268,6 +273,11 @@ class ChFiDS_CommonPoint {
 };
 
 
+%extend ChFiDS_CommonPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_ElSpine;
 class ChFiDS_ElSpine : public Adaptor3d_Curve {
 	public:
@@ -490,6 +500,11 @@ class ChFiDS_ElSpine : public Adaptor3d_Curve {
 };
 
 
+%extend ChFiDS_ElSpine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_FaceInterference;
 class ChFiDS_FaceInterference {
 	public:
@@ -582,6 +597,11 @@ class ChFiDS_FaceInterference {
 };
 
 
+%extend ChFiDS_FaceInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_HData;
 class ChFiDS_HData : public MMgt_TShared {
 	public:
@@ -766,6 +786,11 @@ class Handle_ChFiDS_HData : public Handle_MMgt_TShared {
     }
 };
 
+%extend ChFiDS_HData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_HElSpine;
 class ChFiDS_HElSpine : public Adaptor3d_HCurve {
 	public:
@@ -846,6 +871,11 @@ class Handle_ChFiDS_HElSpine : public Handle_Adaptor3d_HCurve {
     }
 };
 
+%extend ChFiDS_HElSpine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe;
 class ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe : public TCollection_MapNode {
 	public:
@@ -937,6 +967,11 @@ class Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe : pub
     }
 };
 
+%extend ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_IndexedDataMapOfVertexListOfStripe;
 class ChFiDS_IndexedDataMapOfVertexListOfStripe : public TCollection_BasicMap {
 	public:
@@ -1047,6 +1082,11 @@ class ChFiDS_IndexedDataMapOfVertexListOfStripe : public TCollection_BasicMap {
 };
 
 
+%extend ChFiDS_IndexedDataMapOfVertexListOfStripe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_ListIteratorOfListOfHElSpine;
 class ChFiDS_ListIteratorOfListOfHElSpine {
 	public:
@@ -1081,6 +1121,11 @@ class ChFiDS_ListIteratorOfListOfHElSpine {
 };
 
 
+%extend ChFiDS_ListIteratorOfListOfHElSpine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_ListIteratorOfListOfStripe;
 class ChFiDS_ListIteratorOfListOfStripe {
 	public:
@@ -1115,6 +1160,11 @@ class ChFiDS_ListIteratorOfListOfStripe {
 };
 
 
+%extend ChFiDS_ListIteratorOfListOfStripe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_ListIteratorOfRegularities;
 class ChFiDS_ListIteratorOfRegularities {
 	public:
@@ -1149,6 +1199,11 @@ class ChFiDS_ListIteratorOfRegularities {
 };
 
 
+%extend ChFiDS_ListIteratorOfRegularities {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_ListNodeOfListOfHElSpine;
 class ChFiDS_ListNodeOfListOfHElSpine : public TCollection_MapNode {
 	public:
@@ -1213,6 +1268,11 @@ class Handle_ChFiDS_ListNodeOfListOfHElSpine : public Handle_TCollection_MapNode
     }
 };
 
+%extend ChFiDS_ListNodeOfListOfHElSpine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_ListNodeOfListOfStripe;
 class ChFiDS_ListNodeOfListOfStripe : public TCollection_MapNode {
 	public:
@@ -1277,6 +1337,11 @@ class Handle_ChFiDS_ListNodeOfListOfStripe : public Handle_TCollection_MapNode {
     }
 };
 
+%extend ChFiDS_ListNodeOfListOfStripe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_ListNodeOfRegularities;
 class ChFiDS_ListNodeOfRegularities : public TCollection_MapNode {
 	public:
@@ -1341,6 +1406,11 @@ class Handle_ChFiDS_ListNodeOfRegularities : public Handle_TCollection_MapNode {
     }
 };
 
+%extend ChFiDS_ListNodeOfRegularities {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_ListOfHElSpine;
 class ChFiDS_ListOfHElSpine {
 	public:
@@ -1471,6 +1541,11 @@ class ChFiDS_ListOfHElSpine {
 };
 
 
+%extend ChFiDS_ListOfHElSpine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_ListOfStripe;
 class ChFiDS_ListOfStripe {
 	public:
@@ -1601,6 +1676,11 @@ class ChFiDS_ListOfStripe {
 };
 
 
+%extend ChFiDS_ListOfStripe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_Map;
 class ChFiDS_Map {
 	public:
@@ -1643,6 +1723,11 @@ class ChFiDS_Map {
 };
 
 
+%extend ChFiDS_Map {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_Regul;
 class ChFiDS_Regul {
 	public:
@@ -1695,6 +1780,11 @@ class ChFiDS_Regul {
 };
 
 
+%extend ChFiDS_Regul {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_Regularities;
 class ChFiDS_Regularities {
 	public:
@@ -1825,6 +1915,11 @@ class ChFiDS_Regularities {
 };
 
 
+%extend ChFiDS_Regularities {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_SecArray1;
 class ChFiDS_SecArray1 {
 	public:
@@ -1907,6 +2002,11 @@ class ChFiDS_SecArray1 {
 };
 
 
+%extend ChFiDS_SecArray1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_SecHArray1;
 class ChFiDS_SecHArray1 : public MMgt_TShared {
 	public:
@@ -2023,6 +2123,11 @@ class Handle_ChFiDS_SecHArray1 : public Handle_MMgt_TShared {
     }
 };
 
+%extend ChFiDS_SecHArray1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_SequenceNodeOfSequenceOfSpine;
 class ChFiDS_SequenceNodeOfSequenceOfSpine : public TCollection_SeqNode {
 	public:
@@ -2089,6 +2194,11 @@ class Handle_ChFiDS_SequenceNodeOfSequenceOfSpine : public Handle_TCollection_Se
     }
 };
 
+%extend ChFiDS_SequenceNodeOfSequenceOfSpine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_SequenceNodeOfSequenceOfSurfData;
 class ChFiDS_SequenceNodeOfSequenceOfSurfData : public TCollection_SeqNode {
 	public:
@@ -2155,6 +2265,11 @@ class Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData : public Handle_TCollection
     }
 };
 
+%extend ChFiDS_SequenceNodeOfSequenceOfSurfData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_SequenceOfSpine;
 class ChFiDS_SequenceOfSpine : public TCollection_BaseSequence {
 	public:
@@ -2293,6 +2408,11 @@ class ChFiDS_SequenceOfSpine : public TCollection_BaseSequence {
 };
 
 
+%extend ChFiDS_SequenceOfSpine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_SequenceOfSurfData;
 class ChFiDS_SequenceOfSurfData : public TCollection_BaseSequence {
 	public:
@@ -2431,6 +2551,11 @@ class ChFiDS_SequenceOfSurfData : public TCollection_BaseSequence {
 };
 
 
+%extend ChFiDS_SequenceOfSurfData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_Spine;
 class ChFiDS_Spine : public MMgt_TShared {
 	public:
@@ -2869,6 +2994,11 @@ class Handle_ChFiDS_Spine : public Handle_MMgt_TShared {
     }
 };
 
+%extend ChFiDS_Spine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_Stripe;
 class ChFiDS_Stripe : public MMgt_TShared {
 	public:
@@ -3225,6 +3355,11 @@ class Handle_ChFiDS_Stripe : public Handle_MMgt_TShared {
     }
 };
 
+%extend ChFiDS_Stripe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_StripeArray1;
 class ChFiDS_StripeArray1 {
 	public:
@@ -3307,6 +3442,11 @@ class ChFiDS_StripeArray1 {
 };
 
 
+%extend ChFiDS_StripeArray1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_StripeMap;
 class ChFiDS_StripeMap {
 	public:
@@ -3351,6 +3491,11 @@ class ChFiDS_StripeMap {
 };
 
 
+%extend ChFiDS_StripeMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_SurfData;
 class ChFiDS_SurfData : public MMgt_TShared {
 	public:
@@ -3683,6 +3828,11 @@ class Handle_ChFiDS_SurfData : public Handle_MMgt_TShared {
     }
 };
 
+%extend ChFiDS_SurfData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_ChamfSpine;
 class ChFiDS_ChamfSpine : public ChFiDS_Spine {
 	public:
@@ -3799,6 +3949,11 @@ class Handle_ChFiDS_ChamfSpine : public Handle_ChFiDS_Spine {
     }
 };
 
+%extend ChFiDS_ChamfSpine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiDS_FilSpine;
 class ChFiDS_FilSpine : public ChFiDS_Spine {
 	public:
@@ -3993,3 +4148,8 @@ class Handle_ChFiDS_FilSpine : public Handle_ChFiDS_Spine {
     }
 };
 
+%extend ChFiDS_FilSpine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

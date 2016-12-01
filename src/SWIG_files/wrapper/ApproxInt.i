@@ -144,3 +144,8 @@ class ApproxInt_SvSurfaces {
 };
 
 
+%extend ApproxInt_SvSurfaces {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

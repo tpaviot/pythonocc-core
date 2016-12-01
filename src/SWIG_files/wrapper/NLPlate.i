@@ -218,6 +218,11 @@ class Handle_NLPlate_HGPPConstraint : public Handle_MMgt_TShared {
     }
 };
 
+%extend NLPlate_HGPPConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_ListIteratorOfStackOfPlate;
 class NLPlate_ListIteratorOfStackOfPlate {
 	public:
@@ -252,6 +257,11 @@ class NLPlate_ListIteratorOfStackOfPlate {
 };
 
 
+%extend NLPlate_ListIteratorOfStackOfPlate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_ListNodeOfStackOfPlate;
 class NLPlate_ListNodeOfStackOfPlate : public TCollection_MapNode {
 	public:
@@ -316,6 +326,11 @@ class Handle_NLPlate_ListNodeOfStackOfPlate : public Handle_TCollection_MapNode 
     }
 };
 
+%extend NLPlate_ListNodeOfStackOfPlate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_NLPlate;
 class NLPlate_NLPlate {
 	public:
@@ -408,6 +423,11 @@ class NLPlate_NLPlate {
 };
 
 
+%extend NLPlate_NLPlate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_SequenceNodeOfSequenceOfHGPPConstraint;
 class NLPlate_SequenceNodeOfSequenceOfHGPPConstraint : public TCollection_SeqNode {
 	public:
@@ -474,6 +494,11 @@ class Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint : public Handle_TCol
     }
 };
 
+%extend NLPlate_SequenceNodeOfSequenceOfHGPPConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_SequenceOfHGPPConstraint;
 class NLPlate_SequenceOfHGPPConstraint : public TCollection_BaseSequence {
 	public:
@@ -612,6 +637,11 @@ class NLPlate_SequenceOfHGPPConstraint : public TCollection_BaseSequence {
 };
 
 
+%extend NLPlate_SequenceOfHGPPConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_StackOfPlate;
 class NLPlate_StackOfPlate {
 	public:
@@ -742,6 +772,11 @@ class NLPlate_StackOfPlate {
 };
 
 
+%extend NLPlate_StackOfPlate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_HPG0Constraint;
 class NLPlate_HPG0Constraint : public NLPlate_HGPPConstraint {
 	public:
@@ -834,6 +869,11 @@ class Handle_NLPlate_HPG0Constraint : public Handle_NLPlate_HGPPConstraint {
     }
 };
 
+%extend NLPlate_HPG0Constraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_HPG1Constraint;
 class NLPlate_HPG1Constraint : public NLPlate_HGPPConstraint {
 	public:
@@ -926,6 +966,11 @@ class Handle_NLPlate_HPG1Constraint : public Handle_NLPlate_HGPPConstraint {
     }
 };
 
+%extend NLPlate_HPG1Constraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_HPG0G1Constraint;
 class NLPlate_HPG0G1Constraint : public NLPlate_HPG0Constraint {
 	public:
@@ -1006,6 +1051,11 @@ class Handle_NLPlate_HPG0G1Constraint : public Handle_NLPlate_HPG0Constraint {
     }
 };
 
+%extend NLPlate_HPG0G1Constraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_HPG2Constraint;
 class NLPlate_HPG2Constraint : public NLPlate_HPG1Constraint {
 	public:
@@ -1076,6 +1126,11 @@ class Handle_NLPlate_HPG2Constraint : public Handle_NLPlate_HPG1Constraint {
     }
 };
 
+%extend NLPlate_HPG2Constraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_HPG0G2Constraint;
 class NLPlate_HPG0G2Constraint : public NLPlate_HPG0G1Constraint {
 	public:
@@ -1148,6 +1203,11 @@ class Handle_NLPlate_HPG0G2Constraint : public Handle_NLPlate_HPG0G1Constraint {
     }
 };
 
+%extend NLPlate_HPG0G2Constraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_HPG3Constraint;
 class NLPlate_HPG3Constraint : public NLPlate_HPG2Constraint {
 	public:
@@ -1220,6 +1280,11 @@ class Handle_NLPlate_HPG3Constraint : public Handle_NLPlate_HPG2Constraint {
     }
 };
 
+%extend NLPlate_HPG3Constraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NLPlate_HPG0G3Constraint;
 class NLPlate_HPG0G3Constraint : public NLPlate_HPG0G2Constraint {
 	public:
@@ -1294,3 +1359,8 @@ class Handle_NLPlate_HPG0G3Constraint : public Handle_NLPlate_HPG0G2Constraint {
     }
 };
 
+%extend NLPlate_HPG0G3Constraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

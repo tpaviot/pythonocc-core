@@ -128,6 +128,11 @@ class ChFi3d {
 };
 
 
+%extend ChFi3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFi3d_Builder;
 class ChFi3d_Builder {
 	public:
@@ -398,6 +403,11 @@ class ChFi3d_Builder {
 };
 
 
+%extend ChFi3d_Builder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFi3d_SearchSing;
 class ChFi3d_SearchSing : public math_FunctionWithDerivative {
 	public:
@@ -444,6 +454,11 @@ class ChFi3d_SearchSing : public math_FunctionWithDerivative {
 };
 
 
+%extend ChFi3d_SearchSing {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFi3d_ChBuilder;
 class ChFi3d_ChBuilder : public ChFi3d_Builder {
 	public:
@@ -1024,6 +1039,11 @@ class ChFi3d_ChBuilder : public ChFi3d_Builder {
 };
 
 
+%extend ChFi3d_ChBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFi3d_FilBuilder;
 class ChFi3d_FilBuilder : public ChFi3d_Builder {
 	public:
@@ -1240,3 +1260,8 @@ class ChFi3d_FilBuilder : public ChFi3d_Builder {
 };
 
 
+%extend ChFi3d_FilBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

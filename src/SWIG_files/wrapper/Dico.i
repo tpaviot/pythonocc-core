@@ -246,6 +246,11 @@ class Handle_Dico_DictionaryOfInteger : public Handle_MMgt_TShared {
     }
 };
 
+%extend Dico_DictionaryOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Dico_DictionaryOfTransient;
 class Dico_DictionaryOfTransient : public MMgt_TShared {
 	public:
@@ -436,6 +441,11 @@ class Handle_Dico_DictionaryOfTransient : public Handle_MMgt_TShared {
     }
 };
 
+%extend Dico_DictionaryOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Dico_IteratorOfDictionaryOfInteger;
 class Dico_IteratorOfDictionaryOfInteger {
 	public:
@@ -484,6 +494,11 @@ class Dico_IteratorOfDictionaryOfInteger {
 };
 
 
+%extend Dico_IteratorOfDictionaryOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Dico_IteratorOfDictionaryOfTransient;
 class Dico_IteratorOfDictionaryOfTransient {
 	public:
@@ -532,6 +547,11 @@ class Dico_IteratorOfDictionaryOfTransient {
 };
 
 
+%extend Dico_IteratorOfDictionaryOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Dico_StackItemOfDictionaryOfInteger;
 class Dico_StackItemOfDictionaryOfInteger : public MMgt_TShared {
 	public:
@@ -608,6 +628,11 @@ class Handle_Dico_StackItemOfDictionaryOfInteger : public Handle_MMgt_TShared {
     }
 };
 
+%extend Dico_StackItemOfDictionaryOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Dico_StackItemOfDictionaryOfTransient;
 class Dico_StackItemOfDictionaryOfTransient : public MMgt_TShared {
 	public:
@@ -684,3 +709,8 @@ class Handle_Dico_StackItemOfDictionaryOfTransient : public Handle_MMgt_TShared 
     }
 };
 
+%extend Dico_StackItemOfDictionaryOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

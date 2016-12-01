@@ -193,6 +193,11 @@ class Handle_STEPControl_ActorRead : public Handle_Transfer_ActorOfTransientProc
     }
 };
 
+%extend STEPControl_ActorRead {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPControl_ActorWrite;
 class STEPControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 	public:
@@ -337,6 +342,11 @@ class Handle_STEPControl_ActorWrite : public Handle_Transfer_ActorOfFinderProces
     }
 };
 
+%extend STEPControl_ActorWrite {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPControl_Controller;
 class STEPControl_Controller : public XSControl_Controller {
 	public:
@@ -435,6 +445,11 @@ class Handle_STEPControl_Controller : public Handle_XSControl_Controller {
     }
 };
 
+%extend STEPControl_Controller {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPControl_Reader;
 class STEPControl_Reader : public XSControl_Reader {
 	public:
@@ -489,6 +504,11 @@ class STEPControl_Reader : public XSControl_Reader {
 };
 
 
+%extend STEPControl_Reader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPControl_Writer;
 class STEPControl_Writer {
 	public:
@@ -579,3 +599,8 @@ class STEPControl_Writer {
 };
 
 
+%extend STEPControl_Writer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

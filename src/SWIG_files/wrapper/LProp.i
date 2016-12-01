@@ -91,6 +91,11 @@ class LProp_AnalyticCurInf {
 };
 
 
+%extend LProp_AnalyticCurInf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LProp_CurAndInf;
 class LProp_CurAndInf {
 	public:
@@ -145,6 +150,11 @@ class LProp_CurAndInf {
 };
 
 
+%extend LProp_CurAndInf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LProp_SequenceNodeOfSequenceOfCIType;
 class LProp_SequenceNodeOfSequenceOfCIType : public TCollection_SeqNode {
 	public:
@@ -211,6 +221,11 @@ class Handle_LProp_SequenceNodeOfSequenceOfCIType : public Handle_TCollection_Se
     }
 };
 
+%extend LProp_SequenceNodeOfSequenceOfCIType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LProp_SequenceOfCIType;
 class LProp_SequenceOfCIType : public TCollection_BaseSequence {
 	public:
@@ -349,3 +364,8 @@ class LProp_SequenceOfCIType : public TCollection_BaseSequence {
 };
 
 
+%extend LProp_SequenceOfCIType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

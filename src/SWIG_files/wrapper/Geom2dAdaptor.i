@@ -70,6 +70,11 @@ class Geom2dAdaptor {
 };
 
 
+%extend Geom2dAdaptor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dAdaptor_Curve;
 class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 	public:
@@ -304,6 +309,11 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 };
 
 
+%extend Geom2dAdaptor_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dAdaptor_GHCurve;
 class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
 	public:
@@ -380,6 +390,11 @@ class Handle_Geom2dAdaptor_GHCurve : public Handle_Adaptor2d_HCurve2d {
     }
 };
 
+%extend Geom2dAdaptor_GHCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dAdaptor_HCurve;
 class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
 	public:
@@ -460,3 +475,8 @@ class Handle_Geom2dAdaptor_HCurve : public Handle_Geom2dAdaptor_GHCurve {
     }
 };
 
+%extend Geom2dAdaptor_HCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

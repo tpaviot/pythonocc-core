@@ -124,6 +124,11 @@ class Sweep_NumShape {
 };
 
 
+%extend Sweep_NumShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Sweep_NumShapeIterator;
 class Sweep_NumShapeIterator {
 	public:
@@ -166,6 +171,11 @@ class Sweep_NumShapeIterator {
 };
 
 
+%extend Sweep_NumShapeIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Sweep_NumShapeTool;
 class Sweep_NumShapeTool {
 	public:
@@ -242,3 +252,8 @@ class Sweep_NumShapeTool {
 };
 
 
+%extend Sweep_NumShapeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

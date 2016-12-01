@@ -92,6 +92,11 @@ class HLRBRep {
 };
 
 
+%extend HLRBRep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_AreaLimit;
 class HLRBRep_AreaLimit : public MMgt_TShared {
 	public:
@@ -240,6 +245,11 @@ class Handle_HLRBRep_AreaLimit : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRBRep_AreaLimit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_Array1OfEData;
 class HLRBRep_Array1OfEData {
 	public:
@@ -322,6 +332,11 @@ class HLRBRep_Array1OfEData {
 };
 
 
+%extend HLRBRep_Array1OfEData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_Array1OfFData;
 class HLRBRep_Array1OfFData {
 	public:
@@ -404,6 +419,11 @@ class HLRBRep_Array1OfFData {
 };
 
 
+%extend HLRBRep_Array1OfFData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_BCurveTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -661,6 +681,11 @@ class HLRBRep_BCurveTool {
 };
 
 
+%extend HLRBRep_BCurveTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_BiPnt2D;
 class HLRBRep_BiPnt2D {
 	public:
@@ -751,6 +776,11 @@ class HLRBRep_BiPnt2D {
 };
 
 
+%extend HLRBRep_BiPnt2D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_BiPoint;
 class HLRBRep_BiPoint {
 	public:
@@ -845,6 +875,11 @@ class HLRBRep_BiPoint {
 };
 
 
+%extend HLRBRep_BiPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_CInter;
 class HLRBRep_CInter : public IntRes2d_Intersection {
 	public:
@@ -1019,6 +1054,11 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 };
 
 
+%extend HLRBRep_CInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_CLProps;
 class HLRBRep_CLProps {
 	public:
@@ -1109,6 +1149,11 @@ class HLRBRep_CLProps {
 };
 
 
+%extend HLRBRep_CLProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_CLPropsATool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -1198,6 +1243,11 @@ class HLRBRep_CLPropsATool {
 };
 
 
+%extend HLRBRep_CLPropsATool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_Curve;
 class HLRBRep_Curve {
 	public:
@@ -1528,6 +1578,11 @@ class HLRBRep_Curve {
 };
 
 
+%extend HLRBRep_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_CurveTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -1781,6 +1836,11 @@ class HLRBRep_CurveTool {
 };
 
 
+%extend HLRBRep_CurveTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_Data;
 class HLRBRep_Data : public MMgt_TShared {
 	public:
@@ -2105,6 +2165,11 @@ class Handle_HLRBRep_Data : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRBRep_Data {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_EdgeBuilder;
 class HLRBRep_EdgeBuilder {
 	public:
@@ -2227,6 +2292,11 @@ class HLRBRep_EdgeBuilder {
 };
 
 
+%extend HLRBRep_EdgeBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_EdgeData;
 class HLRBRep_EdgeData {
 	public:
@@ -2457,6 +2527,11 @@ class HLRBRep_EdgeData {
 };
 
 
+%extend HLRBRep_EdgeData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_EdgeFaceTool {
 	public:
 		%feature("compactdefaultargs") CurvatureValue;
@@ -2490,6 +2565,11 @@ class HLRBRep_EdgeFaceTool {
 };
 
 
+%extend HLRBRep_EdgeFaceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_EdgeIList {
 	public:
 		%feature("compactdefaultargs") AddInterference;
@@ -2517,6 +2597,11 @@ class HLRBRep_EdgeIList {
 };
 
 
+%extend HLRBRep_EdgeIList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_EdgeInterferenceTool;
 class HLRBRep_EdgeInterferenceTool {
 	public:
@@ -2613,6 +2698,11 @@ class HLRBRep_EdgeInterferenceTool {
 };
 
 
+%extend HLRBRep_EdgeInterferenceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter;
 class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
 	public:
@@ -2677,6 +2767,11 @@ class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
 };
 
 
+%extend HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_FaceData;
 class HLRBRep_FaceData {
 	public:
@@ -2895,6 +2990,11 @@ class HLRBRep_FaceData {
 };
 
 
+%extend HLRBRep_FaceData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_FaceIterator;
 class HLRBRep_FaceIterator {
 	public:
@@ -2969,6 +3069,11 @@ class HLRBRep_FaceIterator {
 };
 
 
+%extend HLRBRep_FaceIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_HLRToShape;
 class HLRBRep_HLRToShape {
 	public:
@@ -3087,6 +3192,11 @@ class HLRBRep_HLRToShape {
 };
 
 
+%extend HLRBRep_HLRToShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_Hider;
 class HLRBRep_Hider {
 	public:
@@ -3119,6 +3229,11 @@ class HLRBRep_Hider {
 };
 
 
+%extend HLRBRep_Hider {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_IntConicCurveOfCInter;
 class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	public:
@@ -3289,6 +3404,11 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 };
 
 
+%extend HLRBRep_IntConicCurveOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_InterCSurf;
 class HLRBRep_InterCSurf : public IntCurveSurface_Intersection {
 	public:
@@ -3353,6 +3473,11 @@ class HLRBRep_InterCSurf : public IntCurveSurface_Intersection {
 };
 
 
+%extend HLRBRep_InterCSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_InternalAlgo;
 class HLRBRep_InternalAlgo : public MMgt_TShared {
 	public:
@@ -3605,6 +3730,11 @@ class Handle_HLRBRep_InternalAlgo : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRBRep_InternalAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_Intersector;
 class HLRBRep_Intersector {
 	public:
@@ -3719,6 +3849,11 @@ class HLRBRep_Intersector {
 };
 
 
+%extend HLRBRep_Intersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_LineTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -4024,6 +4159,11 @@ class HLRBRep_LineTool {
 };
 
 
+%extend HLRBRep_LineTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_ListIteratorOfListOfBPnt2D;
 class HLRBRep_ListIteratorOfListOfBPnt2D {
 	public:
@@ -4058,6 +4198,11 @@ class HLRBRep_ListIteratorOfListOfBPnt2D {
 };
 
 
+%extend HLRBRep_ListIteratorOfListOfBPnt2D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_ListIteratorOfListOfBPoint;
 class HLRBRep_ListIteratorOfListOfBPoint {
 	public:
@@ -4092,6 +4237,11 @@ class HLRBRep_ListIteratorOfListOfBPoint {
 };
 
 
+%extend HLRBRep_ListIteratorOfListOfBPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_ListNodeOfListOfBPnt2D;
 class HLRBRep_ListNodeOfListOfBPnt2D : public TCollection_MapNode {
 	public:
@@ -4156,6 +4306,11 @@ class Handle_HLRBRep_ListNodeOfListOfBPnt2D : public Handle_TCollection_MapNode 
     }
 };
 
+%extend HLRBRep_ListNodeOfListOfBPnt2D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_ListNodeOfListOfBPoint;
 class HLRBRep_ListNodeOfListOfBPoint : public TCollection_MapNode {
 	public:
@@ -4220,6 +4375,11 @@ class Handle_HLRBRep_ListNodeOfListOfBPoint : public Handle_TCollection_MapNode 
     }
 };
 
+%extend HLRBRep_ListNodeOfListOfBPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_ListOfBPnt2D;
 class HLRBRep_ListOfBPnt2D {
 	public:
@@ -4350,6 +4510,11 @@ class HLRBRep_ListOfBPnt2D {
 };
 
 
+%extend HLRBRep_ListOfBPnt2D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_ListOfBPoint;
 class HLRBRep_ListOfBPoint {
 	public:
@@ -4480,6 +4645,11 @@ class HLRBRep_ListOfBPoint {
 };
 
 
+%extend HLRBRep_ListOfBPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter;
 class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter : public math_FunctionWithDerivative {
 	public:
@@ -4520,6 +4690,11 @@ class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter : public ma
 };
 
 
+%extend HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
 class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_FunctionWithDerivative {
 	public:
@@ -4614,6 +4789,11 @@ class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_Function
 };
 
 
+%extend HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_PolyAlgo;
 class HLRBRep_PolyAlgo : public MMgt_TShared {
 	public:
@@ -4846,6 +5026,11 @@ class Handle_HLRBRep_PolyAlgo : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRBRep_PolyAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_PolyHLRToShape;
 class HLRBRep_PolyHLRToShape {
 	public:
@@ -4964,6 +5149,11 @@ class HLRBRep_PolyHLRToShape {
 };
 
 
+%extend HLRBRep_PolyHLRToShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_SLProps;
 class HLRBRep_SLProps {
 	public:
@@ -5100,6 +5290,11 @@ class HLRBRep_SLProps {
 };
 
 
+%extend HLRBRep_SLProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_SLPropsATool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -5199,6 +5394,11 @@ class HLRBRep_SLPropsATool {
 };
 
 
+%extend HLRBRep_SLPropsATool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_SeqOfShapeBounds;
 class HLRBRep_SeqOfShapeBounds : public TCollection_BaseSequence {
 	public:
@@ -5337,6 +5537,11 @@ class HLRBRep_SeqOfShapeBounds : public TCollection_BaseSequence {
 };
 
 
+%extend HLRBRep_SeqOfShapeBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
 class HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public TCollection_BaseSequence {
 	public:
@@ -5475,6 +5680,11 @@ class HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public TColle
 };
 
 
+%extend HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_SequenceNodeOfSeqOfShapeBounds;
 class HLRBRep_SequenceNodeOfSeqOfShapeBounds : public TCollection_SeqNode {
 	public:
@@ -5541,6 +5751,11 @@ class Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds : public Handle_TCollection_
     }
 };
 
+%extend HLRBRep_SequenceNodeOfSeqOfShapeBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
 class HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public TCollection_SeqNode {
 	public:
@@ -5607,6 +5822,11 @@ class Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfC
     }
 };
 
+%extend HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_ShapeBounds;
 class HLRBRep_ShapeBounds {
 	public:
@@ -5735,6 +5955,11 @@ class HLRBRep_ShapeBounds {
 };
 
 
+%extend HLRBRep_ShapeBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_ShapeToHLR {
 	public:
 		%feature("compactdefaultargs") Load;
@@ -5754,6 +5979,11 @@ class HLRBRep_ShapeToHLR {
 };
 
 
+%extend HLRBRep_ShapeToHLR {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_SurfaceTool {
 	public:
 		%feature("compactdefaultargs") FirstUParameter;
@@ -6113,6 +6343,11 @@ class HLRBRep_SurfaceTool {
 };
 
 
+%extend HLRBRep_SurfaceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_TheCSFunctionOfInterCSurf;
 class HLRBRep_TheCSFunctionOfInterCSurf : public math_FunctionSetWithDerivatives {
 	public:
@@ -6177,6 +6412,11 @@ class HLRBRep_TheCSFunctionOfInterCSurf : public math_FunctionSetWithDerivatives
 };
 
 
+%extend HLRBRep_TheCSFunctionOfInterCSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter;
 class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter : public math_FunctionSetWithDerivatives {
 	public:
@@ -6225,6 +6465,11 @@ class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter : public math_Fu
 };
 
 
+%extend HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_TheExactInterCSurf;
 class HLRBRep_TheExactInterCSurf {
 	public:
@@ -6307,6 +6552,11 @@ class HLRBRep_TheExactInterCSurf {
 };
 
 
+%extend HLRBRep_TheExactInterCSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_TheIntConicCurveOfCInter;
 class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	public:
@@ -6477,6 +6727,11 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 };
 
 
+%extend HLRBRep_TheIntConicCurveOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_TheIntPCurvePCurveOfCInter;
 class HLRBRep_TheIntPCurvePCurveOfCInter : public IntRes2d_Intersection {
 	public:
@@ -6515,6 +6770,11 @@ class HLRBRep_TheIntPCurvePCurveOfCInter : public IntRes2d_Intersection {
 };
 
 
+%extend HLRBRep_TheIntPCurvePCurveOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_TheInterferenceOfInterCSurf;
 class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 	public:
@@ -6651,6 +6911,11 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 };
 
 
+%extend HLRBRep_TheInterferenceOfInterCSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter;
 class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	public:
@@ -6749,6 +7014,11 @@ class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter : public IntRes2d_Interse
 };
 
 
+%extend HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
 class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
 	public:
@@ -6823,6 +7093,11 @@ class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
 };
 
 
+%extend HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
 class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter : public Intf_Polygon2d {
 	public:
@@ -6933,6 +7208,11 @@ class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter : public Intf_Polygon2d {
 };
 
 
+%extend HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_ThePolygonOfInterCSurf;
 class HLRBRep_ThePolygonOfInterCSurf {
 	public:
@@ -7027,6 +7307,11 @@ class HLRBRep_ThePolygonOfInterCSurf {
 };
 
 
+%extend HLRBRep_ThePolygonOfInterCSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_ThePolygonToolOfInterCSurf {
 	public:
 		%feature("compactdefaultargs") Bounding;
@@ -7078,6 +7363,11 @@ class HLRBRep_ThePolygonToolOfInterCSurf {
 };
 
 
+%extend HLRBRep_ThePolygonToolOfInterCSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_ThePolyhedronToolOfInterCSurf {
 	public:
 		%feature("compactdefaultargs") Bounding;
@@ -7167,6 +7457,11 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 };
 
 
+%extend HLRBRep_ThePolyhedronToolOfInterCSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRBRep_TheProjPCurOfCInter {
 	public:
 		%feature("compactdefaultargs") FindParameter;
@@ -7196,6 +7491,11 @@ class HLRBRep_TheProjPCurOfCInter {
 };
 
 
+%extend HLRBRep_TheProjPCurOfCInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_TheQuadCurvExactInterCSurf;
 class HLRBRep_TheQuadCurvExactInterCSurf {
 	public:
@@ -7238,6 +7538,11 @@ class HLRBRep_TheQuadCurvExactInterCSurf {
 };
 
 
+%extend HLRBRep_TheQuadCurvExactInterCSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf;
 class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf : public math_FunctionWithDerivative {
 	public:
@@ -7278,6 +7583,11 @@ class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf : public math_Function
 };
 
 
+%extend HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_VertexList;
 class HLRBRep_VertexList {
 	public:
@@ -7346,6 +7656,11 @@ class HLRBRep_VertexList {
 };
 
 
+%extend HLRBRep_VertexList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRBRep_Algo;
 class HLRBRep_Algo : public HLRBRep_InternalAlgo {
 	public:
@@ -7446,3 +7761,8 @@ class Handle_HLRBRep_Algo : public Handle_HLRBRep_InternalAlgo {
     }
 };
 
+%extend HLRBRep_Algo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

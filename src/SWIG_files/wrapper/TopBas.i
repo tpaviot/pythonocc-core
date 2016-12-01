@@ -90,6 +90,11 @@ class TopBas_ListIteratorOfListOfTestInterference {
 };
 
 
+%extend TopBas_ListIteratorOfListOfTestInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopBas_ListNodeOfListOfTestInterference;
 class TopBas_ListNodeOfListOfTestInterference : public TCollection_MapNode {
 	public:
@@ -154,6 +159,11 @@ class Handle_TopBas_ListNodeOfListOfTestInterference : public Handle_TCollection
     }
 };
 
+%extend TopBas_ListNodeOfListOfTestInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopBas_ListOfTestInterference;
 class TopBas_ListOfTestInterference {
 	public:
@@ -284,6 +294,11 @@ class TopBas_ListOfTestInterference {
 };
 
 
+%extend TopBas_ListOfTestInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopBas_TestInterference;
 class TopBas_TestInterference {
 	public:
@@ -384,3 +399,8 @@ class TopBas_TestInterference {
 };
 
 
+%extend TopBas_TestInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

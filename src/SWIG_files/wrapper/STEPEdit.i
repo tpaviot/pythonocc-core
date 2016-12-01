@@ -98,6 +98,11 @@ class STEPEdit {
 };
 
 
+%extend STEPEdit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPEdit_EditContext;
 class STEPEdit_EditContext : public IFSelect_Editor {
 	public:
@@ -192,6 +197,11 @@ class Handle_STEPEdit_EditContext : public Handle_IFSelect_Editor {
     }
 };
 
+%extend STEPEdit_EditContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPEdit_EditSDR;
 class STEPEdit_EditSDR : public IFSelect_Editor {
 	public:
@@ -286,3 +296,8 @@ class Handle_STEPEdit_EditSDR : public Handle_IFSelect_Editor {
     }
 };
 
+%extend STEPEdit_EditSDR {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

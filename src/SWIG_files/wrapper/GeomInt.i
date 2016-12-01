@@ -82,6 +82,11 @@ class GeomInt {
 };
 
 
+%extend GeomInt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox;
 class GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox : public math_BFGS {
 	public:
@@ -110,6 +115,11 @@ class GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox : publi
 };
 
 
+%extend GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox;
 class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -230,6 +240,11 @@ class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox : public 
 };
 
 
+%extend GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
 class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 	public:
@@ -426,6 +441,11 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 };
 
 
+%extend GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox : public math_BFGS {
 	public:
@@ -454,6 +474,11 @@ class GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox : public
 };
 
 
+%extend GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox : public math_BFGS {
 	public:
@@ -482,6 +507,11 @@ class GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox : public ma
 };
 
 
+%extend GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_IntSS;
 class GeomInt_IntSS {
 	public:
@@ -672,6 +702,11 @@ class GeomInt_IntSS {
 };
 
 
+%extend GeomInt_IntSS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_LineConstructor;
 class GeomInt_LineConstructor {
 	public:
@@ -730,6 +765,11 @@ class GeomInt_LineConstructor {
 };
 
 
+%extend GeomInt_LineConstructor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class GeomInt_LineTool {
 	public:
 		%feature("compactdefaultargs") NbVertex;
@@ -761,6 +801,11 @@ class GeomInt_LineTool {
 };
 
 
+%extend GeomInt_LineTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox;
 class GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox {
 	public:
@@ -849,6 +894,11 @@ class GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox {
 };
 
 
+%extend GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox {
 	public:
@@ -903,6 +953,11 @@ class GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox {
 };
 
 
+%extend GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_MyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_MyGradientbisOfTheComputeLineOfWLApprox {
 	public:
@@ -957,6 +1012,11 @@ class GeomInt_MyGradientbisOfTheComputeLineOfWLApprox {
 };
 
 
+%extend GeomInt_MyGradientbisOfTheComputeLineOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -1049,6 +1109,11 @@ class GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox : public m
 };
 
 
+%extend GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -1141,6 +1206,11 @@ class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox : public math
 };
 
 
+%extend GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 	public:
@@ -1337,6 +1407,11 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 };
 
 
+%extend GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 	public:
@@ -1533,6 +1608,11 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 };
 
 
+%extend GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_ParameterAndOrientation;
 class GeomInt_ParameterAndOrientation {
 	public:
@@ -1577,6 +1657,11 @@ class GeomInt_ParameterAndOrientation {
 };
 
 
+%extend GeomInt_ParameterAndOrientation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox {
 	public:
@@ -1631,6 +1716,11 @@ class GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox {
 };
 
 
+%extend GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox {
 	public:
@@ -1685,6 +1775,11 @@ class GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox {
 };
 
 
+%extend GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation;
 class GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation : public TCollection_SeqNode {
 	public:
@@ -1751,6 +1846,11 @@ class Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation : public Ha
     }
 };
 
+%extend GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_SequenceOfParameterAndOrientation;
 class GeomInt_SequenceOfParameterAndOrientation : public TCollection_BaseSequence {
 	public:
@@ -1889,6 +1989,11 @@ class GeomInt_SequenceOfParameterAndOrientation : public TCollection_BaseSequenc
 };
 
 
+%extend GeomInt_SequenceOfParameterAndOrientation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_TheComputeLineBezierOfWLApprox;
 class GeomInt_TheComputeLineBezierOfWLApprox {
 	public:
@@ -2079,6 +2184,11 @@ class GeomInt_TheComputeLineBezierOfWLApprox {
 };
 
 
+%extend GeomInt_TheComputeLineBezierOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_TheComputeLineOfWLApprox;
 class GeomInt_TheComputeLineOfWLApprox {
 	public:
@@ -2279,6 +2389,11 @@ class GeomInt_TheComputeLineOfWLApprox {
 };
 
 
+%extend GeomInt_TheComputeLineOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 class GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox : public math_FunctionSetWithDerivatives {
 	public:
@@ -2385,6 +2500,11 @@ class GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox : public math
 };
 
 
+%extend GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_TheImpPrmSvSurfacesOfWLApprox;
 class GeomInt_TheImpPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 	public:
@@ -2483,6 +2603,11 @@ class GeomInt_TheImpPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 };
 
 
+%extend GeomInt_TheImpPrmSvSurfacesOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
 	public:
@@ -2565,6 +2690,11 @@ class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
 };
 
 
+%extend GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_TheMultiLineOfWLApprox;
 class GeomInt_TheMultiLineOfWLApprox {
 	public:
@@ -2743,6 +2873,11 @@ class GeomInt_TheMultiLineOfWLApprox {
 };
 
 
+%extend GeomInt_TheMultiLineOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class GeomInt_TheMultiLineToolOfWLApprox {
 	public:
 		%feature("compactdefaultargs") FirstPoint;
@@ -2890,6 +3025,11 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 };
 
 
+%extend GeomInt_TheMultiLineToolOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_ThePrmPrmSvSurfacesOfWLApprox;
 class GeomInt_ThePrmPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 	public:
@@ -2980,6 +3120,11 @@ class GeomInt_ThePrmPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 };
 
 
+%extend GeomInt_ThePrmPrmSvSurfacesOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox;
 class GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox : public math_FunctionSetWithDerivatives {
 	public:
@@ -3088,3 +3233,8 @@ class GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox : public math_Functio
 };
 
 
+%extend GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

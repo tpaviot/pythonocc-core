@@ -252,6 +252,11 @@ class Adaptor2d_Curve2d {
 };
 
 
+%extend Adaptor2d_Curve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor2d_HCurve2d;
 class Adaptor2d_HCurve2d : public MMgt_TShared {
 	public:
@@ -472,6 +477,11 @@ class Handle_Adaptor2d_HCurve2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend Adaptor2d_HCurve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor2d_HLine2d;
 class Adaptor2d_HLine2d : public Adaptor2d_HCurve2d {
 	public:
@@ -548,6 +558,11 @@ class Handle_Adaptor2d_HLine2d : public Handle_Adaptor2d_HCurve2d {
     }
 };
 
+%extend Adaptor2d_HLine2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor2d_Line2d;
 class Adaptor2d_Line2d : public Adaptor2d_Curve2d {
 	public:
@@ -752,3 +767,8 @@ class Adaptor2d_Line2d : public Adaptor2d_Curve2d {
 };
 
 
+%extend Adaptor2d_Line2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -138,6 +138,11 @@ class StepRepr_Array1OfMaterialPropertyRepresentation {
 };
 
 
+%extend StepRepr_Array1OfMaterialPropertyRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_Array1OfPropertyDefinitionRepresentation;
 class StepRepr_Array1OfPropertyDefinitionRepresentation {
 	public:
@@ -220,6 +225,11 @@ class StepRepr_Array1OfPropertyDefinitionRepresentation {
 };
 
 
+%extend StepRepr_Array1OfPropertyDefinitionRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_Array1OfRepresentationItem;
 class StepRepr_Array1OfRepresentationItem {
 	public:
@@ -302,6 +312,11 @@ class StepRepr_Array1OfRepresentationItem {
 };
 
 
+%extend StepRepr_Array1OfRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_AssemblyComponentUsageSubstitute;
 class StepRepr_AssemblyComponentUsageSubstitute : public MMgt_TShared {
 	public:
@@ -410,6 +425,11 @@ class Handle_StepRepr_AssemblyComponentUsageSubstitute : public Handle_MMgt_TSha
     }
 };
 
+%extend StepRepr_AssemblyComponentUsageSubstitute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_CharacterizedDefinition;
 class StepRepr_CharacterizedDefinition : public StepData_SelectType {
 	public:
@@ -472,6 +492,11 @@ class StepRepr_CharacterizedDefinition : public StepData_SelectType {
 };
 
 
+%extend StepRepr_CharacterizedDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ConfigurationDesign;
 class StepRepr_ConfigurationDesign : public MMgt_TShared {
 	public:
@@ -568,6 +593,11 @@ class Handle_StepRepr_ConfigurationDesign : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_ConfigurationDesign {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ConfigurationDesignItem;
 class StepRepr_ConfigurationDesignItem : public StepData_SelectType {
 	public:
@@ -600,6 +630,11 @@ class StepRepr_ConfigurationDesignItem : public StepData_SelectType {
 };
 
 
+%extend StepRepr_ConfigurationDesignItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ConfigurationEffectivity;
 class StepRepr_ConfigurationEffectivity : public StepBasic_ProductDefinitionEffectivity {
 	public:
@@ -684,6 +719,11 @@ class Handle_StepRepr_ConfigurationEffectivity : public Handle_StepBasic_Product
     }
 };
 
+%extend StepRepr_ConfigurationEffectivity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ConfigurationItem;
 class StepRepr_ConfigurationItem : public MMgt_TShared {
 	public:
@@ -844,6 +884,11 @@ class Handle_StepRepr_ConfigurationItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_ConfigurationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_DataEnvironment;
 class StepRepr_DataEnvironment : public MMgt_TShared {
 	public:
@@ -956,6 +1001,11 @@ class Handle_StepRepr_DataEnvironment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_DataEnvironment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_FunctionallyDefinedTransformation;
 class StepRepr_FunctionallyDefinedTransformation : public MMgt_TShared {
 	public:
@@ -1042,6 +1092,11 @@ class Handle_StepRepr_FunctionallyDefinedTransformation : public Handle_MMgt_TSh
     }
 };
 
+%extend StepRepr_FunctionallyDefinedTransformation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_HArray1OfMaterialPropertyRepresentation;
 class StepRepr_HArray1OfMaterialPropertyRepresentation : public MMgt_TShared {
 	public:
@@ -1158,6 +1213,11 @@ class Handle_StepRepr_HArray1OfMaterialPropertyRepresentation : public Handle_MM
     }
 };
 
+%extend StepRepr_HArray1OfMaterialPropertyRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_HArray1OfPropertyDefinitionRepresentation;
 class StepRepr_HArray1OfPropertyDefinitionRepresentation : public MMgt_TShared {
 	public:
@@ -1274,6 +1334,11 @@ class Handle_StepRepr_HArray1OfPropertyDefinitionRepresentation : public Handle_
     }
 };
 
+%extend StepRepr_HArray1OfPropertyDefinitionRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_HArray1OfRepresentationItem;
 class StepRepr_HArray1OfRepresentationItem : public MMgt_TShared {
 	public:
@@ -1390,6 +1455,11 @@ class Handle_StepRepr_HArray1OfRepresentationItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_HArray1OfRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_HSequenceOfMaterialPropertyRepresentation;
 class StepRepr_HSequenceOfMaterialPropertyRepresentation : public MMgt_TShared {
 	public:
@@ -1574,6 +1644,11 @@ class Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation : public Handle_
     }
 };
 
+%extend StepRepr_HSequenceOfMaterialPropertyRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_HSequenceOfRepresentationItem;
 class StepRepr_HSequenceOfRepresentationItem : public MMgt_TShared {
 	public:
@@ -1758,6 +1833,11 @@ class Handle_StepRepr_HSequenceOfRepresentationItem : public Handle_MMgt_TShared
     }
 };
 
+%extend StepRepr_HSequenceOfRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ItemDefinedTransformation;
 class StepRepr_ItemDefinedTransformation : public MMgt_TShared {
 	public:
@@ -1866,6 +1946,11 @@ class Handle_StepRepr_ItemDefinedTransformation : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_ItemDefinedTransformation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_MaterialDesignation;
 class StepRepr_MaterialDesignation : public MMgt_TShared {
 	public:
@@ -1950,6 +2035,11 @@ class Handle_StepRepr_MaterialDesignation : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_MaterialDesignation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ProductConcept;
 class StepRepr_ProductConcept : public MMgt_TShared {
 	public:
@@ -2086,6 +2176,11 @@ class Handle_StepRepr_ProductConcept : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_ProductConcept {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ProductDefinitionUsage;
 class StepRepr_ProductDefinitionUsage : public StepBasic_ProductDefinitionRelationship {
 	public:
@@ -2144,6 +2239,11 @@ class Handle_StepRepr_ProductDefinitionUsage : public Handle_StepBasic_ProductDe
     }
 };
 
+%extend StepRepr_ProductDefinitionUsage {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_PropertyDefinition;
 class StepRepr_PropertyDefinition : public MMgt_TShared {
 	public:
@@ -2264,6 +2364,11 @@ class Handle_StepRepr_PropertyDefinition : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_PropertyDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_PropertyDefinitionRelationship;
 class StepRepr_PropertyDefinitionRelationship : public MMgt_TShared {
 	public:
@@ -2392,6 +2497,11 @@ class Handle_StepRepr_PropertyDefinitionRelationship : public Handle_MMgt_TShare
     }
 };
 
+%extend StepRepr_PropertyDefinitionRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_PropertyDefinitionRepresentation;
 class StepRepr_PropertyDefinitionRepresentation : public MMgt_TShared {
 	public:
@@ -2488,6 +2598,11 @@ class Handle_StepRepr_PropertyDefinitionRepresentation : public Handle_MMgt_TSha
     }
 };
 
+%extend StepRepr_PropertyDefinitionRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_Representation;
 class StepRepr_Representation : public MMgt_TShared {
 	public:
@@ -2596,6 +2711,11 @@ class Handle_StepRepr_Representation : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_Representation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_RepresentationContext;
 class StepRepr_RepresentationContext : public MMgt_TShared {
 	public:
@@ -2682,6 +2802,11 @@ class Handle_StepRepr_RepresentationContext : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_RepresentationContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_RepresentationItem;
 class StepRepr_RepresentationItem : public MMgt_TShared {
 	public:
@@ -2756,6 +2881,11 @@ class Handle_StepRepr_RepresentationItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_RepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_RepresentationMap;
 class StepRepr_RepresentationMap : public MMgt_TShared {
 	public:
@@ -2842,6 +2972,11 @@ class Handle_StepRepr_RepresentationMap : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_RepresentationMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_RepresentationRelationship;
 class StepRepr_RepresentationRelationship : public MMgt_TShared {
 	public:
@@ -2952,6 +3087,11 @@ class Handle_StepRepr_RepresentationRelationship : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_RepresentationRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_RepresentedDefinition;
 class StepRepr_RepresentedDefinition : public StepData_SelectType {
 	public:
@@ -3002,6 +3142,11 @@ class StepRepr_RepresentedDefinition : public StepData_SelectType {
 };
 
 
+%extend StepRepr_RepresentedDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation;
 class StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation : public TCollection_SeqNode {
 	public:
@@ -3068,6 +3213,11 @@ class Handle_StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation : p
     }
 };
 
+%extend StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_SequenceNodeOfSequenceOfRepresentationItem;
 class StepRepr_SequenceNodeOfSequenceOfRepresentationItem : public TCollection_SeqNode {
 	public:
@@ -3134,6 +3284,11 @@ class Handle_StepRepr_SequenceNodeOfSequenceOfRepresentationItem : public Handle
     }
 };
 
+%extend StepRepr_SequenceNodeOfSequenceOfRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_SequenceOfMaterialPropertyRepresentation;
 class StepRepr_SequenceOfMaterialPropertyRepresentation : public TCollection_BaseSequence {
 	public:
@@ -3272,6 +3427,11 @@ class StepRepr_SequenceOfMaterialPropertyRepresentation : public TCollection_Bas
 };
 
 
+%extend StepRepr_SequenceOfMaterialPropertyRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_SequenceOfRepresentationItem;
 class StepRepr_SequenceOfRepresentationItem : public TCollection_BaseSequence {
 	public:
@@ -3410,6 +3570,11 @@ class StepRepr_SequenceOfRepresentationItem : public TCollection_BaseSequence {
 };
 
 
+%extend StepRepr_SequenceOfRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ShapeAspect;
 class StepRepr_ShapeAspect : public MMgt_TShared {
 	public:
@@ -3520,6 +3685,11 @@ class Handle_StepRepr_ShapeAspect : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_ShapeAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ShapeAspectRelationship;
 class StepRepr_ShapeAspectRelationship : public MMgt_TShared {
 	public:
@@ -3656,6 +3826,11 @@ class Handle_StepRepr_ShapeAspectRelationship : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepRepr_ShapeAspectRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ShapeDefinition;
 class StepRepr_ShapeDefinition : public StepData_SelectType {
 	public:
@@ -3694,6 +3869,11 @@ class StepRepr_ShapeDefinition : public StepData_SelectType {
 };
 
 
+%extend StepRepr_ShapeDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_SuppliedPartRelationship;
 class StepRepr_SuppliedPartRelationship : public StepBasic_ProductDefinitionRelationship {
 	public:
@@ -3750,6 +3930,11 @@ class Handle_StepRepr_SuppliedPartRelationship : public Handle_StepBasic_Product
     }
 };
 
+%extend StepRepr_SuppliedPartRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_Transformation;
 class StepRepr_Transformation : public StepData_SelectType {
 	public:
@@ -3782,6 +3967,11 @@ class StepRepr_Transformation : public StepData_SelectType {
 };
 
 
+%extend StepRepr_Transformation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_AssemblyComponentUsage;
 class StepRepr_AssemblyComponentUsage : public StepRepr_ProductDefinitionUsage {
 	public:
@@ -3882,6 +4072,11 @@ class Handle_StepRepr_AssemblyComponentUsage : public Handle_StepRepr_ProductDef
     }
 };
 
+%extend StepRepr_AssemblyComponentUsage {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_CompositeShapeAspect;
 class StepRepr_CompositeShapeAspect : public StepRepr_ShapeAspect {
 	public:
@@ -3938,6 +4133,11 @@ class Handle_StepRepr_CompositeShapeAspect : public Handle_StepRepr_ShapeAspect 
     }
 };
 
+%extend StepRepr_CompositeShapeAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_CompoundRepresentationItem;
 class StepRepr_CompoundRepresentationItem : public StepRepr_RepresentationItem {
 	public:
@@ -4030,6 +4230,11 @@ class Handle_StepRepr_CompoundRepresentationItem : public Handle_StepRepr_Repres
     }
 };
 
+%extend StepRepr_CompoundRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_DefinitionalRepresentation;
 class StepRepr_DefinitionalRepresentation : public StepRepr_Representation {
 	public:
@@ -4088,6 +4293,11 @@ class Handle_StepRepr_DefinitionalRepresentation : public Handle_StepRepr_Repres
     }
 };
 
+%extend StepRepr_DefinitionalRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_DerivedShapeAspect;
 class StepRepr_DerivedShapeAspect : public StepRepr_ShapeAspect {
 	public:
@@ -4144,6 +4354,11 @@ class Handle_StepRepr_DerivedShapeAspect : public Handle_StepRepr_ShapeAspect {
     }
 };
 
+%extend StepRepr_DerivedShapeAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_DescriptiveRepresentationItem;
 class StepRepr_DescriptiveRepresentationItem : public StepRepr_RepresentationItem {
 	public:
@@ -4226,6 +4441,11 @@ class Handle_StepRepr_DescriptiveRepresentationItem : public Handle_StepRepr_Rep
     }
 };
 
+%extend StepRepr_DescriptiveRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ExternallyDefinedRepresentation;
 class StepRepr_ExternallyDefinedRepresentation : public StepRepr_Representation {
 	public:
@@ -4282,6 +4502,11 @@ class Handle_StepRepr_ExternallyDefinedRepresentation : public Handle_StepRepr_R
     }
 };
 
+%extend StepRepr_ExternallyDefinedRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_GlobalUncertaintyAssignedContext;
 class StepRepr_GlobalUncertaintyAssignedContext : public StepRepr_RepresentationContext {
 	public:
@@ -4378,6 +4603,11 @@ class Handle_StepRepr_GlobalUncertaintyAssignedContext : public Handle_StepRepr_
     }
 };
 
+%extend StepRepr_GlobalUncertaintyAssignedContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_GlobalUnitAssignedContext;
 class StepRepr_GlobalUnitAssignedContext : public StepRepr_RepresentationContext {
 	public:
@@ -4474,6 +4704,11 @@ class Handle_StepRepr_GlobalUnitAssignedContext : public Handle_StepRepr_Represe
     }
 };
 
+%extend StepRepr_GlobalUnitAssignedContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_MakeFromUsageOption;
 class StepRepr_MakeFromUsageOption : public StepRepr_ProductDefinitionUsage {
 	public:
@@ -4598,6 +4833,11 @@ class Handle_StepRepr_MakeFromUsageOption : public Handle_StepRepr_ProductDefini
     }
 };
 
+%extend StepRepr_MakeFromUsageOption {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_MappedItem;
 class StepRepr_MappedItem : public StepRepr_RepresentationItem {
 	public:
@@ -4692,6 +4932,11 @@ class Handle_StepRepr_MappedItem : public Handle_StepRepr_RepresentationItem {
     }
 };
 
+%extend StepRepr_MappedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_MaterialProperty;
 class StepRepr_MaterialProperty : public StepRepr_PropertyDefinition {
 	public:
@@ -4750,6 +4995,11 @@ class Handle_StepRepr_MaterialProperty : public Handle_StepRepr_PropertyDefiniti
     }
 };
 
+%extend StepRepr_MaterialProperty {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_MaterialPropertyRepresentation;
 class StepRepr_MaterialPropertyRepresentation : public StepRepr_PropertyDefinitionRepresentation {
 	public:
@@ -4834,6 +5084,11 @@ class Handle_StepRepr_MaterialPropertyRepresentation : public Handle_StepRepr_Pr
     }
 };
 
+%extend StepRepr_MaterialPropertyRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_MeasureRepresentationItem;
 class StepRepr_MeasureRepresentationItem : public StepRepr_RepresentationItem {
 	public:
@@ -4914,6 +5169,11 @@ class Handle_StepRepr_MeasureRepresentationItem : public Handle_StepRepr_Represe
     }
 };
 
+%extend StepRepr_MeasureRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ParametricRepresentationContext;
 class StepRepr_ParametricRepresentationContext : public StepRepr_RepresentationContext {
 	public:
@@ -4972,6 +5232,11 @@ class Handle_StepRepr_ParametricRepresentationContext : public Handle_StepRepr_R
     }
 };
 
+%extend StepRepr_ParametricRepresentationContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ProductDefinitionShape;
 class StepRepr_ProductDefinitionShape : public StepRepr_PropertyDefinition {
 	public:
@@ -5030,6 +5295,11 @@ class Handle_StepRepr_ProductDefinitionShape : public Handle_StepRepr_PropertyDe
     }
 };
 
+%extend StepRepr_ProductDefinitionShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ReprItemAndLengthMeasureWithUnit;
 class StepRepr_ReprItemAndLengthMeasureWithUnit : public StepRepr_RepresentationItem {
 	public:
@@ -5122,6 +5392,11 @@ class Handle_StepRepr_ReprItemAndLengthMeasureWithUnit : public Handle_StepRepr_
     }
 };
 
+%extend StepRepr_ReprItemAndLengthMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ShapeAspectDerivingRelationship;
 class StepRepr_ShapeAspectDerivingRelationship : public StepRepr_ShapeAspectRelationship {
 	public:
@@ -5178,6 +5453,11 @@ class Handle_StepRepr_ShapeAspectDerivingRelationship : public Handle_StepRepr_S
     }
 };
 
+%extend StepRepr_ShapeAspectDerivingRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ShapeAspectTransition;
 class StepRepr_ShapeAspectTransition : public StepRepr_ShapeAspectRelationship {
 	public:
@@ -5236,6 +5516,11 @@ class Handle_StepRepr_ShapeAspectTransition : public Handle_StepRepr_ShapeAspect
     }
 };
 
+%extend StepRepr_ShapeAspectTransition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ShapeRepresentationRelationship;
 class StepRepr_ShapeRepresentationRelationship : public StepRepr_RepresentationRelationship {
 	public:
@@ -5292,6 +5577,11 @@ class Handle_StepRepr_ShapeRepresentationRelationship : public Handle_StepRepr_R
     }
 };
 
+%extend StepRepr_ShapeRepresentationRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_StructuralResponseProperty;
 class StepRepr_StructuralResponseProperty : public StepRepr_PropertyDefinition {
 	public:
@@ -5350,6 +5640,11 @@ class Handle_StepRepr_StructuralResponseProperty : public Handle_StepRepr_Proper
     }
 };
 
+%extend StepRepr_StructuralResponseProperty {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_StructuralResponsePropertyDefinitionRepresentation;
 class StepRepr_StructuralResponsePropertyDefinitionRepresentation : public StepRepr_PropertyDefinitionRepresentation {
 	public:
@@ -5408,6 +5703,11 @@ class Handle_StepRepr_StructuralResponsePropertyDefinitionRepresentation : publi
     }
 };
 
+%extend StepRepr_StructuralResponsePropertyDefinitionRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_Extension;
 class StepRepr_Extension : public StepRepr_DerivedShapeAspect {
 	public:
@@ -5464,6 +5764,11 @@ class Handle_StepRepr_Extension : public Handle_StepRepr_DerivedShapeAspect {
     }
 };
 
+%extend StepRepr_Extension {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_NextAssemblyUsageOccurrence;
 class StepRepr_NextAssemblyUsageOccurrence : public StepRepr_AssemblyComponentUsage {
 	public:
@@ -5522,6 +5827,11 @@ class Handle_StepRepr_NextAssemblyUsageOccurrence : public Handle_StepRepr_Assem
     }
 };
 
+%extend StepRepr_NextAssemblyUsageOccurrence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_PromissoryUsageOccurrence;
 class StepRepr_PromissoryUsageOccurrence : public StepRepr_AssemblyComponentUsage {
 	public:
@@ -5578,6 +5888,11 @@ class Handle_StepRepr_PromissoryUsageOccurrence : public Handle_StepRepr_Assembl
     }
 };
 
+%extend StepRepr_PromissoryUsageOccurrence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_QuantifiedAssemblyComponentUsage;
 class StepRepr_QuantifiedAssemblyComponentUsage : public StepRepr_AssemblyComponentUsage {
 	public:
@@ -5674,6 +5989,11 @@ class Handle_StepRepr_QuantifiedAssemblyComponentUsage : public Handle_StepRepr_
     }
 };
 
+%extend StepRepr_QuantifiedAssemblyComponentUsage {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_RepresentationRelationshipWithTransformation;
 class StepRepr_RepresentationRelationshipWithTransformation : public StepRepr_ShapeRepresentationRelationship {
 	public:
@@ -5754,6 +6074,11 @@ class Handle_StepRepr_RepresentationRelationshipWithTransformation : public Hand
     }
 };
 
+%extend StepRepr_RepresentationRelationshipWithTransformation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_SpecifiedHigherUsageOccurrence;
 class StepRepr_SpecifiedHigherUsageOccurrence : public StepRepr_AssemblyComponentUsage {
 	public:
@@ -5866,6 +6191,11 @@ class Handle_StepRepr_SpecifiedHigherUsageOccurrence : public Handle_StepRepr_As
     }
 };
 
+%extend StepRepr_SpecifiedHigherUsageOccurrence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ValueRange;
 class StepRepr_ValueRange : public StepRepr_CompoundRepresentationItem {
 	public:
@@ -5922,6 +6252,11 @@ class Handle_StepRepr_ValueRange : public Handle_StepRepr_CompoundRepresentation
     }
 };
 
+%extend StepRepr_ValueRange {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepRepr_ShapeRepresentationRelationshipWithTransformation;
 class StepRepr_ShapeRepresentationRelationshipWithTransformation : public StepRepr_RepresentationRelationshipWithTransformation {
 	public:
@@ -5978,3 +6313,8 @@ class Handle_StepRepr_ShapeRepresentationRelationshipWithTransformation : public
     }
 };
 
+%extend StepRepr_ShapeRepresentationRelationshipWithTransformation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

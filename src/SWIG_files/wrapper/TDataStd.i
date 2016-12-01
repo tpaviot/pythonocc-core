@@ -87,6 +87,11 @@ class TDataStd {
 };
 
 
+%extend TDataStd {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_AsciiString;
 class TDataStd_AsciiString : public TDF_Attribute {
 	public:
@@ -203,6 +208,11 @@ class Handle_TDataStd_AsciiString : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_AsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_BooleanArray;
 class TDataStd_BooleanArray : public TDF_Attribute {
 	public:
@@ -363,6 +373,11 @@ class Handle_TDataStd_BooleanArray : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_BooleanArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_BooleanList;
 class TDataStd_BooleanList : public TDF_Attribute {
 	public:
@@ -501,6 +516,11 @@ class Handle_TDataStd_BooleanList : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_BooleanList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ByteArray;
 class TDataStd_ByteArray : public TDF_Attribute {
 	public:
@@ -687,6 +707,11 @@ class Handle_TDataStd_ByteArray : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_ByteArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ChildNodeIterator;
 class TDataStd_ChildNodeIterator {
 	public:
@@ -743,6 +768,11 @@ class TDataStd_ChildNodeIterator {
 };
 
 
+%extend TDataStd_ChildNodeIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_Comment;
 class TDataStd_Comment : public TDF_Attribute {
 	public:
@@ -871,6 +901,11 @@ class Handle_TDataStd_Comment : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_Comment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_Current;
 class TDataStd_Current : public TDF_Attribute {
 	public:
@@ -997,6 +1032,11 @@ class Handle_TDataStd_Current : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_Current {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapIteratorOfDataMapOfStringByte;
 class TDataStd_DataMapIteratorOfDataMapOfStringByte : public TCollection_BasicMapIterator {
 	public:
@@ -1027,6 +1067,11 @@ class TDataStd_DataMapIteratorOfDataMapOfStringByte : public TCollection_BasicMa
 };
 
 
+%extend TDataStd_DataMapIteratorOfDataMapOfStringByte {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger;
 class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1057,6 +1102,11 @@ class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger : public TCollec
 };
 
 
+%extend TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal;
 class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal : public TCollection_BasicMapIterator {
 	public:
@@ -1087,6 +1137,11 @@ class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal : public TCollectio
 };
 
 
+%extend TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapIteratorOfDataMapOfStringReal;
 class TDataStd_DataMapIteratorOfDataMapOfStringReal : public TCollection_BasicMapIterator {
 	public:
@@ -1117,6 +1172,11 @@ class TDataStd_DataMapIteratorOfDataMapOfStringReal : public TCollection_BasicMa
 };
 
 
+%extend TDataStd_DataMapIteratorOfDataMapOfStringReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapIteratorOfDataMapOfStringString;
 class TDataStd_DataMapIteratorOfDataMapOfStringString : public TCollection_BasicMapIterator {
 	public:
@@ -1147,6 +1207,11 @@ class TDataStd_DataMapIteratorOfDataMapOfStringString : public TCollection_Basic
 };
 
 
+%extend TDataStd_DataMapIteratorOfDataMapOfStringString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapNodeOfDataMapOfStringByte;
 class TDataStd_DataMapNodeOfDataMapOfStringByte : public TCollection_MapNode {
 	public:
@@ -1217,6 +1282,11 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringByte : public Handle_TCollecti
     }
 };
 
+%extend TDataStd_DataMapNodeOfDataMapOfStringByte {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger;
 class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger : public TCollection_MapNode {
 	public:
@@ -1287,6 +1357,11 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger : public Hand
     }
 };
 
+%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal;
 class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal : public TCollection_MapNode {
 	public:
@@ -1357,6 +1432,11 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal : public Handle_
     }
 };
 
+%extend TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapNodeOfDataMapOfStringReal;
 class TDataStd_DataMapNodeOfDataMapOfStringReal : public TCollection_MapNode {
 	public:
@@ -1436,6 +1516,11 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringReal : public Handle_TCollecti
     }
 };
 
+%extend TDataStd_DataMapNodeOfDataMapOfStringReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapNodeOfDataMapOfStringString;
 class TDataStd_DataMapNodeOfDataMapOfStringString : public TCollection_MapNode {
 	public:
@@ -1506,6 +1591,11 @@ class Handle_TDataStd_DataMapNodeOfDataMapOfStringString : public Handle_TCollec
     }
 };
 
+%extend TDataStd_DataMapNodeOfDataMapOfStringString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapOfStringByte;
 class TDataStd_DataMapOfStringByte : public TCollection_BasicMap {
 	public:
@@ -1584,6 +1674,11 @@ class TDataStd_DataMapOfStringByte : public TCollection_BasicMap {
 };
 
 
+%extend TDataStd_DataMapOfStringByte {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapOfStringHArray1OfInteger;
 class TDataStd_DataMapOfStringHArray1OfInteger : public TCollection_BasicMap {
 	public:
@@ -1662,6 +1757,11 @@ class TDataStd_DataMapOfStringHArray1OfInteger : public TCollection_BasicMap {
 };
 
 
+%extend TDataStd_DataMapOfStringHArray1OfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapOfStringHArray1OfReal;
 class TDataStd_DataMapOfStringHArray1OfReal : public TCollection_BasicMap {
 	public:
@@ -1740,6 +1840,11 @@ class TDataStd_DataMapOfStringHArray1OfReal : public TCollection_BasicMap {
 };
 
 
+%extend TDataStd_DataMapOfStringHArray1OfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapOfStringReal;
 class TDataStd_DataMapOfStringReal : public TCollection_BasicMap {
 	public:
@@ -1818,6 +1923,11 @@ class TDataStd_DataMapOfStringReal : public TCollection_BasicMap {
 };
 
 
+%extend TDataStd_DataMapOfStringReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DataMapOfStringString;
 class TDataStd_DataMapOfStringString : public TCollection_BasicMap {
 	public:
@@ -1896,6 +2006,11 @@ class TDataStd_DataMapOfStringString : public TCollection_BasicMap {
 };
 
 
+%extend TDataStd_DataMapOfStringString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DeltaOnModificationOfByteArray;
 class TDataStd_DeltaOnModificationOfByteArray : public TDF_DeltaOnModification {
 	public:
@@ -1962,6 +2077,11 @@ class Handle_TDataStd_DeltaOnModificationOfByteArray : public Handle_TDF_DeltaOn
     }
 };
 
+%extend TDataStd_DeltaOnModificationOfByteArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DeltaOnModificationOfExtStringArray;
 class TDataStd_DeltaOnModificationOfExtStringArray : public TDF_DeltaOnModification {
 	public:
@@ -2028,6 +2148,11 @@ class Handle_TDataStd_DeltaOnModificationOfExtStringArray : public Handle_TDF_De
     }
 };
 
+%extend TDataStd_DeltaOnModificationOfExtStringArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DeltaOnModificationOfIntArray;
 class TDataStd_DeltaOnModificationOfIntArray : public TDF_DeltaOnModification {
 	public:
@@ -2094,6 +2219,11 @@ class Handle_TDataStd_DeltaOnModificationOfIntArray : public Handle_TDF_DeltaOnM
     }
 };
 
+%extend TDataStd_DeltaOnModificationOfIntArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DeltaOnModificationOfIntPackedMap;
 class TDataStd_DeltaOnModificationOfIntPackedMap : public TDF_DeltaOnModification {
 	public:
@@ -2160,6 +2290,11 @@ class Handle_TDataStd_DeltaOnModificationOfIntPackedMap : public Handle_TDF_Delt
     }
 };
 
+%extend TDataStd_DeltaOnModificationOfIntPackedMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_DeltaOnModificationOfRealArray;
 class TDataStd_DeltaOnModificationOfRealArray : public TDF_DeltaOnModification {
 	public:
@@ -2226,6 +2361,11 @@ class Handle_TDataStd_DeltaOnModificationOfRealArray : public Handle_TDF_DeltaOn
     }
 };
 
+%extend TDataStd_DeltaOnModificationOfRealArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_Directory;
 class TDataStd_Directory : public TDF_Attribute {
 	public:
@@ -2358,6 +2498,11 @@ class Handle_TDataStd_Directory : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_Directory {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_Expression;
 class TDataStd_Expression : public TDF_Attribute {
 	public:
@@ -2478,6 +2623,11 @@ class Handle_TDataStd_Expression : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_Expression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ExtStringArray;
 class TDataStd_ExtStringArray : public TDF_Attribute {
 	public:
@@ -2666,6 +2816,11 @@ class Handle_TDataStd_ExtStringArray : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_ExtStringArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ExtStringList;
 class TDataStd_ExtStringList : public TDF_Attribute {
 	public:
@@ -2830,6 +2985,11 @@ class Handle_TDataStd_ExtStringList : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_ExtStringList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_HDataMapOfStringByte;
 class TDataStd_HDataMapOfStringByte : public MMgt_TShared {
 	public:
@@ -2902,6 +3062,11 @@ class Handle_TDataStd_HDataMapOfStringByte : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDataStd_HDataMapOfStringByte {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_HDataMapOfStringHArray1OfInteger;
 class TDataStd_HDataMapOfStringHArray1OfInteger : public MMgt_TShared {
 	public:
@@ -2974,6 +3139,11 @@ class Handle_TDataStd_HDataMapOfStringHArray1OfInteger : public Handle_MMgt_TSha
     }
 };
 
+%extend TDataStd_HDataMapOfStringHArray1OfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_HDataMapOfStringHArray1OfReal;
 class TDataStd_HDataMapOfStringHArray1OfReal : public MMgt_TShared {
 	public:
@@ -3046,6 +3216,11 @@ class Handle_TDataStd_HDataMapOfStringHArray1OfReal : public Handle_MMgt_TShared
     }
 };
 
+%extend TDataStd_HDataMapOfStringHArray1OfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_HDataMapOfStringInteger;
 class TDataStd_HDataMapOfStringInteger : public MMgt_TShared {
 	public:
@@ -3118,6 +3293,11 @@ class Handle_TDataStd_HDataMapOfStringInteger : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDataStd_HDataMapOfStringInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_HDataMapOfStringReal;
 class TDataStd_HDataMapOfStringReal : public MMgt_TShared {
 	public:
@@ -3190,6 +3370,11 @@ class Handle_TDataStd_HDataMapOfStringReal : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDataStd_HDataMapOfStringReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_HDataMapOfStringString;
 class TDataStd_HDataMapOfStringString : public MMgt_TShared {
 	public:
@@ -3262,6 +3447,11 @@ class Handle_TDataStd_HDataMapOfStringString : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDataStd_HDataMapOfStringString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_HLabelArray1;
 class TDataStd_HLabelArray1 : public MMgt_TShared {
 	public:
@@ -3378,6 +3568,11 @@ class Handle_TDataStd_HLabelArray1 : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDataStd_HLabelArray1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_IntPackedMap;
 class TDataStd_IntPackedMap : public TDF_Attribute {
 	public:
@@ -3544,6 +3739,11 @@ class Handle_TDataStd_IntPackedMap : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_IntPackedMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_Integer;
 class TDataStd_Integer : public TDF_Attribute {
 	public:
@@ -3664,6 +3864,11 @@ class Handle_TDataStd_Integer : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_Integer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_IntegerArray;
 class TDataStd_IntegerArray : public TDF_Attribute {
 	public:
@@ -3854,6 +4059,11 @@ class Handle_TDataStd_IntegerArray : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_IntegerArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_IntegerList;
 class TDataStd_IntegerList : public TDF_Attribute {
 	public:
@@ -4018,6 +4228,11 @@ class Handle_TDataStd_IntegerList : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_IntegerList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_LabelArray1;
 class TDataStd_LabelArray1 {
 	public:
@@ -4100,6 +4315,11 @@ class TDataStd_LabelArray1 {
 };
 
 
+%extend TDataStd_LabelArray1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ListIteratorOfListOfByte;
 class TDataStd_ListIteratorOfListOfByte {
 	public:
@@ -4134,6 +4354,11 @@ class TDataStd_ListIteratorOfListOfByte {
 };
 
 
+%extend TDataStd_ListIteratorOfListOfByte {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ListIteratorOfListOfExtendedString;
 class TDataStd_ListIteratorOfListOfExtendedString {
 	public:
@@ -4168,6 +4393,11 @@ class TDataStd_ListIteratorOfListOfExtendedString {
 };
 
 
+%extend TDataStd_ListIteratorOfListOfExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ListNodeOfListOfByte;
 class TDataStd_ListNodeOfListOfByte : public TCollection_MapNode {
 	public:
@@ -4232,6 +4462,11 @@ class Handle_TDataStd_ListNodeOfListOfByte : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TDataStd_ListNodeOfListOfByte {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ListNodeOfListOfExtendedString;
 class TDataStd_ListNodeOfListOfExtendedString : public TCollection_MapNode {
 	public:
@@ -4296,6 +4531,11 @@ class Handle_TDataStd_ListNodeOfListOfExtendedString : public Handle_TCollection
     }
 };
 
+%extend TDataStd_ListNodeOfListOfExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ListOfByte;
 class TDataStd_ListOfByte {
 	public:
@@ -4426,6 +4666,11 @@ class TDataStd_ListOfByte {
 };
 
 
+%extend TDataStd_ListOfByte {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ListOfExtendedString;
 class TDataStd_ListOfExtendedString {
 	public:
@@ -4556,6 +4801,11 @@ class TDataStd_ListOfExtendedString {
 };
 
 
+%extend TDataStd_ListOfExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_Name;
 class TDataStd_Name : public TDF_Attribute {
 	public:
@@ -4672,6 +4922,11 @@ class Handle_TDataStd_Name : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_Name {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_NamedData;
 class TDataStd_NamedData : public TDF_Attribute {
 	public:
@@ -5048,6 +5303,11 @@ class Handle_TDataStd_NamedData : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_NamedData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_NoteBook;
 class TDataStd_NoteBook : public TDF_Attribute {
 	public:
@@ -5178,6 +5438,11 @@ class Handle_TDataStd_NoteBook : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_NoteBook {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_Real;
 class TDataStd_Real : public TDF_Attribute {
 	public:
@@ -5310,6 +5575,11 @@ class Handle_TDataStd_Real : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_Real {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_RealArray;
 class TDataStd_RealArray : public TDF_Attribute {
 	public:
@@ -5500,6 +5770,11 @@ class Handle_TDataStd_RealArray : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_RealArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_RealList;
 class TDataStd_RealList : public TDF_Attribute {
 	public:
@@ -5664,6 +5939,11 @@ class Handle_TDataStd_RealList : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_RealList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ReferenceArray;
 class TDataStd_ReferenceArray : public TDF_Attribute {
 	public:
@@ -5832,6 +6112,11 @@ class Handle_TDataStd_ReferenceArray : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_ReferenceArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_ReferenceList;
 class TDataStd_ReferenceList : public TDF_Attribute {
 	public:
@@ -6002,6 +6287,11 @@ class Handle_TDataStd_ReferenceList : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_ReferenceList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_Relation;
 class TDataStd_Relation : public TDF_Attribute {
 	public:
@@ -6122,6 +6412,11 @@ class Handle_TDataStd_Relation : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_Relation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_Tick;
 class TDataStd_Tick : public TDF_Attribute {
 	public:
@@ -6222,6 +6517,11 @@ class Handle_TDataStd_Tick : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_Tick {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_TreeNode;
 class TDataStd_TreeNode : public TDF_Attribute {
 	public:
@@ -6588,6 +6888,11 @@ class Handle_TDataStd_TreeNode : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_TreeNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_UAttribute;
 class TDataStd_UAttribute : public TDF_Attribute {
 	public:
@@ -6696,6 +7001,11 @@ class Handle_TDataStd_UAttribute : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_UAttribute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDataStd_Variable;
 class TDataStd_Variable : public TDF_Attribute {
 	public:
@@ -6902,3 +7212,8 @@ class Handle_TDataStd_Variable : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDataStd_Variable {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

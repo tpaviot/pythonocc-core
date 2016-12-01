@@ -138,6 +138,11 @@ class TShort_Array1OfShortReal {
 };
 
 
+%extend TShort_Array1OfShortReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TShort_Array2OfShortReal;
 class TShort_Array2OfShortReal {
 	public:
@@ -242,6 +247,11 @@ class TShort_Array2OfShortReal {
 };
 
 
+%extend TShort_Array2OfShortReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TShort_HArray1OfShortReal;
 class TShort_HArray1OfShortReal : public MMgt_TShared {
 	public:
@@ -358,6 +368,11 @@ class Handle_TShort_HArray1OfShortReal : public Handle_MMgt_TShared {
     }
 };
 
+%extend TShort_HArray1OfShortReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TShort_HArray2OfShortReal;
 class TShort_HArray2OfShortReal : public MMgt_TShared {
 	public:
@@ -500,6 +515,11 @@ class Handle_TShort_HArray2OfShortReal : public Handle_MMgt_TShared {
     }
 };
 
+%extend TShort_HArray2OfShortReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TShort_HSequenceOfShortReal;
 class TShort_HSequenceOfShortReal : public MMgt_TShared {
 	public:
@@ -684,6 +704,11 @@ class Handle_TShort_HSequenceOfShortReal : public Handle_MMgt_TShared {
     }
 };
 
+%extend TShort_HSequenceOfShortReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TShort_SequenceNodeOfSequenceOfShortReal;
 class TShort_SequenceNodeOfSequenceOfShortReal : public TCollection_SeqNode {
 	public:
@@ -750,6 +775,11 @@ class Handle_TShort_SequenceNodeOfSequenceOfShortReal : public Handle_TCollectio
     }
 };
 
+%extend TShort_SequenceNodeOfSequenceOfShortReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TShort_SequenceOfShortReal;
 class TShort_SequenceOfShortReal : public TCollection_BaseSequence {
 	public:
@@ -888,3 +918,8 @@ class TShort_SequenceOfShortReal : public TCollection_BaseSequence {
 };
 
 
+%extend TShort_SequenceOfShortReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -180,6 +180,11 @@ class IntCurvesFace_Intersector {
 };
 
 
+%extend IntCurvesFace_Intersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurvesFace_ShapeIntersector;
 class IntCurvesFace_ShapeIntersector {
 	public:
@@ -310,3 +315,8 @@ class IntCurvesFace_ShapeIntersector {
 };
 
 
+%extend IntCurvesFace_ShapeIntersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

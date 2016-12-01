@@ -102,6 +102,11 @@ class RWStepBasic_RWAction {
 };
 
 
+%extend RWStepBasic_RWAction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWActionAssignment;
 class RWStepBasic_RWActionAssignment {
 	public:
@@ -148,6 +153,11 @@ class RWStepBasic_RWActionAssignment {
 };
 
 
+%extend RWStepBasic_RWActionAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWActionMethod;
 class RWStepBasic_RWActionMethod {
 	public:
@@ -194,6 +204,11 @@ class RWStepBasic_RWActionMethod {
 };
 
 
+%extend RWStepBasic_RWActionMethod {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWActionRequestAssignment;
 class RWStepBasic_RWActionRequestAssignment {
 	public:
@@ -240,6 +255,11 @@ class RWStepBasic_RWActionRequestAssignment {
 };
 
 
+%extend RWStepBasic_RWActionRequestAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWActionRequestSolution;
 class RWStepBasic_RWActionRequestSolution {
 	public:
@@ -286,6 +306,11 @@ class RWStepBasic_RWActionRequestSolution {
 };
 
 
+%extend RWStepBasic_RWActionRequestSolution {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWAddress;
 class RWStepBasic_RWAddress {
 	public:
@@ -316,6 +341,11 @@ class RWStepBasic_RWAddress {
 };
 
 
+%extend RWStepBasic_RWAddress {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWApplicationContext;
 class RWStepBasic_RWApplicationContext {
 	public:
@@ -346,6 +376,11 @@ class RWStepBasic_RWApplicationContext {
 };
 
 
+%extend RWStepBasic_RWApplicationContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWApplicationContextElement;
 class RWStepBasic_RWApplicationContextElement {
 	public:
@@ -384,6 +419,11 @@ class RWStepBasic_RWApplicationContextElement {
 };
 
 
+%extend RWStepBasic_RWApplicationContextElement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWApplicationProtocolDefinition;
 class RWStepBasic_RWApplicationProtocolDefinition {
 	public:
@@ -422,6 +462,11 @@ class RWStepBasic_RWApplicationProtocolDefinition {
 };
 
 
+%extend RWStepBasic_RWApplicationProtocolDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWApproval;
 class RWStepBasic_RWApproval {
 	public:
@@ -460,6 +505,11 @@ class RWStepBasic_RWApproval {
 };
 
 
+%extend RWStepBasic_RWApproval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWApprovalDateTime;
 class RWStepBasic_RWApprovalDateTime {
 	public:
@@ -498,6 +548,11 @@ class RWStepBasic_RWApprovalDateTime {
 };
 
 
+%extend RWStepBasic_RWApprovalDateTime {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWApprovalPersonOrganization;
 class RWStepBasic_RWApprovalPersonOrganization {
 	public:
@@ -536,6 +591,11 @@ class RWStepBasic_RWApprovalPersonOrganization {
 };
 
 
+%extend RWStepBasic_RWApprovalPersonOrganization {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWApprovalRelationship;
 class RWStepBasic_RWApprovalRelationship {
 	public:
@@ -574,6 +634,11 @@ class RWStepBasic_RWApprovalRelationship {
 };
 
 
+%extend RWStepBasic_RWApprovalRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWApprovalRole;
 class RWStepBasic_RWApprovalRole {
 	public:
@@ -604,6 +669,11 @@ class RWStepBasic_RWApprovalRole {
 };
 
 
+%extend RWStepBasic_RWApprovalRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWApprovalStatus;
 class RWStepBasic_RWApprovalStatus {
 	public:
@@ -634,6 +704,11 @@ class RWStepBasic_RWApprovalStatus {
 };
 
 
+%extend RWStepBasic_RWApprovalStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWCalendarDate;
 class RWStepBasic_RWCalendarDate {
 	public:
@@ -664,6 +739,11 @@ class RWStepBasic_RWCalendarDate {
 };
 
 
+%extend RWStepBasic_RWCalendarDate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWCertification;
 class RWStepBasic_RWCertification {
 	public:
@@ -710,6 +790,11 @@ class RWStepBasic_RWCertification {
 };
 
 
+%extend RWStepBasic_RWCertification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWCertificationAssignment;
 class RWStepBasic_RWCertificationAssignment {
 	public:
@@ -756,6 +841,11 @@ class RWStepBasic_RWCertificationAssignment {
 };
 
 
+%extend RWStepBasic_RWCertificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWCertificationType;
 class RWStepBasic_RWCertificationType {
 	public:
@@ -802,6 +892,11 @@ class RWStepBasic_RWCertificationType {
 };
 
 
+%extend RWStepBasic_RWCertificationType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWCharacterizedObject;
 class RWStepBasic_RWCharacterizedObject {
 	public:
@@ -848,6 +943,11 @@ class RWStepBasic_RWCharacterizedObject {
 };
 
 
+%extend RWStepBasic_RWCharacterizedObject {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWContract;
 class RWStepBasic_RWContract {
 	public:
@@ -894,6 +994,11 @@ class RWStepBasic_RWContract {
 };
 
 
+%extend RWStepBasic_RWContract {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWContractAssignment;
 class RWStepBasic_RWContractAssignment {
 	public:
@@ -940,6 +1045,11 @@ class RWStepBasic_RWContractAssignment {
 };
 
 
+%extend RWStepBasic_RWContractAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWContractType;
 class RWStepBasic_RWContractType {
 	public:
@@ -986,6 +1096,11 @@ class RWStepBasic_RWContractType {
 };
 
 
+%extend RWStepBasic_RWContractType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWConversionBasedUnit;
 class RWStepBasic_RWConversionBasedUnit {
 	public:
@@ -1024,6 +1139,11 @@ class RWStepBasic_RWConversionBasedUnit {
 };
 
 
+%extend RWStepBasic_RWConversionBasedUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWConversionBasedUnitAndAreaUnit;
 class RWStepBasic_RWConversionBasedUnitAndAreaUnit {
 	public:
@@ -1062,6 +1182,11 @@ class RWStepBasic_RWConversionBasedUnitAndAreaUnit {
 };
 
 
+%extend RWStepBasic_RWConversionBasedUnitAndAreaUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWConversionBasedUnitAndLengthUnit;
 class RWStepBasic_RWConversionBasedUnitAndLengthUnit {
 	public:
@@ -1100,6 +1225,11 @@ class RWStepBasic_RWConversionBasedUnitAndLengthUnit {
 };
 
 
+%extend RWStepBasic_RWConversionBasedUnitAndLengthUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWConversionBasedUnitAndMassUnit;
 class RWStepBasic_RWConversionBasedUnitAndMassUnit {
 	public:
@@ -1138,6 +1268,11 @@ class RWStepBasic_RWConversionBasedUnitAndMassUnit {
 };
 
 
+%extend RWStepBasic_RWConversionBasedUnitAndMassUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWConversionBasedUnitAndPlaneAngleUnit;
 class RWStepBasic_RWConversionBasedUnitAndPlaneAngleUnit {
 	public:
@@ -1176,6 +1311,11 @@ class RWStepBasic_RWConversionBasedUnitAndPlaneAngleUnit {
 };
 
 
+%extend RWStepBasic_RWConversionBasedUnitAndPlaneAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWConversionBasedUnitAndRatioUnit;
 class RWStepBasic_RWConversionBasedUnitAndRatioUnit {
 	public:
@@ -1214,6 +1354,11 @@ class RWStepBasic_RWConversionBasedUnitAndRatioUnit {
 };
 
 
+%extend RWStepBasic_RWConversionBasedUnitAndRatioUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWConversionBasedUnitAndSolidAngleUnit;
 class RWStepBasic_RWConversionBasedUnitAndSolidAngleUnit {
 	public:
@@ -1252,6 +1397,11 @@ class RWStepBasic_RWConversionBasedUnitAndSolidAngleUnit {
 };
 
 
+%extend RWStepBasic_RWConversionBasedUnitAndSolidAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWConversionBasedUnitAndTimeUnit;
 class RWStepBasic_RWConversionBasedUnitAndTimeUnit {
 	public:
@@ -1290,6 +1440,11 @@ class RWStepBasic_RWConversionBasedUnitAndTimeUnit {
 };
 
 
+%extend RWStepBasic_RWConversionBasedUnitAndTimeUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWConversionBasedUnitAndVolumeUnit;
 class RWStepBasic_RWConversionBasedUnitAndVolumeUnit {
 	public:
@@ -1328,6 +1483,11 @@ class RWStepBasic_RWConversionBasedUnitAndVolumeUnit {
 };
 
 
+%extend RWStepBasic_RWConversionBasedUnitAndVolumeUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWCoordinatedUniversalTimeOffset;
 class RWStepBasic_RWCoordinatedUniversalTimeOffset {
 	public:
@@ -1358,6 +1518,11 @@ class RWStepBasic_RWCoordinatedUniversalTimeOffset {
 };
 
 
+%extend RWStepBasic_RWCoordinatedUniversalTimeOffset {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDate;
 class RWStepBasic_RWDate {
 	public:
@@ -1388,6 +1553,11 @@ class RWStepBasic_RWDate {
 };
 
 
+%extend RWStepBasic_RWDate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDateAndTime;
 class RWStepBasic_RWDateAndTime {
 	public:
@@ -1426,6 +1596,11 @@ class RWStepBasic_RWDateAndTime {
 };
 
 
+%extend RWStepBasic_RWDateAndTime {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDateRole;
 class RWStepBasic_RWDateRole {
 	public:
@@ -1456,6 +1631,11 @@ class RWStepBasic_RWDateRole {
 };
 
 
+%extend RWStepBasic_RWDateRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDateTimeRole;
 class RWStepBasic_RWDateTimeRole {
 	public:
@@ -1486,6 +1666,11 @@ class RWStepBasic_RWDateTimeRole {
 };
 
 
+%extend RWStepBasic_RWDateTimeRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDerivedUnit;
 class RWStepBasic_RWDerivedUnit {
 	public:
@@ -1524,6 +1709,11 @@ class RWStepBasic_RWDerivedUnit {
 };
 
 
+%extend RWStepBasic_RWDerivedUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDerivedUnitElement;
 class RWStepBasic_RWDerivedUnitElement {
 	public:
@@ -1562,6 +1752,11 @@ class RWStepBasic_RWDerivedUnitElement {
 };
 
 
+%extend RWStepBasic_RWDerivedUnitElement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDimensionalExponents;
 class RWStepBasic_RWDimensionalExponents {
 	public:
@@ -1592,6 +1787,11 @@ class RWStepBasic_RWDimensionalExponents {
 };
 
 
+%extend RWStepBasic_RWDimensionalExponents {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDocument;
 class RWStepBasic_RWDocument {
 	public:
@@ -1638,6 +1838,11 @@ class RWStepBasic_RWDocument {
 };
 
 
+%extend RWStepBasic_RWDocument {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDocumentFile;
 class RWStepBasic_RWDocumentFile {
 	public:
@@ -1684,6 +1889,11 @@ class RWStepBasic_RWDocumentFile {
 };
 
 
+%extend RWStepBasic_RWDocumentFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDocumentProductAssociation;
 class RWStepBasic_RWDocumentProductAssociation {
 	public:
@@ -1730,6 +1940,11 @@ class RWStepBasic_RWDocumentProductAssociation {
 };
 
 
+%extend RWStepBasic_RWDocumentProductAssociation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDocumentProductEquivalence;
 class RWStepBasic_RWDocumentProductEquivalence {
 	public:
@@ -1776,6 +1991,11 @@ class RWStepBasic_RWDocumentProductEquivalence {
 };
 
 
+%extend RWStepBasic_RWDocumentProductEquivalence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDocumentRelationship;
 class RWStepBasic_RWDocumentRelationship {
 	public:
@@ -1814,6 +2034,11 @@ class RWStepBasic_RWDocumentRelationship {
 };
 
 
+%extend RWStepBasic_RWDocumentRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDocumentRepresentationType;
 class RWStepBasic_RWDocumentRepresentationType {
 	public:
@@ -1860,6 +2085,11 @@ class RWStepBasic_RWDocumentRepresentationType {
 };
 
 
+%extend RWStepBasic_RWDocumentRepresentationType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDocumentType;
 class RWStepBasic_RWDocumentType {
 	public:
@@ -1898,6 +2128,11 @@ class RWStepBasic_RWDocumentType {
 };
 
 
+%extend RWStepBasic_RWDocumentType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWDocumentUsageConstraint;
 class RWStepBasic_RWDocumentUsageConstraint {
 	public:
@@ -1936,6 +2171,11 @@ class RWStepBasic_RWDocumentUsageConstraint {
 };
 
 
+%extend RWStepBasic_RWDocumentUsageConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWEffectivity;
 class RWStepBasic_RWEffectivity {
 	public:
@@ -1974,6 +2214,11 @@ class RWStepBasic_RWEffectivity {
 };
 
 
+%extend RWStepBasic_RWEffectivity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWEffectivityAssignment;
 class RWStepBasic_RWEffectivityAssignment {
 	public:
@@ -2020,6 +2265,11 @@ class RWStepBasic_RWEffectivityAssignment {
 };
 
 
+%extend RWStepBasic_RWEffectivityAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWEulerAngles;
 class RWStepBasic_RWEulerAngles {
 	public:
@@ -2066,6 +2316,11 @@ class RWStepBasic_RWEulerAngles {
 };
 
 
+%extend RWStepBasic_RWEulerAngles {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWExternalIdentificationAssignment;
 class RWStepBasic_RWExternalIdentificationAssignment {
 	public:
@@ -2112,6 +2367,11 @@ class RWStepBasic_RWExternalIdentificationAssignment {
 };
 
 
+%extend RWStepBasic_RWExternalIdentificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWExternalSource;
 class RWStepBasic_RWExternalSource {
 	public:
@@ -2158,6 +2418,11 @@ class RWStepBasic_RWExternalSource {
 };
 
 
+%extend RWStepBasic_RWExternalSource {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWExternallyDefinedItem;
 class RWStepBasic_RWExternallyDefinedItem {
 	public:
@@ -2204,6 +2469,11 @@ class RWStepBasic_RWExternallyDefinedItem {
 };
 
 
+%extend RWStepBasic_RWExternallyDefinedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWGeneralProperty;
 class RWStepBasic_RWGeneralProperty {
 	public:
@@ -2250,6 +2520,11 @@ class RWStepBasic_RWGeneralProperty {
 };
 
 
+%extend RWStepBasic_RWGeneralProperty {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWGroup;
 class RWStepBasic_RWGroup {
 	public:
@@ -2296,6 +2571,11 @@ class RWStepBasic_RWGroup {
 };
 
 
+%extend RWStepBasic_RWGroup {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWGroupAssignment;
 class RWStepBasic_RWGroupAssignment {
 	public:
@@ -2342,6 +2622,11 @@ class RWStepBasic_RWGroupAssignment {
 };
 
 
+%extend RWStepBasic_RWGroupAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWGroupRelationship;
 class RWStepBasic_RWGroupRelationship {
 	public:
@@ -2388,6 +2673,11 @@ class RWStepBasic_RWGroupRelationship {
 };
 
 
+%extend RWStepBasic_RWGroupRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWIdentificationAssignment;
 class RWStepBasic_RWIdentificationAssignment {
 	public:
@@ -2434,6 +2724,11 @@ class RWStepBasic_RWIdentificationAssignment {
 };
 
 
+%extend RWStepBasic_RWIdentificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWIdentificationRole;
 class RWStepBasic_RWIdentificationRole {
 	public:
@@ -2480,6 +2775,11 @@ class RWStepBasic_RWIdentificationRole {
 };
 
 
+%extend RWStepBasic_RWIdentificationRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWLengthMeasureWithUnit;
 class RWStepBasic_RWLengthMeasureWithUnit {
 	public:
@@ -2518,6 +2818,11 @@ class RWStepBasic_RWLengthMeasureWithUnit {
 };
 
 
+%extend RWStepBasic_RWLengthMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWLengthUnit;
 class RWStepBasic_RWLengthUnit {
 	public:
@@ -2556,6 +2861,11 @@ class RWStepBasic_RWLengthUnit {
 };
 
 
+%extend RWStepBasic_RWLengthUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWLocalTime;
 class RWStepBasic_RWLocalTime {
 	public:
@@ -2594,6 +2904,11 @@ class RWStepBasic_RWLocalTime {
 };
 
 
+%extend RWStepBasic_RWLocalTime {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWMassMeasureWithUnit;
 class RWStepBasic_RWMassMeasureWithUnit {
 	public:
@@ -2632,6 +2947,11 @@ class RWStepBasic_RWMassMeasureWithUnit {
 };
 
 
+%extend RWStepBasic_RWMassMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWMassUnit;
 class RWStepBasic_RWMassUnit {
 	public:
@@ -2678,6 +2998,11 @@ class RWStepBasic_RWMassUnit {
 };
 
 
+%extend RWStepBasic_RWMassUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWMeasureWithUnit;
 class RWStepBasic_RWMeasureWithUnit {
 	public:
@@ -2716,6 +3041,11 @@ class RWStepBasic_RWMeasureWithUnit {
 };
 
 
+%extend RWStepBasic_RWMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWMechanicalContext;
 class RWStepBasic_RWMechanicalContext {
 	public:
@@ -2754,6 +3084,11 @@ class RWStepBasic_RWMechanicalContext {
 };
 
 
+%extend RWStepBasic_RWMechanicalContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWNameAssignment;
 class RWStepBasic_RWNameAssignment {
 	public:
@@ -2800,6 +3135,11 @@ class RWStepBasic_RWNameAssignment {
 };
 
 
+%extend RWStepBasic_RWNameAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWNamedUnit;
 class RWStepBasic_RWNamedUnit {
 	public:
@@ -2838,6 +3178,11 @@ class RWStepBasic_RWNamedUnit {
 };
 
 
+%extend RWStepBasic_RWNamedUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWObjectRole;
 class RWStepBasic_RWObjectRole {
 	public:
@@ -2884,6 +3229,11 @@ class RWStepBasic_RWObjectRole {
 };
 
 
+%extend RWStepBasic_RWObjectRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWOrdinalDate;
 class RWStepBasic_RWOrdinalDate {
 	public:
@@ -2914,6 +3264,11 @@ class RWStepBasic_RWOrdinalDate {
 };
 
 
+%extend RWStepBasic_RWOrdinalDate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWOrganization;
 class RWStepBasic_RWOrganization {
 	public:
@@ -2944,6 +3299,11 @@ class RWStepBasic_RWOrganization {
 };
 
 
+%extend RWStepBasic_RWOrganization {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWOrganizationRole;
 class RWStepBasic_RWOrganizationRole {
 	public:
@@ -2974,6 +3334,11 @@ class RWStepBasic_RWOrganizationRole {
 };
 
 
+%extend RWStepBasic_RWOrganizationRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWOrganizationalAddress;
 class RWStepBasic_RWOrganizationalAddress {
 	public:
@@ -3012,6 +3377,11 @@ class RWStepBasic_RWOrganizationalAddress {
 };
 
 
+%extend RWStepBasic_RWOrganizationalAddress {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWPerson;
 class RWStepBasic_RWPerson {
 	public:
@@ -3042,6 +3412,11 @@ class RWStepBasic_RWPerson {
 };
 
 
+%extend RWStepBasic_RWPerson {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWPersonAndOrganization;
 class RWStepBasic_RWPersonAndOrganization {
 	public:
@@ -3080,6 +3455,11 @@ class RWStepBasic_RWPersonAndOrganization {
 };
 
 
+%extend RWStepBasic_RWPersonAndOrganization {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWPersonAndOrganizationRole;
 class RWStepBasic_RWPersonAndOrganizationRole {
 	public:
@@ -3110,6 +3490,11 @@ class RWStepBasic_RWPersonAndOrganizationRole {
 };
 
 
+%extend RWStepBasic_RWPersonAndOrganizationRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWPersonalAddress;
 class RWStepBasic_RWPersonalAddress {
 	public:
@@ -3148,6 +3533,11 @@ class RWStepBasic_RWPersonalAddress {
 };
 
 
+%extend RWStepBasic_RWPersonalAddress {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWPlaneAngleMeasureWithUnit;
 class RWStepBasic_RWPlaneAngleMeasureWithUnit {
 	public:
@@ -3186,6 +3576,11 @@ class RWStepBasic_RWPlaneAngleMeasureWithUnit {
 };
 
 
+%extend RWStepBasic_RWPlaneAngleMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWPlaneAngleUnit;
 class RWStepBasic_RWPlaneAngleUnit {
 	public:
@@ -3224,6 +3619,11 @@ class RWStepBasic_RWPlaneAngleUnit {
 };
 
 
+%extend RWStepBasic_RWPlaneAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProduct;
 class RWStepBasic_RWProduct {
 	public:
@@ -3262,6 +3662,11 @@ class RWStepBasic_RWProduct {
 };
 
 
+%extend RWStepBasic_RWProduct {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductCategory;
 class RWStepBasic_RWProductCategory {
 	public:
@@ -3292,6 +3697,11 @@ class RWStepBasic_RWProductCategory {
 };
 
 
+%extend RWStepBasic_RWProductCategory {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductCategoryRelationship;
 class RWStepBasic_RWProductCategoryRelationship {
 	public:
@@ -3338,6 +3748,11 @@ class RWStepBasic_RWProductCategoryRelationship {
 };
 
 
+%extend RWStepBasic_RWProductCategoryRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductConceptContext;
 class RWStepBasic_RWProductConceptContext {
 	public:
@@ -3384,6 +3799,11 @@ class RWStepBasic_RWProductConceptContext {
 };
 
 
+%extend RWStepBasic_RWProductConceptContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductContext;
 class RWStepBasic_RWProductContext {
 	public:
@@ -3422,6 +3842,11 @@ class RWStepBasic_RWProductContext {
 };
 
 
+%extend RWStepBasic_RWProductContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductDefinition;
 class RWStepBasic_RWProductDefinition {
 	public:
@@ -3460,6 +3885,11 @@ class RWStepBasic_RWProductDefinition {
 };
 
 
+%extend RWStepBasic_RWProductDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductDefinitionContext;
 class RWStepBasic_RWProductDefinitionContext {
 	public:
@@ -3498,6 +3928,11 @@ class RWStepBasic_RWProductDefinitionContext {
 };
 
 
+%extend RWStepBasic_RWProductDefinitionContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductDefinitionEffectivity;
 class RWStepBasic_RWProductDefinitionEffectivity {
 	public:
@@ -3536,6 +3971,11 @@ class RWStepBasic_RWProductDefinitionEffectivity {
 };
 
 
+%extend RWStepBasic_RWProductDefinitionEffectivity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductDefinitionFormation;
 class RWStepBasic_RWProductDefinitionFormation {
 	public:
@@ -3574,6 +4014,11 @@ class RWStepBasic_RWProductDefinitionFormation {
 };
 
 
+%extend RWStepBasic_RWProductDefinitionFormation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductDefinitionFormationRelationship;
 class RWStepBasic_RWProductDefinitionFormationRelationship {
 	public:
@@ -3620,6 +4065,11 @@ class RWStepBasic_RWProductDefinitionFormationRelationship {
 };
 
 
+%extend RWStepBasic_RWProductDefinitionFormationRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductDefinitionFormationWithSpecifiedSource;
 class RWStepBasic_RWProductDefinitionFormationWithSpecifiedSource {
 	public:
@@ -3658,6 +4108,11 @@ class RWStepBasic_RWProductDefinitionFormationWithSpecifiedSource {
 };
 
 
+%extend RWStepBasic_RWProductDefinitionFormationWithSpecifiedSource {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductDefinitionRelationship;
 class RWStepBasic_RWProductDefinitionRelationship {
 	public:
@@ -3704,6 +4159,11 @@ class RWStepBasic_RWProductDefinitionRelationship {
 };
 
 
+%extend RWStepBasic_RWProductDefinitionRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductDefinitionWithAssociatedDocuments;
 class RWStepBasic_RWProductDefinitionWithAssociatedDocuments {
 	public:
@@ -3742,6 +4202,11 @@ class RWStepBasic_RWProductDefinitionWithAssociatedDocuments {
 };
 
 
+%extend RWStepBasic_RWProductDefinitionWithAssociatedDocuments {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductRelatedProductCategory;
 class RWStepBasic_RWProductRelatedProductCategory {
 	public:
@@ -3780,6 +4245,11 @@ class RWStepBasic_RWProductRelatedProductCategory {
 };
 
 
+%extend RWStepBasic_RWProductRelatedProductCategory {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWProductType;
 class RWStepBasic_RWProductType {
 	public:
@@ -3818,6 +4288,11 @@ class RWStepBasic_RWProductType {
 };
 
 
+%extend RWStepBasic_RWProductType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWRatioMeasureWithUnit;
 class RWStepBasic_RWRatioMeasureWithUnit {
 	public:
@@ -3856,6 +4331,11 @@ class RWStepBasic_RWRatioMeasureWithUnit {
 };
 
 
+%extend RWStepBasic_RWRatioMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWRoleAssociation;
 class RWStepBasic_RWRoleAssociation {
 	public:
@@ -3902,6 +4382,11 @@ class RWStepBasic_RWRoleAssociation {
 };
 
 
+%extend RWStepBasic_RWRoleAssociation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSecurityClassification;
 class RWStepBasic_RWSecurityClassification {
 	public:
@@ -3940,6 +4425,11 @@ class RWStepBasic_RWSecurityClassification {
 };
 
 
+%extend RWStepBasic_RWSecurityClassification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSecurityClassificationLevel;
 class RWStepBasic_RWSecurityClassificationLevel {
 	public:
@@ -3970,6 +4460,11 @@ class RWStepBasic_RWSecurityClassificationLevel {
 };
 
 
+%extend RWStepBasic_RWSecurityClassificationLevel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSiUnit;
 class RWStepBasic_RWSiUnit {
 	public:
@@ -4028,6 +4523,11 @@ class RWStepBasic_RWSiUnit {
 };
 
 
+%extend RWStepBasic_RWSiUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSiUnitAndAreaUnit;
 class RWStepBasic_RWSiUnitAndAreaUnit {
 	public:
@@ -4058,6 +4558,11 @@ class RWStepBasic_RWSiUnitAndAreaUnit {
 };
 
 
+%extend RWStepBasic_RWSiUnitAndAreaUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSiUnitAndLengthUnit;
 class RWStepBasic_RWSiUnitAndLengthUnit {
 	public:
@@ -4088,6 +4593,11 @@ class RWStepBasic_RWSiUnitAndLengthUnit {
 };
 
 
+%extend RWStepBasic_RWSiUnitAndLengthUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSiUnitAndMassUnit;
 class RWStepBasic_RWSiUnitAndMassUnit {
 	public:
@@ -4118,6 +4628,11 @@ class RWStepBasic_RWSiUnitAndMassUnit {
 };
 
 
+%extend RWStepBasic_RWSiUnitAndMassUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSiUnitAndPlaneAngleUnit;
 class RWStepBasic_RWSiUnitAndPlaneAngleUnit {
 	public:
@@ -4148,6 +4663,11 @@ class RWStepBasic_RWSiUnitAndPlaneAngleUnit {
 };
 
 
+%extend RWStepBasic_RWSiUnitAndPlaneAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSiUnitAndRatioUnit;
 class RWStepBasic_RWSiUnitAndRatioUnit {
 	public:
@@ -4178,6 +4698,11 @@ class RWStepBasic_RWSiUnitAndRatioUnit {
 };
 
 
+%extend RWStepBasic_RWSiUnitAndRatioUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSiUnitAndSolidAngleUnit;
 class RWStepBasic_RWSiUnitAndSolidAngleUnit {
 	public:
@@ -4208,6 +4733,11 @@ class RWStepBasic_RWSiUnitAndSolidAngleUnit {
 };
 
 
+%extend RWStepBasic_RWSiUnitAndSolidAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSiUnitAndThermodynamicTemperatureUnit;
 class RWStepBasic_RWSiUnitAndThermodynamicTemperatureUnit {
 	public:
@@ -4238,6 +4768,11 @@ class RWStepBasic_RWSiUnitAndThermodynamicTemperatureUnit {
 };
 
 
+%extend RWStepBasic_RWSiUnitAndThermodynamicTemperatureUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSiUnitAndTimeUnit;
 class RWStepBasic_RWSiUnitAndTimeUnit {
 	public:
@@ -4268,6 +4803,11 @@ class RWStepBasic_RWSiUnitAndTimeUnit {
 };
 
 
+%extend RWStepBasic_RWSiUnitAndTimeUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSiUnitAndVolumeUnit;
 class RWStepBasic_RWSiUnitAndVolumeUnit {
 	public:
@@ -4298,6 +4838,11 @@ class RWStepBasic_RWSiUnitAndVolumeUnit {
 };
 
 
+%extend RWStepBasic_RWSiUnitAndVolumeUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSolidAngleMeasureWithUnit;
 class RWStepBasic_RWSolidAngleMeasureWithUnit {
 	public:
@@ -4336,6 +4881,11 @@ class RWStepBasic_RWSolidAngleMeasureWithUnit {
 };
 
 
+%extend RWStepBasic_RWSolidAngleMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWSolidAngleUnit;
 class RWStepBasic_RWSolidAngleUnit {
 	public:
@@ -4374,6 +4924,11 @@ class RWStepBasic_RWSolidAngleUnit {
 };
 
 
+%extend RWStepBasic_RWSolidAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWThermodynamicTemperatureUnit;
 class RWStepBasic_RWThermodynamicTemperatureUnit {
 	public:
@@ -4420,6 +4975,11 @@ class RWStepBasic_RWThermodynamicTemperatureUnit {
 };
 
 
+%extend RWStepBasic_RWThermodynamicTemperatureUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWUncertaintyMeasureWithUnit;
 class RWStepBasic_RWUncertaintyMeasureWithUnit {
 	public:
@@ -4458,6 +5018,11 @@ class RWStepBasic_RWUncertaintyMeasureWithUnit {
 };
 
 
+%extend RWStepBasic_RWUncertaintyMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWVersionedActionRequest;
 class RWStepBasic_RWVersionedActionRequest {
 	public:
@@ -4504,6 +5069,11 @@ class RWStepBasic_RWVersionedActionRequest {
 };
 
 
+%extend RWStepBasic_RWVersionedActionRequest {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepBasic_RWWeekOfYearAndDayDate;
 class RWStepBasic_RWWeekOfYearAndDayDate {
 	public:
@@ -4534,3 +5104,8 @@ class RWStepBasic_RWWeekOfYearAndDayDate {
 };
 
 
+%extend RWStepBasic_RWWeekOfYearAndDayDate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

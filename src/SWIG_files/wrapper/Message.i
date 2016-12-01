@@ -231,6 +231,11 @@ class Message {
 };
 
 
+%extend Message {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_Algorithm;
 class Message_Algorithm : public MMgt_TShared {
 	public:
@@ -485,6 +490,11 @@ class Handle_Message_Algorithm : public Handle_MMgt_TShared {
     }
 };
 
+%extend Message_Algorithm {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_ListIteratorOfListOfMsg;
 class Message_ListIteratorOfListOfMsg {
 	public:
@@ -519,6 +529,11 @@ class Message_ListIteratorOfListOfMsg {
 };
 
 
+%extend Message_ListIteratorOfListOfMsg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_ListNodeOfListOfMsg;
 class Message_ListNodeOfListOfMsg : public TCollection_MapNode {
 	public:
@@ -583,6 +598,11 @@ class Handle_Message_ListNodeOfListOfMsg : public Handle_TCollection_MapNode {
     }
 };
 
+%extend Message_ListNodeOfListOfMsg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_ListOfMsg;
 class Message_ListOfMsg {
 	public:
@@ -713,6 +733,11 @@ class Message_ListOfMsg {
 };
 
 
+%extend Message_ListOfMsg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_Messenger;
 class Message_Messenger : public MMgt_TShared {
 	public:
@@ -851,6 +876,11 @@ class Handle_Message_Messenger : public Handle_MMgt_TShared {
     }
 };
 
+%extend Message_Messenger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Message_MsgFile {
 	public:
 		%feature("compactdefaultargs") Load;
@@ -918,6 +948,11 @@ class Message_MsgFile {
 };
 
 
+%extend Message_MsgFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_Printer;
 class Message_Printer : public MMgt_TShared {
 	public:
@@ -1020,6 +1055,11 @@ class Handle_Message_Printer : public Handle_MMgt_TShared {
     }
 };
 
+%extend Message_Printer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_ProgressIndicator;
 class Message_ProgressIndicator : public MMgt_TShared {
 	public:
@@ -1270,6 +1310,11 @@ class Handle_Message_ProgressIndicator : public Handle_MMgt_TShared {
     }
 };
 
+%extend Message_ProgressIndicator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_ProgressScale;
 class Message_ProgressScale {
 	public:
@@ -1416,6 +1461,11 @@ class Message_ProgressScale {
 };
 
 
+%extend Message_ProgressScale {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_ProgressSentry;
 class Message_ProgressSentry {
 	public:
@@ -1502,6 +1552,11 @@ class Message_ProgressSentry {
 };
 
 
+%extend Message_ProgressSentry {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_SequenceNodeOfSequenceOfPrinters;
 class Message_SequenceNodeOfSequenceOfPrinters : public TCollection_SeqNode {
 	public:
@@ -1568,6 +1623,11 @@ class Handle_Message_SequenceNodeOfSequenceOfPrinters : public Handle_TCollectio
     }
 };
 
+%extend Message_SequenceNodeOfSequenceOfPrinters {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_SequenceNodeOfSequenceOfProgressScale;
 class Message_SequenceNodeOfSequenceOfProgressScale : public TCollection_SeqNode {
 	public:
@@ -1634,6 +1694,11 @@ class Handle_Message_SequenceNodeOfSequenceOfProgressScale : public Handle_TColl
     }
 };
 
+%extend Message_SequenceNodeOfSequenceOfProgressScale {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_SequenceOfPrinters;
 class Message_SequenceOfPrinters : public TCollection_BaseSequence {
 	public:
@@ -1772,6 +1837,11 @@ class Message_SequenceOfPrinters : public TCollection_BaseSequence {
 };
 
 
+%extend Message_SequenceOfPrinters {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_SequenceOfProgressScale;
 class Message_SequenceOfProgressScale : public TCollection_BaseSequence {
 	public:
@@ -1910,6 +1980,11 @@ class Message_SequenceOfProgressScale : public TCollection_BaseSequence {
 };
 
 
+%extend Message_SequenceOfProgressScale {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Message_PrinterOStream;
 class Message_PrinterOStream : public Message_Printer {
 	public:
@@ -2044,3 +2119,8 @@ class Handle_Message_PrinterOStream : public Handle_Message_Printer {
     }
 };
 
+%extend Message_PrinterOStream {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

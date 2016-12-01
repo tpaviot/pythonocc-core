@@ -170,3 +170,8 @@ class BRepIntCurveSurface_Inter {
 };
 
 
+%extend BRepIntCurveSurface_Inter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

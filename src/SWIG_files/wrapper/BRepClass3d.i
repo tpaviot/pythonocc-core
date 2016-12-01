@@ -70,6 +70,11 @@ class BRepClass3d {
 };
 
 
+%extend BRepClass3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass3d_DataMapIteratorOfMapOfInter;
 class BRepClass3d_DataMapIteratorOfMapOfInter : public TCollection_BasicMapIterator {
 	public:
@@ -100,6 +105,11 @@ class BRepClass3d_DataMapIteratorOfMapOfInter : public TCollection_BasicMapItera
 };
 
 
+%extend BRepClass3d_DataMapIteratorOfMapOfInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass3d_DataMapNodeOfMapOfInter;
 class BRepClass3d_DataMapNodeOfMapOfInter : public TCollection_MapNode {
 	public:
@@ -170,6 +180,11 @@ class Handle_BRepClass3d_DataMapNodeOfMapOfInter : public Handle_TCollection_Map
     }
 };
 
+%extend BRepClass3d_DataMapNodeOfMapOfInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass3d_Intersector3d;
 class BRepClass3d_Intersector3d {
 	public:
@@ -250,6 +265,11 @@ class BRepClass3d_Intersector3d {
 };
 
 
+%extend BRepClass3d_Intersector3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass3d_MapOfInter;
 class BRepClass3d_MapOfInter : public TCollection_BasicMap {
 	public:
@@ -328,6 +348,11 @@ class BRepClass3d_MapOfInter : public TCollection_BasicMap {
 };
 
 
+%extend BRepClass3d_MapOfInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass3d_SClassifier;
 class BRepClass3d_SClassifier {
 	public:
@@ -398,6 +423,11 @@ class BRepClass3d_SClassifier {
 };
 
 
+%extend BRepClass3d_SClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass3d_SolidExplorer;
 class BRepClass3d_SolidExplorer {
 	public:
@@ -708,6 +738,11 @@ class BRepClass3d_SolidExplorer {
 };
 
 
+%extend BRepClass3d_SolidExplorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass3d_SolidPassiveClassifier;
 class BRepClass3d_SolidPassiveClassifier {
 	public:
@@ -752,6 +787,11 @@ class BRepClass3d_SolidPassiveClassifier {
 };
 
 
+%extend BRepClass3d_SolidPassiveClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass3d_SolidClassifier;
 class BRepClass3d_SolidClassifier : public BRepClass3d_SClassifier {
 	public:
@@ -812,3 +852,8 @@ class BRepClass3d_SolidClassifier : public BRepClass3d_SClassifier {
 };
 
 
+%extend BRepClass3d_SolidClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

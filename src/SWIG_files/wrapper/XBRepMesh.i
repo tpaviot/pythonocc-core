@@ -74,3 +74,8 @@ class XBRepMesh {
 };
 
 
+%extend XBRepMesh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

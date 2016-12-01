@@ -134,3 +134,8 @@ class Handle_XCAFApp_Application : public Handle_TDocStd_Application {
     }
 };
 
+%extend XCAFApp_Application {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

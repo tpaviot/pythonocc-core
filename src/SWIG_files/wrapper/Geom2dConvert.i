@@ -192,6 +192,11 @@ class Geom2dConvert {
 };
 
 
+%extend Geom2dConvert {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dConvert_ApproxCurve;
 class Geom2dConvert_ApproxCurve {
 	public:
@@ -246,6 +251,11 @@ class Geom2dConvert_ApproxCurve {
         };
 
 
+%extend Geom2dConvert_ApproxCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dConvert_BSplineCurveKnotSplitting;
 class Geom2dConvert_BSplineCurveKnotSplitting {
 	public:
@@ -284,6 +294,11 @@ class Geom2dConvert_BSplineCurveKnotSplitting {
 };
 
 
+%extend Geom2dConvert_BSplineCurveKnotSplitting {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dConvert_BSplineCurveToBezierCurve;
 class Geom2dConvert_BSplineCurveToBezierCurve {
 	public:
@@ -342,6 +357,11 @@ class Geom2dConvert_BSplineCurveToBezierCurve {
 };
 
 
+%extend Geom2dConvert_BSplineCurveToBezierCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dConvert_CompCurveToBSplineCurve;
 class Geom2dConvert_CompCurveToBSplineCurve {
 	public:
@@ -388,3 +408,8 @@ class Geom2dConvert_CompCurveToBSplineCurve {
 };
 
 
+%extend Geom2dConvert_CompCurveToBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

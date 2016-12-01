@@ -219,6 +219,11 @@ class TopOpeBRepDS {
 };
 
 
+%extend TopOpeBRepDS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference;
 class TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference {
 	public:
@@ -301,6 +306,11 @@ class TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference {
 };
 
 
+%extend TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Association;
 class TopOpeBRepDS_Association : public MMgt_TShared {
 	public:
@@ -393,6 +403,11 @@ class Handle_TopOpeBRepDS_Association : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRepDS_Association {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_BuildTool;
 class TopOpeBRepDS_BuildTool {
 	public:
@@ -799,6 +814,11 @@ class TopOpeBRepDS_BuildTool {
 };
 
 
+%extend TopOpeBRepDS_BuildTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Check;
 class TopOpeBRepDS_Check : public MMgt_TShared {
 	public:
@@ -951,6 +971,11 @@ class Handle_TopOpeBRepDS_Check : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRepDS_Check {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Curve;
 class TopOpeBRepDS_Curve {
 	public:
@@ -1153,6 +1178,11 @@ class TopOpeBRepDS_Curve {
 };
 
 
+%extend TopOpeBRepDS_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_CurveExplorer;
 class TopOpeBRepDS_CurveExplorer {
 	public:
@@ -1217,6 +1247,11 @@ class TopOpeBRepDS_CurveExplorer {
 };
 
 
+%extend TopOpeBRepDS_CurveExplorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus;
 class TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus : public TCollection_BasicMapIterator {
 	public:
@@ -1247,6 +1282,11 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus : public TCollection_Ba
 };
 
 
+%extend TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference;
 class TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference : public TCollection_BasicMapIterator {
 	public:
@@ -1277,6 +1317,11 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference : public 
 };
 
 
+%extend TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference;
 class TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference : public TCollection_BasicMapIterator {
 	public:
@@ -1307,6 +1352,11 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference : pu
 };
 
 
+%extend TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape;
 class TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape : public TCollection_BasicMapIterator {
 	public:
@@ -1337,6 +1387,11 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape : public TCollect
 };
 
 
+%extend TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State;
 class TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State : public TCollection_BasicMapIterator {
 	public:
@@ -1367,6 +1422,11 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State : public T
 };
 
 
+%extend TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState;
 class TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState : public TCollection_BasicMapIterator {
 	public:
@@ -1397,6 +1457,11 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState : public TCollection_Bas
 };
 
 
+%extend TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapIteratorOfMapOfCurve;
 class TopOpeBRepDS_DataMapIteratorOfMapOfCurve : public TCollection_BasicMapIterator {
 	public:
@@ -1427,6 +1492,11 @@ class TopOpeBRepDS_DataMapIteratorOfMapOfCurve : public TCollection_BasicMapIter
 };
 
 
+%extend TopOpeBRepDS_DataMapIteratorOfMapOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData;
 class TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData : public TCollection_BasicMapIterator {
 	public:
@@ -1457,6 +1527,11 @@ class TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData : public TCollection_B
 };
 
 
+%extend TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapIteratorOfMapOfPoint;
 class TopOpeBRepDS_DataMapIteratorOfMapOfPoint : public TCollection_BasicMapIterator {
 	public:
@@ -1487,6 +1562,11 @@ class TopOpeBRepDS_DataMapIteratorOfMapOfPoint : public TCollection_BasicMapIter
 };
 
 
+%extend TopOpeBRepDS_DataMapIteratorOfMapOfPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapIteratorOfMapOfSurface;
 class TopOpeBRepDS_DataMapIteratorOfMapOfSurface : public TCollection_BasicMapIterator {
 	public:
@@ -1517,6 +1597,11 @@ class TopOpeBRepDS_DataMapIteratorOfMapOfSurface : public TCollection_BasicMapIt
 };
 
 
+%extend TopOpeBRepDS_DataMapIteratorOfMapOfSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapIteratorOfShapeSurface;
 class TopOpeBRepDS_DataMapIteratorOfShapeSurface : public TCollection_BasicMapIterator {
 	public:
@@ -1547,6 +1632,11 @@ class TopOpeBRepDS_DataMapIteratorOfShapeSurface : public TCollection_BasicMapIt
 };
 
 
+%extend TopOpeBRepDS_DataMapIteratorOfShapeSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus;
 class TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus : public TCollection_MapNode {
 	public:
@@ -1626,6 +1716,11 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus : public Handle_TCol
     }
 };
 
+%extend TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference;
 class TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference : public TCollection_MapNode {
 	public:
@@ -1705,6 +1800,11 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference : publ
     }
 };
 
+%extend TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference;
 class TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference : public TCollection_MapNode {
 	public:
@@ -1775,6 +1875,11 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference :
     }
 };
 
+%extend TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape;
 class TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape : public TCollection_MapNode {
 	public:
@@ -1845,6 +1950,11 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape : public Handl
     }
 };
 
+%extend TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State;
 class TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State : public TCollection_MapNode {
 	public:
@@ -1915,6 +2025,11 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State : publi
     }
 };
 
+%extend TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState;
 class TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState : public TCollection_MapNode {
 	public:
@@ -1985,6 +2100,11 @@ class Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState : public Handle_TColl
     }
 };
 
+%extend TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapNodeOfMapOfCurve;
 class TopOpeBRepDS_DataMapNodeOfMapOfCurve : public TCollection_MapNode {
 	public:
@@ -2064,6 +2184,11 @@ class Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve : public Handle_TCollection_Ma
     }
 };
 
+%extend TopOpeBRepDS_DataMapNodeOfMapOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData;
 class TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData : public TCollection_MapNode {
 	public:
@@ -2143,6 +2268,11 @@ class Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData : public Handle_TCo
     }
 };
 
+%extend TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapNodeOfMapOfPoint;
 class TopOpeBRepDS_DataMapNodeOfMapOfPoint : public TCollection_MapNode {
 	public:
@@ -2222,6 +2352,11 @@ class Handle_TopOpeBRepDS_DataMapNodeOfMapOfPoint : public Handle_TCollection_Ma
     }
 };
 
+%extend TopOpeBRepDS_DataMapNodeOfMapOfPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapNodeOfMapOfSurface;
 class TopOpeBRepDS_DataMapNodeOfMapOfSurface : public TCollection_MapNode {
 	public:
@@ -2301,6 +2436,11 @@ class Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface : public Handle_TCollection_
     }
 };
 
+%extend TopOpeBRepDS_DataMapNodeOfMapOfSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapNodeOfShapeSurface;
 class TopOpeBRepDS_DataMapNodeOfShapeSurface : public TCollection_MapNode {
 	public:
@@ -2371,6 +2511,11 @@ class Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface : public Handle_TCollection_
     }
 };
 
+%extend TopOpeBRepDS_DataMapNodeOfShapeSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapOfCheckStatus;
 class TopOpeBRepDS_DataMapOfCheckStatus : public TCollection_BasicMap {
 	public:
@@ -2449,6 +2594,11 @@ class TopOpeBRepDS_DataMapOfCheckStatus : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepDS_DataMapOfCheckStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapOfIntegerListOfInterference;
 class TopOpeBRepDS_DataMapOfIntegerListOfInterference : public TCollection_BasicMap {
 	public:
@@ -2527,6 +2677,11 @@ class TopOpeBRepDS_DataMapOfIntegerListOfInterference : public TCollection_Basic
 };
 
 
+%extend TopOpeBRepDS_DataMapOfIntegerListOfInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapOfInterferenceListOfInterference;
 class TopOpeBRepDS_DataMapOfInterferenceListOfInterference : public TCollection_BasicMap {
 	public:
@@ -2605,6 +2760,11 @@ class TopOpeBRepDS_DataMapOfInterferenceListOfInterference : public TCollection_
 };
 
 
+%extend TopOpeBRepDS_DataMapOfInterferenceListOfInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapOfInterferenceShape;
 class TopOpeBRepDS_DataMapOfInterferenceShape : public TCollection_BasicMap {
 	public:
@@ -2683,6 +2843,11 @@ class TopOpeBRepDS_DataMapOfInterferenceShape : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepDS_DataMapOfInterferenceShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State;
 class TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State : public TCollection_BasicMap {
 	public:
@@ -2761,6 +2926,11 @@ class TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State : public TCollection_BasicM
 };
 
 
+%extend TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataMapOfShapeState;
 class TopOpeBRepDS_DataMapOfShapeState : public TCollection_BasicMap {
 	public:
@@ -2839,6 +3009,11 @@ class TopOpeBRepDS_DataMapOfShapeState : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepDS_DataMapOfShapeState {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DataStructure;
 class TopOpeBRepDS_DataStructure {
 	public:
@@ -3517,6 +3692,11 @@ class TopOpeBRepDS_DataStructure {
 };
 
 
+%extend TopOpeBRepDS_DataStructure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape;
 class TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape : public TCollection_BasicMapIterator {
 	public:
@@ -3547,6 +3727,11 @@ class TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape : public TCollecti
 };
 
 
+%extend TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape;
 class TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape : public TCollection_MapNode {
 	public:
@@ -3632,6 +3817,11 @@ class Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape : public Handle
     }
 };
 
+%extend TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_DoubleMapOfIntegerShape;
 class TopOpeBRepDS_DoubleMapOfIntegerShape : public TCollection_BasicMap {
 	public:
@@ -3718,6 +3908,11 @@ class TopOpeBRepDS_DoubleMapOfIntegerShape : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepDS_DoubleMapOfIntegerShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Dumper;
 class TopOpeBRepDS_Dumper {
 	public:
@@ -3936,6 +4131,11 @@ class TopOpeBRepDS_Dumper {
 };
 
 
+%extend TopOpeBRepDS_Dumper {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_EIR;
 class TopOpeBRepDS_EIR {
 	public:
@@ -3958,6 +4158,11 @@ class TopOpeBRepDS_EIR {
 };
 
 
+%extend TopOpeBRepDS_EIR {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Edge3dInterferenceTool;
 class TopOpeBRepDS_Edge3dInterferenceTool {
 	public:
@@ -4006,6 +4211,11 @@ class TopOpeBRepDS_Edge3dInterferenceTool {
 };
 
 
+%extend TopOpeBRepDS_Edge3dInterferenceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_EdgeInterferenceTool;
 class TopOpeBRepDS_EdgeInterferenceTool {
 	public:
@@ -4050,6 +4260,11 @@ class TopOpeBRepDS_EdgeInterferenceTool {
 };
 
 
+%extend TopOpeBRepDS_EdgeInterferenceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Explorer;
 class TopOpeBRepDS_Explorer {
 	public:
@@ -4112,6 +4327,11 @@ class TopOpeBRepDS_Explorer {
 };
 
 
+%extend TopOpeBRepDS_Explorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_FIR;
 class TopOpeBRepDS_FIR {
 	public:
@@ -4138,6 +4358,11 @@ class TopOpeBRepDS_FIR {
 };
 
 
+%extend TopOpeBRepDS_FIR {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_FaceInterferenceTool;
 class TopOpeBRepDS_FaceInterferenceTool {
 	public:
@@ -4216,6 +4441,11 @@ class TopOpeBRepDS_FaceInterferenceTool {
 };
 
 
+%extend TopOpeBRepDS_FaceInterferenceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Filter;
 class TopOpeBRepDS_Filter {
 	public:
@@ -4268,6 +4498,11 @@ class TopOpeBRepDS_Filter {
 };
 
 
+%extend TopOpeBRepDS_Filter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_GapFiller;
 class TopOpeBRepDS_GapFiller {
 	public:
@@ -4378,6 +4613,11 @@ class TopOpeBRepDS_GapFiller {
 };
 
 
+%extend TopOpeBRepDS_GapFiller {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_GapTool;
 class TopOpeBRepDS_GapTool : public MMgt_TShared {
 	public:
@@ -4520,6 +4760,11 @@ class Handle_TopOpeBRepDS_GapTool : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRepDS_GapTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_GeometryData;
 class TopOpeBRepDS_GeometryData {
 	public:
@@ -4562,6 +4807,11 @@ class TopOpeBRepDS_GeometryData {
 };
 
 
+%extend TopOpeBRepDS_GeometryData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference;
 class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public MMgt_TShared {
 	public:
@@ -4678,6 +4928,11 @@ class Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public H
     }
 };
 
+%extend TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState;
 class TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState : public TCollection_MapNode {
 	public:
@@ -4769,6 +5024,11 @@ class Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState : p
     }
 };
 
+%extend TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint;
 class TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint : public TCollection_MapNode {
 	public:
@@ -4860,6 +5120,11 @@ class Handle_TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint : publ
     }
 };
 
+%extend TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData;
 class TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData : public TCollection_MapNode {
 	public:
@@ -4951,6 +5216,11 @@ class Handle_TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData : public Handle_TCo
     }
 };
 
+%extend TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_IndexedDataMapOfShapeWithState;
 class TopOpeBRepDS_IndexedDataMapOfShapeWithState : public TCollection_BasicMap {
 	public:
@@ -5061,6 +5331,11 @@ class TopOpeBRepDS_IndexedDataMapOfShapeWithState : public TCollection_BasicMap 
 };
 
 
+%extend TopOpeBRepDS_IndexedDataMapOfShapeWithState {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_IndexedDataMapOfVertexPoint;
 class TopOpeBRepDS_IndexedDataMapOfVertexPoint : public TCollection_BasicMap {
 	public:
@@ -5171,6 +5446,11 @@ class TopOpeBRepDS_IndexedDataMapOfVertexPoint : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepDS_IndexedDataMapOfVertexPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Interference;
 class TopOpeBRepDS_Interference : public MMgt_TShared {
 	public:
@@ -5367,6 +5647,11 @@ class Handle_TopOpeBRepDS_Interference : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRepDS_Interference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_InterferenceIterator;
 class TopOpeBRepDS_InterferenceIterator {
 	public:
@@ -5461,6 +5746,11 @@ class TopOpeBRepDS_InterferenceIterator {
 };
 
 
+%extend TopOpeBRepDS_InterferenceIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopOpeBRepDS_InterferenceTool {
 	public:
 		%feature("compactdefaultargs") MakeEdgeInterference;
@@ -5572,6 +5862,11 @@ class TopOpeBRepDS_InterferenceTool {
 };
 
 
+%extend TopOpeBRepDS_InterferenceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_ListIteratorOfListOfInterference;
 class TopOpeBRepDS_ListIteratorOfListOfInterference {
 	public:
@@ -5606,6 +5901,11 @@ class TopOpeBRepDS_ListIteratorOfListOfInterference {
 };
 
 
+%extend TopOpeBRepDS_ListIteratorOfListOfInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_ListNodeOfListOfInterference;
 class TopOpeBRepDS_ListNodeOfListOfInterference : public TCollection_MapNode {
 	public:
@@ -5670,6 +5970,11 @@ class Handle_TopOpeBRepDS_ListNodeOfListOfInterference : public Handle_TCollecti
     }
 };
 
+%extend TopOpeBRepDS_ListNodeOfListOfInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_ListOfInterference;
 class TopOpeBRepDS_ListOfInterference {
 	public:
@@ -5800,6 +6105,11 @@ class TopOpeBRepDS_ListOfInterference {
 };
 
 
+%extend TopOpeBRepDS_ListOfInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_ListOfShapeOn1State;
 class TopOpeBRepDS_ListOfShapeOn1State {
 	public:
@@ -5832,6 +6142,11 @@ class TopOpeBRepDS_ListOfShapeOn1State {
 };
 
 
+%extend TopOpeBRepDS_ListOfShapeOn1State {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_MapOfCurve;
 class TopOpeBRepDS_MapOfCurve : public TCollection_BasicMap {
 	public:
@@ -5910,6 +6225,11 @@ class TopOpeBRepDS_MapOfCurve : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepDS_MapOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_MapOfIntegerShapeData;
 class TopOpeBRepDS_MapOfIntegerShapeData : public TCollection_BasicMap {
 	public:
@@ -5988,6 +6308,11 @@ class TopOpeBRepDS_MapOfIntegerShapeData : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepDS_MapOfIntegerShapeData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_MapOfPoint;
 class TopOpeBRepDS_MapOfPoint : public TCollection_BasicMap {
 	public:
@@ -6066,6 +6391,11 @@ class TopOpeBRepDS_MapOfPoint : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepDS_MapOfPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_MapOfShapeData;
 class TopOpeBRepDS_MapOfShapeData : public TCollection_BasicMap {
 	public:
@@ -6176,6 +6506,11 @@ class TopOpeBRepDS_MapOfShapeData : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepDS_MapOfShapeData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_MapOfSurface;
 class TopOpeBRepDS_MapOfSurface : public TCollection_BasicMap {
 	public:
@@ -6254,6 +6589,11 @@ class TopOpeBRepDS_MapOfSurface : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepDS_MapOfSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Marker;
 class TopOpeBRepDS_Marker : public MMgt_TShared {
 	public:
@@ -6344,6 +6684,11 @@ class Handle_TopOpeBRepDS_Marker : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRepDS_Marker {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Point;
 class TopOpeBRepDS_Point {
 	public:
@@ -6402,6 +6747,11 @@ class TopOpeBRepDS_Point {
 };
 
 
+%extend TopOpeBRepDS_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_PointExplorer;
 class TopOpeBRepDS_PointExplorer {
 	public:
@@ -6466,6 +6816,11 @@ class TopOpeBRepDS_PointExplorer {
 };
 
 
+%extend TopOpeBRepDS_PointExplorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Reducer;
 class TopOpeBRepDS_Reducer {
 	public:
@@ -6488,6 +6843,11 @@ class TopOpeBRepDS_Reducer {
 };
 
 
+%extend TopOpeBRepDS_Reducer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_ShapeData;
 class TopOpeBRepDS_ShapeData {
 	public:
@@ -6516,6 +6876,11 @@ class TopOpeBRepDS_ShapeData {
 };
 
 
+%extend TopOpeBRepDS_ShapeData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_ShapeSurface;
 class TopOpeBRepDS_ShapeSurface : public TCollection_BasicMap {
 	public:
@@ -6594,6 +6959,11 @@ class TopOpeBRepDS_ShapeSurface : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRepDS_ShapeSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_ShapeWithState;
 class TopOpeBRepDS_ShapeWithState {
 	public:
@@ -6646,6 +7016,11 @@ class TopOpeBRepDS_ShapeWithState {
 };
 
 
+%extend TopOpeBRepDS_ShapeWithState {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Surface;
 class TopOpeBRepDS_Surface {
 	public:
@@ -6708,6 +7083,11 @@ class TopOpeBRepDS_Surface {
 };
 
 
+%extend TopOpeBRepDS_Surface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_SurfaceExplorer;
 class TopOpeBRepDS_SurfaceExplorer {
 	public:
@@ -6772,6 +7152,11 @@ class TopOpeBRepDS_SurfaceExplorer {
 };
 
 
+%extend TopOpeBRepDS_SurfaceExplorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_TKI;
 class TopOpeBRepDS_TKI {
 	public:
@@ -6928,6 +7313,11 @@ class TopOpeBRepDS_TKI {
 };
 
 
+%extend TopOpeBRepDS_TKI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopOpeBRepDS_TOOL {
 	public:
 		%feature("compactdefaultargs") EShareG;
@@ -6993,6 +7383,11 @@ class TopOpeBRepDS_TOOL {
 };
 
 
+%extend TopOpeBRepDS_TOOL {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_Transition;
 class TopOpeBRepDS_Transition {
 	public:
@@ -7179,6 +7574,11 @@ class TopOpeBRepDS_Transition {
         };
 
 
+%extend TopOpeBRepDS_Transition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_CurveData;
 class TopOpeBRepDS_CurveData : public TopOpeBRepDS_GeometryData {
 	public:
@@ -7195,6 +7595,11 @@ class TopOpeBRepDS_CurveData : public TopOpeBRepDS_GeometryData {
 };
 
 
+%extend TopOpeBRepDS_CurveData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_CurveIterator;
 class TopOpeBRepDS_CurveIterator : public TopOpeBRepDS_InterferenceIterator {
 	public:
@@ -7233,6 +7638,11 @@ class TopOpeBRepDS_CurveIterator : public TopOpeBRepDS_InterferenceIterator {
 };
 
 
+%extend TopOpeBRepDS_CurveIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_CurvePointInterference;
 class TopOpeBRepDS_CurvePointInterference : public TopOpeBRepDS_Interference {
 	public:
@@ -7319,6 +7729,11 @@ class Handle_TopOpeBRepDS_CurvePointInterference : public Handle_TopOpeBRepDS_In
     }
 };
 
+%extend TopOpeBRepDS_CurvePointInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_PointData;
 class TopOpeBRepDS_PointData : public TopOpeBRepDS_GeometryData {
 	public:
@@ -7361,6 +7776,11 @@ class TopOpeBRepDS_PointData : public TopOpeBRepDS_GeometryData {
 };
 
 
+%extend TopOpeBRepDS_PointData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_PointIterator;
 class TopOpeBRepDS_PointIterator : public TopOpeBRepDS_InterferenceIterator {
 	public:
@@ -7419,6 +7839,11 @@ class TopOpeBRepDS_PointIterator : public TopOpeBRepDS_InterferenceIterator {
 };
 
 
+%extend TopOpeBRepDS_PointIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_ShapeShapeInterference;
 class TopOpeBRepDS_ShapeShapeInterference : public TopOpeBRepDS_Interference {
 	public:
@@ -7513,6 +7938,11 @@ class Handle_TopOpeBRepDS_ShapeShapeInterference : public Handle_TopOpeBRepDS_In
     }
 };
 
+%extend TopOpeBRepDS_ShapeShapeInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_SolidSurfaceInterference;
 class TopOpeBRepDS_SolidSurfaceInterference : public TopOpeBRepDS_Interference {
 	public:
@@ -7587,6 +8017,11 @@ class Handle_TopOpeBRepDS_SolidSurfaceInterference : public Handle_TopOpeBRepDS_
     }
 };
 
+%extend TopOpeBRepDS_SolidSurfaceInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_SurfaceCurveInterference;
 class TopOpeBRepDS_SurfaceCurveInterference : public TopOpeBRepDS_Interference {
 	public:
@@ -7691,6 +8126,11 @@ class Handle_TopOpeBRepDS_SurfaceCurveInterference : public Handle_TopOpeBRepDS_
     }
 };
 
+%extend TopOpeBRepDS_SurfaceCurveInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_SurfaceData;
 class TopOpeBRepDS_SurfaceData : public TopOpeBRepDS_GeometryData {
 	public:
@@ -7707,6 +8147,11 @@ class TopOpeBRepDS_SurfaceData : public TopOpeBRepDS_GeometryData {
 };
 
 
+%extend TopOpeBRepDS_SurfaceData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_SurfaceIterator;
 class TopOpeBRepDS_SurfaceIterator : public TopOpeBRepDS_InterferenceIterator {
 	public:
@@ -7733,6 +8178,11 @@ class TopOpeBRepDS_SurfaceIterator : public TopOpeBRepDS_InterferenceIterator {
 };
 
 
+%extend TopOpeBRepDS_SurfaceIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_EdgeVertexInterference;
 class TopOpeBRepDS_EdgeVertexInterference : public TopOpeBRepDS_ShapeShapeInterference {
 	public:
@@ -7841,6 +8291,11 @@ class Handle_TopOpeBRepDS_EdgeVertexInterference : public Handle_TopOpeBRepDS_Sh
     }
 };
 
+%extend TopOpeBRepDS_EdgeVertexInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepDS_FaceEdgeInterference;
 class TopOpeBRepDS_FaceEdgeInterference : public TopOpeBRepDS_ShapeShapeInterference {
 	public:
@@ -7917,3 +8372,8 @@ class Handle_TopOpeBRepDS_FaceEdgeInterference : public Handle_TopOpeBRepDS_Shap
     }
 };
 
+%extend TopOpeBRepDS_FaceEdgeInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

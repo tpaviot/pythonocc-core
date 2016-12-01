@@ -1030,3 +1030,8 @@ class BSplSLib {
 };
 
 
+%extend BSplSLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

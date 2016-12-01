@@ -291,6 +291,11 @@ class BiTgte_Blend {
 };
 
 
+%extend BiTgte_Blend {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BiTgte_CurveOnEdge;
 class BiTgte_CurveOnEdge : public Adaptor3d_Curve {
 	public:
@@ -499,6 +504,11 @@ class BiTgte_CurveOnEdge : public Adaptor3d_Curve {
 };
 
 
+%extend BiTgte_CurveOnEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BiTgte_CurveOnVertex;
 class BiTgte_CurveOnVertex : public Adaptor3d_Curve {
 	public:
@@ -707,6 +717,11 @@ class BiTgte_CurveOnVertex : public Adaptor3d_Curve {
 };
 
 
+%extend BiTgte_CurveOnVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BiTgte_DataMapIteratorOfDataMapOfShapeBox;
 class BiTgte_DataMapIteratorOfDataMapOfShapeBox : public TCollection_BasicMapIterator {
 	public:
@@ -737,6 +752,11 @@ class BiTgte_DataMapIteratorOfDataMapOfShapeBox : public TCollection_BasicMapIte
 };
 
 
+%extend BiTgte_DataMapIteratorOfDataMapOfShapeBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BiTgte_DataMapNodeOfDataMapOfShapeBox;
 class BiTgte_DataMapNodeOfDataMapOfShapeBox : public TCollection_MapNode {
 	public:
@@ -807,6 +827,11 @@ class Handle_BiTgte_DataMapNodeOfDataMapOfShapeBox : public Handle_TCollection_M
     }
 };
 
+%extend BiTgte_DataMapNodeOfDataMapOfShapeBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BiTgte_DataMapOfShapeBox;
 class BiTgte_DataMapOfShapeBox : public TCollection_BasicMap {
 	public:
@@ -885,6 +910,11 @@ class BiTgte_DataMapOfShapeBox : public TCollection_BasicMap {
 };
 
 
+%extend BiTgte_DataMapOfShapeBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BiTgte_HCurveOnEdge;
 class BiTgte_HCurveOnEdge : public Adaptor3d_HCurve {
 	public:
@@ -965,6 +995,11 @@ class Handle_BiTgte_HCurveOnEdge : public Handle_Adaptor3d_HCurve {
     }
 };
 
+%extend BiTgte_HCurveOnEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BiTgte_HCurveOnVertex;
 class BiTgte_HCurveOnVertex : public Adaptor3d_HCurve {
 	public:
@@ -1045,3 +1080,8 @@ class Handle_BiTgte_HCurveOnVertex : public Handle_Adaptor3d_HCurve {
     }
 };
 
+%extend BiTgte_HCurveOnVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

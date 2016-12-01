@@ -154,6 +154,11 @@ class BRepMAT2d_BisectingLocus {
 };
 
 
+%extend BRepMAT2d_BisectingLocus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape;
 class BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape : public TCollection_BasicMapIterator {
 	public:
@@ -184,6 +189,11 @@ class BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape : public TCollection_Bas
 };
 
 
+%extend BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt;
 class BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt : public TCollection_BasicMapIterator {
 	public:
@@ -214,6 +224,11 @@ class BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt : public TColl
 };
 
 
+%extend BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape;
 class BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape : public TCollection_MapNode {
 	public:
@@ -284,6 +299,11 @@ class Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape : public Handle_TColl
     }
 };
 
+%extend BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt;
 class BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt : public TCollection_MapNode {
 	public:
@@ -354,6 +374,11 @@ class Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt : public Ha
     }
 };
 
+%extend BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMAT2d_DataMapOfBasicEltShape;
 class BRepMAT2d_DataMapOfBasicEltShape : public TCollection_BasicMap {
 	public:
@@ -432,6 +457,11 @@ class BRepMAT2d_DataMapOfBasicEltShape : public TCollection_BasicMap {
 };
 
 
+%extend BRepMAT2d_DataMapOfBasicEltShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMAT2d_DataMapOfShapeSequenceOfBasicElt;
 class BRepMAT2d_DataMapOfShapeSequenceOfBasicElt : public TCollection_BasicMap {
 	public:
@@ -510,6 +540,11 @@ class BRepMAT2d_DataMapOfShapeSequenceOfBasicElt : public TCollection_BasicMap {
 };
 
 
+%extend BRepMAT2d_DataMapOfShapeSequenceOfBasicElt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMAT2d_Explorer;
 class BRepMAT2d_Explorer {
 	public:
@@ -606,6 +641,11 @@ class BRepMAT2d_Explorer {
 };
 
 
+%extend BRepMAT2d_Explorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMAT2d_LinkTopoBilo;
 class BRepMAT2d_LinkTopoBilo {
 	public:
@@ -670,3 +710,8 @@ class BRepMAT2d_LinkTopoBilo {
 };
 
 
+%extend BRepMAT2d_LinkTopoBilo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

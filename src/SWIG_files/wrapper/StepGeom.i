@@ -187,6 +187,11 @@ class StepGeom_Array1OfBoundaryCurve {
 };
 
 
+%extend StepGeom_Array1OfBoundaryCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Array1OfCartesianPoint;
 class StepGeom_Array1OfCartesianPoint {
 	public:
@@ -269,6 +274,11 @@ class StepGeom_Array1OfCartesianPoint {
 };
 
 
+%extend StepGeom_Array1OfCartesianPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Array1OfCompositeCurveSegment;
 class StepGeom_Array1OfCompositeCurveSegment {
 	public:
@@ -351,6 +361,11 @@ class StepGeom_Array1OfCompositeCurveSegment {
 };
 
 
+%extend StepGeom_Array1OfCompositeCurveSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Array1OfCurve;
 class StepGeom_Array1OfCurve {
 	public:
@@ -433,6 +448,11 @@ class StepGeom_Array1OfCurve {
 };
 
 
+%extend StepGeom_Array1OfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Array1OfPcurveOrSurface;
 class StepGeom_Array1OfPcurveOrSurface {
 	public:
@@ -515,6 +535,11 @@ class StepGeom_Array1OfPcurveOrSurface {
 };
 
 
+%extend StepGeom_Array1OfPcurveOrSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Array1OfSurfaceBoundary;
 class StepGeom_Array1OfSurfaceBoundary {
 	public:
@@ -597,6 +622,11 @@ class StepGeom_Array1OfSurfaceBoundary {
 };
 
 
+%extend StepGeom_Array1OfSurfaceBoundary {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Array1OfTrimmingSelect;
 class StepGeom_Array1OfTrimmingSelect {
 	public:
@@ -679,6 +709,11 @@ class StepGeom_Array1OfTrimmingSelect {
 };
 
 
+%extend StepGeom_Array1OfTrimmingSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Array2OfCartesianPoint;
 class StepGeom_Array2OfCartesianPoint {
 	public:
@@ -783,6 +818,11 @@ class StepGeom_Array2OfCartesianPoint {
 };
 
 
+%extend StepGeom_Array2OfCartesianPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Array2OfSurfacePatch;
 class StepGeom_Array2OfSurfacePatch {
 	public:
@@ -887,6 +927,11 @@ class StepGeom_Array2OfSurfacePatch {
 };
 
 
+%extend StepGeom_Array2OfSurfacePatch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Axis2Placement;
 class StepGeom_Axis2Placement : public StepData_SelectType {
 	public:
@@ -919,6 +964,11 @@ class StepGeom_Axis2Placement : public StepData_SelectType {
 };
 
 
+%extend StepGeom_Axis2Placement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_CompositeCurveSegment;
 class StepGeom_CompositeCurveSegment : public MMgt_TShared {
 	public:
@@ -1017,6 +1067,11 @@ class Handle_StepGeom_CompositeCurveSegment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepGeom_CompositeCurveSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_CurveOnSurface;
 class StepGeom_CurveOnSurface : public StepData_SelectType {
 	public:
@@ -1055,6 +1110,11 @@ class StepGeom_CurveOnSurface : public StepData_SelectType {
 };
 
 
+%extend StepGeom_CurveOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
 class StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : public StepRepr_RepresentationContext {
 	public:
@@ -1227,6 +1287,11 @@ class Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : 
     }
 };
 
+%extend StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_GeometricRepresentationContext;
 class StepGeom_GeometricRepresentationContext : public StepRepr_RepresentationContext {
 	public:
@@ -1313,6 +1378,11 @@ class Handle_StepGeom_GeometricRepresentationContext : public Handle_StepRepr_Re
     }
 };
 
+%extend StepGeom_GeometricRepresentationContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext;
 class StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext : public StepRepr_RepresentationContext {
 	public:
@@ -1453,6 +1523,11 @@ class Handle_StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext
     }
 };
 
+%extend StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_GeometricRepresentationContextAndParametricRepresentationContext;
 class StepGeom_GeometricRepresentationContextAndParametricRepresentationContext : public StepRepr_RepresentationContext {
 	public:
@@ -1571,6 +1646,11 @@ class Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationC
     }
 };
 
+%extend StepGeom_GeometricRepresentationContextAndParametricRepresentationContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_GeometricRepresentationItem;
 class StepGeom_GeometricRepresentationItem : public StepRepr_RepresentationItem {
 	public:
@@ -1629,6 +1709,11 @@ class Handle_StepGeom_GeometricRepresentationItem : public Handle_StepRepr_Repre
     }
 };
 
+%extend StepGeom_GeometricRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_HArray1OfBoundaryCurve;
 class StepGeom_HArray1OfBoundaryCurve : public MMgt_TShared {
 	public:
@@ -1745,6 +1830,11 @@ class Handle_StepGeom_HArray1OfBoundaryCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepGeom_HArray1OfBoundaryCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_HArray1OfCartesianPoint;
 class StepGeom_HArray1OfCartesianPoint : public MMgt_TShared {
 	public:
@@ -1861,6 +1951,11 @@ class Handle_StepGeom_HArray1OfCartesianPoint : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepGeom_HArray1OfCartesianPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_HArray1OfCompositeCurveSegment;
 class StepGeom_HArray1OfCompositeCurveSegment : public MMgt_TShared {
 	public:
@@ -1977,6 +2072,11 @@ class Handle_StepGeom_HArray1OfCompositeCurveSegment : public Handle_MMgt_TShare
     }
 };
 
+%extend StepGeom_HArray1OfCompositeCurveSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_HArray1OfCurve;
 class StepGeom_HArray1OfCurve : public MMgt_TShared {
 	public:
@@ -2093,6 +2193,11 @@ class Handle_StepGeom_HArray1OfCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepGeom_HArray1OfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_HArray1OfPcurveOrSurface;
 class StepGeom_HArray1OfPcurveOrSurface : public MMgt_TShared {
 	public:
@@ -2209,6 +2314,11 @@ class Handle_StepGeom_HArray1OfPcurveOrSurface : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepGeom_HArray1OfPcurveOrSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_HArray1OfSurfaceBoundary;
 class StepGeom_HArray1OfSurfaceBoundary : public MMgt_TShared {
 	public:
@@ -2325,6 +2435,11 @@ class Handle_StepGeom_HArray1OfSurfaceBoundary : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepGeom_HArray1OfSurfaceBoundary {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_HArray1OfTrimmingSelect;
 class StepGeom_HArray1OfTrimmingSelect : public MMgt_TShared {
 	public:
@@ -2441,6 +2556,11 @@ class Handle_StepGeom_HArray1OfTrimmingSelect : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepGeom_HArray1OfTrimmingSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_HArray2OfCartesianPoint;
 class StepGeom_HArray2OfCartesianPoint : public MMgt_TShared {
 	public:
@@ -2583,6 +2703,11 @@ class Handle_StepGeom_HArray2OfCartesianPoint : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepGeom_HArray2OfCartesianPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_HArray2OfSurfacePatch;
 class StepGeom_HArray2OfSurfacePatch : public MMgt_TShared {
 	public:
@@ -2725,6 +2850,11 @@ class Handle_StepGeom_HArray2OfSurfacePatch : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepGeom_HArray2OfSurfacePatch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_PcurveOrSurface;
 class StepGeom_PcurveOrSurface : public StepData_SelectType {
 	public:
@@ -2757,6 +2887,11 @@ class StepGeom_PcurveOrSurface : public StepData_SelectType {
 };
 
 
+%extend StepGeom_PcurveOrSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_SurfaceBoundary;
 class StepGeom_SurfaceBoundary : public StepData_SelectType {
 	public:
@@ -2789,6 +2924,11 @@ class StepGeom_SurfaceBoundary : public StepData_SelectType {
 };
 
 
+%extend StepGeom_SurfaceBoundary {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_SurfacePatch;
 class StepGeom_SurfacePatch : public MMgt_TShared {
 	public:
@@ -2911,6 +3051,11 @@ class Handle_StepGeom_SurfacePatch : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepGeom_SurfacePatch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_TrimmingMember;
 class StepGeom_TrimmingMember : public StepData_SelectReal {
 	public:
@@ -2981,6 +3126,11 @@ class Handle_StepGeom_TrimmingMember : public Handle_StepData_SelectReal {
     }
 };
 
+%extend StepGeom_TrimmingMember {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_TrimmingSelect;
 class StepGeom_TrimmingSelect : public StepData_SelectType {
 	public:
@@ -3035,6 +3185,11 @@ class StepGeom_TrimmingSelect : public StepData_SelectType {
 };
 
 
+%extend StepGeom_TrimmingSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_VectorOrDirection;
 class StepGeom_VectorOrDirection : public StepData_SelectType {
 	public:
@@ -3067,6 +3222,11 @@ class StepGeom_VectorOrDirection : public StepData_SelectType {
 };
 
 
+%extend StepGeom_VectorOrDirection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_CartesianTransformationOperator;
 class StepGeom_CartesianTransformationOperator : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -3215,6 +3375,11 @@ class Handle_StepGeom_CartesianTransformationOperator : public Handle_StepGeom_G
     }
 };
 
+%extend StepGeom_CartesianTransformationOperator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Curve;
 class StepGeom_Curve : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -3273,6 +3438,11 @@ class Handle_StepGeom_Curve : public Handle_StepGeom_GeometricRepresentationItem
     }
 };
 
+%extend StepGeom_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Direction;
 class StepGeom_Direction : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -3365,6 +3535,11 @@ class Handle_StepGeom_Direction : public Handle_StepGeom_GeometricRepresentation
     }
 };
 
+%extend StepGeom_Direction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Placement;
 class StepGeom_Placement : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -3447,6 +3622,11 @@ class Handle_StepGeom_Placement : public Handle_StepGeom_GeometricRepresentation
     }
 };
 
+%extend StepGeom_Placement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Point;
 class StepGeom_Point : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -3505,6 +3685,11 @@ class Handle_StepGeom_Point : public Handle_StepGeom_GeometricRepresentationItem
     }
 };
 
+%extend StepGeom_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_ReparametrisedCompositeCurveSegment;
 class StepGeom_ReparametrisedCompositeCurveSegment : public StepGeom_CompositeCurveSegment {
 	public:
@@ -3595,6 +3780,11 @@ class Handle_StepGeom_ReparametrisedCompositeCurveSegment : public Handle_StepGe
     }
 };
 
+%extend StepGeom_ReparametrisedCompositeCurveSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Surface;
 class StepGeom_Surface : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -3653,6 +3843,11 @@ class Handle_StepGeom_Surface : public Handle_StepGeom_GeometricRepresentationIt
     }
 };
 
+%extend StepGeom_Surface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Vector;
 class StepGeom_Vector : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -3747,6 +3942,11 @@ class Handle_StepGeom_Vector : public Handle_StepGeom_GeometricRepresentationIte
     }
 };
 
+%extend StepGeom_Vector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Axis1Placement;
 class StepGeom_Axis1Placement : public StepGeom_Placement {
 	public:
@@ -3843,6 +4043,11 @@ class Handle_StepGeom_Axis1Placement : public Handle_StepGeom_Placement {
     }
 };
 
+%extend StepGeom_Axis1Placement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Axis2Placement2d;
 class StepGeom_Axis2Placement2d : public StepGeom_Placement {
 	public:
@@ -3939,6 +4144,11 @@ class Handle_StepGeom_Axis2Placement2d : public Handle_StepGeom_Placement {
     }
 };
 
+%extend StepGeom_Axis2Placement2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Axis2Placement3d;
 class StepGeom_Axis2Placement3d : public StepGeom_Placement {
 	public:
@@ -4057,6 +4267,11 @@ class Handle_StepGeom_Axis2Placement3d : public Handle_StepGeom_Placement {
     }
 };
 
+%extend StepGeom_Axis2Placement3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BoundedCurve;
 class StepGeom_BoundedCurve : public StepGeom_Curve {
 	public:
@@ -4115,6 +4330,11 @@ class Handle_StepGeom_BoundedCurve : public Handle_StepGeom_Curve {
     }
 };
 
+%extend StepGeom_BoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BoundedSurface;
 class StepGeom_BoundedSurface : public StepGeom_Surface {
 	public:
@@ -4173,6 +4393,11 @@ class Handle_StepGeom_BoundedSurface : public Handle_StepGeom_Surface {
     }
 };
 
+%extend StepGeom_BoundedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_CartesianPoint;
 class StepGeom_CartesianPoint : public StepGeom_Point {
 	public:
@@ -4287,6 +4512,11 @@ class Handle_StepGeom_CartesianPoint : public Handle_StepGeom_Point {
     }
 };
 
+%extend StepGeom_CartesianPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_CartesianTransformationOperator2d;
 class StepGeom_CartesianTransformationOperator2d : public StepGeom_CartesianTransformationOperator {
 	public:
@@ -4343,6 +4573,11 @@ class Handle_StepGeom_CartesianTransformationOperator2d : public Handle_StepGeom
     }
 };
 
+%extend StepGeom_CartesianTransformationOperator2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_CartesianTransformationOperator3d;
 class StepGeom_CartesianTransformationOperator3d : public StepGeom_CartesianTransformationOperator {
 	public:
@@ -4463,6 +4698,11 @@ class Handle_StepGeom_CartesianTransformationOperator3d : public Handle_StepGeom
     }
 };
 
+%extend StepGeom_CartesianTransformationOperator3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Conic;
 class StepGeom_Conic : public StepGeom_Curve {
 	public:
@@ -4545,6 +4785,11 @@ class Handle_StepGeom_Conic : public Handle_StepGeom_Curve {
     }
 };
 
+%extend StepGeom_Conic {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_CurveReplica;
 class StepGeom_CurveReplica : public StepGeom_Curve {
 	public:
@@ -4639,6 +4884,11 @@ class Handle_StepGeom_CurveReplica : public Handle_StepGeom_Curve {
     }
 };
 
+%extend StepGeom_CurveReplica {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_DegeneratePcurve;
 class StepGeom_DegeneratePcurve : public StepGeom_Point {
 	public:
@@ -4733,6 +4983,11 @@ class Handle_StepGeom_DegeneratePcurve : public Handle_StepGeom_Point {
     }
 };
 
+%extend StepGeom_DegeneratePcurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_ElementarySurface;
 class StepGeom_ElementarySurface : public StepGeom_Surface {
 	public:
@@ -4815,6 +5070,11 @@ class Handle_StepGeom_ElementarySurface : public Handle_StepGeom_Surface {
     }
 };
 
+%extend StepGeom_ElementarySurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Line;
 class StepGeom_Line : public StepGeom_Curve {
 	public:
@@ -4909,6 +5169,11 @@ class Handle_StepGeom_Line : public Handle_StepGeom_Curve {
     }
 };
 
+%extend StepGeom_Line {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_OffsetCurve3d;
 class StepGeom_OffsetCurve3d : public StepGeom_Curve {
 	public:
@@ -5027,6 +5292,11 @@ class Handle_StepGeom_OffsetCurve3d : public Handle_StepGeom_Curve {
     }
 };
 
+%extend StepGeom_OffsetCurve3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_OffsetSurface;
 class StepGeom_OffsetSurface : public StepGeom_Surface {
 	public:
@@ -5133,6 +5403,11 @@ class Handle_StepGeom_OffsetSurface : public Handle_StepGeom_Surface {
     }
 };
 
+%extend StepGeom_OffsetSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_OrientedSurface;
 class StepGeom_OrientedSurface : public StepGeom_Surface {
 	public:
@@ -5215,6 +5490,11 @@ class Handle_StepGeom_OrientedSurface : public Handle_StepGeom_Surface {
     }
 };
 
+%extend StepGeom_OrientedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Pcurve;
 class StepGeom_Pcurve : public StepGeom_Curve {
 	public:
@@ -5309,6 +5589,11 @@ class Handle_StepGeom_Pcurve : public Handle_StepGeom_Curve {
     }
 };
 
+%extend StepGeom_Pcurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_PointOnCurve;
 class StepGeom_PointOnCurve : public StepGeom_Point {
 	public:
@@ -5403,6 +5688,11 @@ class Handle_StepGeom_PointOnCurve : public Handle_StepGeom_Point {
     }
 };
 
+%extend StepGeom_PointOnCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_PointOnSurface;
 class StepGeom_PointOnSurface : public StepGeom_Point {
 	public:
@@ -5509,6 +5799,11 @@ class Handle_StepGeom_PointOnSurface : public Handle_StepGeom_Point {
     }
 };
 
+%extend StepGeom_PointOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_PointReplica;
 class StepGeom_PointReplica : public StepGeom_Point {
 	public:
@@ -5603,6 +5898,11 @@ class Handle_StepGeom_PointReplica : public Handle_StepGeom_Point {
     }
 };
 
+%extend StepGeom_PointReplica {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_SurfaceCurve;
 class StepGeom_SurfaceCurve : public StepGeom_Curve {
 	public:
@@ -5719,6 +6019,11 @@ class Handle_StepGeom_SurfaceCurve : public Handle_StepGeom_Curve {
     }
 };
 
+%extend StepGeom_SurfaceCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_SurfaceReplica;
 class StepGeom_SurfaceReplica : public StepGeom_Surface {
 	public:
@@ -5813,6 +6118,11 @@ class Handle_StepGeom_SurfaceReplica : public Handle_StepGeom_Surface {
     }
 };
 
+%extend StepGeom_SurfaceReplica {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_SweptSurface;
 class StepGeom_SweptSurface : public StepGeom_Surface {
 	public:
@@ -5895,6 +6205,11 @@ class Handle_StepGeom_SweptSurface : public Handle_StepGeom_Surface {
     }
 };
 
+%extend StepGeom_SweptSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BSplineCurve;
 class StepGeom_BSplineCurve : public StepGeom_BoundedCurve {
 	public:
@@ -6035,6 +6350,11 @@ class Handle_StepGeom_BSplineCurve : public Handle_StepGeom_BoundedCurve {
     }
 };
 
+%extend StepGeom_BSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BSplineSurface;
 class StepGeom_BSplineSurface : public StepGeom_BoundedSurface {
 	public:
@@ -6205,6 +6525,11 @@ class Handle_StepGeom_BSplineSurface : public Handle_StepGeom_BoundedSurface {
     }
 };
 
+%extend StepGeom_BSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Circle;
 class StepGeom_Circle : public StepGeom_Conic {
 	public:
@@ -6291,6 +6616,11 @@ class Handle_StepGeom_Circle : public Handle_StepGeom_Conic {
     }
 };
 
+%extend StepGeom_Circle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_CompositeCurve;
 class StepGeom_CompositeCurve : public StepGeom_BoundedCurve {
 	public:
@@ -6395,6 +6725,11 @@ class Handle_StepGeom_CompositeCurve : public Handle_StepGeom_BoundedCurve {
     }
 };
 
+%extend StepGeom_CompositeCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_ConicalSurface;
 class StepGeom_ConicalSurface : public StepGeom_ElementarySurface {
 	public:
@@ -6493,6 +6828,11 @@ class Handle_StepGeom_ConicalSurface : public Handle_StepGeom_ElementarySurface 
     }
 };
 
+%extend StepGeom_ConicalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_CurveBoundedSurface;
 class StepGeom_CurveBoundedSurface : public StepGeom_BoundedSurface {
 	public:
@@ -6607,6 +6947,11 @@ class Handle_StepGeom_CurveBoundedSurface : public Handle_StepGeom_BoundedSurfac
     }
 };
 
+%extend StepGeom_CurveBoundedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_CylindricalSurface;
 class StepGeom_CylindricalSurface : public StepGeom_ElementarySurface {
 	public:
@@ -6693,6 +7038,11 @@ class Handle_StepGeom_CylindricalSurface : public Handle_StepGeom_ElementarySurf
     }
 };
 
+%extend StepGeom_CylindricalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Ellipse;
 class StepGeom_Ellipse : public StepGeom_Conic {
 	public:
@@ -6791,6 +7141,11 @@ class Handle_StepGeom_Ellipse : public Handle_StepGeom_Conic {
     }
 };
 
+%extend StepGeom_Ellipse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_EvaluatedDegeneratePcurve;
 class StepGeom_EvaluatedDegeneratePcurve : public StepGeom_DegeneratePcurve {
 	public:
@@ -6881,6 +7236,11 @@ class Handle_StepGeom_EvaluatedDegeneratePcurve : public Handle_StepGeom_Degener
     }
 };
 
+%extend StepGeom_EvaluatedDegeneratePcurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Hyperbola;
 class StepGeom_Hyperbola : public StepGeom_Conic {
 	public:
@@ -6979,6 +7339,11 @@ class Handle_StepGeom_Hyperbola : public Handle_StepGeom_Conic {
     }
 };
 
+%extend StepGeom_Hyperbola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_IntersectionCurve;
 class StepGeom_IntersectionCurve : public StepGeom_SurfaceCurve {
 	public:
@@ -7037,6 +7402,11 @@ class Handle_StepGeom_IntersectionCurve : public Handle_StepGeom_SurfaceCurve {
     }
 };
 
+%extend StepGeom_IntersectionCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Parabola;
 class StepGeom_Parabola : public StepGeom_Conic {
 	public:
@@ -7123,6 +7493,11 @@ class Handle_StepGeom_Parabola : public Handle_StepGeom_Conic {
     }
 };
 
+%extend StepGeom_Parabola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Plane;
 class StepGeom_Plane : public StepGeom_ElementarySurface {
 	public:
@@ -7181,6 +7556,11 @@ class Handle_StepGeom_Plane : public Handle_StepGeom_ElementarySurface {
     }
 };
 
+%extend StepGeom_Plane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_Polyline;
 class StepGeom_Polyline : public StepGeom_BoundedCurve {
 	public:
@@ -7273,6 +7653,11 @@ class Handle_StepGeom_Polyline : public Handle_StepGeom_BoundedCurve {
     }
 };
 
+%extend StepGeom_Polyline {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_RectangularCompositeSurface;
 class StepGeom_RectangularCompositeSurface : public StepGeom_BoundedSurface {
 	public:
@@ -7371,6 +7756,11 @@ class Handle_StepGeom_RectangularCompositeSurface : public Handle_StepGeom_Bound
     }
 };
 
+%extend StepGeom_RectangularCompositeSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_RectangularTrimmedSurface;
 class StepGeom_RectangularTrimmedSurface : public StepGeom_BoundedSurface {
 	public:
@@ -7525,6 +7915,11 @@ class Handle_StepGeom_RectangularTrimmedSurface : public Handle_StepGeom_Bounded
     }
 };
 
+%extend StepGeom_RectangularTrimmedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_SeamCurve;
 class StepGeom_SeamCurve : public StepGeom_SurfaceCurve {
 	public:
@@ -7583,6 +7978,11 @@ class Handle_StepGeom_SeamCurve : public Handle_StepGeom_SurfaceCurve {
     }
 };
 
+%extend StepGeom_SeamCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_SphericalSurface;
 class StepGeom_SphericalSurface : public StepGeom_ElementarySurface {
 	public:
@@ -7669,6 +8069,11 @@ class Handle_StepGeom_SphericalSurface : public Handle_StepGeom_ElementarySurfac
     }
 };
 
+%extend StepGeom_SphericalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_SurfaceCurveAndBoundedCurve;
 class StepGeom_SurfaceCurveAndBoundedCurve : public StepGeom_SurfaceCurve {
 	public:
@@ -7733,6 +8138,11 @@ class Handle_StepGeom_SurfaceCurveAndBoundedCurve : public Handle_StepGeom_Surfa
     }
 };
 
+%extend StepGeom_SurfaceCurveAndBoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_SurfaceOfLinearExtrusion;
 class StepGeom_SurfaceOfLinearExtrusion : public StepGeom_SweptSurface {
 	public:
@@ -7819,6 +8229,11 @@ class Handle_StepGeom_SurfaceOfLinearExtrusion : public Handle_StepGeom_SweptSur
     }
 };
 
+%extend StepGeom_SurfaceOfLinearExtrusion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_SurfaceOfRevolution;
 class StepGeom_SurfaceOfRevolution : public StepGeom_SweptSurface {
 	public:
@@ -7905,6 +8320,11 @@ class Handle_StepGeom_SurfaceOfRevolution : public Handle_StepGeom_SweptSurface 
     }
 };
 
+%extend StepGeom_SurfaceOfRevolution {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_ToroidalSurface;
 class StepGeom_ToroidalSurface : public StepGeom_ElementarySurface {
 	public:
@@ -8003,6 +8423,11 @@ class Handle_StepGeom_ToroidalSurface : public Handle_StepGeom_ElementarySurface
     }
 };
 
+%extend StepGeom_ToroidalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_TrimmedCurve;
 class StepGeom_TrimmedCurve : public StepGeom_BoundedCurve {
 	public:
@@ -8153,6 +8578,11 @@ class Handle_StepGeom_TrimmedCurve : public Handle_StepGeom_BoundedCurve {
     }
 };
 
+%extend StepGeom_TrimmedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BSplineCurveWithKnots;
 class StepGeom_BSplineCurveWithKnots : public StepGeom_BSplineCurve {
 	public:
@@ -8299,6 +8729,11 @@ class Handle_StepGeom_BSplineCurveWithKnots : public Handle_StepGeom_BSplineCurv
     }
 };
 
+%extend StepGeom_BSplineCurveWithKnots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
 class StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
@@ -8507,6 +8942,11 @@ class Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public Hand
     }
 };
 
+%extend StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BSplineSurfaceWithKnots;
 class StepGeom_BSplineSurfaceWithKnots : public StepGeom_BSplineSurface {
 	public:
@@ -8705,6 +9145,11 @@ class Handle_StepGeom_BSplineSurfaceWithKnots : public Handle_StepGeom_BSplineSu
     }
 };
 
+%extend StepGeom_BSplineSurfaceWithKnots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
 class StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
@@ -8975,6 +9420,11 @@ class Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public 
     }
 };
 
+%extend StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BezierCurve;
 class StepGeom_BezierCurve : public StepGeom_BSplineCurve {
 	public:
@@ -9033,6 +9483,11 @@ class Handle_StepGeom_BezierCurve : public Handle_StepGeom_BSplineCurve {
     }
 };
 
+%extend StepGeom_BezierCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BezierCurveAndRationalBSplineCurve;
 class StepGeom_BezierCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
@@ -9185,6 +9640,11 @@ class Handle_StepGeom_BezierCurveAndRationalBSplineCurve : public Handle_StepGeo
     }
 };
 
+%extend StepGeom_BezierCurveAndRationalBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BezierSurface;
 class StepGeom_BezierSurface : public StepGeom_BSplineSurface {
 	public:
@@ -9243,6 +9703,11 @@ class Handle_StepGeom_BezierSurface : public Handle_StepGeom_BSplineSurface {
     }
 };
 
+%extend StepGeom_BezierSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BezierSurfaceAndRationalBSplineSurface;
 class StepGeom_BezierSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
@@ -9413,6 +9878,11 @@ class Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface : public Handle_Ste
     }
 };
 
+%extend StepGeom_BezierSurfaceAndRationalBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_CompositeCurveOnSurface;
 class StepGeom_CompositeCurveOnSurface : public StepGeom_CompositeCurve {
 	public:
@@ -9471,6 +9941,11 @@ class Handle_StepGeom_CompositeCurveOnSurface : public Handle_StepGeom_Composite
     }
 };
 
+%extend StepGeom_CompositeCurveOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_DegenerateToroidalSurface;
 class StepGeom_DegenerateToroidalSurface : public StepGeom_ToroidalSurface {
 	public:
@@ -9565,6 +10040,11 @@ class Handle_StepGeom_DegenerateToroidalSurface : public Handle_StepGeom_Toroida
     }
 };
 
+%extend StepGeom_DegenerateToroidalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_QuasiUniformCurve;
 class StepGeom_QuasiUniformCurve : public StepGeom_BSplineCurve {
 	public:
@@ -9623,6 +10103,11 @@ class Handle_StepGeom_QuasiUniformCurve : public Handle_StepGeom_BSplineCurve {
     }
 };
 
+%extend StepGeom_QuasiUniformCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_QuasiUniformCurveAndRationalBSplineCurve;
 class StepGeom_QuasiUniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
@@ -9775,6 +10260,11 @@ class Handle_StepGeom_QuasiUniformCurveAndRationalBSplineCurve : public Handle_S
     }
 };
 
+%extend StepGeom_QuasiUniformCurveAndRationalBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_QuasiUniformSurface;
 class StepGeom_QuasiUniformSurface : public StepGeom_BSplineSurface {
 	public:
@@ -9833,6 +10323,11 @@ class Handle_StepGeom_QuasiUniformSurface : public Handle_StepGeom_BSplineSurfac
     }
 };
 
+%extend StepGeom_QuasiUniformSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface;
 class StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
@@ -10003,6 +10498,11 @@ class Handle_StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public Hand
     }
 };
 
+%extend StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_RationalBSplineCurve;
 class StepGeom_RationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
@@ -10115,6 +10615,11 @@ class Handle_StepGeom_RationalBSplineCurve : public Handle_StepGeom_BSplineCurve
     }
 };
 
+%extend StepGeom_RationalBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_RationalBSplineSurface;
 class StepGeom_RationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
@@ -10241,6 +10746,11 @@ class Handle_StepGeom_RationalBSplineSurface : public Handle_StepGeom_BSplineSur
     }
 };
 
+%extend StepGeom_RationalBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_UniformCurve;
 class StepGeom_UniformCurve : public StepGeom_BSplineCurve {
 	public:
@@ -10299,6 +10809,11 @@ class Handle_StepGeom_UniformCurve : public Handle_StepGeom_BSplineCurve {
     }
 };
 
+%extend StepGeom_UniformCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_UniformCurveAndRationalBSplineCurve;
 class StepGeom_UniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
@@ -10451,6 +10966,11 @@ class Handle_StepGeom_UniformCurveAndRationalBSplineCurve : public Handle_StepGe
     }
 };
 
+%extend StepGeom_UniformCurveAndRationalBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_UniformSurface;
 class StepGeom_UniformSurface : public StepGeom_BSplineSurface {
 	public:
@@ -10509,6 +11029,11 @@ class Handle_StepGeom_UniformSurface : public Handle_StepGeom_BSplineSurface {
     }
 };
 
+%extend StepGeom_UniformSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_UniformSurfaceAndRationalBSplineSurface;
 class StepGeom_UniformSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
@@ -10679,6 +11204,11 @@ class Handle_StepGeom_UniformSurfaceAndRationalBSplineSurface : public Handle_St
     }
 };
 
+%extend StepGeom_UniformSurfaceAndRationalBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_BoundaryCurve;
 class StepGeom_BoundaryCurve : public StepGeom_CompositeCurveOnSurface {
 	public:
@@ -10737,6 +11267,11 @@ class Handle_StepGeom_BoundaryCurve : public Handle_StepGeom_CompositeCurveOnSur
     }
 };
 
+%extend StepGeom_BoundaryCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepGeom_OuterBoundaryCurve;
 class StepGeom_OuterBoundaryCurve : public StepGeom_BoundaryCurve {
 	public:
@@ -10795,3 +11330,8 @@ class Handle_StepGeom_OuterBoundaryCurve : public Handle_StepGeom_BoundaryCurve 
     }
 };
 
+%extend StepGeom_OuterBoundaryCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

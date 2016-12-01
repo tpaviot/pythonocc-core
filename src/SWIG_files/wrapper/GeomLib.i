@@ -304,6 +304,11 @@ class GeomLib {
 };
 
 
+%extend GeomLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomLib_Array1OfMat;
 class GeomLib_Array1OfMat {
 	public:
@@ -386,6 +391,11 @@ class GeomLib_Array1OfMat {
 };
 
 
+%extend GeomLib_Array1OfMat {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomLib_Check2dBSplineCurve;
 class GeomLib_Check2dBSplineCurve {
 	public:
@@ -432,6 +442,11 @@ class GeomLib_Check2dBSplineCurve {
 };
 
 
+%extend GeomLib_Check2dBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomLib_CheckBSplineCurve;
 class GeomLib_CheckBSplineCurve {
 	public:
@@ -478,6 +493,11 @@ class GeomLib_CheckBSplineCurve {
 };
 
 
+%extend GeomLib_CheckBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomLib_DenominatorMultiplier;
 class GeomLib_DenominatorMultiplier {
 	public:
@@ -504,6 +524,11 @@ class GeomLib_DenominatorMultiplier {
 };
 
 
+%extend GeomLib_DenominatorMultiplier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomLib_Interpolate;
 class GeomLib_Interpolate {
 	public:
@@ -540,6 +565,11 @@ class GeomLib_Interpolate {
 };
 
 
+%extend GeomLib_Interpolate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomLib_IsPlanarSurface;
 class GeomLib_IsPlanarSurface {
 	public:
@@ -566,6 +596,11 @@ class GeomLib_IsPlanarSurface {
 };
 
 
+%extend GeomLib_IsPlanarSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomLib_LogSample;
 class GeomLib_LogSample : public math_FunctionSample {
 	public:
@@ -590,6 +625,11 @@ class GeomLib_LogSample : public math_FunctionSample {
 };
 
 
+%extend GeomLib_LogSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomLib_MakeCurvefromApprox;
 class GeomLib_MakeCurvefromApprox {
 	public:
@@ -670,6 +710,11 @@ class GeomLib_MakeCurvefromApprox {
 };
 
 
+%extend GeomLib_MakeCurvefromApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomLib_PolyFunc;
 class GeomLib_PolyFunc : public math_FunctionWithDerivative {
 	public:
@@ -714,6 +759,11 @@ class GeomLib_PolyFunc : public math_FunctionWithDerivative {
 };
 
 
+%extend GeomLib_PolyFunc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class GeomLib_Tool {
 	public:
 		%feature("compactdefaultargs") Parameter;
@@ -763,3 +813,8 @@ class GeomLib_Tool {
 };
 
 
+%extend GeomLib_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

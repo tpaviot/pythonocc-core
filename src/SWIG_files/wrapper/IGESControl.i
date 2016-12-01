@@ -130,6 +130,11 @@ class Handle_IGESControl_ActorWrite : public Handle_Transfer_ActorOfFinderProces
     }
 };
 
+%extend IGESControl_ActorWrite {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IGESControl_AlgoContainer;
 class IGESControl_AlgoContainer : public IGESToBRep_AlgoContainer {
 	public:
@@ -188,6 +193,11 @@ class Handle_IGESControl_AlgoContainer : public Handle_IGESToBRep_AlgoContainer 
     }
 };
 
+%extend IGESControl_AlgoContainer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IGESControl_Controller;
 class IGESControl_Controller : public XSControl_Controller {
 	public:
@@ -288,6 +298,11 @@ class Handle_IGESControl_Controller : public Handle_XSControl_Controller {
     }
 };
 
+%extend IGESControl_Controller {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IGESControl_IGESBoundary;
 class IGESControl_IGESBoundary : public IGESToBRep_IGESBoundary {
 	public:
@@ -368,6 +383,11 @@ class Handle_IGESControl_IGESBoundary : public Handle_IGESToBRep_IGESBoundary {
     }
 };
 
+%extend IGESControl_IGESBoundary {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IGESControl_Reader;
 class IGESControl_Reader : public XSControl_Reader {
 	public:
@@ -424,6 +444,11 @@ class IGESControl_Reader : public XSControl_Reader {
 };
 
 
+%extend IGESControl_Reader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IGESControl_ToolContainer;
 class IGESControl_ToolContainer : public IGESToBRep_ToolContainer {
 	public:
@@ -488,6 +513,11 @@ class Handle_IGESControl_ToolContainer : public Handle_IGESToBRep_ToolContainer 
     }
 };
 
+%extend IGESControl_ToolContainer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IGESControl_Writer;
 class IGESControl_Writer {
 	public:
@@ -598,3 +628,8 @@ class IGESControl_Writer {
 };
 
 
+%extend IGESControl_Writer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

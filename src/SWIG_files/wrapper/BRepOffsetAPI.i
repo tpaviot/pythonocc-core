@@ -174,6 +174,11 @@ class BRepOffsetAPI_DraftAngle : public BRepBuilderAPI_ModifyShape {
 };
 
 
+%extend BRepOffsetAPI_DraftAngle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_FindContigousEdges;
 class BRepOffsetAPI_FindContigousEdges {
 	public:
@@ -288,6 +293,11 @@ class BRepOffsetAPI_FindContigousEdges {
 };
 
 
+%extend BRepOffsetAPI_FindContigousEdges {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_MakeDraft;
 class BRepOffsetAPI_MakeDraft : public BRepBuilderAPI_MakeShape {
 	public:
@@ -368,6 +378,11 @@ class BRepOffsetAPI_MakeDraft : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepOffsetAPI_MakeDraft {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_MakeEvolved;
 class BRepOffsetAPI_MakeEvolved : public BRepBuilderAPI_MakeShape {
 	public:
@@ -448,6 +463,11 @@ class BRepOffsetAPI_MakeEvolved : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepOffsetAPI_MakeEvolved {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_MakeFilling;
 class BRepOffsetAPI_MakeFilling : public BRepBuilderAPI_MakeShape {
 	public:
@@ -646,6 +666,11 @@ class BRepOffsetAPI_MakeFilling : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepOffsetAPI_MakeFilling {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_MakeOffset;
 class BRepOffsetAPI_MakeOffset : public BRepBuilderAPI_MakeShape {
 	public:
@@ -734,6 +759,11 @@ class BRepOffsetAPI_MakeOffset : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepOffsetAPI_MakeOffset {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_MakeOffsetShape;
 class BRepOffsetAPI_MakeOffsetShape : public BRepBuilderAPI_MakeShape {
 	public:
@@ -796,6 +826,11 @@ class BRepOffsetAPI_MakeOffsetShape : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepOffsetAPI_MakeOffsetShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_MakePipe;
 class BRepOffsetAPI_MakePipe : public BRepPrimAPI_MakeSweep {
 	public:
@@ -860,6 +895,11 @@ class BRepOffsetAPI_MakePipe : public BRepPrimAPI_MakeSweep {
 };
 
 
+%extend BRepOffsetAPI_MakePipe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_MakePipeShell;
 class BRepOffsetAPI_MakePipeShell : public BRepPrimAPI_MakeSweep {
 	public:
@@ -1090,6 +1130,11 @@ class BRepOffsetAPI_MakePipeShell : public BRepPrimAPI_MakeSweep {
 };
 
 
+%extend BRepOffsetAPI_MakePipeShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_MiddlePath;
 class BRepOffsetAPI_MiddlePath : public BRepBuilderAPI_MakeShape {
 	public:
@@ -1112,6 +1157,11 @@ class BRepOffsetAPI_MiddlePath : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepOffsetAPI_MiddlePath {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_NormalProjection;
 class BRepOffsetAPI_NormalProjection : public BRepBuilderAPI_MakeShape {
 	public:
@@ -1238,6 +1288,11 @@ class BRepOffsetAPI_NormalProjection : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepOffsetAPI_NormalProjection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal;
 class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal : public TCollection_SeqNode {
 	public:
@@ -1304,6 +1359,11 @@ class Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal : public Handl
     }
 };
 
+%extend BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape;
 class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape : public TCollection_SeqNode {
 	public:
@@ -1370,6 +1430,11 @@ class Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape : public Hand
     }
 };
 
+%extend BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_SequenceOfSequenceOfReal;
 class BRepOffsetAPI_SequenceOfSequenceOfReal : public TCollection_BaseSequence {
 	public:
@@ -1508,6 +1573,11 @@ class BRepOffsetAPI_SequenceOfSequenceOfReal : public TCollection_BaseSequence {
 };
 
 
+%extend BRepOffsetAPI_SequenceOfSequenceOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_SequenceOfSequenceOfShape;
 class BRepOffsetAPI_SequenceOfSequenceOfShape : public TCollection_BaseSequence {
 	public:
@@ -1646,6 +1716,11 @@ class BRepOffsetAPI_SequenceOfSequenceOfShape : public TCollection_BaseSequence 
 };
 
 
+%extend BRepOffsetAPI_SequenceOfSequenceOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_ThruSections;
 class BRepOffsetAPI_ThruSections : public BRepBuilderAPI_MakeShape {
 	public:
@@ -1802,6 +1877,11 @@ class BRepOffsetAPI_ThruSections : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepOffsetAPI_ThruSections {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffsetAPI_MakeThickSolid;
 class BRepOffsetAPI_MakeThickSolid : public BRepOffsetAPI_MakeOffsetShape {
 	public:
@@ -1848,3 +1928,8 @@ class BRepOffsetAPI_MakeThickSolid : public BRepOffsetAPI_MakeOffsetShape {
 };
 
 
+%extend BRepOffsetAPI_MakeThickSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

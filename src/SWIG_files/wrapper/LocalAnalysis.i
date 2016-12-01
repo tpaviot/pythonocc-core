@@ -90,6 +90,11 @@ class LocalAnalysis {
 };
 
 
+%extend LocalAnalysis {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocalAnalysis_CurveContinuity;
 class LocalAnalysis_CurveContinuity {
 	public:
@@ -192,6 +197,11 @@ class LocalAnalysis_CurveContinuity {
 };
 
 
+%extend LocalAnalysis_CurveContinuity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocalAnalysis_SurfaceContinuity;
 class LocalAnalysis_SurfaceContinuity {
 	public:
@@ -368,3 +378,8 @@ class LocalAnalysis_SurfaceContinuity {
 };
 
 
+%extend LocalAnalysis_SurfaceContinuity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -173,6 +173,11 @@ class Interface_Array1OfFileParameter {
 };
 
 
+%extend Interface_Array1OfFileParameter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_Array1OfHAsciiString;
 class Interface_Array1OfHAsciiString {
 	public:
@@ -255,6 +260,11 @@ class Interface_Array1OfHAsciiString {
 };
 
 
+%extend Interface_Array1OfHAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_BitMap;
 class Interface_BitMap {
 	public:
@@ -479,6 +489,11 @@ class Interface_BitMap {
 };
 
 
+%extend Interface_BitMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_Category;
 class Interface_Category {
 	public:
@@ -585,6 +600,11 @@ class Interface_Category {
 };
 
 
+%extend Interface_Category {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_Check;
 class Interface_Check : public MMgt_TShared {
 	public:
@@ -1001,6 +1021,11 @@ class Handle_Interface_Check : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_Check {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_CheckIterator;
 class Interface_CheckIterator {
 	public:
@@ -1231,6 +1256,11 @@ class Interface_CheckIterator {
 };
 
 
+%extend Interface_CheckIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_CheckTool;
 class Interface_CheckTool {
 	public:
@@ -1353,6 +1383,11 @@ class Interface_CheckTool {
 };
 
 
+%extend Interface_CheckTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_CopyControl;
 class Interface_CopyControl : public MMgt_TShared {
 	public:
@@ -1431,6 +1466,11 @@ class Handle_Interface_CopyControl : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_CopyControl {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_CopyTool;
 class Interface_CopyTool {
 	public:
@@ -1593,6 +1633,11 @@ class Interface_CopyTool {
 };
 
 
+%extend Interface_CopyTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_DataMapIteratorOfDataMapOfTransientInteger;
 class Interface_DataMapIteratorOfDataMapOfTransientInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1623,6 +1668,11 @@ class Interface_DataMapIteratorOfDataMapOfTransientInteger : public TCollection_
 };
 
 
+%extend Interface_DataMapIteratorOfDataMapOfTransientInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_DataMapNodeOfDataMapOfTransientInteger;
 class Interface_DataMapNodeOfDataMapOfTransientInteger : public TCollection_MapNode {
 	public:
@@ -1702,6 +1752,11 @@ class Handle_Interface_DataMapNodeOfDataMapOfTransientInteger : public Handle_TC
     }
 };
 
+%extend Interface_DataMapNodeOfDataMapOfTransientInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_DataMapOfTransientInteger;
 class Interface_DataMapOfTransientInteger : public TCollection_BasicMap {
 	public:
@@ -1780,6 +1835,11 @@ class Interface_DataMapOfTransientInteger : public TCollection_BasicMap {
 };
 
 
+%extend Interface_DataMapOfTransientInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_EntityCluster;
 class Interface_EntityCluster : public MMgt_TShared {
 	public:
@@ -1920,6 +1980,11 @@ class Handle_Interface_EntityCluster : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_EntityCluster {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_EntityIterator;
 class Interface_EntityIterator {
 	public:
@@ -2032,6 +2097,11 @@ class Interface_EntityIterator {
 };
 
 
+%extend Interface_EntityIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_EntityList;
 class Interface_EntityList {
 	public:
@@ -2138,6 +2208,11 @@ class Interface_EntityList {
 };
 
 
+%extend Interface_EntityList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_FileParameter;
 class Interface_FileParameter {
 	public:
@@ -2206,6 +2281,11 @@ class Interface_FileParameter {
 };
 
 
+%extend Interface_FileParameter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_FileReaderData;
 class Interface_FileReaderData : public MMgt_TShared {
 	public:
@@ -2482,6 +2562,11 @@ class Handle_Interface_FileReaderData : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_FileReaderData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_FileReaderTool;
 class Interface_FileReaderTool {
 	public:
@@ -2652,6 +2737,11 @@ class Interface_FileReaderTool {
 };
 
 
+%extend Interface_FileReaderTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_FloatWriter;
 class Interface_FloatWriter {
 	public:
@@ -2760,6 +2850,11 @@ class Interface_FloatWriter {
 };
 
 
+%extend Interface_FloatWriter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_GTool;
 class Interface_GTool : public MMgt_TShared {
 	public:
@@ -2910,6 +3005,11 @@ class Handle_Interface_GTool : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_GTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Interface_GeneralLib {
 	public:
 		%feature("compactdefaultargs") SetGlobal;
@@ -2977,6 +3077,11 @@ class Interface_GeneralLib {
 };
 
 
+%extend Interface_GeneralLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_GeneralModule;
 class Interface_GeneralModule : public MMgt_TShared {
 	public:
@@ -3217,6 +3322,11 @@ class Handle_Interface_GeneralModule : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_GeneralModule {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_GlobalNodeOfGeneralLib;
 class Interface_GlobalNodeOfGeneralLib : public Standard_Transient {
 	public:
@@ -3293,6 +3403,11 @@ class Handle_Interface_GlobalNodeOfGeneralLib : public Handle_Standard_Transient
     }
 };
 
+%extend Interface_GlobalNodeOfGeneralLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_GlobalNodeOfReaderLib;
 class Interface_GlobalNodeOfReaderLib : public Standard_Transient {
 	public:
@@ -3369,6 +3484,11 @@ class Handle_Interface_GlobalNodeOfReaderLib : public Handle_Standard_Transient 
     }
 };
 
+%extend Interface_GlobalNodeOfReaderLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_Graph;
 class Interface_Graph {
 	public:
@@ -3701,6 +3821,11 @@ class Interface_Graph {
 };
 
 
+%extend Interface_Graph {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_HArray1OfHAsciiString;
 class Interface_HArray1OfHAsciiString : public MMgt_TShared {
 	public:
@@ -3817,6 +3942,11 @@ class Handle_Interface_HArray1OfHAsciiString : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_HArray1OfHAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_HGraph;
 class Interface_HGraph : public MMgt_TShared {
 	public:
@@ -3935,6 +4065,11 @@ class Handle_Interface_HGraph : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_HGraph {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_HSequenceOfCheck;
 class Interface_HSequenceOfCheck : public MMgt_TShared {
 	public:
@@ -4119,6 +4254,11 @@ class Handle_Interface_HSequenceOfCheck : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_HSequenceOfCheck {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_IndexedMapNodeOfIndexedMapOfAsciiString;
 class Interface_IndexedMapNodeOfIndexedMapOfAsciiString : public TCollection_MapNode {
 	public:
@@ -4204,6 +4344,11 @@ class Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString : public Handle_T
     }
 };
 
+%extend Interface_IndexedMapNodeOfIndexedMapOfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_IndexedMapOfAsciiString;
 class Interface_IndexedMapOfAsciiString : public TCollection_BasicMap {
 	public:
@@ -4280,6 +4425,11 @@ class Interface_IndexedMapOfAsciiString : public TCollection_BasicMap {
 };
 
 
+%extend Interface_IndexedMapOfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_IntList;
 class Interface_IntList {
 	public:
@@ -4436,6 +4586,11 @@ class Interface_IntList {
 };
 
 
+%extend Interface_IntList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_IntVal;
 class Interface_IntVal : public MMgt_TShared {
 	public:
@@ -4509,6 +4664,11 @@ class Handle_Interface_IntVal : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_IntVal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_InterfaceModel;
 class Interface_InterfaceModel : public MMgt_TShared {
 	public:
@@ -5076,6 +5236,11 @@ class Handle_Interface_InterfaceModel : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_InterfaceModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_LineBuffer;
 class Interface_LineBuffer {
 	public:
@@ -5200,6 +5365,11 @@ class Interface_LineBuffer {
 };
 
 
+%extend Interface_LineBuffer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_MSG;
 class Interface_MSG {
 	public:
@@ -5471,6 +5641,11 @@ class Interface_MSG {
 };
 
 
+%extend Interface_MSG {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Interface_MapAsciiStringHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -5492,6 +5667,11 @@ class Interface_MapAsciiStringHasher {
 };
 
 
+%extend Interface_MapAsciiStringHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_NodeOfGeneralLib;
 class Interface_NodeOfGeneralLib : public MMgt_TShared {
 	public:
@@ -5566,6 +5746,11 @@ class Handle_Interface_NodeOfGeneralLib : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_NodeOfGeneralLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_NodeOfReaderLib;
 class Interface_NodeOfReaderLib : public MMgt_TShared {
 	public:
@@ -5640,6 +5825,11 @@ class Handle_Interface_NodeOfReaderLib : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_NodeOfReaderLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_ParamList;
 class Interface_ParamList : public MMgt_TShared {
 	public:
@@ -5748,6 +5938,11 @@ class Handle_Interface_ParamList : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_ParamList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_ParamSet;
 class Interface_ParamSet : public MMgt_TShared {
 	public:
@@ -5880,6 +6075,11 @@ class Handle_Interface_ParamSet : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_ParamSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_Protocol;
 class Interface_Protocol : public MMgt_TShared {
 	public:
@@ -6046,6 +6246,11 @@ class Handle_Interface_Protocol : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_Protocol {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Interface_ReaderLib {
 	public:
 		%feature("compactdefaultargs") SetGlobal;
@@ -6113,6 +6318,11 @@ class Interface_ReaderLib {
 };
 
 
+%extend Interface_ReaderLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_ReaderModule;
 class Interface_ReaderModule : public MMgt_TShared {
 	public:
@@ -6207,6 +6417,11 @@ class Handle_Interface_ReaderModule : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_ReaderModule {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_ReportEntity;
 class Interface_ReportEntity : public MMgt_TShared {
 	public:
@@ -6333,6 +6548,11 @@ class Handle_Interface_ReportEntity : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_ReportEntity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_SequenceNodeOfSequenceOfCheck;
 class Interface_SequenceNodeOfSequenceOfCheck : public TCollection_SeqNode {
 	public:
@@ -6399,6 +6619,11 @@ class Handle_Interface_SequenceNodeOfSequenceOfCheck : public Handle_TCollection
     }
 };
 
+%extend Interface_SequenceNodeOfSequenceOfCheck {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_SequenceOfCheck;
 class Interface_SequenceOfCheck : public TCollection_BaseSequence {
 	public:
@@ -6537,6 +6762,11 @@ class Interface_SequenceOfCheck : public TCollection_BaseSequence {
 };
 
 
+%extend Interface_SequenceOfCheck {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_ShareFlags;
 class Interface_ShareFlags {
 	public:
@@ -6623,6 +6853,11 @@ class Interface_ShareFlags {
 };
 
 
+%extend Interface_ShareFlags {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_ShareTool;
 class Interface_ShareTool {
 	public:
@@ -6765,6 +7000,11 @@ class Interface_ShareTool {
 };
 
 
+%extend Interface_ShareTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_SignLabel;
 class Interface_SignLabel : public MoniTool_SignText {
 	public:
@@ -6837,6 +7077,11 @@ class Handle_Interface_SignLabel : public Handle_MoniTool_SignText {
     }
 };
 
+%extend Interface_SignLabel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_SignType;
 class Interface_SignType : public MoniTool_SignText {
 	public:
@@ -6917,6 +7162,11 @@ class Handle_Interface_SignType : public Handle_MoniTool_SignText {
     }
 };
 
+%extend Interface_SignType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_TypedValue;
 class Interface_TypedValue : public MoniTool_TypedValue {
 	public:
@@ -7003,6 +7253,11 @@ class Handle_Interface_TypedValue : public Handle_MoniTool_TypedValue {
     }
 };
 
+%extend Interface_TypedValue {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_UndefinedContent;
 class Interface_UndefinedContent : public MMgt_TShared {
 	public:
@@ -7207,6 +7462,11 @@ class Handle_Interface_UndefinedContent : public Handle_MMgt_TShared {
     }
 };
 
+%extend Interface_UndefinedContent {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_CopyMap;
 class Interface_CopyMap : public Interface_CopyControl {
 	public:
@@ -7299,6 +7559,11 @@ class Handle_Interface_CopyMap : public Handle_Interface_CopyControl {
     }
 };
 
+%extend Interface_CopyMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_GraphContent;
 class Interface_GraphContent : public Interface_EntityIterator {
 	public:
@@ -7375,6 +7640,11 @@ class Interface_GraphContent : public Interface_EntityIterator {
 };
 
 
+%extend Interface_GraphContent {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Interface_Static;
 class Interface_Static : public Interface_TypedValue {
 	public:
@@ -7653,3 +7923,8 @@ class Handle_Interface_Static : public Handle_Interface_TypedValue {
     }
 };
 
+%extend Interface_Static {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

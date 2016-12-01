@@ -238,6 +238,11 @@ class Handle_StepBasic_Action : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Action {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ActionAssignment;
 class StepBasic_ActionAssignment : public MMgt_TShared {
 	public:
@@ -318,6 +323,11 @@ class Handle_StepBasic_ActionAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ActionAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ActionMethod;
 class StepBasic_ActionMethod : public MMgt_TShared {
 	public:
@@ -454,6 +464,11 @@ class Handle_StepBasic_ActionMethod : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ActionMethod {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ActionRequestAssignment;
 class StepBasic_ActionRequestAssignment : public MMgt_TShared {
 	public:
@@ -534,6 +549,11 @@ class Handle_StepBasic_ActionRequestAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ActionRequestAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ActionRequestSolution;
 class StepBasic_ActionRequestSolution : public MMgt_TShared {
 	public:
@@ -630,6 +650,11 @@ class Handle_StepBasic_ActionRequestSolution : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ActionRequestSolution {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Address;
 class StepBasic_Address : public MMgt_TShared {
 	public:
@@ -956,6 +981,11 @@ class Handle_StepBasic_Address : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Address {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ApplicationContext;
 class StepBasic_ApplicationContext : public MMgt_TShared {
 	public:
@@ -1030,6 +1060,11 @@ class Handle_StepBasic_ApplicationContext : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ApplicationContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ApplicationContextElement;
 class StepBasic_ApplicationContextElement : public MMgt_TShared {
 	public:
@@ -1116,6 +1151,11 @@ class Handle_StepBasic_ApplicationContextElement : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ApplicationContextElement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ApplicationProtocolDefinition;
 class StepBasic_ApplicationProtocolDefinition : public MMgt_TShared {
 	public:
@@ -1226,6 +1266,11 @@ class Handle_StepBasic_ApplicationProtocolDefinition : public Handle_MMgt_TShare
     }
 };
 
+%extend StepBasic_ApplicationProtocolDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Approval;
 class StepBasic_Approval : public MMgt_TShared {
 	public:
@@ -1312,6 +1357,11 @@ class Handle_StepBasic_Approval : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Approval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ApprovalAssignment;
 class StepBasic_ApprovalAssignment : public MMgt_TShared {
 	public:
@@ -1380,6 +1430,11 @@ class Handle_StepBasic_ApprovalAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ApprovalAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ApprovalDateTime;
 class StepBasic_ApprovalDateTime : public MMgt_TShared {
 	public:
@@ -1464,6 +1519,11 @@ class Handle_StepBasic_ApprovalDateTime : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ApprovalDateTime {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ApprovalPersonOrganization;
 class StepBasic_ApprovalPersonOrganization : public MMgt_TShared {
 	public:
@@ -1562,6 +1622,11 @@ class Handle_StepBasic_ApprovalPersonOrganization : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ApprovalPersonOrganization {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ApprovalRelationship;
 class StepBasic_ApprovalRelationship : public MMgt_TShared {
 	public:
@@ -1672,6 +1737,11 @@ class Handle_StepBasic_ApprovalRelationship : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ApprovalRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ApprovalRole;
 class StepBasic_ApprovalRole : public MMgt_TShared {
 	public:
@@ -1746,6 +1816,11 @@ class Handle_StepBasic_ApprovalRole : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ApprovalRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ApprovalStatus;
 class StepBasic_ApprovalStatus : public MMgt_TShared {
 	public:
@@ -1820,6 +1895,11 @@ class Handle_StepBasic_ApprovalStatus : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ApprovalStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Array1OfApproval;
 class StepBasic_Array1OfApproval {
 	public:
@@ -1902,6 +1982,11 @@ class StepBasic_Array1OfApproval {
 };
 
 
+%extend StepBasic_Array1OfApproval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Array1OfDerivedUnitElement;
 class StepBasic_Array1OfDerivedUnitElement {
 	public:
@@ -1984,6 +2069,11 @@ class StepBasic_Array1OfDerivedUnitElement {
 };
 
 
+%extend StepBasic_Array1OfDerivedUnitElement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Array1OfDocument;
 class StepBasic_Array1OfDocument {
 	public:
@@ -2066,6 +2156,11 @@ class StepBasic_Array1OfDocument {
 };
 
 
+%extend StepBasic_Array1OfDocument {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Array1OfNamedUnit;
 class StepBasic_Array1OfNamedUnit {
 	public:
@@ -2148,6 +2243,11 @@ class StepBasic_Array1OfNamedUnit {
 };
 
 
+%extend StepBasic_Array1OfNamedUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Array1OfOrganization;
 class StepBasic_Array1OfOrganization {
 	public:
@@ -2230,6 +2330,11 @@ class StepBasic_Array1OfOrganization {
 };
 
 
+%extend StepBasic_Array1OfOrganization {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Array1OfPerson;
 class StepBasic_Array1OfPerson {
 	public:
@@ -2312,6 +2417,11 @@ class StepBasic_Array1OfPerson {
 };
 
 
+%extend StepBasic_Array1OfPerson {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Array1OfProduct;
 class StepBasic_Array1OfProduct {
 	public:
@@ -2394,6 +2504,11 @@ class StepBasic_Array1OfProduct {
 };
 
 
+%extend StepBasic_Array1OfProduct {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Array1OfProductContext;
 class StepBasic_Array1OfProductContext {
 	public:
@@ -2476,6 +2591,11 @@ class StepBasic_Array1OfProductContext {
 };
 
 
+%extend StepBasic_Array1OfProductContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Array1OfProductDefinition;
 class StepBasic_Array1OfProductDefinition {
 	public:
@@ -2558,6 +2678,11 @@ class StepBasic_Array1OfProductDefinition {
 };
 
 
+%extend StepBasic_Array1OfProductDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Array1OfUncertaintyMeasureWithUnit;
 class StepBasic_Array1OfUncertaintyMeasureWithUnit {
 	public:
@@ -2640,6 +2765,11 @@ class StepBasic_Array1OfUncertaintyMeasureWithUnit {
 };
 
 
+%extend StepBasic_Array1OfUncertaintyMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Certification;
 class StepBasic_Certification : public MMgt_TShared {
 	public:
@@ -2752,6 +2882,11 @@ class Handle_StepBasic_Certification : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Certification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_CertificationAssignment;
 class StepBasic_CertificationAssignment : public MMgt_TShared {
 	public:
@@ -2832,6 +2967,11 @@ class Handle_StepBasic_CertificationAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_CertificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_CertificationType;
 class StepBasic_CertificationType : public MMgt_TShared {
 	public:
@@ -2912,6 +3052,11 @@ class Handle_StepBasic_CertificationType : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_CertificationType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_CharacterizedObject;
 class StepBasic_CharacterizedObject : public MMgt_TShared {
 	public:
@@ -3016,6 +3161,11 @@ class Handle_StepBasic_CharacterizedObject : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_CharacterizedObject {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Contract;
 class StepBasic_Contract : public MMgt_TShared {
 	public:
@@ -3128,6 +3278,11 @@ class Handle_StepBasic_Contract : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Contract {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ContractAssignment;
 class StepBasic_ContractAssignment : public MMgt_TShared {
 	public:
@@ -3208,6 +3363,11 @@ class Handle_StepBasic_ContractAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ContractAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ContractType;
 class StepBasic_ContractType : public MMgt_TShared {
 	public:
@@ -3288,6 +3448,11 @@ class Handle_StepBasic_ContractType : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ContractType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_CoordinatedUniversalTimeOffset;
 class StepBasic_CoordinatedUniversalTimeOffset : public MMgt_TShared {
 	public:
@@ -3396,6 +3561,11 @@ class Handle_StepBasic_CoordinatedUniversalTimeOffset : public Handle_MMgt_TShar
     }
 };
 
+%extend StepBasic_CoordinatedUniversalTimeOffset {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Date;
 class StepBasic_Date : public MMgt_TShared {
 	public:
@@ -3470,6 +3640,11 @@ class Handle_StepBasic_Date : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Date {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DateAndTime;
 class StepBasic_DateAndTime : public MMgt_TShared {
 	public:
@@ -3556,6 +3731,11 @@ class Handle_StepBasic_DateAndTime : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DateAndTime {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DateAndTimeAssignment;
 class StepBasic_DateAndTimeAssignment : public MMgt_TShared {
 	public:
@@ -3636,6 +3816,11 @@ class Handle_StepBasic_DateAndTimeAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DateAndTimeAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DateAssignment;
 class StepBasic_DateAssignment : public MMgt_TShared {
 	public:
@@ -3716,6 +3901,11 @@ class Handle_StepBasic_DateAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DateAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DateRole;
 class StepBasic_DateRole : public MMgt_TShared {
 	public:
@@ -3790,6 +3980,11 @@ class Handle_StepBasic_DateRole : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DateRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DateTimeRole;
 class StepBasic_DateTimeRole : public MMgt_TShared {
 	public:
@@ -3864,6 +4059,11 @@ class Handle_StepBasic_DateTimeRole : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DateTimeRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DateTimeSelect;
 class StepBasic_DateTimeSelect : public StepData_SelectType {
 	public:
@@ -3902,6 +4102,11 @@ class StepBasic_DateTimeSelect : public StepData_SelectType {
 };
 
 
+%extend StepBasic_DateTimeSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DerivedUnit;
 class StepBasic_DerivedUnit : public MMgt_TShared {
 	public:
@@ -3984,6 +4189,11 @@ class Handle_StepBasic_DerivedUnit : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DerivedUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DerivedUnitElement;
 class StepBasic_DerivedUnitElement : public MMgt_TShared {
 	public:
@@ -4068,6 +4278,11 @@ class Handle_StepBasic_DerivedUnitElement : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DerivedUnitElement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DimensionalExponents;
 class StepBasic_DimensionalExponents : public MMgt_TShared {
 	public:
@@ -4214,6 +4429,11 @@ class Handle_StepBasic_DimensionalExponents : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DimensionalExponents {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Document;
 class StepBasic_Document : public MMgt_TShared {
 	public:
@@ -4350,6 +4570,11 @@ class Handle_StepBasic_Document : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Document {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DocumentProductAssociation;
 class StepBasic_DocumentProductAssociation : public MMgt_TShared {
 	public:
@@ -4486,6 +4711,11 @@ class Handle_StepBasic_DocumentProductAssociation : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DocumentProductAssociation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DocumentReference;
 class StepBasic_DocumentReference : public MMgt_TShared {
 	public:
@@ -4566,6 +4796,11 @@ class Handle_StepBasic_DocumentReference : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DocumentReference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DocumentRelationship;
 class StepBasic_DocumentRelationship : public MMgt_TShared {
 	public:
@@ -4674,6 +4909,11 @@ class Handle_StepBasic_DocumentRelationship : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DocumentRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DocumentRepresentationType;
 class StepBasic_DocumentRepresentationType : public MMgt_TShared {
 	public:
@@ -4770,6 +5010,11 @@ class Handle_StepBasic_DocumentRepresentationType : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DocumentRepresentationType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DocumentType;
 class StepBasic_DocumentType : public MMgt_TShared {
 	public:
@@ -4842,6 +5087,11 @@ class Handle_StepBasic_DocumentType : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DocumentType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DocumentUsageConstraint;
 class StepBasic_DocumentUsageConstraint : public MMgt_TShared {
 	public:
@@ -4938,6 +5188,11 @@ class Handle_StepBasic_DocumentUsageConstraint : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_DocumentUsageConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Effectivity;
 class StepBasic_Effectivity : public MMgt_TShared {
 	public:
@@ -5010,6 +5265,11 @@ class Handle_StepBasic_Effectivity : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Effectivity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_EffectivityAssignment;
 class StepBasic_EffectivityAssignment : public MMgt_TShared {
 	public:
@@ -5090,6 +5350,11 @@ class Handle_StepBasic_EffectivityAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_EffectivityAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_EulerAngles;
 class StepBasic_EulerAngles : public MMgt_TShared {
 	public:
@@ -5170,6 +5435,11 @@ class Handle_StepBasic_EulerAngles : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_EulerAngles {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ExternalSource;
 class StepBasic_ExternalSource : public MMgt_TShared {
 	public:
@@ -5250,6 +5520,11 @@ class Handle_StepBasic_ExternalSource : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ExternalSource {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ExternallyDefinedItem;
 class StepBasic_ExternallyDefinedItem : public MMgt_TShared {
 	public:
@@ -5346,6 +5621,11 @@ class Handle_StepBasic_ExternallyDefinedItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ExternallyDefinedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_GeneralProperty;
 class StepBasic_GeneralProperty : public MMgt_TShared {
 	public:
@@ -5466,6 +5746,11 @@ class Handle_StepBasic_GeneralProperty : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_GeneralProperty {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Group;
 class StepBasic_Group : public MMgt_TShared {
 	public:
@@ -5570,6 +5855,11 @@ class Handle_StepBasic_Group : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Group {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_GroupAssignment;
 class StepBasic_GroupAssignment : public MMgt_TShared {
 	public:
@@ -5650,6 +5940,11 @@ class Handle_StepBasic_GroupAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_GroupAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_GroupRelationship;
 class StepBasic_GroupRelationship : public MMgt_TShared {
 	public:
@@ -5786,6 +6081,11 @@ class Handle_StepBasic_GroupRelationship : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_GroupRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_HArray1OfApproval;
 class StepBasic_HArray1OfApproval : public MMgt_TShared {
 	public:
@@ -5902,6 +6202,11 @@ class Handle_StepBasic_HArray1OfApproval : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_HArray1OfApproval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_HArray1OfDerivedUnitElement;
 class StepBasic_HArray1OfDerivedUnitElement : public MMgt_TShared {
 	public:
@@ -6018,6 +6323,11 @@ class Handle_StepBasic_HArray1OfDerivedUnitElement : public Handle_MMgt_TShared 
     }
 };
 
+%extend StepBasic_HArray1OfDerivedUnitElement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_HArray1OfDocument;
 class StepBasic_HArray1OfDocument : public MMgt_TShared {
 	public:
@@ -6134,6 +6444,11 @@ class Handle_StepBasic_HArray1OfDocument : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_HArray1OfDocument {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_HArray1OfNamedUnit;
 class StepBasic_HArray1OfNamedUnit : public MMgt_TShared {
 	public:
@@ -6250,6 +6565,11 @@ class Handle_StepBasic_HArray1OfNamedUnit : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_HArray1OfNamedUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_HArray1OfOrganization;
 class StepBasic_HArray1OfOrganization : public MMgt_TShared {
 	public:
@@ -6366,6 +6686,11 @@ class Handle_StepBasic_HArray1OfOrganization : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_HArray1OfOrganization {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_HArray1OfPerson;
 class StepBasic_HArray1OfPerson : public MMgt_TShared {
 	public:
@@ -6482,6 +6807,11 @@ class Handle_StepBasic_HArray1OfPerson : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_HArray1OfPerson {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_HArray1OfProduct;
 class StepBasic_HArray1OfProduct : public MMgt_TShared {
 	public:
@@ -6598,6 +6928,11 @@ class Handle_StepBasic_HArray1OfProduct : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_HArray1OfProduct {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_HArray1OfProductContext;
 class StepBasic_HArray1OfProductContext : public MMgt_TShared {
 	public:
@@ -6714,6 +7049,11 @@ class Handle_StepBasic_HArray1OfProductContext : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_HArray1OfProductContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_HArray1OfProductDefinition;
 class StepBasic_HArray1OfProductDefinition : public MMgt_TShared {
 	public:
@@ -6830,6 +7170,11 @@ class Handle_StepBasic_HArray1OfProductDefinition : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_HArray1OfProductDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_HArray1OfUncertaintyMeasureWithUnit;
 class StepBasic_HArray1OfUncertaintyMeasureWithUnit : public MMgt_TShared {
 	public:
@@ -6946,6 +7291,11 @@ class Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit : public Handle_MMgt_
     }
 };
 
+%extend StepBasic_HArray1OfUncertaintyMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_IdentificationAssignment;
 class StepBasic_IdentificationAssignment : public MMgt_TShared {
 	public:
@@ -7042,6 +7392,11 @@ class Handle_StepBasic_IdentificationAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_IdentificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_IdentificationRole;
 class StepBasic_IdentificationRole : public MMgt_TShared {
 	public:
@@ -7146,6 +7501,11 @@ class Handle_StepBasic_IdentificationRole : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_IdentificationRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_LocalTime;
 class StepBasic_LocalTime : public MMgt_TShared {
 	public:
@@ -7276,6 +7636,11 @@ class Handle_StepBasic_LocalTime : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_LocalTime {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_MeasureValueMember;
 class StepBasic_MeasureValueMember : public StepData_SelectReal {
 	public:
@@ -7346,6 +7711,11 @@ class Handle_StepBasic_MeasureValueMember : public Handle_StepData_SelectReal {
     }
 };
 
+%extend StepBasic_MeasureValueMember {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_MeasureWithUnit;
 class StepBasic_MeasureWithUnit : public MMgt_TShared {
 	public:
@@ -7442,6 +7812,11 @@ class Handle_StepBasic_MeasureWithUnit : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_MeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_NameAssignment;
 class StepBasic_NameAssignment : public MMgt_TShared {
 	public:
@@ -7522,6 +7897,11 @@ class Handle_StepBasic_NameAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_NameAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_NamedUnit;
 class StepBasic_NamedUnit : public MMgt_TShared {
 	public:
@@ -7596,6 +7976,11 @@ class Handle_StepBasic_NamedUnit : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_NamedUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ObjectRole;
 class StepBasic_ObjectRole : public MMgt_TShared {
 	public:
@@ -7700,6 +8085,11 @@ class Handle_StepBasic_ObjectRole : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ObjectRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Organization;
 class StepBasic_Organization : public MMgt_TShared {
 	public:
@@ -7808,6 +8198,11 @@ class Handle_StepBasic_Organization : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Organization {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_OrganizationAssignment;
 class StepBasic_OrganizationAssignment : public MMgt_TShared {
 	public:
@@ -7888,6 +8283,11 @@ class Handle_StepBasic_OrganizationAssignment : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_OrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_OrganizationRole;
 class StepBasic_OrganizationRole : public MMgt_TShared {
 	public:
@@ -7962,6 +8362,11 @@ class Handle_StepBasic_OrganizationRole : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_OrganizationRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Person;
 class StepBasic_Person : public MMgt_TShared {
 	public:
@@ -8176,6 +8581,11 @@ class Handle_StepBasic_Person : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Person {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_PersonAndOrganization;
 class StepBasic_PersonAndOrganization : public MMgt_TShared {
 	public:
@@ -8262,6 +8672,11 @@ class Handle_StepBasic_PersonAndOrganization : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_PersonAndOrganization {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_PersonAndOrganizationAssignment;
 class StepBasic_PersonAndOrganizationAssignment : public MMgt_TShared {
 	public:
@@ -8342,6 +8757,11 @@ class Handle_StepBasic_PersonAndOrganizationAssignment : public Handle_MMgt_TSha
     }
 };
 
+%extend StepBasic_PersonAndOrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_PersonAndOrganizationRole;
 class StepBasic_PersonAndOrganizationRole : public MMgt_TShared {
 	public:
@@ -8416,6 +8836,11 @@ class Handle_StepBasic_PersonAndOrganizationRole : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_PersonAndOrganizationRole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_PersonOrganizationSelect;
 class StepBasic_PersonOrganizationSelect : public StepData_SelectType {
 	public:
@@ -8454,6 +8879,11 @@ class StepBasic_PersonOrganizationSelect : public StepData_SelectType {
 };
 
 
+%extend StepBasic_PersonOrganizationSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Product;
 class StepBasic_Product : public MMgt_TShared {
 	public:
@@ -8574,6 +9004,11 @@ class Handle_StepBasic_Product : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_Product {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductCategory;
 class StepBasic_ProductCategory : public MMgt_TShared {
 	public:
@@ -8670,6 +9105,11 @@ class Handle_StepBasic_ProductCategory : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ProductCategory {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductCategoryRelationship;
 class StepBasic_ProductCategoryRelationship : public MMgt_TShared {
 	public:
@@ -8806,6 +9246,11 @@ class Handle_StepBasic_ProductCategoryRelationship : public Handle_MMgt_TShared 
     }
 };
 
+%extend StepBasic_ProductCategoryRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductDefinition;
 class StepBasic_ProductDefinition : public MMgt_TShared {
 	public:
@@ -8916,6 +9361,11 @@ class Handle_StepBasic_ProductDefinition : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ProductDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductDefinitionFormation;
 class StepBasic_ProductDefinitionFormation : public MMgt_TShared {
 	public:
@@ -9014,6 +9464,11 @@ class Handle_StepBasic_ProductDefinitionFormation : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_ProductDefinitionFormation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductDefinitionFormationRelationship;
 class StepBasic_ProductDefinitionFormationRelationship : public MMgt_TShared {
 	public:
@@ -9158,6 +9613,11 @@ class Handle_StepBasic_ProductDefinitionFormationRelationship : public Handle_MM
     }
 };
 
+%extend StepBasic_ProductDefinitionFormationRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductDefinitionRelationship;
 class StepBasic_ProductDefinitionRelationship : public MMgt_TShared {
 	public:
@@ -9310,6 +9770,11 @@ class Handle_StepBasic_ProductDefinitionRelationship : public Handle_MMgt_TShare
     }
 };
 
+%extend StepBasic_ProductDefinitionRelationship {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductOrFormationOrDefinition;
 class StepBasic_ProductOrFormationOrDefinition : public StepData_SelectType {
 	public:
@@ -9348,6 +9813,11 @@ class StepBasic_ProductOrFormationOrDefinition : public StepData_SelectType {
 };
 
 
+%extend StepBasic_ProductOrFormationOrDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_RoleAssociation;
 class StepBasic_RoleAssociation : public MMgt_TShared {
 	public:
@@ -9444,6 +9914,11 @@ class Handle_StepBasic_RoleAssociation : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_RoleAssociation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_RoleSelect;
 class StepBasic_RoleSelect : public StepData_SelectType {
 	public:
@@ -9530,6 +10005,11 @@ class StepBasic_RoleSelect : public StepData_SelectType {
 };
 
 
+%extend StepBasic_RoleSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SecurityClassification;
 class StepBasic_SecurityClassification : public MMgt_TShared {
 	public:
@@ -9628,6 +10108,11 @@ class Handle_StepBasic_SecurityClassification : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_SecurityClassification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SecurityClassificationAssignment;
 class StepBasic_SecurityClassificationAssignment : public MMgt_TShared {
 	public:
@@ -9696,6 +10181,11 @@ class Handle_StepBasic_SecurityClassificationAssignment : public Handle_MMgt_TSh
     }
 };
 
+%extend StepBasic_SecurityClassificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SecurityClassificationLevel;
 class StepBasic_SecurityClassificationLevel : public MMgt_TShared {
 	public:
@@ -9770,6 +10260,11 @@ class Handle_StepBasic_SecurityClassificationLevel : public Handle_MMgt_TShared 
     }
 };
 
+%extend StepBasic_SecurityClassificationLevel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SizeMember;
 class StepBasic_SizeMember : public StepData_SelectReal {
 	public:
@@ -9840,6 +10335,11 @@ class Handle_StepBasic_SizeMember : public Handle_StepData_SelectReal {
     }
 };
 
+%extend StepBasic_SizeMember {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SizeSelect;
 class StepBasic_SizeSelect : public StepData_SelectType {
 	public:
@@ -9886,6 +10386,11 @@ class StepBasic_SizeSelect : public StepData_SelectType {
 };
 
 
+%extend StepBasic_SizeSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SourceItem;
 class StepBasic_SourceItem : public StepData_SelectType {
 	public:
@@ -9916,6 +10421,11 @@ class StepBasic_SourceItem : public StepData_SelectType {
 };
 
 
+%extend StepBasic_SourceItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_Unit;
 class StepBasic_Unit : public StepData_SelectType {
 	public:
@@ -9948,6 +10458,11 @@ class StepBasic_Unit : public StepData_SelectType {
 };
 
 
+%extend StepBasic_Unit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_VersionedActionRequest;
 class StepBasic_VersionedActionRequest : public MMgt_TShared {
 	public:
@@ -10084,6 +10599,11 @@ class Handle_StepBasic_VersionedActionRequest : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepBasic_VersionedActionRequest {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_AreaUnit;
 class StepBasic_AreaUnit : public StepBasic_NamedUnit {
 	public:
@@ -10140,6 +10660,11 @@ class Handle_StepBasic_AreaUnit : public Handle_StepBasic_NamedUnit {
     }
 };
 
+%extend StepBasic_AreaUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_CalendarDate;
 class StepBasic_CalendarDate : public StepBasic_Date {
 	public:
@@ -10234,6 +10759,11 @@ class Handle_StepBasic_CalendarDate : public Handle_StepBasic_Date {
     }
 };
 
+%extend StepBasic_CalendarDate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ConversionBasedUnit;
 class StepBasic_ConversionBasedUnit : public StepBasic_NamedUnit {
 	public:
@@ -10328,6 +10858,11 @@ class Handle_StepBasic_ConversionBasedUnit : public Handle_StepBasic_NamedUnit {
     }
 };
 
+%extend StepBasic_ConversionBasedUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DigitalDocument;
 class StepBasic_DigitalDocument : public StepBasic_Document {
 	public:
@@ -10384,6 +10919,11 @@ class Handle_StepBasic_DigitalDocument : public Handle_StepBasic_Document {
     }
 };
 
+%extend StepBasic_DigitalDocument {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DocumentFile;
 class StepBasic_DocumentFile : public StepBasic_Document {
 	public:
@@ -10478,6 +11018,11 @@ class Handle_StepBasic_DocumentFile : public Handle_StepBasic_Document {
     }
 };
 
+%extend StepBasic_DocumentFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DocumentProductEquivalence;
 class StepBasic_DocumentProductEquivalence : public StepBasic_DocumentProductAssociation {
 	public:
@@ -10536,6 +11081,11 @@ class Handle_StepBasic_DocumentProductEquivalence : public Handle_StepBasic_Docu
     }
 };
 
+%extend StepBasic_DocumentProductEquivalence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ExternalIdentificationAssignment;
 class StepBasic_ExternalIdentificationAssignment : public StepBasic_IdentificationAssignment {
 	public:
@@ -10620,6 +11170,11 @@ class Handle_StepBasic_ExternalIdentificationAssignment : public Handle_StepBasi
     }
 };
 
+%extend StepBasic_ExternalIdentificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_LengthMeasureWithUnit;
 class StepBasic_LengthMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
@@ -10678,6 +11233,11 @@ class Handle_StepBasic_LengthMeasureWithUnit : public Handle_StepBasic_MeasureWi
     }
 };
 
+%extend StepBasic_LengthMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_LengthUnit;
 class StepBasic_LengthUnit : public StepBasic_NamedUnit {
 	public:
@@ -10736,6 +11296,11 @@ class Handle_StepBasic_LengthUnit : public Handle_StepBasic_NamedUnit {
     }
 };
 
+%extend StepBasic_LengthUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_MassMeasureWithUnit;
 class StepBasic_MassMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
@@ -10794,6 +11359,11 @@ class Handle_StepBasic_MassMeasureWithUnit : public Handle_StepBasic_MeasureWith
     }
 };
 
+%extend StepBasic_MassMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_MassUnit;
 class StepBasic_MassUnit : public StepBasic_NamedUnit {
 	public:
@@ -10852,6 +11422,11 @@ class Handle_StepBasic_MassUnit : public Handle_StepBasic_NamedUnit {
     }
 };
 
+%extend StepBasic_MassUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_OrdinalDate;
 class StepBasic_OrdinalDate : public StepBasic_Date {
 	public:
@@ -10934,6 +11509,11 @@ class Handle_StepBasic_OrdinalDate : public Handle_StepBasic_Date {
     }
 };
 
+%extend StepBasic_OrdinalDate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_OrganizationalAddress;
 class StepBasic_OrganizationalAddress : public StepBasic_Address {
 	public:
@@ -11130,6 +11710,11 @@ class Handle_StepBasic_OrganizationalAddress : public Handle_StepBasic_Address {
     }
 };
 
+%extend StepBasic_OrganizationalAddress {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_PersonalAddress;
 class StepBasic_PersonalAddress : public StepBasic_Address {
 	public:
@@ -11326,6 +11911,11 @@ class Handle_StepBasic_PersonalAddress : public Handle_StepBasic_Address {
     }
 };
 
+%extend StepBasic_PersonalAddress {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_PhysicallyModeledProductDefinition;
 class StepBasic_PhysicallyModeledProductDefinition : public StepBasic_ProductDefinition {
 	public:
@@ -11382,6 +11972,11 @@ class Handle_StepBasic_PhysicallyModeledProductDefinition : public Handle_StepBa
     }
 };
 
+%extend StepBasic_PhysicallyModeledProductDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_PlaneAngleMeasureWithUnit;
 class StepBasic_PlaneAngleMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
@@ -11440,6 +12035,11 @@ class Handle_StepBasic_PlaneAngleMeasureWithUnit : public Handle_StepBasic_Measu
     }
 };
 
+%extend StepBasic_PlaneAngleMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_PlaneAngleUnit;
 class StepBasic_PlaneAngleUnit : public StepBasic_NamedUnit {
 	public:
@@ -11498,6 +12098,11 @@ class Handle_StepBasic_PlaneAngleUnit : public Handle_StepBasic_NamedUnit {
     }
 };
 
+%extend StepBasic_PlaneAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductConceptContext;
 class StepBasic_ProductConceptContext : public StepBasic_ApplicationContextElement {
 	public:
@@ -11582,6 +12187,11 @@ class Handle_StepBasic_ProductConceptContext : public Handle_StepBasic_Applicati
     }
 };
 
+%extend StepBasic_ProductConceptContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductContext;
 class StepBasic_ProductContext : public StepBasic_ApplicationContextElement {
 	public:
@@ -11668,6 +12278,11 @@ class Handle_StepBasic_ProductContext : public Handle_StepBasic_ApplicationConte
     }
 };
 
+%extend StepBasic_ProductContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductDefinitionContext;
 class StepBasic_ProductDefinitionContext : public StepBasic_ApplicationContextElement {
 	public:
@@ -11754,6 +12369,11 @@ class Handle_StepBasic_ProductDefinitionContext : public Handle_StepBasic_Applic
     }
 };
 
+%extend StepBasic_ProductDefinitionContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductDefinitionEffectivity;
 class StepBasic_ProductDefinitionEffectivity : public StepBasic_Effectivity {
 	public:
@@ -11828,6 +12448,11 @@ class Handle_StepBasic_ProductDefinitionEffectivity : public Handle_StepBasic_Ef
     }
 };
 
+%extend StepBasic_ProductDefinitionEffectivity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductDefinitionFormationWithSpecifiedSource;
 class StepBasic_ProductDefinitionFormationWithSpecifiedSource : public StepBasic_ProductDefinitionFormation {
 	public:
@@ -11918,6 +12543,11 @@ class Handle_StepBasic_ProductDefinitionFormationWithSpecifiedSource : public Ha
     }
 };
 
+%extend StepBasic_ProductDefinitionFormationWithSpecifiedSource {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductDefinitionWithAssociatedDocuments;
 class StepBasic_ProductDefinitionWithAssociatedDocuments : public StepBasic_ProductDefinition {
 	public:
@@ -12016,6 +12646,11 @@ class Handle_StepBasic_ProductDefinitionWithAssociatedDocuments : public Handle_
     }
 };
 
+%extend StepBasic_ProductDefinitionWithAssociatedDocuments {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductRelatedProductCategory;
 class StepBasic_ProductRelatedProductCategory : public StepBasic_ProductCategory {
 	public:
@@ -12116,6 +12751,11 @@ class Handle_StepBasic_ProductRelatedProductCategory : public Handle_StepBasic_P
     }
 };
 
+%extend StepBasic_ProductRelatedProductCategory {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_RatioMeasureWithUnit;
 class StepBasic_RatioMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
@@ -12174,6 +12814,11 @@ class Handle_StepBasic_RatioMeasureWithUnit : public Handle_StepBasic_MeasureWit
     }
 };
 
+%extend StepBasic_RatioMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_RatioUnit;
 class StepBasic_RatioUnit : public StepBasic_NamedUnit {
 	public:
@@ -12232,6 +12877,11 @@ class Handle_StepBasic_RatioUnit : public Handle_StepBasic_NamedUnit {
     }
 };
 
+%extend StepBasic_RatioUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SiUnit;
 class StepBasic_SiUnit : public StepBasic_NamedUnit {
 	public:
@@ -12344,6 +12994,11 @@ class Handle_StepBasic_SiUnit : public Handle_StepBasic_NamedUnit {
     }
 };
 
+%extend StepBasic_SiUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SolidAngleMeasureWithUnit;
 class StepBasic_SolidAngleMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
@@ -12402,6 +13057,11 @@ class Handle_StepBasic_SolidAngleMeasureWithUnit : public Handle_StepBasic_Measu
     }
 };
 
+%extend StepBasic_SolidAngleMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SolidAngleUnit;
 class StepBasic_SolidAngleUnit : public StepBasic_NamedUnit {
 	public:
@@ -12460,6 +13120,11 @@ class Handle_StepBasic_SolidAngleUnit : public Handle_StepBasic_NamedUnit {
     }
 };
 
+%extend StepBasic_SolidAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ThermodynamicTemperatureUnit;
 class StepBasic_ThermodynamicTemperatureUnit : public StepBasic_NamedUnit {
 	public:
@@ -12518,6 +13183,11 @@ class Handle_StepBasic_ThermodynamicTemperatureUnit : public Handle_StepBasic_Na
     }
 };
 
+%extend StepBasic_ThermodynamicTemperatureUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_TimeMeasureWithUnit;
 class StepBasic_TimeMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
@@ -12576,6 +13246,11 @@ class Handle_StepBasic_TimeMeasureWithUnit : public Handle_StepBasic_MeasureWith
     }
 };
 
+%extend StepBasic_TimeMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_TimeUnit;
 class StepBasic_TimeUnit : public StepBasic_NamedUnit {
 	public:
@@ -12634,6 +13309,11 @@ class Handle_StepBasic_TimeUnit : public Handle_StepBasic_NamedUnit {
     }
 };
 
+%extend StepBasic_TimeUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_UncertaintyMeasureWithUnit;
 class StepBasic_UncertaintyMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
@@ -12732,6 +13412,11 @@ class Handle_StepBasic_UncertaintyMeasureWithUnit : public Handle_StepBasic_Meas
     }
 };
 
+%extend StepBasic_UncertaintyMeasureWithUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_VolumeUnit;
 class StepBasic_VolumeUnit : public StepBasic_NamedUnit {
 	public:
@@ -12788,6 +13473,11 @@ class Handle_StepBasic_VolumeUnit : public Handle_StepBasic_NamedUnit {
     }
 };
 
+%extend StepBasic_VolumeUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_WeekOfYearAndDayDate;
 class StepBasic_WeekOfYearAndDayDate : public StepBasic_Date {
 	public:
@@ -12892,6 +13582,11 @@ class Handle_StepBasic_WeekOfYearAndDayDate : public Handle_StepBasic_Date {
     }
 };
 
+%extend StepBasic_WeekOfYearAndDayDate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ConversionBasedUnitAndAreaUnit;
 class StepBasic_ConversionBasedUnitAndAreaUnit : public StepBasic_ConversionBasedUnit {
 	public:
@@ -12960,6 +13655,11 @@ class Handle_StepBasic_ConversionBasedUnitAndAreaUnit : public Handle_StepBasic_
     }
 };
 
+%extend StepBasic_ConversionBasedUnitAndAreaUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ConversionBasedUnitAndLengthUnit;
 class StepBasic_ConversionBasedUnitAndLengthUnit : public StepBasic_ConversionBasedUnit {
 	public:
@@ -13044,6 +13744,11 @@ class Handle_StepBasic_ConversionBasedUnitAndLengthUnit : public Handle_StepBasi
     }
 };
 
+%extend StepBasic_ConversionBasedUnitAndLengthUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ConversionBasedUnitAndMassUnit;
 class StepBasic_ConversionBasedUnitAndMassUnit : public StepBasic_ConversionBasedUnit {
 	public:
@@ -13128,6 +13833,11 @@ class Handle_StepBasic_ConversionBasedUnitAndMassUnit : public Handle_StepBasic_
     }
 };
 
+%extend StepBasic_ConversionBasedUnitAndMassUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ConversionBasedUnitAndPlaneAngleUnit;
 class StepBasic_ConversionBasedUnitAndPlaneAngleUnit : public StepBasic_ConversionBasedUnit {
 	public:
@@ -13212,6 +13922,11 @@ class Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit : public Handle_Step
     }
 };
 
+%extend StepBasic_ConversionBasedUnitAndPlaneAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ConversionBasedUnitAndRatioUnit;
 class StepBasic_ConversionBasedUnitAndRatioUnit : public StepBasic_ConversionBasedUnit {
 	public:
@@ -13296,6 +14011,11 @@ class Handle_StepBasic_ConversionBasedUnitAndRatioUnit : public Handle_StepBasic
     }
 };
 
+%extend StepBasic_ConversionBasedUnitAndRatioUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ConversionBasedUnitAndSolidAngleUnit;
 class StepBasic_ConversionBasedUnitAndSolidAngleUnit : public StepBasic_ConversionBasedUnit {
 	public:
@@ -13380,6 +14100,11 @@ class Handle_StepBasic_ConversionBasedUnitAndSolidAngleUnit : public Handle_Step
     }
 };
 
+%extend StepBasic_ConversionBasedUnitAndSolidAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ConversionBasedUnitAndTimeUnit;
 class StepBasic_ConversionBasedUnitAndTimeUnit : public StepBasic_ConversionBasedUnit {
 	public:
@@ -13464,6 +14189,11 @@ class Handle_StepBasic_ConversionBasedUnitAndTimeUnit : public Handle_StepBasic_
     }
 };
 
+%extend StepBasic_ConversionBasedUnitAndTimeUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ConversionBasedUnitAndVolumeUnit;
 class StepBasic_ConversionBasedUnitAndVolumeUnit : public StepBasic_ConversionBasedUnit {
 	public:
@@ -13532,6 +14262,11 @@ class Handle_StepBasic_ConversionBasedUnitAndVolumeUnit : public Handle_StepBasi
     }
 };
 
+%extend StepBasic_ConversionBasedUnitAndVolumeUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_DesignContext;
 class StepBasic_DesignContext : public StepBasic_ProductDefinitionContext {
 	public:
@@ -13588,6 +14323,11 @@ class Handle_StepBasic_DesignContext : public Handle_StepBasic_ProductDefinition
     }
 };
 
+%extend StepBasic_DesignContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_MechanicalContext;
 class StepBasic_MechanicalContext : public StepBasic_ProductContext {
 	public:
@@ -13646,6 +14386,11 @@ class Handle_StepBasic_MechanicalContext : public Handle_StepBasic_ProductContex
     }
 };
 
+%extend StepBasic_MechanicalContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_ProductType;
 class StepBasic_ProductType : public StepBasic_ProductRelatedProductCategory {
 	public:
@@ -13704,6 +14449,11 @@ class Handle_StepBasic_ProductType : public Handle_StepBasic_ProductRelatedProdu
     }
 };
 
+%extend StepBasic_ProductType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SiUnitAndAreaUnit;
 class StepBasic_SiUnitAndAreaUnit : public StepBasic_SiUnit {
 	public:
@@ -13782,6 +14532,11 @@ class Handle_StepBasic_SiUnitAndAreaUnit : public Handle_StepBasic_SiUnit {
     }
 };
 
+%extend StepBasic_SiUnitAndAreaUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SiUnitAndLengthUnit;
 class StepBasic_SiUnitAndLengthUnit : public StepBasic_SiUnit {
 	public:
@@ -13866,6 +14621,11 @@ class Handle_StepBasic_SiUnitAndLengthUnit : public Handle_StepBasic_SiUnit {
     }
 };
 
+%extend StepBasic_SiUnitAndLengthUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SiUnitAndMassUnit;
 class StepBasic_SiUnitAndMassUnit : public StepBasic_SiUnit {
 	public:
@@ -13950,6 +14710,11 @@ class Handle_StepBasic_SiUnitAndMassUnit : public Handle_StepBasic_SiUnit {
     }
 };
 
+%extend StepBasic_SiUnitAndMassUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SiUnitAndPlaneAngleUnit;
 class StepBasic_SiUnitAndPlaneAngleUnit : public StepBasic_SiUnit {
 	public:
@@ -14034,6 +14799,11 @@ class Handle_StepBasic_SiUnitAndPlaneAngleUnit : public Handle_StepBasic_SiUnit 
     }
 };
 
+%extend StepBasic_SiUnitAndPlaneAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SiUnitAndRatioUnit;
 class StepBasic_SiUnitAndRatioUnit : public StepBasic_SiUnit {
 	public:
@@ -14118,6 +14888,11 @@ class Handle_StepBasic_SiUnitAndRatioUnit : public Handle_StepBasic_SiUnit {
     }
 };
 
+%extend StepBasic_SiUnitAndRatioUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SiUnitAndSolidAngleUnit;
 class StepBasic_SiUnitAndSolidAngleUnit : public StepBasic_SiUnit {
 	public:
@@ -14202,6 +14977,11 @@ class Handle_StepBasic_SiUnitAndSolidAngleUnit : public Handle_StepBasic_SiUnit 
     }
 };
 
+%extend StepBasic_SiUnitAndSolidAngleUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SiUnitAndThermodynamicTemperatureUnit;
 class StepBasic_SiUnitAndThermodynamicTemperatureUnit : public StepBasic_SiUnit {
 	public:
@@ -14286,6 +15066,11 @@ class Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit : public Handle_Ste
     }
 };
 
+%extend StepBasic_SiUnitAndThermodynamicTemperatureUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SiUnitAndTimeUnit;
 class StepBasic_SiUnitAndTimeUnit : public StepBasic_SiUnit {
 	public:
@@ -14370,6 +15155,11 @@ class Handle_StepBasic_SiUnitAndTimeUnit : public Handle_StepBasic_SiUnit {
     }
 };
 
+%extend StepBasic_SiUnitAndTimeUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepBasic_SiUnitAndVolumeUnit;
 class StepBasic_SiUnitAndVolumeUnit : public StepBasic_SiUnit {
 	public:
@@ -14448,3 +15238,8 @@ class Handle_StepBasic_SiUnitAndVolumeUnit : public Handle_StepBasic_SiUnit {
     }
 };
 
+%extend StepBasic_SiUnitAndVolumeUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

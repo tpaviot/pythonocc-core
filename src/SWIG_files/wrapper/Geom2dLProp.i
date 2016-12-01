@@ -146,6 +146,11 @@ class Geom2dLProp_CLProps2d {
 };
 
 
+%extend Geom2dLProp_CLProps2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dLProp_CurAndInf2d;
 class Geom2dLProp_CurAndInf2d : public LProp_CurAndInf {
 	public:
@@ -188,6 +193,11 @@ class Geom2dLProp_CurAndInf2d : public LProp_CurAndInf {
 };
 
 
+%extend Geom2dLProp_CurAndInf2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Geom2dLProp_Curve2dTool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -277,6 +287,11 @@ class Geom2dLProp_Curve2dTool {
 };
 
 
+%extend Geom2dLProp_Curve2dTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dLProp_FuncCurExt;
 class Geom2dLProp_FuncCurExt : public math_FunctionWithDerivative {
 	public:
@@ -331,6 +346,11 @@ class Geom2dLProp_FuncCurExt : public math_FunctionWithDerivative {
 };
 
 
+%extend Geom2dLProp_FuncCurExt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dLProp_FuncCurNul;
 class Geom2dLProp_FuncCurNul : public math_FunctionWithDerivative {
 	public:
@@ -375,6 +395,11 @@ class Geom2dLProp_FuncCurNul : public math_FunctionWithDerivative {
 };
 
 
+%extend Geom2dLProp_FuncCurNul {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dLProp_NumericCurInf2d;
 class Geom2dLProp_NumericCurInf2d {
 	public:
@@ -439,3 +464,8 @@ class Geom2dLProp_NumericCurInf2d {
 };
 
 
+%extend Geom2dLProp_NumericCurInf2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

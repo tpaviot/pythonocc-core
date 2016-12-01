@@ -362,6 +362,11 @@ class CPnts_AbscissaPoint {
 };
 
 
+%extend CPnts_AbscissaPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor CPnts_MyGaussFunction;
 class CPnts_MyGaussFunction : public math_Function {
 	public:
@@ -390,6 +395,11 @@ class CPnts_MyGaussFunction : public math_Function {
 };
 
 
+%extend CPnts_MyGaussFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor CPnts_MyRootFunction;
 class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 	public:
@@ -464,6 +474,11 @@ class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 };
 
 
+%extend CPnts_MyRootFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor CPnts_UniformDeflection;
 class CPnts_UniformDeflection {
 	public:
@@ -634,3 +649,8 @@ class CPnts_UniformDeflection {
 };
 
 
+%extend CPnts_UniformDeflection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

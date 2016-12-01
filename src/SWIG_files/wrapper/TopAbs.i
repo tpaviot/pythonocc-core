@@ -144,3 +144,8 @@ class TopAbs {
 };
 
 
+%extend TopAbs {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

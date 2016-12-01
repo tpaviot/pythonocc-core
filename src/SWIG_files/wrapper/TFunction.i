@@ -146,6 +146,11 @@ class TFunction_Array1OfDataMapOfGUIDDriver {
 };
 
 
+%extend TFunction_Array1OfDataMapOfGUIDDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_DataMapIteratorOfDataMapOfGUIDDriver;
 class TFunction_DataMapIteratorOfDataMapOfGUIDDriver : public TCollection_BasicMapIterator {
 	public:
@@ -176,6 +181,11 @@ class TFunction_DataMapIteratorOfDataMapOfGUIDDriver : public TCollection_BasicM
 };
 
 
+%extend TFunction_DataMapIteratorOfDataMapOfGUIDDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel;
 class TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel : public TCollection_BasicMapIterator {
 	public:
@@ -206,6 +216,11 @@ class TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel : public TCollection_
 };
 
 
+%extend TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_DataMapNodeOfDataMapOfGUIDDriver;
 class TFunction_DataMapNodeOfDataMapOfGUIDDriver : public TCollection_MapNode {
 	public:
@@ -276,6 +291,11 @@ class Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver : public Handle_TCollect
     }
 };
 
+%extend TFunction_DataMapNodeOfDataMapOfGUIDDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_DataMapNodeOfDataMapOfLabelListOfLabel;
 class TFunction_DataMapNodeOfDataMapOfLabelListOfLabel : public TCollection_MapNode {
 	public:
@@ -346,6 +366,11 @@ class Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel : public Handle_TC
     }
 };
 
+%extend TFunction_DataMapNodeOfDataMapOfLabelListOfLabel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_DataMapOfGUIDDriver;
 class TFunction_DataMapOfGUIDDriver : public TCollection_BasicMap {
 	public:
@@ -424,6 +449,11 @@ class TFunction_DataMapOfGUIDDriver : public TCollection_BasicMap {
 };
 
 
+%extend TFunction_DataMapOfGUIDDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_DataMapOfLabelListOfLabel;
 class TFunction_DataMapOfLabelListOfLabel : public TCollection_BasicMap {
 	public:
@@ -502,6 +532,11 @@ class TFunction_DataMapOfLabelListOfLabel : public TCollection_BasicMap {
 };
 
 
+%extend TFunction_DataMapOfLabelListOfLabel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel;
 class TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel : public TCollection_BasicMapIterator {
 	public:
@@ -532,6 +567,11 @@ class TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel : public TCollection_
 };
 
 
+%extend TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel;
 class TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel : public TCollection_MapNode {
 	public:
@@ -617,6 +657,11 @@ class Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel : public Handle_TC
     }
 };
 
+%extend TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_DoubleMapOfIntegerLabel;
 class TFunction_DoubleMapOfIntegerLabel : public TCollection_BasicMap {
 	public:
@@ -703,6 +748,11 @@ class TFunction_DoubleMapOfIntegerLabel : public TCollection_BasicMap {
 };
 
 
+%extend TFunction_DoubleMapOfIntegerLabel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_Driver;
 class TFunction_Driver : public MMgt_TShared {
 	public:
@@ -809,6 +859,11 @@ class Handle_TFunction_Driver : public Handle_MMgt_TShared {
     }
 };
 
+%extend TFunction_Driver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_DriverTable;
 class TFunction_DriverTable : public MMgt_TShared {
 	public:
@@ -931,6 +986,11 @@ class Handle_TFunction_DriverTable : public Handle_MMgt_TShared {
     }
 };
 
+%extend TFunction_DriverTable {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_Function;
 class TFunction_Function : public TDF_Attribute {
 	public:
@@ -1081,6 +1141,11 @@ class Handle_TFunction_Function : public Handle_TDF_Attribute {
     }
 };
 
+%extend TFunction_Function {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_GraphNode;
 class TFunction_GraphNode : public TDF_Attribute {
 	public:
@@ -1289,6 +1354,11 @@ class Handle_TFunction_GraphNode : public Handle_TDF_Attribute {
     }
 };
 
+%extend TFunction_GraphNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_HArray1OfDataMapOfGUIDDriver;
 class TFunction_HArray1OfDataMapOfGUIDDriver : public MMgt_TShared {
 	public:
@@ -1405,6 +1475,11 @@ class Handle_TFunction_HArray1OfDataMapOfGUIDDriver : public Handle_MMgt_TShared
     }
 };
 
+%extend TFunction_HArray1OfDataMapOfGUIDDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TFunction_IFunction {
 	public:
 		%feature("compactdefaultargs") NewFunction;
@@ -1540,6 +1615,11 @@ class TFunction_IFunction {
 };
 
 
+%extend TFunction_IFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_Iterator;
 class TFunction_Iterator {
 	public:
@@ -1632,6 +1712,11 @@ class TFunction_Iterator {
         };
 
 
+%extend TFunction_Iterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_Logbook;
 class TFunction_Logbook {
 	public:
@@ -1734,6 +1819,11 @@ class TFunction_Logbook {
         };
 
 
+%extend TFunction_Logbook {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TFunction_Scope;
 class TFunction_Scope : public TDF_Attribute {
 	public:
@@ -1924,3 +2014,8 @@ class Handle_TFunction_Scope : public Handle_TDF_Attribute {
     }
 };
 
+%extend TFunction_Scope {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

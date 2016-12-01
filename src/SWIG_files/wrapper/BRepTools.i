@@ -364,6 +364,11 @@ class BRepTools {
 };
 
 
+%extend BRepTools {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
 class BRepTools_DataMapIteratorOfMapOfVertexPnt2d : public TCollection_BasicMapIterator {
 	public:
@@ -394,6 +399,11 @@ class BRepTools_DataMapIteratorOfMapOfVertexPnt2d : public TCollection_BasicMapI
 };
 
 
+%extend BRepTools_DataMapIteratorOfMapOfVertexPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_DataMapNodeOfMapOfVertexPnt2d;
 class BRepTools_DataMapNodeOfMapOfVertexPnt2d : public TCollection_MapNode {
 	public:
@@ -464,6 +474,11 @@ class Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d : public Handle_TCollection
     }
 };
 
+%extend BRepTools_DataMapNodeOfMapOfVertexPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_MapOfVertexPnt2d;
 class BRepTools_MapOfVertexPnt2d : public TCollection_BasicMap {
 	public:
@@ -542,6 +557,11 @@ class BRepTools_MapOfVertexPnt2d : public TCollection_BasicMap {
 };
 
 
+%extend BRepTools_MapOfVertexPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_Modification;
 class BRepTools_Modification : public MMgt_TShared {
 	public:
@@ -688,6 +708,11 @@ class Handle_BRepTools_Modification : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepTools_Modification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_Modifier;
 class BRepTools_Modifier {
 	public:
@@ -750,6 +775,11 @@ class BRepTools_Modifier {
 };
 
 
+%extend BRepTools_Modifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_Quilt;
 class BRepTools_Quilt {
 	public:
@@ -810,6 +840,11 @@ class BRepTools_Quilt {
 };
 
 
+%extend BRepTools_Quilt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_ReShape;
 class BRepTools_ReShape : public MMgt_TShared {
 	public:
@@ -972,6 +1007,11 @@ class Handle_BRepTools_ReShape : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepTools_ReShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_ShapeSet;
 class BRepTools_ShapeSet : public TopTools_ShapeSet {
 	public:
@@ -1158,6 +1198,11 @@ class BRepTools_ShapeSet : public TopTools_ShapeSet {
         };
 
 
+%extend BRepTools_ShapeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_Substitution;
 class BRepTools_Substitution {
 	public:
@@ -1208,6 +1253,11 @@ class BRepTools_Substitution {
 };
 
 
+%extend BRepTools_Substitution {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_WireExplorer;
 class BRepTools_WireExplorer {
 	public:
@@ -1292,6 +1342,11 @@ class BRepTools_WireExplorer {
 };
 
 
+%extend BRepTools_WireExplorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_GTrsfModification;
 class BRepTools_GTrsfModification : public BRepTools_Modification {
 	public:
@@ -1450,6 +1505,11 @@ class Handle_BRepTools_GTrsfModification : public Handle_BRepTools_Modification 
     }
 };
 
+%extend BRepTools_GTrsfModification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_NurbsConvertModification;
 class BRepTools_NurbsConvertModification : public BRepTools_Modification {
 	public:
@@ -1600,6 +1660,11 @@ class Handle_BRepTools_NurbsConvertModification : public Handle_BRepTools_Modifi
     }
 };
 
+%extend BRepTools_NurbsConvertModification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepTools_TrsfModification;
 class BRepTools_TrsfModification : public BRepTools_Modification {
 	public:
@@ -1758,3 +1823,8 @@ class Handle_BRepTools_TrsfModification : public Handle_BRepTools_Modification {
     }
 };
 
+%extend BRepTools_TrsfModification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

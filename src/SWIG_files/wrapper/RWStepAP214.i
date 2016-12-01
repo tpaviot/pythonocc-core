@@ -68,6 +68,11 @@ class RWStepAP214 {
 };
 
 
+%extend RWStepAP214 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_GeneralModule;
 class RWStepAP214_GeneralModule : public StepData_GeneralModule {
 	public:
@@ -196,6 +201,11 @@ class Handle_RWStepAP214_GeneralModule : public Handle_StepData_GeneralModule {
     }
 };
 
+%extend RWStepAP214_GeneralModule {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAppliedApprovalAssignment;
 class RWStepAP214_RWAppliedApprovalAssignment {
 	public:
@@ -234,6 +244,11 @@ class RWStepAP214_RWAppliedApprovalAssignment {
 };
 
 
+%extend RWStepAP214_RWAppliedApprovalAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAppliedDateAndTimeAssignment;
 class RWStepAP214_RWAppliedDateAndTimeAssignment {
 	public:
@@ -272,6 +287,11 @@ class RWStepAP214_RWAppliedDateAndTimeAssignment {
 };
 
 
+%extend RWStepAP214_RWAppliedDateAndTimeAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAppliedDateAssignment;
 class RWStepAP214_RWAppliedDateAssignment {
 	public:
@@ -310,6 +330,11 @@ class RWStepAP214_RWAppliedDateAssignment {
 };
 
 
+%extend RWStepAP214_RWAppliedDateAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAppliedDocumentReference;
 class RWStepAP214_RWAppliedDocumentReference {
 	public:
@@ -348,6 +373,11 @@ class RWStepAP214_RWAppliedDocumentReference {
 };
 
 
+%extend RWStepAP214_RWAppliedDocumentReference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAppliedExternalIdentificationAssignment;
 class RWStepAP214_RWAppliedExternalIdentificationAssignment {
 	public:
@@ -394,6 +424,11 @@ class RWStepAP214_RWAppliedExternalIdentificationAssignment {
 };
 
 
+%extend RWStepAP214_RWAppliedExternalIdentificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAppliedGroupAssignment;
 class RWStepAP214_RWAppliedGroupAssignment {
 	public:
@@ -440,6 +475,11 @@ class RWStepAP214_RWAppliedGroupAssignment {
 };
 
 
+%extend RWStepAP214_RWAppliedGroupAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAppliedOrganizationAssignment;
 class RWStepAP214_RWAppliedOrganizationAssignment {
 	public:
@@ -478,6 +518,11 @@ class RWStepAP214_RWAppliedOrganizationAssignment {
 };
 
 
+%extend RWStepAP214_RWAppliedOrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAppliedPersonAndOrganizationAssignment;
 class RWStepAP214_RWAppliedPersonAndOrganizationAssignment {
 	public:
@@ -516,6 +561,11 @@ class RWStepAP214_RWAppliedPersonAndOrganizationAssignment {
 };
 
 
+%extend RWStepAP214_RWAppliedPersonAndOrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAppliedPresentedItem;
 class RWStepAP214_RWAppliedPresentedItem {
 	public:
@@ -554,6 +604,11 @@ class RWStepAP214_RWAppliedPresentedItem {
 };
 
 
+%extend RWStepAP214_RWAppliedPresentedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAppliedSecurityClassificationAssignment;
 class RWStepAP214_RWAppliedSecurityClassificationAssignment {
 	public:
@@ -592,6 +647,11 @@ class RWStepAP214_RWAppliedSecurityClassificationAssignment {
 };
 
 
+%extend RWStepAP214_RWAppliedSecurityClassificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignActualDateAndTimeAssignment;
 class RWStepAP214_RWAutoDesignActualDateAndTimeAssignment {
 	public:
@@ -630,6 +690,11 @@ class RWStepAP214_RWAutoDesignActualDateAndTimeAssignment {
 };
 
 
+%extend RWStepAP214_RWAutoDesignActualDateAndTimeAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignActualDateAssignment;
 class RWStepAP214_RWAutoDesignActualDateAssignment {
 	public:
@@ -668,6 +733,11 @@ class RWStepAP214_RWAutoDesignActualDateAssignment {
 };
 
 
+%extend RWStepAP214_RWAutoDesignActualDateAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignApprovalAssignment;
 class RWStepAP214_RWAutoDesignApprovalAssignment {
 	public:
@@ -706,6 +776,11 @@ class RWStepAP214_RWAutoDesignApprovalAssignment {
 };
 
 
+%extend RWStepAP214_RWAutoDesignApprovalAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignDateAndPersonAssignment;
 class RWStepAP214_RWAutoDesignDateAndPersonAssignment {
 	public:
@@ -744,6 +819,11 @@ class RWStepAP214_RWAutoDesignDateAndPersonAssignment {
 };
 
 
+%extend RWStepAP214_RWAutoDesignDateAndPersonAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignDocumentReference;
 class RWStepAP214_RWAutoDesignDocumentReference {
 	public:
@@ -782,6 +862,11 @@ class RWStepAP214_RWAutoDesignDocumentReference {
 };
 
 
+%extend RWStepAP214_RWAutoDesignDocumentReference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignGroupAssignment;
 class RWStepAP214_RWAutoDesignGroupAssignment {
 	public:
@@ -820,6 +905,11 @@ class RWStepAP214_RWAutoDesignGroupAssignment {
 };
 
 
+%extend RWStepAP214_RWAutoDesignGroupAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment;
 class RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment {
 	public:
@@ -858,6 +948,11 @@ class RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment {
 };
 
 
+%extend RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignNominalDateAssignment;
 class RWStepAP214_RWAutoDesignNominalDateAssignment {
 	public:
@@ -896,6 +991,11 @@ class RWStepAP214_RWAutoDesignNominalDateAssignment {
 };
 
 
+%extend RWStepAP214_RWAutoDesignNominalDateAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignOrganizationAssignment;
 class RWStepAP214_RWAutoDesignOrganizationAssignment {
 	public:
@@ -934,6 +1034,11 @@ class RWStepAP214_RWAutoDesignOrganizationAssignment {
 };
 
 
+%extend RWStepAP214_RWAutoDesignOrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment;
 class RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment {
 	public:
@@ -972,6 +1077,11 @@ class RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment {
 };
 
 
+%extend RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignPresentedItem;
 class RWStepAP214_RWAutoDesignPresentedItem {
 	public:
@@ -1010,6 +1120,11 @@ class RWStepAP214_RWAutoDesignPresentedItem {
 };
 
 
+%extend RWStepAP214_RWAutoDesignPresentedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWAutoDesignSecurityClassificationAssignment;
 class RWStepAP214_RWAutoDesignSecurityClassificationAssignment {
 	public:
@@ -1048,6 +1163,11 @@ class RWStepAP214_RWAutoDesignSecurityClassificationAssignment {
 };
 
 
+%extend RWStepAP214_RWAutoDesignSecurityClassificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWClass;
 class RWStepAP214_RWClass {
 	public:
@@ -1094,6 +1214,11 @@ class RWStepAP214_RWClass {
 };
 
 
+%extend RWStepAP214_RWClass {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWExternallyDefinedClass;
 class RWStepAP214_RWExternallyDefinedClass {
 	public:
@@ -1140,6 +1265,11 @@ class RWStepAP214_RWExternallyDefinedClass {
 };
 
 
+%extend RWStepAP214_RWExternallyDefinedClass {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWExternallyDefinedGeneralProperty;
 class RWStepAP214_RWExternallyDefinedGeneralProperty {
 	public:
@@ -1186,6 +1316,11 @@ class RWStepAP214_RWExternallyDefinedGeneralProperty {
 };
 
 
+%extend RWStepAP214_RWExternallyDefinedGeneralProperty {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_RWRepItemGroup;
 class RWStepAP214_RWRepItemGroup {
 	public:
@@ -1232,6 +1367,11 @@ class RWStepAP214_RWRepItemGroup {
 };
 
 
+%extend RWStepAP214_RWRepItemGroup {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP214_ReadWriteModule;
 class RWStepAP214_ReadWriteModule : public StepData_ReadWriteModule {
 	public:
@@ -1352,3 +1492,8 @@ class Handle_RWStepAP214_ReadWriteModule : public Handle_StepData_ReadWriteModul
     }
 };
 
+%extend RWStepAP214_ReadWriteModule {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

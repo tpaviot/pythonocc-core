@@ -173,6 +173,11 @@ class ChFiKPart_ComputeData {
 };
 
 
+%extend ChFiKPart_ComputeData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiKPart_DataMapIteratorOfRstMap;
 class ChFiKPart_DataMapIteratorOfRstMap : public TCollection_BasicMapIterator {
 	public:
@@ -203,6 +208,11 @@ class ChFiKPart_DataMapIteratorOfRstMap : public TCollection_BasicMapIterator {
 };
 
 
+%extend ChFiKPart_DataMapIteratorOfRstMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiKPart_DataMapNodeOfRstMap;
 class ChFiKPart_DataMapNodeOfRstMap : public TCollection_MapNode {
 	public:
@@ -282,6 +292,11 @@ class Handle_ChFiKPart_DataMapNodeOfRstMap : public Handle_TCollection_MapNode {
     }
 };
 
+%extend ChFiKPart_DataMapNodeOfRstMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFiKPart_RstMap;
 class ChFiKPart_RstMap : public TCollection_BasicMap {
 	public:
@@ -360,3 +375,8 @@ class ChFiKPart_RstMap : public TCollection_BasicMap {
 };
 
 
+%extend ChFiKPart_RstMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

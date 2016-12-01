@@ -269,6 +269,11 @@ class BRepExtrema_DistShapeShape {
 };
 
 
+%extend BRepExtrema_DistShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepExtrema_DistanceSS;
 class BRepExtrema_DistanceSS {
 	public:
@@ -357,6 +362,11 @@ class BRepExtrema_DistanceSS {
 };
 
 
+%extend BRepExtrema_DistanceSS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepExtrema_ExtCC;
 class BRepExtrema_ExtCC {
 	public:
@@ -471,6 +481,11 @@ class BRepExtrema_ExtCC {
 };
 
 
+%extend BRepExtrema_ExtCC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepExtrema_ExtCF;
 class BRepExtrema_ExtCF {
 	public:
@@ -571,6 +586,11 @@ class BRepExtrema_ExtCF {
 };
 
 
+%extend BRepExtrema_ExtCF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepExtrema_ExtFF;
 class BRepExtrema_ExtFF {
 	public:
@@ -673,6 +693,11 @@ class BRepExtrema_ExtFF {
 };
 
 
+%extend BRepExtrema_ExtFF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepExtrema_ExtPC;
 class BRepExtrema_ExtPC {
 	public:
@@ -765,6 +790,11 @@ class BRepExtrema_ExtPC {
 };
 
 
+%extend BRepExtrema_ExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepExtrema_ExtPF;
 class BRepExtrema_ExtPF {
 	public:
@@ -861,6 +891,11 @@ class BRepExtrema_ExtPF {
 };
 
 
+%extend BRepExtrema_ExtPF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepExtrema_Poly;
 class BRepExtrema_Poly {
 	public:
@@ -883,6 +918,11 @@ class BRepExtrema_Poly {
 };
 
 
+%extend BRepExtrema_Poly {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepExtrema_SolutionElem;
 class BRepExtrema_SolutionElem {
 	public:
@@ -997,3 +1037,8 @@ class BRepExtrema_SolutionElem {
 };
 
 
+%extend BRepExtrema_SolutionElem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

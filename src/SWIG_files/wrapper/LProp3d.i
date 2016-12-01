@@ -146,6 +146,11 @@ class LProp3d_CLProps {
 };
 
 
+%extend LProp3d_CLProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class LProp3d_CurveTool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -235,6 +240,11 @@ class LProp3d_CurveTool {
 };
 
 
+%extend LProp3d_CurveTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LProp3d_SLProps;
 class LProp3d_SLProps {
 	public:
@@ -371,6 +381,11 @@ class LProp3d_SLProps {
 };
 
 
+%extend LProp3d_SLProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class LProp3d_SurfaceTool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -470,3 +485,8 @@ class LProp3d_SurfaceTool {
 };
 
 
+%extend LProp3d_SurfaceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

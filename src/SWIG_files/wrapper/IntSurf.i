@@ -93,6 +93,11 @@ class IntSurf {
 };
 
 
+%extend IntSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_Couple;
 class IntSurf_Couple {
 	public:
@@ -123,6 +128,11 @@ class IntSurf_Couple {
 };
 
 
+%extend IntSurf_Couple {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_InteriorPoint;
 class IntSurf_InteriorPoint {
 	public:
@@ -201,6 +211,11 @@ class IntSurf_InteriorPoint {
 };
 
 
+%extend IntSurf_InteriorPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntSurf_InteriorPointTool {
 	public:
 		%feature("compactdefaultargs") Value3d;
@@ -242,6 +257,11 @@ class IntSurf_InteriorPointTool {
 };
 
 
+%extend IntSurf_InteriorPointTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_LineOn2S;
 class IntSurf_LineOn2S : public MMgt_TShared {
 	public:
@@ -378,6 +398,11 @@ class Handle_IntSurf_LineOn2S : public Handle_MMgt_TShared {
     }
 };
 
+%extend IntSurf_LineOn2S {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_ListIteratorOfListOfPntOn2S;
 class IntSurf_ListIteratorOfListOfPntOn2S {
 	public:
@@ -412,6 +437,11 @@ class IntSurf_ListIteratorOfListOfPntOn2S {
 };
 
 
+%extend IntSurf_ListIteratorOfListOfPntOn2S {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_ListNodeOfListOfPntOn2S;
 class IntSurf_ListNodeOfListOfPntOn2S : public TCollection_MapNode {
 	public:
@@ -476,6 +506,11 @@ class Handle_IntSurf_ListNodeOfListOfPntOn2S : public Handle_TCollection_MapNode
     }
 };
 
+%extend IntSurf_ListNodeOfListOfPntOn2S {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_ListOfPntOn2S;
 class IntSurf_ListOfPntOn2S {
 	public:
@@ -606,6 +641,11 @@ class IntSurf_ListOfPntOn2S {
 };
 
 
+%extend IntSurf_ListOfPntOn2S {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_PathPoint;
 class IntSurf_PathPoint {
 	public:
@@ -706,6 +746,11 @@ class IntSurf_PathPoint {
 };
 
 
+%extend IntSurf_PathPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntSurf_PathPointTool {
 	public:
 		%feature("compactdefaultargs") Value3d;
@@ -785,6 +830,11 @@ class IntSurf_PathPointTool {
 };
 
 
+%extend IntSurf_PathPointTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_PntOn2S;
 class IntSurf_PntOn2S {
 	public:
@@ -901,6 +951,11 @@ class IntSurf_PntOn2S {
 };
 
 
+%extend IntSurf_PntOn2S {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_Quadric;
 class IntSurf_Quadric {
 	public:
@@ -1075,6 +1130,11 @@ class IntSurf_Quadric {
 };
 
 
+%extend IntSurf_Quadric {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntSurf_QuadricTool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -1136,6 +1196,11 @@ class IntSurf_QuadricTool {
 };
 
 
+%extend IntSurf_QuadricTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_SequenceNodeOfSequenceOfCouple;
 class IntSurf_SequenceNodeOfSequenceOfCouple : public TCollection_SeqNode {
 	public:
@@ -1202,6 +1267,11 @@ class Handle_IntSurf_SequenceNodeOfSequenceOfCouple : public Handle_TCollection_
     }
 };
 
+%extend IntSurf_SequenceNodeOfSequenceOfCouple {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_SequenceNodeOfSequenceOfInteriorPoint;
 class IntSurf_SequenceNodeOfSequenceOfInteriorPoint : public TCollection_SeqNode {
 	public:
@@ -1268,6 +1338,11 @@ class Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint : public Handle_TColl
     }
 };
 
+%extend IntSurf_SequenceNodeOfSequenceOfInteriorPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_SequenceNodeOfSequenceOfPathPoint;
 class IntSurf_SequenceNodeOfSequenceOfPathPoint : public TCollection_SeqNode {
 	public:
@@ -1334,6 +1409,11 @@ class Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint : public Handle_TCollecti
     }
 };
 
+%extend IntSurf_SequenceNodeOfSequenceOfPathPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_SequenceOfCouple;
 class IntSurf_SequenceOfCouple : public TCollection_BaseSequence {
 	public:
@@ -1472,6 +1552,11 @@ class IntSurf_SequenceOfCouple : public TCollection_BaseSequence {
 };
 
 
+%extend IntSurf_SequenceOfCouple {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_SequenceOfInteriorPoint;
 class IntSurf_SequenceOfInteriorPoint : public TCollection_BaseSequence {
 	public:
@@ -1610,6 +1695,11 @@ class IntSurf_SequenceOfInteriorPoint : public TCollection_BaseSequence {
 };
 
 
+%extend IntSurf_SequenceOfInteriorPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_SequenceOfPathPoint;
 class IntSurf_SequenceOfPathPoint : public TCollection_BaseSequence {
 	public:
@@ -1748,6 +1838,11 @@ class IntSurf_SequenceOfPathPoint : public TCollection_BaseSequence {
 };
 
 
+%extend IntSurf_SequenceOfPathPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntSurf_Transition;
 class IntSurf_Transition {
 	public:
@@ -1834,3 +1929,8 @@ class IntSurf_Transition {
 };
 
 
+%extend IntSurf_Transition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

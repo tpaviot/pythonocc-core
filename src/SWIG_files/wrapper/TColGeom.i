@@ -138,6 +138,11 @@ class TColGeom_Array1OfBSplineCurve {
 };
 
 
+%extend TColGeom_Array1OfBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_Array1OfBezierCurve;
 class TColGeom_Array1OfBezierCurve {
 	public:
@@ -220,6 +225,11 @@ class TColGeom_Array1OfBezierCurve {
 };
 
 
+%extend TColGeom_Array1OfBezierCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_Array1OfCurve;
 class TColGeom_Array1OfCurve {
 	public:
@@ -302,6 +312,11 @@ class TColGeom_Array1OfCurve {
 };
 
 
+%extend TColGeom_Array1OfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_Array1OfSurface;
 class TColGeom_Array1OfSurface {
 	public:
@@ -384,6 +399,11 @@ class TColGeom_Array1OfSurface {
 };
 
 
+%extend TColGeom_Array1OfSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_Array2OfBezierSurface;
 class TColGeom_Array2OfBezierSurface {
 	public:
@@ -488,6 +508,11 @@ class TColGeom_Array2OfBezierSurface {
 };
 
 
+%extend TColGeom_Array2OfBezierSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_Array2OfSurface;
 class TColGeom_Array2OfSurface {
 	public:
@@ -592,6 +617,11 @@ class TColGeom_Array2OfSurface {
 };
 
 
+%extend TColGeom_Array2OfSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_HArray1OfBSplineCurve;
 class TColGeom_HArray1OfBSplineCurve : public MMgt_TShared {
 	public:
@@ -708,6 +738,11 @@ class Handle_TColGeom_HArray1OfBSplineCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom_HArray1OfBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_HArray1OfBezierCurve;
 class TColGeom_HArray1OfBezierCurve : public MMgt_TShared {
 	public:
@@ -824,6 +859,11 @@ class Handle_TColGeom_HArray1OfBezierCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom_HArray1OfBezierCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_HArray1OfCurve;
 class TColGeom_HArray1OfCurve : public MMgt_TShared {
 	public:
@@ -940,6 +980,11 @@ class Handle_TColGeom_HArray1OfCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom_HArray1OfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_HArray1OfSurface;
 class TColGeom_HArray1OfSurface : public MMgt_TShared {
 	public:
@@ -1056,6 +1101,11 @@ class Handle_TColGeom_HArray1OfSurface : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom_HArray1OfSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_HArray2OfSurface;
 class TColGeom_HArray2OfSurface : public MMgt_TShared {
 	public:
@@ -1198,6 +1248,11 @@ class Handle_TColGeom_HArray2OfSurface : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom_HArray2OfSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_HSequenceOfBoundedCurve;
 class TColGeom_HSequenceOfBoundedCurve : public MMgt_TShared {
 	public:
@@ -1382,6 +1437,11 @@ class Handle_TColGeom_HSequenceOfBoundedCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom_HSequenceOfBoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_HSequenceOfCurve;
 class TColGeom_HSequenceOfCurve : public MMgt_TShared {
 	public:
@@ -1566,6 +1626,11 @@ class Handle_TColGeom_HSequenceOfCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom_HSequenceOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_SequenceNodeOfSequenceOfBoundedCurve;
 class TColGeom_SequenceNodeOfSequenceOfBoundedCurve : public TCollection_SeqNode {
 	public:
@@ -1632,6 +1697,11 @@ class Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve : public Handle_TColl
     }
 };
 
+%extend TColGeom_SequenceNodeOfSequenceOfBoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_SequenceNodeOfSequenceOfCurve;
 class TColGeom_SequenceNodeOfSequenceOfCurve : public TCollection_SeqNode {
 	public:
@@ -1698,6 +1768,11 @@ class Handle_TColGeom_SequenceNodeOfSequenceOfCurve : public Handle_TCollection_
     }
 };
 
+%extend TColGeom_SequenceNodeOfSequenceOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_SequenceNodeOfSequenceOfSurface;
 class TColGeom_SequenceNodeOfSequenceOfSurface : public TCollection_SeqNode {
 	public:
@@ -1764,6 +1839,11 @@ class Handle_TColGeom_SequenceNodeOfSequenceOfSurface : public Handle_TCollectio
     }
 };
 
+%extend TColGeom_SequenceNodeOfSequenceOfSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_SequenceOfBoundedCurve;
 class TColGeom_SequenceOfBoundedCurve : public TCollection_BaseSequence {
 	public:
@@ -1902,6 +1982,11 @@ class TColGeom_SequenceOfBoundedCurve : public TCollection_BaseSequence {
 };
 
 
+%extend TColGeom_SequenceOfBoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_SequenceOfCurve;
 class TColGeom_SequenceOfCurve : public TCollection_BaseSequence {
 	public:
@@ -2040,6 +2125,11 @@ class TColGeom_SequenceOfCurve : public TCollection_BaseSequence {
 };
 
 
+%extend TColGeom_SequenceOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom_SequenceOfSurface;
 class TColGeom_SequenceOfSurface : public TCollection_BaseSequence {
 	public:
@@ -2178,3 +2268,8 @@ class TColGeom_SequenceOfSurface : public TCollection_BaseSequence {
 };
 
 
+%extend TColGeom_SequenceOfSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

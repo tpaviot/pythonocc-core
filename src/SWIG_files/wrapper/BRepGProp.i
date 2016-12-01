@@ -158,6 +158,11 @@ class BRepGProp {
 };
 
 
+%extend BRepGProp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepGProp_Cinert;
 class BRepGProp_Cinert : public GProp_GProps {
 	public:
@@ -188,6 +193,11 @@ class BRepGProp_Cinert : public GProp_GProps {
 };
 
 
+%extend BRepGProp_Cinert {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepGProp_Domain;
 class BRepGProp_Domain {
 	public:
@@ -240,6 +250,11 @@ class BRepGProp_Domain {
 };
 
 
+%extend BRepGProp_Domain {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BRepGProp_EdgeTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -315,6 +330,11 @@ class BRepGProp_EdgeTool {
 };
 
 
+%extend BRepGProp_EdgeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepGProp_Face;
 class BRepGProp_Face {
 	public:
@@ -511,6 +531,11 @@ class BRepGProp_Face {
 };
 
 
+%extend BRepGProp_Face {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepGProp_Sinert;
 class BRepGProp_Sinert : public GProp_GProps {
 	public:
@@ -607,6 +632,11 @@ class BRepGProp_Sinert : public GProp_GProps {
 };
 
 
+%extend BRepGProp_Sinert {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepGProp_TFunction;
 class BRepGProp_TFunction : public math_Function {
 	public:
@@ -687,6 +717,11 @@ class BRepGProp_TFunction : public math_Function {
 };
 
 
+%extend BRepGProp_TFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepGProp_UFunction;
 class BRepGProp_UFunction : public math_Function {
 	public:
@@ -733,6 +768,11 @@ class BRepGProp_UFunction : public math_Function {
 };
 
 
+%extend BRepGProp_UFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepGProp_Vinert;
 class BRepGProp_Vinert : public GProp_GProps {
 	public:
@@ -1027,6 +1067,11 @@ class BRepGProp_Vinert : public GProp_GProps {
 };
 
 
+%extend BRepGProp_Vinert {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepGProp_VinertGK;
 class BRepGProp_VinertGK : public GProp_GProps {
 	public:
@@ -1261,3 +1306,8 @@ class BRepGProp_VinertGK : public GProp_GProps {
 };
 
 
+%extend BRepGProp_VinertGK {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

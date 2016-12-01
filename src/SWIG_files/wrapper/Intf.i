@@ -99,6 +99,11 @@ class Intf {
 };
 
 
+%extend Intf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intf_Array1OfLin;
 class Intf_Array1OfLin {
 	public:
@@ -181,6 +186,11 @@ class Intf_Array1OfLin {
 };
 
 
+%extend Intf_Array1OfLin {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intf_Interference;
 class Intf_Interference {
 	public:
@@ -265,6 +275,11 @@ class Intf_Interference {
 };
 
 
+%extend Intf_Interference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intf_Polygon2d;
 class Intf_Polygon2d {
 	public:
@@ -307,6 +322,11 @@ class Intf_Polygon2d {
 };
 
 
+%extend Intf_Polygon2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Intf_SectionLine {
 	public:
 		%feature("compactdefaultargs") NumberOfPoints;
@@ -434,6 +454,11 @@ class Intf_SectionLine {
 };
 
 
+%extend Intf_SectionLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Intf_SectionPoint {
 	public:
 		%feature("compactdefaultargs") Pnt;
@@ -619,6 +644,11 @@ class Intf_SectionPoint {
 };
 
 
+%extend Intf_SectionPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intf_SeqOfSectionLine;
 class Intf_SeqOfSectionLine : public TCollection_BaseSequence {
 	public:
@@ -757,6 +787,11 @@ class Intf_SeqOfSectionLine : public TCollection_BaseSequence {
 };
 
 
+%extend Intf_SeqOfSectionLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intf_SeqOfSectionPoint;
 class Intf_SeqOfSectionPoint : public TCollection_BaseSequence {
 	public:
@@ -895,6 +930,11 @@ class Intf_SeqOfSectionPoint : public TCollection_BaseSequence {
 };
 
 
+%extend Intf_SeqOfSectionPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intf_SeqOfTangentZone;
 class Intf_SeqOfTangentZone : public TCollection_BaseSequence {
 	public:
@@ -1033,6 +1073,11 @@ class Intf_SeqOfTangentZone : public TCollection_BaseSequence {
 };
 
 
+%extend Intf_SeqOfTangentZone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intf_SequenceNodeOfSeqOfSectionLine;
 class Intf_SequenceNodeOfSeqOfSectionLine : public TCollection_SeqNode {
 	public:
@@ -1099,6 +1144,11 @@ class Handle_Intf_SequenceNodeOfSeqOfSectionLine : public Handle_TCollection_Seq
     }
 };
 
+%extend Intf_SequenceNodeOfSeqOfSectionLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intf_SequenceNodeOfSeqOfSectionPoint;
 class Intf_SequenceNodeOfSeqOfSectionPoint : public TCollection_SeqNode {
 	public:
@@ -1165,6 +1215,11 @@ class Handle_Intf_SequenceNodeOfSeqOfSectionPoint : public Handle_TCollection_Se
     }
 };
 
+%extend Intf_SequenceNodeOfSeqOfSectionPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intf_SequenceNodeOfSeqOfTangentZone;
 class Intf_SequenceNodeOfSeqOfTangentZone : public TCollection_SeqNode {
 	public:
@@ -1231,6 +1286,11 @@ class Handle_Intf_SequenceNodeOfSeqOfTangentZone : public Handle_TCollection_Seq
     }
 };
 
+%extend Intf_SequenceNodeOfSeqOfTangentZone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Intf_TangentZone {
 	public:
 		%feature("compactdefaultargs") NumberOfPoints;
@@ -1416,6 +1476,11 @@ class Intf_TangentZone {
 };
 
 
+%extend Intf_TangentZone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intf_Tool;
 class Intf_Tool {
 	public:
@@ -1502,6 +1567,11 @@ class Intf_Tool {
 };
 
 
+%extend Intf_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intf_InterferencePolygon2d;
 class Intf_InterferencePolygon2d : public Intf_Interference {
 	public:
@@ -1558,3 +1628,8 @@ class Intf_InterferencePolygon2d : public Intf_Interference {
 };
 
 
+%extend Intf_InterferencePolygon2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

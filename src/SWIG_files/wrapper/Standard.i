@@ -166,6 +166,11 @@ class Standard {
 };
 
 
+%extend Standard {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_ErrorHandler;
 class Standard_ErrorHandler {
 	public:
@@ -222,6 +227,11 @@ class Standard_ErrorHandler {
 };
 
 
+%extend Standard_ErrorHandler {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_ErrorHandlerCallback;
 class Standard_ErrorHandlerCallback {
 	public:
@@ -234,6 +244,11 @@ class Standard_ErrorHandlerCallback {
 };
 
 
+%extend Standard_ErrorHandlerCallback {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_GUID;
 class Standard_GUID {
 	public:
@@ -524,6 +539,11 @@ class Standard_GUID {
 };
 
 
+%extend Standard_GUID {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_MMgrRoot;
 class Standard_MMgrRoot {
 	public:
@@ -564,6 +584,11 @@ class Standard_MMgrRoot {
 };
 
 
+%extend Standard_MMgrRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_Static_Assert<true>;
 class Standard_Static_Assert<true> {
 	public:
@@ -574,6 +599,11 @@ class Standard_Static_Assert<true> {
 };
 
 
+%extend Standard_Static_Assert<true> {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Standard_Storable {
 	public:
 		%feature("compactdefaultargs") Delete;
@@ -627,6 +657,11 @@ class Standard_Storable {
 };
 
 
+%extend Standard_Storable {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_Transient;
 class Standard_Transient {
 	public:
@@ -803,6 +838,11 @@ class Handle_Standard_Transient {
     }
 };
 
+%extend Standard_Transient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_Failure;
 class Standard_Failure : public Standard_Transient {
 	public:
@@ -921,6 +961,11 @@ class Handle_Standard_Failure : public Handle_Standard_Transient {
     }
 };
 
+%extend Standard_Failure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_MMgrOpt;
 class Standard_MMgrOpt : public Standard_MMgrRoot {
 	public:
@@ -977,6 +1022,11 @@ class Standard_MMgrOpt : public Standard_MMgrRoot {
 };
 
 
+%extend Standard_MMgrOpt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_MMgrRaw;
 class Standard_MMgrRaw : public Standard_MMgrRoot {
 	public:
@@ -1017,6 +1067,11 @@ class Standard_MMgrRaw : public Standard_MMgrRoot {
 };
 
 
+%extend Standard_MMgrRaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_MMgrTBBalloc;
 class Standard_MMgrTBBalloc : public Standard_MMgrRoot {
 	public:
@@ -1057,6 +1112,11 @@ class Standard_MMgrTBBalloc : public Standard_MMgrRoot {
 };
 
 
+%extend Standard_MMgrTBBalloc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_Mutex;
 class Standard_Mutex : public Standard_ErrorHandlerCallback {
 	public:
@@ -1087,6 +1147,11 @@ class Standard_Mutex : public Standard_ErrorHandlerCallback {
 };
 
 
+%extend Standard_Mutex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Standard_Type;
 class Standard_Type : public Standard_Transient {
 	public:
@@ -1269,3 +1334,8 @@ class Handle_Standard_Type : public Handle_Standard_Transient {
     }
 };
 
+%extend Standard_Type {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

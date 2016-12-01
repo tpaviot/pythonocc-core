@@ -120,6 +120,11 @@ class math {
 };
 
 
+%extend math {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_Array1OfValueAndWeight;
 class math_Array1OfValueAndWeight {
 	public:
@@ -202,6 +207,11 @@ class math_Array1OfValueAndWeight {
 };
 
 
+%extend math_Array1OfValueAndWeight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_BFGS;
 class math_BFGS {
 	public:
@@ -314,6 +324,11 @@ class math_BFGS {
         };
 
 
+%extend math_BFGS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_BissecNewton;
 class math_BissecNewton {
 	public:
@@ -376,6 +391,11 @@ class math_BissecNewton {
         };
 
 
+%extend math_BissecNewton {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_BracketMinimum;
 class math_BracketMinimum {
 	public:
@@ -462,6 +482,11 @@ class math_BracketMinimum {
         };
 
 
+%extend math_BracketMinimum {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_BracketedRoot;
 class math_BracketedRoot {
 	public:
@@ -518,6 +543,11 @@ class math_BracketedRoot {
         };
 
 
+%extend math_BracketedRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_BrentMinimum;
 class math_BrentMinimum {
 	public:
@@ -624,6 +654,11 @@ class math_BrentMinimum {
         };
 
 
+%extend math_BrentMinimum {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_BullardGenerator;
 class math_BullardGenerator {
 	public:
@@ -650,6 +685,11 @@ class math_BullardGenerator {
 };
 
 
+%extend math_BullardGenerator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_CompareOfValueAndWeight;
 class math_CompareOfValueAndWeight {
 	public:
@@ -690,6 +730,11 @@ class math_CompareOfValueAndWeight {
 };
 
 
+%extend math_CompareOfValueAndWeight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_ComputeGaussPointsAndWeights;
 class math_ComputeGaussPointsAndWeights {
 	public:
@@ -714,6 +759,11 @@ class math_ComputeGaussPointsAndWeights {
 };
 
 
+%extend math_ComputeGaussPointsAndWeights {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_ComputeKronrodPointsAndWeights;
 class math_ComputeKronrodPointsAndWeights {
 	public:
@@ -738,6 +788,11 @@ class math_ComputeKronrodPointsAndWeights {
 };
 
 
+%extend math_ComputeKronrodPointsAndWeights {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_Crout;
 class math_Crout {
 	public:
@@ -798,6 +853,11 @@ class math_Crout {
         };
 
 
+%extend math_Crout {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_DirectPolynomialRoots;
 class math_DirectPolynomialRoots {
 	public:
@@ -890,6 +950,11 @@ class math_DirectPolynomialRoots {
         };
 
 
+%extend math_DirectPolynomialRoots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_DoubleTab;
 class math_DoubleTab {
 	public:
@@ -964,6 +1029,11 @@ class math_DoubleTab {
 };
 
 
+%extend math_DoubleTab {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_EigenValuesSearcher;
 class math_EigenValuesSearcher {
 	public:
@@ -1006,6 +1076,11 @@ class math_EigenValuesSearcher {
 };
 
 
+%extend math_EigenValuesSearcher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_FRPR;
 class math_FRPR {
 	public:
@@ -1118,6 +1193,11 @@ class math_FRPR {
         };
 
 
+%extend math_FRPR {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_Function;
 class math_Function {
 	public:
@@ -1140,6 +1220,11 @@ class math_Function {
 };
 
 
+%extend math_Function {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_FunctionAllRoots;
 class math_FunctionAllRoots {
 	public:
@@ -1228,6 +1313,11 @@ class math_FunctionAllRoots {
         };
 
 
+%extend math_FunctionAllRoots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_FunctionRoot;
 class math_FunctionRoot {
 	public:
@@ -1304,6 +1394,11 @@ class math_FunctionRoot {
         };
 
 
+%extend math_FunctionRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_FunctionRoots;
 class math_FunctionRoots {
 	public:
@@ -1374,6 +1469,11 @@ class math_FunctionRoots {
         };
 
 
+%extend math_FunctionRoots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_FunctionSample;
 class math_FunctionSample {
 	public:
@@ -1414,6 +1514,11 @@ class math_FunctionSample {
 };
 
 
+%extend math_FunctionSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_FunctionSet;
 class math_FunctionSet {
 	public:
@@ -1452,6 +1557,11 @@ class math_FunctionSet {
 };
 
 
+%extend math_FunctionSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_FunctionSetRoot;
 class math_FunctionSetRoot {
 	public:
@@ -1622,6 +1732,11 @@ class math_FunctionSetRoot {
 };
 
 
+%extend math_FunctionSetRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_Gauss;
 class math_Gauss {
 	public:
@@ -1684,6 +1799,11 @@ class math_Gauss {
         };
 
 
+%extend math_Gauss {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_GaussLeastSquare;
 class math_GaussLeastSquare {
 	public:
@@ -1724,6 +1844,11 @@ class math_GaussLeastSquare {
         };
 
 
+%extend math_GaussLeastSquare {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_GaussMultipleIntegration;
 class math_GaussMultipleIntegration {
 	public:
@@ -1764,6 +1889,11 @@ class math_GaussMultipleIntegration {
         };
 
 
+%extend math_GaussMultipleIntegration {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_GaussSetIntegration;
 class math_GaussSetIntegration {
 	public:
@@ -1804,6 +1934,11 @@ class math_GaussSetIntegration {
         };
 
 
+%extend math_GaussSetIntegration {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_GaussSingleIntegration;
 class math_GaussSingleIntegration {
 	public:
@@ -1864,6 +1999,11 @@ class math_GaussSingleIntegration {
         };
 
 
+%extend math_GaussSingleIntegration {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_GlobOptMin;
 class math_GlobOptMin {
 	public:
@@ -1952,6 +2092,11 @@ class math_GlobOptMin {
 };
 
 
+%extend math_GlobOptMin {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_Householder;
 class math_Householder {
 	public:
@@ -2032,6 +2177,11 @@ class math_Householder {
         };
 
 
+%extend math_Householder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_IntegerRandom;
 class math_IntegerRandom {
 	public:
@@ -2060,6 +2210,11 @@ class math_IntegerRandom {
 };
 
 
+%extend math_IntegerRandom {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_IntegerVector;
 class math_IntegerVector {
 	public:
@@ -2368,6 +2523,11 @@ class math_IntegerVector {
         };
 
 
+%extend math_IntegerVector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_Jacobi;
 class math_Jacobi {
 	public:
@@ -2426,6 +2586,11 @@ class math_Jacobi {
         };
 
 
+%extend math_Jacobi {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_KronrodSingleIntegration;
 class math_KronrodSingleIntegration {
 	public:
@@ -2560,6 +2725,11 @@ class math_KronrodSingleIntegration {
 };
 
 
+%extend math_KronrodSingleIntegration {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_Matrix;
 class math_Matrix {
 	public:
@@ -3036,6 +3206,11 @@ class math_Matrix {
         };
 
 
+%extend math_Matrix {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_MultipleVarFunction;
 class math_MultipleVarFunction {
 	public:
@@ -3068,6 +3243,11 @@ class math_MultipleVarFunction {
 };
 
 
+%extend math_MultipleVarFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_NewtonFunctionRoot;
 class math_NewtonFunctionRoot {
 	public:
@@ -3174,6 +3354,11 @@ class math_NewtonFunctionRoot {
         };
 
 
+%extend math_NewtonFunctionRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_NewtonFunctionSetRoot;
 class math_NewtonFunctionSetRoot {
 	public:
@@ -3338,6 +3523,11 @@ class math_NewtonFunctionSetRoot {
         };
 
 
+%extend math_NewtonFunctionSetRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_NewtonMinimum;
 class math_NewtonMinimum {
 	public:
@@ -3452,6 +3642,11 @@ class math_NewtonMinimum {
         };
 
 
+%extend math_NewtonMinimum {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_PSO;
 class math_PSO {
 	public:
@@ -3506,6 +3701,11 @@ class math_PSO {
 };
 
 
+%extend math_PSO {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_PSOParticlesPool;
 class math_PSOParticlesPool {
 	public:
@@ -3534,6 +3734,11 @@ class math_PSOParticlesPool {
 };
 
 
+%extend math_PSOParticlesPool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_Powell;
 class math_Powell {
 	public:
@@ -3636,6 +3841,11 @@ class math_Powell {
         };
 
 
+%extend math_Powell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class math_QuickSortOfValueAndWeight {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -3649,6 +3859,11 @@ class math_QuickSortOfValueAndWeight {
 };
 
 
+%extend math_QuickSortOfValueAndWeight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_RealRandom;
 class math_RealRandom {
 	public:
@@ -3677,6 +3892,11 @@ class math_RealRandom {
 };
 
 
+%extend math_RealRandom {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_SVD;
 class math_SVD {
 	public:
@@ -3727,6 +3947,11 @@ class math_SVD {
         };
 
 
+%extend math_SVD {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_TrigonometricFunctionRoots;
 class math_TrigonometricFunctionRoots {
 	public:
@@ -3817,6 +4042,11 @@ class math_TrigonometricFunctionRoots {
         };
 
 
+%extend math_TrigonometricFunctionRoots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_Uzawa;
 class math_Uzawa {
 	public:
@@ -3915,6 +4145,11 @@ class math_Uzawa {
         };
 
 
+%extend math_Uzawa {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_ValueAndWeight;
 class math_ValueAndWeight {
 	public:
@@ -3941,6 +4176,11 @@ class math_ValueAndWeight {
 };
 
 
+%extend math_ValueAndWeight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_Vector;
 class math_Vector {
 	public:
@@ -4343,6 +4583,11 @@ class math_Vector {
         };
 
 
+%extend math_Vector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_FunctionSetWithDerivatives;
 class math_FunctionSetWithDerivatives : public math_FunctionSet {
 	public:
@@ -4393,6 +4638,11 @@ class math_FunctionSetWithDerivatives : public math_FunctionSet {
 };
 
 
+%extend math_FunctionSetWithDerivatives {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_FunctionWithDerivative;
 class math_FunctionWithDerivative : public math_Function {
 	public:
@@ -4435,6 +4685,11 @@ class math_FunctionWithDerivative : public math_Function {
 };
 
 
+%extend math_FunctionWithDerivative {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_MultipleVarFunctionWithGradient;
 class math_MultipleVarFunctionWithGradient : public math_MultipleVarFunction {
 	public:
@@ -4483,6 +4738,11 @@ class math_MultipleVarFunctionWithGradient : public math_MultipleVarFunction {
 };
 
 
+%extend math_MultipleVarFunctionWithGradient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor math_MultipleVarFunctionWithHessian;
 class math_MultipleVarFunctionWithHessian : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -4545,3 +4805,8 @@ class math_MultipleVarFunctionWithHessian : public math_MultipleVarFunctionWithG
 };
 
 
+%extend math_MultipleVarFunctionWithHessian {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

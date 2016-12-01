@@ -72,6 +72,11 @@ class SelectBasics {
 };
 
 
+%extend SelectBasics {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class SelectBasics_BasicTool {
 	public:
 		%feature("compactdefaultargs") MatchSegments;
@@ -133,6 +138,11 @@ class SelectBasics_BasicTool {
 };
 
 
+%extend SelectBasics_BasicTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_EntityOwner;
 class SelectBasics_EntityOwner : public MMgt_TShared {
 	public:
@@ -215,6 +225,11 @@ class Handle_SelectBasics_EntityOwner : public Handle_MMgt_TShared {
     }
 };
 
+%extend SelectBasics_EntityOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_ListIteratorOfListOfBox2d;
 class SelectBasics_ListIteratorOfListOfBox2d {
 	public:
@@ -249,6 +264,11 @@ class SelectBasics_ListIteratorOfListOfBox2d {
 };
 
 
+%extend SelectBasics_ListIteratorOfListOfBox2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_ListIteratorOfListOfSensitive;
 class SelectBasics_ListIteratorOfListOfSensitive {
 	public:
@@ -283,6 +303,11 @@ class SelectBasics_ListIteratorOfListOfSensitive {
 };
 
 
+%extend SelectBasics_ListIteratorOfListOfSensitive {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_ListNodeOfListOfBox2d;
 class SelectBasics_ListNodeOfListOfBox2d : public TCollection_MapNode {
 	public:
@@ -347,6 +372,11 @@ class Handle_SelectBasics_ListNodeOfListOfBox2d : public Handle_TCollection_MapN
     }
 };
 
+%extend SelectBasics_ListNodeOfListOfBox2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_ListNodeOfListOfSensitive;
 class SelectBasics_ListNodeOfListOfSensitive : public TCollection_MapNode {
 	public:
@@ -411,6 +441,11 @@ class Handle_SelectBasics_ListNodeOfListOfSensitive : public Handle_TCollection_
     }
 };
 
+%extend SelectBasics_ListNodeOfListOfSensitive {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_ListOfBox2d;
 class SelectBasics_ListOfBox2d {
 	public:
@@ -541,6 +576,11 @@ class SelectBasics_ListOfBox2d {
 };
 
 
+%extend SelectBasics_ListOfBox2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_ListOfSensitive;
 class SelectBasics_ListOfSensitive {
 	public:
@@ -671,6 +711,11 @@ class SelectBasics_ListOfSensitive {
 };
 
 
+%extend SelectBasics_ListOfSensitive {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_PickArgs;
 class SelectBasics_PickArgs {
 	public:
@@ -727,6 +772,11 @@ class SelectBasics_PickArgs {
 };
 
 
+%extend SelectBasics_PickArgs {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_SensitiveEntity;
 class SelectBasics_SensitiveEntity : public MMgt_TShared {
 	public:
@@ -865,6 +915,11 @@ class Handle_SelectBasics_SensitiveEntity : public Handle_MMgt_TShared {
     }
 };
 
+%extend SelectBasics_SensitiveEntity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_SequenceNodeOfSequenceOfOwner;
 class SelectBasics_SequenceNodeOfSequenceOfOwner : public TCollection_SeqNode {
 	public:
@@ -931,6 +986,11 @@ class Handle_SelectBasics_SequenceNodeOfSequenceOfOwner : public Handle_TCollect
     }
 };
 
+%extend SelectBasics_SequenceNodeOfSequenceOfOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_SequenceOfOwner;
 class SelectBasics_SequenceOfOwner : public TCollection_BaseSequence {
 	public:
@@ -1069,6 +1129,11 @@ class SelectBasics_SequenceOfOwner : public TCollection_BaseSequence {
 };
 
 
+%extend SelectBasics_SequenceOfOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SelectBasics_SortAlgo;
 class SelectBasics_SortAlgo {
 	public:
@@ -1141,3 +1206,8 @@ class SelectBasics_SortAlgo {
 };
 
 
+%extend SelectBasics_SortAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -137,6 +137,11 @@ class gce_MakeMirror {
 };
 
 
+%extend gce_MakeMirror {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeMirror2d;
 class gce_MakeMirror2d {
 	public:
@@ -185,6 +190,11 @@ class gce_MakeMirror2d {
 };
 
 
+%extend gce_MakeMirror2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeRotation;
 class gce_MakeRotation {
 	public:
@@ -237,6 +247,11 @@ class gce_MakeRotation {
 };
 
 
+%extend gce_MakeRotation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeRotation2d;
 class gce_MakeRotation2d {
 	public:
@@ -267,6 +282,11 @@ class gce_MakeRotation2d {
 };
 
 
+%extend gce_MakeRotation2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeScale;
 class gce_MakeScale {
 	public:
@@ -297,6 +317,11 @@ class gce_MakeScale {
 };
 
 
+%extend gce_MakeScale {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeScale2d;
 class gce_MakeScale2d {
 	public:
@@ -327,6 +352,11 @@ class gce_MakeScale2d {
 };
 
 
+%extend gce_MakeScale2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeTranslation;
 class gce_MakeTranslation {
 	public:
@@ -365,6 +395,11 @@ class gce_MakeTranslation {
 };
 
 
+%extend gce_MakeTranslation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeTranslation2d;
 class gce_MakeTranslation2d {
 	public:
@@ -403,6 +438,11 @@ class gce_MakeTranslation2d {
 };
 
 
+%extend gce_MakeTranslation2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class gce_Root {
 	public:
 		%feature("compactdefaultargs") IsDone;
@@ -420,6 +460,11 @@ class gce_Root {
 };
 
 
+%extend gce_Root {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeCirc;
 class gce_MakeCirc : public gce_Root {
 	public:
@@ -528,6 +573,11 @@ class gce_MakeCirc : public gce_Root {
 };
 
 
+%extend gce_MakeCirc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeCirc2d;
 class gce_MakeCirc2d : public gce_Root {
 	public:
@@ -626,6 +676,11 @@ class gce_MakeCirc2d : public gce_Root {
 };
 
 
+%extend gce_MakeCirc2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeCone;
 class gce_MakeCone : public gce_Root {
 	public:
@@ -730,6 +785,11 @@ class gce_MakeCone : public gce_Root {
 };
 
 
+%extend gce_MakeCone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeCylinder;
 class gce_MakeCylinder : public gce_Root {
 	public:
@@ -810,6 +870,11 @@ class gce_MakeCylinder : public gce_Root {
 };
 
 
+%extend gce_MakeCylinder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeDir;
 class gce_MakeDir : public gce_Root {
 	public:
@@ -868,6 +933,11 @@ class gce_MakeDir : public gce_Root {
 };
 
 
+%extend gce_MakeDir {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeDir2d;
 class gce_MakeDir2d : public gce_Root {
 	public:
@@ -924,6 +994,11 @@ class gce_MakeDir2d : public gce_Root {
 };
 
 
+%extend gce_MakeDir2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeElips;
 class gce_MakeElips : public gce_Root {
 	public:
@@ -968,6 +1043,11 @@ class gce_MakeElips : public gce_Root {
 };
 
 
+%extend gce_MakeElips {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeElips2d;
 class gce_MakeElips2d : public gce_Root {
 	public:
@@ -1026,6 +1106,11 @@ class gce_MakeElips2d : public gce_Root {
 };
 
 
+%extend gce_MakeElips2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeHypr;
 class gce_MakeHypr : public gce_Root {
 	public:
@@ -1070,6 +1155,11 @@ class gce_MakeHypr : public gce_Root {
 };
 
 
+%extend gce_MakeHypr {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeHypr2d;
 class gce_MakeHypr2d : public gce_Root {
 	public:
@@ -1128,6 +1218,11 @@ class gce_MakeHypr2d : public gce_Root {
 };
 
 
+%extend gce_MakeHypr2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeLin;
 class gce_MakeLin : public gce_Root {
 	public:
@@ -1186,6 +1281,11 @@ class gce_MakeLin : public gce_Root {
 };
 
 
+%extend gce_MakeLin {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeLin2d;
 class gce_MakeLin2d : public gce_Root {
 	public:
@@ -1266,6 +1366,11 @@ class gce_MakeLin2d : public gce_Root {
 };
 
 
+%extend gce_MakeLin2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeParab;
 class gce_MakeParab : public gce_Root {
 	public:
@@ -1306,6 +1411,11 @@ class gce_MakeParab : public gce_Root {
 };
 
 
+%extend gce_MakeParab {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakeParab2d;
 class gce_MakeParab2d : public gce_Root {
 	public:
@@ -1382,6 +1492,11 @@ class gce_MakeParab2d : public gce_Root {
 };
 
 
+%extend gce_MakeParab2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gce_MakePln;
 class gce_MakePln : public gce_Root {
 	public:
@@ -1484,3 +1599,8 @@ class gce_MakePln : public gce_Root {
 };
 
 
+%extend gce_MakePln {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

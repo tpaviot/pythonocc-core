@@ -1522,3 +1522,8 @@ class ElCLib {
 };
 
 
+%extend ElCLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

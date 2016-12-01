@@ -296,6 +296,11 @@ class AdvApp2Var_ApproxAFunc2Var {
         };
 
 
+%extend AdvApp2Var_ApproxAFunc2Var {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_ApproxF2var;
 class AdvApp2Var_ApproxF2var {
 	public:
@@ -688,6 +693,11 @@ class AdvApp2Var_ApproxF2var {
 };
 
 
+%extend AdvApp2Var_ApproxF2var {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_Context;
 class AdvApp2Var_Context {
 	public:
@@ -804,6 +814,11 @@ class AdvApp2Var_Context {
 };
 
 
+%extend AdvApp2Var_Context {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_Criterion;
 class AdvApp2Var_Criterion {
 	public:
@@ -840,6 +855,11 @@ class AdvApp2Var_Criterion {
 };
 
 
+%extend AdvApp2Var_Criterion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_Data;
 class AdvApp2Var_Data {
 	public:
@@ -890,6 +910,11 @@ class AdvApp2Var_Data {
 };
 
 
+%extend AdvApp2Var_Data {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_Framework;
 class AdvApp2Var_Framework {
 	public:
@@ -1020,6 +1045,11 @@ class AdvApp2Var_Framework {
 };
 
 
+%extend AdvApp2Var_Framework {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_MathBase;
 class AdvApp2Var_MathBase {
 	public:
@@ -1680,6 +1710,11 @@ class AdvApp2Var_MathBase {
 };
 
 
+%extend AdvApp2Var_MathBase {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_Network;
 class AdvApp2Var_Network {
 	public:
@@ -1770,6 +1805,11 @@ class AdvApp2Var_Network {
 };
 
 
+%extend AdvApp2Var_Network {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_Node;
 class AdvApp2Var_Node {
 	public:
@@ -1854,6 +1894,11 @@ class AdvApp2Var_Node {
 };
 
 
+%extend AdvApp2Var_Node {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_Patch;
 class AdvApp2Var_Patch {
 	public:
@@ -2036,6 +2081,11 @@ class AdvApp2Var_Patch {
 };
 
 
+%extend AdvApp2Var_Patch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_SequenceNodeOfSequenceOfNode;
 class AdvApp2Var_SequenceNodeOfSequenceOfNode : public TCollection_SeqNode {
 	public:
@@ -2102,6 +2152,11 @@ class Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode : public Handle_TCollection
     }
 };
 
+%extend AdvApp2Var_SequenceNodeOfSequenceOfNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_SequenceNodeOfSequenceOfPatch;
 class AdvApp2Var_SequenceNodeOfSequenceOfPatch : public TCollection_SeqNode {
 	public:
@@ -2168,6 +2223,11 @@ class Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch : public Handle_TCollectio
     }
 };
 
+%extend AdvApp2Var_SequenceNodeOfSequenceOfPatch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_SequenceNodeOfSequenceOfStrip;
 class AdvApp2Var_SequenceNodeOfSequenceOfStrip : public TCollection_SeqNode {
 	public:
@@ -2234,6 +2294,11 @@ class Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip : public Handle_TCollectio
     }
 };
 
+%extend AdvApp2Var_SequenceNodeOfSequenceOfStrip {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_SequenceNodeOfStrip;
 class AdvApp2Var_SequenceNodeOfStrip : public TCollection_SeqNode {
 	public:
@@ -2300,6 +2365,11 @@ class Handle_AdvApp2Var_SequenceNodeOfStrip : public Handle_TCollection_SeqNode 
     }
 };
 
+%extend AdvApp2Var_SequenceNodeOfStrip {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_SequenceOfNode;
 class AdvApp2Var_SequenceOfNode : public TCollection_BaseSequence {
 	public:
@@ -2438,6 +2508,11 @@ class AdvApp2Var_SequenceOfNode : public TCollection_BaseSequence {
 };
 
 
+%extend AdvApp2Var_SequenceOfNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_SequenceOfPatch;
 class AdvApp2Var_SequenceOfPatch : public TCollection_BaseSequence {
 	public:
@@ -2576,6 +2651,11 @@ class AdvApp2Var_SequenceOfPatch : public TCollection_BaseSequence {
 };
 
 
+%extend AdvApp2Var_SequenceOfPatch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_SequenceOfStrip;
 class AdvApp2Var_SequenceOfStrip : public TCollection_BaseSequence {
 	public:
@@ -2714,6 +2794,11 @@ class AdvApp2Var_SequenceOfStrip : public TCollection_BaseSequence {
 };
 
 
+%extend AdvApp2Var_SequenceOfStrip {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_Strip;
 class AdvApp2Var_Strip : public TCollection_BaseSequence {
 	public:
@@ -2852,6 +2937,11 @@ class AdvApp2Var_Strip : public TCollection_BaseSequence {
 };
 
 
+%extend AdvApp2Var_Strip {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApp2Var_SysBase;
 class AdvApp2Var_SysBase {
 	public:
@@ -3066,3 +3156,8 @@ class AdvApp2Var_SysBase {
 };
 
 
+%extend AdvApp2Var_SysBase {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

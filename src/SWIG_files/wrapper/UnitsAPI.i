@@ -330,3 +330,8 @@ class UnitsAPI {
 };
 
 
+%extend UnitsAPI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

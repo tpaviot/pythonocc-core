@@ -174,6 +174,11 @@ class TopoDS {
 };
 
 
+%extend TopoDS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopoDS_Builder {
 	public:
 		%feature("compactdefaultargs") MakeWire;
@@ -239,6 +244,11 @@ class TopoDS_Builder {
 };
 
 
+%extend TopoDS_Builder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_HShape;
 class TopoDS_HShape : public MMgt_TShared {
 	public:
@@ -325,6 +335,11 @@ class Handle_TopoDS_HShape : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopoDS_HShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_Iterator;
 class TopoDS_Iterator {
 	public:
@@ -379,6 +394,11 @@ class TopoDS_Iterator {
 };
 
 
+%extend TopoDS_Iterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_ListIteratorOfListOfShape;
 class TopoDS_ListIteratorOfListOfShape {
 	public:
@@ -413,6 +433,11 @@ class TopoDS_ListIteratorOfListOfShape {
 };
 
 
+%extend TopoDS_ListIteratorOfListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_ListNodeOfListOfShape;
 class TopoDS_ListNodeOfListOfShape : public TCollection_MapNode {
 	public:
@@ -477,6 +502,11 @@ class Handle_TopoDS_ListNodeOfListOfShape : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TopoDS_ListNodeOfListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_ListOfShape;
 class TopoDS_ListOfShape {
 	public:
@@ -607,6 +637,11 @@ class TopoDS_ListOfShape {
 };
 
 
+%extend TopoDS_ListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_Shape;
 class TopoDS_Shape {
 	public:
@@ -967,6 +1002,11 @@ class TopoDS_Shape {
 		self.this = the_shape.this
 	}
 };
+%extend TopoDS_Shape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_TShape;
 class TopoDS_TShape : public MMgt_TShared {
 	public:
@@ -1143,6 +1183,11 @@ class Handle_TopoDS_TShape : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopoDS_TShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_CompSolid;
 class TopoDS_CompSolid : public TopoDS_Shape {
 	public:
@@ -1155,6 +1200,11 @@ class TopoDS_CompSolid : public TopoDS_Shape {
 };
 
 
+%extend TopoDS_CompSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_Compound;
 class TopoDS_Compound : public TopoDS_Shape {
 	public:
@@ -1167,6 +1217,11 @@ class TopoDS_Compound : public TopoDS_Shape {
 };
 
 
+%extend TopoDS_Compound {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_Edge;
 class TopoDS_Edge : public TopoDS_Shape {
 	public:
@@ -1179,6 +1234,11 @@ class TopoDS_Edge : public TopoDS_Shape {
 };
 
 
+%extend TopoDS_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_Face;
 class TopoDS_Face : public TopoDS_Shape {
 	public:
@@ -1191,6 +1251,11 @@ class TopoDS_Face : public TopoDS_Shape {
 };
 
 
+%extend TopoDS_Face {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_Shell;
 class TopoDS_Shell : public TopoDS_Shape {
 	public:
@@ -1203,6 +1268,11 @@ class TopoDS_Shell : public TopoDS_Shape {
 };
 
 
+%extend TopoDS_Shell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_Solid;
 class TopoDS_Solid : public TopoDS_Shape {
 	public:
@@ -1215,6 +1285,11 @@ class TopoDS_Solid : public TopoDS_Shape {
 };
 
 
+%extend TopoDS_Solid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_TCompSolid;
 class TopoDS_TCompSolid : public TopoDS_TShape {
 	public:
@@ -1285,6 +1360,11 @@ class Handle_TopoDS_TCompSolid : public Handle_TopoDS_TShape {
     }
 };
 
+%extend TopoDS_TCompSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_TCompound;
 class TopoDS_TCompound : public TopoDS_TShape {
 	public:
@@ -1355,6 +1435,11 @@ class Handle_TopoDS_TCompound : public Handle_TopoDS_TShape {
     }
 };
 
+%extend TopoDS_TCompound {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_TEdge;
 class TopoDS_TEdge : public TopoDS_TShape {
 	public:
@@ -1413,6 +1498,11 @@ class Handle_TopoDS_TEdge : public Handle_TopoDS_TShape {
     }
 };
 
+%extend TopoDS_TEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_TFace;
 class TopoDS_TFace : public TopoDS_TShape {
 	public:
@@ -1483,6 +1573,11 @@ class Handle_TopoDS_TFace : public Handle_TopoDS_TShape {
     }
 };
 
+%extend TopoDS_TFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_TShell;
 class TopoDS_TShell : public TopoDS_TShape {
 	public:
@@ -1553,6 +1648,11 @@ class Handle_TopoDS_TShell : public Handle_TopoDS_TShape {
     }
 };
 
+%extend TopoDS_TShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_TSolid;
 class TopoDS_TSolid : public TopoDS_TShape {
 	public:
@@ -1623,6 +1723,11 @@ class Handle_TopoDS_TSolid : public Handle_TopoDS_TShape {
     }
 };
 
+%extend TopoDS_TSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_TVertex;
 class TopoDS_TVertex : public TopoDS_TShape {
 	public:
@@ -1681,6 +1786,11 @@ class Handle_TopoDS_TVertex : public Handle_TopoDS_TShape {
     }
 };
 
+%extend TopoDS_TVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_TWire;
 class TopoDS_TWire : public TopoDS_TShape {
 	public:
@@ -1751,6 +1861,11 @@ class Handle_TopoDS_TWire : public Handle_TopoDS_TShape {
     }
 };
 
+%extend TopoDS_TWire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_Vertex;
 class TopoDS_Vertex : public TopoDS_Shape {
 	public:
@@ -1765,6 +1880,11 @@ class TopoDS_Vertex : public TopoDS_Shape {
 };
 
 
+%extend TopoDS_Vertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDS_Wire;
 class TopoDS_Wire : public TopoDS_Shape {
 	public:
@@ -1777,3 +1897,8 @@ class TopoDS_Wire : public TopoDS_Shape {
 };
 
 
+%extend TopoDS_Wire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

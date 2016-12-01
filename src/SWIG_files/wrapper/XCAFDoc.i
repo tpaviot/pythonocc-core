@@ -130,6 +130,11 @@ class XCAFDoc {
 };
 
 
+%extend XCAFDoc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_Area;
 class XCAFDoc_Area : public TDF_Attribute {
 	public:
@@ -254,6 +259,11 @@ class Handle_XCAFDoc_Area : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_Area {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_Centroid;
 class XCAFDoc_Centroid : public TDF_Attribute {
 	public:
@@ -376,6 +386,11 @@ class Handle_XCAFDoc_Centroid : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_Centroid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_Color;
 class XCAFDoc_Color : public TDF_Attribute {
 	public:
@@ -530,6 +545,11 @@ class Handle_XCAFDoc_Color : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_Color {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_ColorTool;
 class XCAFDoc_ColorTool : public TDF_Attribute {
 	public:
@@ -886,6 +906,11 @@ class Handle_XCAFDoc_ColorTool : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_ColorTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel;
 class XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel : public TCollection_BasicMapIterator {
 	public:
@@ -916,6 +941,11 @@ class XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel : public TCollection_BasicMap
 };
 
 
+%extend XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_DataMapNodeOfDataMapOfShapeLabel;
 class XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public TCollection_MapNode {
 	public:
@@ -986,6 +1016,11 @@ class Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public Handle_TCollectio
     }
 };
 
+%extend XCAFDoc_DataMapNodeOfDataMapOfShapeLabel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_DataMapOfShapeLabel;
 class XCAFDoc_DataMapOfShapeLabel : public TCollection_BasicMap {
 	public:
@@ -1064,6 +1099,11 @@ class XCAFDoc_DataMapOfShapeLabel : public TCollection_BasicMap {
 };
 
 
+%extend XCAFDoc_DataMapOfShapeLabel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_Datum;
 class XCAFDoc_Datum : public TDF_Attribute {
 	public:
@@ -1180,6 +1220,11 @@ class Handle_XCAFDoc_Datum : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_Datum {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_DimTol;
 class XCAFDoc_DimTol : public TDF_Attribute {
 	public:
@@ -1304,6 +1349,11 @@ class Handle_XCAFDoc_DimTol : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_DimTol {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_DimTolTool;
 class XCAFDoc_DimTolTool : public TDF_Attribute {
 	public:
@@ -1620,6 +1670,11 @@ class Handle_XCAFDoc_DimTolTool : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_DimTolTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_DocumentTool;
 class XCAFDoc_DocumentTool : public TDF_Attribute {
 	public:
@@ -1818,6 +1873,11 @@ class Handle_XCAFDoc_DocumentTool : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_DocumentTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_GraphNode;
 class XCAFDoc_GraphNode : public TDF_Attribute {
 	public:
@@ -2064,6 +2124,11 @@ class Handle_XCAFDoc_GraphNode : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_GraphNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_GraphNodeSequence;
 class XCAFDoc_GraphNodeSequence : public TCollection_BaseSequence {
 	public:
@@ -2202,6 +2267,11 @@ class XCAFDoc_GraphNodeSequence : public TCollection_BaseSequence {
 };
 
 
+%extend XCAFDoc_GraphNodeSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_LayerTool;
 class XCAFDoc_LayerTool : public TDF_Attribute {
 	public:
@@ -2592,6 +2662,11 @@ class Handle_XCAFDoc_LayerTool : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_LayerTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_Location;
 class XCAFDoc_Location : public TDF_Attribute {
 	public:
@@ -2698,6 +2773,11 @@ class Handle_XCAFDoc_Location : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_Location {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_Material;
 class XCAFDoc_Material : public TDF_Attribute {
 	public:
@@ -2830,6 +2910,11 @@ class Handle_XCAFDoc_Material : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_Material {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_MaterialTool;
 class XCAFDoc_MaterialTool : public TDF_Attribute {
 	public:
@@ -3018,6 +3103,11 @@ class Handle_XCAFDoc_MaterialTool : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_MaterialTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_SequenceNodeOfGraphNodeSequence;
 class XCAFDoc_SequenceNodeOfGraphNodeSequence : public TCollection_SeqNode {
 	public:
@@ -3084,6 +3174,11 @@ class Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence : public Handle_TCollection
     }
 };
 
+%extend XCAFDoc_SequenceNodeOfGraphNodeSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_ShapeMapTool;
 class XCAFDoc_ShapeMapTool : public TDF_Attribute {
 	public:
@@ -3196,6 +3291,11 @@ class Handle_XCAFDoc_ShapeMapTool : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_ShapeMapTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_ShapeTool;
 class XCAFDoc_ShapeTool : public TDF_Attribute {
 	public:
@@ -3832,6 +3932,11 @@ class Handle_XCAFDoc_ShapeTool : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_ShapeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XCAFDoc_Volume;
 class XCAFDoc_Volume : public TDF_Attribute {
 	public:
@@ -3956,3 +4061,8 @@ class Handle_XCAFDoc_Volume : public Handle_TDF_Attribute {
     }
 };
 
+%extend XCAFDoc_Volume {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

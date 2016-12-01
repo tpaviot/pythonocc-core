@@ -290,6 +290,11 @@ class GCPnts_AbscissaPoint {
 };
 
 
+%extend GCPnts_AbscissaPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCPnts_QuasiUniformAbscissa;
 class GCPnts_QuasiUniformAbscissa {
 	public:
@@ -418,6 +423,11 @@ class GCPnts_QuasiUniformAbscissa {
 };
 
 
+%extend GCPnts_QuasiUniformAbscissa {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCPnts_QuasiUniformDeflection;
 class GCPnts_QuasiUniformDeflection {
 	public:
@@ -576,6 +586,11 @@ class GCPnts_QuasiUniformDeflection {
 };
 
 
+%extend GCPnts_QuasiUniformDeflection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCPnts_TangentialDeflection;
 class GCPnts_TangentialDeflection {
 	public:
@@ -742,6 +757,11 @@ class GCPnts_TangentialDeflection {
 };
 
 
+%extend GCPnts_TangentialDeflection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCPnts_UniformAbscissa;
 class GCPnts_UniformAbscissa {
 	public:
@@ -1000,6 +1020,11 @@ class GCPnts_UniformAbscissa {
 };
 
 
+%extend GCPnts_UniformAbscissa {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GCPnts_UniformDeflection;
 class GCPnts_UniformDeflection {
 	public:
@@ -1158,3 +1183,8 @@ class GCPnts_UniformDeflection {
 };
 
 
+%extend GCPnts_UniformDeflection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

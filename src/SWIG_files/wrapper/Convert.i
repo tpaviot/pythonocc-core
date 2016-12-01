@@ -133,6 +133,11 @@ class Convert_CompBezierCurves2dToBSplineCurve2d {
 };
 
 
+%extend Convert_CompBezierCurves2dToBSplineCurve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_CompBezierCurvesToBSplineCurve;
 class Convert_CompBezierCurvesToBSplineCurve {
 	public:
@@ -197,6 +202,11 @@ class Convert_CompBezierCurvesToBSplineCurve {
 };
 
 
+%extend Convert_CompBezierCurvesToBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_CompPolynomialToPoles;
 class Convert_CompPolynomialToPoles {
 	public:
@@ -309,6 +319,11 @@ class Convert_CompPolynomialToPoles {
 };
 
 
+%extend Convert_CompPolynomialToPoles {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_ConicToBSplineCurve;
 class Convert_ConicToBSplineCurve {
 	public:
@@ -411,6 +426,11 @@ class Convert_ConicToBSplineCurve {
 };
 
 
+%extend Convert_ConicToBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_ElementarySurfaceToBSplineSurface;
 class Convert_ElementarySurfaceToBSplineSurface {
 	public:
@@ -509,6 +529,11 @@ class Convert_ElementarySurfaceToBSplineSurface {
 };
 
 
+%extend Convert_ElementarySurfaceToBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_GridPolynomialToPoles;
 class Convert_GridPolynomialToPoles {
 	public:
@@ -645,6 +670,11 @@ class Convert_GridPolynomialToPoles {
 };
 
 
+%extend Convert_GridPolynomialToPoles {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_SequenceNodeOfSequenceOfArray1OfPoles;
 class Convert_SequenceNodeOfSequenceOfArray1OfPoles : public TCollection_SeqNode {
 	public:
@@ -711,6 +741,11 @@ class Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles : public Handle_TColl
     }
 };
 
+%extend Convert_SequenceNodeOfSequenceOfArray1OfPoles {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_SequenceOfArray1OfPoles;
 class Convert_SequenceOfArray1OfPoles : public TCollection_BaseSequence {
 	public:
@@ -849,6 +884,11 @@ class Convert_SequenceOfArray1OfPoles : public TCollection_BaseSequence {
 };
 
 
+%extend Convert_SequenceOfArray1OfPoles {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_CircleToBSplineCurve;
 class Convert_CircleToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
@@ -879,6 +919,11 @@ class Convert_CircleToBSplineCurve : public Convert_ConicToBSplineCurve {
 };
 
 
+%extend Convert_CircleToBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_ConeToBSplineSurface;
 class Convert_ConeToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
@@ -913,6 +958,11 @@ class Convert_ConeToBSplineSurface : public Convert_ElementarySurfaceToBSplineSu
 };
 
 
+%extend Convert_ConeToBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_CylinderToBSplineSurface;
 class Convert_CylinderToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
@@ -947,6 +997,11 @@ class Convert_CylinderToBSplineSurface : public Convert_ElementarySurfaceToBSpli
 };
 
 
+%extend Convert_CylinderToBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_EllipseToBSplineCurve;
 class Convert_EllipseToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
@@ -977,6 +1032,11 @@ class Convert_EllipseToBSplineCurve : public Convert_ConicToBSplineCurve {
 };
 
 
+%extend Convert_EllipseToBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_HyperbolaToBSplineCurve;
 class Convert_HyperbolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
@@ -995,6 +1055,11 @@ class Convert_HyperbolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 };
 
 
+%extend Convert_HyperbolaToBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_ParabolaToBSplineCurve;
 class Convert_ParabolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
@@ -1013,6 +1078,11 @@ class Convert_ParabolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 };
 
 
+%extend Convert_ParabolaToBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_SphereToBSplineSurface;
 class Convert_SphereToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
@@ -1057,6 +1127,11 @@ class Convert_SphereToBSplineSurface : public Convert_ElementarySurfaceToBSpline
 };
 
 
+%extend Convert_SphereToBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Convert_TorusToBSplineSurface;
 class Convert_TorusToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
@@ -1101,3 +1176,8 @@ class Convert_TorusToBSplineSurface : public Convert_ElementarySurfaceToBSplineS
 };
 
 
+%extend Convert_TorusToBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

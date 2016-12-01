@@ -98,6 +98,11 @@ class GProp {
 };
 
 
+%extend GProp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GProp_GProps;
 class GProp_GProps {
 	public:
@@ -180,6 +185,11 @@ class GProp_GProps {
 };
 
 
+%extend GProp_GProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GProp_PEquation;
 class GProp_PEquation {
 	public:
@@ -252,6 +262,11 @@ class GProp_PEquation {
 };
 
 
+%extend GProp_PEquation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GProp_PrincipalProps;
 class GProp_PrincipalProps {
 	public:
@@ -334,6 +349,11 @@ class GProp_PrincipalProps {
 };
 
 
+%extend GProp_PrincipalProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GProp_CelGProps;
 class GProp_CelGProps : public GProp_GProps {
 	public:
@@ -402,6 +422,11 @@ class GProp_CelGProps : public GProp_GProps {
 };
 
 
+%extend GProp_CelGProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GProp_PGProps;
 class GProp_PGProps : public GProp_GProps {
 	public:
@@ -512,6 +537,11 @@ class GProp_PGProps : public GProp_GProps {
 };
 
 
+%extend GProp_PGProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GProp_SelGProps;
 class GProp_SelGProps : public GProp_GProps {
 	public:
@@ -648,6 +678,11 @@ class GProp_SelGProps : public GProp_GProps {
 };
 
 
+%extend GProp_SelGProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GProp_VelGProps;
 class GProp_VelGProps : public GProp_GProps {
 	public:
@@ -784,3 +819,8 @@ class GProp_VelGProps : public GProp_GProps {
 };
 
 
+%extend GProp_VelGProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

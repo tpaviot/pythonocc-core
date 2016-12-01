@@ -102,6 +102,11 @@ class RWStepAP203_RWCcDesignApproval {
 };
 
 
+%extend RWStepAP203_RWCcDesignApproval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP203_RWCcDesignCertification;
 class RWStepAP203_RWCcDesignCertification {
 	public:
@@ -148,6 +153,11 @@ class RWStepAP203_RWCcDesignCertification {
 };
 
 
+%extend RWStepAP203_RWCcDesignCertification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP203_RWCcDesignContract;
 class RWStepAP203_RWCcDesignContract {
 	public:
@@ -194,6 +204,11 @@ class RWStepAP203_RWCcDesignContract {
 };
 
 
+%extend RWStepAP203_RWCcDesignContract {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP203_RWCcDesignDateAndTimeAssignment;
 class RWStepAP203_RWCcDesignDateAndTimeAssignment {
 	public:
@@ -240,6 +255,11 @@ class RWStepAP203_RWCcDesignDateAndTimeAssignment {
 };
 
 
+%extend RWStepAP203_RWCcDesignDateAndTimeAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP203_RWCcDesignPersonAndOrganizationAssignment;
 class RWStepAP203_RWCcDesignPersonAndOrganizationAssignment {
 	public:
@@ -286,6 +306,11 @@ class RWStepAP203_RWCcDesignPersonAndOrganizationAssignment {
 };
 
 
+%extend RWStepAP203_RWCcDesignPersonAndOrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP203_RWCcDesignSecurityClassification;
 class RWStepAP203_RWCcDesignSecurityClassification {
 	public:
@@ -332,6 +357,11 @@ class RWStepAP203_RWCcDesignSecurityClassification {
 };
 
 
+%extend RWStepAP203_RWCcDesignSecurityClassification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP203_RWCcDesignSpecificationReference;
 class RWStepAP203_RWCcDesignSpecificationReference {
 	public:
@@ -378,6 +408,11 @@ class RWStepAP203_RWCcDesignSpecificationReference {
 };
 
 
+%extend RWStepAP203_RWCcDesignSpecificationReference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP203_RWChange;
 class RWStepAP203_RWChange {
 	public:
@@ -424,6 +459,11 @@ class RWStepAP203_RWChange {
 };
 
 
+%extend RWStepAP203_RWChange {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP203_RWChangeRequest;
 class RWStepAP203_RWChangeRequest {
 	public:
@@ -470,6 +510,11 @@ class RWStepAP203_RWChangeRequest {
 };
 
 
+%extend RWStepAP203_RWChangeRequest {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP203_RWStartRequest;
 class RWStepAP203_RWStartRequest {
 	public:
@@ -516,6 +561,11 @@ class RWStepAP203_RWStartRequest {
 };
 
 
+%extend RWStepAP203_RWStartRequest {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepAP203_RWStartWork;
 class RWStepAP203_RWStartWork {
 	public:
@@ -562,3 +612,8 @@ class RWStepAP203_RWStartWork {
 };
 
 
+%extend RWStepAP203_RWStartWork {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

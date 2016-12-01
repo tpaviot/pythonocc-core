@@ -78,6 +78,11 @@ class XSControl {
 };
 
 
+%extend XSControl {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XSControl_ConnectedShapes;
 class XSControl_ConnectedShapes : public IFSelect_SelectExplore {
 	public:
@@ -184,6 +189,11 @@ class Handle_XSControl_ConnectedShapes : public Handle_IFSelect_SelectExplore {
     }
 };
 
+%extend XSControl_ConnectedShapes {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XSControl_Controller;
 class XSControl_Controller : public MMgt_TShared {
 	public:
@@ -580,6 +590,11 @@ class Handle_XSControl_Controller : public Handle_MMgt_TShared {
     }
 };
 
+%extend XSControl_Controller {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class XSControl_FuncShape {
 	public:
 		%feature("compactdefaultargs") Init;
@@ -621,6 +636,11 @@ class XSControl_FuncShape {
 };
 
 
+%extend XSControl_FuncShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class XSControl_Functions {
 	public:
 		%feature("compactdefaultargs") Init;
@@ -632,6 +652,11 @@ class XSControl_Functions {
 };
 
 
+%extend XSControl_Functions {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XSControl_Reader;
 class XSControl_Reader {
 	public:
@@ -842,6 +867,11 @@ class XSControl_Reader {
 };
 
 
+%extend XSControl_Reader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XSControl_SelectForTransfer;
 class XSControl_SelectForTransfer : public IFSelect_SelectExtract {
 	public:
@@ -954,6 +984,11 @@ class Handle_XSControl_SelectForTransfer : public Handle_IFSelect_SelectExtract 
     }
 };
 
+%extend XSControl_SelectForTransfer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XSControl_SignTransferStatus;
 class XSControl_SignTransferStatus : public IFSelect_Signature {
 	public:
@@ -1058,6 +1093,11 @@ class Handle_XSControl_SignTransferStatus : public Handle_IFSelect_Signature {
     }
 };
 
+%extend XSControl_SignTransferStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XSControl_TransferReader;
 class XSControl_TransferReader : public MMgt_TShared {
 	public:
@@ -1508,6 +1548,11 @@ class Handle_XSControl_TransferReader : public Handle_MMgt_TShared {
     }
 };
 
+%extend XSControl_TransferReader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XSControl_TransferWriter;
 class XSControl_TransferWriter : public MMgt_TShared {
 	public:
@@ -1688,6 +1733,11 @@ class Handle_XSControl_TransferWriter : public Handle_MMgt_TShared {
     }
 };
 
+%extend XSControl_TransferWriter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XSControl_Utils;
 class XSControl_Utils {
 	public:
@@ -2026,6 +2076,11 @@ class XSControl_Utils {
 };
 
 
+%extend XSControl_Utils {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XSControl_WorkSession;
 class XSControl_WorkSession : public IFSelect_WorkSession {
 	public:
@@ -2304,6 +2359,11 @@ class Handle_XSControl_WorkSession : public Handle_IFSelect_WorkSession {
     }
 };
 
+%extend XSControl_WorkSession {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor XSControl_Writer;
 class XSControl_Writer {
 	public:
@@ -2394,3 +2454,8 @@ class XSControl_Writer {
 };
 
 
+%extend XSControl_Writer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -157,6 +157,11 @@ class TopExp {
 };
 
 
+%extend TopExp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopExp_Explorer;
 class TopExp_Explorer {
 	public:
@@ -233,3 +238,8 @@ class TopExp_Explorer {
 };
 
 
+%extend TopExp_Explorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

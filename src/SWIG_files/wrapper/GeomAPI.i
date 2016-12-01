@@ -82,6 +82,11 @@ class GeomAPI {
 };
 
 
+%extend GeomAPI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAPI_ExtremaCurveCurve;
 class GeomAPI_ExtremaCurveCurve {
 	public:
@@ -254,6 +259,11 @@ class GeomAPI_ExtremaCurveCurve {
 };
 
 
+%extend GeomAPI_ExtremaCurveCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAPI_ExtremaCurveSurface;
 class GeomAPI_ExtremaCurveSurface {
 	public:
@@ -412,6 +422,11 @@ class GeomAPI_ExtremaCurveSurface {
 };
 
 
+%extend GeomAPI_ExtremaCurveSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAPI_ExtremaSurfaceSurface;
 class GeomAPI_ExtremaSurfaceSurface {
 	public:
@@ -582,6 +597,11 @@ class GeomAPI_ExtremaSurfaceSurface {
 };
 
 
+%extend GeomAPI_ExtremaSurfaceSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAPI_IntCS;
 class GeomAPI_IntCS {
 	public:
@@ -678,6 +698,11 @@ class GeomAPI_IntCS {
 };
 
 
+%extend GeomAPI_IntCS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAPI_IntSS;
 class GeomAPI_IntSS {
 	public:
@@ -734,6 +759,11 @@ class GeomAPI_IntSS {
 };
 
 
+%extend GeomAPI_IntSS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAPI_Interpolate;
 class GeomAPI_Interpolate {
 	public:
@@ -808,6 +838,11 @@ class GeomAPI_Interpolate {
 };
 
 
+%extend GeomAPI_Interpolate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAPI_PointsToBSpline;
 class GeomAPI_PointsToBSpline {
 	public:
@@ -974,6 +1009,11 @@ class GeomAPI_PointsToBSpline {
 };
 
 
+%extend GeomAPI_PointsToBSpline {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAPI_PointsToBSplineSurface;
 class GeomAPI_PointsToBSplineSurface {
 	public:
@@ -1186,6 +1226,11 @@ class GeomAPI_PointsToBSplineSurface {
 };
 
 
+%extend GeomAPI_PointsToBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAPI_ProjectPointOnCurve;
 class GeomAPI_ProjectPointOnCurve {
 	public:
@@ -1342,6 +1387,11 @@ class GeomAPI_ProjectPointOnCurve {
 };
 
 
+%extend GeomAPI_ProjectPointOnCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAPI_ProjectPointOnSurf;
 class GeomAPI_ProjectPointOnSurf {
 	public:
@@ -1604,3 +1654,8 @@ class GeomAPI_ProjectPointOnSurf {
 };
 
 
+%extend GeomAPI_ProjectPointOnSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

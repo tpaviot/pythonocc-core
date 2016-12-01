@@ -108,3 +108,8 @@ class ShapeProcessAPI_ApplySequence {
 };
 
 
+%extend ShapeProcessAPI_ApplySequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

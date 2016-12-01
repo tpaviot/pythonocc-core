@@ -305,6 +305,11 @@ class BRepPrim_Builder {
 };
 
 
+%extend BRepPrim_Builder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrim_FaceBuilder;
 class BRepPrim_FaceBuilder {
 	public:
@@ -387,6 +392,11 @@ class BRepPrim_FaceBuilder {
 };
 
 
+%extend BRepPrim_FaceBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrim_GWedge;
 class BRepPrim_GWedge {
 	public:
@@ -659,6 +669,11 @@ class BRepPrim_GWedge {
 };
 
 
+%extend BRepPrim_GWedge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrim_OneAxis;
 class BRepPrim_OneAxis {
 	public:
@@ -975,6 +990,11 @@ class BRepPrim_OneAxis {
 };
 
 
+%extend BRepPrim_OneAxis {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrim_Revolution;
 class BRepPrim_Revolution : public BRepPrim_OneAxis {
 	public:
@@ -1029,6 +1049,11 @@ class BRepPrim_Revolution : public BRepPrim_OneAxis {
 };
 
 
+%extend BRepPrim_Revolution {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrim_Wedge;
 class BRepPrim_Wedge : public BRepPrim_GWedge {
 	public:
@@ -1093,6 +1118,11 @@ class BRepPrim_Wedge : public BRepPrim_GWedge {
 };
 
 
+%extend BRepPrim_Wedge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrim_Cone;
 class BRepPrim_Cone : public BRepPrim_Revolution {
 	public:
@@ -1187,6 +1217,11 @@ class BRepPrim_Cone : public BRepPrim_Revolution {
 };
 
 
+%extend BRepPrim_Cone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrim_Cylinder;
 class BRepPrim_Cylinder : public BRepPrim_Revolution {
 	public:
@@ -1261,6 +1296,11 @@ class BRepPrim_Cylinder : public BRepPrim_Revolution {
 };
 
 
+%extend BRepPrim_Cylinder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrim_Sphere;
 class BRepPrim_Sphere : public BRepPrim_Revolution {
 	public:
@@ -1301,6 +1341,11 @@ class BRepPrim_Sphere : public BRepPrim_Revolution {
 };
 
 
+%extend BRepPrim_Sphere {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepPrim_Torus;
 class BRepPrim_Torus : public BRepPrim_Revolution {
 	public:
@@ -1347,3 +1392,8 @@ class BRepPrim_Torus : public BRepPrim_Revolution {
 };
 
 
+%extend BRepPrim_Torus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

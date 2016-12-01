@@ -140,6 +140,11 @@ class Handle_STEPSelections_AssemblyComponent : public Handle_MMgt_TShared {
     }
 };
 
+%extend STEPSelections_AssemblyComponent {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_AssemblyExplorer;
 class STEPSelections_AssemblyExplorer {
 	public:
@@ -198,6 +203,11 @@ class STEPSelections_AssemblyExplorer {
 };
 
 
+%extend STEPSelections_AssemblyExplorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_AssemblyLink;
 class STEPSelections_AssemblyLink : public MMgt_TShared {
 	public:
@@ -294,6 +304,11 @@ class Handle_STEPSelections_AssemblyLink : public Handle_MMgt_TShared {
     }
 };
 
+%extend STEPSelections_AssemblyLink {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_Counter;
 class STEPSelections_Counter {
 	public:
@@ -356,6 +371,11 @@ class STEPSelections_Counter {
 };
 
 
+%extend STEPSelections_Counter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_HSequenceOfAssemblyLink;
 class STEPSelections_HSequenceOfAssemblyLink : public MMgt_TShared {
 	public:
@@ -540,6 +560,11 @@ class Handle_STEPSelections_HSequenceOfAssemblyLink : public Handle_MMgt_TShared
     }
 };
 
+%extend STEPSelections_HSequenceOfAssemblyLink {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_SelectAssembly;
 class STEPSelections_SelectAssembly : public IFSelect_SelectExplore {
 	public:
@@ -616,6 +641,11 @@ class Handle_STEPSelections_SelectAssembly : public Handle_IFSelect_SelectExplor
     }
 };
 
+%extend STEPSelections_SelectAssembly {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_SelectDerived;
 class STEPSelections_SelectDerived : public StepSelect_StepType {
 	public:
@@ -684,6 +714,11 @@ class Handle_STEPSelections_SelectDerived : public Handle_StepSelect_StepType {
     }
 };
 
+%extend STEPSelections_SelectDerived {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_SelectFaces;
 class STEPSelections_SelectFaces : public IFSelect_SelectExplore {
 	public:
@@ -760,6 +795,11 @@ class Handle_STEPSelections_SelectFaces : public Handle_IFSelect_SelectExplore {
     }
 };
 
+%extend STEPSelections_SelectFaces {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_SelectForTransfer;
 class STEPSelections_SelectForTransfer : public XSControl_SelectForTransfer {
 	public:
@@ -828,6 +868,11 @@ class Handle_STEPSelections_SelectForTransfer : public Handle_XSControl_SelectFo
     }
 };
 
+%extend STEPSelections_SelectForTransfer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_SelectGSCurves;
 class STEPSelections_SelectGSCurves : public IFSelect_SelectExplore {
 	public:
@@ -902,6 +947,11 @@ class Handle_STEPSelections_SelectGSCurves : public Handle_IFSelect_SelectExplor
     }
 };
 
+%extend STEPSelections_SelectGSCurves {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_SelectInstances;
 class STEPSelections_SelectInstances : public IFSelect_SelectExplore {
 	public:
@@ -982,6 +1032,11 @@ class Handle_STEPSelections_SelectInstances : public Handle_IFSelect_SelectExplo
     }
 };
 
+%extend STEPSelections_SelectInstances {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent;
 class STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent : public TCollection_SeqNode {
 	public:
@@ -1048,6 +1103,11 @@ class Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent : public H
     }
 };
 
+%extend STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_SequenceNodeOfSequenceOfAssemblyLink;
 class STEPSelections_SequenceNodeOfSequenceOfAssemblyLink : public TCollection_SeqNode {
 	public:
@@ -1114,6 +1174,11 @@ class Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink : public Handle
     }
 };
 
+%extend STEPSelections_SequenceNodeOfSequenceOfAssemblyLink {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_SequenceOfAssemblyComponent;
 class STEPSelections_SequenceOfAssemblyComponent : public TCollection_BaseSequence {
 	public:
@@ -1252,6 +1317,11 @@ class STEPSelections_SequenceOfAssemblyComponent : public TCollection_BaseSequen
 };
 
 
+%extend STEPSelections_SequenceOfAssemblyComponent {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPSelections_SequenceOfAssemblyLink;
 class STEPSelections_SequenceOfAssemblyLink : public TCollection_BaseSequence {
 	public:
@@ -1390,3 +1460,8 @@ class STEPSelections_SequenceOfAssemblyLink : public TCollection_BaseSequence {
 };
 
 
+%extend STEPSelections_SequenceOfAssemblyLink {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

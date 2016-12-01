@@ -118,6 +118,11 @@ class ShapeFix {
 };
 
 
+%extend ShapeFix {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
 class ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d : public TCollection_BasicMapIterator {
 	public:
@@ -148,6 +153,11 @@ class ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d : public TCollection_BasicMa
 };
 
 
+%extend ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_DataMapNodeOfDataMapOfShapeBox2d;
 class ShapeFix_DataMapNodeOfDataMapOfShapeBox2d : public TCollection_MapNode {
 	public:
@@ -218,6 +228,11 @@ class Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d : public Handle_TCollecti
     }
 };
 
+%extend ShapeFix_DataMapNodeOfDataMapOfShapeBox2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_DataMapOfShapeBox2d;
 class ShapeFix_DataMapOfShapeBox2d : public TCollection_BasicMap {
 	public:
@@ -296,6 +311,11 @@ class ShapeFix_DataMapOfShapeBox2d : public TCollection_BasicMap {
 };
 
 
+%extend ShapeFix_DataMapOfShapeBox2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_Edge;
 class ShapeFix_Edge : public MMgt_TShared {
 	public:
@@ -514,6 +534,11 @@ class Handle_ShapeFix_Edge : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeFix_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_EdgeConnect;
 class ShapeFix_EdgeConnect {
 	public:
@@ -554,6 +579,11 @@ class ShapeFix_EdgeConnect {
 };
 
 
+%extend ShapeFix_EdgeConnect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_EdgeProjAux;
 class ShapeFix_EdgeProjAux : public MMgt_TShared {
 	public:
@@ -654,6 +684,11 @@ class Handle_ShapeFix_EdgeProjAux : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeFix_EdgeProjAux {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_FaceConnect;
 class ShapeFix_FaceConnect {
 	public:
@@ -688,6 +723,11 @@ class ShapeFix_FaceConnect {
 };
 
 
+%extend ShapeFix_FaceConnect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_FreeBounds;
 class ShapeFix_FreeBounds {
 	public:
@@ -748,6 +788,11 @@ class ShapeFix_FreeBounds {
 };
 
 
+%extend ShapeFix_FreeBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_IntersectionTool;
 class ShapeFix_IntersectionTool {
 	public:
@@ -828,6 +873,11 @@ class ShapeFix_IntersectionTool {
 };
 
 
+%extend ShapeFix_IntersectionTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_Root;
 class ShapeFix_Root : public MMgt_TShared {
 	public:
@@ -1030,6 +1080,11 @@ class Handle_ShapeFix_Root : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeFix_Root {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_SequenceNodeOfSequenceOfWireSegment;
 class ShapeFix_SequenceNodeOfSequenceOfWireSegment : public TCollection_SeqNode {
 	public:
@@ -1096,6 +1151,11 @@ class Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment : public Handle_TColle
     }
 };
 
+%extend ShapeFix_SequenceNodeOfSequenceOfWireSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_SequenceOfWireSegment;
 class ShapeFix_SequenceOfWireSegment : public TCollection_BaseSequence {
 	public:
@@ -1234,6 +1294,11 @@ class ShapeFix_SequenceOfWireSegment : public TCollection_BaseSequence {
 };
 
 
+%extend ShapeFix_SequenceOfWireSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_ShapeTolerance;
 class ShapeFix_ShapeTolerance {
 	public:
@@ -1270,6 +1335,11 @@ class ShapeFix_ShapeTolerance {
 };
 
 
+%extend ShapeFix_ShapeTolerance {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_SplitTool;
 class ShapeFix_SplitTool {
 	public:
@@ -1372,6 +1442,11 @@ class ShapeFix_SplitTool {
 };
 
 
+%extend ShapeFix_SplitTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_WireVertex;
 class ShapeFix_WireVertex {
 	public:
@@ -1440,6 +1515,11 @@ class ShapeFix_WireVertex {
 };
 
 
+%extend ShapeFix_WireVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_ComposeShell;
 class ShapeFix_ComposeShell : public ShapeFix_Root {
 	public:
@@ -1575,6 +1655,11 @@ class Handle_ShapeFix_ComposeShell : public Handle_ShapeFix_Root {
     }
 };
 
+%extend ShapeFix_ComposeShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_Face;
 class ShapeFix_Face : public ShapeFix_Root {
 	public:
@@ -1947,6 +2032,11 @@ class Handle_ShapeFix_Face : public Handle_ShapeFix_Root {
     }
 };
 
+%extend ShapeFix_Face {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_FixSmallFace;
 class ShapeFix_FixSmallFace : public ShapeFix_Root {
 	public:
@@ -2133,6 +2223,11 @@ class Handle_ShapeFix_FixSmallFace : public Handle_ShapeFix_Root {
     }
 };
 
+%extend ShapeFix_FixSmallFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_Shape;
 class ShapeFix_Shape : public ShapeFix_Root {
 	public:
@@ -2369,6 +2464,11 @@ class Handle_ShapeFix_Shape : public Handle_ShapeFix_Root {
     }
 };
 
+%extend ShapeFix_Shape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_Shell;
 class ShapeFix_Shell : public ShapeFix_Root {
 	public:
@@ -2559,6 +2659,11 @@ class Handle_ShapeFix_Shell : public Handle_ShapeFix_Root {
     }
 };
 
+%extend ShapeFix_Shell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_Solid;
 class ShapeFix_Solid : public ShapeFix_Root {
 	public:
@@ -2733,6 +2838,11 @@ class Handle_ShapeFix_Solid : public Handle_ShapeFix_Root {
     }
 };
 
+%extend ShapeFix_Solid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_SplitCommonVertex;
 class ShapeFix_SplitCommonVertex : public ShapeFix_Root {
 	public:
@@ -2803,6 +2913,11 @@ class Handle_ShapeFix_SplitCommonVertex : public Handle_ShapeFix_Root {
     }
 };
 
+%extend ShapeFix_SplitCommonVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_Wire;
 class ShapeFix_Wire : public ShapeFix_Root {
 	public:
@@ -3615,6 +3730,11 @@ class Handle_ShapeFix_Wire : public Handle_ShapeFix_Root {
     }
 };
 
+%extend ShapeFix_Wire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeFix_Wireframe;
 class ShapeFix_Wireframe : public ShapeFix_Root {
 	public:
@@ -3782,3 +3902,8 @@ class Handle_ShapeFix_Wireframe : public Handle_ShapeFix_Root {
     }
 };
 
+%extend ShapeFix_Wireframe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

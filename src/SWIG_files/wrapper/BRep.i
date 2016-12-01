@@ -731,6 +731,11 @@ class BRep_Builder : public TopoDS_Builder {
 };
 
 
+%extend BRep_Builder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_CurveRepresentation;
 class BRep_CurveRepresentation : public MMgt_TShared {
 	public:
@@ -1003,6 +1008,11 @@ class Handle_BRep_CurveRepresentation : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRep_CurveRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_ListIteratorOfListOfCurveRepresentation;
 class BRep_ListIteratorOfListOfCurveRepresentation {
 	public:
@@ -1037,6 +1047,11 @@ class BRep_ListIteratorOfListOfCurveRepresentation {
 };
 
 
+%extend BRep_ListIteratorOfListOfCurveRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_ListIteratorOfListOfPointRepresentation;
 class BRep_ListIteratorOfListOfPointRepresentation {
 	public:
@@ -1071,6 +1086,11 @@ class BRep_ListIteratorOfListOfPointRepresentation {
 };
 
 
+%extend BRep_ListIteratorOfListOfPointRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_ListNodeOfListOfCurveRepresentation;
 class BRep_ListNodeOfListOfCurveRepresentation : public TCollection_MapNode {
 	public:
@@ -1135,6 +1155,11 @@ class Handle_BRep_ListNodeOfListOfCurveRepresentation : public Handle_TCollectio
     }
 };
 
+%extend BRep_ListNodeOfListOfCurveRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_ListNodeOfListOfPointRepresentation;
 class BRep_ListNodeOfListOfPointRepresentation : public TCollection_MapNode {
 	public:
@@ -1199,6 +1224,11 @@ class Handle_BRep_ListNodeOfListOfPointRepresentation : public Handle_TCollectio
     }
 };
 
+%extend BRep_ListNodeOfListOfPointRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_ListOfCurveRepresentation;
 class BRep_ListOfCurveRepresentation {
 	public:
@@ -1329,6 +1359,11 @@ class BRep_ListOfCurveRepresentation {
 };
 
 
+%extend BRep_ListOfCurveRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_ListOfPointRepresentation;
 class BRep_ListOfPointRepresentation {
 	public:
@@ -1459,6 +1494,11 @@ class BRep_ListOfPointRepresentation {
 };
 
 
+%extend BRep_ListOfPointRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_PointRepresentation;
 class BRep_PointRepresentation : public MMgt_TShared {
 	public:
@@ -1621,6 +1661,11 @@ class Handle_BRep_PointRepresentation : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRep_PointRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_TEdge;
 class BRep_TEdge : public TopoDS_TEdge {
 	public:
@@ -1741,6 +1786,11 @@ class Handle_BRep_TEdge : public Handle_TopoDS_TEdge {
     }
 };
 
+%extend BRep_TEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_TFace;
 class BRep_TFace : public TopoDS_TFace {
 	public:
@@ -1855,6 +1905,11 @@ class Handle_BRep_TFace : public Handle_TopoDS_TFace {
     }
 };
 
+%extend BRep_TFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_TVertex;
 class BRep_TVertex : public TopoDS_TVertex {
 	public:
@@ -1953,6 +2008,11 @@ class Handle_BRep_TVertex : public Handle_TopoDS_TVertex {
     }
 };
 
+%extend BRep_TVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BRep_Tool {
 	public:
 		%feature("compactdefaultargs") IsClosed;
@@ -2508,6 +2568,11 @@ class BRep_Tool {
 };
 
 
+%extend BRep_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_CurveOn2Surfaces;
 class BRep_CurveOn2Surfaces : public BRep_CurveRepresentation {
 	public:
@@ -2632,6 +2697,11 @@ class Handle_BRep_CurveOn2Surfaces : public Handle_BRep_CurveRepresentation {
     }
 };
 
+%extend BRep_CurveOn2Surfaces {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_GCurve;
 class BRep_GCurve : public BRep_CurveRepresentation {
 	public:
@@ -2736,6 +2806,11 @@ class Handle_BRep_GCurve : public Handle_BRep_CurveRepresentation {
     }
 };
 
+%extend BRep_GCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_PointOnCurve;
 class BRep_PointOnCurve : public BRep_PointRepresentation {
 	public:
@@ -2822,6 +2897,11 @@ class Handle_BRep_PointOnCurve : public Handle_BRep_PointRepresentation {
     }
 };
 
+%extend BRep_PointOnCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_PointsOnSurface;
 class BRep_PointsOnSurface : public BRep_PointRepresentation {
 	public:
@@ -2884,6 +2964,11 @@ class Handle_BRep_PointsOnSurface : public Handle_BRep_PointRepresentation {
     }
 };
 
+%extend BRep_PointsOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_Polygon3D;
 class BRep_Polygon3D : public BRep_CurveRepresentation {
 	public:
@@ -2966,6 +3051,11 @@ class Handle_BRep_Polygon3D : public Handle_BRep_CurveRepresentation {
     }
 };
 
+%extend BRep_Polygon3D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_PolygonOnSurface;
 class BRep_PolygonOnSurface : public BRep_CurveRepresentation {
 	public:
@@ -3064,6 +3154,11 @@ class Handle_BRep_PolygonOnSurface : public Handle_BRep_CurveRepresentation {
     }
 };
 
+%extend BRep_PolygonOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_PolygonOnTriangulation;
 class BRep_PolygonOnTriangulation : public BRep_CurveRepresentation {
 	public:
@@ -3164,6 +3259,11 @@ class Handle_BRep_PolygonOnTriangulation : public Handle_BRep_CurveRepresentatio
     }
 };
 
+%extend BRep_PolygonOnTriangulation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_Curve3D;
 class BRep_Curve3D : public BRep_GCurve {
 	public:
@@ -3256,6 +3356,11 @@ class Handle_BRep_Curve3D : public Handle_BRep_GCurve {
     }
 };
 
+%extend BRep_Curve3D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_CurveOnSurface;
 class BRep_CurveOnSurface : public BRep_GCurve {
 	public:
@@ -3386,6 +3491,11 @@ class Handle_BRep_CurveOnSurface : public Handle_BRep_GCurve {
     }
 };
 
+%extend BRep_CurveOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_PointOnCurveOnSurface;
 class BRep_PointOnCurveOnSurface : public BRep_PointsOnSurface {
 	public:
@@ -3476,6 +3586,11 @@ class Handle_BRep_PointOnCurveOnSurface : public Handle_BRep_PointsOnSurface {
     }
 };
 
+%extend BRep_PointOnCurveOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_PointOnSurface;
 class BRep_PointOnSurface : public BRep_PointsOnSurface {
 	public:
@@ -3562,6 +3677,11 @@ class Handle_BRep_PointOnSurface : public Handle_BRep_PointsOnSurface {
     }
 };
 
+%extend BRep_PointOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_PolygonOnClosedSurface;
 class BRep_PolygonOnClosedSurface : public BRep_PolygonOnSurface {
 	public:
@@ -3648,6 +3768,11 @@ class Handle_BRep_PolygonOnClosedSurface : public Handle_BRep_PolygonOnSurface {
     }
 };
 
+%extend BRep_PolygonOnClosedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_PolygonOnClosedTriangulation;
 class BRep_PolygonOnClosedTriangulation : public BRep_PolygonOnTriangulation {
 	public:
@@ -3734,6 +3859,11 @@ class Handle_BRep_PolygonOnClosedTriangulation : public Handle_BRep_PolygonOnTri
     }
 };
 
+%extend BRep_PolygonOnClosedTriangulation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRep_CurveOnClosedSurface;
 class BRep_CurveOnClosedSurface : public BRep_CurveOnSurface {
 	public:
@@ -3886,3 +4016,8 @@ class Handle_BRep_CurveOnClosedSurface : public Handle_BRep_CurveOnSurface {
     }
 };
 
+%extend BRep_CurveOnClosedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -116,3 +116,8 @@ class RWStl {
 };
 
 
+%extend RWStl {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

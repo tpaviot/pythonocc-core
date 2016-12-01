@@ -278,6 +278,11 @@ class GeomConvert {
 };
 
 
+%extend GeomConvert {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomConvert_ApproxCurve;
 class GeomConvert_ApproxCurve {
 	public:
@@ -332,6 +337,11 @@ class GeomConvert_ApproxCurve {
         };
 
 
+%extend GeomConvert_ApproxCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomConvert_ApproxSurface;
 class GeomConvert_ApproxSurface {
 	public:
@@ -392,6 +402,11 @@ class GeomConvert_ApproxSurface {
         };
 
 
+%extend GeomConvert_ApproxSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomConvert_BSplineCurveKnotSplitting;
 class GeomConvert_BSplineCurveKnotSplitting {
 	public:
@@ -430,6 +445,11 @@ class GeomConvert_BSplineCurveKnotSplitting {
 };
 
 
+%extend GeomConvert_BSplineCurveKnotSplitting {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomConvert_BSplineCurveToBezierCurve;
 class GeomConvert_BSplineCurveToBezierCurve {
 	public:
@@ -488,6 +508,11 @@ class GeomConvert_BSplineCurveToBezierCurve {
 };
 
 
+%extend GeomConvert_BSplineCurveToBezierCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomConvert_BSplineSurfaceKnotSplitting;
 class GeomConvert_BSplineSurfaceKnotSplitting {
 	public:
@@ -544,6 +569,11 @@ class GeomConvert_BSplineSurfaceKnotSplitting {
 };
 
 
+%extend GeomConvert_BSplineSurfaceKnotSplitting {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomConvert_BSplineSurfaceToBezierSurface;
 class GeomConvert_BSplineSurfaceToBezierSurface {
 	public:
@@ -622,6 +652,11 @@ class GeomConvert_BSplineSurfaceToBezierSurface {
 };
 
 
+%extend GeomConvert_BSplineSurfaceToBezierSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomConvert_CompBezierSurfacesToBSplineSurface;
 class GeomConvert_CompBezierSurfacesToBSplineSurface {
 	public:
@@ -738,6 +773,11 @@ class GeomConvert_CompBezierSurfacesToBSplineSurface {
 };
 
 
+%extend GeomConvert_CompBezierSurfacesToBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomConvert_CompCurveToBSplineCurve;
 class GeomConvert_CompCurveToBSplineCurve {
 	public:
@@ -782,3 +822,8 @@ class GeomConvert_CompCurveToBSplineCurve {
 };
 
 
+%extend GeomConvert_CompCurveToBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -78,6 +78,11 @@ class IGESCAFControl {
 };
 
 
+%extend IGESCAFControl {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IGESCAFControl_Reader;
 class IGESCAFControl_Reader : public IGESControl_Reader {
 	public:
@@ -162,6 +167,11 @@ class IGESCAFControl_Reader : public IGESControl_Reader {
 };
 
 
+%extend IGESCAFControl_Reader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IGESCAFControl_Writer;
 class IGESCAFControl_Writer : public IGESControl_Writer {
 	public:
@@ -246,3 +256,8 @@ class IGESCAFControl_Writer : public IGESControl_Writer {
 };
 
 
+%extend IGESCAFControl_Writer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

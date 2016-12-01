@@ -173,6 +173,11 @@ class Visual3d_ContextPick {
 };
 
 
+%extend Visual3d_ContextPick {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_ContextView;
 class Visual3d_ContextView {
 	public:
@@ -423,6 +428,11 @@ class Visual3d_ContextView {
 };
 
 
+%extend Visual3d_ContextView {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_HSequenceOfLight;
 class Visual3d_HSequenceOfLight : public MMgt_TShared {
 	public:
@@ -607,6 +617,11 @@ class Handle_Visual3d_HSequenceOfLight : public Handle_MMgt_TShared {
     }
 };
 
+%extend Visual3d_HSequenceOfLight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_HSequenceOfView;
 class Visual3d_HSequenceOfView : public MMgt_TShared {
 	public:
@@ -791,6 +806,11 @@ class Handle_Visual3d_HSequenceOfView : public Handle_MMgt_TShared {
     }
 };
 
+%extend Visual3d_HSequenceOfView {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_Layer;
 class Visual3d_Layer : public MMgt_TShared {
 	public:
@@ -1045,6 +1065,11 @@ class Handle_Visual3d_Layer : public Handle_MMgt_TShared {
     }
 };
 
+%extend Visual3d_Layer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_LayerItem;
 class Visual3d_LayerItem : public MMgt_TShared {
 	public:
@@ -1125,6 +1150,11 @@ class Handle_Visual3d_LayerItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend Visual3d_LayerItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_Light;
 class Visual3d_Light : public MMgt_TShared {
 	public:
@@ -1377,6 +1407,11 @@ class Handle_Visual3d_Light : public Handle_MMgt_TShared {
     }
 };
 
+%extend Visual3d_Light {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_SequenceNodeOfSequenceOfLight;
 class Visual3d_SequenceNodeOfSequenceOfLight : public TCollection_SeqNode {
 	public:
@@ -1443,6 +1478,11 @@ class Handle_Visual3d_SequenceNodeOfSequenceOfLight : public Handle_TCollection_
     }
 };
 
+%extend Visual3d_SequenceNodeOfSequenceOfLight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_SequenceNodeOfSequenceOfView;
 class Visual3d_SequenceNodeOfSequenceOfView : public TCollection_SeqNode {
 	public:
@@ -1509,6 +1549,11 @@ class Handle_Visual3d_SequenceNodeOfSequenceOfView : public Handle_TCollection_S
     }
 };
 
+%extend Visual3d_SequenceNodeOfSequenceOfView {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_SequenceOfLight;
 class Visual3d_SequenceOfLight : public TCollection_BaseSequence {
 	public:
@@ -1647,6 +1692,11 @@ class Visual3d_SequenceOfLight : public TCollection_BaseSequence {
 };
 
 
+%extend Visual3d_SequenceOfLight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_SequenceOfView;
 class Visual3d_SequenceOfView : public TCollection_BaseSequence {
 	public:
@@ -1785,6 +1835,11 @@ class Visual3d_SequenceOfView : public TCollection_BaseSequence {
 };
 
 
+%extend Visual3d_SequenceOfView {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_View;
 class Visual3d_View : public Graphic3d_DataStructureManager {
 	public:
@@ -2697,6 +2752,11 @@ class Handle_Visual3d_View : public Handle_Graphic3d_DataStructureManager {
     }
 };
 
+%extend Visual3d_View {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Visual3d_ViewManager;
 class Visual3d_ViewManager : public Graphic3d_StructureManager {
 	public:
@@ -3077,3 +3137,8 @@ class Handle_Visual3d_ViewManager : public Handle_Graphic3d_StructureManager {
     }
 };
 
+%extend Visual3d_ViewManager {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

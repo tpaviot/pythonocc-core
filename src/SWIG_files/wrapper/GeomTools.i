@@ -172,6 +172,11 @@ class GeomTools {
 };
 
 
+%extend GeomTools {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomTools_Curve2dSet;
 class GeomTools_Curve2dSet {
 	public:
@@ -269,6 +274,11 @@ class GeomTools_Curve2dSet {
 };
 
 
+%extend GeomTools_Curve2dSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomTools_CurveSet;
 class GeomTools_CurveSet {
 	public:
@@ -366,6 +376,11 @@ class GeomTools_CurveSet {
 };
 
 
+%extend GeomTools_CurveSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomTools_SurfaceSet;
 class GeomTools_SurfaceSet {
 	public:
@@ -463,6 +478,11 @@ class GeomTools_SurfaceSet {
 };
 
 
+%extend GeomTools_SurfaceSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomTools_UndefinedTypeHandler;
 class GeomTools_UndefinedTypeHandler : public MMgt_TShared {
 	public:
@@ -579,3 +599,8 @@ class Handle_GeomTools_UndefinedTypeHandler : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomTools_UndefinedTypeHandler {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

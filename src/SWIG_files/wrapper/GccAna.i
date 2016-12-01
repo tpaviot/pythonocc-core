@@ -318,6 +318,11 @@ class GccAna_Circ2d2TanOn {
 };
 
 
+%extend GccAna_Circ2d2TanOn {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_Circ2d2TanRad;
 class GccAna_Circ2d2TanRad {
 	public:
@@ -484,6 +489,11 @@ class GccAna_Circ2d2TanRad {
 };
 
 
+%extend GccAna_Circ2d2TanRad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_Circ2d3Tan;
 class GccAna_Circ2d3Tan {
 	public:
@@ -730,6 +740,11 @@ class GccAna_Circ2d3Tan {
 };
 
 
+%extend GccAna_Circ2d3Tan {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_Circ2dBisec;
 class GccAna_Circ2dBisec {
 	public:
@@ -766,6 +781,11 @@ class GccAna_Circ2dBisec {
 };
 
 
+%extend GccAna_Circ2dBisec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_Circ2dTanCen;
 class GccAna_Circ2dTanCen {
 	public:
@@ -856,6 +876,11 @@ class GccAna_Circ2dTanCen {
 };
 
 
+%extend GccAna_Circ2dTanCen {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_Circ2dTanOnRad;
 class GccAna_Circ2dTanOnRad {
 	public:
@@ -1010,6 +1035,11 @@ class GccAna_Circ2dTanOnRad {
 };
 
 
+%extend GccAna_Circ2dTanOnRad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_CircLin2dBisec;
 class GccAna_CircLin2dBisec {
 	public:
@@ -1046,6 +1076,11 @@ class GccAna_CircLin2dBisec {
 };
 
 
+%extend GccAna_CircLin2dBisec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_CircPnt2dBisec;
 class GccAna_CircPnt2dBisec {
 	public:
@@ -1094,6 +1129,11 @@ class GccAna_CircPnt2dBisec {
 };
 
 
+%extend GccAna_CircPnt2dBisec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_Lin2d2Tan;
 class GccAna_Lin2d2Tan {
 	public:
@@ -1196,6 +1236,11 @@ class GccAna_Lin2d2Tan {
 };
 
 
+%extend GccAna_Lin2d2Tan {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_Lin2dBisec;
 class GccAna_Lin2dBisec {
 	public:
@@ -1260,6 +1305,11 @@ class GccAna_Lin2dBisec {
 };
 
 
+%extend GccAna_Lin2dBisec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_Lin2dTanObl;
 class GccAna_Lin2dTanObl {
 	public:
@@ -1348,6 +1398,11 @@ class GccAna_Lin2dTanObl {
 };
 
 
+%extend GccAna_Lin2dTanObl {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_Lin2dTanPar;
 class GccAna_Lin2dTanPar {
 	public:
@@ -1418,6 +1473,11 @@ class GccAna_Lin2dTanPar {
 };
 
 
+%extend GccAna_Lin2dTanPar {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_Lin2dTanPer;
 class GccAna_Lin2dTanPer {
 	public:
@@ -1522,6 +1582,11 @@ class GccAna_Lin2dTanPer {
 };
 
 
+%extend GccAna_Lin2dTanPer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_LinPnt2dBisec;
 class GccAna_LinPnt2dBisec {
 	public:
@@ -1550,6 +1615,11 @@ class GccAna_LinPnt2dBisec {
 };
 
 
+%extend GccAna_LinPnt2dBisec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GccAna_Pnt2dBisec;
 class GccAna_Pnt2dBisec {
 	public:
@@ -1584,3 +1654,8 @@ class GccAna_Pnt2dBisec {
 };
 
 
+%extend GccAna_Pnt2dBisec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

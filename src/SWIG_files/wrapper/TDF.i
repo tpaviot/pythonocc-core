@@ -113,6 +113,11 @@ class TDF {
 };
 
 
+%extend TDF {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_Attribute;
 class TDF_Attribute : public MMgt_TShared {
 	public:
@@ -425,6 +430,11 @@ class Handle_TDF_Attribute : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDF_Attribute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_AttributeArray1;
 class TDF_AttributeArray1 {
 	public:
@@ -507,6 +517,11 @@ class TDF_AttributeArray1 {
 };
 
 
+%extend TDF_AttributeArray1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_AttributeDataMap;
 class TDF_AttributeDataMap : public TCollection_BasicMap {
 	public:
@@ -585,6 +600,11 @@ class TDF_AttributeDataMap : public TCollection_BasicMap {
 };
 
 
+%extend TDF_AttributeDataMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_AttributeDelta;
 class TDF_AttributeDelta : public MMgt_TShared {
 	public:
@@ -669,6 +689,11 @@ class Handle_TDF_AttributeDelta : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDF_AttributeDelta {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_AttributeDeltaList;
 class TDF_AttributeDeltaList {
 	public:
@@ -799,6 +824,11 @@ class TDF_AttributeDeltaList {
 };
 
 
+%extend TDF_AttributeDeltaList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_AttributeDoubleMap;
 class TDF_AttributeDoubleMap : public TCollection_BasicMap {
 	public:
@@ -885,6 +915,11 @@ class TDF_AttributeDoubleMap : public TCollection_BasicMap {
 };
 
 
+%extend TDF_AttributeDoubleMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_AttributeIndexedMap;
 class TDF_AttributeIndexedMap : public TCollection_BasicMap {
 	public:
@@ -961,6 +996,11 @@ class TDF_AttributeIndexedMap : public TCollection_BasicMap {
 };
 
 
+%extend TDF_AttributeIndexedMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_AttributeIterator;
 class TDF_AttributeIterator {
 	public:
@@ -1007,6 +1047,11 @@ class TDF_AttributeIterator {
 };
 
 
+%extend TDF_AttributeIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_AttributeList;
 class TDF_AttributeList {
 	public:
@@ -1137,6 +1182,11 @@ class TDF_AttributeList {
 };
 
 
+%extend TDF_AttributeList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_AttributeMap;
 class TDF_AttributeMap : public TCollection_BasicMap {
 	public:
@@ -1195,6 +1245,11 @@ class TDF_AttributeMap : public TCollection_BasicMap {
 };
 
 
+%extend TDF_AttributeMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_AttributeSequence;
 class TDF_AttributeSequence : public TCollection_BaseSequence {
 	public:
@@ -1333,6 +1388,11 @@ class TDF_AttributeSequence : public TCollection_BaseSequence {
 };
 
 
+%extend TDF_AttributeSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ChildIDIterator;
 class TDF_ChildIDIterator {
 	public:
@@ -1393,6 +1453,11 @@ class TDF_ChildIDIterator {
 };
 
 
+%extend TDF_ChildIDIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ChildIterator;
 class TDF_ChildIterator {
 	public:
@@ -1449,6 +1514,11 @@ class TDF_ChildIterator {
 };
 
 
+%extend TDF_ChildIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ClosureMode;
 class TDF_ClosureMode {
 	public:
@@ -1491,6 +1561,11 @@ class TDF_ClosureMode {
 };
 
 
+%extend TDF_ClosureMode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TDF_ClosureTool {
 	public:
 		%feature("compactdefaultargs") Closure;
@@ -1532,6 +1607,11 @@ class TDF_ClosureTool {
 };
 
 
+%extend TDF_ClosureTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TDF_ComparisonTool {
 	public:
 		%feature("compactdefaultargs") Compare;
@@ -1601,6 +1681,11 @@ class TDF_ComparisonTool {
 };
 
 
+%extend TDF_ComparisonTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_CopyLabel;
 class TDF_CopyLabel {
 	public:
@@ -1685,6 +1770,11 @@ class TDF_CopyLabel {
 };
 
 
+%extend TDF_CopyLabel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TDF_CopyTool {
 	public:
 		%feature("compactdefaultargs") Copy;
@@ -1728,6 +1818,11 @@ class TDF_CopyTool {
 };
 
 
+%extend TDF_CopyTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_Data;
 class TDF_Data : public MMgt_TShared {
 	public:
@@ -1860,6 +1955,11 @@ class Handle_TDF_Data : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDF_Data {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DataMapIteratorOfAttributeDataMap;
 class TDF_DataMapIteratorOfAttributeDataMap : public TCollection_BasicMapIterator {
 	public:
@@ -1890,6 +1990,11 @@ class TDF_DataMapIteratorOfAttributeDataMap : public TCollection_BasicMapIterato
 };
 
 
+%extend TDF_DataMapIteratorOfAttributeDataMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DataMapIteratorOfLabelDataMap;
 class TDF_DataMapIteratorOfLabelDataMap : public TCollection_BasicMapIterator {
 	public:
@@ -1920,6 +2025,11 @@ class TDF_DataMapIteratorOfLabelDataMap : public TCollection_BasicMapIterator {
 };
 
 
+%extend TDF_DataMapIteratorOfLabelDataMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DataMapIteratorOfLabelIntegerMap;
 class TDF_DataMapIteratorOfLabelIntegerMap : public TCollection_BasicMapIterator {
 	public:
@@ -1950,6 +2060,11 @@ class TDF_DataMapIteratorOfLabelIntegerMap : public TCollection_BasicMapIterator
 };
 
 
+%extend TDF_DataMapIteratorOfLabelIntegerMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DataMapNodeOfAttributeDataMap;
 class TDF_DataMapNodeOfAttributeDataMap : public TCollection_MapNode {
 	public:
@@ -2020,6 +2135,11 @@ class Handle_TDF_DataMapNodeOfAttributeDataMap : public Handle_TCollection_MapNo
     }
 };
 
+%extend TDF_DataMapNodeOfAttributeDataMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DataMapNodeOfLabelDataMap;
 class TDF_DataMapNodeOfLabelDataMap : public TCollection_MapNode {
 	public:
@@ -2090,6 +2210,11 @@ class Handle_TDF_DataMapNodeOfLabelDataMap : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TDF_DataMapNodeOfLabelDataMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DataMapNodeOfLabelIntegerMap;
 class TDF_DataMapNodeOfLabelIntegerMap : public TCollection_MapNode {
 	public:
@@ -2169,6 +2294,11 @@ class Handle_TDF_DataMapNodeOfLabelIntegerMap : public Handle_TCollection_MapNod
     }
 };
 
+%extend TDF_DataMapNodeOfLabelIntegerMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DataSet;
 class TDF_DataSet : public MMgt_TShared {
 	public:
@@ -2305,6 +2435,11 @@ class Handle_TDF_DataSet : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDF_DataSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_Delta;
 class TDF_Delta : public MMgt_TShared {
 	public:
@@ -2425,6 +2560,11 @@ class Handle_TDF_Delta : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDF_Delta {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DeltaList;
 class TDF_DeltaList {
 	public:
@@ -2555,6 +2695,11 @@ class TDF_DeltaList {
 };
 
 
+%extend TDF_DeltaList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DoubleMapIteratorOfAttributeDoubleMap;
 class TDF_DoubleMapIteratorOfAttributeDoubleMap : public TCollection_BasicMapIterator {
 	public:
@@ -2585,6 +2730,11 @@ class TDF_DoubleMapIteratorOfAttributeDoubleMap : public TCollection_BasicMapIte
 };
 
 
+%extend TDF_DoubleMapIteratorOfAttributeDoubleMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DoubleMapIteratorOfGUIDProgIDMap;
 class TDF_DoubleMapIteratorOfGUIDProgIDMap : public TCollection_BasicMapIterator {
 	public:
@@ -2615,6 +2765,11 @@ class TDF_DoubleMapIteratorOfGUIDProgIDMap : public TCollection_BasicMapIterator
 };
 
 
+%extend TDF_DoubleMapIteratorOfGUIDProgIDMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DoubleMapIteratorOfLabelDoubleMap;
 class TDF_DoubleMapIteratorOfLabelDoubleMap : public TCollection_BasicMapIterator {
 	public:
@@ -2645,6 +2800,11 @@ class TDF_DoubleMapIteratorOfLabelDoubleMap : public TCollection_BasicMapIterato
 };
 
 
+%extend TDF_DoubleMapIteratorOfLabelDoubleMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DoubleMapNodeOfAttributeDoubleMap;
 class TDF_DoubleMapNodeOfAttributeDoubleMap : public TCollection_MapNode {
 	public:
@@ -2721,6 +2881,11 @@ class Handle_TDF_DoubleMapNodeOfAttributeDoubleMap : public Handle_TCollection_M
     }
 };
 
+%extend TDF_DoubleMapNodeOfAttributeDoubleMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DoubleMapNodeOfGUIDProgIDMap;
 class TDF_DoubleMapNodeOfGUIDProgIDMap : public TCollection_MapNode {
 	public:
@@ -2797,6 +2962,11 @@ class Handle_TDF_DoubleMapNodeOfGUIDProgIDMap : public Handle_TCollection_MapNod
     }
 };
 
+%extend TDF_DoubleMapNodeOfGUIDProgIDMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DoubleMapNodeOfLabelDoubleMap;
 class TDF_DoubleMapNodeOfLabelDoubleMap : public TCollection_MapNode {
 	public:
@@ -2873,6 +3043,11 @@ class Handle_TDF_DoubleMapNodeOfLabelDoubleMap : public Handle_TCollection_MapNo
     }
 };
 
+%extend TDF_DoubleMapNodeOfLabelDoubleMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_GUIDProgIDMap;
 class TDF_GUIDProgIDMap : public TCollection_BasicMap {
 	public:
@@ -2959,6 +3134,11 @@ class TDF_GUIDProgIDMap : public TCollection_BasicMap {
 };
 
 
+%extend TDF_GUIDProgIDMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_HAttributeArray1;
 class TDF_HAttributeArray1 : public MMgt_TShared {
 	public:
@@ -3075,6 +3255,11 @@ class Handle_TDF_HAttributeArray1 : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDF_HAttributeArray1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_IDFilter;
 class TDF_IDFilter {
 	public:
@@ -3191,6 +3376,11 @@ class TDF_IDFilter {
         };
 
 
+%extend TDF_IDFilter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_IDList;
 class TDF_IDList {
 	public:
@@ -3321,6 +3511,11 @@ class TDF_IDList {
 };
 
 
+%extend TDF_IDList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_IDMap;
 class TDF_IDMap : public TCollection_BasicMap {
 	public:
@@ -3379,6 +3574,11 @@ class TDF_IDMap : public TCollection_BasicMap {
 };
 
 
+%extend TDF_IDMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_IndexedMapNodeOfAttributeIndexedMap;
 class TDF_IndexedMapNodeOfAttributeIndexedMap : public TCollection_MapNode {
 	public:
@@ -3464,6 +3664,11 @@ class Handle_TDF_IndexedMapNodeOfAttributeIndexedMap : public Handle_TCollection
     }
 };
 
+%extend TDF_IndexedMapNodeOfAttributeIndexedMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_IndexedMapNodeOfLabelIndexedMap;
 class TDF_IndexedMapNodeOfLabelIndexedMap : public TCollection_MapNode {
 	public:
@@ -3549,6 +3754,11 @@ class Handle_TDF_IndexedMapNodeOfLabelIndexedMap : public Handle_TCollection_Map
     }
 };
 
+%extend TDF_IndexedMapNodeOfLabelIndexedMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_Label;
 class TDF_Label {
 	public:
@@ -3843,6 +4053,11 @@ class TDF_Label {
         };
 
 
+%extend TDF_Label {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_LabelDataMap;
 class TDF_LabelDataMap : public TCollection_BasicMap {
 	public:
@@ -3921,6 +4136,11 @@ class TDF_LabelDataMap : public TCollection_BasicMap {
 };
 
 
+%extend TDF_LabelDataMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_LabelDoubleMap;
 class TDF_LabelDoubleMap : public TCollection_BasicMap {
 	public:
@@ -4007,6 +4227,11 @@ class TDF_LabelDoubleMap : public TCollection_BasicMap {
 };
 
 
+%extend TDF_LabelDoubleMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_LabelIndexedMap;
 class TDF_LabelIndexedMap : public TCollection_BasicMap {
 	public:
@@ -4083,6 +4308,11 @@ class TDF_LabelIndexedMap : public TCollection_BasicMap {
 };
 
 
+%extend TDF_LabelIndexedMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_LabelIntegerMap;
 class TDF_LabelIntegerMap : public TCollection_BasicMap {
 	public:
@@ -4161,6 +4391,11 @@ class TDF_LabelIntegerMap : public TCollection_BasicMap {
 };
 
 
+%extend TDF_LabelIntegerMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_LabelList;
 class TDF_LabelList {
 	public:
@@ -4291,6 +4526,11 @@ class TDF_LabelList {
 };
 
 
+%extend TDF_LabelList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_LabelMap;
 class TDF_LabelMap : public TCollection_BasicMap {
 	public:
@@ -4349,6 +4589,11 @@ class TDF_LabelMap : public TCollection_BasicMap {
 };
 
 
+%extend TDF_LabelMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_LabelSequence;
 class TDF_LabelSequence : public TCollection_BaseSequence {
 	public:
@@ -4487,6 +4732,11 @@ class TDF_LabelSequence : public TCollection_BaseSequence {
 };
 
 
+%extend TDF_LabelSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ListIteratorOfAttributeDeltaList;
 class TDF_ListIteratorOfAttributeDeltaList {
 	public:
@@ -4521,6 +4771,11 @@ class TDF_ListIteratorOfAttributeDeltaList {
 };
 
 
+%extend TDF_ListIteratorOfAttributeDeltaList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ListIteratorOfAttributeList;
 class TDF_ListIteratorOfAttributeList {
 	public:
@@ -4555,6 +4810,11 @@ class TDF_ListIteratorOfAttributeList {
 };
 
 
+%extend TDF_ListIteratorOfAttributeList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ListIteratorOfDeltaList;
 class TDF_ListIteratorOfDeltaList {
 	public:
@@ -4589,6 +4849,11 @@ class TDF_ListIteratorOfDeltaList {
 };
 
 
+%extend TDF_ListIteratorOfDeltaList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ListIteratorOfIDList;
 class TDF_ListIteratorOfIDList {
 	public:
@@ -4623,6 +4888,11 @@ class TDF_ListIteratorOfIDList {
 };
 
 
+%extend TDF_ListIteratorOfIDList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ListIteratorOfLabelList;
 class TDF_ListIteratorOfLabelList {
 	public:
@@ -4657,6 +4927,11 @@ class TDF_ListIteratorOfLabelList {
 };
 
 
+%extend TDF_ListIteratorOfLabelList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ListNodeOfAttributeDeltaList;
 class TDF_ListNodeOfAttributeDeltaList : public TCollection_MapNode {
 	public:
@@ -4721,6 +4996,11 @@ class Handle_TDF_ListNodeOfAttributeDeltaList : public Handle_TCollection_MapNod
     }
 };
 
+%extend TDF_ListNodeOfAttributeDeltaList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ListNodeOfAttributeList;
 class TDF_ListNodeOfAttributeList : public TCollection_MapNode {
 	public:
@@ -4785,6 +5065,11 @@ class Handle_TDF_ListNodeOfAttributeList : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TDF_ListNodeOfAttributeList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ListNodeOfDeltaList;
 class TDF_ListNodeOfDeltaList : public TCollection_MapNode {
 	public:
@@ -4849,6 +5134,11 @@ class Handle_TDF_ListNodeOfDeltaList : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TDF_ListNodeOfDeltaList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ListNodeOfIDList;
 class TDF_ListNodeOfIDList : public TCollection_MapNode {
 	public:
@@ -4913,6 +5203,11 @@ class Handle_TDF_ListNodeOfIDList : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TDF_ListNodeOfIDList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_ListNodeOfLabelList;
 class TDF_ListNodeOfLabelList : public TCollection_MapNode {
 	public:
@@ -4977,6 +5272,11 @@ class Handle_TDF_ListNodeOfLabelList : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TDF_ListNodeOfLabelList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_MapIteratorOfAttributeMap;
 class TDF_MapIteratorOfAttributeMap : public TCollection_BasicMapIterator {
 	public:
@@ -5003,6 +5303,11 @@ class TDF_MapIteratorOfAttributeMap : public TCollection_BasicMapIterator {
 };
 
 
+%extend TDF_MapIteratorOfAttributeMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_MapIteratorOfIDMap;
 class TDF_MapIteratorOfIDMap : public TCollection_BasicMapIterator {
 	public:
@@ -5029,6 +5334,11 @@ class TDF_MapIteratorOfIDMap : public TCollection_BasicMapIterator {
 };
 
 
+%extend TDF_MapIteratorOfIDMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_MapIteratorOfLabelMap;
 class TDF_MapIteratorOfLabelMap : public TCollection_BasicMapIterator {
 	public:
@@ -5055,6 +5365,11 @@ class TDF_MapIteratorOfLabelMap : public TCollection_BasicMapIterator {
 };
 
 
+%extend TDF_MapIteratorOfLabelMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_RelocationTable;
 class TDF_RelocationTable : public MMgt_TShared {
 	public:
@@ -5255,6 +5570,11 @@ class Handle_TDF_RelocationTable : public Handle_MMgt_TShared {
     }
 };
 
+%extend TDF_RelocationTable {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_SequenceNodeOfAttributeSequence;
 class TDF_SequenceNodeOfAttributeSequence : public TCollection_SeqNode {
 	public:
@@ -5321,6 +5641,11 @@ class Handle_TDF_SequenceNodeOfAttributeSequence : public Handle_TCollection_Seq
     }
 };
 
+%extend TDF_SequenceNodeOfAttributeSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_SequenceNodeOfLabelSequence;
 class TDF_SequenceNodeOfLabelSequence : public TCollection_SeqNode {
 	public:
@@ -5387,6 +5712,11 @@ class Handle_TDF_SequenceNodeOfLabelSequence : public Handle_TCollection_SeqNode
     }
 };
 
+%extend TDF_SequenceNodeOfLabelSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_StdMapNodeOfAttributeMap;
 class TDF_StdMapNodeOfAttributeMap : public TCollection_MapNode {
 	public:
@@ -5451,6 +5781,11 @@ class Handle_TDF_StdMapNodeOfAttributeMap : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TDF_StdMapNodeOfAttributeMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_StdMapNodeOfIDMap;
 class TDF_StdMapNodeOfIDMap : public TCollection_MapNode {
 	public:
@@ -5515,6 +5850,11 @@ class Handle_TDF_StdMapNodeOfIDMap : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TDF_StdMapNodeOfIDMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_StdMapNodeOfLabelMap;
 class TDF_StdMapNodeOfLabelMap : public TCollection_MapNode {
 	public:
@@ -5579,6 +5919,11 @@ class Handle_TDF_StdMapNodeOfLabelMap : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TDF_StdMapNodeOfLabelMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TDF_Tool {
 	public:
 		%feature("compactdefaultargs") NbLabels;
@@ -5828,6 +6173,11 @@ class TDF_Tool {
 };
 
 
+%extend TDF_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_Transaction;
 class TDF_Transaction {
 	public:
@@ -5904,6 +6254,11 @@ class TDF_Transaction {
 };
 
 
+%extend TDF_Transaction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DeltaOnAddition;
 class TDF_DeltaOnAddition : public TDF_AttributeDelta {
 	public:
@@ -5970,6 +6325,11 @@ class Handle_TDF_DeltaOnAddition : public Handle_TDF_AttributeDelta {
     }
 };
 
+%extend TDF_DeltaOnAddition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DeltaOnForget;
 class TDF_DeltaOnForget : public TDF_AttributeDelta {
 	public:
@@ -6036,6 +6396,11 @@ class Handle_TDF_DeltaOnForget : public Handle_TDF_AttributeDelta {
     }
 };
 
+%extend TDF_DeltaOnForget {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DeltaOnModification;
 class TDF_DeltaOnModification : public TDF_AttributeDelta {
 	public:
@@ -6094,6 +6459,11 @@ class Handle_TDF_DeltaOnModification : public Handle_TDF_AttributeDelta {
     }
 };
 
+%extend TDF_DeltaOnModification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DeltaOnRemoval;
 class TDF_DeltaOnRemoval : public TDF_AttributeDelta {
 	public:
@@ -6146,6 +6516,11 @@ class Handle_TDF_DeltaOnRemoval : public Handle_TDF_AttributeDelta {
     }
 };
 
+%extend TDF_DeltaOnRemoval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DeltaOnResume;
 class TDF_DeltaOnResume : public TDF_AttributeDelta {
 	public:
@@ -6212,6 +6587,11 @@ class Handle_TDF_DeltaOnResume : public Handle_TDF_AttributeDelta {
     }
 };
 
+%extend TDF_DeltaOnResume {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_Reference;
 class TDF_Reference : public TDF_Attribute {
 	public:
@@ -6326,6 +6706,11 @@ class Handle_TDF_Reference : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDF_Reference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_TagSource;
 class TDF_TagSource : public TDF_Attribute {
 	public:
@@ -6446,6 +6831,11 @@ class Handle_TDF_TagSource : public Handle_TDF_Attribute {
     }
 };
 
+%extend TDF_TagSource {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DefaultDeltaOnModification;
 class TDF_DefaultDeltaOnModification : public TDF_DeltaOnModification {
 	public:
@@ -6512,6 +6902,11 @@ class Handle_TDF_DefaultDeltaOnModification : public Handle_TDF_DeltaOnModificat
     }
 };
 
+%extend TDF_DefaultDeltaOnModification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TDF_DefaultDeltaOnRemoval;
 class TDF_DefaultDeltaOnRemoval : public TDF_DeltaOnRemoval {
 	public:
@@ -6578,3 +6973,8 @@ class Handle_TDF_DefaultDeltaOnRemoval : public Handle_TDF_DeltaOnRemoval {
     }
 };
 
+%extend TDF_DefaultDeltaOnRemoval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

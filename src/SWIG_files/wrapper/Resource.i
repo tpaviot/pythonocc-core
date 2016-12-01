@@ -93,6 +93,11 @@ class Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString : public TCollec
 };
 
 
+%extend Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString;
 class Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString : public TCollection_BasicMapIterator {
 	public:
@@ -123,6 +128,11 @@ class Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString : public TCol
 };
 
 
+%extend Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString;
 class Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString : public TCollection_MapNode {
 	public:
@@ -193,6 +203,11 @@ class Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString : public Hand
     }
 };
 
+%extend Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString;
 class Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString : public TCollection_MapNode {
 	public:
@@ -263,6 +278,11 @@ class Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString : public H
     }
 };
 
+%extend Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Resource_DataMapOfAsciiStringAsciiString;
 class Resource_DataMapOfAsciiStringAsciiString : public TCollection_BasicMap {
 	public:
@@ -341,6 +361,11 @@ class Resource_DataMapOfAsciiStringAsciiString : public TCollection_BasicMap {
 };
 
 
+%extend Resource_DataMapOfAsciiStringAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Resource_DataMapOfAsciiStringExtendedString;
 class Resource_DataMapOfAsciiStringExtendedString : public TCollection_BasicMap {
 	public:
@@ -419,6 +444,11 @@ class Resource_DataMapOfAsciiStringExtendedString : public TCollection_BasicMap 
 };
 
 
+%extend Resource_DataMapOfAsciiStringExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Resource_LexicalCompare;
 class Resource_LexicalCompare {
 	public:
@@ -439,6 +469,11 @@ class Resource_LexicalCompare {
 };
 
 
+%extend Resource_LexicalCompare {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Resource_Manager;
 class Resource_Manager : public MMgt_TShared {
 	public:
@@ -599,6 +634,11 @@ class Handle_Resource_Manager : public Handle_MMgt_TShared {
     }
 };
 
+%extend Resource_Manager {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Resource_QuickSortOfArray1 {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -612,6 +652,11 @@ class Resource_QuickSortOfArray1 {
 };
 
 
+%extend Resource_QuickSortOfArray1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Resource_Unicode {
 	public:
 		%feature("compactdefaultargs") ConvertSJISToUnicode;
@@ -747,3 +792,8 @@ class Resource_Unicode {
 };
 
 
+%extend Resource_Unicode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

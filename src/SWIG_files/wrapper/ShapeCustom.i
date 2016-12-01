@@ -156,6 +156,11 @@ class ShapeCustom {
 };
 
 
+%extend ShapeCustom {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeCustom_ConvertToBSpline;
 class ShapeCustom_ConvertToBSpline : public BRepTools_Modification {
 	public:
@@ -338,6 +343,11 @@ class Handle_ShapeCustom_ConvertToBSpline : public Handle_BRepTools_Modification
     }
 };
 
+%extend ShapeCustom_ConvertToBSpline {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeCustom_Curve;
 class ShapeCustom_Curve {
 	public:
@@ -370,6 +380,11 @@ class ShapeCustom_Curve {
 };
 
 
+%extend ShapeCustom_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class ShapeCustom_Curve2d {
 	public:
 		%feature("compactdefaultargs") IsLinear;
@@ -417,6 +432,11 @@ class ShapeCustom_Curve2d {
 };
 
 
+%extend ShapeCustom_Curve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeCustom_DirectModification;
 class ShapeCustom_DirectModification : public BRepTools_Modification {
 	public:
@@ -567,6 +587,11 @@ class Handle_ShapeCustom_DirectModification : public Handle_BRepTools_Modificati
     }
 };
 
+%extend ShapeCustom_DirectModification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeCustom_RestrictionParameters;
 class ShapeCustom_RestrictionParameters : public MMgt_TShared {
 	public:
@@ -833,6 +858,11 @@ class Handle_ShapeCustom_RestrictionParameters : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeCustom_RestrictionParameters {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeCustom_Surface;
 class ShapeCustom_Surface {
 	public:
@@ -881,6 +911,11 @@ class ShapeCustom_Surface {
 };
 
 
+%extend ShapeCustom_Surface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeCustom_TrsfModification;
 class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 	public:
@@ -1017,3 +1052,8 @@ class Handle_ShapeCustom_TrsfModification : public Handle_BRepTools_TrsfModifica
     }
 };
 
+%extend ShapeCustom_TrsfModification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

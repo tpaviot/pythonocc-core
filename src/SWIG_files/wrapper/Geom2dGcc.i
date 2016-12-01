@@ -123,6 +123,11 @@ class Geom2dGcc {
 };
 
 
+%extend Geom2dGcc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Circ2d2TanOn;
 class Geom2dGcc_Circ2d2TanOn {
 	public:
@@ -281,6 +286,11 @@ class Geom2dGcc_Circ2d2TanOn {
 };
 
 
+%extend Geom2dGcc_Circ2d2TanOn {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Circ2d2TanOnGeo;
 class Geom2dGcc_Circ2d2TanOnGeo {
 	public:
@@ -459,6 +469,11 @@ class Geom2dGcc_Circ2d2TanOnGeo {
 };
 
 
+%extend Geom2dGcc_Circ2d2TanOnGeo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Circ2d2TanOnIter;
 class Geom2dGcc_Circ2d2TanOnIter {
 	public:
@@ -765,6 +780,11 @@ class Geom2dGcc_Circ2d2TanOnIter {
 };
 
 
+%extend Geom2dGcc_Circ2d2TanOnIter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Circ2d2TanRad;
 class Geom2dGcc_Circ2d2TanRad {
 	public:
@@ -897,6 +917,11 @@ class Geom2dGcc_Circ2d2TanRad {
 };
 
 
+%extend Geom2dGcc_Circ2d2TanRad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Circ2d2TanRadGeo;
 class Geom2dGcc_Circ2d2TanRadGeo {
 	public:
@@ -1035,6 +1060,11 @@ class Geom2dGcc_Circ2d2TanRadGeo {
 };
 
 
+%extend Geom2dGcc_Circ2d2TanRadGeo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Circ2d3Tan;
 class Geom2dGcc_Circ2d3Tan {
 	public:
@@ -1221,6 +1251,11 @@ class Geom2dGcc_Circ2d3Tan {
 };
 
 
+%extend Geom2dGcc_Circ2d3Tan {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Circ2d3TanIter;
 class Geom2dGcc_Circ2d3TanIter {
 	public:
@@ -1493,6 +1528,11 @@ class Geom2dGcc_Circ2d3TanIter {
 };
 
 
+%extend Geom2dGcc_Circ2d3TanIter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Circ2dTanCen;
 class Geom2dGcc_Circ2dTanCen {
 	public:
@@ -1563,6 +1603,11 @@ class Geom2dGcc_Circ2dTanCen {
 };
 
 
+%extend Geom2dGcc_Circ2dTanCen {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Circ2dTanCenGeo;
 class Geom2dGcc_Circ2dTanCenGeo {
 	public:
@@ -1623,6 +1668,11 @@ class Geom2dGcc_Circ2dTanCenGeo {
 };
 
 
+%extend Geom2dGcc_Circ2dTanCenGeo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Circ2dTanOnRad;
 class Geom2dGcc_Circ2dTanOnRad {
 	public:
@@ -1733,6 +1783,11 @@ class Geom2dGcc_Circ2dTanOnRad {
 };
 
 
+%extend Geom2dGcc_Circ2dTanOnRad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Circ2dTanOnRadGeo;
 class Geom2dGcc_Circ2dTanOnRadGeo {
 	public:
@@ -1885,6 +1940,11 @@ class Geom2dGcc_Circ2dTanOnRadGeo {
 };
 
 
+%extend Geom2dGcc_Circ2dTanOnRadGeo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Geom2dGcc_CurveTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -1966,6 +2026,11 @@ class Geom2dGcc_CurveTool {
 };
 
 
+%extend Geom2dGcc_CurveTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Geom2dGcc_CurveToolGeo {
 	public:
 		%feature("compactdefaultargs") TheType;
@@ -2115,6 +2180,11 @@ class Geom2dGcc_CurveToolGeo {
 };
 
 
+%extend Geom2dGcc_CurveToolGeo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_FunctionTanCirCu;
 class Geom2dGcc_FunctionTanCirCu : public math_FunctionWithDerivative {
 	public:
@@ -2161,6 +2231,11 @@ class Geom2dGcc_FunctionTanCirCu : public math_FunctionWithDerivative {
 };
 
 
+%extend Geom2dGcc_FunctionTanCirCu {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_FunctionTanCuCu;
 class Geom2dGcc_FunctionTanCuCu : public math_FunctionSetWithDerivatives {
 	public:
@@ -2245,6 +2320,11 @@ class Geom2dGcc_FunctionTanCuCu : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Geom2dGcc_FunctionTanCuCu {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_FunctionTanCuCuOnCu;
 class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	public:
@@ -2463,6 +2543,11 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Geom2dGcc_FunctionTanCuCuOnCu {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_FunctionTanCuPnt;
 class Geom2dGcc_FunctionTanCuPnt : public math_FunctionWithDerivative {
 	public:
@@ -2509,6 +2594,11 @@ class Geom2dGcc_FunctionTanCuPnt : public math_FunctionWithDerivative {
 };
 
 
+%extend Geom2dGcc_FunctionTanCuPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_FunctionTanObl;
 class Geom2dGcc_FunctionTanObl : public math_FunctionWithDerivative {
 	public:
@@ -2555,6 +2645,11 @@ class Geom2dGcc_FunctionTanObl : public math_FunctionWithDerivative {
 };
 
 
+%extend Geom2dGcc_FunctionTanObl {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Lin2d2Tan;
 class Geom2dGcc_Lin2d2Tan {
 	public:
@@ -2675,6 +2770,11 @@ class Geom2dGcc_Lin2d2Tan {
 };
 
 
+%extend Geom2dGcc_Lin2d2Tan {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Lin2d2TanIter;
 class Geom2dGcc_Lin2d2TanIter {
 	public:
@@ -2767,6 +2867,11 @@ class Geom2dGcc_Lin2d2TanIter {
 };
 
 
+%extend Geom2dGcc_Lin2d2TanIter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Lin2dTanObl;
 class Geom2dGcc_Lin2dTanObl {
 	public:
@@ -2861,6 +2966,11 @@ class Geom2dGcc_Lin2dTanObl {
 };
 
 
+%extend Geom2dGcc_Lin2dTanObl {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_Lin2dTanOblIter;
 class Geom2dGcc_Lin2dTanOblIter {
 	public:
@@ -2923,6 +3033,11 @@ class Geom2dGcc_Lin2dTanOblIter {
 };
 
 
+%extend Geom2dGcc_Lin2dTanOblIter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_QCurve;
 class Geom2dGcc_QCurve {
 	public:
@@ -2969,6 +3084,11 @@ class Geom2dGcc_QCurve {
 };
 
 
+%extend Geom2dGcc_QCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dGcc_QualifiedCurve;
 class Geom2dGcc_QualifiedCurve {
 	public:
@@ -3021,3 +3141,8 @@ class Geom2dGcc_QualifiedCurve {
 };
 
 
+%extend Geom2dGcc_QualifiedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

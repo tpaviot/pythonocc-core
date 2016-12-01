@@ -117,6 +117,11 @@ class BRepAlgo {
 };
 
 
+%extend BRepAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_AsDes;
 class BRepAlgo_AsDes : public MMgt_TShared {
 	public:
@@ -265,6 +270,11 @@ class Handle_BRepAlgo_AsDes : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepAlgo_AsDes {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_BooleanOperation;
 class BRepAlgo_BooleanOperation : public BRepBuilderAPI_MakeShape {
 	public:
@@ -317,6 +327,11 @@ class BRepAlgo_BooleanOperation : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepAlgo_BooleanOperation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_BooleanOperations;
 class BRepAlgo_BooleanOperations {
 	public:
@@ -447,6 +462,11 @@ class BRepAlgo_BooleanOperations {
 };
 
 
+%extend BRepAlgo_BooleanOperations {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_DSAccess;
 class BRepAlgo_DSAccess {
 	public:
@@ -639,6 +659,11 @@ class BRepAlgo_DSAccess {
 };
 
 
+%extend BRepAlgo_DSAccess {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean;
 class BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean : public TCollection_BasicMapIterator {
 	public:
@@ -669,6 +694,11 @@ class BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean : public TCollection_Basic
 };
 
 
+%extend BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference;
 class BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference : public TCollection_BasicMapIterator {
 	public:
@@ -699,6 +729,11 @@ class BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference : public TCollection_
 };
 
 
+%extend BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean;
 class BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public TCollection_MapNode {
 	public:
@@ -778,6 +813,11 @@ class Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public Handle_TCollec
     }
 };
 
+%extend BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_DataMapNodeOfDataMapOfShapeInterference;
 class BRepAlgo_DataMapNodeOfDataMapOfShapeInterference : public TCollection_MapNode {
 	public:
@@ -848,6 +888,11 @@ class Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference : public Handle_TC
     }
 };
 
+%extend BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_DataMapOfShapeBoolean;
 class BRepAlgo_DataMapOfShapeBoolean : public TCollection_BasicMap {
 	public:
@@ -926,6 +971,11 @@ class BRepAlgo_DataMapOfShapeBoolean : public TCollection_BasicMap {
 };
 
 
+%extend BRepAlgo_DataMapOfShapeBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_DataMapOfShapeInterference;
 class BRepAlgo_DataMapOfShapeInterference : public TCollection_BasicMap {
 	public:
@@ -1004,6 +1054,11 @@ class BRepAlgo_DataMapOfShapeInterference : public TCollection_BasicMap {
 };
 
 
+%extend BRepAlgo_DataMapOfShapeInterference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_EdgeConnector;
 class BRepAlgo_EdgeConnector : public MMgt_TShared {
 	public:
@@ -1112,6 +1167,11 @@ class Handle_BRepAlgo_EdgeConnector : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepAlgo_EdgeConnector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_FaceRestrictor;
 class BRepAlgo_FaceRestrictor {
 	public:
@@ -1170,6 +1230,11 @@ class BRepAlgo_FaceRestrictor {
 };
 
 
+%extend BRepAlgo_FaceRestrictor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_Image;
 class BRepAlgo_Image {
 	public:
@@ -1304,6 +1369,11 @@ class BRepAlgo_Image {
 };
 
 
+%extend BRepAlgo_Image {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_Loop;
 class BRepAlgo_Loop {
 	public:
@@ -1406,6 +1476,11 @@ class BRepAlgo_Loop {
 };
 
 
+%extend BRepAlgo_Loop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_NormalProjection;
 class BRepAlgo_NormalProjection {
 	public:
@@ -1536,6 +1611,11 @@ class BRepAlgo_NormalProjection {
 };
 
 
+%extend BRepAlgo_NormalProjection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger;
 class BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger : public TCollection_SeqNode {
 	public:
@@ -1602,6 +1682,11 @@ class Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger : public Handle_
     }
 };
 
+%extend BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_SequenceOfSequenceOfInteger;
 class BRepAlgo_SequenceOfSequenceOfInteger : public TCollection_BaseSequence {
 	public:
@@ -1740,6 +1825,11 @@ class BRepAlgo_SequenceOfSequenceOfInteger : public TCollection_BaseSequence {
 };
 
 
+%extend BRepAlgo_SequenceOfSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BRepAlgo_Tool {
 	public:
 		%feature("compactdefaultargs") Deboucle3D;
@@ -1755,6 +1845,11 @@ class BRepAlgo_Tool {
 };
 
 
+%extend BRepAlgo_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_Common;
 class BRepAlgo_Common : public BRepAlgo_BooleanOperation {
 	public:
@@ -1771,6 +1866,11 @@ class BRepAlgo_Common : public BRepAlgo_BooleanOperation {
 };
 
 
+%extend BRepAlgo_Common {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_Cut;
 class BRepAlgo_Cut : public BRepAlgo_BooleanOperation {
 	public:
@@ -1787,6 +1887,11 @@ class BRepAlgo_Cut : public BRepAlgo_BooleanOperation {
 };
 
 
+%extend BRepAlgo_Cut {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_Fuse;
 class BRepAlgo_Fuse : public BRepAlgo_BooleanOperation {
 	public:
@@ -1803,6 +1908,11 @@ class BRepAlgo_Fuse : public BRepAlgo_BooleanOperation {
 };
 
 
+%extend BRepAlgo_Fuse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAlgo_Section;
 class BRepAlgo_Section : public BRepAlgo_BooleanOperation {
 	public:
@@ -1959,3 +2069,8 @@ class BRepAlgo_Section : public BRepAlgo_BooleanOperation {
 };
 
 
+%extend BRepAlgo_Section {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

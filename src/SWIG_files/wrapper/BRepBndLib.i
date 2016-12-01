@@ -84,3 +84,8 @@ class BRepBndLib {
 };
 
 
+%extend BRepBndLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
