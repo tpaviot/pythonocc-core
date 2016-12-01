@@ -486,6 +486,14 @@ class TestWrapperFeatures(unittest.TestCase):
         graphic_params.RaytracingDepth = 5
         assert graphic_params.RaytracingDepth == 5
 
+    def test_repr_overload(self):
+        """ Test if repr string is properly returned
+        """
+        p = gp_Pnt(1,2,3)
+        assert str(p) == "class<'gp_Pnt'>"
+        shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+        assert "class<'TopoDS_Shape'; Type:Solid; id:" in str(shp)
+
 def suite():
     test_suite = unittest.TestSuite()
     test_suite.addTest(unittest.makeSuite(TestWrapperFeatures))
