@@ -1,4 +1,34 @@
 =============================
+Version 0.17.1 - December 2016
+
+This release requires oce-0.17.0 or oce-0.17.1 or oce-0.17.2. Prefer the latter.
+
+* gui: fix of the resizing issue of the qtViewer widget
+
+* wrapper: Add class local properties #356
+
+* wrapper: Fixed string representation #353
+
+* wrapper: Fix incorrect array size #355
+
+* wrapper: BRep 3d font support and related example
+
+* webgl: major refactoring of threejs and webgl renderers
+ (webserver, contour edge rendering, multishape, mesh quality, colr and transparency)
+
+* wrapper: proper __repr__ function for pythonocc objects
+
+* gui: PyQt signals and related example
+
+* gui: cursor pan, zoom, rotate in the Qt viewer #335
+
+* wrapper: fixes for BOPCol and BOPAlgo packages
+
+* examples: ported algotopia examples, bisector, geomplate
+
+* minor fixes
+
+=============================
 Version 0.17 - Septembre 2016
 
 This release requires oce-0.17.0 or oce-0.17.1 or oce-0.17.2. Prefer the latter.
