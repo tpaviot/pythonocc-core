@@ -63,6 +63,11 @@ class ExprIntrp {
 };
 
 
+%extend ExprIntrp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_Analysis;
 class ExprIntrp_Analysis {
 	public:
@@ -165,6 +170,11 @@ class ExprIntrp_Analysis {
 };
 
 
+%extend ExprIntrp_Analysis {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_Generator;
 class ExprIntrp_Generator : public MMgt_TShared {
 	public:
@@ -253,6 +263,11 @@ class Handle_ExprIntrp_Generator : public Handle_MMgt_TShared {
     }
 };
 
+%extend ExprIntrp_Generator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_ListIteratorOfStackOfGeneralExpression;
 class ExprIntrp_ListIteratorOfStackOfGeneralExpression {
 	public:
@@ -287,6 +302,11 @@ class ExprIntrp_ListIteratorOfStackOfGeneralExpression {
 };
 
 
+%extend ExprIntrp_ListIteratorOfStackOfGeneralExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_ListIteratorOfStackOfGeneralFunction;
 class ExprIntrp_ListIteratorOfStackOfGeneralFunction {
 	public:
@@ -321,6 +341,11 @@ class ExprIntrp_ListIteratorOfStackOfGeneralFunction {
 };
 
 
+%extend ExprIntrp_ListIteratorOfStackOfGeneralFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_ListIteratorOfStackOfGeneralRelation;
 class ExprIntrp_ListIteratorOfStackOfGeneralRelation {
 	public:
@@ -355,6 +380,11 @@ class ExprIntrp_ListIteratorOfStackOfGeneralRelation {
 };
 
 
+%extend ExprIntrp_ListIteratorOfStackOfGeneralRelation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_ListNodeOfStackOfGeneralExpression;
 class ExprIntrp_ListNodeOfStackOfGeneralExpression : public TCollection_MapNode {
 	public:
@@ -419,6 +449,11 @@ class Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression : public Handle_TColle
     }
 };
 
+%extend ExprIntrp_ListNodeOfStackOfGeneralExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_ListNodeOfStackOfGeneralFunction;
 class ExprIntrp_ListNodeOfStackOfGeneralFunction : public TCollection_MapNode {
 	public:
@@ -483,6 +518,11 @@ class Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction : public Handle_TCollect
     }
 };
 
+%extend ExprIntrp_ListNodeOfStackOfGeneralFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_ListNodeOfStackOfGeneralRelation;
 class ExprIntrp_ListNodeOfStackOfGeneralRelation : public TCollection_MapNode {
 	public:
@@ -547,6 +587,11 @@ class Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation : public Handle_TCollect
     }
 };
 
+%extend ExprIntrp_ListNodeOfStackOfGeneralRelation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_SequenceNodeOfSequenceOfNamedExpression;
 class ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public TCollection_SeqNode {
 	public:
@@ -613,6 +658,11 @@ class Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public Handle_T
     }
 };
 
+%extend ExprIntrp_SequenceNodeOfSequenceOfNamedExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_SequenceNodeOfSequenceOfNamedFunction;
 class ExprIntrp_SequenceNodeOfSequenceOfNamedFunction : public TCollection_SeqNode {
 	public:
@@ -679,6 +729,11 @@ class Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction : public Handle_TCo
     }
 };
 
+%extend ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_SequenceOfNamedExpression;
 class ExprIntrp_SequenceOfNamedExpression : public TCollection_BaseSequence {
 	public:
@@ -817,6 +872,11 @@ class ExprIntrp_SequenceOfNamedExpression : public TCollection_BaseSequence {
 };
 
 
+%extend ExprIntrp_SequenceOfNamedExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_SequenceOfNamedFunction;
 class ExprIntrp_SequenceOfNamedFunction : public TCollection_BaseSequence {
 	public:
@@ -955,6 +1015,11 @@ class ExprIntrp_SequenceOfNamedFunction : public TCollection_BaseSequence {
 };
 
 
+%extend ExprIntrp_SequenceOfNamedFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_StackOfGeneralExpression;
 class ExprIntrp_StackOfGeneralExpression {
 	public:
@@ -1085,6 +1150,11 @@ class ExprIntrp_StackOfGeneralExpression {
 };
 
 
+%extend ExprIntrp_StackOfGeneralExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_StackOfGeneralFunction;
 class ExprIntrp_StackOfGeneralFunction {
 	public:
@@ -1215,6 +1285,11 @@ class ExprIntrp_StackOfGeneralFunction {
 };
 
 
+%extend ExprIntrp_StackOfGeneralFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_StackOfGeneralRelation;
 class ExprIntrp_StackOfGeneralRelation {
 	public:
@@ -1345,6 +1420,11 @@ class ExprIntrp_StackOfGeneralRelation {
 };
 
 
+%extend ExprIntrp_StackOfGeneralRelation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_GenExp;
 class ExprIntrp_GenExp : public ExprIntrp_Generator {
 	public:
@@ -1421,6 +1501,11 @@ class Handle_ExprIntrp_GenExp : public Handle_ExprIntrp_Generator {
     }
 };
 
+%extend ExprIntrp_GenExp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_GenFct;
 class ExprIntrp_GenFct : public ExprIntrp_Generator {
 	public:
@@ -1487,6 +1572,11 @@ class Handle_ExprIntrp_GenFct : public Handle_ExprIntrp_Generator {
     }
 };
 
+%extend ExprIntrp_GenFct {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ExprIntrp_GenRel;
 class ExprIntrp_GenRel : public ExprIntrp_Generator {
 	public:
@@ -1563,3 +1653,8 @@ class Handle_ExprIntrp_GenRel : public Handle_ExprIntrp_Generator {
     }
 };
 
+%extend ExprIntrp_GenRel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -108,6 +108,11 @@ class LocOpe {
 };
 
 
+%extend LocOpe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_BuildShape;
 class LocOpe_BuildShape {
 	public:
@@ -138,6 +143,11 @@ class LocOpe_BuildShape {
 };
 
 
+%extend LocOpe_BuildShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_BuildWires;
 class LocOpe_BuildWires {
 	public:
@@ -172,6 +182,11 @@ class LocOpe_BuildWires {
 };
 
 
+%extend LocOpe_BuildWires {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_CSIntersector;
 class LocOpe_CSIntersector {
 	public:
@@ -318,6 +333,11 @@ class LocOpe_CSIntersector {
 };
 
 
+%extend LocOpe_CSIntersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_CurveShapeIntersector;
 class LocOpe_CurveShapeIntersector {
 	public:
@@ -446,6 +466,11 @@ class LocOpe_CurveShapeIntersector {
 };
 
 
+%extend LocOpe_CurveShapeIntersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_DPrism;
 class LocOpe_DPrism {
 	public:
@@ -514,6 +539,11 @@ class LocOpe_DPrism {
 };
 
 
+%extend LocOpe_DPrism {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_DataMapIteratorOfDataMapOfShapePnt;
 class LocOpe_DataMapIteratorOfDataMapOfShapePnt : public TCollection_BasicMapIterator {
 	public:
@@ -544,6 +574,11 @@ class LocOpe_DataMapIteratorOfDataMapOfShapePnt : public TCollection_BasicMapIte
 };
 
 
+%extend LocOpe_DataMapIteratorOfDataMapOfShapePnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_DataMapNodeOfDataMapOfShapePnt;
 class LocOpe_DataMapNodeOfDataMapOfShapePnt : public TCollection_MapNode {
 	public:
@@ -614,6 +649,11 @@ class Handle_LocOpe_DataMapNodeOfDataMapOfShapePnt : public Handle_TCollection_M
     }
 };
 
+%extend LocOpe_DataMapNodeOfDataMapOfShapePnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_DataMapOfShapePnt;
 class LocOpe_DataMapOfShapePnt : public TCollection_BasicMap {
 	public:
@@ -692,6 +732,11 @@ class LocOpe_DataMapOfShapePnt : public TCollection_BasicMap {
 };
 
 
+%extend LocOpe_DataMapOfShapePnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_FindEdges;
 class LocOpe_FindEdges {
 	public:
@@ -738,6 +783,11 @@ class LocOpe_FindEdges {
 };
 
 
+%extend LocOpe_FindEdges {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_FindEdgesInFace;
 class LocOpe_FindEdgesInFace {
 	public:
@@ -780,6 +830,11 @@ class LocOpe_FindEdgesInFace {
 };
 
 
+%extend LocOpe_FindEdgesInFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_GeneratedShape;
 class LocOpe_GeneratedShape : public MMgt_TShared {
 	public:
@@ -858,6 +913,11 @@ class Handle_LocOpe_GeneratedShape : public Handle_MMgt_TShared {
     }
 };
 
+%extend LocOpe_GeneratedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_Generator;
 class LocOpe_Generator {
 	public:
@@ -916,6 +976,11 @@ class LocOpe_Generator {
 };
 
 
+%extend LocOpe_Generator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_Gluer;
 class LocOpe_Gluer {
 	public:
@@ -996,6 +1061,11 @@ class LocOpe_Gluer {
 };
 
 
+%extend LocOpe_Gluer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_HBuilder;
 class LocOpe_HBuilder : public TopOpeBRepBuild_HBuilder {
 	public:
@@ -1064,6 +1134,11 @@ class Handle_LocOpe_HBuilder : public Handle_TopOpeBRepBuild_HBuilder {
     }
 };
 
+%extend LocOpe_HBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_LinearForm;
 class LocOpe_LinearForm {
 	public:
@@ -1144,6 +1219,11 @@ class LocOpe_LinearForm {
 };
 
 
+%extend LocOpe_LinearForm {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_Pipe;
 class LocOpe_Pipe {
 	public:
@@ -1194,6 +1274,11 @@ class LocOpe_Pipe {
 };
 
 
+%extend LocOpe_Pipe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_PntFace;
 class LocOpe_PntFace {
 	public:
@@ -1250,6 +1335,11 @@ class LocOpe_PntFace {
 };
 
 
+%extend LocOpe_PntFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_Prism;
 class LocOpe_Prism {
 	public:
@@ -1324,6 +1414,11 @@ class LocOpe_Prism {
 };
 
 
+%extend LocOpe_Prism {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_SequenceNodeOfSequenceOfCirc;
 class LocOpe_SequenceNodeOfSequenceOfCirc : public TCollection_SeqNode {
 	public:
@@ -1390,6 +1485,11 @@ class Handle_LocOpe_SequenceNodeOfSequenceOfCirc : public Handle_TCollection_Seq
     }
 };
 
+%extend LocOpe_SequenceNodeOfSequenceOfCirc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_SequenceNodeOfSequenceOfLin;
 class LocOpe_SequenceNodeOfSequenceOfLin : public TCollection_SeqNode {
 	public:
@@ -1456,6 +1556,11 @@ class Handle_LocOpe_SequenceNodeOfSequenceOfLin : public Handle_TCollection_SeqN
     }
 };
 
+%extend LocOpe_SequenceNodeOfSequenceOfLin {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_SequenceNodeOfSequenceOfPntFace;
 class LocOpe_SequenceNodeOfSequenceOfPntFace : public TCollection_SeqNode {
 	public:
@@ -1522,6 +1627,11 @@ class Handle_LocOpe_SequenceNodeOfSequenceOfPntFace : public Handle_TCollection_
     }
 };
 
+%extend LocOpe_SequenceNodeOfSequenceOfPntFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_SequenceOfCirc;
 class LocOpe_SequenceOfCirc : public TCollection_BaseSequence {
 	public:
@@ -1660,6 +1770,11 @@ class LocOpe_SequenceOfCirc : public TCollection_BaseSequence {
 };
 
 
+%extend LocOpe_SequenceOfCirc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_SequenceOfLin;
 class LocOpe_SequenceOfLin : public TCollection_BaseSequence {
 	public:
@@ -1798,6 +1913,11 @@ class LocOpe_SequenceOfLin : public TCollection_BaseSequence {
 };
 
 
+%extend LocOpe_SequenceOfLin {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_SequenceOfPntFace;
 class LocOpe_SequenceOfPntFace : public TCollection_BaseSequence {
 	public:
@@ -1936,6 +2056,11 @@ class LocOpe_SequenceOfPntFace : public TCollection_BaseSequence {
 };
 
 
+%extend LocOpe_SequenceOfPntFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_SplitDrafts;
 class LocOpe_SplitDrafts {
 	public:
@@ -2030,6 +2155,11 @@ class LocOpe_SplitDrafts {
 };
 
 
+%extend LocOpe_SplitDrafts {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_SplitShape;
 class LocOpe_SplitShape {
 	public:
@@ -2122,6 +2252,11 @@ class LocOpe_SplitShape {
 };
 
 
+%extend LocOpe_SplitShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_Spliter;
 class LocOpe_Spliter {
 	public:
@@ -2192,6 +2327,11 @@ class LocOpe_Spliter {
 };
 
 
+%extend LocOpe_Spliter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_WiresOnShape;
 class LocOpe_WiresOnShape : public MMgt_TShared {
 	public:
@@ -2376,6 +2516,11 @@ class Handle_LocOpe_WiresOnShape : public Handle_MMgt_TShared {
     }
 };
 
+%extend LocOpe_WiresOnShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor LocOpe_GluedShape;
 class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 	public:
@@ -2476,3 +2621,8 @@ class Handle_LocOpe_GluedShape : public Handle_LocOpe_GeneratedShape {
     }
 };
 
+%extend LocOpe_GluedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

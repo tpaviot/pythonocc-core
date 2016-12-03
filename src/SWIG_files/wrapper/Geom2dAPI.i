@@ -156,6 +156,11 @@ class Geom2dAPI_ExtremaCurveCurve {
 };
 
 
+%extend Geom2dAPI_ExtremaCurveCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dAPI_InterCurveCurve;
 class Geom2dAPI_InterCurveCurve {
 	public:
@@ -260,6 +265,11 @@ class Geom2dAPI_InterCurveCurve {
 };
 
 
+%extend Geom2dAPI_InterCurveCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dAPI_Interpolate;
 class Geom2dAPI_Interpolate {
 	public:
@@ -330,6 +340,11 @@ class Geom2dAPI_Interpolate {
 };
 
 
+%extend Geom2dAPI_Interpolate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dAPI_PointsToBSpline;
 class Geom2dAPI_PointsToBSpline {
 	public:
@@ -536,6 +551,11 @@ class Geom2dAPI_PointsToBSpline {
 };
 
 
+%extend Geom2dAPI_PointsToBSpline {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dAPI_ProjectPointOnCurve;
 class Geom2dAPI_ProjectPointOnCurve {
 	public:
@@ -672,3 +692,8 @@ class Geom2dAPI_ProjectPointOnCurve {
 };
 
 
+%extend Geom2dAPI_ProjectPointOnCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

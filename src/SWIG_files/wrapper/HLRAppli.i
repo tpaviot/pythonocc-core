@@ -104,3 +104,8 @@ class HLRAppli_ReflectLines {
 };
 
 
+%extend HLRAppli_ReflectLines {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

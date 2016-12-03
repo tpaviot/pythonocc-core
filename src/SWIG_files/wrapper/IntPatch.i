@@ -164,6 +164,11 @@ class IntPatch_ALineToWLine {
 };
 
 
+%extend IntPatch_ALineToWLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_ArcFunction;
 class IntPatch_ArcFunction : public math_FunctionWithDerivative {
 	public:
@@ -244,6 +249,11 @@ class IntPatch_ArcFunction : public math_FunctionWithDerivative {
 };
 
 
+%extend IntPatch_ArcFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_CSFunction;
 class IntPatch_CSFunction : public math_FunctionSetWithDerivatives {
 	public:
@@ -312,6 +322,11 @@ class IntPatch_CSFunction : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend IntPatch_CSFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_CurvIntSurf;
 class IntPatch_CurvIntSurf {
 	public:
@@ -394,6 +409,11 @@ class IntPatch_CurvIntSurf {
 };
 
 
+%extend IntPatch_CurvIntSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntPatch_HCurve2dTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -609,6 +629,11 @@ class IntPatch_HCurve2dTool {
 };
 
 
+%extend IntPatch_HCurve2dTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_HInterTool;
 class IntPatch_HInterTool {
 	public:
@@ -829,6 +854,11 @@ class IntPatch_HInterTool {
 };
 
 
+%extend IntPatch_HInterTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_ImpImpIntersection;
 class IntPatch_ImpImpIntersection {
 	public:
@@ -925,6 +955,11 @@ class IntPatch_ImpImpIntersection {
 };
 
 
+%extend IntPatch_ImpImpIntersection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_ImpPrmIntersection;
 class IntPatch_ImpPrmIntersection {
 	public:
@@ -1025,6 +1060,11 @@ class IntPatch_ImpPrmIntersection {
 };
 
 
+%extend IntPatch_ImpPrmIntersection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_InterferencePolyhedron;
 class IntPatch_InterferencePolyhedron : public Intf_Interference {
 	public:
@@ -1073,6 +1113,11 @@ class IntPatch_InterferencePolyhedron : public Intf_Interference {
 };
 
 
+%extend IntPatch_InterferencePolyhedron {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_Intersection;
 class IntPatch_Intersection {
 	public:
@@ -1275,6 +1320,11 @@ class IntPatch_Intersection {
 };
 
 
+%extend IntPatch_Intersection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_Line;
 class IntPatch_Line : public MMgt_TShared {
 	public:
@@ -1401,6 +1451,11 @@ class Handle_IntPatch_Line : public Handle_MMgt_TShared {
     }
 };
 
+%extend IntPatch_Line {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_LineConstructor;
 class IntPatch_LineConstructor {
 	public:
@@ -1441,6 +1496,11 @@ class IntPatch_LineConstructor {
 };
 
 
+%extend IntPatch_LineConstructor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_Point;
 class IntPatch_Point {
 	public:
@@ -1695,6 +1755,11 @@ class IntPatch_Point {
 };
 
 
+%extend IntPatch_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_Polygo;
 class IntPatch_Polygo : public Intf_Polygon2d {
 	public:
@@ -1743,6 +1808,11 @@ class IntPatch_Polygo : public Intf_Polygon2d {
 };
 
 
+%extend IntPatch_Polygo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_PrmPrmIntersection;
 class IntPatch_PrmPrmIntersection {
 	public:
@@ -2115,6 +2185,11 @@ class IntPatch_PrmPrmIntersection {
 };
 
 
+%extend IntPatch_PrmPrmIntersection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_PrmPrmIntersection_T3Bits;
 class IntPatch_PrmPrmIntersection_T3Bits {
 	public:
@@ -2161,6 +2236,11 @@ class IntPatch_PrmPrmIntersection_T3Bits {
 };
 
 
+%extend IntPatch_PrmPrmIntersection_T3Bits {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntPatch_RstInt {
 	public:
 		%feature("compactdefaultargs") PutVertexOnLine;
@@ -2184,6 +2264,11 @@ class IntPatch_RstInt {
 };
 
 
+%extend IntPatch_RstInt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking;
 class IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public TCollection_SeqNode {
 	public:
@@ -2250,6 +2335,11 @@ class Handle_IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public Handl
     }
 };
 
+%extend IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_SequenceNodeOfSequenceOfLine;
 class IntPatch_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
 	public:
@@ -2316,6 +2406,11 @@ class Handle_IntPatch_SequenceNodeOfSequenceOfLine : public Handle_TCollection_S
     }
 };
 
+%extend IntPatch_SequenceNodeOfSequenceOfLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds;
 class IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds : public TCollection_SeqNode {
 	public:
@@ -2382,6 +2477,11 @@ class Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds : public H
     }
 };
 
+%extend IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_SequenceNodeOfSequenceOfPoint;
 class IntPatch_SequenceNodeOfSequenceOfPoint : public TCollection_SeqNode {
 	public:
@@ -2448,6 +2548,11 @@ class Handle_IntPatch_SequenceNodeOfSequenceOfPoint : public Handle_TCollection_
     }
 };
 
+%extend IntPatch_SequenceNodeOfSequenceOfPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds;
 class IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds : public TCollection_SeqNode {
 	public:
@@ -2514,6 +2619,11 @@ class Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds : public Han
     }
 };
 
+%extend IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_SequenceOfIWLineOfTheIWalking;
 class IntPatch_SequenceOfIWLineOfTheIWalking : public TCollection_BaseSequence {
 	public:
@@ -2652,6 +2762,11 @@ class IntPatch_SequenceOfIWLineOfTheIWalking : public TCollection_BaseSequence {
 };
 
 
+%extend IntPatch_SequenceOfIWLineOfTheIWalking {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_SequenceOfLine;
 class IntPatch_SequenceOfLine : public TCollection_BaseSequence {
 	public:
@@ -2790,6 +2905,11 @@ class IntPatch_SequenceOfLine : public TCollection_BaseSequence {
 };
 
 
+%extend IntPatch_SequenceOfLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_SequenceOfPathPointOfTheSOnBounds;
 class IntPatch_SequenceOfPathPointOfTheSOnBounds : public TCollection_BaseSequence {
 	public:
@@ -2928,6 +3048,11 @@ class IntPatch_SequenceOfPathPointOfTheSOnBounds : public TCollection_BaseSequen
 };
 
 
+%extend IntPatch_SequenceOfPathPointOfTheSOnBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_SequenceOfPoint;
 class IntPatch_SequenceOfPoint : public TCollection_BaseSequence {
 	public:
@@ -3066,6 +3191,11 @@ class IntPatch_SequenceOfPoint : public TCollection_BaseSequence {
 };
 
 
+%extend IntPatch_SequenceOfPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_SequenceOfSegmentOfTheSOnBounds;
 class IntPatch_SequenceOfSegmentOfTheSOnBounds : public TCollection_BaseSequence {
 	public:
@@ -3204,6 +3334,11 @@ class IntPatch_SequenceOfSegmentOfTheSOnBounds : public TCollection_BaseSequence
 };
 
 
+%extend IntPatch_SequenceOfSegmentOfTheSOnBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_TheIWLineOfTheIWalking;
 class IntPatch_TheIWLineOfTheIWalking : public MMgt_TShared {
 	public:
@@ -3420,6 +3555,11 @@ class Handle_IntPatch_TheIWLineOfTheIWalking : public Handle_MMgt_TShared {
     }
 };
 
+%extend IntPatch_TheIWLineOfTheIWalking {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_TheIWalking;
 class IntPatch_TheIWalking {
 	public:
@@ -3496,6 +3636,11 @@ class IntPatch_TheIWalking {
 };
 
 
+%extend IntPatch_TheIWalking {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_ThePathPointOfTheSOnBounds;
 class IntPatch_ThePathPointOfTheSOnBounds {
 	public:
@@ -3582,6 +3727,11 @@ class IntPatch_ThePathPointOfTheSOnBounds {
 };
 
 
+%extend IntPatch_ThePathPointOfTheSOnBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_TheSOnBounds;
 class IntPatch_TheSOnBounds {
 	public:
@@ -3634,6 +3784,11 @@ class IntPatch_TheSOnBounds {
 };
 
 
+%extend IntPatch_TheSOnBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_TheSearchInside;
 class IntPatch_TheSearchInside {
 	public:
@@ -3694,6 +3849,11 @@ class IntPatch_TheSearchInside {
 };
 
 
+%extend IntPatch_TheSearchInside {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_TheSegmentOfTheSOnBounds;
 class IntPatch_TheSegmentOfTheSOnBounds {
 	public:
@@ -3738,6 +3898,11 @@ class IntPatch_TheSegmentOfTheSOnBounds {
 };
 
 
+%extend IntPatch_TheSegmentOfTheSOnBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_TheSurfFunction;
 class IntPatch_TheSurfFunction : public math_FunctionSetWithDerivatives {
 	public:
@@ -3846,6 +4011,11 @@ class IntPatch_TheSurfFunction : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend IntPatch_TheSurfFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_ALine;
 class IntPatch_ALine : public IntPatch_Line {
 	public:
@@ -4060,6 +4230,11 @@ class Handle_IntPatch_ALine : public Handle_IntPatch_Line {
     }
 };
 
+%extend IntPatch_ALine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_GLine;
 class IntPatch_GLine : public IntPatch_Line {
 	public:
@@ -4406,6 +4581,11 @@ class Handle_IntPatch_GLine : public Handle_IntPatch_Line {
     }
 };
 
+%extend IntPatch_GLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_PolyArc;
 class IntPatch_PolyArc : public IntPatch_Polygo {
 	public:
@@ -4456,6 +4636,11 @@ class IntPatch_PolyArc : public IntPatch_Polygo {
 };
 
 
+%extend IntPatch_PolyArc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_PolyLine;
 class IntPatch_PolyLine : public IntPatch_Polygo {
 	public:
@@ -4502,6 +4687,11 @@ class IntPatch_PolyLine : public IntPatch_Polygo {
 };
 
 
+%extend IntPatch_PolyLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_RLine;
 class IntPatch_RLine : public IntPatch_Line {
 	public:
@@ -4746,6 +4936,11 @@ class Handle_IntPatch_RLine : public Handle_IntPatch_Line {
     }
 };
 
+%extend IntPatch_RLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_WLine;
 class IntPatch_WLine : public IntPatch_Line {
 	public:
@@ -5034,3 +5229,8 @@ class Handle_IntPatch_WLine : public Handle_IntPatch_Line {
     }
 };
 
+%extend IntPatch_WLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -94,6 +94,11 @@ class RWStepGeom_RWAxis1Placement {
 };
 
 
+%extend RWStepGeom_RWAxis1Placement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWAxis2Placement2d;
 class RWStepGeom_RWAxis2Placement2d {
 	public:
@@ -132,6 +137,11 @@ class RWStepGeom_RWAxis2Placement2d {
 };
 
 
+%extend RWStepGeom_RWAxis2Placement2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWAxis2Placement3d;
 class RWStepGeom_RWAxis2Placement3d {
 	public:
@@ -170,6 +180,11 @@ class RWStepGeom_RWAxis2Placement3d {
 };
 
 
+%extend RWStepGeom_RWAxis2Placement3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBSplineCurve;
 class RWStepGeom_RWBSplineCurve {
 	public:
@@ -208,6 +223,11 @@ class RWStepGeom_RWBSplineCurve {
 };
 
 
+%extend RWStepGeom_RWBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBSplineCurveWithKnots;
 class RWStepGeom_RWBSplineCurveWithKnots {
 	public:
@@ -256,6 +276,11 @@ class RWStepGeom_RWBSplineCurveWithKnots {
 };
 
 
+%extend RWStepGeom_RWBSplineCurveWithKnots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve;
 class RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve {
 	public:
@@ -304,6 +329,11 @@ class RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve {
 };
 
 
+%extend RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBSplineSurface;
 class RWStepGeom_RWBSplineSurface {
 	public:
@@ -342,6 +372,11 @@ class RWStepGeom_RWBSplineSurface {
 };
 
 
+%extend RWStepGeom_RWBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBSplineSurfaceWithKnots;
 class RWStepGeom_RWBSplineSurfaceWithKnots {
 	public:
@@ -390,6 +425,11 @@ class RWStepGeom_RWBSplineSurfaceWithKnots {
 };
 
 
+%extend RWStepGeom_RWBSplineSurfaceWithKnots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 class RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface {
 	public:
@@ -438,6 +478,11 @@ class RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface {
 };
 
 
+%extend RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBezierCurve;
 class RWStepGeom_RWBezierCurve {
 	public:
@@ -476,6 +521,11 @@ class RWStepGeom_RWBezierCurve {
 };
 
 
+%extend RWStepGeom_RWBezierCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBezierCurveAndRationalBSplineCurve;
 class RWStepGeom_RWBezierCurveAndRationalBSplineCurve {
 	public:
@@ -514,6 +564,11 @@ class RWStepGeom_RWBezierCurveAndRationalBSplineCurve {
 };
 
 
+%extend RWStepGeom_RWBezierCurveAndRationalBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBezierSurface;
 class RWStepGeom_RWBezierSurface {
 	public:
@@ -552,6 +607,11 @@ class RWStepGeom_RWBezierSurface {
 };
 
 
+%extend RWStepGeom_RWBezierSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface;
 class RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface {
 	public:
@@ -590,6 +650,11 @@ class RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface {
 };
 
 
+%extend RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBoundaryCurve;
 class RWStepGeom_RWBoundaryCurve {
 	public:
@@ -628,6 +693,11 @@ class RWStepGeom_RWBoundaryCurve {
 };
 
 
+%extend RWStepGeom_RWBoundaryCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBoundedCurve;
 class RWStepGeom_RWBoundedCurve {
 	public:
@@ -658,6 +728,11 @@ class RWStepGeom_RWBoundedCurve {
 };
 
 
+%extend RWStepGeom_RWBoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWBoundedSurface;
 class RWStepGeom_RWBoundedSurface {
 	public:
@@ -688,6 +763,11 @@ class RWStepGeom_RWBoundedSurface {
 };
 
 
+%extend RWStepGeom_RWBoundedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWCartesianPoint;
 class RWStepGeom_RWCartesianPoint {
 	public:
@@ -718,6 +798,11 @@ class RWStepGeom_RWCartesianPoint {
 };
 
 
+%extend RWStepGeom_RWCartesianPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWCartesianTransformationOperator;
 class RWStepGeom_RWCartesianTransformationOperator {
 	public:
@@ -756,6 +841,11 @@ class RWStepGeom_RWCartesianTransformationOperator {
 };
 
 
+%extend RWStepGeom_RWCartesianTransformationOperator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWCartesianTransformationOperator3d;
 class RWStepGeom_RWCartesianTransformationOperator3d {
 	public:
@@ -794,6 +884,11 @@ class RWStepGeom_RWCartesianTransformationOperator3d {
 };
 
 
+%extend RWStepGeom_RWCartesianTransformationOperator3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWCircle;
 class RWStepGeom_RWCircle {
 	public:
@@ -832,6 +927,11 @@ class RWStepGeom_RWCircle {
 };
 
 
+%extend RWStepGeom_RWCircle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWCompositeCurve;
 class RWStepGeom_RWCompositeCurve {
 	public:
@@ -870,6 +970,11 @@ class RWStepGeom_RWCompositeCurve {
 };
 
 
+%extend RWStepGeom_RWCompositeCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWCompositeCurveOnSurface;
 class RWStepGeom_RWCompositeCurveOnSurface {
 	public:
@@ -908,6 +1013,11 @@ class RWStepGeom_RWCompositeCurveOnSurface {
 };
 
 
+%extend RWStepGeom_RWCompositeCurveOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWCompositeCurveSegment;
 class RWStepGeom_RWCompositeCurveSegment {
 	public:
@@ -946,6 +1056,11 @@ class RWStepGeom_RWCompositeCurveSegment {
 };
 
 
+%extend RWStepGeom_RWCompositeCurveSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWConic;
 class RWStepGeom_RWConic {
 	public:
@@ -984,6 +1099,11 @@ class RWStepGeom_RWConic {
 };
 
 
+%extend RWStepGeom_RWConic {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWConicalSurface;
 class RWStepGeom_RWConicalSurface {
 	public:
@@ -1022,6 +1142,11 @@ class RWStepGeom_RWConicalSurface {
 };
 
 
+%extend RWStepGeom_RWConicalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWCurve;
 class RWStepGeom_RWCurve {
 	public:
@@ -1052,6 +1177,11 @@ class RWStepGeom_RWCurve {
 };
 
 
+%extend RWStepGeom_RWCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWCurveBoundedSurface;
 class RWStepGeom_RWCurveBoundedSurface {
 	public:
@@ -1098,6 +1228,11 @@ class RWStepGeom_RWCurveBoundedSurface {
 };
 
 
+%extend RWStepGeom_RWCurveBoundedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWCurveReplica;
 class RWStepGeom_RWCurveReplica {
 	public:
@@ -1136,6 +1271,11 @@ class RWStepGeom_RWCurveReplica {
 };
 
 
+%extend RWStepGeom_RWCurveReplica {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWCylindricalSurface;
 class RWStepGeom_RWCylindricalSurface {
 	public:
@@ -1174,6 +1314,11 @@ class RWStepGeom_RWCylindricalSurface {
 };
 
 
+%extend RWStepGeom_RWCylindricalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWDegeneratePcurve;
 class RWStepGeom_RWDegeneratePcurve {
 	public:
@@ -1212,6 +1357,11 @@ class RWStepGeom_RWDegeneratePcurve {
 };
 
 
+%extend RWStepGeom_RWDegeneratePcurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWDegenerateToroidalSurface;
 class RWStepGeom_RWDegenerateToroidalSurface {
 	public:
@@ -1250,6 +1400,11 @@ class RWStepGeom_RWDegenerateToroidalSurface {
 };
 
 
+%extend RWStepGeom_RWDegenerateToroidalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWDirection;
 class RWStepGeom_RWDirection {
 	public:
@@ -1290,6 +1445,11 @@ class RWStepGeom_RWDirection {
 };
 
 
+%extend RWStepGeom_RWDirection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWElementarySurface;
 class RWStepGeom_RWElementarySurface {
 	public:
@@ -1328,6 +1488,11 @@ class RWStepGeom_RWElementarySurface {
 };
 
 
+%extend RWStepGeom_RWElementarySurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWEllipse;
 class RWStepGeom_RWEllipse {
 	public:
@@ -1376,6 +1541,11 @@ class RWStepGeom_RWEllipse {
 };
 
 
+%extend RWStepGeom_RWEllipse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWEvaluatedDegeneratePcurve;
 class RWStepGeom_RWEvaluatedDegeneratePcurve {
 	public:
@@ -1414,6 +1584,11 @@ class RWStepGeom_RWEvaluatedDegeneratePcurve {
 };
 
 
+%extend RWStepGeom_RWEvaluatedDegeneratePcurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
 class RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
 	public:
@@ -1452,6 +1627,11 @@ class RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
 };
 
 
+%extend RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWGeometricRepresentationContext;
 class RWStepGeom_RWGeometricRepresentationContext {
 	public:
@@ -1482,6 +1662,11 @@ class RWStepGeom_RWGeometricRepresentationContext {
 };
 
 
+%extend RWStepGeom_RWGeometricRepresentationContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext;
 class RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext {
 	public:
@@ -1520,6 +1705,11 @@ class RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext {
 };
 
 
+%extend RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext;
 class RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext {
 	public:
@@ -1558,6 +1748,11 @@ class RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationCont
 };
 
 
+%extend RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWGeometricRepresentationItem;
 class RWStepGeom_RWGeometricRepresentationItem {
 	public:
@@ -1588,6 +1783,11 @@ class RWStepGeom_RWGeometricRepresentationItem {
 };
 
 
+%extend RWStepGeom_RWGeometricRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWHyperbola;
 class RWStepGeom_RWHyperbola {
 	public:
@@ -1626,6 +1826,11 @@ class RWStepGeom_RWHyperbola {
 };
 
 
+%extend RWStepGeom_RWHyperbola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWIntersectionCurve;
 class RWStepGeom_RWIntersectionCurve {
 	public:
@@ -1664,6 +1869,11 @@ class RWStepGeom_RWIntersectionCurve {
 };
 
 
+%extend RWStepGeom_RWIntersectionCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWLine;
 class RWStepGeom_RWLine {
 	public:
@@ -1702,6 +1912,11 @@ class RWStepGeom_RWLine {
 };
 
 
+%extend RWStepGeom_RWLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWOffsetCurve3d;
 class RWStepGeom_RWOffsetCurve3d {
 	public:
@@ -1740,6 +1955,11 @@ class RWStepGeom_RWOffsetCurve3d {
 };
 
 
+%extend RWStepGeom_RWOffsetCurve3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWOffsetSurface;
 class RWStepGeom_RWOffsetSurface {
 	public:
@@ -1778,6 +1998,11 @@ class RWStepGeom_RWOffsetSurface {
 };
 
 
+%extend RWStepGeom_RWOffsetSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWOrientedSurface;
 class RWStepGeom_RWOrientedSurface {
 	public:
@@ -1824,6 +2049,11 @@ class RWStepGeom_RWOrientedSurface {
 };
 
 
+%extend RWStepGeom_RWOrientedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWOuterBoundaryCurve;
 class RWStepGeom_RWOuterBoundaryCurve {
 	public:
@@ -1862,6 +2092,11 @@ class RWStepGeom_RWOuterBoundaryCurve {
 };
 
 
+%extend RWStepGeom_RWOuterBoundaryCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWParabola;
 class RWStepGeom_RWParabola {
 	public:
@@ -1900,6 +2135,11 @@ class RWStepGeom_RWParabola {
 };
 
 
+%extend RWStepGeom_RWParabola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWPcurve;
 class RWStepGeom_RWPcurve {
 	public:
@@ -1938,6 +2178,11 @@ class RWStepGeom_RWPcurve {
 };
 
 
+%extend RWStepGeom_RWPcurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWPlacement;
 class RWStepGeom_RWPlacement {
 	public:
@@ -1976,6 +2221,11 @@ class RWStepGeom_RWPlacement {
 };
 
 
+%extend RWStepGeom_RWPlacement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWPlane;
 class RWStepGeom_RWPlane {
 	public:
@@ -2014,6 +2264,11 @@ class RWStepGeom_RWPlane {
 };
 
 
+%extend RWStepGeom_RWPlane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWPoint;
 class RWStepGeom_RWPoint {
 	public:
@@ -2044,6 +2299,11 @@ class RWStepGeom_RWPoint {
 };
 
 
+%extend RWStepGeom_RWPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWPointOnCurve;
 class RWStepGeom_RWPointOnCurve {
 	public:
@@ -2082,6 +2342,11 @@ class RWStepGeom_RWPointOnCurve {
 };
 
 
+%extend RWStepGeom_RWPointOnCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWPointOnSurface;
 class RWStepGeom_RWPointOnSurface {
 	public:
@@ -2120,6 +2385,11 @@ class RWStepGeom_RWPointOnSurface {
 };
 
 
+%extend RWStepGeom_RWPointOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWPointReplica;
 class RWStepGeom_RWPointReplica {
 	public:
@@ -2158,6 +2428,11 @@ class RWStepGeom_RWPointReplica {
 };
 
 
+%extend RWStepGeom_RWPointReplica {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWPolyline;
 class RWStepGeom_RWPolyline {
 	public:
@@ -2196,6 +2471,11 @@ class RWStepGeom_RWPolyline {
 };
 
 
+%extend RWStepGeom_RWPolyline {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWQuasiUniformCurve;
 class RWStepGeom_RWQuasiUniformCurve {
 	public:
@@ -2234,6 +2514,11 @@ class RWStepGeom_RWQuasiUniformCurve {
 };
 
 
+%extend RWStepGeom_RWQuasiUniformCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve;
 class RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve {
 	public:
@@ -2272,6 +2557,11 @@ class RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve {
 };
 
 
+%extend RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWQuasiUniformSurface;
 class RWStepGeom_RWQuasiUniformSurface {
 	public:
@@ -2310,6 +2600,11 @@ class RWStepGeom_RWQuasiUniformSurface {
 };
 
 
+%extend RWStepGeom_RWQuasiUniformSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface;
 class RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface {
 	public:
@@ -2348,6 +2643,11 @@ class RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface {
 };
 
 
+%extend RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWRationalBSplineCurve;
 class RWStepGeom_RWRationalBSplineCurve {
 	public:
@@ -2396,6 +2696,11 @@ class RWStepGeom_RWRationalBSplineCurve {
 };
 
 
+%extend RWStepGeom_RWRationalBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWRationalBSplineSurface;
 class RWStepGeom_RWRationalBSplineSurface {
 	public:
@@ -2444,6 +2749,11 @@ class RWStepGeom_RWRationalBSplineSurface {
 };
 
 
+%extend RWStepGeom_RWRationalBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWRectangularCompositeSurface;
 class RWStepGeom_RWRectangularCompositeSurface {
 	public:
@@ -2482,6 +2792,11 @@ class RWStepGeom_RWRectangularCompositeSurface {
 };
 
 
+%extend RWStepGeom_RWRectangularCompositeSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWRectangularTrimmedSurface;
 class RWStepGeom_RWRectangularTrimmedSurface {
 	public:
@@ -2520,6 +2835,11 @@ class RWStepGeom_RWRectangularTrimmedSurface {
 };
 
 
+%extend RWStepGeom_RWRectangularTrimmedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWReparametrisedCompositeCurveSegment;
 class RWStepGeom_RWReparametrisedCompositeCurveSegment {
 	public:
@@ -2558,6 +2878,11 @@ class RWStepGeom_RWReparametrisedCompositeCurveSegment {
 };
 
 
+%extend RWStepGeom_RWReparametrisedCompositeCurveSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWSeamCurve;
 class RWStepGeom_RWSeamCurve {
 	public:
@@ -2596,6 +2921,11 @@ class RWStepGeom_RWSeamCurve {
 };
 
 
+%extend RWStepGeom_RWSeamCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWSphericalSurface;
 class RWStepGeom_RWSphericalSurface {
 	public:
@@ -2634,6 +2964,11 @@ class RWStepGeom_RWSphericalSurface {
 };
 
 
+%extend RWStepGeom_RWSphericalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWSurface;
 class RWStepGeom_RWSurface {
 	public:
@@ -2664,6 +2999,11 @@ class RWStepGeom_RWSurface {
 };
 
 
+%extend RWStepGeom_RWSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWSurfaceCurve;
 class RWStepGeom_RWSurfaceCurve {
 	public:
@@ -2702,6 +3042,11 @@ class RWStepGeom_RWSurfaceCurve {
 };
 
 
+%extend RWStepGeom_RWSurfaceCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWSurfaceCurveAndBoundedCurve;
 class RWStepGeom_RWSurfaceCurveAndBoundedCurve {
 	public:
@@ -2740,6 +3085,11 @@ class RWStepGeom_RWSurfaceCurveAndBoundedCurve {
 };
 
 
+%extend RWStepGeom_RWSurfaceCurveAndBoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWSurfaceOfLinearExtrusion;
 class RWStepGeom_RWSurfaceOfLinearExtrusion {
 	public:
@@ -2778,6 +3128,11 @@ class RWStepGeom_RWSurfaceOfLinearExtrusion {
 };
 
 
+%extend RWStepGeom_RWSurfaceOfLinearExtrusion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWSurfaceOfRevolution;
 class RWStepGeom_RWSurfaceOfRevolution {
 	public:
@@ -2816,6 +3171,11 @@ class RWStepGeom_RWSurfaceOfRevolution {
 };
 
 
+%extend RWStepGeom_RWSurfaceOfRevolution {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWSurfacePatch;
 class RWStepGeom_RWSurfacePatch {
 	public:
@@ -2854,6 +3214,11 @@ class RWStepGeom_RWSurfacePatch {
 };
 
 
+%extend RWStepGeom_RWSurfacePatch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWSurfaceReplica;
 class RWStepGeom_RWSurfaceReplica {
 	public:
@@ -2892,6 +3257,11 @@ class RWStepGeom_RWSurfaceReplica {
 };
 
 
+%extend RWStepGeom_RWSurfaceReplica {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWSweptSurface;
 class RWStepGeom_RWSweptSurface {
 	public:
@@ -2930,6 +3300,11 @@ class RWStepGeom_RWSweptSurface {
 };
 
 
+%extend RWStepGeom_RWSweptSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWToroidalSurface;
 class RWStepGeom_RWToroidalSurface {
 	public:
@@ -2978,6 +3353,11 @@ class RWStepGeom_RWToroidalSurface {
 };
 
 
+%extend RWStepGeom_RWToroidalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWTrimmedCurve;
 class RWStepGeom_RWTrimmedCurve {
 	public:
@@ -3016,6 +3396,11 @@ class RWStepGeom_RWTrimmedCurve {
 };
 
 
+%extend RWStepGeom_RWTrimmedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWUniformCurve;
 class RWStepGeom_RWUniformCurve {
 	public:
@@ -3054,6 +3439,11 @@ class RWStepGeom_RWUniformCurve {
 };
 
 
+%extend RWStepGeom_RWUniformCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWUniformCurveAndRationalBSplineCurve;
 class RWStepGeom_RWUniformCurveAndRationalBSplineCurve {
 	public:
@@ -3092,6 +3482,11 @@ class RWStepGeom_RWUniformCurveAndRationalBSplineCurve {
 };
 
 
+%extend RWStepGeom_RWUniformCurveAndRationalBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWUniformSurface;
 class RWStepGeom_RWUniformSurface {
 	public:
@@ -3130,6 +3525,11 @@ class RWStepGeom_RWUniformSurface {
 };
 
 
+%extend RWStepGeom_RWUniformSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface;
 class RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface {
 	public:
@@ -3168,6 +3568,11 @@ class RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface {
 };
 
 
+%extend RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor RWStepGeom_RWVector;
 class RWStepGeom_RWVector {
 	public:
@@ -3216,3 +3621,8 @@ class RWStepGeom_RWVector {
 };
 
 
+%extend RWStepGeom_RWVector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -116,3 +116,8 @@ class Handle_IntStart_SITopolTool : public Handle_MMgt_TShared {
     }
 };
 
+%extend IntStart_SITopolTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

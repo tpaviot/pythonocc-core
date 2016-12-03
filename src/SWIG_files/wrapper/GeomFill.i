@@ -287,6 +287,11 @@ class GeomFill {
 };
 
 
+%extend GeomFill {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_AppSurf;
 class GeomFill_AppSurf : public AppBlend_Approx {
 	public:
@@ -523,6 +528,11 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 };
 
 
+%extend GeomFill_AppSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_AppSweep;
 class GeomFill_AppSweep : public AppBlend_Approx {
 	public:
@@ -759,6 +769,11 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 };
 
 
+%extend GeomFill_AppSweep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Array1OfLocationLaw;
 class GeomFill_Array1OfLocationLaw {
 	public:
@@ -841,6 +856,11 @@ class GeomFill_Array1OfLocationLaw {
 };
 
 
+%extend GeomFill_Array1OfLocationLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Array1OfSectionLaw;
 class GeomFill_Array1OfSectionLaw {
 	public:
@@ -923,6 +943,11 @@ class GeomFill_Array1OfSectionLaw {
 };
 
 
+%extend GeomFill_Array1OfSectionLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_BSplineCurves;
 class GeomFill_BSplineCurves {
 	public:
@@ -1021,6 +1046,11 @@ class GeomFill_BSplineCurves {
 };
 
 
+%extend GeomFill_BSplineCurves {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_BezierCurves;
 class GeomFill_BezierCurves {
 	public:
@@ -1123,6 +1153,11 @@ class GeomFill_BezierCurves {
 };
 
 
+%extend GeomFill_BezierCurves {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Boundary;
 class GeomFill_Boundary : public MMgt_TShared {
 	public:
@@ -1269,6 +1304,11 @@ class Handle_GeomFill_Boundary : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomFill_Boundary {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_CircularBlendFunc;
 class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 	public:
@@ -1521,6 +1561,11 @@ class Handle_GeomFill_CircularBlendFunc : public Handle_Approx_SweepFunction {
     }
 };
 
+%extend GeomFill_CircularBlendFunc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_ConstrainedFilling;
 class GeomFill_ConstrainedFilling {
 	public:
@@ -1639,6 +1684,11 @@ class GeomFill_ConstrainedFilling {
 };
 
 
+%extend GeomFill_ConstrainedFilling {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_CoonsAlgPatch;
 class GeomFill_CoonsAlgPatch : public MMgt_TShared {
 	public:
@@ -1783,6 +1833,11 @@ class Handle_GeomFill_CoonsAlgPatch : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomFill_CoonsAlgPatch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_CornerState;
 class GeomFill_CornerState {
 	public:
@@ -1843,6 +1898,11 @@ class GeomFill_CornerState {
 };
 
 
+%extend GeomFill_CornerState {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Filling;
 class GeomFill_Filling {
 	public:
@@ -1877,6 +1937,11 @@ class GeomFill_Filling {
 };
 
 
+%extend GeomFill_Filling {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_FunctionDraft;
 class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 	public:
@@ -1993,6 +2058,11 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend GeomFill_FunctionDraft {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_FunctionGuide;
 class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 	public:
@@ -2079,6 +2149,11 @@ class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend GeomFill_FunctionGuide {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_HArray1OfLocationLaw;
 class GeomFill_HArray1OfLocationLaw : public MMgt_TShared {
 	public:
@@ -2195,6 +2270,11 @@ class Handle_GeomFill_HArray1OfLocationLaw : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomFill_HArray1OfLocationLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_HArray1OfSectionLaw;
 class GeomFill_HArray1OfSectionLaw : public MMgt_TShared {
 	public:
@@ -2311,6 +2391,11 @@ class Handle_GeomFill_HArray1OfSectionLaw : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomFill_HArray1OfSectionLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_HSequenceOfAx2;
 class GeomFill_HSequenceOfAx2 : public MMgt_TShared {
 	public:
@@ -2495,6 +2580,11 @@ class Handle_GeomFill_HSequenceOfAx2 : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomFill_HSequenceOfAx2 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Line;
 class GeomFill_Line : public MMgt_TShared {
 	public:
@@ -2567,6 +2657,11 @@ class Handle_GeomFill_Line : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomFill_Line {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_LocFunction;
 class GeomFill_LocFunction {
 	public:
@@ -2631,6 +2726,11 @@ class GeomFill_LocFunction {
 };
 
 
+%extend GeomFill_LocFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_LocationLaw;
 class GeomFill_LocationLaw : public MMgt_TShared {
 	public:
@@ -2917,6 +3017,11 @@ class Handle_GeomFill_LocationLaw : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomFill_LocationLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Pipe;
 class GeomFill_Pipe {
 	public:
@@ -3183,6 +3288,11 @@ class GeomFill_Pipe {
 };
 
 
+%extend GeomFill_Pipe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_PlanFunc;
 class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 	public:
@@ -3275,6 +3385,11 @@ class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 };
 
 
+%extend GeomFill_PlanFunc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_PolynomialConvertor;
 class GeomFill_PolynomialConvertor {
 	public:
@@ -3367,6 +3482,11 @@ class GeomFill_PolynomialConvertor {
 };
 
 
+%extend GeomFill_PolynomialConvertor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Profiler;
 class GeomFill_Profiler {
 	public:
@@ -3453,6 +3573,11 @@ class GeomFill_Profiler {
 };
 
 
+%extend GeomFill_Profiler {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_QuasiAngularConvertor;
 class GeomFill_QuasiAngularConvertor {
 	public:
@@ -3557,6 +3682,11 @@ class GeomFill_QuasiAngularConvertor {
 };
 
 
+%extend GeomFill_QuasiAngularConvertor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_SectionLaw;
 class GeomFill_SectionLaw : public MMgt_TShared {
 	public:
@@ -3831,6 +3961,11 @@ class Handle_GeomFill_SectionLaw : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomFill_SectionLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_SectionPlacement;
 class GeomFill_SectionPlacement {
 	public:
@@ -3919,6 +4054,11 @@ class GeomFill_SectionPlacement {
 };
 
 
+%extend GeomFill_SectionPlacement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_SequenceNodeOfSequenceOfAx2;
 class GeomFill_SequenceNodeOfSequenceOfAx2 : public TCollection_SeqNode {
 	public:
@@ -3985,6 +4125,11 @@ class Handle_GeomFill_SequenceNodeOfSequenceOfAx2 : public Handle_TCollection_Se
     }
 };
 
+%extend GeomFill_SequenceNodeOfSequenceOfAx2 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_SequenceNodeOfSequenceOfTrsf;
 class GeomFill_SequenceNodeOfSequenceOfTrsf : public TCollection_SeqNode {
 	public:
@@ -4051,6 +4196,11 @@ class Handle_GeomFill_SequenceNodeOfSequenceOfTrsf : public Handle_TCollection_S
     }
 };
 
+%extend GeomFill_SequenceNodeOfSequenceOfTrsf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_SequenceOfAx2;
 class GeomFill_SequenceOfAx2 : public TCollection_BaseSequence {
 	public:
@@ -4189,6 +4339,11 @@ class GeomFill_SequenceOfAx2 : public TCollection_BaseSequence {
 };
 
 
+%extend GeomFill_SequenceOfAx2 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_SequenceOfTrsf;
 class GeomFill_SequenceOfTrsf : public TCollection_BaseSequence {
 	public:
@@ -4327,6 +4482,11 @@ class GeomFill_SequenceOfTrsf : public TCollection_BaseSequence {
 };
 
 
+%extend GeomFill_SequenceOfTrsf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_SnglrFunc;
 class GeomFill_SnglrFunc : public Adaptor3d_Curve {
 	public:
@@ -4463,6 +4623,11 @@ class GeomFill_SnglrFunc : public Adaptor3d_Curve {
 };
 
 
+%extend GeomFill_SnglrFunc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Sweep;
 class GeomFill_Sweep {
 	public:
@@ -4603,6 +4768,11 @@ class GeomFill_Sweep {
 };
 
 
+%extend GeomFill_Sweep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_SweepFunction;
 class GeomFill_SweepFunction : public Approx_SweepFunction {
 	public:
@@ -4867,6 +5037,11 @@ class Handle_GeomFill_SweepFunction : public Handle_Approx_SweepFunction {
     }
 };
 
+%extend GeomFill_SweepFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Tensor;
 class GeomFill_Tensor {
 	public:
@@ -4923,6 +5098,11 @@ class GeomFill_Tensor {
 };
 
 
+%extend GeomFill_Tensor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_TgtField;
 class GeomFill_TgtField : public MMgt_TShared {
 	public:
@@ -5013,6 +5193,11 @@ class Handle_GeomFill_TgtField : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomFill_TgtField {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_TrihedronLaw;
 class GeomFill_TrihedronLaw : public MMgt_TShared {
 	public:
@@ -5203,6 +5388,11 @@ class Handle_GeomFill_TrihedronLaw : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomFill_TrihedronLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_BoundWithSurf;
 class GeomFill_BoundWithSurf : public GeomFill_Boundary {
 	public:
@@ -5333,6 +5523,11 @@ class Handle_GeomFill_BoundWithSurf : public Handle_GeomFill_Boundary {
     }
 };
 
+%extend GeomFill_BoundWithSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_ConstantBiNormal;
 class GeomFill_ConstantBiNormal : public GeomFill_TrihedronLaw {
 	public:
@@ -5503,6 +5698,11 @@ class Handle_GeomFill_ConstantBiNormal : public Handle_GeomFill_TrihedronLaw {
     }
 };
 
+%extend GeomFill_ConstantBiNormal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Coons;
 class GeomFill_Coons : public GeomFill_Filling {
 	public:
@@ -5577,6 +5777,11 @@ class GeomFill_Coons : public GeomFill_Filling {
 };
 
 
+%extend GeomFill_Coons {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_CorrectedFrenet;
 class GeomFill_CorrectedFrenet : public GeomFill_TrihedronLaw {
 	public:
@@ -5765,6 +5970,11 @@ class Handle_GeomFill_CorrectedFrenet : public Handle_GeomFill_TrihedronLaw {
     }
 };
 
+%extend GeomFill_CorrectedFrenet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_CurveAndTrihedron;
 class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 	public:
@@ -6003,6 +6213,11 @@ class Handle_GeomFill_CurveAndTrihedron : public Handle_GeomFill_LocationLaw {
     }
 };
 
+%extend GeomFill_CurveAndTrihedron {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Curved;
 class GeomFill_Curved : public GeomFill_Filling {
 	public:
@@ -6169,6 +6384,11 @@ class GeomFill_Curved : public GeomFill_Filling {
 };
 
 
+%extend GeomFill_Curved {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Darboux;
 class GeomFill_Darboux : public GeomFill_TrihedronLaw {
 	public:
@@ -6331,6 +6551,11 @@ class Handle_GeomFill_Darboux : public Handle_GeomFill_TrihedronLaw {
     }
 };
 
+%extend GeomFill_Darboux {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_DegeneratedBound;
 class GeomFill_DegeneratedBound : public GeomFill_Boundary {
 	public:
@@ -6443,6 +6668,11 @@ class Handle_GeomFill_DegeneratedBound : public Handle_GeomFill_Boundary {
     }
 };
 
+%extend GeomFill_DegeneratedBound {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_DiscreteTrihedron;
 class GeomFill_DiscreteTrihedron : public GeomFill_TrihedronLaw {
 	public:
@@ -6615,6 +6845,11 @@ class Handle_GeomFill_DiscreteTrihedron : public Handle_GeomFill_TrihedronLaw {
     }
 };
 
+%extend GeomFill_DiscreteTrihedron {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_DraftTrihedron;
 class GeomFill_DraftTrihedron : public GeomFill_TrihedronLaw {
 	public:
@@ -6785,6 +7020,11 @@ class Handle_GeomFill_DraftTrihedron : public Handle_GeomFill_TrihedronLaw {
     }
 };
 
+%extend GeomFill_DraftTrihedron {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_EvolvedSection;
 class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 	public:
@@ -7043,6 +7283,11 @@ class Handle_GeomFill_EvolvedSection : public Handle_GeomFill_SectionLaw {
     }
 };
 
+%extend GeomFill_EvolvedSection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Fixed;
 class GeomFill_Fixed : public GeomFill_TrihedronLaw {
 	public:
@@ -7203,6 +7448,11 @@ class Handle_GeomFill_Fixed : public Handle_GeomFill_TrihedronLaw {
     }
 };
 
+%extend GeomFill_Fixed {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Frenet;
 class GeomFill_Frenet : public GeomFill_TrihedronLaw {
 	public:
@@ -7375,6 +7625,11 @@ class Handle_GeomFill_Frenet : public Handle_GeomFill_TrihedronLaw {
     }
 };
 
+%extend GeomFill_Frenet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Generator;
 class GeomFill_Generator : public GeomFill_Profiler {
 	public:
@@ -7397,6 +7652,11 @@ class GeomFill_Generator : public GeomFill_Profiler {
 };
 
 
+%extend GeomFill_Generator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_LocationDraft;
 class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 	public:
@@ -7689,6 +7949,11 @@ class Handle_GeomFill_LocationDraft : public Handle_GeomFill_LocationLaw {
     }
 };
 
+%extend GeomFill_LocationDraft {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_LocationGuide;
 class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 	public:
@@ -8015,6 +8280,11 @@ class Handle_GeomFill_LocationGuide : public Handle_GeomFill_LocationLaw {
     }
 };
 
+%extend GeomFill_LocationGuide {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_SectionGenerator;
 class GeomFill_SectionGenerator : public GeomFill_Profiler {
 	public:
@@ -8095,6 +8365,11 @@ class GeomFill_SectionGenerator : public GeomFill_Profiler {
 };
 
 
+%extend GeomFill_SectionGenerator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_SimpleBound;
 class GeomFill_SimpleBound : public GeomFill_Boundary {
 	public:
@@ -8205,6 +8480,11 @@ class Handle_GeomFill_SimpleBound : public Handle_GeomFill_Boundary {
     }
 };
 
+%extend GeomFill_SimpleBound {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_Stretch;
 class GeomFill_Stretch : public GeomFill_Filling {
 	public:
@@ -8279,6 +8559,11 @@ class GeomFill_Stretch : public GeomFill_Filling {
 };
 
 
+%extend GeomFill_Stretch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_TgtOnCoons;
 class GeomFill_TgtOnCoons : public GeomFill_TgtField {
 	public:
@@ -8367,6 +8652,11 @@ class Handle_GeomFill_TgtOnCoons : public Handle_GeomFill_TgtField {
     }
 };
 
+%extend GeomFill_TgtOnCoons {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_TrihedronWithGuide;
 class GeomFill_TrihedronWithGuide : public GeomFill_TrihedronLaw {
 	public:
@@ -8437,6 +8727,11 @@ class Handle_GeomFill_TrihedronWithGuide : public Handle_GeomFill_TrihedronLaw {
     }
 };
 
+%extend GeomFill_TrihedronWithGuide {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_UniformSection;
 class GeomFill_UniformSection : public GeomFill_SectionLaw {
 	public:
@@ -8697,6 +8992,11 @@ class Handle_GeomFill_UniformSection : public Handle_GeomFill_SectionLaw {
     }
 };
 
+%extend GeomFill_UniformSection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_GuideTrihedronAC;
 class GeomFill_GuideTrihedronAC : public GeomFill_TrihedronWithGuide {
 	public:
@@ -8883,6 +9183,11 @@ class Handle_GeomFill_GuideTrihedronAC : public Handle_GeomFill_TrihedronWithGui
     }
 };
 
+%extend GeomFill_GuideTrihedronAC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomFill_GuideTrihedronPlan;
 class GeomFill_GuideTrihedronPlan : public GeomFill_TrihedronWithGuide {
 	public:
@@ -9075,3 +9380,8 @@ class Handle_GeomFill_GuideTrihedronPlan : public Handle_GeomFill_TrihedronWithG
     }
 };
 
+%extend GeomFill_GuideTrihedronPlan {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

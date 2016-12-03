@@ -160,6 +160,11 @@ class MAT2d_Array2OfConnexion {
 };
 
 
+%extend MAT2d_Array2OfConnexion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_BiInt;
 class MAT2d_BiInt {
 	public:
@@ -214,6 +219,11 @@ class MAT2d_BiInt {
         };
 
 
+%extend MAT2d_BiInt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_Circuit;
 class MAT2d_Circuit : public MMgt_TShared {
 	public:
@@ -334,6 +344,11 @@ class Handle_MAT2d_Circuit : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT2d_Circuit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_Connexion;
 class MAT2d_Connexion : public MMgt_TShared {
 	public:
@@ -546,6 +561,11 @@ class Handle_MAT2d_Connexion : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT2d_Connexion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapIteratorOfDataMapOfBiIntInteger;
 class MAT2d_DataMapIteratorOfDataMapOfBiIntInteger : public TCollection_BasicMapIterator {
 	public:
@@ -576,6 +596,11 @@ class MAT2d_DataMapIteratorOfDataMapOfBiIntInteger : public TCollection_BasicMap
 };
 
 
+%extend MAT2d_DataMapIteratorOfDataMapOfBiIntInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger;
 class MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -606,6 +631,11 @@ class MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger : public TCollectio
 };
 
 
+%extend MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapIteratorOfDataMapOfIntegerBisec;
 class MAT2d_DataMapIteratorOfDataMapOfIntegerBisec : public TCollection_BasicMapIterator {
 	public:
@@ -636,6 +666,11 @@ class MAT2d_DataMapIteratorOfDataMapOfIntegerBisec : public TCollection_BasicMap
 };
 
 
+%extend MAT2d_DataMapIteratorOfDataMapOfIntegerBisec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapIteratorOfDataMapOfIntegerConnexion;
 class MAT2d_DataMapIteratorOfDataMapOfIntegerConnexion : public TCollection_BasicMapIterator {
 	public:
@@ -666,6 +701,11 @@ class MAT2d_DataMapIteratorOfDataMapOfIntegerConnexion : public TCollection_Basi
 };
 
 
+%extend MAT2d_DataMapIteratorOfDataMapOfIntegerConnexion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d;
 class MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d : public TCollection_BasicMapIterator {
 	public:
@@ -696,6 +736,11 @@ class MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d : public TCollection_BasicMap
 };
 
 
+%extend MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion;
 class MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion : public TCollection_BasicMapIterator {
 	public:
@@ -726,6 +771,11 @@ class MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion : public TColle
 };
 
 
+%extend MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d;
 class MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d : public TCollection_BasicMapIterator {
 	public:
@@ -756,6 +806,11 @@ class MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d : public TCollection_BasicMap
 };
 
 
+%extend MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapNodeOfDataMapOfBiIntInteger;
 class MAT2d_DataMapNodeOfDataMapOfBiIntInteger : public TCollection_MapNode {
 	public:
@@ -835,6 +890,11 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger : public Handle_TCollectio
     }
 };
 
+%extend MAT2d_DataMapNodeOfDataMapOfBiIntInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger;
 class MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger : public TCollection_MapNode {
 	public:
@@ -905,6 +965,11 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger : public Handle_
     }
 };
 
+%extend MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapNodeOfDataMapOfIntegerBisec;
 class MAT2d_DataMapNodeOfDataMapOfIntegerBisec : public TCollection_MapNode {
 	public:
@@ -984,6 +1049,11 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec : public Handle_TCollectio
     }
 };
 
+%extend MAT2d_DataMapNodeOfDataMapOfIntegerBisec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapNodeOfDataMapOfIntegerConnexion;
 class MAT2d_DataMapNodeOfDataMapOfIntegerConnexion : public TCollection_MapNode {
 	public:
@@ -1063,6 +1133,11 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion : public Handle_TColle
     }
 };
 
+%extend MAT2d_DataMapNodeOfDataMapOfIntegerConnexion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d;
 class MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d : public TCollection_MapNode {
 	public:
@@ -1142,6 +1217,11 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d : public Handle_TCollectio
     }
 };
 
+%extend MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion;
 class MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion : public TCollection_MapNode {
 	public:
@@ -1221,6 +1301,11 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion : public Han
     }
 };
 
+%extend MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapNodeOfDataMapOfIntegerVec2d;
 class MAT2d_DataMapNodeOfDataMapOfIntegerVec2d : public TCollection_MapNode {
 	public:
@@ -1300,6 +1385,11 @@ class Handle_MAT2d_DataMapNodeOfDataMapOfIntegerVec2d : public Handle_TCollectio
     }
 };
 
+%extend MAT2d_DataMapNodeOfDataMapOfIntegerVec2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapOfBiIntInteger;
 class MAT2d_DataMapOfBiIntInteger : public TCollection_BasicMap {
 	public:
@@ -1378,6 +1468,11 @@ class MAT2d_DataMapOfBiIntInteger : public TCollection_BasicMap {
 };
 
 
+%extend MAT2d_DataMapOfBiIntInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapOfBiIntSequenceOfInteger;
 class MAT2d_DataMapOfBiIntSequenceOfInteger : public TCollection_BasicMap {
 	public:
@@ -1456,6 +1551,11 @@ class MAT2d_DataMapOfBiIntSequenceOfInteger : public TCollection_BasicMap {
 };
 
 
+%extend MAT2d_DataMapOfBiIntSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapOfIntegerBisec;
 class MAT2d_DataMapOfIntegerBisec : public TCollection_BasicMap {
 	public:
@@ -1534,6 +1634,11 @@ class MAT2d_DataMapOfIntegerBisec : public TCollection_BasicMap {
 };
 
 
+%extend MAT2d_DataMapOfIntegerBisec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapOfIntegerConnexion;
 class MAT2d_DataMapOfIntegerConnexion : public TCollection_BasicMap {
 	public:
@@ -1612,6 +1717,11 @@ class MAT2d_DataMapOfIntegerConnexion : public TCollection_BasicMap {
 };
 
 
+%extend MAT2d_DataMapOfIntegerConnexion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapOfIntegerPnt2d;
 class MAT2d_DataMapOfIntegerPnt2d : public TCollection_BasicMap {
 	public:
@@ -1690,6 +1800,11 @@ class MAT2d_DataMapOfIntegerPnt2d : public TCollection_BasicMap {
 };
 
 
+%extend MAT2d_DataMapOfIntegerPnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapOfIntegerSequenceOfConnexion;
 class MAT2d_DataMapOfIntegerSequenceOfConnexion : public TCollection_BasicMap {
 	public:
@@ -1768,6 +1883,11 @@ class MAT2d_DataMapOfIntegerSequenceOfConnexion : public TCollection_BasicMap {
 };
 
 
+%extend MAT2d_DataMapOfIntegerSequenceOfConnexion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_DataMapOfIntegerVec2d;
 class MAT2d_DataMapOfIntegerVec2d : public TCollection_BasicMap {
 	public:
@@ -1846,6 +1966,11 @@ class MAT2d_DataMapOfIntegerVec2d : public TCollection_BasicMap {
 };
 
 
+%extend MAT2d_DataMapOfIntegerVec2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class MAT2d_MapBiIntHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -1867,6 +1992,11 @@ class MAT2d_MapBiIntHasher {
 };
 
 
+%extend MAT2d_MapBiIntHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_Mat2d;
 class MAT2d_Mat2d {
 	public:
@@ -1939,6 +2069,11 @@ class MAT2d_Mat2d {
 };
 
 
+%extend MAT2d_Mat2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_MiniPath;
 class MAT2d_MiniPath {
 	public:
@@ -2005,6 +2140,11 @@ class MAT2d_MiniPath {
 };
 
 
+%extend MAT2d_MiniPath {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_SequenceNodeOfSequenceOfConnexion;
 class MAT2d_SequenceNodeOfSequenceOfConnexion : public TCollection_SeqNode {
 	public:
@@ -2071,6 +2211,11 @@ class Handle_MAT2d_SequenceNodeOfSequenceOfConnexion : public Handle_TCollection
     }
 };
 
+%extend MAT2d_SequenceNodeOfSequenceOfConnexion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve;
 class MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve : public TCollection_SeqNode {
 	public:
@@ -2137,6 +2282,11 @@ class Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve : public Handle_TColl
     }
 };
 
+%extend MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry;
 class MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry : public TCollection_SeqNode {
 	public:
@@ -2203,6 +2353,11 @@ class Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry : public Handle_TC
     }
 };
 
+%extend MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_SequenceOfConnexion;
 class MAT2d_SequenceOfConnexion : public TCollection_BaseSequence {
 	public:
@@ -2341,6 +2496,11 @@ class MAT2d_SequenceOfConnexion : public TCollection_BaseSequence {
 };
 
 
+%extend MAT2d_SequenceOfConnexion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_SequenceOfSequenceOfCurve;
 class MAT2d_SequenceOfSequenceOfCurve : public TCollection_BaseSequence {
 	public:
@@ -2479,6 +2639,11 @@ class MAT2d_SequenceOfSequenceOfCurve : public TCollection_BaseSequence {
 };
 
 
+%extend MAT2d_SequenceOfSequenceOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_SequenceOfSequenceOfGeometry;
 class MAT2d_SequenceOfSequenceOfGeometry : public TCollection_BaseSequence {
 	public:
@@ -2617,6 +2782,11 @@ class MAT2d_SequenceOfSequenceOfGeometry : public TCollection_BaseSequence {
 };
 
 
+%extend MAT2d_SequenceOfSequenceOfGeometry {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT2d_Tool2d;
 class MAT2d_Tool2d {
 	public:
@@ -2813,3 +2983,8 @@ class MAT2d_Tool2d {
 };
 
 
+%extend MAT2d_Tool2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

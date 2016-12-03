@@ -154,6 +154,11 @@ class IntCurve_IConicTool {
 };
 
 
+%extend IntCurve_IConicTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurve_IntConicConic;
 class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	public:
@@ -706,6 +711,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 };
 
 
+%extend IntCurve_IntConicConic {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurve_IntImpConicParConic;
 class IntCurve_IntImpConicParConic : public IntRes2d_Intersection {
 	public:
@@ -804,6 +814,11 @@ class IntCurve_IntImpConicParConic : public IntRes2d_Intersection {
 };
 
 
+%extend IntCurve_IntImpConicParConic {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurve_MyImpParToolOfIntImpConicParConic;
 class IntCurve_MyImpParToolOfIntImpConicParConic : public math_FunctionWithDerivative {
 	public:
@@ -844,6 +859,11 @@ class IntCurve_MyImpParToolOfIntImpConicParConic : public math_FunctionWithDeriv
 };
 
 
+%extend IntCurve_MyImpParToolOfIntImpConicParConic {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurve_PConic;
 class IntCurve_PConic {
 	public:
@@ -928,6 +948,11 @@ class IntCurve_PConic {
 };
 
 
+%extend IntCurve_PConic {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntCurve_PConicTool {
 	public:
 		%feature("compactdefaultargs") EpsX;
@@ -989,6 +1014,11 @@ class IntCurve_PConicTool {
 };
 
 
+%extend IntCurve_PConicTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntCurve_ProjectOnPConicTool {
 	public:
 		%feature("compactdefaultargs") FindParameter;
@@ -1022,3 +1052,8 @@ class IntCurve_ProjectOnPConicTool {
 };
 
 
+%extend IntCurve_ProjectOnPConicTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

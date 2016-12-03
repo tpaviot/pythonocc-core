@@ -130,6 +130,11 @@ class Prs3d {
 };
 
 
+%extend Prs3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_BasicAspect;
 class Prs3d_BasicAspect : public MMgt_TShared {
 	public:
@@ -182,6 +187,11 @@ class Handle_Prs3d_BasicAspect : public Handle_MMgt_TShared {
     }
 };
 
+%extend Prs3d_BasicAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_DimensionUnits;
 class Prs3d_DimensionUnits {
 	public:
@@ -228,6 +238,11 @@ class Prs3d_DimensionUnits {
 };
 
 
+%extend Prs3d_DimensionUnits {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_Drawer;
 class Prs3d_Drawer : public MMgt_TShared {
 	public:
@@ -844,6 +859,11 @@ class Handle_Prs3d_Drawer : public Handle_MMgt_TShared {
     }
 };
 
+%extend Prs3d_Drawer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_PlaneSet;
 class Prs3d_PlaneSet : public MMgt_TShared {
 	public:
@@ -968,6 +988,11 @@ class Handle_Prs3d_PlaneSet : public Handle_MMgt_TShared {
     }
 };
 
+%extend Prs3d_PlaneSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_Presentation;
 class Prs3d_Presentation : public Graphic3d_Structure {
 	public:
@@ -1174,6 +1199,11 @@ class Handle_Prs3d_Presentation : public Handle_Graphic3d_Structure {
     }
 };
 
+%extend Prs3d_Presentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_Projector;
 class Prs3d_Projector : public MMgt_TShared {
 	public:
@@ -1266,6 +1296,11 @@ class Handle_Prs3d_Projector : public Handle_MMgt_TShared {
     }
 };
 
+%extend Prs3d_Projector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") CurrentGroup;
@@ -1287,6 +1322,11 @@ class Prs3d_Root {
 };
 
 
+%extend Prs3d_Root {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_ShapeTool;
 class Prs3d_ShapeTool {
 	public:
@@ -1401,6 +1441,11 @@ class Prs3d_ShapeTool {
 };
 
 
+%extend Prs3d_ShapeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Prs3d_Arrow : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Draw;
@@ -1438,6 +1483,11 @@ class Prs3d_Arrow : public Prs3d_Root {
 };
 
 
+%extend Prs3d_Arrow {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_ArrowAspect;
 class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 	public:
@@ -1550,6 +1600,11 @@ class Handle_Prs3d_ArrowAspect : public Handle_Prs3d_BasicAspect {
     }
 };
 
+%extend Prs3d_ArrowAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_DatumAspect;
 class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 	public:
@@ -1684,6 +1739,11 @@ class Handle_Prs3d_DatumAspect : public Handle_Prs3d_BasicAspect {
     }
 };
 
+%extend Prs3d_DatumAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_DimensionAspect;
 class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 	public:
@@ -1932,6 +1992,11 @@ class Handle_Prs3d_DimensionAspect : public Handle_Prs3d_BasicAspect {
     }
 };
 
+%extend Prs3d_DimensionAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_LineAspect;
 class Prs3d_LineAspect : public Prs3d_BasicAspect {
 	public:
@@ -2042,6 +2107,11 @@ class Handle_Prs3d_LineAspect : public Handle_Prs3d_BasicAspect {
     }
 };
 
+%extend Prs3d_LineAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_PlaneAspect;
 class Prs3d_PlaneAspect : public Prs3d_BasicAspect {
 	public:
@@ -2244,6 +2314,11 @@ class Handle_Prs3d_PlaneAspect : public Handle_Prs3d_BasicAspect {
     }
 };
 
+%extend Prs3d_PlaneAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_PointAspect;
 class Prs3d_PointAspect : public Prs3d_BasicAspect {
 	public:
@@ -2380,6 +2455,11 @@ class Handle_Prs3d_PointAspect : public Handle_Prs3d_BasicAspect {
     }
 };
 
+%extend Prs3d_PointAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_PresentationShadow;
 class Prs3d_PresentationShadow : public Prs3d_Presentation {
 	public:
@@ -2442,6 +2522,11 @@ class Handle_Prs3d_PresentationShadow : public Handle_Prs3d_Presentation {
     }
 };
 
+%extend Prs3d_PresentationShadow {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_ShadingAspect;
 class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 	public:
@@ -2586,6 +2671,11 @@ class Handle_Prs3d_ShadingAspect : public Handle_Prs3d_BasicAspect {
     }
 };
 
+%extend Prs3d_ShadingAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Prs3d_Text : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Draw;
@@ -2619,6 +2709,11 @@ class Prs3d_Text : public Prs3d_Root {
 };
 
 
+%extend Prs3d_Text {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_TextAspect;
 class Prs3d_TextAspect : public Prs3d_BasicAspect {
 	public:
@@ -2791,6 +2886,11 @@ class Handle_Prs3d_TextAspect : public Handle_Prs3d_BasicAspect {
     }
 };
 
+%extend Prs3d_TextAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Prs3d_IsoAspect;
 class Prs3d_IsoAspect : public Prs3d_LineAspect {
 	public:
@@ -2883,3 +2983,8 @@ class Handle_Prs3d_IsoAspect : public Handle_Prs3d_LineAspect {
     }
 };
 
+%extend Prs3d_IsoAspect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

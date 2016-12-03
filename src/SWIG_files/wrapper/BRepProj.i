@@ -122,3 +122,8 @@ class BRepProj_Projection {
 };
 
 
+%extend BRepProj_Projection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

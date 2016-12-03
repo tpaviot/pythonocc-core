@@ -86,6 +86,11 @@ class Expr {
 };
 
 
+%extend Expr {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Array1OfGeneralExpression;
 class Expr_Array1OfGeneralExpression {
 	public:
@@ -168,6 +173,11 @@ class Expr_Array1OfGeneralExpression {
 };
 
 
+%extend Expr_Array1OfGeneralExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Array1OfNamedUnknown;
 class Expr_Array1OfNamedUnknown {
 	public:
@@ -250,6 +260,11 @@ class Expr_Array1OfNamedUnknown {
 };
 
 
+%extend Expr_Array1OfNamedUnknown {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Array1OfSingleRelation;
 class Expr_Array1OfSingleRelation {
 	public:
@@ -332,6 +347,11 @@ class Expr_Array1OfSingleRelation {
 };
 
 
+%extend Expr_Array1OfSingleRelation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_GeneralExpression;
 class Expr_GeneralExpression : public MMgt_TShared {
 	public:
@@ -500,6 +520,11 @@ class Handle_Expr_GeneralExpression : public Handle_MMgt_TShared {
     }
 };
 
+%extend Expr_GeneralExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_GeneralFunction;
 class Expr_GeneralFunction : public MMgt_TShared {
 	public:
@@ -620,6 +645,11 @@ class Handle_Expr_GeneralFunction : public Handle_MMgt_TShared {
     }
 };
 
+%extend Expr_GeneralFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_GeneralRelation;
 class Expr_GeneralRelation : public MMgt_TShared {
 	public:
@@ -746,6 +776,11 @@ class Handle_Expr_GeneralRelation : public Handle_MMgt_TShared {
     }
 };
 
+%extend Expr_GeneralRelation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_IndexedMapNodeOfMapOfNamedUnknown;
 class Expr_IndexedMapNodeOfMapOfNamedUnknown : public TCollection_MapNode {
 	public:
@@ -831,6 +866,11 @@ class Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown : public Handle_TCollection_
     }
 };
 
+%extend Expr_IndexedMapNodeOfMapOfNamedUnknown {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_MapOfNamedUnknown;
 class Expr_MapOfNamedUnknown : public TCollection_BasicMap {
 	public:
@@ -907,6 +947,11 @@ class Expr_MapOfNamedUnknown : public TCollection_BasicMap {
 };
 
 
+%extend Expr_MapOfNamedUnknown {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_RUIterator;
 class Expr_RUIterator {
 	public:
@@ -937,6 +982,11 @@ class Expr_RUIterator {
 };
 
 
+%extend Expr_RUIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_RelationIterator;
 class Expr_RelationIterator {
 	public:
@@ -965,6 +1015,11 @@ class Expr_RelationIterator {
 };
 
 
+%extend Expr_RelationIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_SequenceNodeOfSequenceOfGeneralExpression;
 class Expr_SequenceNodeOfSequenceOfGeneralExpression : public TCollection_SeqNode {
 	public:
@@ -1031,6 +1086,11 @@ class Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression : public Handle_TCol
     }
 };
 
+%extend Expr_SequenceNodeOfSequenceOfGeneralExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_SequenceNodeOfSequenceOfGeneralRelation;
 class Expr_SequenceNodeOfSequenceOfGeneralRelation : public TCollection_SeqNode {
 	public:
@@ -1097,6 +1157,11 @@ class Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation : public Handle_TColle
     }
 };
 
+%extend Expr_SequenceNodeOfSequenceOfGeneralRelation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_SequenceOfGeneralExpression;
 class Expr_SequenceOfGeneralExpression : public TCollection_BaseSequence {
 	public:
@@ -1235,6 +1300,11 @@ class Expr_SequenceOfGeneralExpression : public TCollection_BaseSequence {
 };
 
 
+%extend Expr_SequenceOfGeneralExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_SequenceOfGeneralRelation;
 class Expr_SequenceOfGeneralRelation : public TCollection_BaseSequence {
 	public:
@@ -1373,6 +1443,11 @@ class Expr_SequenceOfGeneralRelation : public TCollection_BaseSequence {
 };
 
 
+%extend Expr_SequenceOfGeneralRelation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_UnknownIterator;
 class Expr_UnknownIterator {
 	public:
@@ -1397,6 +1472,11 @@ class Expr_UnknownIterator {
 };
 
 
+%extend Expr_UnknownIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_BinaryExpression;
 class Expr_BinaryExpression : public Expr_GeneralExpression {
 	public:
@@ -1517,6 +1597,11 @@ class Handle_Expr_BinaryExpression : public Handle_Expr_GeneralExpression {
     }
 };
 
+%extend Expr_BinaryExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_FunctionDerivative;
 class Expr_FunctionDerivative : public Expr_GeneralFunction {
 	public:
@@ -1675,6 +1760,11 @@ class Handle_Expr_FunctionDerivative : public Handle_Expr_GeneralFunction {
     }
 };
 
+%extend Expr_FunctionDerivative {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_NamedExpression;
 class Expr_NamedExpression : public Expr_GeneralExpression {
 	public:
@@ -1757,6 +1847,11 @@ class Handle_Expr_NamedExpression : public Handle_Expr_GeneralExpression {
     }
 };
 
+%extend Expr_NamedExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_NamedFunction;
 class Expr_NamedFunction : public Expr_GeneralFunction {
 	public:
@@ -1917,6 +2012,11 @@ class Handle_Expr_NamedFunction : public Handle_Expr_GeneralFunction {
     }
 };
 
+%extend Expr_NamedFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_NumericValue;
 class Expr_NumericValue : public Expr_GeneralExpression {
 	public:
@@ -2087,6 +2187,11 @@ class Handle_Expr_NumericValue : public Handle_Expr_GeneralExpression {
     }
 };
 
+%extend Expr_NumericValue {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_PolyExpression;
 class Expr_PolyExpression : public Expr_GeneralExpression {
 	public:
@@ -2207,6 +2312,11 @@ class Handle_Expr_PolyExpression : public Handle_Expr_GeneralExpression {
     }
 };
 
+%extend Expr_PolyExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_SingleRelation;
 class Expr_SingleRelation : public Expr_GeneralRelation {
 	public:
@@ -2331,6 +2441,11 @@ class Handle_Expr_SingleRelation : public Handle_Expr_GeneralRelation {
     }
 };
 
+%extend Expr_SingleRelation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_SystemRelation;
 class Expr_SystemRelation : public Expr_GeneralRelation {
 	public:
@@ -2477,6 +2592,11 @@ class Handle_Expr_SystemRelation : public Handle_Expr_GeneralRelation {
     }
 };
 
+%extend Expr_SystemRelation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_UnaryExpression;
 class Expr_UnaryExpression : public Expr_GeneralExpression {
 	public:
@@ -2587,6 +2707,11 @@ class Handle_Expr_UnaryExpression : public Handle_Expr_GeneralExpression {
     }
 };
 
+%extend Expr_UnaryExpression {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Absolute;
 class Expr_Absolute : public Expr_UnaryExpression {
 	public:
@@ -2695,6 +2820,11 @@ class Handle_Expr_Absolute : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_Absolute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_ArcCosine;
 class Expr_ArcCosine : public Expr_UnaryExpression {
 	public:
@@ -2803,6 +2933,11 @@ class Handle_Expr_ArcCosine : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_ArcCosine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_ArcSine;
 class Expr_ArcSine : public Expr_UnaryExpression {
 	public:
@@ -2911,6 +3046,11 @@ class Handle_Expr_ArcSine : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_ArcSine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_ArcTangent;
 class Expr_ArcTangent : public Expr_UnaryExpression {
 	public:
@@ -3019,6 +3159,11 @@ class Handle_Expr_ArcTangent : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_ArcTangent {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_ArgCosh;
 class Expr_ArgCosh : public Expr_UnaryExpression {
 	public:
@@ -3127,6 +3272,11 @@ class Handle_Expr_ArgCosh : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_ArgCosh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_ArgSinh;
 class Expr_ArgSinh : public Expr_UnaryExpression {
 	public:
@@ -3235,6 +3385,11 @@ class Handle_Expr_ArgSinh : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_ArgSinh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_ArgTanh;
 class Expr_ArgTanh : public Expr_UnaryExpression {
 	public:
@@ -3343,6 +3498,11 @@ class Handle_Expr_ArgTanh : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_ArgTanh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_BinaryFunction;
 class Expr_BinaryFunction : public Expr_BinaryExpression {
 	public:
@@ -3461,6 +3621,11 @@ class Handle_Expr_BinaryFunction : public Handle_Expr_BinaryExpression {
     }
 };
 
+%extend Expr_BinaryFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Cosh;
 class Expr_Cosh : public Expr_UnaryExpression {
 	public:
@@ -3569,6 +3734,11 @@ class Handle_Expr_Cosh : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_Cosh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Cosine;
 class Expr_Cosine : public Expr_UnaryExpression {
 	public:
@@ -3677,6 +3847,11 @@ class Handle_Expr_Cosine : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_Cosine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Difference;
 class Expr_Difference : public Expr_BinaryExpression {
 	public:
@@ -3797,6 +3972,11 @@ class Handle_Expr_Difference : public Handle_Expr_BinaryExpression {
     }
 };
 
+%extend Expr_Difference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Different;
 class Expr_Different : public Expr_SingleRelation {
 	public:
@@ -3887,6 +4067,11 @@ class Handle_Expr_Different : public Handle_Expr_SingleRelation {
     }
 };
 
+%extend Expr_Different {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Division;
 class Expr_Division : public Expr_BinaryExpression {
 	public:
@@ -3997,6 +4182,11 @@ class Handle_Expr_Division : public Handle_Expr_BinaryExpression {
     }
 };
 
+%extend Expr_Division {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Equal;
 class Expr_Equal : public Expr_SingleRelation {
 	public:
@@ -4087,6 +4277,11 @@ class Handle_Expr_Equal : public Handle_Expr_SingleRelation {
     }
 };
 
+%extend Expr_Equal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Exponential;
 class Expr_Exponential : public Expr_UnaryExpression {
 	public:
@@ -4195,6 +4390,11 @@ class Handle_Expr_Exponential : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_Exponential {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Exponentiate;
 class Expr_Exponentiate : public Expr_BinaryExpression {
 	public:
@@ -4305,6 +4505,11 @@ class Handle_Expr_Exponentiate : public Handle_Expr_BinaryExpression {
     }
 };
 
+%extend Expr_Exponentiate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_GreaterThan;
 class Expr_GreaterThan : public Expr_SingleRelation {
 	public:
@@ -4395,6 +4600,11 @@ class Handle_Expr_GreaterThan : public Handle_Expr_SingleRelation {
     }
 };
 
+%extend Expr_GreaterThan {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_GreaterThanOrEqual;
 class Expr_GreaterThanOrEqual : public Expr_SingleRelation {
 	public:
@@ -4485,6 +4695,11 @@ class Handle_Expr_GreaterThanOrEqual : public Handle_Expr_SingleRelation {
     }
 };
 
+%extend Expr_GreaterThanOrEqual {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_LessThan;
 class Expr_LessThan : public Expr_SingleRelation {
 	public:
@@ -4575,6 +4790,11 @@ class Handle_Expr_LessThan : public Handle_Expr_SingleRelation {
     }
 };
 
+%extend Expr_LessThan {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_LessThanOrEqual;
 class Expr_LessThanOrEqual : public Expr_SingleRelation {
 	public:
@@ -4665,6 +4885,11 @@ class Handle_Expr_LessThanOrEqual : public Handle_Expr_SingleRelation {
     }
 };
 
+%extend Expr_LessThanOrEqual {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_LogOf10;
 class Expr_LogOf10 : public Expr_UnaryExpression {
 	public:
@@ -4773,6 +4998,11 @@ class Handle_Expr_LogOf10 : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_LogOf10 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_LogOfe;
 class Expr_LogOfe : public Expr_UnaryExpression {
 	public:
@@ -4881,6 +5111,11 @@ class Handle_Expr_LogOfe : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_LogOfe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_NamedConstant;
 class Expr_NamedConstant : public Expr_NamedExpression {
 	public:
@@ -5035,6 +5270,11 @@ class Handle_Expr_NamedConstant : public Handle_Expr_NamedExpression {
     }
 };
 
+%extend Expr_NamedConstant {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_NamedUnknown;
 class Expr_NamedUnknown : public Expr_NamedExpression {
 	public:
@@ -5197,6 +5437,11 @@ class Handle_Expr_NamedUnknown : public Handle_Expr_NamedExpression {
     }
 };
 
+%extend Expr_NamedUnknown {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_PolyFunction;
 class Expr_PolyFunction : public Expr_PolyExpression {
 	public:
@@ -5313,6 +5558,11 @@ class Handle_Expr_PolyFunction : public Handle_Expr_PolyExpression {
     }
 };
 
+%extend Expr_PolyFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Product;
 class Expr_Product : public Expr_PolyExpression {
 	public:
@@ -5431,6 +5681,11 @@ class Handle_Expr_Product : public Handle_Expr_PolyExpression {
     }
 };
 
+%extend Expr_Product {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Sine;
 class Expr_Sine : public Expr_UnaryExpression {
 	public:
@@ -5539,6 +5794,11 @@ class Handle_Expr_Sine : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_Sine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Sinh;
 class Expr_Sinh : public Expr_UnaryExpression {
 	public:
@@ -5647,6 +5907,11 @@ class Handle_Expr_Sinh : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_Sinh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Square;
 class Expr_Square : public Expr_UnaryExpression {
 	public:
@@ -5755,6 +6020,11 @@ class Handle_Expr_Square : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_Square {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_SquareRoot;
 class Expr_SquareRoot : public Expr_UnaryExpression {
 	public:
@@ -5863,6 +6133,11 @@ class Handle_Expr_SquareRoot : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_SquareRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Sum;
 class Expr_Sum : public Expr_PolyExpression {
 	public:
@@ -5991,6 +6266,11 @@ class Handle_Expr_Sum : public Handle_Expr_PolyExpression {
     }
 };
 
+%extend Expr_Sum {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Tangent;
 class Expr_Tangent : public Expr_UnaryExpression {
 	public:
@@ -6099,6 +6379,11 @@ class Handle_Expr_Tangent : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_Tangent {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_Tanh;
 class Expr_Tanh : public Expr_UnaryExpression {
 	public:
@@ -6207,6 +6492,11 @@ class Handle_Expr_Tanh : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_Tanh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_UnaryFunction;
 class Expr_UnaryFunction : public Expr_UnaryExpression {
 	public:
@@ -6323,6 +6613,11 @@ class Handle_Expr_UnaryFunction : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_UnaryFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Expr_UnaryMinus;
 class Expr_UnaryMinus : public Expr_UnaryExpression {
 	public:
@@ -6441,3 +6736,8 @@ class Handle_Expr_UnaryMinus : public Handle_Expr_UnaryExpression {
     }
 };
 
+%extend Expr_UnaryMinus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

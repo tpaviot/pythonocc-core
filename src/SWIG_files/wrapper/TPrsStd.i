@@ -388,6 +388,11 @@ class Handle_TPrsStd_AISPresentation : public Handle_TDF_Attribute {
     }
 };
 
+%extend TPrsStd_AISPresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_AISViewer;
 class TPrsStd_AISViewer : public TDF_Attribute {
 	public:
@@ -554,6 +559,11 @@ class Handle_TPrsStd_AISViewer : public Handle_TDF_Attribute {
     }
 };
 
+%extend TPrsStd_AISViewer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TPrsStd_ConstraintTools {
 	public:
 		%feature("compactdefaultargs") UpdateOnlyValue;
@@ -747,6 +757,11 @@ class TPrsStd_ConstraintTools {
 };
 
 
+%extend TPrsStd_ConstraintTools {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver;
 class TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver : public TCollection_BasicMapIterator {
 	public:
@@ -777,6 +792,11 @@ class TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver : public TCollection_BasicMap
 };
 
 
+%extend TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_DataMapNodeOfDataMapOfGUIDDriver;
 class TPrsStd_DataMapNodeOfDataMapOfGUIDDriver : public TCollection_MapNode {
 	public:
@@ -847,6 +867,11 @@ class Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver : public Handle_TCollectio
     }
 };
 
+%extend TPrsStd_DataMapNodeOfDataMapOfGUIDDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_DataMapOfGUIDDriver;
 class TPrsStd_DataMapOfGUIDDriver : public TCollection_BasicMap {
 	public:
@@ -925,6 +950,11 @@ class TPrsStd_DataMapOfGUIDDriver : public TCollection_BasicMap {
 };
 
 
+%extend TPrsStd_DataMapOfGUIDDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_Driver;
 class TPrsStd_Driver : public MMgt_TShared {
 	public:
@@ -987,6 +1017,11 @@ class Handle_TPrsStd_Driver : public Handle_MMgt_TShared {
     }
 };
 
+%extend TPrsStd_Driver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_DriverTable;
 class TPrsStd_DriverTable : public MMgt_TShared {
 	public:
@@ -1091,6 +1126,11 @@ class Handle_TPrsStd_DriverTable : public Handle_MMgt_TShared {
     }
 };
 
+%extend TPrsStd_DriverTable {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_AxisDriver;
 class TPrsStd_AxisDriver : public TPrsStd_Driver {
 	public:
@@ -1159,6 +1199,11 @@ class Handle_TPrsStd_AxisDriver : public Handle_TPrsStd_Driver {
     }
 };
 
+%extend TPrsStd_AxisDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_ConstraintDriver;
 class TPrsStd_ConstraintDriver : public TPrsStd_Driver {
 	public:
@@ -1227,6 +1272,11 @@ class Handle_TPrsStd_ConstraintDriver : public Handle_TPrsStd_Driver {
     }
 };
 
+%extend TPrsStd_ConstraintDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_GeometryDriver;
 class TPrsStd_GeometryDriver : public TPrsStd_Driver {
 	public:
@@ -1295,6 +1345,11 @@ class Handle_TPrsStd_GeometryDriver : public Handle_TPrsStd_Driver {
     }
 };
 
+%extend TPrsStd_GeometryDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_NamedShapeDriver;
 class TPrsStd_NamedShapeDriver : public TPrsStd_Driver {
 	public:
@@ -1363,6 +1418,11 @@ class Handle_TPrsStd_NamedShapeDriver : public Handle_TPrsStd_Driver {
     }
 };
 
+%extend TPrsStd_NamedShapeDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_PlaneDriver;
 class TPrsStd_PlaneDriver : public TPrsStd_Driver {
 	public:
@@ -1431,6 +1491,11 @@ class Handle_TPrsStd_PlaneDriver : public Handle_TPrsStd_Driver {
     }
 };
 
+%extend TPrsStd_PlaneDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TPrsStd_PointDriver;
 class TPrsStd_PointDriver : public TPrsStd_Driver {
 	public:
@@ -1499,3 +1564,8 @@ class Handle_TPrsStd_PointDriver : public Handle_TPrsStd_Driver {
     }
 };
 
+%extend TPrsStd_PointDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

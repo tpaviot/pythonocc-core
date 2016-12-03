@@ -94,6 +94,11 @@ class PrsMgr_ModedPresentation {
 };
 
 
+%extend PrsMgr_ModedPresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor PrsMgr_Presentation;
 class PrsMgr_Presentation : public MMgt_TShared {
 	public:
@@ -172,6 +177,11 @@ class Handle_PrsMgr_Presentation : public Handle_MMgt_TShared {
     }
 };
 
+%extend PrsMgr_Presentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor PrsMgr_PresentationManager;
 class PrsMgr_PresentationManager : public MMgt_TShared {
 	public:
@@ -494,6 +504,11 @@ class Handle_PrsMgr_PresentationManager : public Handle_MMgt_TShared {
     }
 };
 
+%extend PrsMgr_PresentationManager {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor PrsMgr_Presentations;
 class PrsMgr_Presentations : public TCollection_BaseSequence {
 	public:
@@ -632,6 +647,11 @@ class PrsMgr_Presentations : public TCollection_BaseSequence {
 };
 
 
+%extend PrsMgr_Presentations {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor PrsMgr_Prs;
 class PrsMgr_Prs : public Prs3d_Presentation {
 	public:
@@ -736,6 +756,11 @@ class Handle_PrsMgr_Prs : public Handle_Prs3d_Presentation {
     }
 };
 
+%extend PrsMgr_Prs {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor PrsMgr_SequenceNodeOfPresentations;
 class PrsMgr_SequenceNodeOfPresentations : public TCollection_SeqNode {
 	public:
@@ -802,3 +827,8 @@ class Handle_PrsMgr_SequenceNodeOfPresentations : public Handle_TCollection_SeqN
     }
 };
 
+%extend PrsMgr_SequenceNodeOfPresentations {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

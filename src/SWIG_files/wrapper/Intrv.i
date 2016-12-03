@@ -304,6 +304,11 @@ class Intrv_Interval {
 };
 
 
+%extend Intrv_Interval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intrv_Intervals;
 class Intrv_Intervals {
 	public:
@@ -394,6 +399,11 @@ class Intrv_Intervals {
 };
 
 
+%extend Intrv_Intervals {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intrv_SequenceNodeOfSequenceOfInterval;
 class Intrv_SequenceNodeOfSequenceOfInterval : public TCollection_SeqNode {
 	public:
@@ -460,6 +470,11 @@ class Handle_Intrv_SequenceNodeOfSequenceOfInterval : public Handle_TCollection_
     }
 };
 
+%extend Intrv_SequenceNodeOfSequenceOfInterval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Intrv_SequenceOfInterval;
 class Intrv_SequenceOfInterval : public TCollection_BaseSequence {
 	public:
@@ -598,3 +613,8 @@ class Intrv_SequenceOfInterval : public TCollection_BaseSequence {
 };
 
 
+%extend Intrv_SequenceOfInterval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

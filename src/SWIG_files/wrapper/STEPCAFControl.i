@@ -142,6 +142,11 @@ class Handle_STEPCAFControl_ActorWrite : public Handle_STEPControl_ActorWrite {
     }
 };
 
+%extend STEPCAFControl_ActorWrite {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_Controller;
 class STEPCAFControl_Controller : public STEPControl_Controller {
 	public:
@@ -206,6 +211,11 @@ class Handle_STEPCAFControl_Controller : public Handle_STEPControl_Controller {
     }
 };
 
+%extend STEPCAFControl_Controller {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
 class STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile : public TCollection_BasicMapIterator {
 	public:
@@ -236,6 +246,11 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile : public TCollect
 };
 
 
+%extend STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
 class STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape : public TCollection_BasicMapIterator {
 	public:
@@ -266,6 +281,11 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape : public TCollection_B
 };
 
 
+%extend STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
 class STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile : public TCollection_BasicMapIterator {
 	public:
@@ -296,6 +316,11 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile : public TCollection
 };
 
 
+%extend STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
 class STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile : public TCollection_BasicMapIterator {
 	public:
@@ -326,6 +351,11 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile : public TCollectio
 };
 
 
+%extend STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
 class STEPCAFControl_DataMapIteratorOfDataMapOfShapePD : public TCollection_BasicMapIterator {
 	public:
@@ -356,6 +386,11 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfShapePD : public TCollection_Basi
 };
 
 
+%extend STEPCAFControl_DataMapIteratorOfDataMapOfShapePD {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
 class STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR : public TCollection_BasicMapIterator {
 	public:
@@ -386,6 +421,11 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR : public TCollection_Bas
 };
 
 
+%extend STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile;
 class STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public TCollection_MapNode {
 	public:
@@ -456,6 +496,11 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public Handl
     }
 };
 
+%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfLabelShape;
 class STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public TCollection_MapNode {
 	public:
@@ -526,6 +571,11 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public Handle_TCo
     }
 };
 
+%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile;
 class STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public TCollection_MapNode {
 	public:
@@ -596,6 +646,11 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public Handle_T
     }
 };
 
+%extend STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile;
 class STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public TCollection_MapNode {
 	public:
@@ -666,6 +721,11 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public Handle_
     }
 };
 
+%extend STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfShapePD;
 class STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public TCollection_MapNode {
 	public:
@@ -736,6 +796,11 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public Handle_TColle
     }
 };
 
+%extend STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR;
 class STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public TCollection_MapNode {
 	public:
@@ -806,6 +871,11 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public Handle_TColl
     }
 };
 
+%extend STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapOfLabelExternFile;
 class STEPCAFControl_DataMapOfLabelExternFile : public TCollection_BasicMap {
 	public:
@@ -884,6 +954,11 @@ class STEPCAFControl_DataMapOfLabelExternFile : public TCollection_BasicMap {
 };
 
 
+%extend STEPCAFControl_DataMapOfLabelExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapOfLabelShape;
 class STEPCAFControl_DataMapOfLabelShape : public TCollection_BasicMap {
 	public:
@@ -962,6 +1037,11 @@ class STEPCAFControl_DataMapOfLabelShape : public TCollection_BasicMap {
 };
 
 
+%extend STEPCAFControl_DataMapOfLabelShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapOfPDExternFile;
 class STEPCAFControl_DataMapOfPDExternFile : public TCollection_BasicMap {
 	public:
@@ -1040,6 +1120,11 @@ class STEPCAFControl_DataMapOfPDExternFile : public TCollection_BasicMap {
 };
 
 
+%extend STEPCAFControl_DataMapOfPDExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapOfSDRExternFile;
 class STEPCAFControl_DataMapOfSDRExternFile : public TCollection_BasicMap {
 	public:
@@ -1118,6 +1203,11 @@ class STEPCAFControl_DataMapOfSDRExternFile : public TCollection_BasicMap {
 };
 
 
+%extend STEPCAFControl_DataMapOfSDRExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapOfShapePD;
 class STEPCAFControl_DataMapOfShapePD : public TCollection_BasicMap {
 	public:
@@ -1196,6 +1286,11 @@ class STEPCAFControl_DataMapOfShapePD : public TCollection_BasicMap {
 };
 
 
+%extend STEPCAFControl_DataMapOfShapePD {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DataMapOfShapeSDR;
 class STEPCAFControl_DataMapOfShapeSDR : public TCollection_BasicMap {
 	public:
@@ -1274,6 +1369,11 @@ class STEPCAFControl_DataMapOfShapeSDR : public TCollection_BasicMap {
 };
 
 
+%extend STEPCAFControl_DataMapOfShapeSDR {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_DictionaryOfExternFile;
 class STEPCAFControl_DictionaryOfExternFile : public MMgt_TShared {
 	public:
@@ -1464,6 +1564,11 @@ class Handle_STEPCAFControl_DictionaryOfExternFile : public Handle_MMgt_TShared 
     }
 };
 
+%extend STEPCAFControl_DictionaryOfExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_ExternFile;
 class STEPCAFControl_ExternFile : public MMgt_TShared {
 	public:
@@ -1582,6 +1687,11 @@ class Handle_STEPCAFControl_ExternFile : public Handle_MMgt_TShared {
     }
 };
 
+%extend STEPCAFControl_ExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_IteratorOfDictionaryOfExternFile;
 class STEPCAFControl_IteratorOfDictionaryOfExternFile {
 	public:
@@ -1630,6 +1740,11 @@ class STEPCAFControl_IteratorOfDictionaryOfExternFile {
 };
 
 
+%extend STEPCAFControl_IteratorOfDictionaryOfExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_Reader;
 class STEPCAFControl_Reader {
 	public:
@@ -1840,6 +1955,11 @@ class STEPCAFControl_Reader {
 };
 
 
+%extend STEPCAFControl_Reader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_StackItemOfDictionaryOfExternFile;
 class STEPCAFControl_StackItemOfDictionaryOfExternFile : public MMgt_TShared {
 	public:
@@ -1916,6 +2036,11 @@ class Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile : public Handle_MM
     }
 };
 
+%extend STEPCAFControl_StackItemOfDictionaryOfExternFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPCAFControl_Writer;
 class STEPCAFControl_Writer {
 	public:
@@ -2118,3 +2243,8 @@ class STEPCAFControl_Writer {
 };
 
 
+%extend STEPCAFControl_Writer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

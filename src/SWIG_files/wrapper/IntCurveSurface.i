@@ -108,6 +108,11 @@ class IntCurveSurface_Intersection {
 };
 
 
+%extend IntCurveSurface_Intersection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_IntersectionPoint;
 class IntCurveSurface_IntersectionPoint {
 	public:
@@ -204,6 +209,11 @@ class IntCurveSurface_IntersectionPoint {
 };
 
 
+%extend IntCurveSurface_IntersectionPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_IntersectionSegment;
 class IntCurveSurface_IntersectionSegment {
 	public:
@@ -262,6 +272,11 @@ class IntCurveSurface_IntersectionSegment {
 };
 
 
+%extend IntCurveSurface_IntersectionSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_SequenceNodeOfSequenceOfPnt;
 class IntCurveSurface_SequenceNodeOfSequenceOfPnt : public TCollection_SeqNode {
 	public:
@@ -328,6 +343,11 @@ class Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt : public Handle_TCollec
     }
 };
 
+%extend IntCurveSurface_SequenceNodeOfSequenceOfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_SequenceNodeOfSequenceOfSeg;
 class IntCurveSurface_SequenceNodeOfSequenceOfSeg : public TCollection_SeqNode {
 	public:
@@ -394,6 +414,11 @@ class Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg : public Handle_TCollec
     }
 };
 
+%extend IntCurveSurface_SequenceNodeOfSequenceOfSeg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_SequenceOfPnt;
 class IntCurveSurface_SequenceOfPnt : public TCollection_BaseSequence {
 	public:
@@ -532,6 +557,11 @@ class IntCurveSurface_SequenceOfPnt : public TCollection_BaseSequence {
 };
 
 
+%extend IntCurveSurface_SequenceOfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_SequenceOfSeg;
 class IntCurveSurface_SequenceOfSeg : public TCollection_BaseSequence {
 	public:
@@ -670,6 +700,11 @@ class IntCurveSurface_SequenceOfSeg : public TCollection_BaseSequence {
 };
 
 
+%extend IntCurveSurface_SequenceOfSeg {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_TheCSFunctionOfHInter;
 class IntCurveSurface_TheCSFunctionOfHInter : public math_FunctionSetWithDerivatives {
 	public:
@@ -734,6 +769,11 @@ class IntCurveSurface_TheCSFunctionOfHInter : public math_FunctionSetWithDerivat
 };
 
 
+%extend IntCurveSurface_TheCSFunctionOfHInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_TheExactHInter;
 class IntCurveSurface_TheExactHInter {
 	public:
@@ -816,6 +856,11 @@ class IntCurveSurface_TheExactHInter {
 };
 
 
+%extend IntCurveSurface_TheExactHInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntCurveSurface_TheHCurveTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -1027,6 +1072,11 @@ class IntCurveSurface_TheHCurveTool {
 };
 
 
+%extend IntCurveSurface_TheHCurveTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_TheInterferenceOfHInter;
 class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 	public:
@@ -1163,6 +1213,11 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 };
 
 
+%extend IntCurveSurface_TheInterferenceOfHInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_ThePolygonOfHInter;
 class IntCurveSurface_ThePolygonOfHInter {
 	public:
@@ -1257,6 +1312,11 @@ class IntCurveSurface_ThePolygonOfHInter {
 };
 
 
+%extend IntCurveSurface_ThePolygonOfHInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntCurveSurface_ThePolygonToolOfHInter {
 	public:
 		%feature("compactdefaultargs") Bounding;
@@ -1308,6 +1368,11 @@ class IntCurveSurface_ThePolygonToolOfHInter {
 };
 
 
+%extend IntCurveSurface_ThePolygonToolOfHInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntCurveSurface_ThePolyhedronToolOfHInter {
 	public:
 		%feature("compactdefaultargs") Bounding;
@@ -1397,6 +1462,11 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 };
 
 
+%extend IntCurveSurface_ThePolyhedronToolOfHInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_TheQuadCurvExactHInter;
 class IntCurveSurface_TheQuadCurvExactHInter {
 	public:
@@ -1439,6 +1509,11 @@ class IntCurveSurface_TheQuadCurvExactHInter {
 };
 
 
+%extend IntCurveSurface_TheQuadCurvExactHInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter;
 class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter : public math_FunctionWithDerivative {
 	public:
@@ -1479,6 +1554,11 @@ class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter : public math_Func
 };
 
 
+%extend IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntCurveSurface_HInter;
 class IntCurveSurface_HInter : public IntCurveSurface_Intersection {
 	public:
@@ -1543,3 +1623,8 @@ class IntCurveSurface_HInter : public IntCurveSurface_Intersection {
 };
 
 
+%extend IntCurveSurface_HInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

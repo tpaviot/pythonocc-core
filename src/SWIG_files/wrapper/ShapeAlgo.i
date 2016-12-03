@@ -82,6 +82,11 @@ class ShapeAlgo {
 };
 
 
+%extend ShapeAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAlgo_ToolContainer;
 class ShapeAlgo_ToolContainer : public MMgt_TShared {
 	public:
@@ -152,3 +157,8 @@ class Handle_ShapeAlgo_ToolContainer : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeAlgo_ToolContainer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

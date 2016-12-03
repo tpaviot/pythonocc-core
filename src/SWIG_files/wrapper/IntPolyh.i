@@ -124,6 +124,11 @@ class IntPolyh_Couple {
 };
 
 
+%extend IntPolyh_Couple {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPolyh_Edge;
 class IntPolyh_Edge {
 	public:
@@ -202,6 +207,11 @@ class IntPolyh_Edge {
 };
 
 
+%extend IntPolyh_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPolyh_Intersection;
 class IntPolyh_Intersection {
 	public:
@@ -344,6 +354,11 @@ class IntPolyh_Intersection {
 };
 
 
+%extend IntPolyh_Intersection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPolyh_Point;
 class IntPolyh_Point {
 	public:
@@ -558,6 +573,11 @@ class IntPolyh_Point {
 };
 
 
+%extend IntPolyh_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPolyh_SectionLine;
 class IntPolyh_SectionLine {
 	public:
@@ -630,6 +650,11 @@ class IntPolyh_SectionLine {
 };
 
 
+%extend IntPolyh_SectionLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPolyh_SeqOfStartPoints;
 class IntPolyh_SeqOfStartPoints : public TCollection_BaseSequence {
 	public:
@@ -768,6 +793,11 @@ class IntPolyh_SeqOfStartPoints : public TCollection_BaseSequence {
 };
 
 
+%extend IntPolyh_SeqOfStartPoints {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPolyh_SequenceNodeOfSeqOfStartPoints;
 class IntPolyh_SequenceNodeOfSeqOfStartPoints : public TCollection_SeqNode {
 	public:
@@ -834,6 +864,11 @@ class Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints : public Handle_TCollection
     }
 };
 
+%extend IntPolyh_SequenceNodeOfSeqOfStartPoints {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPolyh_StartPoint;
 class IntPolyh_StartPoint {
 	public:
@@ -1046,6 +1081,11 @@ class IntPolyh_StartPoint {
 };
 
 
+%extend IntPolyh_StartPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPolyh_Triangle;
 class IntPolyh_Triangle {
 	public:
@@ -1322,3 +1362,8 @@ class IntPolyh_Triangle {
 };
 
 
+%extend IntPolyh_Triangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

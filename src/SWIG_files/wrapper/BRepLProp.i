@@ -94,6 +94,11 @@ class BRepLProp {
 };
 
 
+%extend BRepLProp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLProp_CLProps;
 class BRepLProp_CLProps {
 	public:
@@ -184,6 +189,11 @@ class BRepLProp_CLProps {
 };
 
 
+%extend BRepLProp_CLProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BRepLProp_CurveTool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -273,6 +283,11 @@ class BRepLProp_CurveTool {
 };
 
 
+%extend BRepLProp_CurveTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLProp_SLProps;
 class BRepLProp_SLProps {
 	public:
@@ -409,6 +424,11 @@ class BRepLProp_SLProps {
 };
 
 
+%extend BRepLProp_SLProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BRepLProp_SurfaceTool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -508,3 +528,8 @@ class BRepLProp_SurfaceTool {
 };
 
 
+%extend BRepLProp_SurfaceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

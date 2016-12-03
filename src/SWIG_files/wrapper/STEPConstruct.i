@@ -106,6 +106,11 @@ class STEPConstruct {
 };
 
 
+%extend STEPConstruct {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_AP203Context;
 class STEPConstruct_AP203Context {
 	public:
@@ -306,6 +311,11 @@ class STEPConstruct_AP203Context {
 };
 
 
+%extend STEPConstruct_AP203Context {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_Assembly;
 class STEPConstruct_Assembly {
 	public:
@@ -364,6 +374,11 @@ class STEPConstruct_Assembly {
 };
 
 
+%extend STEPConstruct_Assembly {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_ContextTool;
 class STEPConstruct_ContextTool {
 	public:
@@ -528,6 +543,11 @@ class STEPConstruct_ContextTool {
 };
 
 
+%extend STEPConstruct_ContextTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient;
 class STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient : public TCollection_BasicMapIterator {
 	public:
@@ -558,6 +578,11 @@ class STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient : public TCol
 };
 
 
+%extend STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_DataMapIteratorOfDataMapOfPointTransient;
 class STEPConstruct_DataMapIteratorOfDataMapOfPointTransient : public TCollection_BasicMapIterator {
 	public:
@@ -588,6 +613,11 @@ class STEPConstruct_DataMapIteratorOfDataMapOfPointTransient : public TCollectio
 };
 
 
+%extend STEPConstruct_DataMapIteratorOfDataMapOfPointTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient;
 class STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient : public TCollection_MapNode {
 	public:
@@ -658,6 +688,11 @@ class Handle_STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient : public H
     }
 };
 
+%extend STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_DataMapNodeOfDataMapOfPointTransient;
 class STEPConstruct_DataMapNodeOfDataMapOfPointTransient : public TCollection_MapNode {
 	public:
@@ -728,6 +763,11 @@ class Handle_STEPConstruct_DataMapNodeOfDataMapOfPointTransient : public Handle_
     }
 };
 
+%extend STEPConstruct_DataMapNodeOfDataMapOfPointTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_DataMapOfAsciiStringTransient;
 class STEPConstruct_DataMapOfAsciiStringTransient : public TCollection_BasicMap {
 	public:
@@ -806,6 +846,11 @@ class STEPConstruct_DataMapOfAsciiStringTransient : public TCollection_BasicMap 
 };
 
 
+%extend STEPConstruct_DataMapOfAsciiStringTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_DataMapOfPointTransient;
 class STEPConstruct_DataMapOfPointTransient : public TCollection_BasicMap {
 	public:
@@ -884,6 +929,11 @@ class STEPConstruct_DataMapOfPointTransient : public TCollection_BasicMap {
 };
 
 
+%extend STEPConstruct_DataMapOfPointTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_Part;
 class STEPConstruct_Part {
 	public:
@@ -1108,6 +1158,11 @@ class STEPConstruct_Part {
 };
 
 
+%extend STEPConstruct_Part {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class STEPConstruct_PointHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -1133,6 +1188,11 @@ class STEPConstruct_PointHasher {
 };
 
 
+%extend STEPConstruct_PointHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_Tool;
 class STEPConstruct_Tool {
 	public:
@@ -1185,6 +1245,11 @@ class STEPConstruct_Tool {
 };
 
 
+%extend STEPConstruct_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_UnitContext;
 class STEPConstruct_UnitContext {
 	public:
@@ -1327,6 +1392,11 @@ class STEPConstruct_UnitContext {
 };
 
 
+%extend STEPConstruct_UnitContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_ExternRefs;
 class STEPConstruct_ExternRefs : public STEPConstruct_Tool {
 	public:
@@ -1437,6 +1507,11 @@ class STEPConstruct_ExternRefs : public STEPConstruct_Tool {
 };
 
 
+%extend STEPConstruct_ExternRefs {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_Styles;
 class STEPConstruct_Styles : public STEPConstruct_Tool {
 	public:
@@ -1631,6 +1706,11 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 };
 
 
+%extend STEPConstruct_Styles {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor STEPConstruct_ValidationProps;
 class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 	public:
@@ -1805,3 +1885,8 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 };
 
 
+%extend STEPConstruct_ValidationProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -143,6 +143,11 @@ class BOPAlgo_Algo {
 };
 
 
+%extend BOPAlgo_Algo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_ArgumentAnalyzer;
 class BOPAlgo_ArgumentAnalyzer {
 	public:
@@ -337,6 +342,11 @@ class BOPAlgo_ArgumentAnalyzer {
 };
 
 
+%extend BOPAlgo_ArgumentAnalyzer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_CheckResult;
 class BOPAlgo_CheckResult {
 	public:
@@ -475,6 +485,11 @@ class BOPAlgo_CheckResult {
 };
 
 
+%extend BOPAlgo_CheckResult {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_SectionAttribute;
 class BOPAlgo_SectionAttribute {
 	public:
@@ -535,6 +550,11 @@ class BOPAlgo_SectionAttribute {
 };
 
 
+%extend BOPAlgo_SectionAttribute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BOPAlgo_Tools {
 	public:
 		%feature("compactdefaultargs") MakeBlocksCnx;
@@ -616,6 +636,11 @@ class BOPAlgo_Tools {
 };
 
 
+%extend BOPAlgo_Tools {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_WireEdgeSet;
 class BOPAlgo_WireEdgeSet {
 	public:
@@ -666,6 +691,11 @@ class BOPAlgo_WireEdgeSet {
 };
 
 
+%extend BOPAlgo_WireEdgeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_BuilderArea;
 %ignore BOPAlgo_BuilderArea::~BOPAlgo_BuilderArea();
 class BOPAlgo_BuilderArea : public BOPAlgo_Algo {
@@ -697,6 +727,11 @@ class BOPAlgo_BuilderArea : public BOPAlgo_Algo {
 };
 
 
+%extend BOPAlgo_BuilderArea {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_BuilderShape;
 %ignore BOPAlgo_BuilderShape::~BOPAlgo_BuilderShape();
 class BOPAlgo_BuilderShape : public BOPAlgo_Algo {
@@ -756,6 +791,11 @@ class BOPAlgo_BuilderShape : public BOPAlgo_Algo {
 };
 
 
+%extend BOPAlgo_BuilderShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_PaveFiller;
 class BOPAlgo_PaveFiller : public BOPAlgo_Algo {
 	public:
@@ -804,6 +844,11 @@ class BOPAlgo_PaveFiller : public BOPAlgo_Algo {
 };
 
 
+%extend BOPAlgo_PaveFiller {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_ShellSplitter;
 class BOPAlgo_ShellSplitter : public BOPAlgo_Algo {
 	public:
@@ -856,6 +901,11 @@ class BOPAlgo_ShellSplitter : public BOPAlgo_Algo {
 };
 
 
+%extend BOPAlgo_ShellSplitter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_WireSplitter;
 class BOPAlgo_WireSplitter : public BOPAlgo_Algo {
 	public:
@@ -902,6 +952,11 @@ class BOPAlgo_WireSplitter : public BOPAlgo_Algo {
 };
 
 
+%extend BOPAlgo_WireSplitter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_Builder;
 class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 	public:
@@ -1008,6 +1063,11 @@ class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 };
 
 
+%extend BOPAlgo_Builder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_BuilderFace;
 class BOPAlgo_BuilderFace : public BOPAlgo_BuilderArea {
 	public:
@@ -1048,6 +1108,11 @@ class BOPAlgo_BuilderFace : public BOPAlgo_BuilderArea {
 };
 
 
+%extend BOPAlgo_BuilderFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_BuilderSolid;
 class BOPAlgo_BuilderSolid : public BOPAlgo_BuilderArea {
 	public:
@@ -1084,6 +1149,11 @@ class BOPAlgo_BuilderSolid : public BOPAlgo_BuilderArea {
 };
 
 
+%extend BOPAlgo_BuilderSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_CheckerSI;
 class BOPAlgo_CheckerSI : public BOPAlgo_PaveFiller {
 	public:
@@ -1120,6 +1190,11 @@ class BOPAlgo_CheckerSI : public BOPAlgo_PaveFiller {
 };
 
 
+%extend BOPAlgo_CheckerSI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_BOP;
 class BOPAlgo_BOP : public BOPAlgo_Builder {
 	public:
@@ -1166,6 +1241,11 @@ class BOPAlgo_BOP : public BOPAlgo_Builder {
 };
 
 
+%extend BOPAlgo_BOP {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_MakerVolume;
 class BOPAlgo_MakerVolume : public BOPAlgo_Builder {
 	public:
@@ -1224,6 +1304,11 @@ class BOPAlgo_MakerVolume : public BOPAlgo_Builder {
 };
 
 
+%extend BOPAlgo_MakerVolume {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_Section;
 class BOPAlgo_Section : public BOPAlgo_Builder {
 	public:
@@ -1256,3 +1341,8 @@ class BOPAlgo_Section : public BOPAlgo_Builder {
 };
 
 
+%extend BOPAlgo_Section {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

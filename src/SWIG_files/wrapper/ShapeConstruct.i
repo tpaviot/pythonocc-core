@@ -192,6 +192,11 @@ class ShapeConstruct {
 };
 
 
+%extend ShapeConstruct {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeConstruct_CompBezierCurves2dToBSplineCurve2d;
 class ShapeConstruct_CompBezierCurves2dToBSplineCurve2d {
 	public:
@@ -242,6 +247,11 @@ class ShapeConstruct_CompBezierCurves2dToBSplineCurve2d {
 };
 
 
+%extend ShapeConstruct_CompBezierCurves2dToBSplineCurve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeConstruct_CompBezierCurvesToBSplineCurve;
 class ShapeConstruct_CompBezierCurvesToBSplineCurve {
 	public:
@@ -292,6 +302,11 @@ class ShapeConstruct_CompBezierCurvesToBSplineCurve {
 };
 
 
+%extend ShapeConstruct_CompBezierCurvesToBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class ShapeConstruct_Curve {
 	public:
 		%feature("compactdefaultargs") AdjustCurve;
@@ -387,6 +402,11 @@ class ShapeConstruct_Curve {
 };
 
 
+%extend ShapeConstruct_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeConstruct_MakeTriangulation;
 class ShapeConstruct_MakeTriangulation : public BRepBuilderAPI_MakeShape {
 	public:
@@ -417,6 +437,11 @@ class ShapeConstruct_MakeTriangulation : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend ShapeConstruct_MakeTriangulation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeConstruct_ProjectCurveOnSurface;
 class ShapeConstruct_ProjectCurveOnSurface : public MMgt_TShared {
 	public:
@@ -607,3 +632,8 @@ class Handle_ShapeConstruct_ProjectCurveOnSurface : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeConstruct_ProjectCurveOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

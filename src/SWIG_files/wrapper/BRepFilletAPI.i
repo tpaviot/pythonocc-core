@@ -204,6 +204,11 @@ class BRepFilletAPI_LocalOperation : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepFilletAPI_LocalOperation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFilletAPI_MakeFillet2d;
 class BRepFilletAPI_MakeFillet2d : public BRepBuilderAPI_MakeShape {
 	public:
@@ -422,6 +427,11 @@ class BRepFilletAPI_MakeFillet2d : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepFilletAPI_MakeFillet2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFilletAPI_MakeChamfer;
 class BRepFilletAPI_MakeChamfer : public BRepFilletAPI_LocalOperation {
 	public:
@@ -750,6 +760,11 @@ class BRepFilletAPI_MakeChamfer : public BRepFilletAPI_LocalOperation {
 };
 
 
+%extend BRepFilletAPI_MakeChamfer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFilletAPI_MakeFillet;
 class BRepFilletAPI_MakeFillet : public BRepFilletAPI_LocalOperation {
 	public:
@@ -1242,3 +1257,8 @@ class BRepFilletAPI_MakeFillet : public BRepFilletAPI_LocalOperation {
 };
 
 
+%extend BRepFilletAPI_MakeFillet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

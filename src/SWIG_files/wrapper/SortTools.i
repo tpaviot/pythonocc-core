@@ -69,6 +69,11 @@ class SortTools_HeapSortOfInteger {
 };
 
 
+%extend SortTools_HeapSortOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class SortTools_HeapSortOfReal {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -82,6 +87,11 @@ class SortTools_HeapSortOfReal {
 };
 
 
+%extend SortTools_HeapSortOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class SortTools_QuickSortOfInteger {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -95,6 +105,11 @@ class SortTools_QuickSortOfInteger {
 };
 
 
+%extend SortTools_QuickSortOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class SortTools_QuickSortOfReal {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -108,6 +123,11 @@ class SortTools_QuickSortOfReal {
 };
 
 
+%extend SortTools_QuickSortOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class SortTools_ShellSortOfInteger {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -121,6 +141,11 @@ class SortTools_ShellSortOfInteger {
 };
 
 
+%extend SortTools_ShellSortOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class SortTools_ShellSortOfReal {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -134,6 +159,11 @@ class SortTools_ShellSortOfReal {
 };
 
 
+%extend SortTools_ShellSortOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class SortTools_StraightInsertionSortOfInteger {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -147,6 +177,11 @@ class SortTools_StraightInsertionSortOfInteger {
 };
 
 
+%extend SortTools_StraightInsertionSortOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class SortTools_StraightInsertionSortOfReal {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -160,3 +195,8 @@ class SortTools_StraightInsertionSortOfReal {
 };
 
 
+%extend SortTools_StraightInsertionSortOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

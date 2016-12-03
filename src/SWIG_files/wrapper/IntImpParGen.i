@@ -124,3 +124,8 @@ class IntImpParGen {
 };
 
 
+%extend IntImpParGen {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -185,6 +185,11 @@ class Poly {
 };
 
 
+%extend Poly {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Poly_Array1OfTriangle;
 class Poly_Array1OfTriangle {
 	public:
@@ -267,6 +272,11 @@ class Poly_Array1OfTriangle {
 };
 
 
+%extend Poly_Array1OfTriangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Poly_CoherentLink;
 class Poly_CoherentLink {
 	public:
@@ -341,6 +351,11 @@ class Poly_CoherentLink {
 };
 
 
+%extend Poly_CoherentLink {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Poly_CoherentNode;
 class Poly_CoherentNode : public gp_XYZ {
 	public:
@@ -465,6 +480,11 @@ class Poly_CoherentNode : public gp_XYZ {
         };
 
 
+%extend Poly_CoherentNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Poly_CoherentTriangle;
 class Poly_CoherentTriangle {
 	public:
@@ -575,6 +595,11 @@ class Poly_CoherentTriangle {
 };
 
 
+%extend Poly_CoherentTriangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Poly_Connect;
 class Poly_Connect {
 	public:
@@ -657,6 +682,11 @@ class Poly_Connect {
 };
 
 
+%extend Poly_Connect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Poly_HArray1OfTriangle;
 class Poly_HArray1OfTriangle : public MMgt_TShared {
 	public:
@@ -773,6 +803,11 @@ class Handle_Poly_HArray1OfTriangle : public Handle_MMgt_TShared {
     }
 };
 
+%extend Poly_HArray1OfTriangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Poly_Polygon2D;
 class Poly_Polygon2D : public MMgt_TShared {
 	public:
@@ -859,6 +894,11 @@ class Handle_Poly_Polygon2D : public Handle_MMgt_TShared {
     }
 };
 
+%extend Poly_Polygon2D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Poly_Polygon3D;
 class Poly_Polygon3D : public MMgt_TShared {
 	public:
@@ -973,6 +1013,11 @@ class Handle_Poly_Polygon3D : public Handle_MMgt_TShared {
     }
 };
 
+%extend Poly_Polygon3D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Poly_PolygonOnTriangulation;
 class Poly_PolygonOnTriangulation : public MMgt_TShared {
 	public:
@@ -1081,6 +1126,11 @@ class Handle_Poly_PolygonOnTriangulation : public Handle_MMgt_TShared {
     }
 };
 
+%extend Poly_PolygonOnTriangulation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Poly_Triangle;
 class Poly_Triangle {
 	public:
@@ -1155,6 +1205,11 @@ class Poly_Triangle {
 };
 
 
+%extend Poly_Triangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Poly_Triangulation;
 class Poly_Triangulation : public MMgt_TShared {
 	public:
@@ -1335,3 +1390,8 @@ class Handle_Poly_Triangulation : public Handle_MMgt_TShared {
     }
 };
 
+%extend Poly_Triangulation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

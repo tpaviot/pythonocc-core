@@ -182,3 +182,8 @@ class Precision {
 };
 
 
+%extend Precision {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

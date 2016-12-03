@@ -283,6 +283,11 @@ class V3d {
 };
 
 
+%extend V3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_CircularGrid;
 class V3d_CircularGrid : public Aspect_CircularGrid {
 	public:
@@ -381,6 +386,11 @@ class Handle_V3d_CircularGrid : public Handle_Aspect_CircularGrid {
     }
 };
 
+%extend V3d_CircularGrid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_ColorScale;
 class V3d_ColorScale : public Aspect_ColorScale {
 	public:
@@ -511,6 +521,11 @@ class Handle_V3d_ColorScale : public Handle_Aspect_ColorScale {
     }
 };
 
+%extend V3d_ColorScale {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_ColorScaleLayerItem;
 class V3d_ColorScaleLayerItem : public Visual3d_LayerItem {
 	public:
@@ -583,6 +598,11 @@ class Handle_V3d_ColorScaleLayerItem : public Handle_Visual3d_LayerItem {
     }
 };
 
+%extend V3d_ColorScaleLayerItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_LayerMgr;
 class V3d_LayerMgr : public MMgt_TShared {
 	public:
@@ -675,6 +695,11 @@ class Handle_V3d_LayerMgr : public Handle_MMgt_TShared {
     }
 };
 
+%extend V3d_LayerMgr {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_Light;
 class V3d_Light : public MMgt_TShared {
 	public:
@@ -811,6 +836,11 @@ class Handle_V3d_Light : public Handle_MMgt_TShared {
     }
 };
 
+%extend V3d_Light {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_ListOfTransient;
 class V3d_ListOfTransient : public TColStd_ListOfTransient {
 	public:
@@ -833,6 +863,11 @@ class V3d_ListOfTransient : public TColStd_ListOfTransient {
 };
 
 
+%extend V3d_ListOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_Plane;
 class V3d_Plane : public MMgt_TShared {
 	public:
@@ -955,6 +990,11 @@ class Handle_V3d_Plane : public Handle_MMgt_TShared {
     }
 };
 
+%extend V3d_Plane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_RectangularGrid;
 class V3d_RectangularGrid : public Aspect_RectangularGrid {
 	public:
@@ -1057,6 +1097,11 @@ class Handle_V3d_RectangularGrid : public Handle_Aspect_RectangularGrid {
     }
 };
 
+%extend V3d_RectangularGrid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_View;
 class V3d_View : public MMgt_TShared {
 	public:
@@ -2893,6 +2938,11 @@ class Handle_V3d_View : public Handle_MMgt_TShared {
     }
 };
 
+%extend V3d_View {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_Viewer;
 class V3d_Viewer : public MMgt_TShared {
 	public:
@@ -3707,6 +3757,11 @@ class Handle_V3d_Viewer : public Handle_MMgt_TShared {
     }
 };
 
+%extend V3d_Viewer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_AmbientLight;
 class V3d_AmbientLight : public V3d_Light {
 	public:
@@ -3769,6 +3824,11 @@ class Handle_V3d_AmbientLight : public Handle_V3d_Light {
     }
 };
 
+%extend V3d_AmbientLight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_PositionLight;
 class V3d_PositionLight : public V3d_Light {
 	public:
@@ -3937,6 +3997,11 @@ class Handle_V3d_PositionLight : public Handle_V3d_Light {
     }
 };
 
+%extend V3d_PositionLight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_DirectionalLight;
 class V3d_DirectionalLight : public V3d_PositionLight {
 	public:
@@ -4117,6 +4182,11 @@ class Handle_V3d_DirectionalLight : public Handle_V3d_PositionLight {
     }
 };
 
+%extend V3d_DirectionalLight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_PositionalLight;
 class V3d_PositionalLight : public V3d_PositionLight {
 	public:
@@ -4269,6 +4339,11 @@ class Handle_V3d_PositionalLight : public Handle_V3d_PositionLight {
     }
 };
 
+%extend V3d_PositionalLight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor V3d_SpotLight;
 class V3d_SpotLight : public V3d_PositionLight {
 	public:
@@ -4489,3 +4564,8 @@ class Handle_V3d_SpotLight : public Handle_V3d_PositionLight {
     }
 };
 
+%extend V3d_SpotLight {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

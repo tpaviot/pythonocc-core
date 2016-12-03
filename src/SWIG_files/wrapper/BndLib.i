@@ -388,6 +388,11 @@ class BndLib {
 };
 
 
+%extend BndLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BndLib_Add2dCurve {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -449,6 +454,11 @@ class BndLib_Add2dCurve {
 };
 
 
+%extend BndLib_Add2dCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BndLib_Add3dCurve {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -482,6 +492,11 @@ class BndLib_Add3dCurve {
 };
 
 
+%extend BndLib_Add3dCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BndLib_AddSurface {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -519,3 +534,8 @@ class BndLib_AddSurface {
 };
 
 
+%extend BndLib_AddSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

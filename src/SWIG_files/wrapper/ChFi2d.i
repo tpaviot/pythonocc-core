@@ -79,6 +79,11 @@ class ChFi2d {
 };
 
 
+%extend ChFi2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFi2d_AnaFilletAlgo;
 class ChFi2d_AnaFilletAlgo {
 	public:
@@ -153,6 +158,11 @@ class ChFi2d_AnaFilletAlgo {
 };
 
 
+%extend ChFi2d_AnaFilletAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFi2d_Builder;
 class ChFi2d_Builder {
 	public:
@@ -337,6 +347,11 @@ class ChFi2d_Builder {
 };
 
 
+%extend ChFi2d_Builder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFi2d_ChamferAPI;
 class ChFi2d_ChamferAPI {
 	public:
@@ -403,6 +418,11 @@ class ChFi2d_ChamferAPI {
 };
 
 
+%extend ChFi2d_ChamferAPI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFi2d_FilletAPI;
 class ChFi2d_FilletAPI {
 	public:
@@ -489,6 +509,11 @@ class ChFi2d_FilletAPI {
 };
 
 
+%extend ChFi2d_FilletAPI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ChFi2d_FilletAlgo;
 class ChFi2d_FilletAlgo {
 	public:
@@ -575,3 +600,8 @@ class ChFi2d_FilletAlgo {
 };
 
 
+%extend ChFi2d_FilletAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

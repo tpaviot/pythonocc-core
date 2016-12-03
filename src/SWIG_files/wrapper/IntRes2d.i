@@ -231,6 +231,11 @@ class IntRes2d_Domain {
 };
 
 
+%extend IntRes2d_Domain {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntRes2d_Intersection;
 class IntRes2d_Intersection {
 	public:
@@ -283,6 +288,11 @@ class IntRes2d_Intersection {
 };
 
 
+%extend IntRes2d_Intersection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntRes2d_IntersectionPoint;
 class IntRes2d_IntersectionPoint {
 	public:
@@ -393,6 +403,11 @@ class IntRes2d_IntersectionPoint {
 };
 
 
+%extend IntRes2d_IntersectionPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntRes2d_IntersectionSegment;
 class IntRes2d_IntersectionSegment {
 	public:
@@ -505,6 +520,11 @@ class IntRes2d_IntersectionSegment {
 };
 
 
+%extend IntRes2d_IntersectionSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint;
 class IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint : public TCollection_SeqNode {
 	public:
@@ -571,6 +591,11 @@ class Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint : public Handle_
     }
 };
 
+%extend IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment;
 class IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment : public TCollection_SeqNode {
 	public:
@@ -637,6 +662,11 @@ class Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment : public Handl
     }
 };
 
+%extend IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntRes2d_SequenceOfIntersectionPoint;
 class IntRes2d_SequenceOfIntersectionPoint : public TCollection_BaseSequence {
 	public:
@@ -775,6 +805,11 @@ class IntRes2d_SequenceOfIntersectionPoint : public TCollection_BaseSequence {
 };
 
 
+%extend IntRes2d_SequenceOfIntersectionPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntRes2d_SequenceOfIntersectionSegment;
 class IntRes2d_SequenceOfIntersectionSegment : public TCollection_BaseSequence {
 	public:
@@ -913,6 +948,11 @@ class IntRes2d_SequenceOfIntersectionSegment : public TCollection_BaseSequence {
 };
 
 
+%extend IntRes2d_SequenceOfIntersectionSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntRes2d_Transition;
 class IntRes2d_Transition {
 	public:
@@ -1081,3 +1121,8 @@ class IntRes2d_Transition {
 };
 
 
+%extend IntRes2d_Transition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

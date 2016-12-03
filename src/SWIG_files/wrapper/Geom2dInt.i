@@ -120,6 +120,11 @@ class Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter {
 };
 
 
+%extend Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_GInter;
 class Geom2dInt_GInter : public IntRes2d_Intersection {
 	public:
@@ -294,6 +299,11 @@ class Geom2dInt_GInter : public IntRes2d_Intersection {
 };
 
 
+%extend Geom2dInt_GInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Geom2dInt_Geom2dCurveTool {
 	public:
 		%feature("compactdefaultargs") GetType;
@@ -497,6 +507,11 @@ class Geom2dInt_Geom2dCurveTool {
 };
 
 
+%extend Geom2dInt_Geom2dCurveTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_IntConicCurveOfGInter;
 class Geom2dInt_IntConicCurveOfGInter : public IntRes2d_Intersection {
 	public:
@@ -667,6 +682,11 @@ class Geom2dInt_IntConicCurveOfGInter : public IntRes2d_Intersection {
 };
 
 
+%extend Geom2dInt_IntConicCurveOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter;
 class Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter : public math_FunctionWithDerivative {
 	public:
@@ -707,6 +727,11 @@ class Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter : public 
 };
 
 
+%extend Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
 class Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public math_FunctionWithDerivative {
 	public:
@@ -801,6 +826,11 @@ class Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public math_Functi
 };
 
 
+%extend Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
 class Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public TCollection_BaseSequence {
 	public:
@@ -939,6 +969,11 @@ class Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public TCol
 };
 
 
+%extend Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
 class Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public TCollection_SeqNode {
 	public:
@@ -1005,11 +1040,21 @@ class Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurO
     }
 };
 
+%extend Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter {
 	public:
 };
 
 
+%extend Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter;
 class Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter : public math_FunctionSetWithDerivatives {
 	public:
@@ -1058,6 +1103,11 @@ class Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter : public math_
 };
 
 
+%extend Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_TheIntConicCurveOfGInter;
 class Geom2dInt_TheIntConicCurveOfGInter : public IntRes2d_Intersection {
 	public:
@@ -1228,6 +1278,11 @@ class Geom2dInt_TheIntConicCurveOfGInter : public IntRes2d_Intersection {
 };
 
 
+%extend Geom2dInt_TheIntConicCurveOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_TheIntPCurvePCurveOfGInter;
 class Geom2dInt_TheIntPCurvePCurveOfGInter : public IntRes2d_Intersection {
 	public:
@@ -1266,6 +1321,11 @@ class Geom2dInt_TheIntPCurvePCurveOfGInter : public IntRes2d_Intersection {
 };
 
 
+%extend Geom2dInt_TheIntPCurvePCurveOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter;
 class Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter : public IntRes2d_Intersection {
 	public:
@@ -1364,6 +1424,11 @@ class Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter : public IntRes2d_Inter
 };
 
 
+%extend Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter;
 class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter {
 	public:
@@ -1438,6 +1503,11 @@ class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter {
 };
 
 
+%extend Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter;
 class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter : public Intf_Polygon2d {
 	public:
@@ -1548,6 +1618,11 @@ class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter : public Intf_Polygon2d
 };
 
 
+%extend Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Geom2dInt_TheProjPCurOfGInter {
 	public:
 		%feature("compactdefaultargs") FindParameter;
@@ -1577,3 +1652,8 @@ class Geom2dInt_TheProjPCurOfGInter {
 };
 
 
+%extend Geom2dInt_TheProjPCurOfGInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

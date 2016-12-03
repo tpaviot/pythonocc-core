@@ -159,6 +159,11 @@ class StepToTopoDS {
 };
 
 
+%extend StepToTopoDS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToTopoDS_CartesianPointHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -184,6 +189,11 @@ class StepToTopoDS_CartesianPointHasher {
 };
 
 
+%extend StepToTopoDS_CartesianPointHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_DataMapIteratorOfDataMapOfRI;
 class StepToTopoDS_DataMapIteratorOfDataMapOfRI : public TCollection_BasicMapIterator {
 	public:
@@ -214,6 +224,11 @@ class StepToTopoDS_DataMapIteratorOfDataMapOfRI : public TCollection_BasicMapIte
 };
 
 
+%extend StepToTopoDS_DataMapIteratorOfDataMapOfRI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_DataMapIteratorOfDataMapOfRINames;
 class StepToTopoDS_DataMapIteratorOfDataMapOfRINames : public TCollection_BasicMapIterator {
 	public:
@@ -244,6 +259,11 @@ class StepToTopoDS_DataMapIteratorOfDataMapOfRINames : public TCollection_BasicM
 };
 
 
+%extend StepToTopoDS_DataMapIteratorOfDataMapOfRINames {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_DataMapIteratorOfDataMapOfTRI;
 class StepToTopoDS_DataMapIteratorOfDataMapOfTRI : public TCollection_BasicMapIterator {
 	public:
@@ -274,6 +294,11 @@ class StepToTopoDS_DataMapIteratorOfDataMapOfTRI : public TCollection_BasicMapIt
 };
 
 
+%extend StepToTopoDS_DataMapIteratorOfDataMapOfTRI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_DataMapIteratorOfPointEdgeMap;
 class StepToTopoDS_DataMapIteratorOfPointEdgeMap : public TCollection_BasicMapIterator {
 	public:
@@ -304,6 +329,11 @@ class StepToTopoDS_DataMapIteratorOfPointEdgeMap : public TCollection_BasicMapIt
 };
 
 
+%extend StepToTopoDS_DataMapIteratorOfPointEdgeMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_DataMapIteratorOfPointVertexMap;
 class StepToTopoDS_DataMapIteratorOfPointVertexMap : public TCollection_BasicMapIterator {
 	public:
@@ -334,6 +364,11 @@ class StepToTopoDS_DataMapIteratorOfPointVertexMap : public TCollection_BasicMap
 };
 
 
+%extend StepToTopoDS_DataMapIteratorOfPointVertexMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_DataMapNodeOfDataMapOfRI;
 class StepToTopoDS_DataMapNodeOfDataMapOfRI : public TCollection_MapNode {
 	public:
@@ -404,6 +439,11 @@ class Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI : public Handle_TCollection_M
     }
 };
 
+%extend StepToTopoDS_DataMapNodeOfDataMapOfRI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_DataMapNodeOfDataMapOfRINames;
 class StepToTopoDS_DataMapNodeOfDataMapOfRINames : public TCollection_MapNode {
 	public:
@@ -474,6 +514,11 @@ class Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames : public Handle_TCollect
     }
 };
 
+%extend StepToTopoDS_DataMapNodeOfDataMapOfRINames {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_DataMapNodeOfDataMapOfTRI;
 class StepToTopoDS_DataMapNodeOfDataMapOfTRI : public TCollection_MapNode {
 	public:
@@ -544,6 +589,11 @@ class Handle_StepToTopoDS_DataMapNodeOfDataMapOfTRI : public Handle_TCollection_
     }
 };
 
+%extend StepToTopoDS_DataMapNodeOfDataMapOfTRI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_DataMapNodeOfPointEdgeMap;
 class StepToTopoDS_DataMapNodeOfPointEdgeMap : public TCollection_MapNode {
 	public:
@@ -614,6 +664,11 @@ class Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap : public Handle_TCollection_
     }
 };
 
+%extend StepToTopoDS_DataMapNodeOfPointEdgeMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_DataMapNodeOfPointVertexMap;
 class StepToTopoDS_DataMapNodeOfPointVertexMap : public TCollection_MapNode {
 	public:
@@ -684,6 +739,11 @@ class Handle_StepToTopoDS_DataMapNodeOfPointVertexMap : public Handle_TCollectio
     }
 };
 
+%extend StepToTopoDS_DataMapNodeOfPointVertexMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToTopoDS_GeometricTool {
 	public:
 		%feature("compactdefaultargs") PCurve;
@@ -737,6 +797,11 @@ class StepToTopoDS_GeometricTool {
 };
 
 
+%extend StepToTopoDS_GeometricTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_NMTool;
 class StepToTopoDS_NMTool {
 	public:
@@ -847,6 +912,11 @@ class StepToTopoDS_NMTool {
 };
 
 
+%extend StepToTopoDS_NMTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_PointPair;
 class StepToTopoDS_PointPair {
 	public:
@@ -861,6 +931,11 @@ class StepToTopoDS_PointPair {
 };
 
 
+%extend StepToTopoDS_PointPair {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToTopoDS_PointPairHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -886,6 +961,11 @@ class StepToTopoDS_PointPairHasher {
 };
 
 
+%extend StepToTopoDS_PointPairHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_Root;
 class StepToTopoDS_Root {
 	public:
@@ -924,6 +1004,11 @@ class StepToTopoDS_Root {
 };
 
 
+%extend StepToTopoDS_Root {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_Tool;
 class StepToTopoDS_Tool {
 	public:
@@ -1086,6 +1171,11 @@ class StepToTopoDS_Tool {
 };
 
 
+%extend StepToTopoDS_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_MakeTransformed;
 class StepToTopoDS_MakeTransformed : public StepToTopoDS_Root {
 	public:
@@ -1138,6 +1228,11 @@ class StepToTopoDS_MakeTransformed : public StepToTopoDS_Root {
 };
 
 
+%extend StepToTopoDS_MakeTransformed {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_TranslateCompositeCurve;
 class StepToTopoDS_TranslateCompositeCurve : public StepToTopoDS_Root {
 	public:
@@ -1210,6 +1305,11 @@ class StepToTopoDS_TranslateCompositeCurve : public StepToTopoDS_Root {
 };
 
 
+%extend StepToTopoDS_TranslateCompositeCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_TranslateCurveBoundedSurface;
 class StepToTopoDS_TranslateCurveBoundedSurface : public StepToTopoDS_Root {
 	public:
@@ -1248,6 +1348,11 @@ class StepToTopoDS_TranslateCurveBoundedSurface : public StepToTopoDS_Root {
 };
 
 
+%extend StepToTopoDS_TranslateCurveBoundedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_TranslateEdge;
 class StepToTopoDS_TranslateEdge : public StepToTopoDS_Root {
 	public:
@@ -1316,6 +1421,11 @@ class StepToTopoDS_TranslateEdge : public StepToTopoDS_Root {
 };
 
 
+%extend StepToTopoDS_TranslateEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_TranslateEdgeLoop;
 class StepToTopoDS_TranslateEdgeLoop : public StepToTopoDS_Root {
 	public:
@@ -1370,6 +1480,11 @@ class StepToTopoDS_TranslateEdgeLoop : public StepToTopoDS_Root {
 };
 
 
+%extend StepToTopoDS_TranslateEdgeLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_TranslateFace;
 class StepToTopoDS_TranslateFace : public StepToTopoDS_Root {
 	public:
@@ -1408,6 +1523,11 @@ class StepToTopoDS_TranslateFace : public StepToTopoDS_Root {
 };
 
 
+%extend StepToTopoDS_TranslateFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_TranslatePolyLoop;
 class StepToTopoDS_TranslatePolyLoop : public StepToTopoDS_Root {
 	public:
@@ -1450,6 +1570,11 @@ class StepToTopoDS_TranslatePolyLoop : public StepToTopoDS_Root {
 };
 
 
+%extend StepToTopoDS_TranslatePolyLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_TranslateShell;
 class StepToTopoDS_TranslateShell : public StepToTopoDS_Root {
 	public:
@@ -1488,6 +1613,11 @@ class StepToTopoDS_TranslateShell : public StepToTopoDS_Root {
 };
 
 
+%extend StepToTopoDS_TranslateShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_TranslateVertex;
 class StepToTopoDS_TranslateVertex : public StepToTopoDS_Root {
 	public:
@@ -1526,6 +1656,11 @@ class StepToTopoDS_TranslateVertex : public StepToTopoDS_Root {
 };
 
 
+%extend StepToTopoDS_TranslateVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepToTopoDS_TranslateVertexLoop;
 class StepToTopoDS_TranslateVertexLoop : public StepToTopoDS_Root {
 	public:
@@ -1564,3 +1699,8 @@ class StepToTopoDS_TranslateVertexLoop : public StepToTopoDS_Root {
 };
 
 
+%extend StepToTopoDS_TranslateVertexLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

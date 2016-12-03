@@ -138,6 +138,11 @@ class BRepAdaptor_Array1OfCurve {
 };
 
 
+%extend BRepAdaptor_Array1OfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAdaptor_CompCurve;
 class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 	public:
@@ -406,6 +411,11 @@ class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 };
 
 
+%extend BRepAdaptor_CompCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAdaptor_Curve;
 class BRepAdaptor_Curve : public Adaptor3d_Curve {
 	public:
@@ -680,6 +690,11 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 };
 
 
+%extend BRepAdaptor_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAdaptor_Curve2d;
 class BRepAdaptor_Curve2d : public Geom2dAdaptor_Curve {
 	public:
@@ -724,6 +739,11 @@ class BRepAdaptor_Curve2d : public Geom2dAdaptor_Curve {
 };
 
 
+%extend BRepAdaptor_Curve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAdaptor_HArray1OfCurve;
 class BRepAdaptor_HArray1OfCurve : public MMgt_TShared {
 	public:
@@ -840,6 +860,11 @@ class Handle_BRepAdaptor_HArray1OfCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepAdaptor_HArray1OfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAdaptor_HCompCurve;
 class BRepAdaptor_HCompCurve : public Adaptor3d_HCurve {
 	public:
@@ -920,6 +945,11 @@ class Handle_BRepAdaptor_HCompCurve : public Handle_Adaptor3d_HCurve {
     }
 };
 
+%extend BRepAdaptor_HCompCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAdaptor_HCurve;
 class BRepAdaptor_HCurve : public Adaptor3d_HCurve {
 	public:
@@ -1000,6 +1030,11 @@ class Handle_BRepAdaptor_HCurve : public Handle_Adaptor3d_HCurve {
     }
 };
 
+%extend BRepAdaptor_HCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAdaptor_HCurve2d;
 class BRepAdaptor_HCurve2d : public Adaptor2d_HCurve2d {
 	public:
@@ -1076,6 +1111,11 @@ class Handle_BRepAdaptor_HCurve2d : public Handle_Adaptor2d_HCurve2d {
     }
 };
 
+%extend BRepAdaptor_HCurve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAdaptor_HSurface;
 class BRepAdaptor_HSurface : public Adaptor3d_HSurface {
 	public:
@@ -1152,6 +1192,11 @@ class Handle_BRepAdaptor_HSurface : public Handle_Adaptor3d_HSurface {
     }
 };
 
+%extend BRepAdaptor_HSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepAdaptor_Surface;
 class BRepAdaptor_Surface : public Adaptor3d_Surface {
 	public:
@@ -1532,3 +1577,8 @@ class BRepAdaptor_Surface : public Adaptor3d_Surface {
 };
 
 
+%extend BRepAdaptor_Surface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

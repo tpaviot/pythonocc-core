@@ -104,6 +104,11 @@ class BRepOffset {
 };
 
 
+%extend BRepOffset {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_Analyse;
 class BRepOffset_Analyse {
 	public:
@@ -244,6 +249,11 @@ class BRepOffset_Analyse {
 };
 
 
+%extend BRepOffset_Analyse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval;
 class BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval : public TCollection_BasicMapIterator {
 	public:
@@ -274,6 +284,11 @@ class BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval : public TCollect
 };
 
 
+%extend BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape;
 class BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -304,6 +319,11 @@ class BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape : public TCollection_
 };
 
 
+%extend BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_DataMapIteratorOfDataMapOfShapeOffset;
 class BRepOffset_DataMapIteratorOfDataMapOfShapeOffset : public TCollection_BasicMapIterator {
 	public:
@@ -334,6 +354,11 @@ class BRepOffset_DataMapIteratorOfDataMapOfShapeOffset : public TCollection_Basi
 };
 
 
+%extend BRepOffset_DataMapIteratorOfDataMapOfShapeOffset {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval;
 class BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval : public TCollection_MapNode {
 	public:
@@ -404,6 +429,11 @@ class Handle_BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval : public Handl
     }
 };
 
+%extend BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape;
 class BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape : public TCollection_MapNode {
 	public:
@@ -474,6 +504,11 @@ class Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape : public Handle_TC
     }
 };
 
+%extend BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_DataMapNodeOfDataMapOfShapeOffset;
 class BRepOffset_DataMapNodeOfDataMapOfShapeOffset : public TCollection_MapNode {
 	public:
@@ -544,6 +579,11 @@ class Handle_BRepOffset_DataMapNodeOfDataMapOfShapeOffset : public Handle_TColle
     }
 };
 
+%extend BRepOffset_DataMapNodeOfDataMapOfShapeOffset {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_DataMapOfShapeListOfInterval;
 class BRepOffset_DataMapOfShapeListOfInterval : public TCollection_BasicMap {
 	public:
@@ -622,6 +662,11 @@ class BRepOffset_DataMapOfShapeListOfInterval : public TCollection_BasicMap {
 };
 
 
+%extend BRepOffset_DataMapOfShapeListOfInterval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_DataMapOfShapeMapOfShape;
 class BRepOffset_DataMapOfShapeMapOfShape : public TCollection_BasicMap {
 	public:
@@ -700,6 +745,11 @@ class BRepOffset_DataMapOfShapeMapOfShape : public TCollection_BasicMap {
 };
 
 
+%extend BRepOffset_DataMapOfShapeMapOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_DataMapOfShapeOffset;
 class BRepOffset_DataMapOfShapeOffset : public TCollection_BasicMap {
 	public:
@@ -778,6 +828,11 @@ class BRepOffset_DataMapOfShapeOffset : public TCollection_BasicMap {
 };
 
 
+%extend BRepOffset_DataMapOfShapeOffset {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BRepOffset_Inter2d {
 	public:
 		%feature("compactdefaultargs") Compute;
@@ -815,6 +870,11 @@ class BRepOffset_Inter2d {
 };
 
 
+%extend BRepOffset_Inter2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_Inter3d;
 class BRepOffset_Inter3d {
 	public:
@@ -943,6 +1003,11 @@ class BRepOffset_Inter3d {
 };
 
 
+%extend BRepOffset_Inter3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_Interval;
 class BRepOffset_Interval {
 	public:
@@ -993,6 +1058,11 @@ class BRepOffset_Interval {
 };
 
 
+%extend BRepOffset_Interval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_ListIteratorOfListOfInterval;
 class BRepOffset_ListIteratorOfListOfInterval {
 	public:
@@ -1027,6 +1097,11 @@ class BRepOffset_ListIteratorOfListOfInterval {
 };
 
 
+%extend BRepOffset_ListIteratorOfListOfInterval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_ListNodeOfListOfInterval;
 class BRepOffset_ListNodeOfListOfInterval : public TCollection_MapNode {
 	public:
@@ -1091,6 +1166,11 @@ class Handle_BRepOffset_ListNodeOfListOfInterval : public Handle_TCollection_Map
     }
 };
 
+%extend BRepOffset_ListNodeOfListOfInterval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_ListOfInterval;
 class BRepOffset_ListOfInterval {
 	public:
@@ -1221,6 +1301,11 @@ class BRepOffset_ListOfInterval {
 };
 
 
+%extend BRepOffset_ListOfInterval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_MakeLoops;
 class BRepOffset_MakeLoops {
 	public:
@@ -1265,6 +1350,11 @@ class BRepOffset_MakeLoops {
 };
 
 
+%extend BRepOffset_MakeLoops {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_MakeOffset;
 class BRepOffset_MakeOffset {
 	public:
@@ -1383,6 +1473,11 @@ class BRepOffset_MakeOffset {
 };
 
 
+%extend BRepOffset_MakeOffset {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepOffset_Offset;
 class BRepOffset_Offset {
 	public:
@@ -1591,6 +1686,11 @@ class BRepOffset_Offset {
 };
 
 
+%extend BRepOffset_Offset {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BRepOffset_Tool {
 	public:
 		%feature("compactdefaultargs") EdgeVertices;
@@ -1834,3 +1934,8 @@ class BRepOffset_Tool {
 };
 
 
+%extend BRepOffset_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

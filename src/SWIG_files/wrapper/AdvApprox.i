@@ -290,6 +290,11 @@ class AdvApprox_ApproxAFunction {
         };
 
 
+%extend AdvApprox_ApproxAFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApprox_Cutting;
 class AdvApprox_Cutting {
 	public:
@@ -310,6 +315,11 @@ class AdvApprox_Cutting {
 };
 
 
+%extend AdvApprox_Cutting {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApprox_SimpleApprox;
 class AdvApprox_SimpleApprox {
 	public:
@@ -404,6 +414,11 @@ class AdvApprox_SimpleApprox {
         };
 
 
+%extend AdvApprox_SimpleApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApprox_DichoCutting;
 class AdvApprox_DichoCutting : public AdvApprox_Cutting {
 	public:
@@ -424,6 +439,11 @@ class AdvApprox_DichoCutting : public AdvApprox_Cutting {
 };
 
 
+%extend AdvApprox_DichoCutting {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApprox_PrefAndRec;
 class AdvApprox_PrefAndRec : public AdvApprox_Cutting {
 	public:
@@ -452,6 +472,11 @@ class AdvApprox_PrefAndRec : public AdvApprox_Cutting {
 };
 
 
+%extend AdvApprox_PrefAndRec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AdvApprox_PrefCutting;
 class AdvApprox_PrefCutting : public AdvApprox_Cutting {
 	public:
@@ -474,3 +499,8 @@ class AdvApprox_PrefCutting : public AdvApprox_Cutting {
 };
 
 
+%extend AdvApprox_PrefCutting {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

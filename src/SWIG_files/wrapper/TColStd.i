@@ -138,6 +138,11 @@ class TColStd_Array1OfAsciiString {
 };
 
 
+%extend TColStd_Array1OfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array1OfBoolean;
 class TColStd_Array1OfBoolean {
 	public:
@@ -220,6 +225,11 @@ class TColStd_Array1OfBoolean {
 };
 
 
+%extend TColStd_Array1OfBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array1OfByte;
 class TColStd_Array1OfByte {
 	public:
@@ -302,6 +312,11 @@ class TColStd_Array1OfByte {
 };
 
 
+%extend TColStd_Array1OfByte {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array1OfCharacter;
 class TColStd_Array1OfCharacter {
 	public:
@@ -384,6 +399,11 @@ class TColStd_Array1OfCharacter {
 };
 
 
+%extend TColStd_Array1OfCharacter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array1OfExtendedString;
 class TColStd_Array1OfExtendedString {
 	public:
@@ -466,6 +486,11 @@ class TColStd_Array1OfExtendedString {
 };
 
 
+%extend TColStd_Array1OfExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array1OfInteger;
 class TColStd_Array1OfInteger {
 	public:
@@ -548,6 +573,11 @@ class TColStd_Array1OfInteger {
 };
 
 
+%extend TColStd_Array1OfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array1OfListOfInteger;
 class TColStd_Array1OfListOfInteger {
 	public:
@@ -630,6 +660,11 @@ class TColStd_Array1OfListOfInteger {
 };
 
 
+%extend TColStd_Array1OfListOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array1OfReal;
 class TColStd_Array1OfReal {
 	public:
@@ -712,6 +747,11 @@ class TColStd_Array1OfReal {
 };
 
 
+%extend TColStd_Array1OfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array1OfTransient;
 class TColStd_Array1OfTransient {
 	public:
@@ -794,6 +834,11 @@ class TColStd_Array1OfTransient {
 };
 
 
+%extend TColStd_Array1OfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array2OfBoolean;
 class TColStd_Array2OfBoolean {
 	public:
@@ -898,6 +943,11 @@ class TColStd_Array2OfBoolean {
 };
 
 
+%extend TColStd_Array2OfBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array2OfCharacter;
 class TColStd_Array2OfCharacter {
 	public:
@@ -1002,6 +1052,11 @@ class TColStd_Array2OfCharacter {
 };
 
 
+%extend TColStd_Array2OfCharacter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array2OfInteger;
 class TColStd_Array2OfInteger {
 	public:
@@ -1106,6 +1161,11 @@ class TColStd_Array2OfInteger {
 };
 
 
+%extend TColStd_Array2OfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array2OfReal;
 class TColStd_Array2OfReal {
 	public:
@@ -1210,6 +1270,11 @@ class TColStd_Array2OfReal {
 };
 
 
+%extend TColStd_Array2OfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_Array2OfTransient;
 class TColStd_Array2OfTransient {
 	public:
@@ -1314,6 +1379,11 @@ class TColStd_Array2OfTransient {
 };
 
 
+%extend TColStd_Array2OfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger;
 class TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1344,6 +1414,11 @@ class TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger : public TCollection_
 };
 
 
+%extend TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerInteger;
 class TColStd_DataMapIteratorOfDataMapOfIntegerInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1374,6 +1449,11 @@ class TColStd_DataMapIteratorOfDataMapOfIntegerInteger : public TCollection_Basi
 };
 
 
+%extend TColStd_DataMapIteratorOfDataMapOfIntegerInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger;
 class TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1404,6 +1484,11 @@ class TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger : public TCollectio
 };
 
 
+%extend TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerReal;
 class TColStd_DataMapIteratorOfDataMapOfIntegerReal : public TCollection_BasicMapIterator {
 	public:
@@ -1434,6 +1519,11 @@ class TColStd_DataMapIteratorOfDataMapOfIntegerReal : public TCollection_BasicMa
 };
 
 
+%extend TColStd_DataMapIteratorOfDataMapOfIntegerReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerTransient;
 class TColStd_DataMapIteratorOfDataMapOfIntegerTransient : public TCollection_BasicMapIterator {
 	public:
@@ -1464,6 +1554,11 @@ class TColStd_DataMapIteratorOfDataMapOfIntegerTransient : public TCollection_Ba
 };
 
 
+%extend TColStd_DataMapIteratorOfDataMapOfIntegerTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfStringInteger;
 class TColStd_DataMapIteratorOfDataMapOfStringInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1494,6 +1589,11 @@ class TColStd_DataMapIteratorOfDataMapOfStringInteger : public TCollection_Basic
 };
 
 
+%extend TColStd_DataMapIteratorOfDataMapOfStringInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfTransientTransient;
 class TColStd_DataMapIteratorOfDataMapOfTransientTransient : public TCollection_BasicMapIterator {
 	public:
@@ -1524,6 +1624,11 @@ class TColStd_DataMapIteratorOfDataMapOfTransientTransient : public TCollection_
 };
 
 
+%extend TColStd_DataMapIteratorOfDataMapOfTransientTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfAsciiStringInteger;
 class TColStd_DataMapNodeOfDataMapOfAsciiStringInteger : public TCollection_MapNode {
 	public:
@@ -1603,6 +1708,11 @@ class Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger : public Handle_TC
     }
 };
 
+%extend TColStd_DataMapNodeOfDataMapOfAsciiStringInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfIntegerInteger;
 class TColStd_DataMapNodeOfDataMapOfIntegerInteger : public TCollection_MapNode {
 	public:
@@ -1691,6 +1801,11 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger : public Handle_TColle
     }
 };
 
+%extend TColStd_DataMapNodeOfDataMapOfIntegerInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger;
 class TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public TCollection_MapNode {
 	public:
@@ -1770,6 +1885,11 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public Handle_
     }
 };
 
+%extend TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfIntegerReal;
 class TColStd_DataMapNodeOfDataMapOfIntegerReal : public TCollection_MapNode {
 	public:
@@ -1858,6 +1978,11 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal : public Handle_TCollecti
     }
 };
 
+%extend TColStd_DataMapNodeOfDataMapOfIntegerReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfIntegerTransient;
 class TColStd_DataMapNodeOfDataMapOfIntegerTransient : public TCollection_MapNode {
 	public:
@@ -1937,6 +2062,11 @@ class Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient : public Handle_TCol
     }
 };
 
+%extend TColStd_DataMapNodeOfDataMapOfIntegerTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfStringInteger;
 class TColStd_DataMapNodeOfDataMapOfStringInteger : public TCollection_MapNode {
 	public:
@@ -2016,6 +2146,11 @@ class Handle_TColStd_DataMapNodeOfDataMapOfStringInteger : public Handle_TCollec
     }
 };
 
+%extend TColStd_DataMapNodeOfDataMapOfStringInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfTransientTransient;
 class TColStd_DataMapNodeOfDataMapOfTransientTransient : public TCollection_MapNode {
 	public:
@@ -2086,6 +2221,11 @@ class Handle_TColStd_DataMapNodeOfDataMapOfTransientTransient : public Handle_TC
     }
 };
 
+%extend TColStd_DataMapNodeOfDataMapOfTransientTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapOfAsciiStringInteger;
 class TColStd_DataMapOfAsciiStringInteger : public TCollection_BasicMap {
 	public:
@@ -2164,6 +2304,11 @@ class TColStd_DataMapOfAsciiStringInteger : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_DataMapOfAsciiStringInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapOfIntegerInteger;
 class TColStd_DataMapOfIntegerInteger : public TCollection_BasicMap {
 	public:
@@ -2242,6 +2387,11 @@ class TColStd_DataMapOfIntegerInteger : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_DataMapOfIntegerInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapOfIntegerListOfInteger;
 class TColStd_DataMapOfIntegerListOfInteger : public TCollection_BasicMap {
 	public:
@@ -2320,6 +2470,11 @@ class TColStd_DataMapOfIntegerListOfInteger : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_DataMapOfIntegerListOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapOfIntegerReal;
 class TColStd_DataMapOfIntegerReal : public TCollection_BasicMap {
 	public:
@@ -2398,6 +2553,11 @@ class TColStd_DataMapOfIntegerReal : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_DataMapOfIntegerReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapOfIntegerTransient;
 class TColStd_DataMapOfIntegerTransient : public TCollection_BasicMap {
 	public:
@@ -2476,6 +2636,11 @@ class TColStd_DataMapOfIntegerTransient : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_DataMapOfIntegerTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapOfStringInteger;
 class TColStd_DataMapOfStringInteger : public TCollection_BasicMap {
 	public:
@@ -2554,6 +2719,11 @@ class TColStd_DataMapOfStringInteger : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_DataMapOfStringInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_DataMapOfTransientTransient;
 class TColStd_DataMapOfTransientTransient : public TCollection_BasicMap {
 	public:
@@ -2632,6 +2802,11 @@ class TColStd_DataMapOfTransientTransient : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_DataMapOfTransientTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray1OfAsciiString;
 class TColStd_HArray1OfAsciiString : public MMgt_TShared {
 	public:
@@ -2748,6 +2923,11 @@ class Handle_TColStd_HArray1OfAsciiString : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray1OfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray1OfBoolean;
 class TColStd_HArray1OfBoolean : public MMgt_TShared {
 	public:
@@ -2864,6 +3044,11 @@ class Handle_TColStd_HArray1OfBoolean : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray1OfBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray1OfByte;
 class TColStd_HArray1OfByte : public MMgt_TShared {
 	public:
@@ -2980,6 +3165,11 @@ class Handle_TColStd_HArray1OfByte : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray1OfByte {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray1OfCharacter;
 class TColStd_HArray1OfCharacter : public MMgt_TShared {
 	public:
@@ -3096,6 +3286,11 @@ class Handle_TColStd_HArray1OfCharacter : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray1OfCharacter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray1OfExtendedString;
 class TColStd_HArray1OfExtendedString : public MMgt_TShared {
 	public:
@@ -3212,6 +3407,11 @@ class Handle_TColStd_HArray1OfExtendedString : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray1OfExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray1OfInteger;
 class TColStd_HArray1OfInteger : public MMgt_TShared {
 	public:
@@ -3328,6 +3528,11 @@ class Handle_TColStd_HArray1OfInteger : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray1OfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray1OfListOfInteger;
 class TColStd_HArray1OfListOfInteger : public MMgt_TShared {
 	public:
@@ -3444,6 +3649,11 @@ class Handle_TColStd_HArray1OfListOfInteger : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray1OfListOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray1OfReal;
 class TColStd_HArray1OfReal : public MMgt_TShared {
 	public:
@@ -3560,6 +3770,11 @@ class Handle_TColStd_HArray1OfReal : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray1OfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray1OfTransient;
 class TColStd_HArray1OfTransient : public MMgt_TShared {
 	public:
@@ -3676,6 +3891,11 @@ class Handle_TColStd_HArray1OfTransient : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray1OfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray2OfBoolean;
 class TColStd_HArray2OfBoolean : public MMgt_TShared {
 	public:
@@ -3818,6 +4038,11 @@ class Handle_TColStd_HArray2OfBoolean : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray2OfBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray2OfCharacter;
 class TColStd_HArray2OfCharacter : public MMgt_TShared {
 	public:
@@ -3960,6 +4185,11 @@ class Handle_TColStd_HArray2OfCharacter : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray2OfCharacter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray2OfInteger;
 class TColStd_HArray2OfInteger : public MMgt_TShared {
 	public:
@@ -4102,6 +4332,11 @@ class Handle_TColStd_HArray2OfInteger : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray2OfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray2OfReal;
 class TColStd_HArray2OfReal : public MMgt_TShared {
 	public:
@@ -4244,6 +4479,11 @@ class Handle_TColStd_HArray2OfReal : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray2OfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HArray2OfTransient;
 class TColStd_HArray2OfTransient : public MMgt_TShared {
 	public:
@@ -4386,6 +4626,11 @@ class Handle_TColStd_HArray2OfTransient : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HArray2OfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HPackedMapOfInteger;
 class TColStd_HPackedMapOfInteger : public MMgt_TShared {
 	public:
@@ -4458,6 +4703,11 @@ class Handle_TColStd_HPackedMapOfInteger : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HPackedMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HSequenceOfAsciiString;
 class TColStd_HSequenceOfAsciiString : public MMgt_TShared {
 	public:
@@ -4642,6 +4892,11 @@ class Handle_TColStd_HSequenceOfAsciiString : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HSequenceOfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HSequenceOfExtendedString;
 class TColStd_HSequenceOfExtendedString : public MMgt_TShared {
 	public:
@@ -4826,6 +5081,11 @@ class Handle_TColStd_HSequenceOfExtendedString : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HSequenceOfExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HSequenceOfHAsciiString;
 class TColStd_HSequenceOfHAsciiString : public MMgt_TShared {
 	public:
@@ -5010,6 +5270,11 @@ class Handle_TColStd_HSequenceOfHAsciiString : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HSequenceOfHAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HSequenceOfHExtendedString;
 class TColStd_HSequenceOfHExtendedString : public MMgt_TShared {
 	public:
@@ -5194,6 +5459,11 @@ class Handle_TColStd_HSequenceOfHExtendedString : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HSequenceOfHExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HSequenceOfInteger;
 class TColStd_HSequenceOfInteger : public MMgt_TShared {
 	public:
@@ -5378,6 +5648,11 @@ class Handle_TColStd_HSequenceOfInteger : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HSequenceOfReal;
 class TColStd_HSequenceOfReal : public MMgt_TShared {
 	public:
@@ -5562,6 +5837,11 @@ class Handle_TColStd_HSequenceOfReal : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HSequenceOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_HSequenceOfTransient;
 class TColStd_HSequenceOfTransient : public MMgt_TShared {
 	public:
@@ -5746,6 +6026,11 @@ class Handle_TColStd_HSequenceOfTransient : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColStd_HSequenceOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient;
 class TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient : public TCollection_MapNode {
 	public:
@@ -5837,6 +6122,11 @@ class Handle_TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient : pu
     }
 };
 
+%extend TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_IndexedDataMapOfTransientTransient;
 class TColStd_IndexedDataMapOfTransientTransient : public TCollection_BasicMap {
 	public:
@@ -5947,6 +6237,11 @@ class TColStd_IndexedDataMapOfTransientTransient : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_IndexedDataMapOfTransientTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_IndexedMapNodeOfIndexedMapOfInteger;
 class TColStd_IndexedMapNodeOfIndexedMapOfInteger : public TCollection_MapNode {
 	public:
@@ -6041,6 +6336,11 @@ class Handle_TColStd_IndexedMapNodeOfIndexedMapOfInteger : public Handle_TCollec
     }
 };
 
+%extend TColStd_IndexedMapNodeOfIndexedMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_IndexedMapNodeOfIndexedMapOfReal;
 class TColStd_IndexedMapNodeOfIndexedMapOfReal : public TCollection_MapNode {
 	public:
@@ -6135,6 +6435,11 @@ class Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal : public Handle_TCollectio
     }
 };
 
+%extend TColStd_IndexedMapNodeOfIndexedMapOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_IndexedMapNodeOfIndexedMapOfTransient;
 class TColStd_IndexedMapNodeOfIndexedMapOfTransient : public TCollection_MapNode {
 	public:
@@ -6220,6 +6525,11 @@ class Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient : public Handle_TColl
     }
 };
 
+%extend TColStd_IndexedMapNodeOfIndexedMapOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_IndexedMapOfInteger;
 class TColStd_IndexedMapOfInteger : public TCollection_BasicMap {
 	public:
@@ -6296,6 +6606,11 @@ class TColStd_IndexedMapOfInteger : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_IndexedMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_IndexedMapOfReal;
 class TColStd_IndexedMapOfReal : public TCollection_BasicMap {
 	public:
@@ -6372,6 +6687,11 @@ class TColStd_IndexedMapOfReal : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_IndexedMapOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_IndexedMapOfTransient;
 class TColStd_IndexedMapOfTransient : public TCollection_BasicMap {
 	public:
@@ -6448,6 +6768,11 @@ class TColStd_IndexedMapOfTransient : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_IndexedMapOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListIteratorOfListOfAsciiString;
 class TColStd_ListIteratorOfListOfAsciiString {
 	public:
@@ -6482,6 +6807,11 @@ class TColStd_ListIteratorOfListOfAsciiString {
 };
 
 
+%extend TColStd_ListIteratorOfListOfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListIteratorOfListOfInteger;
 class TColStd_ListIteratorOfListOfInteger {
 	public:
@@ -6525,6 +6855,11 @@ class TColStd_ListIteratorOfListOfInteger {
             };
 
 
+%extend TColStd_ListIteratorOfListOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListIteratorOfListOfReal;
 class TColStd_ListIteratorOfListOfReal {
 	public:
@@ -6568,6 +6903,11 @@ class TColStd_ListIteratorOfListOfReal {
             };
 
 
+%extend TColStd_ListIteratorOfListOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListIteratorOfListOfTransient;
 class TColStd_ListIteratorOfListOfTransient {
 	public:
@@ -6602,6 +6942,11 @@ class TColStd_ListIteratorOfListOfTransient {
 };
 
 
+%extend TColStd_ListIteratorOfListOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListNodeOfListOfAsciiString;
 class TColStd_ListNodeOfListOfAsciiString : public TCollection_MapNode {
 	public:
@@ -6666,6 +7011,11 @@ class Handle_TColStd_ListNodeOfListOfAsciiString : public Handle_TCollection_Map
     }
 };
 
+%extend TColStd_ListNodeOfListOfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListNodeOfListOfInteger;
 class TColStd_ListNodeOfListOfInteger : public TCollection_MapNode {
 	public:
@@ -6739,6 +7089,11 @@ class Handle_TColStd_ListNodeOfListOfInteger : public Handle_TCollection_MapNode
     }
 };
 
+%extend TColStd_ListNodeOfListOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListNodeOfListOfReal;
 class TColStd_ListNodeOfListOfReal : public TCollection_MapNode {
 	public:
@@ -6812,6 +7167,11 @@ class Handle_TColStd_ListNodeOfListOfReal : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TColStd_ListNodeOfListOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListNodeOfListOfTransient;
 class TColStd_ListNodeOfListOfTransient : public TCollection_MapNode {
 	public:
@@ -6876,6 +7236,11 @@ class Handle_TColStd_ListNodeOfListOfTransient : public Handle_TCollection_MapNo
     }
 };
 
+%extend TColStd_ListNodeOfListOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListOfAsciiString;
 class TColStd_ListOfAsciiString {
 	public:
@@ -7006,6 +7371,11 @@ class TColStd_ListOfAsciiString {
 };
 
 
+%extend TColStd_ListOfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListOfInteger;
 class TColStd_ListOfInteger {
 	public:
@@ -7154,6 +7524,11 @@ class TColStd_ListOfInteger {
 };
 
 
+%extend TColStd_ListOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListOfReal;
 class TColStd_ListOfReal {
 	public:
@@ -7302,6 +7677,11 @@ class TColStd_ListOfReal {
 };
 
 
+%extend TColStd_ListOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_ListOfTransient;
 class TColStd_ListOfTransient {
 	public:
@@ -7432,6 +7812,11 @@ class TColStd_ListOfTransient {
 };
 
 
+%extend TColStd_ListOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TColStd_MapIntegerHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -7453,6 +7838,11 @@ class TColStd_MapIntegerHasher {
 };
 
 
+%extend TColStd_MapIntegerHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_MapIteratorOfMapOfAsciiString;
 class TColStd_MapIteratorOfMapOfAsciiString : public TCollection_BasicMapIterator {
 	public:
@@ -7479,6 +7869,11 @@ class TColStd_MapIteratorOfMapOfAsciiString : public TCollection_BasicMapIterato
 };
 
 
+%extend TColStd_MapIteratorOfMapOfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_MapIteratorOfMapOfInteger;
 class TColStd_MapIteratorOfMapOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -7505,6 +7900,11 @@ class TColStd_MapIteratorOfMapOfInteger : public TCollection_BasicMapIterator {
 };
 
 
+%extend TColStd_MapIteratorOfMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_MapIteratorOfMapOfReal;
 class TColStd_MapIteratorOfMapOfReal : public TCollection_BasicMapIterator {
 	public:
@@ -7531,6 +7931,11 @@ class TColStd_MapIteratorOfMapOfReal : public TCollection_BasicMapIterator {
 };
 
 
+%extend TColStd_MapIteratorOfMapOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_MapIteratorOfMapOfTransient;
 class TColStd_MapIteratorOfMapOfTransient : public TCollection_BasicMapIterator {
 	public:
@@ -7557,6 +7962,11 @@ class TColStd_MapIteratorOfMapOfTransient : public TCollection_BasicMapIterator 
 };
 
 
+%extend TColStd_MapIteratorOfMapOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_MapIteratorOfPackedMapOfInteger;
 class TColStd_MapIteratorOfPackedMapOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -7603,6 +8013,11 @@ class TColStd_MapIteratorOfPackedMapOfInteger : public TCollection_BasicMapItera
 };
 
 
+%extend TColStd_MapIteratorOfPackedMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_MapOfAsciiString;
 class TColStd_MapOfAsciiString : public TCollection_BasicMap {
 	public:
@@ -7661,6 +8076,11 @@ class TColStd_MapOfAsciiString : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_MapOfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_MapOfInteger;
 class TColStd_MapOfInteger : public TCollection_BasicMap {
 	public:
@@ -7719,6 +8139,11 @@ class TColStd_MapOfInteger : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_MapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_MapOfReal;
 class TColStd_MapOfReal : public TCollection_BasicMap {
 	public:
@@ -7777,6 +8202,11 @@ class TColStd_MapOfReal : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_MapOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_MapOfTransient;
 class TColStd_MapOfTransient : public TCollection_BasicMap {
 	public:
@@ -7835,6 +8265,11 @@ class TColStd_MapOfTransient : public TCollection_BasicMap {
 };
 
 
+%extend TColStd_MapOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TColStd_MapRealHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -7856,6 +8291,11 @@ class TColStd_MapRealHasher {
 };
 
 
+%extend TColStd_MapRealHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TColStd_MapTransientHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -7877,6 +8317,11 @@ class TColStd_MapTransientHasher {
 };
 
 
+%extend TColStd_MapTransientHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfAddress;
 class TColStd_SequenceNodeOfSequenceOfAddress : public TCollection_SeqNode {
 	public:
@@ -7943,6 +8388,11 @@ class Handle_TColStd_SequenceNodeOfSequenceOfAddress : public Handle_TCollection
     }
 };
 
+%extend TColStd_SequenceNodeOfSequenceOfAddress {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfAsciiString;
 class TColStd_SequenceNodeOfSequenceOfAsciiString : public TCollection_SeqNode {
 	public:
@@ -8009,6 +8459,11 @@ class Handle_TColStd_SequenceNodeOfSequenceOfAsciiString : public Handle_TCollec
     }
 };
 
+%extend TColStd_SequenceNodeOfSequenceOfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfBoolean;
 class TColStd_SequenceNodeOfSequenceOfBoolean : public TCollection_SeqNode {
 	public:
@@ -8084,6 +8539,11 @@ class Handle_TColStd_SequenceNodeOfSequenceOfBoolean : public Handle_TCollection
     }
 };
 
+%extend TColStd_SequenceNodeOfSequenceOfBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfExtendedString;
 class TColStd_SequenceNodeOfSequenceOfExtendedString : public TCollection_SeqNode {
 	public:
@@ -8150,6 +8610,11 @@ class Handle_TColStd_SequenceNodeOfSequenceOfExtendedString : public Handle_TCol
     }
 };
 
+%extend TColStd_SequenceNodeOfSequenceOfExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfHAsciiString;
 class TColStd_SequenceNodeOfSequenceOfHAsciiString : public TCollection_SeqNode {
 	public:
@@ -8216,6 +8681,11 @@ class Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString : public Handle_TColle
     }
 };
 
+%extend TColStd_SequenceNodeOfSequenceOfHAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfHExtendedString;
 class TColStd_SequenceNodeOfSequenceOfHExtendedString : public TCollection_SeqNode {
 	public:
@@ -8282,6 +8752,11 @@ class Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString : public Handle_TCo
     }
 };
 
+%extend TColStd_SequenceNodeOfSequenceOfHExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfInteger;
 class TColStd_SequenceNodeOfSequenceOfInteger : public TCollection_SeqNode {
 	public:
@@ -8357,6 +8832,11 @@ class Handle_TColStd_SequenceNodeOfSequenceOfInteger : public Handle_TCollection
     }
 };
 
+%extend TColStd_SequenceNodeOfSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfReal;
 class TColStd_SequenceNodeOfSequenceOfReal : public TCollection_SeqNode {
 	public:
@@ -8432,6 +8912,11 @@ class Handle_TColStd_SequenceNodeOfSequenceOfReal : public Handle_TCollection_Se
     }
 };
 
+%extend TColStd_SequenceNodeOfSequenceOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfTransient;
 class TColStd_SequenceNodeOfSequenceOfTransient : public TCollection_SeqNode {
 	public:
@@ -8498,6 +8983,11 @@ class Handle_TColStd_SequenceNodeOfSequenceOfTransient : public Handle_TCollecti
     }
 };
 
+%extend TColStd_SequenceNodeOfSequenceOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceOfAddress;
 class TColStd_SequenceOfAddress : public TCollection_BaseSequence {
 	public:
@@ -8636,6 +9126,11 @@ class TColStd_SequenceOfAddress : public TCollection_BaseSequence {
 };
 
 
+%extend TColStd_SequenceOfAddress {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceOfAsciiString;
 class TColStd_SequenceOfAsciiString : public TCollection_BaseSequence {
 	public:
@@ -8774,6 +9269,11 @@ class TColStd_SequenceOfAsciiString : public TCollection_BaseSequence {
 };
 
 
+%extend TColStd_SequenceOfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceOfBoolean;
 class TColStd_SequenceOfBoolean : public TCollection_BaseSequence {
 	public:
@@ -8912,6 +9412,11 @@ class TColStd_SequenceOfBoolean : public TCollection_BaseSequence {
 };
 
 
+%extend TColStd_SequenceOfBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceOfExtendedString;
 class TColStd_SequenceOfExtendedString : public TCollection_BaseSequence {
 	public:
@@ -9050,6 +9555,11 @@ class TColStd_SequenceOfExtendedString : public TCollection_BaseSequence {
 };
 
 
+%extend TColStd_SequenceOfExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceOfHAsciiString;
 class TColStd_SequenceOfHAsciiString : public TCollection_BaseSequence {
 	public:
@@ -9188,6 +9698,11 @@ class TColStd_SequenceOfHAsciiString : public TCollection_BaseSequence {
 };
 
 
+%extend TColStd_SequenceOfHAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceOfHExtendedString;
 class TColStd_SequenceOfHExtendedString : public TCollection_BaseSequence {
 	public:
@@ -9326,6 +9841,11 @@ class TColStd_SequenceOfHExtendedString : public TCollection_BaseSequence {
 };
 
 
+%extend TColStd_SequenceOfHExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceOfInteger;
 class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 	public:
@@ -9464,6 +9984,11 @@ class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 };
 
 
+%extend TColStd_SequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceOfReal;
 class TColStd_SequenceOfReal : public TCollection_BaseSequence {
 	public:
@@ -9602,6 +10127,11 @@ class TColStd_SequenceOfReal : public TCollection_BaseSequence {
 };
 
 
+%extend TColStd_SequenceOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_SequenceOfTransient;
 class TColStd_SequenceOfTransient : public TCollection_BaseSequence {
 	public:
@@ -9740,6 +10270,11 @@ class TColStd_SequenceOfTransient : public TCollection_BaseSequence {
 };
 
 
+%extend TColStd_SequenceOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_StdMapNodeOfMapOfAsciiString;
 class TColStd_StdMapNodeOfMapOfAsciiString : public TCollection_MapNode {
 	public:
@@ -9804,6 +10339,11 @@ class Handle_TColStd_StdMapNodeOfMapOfAsciiString : public Handle_TCollection_Ma
     }
 };
 
+%extend TColStd_StdMapNodeOfMapOfAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_StdMapNodeOfMapOfInteger;
 class TColStd_StdMapNodeOfMapOfInteger : public TCollection_MapNode {
 	public:
@@ -9877,6 +10417,11 @@ class Handle_TColStd_StdMapNodeOfMapOfInteger : public Handle_TCollection_MapNod
     }
 };
 
+%extend TColStd_StdMapNodeOfMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_StdMapNodeOfMapOfReal;
 class TColStd_StdMapNodeOfMapOfReal : public TCollection_MapNode {
 	public:
@@ -9950,6 +10495,11 @@ class Handle_TColStd_StdMapNodeOfMapOfReal : public Handle_TCollection_MapNode {
     }
 };
 
+%extend TColStd_StdMapNodeOfMapOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColStd_StdMapNodeOfMapOfTransient;
 class TColStd_StdMapNodeOfMapOfTransient : public TCollection_MapNode {
 	public:
@@ -10014,3 +10564,8 @@ class Handle_TColStd_StdMapNodeOfMapOfTransient : public Handle_TCollection_MapN
     }
 };
 
+%extend TColStd_StdMapNodeOfMapOfTransient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

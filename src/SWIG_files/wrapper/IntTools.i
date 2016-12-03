@@ -138,6 +138,11 @@ class IntTools {
 };
 
 
+%extend IntTools {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_Array1OfRange;
 class IntTools_Array1OfRange {
 	public:
@@ -220,6 +225,11 @@ class IntTools_Array1OfRange {
 };
 
 
+%extend IntTools_Array1OfRange {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_Array1OfRoots;
 class IntTools_Array1OfRoots {
 	public:
@@ -302,6 +312,11 @@ class IntTools_Array1OfRoots {
 };
 
 
+%extend IntTools_Array1OfRoots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_BaseRangeSample;
 class IntTools_BaseRangeSample {
 	public:
@@ -328,6 +343,11 @@ class IntTools_BaseRangeSample {
 };
 
 
+%extend IntTools_BaseRangeSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_BeanFaceIntersector;
 class IntTools_BeanFaceIntersector {
 	public:
@@ -496,6 +516,11 @@ class IntTools_BeanFaceIntersector {
 };
 
 
+%extend IntTools_BeanFaceIntersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_CommonPrt;
 class IntTools_CommonPrt {
 	public:
@@ -704,6 +729,11 @@ class IntTools_CommonPrt {
 };
 
 
+%extend IntTools_CommonPrt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_Compare;
 class IntTools_Compare {
 	public:
@@ -754,6 +784,11 @@ class IntTools_Compare {
 };
 
 
+%extend IntTools_Compare {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_CompareRange;
 class IntTools_CompareRange {
 	public:
@@ -804,6 +839,11 @@ class IntTools_CompareRange {
 };
 
 
+%extend IntTools_CompareRange {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_Context;
 class IntTools_Context : public MMgt_TShared {
 	public:
@@ -1094,6 +1134,11 @@ class Handle_IntTools_Context : public Handle_MMgt_TShared {
     }
 };
 
+%extend IntTools_Context {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_Curve;
 class IntTools_Curve {
 	public:
@@ -1208,6 +1253,11 @@ class IntTools_Curve {
 };
 
 
+%extend IntTools_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_CurveRangeLocalizeData;
 class IntTools_CurveRangeLocalizeData {
 	public:
@@ -1264,6 +1314,11 @@ class IntTools_CurveRangeLocalizeData {
 };
 
 
+%extend IntTools_CurveRangeLocalizeData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
 class IntTools_DataMapIteratorOfDataMapOfCurveSampleBox : public TCollection_BasicMapIterator {
 	public:
@@ -1294,6 +1349,11 @@ class IntTools_DataMapIteratorOfDataMapOfCurveSampleBox : public TCollection_Bas
 };
 
 
+%extend IntTools_DataMapIteratorOfDataMapOfCurveSampleBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
 class IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox : public TCollection_BasicMapIterator {
 	public:
@@ -1324,6 +1384,11 @@ class IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox : public TCollection_B
 };
 
 
+%extend IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_DataMapNodeOfDataMapOfCurveSampleBox;
 class IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public TCollection_MapNode {
 	public:
@@ -1394,6 +1459,11 @@ class Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public Handle_TColl
     }
 };
 
+%extend IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox;
 class IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox : public TCollection_MapNode {
 	public:
@@ -1464,6 +1534,11 @@ class Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox : public Handle_TCo
     }
 };
 
+%extend IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_DataMapOfCurveSampleBox;
 class IntTools_DataMapOfCurveSampleBox : public TCollection_BasicMap {
 	public:
@@ -1542,6 +1617,11 @@ class IntTools_DataMapOfCurveSampleBox : public TCollection_BasicMap {
 };
 
 
+%extend IntTools_DataMapOfCurveSampleBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_DataMapOfSurfaceSampleBox;
 class IntTools_DataMapOfSurfaceSampleBox : public TCollection_BasicMap {
 	public:
@@ -1620,6 +1700,11 @@ class IntTools_DataMapOfSurfaceSampleBox : public TCollection_BasicMap {
 };
 
 
+%extend IntTools_DataMapOfSurfaceSampleBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_EdgeEdge;
 class IntTools_EdgeEdge {
 	public:
@@ -1754,6 +1839,11 @@ class IntTools_EdgeEdge {
 };
 
 
+%extend IntTools_EdgeEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_EdgeFace;
 class IntTools_EdgeFace {
 	public:
@@ -1928,6 +2018,11 @@ class IntTools_EdgeFace {
 };
 
 
+%extend IntTools_EdgeFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_FClass2d;
 class IntTools_FClass2d {
 	public:
@@ -1998,6 +2093,11 @@ class IntTools_FClass2d {
 };
 
 
+%extend IntTools_FClass2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_FaceFace;
 class IntTools_FaceFace {
 	public:
@@ -2110,6 +2210,11 @@ class IntTools_FaceFace {
 };
 
 
+%extend IntTools_FaceFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress;
 class IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : public TCollection_MapNode {
 	public:
@@ -2201,6 +2306,11 @@ class Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : pub
     }
 };
 
+%extend IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_IndexedDataMapOfTransientAddress;
 class IntTools_IndexedDataMapOfTransientAddress : public TCollection_BasicMap {
 	public:
@@ -2311,6 +2421,11 @@ class IntTools_IndexedDataMapOfTransientAddress : public TCollection_BasicMap {
 };
 
 
+%extend IntTools_IndexedDataMapOfTransientAddress {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_ListIteratorOfListOfBox;
 class IntTools_ListIteratorOfListOfBox {
 	public:
@@ -2345,6 +2460,11 @@ class IntTools_ListIteratorOfListOfBox {
 };
 
 
+%extend IntTools_ListIteratorOfListOfBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_ListIteratorOfListOfCurveRangeSample;
 class IntTools_ListIteratorOfListOfCurveRangeSample {
 	public:
@@ -2379,6 +2499,11 @@ class IntTools_ListIteratorOfListOfCurveRangeSample {
 };
 
 
+%extend IntTools_ListIteratorOfListOfCurveRangeSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_ListIteratorOfListOfSurfaceRangeSample;
 class IntTools_ListIteratorOfListOfSurfaceRangeSample {
 	public:
@@ -2413,6 +2538,11 @@ class IntTools_ListIteratorOfListOfSurfaceRangeSample {
 };
 
 
+%extend IntTools_ListIteratorOfListOfSurfaceRangeSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_ListNodeOfListOfBox;
 class IntTools_ListNodeOfListOfBox : public TCollection_MapNode {
 	public:
@@ -2477,6 +2607,11 @@ class Handle_IntTools_ListNodeOfListOfBox : public Handle_TCollection_MapNode {
     }
 };
 
+%extend IntTools_ListNodeOfListOfBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_ListNodeOfListOfCurveRangeSample;
 class IntTools_ListNodeOfListOfCurveRangeSample : public TCollection_MapNode {
 	public:
@@ -2541,6 +2676,11 @@ class Handle_IntTools_ListNodeOfListOfCurveRangeSample : public Handle_TCollecti
     }
 };
 
+%extend IntTools_ListNodeOfListOfCurveRangeSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_ListNodeOfListOfSurfaceRangeSample;
 class IntTools_ListNodeOfListOfSurfaceRangeSample : public TCollection_MapNode {
 	public:
@@ -2605,6 +2745,11 @@ class Handle_IntTools_ListNodeOfListOfSurfaceRangeSample : public Handle_TCollec
     }
 };
 
+%extend IntTools_ListNodeOfListOfSurfaceRangeSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_ListOfBox;
 class IntTools_ListOfBox {
 	public:
@@ -2735,6 +2880,11 @@ class IntTools_ListOfBox {
 };
 
 
+%extend IntTools_ListOfBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_ListOfCurveRangeSample;
 class IntTools_ListOfCurveRangeSample {
 	public:
@@ -2865,6 +3015,11 @@ class IntTools_ListOfCurveRangeSample {
 };
 
 
+%extend IntTools_ListOfCurveRangeSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_ListOfSurfaceRangeSample;
 class IntTools_ListOfSurfaceRangeSample {
 	public:
@@ -2995,6 +3150,11 @@ class IntTools_ListOfSurfaceRangeSample {
 };
 
 
+%extend IntTools_ListOfSurfaceRangeSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_MapIteratorOfMapOfCurveSample;
 class IntTools_MapIteratorOfMapOfCurveSample : public TCollection_BasicMapIterator {
 	public:
@@ -3021,6 +3181,11 @@ class IntTools_MapIteratorOfMapOfCurveSample : public TCollection_BasicMapIterat
 };
 
 
+%extend IntTools_MapIteratorOfMapOfCurveSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_MapIteratorOfMapOfSurfaceSample;
 class IntTools_MapIteratorOfMapOfSurfaceSample : public TCollection_BasicMapIterator {
 	public:
@@ -3047,6 +3212,11 @@ class IntTools_MapIteratorOfMapOfSurfaceSample : public TCollection_BasicMapIter
 };
 
 
+%extend IntTools_MapIteratorOfMapOfSurfaceSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_MapOfCurveSample;
 class IntTools_MapOfCurveSample : public TCollection_BasicMap {
 	public:
@@ -3105,6 +3275,11 @@ class IntTools_MapOfCurveSample : public TCollection_BasicMap {
 };
 
 
+%extend IntTools_MapOfCurveSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_MapOfSurfaceSample;
 class IntTools_MapOfSurfaceSample : public TCollection_BasicMap {
 	public:
@@ -3163,6 +3338,11 @@ class IntTools_MapOfSurfaceSample : public TCollection_BasicMap {
 };
 
 
+%extend IntTools_MapOfSurfaceSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_MarkedRangeSet;
 class IntTools_MarkedRangeSet {
 	public:
@@ -3323,6 +3503,11 @@ class IntTools_MarkedRangeSet {
 };
 
 
+%extend IntTools_MarkedRangeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_PntOn2Faces;
 class IntTools_PntOn2Faces {
 	public:
@@ -3387,6 +3572,11 @@ class IntTools_PntOn2Faces {
 };
 
 
+%extend IntTools_PntOn2Faces {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_PntOnFace;
 class IntTools_PntOnFace {
 	public:
@@ -3469,6 +3659,11 @@ class IntTools_PntOnFace {
 };
 
 
+%extend IntTools_PntOnFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntTools_QuickSort {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -3482,6 +3677,11 @@ class IntTools_QuickSort {
 };
 
 
+%extend IntTools_QuickSort {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntTools_QuickSortRange {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -3495,6 +3695,11 @@ class IntTools_QuickSortRange {
 };
 
 
+%extend IntTools_QuickSortRange {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_Range;
 class IntTools_Range {
 	public:
@@ -3555,6 +3760,11 @@ class IntTools_Range {
 };
 
 
+%extend IntTools_Range {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_Root;
 class IntTools_Root {
 	public:
@@ -3681,6 +3891,11 @@ class IntTools_Root {
 };
 
 
+%extend IntTools_Root {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SequenceNodeOfSequenceOfCommonPrts;
 class IntTools_SequenceNodeOfSequenceOfCommonPrts : public TCollection_SeqNode {
 	public:
@@ -3747,6 +3962,11 @@ class Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts : public Handle_TCollec
     }
 };
 
+%extend IntTools_SequenceNodeOfSequenceOfCommonPrts {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SequenceNodeOfSequenceOfCurves;
 class IntTools_SequenceNodeOfSequenceOfCurves : public TCollection_SeqNode {
 	public:
@@ -3813,6 +4033,11 @@ class Handle_IntTools_SequenceNodeOfSequenceOfCurves : public Handle_TCollection
     }
 };
 
+%extend IntTools_SequenceNodeOfSequenceOfCurves {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SequenceNodeOfSequenceOfPntOn2Faces;
 class IntTools_SequenceNodeOfSequenceOfPntOn2Faces : public TCollection_SeqNode {
 	public:
@@ -3879,6 +4104,11 @@ class Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces : public Handle_TColle
     }
 };
 
+%extend IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SequenceNodeOfSequenceOfRanges;
 class IntTools_SequenceNodeOfSequenceOfRanges : public TCollection_SeqNode {
 	public:
@@ -3945,6 +4175,11 @@ class Handle_IntTools_SequenceNodeOfSequenceOfRanges : public Handle_TCollection
     }
 };
 
+%extend IntTools_SequenceNodeOfSequenceOfRanges {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SequenceNodeOfSequenceOfRoots;
 class IntTools_SequenceNodeOfSequenceOfRoots : public TCollection_SeqNode {
 	public:
@@ -4011,6 +4246,11 @@ class Handle_IntTools_SequenceNodeOfSequenceOfRoots : public Handle_TCollection_
     }
 };
 
+%extend IntTools_SequenceNodeOfSequenceOfRoots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SequenceOfCommonPrts;
 class IntTools_SequenceOfCommonPrts : public TCollection_BaseSequence {
 	public:
@@ -4149,6 +4389,11 @@ class IntTools_SequenceOfCommonPrts : public TCollection_BaseSequence {
 };
 
 
+%extend IntTools_SequenceOfCommonPrts {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SequenceOfCurves;
 class IntTools_SequenceOfCurves : public TCollection_BaseSequence {
 	public:
@@ -4287,6 +4532,11 @@ class IntTools_SequenceOfCurves : public TCollection_BaseSequence {
 };
 
 
+%extend IntTools_SequenceOfCurves {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SequenceOfPntOn2Faces;
 class IntTools_SequenceOfPntOn2Faces : public TCollection_BaseSequence {
 	public:
@@ -4425,6 +4675,11 @@ class IntTools_SequenceOfPntOn2Faces : public TCollection_BaseSequence {
 };
 
 
+%extend IntTools_SequenceOfPntOn2Faces {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SequenceOfRanges;
 class IntTools_SequenceOfRanges : public TCollection_BaseSequence {
 	public:
@@ -4563,6 +4818,11 @@ class IntTools_SequenceOfRanges : public TCollection_BaseSequence {
 };
 
 
+%extend IntTools_SequenceOfRanges {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SequenceOfRoots;
 class IntTools_SequenceOfRoots : public TCollection_BaseSequence {
 	public:
@@ -4701,6 +4961,11 @@ class IntTools_SequenceOfRoots : public TCollection_BaseSequence {
 };
 
 
+%extend IntTools_SequenceOfRoots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_ShrunkRange;
 class IntTools_ShrunkRange {
 	public:
@@ -4769,6 +5034,11 @@ class IntTools_ShrunkRange {
 };
 
 
+%extend IntTools_ShrunkRange {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_StdMapNodeOfMapOfCurveSample;
 class IntTools_StdMapNodeOfMapOfCurveSample : public TCollection_MapNode {
 	public:
@@ -4833,6 +5103,11 @@ class Handle_IntTools_StdMapNodeOfMapOfCurveSample : public Handle_TCollection_M
     }
 };
 
+%extend IntTools_StdMapNodeOfMapOfCurveSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_StdMapNodeOfMapOfSurfaceSample;
 class IntTools_StdMapNodeOfMapOfSurfaceSample : public TCollection_MapNode {
 	public:
@@ -4897,6 +5172,11 @@ class Handle_IntTools_StdMapNodeOfMapOfSurfaceSample : public Handle_TCollection
     }
 };
 
+%extend IntTools_StdMapNodeOfMapOfSurfaceSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SurfaceRangeLocalizeData;
 class IntTools_SurfaceRangeLocalizeData {
 	public:
@@ -5149,6 +5429,11 @@ class IntTools_SurfaceRangeLocalizeData {
 };
 
 
+%extend IntTools_SurfaceRangeLocalizeData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_SurfaceRangeSample;
 class IntTools_SurfaceRangeSample {
 	public:
@@ -5335,6 +5620,11 @@ class IntTools_SurfaceRangeSample {
 };
 
 
+%extend IntTools_SurfaceRangeSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntTools_SurfaceRangeSampleMapHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -5360,6 +5650,11 @@ class IntTools_SurfaceRangeSampleMapHasher {
 };
 
 
+%extend IntTools_SurfaceRangeSampleMapHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IntTools_Tools {
 	public:
 		%feature("compactdefaultargs") ComputeVV;
@@ -5611,6 +5906,11 @@ class IntTools_Tools {
 };
 
 
+%extend IntTools_Tools {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_TopolTool;
 class IntTools_TopolTool : public Adaptor3d_TopolTool {
 	public:
@@ -5737,6 +6037,11 @@ class Handle_IntTools_TopolTool : public Handle_Adaptor3d_TopolTool {
     }
 };
 
+%extend IntTools_TopolTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntTools_CurveRangeSample;
 class IntTools_CurveRangeSample : public IntTools_BaseRangeSample {
 	public:
@@ -5785,3 +6090,8 @@ class IntTools_CurveRangeSample : public IntTools_BaseRangeSample {
 };
 
 
+%extend IntTools_CurveRangeSample {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

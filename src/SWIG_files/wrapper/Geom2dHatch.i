@@ -110,6 +110,11 @@ class Geom2dHatch_Classifier {
 };
 
 
+%extend Geom2dHatch_Classifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_DataMapIteratorOfHatchings;
 class Geom2dHatch_DataMapIteratorOfHatchings : public TCollection_BasicMapIterator {
 	public:
@@ -140,6 +145,11 @@ class Geom2dHatch_DataMapIteratorOfHatchings : public TCollection_BasicMapIterat
 };
 
 
+%extend Geom2dHatch_DataMapIteratorOfHatchings {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_DataMapIteratorOfMapOfElements;
 class Geom2dHatch_DataMapIteratorOfMapOfElements : public TCollection_BasicMapIterator {
 	public:
@@ -170,6 +180,11 @@ class Geom2dHatch_DataMapIteratorOfMapOfElements : public TCollection_BasicMapIt
 };
 
 
+%extend Geom2dHatch_DataMapIteratorOfMapOfElements {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_DataMapNodeOfHatchings;
 class Geom2dHatch_DataMapNodeOfHatchings : public TCollection_MapNode {
 	public:
@@ -249,6 +264,11 @@ class Handle_Geom2dHatch_DataMapNodeOfHatchings : public Handle_TCollection_MapN
     }
 };
 
+%extend Geom2dHatch_DataMapNodeOfHatchings {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_DataMapNodeOfMapOfElements;
 class Geom2dHatch_DataMapNodeOfMapOfElements : public TCollection_MapNode {
 	public:
@@ -328,6 +348,11 @@ class Handle_Geom2dHatch_DataMapNodeOfMapOfElements : public Handle_TCollection_
     }
 };
 
+%extend Geom2dHatch_DataMapNodeOfMapOfElements {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_Element;
 class Geom2dHatch_Element {
 	public:
@@ -382,6 +407,11 @@ class Geom2dHatch_Element {
 };
 
 
+%extend Geom2dHatch_Element {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_Elements;
 class Geom2dHatch_Elements {
 	public:
@@ -508,6 +538,11 @@ class Geom2dHatch_Elements {
 };
 
 
+%extend Geom2dHatch_Elements {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_FClass2dOfClassifier;
 class Geom2dHatch_FClass2dOfClassifier {
 	public:
@@ -556,6 +591,11 @@ class Geom2dHatch_FClass2dOfClassifier {
 };
 
 
+%extend Geom2dHatch_FClass2dOfClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_Hatcher;
 class Geom2dHatch_Hatcher {
 	public:
@@ -824,6 +864,11 @@ class Geom2dHatch_Hatcher {
 };
 
 
+%extend Geom2dHatch_Hatcher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_Hatching;
 class Geom2dHatch_Hatching {
 	public:
@@ -998,6 +1043,11 @@ class Geom2dHatch_Hatching {
 };
 
 
+%extend Geom2dHatch_Hatching {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_Hatchings;
 class Geom2dHatch_Hatchings : public TCollection_BasicMap {
 	public:
@@ -1076,6 +1126,11 @@ class Geom2dHatch_Hatchings : public TCollection_BasicMap {
 };
 
 
+%extend Geom2dHatch_Hatchings {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_Intersector;
 class Geom2dHatch_Intersector : public Geom2dInt_GInter {
 	public:
@@ -1164,6 +1219,11 @@ class Geom2dHatch_Intersector : public Geom2dInt_GInter {
 };
 
 
+%extend Geom2dHatch_Intersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom2dHatch_MapOfElements;
 class Geom2dHatch_MapOfElements : public TCollection_BasicMap {
 	public:
@@ -1242,3 +1302,8 @@ class Geom2dHatch_MapOfElements : public TCollection_BasicMap {
 };
 
 
+%extend Geom2dHatch_MapOfElements {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

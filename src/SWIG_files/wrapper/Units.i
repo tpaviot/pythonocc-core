@@ -178,6 +178,11 @@ class Units {
 };
 
 
+%extend Units {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_Explorer;
 class Units_Explorer {
 	public:
@@ -304,6 +309,11 @@ class Units_Explorer {
 };
 
 
+%extend Units_Explorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_Lexicon;
 class Units_Lexicon : public MMgt_TShared {
 	public:
@@ -406,6 +416,11 @@ class Handle_Units_Lexicon : public Handle_MMgt_TShared {
     }
 };
 
+%extend Units_Lexicon {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_Measurement;
 class Units_Measurement {
 	public:
@@ -572,6 +587,11 @@ class Units_Measurement {
 };
 
 
+%extend Units_Measurement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_QtsSequence;
 class Units_QtsSequence : public TCollection_BaseSequence {
 	public:
@@ -710,6 +730,11 @@ class Units_QtsSequence : public TCollection_BaseSequence {
 };
 
 
+%extend Units_QtsSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_QuantitiesSequence;
 class Units_QuantitiesSequence : public MMgt_TShared {
 	public:
@@ -894,6 +919,11 @@ class Handle_Units_QuantitiesSequence : public Handle_MMgt_TShared {
     }
 };
 
+%extend Units_QuantitiesSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_Sentence;
 class Units_Sentence {
 	public:
@@ -948,6 +978,11 @@ class Units_Sentence {
 };
 
 
+%extend Units_Sentence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_SequenceNodeOfQtsSequence;
 class Units_SequenceNodeOfQtsSequence : public TCollection_SeqNode {
 	public:
@@ -1014,6 +1049,11 @@ class Handle_Units_SequenceNodeOfQtsSequence : public Handle_TCollection_SeqNode
     }
 };
 
+%extend Units_SequenceNodeOfQtsSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_SequenceNodeOfTksSequence;
 class Units_SequenceNodeOfTksSequence : public TCollection_SeqNode {
 	public:
@@ -1080,6 +1120,11 @@ class Handle_Units_SequenceNodeOfTksSequence : public Handle_TCollection_SeqNode
     }
 };
 
+%extend Units_SequenceNodeOfTksSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_SequenceNodeOfUtsSequence;
 class Units_SequenceNodeOfUtsSequence : public TCollection_SeqNode {
 	public:
@@ -1146,6 +1191,11 @@ class Handle_Units_SequenceNodeOfUtsSequence : public Handle_TCollection_SeqNode
     }
 };
 
+%extend Units_SequenceNodeOfUtsSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_TksSequence;
 class Units_TksSequence : public TCollection_BaseSequence {
 	public:
@@ -1284,6 +1334,11 @@ class Units_TksSequence : public TCollection_BaseSequence {
 };
 
 
+%extend Units_TksSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_Token;
 class Units_Token : public MMgt_TShared {
 	public:
@@ -1620,6 +1675,11 @@ class Handle_Units_Token : public Handle_MMgt_TShared {
     }
 };
 
+%extend Units_Token {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_TokensSequence;
 class Units_TokensSequence : public MMgt_TShared {
 	public:
@@ -1804,6 +1864,11 @@ class Handle_Units_TokensSequence : public Handle_MMgt_TShared {
     }
 };
 
+%extend Units_TokensSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_Unit;
 class Units_Unit : public MMgt_TShared {
 	public:
@@ -1960,6 +2025,11 @@ class Handle_Units_Unit : public Handle_MMgt_TShared {
     }
 };
 
+%extend Units_Unit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_UnitsDictionary;
 class Units_UnitsDictionary : public MMgt_TShared {
 	public:
@@ -2062,6 +2132,11 @@ class Handle_Units_UnitsDictionary : public Handle_MMgt_TShared {
     }
 };
 
+%extend Units_UnitsDictionary {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_UnitsSequence;
 class Units_UnitsSequence : public MMgt_TShared {
 	public:
@@ -2246,6 +2321,11 @@ class Handle_Units_UnitsSequence : public Handle_MMgt_TShared {
     }
 };
 
+%extend Units_UnitsSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_UnitsSystem;
 class Units_UnitsSystem : public MMgt_TShared {
 	public:
@@ -2412,6 +2492,11 @@ class Handle_Units_UnitsSystem : public Handle_MMgt_TShared {
     }
 };
 
+%extend Units_UnitsSystem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_UtsSequence;
 class Units_UtsSequence : public TCollection_BaseSequence {
 	public:
@@ -2550,6 +2635,11 @@ class Units_UtsSequence : public TCollection_BaseSequence {
 };
 
 
+%extend Units_UtsSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_MathSentence;
 class Units_MathSentence : public Units_Sentence {
 	public:
@@ -2564,6 +2654,11 @@ class Units_MathSentence : public Units_Sentence {
 };
 
 
+%extend Units_MathSentence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_ShiftedToken;
 class Units_ShiftedToken : public Units_Token {
 	public:
@@ -2674,6 +2769,11 @@ class Handle_Units_ShiftedToken : public Handle_Units_Token {
     }
 };
 
+%extend Units_ShiftedToken {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_ShiftedUnit;
 class Units_ShiftedUnit : public Units_Unit {
 	public:
@@ -2788,6 +2888,11 @@ class Handle_Units_ShiftedUnit : public Handle_Units_Unit {
     }
 };
 
+%extend Units_ShiftedUnit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_UnitSentence;
 class Units_UnitSentence : public Units_Sentence {
 	public:
@@ -2826,6 +2931,11 @@ class Units_UnitSentence : public Units_Sentence {
 };
 
 
+%extend Units_UnitSentence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Units_UnitsLexicon;
 class Units_UnitsLexicon : public Units_Lexicon {
 	public:
@@ -2914,3 +3024,8 @@ class Handle_Units_UnitsLexicon : public Handle_Units_Lexicon {
     }
 };
 
+%extend Units_UnitsLexicon {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

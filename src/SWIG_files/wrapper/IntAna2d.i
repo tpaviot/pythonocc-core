@@ -266,6 +266,11 @@ class IntAna2d_AnaIntersection {
 };
 
 
+%extend IntAna2d_AnaIntersection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntAna2d_Conic;
 class IntAna2d_Conic {
 	public:
@@ -374,6 +379,11 @@ class IntAna2d_Conic {
 };
 
 
+%extend IntAna2d_Conic {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntAna2d_IntPoint;
 class IntAna2d_IntPoint {
 	public:
@@ -494,3 +504,8 @@ class IntAna2d_IntPoint {
 };
 
 
+%extend IntAna2d_IntPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

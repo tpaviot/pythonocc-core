@@ -100,6 +100,11 @@ class Storage {
 };
 
 
+%extend Storage {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_ArrayOfCallBack;
 class Storage_ArrayOfCallBack {
 	public:
@@ -182,6 +187,11 @@ class Storage_ArrayOfCallBack {
 };
 
 
+%extend Storage_ArrayOfCallBack {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_ArrayOfSchema;
 class Storage_ArrayOfSchema {
 	public:
@@ -264,6 +274,11 @@ class Storage_ArrayOfSchema {
 };
 
 
+%extend Storage_ArrayOfSchema {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_BaseDriver;
 class Storage_BaseDriver {
 	public:
@@ -712,6 +727,11 @@ class Storage_BaseDriver {
 };
 
 
+%extend Storage_BaseDriver {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_CallBack;
 class Storage_CallBack : public MMgt_TShared {
 	public:
@@ -796,6 +816,11 @@ class Handle_Storage_CallBack : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_CallBack {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_Data;
 class Storage_Data : public MMgt_TShared {
 	public:
@@ -1044,6 +1069,11 @@ class Handle_Storage_Data : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_Data {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_DataMapIteratorOfMapOfCallBack;
 class Storage_DataMapIteratorOfMapOfCallBack : public TCollection_BasicMapIterator {
 	public:
@@ -1074,6 +1104,11 @@ class Storage_DataMapIteratorOfMapOfCallBack : public TCollection_BasicMapIterat
 };
 
 
+%extend Storage_DataMapIteratorOfMapOfCallBack {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_DataMapIteratorOfMapOfPers;
 class Storage_DataMapIteratorOfMapOfPers : public TCollection_BasicMapIterator {
 	public:
@@ -1104,6 +1139,11 @@ class Storage_DataMapIteratorOfMapOfPers : public TCollection_BasicMapIterator {
 };
 
 
+%extend Storage_DataMapIteratorOfMapOfPers {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_DataMapNodeOfMapOfCallBack;
 class Storage_DataMapNodeOfMapOfCallBack : public TCollection_MapNode {
 	public:
@@ -1174,6 +1214,11 @@ class Handle_Storage_DataMapNodeOfMapOfCallBack : public Handle_TCollection_MapN
     }
 };
 
+%extend Storage_DataMapNodeOfMapOfCallBack {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_DataMapNodeOfMapOfPers;
 class Storage_DataMapNodeOfMapOfPers : public TCollection_MapNode {
 	public:
@@ -1244,6 +1289,11 @@ class Handle_Storage_DataMapNodeOfMapOfPers : public Handle_TCollection_MapNode 
     }
 };
 
+%extend Storage_DataMapNodeOfMapOfPers {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_HArrayOfCallBack;
 class Storage_HArrayOfCallBack : public MMgt_TShared {
 	public:
@@ -1360,6 +1410,11 @@ class Handle_Storage_HArrayOfCallBack : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_HArrayOfCallBack {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_HArrayOfSchema;
 class Storage_HArrayOfSchema : public MMgt_TShared {
 	public:
@@ -1476,6 +1531,11 @@ class Handle_Storage_HArrayOfSchema : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_HArrayOfSchema {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_HPArray;
 class Storage_HPArray : public MMgt_TShared {
 	public:
@@ -1592,6 +1652,11 @@ class Handle_Storage_HPArray : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_HPArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_HSeqOfRoot;
 class Storage_HSeqOfRoot : public MMgt_TShared {
 	public:
@@ -1776,6 +1841,11 @@ class Handle_Storage_HSeqOfRoot : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_HSeqOfRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_HeaderData;
 class Storage_HeaderData : public MMgt_TShared {
 	public:
@@ -1944,6 +2014,11 @@ class Handle_Storage_HeaderData : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_HeaderData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_IndexedDataMapNodeOfPType;
 class Storage_IndexedDataMapNodeOfPType : public TCollection_MapNode {
 	public:
@@ -2044,6 +2119,11 @@ class Handle_Storage_IndexedDataMapNodeOfPType : public Handle_TCollection_MapNo
     }
 };
 
+%extend Storage_IndexedDataMapNodeOfPType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_InternalData;
 class Storage_InternalData : public MMgt_TShared {
 	public:
@@ -2104,6 +2184,11 @@ class Handle_Storage_InternalData : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_InternalData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_MapOfCallBack;
 class Storage_MapOfCallBack : public TCollection_BasicMap {
 	public:
@@ -2182,6 +2267,11 @@ class Storage_MapOfCallBack : public TCollection_BasicMap {
 };
 
 
+%extend Storage_MapOfCallBack {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_MapOfPers;
 class Storage_MapOfPers : public TCollection_BasicMap {
 	public:
@@ -2260,6 +2350,11 @@ class Storage_MapOfPers : public TCollection_BasicMap {
 };
 
 
+%extend Storage_MapOfPers {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_PArray;
 class Storage_PArray {
 	public:
@@ -2342,6 +2437,11 @@ class Storage_PArray {
 };
 
 
+%extend Storage_PArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_PType;
 class Storage_PType : public TCollection_BasicMap {
 	public:
@@ -2452,6 +2552,11 @@ class Storage_PType : public TCollection_BasicMap {
 };
 
 
+%extend Storage_PType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_Root;
 class Storage_Root : public MMgt_TShared {
 	public:
@@ -2546,6 +2651,11 @@ class Handle_Storage_Root : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_Root {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_RootData;
 class Storage_RootData : public MMgt_TShared {
 	public:
@@ -2656,6 +2766,11 @@ class Handle_Storage_RootData : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_RootData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_Schema;
 class Storage_Schema : public MMgt_TShared {
 	public:
@@ -2960,6 +3075,11 @@ class Handle_Storage_Schema : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_Schema {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_SeqOfRoot;
 class Storage_SeqOfRoot : public TCollection_BaseSequence {
 	public:
@@ -3098,6 +3218,11 @@ class Storage_SeqOfRoot : public TCollection_BaseSequence {
 };
 
 
+%extend Storage_SeqOfRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_SequenceNodeOfSeqOfRoot;
 class Storage_SequenceNodeOfSeqOfRoot : public TCollection_SeqNode {
 	public:
@@ -3164,6 +3289,11 @@ class Handle_Storage_SequenceNodeOfSeqOfRoot : public Handle_TCollection_SeqNode
     }
 };
 
+%extend Storage_SequenceNodeOfSeqOfRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_TypeData;
 class Storage_TypeData : public MMgt_TShared {
 	public:
@@ -3250,6 +3380,11 @@ class Handle_Storage_TypeData : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_TypeData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_TypedCallBack;
 class Storage_TypedCallBack : public MMgt_TShared {
 	public:
@@ -3344,12 +3479,22 @@ class Handle_Storage_TypedCallBack : public Handle_MMgt_TShared {
     }
 };
 
+%extend Storage_TypedCallBack {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_stCONSTclCOM;
 class Storage_stCONSTclCOM {
 	public:
 };
 
 
+%extend Storage_stCONSTclCOM {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Storage_DefaultCallBack;
 class Storage_DefaultCallBack : public Storage_CallBack {
 	public:
@@ -3438,3 +3583,8 @@ class Handle_Storage_DefaultCallBack : public Handle_Storage_CallBack {
     }
 };
 
+%extend Storage_DefaultCallBack {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

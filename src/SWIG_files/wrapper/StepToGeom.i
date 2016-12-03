@@ -69,6 +69,11 @@ class StepToGeom_MakeAxis1Placement {
 };
 
 
+%extend StepToGeom_MakeAxis1Placement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeAxis2Placement {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -82,6 +87,11 @@ class StepToGeom_MakeAxis2Placement {
 };
 
 
+%extend StepToGeom_MakeAxis2Placement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeAxisPlacement {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -95,6 +105,11 @@ class StepToGeom_MakeAxisPlacement {
 };
 
 
+%extend StepToGeom_MakeAxisPlacement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeBSplineCurve {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -108,6 +123,11 @@ class StepToGeom_MakeBSplineCurve {
 };
 
 
+%extend StepToGeom_MakeBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeBSplineCurve2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -121,6 +141,11 @@ class StepToGeom_MakeBSplineCurve2d {
 };
 
 
+%extend StepToGeom_MakeBSplineCurve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeBSplineSurface {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -134,6 +159,11 @@ class StepToGeom_MakeBSplineSurface {
 };
 
 
+%extend StepToGeom_MakeBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeBoundedCurve {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -147,6 +177,11 @@ class StepToGeom_MakeBoundedCurve {
 };
 
 
+%extend StepToGeom_MakeBoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeBoundedCurve2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -160,6 +195,11 @@ class StepToGeom_MakeBoundedCurve2d {
 };
 
 
+%extend StepToGeom_MakeBoundedCurve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeBoundedSurface {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -173,6 +213,11 @@ class StepToGeom_MakeBoundedSurface {
 };
 
 
+%extend StepToGeom_MakeBoundedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeCartesianPoint {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -186,6 +231,11 @@ class StepToGeom_MakeCartesianPoint {
 };
 
 
+%extend StepToGeom_MakeCartesianPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeCartesianPoint2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -199,6 +249,11 @@ class StepToGeom_MakeCartesianPoint2d {
 };
 
 
+%extend StepToGeom_MakeCartesianPoint2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeCircle {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -212,6 +267,11 @@ class StepToGeom_MakeCircle {
 };
 
 
+%extend StepToGeom_MakeCircle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeCircle2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -225,6 +285,11 @@ class StepToGeom_MakeCircle2d {
 };
 
 
+%extend StepToGeom_MakeCircle2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeConic {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -238,6 +303,11 @@ class StepToGeom_MakeConic {
 };
 
 
+%extend StepToGeom_MakeConic {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeConic2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -251,6 +321,11 @@ class StepToGeom_MakeConic2d {
 };
 
 
+%extend StepToGeom_MakeConic2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeConicalSurface {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -264,6 +339,11 @@ class StepToGeom_MakeConicalSurface {
 };
 
 
+%extend StepToGeom_MakeConicalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeCurve {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -277,6 +357,11 @@ class StepToGeom_MakeCurve {
 };
 
 
+%extend StepToGeom_MakeCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeCurve2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -290,6 +375,11 @@ class StepToGeom_MakeCurve2d {
 };
 
 
+%extend StepToGeom_MakeCurve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeCylindricalSurface {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -303,6 +393,11 @@ class StepToGeom_MakeCylindricalSurface {
 };
 
 
+%extend StepToGeom_MakeCylindricalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeDirection {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -316,6 +411,11 @@ class StepToGeom_MakeDirection {
 };
 
 
+%extend StepToGeom_MakeDirection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeDirection2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -329,6 +429,11 @@ class StepToGeom_MakeDirection2d {
 };
 
 
+%extend StepToGeom_MakeDirection2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeElementarySurface {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -342,6 +447,11 @@ class StepToGeom_MakeElementarySurface {
 };
 
 
+%extend StepToGeom_MakeElementarySurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeEllipse {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -355,6 +465,11 @@ class StepToGeom_MakeEllipse {
 };
 
 
+%extend StepToGeom_MakeEllipse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeEllipse2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -368,6 +483,11 @@ class StepToGeom_MakeEllipse2d {
 };
 
 
+%extend StepToGeom_MakeEllipse2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeHyperbola {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -381,6 +501,11 @@ class StepToGeom_MakeHyperbola {
 };
 
 
+%extend StepToGeom_MakeHyperbola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeHyperbola2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -394,6 +519,11 @@ class StepToGeom_MakeHyperbola2d {
 };
 
 
+%extend StepToGeom_MakeHyperbola2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeLine {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -407,6 +537,11 @@ class StepToGeom_MakeLine {
 };
 
 
+%extend StepToGeom_MakeLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeLine2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -420,6 +555,11 @@ class StepToGeom_MakeLine2d {
 };
 
 
+%extend StepToGeom_MakeLine2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeParabola {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -433,6 +573,11 @@ class StepToGeom_MakeParabola {
 };
 
 
+%extend StepToGeom_MakeParabola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeParabola2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -446,6 +591,11 @@ class StepToGeom_MakeParabola2d {
 };
 
 
+%extend StepToGeom_MakeParabola2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakePlane {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -459,6 +609,11 @@ class StepToGeom_MakePlane {
 };
 
 
+%extend StepToGeom_MakePlane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakePolyline2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -472,6 +627,11 @@ class StepToGeom_MakePolyline2d {
 };
 
 
+%extend StepToGeom_MakePolyline2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeRectangularTrimmedSurface {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -485,6 +645,11 @@ class StepToGeom_MakeRectangularTrimmedSurface {
 };
 
 
+%extend StepToGeom_MakeRectangularTrimmedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeSphericalSurface {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -498,6 +663,11 @@ class StepToGeom_MakeSphericalSurface {
 };
 
 
+%extend StepToGeom_MakeSphericalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeSurface {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -511,6 +681,11 @@ class StepToGeom_MakeSurface {
 };
 
 
+%extend StepToGeom_MakeSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeSurfaceOfLinearExtrusion {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -524,6 +699,11 @@ class StepToGeom_MakeSurfaceOfLinearExtrusion {
 };
 
 
+%extend StepToGeom_MakeSurfaceOfLinearExtrusion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeSurfaceOfRevolution {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -537,6 +717,11 @@ class StepToGeom_MakeSurfaceOfRevolution {
 };
 
 
+%extend StepToGeom_MakeSurfaceOfRevolution {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeSweptSurface {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -550,6 +735,11 @@ class StepToGeom_MakeSweptSurface {
 };
 
 
+%extend StepToGeom_MakeSweptSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeToroidalSurface {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -563,6 +753,11 @@ class StepToGeom_MakeToroidalSurface {
 };
 
 
+%extend StepToGeom_MakeToroidalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeTransformation2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -576,6 +771,11 @@ class StepToGeom_MakeTransformation2d {
 };
 
 
+%extend StepToGeom_MakeTransformation2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeTransformation3d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -589,6 +789,11 @@ class StepToGeom_MakeTransformation3d {
 };
 
 
+%extend StepToGeom_MakeTransformation3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeTrimmedCurve {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -602,6 +807,11 @@ class StepToGeom_MakeTrimmedCurve {
 };
 
 
+%extend StepToGeom_MakeTrimmedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeTrimmedCurve2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -615,6 +825,11 @@ class StepToGeom_MakeTrimmedCurve2d {
 };
 
 
+%extend StepToGeom_MakeTrimmedCurve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeVectorWithMagnitude {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -628,6 +843,11 @@ class StepToGeom_MakeVectorWithMagnitude {
 };
 
 
+%extend StepToGeom_MakeVectorWithMagnitude {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakeVectorWithMagnitude2d {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -641,6 +861,11 @@ class StepToGeom_MakeVectorWithMagnitude2d {
 };
 
 
+%extend StepToGeom_MakeVectorWithMagnitude2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_Root {
 	public:
 		%feature("compactdefaultargs") IsDone;
@@ -650,6 +875,11 @@ class StepToGeom_Root {
 };
 
 
+%extend StepToGeom_Root {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StepToGeom_MakePolyline : public StepToGeom_Root {
 	public:
 		%feature("compactdefaultargs") Convert;
@@ -663,3 +893,8 @@ class StepToGeom_MakePolyline : public StepToGeom_Root {
 };
 
 
+%extend StepToGeom_MakePolyline {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

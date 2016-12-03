@@ -1362,3 +1362,8 @@ class ElSLib {
 };
 
 
+%extend ElSLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

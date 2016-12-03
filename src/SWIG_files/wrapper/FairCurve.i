@@ -259,6 +259,11 @@ class FairCurve_Batten {
         };
 
 
+%extend FairCurve_Batten {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FairCurve_BattenLaw;
 class FairCurve_BattenLaw : public math_Function {
 	public:
@@ -311,6 +316,11 @@ class FairCurve_BattenLaw : public math_Function {
 };
 
 
+%extend FairCurve_BattenLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FairCurve_DistributionOfEnergy;
 class FairCurve_DistributionOfEnergy : public math_FunctionSet {
 	public:
@@ -335,6 +345,11 @@ class FairCurve_DistributionOfEnergy : public math_FunctionSet {
 };
 
 
+%extend FairCurve_DistributionOfEnergy {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FairCurve_Energy;
 class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 	public:
@@ -407,6 +422,11 @@ class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 };
 
 
+%extend FairCurve_Energy {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FairCurve_Newton;
 class FairCurve_Newton : public math_NewtonMinimum {
 	public:
@@ -457,6 +477,11 @@ class FairCurve_Newton : public math_NewtonMinimum {
 };
 
 
+%extend FairCurve_Newton {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FairCurve_DistributionOfJerk;
 class FairCurve_DistributionOfJerk : public FairCurve_DistributionOfEnergy {
 	public:
@@ -489,6 +514,11 @@ class FairCurve_DistributionOfJerk : public FairCurve_DistributionOfEnergy {
 };
 
 
+%extend FairCurve_DistributionOfJerk {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FairCurve_DistributionOfSagging;
 class FairCurve_DistributionOfSagging : public FairCurve_DistributionOfEnergy {
 	public:
@@ -521,6 +551,11 @@ class FairCurve_DistributionOfSagging : public FairCurve_DistributionOfEnergy {
 };
 
 
+%extend FairCurve_DistributionOfSagging {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FairCurve_DistributionOfTension;
 class FairCurve_DistributionOfTension : public FairCurve_DistributionOfEnergy {
 	public:
@@ -565,6 +600,11 @@ class FairCurve_DistributionOfTension : public FairCurve_DistributionOfEnergy {
 };
 
 
+%extend FairCurve_DistributionOfTension {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FairCurve_EnergyOfBatten;
 class FairCurve_EnergyOfBatten : public FairCurve_Energy {
 	public:
@@ -617,6 +657,11 @@ class FairCurve_EnergyOfBatten : public FairCurve_Energy {
 };
 
 
+%extend FairCurve_EnergyOfBatten {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FairCurve_EnergyOfMVC;
 class FairCurve_EnergyOfMVC : public FairCurve_Energy {
 	public:
@@ -675,6 +720,11 @@ class FairCurve_EnergyOfMVC : public FairCurve_Energy {
 };
 
 
+%extend FairCurve_EnergyOfMVC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FairCurve_MinimalVariation;
 class FairCurve_MinimalVariation : public FairCurve_Batten {
 	public:
@@ -759,3 +809,8 @@ class FairCurve_MinimalVariation : public FairCurve_Batten {
         };
 
 
+%extend FairCurve_MinimalVariation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

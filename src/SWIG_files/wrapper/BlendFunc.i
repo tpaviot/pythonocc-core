@@ -131,6 +131,11 @@ class BlendFunc {
 };
 
 
+%extend BlendFunc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_CSCircular;
 class BlendFunc_CSCircular : public Blend_CSFunction {
 	public:
@@ -479,6 +484,11 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 };
 
 
+%extend BlendFunc_CSCircular {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_CSConstRad;
 class BlendFunc_CSConstRad : public Blend_CSFunction {
 	public:
@@ -819,6 +829,11 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 };
 
 
+%extend BlendFunc_CSConstRad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_ChAsym;
 class BlendFunc_ChAsym : public Blend_Function {
 	public:
@@ -1169,6 +1184,11 @@ class BlendFunc_ChAsym : public Blend_Function {
 };
 
 
+%extend BlendFunc_ChAsym {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_ChAsymInv;
 class BlendFunc_ChAsymInv : public Blend_FuncInv {
 	public:
@@ -1277,6 +1297,11 @@ class BlendFunc_ChAsymInv : public Blend_FuncInv {
 };
 
 
+%extend BlendFunc_ChAsymInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_ChamfInv;
 class BlendFunc_ChamfInv : public Blend_FuncInv {
 	public:
@@ -1373,6 +1398,11 @@ class BlendFunc_ChamfInv : public Blend_FuncInv {
 };
 
 
+%extend BlendFunc_ChamfInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_Chamfer;
 class BlendFunc_Chamfer : public Blend_Function {
 	public:
@@ -1703,6 +1733,11 @@ class BlendFunc_Chamfer : public Blend_Function {
 };
 
 
+%extend BlendFunc_Chamfer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_ConstRad;
 class BlendFunc_ConstRad : public Blend_Function {
 	public:
@@ -2053,6 +2088,11 @@ class BlendFunc_ConstRad : public Blend_Function {
 };
 
 
+%extend BlendFunc_ConstRad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_ConstRadInv;
 class BlendFunc_ConstRadInv : public Blend_FuncInv {
 	public:
@@ -2147,6 +2187,11 @@ class BlendFunc_ConstRadInv : public Blend_FuncInv {
 };
 
 
+%extend BlendFunc_ConstRadInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_Corde;
 class BlendFunc_Corde {
 	public:
@@ -2247,6 +2292,11 @@ class BlendFunc_Corde {
 };
 
 
+%extend BlendFunc_Corde {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_EvolRad;
 class BlendFunc_EvolRad : public Blend_Function {
 	public:
@@ -2589,6 +2639,11 @@ class BlendFunc_EvolRad : public Blend_Function {
 };
 
 
+%extend BlendFunc_EvolRad {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_EvolRadInv;
 class BlendFunc_EvolRadInv : public Blend_FuncInv {
 	public:
@@ -2683,6 +2738,11 @@ class BlendFunc_EvolRadInv : public Blend_FuncInv {
 };
 
 
+%extend BlendFunc_EvolRadInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_Ruled;
 class BlendFunc_Ruled : public Blend_Function {
 	public:
@@ -3003,6 +3063,11 @@ class BlendFunc_Ruled : public Blend_Function {
 };
 
 
+%extend BlendFunc_Ruled {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_RuledInv;
 class BlendFunc_RuledInv : public Blend_FuncInv {
 	public:
@@ -3089,6 +3154,11 @@ class BlendFunc_RuledInv : public Blend_FuncInv {
 };
 
 
+%extend BlendFunc_RuledInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BlendFunc_Tensor;
 class BlendFunc_Tensor {
 	public:
@@ -3145,3 +3215,8 @@ class BlendFunc_Tensor {
 };
 
 
+%extend BlendFunc_Tensor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

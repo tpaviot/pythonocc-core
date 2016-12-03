@@ -138,6 +138,11 @@ class TColGeom2d_Array1OfBSplineCurve {
 };
 
 
+%extend TColGeom2d_Array1OfBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_Array1OfBezierCurve;
 class TColGeom2d_Array1OfBezierCurve {
 	public:
@@ -220,6 +225,11 @@ class TColGeom2d_Array1OfBezierCurve {
 };
 
 
+%extend TColGeom2d_Array1OfBezierCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_Array1OfCurve;
 class TColGeom2d_Array1OfCurve {
 	public:
@@ -302,6 +312,11 @@ class TColGeom2d_Array1OfCurve {
 };
 
 
+%extend TColGeom2d_Array1OfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_HArray1OfBSplineCurve;
 class TColGeom2d_HArray1OfBSplineCurve : public MMgt_TShared {
 	public:
@@ -418,6 +433,11 @@ class Handle_TColGeom2d_HArray1OfBSplineCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom2d_HArray1OfBSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_HArray1OfBezierCurve;
 class TColGeom2d_HArray1OfBezierCurve : public MMgt_TShared {
 	public:
@@ -534,6 +554,11 @@ class Handle_TColGeom2d_HArray1OfBezierCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom2d_HArray1OfBezierCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_HArray1OfCurve;
 class TColGeom2d_HArray1OfCurve : public MMgt_TShared {
 	public:
@@ -650,6 +675,11 @@ class Handle_TColGeom2d_HArray1OfCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom2d_HArray1OfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_HSequenceOfBoundedCurve;
 class TColGeom2d_HSequenceOfBoundedCurve : public MMgt_TShared {
 	public:
@@ -834,6 +864,11 @@ class Handle_TColGeom2d_HSequenceOfBoundedCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom2d_HSequenceOfBoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_HSequenceOfCurve;
 class TColGeom2d_HSequenceOfCurve : public MMgt_TShared {
 	public:
@@ -1018,6 +1053,11 @@ class Handle_TColGeom2d_HSequenceOfCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend TColGeom2d_HSequenceOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve;
 class TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve : public TCollection_SeqNode {
 	public:
@@ -1084,6 +1124,11 @@ class Handle_TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve : public Handle_TCo
     }
 };
 
+%extend TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_SequenceNodeOfSequenceOfCurve;
 class TColGeom2d_SequenceNodeOfSequenceOfCurve : public TCollection_SeqNode {
 	public:
@@ -1150,6 +1195,11 @@ class Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve : public Handle_TCollectio
     }
 };
 
+%extend TColGeom2d_SequenceNodeOfSequenceOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_SequenceNodeOfSequenceOfGeometry;
 class TColGeom2d_SequenceNodeOfSequenceOfGeometry : public TCollection_SeqNode {
 	public:
@@ -1216,6 +1266,11 @@ class Handle_TColGeom2d_SequenceNodeOfSequenceOfGeometry : public Handle_TCollec
     }
 };
 
+%extend TColGeom2d_SequenceNodeOfSequenceOfGeometry {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_SequenceOfBoundedCurve;
 class TColGeom2d_SequenceOfBoundedCurve : public TCollection_BaseSequence {
 	public:
@@ -1354,6 +1409,11 @@ class TColGeom2d_SequenceOfBoundedCurve : public TCollection_BaseSequence {
 };
 
 
+%extend TColGeom2d_SequenceOfBoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_SequenceOfCurve;
 class TColGeom2d_SequenceOfCurve : public TCollection_BaseSequence {
 	public:
@@ -1492,6 +1552,11 @@ class TColGeom2d_SequenceOfCurve : public TCollection_BaseSequence {
 };
 
 
+%extend TColGeom2d_SequenceOfCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColGeom2d_SequenceOfGeometry;
 class TColGeom2d_SequenceOfGeometry : public TCollection_BaseSequence {
 	public:
@@ -1630,3 +1695,8 @@ class TColGeom2d_SequenceOfGeometry : public TCollection_BaseSequence {
 };
 
 
+%extend TColGeom2d_SequenceOfGeometry {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

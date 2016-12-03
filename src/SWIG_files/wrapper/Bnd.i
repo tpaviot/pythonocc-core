@@ -138,6 +138,11 @@ class Bnd_Array1OfBox {
 };
 
 
+%extend Bnd_Array1OfBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_Array1OfBox2d;
 class Bnd_Array1OfBox2d {
 	public:
@@ -220,6 +225,11 @@ class Bnd_Array1OfBox2d {
 };
 
 
+%extend Bnd_Array1OfBox2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_Array1OfSphere;
 class Bnd_Array1OfSphere {
 	public:
@@ -302,6 +312,11 @@ class Bnd_Array1OfSphere {
 };
 
 
+%extend Bnd_Array1OfSphere {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_B2d;
 class Bnd_B2d {
 	public:
@@ -446,6 +461,11 @@ class Bnd_B2d {
 };
 
 
+%extend Bnd_B2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_B2f;
 class Bnd_B2f {
 	public:
@@ -590,6 +610,11 @@ class Bnd_B2f {
 };
 
 
+%extend Bnd_B2f {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_B3d;
 class Bnd_B3d {
 	public:
@@ -736,6 +761,11 @@ class Bnd_B3d {
 };
 
 
+%extend Bnd_B3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_B3f;
 class Bnd_B3f {
 	public:
@@ -882,6 +912,11 @@ class Bnd_B3f {
 };
 
 
+%extend Bnd_B3f {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_BoundSortBox;
 class Bnd_BoundSortBox {
 	public:
@@ -956,6 +991,11 @@ class Bnd_BoundSortBox {
 };
 
 
+%extend Bnd_BoundSortBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_BoundSortBox2d;
 class Bnd_BoundSortBox2d {
 	public:
@@ -1018,6 +1058,11 @@ class Bnd_BoundSortBox2d {
 };
 
 
+%extend Bnd_BoundSortBox2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_Box;
 class Bnd_Box {
 	public:
@@ -1384,6 +1429,11 @@ class Bnd_Box {
 };
 
 
+%extend Bnd_Box {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_Box2d;
 class Bnd_Box2d {
 	public:
@@ -1636,6 +1686,11 @@ class Bnd_Box2d {
 };
 
 
+%extend Bnd_Box2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_HArray1OfBox;
 class Bnd_HArray1OfBox : public MMgt_TShared {
 	public:
@@ -1752,6 +1807,11 @@ class Handle_Bnd_HArray1OfBox : public Handle_MMgt_TShared {
     }
 };
 
+%extend Bnd_HArray1OfBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_HArray1OfBox2d;
 class Bnd_HArray1OfBox2d : public MMgt_TShared {
 	public:
@@ -1868,6 +1928,11 @@ class Handle_Bnd_HArray1OfBox2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend Bnd_HArray1OfBox2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_HArray1OfSphere;
 class Bnd_HArray1OfSphere : public MMgt_TShared {
 	public:
@@ -1984,6 +2049,11 @@ class Handle_Bnd_HArray1OfSphere : public Handle_MMgt_TShared {
     }
 };
 
+%extend Bnd_HArray1OfSphere {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_SeqOfBox;
 class Bnd_SeqOfBox : public TCollection_BaseSequence {
 	public:
@@ -2122,6 +2192,11 @@ class Bnd_SeqOfBox : public TCollection_BaseSequence {
 };
 
 
+%extend Bnd_SeqOfBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_SequenceNodeOfSeqOfBox;
 class Bnd_SequenceNodeOfSeqOfBox : public TCollection_SeqNode {
 	public:
@@ -2188,6 +2263,11 @@ class Handle_Bnd_SequenceNodeOfSeqOfBox : public Handle_TCollection_SeqNode {
     }
 };
 
+%extend Bnd_SequenceNodeOfSeqOfBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bnd_Sphere;
 class Bnd_Sphere {
 	public:
@@ -2324,3 +2404,8 @@ class Bnd_Sphere {
 };
 
 
+%extend Bnd_Sphere {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

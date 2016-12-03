@@ -221,6 +221,11 @@ class StdPrs_Curve : public Prs3d_Root {
 };
 
 
+%extend StdPrs_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_HLRPolyShape : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -240,6 +245,11 @@ class StdPrs_HLRPolyShape : public Prs3d_Root {
 };
 
 
+%extend StdPrs_HLRPolyShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_HLRShape : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -257,6 +267,11 @@ class StdPrs_HLRShape : public Prs3d_Root {
 };
 
 
+%extend StdPrs_HLRShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StdPrs_HLRToolShape;
 class StdPrs_HLRToolShape {
 	public:
@@ -323,6 +338,11 @@ class StdPrs_HLRToolShape {
 };
 
 
+%extend StdPrs_HLRToolShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_Plane : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -358,6 +378,11 @@ class StdPrs_Plane : public Prs3d_Root {
 };
 
 
+%extend StdPrs_Plane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_PoleCurve : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -411,6 +436,11 @@ class StdPrs_PoleCurve : public Prs3d_Root {
 };
 
 
+%extend StdPrs_PoleCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_ShadedShape : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -462,6 +492,11 @@ class StdPrs_ShadedShape : public Prs3d_Root {
 };
 
 
+%extend StdPrs_ShadedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_ShadedSurface : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -479,6 +514,11 @@ class StdPrs_ShadedSurface : public Prs3d_Root {
 };
 
 
+%extend StdPrs_ShadedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_ToolPoint {
 	public:
 		%feature("compactdefaultargs") Coord;
@@ -496,6 +536,11 @@ class StdPrs_ToolPoint {
 };
 
 
+%extend StdPrs_ToolPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StdPrs_ToolRFace;
 class StdPrs_ToolRFace {
 	public:
@@ -536,6 +581,11 @@ class StdPrs_ToolRFace {
 };
 
 
+%extend StdPrs_ToolRFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_ToolShadedShape {
 	public:
 		%feature("compactdefaultargs") IsTriangulated;
@@ -575,6 +625,11 @@ class StdPrs_ToolShadedShape {
 };
 
 
+%extend StdPrs_ToolShadedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_ToolVertex {
 	public:
 		%feature("compactdefaultargs") Coord;
@@ -592,6 +647,11 @@ class StdPrs_ToolVertex {
 };
 
 
+%extend StdPrs_ToolVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_WFDeflectionRestrictedFace : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -743,6 +803,11 @@ class StdPrs_WFDeflectionRestrictedFace : public Prs3d_Root {
 };
 
 
+%extend StdPrs_WFDeflectionRestrictedFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StdPrs_WFDeflectionShape;
 class StdPrs_WFDeflectionShape : public Prs3d_Root {
 	public:
@@ -793,6 +858,11 @@ class StdPrs_WFDeflectionShape : public Prs3d_Root {
 };
 
 
+%extend StdPrs_WFDeflectionShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_WFDeflectionSurface : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -810,6 +880,11 @@ class StdPrs_WFDeflectionSurface : public Prs3d_Root {
 };
 
 
+%extend StdPrs_WFDeflectionSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_WFPoleSurface : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -827,6 +902,11 @@ class StdPrs_WFPoleSurface : public Prs3d_Root {
 };
 
 
+%extend StdPrs_WFPoleSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_WFRestrictedFace : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -958,6 +1038,11 @@ class StdPrs_WFRestrictedFace : public Prs3d_Root {
 };
 
 
+%extend StdPrs_WFRestrictedFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StdPrs_WFShape;
 class StdPrs_WFShape : public Prs3d_Root {
 	public:
@@ -1008,6 +1093,11 @@ class StdPrs_WFShape : public Prs3d_Root {
 };
 
 
+%extend StdPrs_WFShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class StdPrs_WFSurface : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
@@ -1025,3 +1115,8 @@ class StdPrs_WFSurface : public Prs3d_Root {
 };
 
 
+%extend StdPrs_WFSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

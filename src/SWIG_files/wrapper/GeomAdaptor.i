@@ -78,6 +78,11 @@ class GeomAdaptor {
 };
 
 
+%extend GeomAdaptor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAdaptor_Curve;
 class GeomAdaptor_Curve : public Adaptor3d_Curve {
 	public:
@@ -322,6 +327,11 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 };
 
 
+%extend GeomAdaptor_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAdaptor_GHCurve;
 class GeomAdaptor_GHCurve : public Adaptor3d_HCurve {
 	public:
@@ -402,6 +412,11 @@ class Handle_GeomAdaptor_GHCurve : public Handle_Adaptor3d_HCurve {
     }
 };
 
+%extend GeomAdaptor_GHCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAdaptor_GHSurface;
 class GeomAdaptor_GHSurface : public Adaptor3d_HSurface {
 	public:
@@ -478,6 +493,11 @@ class Handle_GeomAdaptor_GHSurface : public Handle_Adaptor3d_HSurface {
     }
 };
 
+%extend GeomAdaptor_GHSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAdaptor_Surface;
 class GeomAdaptor_Surface : public Adaptor3d_Surface {
 	public:
@@ -862,6 +882,11 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 };
 
 
+%extend GeomAdaptor_Surface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAdaptor_HCurve;
 class GeomAdaptor_HCurve : public GeomAdaptor_GHCurve {
 	public:
@@ -942,6 +967,11 @@ class Handle_GeomAdaptor_HCurve : public Handle_GeomAdaptor_GHCurve {
     }
 };
 
+%extend GeomAdaptor_HCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomAdaptor_HSurface;
 class GeomAdaptor_HSurface : public GeomAdaptor_GHSurface {
 	public:
@@ -1030,3 +1060,8 @@ class Handle_GeomAdaptor_HSurface : public Handle_GeomAdaptor_GHSurface {
     }
 };
 
+%extend GeomAdaptor_HSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -813,6 +813,11 @@ class Quantity_Array1OfCoefficient {
 };
 
 
+%extend Quantity_Array1OfCoefficient {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Quantity_Array1OfColor;
 class Quantity_Array1OfColor {
 	public:
@@ -895,6 +900,11 @@ class Quantity_Array1OfColor {
 };
 
 
+%extend Quantity_Array1OfColor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Quantity_Array2OfColor;
 class Quantity_Array2OfColor {
 	public:
@@ -999,6 +1009,11 @@ class Quantity_Array2OfColor {
 };
 
 
+%extend Quantity_Array2OfColor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Quantity_Color;
 class Quantity_Color {
 	public:
@@ -1349,6 +1364,11 @@ class Quantity_Color {
 };
 
 
+%extend Quantity_Color {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Quantity_Convert;
 class Quantity_Convert {
 	public:
@@ -1401,6 +1421,11 @@ class Quantity_Convert {
 };
 
 
+%extend Quantity_Convert {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Quantity_Date;
 class Quantity_Date {
 	public:
@@ -1663,6 +1688,11 @@ class Quantity_Date {
 };
 
 
+%extend Quantity_Date {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Quantity_HArray1OfColor;
 class Quantity_HArray1OfColor : public MMgt_TShared {
 	public:
@@ -1779,6 +1809,11 @@ class Handle_Quantity_HArray1OfColor : public Handle_MMgt_TShared {
     }
 };
 
+%extend Quantity_HArray1OfColor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Quantity_Period;
 class Quantity_Period {
 	public:
@@ -1999,3 +2034,8 @@ class Quantity_Period {
 };
 
 
+%extend Quantity_Period {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

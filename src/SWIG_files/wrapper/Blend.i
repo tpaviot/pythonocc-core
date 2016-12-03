@@ -346,6 +346,11 @@ class Blend_AppFunction : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Blend_AppFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Blend_CurvPointFuncInv;
 class Blend_CurvPointFuncInv : public math_FunctionSetWithDerivatives {
 	public:
@@ -434,6 +439,11 @@ class Blend_CurvPointFuncInv : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Blend_CurvPointFuncInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Blend_FuncInv;
 class Blend_FuncInv : public math_FunctionSetWithDerivatives {
 	public:
@@ -524,6 +534,11 @@ class Blend_FuncInv : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Blend_FuncInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Blend_Point;
 class Blend_Point {
 	public:
@@ -1052,6 +1067,11 @@ class Blend_Point {
 };
 
 
+%extend Blend_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Blend_SequenceNodeOfSequenceOfPoint;
 class Blend_SequenceNodeOfSequenceOfPoint : public TCollection_SeqNode {
 	public:
@@ -1118,6 +1138,11 @@ class Handle_Blend_SequenceNodeOfSequenceOfPoint : public Handle_TCollection_Seq
     }
 };
 
+%extend Blend_SequenceNodeOfSequenceOfPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Blend_SequenceOfPoint;
 class Blend_SequenceOfPoint : public TCollection_BaseSequence {
 	public:
@@ -1256,6 +1281,11 @@ class Blend_SequenceOfPoint : public TCollection_BaseSequence {
 };
 
 
+%extend Blend_SequenceOfPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Blend_SurfCurvFuncInv;
 class Blend_SurfCurvFuncInv : public math_FunctionSetWithDerivatives {
 	public:
@@ -1344,6 +1374,11 @@ class Blend_SurfCurvFuncInv : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Blend_SurfCurvFuncInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Blend_SurfPointFuncInv;
 class Blend_SurfPointFuncInv : public math_FunctionSetWithDerivatives {
 	public:
@@ -1432,6 +1467,11 @@ class Blend_SurfPointFuncInv : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Blend_SurfPointFuncInv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Blend_CSFunction;
 class Blend_CSFunction : public Blend_AppFunction {
 	public:
@@ -1708,6 +1748,11 @@ class Blend_CSFunction : public Blend_AppFunction {
 };
 
 
+%extend Blend_CSFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Blend_Function;
 class Blend_Function : public Blend_AppFunction {
 	public:
@@ -1988,6 +2033,11 @@ class Blend_Function : public Blend_AppFunction {
 };
 
 
+%extend Blend_Function {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Blend_RstRstFunction;
 class Blend_RstRstFunction : public Blend_AppFunction {
 	public:
@@ -2322,6 +2372,11 @@ class Blend_RstRstFunction : public Blend_AppFunction {
 };
 
 
+%extend Blend_RstRstFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Blend_SurfRstFunction;
 class Blend_SurfRstFunction : public Blend_AppFunction {
 	public:
@@ -2646,3 +2701,8 @@ class Blend_SurfRstFunction : public Blend_AppFunction {
 };
 
 
+%extend Blend_SurfRstFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

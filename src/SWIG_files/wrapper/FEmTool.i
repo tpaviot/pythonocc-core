@@ -156,6 +156,11 @@ class FEmTool_Assembly {
 };
 
 
+%extend FEmTool_Assembly {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_AssemblyTable;
 class FEmTool_AssemblyTable {
 	public:
@@ -260,6 +265,11 @@ class FEmTool_AssemblyTable {
 };
 
 
+%extend FEmTool_AssemblyTable {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_Curve;
 class FEmTool_Curve : public MMgt_TShared {
 	public:
@@ -424,6 +434,11 @@ class Handle_FEmTool_Curve : public Handle_MMgt_TShared {
     }
 };
 
+%extend FEmTool_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_ElementaryCriterion;
 class FEmTool_ElementaryCriterion : public MMgt_TShared {
 	public:
@@ -528,6 +543,11 @@ class Handle_FEmTool_ElementaryCriterion : public Handle_MMgt_TShared {
     }
 };
 
+%extend FEmTool_ElementaryCriterion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_ElementsOfRefMatrix;
 class FEmTool_ElementsOfRefMatrix : public math_FunctionSet {
 	public:
@@ -564,6 +584,11 @@ class FEmTool_ElementsOfRefMatrix : public math_FunctionSet {
 };
 
 
+%extend FEmTool_ElementsOfRefMatrix {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_HAssemblyTable;
 class FEmTool_HAssemblyTable : public MMgt_TShared {
 	public:
@@ -706,6 +731,11 @@ class Handle_FEmTool_HAssemblyTable : public Handle_MMgt_TShared {
     }
 };
 
+%extend FEmTool_HAssemblyTable {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_ListIteratorOfListOfVectors;
 class FEmTool_ListIteratorOfListOfVectors {
 	public:
@@ -740,6 +770,11 @@ class FEmTool_ListIteratorOfListOfVectors {
 };
 
 
+%extend FEmTool_ListIteratorOfListOfVectors {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_ListNodeOfListOfVectors;
 class FEmTool_ListNodeOfListOfVectors : public TCollection_MapNode {
 	public:
@@ -804,6 +839,11 @@ class Handle_FEmTool_ListNodeOfListOfVectors : public Handle_TCollection_MapNode
     }
 };
 
+%extend FEmTool_ListNodeOfListOfVectors {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_ListOfVectors;
 class FEmTool_ListOfVectors {
 	public:
@@ -934,6 +974,11 @@ class FEmTool_ListOfVectors {
 };
 
 
+%extend FEmTool_ListOfVectors {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_SeqOfLinConstr;
 class FEmTool_SeqOfLinConstr : public TCollection_BaseSequence {
 	public:
@@ -1072,6 +1117,11 @@ class FEmTool_SeqOfLinConstr : public TCollection_BaseSequence {
 };
 
 
+%extend FEmTool_SeqOfLinConstr {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_SequenceNodeOfSeqOfLinConstr;
 class FEmTool_SequenceNodeOfSeqOfLinConstr : public TCollection_SeqNode {
 	public:
@@ -1138,6 +1188,11 @@ class Handle_FEmTool_SequenceNodeOfSeqOfLinConstr : public Handle_TCollection_Se
     }
 };
 
+%extend FEmTool_SequenceNodeOfSeqOfLinConstr {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_SparseMatrix;
 class FEmTool_SparseMatrix : public MMgt_TShared {
 	public:
@@ -1266,6 +1321,11 @@ class Handle_FEmTool_SparseMatrix : public Handle_MMgt_TShared {
     }
 };
 
+%extend FEmTool_SparseMatrix {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_LinearFlexion;
 class FEmTool_LinearFlexion : public FEmTool_ElementaryCriterion {
 	public:
@@ -1352,6 +1412,11 @@ class Handle_FEmTool_LinearFlexion : public Handle_FEmTool_ElementaryCriterion {
     }
 };
 
+%extend FEmTool_LinearFlexion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_LinearJerk;
 class FEmTool_LinearJerk : public FEmTool_ElementaryCriterion {
 	public:
@@ -1438,6 +1503,11 @@ class Handle_FEmTool_LinearJerk : public Handle_FEmTool_ElementaryCriterion {
     }
 };
 
+%extend FEmTool_LinearJerk {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_LinearTension;
 class FEmTool_LinearTension : public FEmTool_ElementaryCriterion {
 	public:
@@ -1524,6 +1594,11 @@ class Handle_FEmTool_LinearTension : public Handle_FEmTool_ElementaryCriterion {
     }
 };
 
+%extend FEmTool_LinearTension {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FEmTool_ProfileMatrix;
 class FEmTool_ProfileMatrix : public FEmTool_SparseMatrix {
 	public:
@@ -1674,3 +1749,8 @@ class Handle_FEmTool_ProfileMatrix : public Handle_FEmTool_SparseMatrix {
     }
 };
 
+%extend FEmTool_ProfileMatrix {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

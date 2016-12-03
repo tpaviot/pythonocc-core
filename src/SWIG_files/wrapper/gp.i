@@ -199,6 +199,11 @@ class gp {
 };
 
 
+%extend gp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Ax1;
 class gp_Ax1 {
 	public:
@@ -459,6 +464,11 @@ class gp_Ax1 {
 };
 
 
+%extend gp_Ax1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Ax2;
 class gp_Ax2 {
 	public:
@@ -735,6 +745,11 @@ class gp_Ax2 {
 };
 
 
+%extend gp_Ax2 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Ax22d;
 class gp_Ax22d {
 	public:
@@ -981,6 +996,11 @@ class gp_Ax22d {
 };
 
 
+%extend gp_Ax22d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Ax2d;
 class gp_Ax2d {
 	public:
@@ -1211,6 +1231,11 @@ class gp_Ax2d {
 };
 
 
+%extend gp_Ax2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Ax3;
 class gp_Ax3 {
 	public:
@@ -1521,6 +1546,11 @@ class gp_Ax3 {
 };
 
 
+%extend gp_Ax3 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Circ;
 class gp_Circ {
 	public:
@@ -1787,6 +1817,11 @@ class gp_Circ {
 };
 
 
+%extend gp_Circ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Circ2d;
 class gp_Circ2d {
 	public:
@@ -2095,6 +2130,11 @@ class gp_Circ2d {
 };
 
 
+%extend gp_Circ2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Cone;
 class gp_Cone {
 	public:
@@ -2399,6 +2439,11 @@ class gp_Cone {
 };
 
 
+%extend gp_Cone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Cylinder;
 class gp_Cylinder {
 	public:
@@ -2671,6 +2716,11 @@ class gp_Cylinder {
 };
 
 
+%extend gp_Cylinder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Dir;
 class gp_Dir {
 	public:
@@ -3029,6 +3079,11 @@ class gp_Dir {
 };
 
 
+%extend gp_Dir {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Dir2d;
 class gp_Dir2d {
 	public:
@@ -3297,6 +3352,11 @@ class gp_Dir2d {
 };
 
 
+%extend gp_Dir2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Elips;
 class gp_Elips {
 	public:
@@ -3599,6 +3659,11 @@ class gp_Elips {
 };
 
 
+%extend gp_Elips {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Elips2d;
 class gp_Elips2d {
 	public:
@@ -3933,6 +3998,11 @@ class gp_Elips2d {
 };
 
 
+%extend gp_Elips2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_GTrsf;
 class gp_GTrsf {
 	public:
@@ -4163,6 +4233,11 @@ class gp_GTrsf {
 };
 
 
+%extend gp_GTrsf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_GTrsf2d;
 class gp_GTrsf2d {
 	public:
@@ -4393,6 +4468,11 @@ class gp_GTrsf2d {
 };
 
 
+%extend gp_GTrsf2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Hypr;
 class gp_Hypr {
 	public:
@@ -4719,6 +4799,11 @@ class gp_Hypr {
 };
 
 
+%extend gp_Hypr {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Hypr2d;
 class gp_Hypr2d {
 	public:
@@ -5081,6 +5166,11 @@ class gp_Hypr2d {
 };
 
 
+%extend gp_Hypr2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Lin;
 class gp_Lin {
 	public:
@@ -5349,6 +5439,11 @@ class gp_Lin {
 };
 
 
+%extend gp_Lin {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Lin2d;
 class gp_Lin2d {
 	public:
@@ -5627,6 +5722,11 @@ class gp_Lin2d {
 };
 
 
+%extend gp_Lin2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Mat;
 class gp_Mat {
 	public:
@@ -6015,6 +6115,11 @@ class gp_Mat {
 };
 
 
+%extend gp_Mat {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Mat2d;
 class gp_Mat2d {
 	public:
@@ -6349,6 +6454,11 @@ class gp_Mat2d {
 };
 
 
+%extend gp_Mat2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Parab;
 class gp_Parab {
 	public:
@@ -6605,6 +6715,11 @@ class gp_Parab {
 };
 
 
+%extend gp_Parab {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Parab2d;
 class gp_Parab2d {
 	public:
@@ -6893,6 +7008,11 @@ class gp_Parab2d {
 };
 
 
+%extend gp_Parab2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Pln;
 class gp_Pln {
 	public:
@@ -7221,6 +7341,11 @@ class gp_Pln {
 };
 
 
+%extend gp_Pln {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Pnt;
 class gp_Pnt {
 	public:
@@ -7529,6 +7654,11 @@ class gp_Pnt {
 };
 
 
+%extend gp_Pnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Pnt2d;
 class gp_Pnt2d {
 	public:
@@ -7791,6 +7921,11 @@ class gp_Pnt2d {
 };
 
 
+%extend gp_Pnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Quaternion;
 class gp_Quaternion {
 	public:
@@ -8201,6 +8336,11 @@ class gp_Quaternion {
 };
 
 
+%extend gp_Quaternion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_QuaternionNLerp;
 class gp_QuaternionNLerp {
 	public:
@@ -8255,6 +8395,11 @@ class gp_QuaternionNLerp {
 };
 
 
+%extend gp_QuaternionNLerp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_QuaternionSLerp;
 class gp_QuaternionSLerp {
 	public:
@@ -8299,6 +8444,11 @@ class gp_QuaternionSLerp {
 };
 
 
+%extend gp_QuaternionSLerp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Sphere;
 class gp_Sphere {
 	public:
@@ -8569,6 +8719,11 @@ class gp_Sphere {
 };
 
 
+%extend gp_Sphere {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Torus;
 class gp_Torus {
 	public:
@@ -8853,6 +9008,11 @@ class gp_Torus {
 };
 
 
+%extend gp_Torus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Trsf;
 class gp_Trsf {
 	public:
@@ -9193,6 +9353,11 @@ class gp_Trsf {
 };
 
 
+%extend gp_Trsf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Trsf2d;
 class gp_Trsf2d {
 	public:
@@ -9473,6 +9638,11 @@ class gp_Trsf2d {
 };
 
 
+%extend gp_Trsf2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Vec;
 class gp_Vec {
 	public:
@@ -10087,6 +10257,11 @@ class gp_Vec {
 };
 
 
+%extend gp_Vec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_Vec2d;
 class gp_Vec2d {
 	public:
@@ -10579,6 +10754,11 @@ class gp_Vec2d {
 };
 
 
+%extend gp_Vec2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_XY;
 class gp_XY {
 	public:
@@ -11001,6 +11181,11 @@ class gp_XY {
 };
 
 
+%extend gp_XY {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor gp_XYZ;
 class gp_XYZ {
 	public:
@@ -11529,3 +11714,8 @@ class gp_XYZ {
 };
 
 
+%extend gp_XYZ {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -116,6 +116,11 @@ class GC_MakeMirror {
 };
 
 
+%extend GC_MakeMirror {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeRotation;
 class GC_MakeRotation {
 	public:
@@ -164,6 +169,11 @@ class GC_MakeRotation {
 };
 
 
+%extend GC_MakeRotation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeScale;
 class GC_MakeScale {
 	public:
@@ -190,6 +200,11 @@ class GC_MakeScale {
 };
 
 
+%extend GC_MakeScale {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeTranslation;
 class GC_MakeTranslation {
 	public:
@@ -224,6 +239,11 @@ class GC_MakeTranslation {
 };
 
 
+%extend GC_MakeTranslation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class GC_Root {
 	public:
 		%feature("compactdefaultargs") IsDone;
@@ -241,6 +261,11 @@ class GC_Root {
 };
 
 
+%extend GC_Root {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeArcOfCircle;
 class GC_MakeArcOfCircle : public GC_Root {
 	public:
@@ -323,6 +348,11 @@ class GC_MakeArcOfCircle : public GC_Root {
 };
 
 
+%extend GC_MakeArcOfCircle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeArcOfEllipse;
 class GC_MakeArcOfEllipse : public GC_Root {
 	public:
@@ -381,6 +411,11 @@ class GC_MakeArcOfEllipse : public GC_Root {
 };
 
 
+%extend GC_MakeArcOfEllipse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeArcOfHyperbola;
 class GC_MakeArcOfHyperbola : public GC_Root {
 	public:
@@ -439,6 +474,11 @@ class GC_MakeArcOfHyperbola : public GC_Root {
 };
 
 
+%extend GC_MakeArcOfHyperbola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeArcOfParabola;
 class GC_MakeArcOfParabola : public GC_Root {
 	public:
@@ -497,6 +537,11 @@ class GC_MakeArcOfParabola : public GC_Root {
 };
 
 
+%extend GC_MakeArcOfParabola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeCircle;
 class GC_MakeCircle : public GC_Root {
 	public:
@@ -597,6 +642,11 @@ class GC_MakeCircle : public GC_Root {
 };
 
 
+%extend GC_MakeCircle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeConicalSurface;
 class GC_MakeConicalSurface : public GC_Root {
 	public:
@@ -705,6 +755,11 @@ class GC_MakeConicalSurface : public GC_Root {
 };
 
 
+%extend GC_MakeConicalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeCylindricalSurface;
 class GC_MakeCylindricalSurface : public GC_Root {
 	public:
@@ -789,6 +844,11 @@ class GC_MakeCylindricalSurface : public GC_Root {
 };
 
 
+%extend GC_MakeCylindricalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeEllipse;
 class GC_MakeEllipse : public GC_Root {
 	public:
@@ -837,6 +897,11 @@ class GC_MakeEllipse : public GC_Root {
 };
 
 
+%extend GC_MakeEllipse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeHyperbola;
 class GC_MakeHyperbola : public GC_Root {
 	public:
@@ -885,6 +950,11 @@ class GC_MakeHyperbola : public GC_Root {
 };
 
 
+%extend GC_MakeHyperbola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeLine;
 class GC_MakeLine : public GC_Root {
 	public:
@@ -947,6 +1017,11 @@ class GC_MakeLine : public GC_Root {
 };
 
 
+%extend GC_MakeLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakePlane;
 class GC_MakePlane : public GC_Root {
 	public:
@@ -1043,6 +1118,11 @@ class GC_MakePlane : public GC_Root {
 };
 
 
+%extend GC_MakePlane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeSegment;
 class GC_MakeSegment : public GC_Root {
 	public:
@@ -1105,6 +1185,11 @@ class GC_MakeSegment : public GC_Root {
 };
 
 
+%extend GC_MakeSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeTrimmedCone;
 class GC_MakeTrimmedCone : public GC_Root {
 	public:
@@ -1149,6 +1234,11 @@ class GC_MakeTrimmedCone : public GC_Root {
 };
 
 
+%extend GC_MakeTrimmedCone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GC_MakeTrimmedCylinder;
 class GC_MakeTrimmedCylinder : public GC_Root {
 	public:
@@ -1223,3 +1313,8 @@ class GC_MakeTrimmedCylinder : public GC_Root {
 };
 
 
+%extend GC_MakeTrimmedCylinder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

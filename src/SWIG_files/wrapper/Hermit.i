@@ -102,3 +102,8 @@ class Hermit {
 };
 
 
+%extend Hermit {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

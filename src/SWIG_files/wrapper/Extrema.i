@@ -159,6 +159,11 @@ class Extrema_Array1OfPOnCurv {
 };
 
 
+%extend Extrema_Array1OfPOnCurv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_Array1OfPOnCurv2d;
 class Extrema_Array1OfPOnCurv2d {
 	public:
@@ -241,6 +246,11 @@ class Extrema_Array1OfPOnCurv2d {
 };
 
 
+%extend Extrema_Array1OfPOnCurv2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_Array1OfPOnSurf;
 class Extrema_Array1OfPOnSurf {
 	public:
@@ -323,6 +333,11 @@ class Extrema_Array1OfPOnSurf {
 };
 
 
+%extend Extrema_Array1OfPOnSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_Array2OfPOnCurv;
 class Extrema_Array2OfPOnCurv {
 	public:
@@ -427,6 +442,11 @@ class Extrema_Array2OfPOnCurv {
 };
 
 
+%extend Extrema_Array2OfPOnCurv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_Array2OfPOnCurv2d;
 class Extrema_Array2OfPOnCurv2d {
 	public:
@@ -531,6 +551,11 @@ class Extrema_Array2OfPOnCurv2d {
 };
 
 
+%extend Extrema_Array2OfPOnCurv2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_Array2OfPOnSurf;
 class Extrema_Array2OfPOnSurf {
 	public:
@@ -635,6 +660,11 @@ class Extrema_Array2OfPOnSurf {
 };
 
 
+%extend Extrema_Array2OfPOnSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_Array2OfPOnSurfParams;
 class Extrema_Array2OfPOnSurfParams {
 	public:
@@ -739,6 +769,11 @@ class Extrema_Array2OfPOnSurfParams {
 };
 
 
+%extend Extrema_Array2OfPOnSurfParams {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_CCLocFOfLocECC;
 class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
 	public:
@@ -857,6 +892,11 @@ class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Extrema_CCLocFOfLocECC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_CCLocFOfLocECC2d;
 class Extrema_CCLocFOfLocECC2d : public math_FunctionSetWithDerivatives {
 	public:
@@ -975,6 +1015,11 @@ class Extrema_CCLocFOfLocECC2d : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Extrema_CCLocFOfLocECC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Extrema_Curve2dTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -1204,6 +1249,11 @@ class Extrema_Curve2dTool {
 };
 
 
+%extend Extrema_Curve2dTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Extrema_CurveTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -1411,6 +1461,11 @@ class Extrema_CurveTool {
 };
 
 
+%extend Extrema_CurveTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ECC;
 class Extrema_ECC {
 	public:
@@ -1495,6 +1550,11 @@ class Extrema_ECC {
 };
 
 
+%extend Extrema_ECC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ECC2d;
 class Extrema_ECC2d {
 	public:
@@ -1579,6 +1639,11 @@ class Extrema_ECC2d {
 };
 
 
+%extend Extrema_ECC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ELCC;
 class Extrema_ELCC {
 	public:
@@ -1663,6 +1728,11 @@ class Extrema_ELCC {
 };
 
 
+%extend Extrema_ELCC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ELCC2d;
 class Extrema_ELCC2d {
 	public:
@@ -1747,6 +1817,11 @@ class Extrema_ELCC2d {
 };
 
 
+%extend Extrema_ELCC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ELPCOfLocateExtPC;
 class Extrema_ELPCOfLocateExtPC {
 	public:
@@ -1837,6 +1912,11 @@ class Extrema_ELPCOfLocateExtPC {
 };
 
 
+%extend Extrema_ELPCOfLocateExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ELPCOfLocateExtPC2d;
 class Extrema_ELPCOfLocateExtPC2d {
 	public:
@@ -1927,6 +2007,11 @@ class Extrema_ELPCOfLocateExtPC2d {
 };
 
 
+%extend Extrema_ELPCOfLocateExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_EPCOfELPCOfLocateExtPC;
 class Extrema_EPCOfELPCOfLocateExtPC {
 	public:
@@ -2049,6 +2134,11 @@ class Extrema_EPCOfELPCOfLocateExtPC {
 };
 
 
+%extend Extrema_EPCOfELPCOfLocateExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_EPCOfELPCOfLocateExtPC2d;
 class Extrema_EPCOfELPCOfLocateExtPC2d {
 	public:
@@ -2171,6 +2261,11 @@ class Extrema_EPCOfELPCOfLocateExtPC2d {
 };
 
 
+%extend Extrema_EPCOfELPCOfLocateExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_EPCOfExtPC;
 class Extrema_EPCOfExtPC {
 	public:
@@ -2293,6 +2388,11 @@ class Extrema_EPCOfExtPC {
 };
 
 
+%extend Extrema_EPCOfExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_EPCOfExtPC2d;
 class Extrema_EPCOfExtPC2d {
 	public:
@@ -2415,6 +2515,11 @@ class Extrema_EPCOfExtPC2d {
 };
 
 
+%extend Extrema_EPCOfExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtCC;
 class Extrema_ExtCC {
 	public:
@@ -2567,6 +2672,11 @@ class Extrema_ExtCC {
 };
 
 
+%extend Extrema_ExtCC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtCC2d;
 class Extrema_ExtCC2d {
 	public:
@@ -2699,6 +2809,11 @@ class Extrema_ExtCC2d {
 };
 
 
+%extend Extrema_ExtCC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtCS;
 class Extrema_ExtCS {
 	public:
@@ -2819,6 +2934,11 @@ class Extrema_ExtCS {
 };
 
 
+%extend Extrema_ExtCS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtElC;
 class Extrema_ExtElC {
 	public:
@@ -3021,6 +3141,11 @@ class Extrema_ExtElC {
 };
 
 
+%extend Extrema_ExtElC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtElC2d;
 class Extrema_ExtElC2d {
 	public:
@@ -3223,6 +3348,11 @@ class Extrema_ExtElC2d {
 };
 
 
+%extend Extrema_ExtElC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtElCS;
 class Extrema_ExtElCS {
 	public:
@@ -3469,6 +3599,11 @@ class Extrema_ExtElCS {
 };
 
 
+%extend Extrema_ExtElCS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtElSS;
 class Extrema_ExtElSS {
 	public:
@@ -3625,6 +3760,11 @@ class Extrema_ExtElSS {
 };
 
 
+%extend Extrema_ExtElSS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtPC;
 class Extrema_ExtPC {
 	public:
@@ -3715,6 +3855,11 @@ class Extrema_ExtPC {
 };
 
 
+%extend Extrema_ExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtPC2d;
 class Extrema_ExtPC2d {
 	public:
@@ -3805,6 +3950,11 @@ class Extrema_ExtPC2d {
 };
 
 
+%extend Extrema_ExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtPElC;
 class Extrema_ExtPElC {
 	public:
@@ -4001,6 +4151,11 @@ class Extrema_ExtPElC {
 };
 
 
+%extend Extrema_ExtPElC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtPElC2d;
 class Extrema_ExtPElC2d {
 	public:
@@ -4197,6 +4352,11 @@ class Extrema_ExtPElC2d {
 };
 
 
+%extend Extrema_ExtPElC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtPElS;
 class Extrema_ExtPElS {
 	public:
@@ -4345,6 +4505,11 @@ class Extrema_ExtPElS {
 };
 
 
+%extend Extrema_ExtPElS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtPExtS;
 class Extrema_ExtPExtS : public Standard_Transient {
 	public:
@@ -4491,6 +4656,11 @@ class Handle_Extrema_ExtPExtS : public Handle_Standard_Transient {
     }
 };
 
+%extend Extrema_ExtPExtS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtPRevS;
 class Extrema_ExtPRevS : public Standard_Transient {
 	public:
@@ -4635,6 +4805,11 @@ class Handle_Extrema_ExtPRevS : public Handle_Standard_Transient {
     }
 };
 
+%extend Extrema_ExtPRevS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtPS;
 class Extrema_ExtPS {
 	public:
@@ -4779,6 +4954,11 @@ class Extrema_ExtPS {
 };
 
 
+%extend Extrema_ExtPS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_ExtSS;
 class Extrema_ExtSS {
 	public:
@@ -4907,6 +5087,11 @@ class Extrema_ExtSS {
 };
 
 
+%extend Extrema_ExtSS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_FuncExtCS;
 class Extrema_FuncExtCS : public math_FunctionSetWithDerivatives {
 	public:
@@ -5011,6 +5196,11 @@ class Extrema_FuncExtCS : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Extrema_FuncExtCS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_FuncExtPS;
 class Extrema_FuncExtPS : public math_FunctionSetWithDerivatives {
 	public:
@@ -5113,6 +5303,11 @@ class Extrema_FuncExtPS : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Extrema_FuncExtPS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_FuncExtSS;
 class Extrema_FuncExtSS : public math_FunctionSetWithDerivatives {
 	public:
@@ -5217,6 +5412,11 @@ class Extrema_FuncExtSS : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Extrema_FuncExtSS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_GenExtCS;
 class Extrema_GenExtCS {
 	public:
@@ -5375,6 +5575,11 @@ class Extrema_GenExtCS {
 };
 
 
+%extend Extrema_GenExtCS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_GenExtPS;
 class Extrema_GenExtPS {
 	public:
@@ -5521,6 +5726,11 @@ class Extrema_GenExtPS {
 };
 
 
+%extend Extrema_GenExtPS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_GenExtSS;
 class Extrema_GenExtSS {
 	public:
@@ -5679,6 +5889,11 @@ class Extrema_GenExtSS {
 };
 
 
+%extend Extrema_GenExtSS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_GenLocateExtCS;
 class Extrema_GenLocateExtCS {
 	public:
@@ -5751,6 +5966,11 @@ class Extrema_GenLocateExtCS {
 };
 
 
+%extend Extrema_GenLocateExtCS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_GenLocateExtPS;
 class Extrema_GenLocateExtPS {
 	public:
@@ -5797,6 +6017,11 @@ class Extrema_GenLocateExtPS {
 };
 
 
+%extend Extrema_GenLocateExtPS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_GenLocateExtSS;
 class Extrema_GenLocateExtSS {
 	public:
@@ -5873,6 +6098,11 @@ class Extrema_GenLocateExtSS {
 };
 
 
+%extend Extrema_GenLocateExtSS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_GlobOptFuncCCC0;
 class Extrema_GlobOptFuncCCC0 : public math_MultipleVarFunction {
 	public:
@@ -5907,6 +6137,11 @@ class Extrema_GlobOptFuncCCC0 : public math_MultipleVarFunction {
 };
 
 
+%extend Extrema_GlobOptFuncCCC0 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_GlobOptFuncCCC1;
 class Extrema_GlobOptFuncCCC1 : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -5959,6 +6194,11 @@ class Extrema_GlobOptFuncCCC1 : public math_MultipleVarFunctionWithGradient {
 };
 
 
+%extend Extrema_GlobOptFuncCCC1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_GlobOptFuncCCC2;
 class Extrema_GlobOptFuncCCC2 : public math_MultipleVarFunctionWithHessian {
 	public:
@@ -6023,6 +6263,11 @@ class Extrema_GlobOptFuncCCC2 : public math_MultipleVarFunctionWithHessian {
 };
 
 
+%extend Extrema_GlobOptFuncCCC2 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_GlobOptFuncCS;
 class Extrema_GlobOptFuncCS : public math_MultipleVarFunctionWithHessian {
 	public:
@@ -6081,6 +6326,11 @@ class Extrema_GlobOptFuncCS : public math_MultipleVarFunctionWithHessian {
 };
 
 
+%extend Extrema_GlobOptFuncCS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_HArray1OfPOnCurv;
 class Extrema_HArray1OfPOnCurv : public MMgt_TShared {
 	public:
@@ -6197,6 +6447,11 @@ class Handle_Extrema_HArray1OfPOnCurv : public Handle_MMgt_TShared {
     }
 };
 
+%extend Extrema_HArray1OfPOnCurv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_HArray1OfPOnCurv2d;
 class Extrema_HArray1OfPOnCurv2d : public MMgt_TShared {
 	public:
@@ -6313,6 +6568,11 @@ class Handle_Extrema_HArray1OfPOnCurv2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend Extrema_HArray1OfPOnCurv2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_HArray1OfPOnSurf;
 class Extrema_HArray1OfPOnSurf : public MMgt_TShared {
 	public:
@@ -6429,6 +6689,11 @@ class Handle_Extrema_HArray1OfPOnSurf : public Handle_MMgt_TShared {
     }
 };
 
+%extend Extrema_HArray1OfPOnSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_HArray2OfPOnCurv;
 class Extrema_HArray2OfPOnCurv : public MMgt_TShared {
 	public:
@@ -6571,6 +6836,11 @@ class Handle_Extrema_HArray2OfPOnCurv : public Handle_MMgt_TShared {
     }
 };
 
+%extend Extrema_HArray2OfPOnCurv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_HArray2OfPOnCurv2d;
 class Extrema_HArray2OfPOnCurv2d : public MMgt_TShared {
 	public:
@@ -6713,6 +6983,11 @@ class Handle_Extrema_HArray2OfPOnCurv2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend Extrema_HArray2OfPOnCurv2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_HArray2OfPOnSurf;
 class Extrema_HArray2OfPOnSurf : public MMgt_TShared {
 	public:
@@ -6855,6 +7130,11 @@ class Handle_Extrema_HArray2OfPOnSurf : public Handle_MMgt_TShared {
     }
 };
 
+%extend Extrema_HArray2OfPOnSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_HArray2OfPOnSurfParams;
 class Extrema_HArray2OfPOnSurfParams : public MMgt_TShared {
 	public:
@@ -6997,6 +7277,11 @@ class Handle_Extrema_HArray2OfPOnSurfParams : public Handle_MMgt_TShared {
     }
 };
 
+%extend Extrema_HArray2OfPOnSurfParams {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_LocECC;
 class Extrema_LocECC {
 	public:
@@ -7035,6 +7320,11 @@ class Extrema_LocECC {
 };
 
 
+%extend Extrema_LocECC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_LocECC2d;
 class Extrema_LocECC2d {
 	public:
@@ -7073,6 +7363,11 @@ class Extrema_LocECC2d {
 };
 
 
+%extend Extrema_LocECC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_LocEPCOfLocateExtPC;
 class Extrema_LocEPCOfLocateExtPC {
 	public:
@@ -7147,6 +7442,11 @@ class Extrema_LocEPCOfLocateExtPC {
 };
 
 
+%extend Extrema_LocEPCOfLocateExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_LocEPCOfLocateExtPC2d;
 class Extrema_LocEPCOfLocateExtPC2d {
 	public:
@@ -7221,6 +7521,11 @@ class Extrema_LocEPCOfLocateExtPC2d {
 };
 
 
+%extend Extrema_LocEPCOfLocateExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_LocateExtCC;
 class Extrema_LocateExtCC {
 	public:
@@ -7263,6 +7568,11 @@ class Extrema_LocateExtCC {
 };
 
 
+%extend Extrema_LocateExtCC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_LocateExtCC2d;
 class Extrema_LocateExtCC2d {
 	public:
@@ -7305,6 +7615,11 @@ class Extrema_LocateExtCC2d {
 };
 
 
+%extend Extrema_LocateExtCC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_LocateExtPC;
 class Extrema_LocateExtPC {
 	public:
@@ -7379,6 +7694,11 @@ class Extrema_LocateExtPC {
 };
 
 
+%extend Extrema_LocateExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_LocateExtPC2d;
 class Extrema_LocateExtPC2d {
 	public:
@@ -7453,6 +7773,11 @@ class Extrema_LocateExtPC2d {
 };
 
 
+%extend Extrema_LocateExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_PCFOfEPCOfELPCOfLocateExtPC;
 class Extrema_PCFOfEPCOfELPCOfLocateExtPC : public math_FunctionWithDerivative {
 	public:
@@ -7547,6 +7872,11 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC : public math_FunctionWithDerivative {
 };
 
 
+%extend Extrema_PCFOfEPCOfELPCOfLocateExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_PCFOfEPCOfELPCOfLocateExtPC2d;
 class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d : public math_FunctionWithDerivative {
 	public:
@@ -7641,6 +7971,11 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d : public math_FunctionWithDerivative
 };
 
 
+%extend Extrema_PCFOfEPCOfELPCOfLocateExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_PCFOfEPCOfExtPC;
 class Extrema_PCFOfEPCOfExtPC : public math_FunctionWithDerivative {
 	public:
@@ -7735,6 +8070,11 @@ class Extrema_PCFOfEPCOfExtPC : public math_FunctionWithDerivative {
 };
 
 
+%extend Extrema_PCFOfEPCOfExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_PCFOfEPCOfExtPC2d;
 class Extrema_PCFOfEPCOfExtPC2d : public math_FunctionWithDerivative {
 	public:
@@ -7829,6 +8169,11 @@ class Extrema_PCFOfEPCOfExtPC2d : public math_FunctionWithDerivative {
 };
 
 
+%extend Extrema_PCFOfEPCOfExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_PCLocFOfLocEPCOfLocateExtPC;
 class Extrema_PCLocFOfLocEPCOfLocateExtPC : public math_FunctionWithDerivative {
 	public:
@@ -7923,6 +8268,11 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC : public math_FunctionWithDerivative {
 };
 
 
+%extend Extrema_PCLocFOfLocEPCOfLocateExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_PCLocFOfLocEPCOfLocateExtPC2d;
 class Extrema_PCLocFOfLocEPCOfLocateExtPC2d : public math_FunctionWithDerivative {
 	public:
@@ -8017,6 +8367,11 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC2d : public math_FunctionWithDerivative
 };
 
 
+%extend Extrema_PCLocFOfLocEPCOfLocateExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_POnCurv;
 class Extrema_POnCurv {
 	public:
@@ -8065,6 +8420,11 @@ class Extrema_POnCurv {
 };
 
 
+%extend Extrema_POnCurv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_POnCurv2d;
 class Extrema_POnCurv2d {
 	public:
@@ -8113,6 +8473,11 @@ class Extrema_POnCurv2d {
 };
 
 
+%extend Extrema_POnCurv2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_POnSurf;
 class Extrema_POnSurf {
 	public:
@@ -8153,6 +8518,11 @@ class Extrema_POnSurf {
 };
 
 
+%extend Extrema_POnSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC;
 class Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC : public TCollection_BaseSequence {
 	public:
@@ -8291,6 +8661,11 @@ class Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC : public TCollection_BaseSequen
 };
 
 
+%extend Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d;
 class Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d : public TCollection_BaseSequence {
 	public:
@@ -8429,6 +8804,11 @@ class Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d : public TCollection_BaseSequ
 };
 
 
+%extend Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SeqPCOfPCFOfEPCOfExtPC;
 class Extrema_SeqPCOfPCFOfEPCOfExtPC : public TCollection_BaseSequence {
 	public:
@@ -8567,6 +8947,11 @@ class Extrema_SeqPCOfPCFOfEPCOfExtPC : public TCollection_BaseSequence {
 };
 
 
+%extend Extrema_SeqPCOfPCFOfEPCOfExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SeqPCOfPCFOfEPCOfExtPC2d;
 class Extrema_SeqPCOfPCFOfEPCOfExtPC2d : public TCollection_BaseSequence {
 	public:
@@ -8705,6 +9090,11 @@ class Extrema_SeqPCOfPCFOfEPCOfExtPC2d : public TCollection_BaseSequence {
 };
 
 
+%extend Extrema_SeqPCOfPCFOfEPCOfExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC;
 class Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC : public TCollection_BaseSequence {
 	public:
@@ -8843,6 +9233,11 @@ class Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC : public TCollection_BaseSequen
 };
 
 
+%extend Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC2d;
 class Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC2d : public TCollection_BaseSequence {
 	public:
@@ -8981,6 +9376,11 @@ class Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC2d : public TCollection_BaseSequ
 };
 
 
+%extend Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SeqPOnCOfCCLocFOfLocECC;
 class Extrema_SeqPOnCOfCCLocFOfLocECC : public TCollection_BaseSequence {
 	public:
@@ -9119,6 +9519,11 @@ class Extrema_SeqPOnCOfCCLocFOfLocECC : public TCollection_BaseSequence {
 };
 
 
+%extend Extrema_SeqPOnCOfCCLocFOfLocECC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SeqPOnCOfCCLocFOfLocECC2d;
 class Extrema_SeqPOnCOfCCLocFOfLocECC2d : public TCollection_BaseSequence {
 	public:
@@ -9257,6 +9662,11 @@ class Extrema_SeqPOnCOfCCLocFOfLocECC2d : public TCollection_BaseSequence {
 };
 
 
+%extend Extrema_SeqPOnCOfCCLocFOfLocECC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC;
 class Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC : public TCollection_SeqNode {
 	public:
@@ -9323,6 +9733,11 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC : public H
     }
 };
 
+%extend Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d;
 class Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d : public TCollection_SeqNode {
 	public:
@@ -9389,6 +9804,11 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d : public
     }
 };
 
+%extend Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC;
 class Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC : public TCollection_SeqNode {
 	public:
@@ -9455,6 +9875,11 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC : public Handle_TColle
     }
 };
 
+%extend Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d;
 class Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d : public TCollection_SeqNode {
 	public:
@@ -9521,6 +9946,11 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d : public Handle_TCol
     }
 };
 
+%extend Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC;
 class Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC : public TCollection_SeqNode {
 	public:
@@ -9587,6 +10017,11 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC : public H
     }
 };
 
+%extend Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC2d;
 class Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC2d : public TCollection_SeqNode {
 	public:
@@ -9653,6 +10088,11 @@ class Handle_Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC2d : public
     }
 };
 
+%extend Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC;
 class Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC : public TCollection_SeqNode {
 	public:
@@ -9719,6 +10159,11 @@ class Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC : public Handle_TColl
     }
 };
 
+%extend Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d;
 class Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d : public TCollection_SeqNode {
 	public:
@@ -9785,6 +10230,11 @@ class Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d : public Handle_TCo
     }
 };
 
+%extend Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceNodeOfSequenceOfPOnCurv;
 class Extrema_SequenceNodeOfSequenceOfPOnCurv : public TCollection_SeqNode {
 	public:
@@ -9851,6 +10301,11 @@ class Handle_Extrema_SequenceNodeOfSequenceOfPOnCurv : public Handle_TCollection
     }
 };
 
+%extend Extrema_SequenceNodeOfSequenceOfPOnCurv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceNodeOfSequenceOfPOnCurv2d;
 class Extrema_SequenceNodeOfSequenceOfPOnCurv2d : public TCollection_SeqNode {
 	public:
@@ -9917,6 +10372,11 @@ class Handle_Extrema_SequenceNodeOfSequenceOfPOnCurv2d : public Handle_TCollecti
     }
 };
 
+%extend Extrema_SequenceNodeOfSequenceOfPOnCurv2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceNodeOfSequenceOfPOnSurf;
 class Extrema_SequenceNodeOfSequenceOfPOnSurf : public TCollection_SeqNode {
 	public:
@@ -9983,6 +10443,11 @@ class Handle_Extrema_SequenceNodeOfSequenceOfPOnSurf : public Handle_TCollection
     }
 };
 
+%extend Extrema_SequenceNodeOfSequenceOfPOnSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceOfPOnCurv;
 class Extrema_SequenceOfPOnCurv : public TCollection_BaseSequence {
 	public:
@@ -10121,6 +10586,11 @@ class Extrema_SequenceOfPOnCurv : public TCollection_BaseSequence {
 };
 
 
+%extend Extrema_SequenceOfPOnCurv {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceOfPOnCurv2d;
 class Extrema_SequenceOfPOnCurv2d : public TCollection_BaseSequence {
 	public:
@@ -10259,6 +10729,11 @@ class Extrema_SequenceOfPOnCurv2d : public TCollection_BaseSequence {
 };
 
 
+%extend Extrema_SequenceOfPOnCurv2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_SequenceOfPOnSurf;
 class Extrema_SequenceOfPOnSurf : public TCollection_BaseSequence {
 	public:
@@ -10397,6 +10872,11 @@ class Extrema_SequenceOfPOnSurf : public TCollection_BaseSequence {
 };
 
 
+%extend Extrema_SequenceOfPOnSurf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Extrema_POnSurfParams;
 class Extrema_POnSurfParams : public Extrema_POnSurf {
 	public:
@@ -10469,3 +10949,8 @@ class Extrema_POnSurfParams : public Extrema_POnSurf {
 };
 
 
+%extend Extrema_POnSurfParams {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

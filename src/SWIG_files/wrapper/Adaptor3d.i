@@ -250,6 +250,11 @@ class Adaptor3d_Curve {
 };
 
 
+%extend Adaptor3d_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_HCurve;
 class Adaptor3d_HCurve : public MMgt_TShared {
 	public:
@@ -478,6 +483,11 @@ class Handle_Adaptor3d_HCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend Adaptor3d_HCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_HOffsetCurve;
 class Adaptor3d_HOffsetCurve : public Adaptor2d_HCurve2d {
 	public:
@@ -554,6 +564,11 @@ class Handle_Adaptor3d_HOffsetCurve : public Handle_Adaptor2d_HCurve2d {
     }
 };
 
+%extend Adaptor3d_HOffsetCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_HSurface;
 class Adaptor3d_HSurface : public MMgt_TShared {
 	public:
@@ -896,6 +911,11 @@ class Handle_Adaptor3d_HSurface : public Handle_MMgt_TShared {
     }
 };
 
+%extend Adaptor3d_HSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Adaptor3d_HSurfaceTool {
 	public:
 		%feature("compactdefaultargs") FirstUParameter;
@@ -1255,6 +1275,11 @@ class Adaptor3d_HSurfaceTool {
 };
 
 
+%extend Adaptor3d_HSurfaceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_HVertex;
 class Adaptor3d_HVertex : public MMgt_TShared {
 	public:
@@ -1349,6 +1374,11 @@ class Handle_Adaptor3d_HVertex : public Handle_MMgt_TShared {
     }
 };
 
+%extend Adaptor3d_HVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_InterFunc;
 class Adaptor3d_InterFunc : public math_FunctionWithDerivative {
 	public:
@@ -1399,6 +1429,11 @@ class Adaptor3d_InterFunc : public math_FunctionWithDerivative {
 };
 
 
+%extend Adaptor3d_InterFunc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_OffsetCurve;
 class Adaptor3d_OffsetCurve : public Adaptor2d_Curve2d {
 	public:
@@ -1661,6 +1696,11 @@ class Adaptor3d_OffsetCurve : public Adaptor2d_Curve2d {
 };
 
 
+%extend Adaptor3d_OffsetCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Adaptor3d_Surface {
 	public:
 		%feature("compactdefaultargs") Delete;
@@ -1984,6 +2024,11 @@ class Adaptor3d_Surface {
 };
 
 
+%extend Adaptor3d_Surface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_TopolTool;
 class Adaptor3d_TopolTool : public MMgt_TShared {
 	public:
@@ -2256,6 +2301,11 @@ class Handle_Adaptor3d_TopolTool : public Handle_MMgt_TShared {
     }
 };
 
+%extend Adaptor3d_TopolTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_CurveOnSurface;
 class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 	public:
@@ -2496,6 +2546,11 @@ class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 };
 
 
+%extend Adaptor3d_CurveOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_HCurveOnSurface;
 class Adaptor3d_HCurveOnSurface : public Adaptor3d_HCurve {
 	public:
@@ -2576,6 +2631,11 @@ class Handle_Adaptor3d_HCurveOnSurface : public Handle_Adaptor3d_HCurve {
     }
 };
 
+%extend Adaptor3d_HCurveOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_HIsoCurve;
 class Adaptor3d_HIsoCurve : public Adaptor3d_HCurve {
 	public:
@@ -2656,6 +2716,11 @@ class Handle_Adaptor3d_HIsoCurve : public Handle_Adaptor3d_HCurve {
     }
 };
 
+%extend Adaptor3d_HIsoCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_HSurfaceOfLinearExtrusion;
 class Adaptor3d_HSurfaceOfLinearExtrusion : public Adaptor3d_HSurface {
 	public:
@@ -2732,6 +2797,11 @@ class Handle_Adaptor3d_HSurfaceOfLinearExtrusion : public Handle_Adaptor3d_HSurf
     }
 };
 
+%extend Adaptor3d_HSurfaceOfLinearExtrusion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_HSurfaceOfRevolution;
 class Adaptor3d_HSurfaceOfRevolution : public Adaptor3d_HSurface {
 	public:
@@ -2808,6 +2878,11 @@ class Handle_Adaptor3d_HSurfaceOfRevolution : public Handle_Adaptor3d_HSurface {
     }
 };
 
+%extend Adaptor3d_HSurfaceOfRevolution {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_IsoCurve;
 class Adaptor3d_IsoCurve : public Adaptor3d_Curve {
 	public:
@@ -3082,6 +3157,11 @@ class Adaptor3d_IsoCurve : public Adaptor3d_Curve {
 };
 
 
+%extend Adaptor3d_IsoCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_SurfaceOfLinearExtrusion;
 class Adaptor3d_SurfaceOfLinearExtrusion : public Adaptor3d_Surface {
 	public:
@@ -3434,6 +3514,11 @@ class Adaptor3d_SurfaceOfLinearExtrusion : public Adaptor3d_Surface {
 };
 
 
+%extend Adaptor3d_SurfaceOfLinearExtrusion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Adaptor3d_SurfaceOfRevolution;
 class Adaptor3d_SurfaceOfRevolution : public Adaptor3d_Surface {
 	public:
@@ -3792,3 +3877,8 @@ class Adaptor3d_SurfaceOfRevolution : public Adaptor3d_Surface {
 };
 
 
+%extend Adaptor3d_SurfaceOfRevolution {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -120,3 +120,8 @@ class TopCnx_EdgeFaceTransition {
 };
 
 
+%extend TopCnx_EdgeFaceTransition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

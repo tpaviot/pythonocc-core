@@ -268,6 +268,11 @@ class Hatch_Hatcher {
 };
 
 
+%extend Hatch_Hatcher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Hatch_Line;
 class Hatch_Line {
 	public:
@@ -302,6 +307,11 @@ class Hatch_Line {
 };
 
 
+%extend Hatch_Line {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Hatch_Parameter;
 class Hatch_Parameter {
 	public:
@@ -324,6 +334,11 @@ class Hatch_Parameter {
 };
 
 
+%extend Hatch_Parameter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Hatch_SequenceNodeOfSequenceOfLine;
 class Hatch_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
 	public:
@@ -390,6 +405,11 @@ class Handle_Hatch_SequenceNodeOfSequenceOfLine : public Handle_TCollection_SeqN
     }
 };
 
+%extend Hatch_SequenceNodeOfSequenceOfLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Hatch_SequenceNodeOfSequenceOfParameter;
 class Hatch_SequenceNodeOfSequenceOfParameter : public TCollection_SeqNode {
 	public:
@@ -456,6 +476,11 @@ class Handle_Hatch_SequenceNodeOfSequenceOfParameter : public Handle_TCollection
     }
 };
 
+%extend Hatch_SequenceNodeOfSequenceOfParameter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Hatch_SequenceOfLine;
 class Hatch_SequenceOfLine : public TCollection_BaseSequence {
 	public:
@@ -594,6 +619,11 @@ class Hatch_SequenceOfLine : public TCollection_BaseSequence {
 };
 
 
+%extend Hatch_SequenceOfLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Hatch_SequenceOfParameter;
 class Hatch_SequenceOfParameter : public TCollection_BaseSequence {
 	public:
@@ -732,3 +762,8 @@ class Hatch_SequenceOfParameter : public TCollection_BaseSequence {
 };
 
 
+%extend Hatch_SequenceOfParameter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

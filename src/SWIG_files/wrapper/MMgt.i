@@ -112,3 +112,8 @@ class Handle_MMgt_TShared : public Handle_Standard_Transient {
     }
 };
 
+%extend MMgt_TShared {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

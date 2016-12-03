@@ -142,6 +142,11 @@ class StepAP203_ApprovedItem : public StepData_SelectType {
 };
 
 
+%extend StepAP203_ApprovedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_Array1OfApprovedItem;
 class StepAP203_Array1OfApprovedItem {
 	public:
@@ -224,6 +229,11 @@ class StepAP203_Array1OfApprovedItem {
 };
 
 
+%extend StepAP203_Array1OfApprovedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_Array1OfCertifiedItem;
 class StepAP203_Array1OfCertifiedItem {
 	public:
@@ -306,6 +316,11 @@ class StepAP203_Array1OfCertifiedItem {
 };
 
 
+%extend StepAP203_Array1OfCertifiedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_Array1OfChangeRequestItem;
 class StepAP203_Array1OfChangeRequestItem {
 	public:
@@ -388,6 +403,11 @@ class StepAP203_Array1OfChangeRequestItem {
 };
 
 
+%extend StepAP203_Array1OfChangeRequestItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_Array1OfClassifiedItem;
 class StepAP203_Array1OfClassifiedItem {
 	public:
@@ -470,6 +490,11 @@ class StepAP203_Array1OfClassifiedItem {
 };
 
 
+%extend StepAP203_Array1OfClassifiedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_Array1OfContractedItem;
 class StepAP203_Array1OfContractedItem {
 	public:
@@ -552,6 +577,11 @@ class StepAP203_Array1OfContractedItem {
 };
 
 
+%extend StepAP203_Array1OfContractedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_Array1OfDateTimeItem;
 class StepAP203_Array1OfDateTimeItem {
 	public:
@@ -634,6 +664,11 @@ class StepAP203_Array1OfDateTimeItem {
 };
 
 
+%extend StepAP203_Array1OfDateTimeItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_Array1OfPersonOrganizationItem;
 class StepAP203_Array1OfPersonOrganizationItem {
 	public:
@@ -716,6 +751,11 @@ class StepAP203_Array1OfPersonOrganizationItem {
 };
 
 
+%extend StepAP203_Array1OfPersonOrganizationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_Array1OfSpecifiedItem;
 class StepAP203_Array1OfSpecifiedItem {
 	public:
@@ -798,6 +838,11 @@ class StepAP203_Array1OfSpecifiedItem {
 };
 
 
+%extend StepAP203_Array1OfSpecifiedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_Array1OfStartRequestItem;
 class StepAP203_Array1OfStartRequestItem {
 	public:
@@ -880,6 +925,11 @@ class StepAP203_Array1OfStartRequestItem {
 };
 
 
+%extend StepAP203_Array1OfStartRequestItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_Array1OfWorkItem;
 class StepAP203_Array1OfWorkItem {
 	public:
@@ -962,6 +1012,11 @@ class StepAP203_Array1OfWorkItem {
 };
 
 
+%extend StepAP203_Array1OfWorkItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_CcDesignApproval;
 class StepAP203_CcDesignApproval : public StepBasic_ApprovalAssignment {
 	public:
@@ -1044,6 +1099,11 @@ class Handle_StepAP203_CcDesignApproval : public Handle_StepBasic_ApprovalAssign
     }
 };
 
+%extend StepAP203_CcDesignApproval {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_CcDesignCertification;
 class StepAP203_CcDesignCertification : public StepBasic_CertificationAssignment {
 	public:
@@ -1126,6 +1186,11 @@ class Handle_StepAP203_CcDesignCertification : public Handle_StepBasic_Certifica
     }
 };
 
+%extend StepAP203_CcDesignCertification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_CcDesignContract;
 class StepAP203_CcDesignContract : public StepBasic_ContractAssignment {
 	public:
@@ -1208,6 +1273,11 @@ class Handle_StepAP203_CcDesignContract : public Handle_StepBasic_ContractAssign
     }
 };
 
+%extend StepAP203_CcDesignContract {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_CcDesignDateAndTimeAssignment;
 class StepAP203_CcDesignDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
 	public:
@@ -1292,6 +1362,11 @@ class Handle_StepAP203_CcDesignDateAndTimeAssignment : public Handle_StepBasic_D
     }
 };
 
+%extend StepAP203_CcDesignDateAndTimeAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_CcDesignPersonAndOrganizationAssignment;
 class StepAP203_CcDesignPersonAndOrganizationAssignment : public StepBasic_PersonAndOrganizationAssignment {
 	public:
@@ -1376,6 +1451,11 @@ class Handle_StepAP203_CcDesignPersonAndOrganizationAssignment : public Handle_S
     }
 };
 
+%extend StepAP203_CcDesignPersonAndOrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_CcDesignSecurityClassification;
 class StepAP203_CcDesignSecurityClassification : public StepBasic_SecurityClassificationAssignment {
 	public:
@@ -1458,6 +1538,11 @@ class Handle_StepAP203_CcDesignSecurityClassification : public Handle_StepBasic_
     }
 };
 
+%extend StepAP203_CcDesignSecurityClassification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_CcDesignSpecificationReference;
 class StepAP203_CcDesignSpecificationReference : public StepBasic_DocumentReference {
 	public:
@@ -1542,6 +1627,11 @@ class Handle_StepAP203_CcDesignSpecificationReference : public Handle_StepBasic_
     }
 };
 
+%extend StepAP203_CcDesignSpecificationReference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_CertifiedItem;
 class StepAP203_CertifiedItem : public StepData_SelectType {
 	public:
@@ -1568,6 +1658,11 @@ class StepAP203_CertifiedItem : public StepData_SelectType {
 };
 
 
+%extend StepAP203_CertifiedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_Change;
 class StepAP203_Change : public StepBasic_ActionAssignment {
 	public:
@@ -1650,6 +1745,11 @@ class Handle_StepAP203_Change : public Handle_StepBasic_ActionAssignment {
     }
 };
 
+%extend StepAP203_Change {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_ChangeRequest;
 class StepAP203_ChangeRequest : public StepBasic_ActionRequestAssignment {
 	public:
@@ -1732,6 +1832,11 @@ class Handle_StepAP203_ChangeRequest : public Handle_StepBasic_ActionRequestAssi
     }
 };
 
+%extend StepAP203_ChangeRequest {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_ChangeRequestItem;
 class StepAP203_ChangeRequestItem : public StepData_SelectType {
 	public:
@@ -1758,6 +1863,11 @@ class StepAP203_ChangeRequestItem : public StepData_SelectType {
 };
 
 
+%extend StepAP203_ChangeRequestItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_ClassifiedItem;
 class StepAP203_ClassifiedItem : public StepData_SelectType {
 	public:
@@ -1790,6 +1900,11 @@ class StepAP203_ClassifiedItem : public StepData_SelectType {
 };
 
 
+%extend StepAP203_ClassifiedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_ContractedItem;
 class StepAP203_ContractedItem : public StepData_SelectType {
 	public:
@@ -1816,6 +1931,11 @@ class StepAP203_ContractedItem : public StepData_SelectType {
 };
 
 
+%extend StepAP203_ContractedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_DateTimeItem;
 class StepAP203_DateTimeItem : public StepData_SelectType {
 	public:
@@ -1890,6 +2010,11 @@ class StepAP203_DateTimeItem : public StepData_SelectType {
 };
 
 
+%extend StepAP203_DateTimeItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_HArray1OfApprovedItem;
 class StepAP203_HArray1OfApprovedItem : public MMgt_TShared {
 	public:
@@ -2006,6 +2131,11 @@ class Handle_StepAP203_HArray1OfApprovedItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP203_HArray1OfApprovedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_HArray1OfCertifiedItem;
 class StepAP203_HArray1OfCertifiedItem : public MMgt_TShared {
 	public:
@@ -2122,6 +2252,11 @@ class Handle_StepAP203_HArray1OfCertifiedItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP203_HArray1OfCertifiedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_HArray1OfChangeRequestItem;
 class StepAP203_HArray1OfChangeRequestItem : public MMgt_TShared {
 	public:
@@ -2238,6 +2373,11 @@ class Handle_StepAP203_HArray1OfChangeRequestItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP203_HArray1OfChangeRequestItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_HArray1OfClassifiedItem;
 class StepAP203_HArray1OfClassifiedItem : public MMgt_TShared {
 	public:
@@ -2354,6 +2494,11 @@ class Handle_StepAP203_HArray1OfClassifiedItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP203_HArray1OfClassifiedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_HArray1OfContractedItem;
 class StepAP203_HArray1OfContractedItem : public MMgt_TShared {
 	public:
@@ -2470,6 +2615,11 @@ class Handle_StepAP203_HArray1OfContractedItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP203_HArray1OfContractedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_HArray1OfDateTimeItem;
 class StepAP203_HArray1OfDateTimeItem : public MMgt_TShared {
 	public:
@@ -2586,6 +2736,11 @@ class Handle_StepAP203_HArray1OfDateTimeItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP203_HArray1OfDateTimeItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_HArray1OfPersonOrganizationItem;
 class StepAP203_HArray1OfPersonOrganizationItem : public MMgt_TShared {
 	public:
@@ -2702,6 +2857,11 @@ class Handle_StepAP203_HArray1OfPersonOrganizationItem : public Handle_MMgt_TSha
     }
 };
 
+%extend StepAP203_HArray1OfPersonOrganizationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_HArray1OfSpecifiedItem;
 class StepAP203_HArray1OfSpecifiedItem : public MMgt_TShared {
 	public:
@@ -2818,6 +2978,11 @@ class Handle_StepAP203_HArray1OfSpecifiedItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP203_HArray1OfSpecifiedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_HArray1OfStartRequestItem;
 class StepAP203_HArray1OfStartRequestItem : public MMgt_TShared {
 	public:
@@ -2934,6 +3099,11 @@ class Handle_StepAP203_HArray1OfStartRequestItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP203_HArray1OfStartRequestItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_HArray1OfWorkItem;
 class StepAP203_HArray1OfWorkItem : public MMgt_TShared {
 	public:
@@ -3050,6 +3220,11 @@ class Handle_StepAP203_HArray1OfWorkItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP203_HArray1OfWorkItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_PersonOrganizationItem;
 class StepAP203_PersonOrganizationItem : public StepData_SelectType {
 	public:
@@ -3130,6 +3305,11 @@ class StepAP203_PersonOrganizationItem : public StepData_SelectType {
 };
 
 
+%extend StepAP203_PersonOrganizationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_SpecifiedItem;
 class StepAP203_SpecifiedItem : public StepData_SelectType {
 	public:
@@ -3162,6 +3342,11 @@ class StepAP203_SpecifiedItem : public StepData_SelectType {
 };
 
 
+%extend StepAP203_SpecifiedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_StartRequest;
 class StepAP203_StartRequest : public StepBasic_ActionRequestAssignment {
 	public:
@@ -3244,6 +3429,11 @@ class Handle_StepAP203_StartRequest : public Handle_StepBasic_ActionRequestAssig
     }
 };
 
+%extend StepAP203_StartRequest {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_StartRequestItem;
 class StepAP203_StartRequestItem : public StepData_SelectType {
 	public:
@@ -3270,6 +3460,11 @@ class StepAP203_StartRequestItem : public StepData_SelectType {
 };
 
 
+%extend StepAP203_StartRequestItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_StartWork;
 class StepAP203_StartWork : public StepBasic_ActionAssignment {
 	public:
@@ -3352,6 +3547,11 @@ class Handle_StepAP203_StartWork : public Handle_StepBasic_ActionAssignment {
     }
 };
 
+%extend StepAP203_StartWork {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP203_WorkItem;
 class StepAP203_WorkItem : public StepData_SelectType {
 	public:
@@ -3378,3 +3578,8 @@ class StepAP203_WorkItem : public StepData_SelectType {
 };
 
 
+%extend StepAP203_WorkItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -192,3 +192,8 @@ class AppBlend_Approx {
 };
 
 
+%extend AppBlend_Approx {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

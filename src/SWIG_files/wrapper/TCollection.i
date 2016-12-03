@@ -77,6 +77,11 @@ class TCollection {
 };
 
 
+%extend TCollection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TCollection_AsciiString;
 class TCollection_AsciiString {
 	public:
@@ -926,6 +931,11 @@ class TCollection_AsciiString {
 };
 
 
+%extend TCollection_AsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TCollection_BaseSequence;
 class TCollection_BaseSequence {
 	public:
@@ -960,6 +970,11 @@ class TCollection_BaseSequence {
 };
 
 
+%extend TCollection_BaseSequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TCollection_BasicMap;
 class TCollection_BasicMap {
 	public:
@@ -992,6 +1007,11 @@ class TCollection_BasicMap {
         };
 
 
+%extend TCollection_BasicMap {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TCollection_BasicMapIterator;
 class TCollection_BasicMapIterator {
 	public:
@@ -1016,6 +1036,11 @@ class TCollection_BasicMapIterator {
 };
 
 
+%extend TCollection_BasicMapIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TCollection_ExtendedString;
 class TCollection_ExtendedString {
 	public:
@@ -1480,6 +1505,11 @@ class TCollection_ExtendedString {
 };
 
 
+%extend TCollection_ExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TCollection_HAsciiString;
 class TCollection_HAsciiString : public MMgt_TShared {
 	public:
@@ -2074,6 +2104,11 @@ class Handle_TCollection_HAsciiString : public Handle_MMgt_TShared {
     }
 };
 
+%extend TCollection_HAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TCollection_HExtendedString;
 class TCollection_HExtendedString : public MMgt_TShared {
 	public:
@@ -2390,6 +2425,11 @@ class Handle_TCollection_HExtendedString : public Handle_MMgt_TShared {
     }
 };
 
+%extend TCollection_HExtendedString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TCollection_MapNode;
 class TCollection_MapNode : public MMgt_TShared {
 	public:
@@ -2452,6 +2492,11 @@ class Handle_TCollection_MapNode : public Handle_MMgt_TShared {
     }
 };
 
+%extend TCollection_MapNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TCollection_PrivCompareOfInteger {
 	public:
 		%feature("compactdefaultargs") IsLower;
@@ -2481,6 +2526,11 @@ class TCollection_PrivCompareOfInteger {
 };
 
 
+%extend TCollection_PrivCompareOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TCollection_PrivCompareOfReal {
 	public:
 		%feature("compactdefaultargs") IsLower;
@@ -2510,6 +2560,11 @@ class TCollection_PrivCompareOfReal {
 };
 
 
+%extend TCollection_PrivCompareOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TCollection_SeqNode;
 class TCollection_SeqNode : public MMgt_TShared {
 	public:
@@ -2578,6 +2633,11 @@ class Handle_TCollection_SeqNode : public Handle_MMgt_TShared {
     }
 };
 
+%extend TCollection_SeqNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TCollection_CompareOfInteger;
 class TCollection_CompareOfInteger : public TCollection_PrivCompareOfInteger {
 	public:
@@ -2608,6 +2668,11 @@ class TCollection_CompareOfInteger : public TCollection_PrivCompareOfInteger {
 };
 
 
+%extend TCollection_CompareOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TCollection_CompareOfReal;
 class TCollection_CompareOfReal : public TCollection_PrivCompareOfReal {
 	public:
@@ -2638,3 +2703,8 @@ class TCollection_CompareOfReal : public TCollection_PrivCompareOfReal {
 };
 
 
+%extend TCollection_CompareOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -2933,3 +2933,8 @@ class BSplCLib {
 };
 
 
+%extend BSplCLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

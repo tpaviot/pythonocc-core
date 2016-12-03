@@ -245,6 +245,11 @@ class FilletSurf_Builder {
 };
 
 
+%extend FilletSurf_Builder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor FilletSurf_InternalBuilder;
 class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	public:
@@ -409,3 +414,8 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 };
 
 
+%extend FilletSurf_InternalBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

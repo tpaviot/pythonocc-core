@@ -188,3 +188,8 @@ class GeomProjLib {
 };
 
 
+%extend GeomProjLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -149,6 +149,11 @@ class ShapeAnalysis {
 };
 
 
+%extend ShapeAnalysis {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_CheckSmallFace;
 class ShapeAnalysis_CheckSmallFace {
 	public:
@@ -379,6 +384,11 @@ class ShapeAnalysis_CheckSmallFace {
 };
 
 
+%extend ShapeAnalysis_CheckSmallFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class ShapeAnalysis_Curve {
 	public:
 		%feature("compactdefaultargs") Project;
@@ -618,6 +628,11 @@ class ShapeAnalysis_Curve {
 };
 
 
+%extend ShapeAnalysis_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal;
 class ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal : public TCollection_BasicMapIterator {
 	public:
@@ -648,6 +663,11 @@ class ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal : public TCollecti
 };
 
 
+%extend ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal;
 class ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public TCollection_MapNode {
 	public:
@@ -718,6 +738,11 @@ class Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public Handle
     }
 };
 
+%extend ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_DataMapOfShapeListOfReal;
 class ShapeAnalysis_DataMapOfShapeListOfReal : public TCollection_BasicMap {
 	public:
@@ -796,6 +821,11 @@ class ShapeAnalysis_DataMapOfShapeListOfReal : public TCollection_BasicMap {
 };
 
 
+%extend ShapeAnalysis_DataMapOfShapeListOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_Edge;
 class ShapeAnalysis_Edge {
 	public:
@@ -1132,6 +1162,11 @@ class ShapeAnalysis_Edge {
 };
 
 
+%extend ShapeAnalysis_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_FreeBoundData;
 class ShapeAnalysis_FreeBoundData : public MMgt_TShared {
 	public:
@@ -1320,6 +1355,11 @@ class Handle_ShapeAnalysis_FreeBoundData : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeAnalysis_FreeBoundData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_FreeBounds;
 class ShapeAnalysis_FreeBounds {
 	public:
@@ -1442,6 +1482,11 @@ class ShapeAnalysis_FreeBounds {
 };
 
 
+%extend ShapeAnalysis_FreeBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_FreeBoundsProperties;
 class ShapeAnalysis_FreeBoundsProperties {
 	public:
@@ -1622,6 +1667,11 @@ class ShapeAnalysis_FreeBoundsProperties {
 };
 
 
+%extend ShapeAnalysis_FreeBoundsProperties {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class ShapeAnalysis_Geom {
 	public:
 		%feature("compactdefaultargs") NearestPlane;
@@ -1653,6 +1703,11 @@ class ShapeAnalysis_Geom {
 };
 
 
+%extend ShapeAnalysis_Geom {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_HSequenceOfFreeBounds;
 class ShapeAnalysis_HSequenceOfFreeBounds : public MMgt_TShared {
 	public:
@@ -1837,6 +1892,11 @@ class Handle_ShapeAnalysis_HSequenceOfFreeBounds : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeAnalysis_HSequenceOfFreeBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds;
 class ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds : public TCollection_SeqNode {
 	public:
@@ -1903,6 +1963,11 @@ class Handle_ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds : public Handle_TC
     }
 };
 
+%extend ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_SequenceOfFreeBounds;
 class ShapeAnalysis_SequenceOfFreeBounds : public TCollection_BaseSequence {
 	public:
@@ -2041,6 +2106,11 @@ class ShapeAnalysis_SequenceOfFreeBounds : public TCollection_BaseSequence {
 };
 
 
+%extend ShapeAnalysis_SequenceOfFreeBounds {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_ShapeContents;
 class ShapeAnalysis_ShapeContents {
 	public:
@@ -2307,6 +2377,11 @@ class ShapeAnalysis_ShapeContents {
 };
 
 
+%extend ShapeAnalysis_ShapeContents {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_ShapeTolerance;
 class ShapeAnalysis_ShapeTolerance {
 	public:
@@ -2381,6 +2456,11 @@ class ShapeAnalysis_ShapeTolerance {
 };
 
 
+%extend ShapeAnalysis_ShapeTolerance {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class ShapeAnalysis_Shell {
 	public:
 		%feature("compactdefaultargs") Clear;
@@ -2464,6 +2544,11 @@ class ShapeAnalysis_Shell {
 };
 
 
+%extend ShapeAnalysis_Shell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_Surface;
 class ShapeAnalysis_Surface : public MMgt_TShared {
 	public:
@@ -2824,6 +2909,11 @@ class Handle_ShapeAnalysis_Surface : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeAnalysis_Surface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_TransferParameters;
 class ShapeAnalysis_TransferParameters : public MMgt_TShared {
 	public:
@@ -2950,6 +3040,11 @@ class Handle_ShapeAnalysis_TransferParameters : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeAnalysis_TransferParameters {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_Wire;
 class ShapeAnalysis_Wire : public MMgt_TShared {
 	public:
@@ -3594,6 +3689,11 @@ class Handle_ShapeAnalysis_Wire : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeAnalysis_Wire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_WireOrder;
 class ShapeAnalysis_WireOrder {
 	public:
@@ -3789,6 +3889,11 @@ class ShapeAnalysis_WireOrder {
 };
 
 
+%extend ShapeAnalysis_WireOrder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_WireVertex;
 class ShapeAnalysis_WireVertex {
 	public:
@@ -3995,6 +4100,11 @@ class ShapeAnalysis_WireVertex {
 };
 
 
+%extend ShapeAnalysis_WireVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeAnalysis_TransferParametersProj;
 class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParameters {
 	public:
@@ -4146,3 +4256,8 @@ class Handle_ShapeAnalysis_TransferParametersProj : public Handle_ShapeAnalysis_
     }
 };
 
+%extend ShapeAnalysis_TransferParametersProj {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

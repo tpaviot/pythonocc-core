@@ -105,6 +105,11 @@ class Select3D_Box2d {
 };
 
 
+%extend Select3D_Box2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_ListIteratorOfListOfSensitive;
 class Select3D_ListIteratorOfListOfSensitive {
 	public:
@@ -139,6 +144,11 @@ class Select3D_ListIteratorOfListOfSensitive {
 };
 
 
+%extend Select3D_ListIteratorOfListOfSensitive {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_ListIteratorOfListOfSensitiveTriangle;
 class Select3D_ListIteratorOfListOfSensitiveTriangle {
 	public:
@@ -173,6 +183,11 @@ class Select3D_ListIteratorOfListOfSensitiveTriangle {
 };
 
 
+%extend Select3D_ListIteratorOfListOfSensitiveTriangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_ListNodeOfListOfSensitive;
 class Select3D_ListNodeOfListOfSensitive : public TCollection_MapNode {
 	public:
@@ -237,6 +252,11 @@ class Handle_Select3D_ListNodeOfListOfSensitive : public Handle_TCollection_MapN
     }
 };
 
+%extend Select3D_ListNodeOfListOfSensitive {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_ListNodeOfListOfSensitiveTriangle;
 class Select3D_ListNodeOfListOfSensitiveTriangle : public TCollection_MapNode {
 	public:
@@ -301,6 +321,11 @@ class Handle_Select3D_ListNodeOfListOfSensitiveTriangle : public Handle_TCollect
     }
 };
 
+%extend Select3D_ListNodeOfListOfSensitiveTriangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_ListOfSensitive;
 class Select3D_ListOfSensitive {
 	public:
@@ -431,6 +456,11 @@ class Select3D_ListOfSensitive {
 };
 
 
+%extend Select3D_ListOfSensitive {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_ListOfSensitiveTriangle;
 class Select3D_ListOfSensitiveTriangle {
 	public:
@@ -561,6 +591,11 @@ class Select3D_ListOfSensitiveTriangle {
 };
 
 
+%extend Select3D_ListOfSensitiveTriangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_Pnt;
 class Select3D_Pnt {
 	public:
@@ -584,6 +619,11 @@ class Select3D_Pnt {
 };
 
 
+%extend Select3D_Pnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_Pnt2d;
 class Select3D_Pnt2d {
 	public:
@@ -606,6 +646,11 @@ class Select3D_Pnt2d {
 };
 
 
+%extend Select3D_Pnt2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_PointData;
 class Select3D_PointData {
 	public:
@@ -666,6 +711,11 @@ class Select3D_PointData {
 };
 
 
+%extend Select3D_PointData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_Projector;
 class Select3D_Projector : public Standard_Transient {
 	public:
@@ -938,6 +988,11 @@ class Handle_Select3D_Projector : public Handle_Standard_Transient {
     }
 };
 
+%extend Select3D_Projector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitiveEntity;
 class Select3D_SensitiveEntity : public SelectBasics_SensitiveEntity {
 	public:
@@ -1098,6 +1153,11 @@ class Handle_Select3D_SensitiveEntity : public Handle_SelectBasics_SensitiveEnti
     }
 };
 
+%extend Select3D_SensitiveEntity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitiveEntitySequence;
 class Select3D_SensitiveEntitySequence : public TCollection_BaseSequence {
 	public:
@@ -1236,6 +1296,11 @@ class Select3D_SensitiveEntitySequence : public TCollection_BaseSequence {
 };
 
 
+%extend Select3D_SensitiveEntitySequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SequenceNodeOfSensitiveEntitySequence;
 class Select3D_SequenceNodeOfSensitiveEntitySequence : public TCollection_SeqNode {
 	public:
@@ -1302,6 +1367,11 @@ class Handle_Select3D_SequenceNodeOfSensitiveEntitySequence : public Handle_TCol
     }
 };
 
+%extend Select3D_SequenceNodeOfSensitiveEntitySequence {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitiveBox;
 class Select3D_SensitiveBox : public Select3D_SensitiveEntity {
 	public:
@@ -1462,6 +1532,11 @@ class Handle_Select3D_SensitiveBox : public Handle_Select3D_SensitiveEntity {
     }
 };
 
+%extend Select3D_SensitiveBox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitiveGroup;
 class Select3D_SensitiveGroup : public Select3D_SensitiveEntity {
 	public:
@@ -1676,6 +1751,11 @@ class Handle_Select3D_SensitiveGroup : public Handle_Select3D_SensitiveEntity {
     }
 };
 
+%extend Select3D_SensitiveGroup {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitivePoint;
 class Select3D_SensitivePoint : public Select3D_SensitiveEntity {
 	public:
@@ -1816,6 +1896,11 @@ class Handle_Select3D_SensitivePoint : public Handle_Select3D_SensitiveEntity {
     }
 };
 
+%extend Select3D_SensitivePoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitivePoly;
 class Select3D_SensitivePoly : public Select3D_SensitiveEntity {
 	public:
@@ -1900,6 +1985,11 @@ class Handle_Select3D_SensitivePoly : public Handle_Select3D_SensitiveEntity {
     }
 };
 
+%extend Select3D_SensitivePoly {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitiveSegment;
 class Select3D_SensitiveSegment : public Select3D_SensitiveEntity {
 	public:
@@ -2092,6 +2182,11 @@ class Handle_Select3D_SensitiveSegment : public Handle_Select3D_SensitiveEntity 
     }
 };
 
+%extend Select3D_SensitiveSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitiveWire;
 class Select3D_SensitiveWire : public Select3D_SensitiveEntity {
 	public:
@@ -2270,6 +2365,11 @@ class Handle_Select3D_SensitiveWire : public Handle_Select3D_SensitiveEntity {
     }
 };
 
+%extend Select3D_SensitiveWire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitiveCircle;
 class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 	public:
@@ -2460,6 +2560,11 @@ class Handle_Select3D_SensitiveCircle : public Handle_Select3D_SensitivePoly {
     }
 };
 
+%extend Select3D_SensitiveCircle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitiveCurve;
 class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 	public:
@@ -2612,6 +2717,11 @@ class Handle_Select3D_SensitiveCurve : public Handle_Select3D_SensitivePoly {
     }
 };
 
+%extend Select3D_SensitiveCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitiveFace;
 class Select3D_SensitiveFace : public Select3D_SensitivePoly {
 	public:
@@ -2752,6 +2862,11 @@ class Handle_Select3D_SensitiveFace : public Handle_Select3D_SensitivePoly {
     }
 };
 
+%extend Select3D_SensitiveFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Select3D_SensitiveTriangle;
 class Select3D_SensitiveTriangle : public Select3D_SensitivePoly {
 	public:
@@ -2932,3 +3047,8 @@ class Handle_Select3D_SensitiveTriangle : public Handle_Select3D_SensitivePoly {
     }
 };
 
+%extend Select3D_SensitiveTriangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

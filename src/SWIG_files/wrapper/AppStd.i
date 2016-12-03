@@ -130,3 +130,8 @@ class Handle_AppStd_Application : public Handle_TDocStd_Application {
     }
 };
 
+%extend AppStd_Application {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

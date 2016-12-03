@@ -93,6 +93,11 @@ class ShapeProcess {
 };
 
 
+%extend ShapeProcess {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeProcess_Context;
 class ShapeProcess_Context : public MMgt_TShared {
 	public:
@@ -317,6 +322,11 @@ class Handle_ShapeProcess_Context : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeProcess_Context {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeProcess_DictionaryOfOperator;
 class ShapeProcess_DictionaryOfOperator : public MMgt_TShared {
 	public:
@@ -507,6 +517,11 @@ class Handle_ShapeProcess_DictionaryOfOperator : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeProcess_DictionaryOfOperator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeProcess_IteratorOfDictionaryOfOperator;
 class ShapeProcess_IteratorOfDictionaryOfOperator {
 	public:
@@ -555,6 +570,11 @@ class ShapeProcess_IteratorOfDictionaryOfOperator {
 };
 
 
+%extend ShapeProcess_IteratorOfDictionaryOfOperator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class ShapeProcess_OperLibrary {
 	public:
 		%feature("compactdefaultargs") Init;
@@ -580,6 +600,11 @@ class ShapeProcess_OperLibrary {
 };
 
 
+%extend ShapeProcess_OperLibrary {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeProcess_Operator;
 class ShapeProcess_Operator : public MMgt_TShared {
 	public:
@@ -640,6 +665,11 @@ class Handle_ShapeProcess_Operator : public Handle_MMgt_TShared {
     }
 };
 
+%extend ShapeProcess_Operator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeProcess_StackItemOfDictionaryOfOperator;
 class ShapeProcess_StackItemOfDictionaryOfOperator : public MMgt_TShared {
 	public:
@@ -716,6 +746,11 @@ class Handle_ShapeProcess_StackItemOfDictionaryOfOperator : public Handle_MMgt_T
     }
 };
 
+%extend ShapeProcess_StackItemOfDictionaryOfOperator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeProcess_ShapeContext;
 class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 	public:
@@ -912,6 +947,11 @@ class Handle_ShapeProcess_ShapeContext : public Handle_ShapeProcess_Context {
     }
 };
 
+%extend ShapeProcess_ShapeContext {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeProcess_UOperator;
 class ShapeProcess_UOperator : public ShapeProcess_Operator {
 	public:
@@ -980,3 +1020,8 @@ class Handle_ShapeProcess_UOperator : public Handle_ShapeProcess_Operator {
     }
 };
 
+%extend ShapeProcess_UOperator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

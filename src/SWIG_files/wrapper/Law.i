@@ -158,6 +158,11 @@ class Law {
 };
 
 
+%extend Law {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_BSpline;
 class Law_BSpline : public MMgt_TShared {
 	public:
@@ -802,6 +807,11 @@ class Handle_Law_BSpline : public Handle_MMgt_TShared {
     }
 };
 
+%extend Law_BSpline {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_BSplineKnotSplitting;
 class Law_BSplineKnotSplitting {
 	public:
@@ -840,6 +850,11 @@ class Law_BSplineKnotSplitting {
 };
 
 
+%extend Law_BSplineKnotSplitting {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_Function;
 class Law_Function : public MMgt_TShared {
 	public:
@@ -970,6 +985,11 @@ class Handle_Law_Function : public Handle_MMgt_TShared {
     }
 };
 
+%extend Law_Function {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_Interpolate;
 class Law_Interpolate {
 	public:
@@ -1036,6 +1056,11 @@ class Law_Interpolate {
 };
 
 
+%extend Law_Interpolate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_Laws;
 class Law_Laws {
 	public:
@@ -1166,6 +1191,11 @@ class Law_Laws {
 };
 
 
+%extend Law_Laws {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_ListIteratorOfLaws;
 class Law_ListIteratorOfLaws {
 	public:
@@ -1200,6 +1230,11 @@ class Law_ListIteratorOfLaws {
 };
 
 
+%extend Law_ListIteratorOfLaws {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_ListNodeOfLaws;
 class Law_ListNodeOfLaws : public TCollection_MapNode {
 	public:
@@ -1264,6 +1299,11 @@ class Handle_Law_ListNodeOfLaws : public Handle_TCollection_MapNode {
     }
 };
 
+%extend Law_ListNodeOfLaws {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_BSpFunc;
 class Law_BSpFunc : public Law_Function {
 	public:
@@ -1410,6 +1450,11 @@ class Handle_Law_BSpFunc : public Handle_Law_Function {
     }
 };
 
+%extend Law_BSpFunc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_Composite;
 class Law_Composite : public Law_Function {
 	public:
@@ -1578,6 +1623,11 @@ class Handle_Law_Composite : public Handle_Law_Function {
     }
 };
 
+%extend Law_Composite {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_Constant;
 class Law_Constant : public Law_Function {
 	public:
@@ -1722,6 +1772,11 @@ class Handle_Law_Constant : public Handle_Law_Function {
     }
 };
 
+%extend Law_Constant {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_Linear;
 class Law_Linear : public Law_Function {
 	public:
@@ -1872,6 +1927,11 @@ class Handle_Law_Linear : public Handle_Law_Function {
     }
 };
 
+%extend Law_Linear {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_Interpol;
 class Law_Interpol : public Law_BSpFunc {
 	public:
@@ -1982,6 +2042,11 @@ class Handle_Law_Interpol : public Handle_Law_BSpFunc {
     }
 };
 
+%extend Law_Interpol {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Law_S;
 class Law_S : public Law_BSpFunc {
 	public:
@@ -2072,3 +2137,8 @@ class Handle_Law_S : public Handle_Law_BSpFunc {
     }
 };
 
+%extend Law_S {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

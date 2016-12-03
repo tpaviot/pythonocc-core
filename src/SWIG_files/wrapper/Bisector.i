@@ -70,6 +70,11 @@ class Bisector {
 };
 
 
+%extend Bisector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bisector_Bisec;
 class Bisector_Bisec {
 	public:
@@ -180,6 +185,11 @@ class Bisector_Bisec {
 };
 
 
+%extend Bisector_Bisec {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bisector_Curve;
 class Bisector_Curve : public Geom2d_Curve {
 	public:
@@ -268,6 +278,11 @@ class Handle_Bisector_Curve : public Handle_Geom2d_Curve {
     }
 };
 
+%extend Bisector_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bisector_FunctionH;
 class Bisector_FunctionH : public math_FunctionWithDerivative {
 	public:
@@ -314,6 +329,11 @@ class Bisector_FunctionH : public math_FunctionWithDerivative {
 };
 
 
+%extend Bisector_FunctionH {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bisector_FunctionInter;
 class Bisector_FunctionInter : public math_FunctionWithDerivative {
 	public:
@@ -374,6 +394,11 @@ class Bisector_FunctionInter : public math_FunctionWithDerivative {
 };
 
 
+%extend Bisector_FunctionInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bisector_Inter;
 class Bisector_Inter : public IntRes2d_Intersection {
 	public:
@@ -424,6 +449,11 @@ class Bisector_Inter : public IntRes2d_Intersection {
 };
 
 
+%extend Bisector_Inter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bisector_PointOnBis;
 class Bisector_PointOnBis {
 	public:
@@ -512,6 +542,11 @@ class Bisector_PointOnBis {
 };
 
 
+%extend Bisector_PointOnBis {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bisector_PolyBis;
 class Bisector_PolyBis {
 	public:
@@ -562,6 +597,11 @@ class Bisector_PolyBis {
 };
 
 
+%extend Bisector_PolyBis {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bisector_BisecAna;
 class Bisector_BisecAna : public Bisector_Curve {
 	public:
@@ -886,6 +926,11 @@ class Handle_Bisector_BisecAna : public Handle_Bisector_Curve {
     }
 };
 
+%extend Bisector_BisecAna {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bisector_BisecCC;
 class Bisector_BisecCC : public Bisector_Curve {
 	public:
@@ -1192,6 +1237,11 @@ class Handle_Bisector_BisecCC : public Handle_Bisector_Curve {
     }
 };
 
+%extend Bisector_BisecCC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Bisector_BisecPC;
 class Bisector_BisecPC : public Bisector_Curve {
 	public:
@@ -1486,3 +1536,8 @@ class Handle_Bisector_BisecPC : public Handle_Bisector_Curve {
     }
 };
 
+%extend Bisector_BisecPC {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

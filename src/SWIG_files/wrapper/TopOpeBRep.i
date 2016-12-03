@@ -99,6 +99,11 @@ class TopOpeBRep {
 };
 
 
+%extend TopOpeBRep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_Array1OfLineInter;
 class TopOpeBRep_Array1OfLineInter {
 	public:
@@ -181,6 +186,11 @@ class TopOpeBRep_Array1OfLineInter {
 };
 
 
+%extend TopOpeBRep_Array1OfLineInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_Array1OfVPointInter;
 class TopOpeBRep_Array1OfVPointInter {
 	public:
@@ -263,6 +273,11 @@ class TopOpeBRep_Array1OfVPointInter {
 };
 
 
+%extend TopOpeBRep_Array1OfVPointInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_Bipoint;
 class TopOpeBRep_Bipoint {
 	public:
@@ -289,6 +304,11 @@ class TopOpeBRep_Bipoint {
 };
 
 
+%extend TopOpeBRep_Bipoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_DSFiller;
 class TopOpeBRep_DSFiller {
 	public:
@@ -463,6 +483,11 @@ class TopOpeBRep_DSFiller {
 };
 
 
+%extend TopOpeBRep_DSFiller {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool;
 class TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool : public TCollection_BasicMapIterator {
 	public:
@@ -493,6 +518,11 @@ class TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool : public TCollection_BasicM
 };
 
 
+%extend TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_DataMapNodeOfDataMapOfTopolTool;
 class TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public TCollection_MapNode {
 	public:
@@ -563,6 +593,11 @@ class Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public Handle_TCollect
     }
 };
 
+%extend TopOpeBRep_DataMapNodeOfDataMapOfTopolTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_DataMapOfTopolTool;
 class TopOpeBRep_DataMapOfTopolTool : public TCollection_BasicMap {
 	public:
@@ -641,6 +676,11 @@ class TopOpeBRep_DataMapOfTopolTool : public TCollection_BasicMap {
 };
 
 
+%extend TopOpeBRep_DataMapOfTopolTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_EdgesFiller;
 class TopOpeBRep_EdgesFiller {
 	public:
@@ -677,6 +717,11 @@ class TopOpeBRep_EdgesFiller {
 };
 
 
+%extend TopOpeBRep_EdgesFiller {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_EdgesIntersector;
 class TopOpeBRep_EdgesIntersector {
 	public:
@@ -861,6 +906,11 @@ class TopOpeBRep_EdgesIntersector {
 };
 
 
+%extend TopOpeBRep_EdgesIntersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_FFDumper;
 class TopOpeBRep_FFDumper : public MMgt_TShared {
 	public:
@@ -975,6 +1025,11 @@ class Handle_TopOpeBRep_FFDumper : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRep_FFDumper {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopOpeBRep_FFTransitionTool {
 	public:
 		%feature("compactdefaultargs") ProcessLineTransition;
@@ -1034,6 +1089,11 @@ class TopOpeBRep_FFTransitionTool {
 };
 
 
+%extend TopOpeBRep_FFTransitionTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_FaceEdgeFiller;
 class TopOpeBRep_FaceEdgeFiller {
 	public:
@@ -1056,6 +1116,11 @@ class TopOpeBRep_FaceEdgeFiller {
 };
 
 
+%extend TopOpeBRep_FaceEdgeFiller {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_FaceEdgeIntersector;
 class TopOpeBRep_FaceEdgeIntersector {
 	public:
@@ -1178,6 +1243,11 @@ class TopOpeBRep_FaceEdgeIntersector {
 };
 
 
+%extend TopOpeBRep_FaceEdgeIntersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_FacesFiller;
 class TopOpeBRep_FacesFiller {
 	public:
@@ -1602,6 +1672,11 @@ class TopOpeBRep_FacesFiller {
 };
 
 
+%extend TopOpeBRep_FacesFiller {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_FacesIntersector;
 class TopOpeBRep_FacesIntersector {
 	public:
@@ -1736,6 +1811,11 @@ class TopOpeBRep_FacesIntersector {
 };
 
 
+%extend TopOpeBRep_FacesIntersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopOpeBRep_GeomTool {
 	public:
 		%feature("compactdefaultargs") MakeCurves;
@@ -1789,6 +1869,11 @@ class TopOpeBRep_GeomTool {
 };
 
 
+%extend TopOpeBRep_GeomTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_HArray1OfLineInter;
 class TopOpeBRep_HArray1OfLineInter : public MMgt_TShared {
 	public:
@@ -1905,6 +1990,11 @@ class Handle_TopOpeBRep_HArray1OfLineInter : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRep_HArray1OfLineInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_HArray1OfVPointInter;
 class TopOpeBRep_HArray1OfVPointInter : public MMgt_TShared {
 	public:
@@ -2021,6 +2111,11 @@ class Handle_TopOpeBRep_HArray1OfVPointInter : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRep_HArray1OfVPointInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_Hctxee2d;
 class TopOpeBRep_Hctxee2d : public MMgt_TShared {
 	public:
@@ -2107,6 +2202,11 @@ class Handle_TopOpeBRep_Hctxee2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRep_Hctxee2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_Hctxff2d;
 class TopOpeBRep_Hctxff2d : public MMgt_TShared {
 	public:
@@ -2225,6 +2325,11 @@ class Handle_TopOpeBRep_Hctxff2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRep_Hctxff2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_LineInter;
 class TopOpeBRep_LineInter {
 	public:
@@ -2481,6 +2586,11 @@ class TopOpeBRep_LineInter {
         };
 
 
+%extend TopOpeBRep_LineInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_ListIteratorOfListOfBipoint;
 class TopOpeBRep_ListIteratorOfListOfBipoint {
 	public:
@@ -2515,6 +2625,11 @@ class TopOpeBRep_ListIteratorOfListOfBipoint {
 };
 
 
+%extend TopOpeBRep_ListIteratorOfListOfBipoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_ListNodeOfListOfBipoint;
 class TopOpeBRep_ListNodeOfListOfBipoint : public TCollection_MapNode {
 	public:
@@ -2579,6 +2694,11 @@ class Handle_TopOpeBRep_ListNodeOfListOfBipoint : public Handle_TCollection_MapN
     }
 };
 
+%extend TopOpeBRep_ListNodeOfListOfBipoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_ListOfBipoint;
 class TopOpeBRep_ListOfBipoint {
 	public:
@@ -2709,6 +2829,11 @@ class TopOpeBRep_ListOfBipoint {
 };
 
 
+%extend TopOpeBRep_ListOfBipoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_Point2d;
 class TopOpeBRep_Point2d {
 	public:
@@ -2919,6 +3044,11 @@ class TopOpeBRep_Point2d {
 };
 
 
+%extend TopOpeBRep_Point2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_PointClassifier;
 class TopOpeBRep_PointClassifier {
 	public:
@@ -2955,6 +3085,11 @@ class TopOpeBRep_PointClassifier {
 };
 
 
+%extend TopOpeBRep_PointClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopOpeBRep_PointGeomTool {
 	public:
 		%feature("compactdefaultargs") MakePoint;
@@ -2992,6 +3127,11 @@ class TopOpeBRep_PointGeomTool {
 };
 
 
+%extend TopOpeBRep_PointGeomTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_SequenceNodeOfSequenceOfPoint2d;
 class TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public TCollection_SeqNode {
 	public:
@@ -3058,6 +3198,11 @@ class Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public Handle_TCollect
     }
 };
 
+%extend TopOpeBRep_SequenceNodeOfSequenceOfPoint2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_SequenceOfPoint2d;
 class TopOpeBRep_SequenceOfPoint2d : public TCollection_BaseSequence {
 	public:
@@ -3196,6 +3341,11 @@ class TopOpeBRep_SequenceOfPoint2d : public TCollection_BaseSequence {
 };
 
 
+%extend TopOpeBRep_SequenceOfPoint2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_ShapeIntersector;
 class TopOpeBRep_ShapeIntersector {
 	public:
@@ -3308,6 +3458,11 @@ class TopOpeBRep_ShapeIntersector {
 };
 
 
+%extend TopOpeBRep_ShapeIntersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_ShapeIntersector2d;
 class TopOpeBRep_ShapeIntersector2d {
 	public:
@@ -3374,6 +3529,11 @@ class TopOpeBRep_ShapeIntersector2d {
 };
 
 
+%extend TopOpeBRep_ShapeIntersector2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_ShapeScanner;
 class TopOpeBRep_ShapeScanner {
 	public:
@@ -3442,6 +3602,11 @@ class TopOpeBRep_ShapeScanner {
         };
 
 
+%extend TopOpeBRep_ShapeScanner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_VPointInter;
 class TopOpeBRep_VPointInter {
 	public:
@@ -3744,6 +3909,11 @@ class TopOpeBRep_VPointInter {
 };
 
 
+%extend TopOpeBRep_VPointInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_VPointInterClassifier;
 class TopOpeBRep_VPointInterClassifier {
 	public:
@@ -3784,6 +3954,11 @@ class TopOpeBRep_VPointInterClassifier {
 };
 
 
+%extend TopOpeBRep_VPointInterClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_VPointInterIterator;
 class TopOpeBRep_VPointInterIterator {
 	public:
@@ -3836,6 +4011,11 @@ class TopOpeBRep_VPointInterIterator {
 };
 
 
+%extend TopOpeBRep_VPointInterIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_WPointInter;
 class TopOpeBRep_WPointInter {
 	public:
@@ -3896,6 +4076,11 @@ class TopOpeBRep_WPointInter {
 };
 
 
+%extend TopOpeBRep_WPointInter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRep_WPointInterIterator;
 class TopOpeBRep_WPointInterIterator {
 	public:
@@ -3938,3 +4123,8 @@ class TopOpeBRep_WPointInterIterator {
 };
 
 
+%extend TopOpeBRep_WPointInterIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

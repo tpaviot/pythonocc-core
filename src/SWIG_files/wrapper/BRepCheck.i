@@ -128,6 +128,11 @@ class BRepCheck {
 };
 
 
+%extend BRepCheck {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_Analyzer;
 class BRepCheck_Analyzer {
 	public:
@@ -174,6 +179,11 @@ class BRepCheck_Analyzer {
 };
 
 
+%extend BRepCheck_Analyzer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
 class BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus : public TCollection_BasicMapIterator {
 	public:
@@ -204,6 +214,11 @@ class BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus : public TCollection
 };
 
 
+%extend BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_DataMapIteratorOfDataMapOfShapeResult;
 class BRepCheck_DataMapIteratorOfDataMapOfShapeResult : public TCollection_BasicMapIterator {
 	public:
@@ -234,6 +249,11 @@ class BRepCheck_DataMapIteratorOfDataMapOfShapeResult : public TCollection_Basic
 };
 
 
+%extend BRepCheck_DataMapIteratorOfDataMapOfShapeResult {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus;
 class BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus : public TCollection_MapNode {
 	public:
@@ -304,6 +324,11 @@ class Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus : public Handle_T
     }
 };
 
+%extend BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_DataMapNodeOfDataMapOfShapeResult;
 class BRepCheck_DataMapNodeOfDataMapOfShapeResult : public TCollection_MapNode {
 	public:
@@ -374,6 +399,11 @@ class Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult : public Handle_TCollec
     }
 };
 
+%extend BRepCheck_DataMapNodeOfDataMapOfShapeResult {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_DataMapOfShapeListOfStatus;
 class BRepCheck_DataMapOfShapeListOfStatus : public TCollection_BasicMap {
 	public:
@@ -452,6 +482,11 @@ class BRepCheck_DataMapOfShapeListOfStatus : public TCollection_BasicMap {
 };
 
 
+%extend BRepCheck_DataMapOfShapeListOfStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_DataMapOfShapeResult;
 class BRepCheck_DataMapOfShapeResult : public TCollection_BasicMap {
 	public:
@@ -530,6 +565,11 @@ class BRepCheck_DataMapOfShapeResult : public TCollection_BasicMap {
 };
 
 
+%extend BRepCheck_DataMapOfShapeResult {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_ListIteratorOfListOfStatus;
 class BRepCheck_ListIteratorOfListOfStatus {
 	public:
@@ -564,6 +604,11 @@ class BRepCheck_ListIteratorOfListOfStatus {
 };
 
 
+%extend BRepCheck_ListIteratorOfListOfStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_ListNodeOfListOfStatus;
 class BRepCheck_ListNodeOfListOfStatus : public TCollection_MapNode {
 	public:
@@ -628,6 +673,11 @@ class Handle_BRepCheck_ListNodeOfListOfStatus : public Handle_TCollection_MapNod
     }
 };
 
+%extend BRepCheck_ListNodeOfListOfStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_ListOfStatus;
 class BRepCheck_ListOfStatus {
 	public:
@@ -758,6 +808,11 @@ class BRepCheck_ListOfStatus {
 };
 
 
+%extend BRepCheck_ListOfStatus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_Result;
 class BRepCheck_Result : public MMgt_TShared {
 	public:
@@ -876,6 +931,11 @@ class Handle_BRepCheck_Result : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepCheck_Result {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_Edge;
 class BRepCheck_Edge : public BRepCheck_Result {
 	public:
@@ -978,6 +1038,11 @@ class Handle_BRepCheck_Edge : public Handle_BRepCheck_Result {
     }
 };
 
+%extend BRepCheck_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_Face;
 class BRepCheck_Face : public BRepCheck_Result {
 	public:
@@ -1094,6 +1159,11 @@ class Handle_BRepCheck_Face : public Handle_BRepCheck_Result {
     }
 };
 
+%extend BRepCheck_Face {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_Shell;
 class BRepCheck_Shell : public BRepCheck_Result {
 	public:
@@ -1196,6 +1266,11 @@ class Handle_BRepCheck_Shell : public Handle_BRepCheck_Result {
     }
 };
 
+%extend BRepCheck_Shell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_Vertex;
 class BRepCheck_Vertex : public BRepCheck_Result {
 	public:
@@ -1272,6 +1347,11 @@ class Handle_BRepCheck_Vertex : public Handle_BRepCheck_Result {
     }
 };
 
+%extend BRepCheck_Vertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepCheck_Wire;
 class BRepCheck_Wire : public BRepCheck_Result {
 	public:
@@ -1414,3 +1494,8 @@ class Handle_BRepCheck_Wire : public Handle_BRepCheck_Result {
     }
 };
 
+%extend BRepCheck_Wire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

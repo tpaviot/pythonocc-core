@@ -76,6 +76,11 @@ class GeomPlate_Aij {
 };
 
 
+%extend GeomPlate_Aij {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_Array1OfHCurveOnSurface;
 class GeomPlate_Array1OfHCurveOnSurface {
 	public:
@@ -158,6 +163,11 @@ class GeomPlate_Array1OfHCurveOnSurface {
 };
 
 
+%extend GeomPlate_Array1OfHCurveOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_Array1OfSequenceOfReal;
 class GeomPlate_Array1OfSequenceOfReal {
 	public:
@@ -240,6 +250,11 @@ class GeomPlate_Array1OfSequenceOfReal {
 };
 
 
+%extend GeomPlate_Array1OfSequenceOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_BuildAveragePlane;
 class GeomPlate_BuildAveragePlane {
 	public:
@@ -324,6 +339,11 @@ class GeomPlate_BuildAveragePlane {
 };
 
 
+%extend GeomPlate_BuildAveragePlane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_BuildPlateSurface;
 class GeomPlate_BuildPlateSurface {
 	public:
@@ -554,6 +574,11 @@ class GeomPlate_BuildPlateSurface {
 };
 
 
+%extend GeomPlate_BuildPlateSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_CurveConstraint;
 class GeomPlate_CurveConstraint : public MMgt_TShared {
 	public:
@@ -810,6 +835,11 @@ class Handle_GeomPlate_CurveConstraint : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomPlate_CurveConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_HArray1OfHCurveOnSurface;
 class GeomPlate_HArray1OfHCurveOnSurface : public MMgt_TShared {
 	public:
@@ -926,6 +956,11 @@ class Handle_GeomPlate_HArray1OfHCurveOnSurface : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomPlate_HArray1OfHCurveOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_HArray1OfSequenceOfReal;
 class GeomPlate_HArray1OfSequenceOfReal : public MMgt_TShared {
 	public:
@@ -1042,6 +1077,11 @@ class Handle_GeomPlate_HArray1OfSequenceOfReal : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomPlate_HArray1OfSequenceOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_HSequenceOfCurveConstraint;
 class GeomPlate_HSequenceOfCurveConstraint : public MMgt_TShared {
 	public:
@@ -1226,6 +1266,11 @@ class Handle_GeomPlate_HSequenceOfCurveConstraint : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomPlate_HSequenceOfCurveConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_HSequenceOfPointConstraint;
 class GeomPlate_HSequenceOfPointConstraint : public MMgt_TShared {
 	public:
@@ -1410,6 +1455,11 @@ class Handle_GeomPlate_HSequenceOfPointConstraint : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomPlate_HSequenceOfPointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_MakeApprox;
 class GeomPlate_MakeApprox {
 	public:
@@ -1476,6 +1526,11 @@ class GeomPlate_MakeApprox {
 };
 
 
+%extend GeomPlate_MakeApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_PlateG0Criterion;
 class GeomPlate_PlateG0Criterion : public AdvApp2Var_Criterion {
 	public:
@@ -1510,6 +1565,11 @@ class GeomPlate_PlateG0Criterion : public AdvApp2Var_Criterion {
 };
 
 
+%extend GeomPlate_PlateG0Criterion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_PlateG1Criterion;
 class GeomPlate_PlateG1Criterion : public AdvApp2Var_Criterion {
 	public:
@@ -1544,6 +1604,11 @@ class GeomPlate_PlateG1Criterion : public AdvApp2Var_Criterion {
 };
 
 
+%extend GeomPlate_PlateG1Criterion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_PointConstraint;
 class GeomPlate_PointConstraint : public MMgt_TShared {
 	public:
@@ -1732,6 +1797,11 @@ class Handle_GeomPlate_PointConstraint : public Handle_MMgt_TShared {
     }
 };
 
+%extend GeomPlate_PointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_SequenceNodeOfSequenceOfAij;
 class GeomPlate_SequenceNodeOfSequenceOfAij : public TCollection_SeqNode {
 	public:
@@ -1798,6 +1868,11 @@ class Handle_GeomPlate_SequenceNodeOfSequenceOfAij : public Handle_TCollection_S
     }
 };
 
+%extend GeomPlate_SequenceNodeOfSequenceOfAij {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_SequenceNodeOfSequenceOfCurveConstraint;
 class GeomPlate_SequenceNodeOfSequenceOfCurveConstraint : public TCollection_SeqNode {
 	public:
@@ -1864,6 +1939,11 @@ class Handle_GeomPlate_SequenceNodeOfSequenceOfCurveConstraint : public Handle_T
     }
 };
 
+%extend GeomPlate_SequenceNodeOfSequenceOfCurveConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_SequenceNodeOfSequenceOfPointConstraint;
 class GeomPlate_SequenceNodeOfSequenceOfPointConstraint : public TCollection_SeqNode {
 	public:
@@ -1930,6 +2010,11 @@ class Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint : public Handle_T
     }
 };
 
+%extend GeomPlate_SequenceNodeOfSequenceOfPointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_SequenceOfAij;
 class GeomPlate_SequenceOfAij : public TCollection_BaseSequence {
 	public:
@@ -2068,6 +2153,11 @@ class GeomPlate_SequenceOfAij : public TCollection_BaseSequence {
 };
 
 
+%extend GeomPlate_SequenceOfAij {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_SequenceOfCurveConstraint;
 class GeomPlate_SequenceOfCurveConstraint : public TCollection_BaseSequence {
 	public:
@@ -2206,6 +2296,11 @@ class GeomPlate_SequenceOfCurveConstraint : public TCollection_BaseSequence {
 };
 
 
+%extend GeomPlate_SequenceOfCurveConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_SequenceOfPointConstraint;
 class GeomPlate_SequenceOfPointConstraint : public TCollection_BaseSequence {
 	public:
@@ -2344,6 +2439,11 @@ class GeomPlate_SequenceOfPointConstraint : public TCollection_BaseSequence {
 };
 
 
+%extend GeomPlate_SequenceOfPointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomPlate_Surface;
 class GeomPlate_Surface : public Geom_Surface {
 	public:
@@ -2678,3 +2778,8 @@ class Handle_GeomPlate_Surface : public Handle_Geom_Surface {
     }
 };
 
+%extend GeomPlate_Surface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

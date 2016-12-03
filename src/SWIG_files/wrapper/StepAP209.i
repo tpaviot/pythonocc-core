@@ -248,3 +248,8 @@ class StepAP209_Construct : public STEPConstruct_Tool {
 };
 
 
+%extend StepAP209_Construct {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -132,6 +132,11 @@ class BRepFill {
 };
 
 
+%extend BRepFill {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_ApproxSeewing;
 class BRepFill_ApproxSeewing {
 	public:
@@ -176,6 +181,11 @@ class BRepFill_ApproxSeewing {
 };
 
 
+%extend BRepFill_ApproxSeewing {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_CompatibleWires;
 class BRepFill_CompatibleWires {
 	public:
@@ -234,6 +244,11 @@ class BRepFill_CompatibleWires {
 };
 
 
+%extend BRepFill_CompatibleWires {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_ComputeCLine;
 class BRepFill_ComputeCLine {
 	public:
@@ -346,6 +361,11 @@ class BRepFill_ComputeCLine {
 };
 
 
+%extend BRepFill_ComputeCLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_CurveConstraint;
 class BRepFill_CurveConstraint : public GeomPlate_CurveConstraint {
 	public:
@@ -428,6 +448,11 @@ class Handle_BRepFill_CurveConstraint : public Handle_GeomPlate_CurveConstraint 
     }
 };
 
+%extend BRepFill_CurveConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape;
 class BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape : public TCollection_BasicMapIterator {
 	public:
@@ -458,6 +483,11 @@ class BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape : public TColle
 };
 
 
+%extend BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapIteratorOfDataMapOfNodeShape;
 class BRepFill_DataMapIteratorOfDataMapOfNodeShape : public TCollection_BasicMapIterator {
 	public:
@@ -488,6 +518,11 @@ class BRepFill_DataMapIteratorOfDataMapOfNodeShape : public TCollection_BasicMap
 };
 
 
+%extend BRepFill_DataMapIteratorOfDataMapOfNodeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape;
 class BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -518,6 +553,11 @@ class BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape : public TColl
 };
 
 
+%extend BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape;
 class BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -548,6 +588,11 @@ class BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape : public
 };
 
 
+%extend BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape;
 class BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape : public TCollection_BasicMapIterator {
 	public:
@@ -578,6 +623,11 @@ class BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape : public TCollectio
 };
 
 
+%extend BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt;
 class BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt : public TCollection_BasicMapIterator {
 	public:
@@ -608,6 +658,11 @@ class BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt : public TCollection
 };
 
 
+%extend BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfReal;
 class BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfReal : public TCollection_BasicMapIterator {
 	public:
@@ -638,6 +693,11 @@ class BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfReal : public TCollectio
 };
 
 
+%extend BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape;
 class BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape : public TCollection_MapNode {
 	public:
@@ -708,6 +768,11 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape : public Han
     }
 };
 
+%extend BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapNodeOfDataMapOfNodeShape;
 class BRepFill_DataMapNodeOfDataMapOfNodeShape : public TCollection_MapNode {
 	public:
@@ -778,6 +843,11 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape : public Handle_TCollectio
     }
 };
 
+%extend BRepFill_DataMapNodeOfDataMapOfNodeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape;
 class BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape : public TCollection_MapNode {
 	public:
@@ -848,6 +918,11 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape : public Ha
     }
 };
 
+%extend BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape;
 class BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape : public TCollection_MapNode {
 	public:
@@ -918,6 +993,11 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape : pub
     }
 };
 
+%extend BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape;
 class BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape : public TCollection_MapNode {
 	public:
@@ -988,6 +1068,11 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape : public Handle_
     }
 };
 
+%extend BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt;
 class BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt : public TCollection_MapNode {
 	public:
@@ -1058,6 +1143,11 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt : public Handle_T
     }
 };
 
+%extend BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal;
 class BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal : public TCollection_MapNode {
 	public:
@@ -1128,6 +1218,11 @@ class Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal : public Handle_
     }
 };
 
+%extend BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapOfNodeDataMapOfShapeShape;
 class BRepFill_DataMapOfNodeDataMapOfShapeShape : public TCollection_BasicMap {
 	public:
@@ -1206,6 +1301,11 @@ class BRepFill_DataMapOfNodeDataMapOfShapeShape : public TCollection_BasicMap {
 };
 
 
+%extend BRepFill_DataMapOfNodeDataMapOfShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapOfNodeShape;
 class BRepFill_DataMapOfNodeShape : public TCollection_BasicMap {
 	public:
@@ -1284,6 +1384,11 @@ class BRepFill_DataMapOfNodeShape : public TCollection_BasicMap {
 };
 
 
+%extend BRepFill_DataMapOfNodeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapOfOrientedShapeListOfShape;
 class BRepFill_DataMapOfOrientedShapeListOfShape : public TCollection_BasicMap {
 	public:
@@ -1362,6 +1467,11 @@ class BRepFill_DataMapOfOrientedShapeListOfShape : public TCollection_BasicMap {
 };
 
 
+%extend BRepFill_DataMapOfOrientedShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapOfShapeDataMapOfShapeListOfShape;
 class BRepFill_DataMapOfShapeDataMapOfShapeListOfShape : public TCollection_BasicMap {
 	public:
@@ -1440,6 +1550,11 @@ class BRepFill_DataMapOfShapeDataMapOfShapeListOfShape : public TCollection_Basi
 };
 
 
+%extend BRepFill_DataMapOfShapeDataMapOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapOfShapeHArray2OfShape;
 class BRepFill_DataMapOfShapeHArray2OfShape : public TCollection_BasicMap {
 	public:
@@ -1518,6 +1633,11 @@ class BRepFill_DataMapOfShapeHArray2OfShape : public TCollection_BasicMap {
 };
 
 
+%extend BRepFill_DataMapOfShapeHArray2OfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapOfShapeSequenceOfPnt;
 class BRepFill_DataMapOfShapeSequenceOfPnt : public TCollection_BasicMap {
 	public:
@@ -1596,6 +1716,11 @@ class BRepFill_DataMapOfShapeSequenceOfPnt : public TCollection_BasicMap {
 };
 
 
+%extend BRepFill_DataMapOfShapeSequenceOfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DataMapOfShapeSequenceOfReal;
 class BRepFill_DataMapOfShapeSequenceOfReal : public TCollection_BasicMap {
 	public:
@@ -1674,6 +1799,11 @@ class BRepFill_DataMapOfShapeSequenceOfReal : public TCollection_BasicMap {
 };
 
 
+%extend BRepFill_DataMapOfShapeSequenceOfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_Draft;
 class BRepFill_Draft {
 	public:
@@ -1750,6 +1880,11 @@ class BRepFill_Draft {
 };
 
 
+%extend BRepFill_Draft {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_EdgeFaceAndOrder;
 class BRepFill_EdgeFaceAndOrder {
 	public:
@@ -1770,6 +1905,11 @@ class BRepFill_EdgeFaceAndOrder {
 };
 
 
+%extend BRepFill_EdgeFaceAndOrder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_Evolved;
 class BRepFill_Evolved {
 	public:
@@ -1880,6 +2020,11 @@ class BRepFill_Evolved {
 };
 
 
+%extend BRepFill_Evolved {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_FaceAndOrder;
 class BRepFill_FaceAndOrder {
 	public:
@@ -1898,6 +2043,11 @@ class BRepFill_FaceAndOrder {
 };
 
 
+%extend BRepFill_FaceAndOrder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_Filling;
 class BRepFill_Filling {
 	public:
@@ -2086,6 +2236,11 @@ class BRepFill_Filling {
 };
 
 
+%extend BRepFill_Filling {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_Generator;
 class BRepFill_Generator {
 	public:
@@ -2126,6 +2281,11 @@ class BRepFill_Generator {
 };
 
 
+%extend BRepFill_Generator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape;
 class BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape : public TCollection_MapNode {
 	public:
@@ -2217,6 +2377,11 @@ class Handle_BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfSha
     }
 };
 
+%extend BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_IndexedDataMapOfOrientedShapeListOfShape;
 class BRepFill_IndexedDataMapOfOrientedShapeListOfShape : public TCollection_BasicMap {
 	public:
@@ -2327,6 +2492,11 @@ class BRepFill_IndexedDataMapOfOrientedShapeListOfShape : public TCollection_Bas
 };
 
 
+%extend BRepFill_IndexedDataMapOfOrientedShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_ListIteratorOfListOfOffsetWire;
 class BRepFill_ListIteratorOfListOfOffsetWire {
 	public:
@@ -2361,6 +2531,11 @@ class BRepFill_ListIteratorOfListOfOffsetWire {
 };
 
 
+%extend BRepFill_ListIteratorOfListOfOffsetWire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_ListNodeOfListOfOffsetWire;
 class BRepFill_ListNodeOfListOfOffsetWire : public TCollection_MapNode {
 	public:
@@ -2425,6 +2600,11 @@ class Handle_BRepFill_ListNodeOfListOfOffsetWire : public Handle_TCollection_Map
     }
 };
 
+%extend BRepFill_ListNodeOfListOfOffsetWire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_ListOfOffsetWire;
 class BRepFill_ListOfOffsetWire {
 	public:
@@ -2555,6 +2735,11 @@ class BRepFill_ListOfOffsetWire {
 };
 
 
+%extend BRepFill_ListOfOffsetWire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_LocationLaw;
 class BRepFill_LocationLaw : public MMgt_TShared {
 	public:
@@ -2755,6 +2940,11 @@ class Handle_BRepFill_LocationLaw : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepFill_LocationLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_MultiLine;
 class BRepFill_MultiLine {
 	public:
@@ -2855,6 +3045,11 @@ class BRepFill_MultiLine {
 };
 
 
+%extend BRepFill_MultiLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BRepFill_MultiLineTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -2968,6 +3163,11 @@ class BRepFill_MultiLineTool {
 };
 
 
+%extend BRepFill_MultiLineTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_MyLeastSquareOfComputeCLine;
 class BRepFill_MyLeastSquareOfComputeCLine {
 	public:
@@ -3010,6 +3210,11 @@ class BRepFill_MyLeastSquareOfComputeCLine {
 };
 
 
+%extend BRepFill_MyLeastSquareOfComputeCLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_OffsetAncestors;
 class BRepFill_OffsetAncestors {
 	public:
@@ -3050,6 +3255,11 @@ class BRepFill_OffsetAncestors {
 };
 
 
+%extend BRepFill_OffsetAncestors {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_OffsetWire;
 class BRepFill_OffsetWire {
 	public:
@@ -3136,6 +3346,11 @@ class BRepFill_OffsetWire {
 };
 
 
+%extend BRepFill_OffsetWire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_Pipe;
 class BRepFill_Pipe {
 	public:
@@ -3230,6 +3445,11 @@ class BRepFill_Pipe {
 };
 
 
+%extend BRepFill_Pipe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_PipeShell;
 class BRepFill_PipeShell : public MMgt_TShared {
 	public:
@@ -3516,6 +3736,11 @@ class Handle_BRepFill_PipeShell : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepFill_PipeShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_Section;
 class BRepFill_Section {
 	public:
@@ -3564,6 +3789,11 @@ class BRepFill_Section {
 };
 
 
+%extend BRepFill_Section {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_SectionLaw;
 class BRepFill_SectionLaw : public MMgt_TShared {
 	public:
@@ -3690,6 +3920,11 @@ class Handle_BRepFill_SectionLaw : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepFill_SectionLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_SectionPlacement;
 class BRepFill_SectionPlacement {
 	public:
@@ -3734,6 +3969,11 @@ class BRepFill_SectionPlacement {
 };
 
 
+%extend BRepFill_SectionPlacement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder;
 class BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder : public TCollection_SeqNode {
 	public:
@@ -3800,6 +4040,11 @@ class Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder : public Handle_T
     }
 };
 
+%extend BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_SequenceNodeOfSequenceOfFaceAndOrder;
 class BRepFill_SequenceNodeOfSequenceOfFaceAndOrder : public TCollection_SeqNode {
 	public:
@@ -3866,6 +4111,11 @@ class Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder : public Handle_TColl
     }
 };
 
+%extend BRepFill_SequenceNodeOfSequenceOfFaceAndOrder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_SequenceNodeOfSequenceOfSection;
 class BRepFill_SequenceNodeOfSequenceOfSection : public TCollection_SeqNode {
 	public:
@@ -3932,6 +4182,11 @@ class Handle_BRepFill_SequenceNodeOfSequenceOfSection : public Handle_TCollectio
     }
 };
 
+%extend BRepFill_SequenceNodeOfSequenceOfSection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_SequenceOfEdgeFaceAndOrder;
 class BRepFill_SequenceOfEdgeFaceAndOrder : public TCollection_BaseSequence {
 	public:
@@ -4070,6 +4325,11 @@ class BRepFill_SequenceOfEdgeFaceAndOrder : public TCollection_BaseSequence {
 };
 
 
+%extend BRepFill_SequenceOfEdgeFaceAndOrder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_SequenceOfFaceAndOrder;
 class BRepFill_SequenceOfFaceAndOrder : public TCollection_BaseSequence {
 	public:
@@ -4208,6 +4468,11 @@ class BRepFill_SequenceOfFaceAndOrder : public TCollection_BaseSequence {
 };
 
 
+%extend BRepFill_SequenceOfFaceAndOrder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_SequenceOfSection;
 class BRepFill_SequenceOfSection : public TCollection_BaseSequence {
 	public:
@@ -4346,6 +4611,11 @@ class BRepFill_SequenceOfSection : public TCollection_BaseSequence {
 };
 
 
+%extend BRepFill_SequenceOfSection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_Sweep;
 class BRepFill_Sweep {
 	public:
@@ -4454,6 +4724,11 @@ class BRepFill_Sweep {
 };
 
 
+%extend BRepFill_Sweep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_TrimEdgeTool;
 class BRepFill_TrimEdgeTool {
 	public:
@@ -4504,6 +4779,11 @@ class BRepFill_TrimEdgeTool {
 };
 
 
+%extend BRepFill_TrimEdgeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_TrimShellCorner;
 class BRepFill_TrimShellCorner {
 	public:
@@ -4570,6 +4850,11 @@ class BRepFill_TrimShellCorner {
 };
 
 
+%extend BRepFill_TrimShellCorner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_TrimSurfaceTool;
 class BRepFill_TrimSurfaceTool {
 	public:
@@ -4640,6 +4925,11 @@ class BRepFill_TrimSurfaceTool {
 };
 
 
+%extend BRepFill_TrimSurfaceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_ACRLaw;
 class BRepFill_ACRLaw : public BRepFill_LocationLaw {
 	public:
@@ -4700,6 +4990,11 @@ class Handle_BRepFill_ACRLaw : public Handle_BRepFill_LocationLaw {
     }
 };
 
+%extend BRepFill_ACRLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_Edge3DLaw;
 class BRepFill_Edge3DLaw : public BRepFill_LocationLaw {
 	public:
@@ -4760,6 +5055,11 @@ class Handle_BRepFill_Edge3DLaw : public Handle_BRepFill_LocationLaw {
     }
 };
 
+%extend BRepFill_Edge3DLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_EdgeOnSurfLaw;
 class BRepFill_EdgeOnSurfLaw : public BRepFill_LocationLaw {
 	public:
@@ -4826,6 +5126,11 @@ class Handle_BRepFill_EdgeOnSurfLaw : public Handle_BRepFill_LocationLaw {
     }
 };
 
+%extend BRepFill_EdgeOnSurfLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_NSections;
 class BRepFill_NSections : public BRepFill_SectionLaw {
 	public:
@@ -4956,6 +5261,11 @@ class Handle_BRepFill_NSections : public Handle_BRepFill_SectionLaw {
     }
 };
 
+%extend BRepFill_NSections {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_ShapeLaw;
 class BRepFill_ShapeLaw : public BRepFill_SectionLaw {
 	public:
@@ -5096,6 +5406,11 @@ class Handle_BRepFill_ShapeLaw : public Handle_BRepFill_SectionLaw {
     }
 };
 
+%extend BRepFill_ShapeLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFill_DraftLaw;
 class BRepFill_DraftLaw : public BRepFill_Edge3DLaw {
 	public:
@@ -5164,3 +5479,8 @@ class Handle_BRepFill_DraftLaw : public Handle_BRepFill_Edge3DLaw {
     }
 };
 
+%extend BRepFill_DraftLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

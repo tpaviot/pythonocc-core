@@ -136,6 +136,11 @@ class BRepSweep_Builder {
 };
 
 
+%extend BRepSweep_Builder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepSweep_Iterator;
 class BRepSweep_Iterator {
 	public:
@@ -178,6 +183,11 @@ class BRepSweep_Iterator {
 };
 
 
+%extend BRepSweep_Iterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepSweep_NumLinearRegularSweep;
 class BRepSweep_NumLinearRegularSweep {
 	public:
@@ -472,6 +482,11 @@ class BRepSweep_NumLinearRegularSweep {
 };
 
 
+%extend BRepSweep_NumLinearRegularSweep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepSweep_Prism;
 class BRepSweep_Prism {
 	public:
@@ -556,6 +571,11 @@ class BRepSweep_Prism {
 };
 
 
+%extend BRepSweep_Prism {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepSweep_Revol;
 class BRepSweep_Revol {
 	public:
@@ -642,6 +662,11 @@ class BRepSweep_Revol {
 };
 
 
+%extend BRepSweep_Revol {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepSweep_Tool;
 class BRepSweep_Tool {
 	public:
@@ -704,6 +729,11 @@ class BRepSweep_Tool {
 };
 
 
+%extend BRepSweep_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepSweep_Trsf;
 class BRepSweep_Trsf : public BRepSweep_NumLinearRegularSweep {
 	public:
@@ -948,6 +978,11 @@ class BRepSweep_Trsf : public BRepSweep_NumLinearRegularSweep {
 };
 
 
+%extend BRepSweep_Trsf {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepSweep_Rotation;
 class BRepSweep_Rotation : public BRepSweep_Trsf {
 	public:
@@ -1210,6 +1245,11 @@ class BRepSweep_Rotation : public BRepSweep_Trsf {
 };
 
 
+%extend BRepSweep_Rotation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepSweep_Translation;
 class BRepSweep_Translation : public BRepSweep_Trsf {
 	public:
@@ -1462,3 +1502,8 @@ class BRepSweep_Translation : public BRepSweep_Trsf {
 };
 
 
+%extend BRepSweep_Translation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

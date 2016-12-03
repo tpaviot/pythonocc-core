@@ -79,6 +79,11 @@ class Draft {
 };
 
 
+%extend Draft {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_DataMapIteratorOfDataMapOfEdgeEdgeInfo;
 class Draft_DataMapIteratorOfDataMapOfEdgeEdgeInfo : public TCollection_BasicMapIterator {
 	public:
@@ -109,6 +114,11 @@ class Draft_DataMapIteratorOfDataMapOfEdgeEdgeInfo : public TCollection_BasicMap
 };
 
 
+%extend Draft_DataMapIteratorOfDataMapOfEdgeEdgeInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_DataMapIteratorOfDataMapOfFaceFaceInfo;
 class Draft_DataMapIteratorOfDataMapOfFaceFaceInfo : public TCollection_BasicMapIterator {
 	public:
@@ -139,6 +149,11 @@ class Draft_DataMapIteratorOfDataMapOfFaceFaceInfo : public TCollection_BasicMap
 };
 
 
+%extend Draft_DataMapIteratorOfDataMapOfFaceFaceInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_DataMapIteratorOfDataMapOfVertexVertexInfo;
 class Draft_DataMapIteratorOfDataMapOfVertexVertexInfo : public TCollection_BasicMapIterator {
 	public:
@@ -169,6 +184,11 @@ class Draft_DataMapIteratorOfDataMapOfVertexVertexInfo : public TCollection_Basi
 };
 
 
+%extend Draft_DataMapIteratorOfDataMapOfVertexVertexInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo;
 class Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo : public TCollection_MapNode {
 	public:
@@ -239,6 +259,11 @@ class Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo : public Handle_TCollectio
     }
 };
 
+%extend Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_DataMapNodeOfDataMapOfFaceFaceInfo;
 class Draft_DataMapNodeOfDataMapOfFaceFaceInfo : public TCollection_MapNode {
 	public:
@@ -309,6 +334,11 @@ class Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo : public Handle_TCollectio
     }
 };
 
+%extend Draft_DataMapNodeOfDataMapOfFaceFaceInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_DataMapNodeOfDataMapOfVertexVertexInfo;
 class Draft_DataMapNodeOfDataMapOfVertexVertexInfo : public TCollection_MapNode {
 	public:
@@ -379,6 +409,11 @@ class Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo : public Handle_TColle
     }
 };
 
+%extend Draft_DataMapNodeOfDataMapOfVertexVertexInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_DataMapOfEdgeEdgeInfo;
 class Draft_DataMapOfEdgeEdgeInfo : public TCollection_BasicMap {
 	public:
@@ -457,6 +492,11 @@ class Draft_DataMapOfEdgeEdgeInfo : public TCollection_BasicMap {
 };
 
 
+%extend Draft_DataMapOfEdgeEdgeInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_DataMapOfFaceFaceInfo;
 class Draft_DataMapOfFaceFaceInfo : public TCollection_BasicMap {
 	public:
@@ -535,6 +575,11 @@ class Draft_DataMapOfFaceFaceInfo : public TCollection_BasicMap {
 };
 
 
+%extend Draft_DataMapOfFaceFaceInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_DataMapOfVertexVertexInfo;
 class Draft_DataMapOfVertexVertexInfo : public TCollection_BasicMap {
 	public:
@@ -613,6 +658,11 @@ class Draft_DataMapOfVertexVertexInfo : public TCollection_BasicMap {
 };
 
 
+%extend Draft_DataMapOfVertexVertexInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_EdgeInfo;
 class Draft_EdgeInfo {
 	public:
@@ -709,6 +759,11 @@ class Draft_EdgeInfo {
 };
 
 
+%extend Draft_EdgeInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_FaceInfo;
 class Draft_FaceInfo {
 	public:
@@ -771,6 +826,11 @@ class Draft_FaceInfo {
 };
 
 
+%extend Draft_FaceInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_Modification;
 class Draft_Modification : public BRepTools_Modification {
 	public:
@@ -997,6 +1057,11 @@ class Handle_Draft_Modification : public Handle_BRepTools_Modification {
     }
 };
 
+%extend Draft_Modification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Draft_VertexInfo;
 class Draft_VertexInfo {
 	public:
@@ -1049,3 +1114,8 @@ class Draft_VertexInfo {
 };
 
 
+%extend Draft_VertexInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

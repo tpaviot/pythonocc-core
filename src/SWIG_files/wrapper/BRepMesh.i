@@ -177,6 +177,11 @@ class BRepMesh_Circle {
 };
 
 
+%extend BRepMesh_Circle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_CircleInspector;
 class BRepMesh_CircleInspector : public NCollection_CellFilter_InspectorXY {
 	public:
@@ -252,6 +257,11 @@ typedef Standard_Integer Target;
 };
 
 
+%extend BRepMesh_CircleInspector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_CircleTool;
 class BRepMesh_CircleTool {
 	public:
@@ -360,6 +370,11 @@ class BRepMesh_CircleTool {
 };
 
 
+%extend BRepMesh_CircleTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_Classifier;
 class BRepMesh_Classifier {
 	public:
@@ -404,6 +419,11 @@ class BRepMesh_Classifier {
 };
 
 
+%extend BRepMesh_Classifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_DataStructureOfDelaun;
 class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 	public:
@@ -686,6 +706,11 @@ class Handle_BRepMesh_DataStructureOfDelaun : public Handle_Standard_Transient {
     }
 };
 
+%extend BRepMesh_DataStructureOfDelaun {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_Delaun;
 class BRepMesh_Delaun {
 	public:
@@ -794,6 +819,11 @@ class BRepMesh_Delaun {
 };
 
 
+%extend BRepMesh_Delaun {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_DiscretFactory;
 %ignore BRepMesh_DiscretFactory::~BRepMesh_DiscretFactory();
 class BRepMesh_DiscretFactory {
@@ -869,6 +899,11 @@ class BRepMesh_DiscretFactory {
 };
 
 
+%extend BRepMesh_DiscretFactory {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_DiscretRoot;
 class BRepMesh_DiscretRoot : public Standard_Transient {
 	public:
@@ -973,6 +1008,11 @@ class Handle_BRepMesh_DiscretRoot : public Handle_Standard_Transient {
     }
 };
 
+%extend BRepMesh_DiscretRoot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_EdgeChecker;
 class BRepMesh_EdgeChecker {
 	public:
@@ -993,6 +1033,11 @@ class BRepMesh_EdgeChecker {
 };
 
 
+%extend BRepMesh_EdgeChecker {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_FaceChecker;
 class BRepMesh_FaceChecker {
 	public:
@@ -1013,6 +1058,11 @@ class BRepMesh_FaceChecker {
 };
 
 
+%extend BRepMesh_FaceChecker {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_FastDiscret;
 class BRepMesh_FastDiscret : public Standard_Transient {
 	public:
@@ -1205,6 +1255,11 @@ class Handle_BRepMesh_FastDiscret : public Handle_Standard_Transient {
     }
 };
 
+%extend BRepMesh_FastDiscret {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_FastDiscretFace;
 class BRepMesh_FastDiscretFace : public Standard_Transient {
 	public:
@@ -1269,6 +1324,11 @@ class Handle_BRepMesh_FastDiscretFace : public Handle_Standard_Transient {
     }
 };
 
+%extend BRepMesh_FastDiscretFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_GeomTool;
 class BRepMesh_GeomTool {
 	public:
@@ -1377,6 +1437,11 @@ enum IntFlag {
 };
 
 
+%extend BRepMesh_GeomTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_IEdgeTool;
 class BRepMesh_IEdgeTool : public Standard_Transient {
 	public:
@@ -1449,6 +1514,11 @@ class Handle_BRepMesh_IEdgeTool : public Handle_Standard_Transient {
     }
 };
 
+%extend BRepMesh_IEdgeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_OrientedEdge;
 class BRepMesh_OrientedEdge {
 	public:
@@ -1519,6 +1589,11 @@ class BRepMesh_OrientedEdge {
         };
 
 
+%extend BRepMesh_OrientedEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_PairOfIndex;
 class BRepMesh_PairOfIndex {
 	public:
@@ -1603,6 +1678,11 @@ class BRepMesh_PairOfIndex {
 };
 
 
+%extend BRepMesh_PairOfIndex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_PairOfPolygon;
 class BRepMesh_PairOfPolygon {
 	public:
@@ -1649,6 +1729,11 @@ class BRepMesh_PairOfPolygon {
 };
 
 
+%extend BRepMesh_PairOfPolygon {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_SelectorOfDataStructureOfDelaun;
 class BRepMesh_SelectorOfDataStructureOfDelaun {
 	public:
@@ -1771,6 +1856,11 @@ class BRepMesh_SelectorOfDataStructureOfDelaun {
 };
 
 
+%extend BRepMesh_SelectorOfDataStructureOfDelaun {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BRepMesh_ShapeTool {
 	public:
 		%feature("compactdefaultargs") MaxFaceTolerance;
@@ -1904,6 +1994,11 @@ class BRepMesh_ShapeTool {
 };
 
 
+%extend BRepMesh_ShapeTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_Triangle;
 class BRepMesh_Triangle {
 	public:
@@ -2000,6 +2095,11 @@ class BRepMesh_Triangle {
         };
 
 
+%extend BRepMesh_Triangle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_Vertex;
 class BRepMesh_Vertex {
 	public:
@@ -2116,6 +2216,11 @@ class BRepMesh_Vertex {
         };
 
 
+%extend BRepMesh_Vertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_VertexInspector;
 class BRepMesh_VertexInspector : public NCollection_CellFilter_InspectorXY {
 	public:
@@ -2237,6 +2342,11 @@ typedef Standard_Integer Target;
 };
 
 
+%extend BRepMesh_VertexInspector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_VertexTool;
 class BRepMesh_VertexTool {
 	public:
@@ -2377,6 +2487,11 @@ class BRepMesh_VertexTool {
         };
 
 
+%extend BRepMesh_VertexTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_WireChecker;
 class BRepMesh_WireChecker {
 	public:
@@ -2423,6 +2538,11 @@ class BRepMesh_WireChecker {
 };
 
 
+%extend BRepMesh_WireChecker {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_Edge;
 class BRepMesh_Edge : public BRepMesh_OrientedEdge {
 	public:
@@ -2491,6 +2611,11 @@ class BRepMesh_Edge : public BRepMesh_OrientedEdge {
         };
 
 
+%extend BRepMesh_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepMesh_IncrementalMesh;
 class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 	public:
@@ -2639,3 +2764,8 @@ class Handle_BRepMesh_IncrementalMesh : public Handle_BRepMesh_DiscretRoot {
     }
 };
 
+%extend BRepMesh_IncrementalMesh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

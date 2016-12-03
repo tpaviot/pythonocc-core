@@ -150,6 +150,11 @@ class StepShape_Array1OfConnectedEdgeSet {
 };
 
 
+%extend StepShape_Array1OfConnectedEdgeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Array1OfConnectedFaceSet;
 class StepShape_Array1OfConnectedFaceSet {
 	public:
@@ -232,6 +237,11 @@ class StepShape_Array1OfConnectedFaceSet {
 };
 
 
+%extend StepShape_Array1OfConnectedFaceSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Array1OfEdge;
 class StepShape_Array1OfEdge {
 	public:
@@ -314,6 +324,11 @@ class StepShape_Array1OfEdge {
 };
 
 
+%extend StepShape_Array1OfEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Array1OfFace;
 class StepShape_Array1OfFace {
 	public:
@@ -396,6 +411,11 @@ class StepShape_Array1OfFace {
 };
 
 
+%extend StepShape_Array1OfFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Array1OfFaceBound;
 class StepShape_Array1OfFaceBound {
 	public:
@@ -478,6 +498,11 @@ class StepShape_Array1OfFaceBound {
 };
 
 
+%extend StepShape_Array1OfFaceBound {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Array1OfGeometricSetSelect;
 class StepShape_Array1OfGeometricSetSelect {
 	public:
@@ -560,6 +585,11 @@ class StepShape_Array1OfGeometricSetSelect {
 };
 
 
+%extend StepShape_Array1OfGeometricSetSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Array1OfOrientedClosedShell;
 class StepShape_Array1OfOrientedClosedShell {
 	public:
@@ -642,6 +672,11 @@ class StepShape_Array1OfOrientedClosedShell {
 };
 
 
+%extend StepShape_Array1OfOrientedClosedShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Array1OfOrientedEdge;
 class StepShape_Array1OfOrientedEdge {
 	public:
@@ -724,6 +759,11 @@ class StepShape_Array1OfOrientedEdge {
 };
 
 
+%extend StepShape_Array1OfOrientedEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Array1OfShell;
 class StepShape_Array1OfShell {
 	public:
@@ -806,6 +846,11 @@ class StepShape_Array1OfShell {
 };
 
 
+%extend StepShape_Array1OfShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Array1OfValueQualifier;
 class StepShape_Array1OfValueQualifier {
 	public:
@@ -888,6 +933,11 @@ class StepShape_Array1OfValueQualifier {
 };
 
 
+%extend StepShape_Array1OfValueQualifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Block;
 class StepShape_Block : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -1006,6 +1056,11 @@ class Handle_StepShape_Block : public Handle_StepGeom_GeometricRepresentationIte
     }
 };
 
+%extend StepShape_Block {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_BooleanOperand;
 class StepShape_BooleanOperand {
 	public:
@@ -1076,6 +1131,11 @@ class StepShape_BooleanOperand {
 };
 
 
+%extend StepShape_BooleanOperand {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_BooleanResult;
 class StepShape_BooleanResult : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -1182,6 +1242,11 @@ class Handle_StepShape_BooleanResult : public Handle_StepGeom_GeometricRepresent
     }
 };
 
+%extend StepShape_BooleanResult {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_BoxDomain;
 class StepShape_BoxDomain : public MMgt_TShared {
 	public:
@@ -1292,6 +1357,11 @@ class Handle_StepShape_BoxDomain : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_BoxDomain {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ConnectedFaceShapeRepresentation;
 class StepShape_ConnectedFaceShapeRepresentation : public StepRepr_Representation {
 	public:
@@ -1350,6 +1420,11 @@ class Handle_StepShape_ConnectedFaceShapeRepresentation : public Handle_StepRepr
     }
 };
 
+%extend StepShape_ConnectedFaceShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ContextDependentShapeRepresentation;
 class StepShape_ContextDependentShapeRepresentation : public MMgt_TShared {
 	public:
@@ -1434,6 +1509,11 @@ class Handle_StepShape_ContextDependentShapeRepresentation : public Handle_MMgt_
     }
 };
 
+%extend StepShape_ContextDependentShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_CsgPrimitive;
 class StepShape_CsgPrimitive : public StepData_SelectType {
 	public:
@@ -1490,6 +1570,11 @@ class StepShape_CsgPrimitive : public StepData_SelectType {
 };
 
 
+%extend StepShape_CsgPrimitive {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_CsgSelect;
 class StepShape_CsgSelect {
 	public:
@@ -1536,6 +1621,11 @@ class StepShape_CsgSelect {
 };
 
 
+%extend StepShape_CsgSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_DefinitionalRepresentationAndShapeRepresentation;
 class StepShape_DefinitionalRepresentationAndShapeRepresentation : public StepRepr_DefinitionalRepresentation {
 	public:
@@ -1592,6 +1682,11 @@ class Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation : public
     }
 };
 
+%extend StepShape_DefinitionalRepresentationAndShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_DimensionalCharacteristic;
 class StepShape_DimensionalCharacteristic : public StepData_SelectType {
 	public:
@@ -1624,6 +1719,11 @@ class StepShape_DimensionalCharacteristic : public StepData_SelectType {
 };
 
 
+%extend StepShape_DimensionalCharacteristic {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_DimensionalCharacteristicRepresentation;
 class StepShape_DimensionalCharacteristicRepresentation : public MMgt_TShared {
 	public:
@@ -1720,6 +1820,11 @@ class Handle_StepShape_DimensionalCharacteristicRepresentation : public Handle_M
     }
 };
 
+%extend StepShape_DimensionalCharacteristicRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_DimensionalLocation;
 class StepShape_DimensionalLocation : public StepRepr_ShapeAspectRelationship {
 	public:
@@ -1778,6 +1883,11 @@ class Handle_StepShape_DimensionalLocation : public Handle_StepRepr_ShapeAspectR
     }
 };
 
+%extend StepShape_DimensionalLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_DimensionalSize;
 class StepShape_DimensionalSize : public MMgt_TShared {
 	public:
@@ -1874,6 +1984,11 @@ class Handle_StepShape_DimensionalSize : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_DimensionalSize {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_EdgeBasedWireframeModel;
 class StepShape_EdgeBasedWireframeModel : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -1956,6 +2071,11 @@ class Handle_StepShape_EdgeBasedWireframeModel : public Handle_StepGeom_Geometri
     }
 };
 
+%extend StepShape_EdgeBasedWireframeModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_FaceBasedSurfaceModel;
 class StepShape_FaceBasedSurfaceModel : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -2038,6 +2158,11 @@ class Handle_StepShape_FaceBasedSurfaceModel : public Handle_StepGeom_GeometricR
     }
 };
 
+%extend StepShape_FaceBasedSurfaceModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_GeometricSet;
 class StepShape_GeometricSet : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -2130,6 +2255,11 @@ class Handle_StepShape_GeometricSet : public Handle_StepGeom_GeometricRepresenta
     }
 };
 
+%extend StepShape_GeometricSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_GeometricSetSelect;
 class StepShape_GeometricSetSelect : public StepData_SelectType {
 	public:
@@ -2168,6 +2298,11 @@ class StepShape_GeometricSetSelect : public StepData_SelectType {
 };
 
 
+%extend StepShape_GeometricSetSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_HArray1OfConnectedEdgeSet;
 class StepShape_HArray1OfConnectedEdgeSet : public MMgt_TShared {
 	public:
@@ -2284,6 +2419,11 @@ class Handle_StepShape_HArray1OfConnectedEdgeSet : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_HArray1OfConnectedEdgeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_HArray1OfConnectedFaceSet;
 class StepShape_HArray1OfConnectedFaceSet : public MMgt_TShared {
 	public:
@@ -2400,6 +2540,11 @@ class Handle_StepShape_HArray1OfConnectedFaceSet : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_HArray1OfConnectedFaceSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_HArray1OfEdge;
 class StepShape_HArray1OfEdge : public MMgt_TShared {
 	public:
@@ -2516,6 +2661,11 @@ class Handle_StepShape_HArray1OfEdge : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_HArray1OfEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_HArray1OfFace;
 class StepShape_HArray1OfFace : public MMgt_TShared {
 	public:
@@ -2632,6 +2782,11 @@ class Handle_StepShape_HArray1OfFace : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_HArray1OfFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_HArray1OfFaceBound;
 class StepShape_HArray1OfFaceBound : public MMgt_TShared {
 	public:
@@ -2748,6 +2903,11 @@ class Handle_StepShape_HArray1OfFaceBound : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_HArray1OfFaceBound {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_HArray1OfGeometricSetSelect;
 class StepShape_HArray1OfGeometricSetSelect : public MMgt_TShared {
 	public:
@@ -2864,6 +3024,11 @@ class Handle_StepShape_HArray1OfGeometricSetSelect : public Handle_MMgt_TShared 
     }
 };
 
+%extend StepShape_HArray1OfGeometricSetSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_HArray1OfOrientedClosedShell;
 class StepShape_HArray1OfOrientedClosedShell : public MMgt_TShared {
 	public:
@@ -2980,6 +3145,11 @@ class Handle_StepShape_HArray1OfOrientedClosedShell : public Handle_MMgt_TShared
     }
 };
 
+%extend StepShape_HArray1OfOrientedClosedShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_HArray1OfOrientedEdge;
 class StepShape_HArray1OfOrientedEdge : public MMgt_TShared {
 	public:
@@ -3096,6 +3266,11 @@ class Handle_StepShape_HArray1OfOrientedEdge : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_HArray1OfOrientedEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_HArray1OfShell;
 class StepShape_HArray1OfShell : public MMgt_TShared {
 	public:
@@ -3212,6 +3387,11 @@ class Handle_StepShape_HArray1OfShell : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_HArray1OfShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_HArray1OfValueQualifier;
 class StepShape_HArray1OfValueQualifier : public MMgt_TShared {
 	public:
@@ -3328,6 +3508,11 @@ class Handle_StepShape_HArray1OfValueQualifier : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_HArray1OfValueQualifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_HalfSpaceSolid;
 class StepShape_HalfSpaceSolid : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -3422,6 +3607,11 @@ class Handle_StepShape_HalfSpaceSolid : public Handle_StepGeom_GeometricRepresen
     }
 };
 
+%extend StepShape_HalfSpaceSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_LimitsAndFits;
 class StepShape_LimitsAndFits : public MMgt_TShared {
 	public:
@@ -3530,6 +3720,11 @@ class Handle_StepShape_LimitsAndFits : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_LimitsAndFits {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_MeasureQualification;
 class StepShape_MeasureQualification : public MMgt_TShared {
 	public:
@@ -3656,6 +3851,11 @@ class Handle_StepShape_MeasureQualification : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_MeasureQualification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem;
 class StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem : public StepRepr_RepresentationItem {
 	public:
@@ -3762,6 +3962,11 @@ class Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem :
     }
 };
 
+%extend StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_PlusMinusTolerance;
 class StepShape_PlusMinusTolerance : public MMgt_TShared {
 	public:
@@ -3846,6 +4051,11 @@ class Handle_StepShape_PlusMinusTolerance : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_PlusMinusTolerance {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_PrecisionQualifier;
 class StepShape_PrecisionQualifier : public MMgt_TShared {
 	public:
@@ -3918,6 +4128,11 @@ class Handle_StepShape_PrecisionQualifier : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_PrecisionQualifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_QualifiedRepresentationItem;
 class StepShape_QualifiedRepresentationItem : public StepRepr_RepresentationItem {
 	public:
@@ -4010,6 +4225,11 @@ class Handle_StepShape_QualifiedRepresentationItem : public Handle_StepRepr_Repr
     }
 };
 
+%extend StepShape_QualifiedRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ReversibleTopologyItem;
 class StepShape_ReversibleTopologyItem : public StepData_SelectType {
 	public:
@@ -4066,6 +4286,11 @@ class StepShape_ReversibleTopologyItem : public StepData_SelectType {
 };
 
 
+%extend StepShape_ReversibleTopologyItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_RightAngularWedge;
 class StepShape_RightAngularWedge : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -4196,6 +4421,11 @@ class Handle_StepShape_RightAngularWedge : public Handle_StepGeom_GeometricRepre
     }
 };
 
+%extend StepShape_RightAngularWedge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_RightCircularCone;
 class StepShape_RightCircularCone : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -4314,6 +4544,11 @@ class Handle_StepShape_RightCircularCone : public Handle_StepGeom_GeometricRepre
     }
 };
 
+%extend StepShape_RightCircularCone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_RightCircularCylinder;
 class StepShape_RightCircularCylinder : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -4420,6 +4655,11 @@ class Handle_StepShape_RightCircularCylinder : public Handle_StepGeom_GeometricR
     }
 };
 
+%extend StepShape_RightCircularCylinder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ShapeDefinitionRepresentation;
 class StepShape_ShapeDefinitionRepresentation : public StepRepr_PropertyDefinitionRepresentation {
 	public:
@@ -4478,6 +4718,11 @@ class Handle_StepShape_ShapeDefinitionRepresentation : public Handle_StepRepr_Pr
     }
 };
 
+%extend StepShape_ShapeDefinitionRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ShapeRepresentation;
 class StepShape_ShapeRepresentation : public StepRepr_Representation {
 	public:
@@ -4536,6 +4781,11 @@ class Handle_StepShape_ShapeRepresentation : public Handle_StepRepr_Representati
     }
 };
 
+%extend StepShape_ShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Shell;
 class StepShape_Shell : public StepData_SelectType {
 	public:
@@ -4568,6 +4818,11 @@ class StepShape_Shell : public StepData_SelectType {
 };
 
 
+%extend StepShape_Shell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ShellBasedSurfaceModel;
 class StepShape_ShellBasedSurfaceModel : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -4660,6 +4915,11 @@ class Handle_StepShape_ShellBasedSurfaceModel : public Handle_StepGeom_Geometric
     }
 };
 
+%extend StepShape_ShellBasedSurfaceModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_SolidModel;
 class StepShape_SolidModel : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -4718,6 +4978,11 @@ class Handle_StepShape_SolidModel : public Handle_StepGeom_GeometricRepresentati
     }
 };
 
+%extend StepShape_SolidModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Sphere;
 class StepShape_Sphere : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -4812,6 +5077,11 @@ class Handle_StepShape_Sphere : public Handle_StepGeom_GeometricRepresentationIt
     }
 };
 
+%extend StepShape_Sphere {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_SurfaceModel;
 class StepShape_SurfaceModel : public StepData_SelectType {
 	public:
@@ -4838,6 +5108,11 @@ class StepShape_SurfaceModel : public StepData_SelectType {
 };
 
 
+%extend StepShape_SurfaceModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ToleranceMethodDefinition;
 class StepShape_ToleranceMethodDefinition : public StepData_SelectType {
 	public:
@@ -4868,6 +5143,11 @@ class StepShape_ToleranceMethodDefinition : public StepData_SelectType {
 };
 
 
+%extend StepShape_ToleranceMethodDefinition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ToleranceValue;
 class StepShape_ToleranceValue : public MMgt_TShared {
 	public:
@@ -4952,6 +5232,11 @@ class Handle_StepShape_ToleranceValue : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_ToleranceValue {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_TopologicalRepresentationItem;
 class StepShape_TopologicalRepresentationItem : public StepRepr_RepresentationItem {
 	public:
@@ -5010,6 +5295,11 @@ class Handle_StepShape_TopologicalRepresentationItem : public Handle_StepRepr_Re
     }
 };
 
+%extend StepShape_TopologicalRepresentationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Torus;
 class StepShape_Torus : public StepGeom_GeometricRepresentationItem {
 	public:
@@ -5116,6 +5406,11 @@ class Handle_StepShape_Torus : public Handle_StepGeom_GeometricRepresentationIte
     }
 };
 
+%extend StepShape_Torus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_TypeQualifier;
 class StepShape_TypeQualifier : public MMgt_TShared {
 	public:
@@ -5188,6 +5483,11 @@ class Handle_StepShape_TypeQualifier : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepShape_TypeQualifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ValueQualifier;
 class StepShape_ValueQualifier : public StepData_SelectType {
 	public:
@@ -5218,6 +5518,11 @@ class StepShape_ValueQualifier : public StepData_SelectType {
 };
 
 
+%extend StepShape_ValueQualifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_AdvancedBrepShapeRepresentation;
 class StepShape_AdvancedBrepShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -5276,6 +5581,11 @@ class Handle_StepShape_AdvancedBrepShapeRepresentation : public Handle_StepShape
     }
 };
 
+%extend StepShape_AdvancedBrepShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_AngularLocation;
 class StepShape_AngularLocation : public StepShape_DimensionalLocation {
 	public:
@@ -5366,6 +5676,11 @@ class Handle_StepShape_AngularLocation : public Handle_StepShape_DimensionalLoca
     }
 };
 
+%extend StepShape_AngularLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_AngularSize;
 class StepShape_AngularSize : public StepShape_DimensionalSize {
 	public:
@@ -5450,6 +5765,11 @@ class Handle_StepShape_AngularSize : public Handle_StepShape_DimensionalSize {
     }
 };
 
+%extend StepShape_AngularSize {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_BoxedHalfSpace;
 class StepShape_BoxedHalfSpace : public StepShape_HalfSpaceSolid {
 	public:
@@ -5540,6 +5860,11 @@ class Handle_StepShape_BoxedHalfSpace : public Handle_StepShape_HalfSpaceSolid {
     }
 };
 
+%extend StepShape_BoxedHalfSpace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_CompoundShapeRepresentation;
 class StepShape_CompoundShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -5598,6 +5923,11 @@ class Handle_StepShape_CompoundShapeRepresentation : public Handle_StepShape_Sha
     }
 };
 
+%extend StepShape_CompoundShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ConnectedEdgeSet;
 class StepShape_ConnectedEdgeSet : public StepShape_TopologicalRepresentationItem {
 	public:
@@ -5680,6 +6010,11 @@ class Handle_StepShape_ConnectedEdgeSet : public Handle_StepShape_TopologicalRep
     }
 };
 
+%extend StepShape_ConnectedEdgeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ConnectedFaceSet;
 class StepShape_ConnectedFaceSet : public StepShape_TopologicalRepresentationItem {
 	public:
@@ -5772,6 +6107,11 @@ class Handle_StepShape_ConnectedFaceSet : public Handle_StepShape_TopologicalRep
     }
 };
 
+%extend StepShape_ConnectedFaceSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_CsgShapeRepresentation;
 class StepShape_CsgShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -5830,6 +6170,11 @@ class Handle_StepShape_CsgShapeRepresentation : public Handle_StepShape_ShapeRep
     }
 };
 
+%extend StepShape_CsgShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_CsgSolid;
 class StepShape_CsgSolid : public StepShape_SolidModel {
 	public:
@@ -5912,6 +6257,11 @@ class Handle_StepShape_CsgSolid : public Handle_StepShape_SolidModel {
     }
 };
 
+%extend StepShape_CsgSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_DimensionalLocationWithPath;
 class StepShape_DimensionalLocationWithPath : public StepShape_DimensionalLocation {
 	public:
@@ -6002,6 +6352,11 @@ class Handle_StepShape_DimensionalLocationWithPath : public Handle_StepShape_Dim
     }
 };
 
+%extend StepShape_DimensionalLocationWithPath {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_DimensionalSizeWithPath;
 class StepShape_DimensionalSizeWithPath : public StepShape_DimensionalSize {
 	public:
@@ -6086,6 +6441,11 @@ class Handle_StepShape_DimensionalSizeWithPath : public Handle_StepShape_Dimensi
     }
 };
 
+%extend StepShape_DimensionalSizeWithPath {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_DirectedDimensionalLocation;
 class StepShape_DirectedDimensionalLocation : public StepShape_DimensionalLocation {
 	public:
@@ -6144,6 +6504,11 @@ class Handle_StepShape_DirectedDimensionalLocation : public Handle_StepShape_Dim
     }
 };
 
+%extend StepShape_DirectedDimensionalLocation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Edge;
 class StepShape_Edge : public StepShape_TopologicalRepresentationItem {
 	public:
@@ -6238,6 +6603,11 @@ class Handle_StepShape_Edge : public Handle_StepShape_TopologicalRepresentationI
     }
 };
 
+%extend StepShape_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_EdgeBasedWireframeShapeRepresentation;
 class StepShape_EdgeBasedWireframeShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -6296,6 +6666,11 @@ class Handle_StepShape_EdgeBasedWireframeShapeRepresentation : public Handle_Ste
     }
 };
 
+%extend StepShape_EdgeBasedWireframeShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Face;
 class StepShape_Face : public StepShape_TopologicalRepresentationItem {
 	public:
@@ -6388,6 +6763,11 @@ class Handle_StepShape_Face : public Handle_StepShape_TopologicalRepresentationI
     }
 };
 
+%extend StepShape_Face {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_FaceBound;
 class StepShape_FaceBound : public StepShape_TopologicalRepresentationItem {
 	public:
@@ -6482,6 +6862,11 @@ class Handle_StepShape_FaceBound : public Handle_StepShape_TopologicalRepresenta
     }
 };
 
+%extend StepShape_FaceBound {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_FacetedBrepShapeRepresentation;
 class StepShape_FacetedBrepShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -6540,6 +6925,11 @@ class Handle_StepShape_FacetedBrepShapeRepresentation : public Handle_StepShape_
     }
 };
 
+%extend StepShape_FacetedBrepShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_GeometricCurveSet;
 class StepShape_GeometricCurveSet : public StepShape_GeometricSet {
 	public:
@@ -6598,6 +6988,11 @@ class Handle_StepShape_GeometricCurveSet : public Handle_StepShape_GeometricSet 
     }
 };
 
+%extend StepShape_GeometricCurveSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_GeometricallyBoundedSurfaceShapeRepresentation;
 class StepShape_GeometricallyBoundedSurfaceShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -6656,6 +7051,11 @@ class Handle_StepShape_GeometricallyBoundedSurfaceShapeRepresentation : public H
     }
 };
 
+%extend StepShape_GeometricallyBoundedSurfaceShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_GeometricallyBoundedWireframeShapeRepresentation;
 class StepShape_GeometricallyBoundedWireframeShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -6714,6 +7114,11 @@ class Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation : public
     }
 };
 
+%extend StepShape_GeometricallyBoundedWireframeShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Loop;
 class StepShape_Loop : public StepShape_TopologicalRepresentationItem {
 	public:
@@ -6772,6 +7177,11 @@ class Handle_StepShape_Loop : public Handle_StepShape_TopologicalRepresentationI
     }
 };
 
+%extend StepShape_Loop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_LoopAndPath;
 class StepShape_LoopAndPath : public StepShape_TopologicalRepresentationItem {
 	public:
@@ -6894,6 +7304,11 @@ class Handle_StepShape_LoopAndPath : public Handle_StepShape_TopologicalRepresen
     }
 };
 
+%extend StepShape_LoopAndPath {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ManifoldSolidBrep;
 class StepShape_ManifoldSolidBrep : public StepShape_SolidModel {
 	public:
@@ -6984,6 +7399,11 @@ class Handle_StepShape_ManifoldSolidBrep : public Handle_StepShape_SolidModel {
     }
 };
 
+%extend StepShape_ManifoldSolidBrep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ManifoldSurfaceShapeRepresentation;
 class StepShape_ManifoldSurfaceShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -7042,6 +7462,11 @@ class Handle_StepShape_ManifoldSurfaceShapeRepresentation : public Handle_StepSh
     }
 };
 
+%extend StepShape_ManifoldSurfaceShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_NonManifoldSurfaceShapeRepresentation;
 class StepShape_NonManifoldSurfaceShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -7100,6 +7525,11 @@ class Handle_StepShape_NonManifoldSurfaceShapeRepresentation : public Handle_Ste
     }
 };
 
+%extend StepShape_NonManifoldSurfaceShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Path;
 class StepShape_Path : public StepShape_TopologicalRepresentationItem {
 	public:
@@ -7192,6 +7622,11 @@ class Handle_StepShape_Path : public Handle_StepShape_TopologicalRepresentationI
     }
 };
 
+%extend StepShape_Path {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_PointRepresentation;
 class StepShape_PointRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -7250,6 +7685,11 @@ class Handle_StepShape_PointRepresentation : public Handle_StepShape_ShapeRepres
     }
 };
 
+%extend StepShape_PointRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ShapeDimensionRepresentation;
 class StepShape_ShapeDimensionRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -7308,6 +7748,11 @@ class Handle_StepShape_ShapeDimensionRepresentation : public Handle_StepShape_Sh
     }
 };
 
+%extend StepShape_ShapeDimensionRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ShapeRepresentationWithParameters;
 class StepShape_ShapeRepresentationWithParameters : public StepShape_ShapeRepresentation {
 	public:
@@ -7366,6 +7811,11 @@ class Handle_StepShape_ShapeRepresentationWithParameters : public Handle_StepSha
     }
 };
 
+%extend StepShape_ShapeRepresentationWithParameters {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_SolidReplica;
 class StepShape_SolidReplica : public StepShape_SolidModel {
 	public:
@@ -7460,6 +7910,11 @@ class Handle_StepShape_SolidReplica : public Handle_StepShape_SolidModel {
     }
 };
 
+%extend StepShape_SolidReplica {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_SweptAreaSolid;
 class StepShape_SweptAreaSolid : public StepShape_SolidModel {
 	public:
@@ -7542,6 +7997,11 @@ class Handle_StepShape_SweptAreaSolid : public Handle_StepShape_SolidModel {
     }
 };
 
+%extend StepShape_SweptAreaSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_SweptFaceSolid;
 class StepShape_SweptFaceSolid : public StepShape_SolidModel {
 	public:
@@ -7624,6 +8084,11 @@ class Handle_StepShape_SweptFaceSolid : public Handle_StepShape_SolidModel {
     }
 };
 
+%extend StepShape_SweptFaceSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_TransitionalShapeRepresentation;
 class StepShape_TransitionalShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
@@ -7682,6 +8147,11 @@ class Handle_StepShape_TransitionalShapeRepresentation : public Handle_StepShape
     }
 };
 
+%extend StepShape_TransitionalShapeRepresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Vertex;
 class StepShape_Vertex : public StepShape_TopologicalRepresentationItem {
 	public:
@@ -7740,6 +8210,11 @@ class Handle_StepShape_Vertex : public Handle_StepShape_TopologicalRepresentatio
     }
 };
 
+%extend StepShape_Vertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_BrepWithVoids;
 class StepShape_BrepWithVoids : public StepShape_ManifoldSolidBrep {
 	public:
@@ -7836,6 +8311,11 @@ class Handle_StepShape_BrepWithVoids : public Handle_StepShape_ManifoldSolidBrep
     }
 };
 
+%extend StepShape_BrepWithVoids {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ClosedShell;
 class StepShape_ClosedShell : public StepShape_ConnectedFaceSet {
 	public:
@@ -7894,6 +8374,11 @@ class Handle_StepShape_ClosedShell : public Handle_StepShape_ConnectedFaceSet {
     }
 };
 
+%extend StepShape_ClosedShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ConnectedFaceSubSet;
 class StepShape_ConnectedFaceSubSet : public StepShape_ConnectedFaceSet {
 	public:
@@ -7978,6 +8463,11 @@ class Handle_StepShape_ConnectedFaceSubSet : public Handle_StepShape_ConnectedFa
     }
 };
 
+%extend StepShape_ConnectedFaceSubSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_EdgeCurve;
 class StepShape_EdgeCurve : public StepShape_Edge {
 	public:
@@ -8080,6 +8570,11 @@ class Handle_StepShape_EdgeCurve : public Handle_StepShape_Edge {
     }
 };
 
+%extend StepShape_EdgeCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_EdgeLoop;
 class StepShape_EdgeLoop : public StepShape_Loop {
 	public:
@@ -8172,6 +8667,11 @@ class Handle_StepShape_EdgeLoop : public Handle_StepShape_Loop {
     }
 };
 
+%extend StepShape_EdgeLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ExtrudedAreaSolid;
 class StepShape_ExtrudedAreaSolid : public StepShape_SweptAreaSolid {
 	public:
@@ -8270,6 +8770,11 @@ class Handle_StepShape_ExtrudedAreaSolid : public Handle_StepShape_SweptAreaSoli
     }
 };
 
+%extend StepShape_ExtrudedAreaSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_ExtrudedFaceSolid;
 class StepShape_ExtrudedFaceSolid : public StepShape_SweptFaceSolid {
 	public:
@@ -8368,6 +8873,11 @@ class Handle_StepShape_ExtrudedFaceSolid : public Handle_StepShape_SweptFaceSoli
     }
 };
 
+%extend StepShape_ExtrudedFaceSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_FaceOuterBound;
 class StepShape_FaceOuterBound : public StepShape_FaceBound {
 	public:
@@ -8426,6 +8936,11 @@ class Handle_StepShape_FaceOuterBound : public Handle_StepShape_FaceBound {
     }
 };
 
+%extend StepShape_FaceOuterBound {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_FaceSurface;
 class StepShape_FaceSurface : public StepShape_Face {
 	public:
@@ -8524,6 +9039,11 @@ class Handle_StepShape_FaceSurface : public Handle_StepShape_Face {
     }
 };
 
+%extend StepShape_FaceSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_FacetedBrep;
 class StepShape_FacetedBrep : public StepShape_ManifoldSolidBrep {
 	public:
@@ -8582,6 +9102,11 @@ class Handle_StepShape_FacetedBrep : public Handle_StepShape_ManifoldSolidBrep {
     }
 };
 
+%extend StepShape_FacetedBrep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_FacetedBrepAndBrepWithVoids;
 class StepShape_FacetedBrepAndBrepWithVoids : public StepShape_ManifoldSolidBrep {
 	public:
@@ -8710,6 +9235,11 @@ class Handle_StepShape_FacetedBrepAndBrepWithVoids : public Handle_StepShape_Man
     }
 };
 
+%extend StepShape_FacetedBrepAndBrepWithVoids {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_OpenShell;
 class StepShape_OpenShell : public StepShape_ConnectedFaceSet {
 	public:
@@ -8768,6 +9298,11 @@ class Handle_StepShape_OpenShell : public Handle_StepShape_ConnectedFaceSet {
     }
 };
 
+%extend StepShape_OpenShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_OrientedEdge;
 class StepShape_OrientedEdge : public StepShape_Edge {
 	public:
@@ -8876,6 +9411,11 @@ class Handle_StepShape_OrientedEdge : public Handle_StepShape_Edge {
     }
 };
 
+%extend StepShape_OrientedEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_OrientedFace;
 class StepShape_OrientedFace : public StepShape_Face {
 	public:
@@ -8992,6 +9532,11 @@ class Handle_StepShape_OrientedFace : public Handle_StepShape_Face {
     }
 };
 
+%extend StepShape_OrientedFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_OrientedPath;
 class StepShape_OrientedPath : public StepShape_Path {
 	public:
@@ -9108,6 +9653,11 @@ class Handle_StepShape_OrientedPath : public Handle_StepShape_Path {
     }
 };
 
+%extend StepShape_OrientedPath {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_PolyLoop;
 class StepShape_PolyLoop : public StepShape_Loop {
 	public:
@@ -9200,6 +9750,11 @@ class Handle_StepShape_PolyLoop : public Handle_StepShape_Loop {
     }
 };
 
+%extend StepShape_PolyLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_RevolvedAreaSolid;
 class StepShape_RevolvedAreaSolid : public StepShape_SweptAreaSolid {
 	public:
@@ -9298,6 +9853,11 @@ class Handle_StepShape_RevolvedAreaSolid : public Handle_StepShape_SweptAreaSoli
     }
 };
 
+%extend StepShape_RevolvedAreaSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_RevolvedFaceSolid;
 class StepShape_RevolvedFaceSolid : public StepShape_SweptFaceSolid {
 	public:
@@ -9396,6 +9956,11 @@ class Handle_StepShape_RevolvedFaceSolid : public Handle_StepShape_SweptFaceSoli
     }
 };
 
+%extend StepShape_RevolvedFaceSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Subedge;
 class StepShape_Subedge : public StepShape_Edge {
 	public:
@@ -9482,6 +10047,11 @@ class Handle_StepShape_Subedge : public Handle_StepShape_Edge {
     }
 };
 
+%extend StepShape_Subedge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_Subface;
 class StepShape_Subface : public StepShape_Face {
 	public:
@@ -9566,6 +10136,11 @@ class Handle_StepShape_Subface : public Handle_StepShape_Face {
     }
 };
 
+%extend StepShape_Subface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_VertexLoop;
 class StepShape_VertexLoop : public StepShape_Loop {
 	public:
@@ -9648,6 +10223,11 @@ class Handle_StepShape_VertexLoop : public Handle_StepShape_Loop {
     }
 };
 
+%extend StepShape_VertexLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_VertexPoint;
 class StepShape_VertexPoint : public StepShape_Vertex {
 	public:
@@ -9730,6 +10310,11 @@ class Handle_StepShape_VertexPoint : public Handle_StepShape_Vertex {
     }
 };
 
+%extend StepShape_VertexPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_AdvancedFace;
 class StepShape_AdvancedFace : public StepShape_FaceSurface {
 	public:
@@ -9788,6 +10373,11 @@ class Handle_StepShape_AdvancedFace : public Handle_StepShape_FaceSurface {
     }
 };
 
+%extend StepShape_AdvancedFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_OrientedClosedShell;
 class StepShape_OrientedClosedShell : public StepShape_ClosedShell {
 	public:
@@ -9904,6 +10494,11 @@ class Handle_StepShape_OrientedClosedShell : public Handle_StepShape_ClosedShell
     }
 };
 
+%extend StepShape_OrientedClosedShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_OrientedOpenShell;
 class StepShape_OrientedOpenShell : public StepShape_OpenShell {
 	public:
@@ -10020,6 +10615,11 @@ class Handle_StepShape_OrientedOpenShell : public Handle_StepShape_OpenShell {
     }
 };
 
+%extend StepShape_OrientedOpenShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepShape_SeamEdge;
 class StepShape_SeamEdge : public StepShape_OrientedEdge {
 	public:
@@ -10106,3 +10706,8 @@ class Handle_StepShape_SeamEdge : public Handle_StepShape_OrientedEdge {
     }
 };
 
+%extend StepShape_SeamEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

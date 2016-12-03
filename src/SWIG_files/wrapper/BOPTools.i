@@ -110,6 +110,11 @@ class BOPTools {
 };
 
 
+%extend BOPTools {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BOPTools_AlgoTools {
 	public:
 		%feature("compactdefaultargs") ComputeVV;
@@ -733,6 +738,11 @@ class BOPTools_AlgoTools {
 };
 
 
+%extend BOPTools_AlgoTools {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BOPTools_AlgoTools2D {
 	public:
 		%feature("compactdefaultargs") BuildPCurveForEdgeOnFace;
@@ -928,6 +938,11 @@ class BOPTools_AlgoTools2D {
 };
 
 
+%extend BOPTools_AlgoTools2D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BOPTools_AlgoTools3D {
 	public:
 		%feature("compactdefaultargs") DoSplitSEAMOnFace;
@@ -1119,6 +1134,11 @@ class BOPTools_AlgoTools3D {
 };
 
 
+%extend BOPTools_AlgoTools3D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPTools_ConnexityBlock;
 class BOPTools_ConnexityBlock {
 	public:
@@ -1161,6 +1181,11 @@ class BOPTools_ConnexityBlock {
 };
 
 
+%extend BOPTools_ConnexityBlock {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPTools_CoupleOfShape;
 class BOPTools_CoupleOfShape {
 	public:
@@ -1191,6 +1216,11 @@ class BOPTools_CoupleOfShape {
 };
 
 
+%extend BOPTools_CoupleOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPTools_EdgeSet;
 class BOPTools_EdgeSet {
 	public:
@@ -1251,6 +1281,11 @@ class BOPTools_EdgeSet {
 };
 
 
+%extend BOPTools_EdgeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPTools_Set;
 class BOPTools_Set {
 	public:
@@ -1313,6 +1348,11 @@ class BOPTools_Set {
         };
 
 
+%extend BOPTools_Set {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BOPTools_SetMapHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -1334,6 +1374,11 @@ class BOPTools_SetMapHasher {
 };
 
 
+%extend BOPTools_SetMapHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPTools_ShapeSet;
 class BOPTools_ShapeSet {
 	public:
@@ -1426,3 +1471,8 @@ class BOPTools_ShapeSet {
 };
 
 
+%extend BOPTools_ShapeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

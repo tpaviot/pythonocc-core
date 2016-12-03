@@ -254,6 +254,11 @@ class IntWalk_PWalking {
 };
 
 
+%extend IntWalk_PWalking {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntWalk_TheFunctionOfTheInt2S;
 class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 	public:
@@ -360,6 +365,11 @@ class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend IntWalk_TheFunctionOfTheInt2S {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntWalk_TheInt2S;
 class IntWalk_TheInt2S {
 	public:
@@ -442,6 +452,11 @@ class IntWalk_TheInt2S {
 };
 
 
+%extend IntWalk_TheInt2S {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntWalk_WalkingData;
 class IntWalk_WalkingData {
 	public:
@@ -451,3 +466,8 @@ class IntWalk_WalkingData {
 };
 
 
+%extend IntWalk_WalkingData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

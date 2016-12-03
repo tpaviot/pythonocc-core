@@ -68,6 +68,11 @@ class ShapeBuild {
 };
 
 
+%extend ShapeBuild {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class ShapeBuild_Edge {
 	public:
 		%feature("compactdefaultargs") CopyReplaceVertices;
@@ -307,6 +312,11 @@ class ShapeBuild_Edge {
 };
 
 
+%extend ShapeBuild_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ShapeBuild_ReShape;
 class ShapeBuild_ReShape : public BRepTools_ReShape {
 	public:
@@ -407,6 +417,11 @@ class Handle_ShapeBuild_ReShape : public Handle_BRepTools_ReShape {
     }
 };
 
+%extend ShapeBuild_ReShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class ShapeBuild_Vertex {
 	public:
 		%feature("compactdefaultargs") CombineVertex;
@@ -440,3 +455,8 @@ class ShapeBuild_Vertex {
 };
 
 
+%extend ShapeBuild_Vertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

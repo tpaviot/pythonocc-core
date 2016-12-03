@@ -146,6 +146,11 @@ class BRepBuilderAPI {
 };
 
 
+%extend BRepBuilderAPI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_Collect;
 class BRepBuilderAPI_Collect {
 	public:
@@ -194,6 +199,11 @@ class BRepBuilderAPI_Collect {
 };
 
 
+%extend BRepBuilderAPI_Collect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_Command;
 class BRepBuilderAPI_Command {
 	public:
@@ -214,6 +224,11 @@ class BRepBuilderAPI_Command {
 };
 
 
+%extend BRepBuilderAPI_Command {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_FindPlane;
 class BRepBuilderAPI_FindPlane {
 	public:
@@ -258,6 +273,11 @@ class BRepBuilderAPI_FindPlane {
 };
 
 
+%extend BRepBuilderAPI_FindPlane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_Sewing;
 class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	public:
@@ -648,6 +668,11 @@ class Handle_BRepBuilderAPI_Sewing : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepBuilderAPI_Sewing {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_VertexInspector;
 class BRepBuilderAPI_VertexInspector : public NCollection_CellFilter_InspectorXYZ {
 	public:
@@ -699,6 +724,11 @@ typedef Standard_Integer Target;
 };
 
 
+%extend BRepBuilderAPI_VertexInspector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_BndBoxTreeSelector;
 class BRepBuilderAPI_BndBoxTreeSelector : public BRepBuilderAPI_BndBoxTree::Selector {
 	public:
@@ -747,6 +777,11 @@ class BRepBuilderAPI_BndBoxTreeSelector : public BRepBuilderAPI_BndBoxTree::Sele
 };
 
 
+%extend BRepBuilderAPI_BndBoxTreeSelector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_MakeShape;
 class BRepBuilderAPI_MakeShape : public BRepBuilderAPI_Command {
 	public:
@@ -797,6 +832,11 @@ class BRepBuilderAPI_MakeShape : public BRepBuilderAPI_Command {
 };
 
 
+%extend BRepBuilderAPI_MakeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_MakeEdge;
 class BRepBuilderAPI_MakeEdge : public BRepBuilderAPI_MakeShape {
 	public:
@@ -1321,6 +1361,11 @@ class BRepBuilderAPI_MakeEdge : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepBuilderAPI_MakeEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_MakeEdge2d;
 class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 	public:
@@ -1681,6 +1726,11 @@ class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepBuilderAPI_MakeEdge2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_MakeFace;
 class BRepBuilderAPI_MakeFace : public BRepBuilderAPI_MakeShape {
 	public:
@@ -2009,6 +2059,11 @@ class BRepBuilderAPI_MakeFace : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepBuilderAPI_MakeFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_MakePolygon;
 class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 	public:
@@ -2155,6 +2210,11 @@ class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepBuilderAPI_MakePolygon {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_MakeShell;
 class BRepBuilderAPI_MakeShell : public BRepBuilderAPI_MakeShape {
 	public:
@@ -2235,6 +2295,11 @@ class BRepBuilderAPI_MakeShell : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepBuilderAPI_MakeShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_MakeSolid;
 class BRepBuilderAPI_MakeSolid : public BRepBuilderAPI_MakeShape {
 	public:
@@ -2333,6 +2398,11 @@ class BRepBuilderAPI_MakeSolid : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepBuilderAPI_MakeSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_MakeVertex;
 class BRepBuilderAPI_MakeVertex : public BRepBuilderAPI_MakeShape {
 	public:
@@ -2357,6 +2427,11 @@ class BRepBuilderAPI_MakeVertex : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepBuilderAPI_MakeVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_MakeWire;
 class BRepBuilderAPI_MakeWire : public BRepBuilderAPI_MakeShape {
 	public:
@@ -2489,6 +2564,11 @@ class BRepBuilderAPI_MakeWire : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepBuilderAPI_MakeWire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_ModifyShape;
 class BRepBuilderAPI_ModifyShape : public BRepBuilderAPI_MakeShape {
 	public:
@@ -2511,6 +2591,11 @@ class BRepBuilderAPI_ModifyShape : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepBuilderAPI_ModifyShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_Copy;
 class BRepBuilderAPI_Copy : public BRepBuilderAPI_ModifyShape {
 	public:
@@ -2543,6 +2628,11 @@ class BRepBuilderAPI_Copy : public BRepBuilderAPI_ModifyShape {
 };
 
 
+%extend BRepBuilderAPI_Copy {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_GTransform;
 class BRepBuilderAPI_GTransform : public BRepBuilderAPI_ModifyShape {
 	public:
@@ -2595,6 +2685,11 @@ class BRepBuilderAPI_GTransform : public BRepBuilderAPI_ModifyShape {
 };
 
 
+%extend BRepBuilderAPI_GTransform {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_NurbsConvert;
 class BRepBuilderAPI_NurbsConvert : public BRepBuilderAPI_ModifyShape {
 	public:
@@ -2627,6 +2722,11 @@ class BRepBuilderAPI_NurbsConvert : public BRepBuilderAPI_ModifyShape {
 };
 
 
+%extend BRepBuilderAPI_NurbsConvert {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepBuilderAPI_Transform;
 class BRepBuilderAPI_Transform : public BRepBuilderAPI_ModifyShape {
 	public:
@@ -2679,3 +2779,8 @@ class BRepBuilderAPI_Transform : public BRepBuilderAPI_ModifyShape {
 };
 
 
+%extend BRepBuilderAPI_Transform {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

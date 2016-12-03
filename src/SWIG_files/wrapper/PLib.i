@@ -548,6 +548,11 @@ class PLib {
 };
 
 
+%extend PLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor PLib_Base;
 class PLib_Base : public MMgt_TShared {
 	public:
@@ -690,6 +695,11 @@ class Handle_PLib_Base : public Handle_MMgt_TShared {
     }
 };
 
+%extend PLib_Base {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor PLib_DoubleJacobiPolynomial;
 class PLib_DoubleJacobiPolynomial {
 	public:
@@ -834,6 +844,11 @@ class PLib_DoubleJacobiPolynomial {
 };
 
 
+%extend PLib_DoubleJacobiPolynomial {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor PLib_HermitJacobi;
 class PLib_HermitJacobi : public PLib_Base {
 	public:
@@ -1014,6 +1029,11 @@ class Handle_PLib_HermitJacobi : public Handle_PLib_Base {
     }
 };
 
+%extend PLib_HermitJacobi {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor PLib_JacobiPolynomial;
 class PLib_JacobiPolynomial : public PLib_Base {
 	public:
@@ -1222,3 +1242,8 @@ class Handle_PLib_JacobiPolynomial : public Handle_PLib_Base {
     }
 };
 
+%extend PLib_JacobiPolynomial {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

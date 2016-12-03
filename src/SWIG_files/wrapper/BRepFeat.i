@@ -189,6 +189,11 @@ class BRepFeat {
 };
 
 
+%extend BRepFeat {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_Builder;
 class BRepFeat_Builder : public BOPAlgo_BOP {
 	public:
@@ -313,6 +318,11 @@ class BRepFeat_Builder : public BOPAlgo_BOP {
 };
 
 
+%extend BRepFeat_Builder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_Form;
 class BRepFeat_Form : public BRepBuilderAPI_MakeShape {
 	public:
@@ -421,6 +431,11 @@ class BRepFeat_Form : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepFeat_Form {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_Gluer;
 class BRepFeat_Gluer : public BRepBuilderAPI_MakeShape {
 	public:
@@ -513,6 +528,11 @@ class BRepFeat_Gluer : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepFeat_Gluer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_RibSlot;
 class BRepFeat_RibSlot : public BRepBuilderAPI_MakeShape {
 	public:
@@ -599,6 +619,11 @@ class BRepFeat_RibSlot : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepFeat_RibSlot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_SplitShape;
 class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 	public:
@@ -709,6 +734,11 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 };
 
 
+%extend BRepFeat_SplitShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_MakeCylindricalHole;
 class BRepFeat_MakeCylindricalHole : public BRepFeat_Builder {
 	public:
@@ -805,6 +835,11 @@ class BRepFeat_MakeCylindricalHole : public BRepFeat_Builder {
 };
 
 
+%extend BRepFeat_MakeCylindricalHole {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_MakeDPrism;
 class BRepFeat_MakeDPrism : public BRepFeat_Form {
 	public:
@@ -943,6 +978,11 @@ class BRepFeat_MakeDPrism : public BRepFeat_Form {
 };
 
 
+%extend BRepFeat_MakeDPrism {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_MakeLinearForm;
 class BRepFeat_MakeLinearForm : public BRepFeat_RibSlot {
 	public:
@@ -1025,6 +1065,11 @@ class BRepFeat_MakeLinearForm : public BRepFeat_RibSlot {
 };
 
 
+%extend BRepFeat_MakeLinearForm {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_MakePipe;
 class BRepFeat_MakePipe : public BRepFeat_Form {
 	public:
@@ -1113,6 +1158,11 @@ class BRepFeat_MakePipe : public BRepFeat_Form {
 };
 
 
+%extend BRepFeat_MakePipe {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_MakePrism;
 class BRepFeat_MakePrism : public BRepFeat_Form {
 	public:
@@ -1237,6 +1287,11 @@ class BRepFeat_MakePrism : public BRepFeat_Form {
 };
 
 
+%extend BRepFeat_MakePrism {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_MakeRevol;
 class BRepFeat_MakeRevol : public BRepFeat_Form {
 	public:
@@ -1341,6 +1396,11 @@ class BRepFeat_MakeRevol : public BRepFeat_Form {
 };
 
 
+%extend BRepFeat_MakeRevol {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepFeat_MakeRevolutionForm;
 class BRepFeat_MakeRevolutionForm : public BRepFeat_RibSlot {
 	public:
@@ -1427,3 +1487,8 @@ class BRepFeat_MakeRevolutionForm : public BRepFeat_RibSlot {
 };
 
 
+%extend BRepFeat_MakeRevolutionForm {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

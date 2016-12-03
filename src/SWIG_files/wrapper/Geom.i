@@ -238,6 +238,11 @@ class Handle_Geom_Geometry : public Handle_MMgt_TShared {
     }
 };
 
+%extend Geom_Geometry {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_HSequenceOfBSplineSurface;
 class Geom_HSequenceOfBSplineSurface : public MMgt_TShared {
 	public:
@@ -422,6 +427,11 @@ class Handle_Geom_HSequenceOfBSplineSurface : public Handle_MMgt_TShared {
     }
 };
 
+%extend Geom_HSequenceOfBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_OsculatingSurface;
 class Geom_OsculatingSurface {
 	public:
@@ -486,6 +496,11 @@ class Geom_OsculatingSurface {
 };
 
 
+%extend Geom_OsculatingSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_SequenceNodeOfSequenceOfBSplineSurface;
 class Geom_SequenceNodeOfSequenceOfBSplineSurface : public TCollection_SeqNode {
 	public:
@@ -552,6 +567,11 @@ class Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface : public Handle_TCollec
     }
 };
 
+%extend Geom_SequenceNodeOfSequenceOfBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_SequenceOfBSplineSurface;
 class Geom_SequenceOfBSplineSurface : public TCollection_BaseSequence {
 	public:
@@ -690,6 +710,11 @@ class Geom_SequenceOfBSplineSurface : public TCollection_BaseSequence {
 };
 
 
+%extend Geom_SequenceOfBSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Transformation;
 class Geom_Transformation : public MMgt_TShared {
 	public:
@@ -948,6 +973,11 @@ class Handle_Geom_Transformation : public Handle_MMgt_TShared {
     }
 };
 
+%extend Geom_Transformation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_AxisPlacement;
 class Geom_AxisPlacement : public Geom_Geometry {
 	public:
@@ -1050,6 +1080,11 @@ class Handle_Geom_AxisPlacement : public Handle_Geom_Geometry {
     }
 };
 
+%extend Geom_AxisPlacement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Curve;
 class Geom_Curve : public Geom_Geometry {
 	public:
@@ -1254,6 +1289,11 @@ class Handle_Geom_Curve : public Handle_Geom_Geometry {
     }
 };
 
+%extend Geom_Curve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Point;
 class Geom_Point : public Geom_Geometry {
 	public:
@@ -1358,6 +1398,11 @@ class Handle_Geom_Point : public Handle_Geom_Geometry {
     }
 };
 
+%extend Geom_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Surface;
 class Geom_Surface : public Geom_Geometry {
 	public:
@@ -1662,6 +1707,11 @@ class Handle_Geom_Surface : public Handle_Geom_Geometry {
     }
 };
 
+%extend Geom_Surface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Vector;
 class Geom_Vector : public Geom_Geometry {
 	public:
@@ -1846,6 +1896,11 @@ class Handle_Geom_Vector : public Handle_Geom_Geometry {
     }
 };
 
+%extend Geom_Vector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Axis1Placement;
 class Geom_Axis1Placement : public Geom_AxisPlacement {
 	public:
@@ -1956,6 +2011,11 @@ class Handle_Geom_Axis1Placement : public Handle_Geom_AxisPlacement {
     }
 };
 
+%extend Geom_Axis1Placement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Axis2Placement;
 class Geom_Axis2Placement : public Geom_AxisPlacement {
 	public:
@@ -2092,6 +2152,11 @@ class Handle_Geom_Axis2Placement : public Handle_Geom_AxisPlacement {
     }
 };
 
+%extend Geom_Axis2Placement {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_BoundedCurve;
 class Geom_BoundedCurve : public Geom_Curve {
 	public:
@@ -2156,6 +2221,11 @@ class Handle_Geom_BoundedCurve : public Handle_Geom_Curve {
     }
 };
 
+%extend Geom_BoundedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_BoundedSurface;
 class Geom_BoundedSurface : public Geom_Surface {
 	public:
@@ -2208,6 +2278,11 @@ class Handle_Geom_BoundedSurface : public Handle_Geom_Surface {
     }
 };
 
+%extend Geom_BoundedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_CartesianPoint;
 class Geom_CartesianPoint : public Geom_Point {
 	public:
@@ -2374,6 +2449,11 @@ class Handle_Geom_CartesianPoint : public Handle_Geom_Point {
     }
 };
 
+%extend Geom_CartesianPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Conic;
 class Geom_Conic : public Geom_Curve {
 	public:
@@ -2514,6 +2594,11 @@ class Handle_Geom_Conic : public Handle_Geom_Curve {
     }
 };
 
+%extend Geom_Conic {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Direction;
 class Geom_Direction : public Geom_Vector {
 	public:
@@ -2698,6 +2783,11 @@ class Handle_Geom_Direction : public Handle_Geom_Vector {
     }
 };
 
+%extend Geom_Direction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_ElementarySurface;
 class Geom_ElementarySurface : public Geom_Surface {
 	public:
@@ -2842,6 +2932,11 @@ class Handle_Geom_ElementarySurface : public Handle_Geom_Surface {
     }
 };
 
+%extend Geom_ElementarySurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Line;
 class Geom_Line : public Geom_Curve {
 	public:
@@ -3110,6 +3205,11 @@ class Handle_Geom_Line : public Handle_Geom_Curve {
     }
 };
 
+%extend Geom_Line {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_OffsetCurve;
 class Geom_OffsetCurve : public Geom_Curve {
 	public:
@@ -3432,6 +3532,11 @@ class Handle_Geom_OffsetCurve : public Handle_Geom_Curve {
     }
 };
 
+%extend Geom_OffsetCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_OffsetSurface;
 class Geom_OffsetSurface : public Geom_Surface {
 	public:
@@ -3992,6 +4097,11 @@ class Handle_Geom_OffsetSurface : public Handle_Geom_Surface {
     }
 };
 
+%extend Geom_OffsetSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_SweptSurface;
 class Geom_SweptSurface : public Geom_Surface {
 	public:
@@ -4062,6 +4172,11 @@ class Handle_Geom_SweptSurface : public Handle_Geom_Surface {
     }
 };
 
+%extend Geom_SweptSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_VectorWithMagnitude;
 class Geom_VectorWithMagnitude : public Geom_Vector {
 	public:
@@ -4326,6 +4441,11 @@ class Handle_Geom_VectorWithMagnitude : public Handle_Geom_Vector {
     }
 };
 
+%extend Geom_VectorWithMagnitude {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_BSplineCurve;
 class Geom_BSplineCurve : public Geom_BoundedCurve {
 	public:
@@ -5034,6 +5154,11 @@ class Handle_Geom_BSplineCurve : public Handle_Geom_BoundedCurve {
     }
 };
 
+%extend Geom_BSplineCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_BSplineSurface;
 class Geom_BSplineSurface : public Geom_BoundedSurface {
 	public:
@@ -6200,6 +6325,11 @@ class Handle_Geom_BSplineSurface : public Handle_Geom_BoundedSurface {
     }
 };
 
+%extend Geom_BSplineSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_BezierCurve;
 class Geom_BezierCurve : public Geom_BoundedCurve {
 	public:
@@ -6572,6 +6702,11 @@ class Handle_Geom_BezierCurve : public Handle_Geom_BoundedCurve {
     }
 };
 
+%extend Geom_BezierCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_BezierSurface;
 class Geom_BezierSurface : public Geom_BoundedSurface {
 	public:
@@ -7174,6 +7309,11 @@ class Handle_Geom_BezierSurface : public Handle_Geom_BoundedSurface {
     }
 };
 
+%extend Geom_BezierSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Circle;
 class Geom_Circle : public Geom_Conic {
 	public:
@@ -7386,6 +7526,11 @@ class Handle_Geom_Circle : public Handle_Geom_Conic {
     }
 };
 
+%extend Geom_Circle {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_ConicalSurface;
 class Geom_ConicalSurface : public Geom_ElementarySurface {
 	public:
@@ -7736,6 +7881,11 @@ class Handle_Geom_ConicalSurface : public Handle_Geom_ElementarySurface {
     }
 };
 
+%extend Geom_ConicalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_CylindricalSurface;
 class Geom_CylindricalSurface : public Geom_ElementarySurface {
 	public:
@@ -8058,6 +8208,11 @@ class Handle_Geom_CylindricalSurface : public Handle_Geom_ElementarySurface {
     }
 };
 
+%extend Geom_CylindricalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Ellipse;
 class Geom_Ellipse : public Geom_Conic {
 	public:
@@ -8320,6 +8475,11 @@ class Handle_Geom_Ellipse : public Handle_Geom_Conic {
     }
 };
 
+%extend Geom_Ellipse {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Hyperbola;
 class Geom_Hyperbola : public Geom_Conic {
 	public:
@@ -8614,6 +8774,11 @@ class Handle_Geom_Hyperbola : public Handle_Geom_Conic {
     }
 };
 
+%extend Geom_Hyperbola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Parabola;
 class Geom_Parabola : public Geom_Conic {
 	public:
@@ -8872,6 +9037,11 @@ class Handle_Geom_Parabola : public Handle_Geom_Conic {
     }
 };
 
+%extend Geom_Parabola {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_Plane;
 class Geom_Plane : public Geom_ElementarySurface {
 	public:
@@ -9202,6 +9372,11 @@ class Handle_Geom_Plane : public Handle_Geom_ElementarySurface {
     }
 };
 
+%extend Geom_Plane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_RectangularTrimmedSurface;
 class Geom_RectangularTrimmedSurface : public Geom_BoundedSurface {
 	public:
@@ -9572,6 +9747,11 @@ class Handle_Geom_RectangularTrimmedSurface : public Handle_Geom_BoundedSurface 
     }
 };
 
+%extend Geom_RectangularTrimmedSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_SphericalSurface;
 class Geom_SphericalSurface : public Geom_ElementarySurface {
 	public:
@@ -9886,6 +10066,11 @@ class Handle_Geom_SphericalSurface : public Handle_Geom_ElementarySurface {
     }
 };
 
+%extend Geom_SphericalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_SurfaceOfLinearExtrusion;
 class Geom_SurfaceOfLinearExtrusion : public Geom_SweptSurface {
 	public:
@@ -10286,6 +10471,11 @@ class Handle_Geom_SurfaceOfLinearExtrusion : public Handle_Geom_SweptSurface {
     }
 };
 
+%extend Geom_SurfaceOfLinearExtrusion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_SurfaceOfRevolution;
 class Geom_SurfaceOfRevolution : public Geom_SweptSurface {
 	public:
@@ -10718,6 +10908,11 @@ class Handle_Geom_SurfaceOfRevolution : public Handle_Geom_SweptSurface {
     }
 };
 
+%extend Geom_SurfaceOfRevolution {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_ToroidalSurface;
 class Geom_ToroidalSurface : public Geom_ElementarySurface {
 	public:
@@ -11030,6 +11225,11 @@ class Handle_Geom_ToroidalSurface : public Handle_Geom_ElementarySurface {
     }
 };
 
+%extend Geom_ToroidalSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Geom_TrimmedCurve;
 class Geom_TrimmedCurve : public Geom_BoundedCurve {
 	public:
@@ -11278,3 +11478,8 @@ class Handle_Geom_TrimmedCurve : public Handle_Geom_BoundedCurve {
     }
 };
 
+%extend Geom_TrimmedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

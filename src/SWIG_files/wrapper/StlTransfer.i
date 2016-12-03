@@ -74,3 +74,8 @@ class StlTransfer {
 };
 
 
+%extend StlTransfer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

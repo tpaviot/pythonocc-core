@@ -298,6 +298,11 @@ class BRepLib {
 };
 
 
+%extend BRepLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_Command;
 class BRepLib_Command {
 	public:
@@ -318,6 +323,11 @@ class BRepLib_Command {
 };
 
 
+%extend BRepLib_Command {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_FindSurface;
 class BRepLib_FindSurface {
 	public:
@@ -380,6 +390,11 @@ class BRepLib_FindSurface {
 };
 
 
+%extend BRepLib_FindSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_FuseEdges;
 class BRepLib_FuseEdges {
 	public:
@@ -454,6 +469,11 @@ class BRepLib_FuseEdges {
 };
 
 
+%extend BRepLib_FuseEdges {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_MakeShape;
 class BRepLib_MakeShape : public BRepLib_Command {
 	public:
@@ -520,6 +540,11 @@ class BRepLib_MakeShape : public BRepLib_Command {
 };
 
 
+%extend BRepLib_MakeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_MakeEdge;
 class BRepLib_MakeEdge : public BRepLib_MakeShape {
 	public:
@@ -1032,6 +1057,11 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 };
 
 
+%extend BRepLib_MakeEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_MakeEdge2d;
 class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 	public:
@@ -1388,6 +1418,11 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 };
 
 
+%extend BRepLib_MakeEdge2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_MakeFace;
 class BRepLib_MakeFace : public BRepLib_MakeShape {
 	public:
@@ -1708,6 +1743,11 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 };
 
 
+%extend BRepLib_MakeFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_MakePolygon;
 class BRepLib_MakePolygon : public BRepLib_MakeShape {
 	public:
@@ -1836,6 +1876,11 @@ class BRepLib_MakePolygon : public BRepLib_MakeShape {
 };
 
 
+%extend BRepLib_MakePolygon {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_MakeShell;
 class BRepLib_MakeShell : public BRepLib_MakeShape {
 	public:
@@ -1904,6 +1949,11 @@ class BRepLib_MakeShell : public BRepLib_MakeShape {
 };
 
 
+%extend BRepLib_MakeShell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_MakeSolid;
 class BRepLib_MakeSolid : public BRepLib_MakeShape {
 	public:
@@ -1998,6 +2048,11 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 };
 
 
+%extend BRepLib_MakeSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_MakeVertex;
 class BRepLib_MakeVertex : public BRepLib_MakeShape {
 	public:
@@ -2018,6 +2073,11 @@ class BRepLib_MakeVertex : public BRepLib_MakeShape {
 };
 
 
+%extend BRepLib_MakeVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepLib_MakeWire;
 class BRepLib_MakeWire : public BRepLib_MakeShape {
 	public:
@@ -2142,3 +2202,8 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 };
 
 
+%extend BRepLib_MakeWire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

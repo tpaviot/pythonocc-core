@@ -150,6 +150,11 @@ class Approx_Array1OfAdHSurface {
 };
 
 
+%extend Approx_Array1OfAdHSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_Array1OfGTrsf2d;
 class Approx_Array1OfGTrsf2d {
 	public:
@@ -232,6 +237,11 @@ class Approx_Array1OfGTrsf2d {
 };
 
 
+%extend Approx_Array1OfGTrsf2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_Curve2d;
 class Approx_Curve2d {
 	public:
@@ -278,6 +288,11 @@ class Approx_Curve2d {
 };
 
 
+%extend Approx_Curve2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_Curve3d;
 class Approx_Curve3d {
 	public:
@@ -330,6 +345,11 @@ class Approx_Curve3d {
         };
 
 
+%extend Approx_Curve3d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_CurveOnSurface;
 class Approx_CurveOnSurface {
 	public:
@@ -390,6 +410,11 @@ class Approx_CurveOnSurface {
 };
 
 
+%extend Approx_CurveOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_CurvilinearParameter;
 class Approx_CurvilinearParameter {
 	public:
@@ -504,6 +529,11 @@ class Approx_CurvilinearParameter {
         };
 
 
+%extend Approx_CurvilinearParameter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_CurvlinFunc;
 class Approx_CurvlinFunc : public MMgt_TShared {
 	public:
@@ -712,6 +742,11 @@ class Handle_Approx_CurvlinFunc : public Handle_MMgt_TShared {
     }
 };
 
+%extend Approx_CurvlinFunc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_FitAndDivide;
 class Approx_FitAndDivide {
 	public:
@@ -824,6 +859,11 @@ class Approx_FitAndDivide {
 };
 
 
+%extend Approx_FitAndDivide {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_FitAndDivide2d;
 class Approx_FitAndDivide2d {
 	public:
@@ -936,6 +976,11 @@ class Approx_FitAndDivide2d {
 };
 
 
+%extend Approx_FitAndDivide2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_HArray1OfAdHSurface;
 class Approx_HArray1OfAdHSurface : public MMgt_TShared {
 	public:
@@ -1052,6 +1097,11 @@ class Handle_Approx_HArray1OfAdHSurface : public Handle_MMgt_TShared {
     }
 };
 
+%extend Approx_HArray1OfAdHSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_HArray1OfGTrsf2d;
 class Approx_HArray1OfGTrsf2d : public MMgt_TShared {
 	public:
@@ -1168,6 +1218,11 @@ class Handle_Approx_HArray1OfGTrsf2d : public Handle_MMgt_TShared {
     }
 };
 
+%extend Approx_HArray1OfGTrsf2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_MCurvesToBSpCurve;
 class Approx_MCurvesToBSpCurve {
 	public:
@@ -1210,6 +1265,11 @@ class Approx_MCurvesToBSpCurve {
 };
 
 
+%extend Approx_MCurvesToBSpCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_MyLeastSquareOfFitAndDivide;
 class Approx_MyLeastSquareOfFitAndDivide {
 	public:
@@ -1252,6 +1312,11 @@ class Approx_MyLeastSquareOfFitAndDivide {
 };
 
 
+%extend Approx_MyLeastSquareOfFitAndDivide {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_MyLeastSquareOfFitAndDivide2d;
 class Approx_MyLeastSquareOfFitAndDivide2d {
 	public:
@@ -1294,6 +1359,11 @@ class Approx_MyLeastSquareOfFitAndDivide2d {
 };
 
 
+%extend Approx_MyLeastSquareOfFitAndDivide2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_SameParameter;
 class Approx_SameParameter {
 	public:
@@ -1360,6 +1430,11 @@ class Approx_SameParameter {
 };
 
 
+%extend Approx_SameParameter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_SequenceNodeOfSequenceOfHArray1OfReal;
 class Approx_SequenceNodeOfSequenceOfHArray1OfReal : public TCollection_SeqNode {
 	public:
@@ -1426,6 +1501,11 @@ class Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal : public Handle_TColle
     }
 };
 
+%extend Approx_SequenceNodeOfSequenceOfHArray1OfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_SequenceOfHArray1OfReal;
 class Approx_SequenceOfHArray1OfReal : public TCollection_BaseSequence {
 	public:
@@ -1564,6 +1644,11 @@ class Approx_SequenceOfHArray1OfReal : public TCollection_BaseSequence {
 };
 
 
+%extend Approx_SequenceOfHArray1OfReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_SweepApproximation;
 class Approx_SweepApproximation {
 	public:
@@ -1774,6 +1859,11 @@ class Approx_SweepApproximation {
         };
 
 
+%extend Approx_SweepApproximation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Approx_SweepFunction;
 class Approx_SweepFunction : public MMgt_TShared {
 	public:
@@ -2024,3 +2114,8 @@ class Handle_Approx_SweepFunction : public Handle_MMgt_TShared {
     }
 };
 
+%extend Approx_SweepFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -81,6 +81,11 @@ class TopTools {
 };
 
 
+%extend TopTools {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_Array1OfListOfShape;
 class TopTools_Array1OfListOfShape {
 	public:
@@ -163,6 +168,11 @@ class TopTools_Array1OfListOfShape {
 };
 
 
+%extend TopTools_Array1OfListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_Array1OfShape;
 class TopTools_Array1OfShape {
 	public:
@@ -245,6 +255,11 @@ class TopTools_Array1OfShape {
 };
 
 
+%extend TopTools_Array1OfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_Array2OfShape;
 class TopTools_Array2OfShape {
 	public:
@@ -349,6 +364,11 @@ class TopTools_Array2OfShape {
 };
 
 
+%extend TopTools_Array2OfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape;
 class TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -379,6 +399,11 @@ class TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape : public TCollection
 };
 
 
+%extend TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfIntegerShape;
 class TopTools_DataMapIteratorOfDataMapOfIntegerShape : public TCollection_BasicMapIterator {
 	public:
@@ -409,6 +434,11 @@ class TopTools_DataMapIteratorOfDataMapOfIntegerShape : public TCollection_Basic
 };
 
 
+%extend TopTools_DataMapIteratorOfDataMapOfIntegerShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger;
 class TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger : public TCollection_BasicMapIterator {
 	public:
@@ -439,6 +469,11 @@ class TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger : public TCollecti
 };
 
 
+%extend TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
 class TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape : public TCollection_BasicMapIterator {
 	public:
@@ -469,6 +504,11 @@ class TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape : public TCollection
 };
 
 
+%extend TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeInteger;
 class TopTools_DataMapIteratorOfDataMapOfShapeInteger : public TCollection_BasicMapIterator {
 	public:
@@ -499,6 +539,11 @@ class TopTools_DataMapIteratorOfDataMapOfShapeInteger : public TCollection_Basic
 };
 
 
+%extend TopTools_DataMapIteratorOfDataMapOfShapeInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger;
 class TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -529,6 +574,11 @@ class TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger : public TCollection
 };
 
 
+%extend TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeListOfShape;
 class TopTools_DataMapIteratorOfDataMapOfShapeListOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -559,6 +609,11 @@ class TopTools_DataMapIteratorOfDataMapOfShapeListOfShape : public TCollection_B
 };
 
 
+%extend TopTools_DataMapIteratorOfDataMapOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeReal;
 class TopTools_DataMapIteratorOfDataMapOfShapeReal : public TCollection_BasicMapIterator {
 	public:
@@ -589,6 +644,11 @@ class TopTools_DataMapIteratorOfDataMapOfShapeReal : public TCollection_BasicMap
 };
 
 
+%extend TopTools_DataMapIteratorOfDataMapOfShapeReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape;
 class TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -619,6 +679,11 @@ class TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape : public TCollecti
 };
 
 
+%extend TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeShape;
 class TopTools_DataMapIteratorOfDataMapOfShapeShape : public TCollection_BasicMapIterator {
 	public:
@@ -649,6 +714,11 @@ class TopTools_DataMapIteratorOfDataMapOfShapeShape : public TCollection_BasicMa
 };
 
 
+%extend TopTools_DataMapIteratorOfDataMapOfShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfIntegerListOfShape;
 class TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public TCollection_MapNode {
 	public:
@@ -728,6 +798,11 @@ class Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public Handle_T
     }
 };
 
+%extend TopTools_DataMapNodeOfDataMapOfIntegerListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfIntegerShape;
 class TopTools_DataMapNodeOfDataMapOfIntegerShape : public TCollection_MapNode {
 	public:
@@ -807,6 +882,11 @@ class Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape : public Handle_TCollec
     }
 };
 
+%extend TopTools_DataMapNodeOfDataMapOfIntegerShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger;
 class TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public TCollection_MapNode {
 	public:
@@ -886,6 +966,11 @@ class Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public Handle
     }
 };
 
+%extend TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfOrientedShapeShape;
 class TopTools_DataMapNodeOfDataMapOfOrientedShapeShape : public TCollection_MapNode {
 	public:
@@ -956,6 +1041,11 @@ class Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeShape : public Handle_T
     }
 };
 
+%extend TopTools_DataMapNodeOfDataMapOfOrientedShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeInteger;
 class TopTools_DataMapNodeOfDataMapOfShapeInteger : public TCollection_MapNode {
 	public:
@@ -1035,6 +1125,11 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeInteger : public Handle_TCollec
     }
 };
 
+%extend TopTools_DataMapNodeOfDataMapOfShapeInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeListOfInteger;
 class TopTools_DataMapNodeOfDataMapOfShapeListOfInteger : public TCollection_MapNode {
 	public:
@@ -1105,6 +1200,11 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfInteger : public Handle_T
     }
 };
 
+%extend TopTools_DataMapNodeOfDataMapOfShapeListOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeListOfShape;
 class TopTools_DataMapNodeOfDataMapOfShapeListOfShape : public TCollection_MapNode {
 	public:
@@ -1175,6 +1275,11 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeListOfShape : public Handle_TCo
     }
 };
 
+%extend TopTools_DataMapNodeOfDataMapOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeReal;
 class TopTools_DataMapNodeOfDataMapOfShapeReal : public TCollection_MapNode {
 	public:
@@ -1254,6 +1359,11 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeReal : public Handle_TCollectio
     }
 };
 
+%extend TopTools_DataMapNodeOfDataMapOfShapeReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape;
 class TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public TCollection_MapNode {
 	public:
@@ -1324,6 +1434,11 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public Handle
     }
 };
 
+%extend TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeShape;
 class TopTools_DataMapNodeOfDataMapOfShapeShape : public TCollection_MapNode {
 	public:
@@ -1394,6 +1509,11 @@ class Handle_TopTools_DataMapNodeOfDataMapOfShapeShape : public Handle_TCollecti
     }
 };
 
+%extend TopTools_DataMapNodeOfDataMapOfShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapOfIntegerListOfShape;
 class TopTools_DataMapOfIntegerListOfShape : public TCollection_BasicMap {
 	public:
@@ -1472,6 +1592,11 @@ class TopTools_DataMapOfIntegerListOfShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_DataMapOfIntegerListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapOfIntegerShape;
 class TopTools_DataMapOfIntegerShape : public TCollection_BasicMap {
 	public:
@@ -1550,6 +1675,11 @@ class TopTools_DataMapOfIntegerShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_DataMapOfIntegerShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapOfOrientedShapeInteger;
 class TopTools_DataMapOfOrientedShapeInteger : public TCollection_BasicMap {
 	public:
@@ -1628,6 +1758,11 @@ class TopTools_DataMapOfOrientedShapeInteger : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_DataMapOfOrientedShapeInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapOfOrientedShapeShape;
 class TopTools_DataMapOfOrientedShapeShape : public TCollection_BasicMap {
 	public:
@@ -1706,6 +1841,11 @@ class TopTools_DataMapOfOrientedShapeShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_DataMapOfOrientedShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapOfShapeInteger;
 class TopTools_DataMapOfShapeInteger : public TCollection_BasicMap {
 	public:
@@ -1784,6 +1924,11 @@ class TopTools_DataMapOfShapeInteger : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_DataMapOfShapeInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapOfShapeListOfInteger;
 class TopTools_DataMapOfShapeListOfInteger : public TCollection_BasicMap {
 	public:
@@ -1862,6 +2007,11 @@ class TopTools_DataMapOfShapeListOfInteger : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_DataMapOfShapeListOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapOfShapeListOfShape;
 class TopTools_DataMapOfShapeListOfShape : public TCollection_BasicMap {
 	public:
@@ -1940,6 +2090,11 @@ class TopTools_DataMapOfShapeListOfShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_DataMapOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapOfShapeReal;
 class TopTools_DataMapOfShapeReal : public TCollection_BasicMap {
 	public:
@@ -2018,6 +2173,11 @@ class TopTools_DataMapOfShapeReal : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_DataMapOfShapeReal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapOfShapeSequenceOfShape;
 class TopTools_DataMapOfShapeSequenceOfShape : public TCollection_BasicMap {
 	public:
@@ -2096,6 +2256,11 @@ class TopTools_DataMapOfShapeSequenceOfShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_DataMapOfShapeSequenceOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_DataMapOfShapeShape;
 class TopTools_DataMapOfShapeShape : public TCollection_BasicMap {
 	public:
@@ -2174,6 +2339,11 @@ class TopTools_DataMapOfShapeShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_DataMapOfShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_HArray1OfListOfShape;
 class TopTools_HArray1OfListOfShape : public MMgt_TShared {
 	public:
@@ -2290,6 +2460,11 @@ class Handle_TopTools_HArray1OfListOfShape : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopTools_HArray1OfListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_HArray1OfShape;
 class TopTools_HArray1OfShape : public MMgt_TShared {
 	public:
@@ -2406,6 +2581,11 @@ class Handle_TopTools_HArray1OfShape : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopTools_HArray1OfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_HArray2OfShape;
 class TopTools_HArray2OfShape : public MMgt_TShared {
 	public:
@@ -2548,6 +2728,11 @@ class Handle_TopTools_HArray2OfShape : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopTools_HArray2OfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_HSequenceOfShape;
 class TopTools_HSequenceOfShape : public MMgt_TShared {
 	public:
@@ -2732,6 +2917,11 @@ class Handle_TopTools_HSequenceOfShape : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopTools_HSequenceOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress;
 class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress : public TCollection_MapNode {
 	public:
@@ -2823,6 +3013,11 @@ class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress : public 
     }
 };
 
+%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape;
 class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape : public TCollection_MapNode {
 	public:
@@ -2914,6 +3109,11 @@ class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape : pub
     }
 };
 
+%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape;
 class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape : public TCollection_MapNode {
 	public:
@@ -3005,6 +3205,11 @@ class Handle_TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape : public Ha
     }
 };
 
+%extend TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_IndexedDataMapOfShapeAddress;
 class TopTools_IndexedDataMapOfShapeAddress : public TCollection_BasicMap {
 	public:
@@ -3115,6 +3320,11 @@ class TopTools_IndexedDataMapOfShapeAddress : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_IndexedDataMapOfShapeAddress {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_IndexedDataMapOfShapeListOfShape;
 class TopTools_IndexedDataMapOfShapeListOfShape : public TCollection_BasicMap {
 	public:
@@ -3225,6 +3435,11 @@ class TopTools_IndexedDataMapOfShapeListOfShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_IndexedDataMapOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_IndexedDataMapOfShapeShape;
 class TopTools_IndexedDataMapOfShapeShape : public TCollection_BasicMap {
 	public:
@@ -3335,6 +3550,11 @@ class TopTools_IndexedDataMapOfShapeShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_IndexedDataMapOfShapeShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape;
 class TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public TCollection_MapNode {
 	public:
@@ -3420,6 +3640,11 @@ class Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public Handle_
     }
 };
 
+%extend TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_IndexedMapNodeOfIndexedMapOfShape;
 class TopTools_IndexedMapNodeOfIndexedMapOfShape : public TCollection_MapNode {
 	public:
@@ -3505,6 +3730,11 @@ class Handle_TopTools_IndexedMapNodeOfIndexedMapOfShape : public Handle_TCollect
     }
 };
 
+%extend TopTools_IndexedMapNodeOfIndexedMapOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_IndexedMapOfOrientedShape;
 class TopTools_IndexedMapOfOrientedShape : public TCollection_BasicMap {
 	public:
@@ -3581,6 +3811,11 @@ class TopTools_IndexedMapOfOrientedShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_IndexedMapOfOrientedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_IndexedMapOfShape;
 class TopTools_IndexedMapOfShape : public TCollection_BasicMap {
 	public:
@@ -3657,6 +3892,11 @@ class TopTools_IndexedMapOfShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_IndexedMapOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_ListIteratorOfListOfShape;
 class TopTools_ListIteratorOfListOfShape {
 	public:
@@ -3691,6 +3931,11 @@ class TopTools_ListIteratorOfListOfShape {
 };
 
 
+%extend TopTools_ListIteratorOfListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_ListNodeOfListOfShape;
 class TopTools_ListNodeOfListOfShape : public TCollection_MapNode {
 	public:
@@ -3755,6 +4000,11 @@ class Handle_TopTools_ListNodeOfListOfShape : public Handle_TCollection_MapNode 
     }
 };
 
+%extend TopTools_ListNodeOfListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_ListOfShape;
 class TopTools_ListOfShape {
 	public:
@@ -3885,6 +4135,11 @@ class TopTools_ListOfShape {
 };
 
 
+%extend TopTools_ListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_LocationSet;
 class TopTools_LocationSet {
 	public:
@@ -3960,6 +4215,11 @@ class TopTools_LocationSet {
 };
 
 
+%extend TopTools_LocationSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_MapIteratorOfMapOfOrientedShape;
 class TopTools_MapIteratorOfMapOfOrientedShape : public TCollection_BasicMapIterator {
 	public:
@@ -3986,6 +4246,11 @@ class TopTools_MapIteratorOfMapOfOrientedShape : public TCollection_BasicMapIter
 };
 
 
+%extend TopTools_MapIteratorOfMapOfOrientedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_MapIteratorOfMapOfShape;
 class TopTools_MapIteratorOfMapOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -4012,6 +4277,11 @@ class TopTools_MapIteratorOfMapOfShape : public TCollection_BasicMapIterator {
 };
 
 
+%extend TopTools_MapIteratorOfMapOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_MapOfOrientedShape;
 class TopTools_MapOfOrientedShape : public TCollection_BasicMap {
 	public:
@@ -4070,6 +4340,11 @@ class TopTools_MapOfOrientedShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_MapOfOrientedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_MapOfShape;
 class TopTools_MapOfShape : public TCollection_BasicMap {
 	public:
@@ -4128,6 +4403,11 @@ class TopTools_MapOfShape : public TCollection_BasicMap {
 };
 
 
+%extend TopTools_MapOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_MutexForShapeProvider;
 class TopTools_MutexForShapeProvider {
 	public:
@@ -4172,6 +4452,11 @@ class TopTools_MutexForShapeProvider {
 };
 
 
+%extend TopTools_MutexForShapeProvider {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopTools_OrientedShapeMapHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -4197,6 +4482,11 @@ class TopTools_OrientedShapeMapHasher {
 };
 
 
+%extend TopTools_OrientedShapeMapHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_SequenceNodeOfSequenceOfShape;
 class TopTools_SequenceNodeOfSequenceOfShape : public TCollection_SeqNode {
 	public:
@@ -4263,6 +4553,11 @@ class Handle_TopTools_SequenceNodeOfSequenceOfShape : public Handle_TCollection_
     }
 };
 
+%extend TopTools_SequenceNodeOfSequenceOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_SequenceOfShape;
 class TopTools_SequenceOfShape : public TCollection_BaseSequence {
 	public:
@@ -4401,6 +4696,11 @@ class TopTools_SequenceOfShape : public TCollection_BaseSequence {
 };
 
 
+%extend TopTools_SequenceOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopTools_ShapeMapHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -4426,6 +4726,11 @@ class TopTools_ShapeMapHasher {
 };
 
 
+%extend TopTools_ShapeMapHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_ShapeSet;
 class TopTools_ShapeSet {
 	public:
@@ -4660,6 +4965,11 @@ class TopTools_ShapeSet {
 };
 
 
+%extend TopTools_ShapeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_StdMapNodeOfMapOfOrientedShape;
 class TopTools_StdMapNodeOfMapOfOrientedShape : public TCollection_MapNode {
 	public:
@@ -4724,6 +5034,11 @@ class Handle_TopTools_StdMapNodeOfMapOfOrientedShape : public Handle_TCollection
     }
 };
 
+%extend TopTools_StdMapNodeOfMapOfOrientedShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTools_StdMapNodeOfMapOfShape;
 class TopTools_StdMapNodeOfMapOfShape : public TCollection_MapNode {
 	public:
@@ -4788,3 +5103,8 @@ class Handle_TopTools_StdMapNodeOfMapOfShape : public Handle_TCollection_MapNode
     }
 };
 
+%extend TopTools_StdMapNodeOfMapOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

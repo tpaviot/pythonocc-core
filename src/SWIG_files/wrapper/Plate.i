@@ -138,6 +138,11 @@ class Plate_Array1OfPinpointConstraint {
 };
 
 
+%extend Plate_Array1OfPinpointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_D1;
 class Plate_D1 {
 	public:
@@ -166,6 +171,11 @@ class Plate_D1 {
 };
 
 
+%extend Plate_D1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_D2;
 class Plate_D2 {
 	public:
@@ -188,6 +198,11 @@ class Plate_D2 {
 };
 
 
+%extend Plate_D2 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_D3;
 class Plate_D3 {
 	public:
@@ -212,6 +227,11 @@ class Plate_D3 {
 };
 
 
+%extend Plate_D3 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_FreeGtoCConstraint;
 class Plate_FreeGtoCConstraint {
 	public:
@@ -292,6 +312,11 @@ class Plate_FreeGtoCConstraint {
 };
 
 
+%extend Plate_FreeGtoCConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_GlobalTranslationConstraint;
 class Plate_GlobalTranslationConstraint {
 	public:
@@ -308,6 +333,11 @@ class Plate_GlobalTranslationConstraint {
 };
 
 
+%extend Plate_GlobalTranslationConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_GtoCConstraint;
 class Plate_GtoCConstraint {
 	public:
@@ -424,6 +454,11 @@ class Plate_GtoCConstraint {
 };
 
 
+%extend Plate_GtoCConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_HArray1OfPinpointConstraint;
 class Plate_HArray1OfPinpointConstraint : public MMgt_TShared {
 	public:
@@ -540,6 +575,11 @@ class Handle_Plate_HArray1OfPinpointConstraint : public Handle_MMgt_TShared {
     }
 };
 
+%extend Plate_HArray1OfPinpointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_LineConstraint;
 class Plate_LineConstraint {
 	public:
@@ -562,6 +602,11 @@ class Plate_LineConstraint {
 };
 
 
+%extend Plate_LineConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_LinearScalarConstraint;
 class Plate_LinearScalarConstraint {
 	public:
@@ -634,6 +679,11 @@ class Plate_LinearScalarConstraint {
 };
 
 
+%extend Plate_LinearScalarConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_LinearXYZConstraint;
 class Plate_LinearXYZConstraint {
 	public:
@@ -698,6 +748,11 @@ class Plate_LinearXYZConstraint {
 };
 
 
+%extend Plate_LinearXYZConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_PinpointConstraint;
 class Plate_PinpointConstraint {
 	public:
@@ -736,6 +791,11 @@ class Plate_PinpointConstraint {
 };
 
 
+%extend Plate_PinpointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_PlaneConstraint;
 class Plate_PlaneConstraint {
 	public:
@@ -758,6 +818,11 @@ class Plate_PlaneConstraint {
 };
 
 
+%extend Plate_PlaneConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_Plate;
 class Plate_Plate {
 	public:
@@ -914,6 +979,11 @@ class Plate_Plate {
 };
 
 
+%extend Plate_Plate {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_SampledCurveConstraint;
 class Plate_SampledCurveConstraint {
 	public:
@@ -932,6 +1002,11 @@ class Plate_SampledCurveConstraint {
 };
 
 
+%extend Plate_SampledCurveConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_SequenceNodeOfSequenceOfLinearScalarConstraint;
 class Plate_SequenceNodeOfSequenceOfLinearScalarConstraint : public TCollection_SeqNode {
 	public:
@@ -998,6 +1073,11 @@ class Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint : public Handl
     }
 };
 
+%extend Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_SequenceNodeOfSequenceOfLinearXYZConstraint;
 class Plate_SequenceNodeOfSequenceOfLinearXYZConstraint : public TCollection_SeqNode {
 	public:
@@ -1064,6 +1144,11 @@ class Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint : public Handle_T
     }
 };
 
+%extend Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_SequenceNodeOfSequenceOfPinpointConstraint;
 class Plate_SequenceNodeOfSequenceOfPinpointConstraint : public TCollection_SeqNode {
 	public:
@@ -1130,6 +1215,11 @@ class Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint : public Handle_TC
     }
 };
 
+%extend Plate_SequenceNodeOfSequenceOfPinpointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_SequenceOfLinearScalarConstraint;
 class Plate_SequenceOfLinearScalarConstraint : public TCollection_BaseSequence {
 	public:
@@ -1268,6 +1358,11 @@ class Plate_SequenceOfLinearScalarConstraint : public TCollection_BaseSequence {
 };
 
 
+%extend Plate_SequenceOfLinearScalarConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_SequenceOfLinearXYZConstraint;
 class Plate_SequenceOfLinearXYZConstraint : public TCollection_BaseSequence {
 	public:
@@ -1406,6 +1501,11 @@ class Plate_SequenceOfLinearXYZConstraint : public TCollection_BaseSequence {
 };
 
 
+%extend Plate_SequenceOfLinearXYZConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Plate_SequenceOfPinpointConstraint;
 class Plate_SequenceOfPinpointConstraint : public TCollection_BaseSequence {
 	public:
@@ -1544,3 +1644,8 @@ class Plate_SequenceOfPinpointConstraint : public TCollection_BaseSequence {
 };
 
 
+%extend Plate_SequenceOfPinpointConstraint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

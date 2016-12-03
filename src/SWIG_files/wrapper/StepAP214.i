@@ -68,6 +68,11 @@ class StepAP214 {
 };
 
 
+%extend StepAP214 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AppliedApprovalAssignment;
 class StepAP214_AppliedApprovalAssignment : public StepBasic_ApprovalAssignment {
 	public:
@@ -160,6 +165,11 @@ class Handle_StepAP214_AppliedApprovalAssignment : public Handle_StepBasic_Appro
     }
 };
 
+%extend StepAP214_AppliedApprovalAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AppliedDateAndTimeAssignment;
 class StepAP214_AppliedDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
 	public:
@@ -256,6 +266,11 @@ class Handle_StepAP214_AppliedDateAndTimeAssignment : public Handle_StepBasic_Da
     }
 };
 
+%extend StepAP214_AppliedDateAndTimeAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AppliedDateAssignment;
 class StepAP214_AppliedDateAssignment : public StepBasic_DateAssignment {
 	public:
@@ -352,6 +367,11 @@ class Handle_StepAP214_AppliedDateAssignment : public Handle_StepBasic_DateAssig
     }
 };
 
+%extend StepAP214_AppliedDateAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AppliedDocumentReference;
 class StepAP214_AppliedDocumentReference : public StepBasic_DocumentReference {
 	public:
@@ -438,6 +458,11 @@ class Handle_StepAP214_AppliedDocumentReference : public Handle_StepBasic_Docume
     }
 };
 
+%extend StepAP214_AppliedDocumentReference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AppliedExternalIdentificationAssignment;
 class StepAP214_AppliedExternalIdentificationAssignment : public StepBasic_ExternalIdentificationAssignment {
 	public:
@@ -524,6 +549,11 @@ class Handle_StepAP214_AppliedExternalIdentificationAssignment : public Handle_S
     }
 };
 
+%extend StepAP214_AppliedExternalIdentificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AppliedGroupAssignment;
 class StepAP214_AppliedGroupAssignment : public StepBasic_GroupAssignment {
 	public:
@@ -606,6 +636,11 @@ class Handle_StepAP214_AppliedGroupAssignment : public Handle_StepBasic_GroupAss
     }
 };
 
+%extend StepAP214_AppliedGroupAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AppliedOrganizationAssignment;
 class StepAP214_AppliedOrganizationAssignment : public StepBasic_OrganizationAssignment {
 	public:
@@ -702,6 +737,11 @@ class Handle_StepAP214_AppliedOrganizationAssignment : public Handle_StepBasic_O
     }
 };
 
+%extend StepAP214_AppliedOrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AppliedPersonAndOrganizationAssignment;
 class StepAP214_AppliedPersonAndOrganizationAssignment : public StepBasic_PersonAndOrganizationAssignment {
 	public:
@@ -798,6 +838,11 @@ class Handle_StepAP214_AppliedPersonAndOrganizationAssignment : public Handle_St
     }
 };
 
+%extend StepAP214_AppliedPersonAndOrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AppliedPresentedItem;
 class StepAP214_AppliedPresentedItem : public StepVisual_PresentedItem {
 	public:
@@ -882,6 +927,11 @@ class Handle_StepAP214_AppliedPresentedItem : public Handle_StepVisual_Presented
     }
 };
 
+%extend StepAP214_AppliedPresentedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AppliedSecurityClassificationAssignment;
 class StepAP214_AppliedSecurityClassificationAssignment : public StepBasic_SecurityClassificationAssignment {
 	public:
@@ -974,6 +1024,11 @@ class Handle_StepAP214_AppliedSecurityClassificationAssignment : public Handle_S
     }
 };
 
+%extend StepAP214_AppliedSecurityClassificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_ApprovalItem;
 class StepAP214_ApprovalItem : public StepData_SelectType {
 	public:
@@ -1066,6 +1121,11 @@ class StepAP214_ApprovalItem : public StepData_SelectType {
 };
 
 
+%extend StepAP214_ApprovalItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfApprovalItem;
 class StepAP214_Array1OfApprovalItem {
 	public:
@@ -1148,6 +1208,11 @@ class StepAP214_Array1OfApprovalItem {
 };
 
 
+%extend StepAP214_Array1OfApprovalItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfAutoDesignDateAndPersonItem;
 class StepAP214_Array1OfAutoDesignDateAndPersonItem {
 	public:
@@ -1230,6 +1295,11 @@ class StepAP214_Array1OfAutoDesignDateAndPersonItem {
 };
 
 
+%extend StepAP214_Array1OfAutoDesignDateAndPersonItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfAutoDesignDateAndTimeItem;
 class StepAP214_Array1OfAutoDesignDateAndTimeItem {
 	public:
@@ -1312,6 +1382,11 @@ class StepAP214_Array1OfAutoDesignDateAndTimeItem {
 };
 
 
+%extend StepAP214_Array1OfAutoDesignDateAndTimeItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfAutoDesignDatedItem;
 class StepAP214_Array1OfAutoDesignDatedItem {
 	public:
@@ -1394,6 +1469,11 @@ class StepAP214_Array1OfAutoDesignDatedItem {
 };
 
 
+%extend StepAP214_Array1OfAutoDesignDatedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfAutoDesignGeneralOrgItem;
 class StepAP214_Array1OfAutoDesignGeneralOrgItem {
 	public:
@@ -1476,6 +1556,11 @@ class StepAP214_Array1OfAutoDesignGeneralOrgItem {
 };
 
 
+%extend StepAP214_Array1OfAutoDesignGeneralOrgItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfAutoDesignGroupedItem;
 class StepAP214_Array1OfAutoDesignGroupedItem {
 	public:
@@ -1558,6 +1643,11 @@ class StepAP214_Array1OfAutoDesignGroupedItem {
 };
 
 
+%extend StepAP214_Array1OfAutoDesignGroupedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfAutoDesignPresentedItemSelect;
 class StepAP214_Array1OfAutoDesignPresentedItemSelect {
 	public:
@@ -1640,6 +1730,11 @@ class StepAP214_Array1OfAutoDesignPresentedItemSelect {
 };
 
 
+%extend StepAP214_Array1OfAutoDesignPresentedItemSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfAutoDesignReferencingItem;
 class StepAP214_Array1OfAutoDesignReferencingItem {
 	public:
@@ -1722,6 +1817,11 @@ class StepAP214_Array1OfAutoDesignReferencingItem {
 };
 
 
+%extend StepAP214_Array1OfAutoDesignReferencingItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfDateAndTimeItem;
 class StepAP214_Array1OfDateAndTimeItem {
 	public:
@@ -1804,6 +1904,11 @@ class StepAP214_Array1OfDateAndTimeItem {
 };
 
 
+%extend StepAP214_Array1OfDateAndTimeItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfDateItem;
 class StepAP214_Array1OfDateItem {
 	public:
@@ -1886,6 +1991,11 @@ class StepAP214_Array1OfDateItem {
 };
 
 
+%extend StepAP214_Array1OfDateItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfDocumentReferenceItem;
 class StepAP214_Array1OfDocumentReferenceItem {
 	public:
@@ -1968,6 +2078,11 @@ class StepAP214_Array1OfDocumentReferenceItem {
 };
 
 
+%extend StepAP214_Array1OfDocumentReferenceItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfExternalIdentificationItem;
 class StepAP214_Array1OfExternalIdentificationItem {
 	public:
@@ -2050,6 +2165,11 @@ class StepAP214_Array1OfExternalIdentificationItem {
 };
 
 
+%extend StepAP214_Array1OfExternalIdentificationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfGroupItem;
 class StepAP214_Array1OfGroupItem {
 	public:
@@ -2132,6 +2252,11 @@ class StepAP214_Array1OfGroupItem {
 };
 
 
+%extend StepAP214_Array1OfGroupItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfOrganizationItem;
 class StepAP214_Array1OfOrganizationItem {
 	public:
@@ -2214,6 +2339,11 @@ class StepAP214_Array1OfOrganizationItem {
 };
 
 
+%extend StepAP214_Array1OfOrganizationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfPersonAndOrganizationItem;
 class StepAP214_Array1OfPersonAndOrganizationItem {
 	public:
@@ -2296,6 +2426,11 @@ class StepAP214_Array1OfPersonAndOrganizationItem {
 };
 
 
+%extend StepAP214_Array1OfPersonAndOrganizationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfPresentedItemSelect;
 class StepAP214_Array1OfPresentedItemSelect {
 	public:
@@ -2378,6 +2513,11 @@ class StepAP214_Array1OfPresentedItemSelect {
 };
 
 
+%extend StepAP214_Array1OfPresentedItemSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Array1OfSecurityClassificationItem;
 class StepAP214_Array1OfSecurityClassificationItem {
 	public:
@@ -2460,6 +2600,11 @@ class StepAP214_Array1OfSecurityClassificationItem {
 };
 
 
+%extend StepAP214_Array1OfSecurityClassificationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignActualDateAndTimeAssignment;
 class StepAP214_AutoDesignActualDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
 	public:
@@ -2556,6 +2701,11 @@ class Handle_StepAP214_AutoDesignActualDateAndTimeAssignment : public Handle_Ste
     }
 };
 
+%extend StepAP214_AutoDesignActualDateAndTimeAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignActualDateAssignment;
 class StepAP214_AutoDesignActualDateAssignment : public StepBasic_DateAssignment {
 	public:
@@ -2652,6 +2802,11 @@ class Handle_StepAP214_AutoDesignActualDateAssignment : public Handle_StepBasic_
     }
 };
 
+%extend StepAP214_AutoDesignActualDateAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignApprovalAssignment;
 class StepAP214_AutoDesignApprovalAssignment : public StepBasic_ApprovalAssignment {
 	public:
@@ -2744,6 +2899,11 @@ class Handle_StepAP214_AutoDesignApprovalAssignment : public Handle_StepBasic_Ap
     }
 };
 
+%extend StepAP214_AutoDesignApprovalAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignDateAndPersonAssignment;
 class StepAP214_AutoDesignDateAndPersonAssignment : public StepBasic_PersonAndOrganizationAssignment {
 	public:
@@ -2840,6 +3000,11 @@ class Handle_StepAP214_AutoDesignDateAndPersonAssignment : public Handle_StepBas
     }
 };
 
+%extend StepAP214_AutoDesignDateAndPersonAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignDateAndPersonItem;
 class StepAP214_AutoDesignDateAndPersonItem : public StepData_SelectType {
 	public:
@@ -2896,6 +3061,11 @@ class StepAP214_AutoDesignDateAndPersonItem : public StepData_SelectType {
 };
 
 
+%extend StepAP214_AutoDesignDateAndPersonItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignDateAndTimeItem;
 class StepAP214_AutoDesignDateAndTimeItem : public StepData_SelectType {
 	public:
@@ -2932,6 +3102,11 @@ class StepAP214_AutoDesignDateAndTimeItem : public StepData_SelectType {
 };
 
 
+%extend StepAP214_AutoDesignDateAndTimeItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignDatedItem;
 class StepAP214_AutoDesignDatedItem : public StepData_SelectType {
 	public:
@@ -2970,6 +3145,11 @@ class StepAP214_AutoDesignDatedItem : public StepData_SelectType {
 };
 
 
+%extend StepAP214_AutoDesignDatedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignDocumentReference;
 class StepAP214_AutoDesignDocumentReference : public StepBasic_DocumentReference {
 	public:
@@ -3056,6 +3236,11 @@ class Handle_StepAP214_AutoDesignDocumentReference : public Handle_StepBasic_Doc
     }
 };
 
+%extend StepAP214_AutoDesignDocumentReference {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignGeneralOrgItem;
 class StepAP214_AutoDesignGeneralOrgItem : public StepData_SelectType {
 	public:
@@ -3122,6 +3307,11 @@ class StepAP214_AutoDesignGeneralOrgItem : public StepData_SelectType {
 };
 
 
+%extend StepAP214_AutoDesignGeneralOrgItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignGroupAssignment;
 class StepAP214_AutoDesignGroupAssignment : public StepBasic_GroupAssignment {
 	public:
@@ -3208,6 +3398,11 @@ class Handle_StepAP214_AutoDesignGroupAssignment : public Handle_StepBasic_Group
     }
 };
 
+%extend StepAP214_AutoDesignGroupAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignGroupedItem;
 class StepAP214_AutoDesignGroupedItem : public StepData_SelectType {
 	public:
@@ -3294,6 +3489,11 @@ class StepAP214_AutoDesignGroupedItem : public StepData_SelectType {
 };
 
 
+%extend StepAP214_AutoDesignGroupedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignNominalDateAndTimeAssignment;
 class StepAP214_AutoDesignNominalDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
 	public:
@@ -3390,6 +3590,11 @@ class Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment : public Handle_St
     }
 };
 
+%extend StepAP214_AutoDesignNominalDateAndTimeAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignNominalDateAssignment;
 class StepAP214_AutoDesignNominalDateAssignment : public StepBasic_DateAssignment {
 	public:
@@ -3486,6 +3691,11 @@ class Handle_StepAP214_AutoDesignNominalDateAssignment : public Handle_StepBasic
     }
 };
 
+%extend StepAP214_AutoDesignNominalDateAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignOrganizationAssignment;
 class StepAP214_AutoDesignOrganizationAssignment : public StepBasic_OrganizationAssignment {
 	public:
@@ -3582,6 +3792,11 @@ class Handle_StepAP214_AutoDesignOrganizationAssignment : public Handle_StepBasi
     }
 };
 
+%extend StepAP214_AutoDesignOrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignPersonAndOrganizationAssignment;
 class StepAP214_AutoDesignPersonAndOrganizationAssignment : public StepBasic_PersonAndOrganizationAssignment {
 	public:
@@ -3678,6 +3893,11 @@ class Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment : public Handle
     }
 };
 
+%extend StepAP214_AutoDesignPersonAndOrganizationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignPresentedItem;
 class StepAP214_AutoDesignPresentedItem : public StepVisual_PresentedItem {
 	public:
@@ -3762,6 +3982,11 @@ class Handle_StepAP214_AutoDesignPresentedItem : public Handle_StepVisual_Presen
     }
 };
 
+%extend StepAP214_AutoDesignPresentedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignPresentedItemSelect;
 class StepAP214_AutoDesignPresentedItemSelect : public StepData_SelectType {
 	public:
@@ -3818,6 +4043,11 @@ class StepAP214_AutoDesignPresentedItemSelect : public StepData_SelectType {
 };
 
 
+%extend StepAP214_AutoDesignPresentedItemSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignReferencingItem;
 class StepAP214_AutoDesignReferencingItem : public StepData_SelectType {
 	public:
@@ -3894,6 +4124,11 @@ class StepAP214_AutoDesignReferencingItem : public StepData_SelectType {
 };
 
 
+%extend StepAP214_AutoDesignReferencingItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignSecurityClassificationAssignment;
 class StepAP214_AutoDesignSecurityClassificationAssignment : public StepBasic_SecurityClassificationAssignment {
 	public:
@@ -3986,6 +4221,11 @@ class Handle_StepAP214_AutoDesignSecurityClassificationAssignment : public Handl
     }
 };
 
+%extend StepAP214_AutoDesignSecurityClassificationAssignment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Class;
 class StepAP214_Class : public StepBasic_Group {
 	public:
@@ -4044,6 +4284,11 @@ class Handle_StepAP214_Class : public Handle_StepBasic_Group {
     }
 };
 
+%extend StepAP214_Class {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_DocumentReferenceItem;
 class StepAP214_DocumentReferenceItem : public StepData_SelectType {
 	public:
@@ -4118,6 +4363,11 @@ class StepAP214_DocumentReferenceItem : public StepData_SelectType {
 };
 
 
+%extend StepAP214_DocumentReferenceItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_ExternalIdentificationItem;
 class StepAP214_ExternalIdentificationItem : public StepData_SelectType {
 	public:
@@ -4162,6 +4412,11 @@ class StepAP214_ExternalIdentificationItem : public StepData_SelectType {
 };
 
 
+%extend StepAP214_ExternalIdentificationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_ExternallyDefinedGeneralProperty;
 class StepAP214_ExternallyDefinedGeneralProperty : public StepBasic_GeneralProperty {
 	public:
@@ -4252,6 +4507,11 @@ class Handle_StepAP214_ExternallyDefinedGeneralProperty : public Handle_StepBasi
     }
 };
 
+%extend StepAP214_ExternallyDefinedGeneralProperty {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_GroupItem;
 class StepAP214_GroupItem : public StepData_SelectType {
 	public:
@@ -4278,6 +4538,11 @@ class StepAP214_GroupItem : public StepData_SelectType {
 };
 
 
+%extend StepAP214_GroupItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfApprovalItem;
 class StepAP214_HArray1OfApprovalItem : public MMgt_TShared {
 	public:
@@ -4394,6 +4659,11 @@ class Handle_StepAP214_HArray1OfApprovalItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP214_HArray1OfApprovalItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfAutoDesignDateAndPersonItem;
 class StepAP214_HArray1OfAutoDesignDateAndPersonItem : public MMgt_TShared {
 	public:
@@ -4510,6 +4780,11 @@ class Handle_StepAP214_HArray1OfAutoDesignDateAndPersonItem : public Handle_MMgt
     }
 };
 
+%extend StepAP214_HArray1OfAutoDesignDateAndPersonItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfAutoDesignDateAndTimeItem;
 class StepAP214_HArray1OfAutoDesignDateAndTimeItem : public MMgt_TShared {
 	public:
@@ -4626,6 +4901,11 @@ class Handle_StepAP214_HArray1OfAutoDesignDateAndTimeItem : public Handle_MMgt_T
     }
 };
 
+%extend StepAP214_HArray1OfAutoDesignDateAndTimeItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfAutoDesignDatedItem;
 class StepAP214_HArray1OfAutoDesignDatedItem : public MMgt_TShared {
 	public:
@@ -4742,6 +5022,11 @@ class Handle_StepAP214_HArray1OfAutoDesignDatedItem : public Handle_MMgt_TShared
     }
 };
 
+%extend StepAP214_HArray1OfAutoDesignDatedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfAutoDesignGeneralOrgItem;
 class StepAP214_HArray1OfAutoDesignGeneralOrgItem : public MMgt_TShared {
 	public:
@@ -4858,6 +5143,11 @@ class Handle_StepAP214_HArray1OfAutoDesignGeneralOrgItem : public Handle_MMgt_TS
     }
 };
 
+%extend StepAP214_HArray1OfAutoDesignGeneralOrgItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfAutoDesignGroupedItem;
 class StepAP214_HArray1OfAutoDesignGroupedItem : public MMgt_TShared {
 	public:
@@ -4974,6 +5264,11 @@ class Handle_StepAP214_HArray1OfAutoDesignGroupedItem : public Handle_MMgt_TShar
     }
 };
 
+%extend StepAP214_HArray1OfAutoDesignGroupedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfAutoDesignPresentedItemSelect;
 class StepAP214_HArray1OfAutoDesignPresentedItemSelect : public MMgt_TShared {
 	public:
@@ -5090,6 +5385,11 @@ class Handle_StepAP214_HArray1OfAutoDesignPresentedItemSelect : public Handle_MM
     }
 };
 
+%extend StepAP214_HArray1OfAutoDesignPresentedItemSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfAutoDesignReferencingItem;
 class StepAP214_HArray1OfAutoDesignReferencingItem : public MMgt_TShared {
 	public:
@@ -5206,6 +5506,11 @@ class Handle_StepAP214_HArray1OfAutoDesignReferencingItem : public Handle_MMgt_T
     }
 };
 
+%extend StepAP214_HArray1OfAutoDesignReferencingItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfDateAndTimeItem;
 class StepAP214_HArray1OfDateAndTimeItem : public MMgt_TShared {
 	public:
@@ -5322,6 +5627,11 @@ class Handle_StepAP214_HArray1OfDateAndTimeItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP214_HArray1OfDateAndTimeItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfDateItem;
 class StepAP214_HArray1OfDateItem : public MMgt_TShared {
 	public:
@@ -5438,6 +5748,11 @@ class Handle_StepAP214_HArray1OfDateItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP214_HArray1OfDateItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfDocumentReferenceItem;
 class StepAP214_HArray1OfDocumentReferenceItem : public MMgt_TShared {
 	public:
@@ -5554,6 +5869,11 @@ class Handle_StepAP214_HArray1OfDocumentReferenceItem : public Handle_MMgt_TShar
     }
 };
 
+%extend StepAP214_HArray1OfDocumentReferenceItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfExternalIdentificationItem;
 class StepAP214_HArray1OfExternalIdentificationItem : public MMgt_TShared {
 	public:
@@ -5670,6 +5990,11 @@ class Handle_StepAP214_HArray1OfExternalIdentificationItem : public Handle_MMgt_
     }
 };
 
+%extend StepAP214_HArray1OfExternalIdentificationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfGroupItem;
 class StepAP214_HArray1OfGroupItem : public MMgt_TShared {
 	public:
@@ -5786,6 +6111,11 @@ class Handle_StepAP214_HArray1OfGroupItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP214_HArray1OfGroupItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfOrganizationItem;
 class StepAP214_HArray1OfOrganizationItem : public MMgt_TShared {
 	public:
@@ -5902,6 +6232,11 @@ class Handle_StepAP214_HArray1OfOrganizationItem : public Handle_MMgt_TShared {
     }
 };
 
+%extend StepAP214_HArray1OfOrganizationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfPersonAndOrganizationItem;
 class StepAP214_HArray1OfPersonAndOrganizationItem : public MMgt_TShared {
 	public:
@@ -6018,6 +6353,11 @@ class Handle_StepAP214_HArray1OfPersonAndOrganizationItem : public Handle_MMgt_T
     }
 };
 
+%extend StepAP214_HArray1OfPersonAndOrganizationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfPresentedItemSelect;
 class StepAP214_HArray1OfPresentedItemSelect : public MMgt_TShared {
 	public:
@@ -6134,6 +6474,11 @@ class Handle_StepAP214_HArray1OfPresentedItemSelect : public Handle_MMgt_TShared
     }
 };
 
+%extend StepAP214_HArray1OfPresentedItemSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_HArray1OfSecurityClassificationItem;
 class StepAP214_HArray1OfSecurityClassificationItem : public MMgt_TShared {
 	public:
@@ -6250,6 +6595,11 @@ class Handle_StepAP214_HArray1OfSecurityClassificationItem : public Handle_MMgt_
     }
 };
 
+%extend StepAP214_HArray1OfSecurityClassificationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_PresentedItemSelect;
 class StepAP214_PresentedItemSelect : public StepData_SelectType {
 	public:
@@ -6282,6 +6632,11 @@ class StepAP214_PresentedItemSelect : public StepData_SelectType {
 };
 
 
+%extend StepAP214_PresentedItemSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_Protocol;
 class StepAP214_Protocol : public StepData_Protocol {
 	public:
@@ -6364,6 +6719,11 @@ class Handle_StepAP214_Protocol : public Handle_StepData_Protocol {
     }
 };
 
+%extend StepAP214_Protocol {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_RepItemGroup;
 class StepAP214_RepItemGroup : public StepBasic_Group {
 	public:
@@ -6450,6 +6810,11 @@ class Handle_StepAP214_RepItemGroup : public Handle_StepBasic_Group {
     }
 };
 
+%extend StepAP214_RepItemGroup {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_AutoDesignOrganizationItem;
 class StepAP214_AutoDesignOrganizationItem : public StepAP214_AutoDesignGeneralOrgItem {
 	public:
@@ -6474,6 +6839,11 @@ class StepAP214_AutoDesignOrganizationItem : public StepAP214_AutoDesignGeneralO
 };
 
 
+%extend StepAP214_AutoDesignOrganizationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_DateAndTimeItem;
 class StepAP214_DateAndTimeItem : public StepAP214_ApprovalItem {
 	public:
@@ -6518,6 +6888,11 @@ class StepAP214_DateAndTimeItem : public StepAP214_ApprovalItem {
 };
 
 
+%extend StepAP214_DateAndTimeItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_DateItem;
 class StepAP214_DateItem : public StepAP214_ApprovalItem {
 	public:
@@ -6562,6 +6937,11 @@ class StepAP214_DateItem : public StepAP214_ApprovalItem {
 };
 
 
+%extend StepAP214_DateItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_ExternallyDefinedClass;
 class StepAP214_ExternallyDefinedClass : public StepAP214_Class {
 	public:
@@ -6650,6 +7030,11 @@ class Handle_StepAP214_ExternallyDefinedClass : public Handle_StepAP214_Class {
     }
 };
 
+%extend StepAP214_ExternallyDefinedClass {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_OrganizationItem;
 class StepAP214_OrganizationItem : public StepAP214_ApprovalItem {
 	public:
@@ -6682,6 +7067,11 @@ class StepAP214_OrganizationItem : public StepAP214_ApprovalItem {
 };
 
 
+%extend StepAP214_OrganizationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_PersonAndOrganizationItem;
 class StepAP214_PersonAndOrganizationItem : public StepAP214_ApprovalItem {
 	public:
@@ -6708,6 +7098,11 @@ class StepAP214_PersonAndOrganizationItem : public StepAP214_ApprovalItem {
 };
 
 
+%extend StepAP214_PersonAndOrganizationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StepAP214_SecurityClassificationItem;
 class StepAP214_SecurityClassificationItem : public StepAP214_ApprovalItem {
 	public:
@@ -6720,3 +7115,8 @@ class StepAP214_SecurityClassificationItem : public StepAP214_ApprovalItem {
 };
 
 
+%extend StepAP214_SecurityClassificationItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

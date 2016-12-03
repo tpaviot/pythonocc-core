@@ -243,6 +243,11 @@ class MeshVS_Array1OfSequenceOfInteger {
 };
 
 
+%extend MeshVS_Array1OfSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class MeshVS_ColorHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -264,6 +269,11 @@ class MeshVS_ColorHasher {
 };
 
 
+%extend MeshVS_ColorHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger;
 class MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -294,6 +304,11 @@ class MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger : public TCollection_Ba
 };
 
 
+%extend MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger;
 class MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -324,6 +339,11 @@ class MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger : public TColl
 };
 
 
+%extend MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString;
 class MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString : public TCollection_BasicMapIterator {
 	public:
@@ -354,6 +374,11 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString : public TCollection_B
 };
 
 
+%extend MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean;
 class MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean : public TCollection_BasicMapIterator {
 	public:
@@ -384,6 +409,11 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean : public TCollection_Basic
 };
 
 
+%extend MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapIteratorOfDataMapOfIntegerColor;
 class MeshVS_DataMapIteratorOfDataMapOfIntegerColor : public TCollection_BasicMapIterator {
 	public:
@@ -414,6 +444,11 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerColor : public TCollection_BasicMa
 };
 
 
+%extend MeshVS_DataMapIteratorOfDataMapOfIntegerColor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial;
 class MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial : public TCollection_BasicMapIterator {
 	public:
@@ -444,6 +479,11 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial : public TCollection_Basi
 };
 
 
+%extend MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner;
 class MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner : public TCollection_BasicMapIterator {
 	public:
@@ -474,6 +514,11 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner : public TCollecti
 };
 
 
+%extend MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapIteratorOfDataMapOfIntegerOwner;
 class MeshVS_DataMapIteratorOfDataMapOfIntegerOwner : public TCollection_BasicMapIterator {
 	public:
@@ -504,6 +549,11 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerOwner : public TCollection_BasicMa
 };
 
 
+%extend MeshVS_DataMapIteratorOfDataMapOfIntegerOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapIteratorOfDataMapOfIntegerTwoColors;
 class MeshVS_DataMapIteratorOfDataMapOfIntegerTwoColors : public TCollection_BasicMapIterator {
 	public:
@@ -534,6 +584,11 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerTwoColors : public TCollection_Bas
 };
 
 
+%extend MeshVS_DataMapIteratorOfDataMapOfIntegerTwoColors {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapIteratorOfDataMapOfIntegerVector;
 class MeshVS_DataMapIteratorOfDataMapOfIntegerVector : public TCollection_BasicMapIterator {
 	public:
@@ -564,6 +619,11 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerVector : public TCollection_BasicM
 };
 
 
+%extend MeshVS_DataMapIteratorOfDataMapOfIntegerVector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger;
 class MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -594,6 +654,11 @@ class MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger : public TCollectio
 };
 
 
+%extend MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger;
 class MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger : public TCollection_MapNode {
 	public:
@@ -664,6 +729,11 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger : public Handle_TCol
     }
 };
 
+%extend MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger;
 class MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger : public TCollection_MapNode {
 	public:
@@ -743,6 +813,11 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger : public Ha
     }
 };
 
+%extend MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString;
 class MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString : public TCollection_MapNode {
 	public:
@@ -822,6 +897,11 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString : public Handle_TCo
     }
 };
 
+%extend MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapNodeOfDataMapOfIntegerBoolean;
 class MeshVS_DataMapNodeOfDataMapOfIntegerBoolean : public TCollection_MapNode {
 	public:
@@ -910,6 +990,11 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean : public Handle_TCollec
     }
 };
 
+%extend MeshVS_DataMapNodeOfDataMapOfIntegerBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapNodeOfDataMapOfIntegerColor;
 class MeshVS_DataMapNodeOfDataMapOfIntegerColor : public TCollection_MapNode {
 	public:
@@ -989,6 +1074,11 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerColor : public Handle_TCollecti
     }
 };
 
+%extend MeshVS_DataMapNodeOfDataMapOfIntegerColor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapNodeOfDataMapOfIntegerMaterial;
 class MeshVS_DataMapNodeOfDataMapOfIntegerMaterial : public TCollection_MapNode {
 	public:
@@ -1068,6 +1158,11 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial : public Handle_TColle
     }
 };
 
+%extend MeshVS_DataMapNodeOfDataMapOfIntegerMaterial {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner;
 class MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner : public TCollection_MapNode {
 	public:
@@ -1147,6 +1242,11 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner : public Handle
     }
 };
 
+%extend MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapNodeOfDataMapOfIntegerOwner;
 class MeshVS_DataMapNodeOfDataMapOfIntegerOwner : public TCollection_MapNode {
 	public:
@@ -1226,6 +1326,11 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner : public Handle_TCollecti
     }
 };
 
+%extend MeshVS_DataMapNodeOfDataMapOfIntegerOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors;
 class MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors : public TCollection_MapNode {
 	public:
@@ -1305,6 +1410,11 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors : public Handle_TColl
     }
 };
 
+%extend MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapNodeOfDataMapOfIntegerVector;
 class MeshVS_DataMapNodeOfDataMapOfIntegerVector : public TCollection_MapNode {
 	public:
@@ -1384,6 +1494,11 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector : public Handle_TCollect
     }
 };
 
+%extend MeshVS_DataMapNodeOfDataMapOfIntegerVector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger;
 class MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger : public TCollection_MapNode {
 	public:
@@ -1454,6 +1569,11 @@ class Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger : public Handle_
     }
 };
 
+%extend MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapOfColorMapOfInteger;
 class MeshVS_DataMapOfColorMapOfInteger : public TCollection_BasicMap {
 	public:
@@ -1532,6 +1652,11 @@ class MeshVS_DataMapOfColorMapOfInteger : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_DataMapOfColorMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapOfHArray1OfSequenceOfInteger;
 class MeshVS_DataMapOfHArray1OfSequenceOfInteger : public TCollection_BasicMap {
 	public:
@@ -1610,6 +1735,11 @@ class MeshVS_DataMapOfHArray1OfSequenceOfInteger : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_DataMapOfHArray1OfSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapOfIntegerAsciiString;
 class MeshVS_DataMapOfIntegerAsciiString : public TCollection_BasicMap {
 	public:
@@ -1688,6 +1818,11 @@ class MeshVS_DataMapOfIntegerAsciiString : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_DataMapOfIntegerAsciiString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapOfIntegerBoolean;
 class MeshVS_DataMapOfIntegerBoolean : public TCollection_BasicMap {
 	public:
@@ -1766,6 +1901,11 @@ class MeshVS_DataMapOfIntegerBoolean : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_DataMapOfIntegerBoolean {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapOfIntegerColor;
 class MeshVS_DataMapOfIntegerColor : public TCollection_BasicMap {
 	public:
@@ -1844,6 +1984,11 @@ class MeshVS_DataMapOfIntegerColor : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_DataMapOfIntegerColor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapOfIntegerMaterial;
 class MeshVS_DataMapOfIntegerMaterial : public TCollection_BasicMap {
 	public:
@@ -1922,6 +2067,11 @@ class MeshVS_DataMapOfIntegerMaterial : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_DataMapOfIntegerMaterial {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapOfIntegerMeshEntityOwner;
 class MeshVS_DataMapOfIntegerMeshEntityOwner : public TCollection_BasicMap {
 	public:
@@ -2000,6 +2150,11 @@ class MeshVS_DataMapOfIntegerMeshEntityOwner : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_DataMapOfIntegerMeshEntityOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapOfIntegerOwner;
 class MeshVS_DataMapOfIntegerOwner : public TCollection_BasicMap {
 	public:
@@ -2078,6 +2233,11 @@ class MeshVS_DataMapOfIntegerOwner : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_DataMapOfIntegerOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapOfIntegerTwoColors;
 class MeshVS_DataMapOfIntegerTwoColors : public TCollection_BasicMap {
 	public:
@@ -2156,6 +2316,11 @@ class MeshVS_DataMapOfIntegerTwoColors : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_DataMapOfIntegerTwoColors {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapOfIntegerVector;
 class MeshVS_DataMapOfIntegerVector : public TCollection_BasicMap {
 	public:
@@ -2234,6 +2399,11 @@ class MeshVS_DataMapOfIntegerVector : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_DataMapOfIntegerVector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataMapOfTwoColorsMapOfInteger;
 class MeshVS_DataMapOfTwoColorsMapOfInteger : public TCollection_BasicMap {
 	public:
@@ -2312,6 +2482,11 @@ class MeshVS_DataMapOfTwoColorsMapOfInteger : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_DataMapOfTwoColorsMapOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataSource;
 class MeshVS_DataSource : public MMgt_TShared {
 	public:
@@ -2596,6 +2771,11 @@ class Handle_MeshVS_DataSource : public Handle_MMgt_TShared {
     }
 };
 
+%extend MeshVS_DataSource {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_Drawer;
 class MeshVS_Drawer : public MMgt_TShared {
 	public:
@@ -2788,6 +2968,11 @@ class Handle_MeshVS_Drawer : public Handle_MMgt_TShared {
     }
 };
 
+%extend MeshVS_Drawer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DummySensitiveEntity;
 class MeshVS_DummySensitiveEntity : public SelectBasics_SensitiveEntity {
 	public:
@@ -2898,6 +3083,11 @@ class Handle_MeshVS_DummySensitiveEntity : public Handle_SelectBasics_SensitiveE
     }
 };
 
+%extend MeshVS_DummySensitiveEntity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_HArray1OfSequenceOfInteger;
 class MeshVS_HArray1OfSequenceOfInteger : public MMgt_TShared {
 	public:
@@ -3014,6 +3204,11 @@ class Handle_MeshVS_HArray1OfSequenceOfInteger : public Handle_MMgt_TShared {
     }
 };
 
+%extend MeshVS_HArray1OfSequenceOfInteger {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_MapIteratorOfMapOfTwoNodes;
 class MeshVS_MapIteratorOfMapOfTwoNodes : public TCollection_BasicMapIterator {
 	public:
@@ -3040,6 +3235,11 @@ class MeshVS_MapIteratorOfMapOfTwoNodes : public TCollection_BasicMapIterator {
 };
 
 
+%extend MeshVS_MapIteratorOfMapOfTwoNodes {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_MapOfTwoNodes;
 class MeshVS_MapOfTwoNodes : public TCollection_BasicMap {
 	public:
@@ -3098,6 +3298,11 @@ class MeshVS_MapOfTwoNodes : public TCollection_BasicMap {
 };
 
 
+%extend MeshVS_MapOfTwoNodes {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_Mesh;
 class MeshVS_Mesh : public AIS_InteractiveObject {
 	public:
@@ -3442,6 +3647,11 @@ class Handle_MeshVS_Mesh : public Handle_AIS_InteractiveObject {
     }
 };
 
+%extend MeshVS_Mesh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_MeshEntityOwner;
 class MeshVS_MeshEntityOwner : public SelectMgr_EntityOwner {
 	public:
@@ -3590,6 +3800,11 @@ class Handle_MeshVS_MeshEntityOwner : public Handle_SelectMgr_EntityOwner {
     }
 };
 
+%extend MeshVS_MeshEntityOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_MeshOwner;
 class MeshVS_MeshOwner : public SelectMgr_EntityOwner {
 	public:
@@ -3728,6 +3943,11 @@ class Handle_MeshVS_MeshOwner : public Handle_SelectMgr_EntityOwner {
     }
 };
 
+%extend MeshVS_MeshOwner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_PrsBuilder;
 class MeshVS_PrsBuilder : public MMgt_TShared {
 	public:
@@ -3902,6 +4122,11 @@ class Handle_MeshVS_PrsBuilder : public Handle_MMgt_TShared {
     }
 };
 
+%extend MeshVS_PrsBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_SensitiveFace;
 class MeshVS_SensitiveFace : public Select3D_SensitiveFace {
 	public:
@@ -3994,6 +4219,11 @@ class Handle_MeshVS_SensitiveFace : public Handle_Select3D_SensitiveFace {
     }
 };
 
+%extend MeshVS_SensitiveFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_SensitiveMesh;
 class MeshVS_SensitiveMesh : public Select3D_SensitiveEntity {
 	public:
@@ -4110,6 +4340,11 @@ class Handle_MeshVS_SensitiveMesh : public Handle_Select3D_SensitiveEntity {
     }
 };
 
+%extend MeshVS_SensitiveMesh {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_SensitivePolyhedron;
 class MeshVS_SensitivePolyhedron : public Select3D_SensitiveEntity {
 	public:
@@ -4230,6 +4465,11 @@ class Handle_MeshVS_SensitivePolyhedron : public Handle_Select3D_SensitiveEntity
     }
 };
 
+%extend MeshVS_SensitivePolyhedron {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_SensitiveSegment;
 class MeshVS_SensitiveSegment : public Select3D_SensitiveSegment {
 	public:
@@ -4324,6 +4564,11 @@ class Handle_MeshVS_SensitiveSegment : public Handle_Select3D_SensitiveSegment {
     }
 };
 
+%extend MeshVS_SensitiveSegment {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_SequenceNodeOfSequenceOfPrsBuilder;
 class MeshVS_SequenceNodeOfSequenceOfPrsBuilder : public TCollection_SeqNode {
 	public:
@@ -4390,6 +4635,11 @@ class Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder : public Handle_TCollecti
     }
 };
 
+%extend MeshVS_SequenceNodeOfSequenceOfPrsBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_SequenceOfPrsBuilder;
 class MeshVS_SequenceOfPrsBuilder : public TCollection_BaseSequence {
 	public:
@@ -4528,6 +4778,11 @@ class MeshVS_SequenceOfPrsBuilder : public TCollection_BaseSequence {
 };
 
 
+%extend MeshVS_SequenceOfPrsBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_StdMapNodeOfMapOfTwoNodes;
 class MeshVS_StdMapNodeOfMapOfTwoNodes : public TCollection_MapNode {
 	public:
@@ -4592,6 +4847,11 @@ class Handle_MeshVS_StdMapNodeOfMapOfTwoNodes : public Handle_TCollection_MapNod
     }
 };
 
+%extend MeshVS_StdMapNodeOfMapOfTwoNodes {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_SymmetricPairHasher;
 class MeshVS_SymmetricPairHasher {
 	public:
@@ -4614,6 +4874,11 @@ class MeshVS_SymmetricPairHasher {
 };
 
 
+%extend MeshVS_SymmetricPairHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class MeshVS_Tool {
 	public:
 		%feature("compactdefaultargs") CreateAspectFillArea3d;
@@ -4691,6 +4956,11 @@ class MeshVS_Tool {
 };
 
 
+%extend MeshVS_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_TwoColors;
 class MeshVS_TwoColors {
 	public:
@@ -4703,6 +4973,11 @@ class MeshVS_TwoColors {
 };
 
 
+%extend MeshVS_TwoColors {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class MeshVS_TwoColorsHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -4724,6 +4999,11 @@ class MeshVS_TwoColorsHasher {
 };
 
 
+%extend MeshVS_TwoColorsHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_TwoNodes;
 class MeshVS_TwoNodes {
 	public:
@@ -4740,6 +5020,11 @@ class MeshVS_TwoNodes {
 };
 
 
+%extend MeshVS_TwoNodes {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class MeshVS_TwoNodesHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -4761,6 +5046,11 @@ class MeshVS_TwoNodesHasher {
 };
 
 
+%extend MeshVS_TwoNodesHasher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DataSource3D;
 class MeshVS_DataSource3D : public MeshVS_DataSource {
 	public:
@@ -4837,6 +5127,11 @@ class Handle_MeshVS_DataSource3D : public Handle_MeshVS_DataSource {
     }
 };
 
+%extend MeshVS_DataSource3D {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_DeformedDataSource;
 class MeshVS_DeformedDataSource : public MeshVS_DataSource {
 	public:
@@ -5017,6 +5312,11 @@ class Handle_MeshVS_DeformedDataSource : public Handle_MeshVS_DataSource {
     }
 };
 
+%extend MeshVS_DeformedDataSource {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_ElementalColorPrsBuilder;
 class MeshVS_ElementalColorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
@@ -5205,6 +5505,11 @@ class Handle_MeshVS_ElementalColorPrsBuilder : public Handle_MeshVS_PrsBuilder {
     }
 };
 
+%extend MeshVS_ElementalColorPrsBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_MeshPrsBuilder;
 class MeshVS_MeshPrsBuilder : public MeshVS_PrsBuilder {
 	public:
@@ -5369,6 +5674,11 @@ class Handle_MeshVS_MeshPrsBuilder : public Handle_MeshVS_PrsBuilder {
     }
 };
 
+%extend MeshVS_MeshPrsBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_NodalColorPrsBuilder;
 class MeshVS_NodalColorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
@@ -5587,6 +5897,11 @@ class Handle_MeshVS_NodalColorPrsBuilder : public Handle_MeshVS_PrsBuilder {
     }
 };
 
+%extend MeshVS_NodalColorPrsBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_TextPrsBuilder;
 class MeshVS_TextPrsBuilder : public MeshVS_PrsBuilder {
 	public:
@@ -5723,6 +6038,11 @@ class Handle_MeshVS_TextPrsBuilder : public Handle_MeshVS_PrsBuilder {
     }
 };
 
+%extend MeshVS_TextPrsBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MeshVS_VectorPrsBuilder;
 class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
@@ -5925,3 +6245,8 @@ class Handle_MeshVS_VectorPrsBuilder : public Handle_MeshVS_PrsBuilder {
     }
 };
 
+%extend MeshVS_VectorPrsBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

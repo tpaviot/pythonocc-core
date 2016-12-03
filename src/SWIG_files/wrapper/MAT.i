@@ -251,6 +251,11 @@ class Handle_MAT_Arc : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT_Arc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_BasicElt;
 class MAT_BasicElt : public MMgt_TShared {
 	public:
@@ -359,6 +364,11 @@ class Handle_MAT_BasicElt : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT_BasicElt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_Bisector;
 class MAT_Bisector : public MMgt_TShared {
 	public:
@@ -561,6 +571,11 @@ class Handle_MAT_Bisector : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT_Bisector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapIteratorOfDataMapOfIntegerArc;
 class MAT_DataMapIteratorOfDataMapOfIntegerArc : public TCollection_BasicMapIterator {
 	public:
@@ -591,6 +606,11 @@ class MAT_DataMapIteratorOfDataMapOfIntegerArc : public TCollection_BasicMapIter
 };
 
 
+%extend MAT_DataMapIteratorOfDataMapOfIntegerArc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
 class MAT_DataMapIteratorOfDataMapOfIntegerBasicElt : public TCollection_BasicMapIterator {
 	public:
@@ -621,6 +641,11 @@ class MAT_DataMapIteratorOfDataMapOfIntegerBasicElt : public TCollection_BasicMa
 };
 
 
+%extend MAT_DataMapIteratorOfDataMapOfIntegerBasicElt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapIteratorOfDataMapOfIntegerBisector;
 class MAT_DataMapIteratorOfDataMapOfIntegerBisector : public TCollection_BasicMapIterator {
 	public:
@@ -651,6 +676,11 @@ class MAT_DataMapIteratorOfDataMapOfIntegerBisector : public TCollection_BasicMa
 };
 
 
+%extend MAT_DataMapIteratorOfDataMapOfIntegerBisector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapIteratorOfDataMapOfIntegerNode;
 class MAT_DataMapIteratorOfDataMapOfIntegerNode : public TCollection_BasicMapIterator {
 	public:
@@ -681,6 +711,11 @@ class MAT_DataMapIteratorOfDataMapOfIntegerNode : public TCollection_BasicMapIte
 };
 
 
+%extend MAT_DataMapIteratorOfDataMapOfIntegerNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapNodeOfDataMapOfIntegerArc;
 class MAT_DataMapNodeOfDataMapOfIntegerArc : public TCollection_MapNode {
 	public:
@@ -760,6 +795,11 @@ class Handle_MAT_DataMapNodeOfDataMapOfIntegerArc : public Handle_TCollection_Ma
     }
 };
 
+%extend MAT_DataMapNodeOfDataMapOfIntegerArc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapNodeOfDataMapOfIntegerBasicElt;
 class MAT_DataMapNodeOfDataMapOfIntegerBasicElt : public TCollection_MapNode {
 	public:
@@ -839,6 +879,11 @@ class Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt : public Handle_TCollecti
     }
 };
 
+%extend MAT_DataMapNodeOfDataMapOfIntegerBasicElt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapNodeOfDataMapOfIntegerBisector;
 class MAT_DataMapNodeOfDataMapOfIntegerBisector : public TCollection_MapNode {
 	public:
@@ -918,6 +963,11 @@ class Handle_MAT_DataMapNodeOfDataMapOfIntegerBisector : public Handle_TCollecti
     }
 };
 
+%extend MAT_DataMapNodeOfDataMapOfIntegerBisector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapNodeOfDataMapOfIntegerNode;
 class MAT_DataMapNodeOfDataMapOfIntegerNode : public TCollection_MapNode {
 	public:
@@ -997,6 +1047,11 @@ class Handle_MAT_DataMapNodeOfDataMapOfIntegerNode : public Handle_TCollection_M
     }
 };
 
+%extend MAT_DataMapNodeOfDataMapOfIntegerNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapOfIntegerArc;
 class MAT_DataMapOfIntegerArc : public TCollection_BasicMap {
 	public:
@@ -1075,6 +1130,11 @@ class MAT_DataMapOfIntegerArc : public TCollection_BasicMap {
 };
 
 
+%extend MAT_DataMapOfIntegerArc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapOfIntegerBasicElt;
 class MAT_DataMapOfIntegerBasicElt : public TCollection_BasicMap {
 	public:
@@ -1153,6 +1213,11 @@ class MAT_DataMapOfIntegerBasicElt : public TCollection_BasicMap {
 };
 
 
+%extend MAT_DataMapOfIntegerBasicElt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapOfIntegerBisector;
 class MAT_DataMapOfIntegerBisector : public TCollection_BasicMap {
 	public:
@@ -1231,6 +1296,11 @@ class MAT_DataMapOfIntegerBisector : public TCollection_BasicMap {
 };
 
 
+%extend MAT_DataMapOfIntegerBisector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_DataMapOfIntegerNode;
 class MAT_DataMapOfIntegerNode : public TCollection_BasicMap {
 	public:
@@ -1309,6 +1379,11 @@ class MAT_DataMapOfIntegerNode : public TCollection_BasicMap {
 };
 
 
+%extend MAT_DataMapOfIntegerNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_Edge;
 class MAT_Edge : public MMgt_TShared {
 	public:
@@ -1423,6 +1498,11 @@ class Handle_MAT_Edge : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_Graph;
 class MAT_Graph : public MMgt_TShared {
 	public:
@@ -1585,6 +1665,11 @@ class Handle_MAT_Graph : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT_Graph {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_ListOfBisector;
 class MAT_ListOfBisector : public MMgt_TShared {
 	public:
@@ -1755,6 +1840,11 @@ class Handle_MAT_ListOfBisector : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT_ListOfBisector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_ListOfEdge;
 class MAT_ListOfEdge : public MMgt_TShared {
 	public:
@@ -1925,6 +2015,11 @@ class Handle_MAT_ListOfEdge : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT_ListOfEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_Node;
 class MAT_Node : public MMgt_TShared {
 	public:
@@ -2051,6 +2146,11 @@ class Handle_MAT_Node : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT_Node {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_SequenceNodeOfSequenceOfArc;
 class MAT_SequenceNodeOfSequenceOfArc : public TCollection_SeqNode {
 	public:
@@ -2117,6 +2217,11 @@ class Handle_MAT_SequenceNodeOfSequenceOfArc : public Handle_TCollection_SeqNode
     }
 };
 
+%extend MAT_SequenceNodeOfSequenceOfArc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_SequenceNodeOfSequenceOfBasicElt;
 class MAT_SequenceNodeOfSequenceOfBasicElt : public TCollection_SeqNode {
 	public:
@@ -2183,6 +2288,11 @@ class Handle_MAT_SequenceNodeOfSequenceOfBasicElt : public Handle_TCollection_Se
     }
 };
 
+%extend MAT_SequenceNodeOfSequenceOfBasicElt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_SequenceOfArc;
 class MAT_SequenceOfArc : public TCollection_BaseSequence {
 	public:
@@ -2321,6 +2431,11 @@ class MAT_SequenceOfArc : public TCollection_BaseSequence {
 };
 
 
+%extend MAT_SequenceOfArc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_SequenceOfBasicElt;
 class MAT_SequenceOfBasicElt : public TCollection_BaseSequence {
 	public:
@@ -2459,6 +2574,11 @@ class MAT_SequenceOfBasicElt : public TCollection_BaseSequence {
 };
 
 
+%extend MAT_SequenceOfBasicElt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_TListNodeOfListOfBisector;
 class MAT_TListNodeOfListOfBisector : public MMgt_TShared {
 	public:
@@ -2555,6 +2675,11 @@ class Handle_MAT_TListNodeOfListOfBisector : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT_TListNodeOfListOfBisector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_TListNodeOfListOfEdge;
 class MAT_TListNodeOfListOfEdge : public MMgt_TShared {
 	public:
@@ -2651,6 +2776,11 @@ class Handle_MAT_TListNodeOfListOfEdge : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT_TListNodeOfListOfEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor MAT_Zone;
 class MAT_Zone : public MMgt_TShared {
 	public:
@@ -2749,3 +2879,8 @@ class Handle_MAT_Zone : public Handle_MMgt_TShared {
     }
 };
 
+%extend MAT_Zone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

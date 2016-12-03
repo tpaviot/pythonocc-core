@@ -84,6 +84,11 @@ class StlAPI {
 };
 
 
+%extend StlAPI {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlAPI_Reader;
 class StlAPI_Reader {
 	public:
@@ -102,6 +107,11 @@ class StlAPI_Reader {
 };
 
 
+%extend StlAPI_Reader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor StlAPI_Writer;
 class StlAPI_Writer {
 	public:
@@ -168,3 +178,8 @@ class StlAPI_Writer {
 };
 
 
+%extend StlAPI_Writer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

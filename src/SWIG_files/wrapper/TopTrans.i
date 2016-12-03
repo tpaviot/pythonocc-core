@@ -160,6 +160,11 @@ class TopTrans_Array2OfOrientation {
 };
 
 
+%extend TopTrans_Array2OfOrientation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTrans_CurveTransition;
 class TopTrans_CurveTransition {
 	public:
@@ -222,6 +227,11 @@ class TopTrans_CurveTransition {
 };
 
 
+%extend TopTrans_CurveTransition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopTrans_SurfaceTransition;
 class TopTrans_SurfaceTransition {
 	public:
@@ -322,3 +332,8 @@ class TopTrans_SurfaceTransition {
 };
 
 
+%extend TopTrans_SurfaceTransition {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

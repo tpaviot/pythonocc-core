@@ -153,6 +153,11 @@ class TopoDSToStep {
 };
 
 
+%extend TopoDSToStep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopoDSToStep_FacetedTool {
 	public:
 		%feature("compactdefaultargs") CheckTopoDSShape;
@@ -164,6 +169,11 @@ class TopoDSToStep_FacetedTool {
 };
 
 
+%extend TopoDSToStep_FacetedTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_Root;
 class TopoDSToStep_Root {
 	public:
@@ -187,6 +197,11 @@ class TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_Root {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_Tool;
 class TopoDSToStep_Tool {
 	public:
@@ -311,6 +326,11 @@ class TopoDSToStep_Tool {
 };
 
 
+%extend TopoDSToStep_Tool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_Builder;
 class TopoDSToStep_Builder : public TopoDSToStep_Root {
 	public:
@@ -349,6 +369,11 @@ class TopoDSToStep_Builder : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_Builder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_MakeBrepWithVoids;
 class TopoDSToStep_MakeBrepWithVoids : public TopoDSToStep_Root {
 	public:
@@ -367,6 +392,11 @@ class TopoDSToStep_MakeBrepWithVoids : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_MakeBrepWithVoids {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_MakeFacetedBrep;
 class TopoDSToStep_MakeFacetedBrep : public TopoDSToStep_Root {
 	public:
@@ -393,6 +423,11 @@ class TopoDSToStep_MakeFacetedBrep : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_MakeFacetedBrep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_MakeFacetedBrepAndBrepWithVoids;
 class TopoDSToStep_MakeFacetedBrepAndBrepWithVoids : public TopoDSToStep_Root {
 	public:
@@ -411,6 +446,11 @@ class TopoDSToStep_MakeFacetedBrepAndBrepWithVoids : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_MakeFacetedBrepAndBrepWithVoids {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_MakeGeometricCurveSet;
 class TopoDSToStep_MakeGeometricCurveSet : public TopoDSToStep_Root {
 	public:
@@ -429,6 +469,11 @@ class TopoDSToStep_MakeGeometricCurveSet : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_MakeGeometricCurveSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_MakeManifoldSolidBrep;
 class TopoDSToStep_MakeManifoldSolidBrep : public TopoDSToStep_Root {
 	public:
@@ -455,6 +500,11 @@ class TopoDSToStep_MakeManifoldSolidBrep : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_MakeManifoldSolidBrep {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_MakeShellBasedSurfaceModel;
 class TopoDSToStep_MakeShellBasedSurfaceModel : public TopoDSToStep_Root {
 	public:
@@ -489,6 +539,11 @@ class TopoDSToStep_MakeShellBasedSurfaceModel : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_MakeShellBasedSurfaceModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_MakeStepEdge;
 class TopoDSToStep_MakeStepEdge : public TopoDSToStep_Root {
 	public:
@@ -527,6 +582,11 @@ class TopoDSToStep_MakeStepEdge : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_MakeStepEdge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_MakeStepFace;
 class TopoDSToStep_MakeStepFace : public TopoDSToStep_Root {
 	public:
@@ -565,6 +625,11 @@ class TopoDSToStep_MakeStepFace : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_MakeStepFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_MakeStepVertex;
 class TopoDSToStep_MakeStepVertex : public TopoDSToStep_Root {
 	public:
@@ -603,6 +668,11 @@ class TopoDSToStep_MakeStepVertex : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_MakeStepVertex {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_MakeStepWire;
 class TopoDSToStep_MakeStepWire : public TopoDSToStep_Root {
 	public:
@@ -641,6 +711,11 @@ class TopoDSToStep_MakeStepWire : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_MakeStepWire {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopoDSToStep_WireframeBuilder;
 class TopoDSToStep_WireframeBuilder : public TopoDSToStep_Root {
 	public:
@@ -717,3 +792,8 @@ class TopoDSToStep_WireframeBuilder : public TopoDSToStep_Root {
 };
 
 
+%extend TopoDSToStep_WireframeBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -77,6 +77,11 @@ class HLRTopoBRep_DSFiller {
 };
 
 
+%extend HLRTopoBRep_DSFiller {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_Data;
 class HLRTopoBRep_Data {
 	public:
@@ -319,6 +324,11 @@ class HLRTopoBRep_Data {
 };
 
 
+%extend HLRTopoBRep_Data {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData;
 class HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData : public TCollection_BasicMapIterator {
 	public:
@@ -349,6 +359,11 @@ class HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData : public TCollection_B
 };
 
 
+%extend HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData;
 class HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData : public TCollection_BasicMapIterator {
 	public:
@@ -379,6 +394,11 @@ class HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData : public TCollection_Ba
 };
 
 
+%extend HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData;
 class HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public TCollection_MapNode {
 	public:
@@ -449,6 +469,11 @@ class Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public Handle_TCo
     }
 };
 
+%extend HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData;
 class HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData : public TCollection_MapNode {
 	public:
@@ -519,6 +544,11 @@ class Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData : public Handle_TCol
     }
 };
 
+%extend HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_DataMapOfShapeFaceData;
 class HLRTopoBRep_DataMapOfShapeFaceData : public TCollection_BasicMap {
 	public:
@@ -597,6 +627,11 @@ class HLRTopoBRep_DataMapOfShapeFaceData : public TCollection_BasicMap {
 };
 
 
+%extend HLRTopoBRep_DataMapOfShapeFaceData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_FaceData;
 class HLRTopoBRep_FaceData {
 	public:
@@ -631,6 +666,11 @@ class HLRTopoBRep_FaceData {
 };
 
 
+%extend HLRTopoBRep_FaceData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class HLRTopoBRep_FaceIsoLiner {
 	public:
 		%feature("compactdefaultargs") Perform;
@@ -682,6 +722,11 @@ class HLRTopoBRep_FaceIsoLiner {
 };
 
 
+%extend HLRTopoBRep_FaceIsoLiner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_ListIteratorOfListOfVData;
 class HLRTopoBRep_ListIteratorOfListOfVData {
 	public:
@@ -716,6 +761,11 @@ class HLRTopoBRep_ListIteratorOfListOfVData {
 };
 
 
+%extend HLRTopoBRep_ListIteratorOfListOfVData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_ListNodeOfListOfVData;
 class HLRTopoBRep_ListNodeOfListOfVData : public TCollection_MapNode {
 	public:
@@ -780,6 +830,11 @@ class Handle_HLRTopoBRep_ListNodeOfListOfVData : public Handle_TCollection_MapNo
     }
 };
 
+%extend HLRTopoBRep_ListNodeOfListOfVData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_ListOfVData;
 class HLRTopoBRep_ListOfVData {
 	public:
@@ -910,6 +965,11 @@ class HLRTopoBRep_ListOfVData {
 };
 
 
+%extend HLRTopoBRep_ListOfVData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_MapOfShapeListOfVData;
 class HLRTopoBRep_MapOfShapeListOfVData : public TCollection_BasicMap {
 	public:
@@ -988,6 +1048,11 @@ class HLRTopoBRep_MapOfShapeListOfVData : public TCollection_BasicMap {
 };
 
 
+%extend HLRTopoBRep_MapOfShapeListOfVData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_OutLiner;
 class HLRTopoBRep_OutLiner : public MMgt_TShared {
 	public:
@@ -1092,6 +1157,11 @@ class Handle_HLRTopoBRep_OutLiner : public Handle_MMgt_TShared {
     }
 };
 
+%extend HLRTopoBRep_OutLiner {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor HLRTopoBRep_VData;
 class HLRTopoBRep_VData {
 	public:
@@ -1118,3 +1188,8 @@ class HLRTopoBRep_VData {
 };
 
 
+%extend HLRTopoBRep_VData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

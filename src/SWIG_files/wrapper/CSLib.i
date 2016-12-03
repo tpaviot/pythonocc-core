@@ -214,6 +214,11 @@ class CSLib {
 };
 
 
+%extend CSLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor CSLib_Class2d;
 class CSLib_Class2d {
 	public:
@@ -284,6 +289,11 @@ class CSLib_Class2d {
 };
 
 
+%extend CSLib_Class2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor CSLib_NormalPolyDef;
 class CSLib_NormalPolyDef : public math_FunctionWithDerivative {
 	public:
@@ -330,3 +340,8 @@ class CSLib_NormalPolyDef : public math_FunctionWithDerivative {
 };
 
 
+%extend CSLib_NormalPolyDef {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

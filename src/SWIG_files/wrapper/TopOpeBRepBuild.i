@@ -171,6 +171,11 @@ class TopOpeBRepBuild_AreaBuilder {
 };
 
 
+%extend TopOpeBRepBuild_AreaBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_BlockBuilder;
 class TopOpeBRepBuild_BlockBuilder {
 	public:
@@ -267,6 +272,11 @@ class TopOpeBRepBuild_BlockBuilder {
 };
 
 
+%extend TopOpeBRepBuild_BlockBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_BlockIterator;
 class TopOpeBRepBuild_BlockIterator {
 	public:
@@ -305,6 +315,11 @@ class TopOpeBRepBuild_BlockIterator {
 };
 
 
+%extend TopOpeBRepBuild_BlockIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_BuilderON;
 class TopOpeBRepBuild_BuilderON {
 	public:
@@ -385,6 +400,11 @@ class TopOpeBRepBuild_BuilderON {
 };
 
 
+%extend TopOpeBRepBuild_BuilderON {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_CorrectFace2d;
 class TopOpeBRepBuild_CorrectFace2d {
 	public:
@@ -455,6 +475,11 @@ class TopOpeBRepBuild_CorrectFace2d {
 };
 
 
+%extend TopOpeBRepBuild_CorrectFace2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_DataMapIteratorOfDataMapOfShapeListOfShapeListOfShape;
 class TopOpeBRepBuild_DataMapIteratorOfDataMapOfShapeListOfShapeListOfShape : public TCollection_BasicMapIterator {
 	public:
@@ -485,6 +510,11 @@ class TopOpeBRepBuild_DataMapIteratorOfDataMapOfShapeListOfShapeListOfShape : pu
 };
 
 
+%extend TopOpeBRepBuild_DataMapIteratorOfDataMapOfShapeListOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape;
 class TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape : public TCollection_MapNode {
 	public:
@@ -555,6 +585,11 @@ class Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape :
     }
 };
 
+%extend TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape;
 class TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape : public TCollection_BasicMap {
 	public:
@@ -633,6 +668,11 @@ class TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape : public TCollection_
 };
 
 
+%extend TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_FaceBuilder;
 class TopOpeBRepBuild_FaceBuilder {
 	public:
@@ -771,6 +811,11 @@ class TopOpeBRepBuild_FaceBuilder {
 };
 
 
+%extend TopOpeBRepBuild_FaceBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_FuseFace;
 class TopOpeBRepBuild_FuseFace {
 	public:
@@ -853,6 +898,11 @@ class TopOpeBRepBuild_FuseFace {
 };
 
 
+%extend TopOpeBRepBuild_FuseFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_GIter;
 class TopOpeBRepBuild_GIter {
 	public:
@@ -903,6 +953,11 @@ class TopOpeBRepBuild_GIter {
         };
 
 
+%extend TopOpeBRepBuild_GIter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopOpeBRepBuild_GTool {
 	public:
 		%feature("compactdefaultargs") GFusUnsh;
@@ -988,6 +1043,11 @@ class TopOpeBRepBuild_GTool {
         };
 
 
+%extend TopOpeBRepBuild_GTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_GTopo;
 class TopOpeBRepBuild_GTopo {
 	public:
@@ -1218,6 +1278,11 @@ class TopOpeBRepBuild_GTopo {
 };
 
 
+%extend TopOpeBRepBuild_GTopo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_HBuilder;
 class TopOpeBRepBuild_HBuilder : public MMgt_TShared {
 	public:
@@ -1538,6 +1603,11 @@ class Handle_TopOpeBRepBuild_HBuilder : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRepBuild_HBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo;
 class TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo : public TCollection_MapNode {
 	public:
@@ -1629,6 +1699,11 @@ class Handle_TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo
     }
 };
 
+%extend TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo;
 class TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo : public TCollection_BasicMap {
 	public:
@@ -1739,6 +1814,11 @@ class TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo : public TCollection_Basic
 };
 
 
+%extend TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListIteratorOfListOfListOfLoop;
 class TopOpeBRepBuild_ListIteratorOfListOfListOfLoop {
 	public:
@@ -1773,6 +1853,11 @@ class TopOpeBRepBuild_ListIteratorOfListOfListOfLoop {
 };
 
 
+%extend TopOpeBRepBuild_ListIteratorOfListOfListOfLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListIteratorOfListOfLoop;
 class TopOpeBRepBuild_ListIteratorOfListOfLoop {
 	public:
@@ -1807,6 +1892,11 @@ class TopOpeBRepBuild_ListIteratorOfListOfLoop {
 };
 
 
+%extend TopOpeBRepBuild_ListIteratorOfListOfLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListIteratorOfListOfPave;
 class TopOpeBRepBuild_ListIteratorOfListOfPave {
 	public:
@@ -1841,6 +1931,11 @@ class TopOpeBRepBuild_ListIteratorOfListOfPave {
 };
 
 
+%extend TopOpeBRepBuild_ListIteratorOfListOfPave {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape;
 class TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape {
 	public:
@@ -1875,6 +1970,11 @@ class TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape {
 };
 
 
+%extend TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListNodeOfListOfListOfLoop;
 class TopOpeBRepBuild_ListNodeOfListOfListOfLoop : public TCollection_MapNode {
 	public:
@@ -1939,6 +2039,11 @@ class Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop : public Handle_TCollect
     }
 };
 
+%extend TopOpeBRepBuild_ListNodeOfListOfListOfLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListNodeOfListOfLoop;
 class TopOpeBRepBuild_ListNodeOfListOfLoop : public TCollection_MapNode {
 	public:
@@ -2003,6 +2108,11 @@ class Handle_TopOpeBRepBuild_ListNodeOfListOfLoop : public Handle_TCollection_Ma
     }
 };
 
+%extend TopOpeBRepBuild_ListNodeOfListOfLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListNodeOfListOfPave;
 class TopOpeBRepBuild_ListNodeOfListOfPave : public TCollection_MapNode {
 	public:
@@ -2067,6 +2177,11 @@ class Handle_TopOpeBRepBuild_ListNodeOfListOfPave : public Handle_TCollection_Ma
     }
 };
 
+%extend TopOpeBRepBuild_ListNodeOfListOfPave {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape;
 class TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape : public TCollection_MapNode {
 	public:
@@ -2131,6 +2246,11 @@ class Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape : public Handle_TC
     }
 };
 
+%extend TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListOfListOfLoop;
 class TopOpeBRepBuild_ListOfListOfLoop {
 	public:
@@ -2261,6 +2381,11 @@ class TopOpeBRepBuild_ListOfListOfLoop {
 };
 
 
+%extend TopOpeBRepBuild_ListOfListOfLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListOfLoop;
 class TopOpeBRepBuild_ListOfLoop {
 	public:
@@ -2391,6 +2516,11 @@ class TopOpeBRepBuild_ListOfLoop {
 };
 
 
+%extend TopOpeBRepBuild_ListOfLoop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListOfPave;
 class TopOpeBRepBuild_ListOfPave {
 	public:
@@ -2521,6 +2651,11 @@ class TopOpeBRepBuild_ListOfPave {
 };
 
 
+%extend TopOpeBRepBuild_ListOfPave {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ListOfShapeListOfShape;
 class TopOpeBRepBuild_ListOfShapeListOfShape {
 	public:
@@ -2651,6 +2786,11 @@ class TopOpeBRepBuild_ListOfShapeListOfShape {
 };
 
 
+%extend TopOpeBRepBuild_ListOfShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_Loop;
 class TopOpeBRepBuild_Loop : public MMgt_TShared {
 	public:
@@ -2731,6 +2871,11 @@ class Handle_TopOpeBRepBuild_Loop : public Handle_MMgt_TShared {
     }
 };
 
+%extend TopOpeBRepBuild_Loop {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_LoopClassifier;
 class TopOpeBRepBuild_LoopClassifier {
 	public:
@@ -2751,6 +2896,11 @@ class TopOpeBRepBuild_LoopClassifier {
 };
 
 
+%extend TopOpeBRepBuild_LoopClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_LoopSet;
 class TopOpeBRepBuild_LoopSet {
 	public:
@@ -2785,6 +2935,11 @@ class TopOpeBRepBuild_LoopSet {
 };
 
 
+%extend TopOpeBRepBuild_LoopSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ShapeListOfShape;
 class TopOpeBRepBuild_ShapeListOfShape {
 	public:
@@ -2825,6 +2980,11 @@ class TopOpeBRepBuild_ShapeListOfShape {
 };
 
 
+%extend TopOpeBRepBuild_ShapeListOfShape {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ShapeSet;
 class TopOpeBRepBuild_ShapeSet {
 	public:
@@ -3055,6 +3215,11 @@ class TopOpeBRepBuild_ShapeSet {
 };
 
 
+%extend TopOpeBRepBuild_ShapeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ShellToSolid;
 class TopOpeBRepBuild_ShellToSolid {
 	public:
@@ -3083,6 +3248,11 @@ class TopOpeBRepBuild_ShellToSolid {
 };
 
 
+%extend TopOpeBRepBuild_ShellToSolid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_SolidBuilder;
 class TopOpeBRepBuild_SolidBuilder {
 	public:
@@ -3163,6 +3333,11 @@ class TopOpeBRepBuild_SolidBuilder {
 };
 
 
+%extend TopOpeBRepBuild_SolidBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopOpeBRepBuild_Tools {
 	public:
 		%feature("compactdefaultargs") DumpMapOfShapeWithState;
@@ -3422,6 +3597,11 @@ class TopOpeBRepBuild_Tools {
 };
 
 
+%extend TopOpeBRepBuild_Tools {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class TopOpeBRepBuild_Tools2d {
 	public:
 		%feature("compactdefaultargs") MakeMapOfShapeVertexInfo;
@@ -3449,6 +3629,11 @@ class TopOpeBRepBuild_Tools2d {
 };
 
 
+%extend TopOpeBRepBuild_Tools2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_VertexInfo;
 class TopOpeBRepBuild_VertexInfo {
 	public:
@@ -3545,6 +3730,11 @@ class TopOpeBRepBuild_VertexInfo {
 };
 
 
+%extend TopOpeBRepBuild_VertexInfo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_WireToFace;
 class TopOpeBRepBuild_WireToFace {
 	public:
@@ -3573,6 +3763,11 @@ class TopOpeBRepBuild_WireToFace {
 };
 
 
+%extend TopOpeBRepBuild_WireToFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_Area1dBuilder;
 class TopOpeBRepBuild_Area1dBuilder : public TopOpeBRepBuild_AreaBuilder {
 	public:
@@ -3647,6 +3842,11 @@ class TopOpeBRepBuild_Area1dBuilder : public TopOpeBRepBuild_AreaBuilder {
 };
 
 
+%extend TopOpeBRepBuild_Area1dBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_Area2dBuilder;
 class TopOpeBRepBuild_Area2dBuilder : public TopOpeBRepBuild_AreaBuilder {
 	public:
@@ -3681,6 +3881,11 @@ class TopOpeBRepBuild_Area2dBuilder : public TopOpeBRepBuild_AreaBuilder {
 };
 
 
+%extend TopOpeBRepBuild_Area2dBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_Area3dBuilder;
 class TopOpeBRepBuild_Area3dBuilder : public TopOpeBRepBuild_AreaBuilder {
 	public:
@@ -3715,6 +3920,11 @@ class TopOpeBRepBuild_Area3dBuilder : public TopOpeBRepBuild_AreaBuilder {
 };
 
 
+%extend TopOpeBRepBuild_Area3dBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_Builder1;
 class TopOpeBRepBuild_Builder1 : public TopOpeBRepBuild_Builder {
 	public:
@@ -3957,6 +4167,11 @@ class TopOpeBRepBuild_Builder1 : public TopOpeBRepBuild_Builder {
 };
 
 
+%extend TopOpeBRepBuild_Builder1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_CompositeClassifier;
 class TopOpeBRepBuild_CompositeClassifier : public TopOpeBRepBuild_LoopClassifier {
 	public:
@@ -4021,6 +4236,11 @@ class TopOpeBRepBuild_CompositeClassifier : public TopOpeBRepBuild_LoopClassifie
 };
 
 
+%extend TopOpeBRepBuild_CompositeClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_Pave;
 class TopOpeBRepBuild_Pave : public TopOpeBRepBuild_Loop {
 	public:
@@ -4139,6 +4359,11 @@ class Handle_TopOpeBRepBuild_Pave : public Handle_TopOpeBRepBuild_Loop {
     }
 };
 
+%extend TopOpeBRepBuild_Pave {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_PaveClassifier;
 class TopOpeBRepBuild_PaveClassifier : public TopOpeBRepBuild_LoopClassifier {
 	public:
@@ -4191,6 +4416,11 @@ class TopOpeBRepBuild_PaveClassifier : public TopOpeBRepBuild_LoopClassifier {
 };
 
 
+%extend TopOpeBRepBuild_PaveClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_PaveSet;
 class TopOpeBRepBuild_PaveSet : public TopOpeBRepBuild_LoopSet {
 	public:
@@ -4259,6 +4489,11 @@ class TopOpeBRepBuild_PaveSet : public TopOpeBRepBuild_LoopSet {
 };
 
 
+%extend TopOpeBRepBuild_PaveSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ShellFaceSet;
 class TopOpeBRepBuild_ShellFaceSet : public TopOpeBRepBuild_ShapeSet {
 	public:
@@ -4347,6 +4582,11 @@ class TopOpeBRepBuild_ShellFaceSet : public TopOpeBRepBuild_ShapeSet {
 };
 
 
+%extend TopOpeBRepBuild_ShellFaceSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_WireEdgeSet;
 class TopOpeBRepBuild_WireEdgeSet : public TopOpeBRepBuild_ShapeSet {
 	public:
@@ -4463,6 +4703,11 @@ class TopOpeBRepBuild_WireEdgeSet : public TopOpeBRepBuild_ShapeSet {
 };
 
 
+%extend TopOpeBRepBuild_WireEdgeSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_EdgeBuilder;
 class TopOpeBRepBuild_EdgeBuilder : public TopOpeBRepBuild_Area1dBuilder {
 	public:
@@ -4527,6 +4772,11 @@ class TopOpeBRepBuild_EdgeBuilder : public TopOpeBRepBuild_Area1dBuilder {
 };
 
 
+%extend TopOpeBRepBuild_EdgeBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_FaceAreaBuilder;
 class TopOpeBRepBuild_FaceAreaBuilder : public TopOpeBRepBuild_Area2dBuilder {
 	public:
@@ -4559,6 +4809,11 @@ class TopOpeBRepBuild_FaceAreaBuilder : public TopOpeBRepBuild_Area2dBuilder {
 };
 
 
+%extend TopOpeBRepBuild_FaceAreaBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_ShellFaceClassifier;
 class TopOpeBRepBuild_ShellFaceClassifier : public TopOpeBRepBuild_CompositeClassifier {
 	public:
@@ -4627,6 +4882,11 @@ class TopOpeBRepBuild_ShellFaceClassifier : public TopOpeBRepBuild_CompositeClas
 };
 
 
+%extend TopOpeBRepBuild_ShellFaceClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_SolidAreaBuilder;
 class TopOpeBRepBuild_SolidAreaBuilder : public TopOpeBRepBuild_Area3dBuilder {
 	public:
@@ -4659,6 +4919,11 @@ class TopOpeBRepBuild_SolidAreaBuilder : public TopOpeBRepBuild_Area3dBuilder {
 };
 
 
+%extend TopOpeBRepBuild_SolidAreaBuilder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TopOpeBRepBuild_WireEdgeClassifier;
 class TopOpeBRepBuild_WireEdgeClassifier : public TopOpeBRepBuild_CompositeClassifier {
 	public:
@@ -4739,3 +5004,8 @@ class TopOpeBRepBuild_WireEdgeClassifier : public TopOpeBRepBuild_CompositeClass
 };
 
 
+%extend TopOpeBRepBuild_WireEdgeClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

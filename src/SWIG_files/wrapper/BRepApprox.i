@@ -128,6 +128,11 @@ class BRepApprox_Approx {
 };
 
 
+%extend BRepApprox_Approx {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_ApproxLine;
 class BRepApprox_ApproxLine : public MMgt_TShared {
 	public:
@@ -208,6 +213,11 @@ class Handle_BRepApprox_ApproxLine : public Handle_MMgt_TShared {
     }
 };
 
+%extend BRepApprox_ApproxLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox;
 class BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox : public math_BFGS {
 	public:
@@ -236,6 +246,11 @@ class BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox : publ
 };
 
 
+%extend BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox;
 class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -356,6 +371,11 @@ class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox : public
 };
 
 
+%extend BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 	public:
@@ -552,6 +572,11 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 };
 
 
+%extend BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox : public math_BFGS {
 	public:
@@ -580,6 +605,11 @@ class BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox : publi
 };
 
 
+%extend BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox;
 class BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox : public math_BFGS {
 	public:
@@ -608,6 +638,11 @@ class BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox : public m
 };
 
 
+%extend BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_MyBSplGradientOfTheComputeLineOfApprox;
 class BRepApprox_MyBSplGradientOfTheComputeLineOfApprox {
 	public:
@@ -696,6 +731,11 @@ class BRepApprox_MyBSplGradientOfTheComputeLineOfApprox {
 };
 
 
+%extend BRepApprox_MyBSplGradientOfTheComputeLineOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_MyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_MyGradientOfTheComputeLineBezierOfApprox {
 	public:
@@ -750,6 +790,11 @@ class BRepApprox_MyGradientOfTheComputeLineBezierOfApprox {
 };
 
 
+%extend BRepApprox_MyGradientOfTheComputeLineBezierOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_MyGradientbisOfTheComputeLineOfApprox;
 class BRepApprox_MyGradientbisOfTheComputeLineOfApprox {
 	public:
@@ -804,6 +849,11 @@ class BRepApprox_MyGradientbisOfTheComputeLineOfApprox {
 };
 
 
+%extend BRepApprox_MyGradientbisOfTheComputeLineOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -896,6 +946,11 @@ class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox : public 
 };
 
 
+%extend BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox;
 class BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox : public math_MultipleVarFunctionWithGradient {
 	public:
@@ -988,6 +1043,11 @@ class BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox : public mat
 };
 
 
+%extend BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 	public:
@@ -1184,6 +1244,11 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 };
 
 
+%extend BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 	public:
@@ -1380,6 +1445,11 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 };
 
 
+%extend BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
 	public:
@@ -1434,6 +1504,11 @@ class BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
 };
 
 
+%extend BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox;
 class BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
 	public:
@@ -1488,6 +1563,11 @@ class BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
 };
 
 
+%extend BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_TheComputeLineBezierOfApprox;
 class BRepApprox_TheComputeLineBezierOfApprox {
 	public:
@@ -1678,6 +1758,11 @@ class BRepApprox_TheComputeLineBezierOfApprox {
 };
 
 
+%extend BRepApprox_TheComputeLineBezierOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_TheComputeLineOfApprox;
 class BRepApprox_TheComputeLineOfApprox {
 	public:
@@ -1878,6 +1963,11 @@ class BRepApprox_TheComputeLineOfApprox {
 };
 
 
+%extend BRepApprox_TheComputeLineOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox;
 class BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox : public math_FunctionSetWithDerivatives {
 	public:
@@ -1984,6 +2074,11 @@ class BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox : public mat
 };
 
 
+%extend BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_TheImpPrmSvSurfacesOfApprox;
 class BRepApprox_TheImpPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 	public:
@@ -2082,6 +2177,11 @@ class BRepApprox_TheImpPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 };
 
 
+%extend BRepApprox_TheImpPrmSvSurfacesOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox;
 class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 	public:
@@ -2164,6 +2264,11 @@ class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 };
 
 
+%extend BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_TheMultiLineOfApprox;
 class BRepApprox_TheMultiLineOfApprox {
 	public:
@@ -2342,6 +2447,11 @@ class BRepApprox_TheMultiLineOfApprox {
 };
 
 
+%extend BRepApprox_TheMultiLineOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class BRepApprox_TheMultiLineToolOfApprox {
 	public:
 		%feature("compactdefaultargs") FirstPoint;
@@ -2489,6 +2599,11 @@ class BRepApprox_TheMultiLineToolOfApprox {
 };
 
 
+%extend BRepApprox_TheMultiLineToolOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_ThePrmPrmSvSurfacesOfApprox;
 class BRepApprox_ThePrmPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 	public:
@@ -2579,6 +2694,11 @@ class BRepApprox_ThePrmPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 };
 
 
+%extend BRepApprox_ThePrmPrmSvSurfacesOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox;
 class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox : public math_FunctionSetWithDerivatives {
 	public:
@@ -2687,3 +2807,8 @@ class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox : public math_Functi
 };
 
 
+%extend BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

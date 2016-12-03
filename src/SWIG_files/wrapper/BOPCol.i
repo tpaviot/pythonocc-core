@@ -141,6 +141,11 @@ class BOPCol_Box2DBndTreeSelector : public BOPCol_Box2DBndTree::Selector {
 };
 
 
+%extend BOPCol_Box2DBndTreeSelector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPCol_BoxBndTreeSelector;
 class BOPCol_BoxBndTreeSelector : public BOPCol_BoxBndTree::Selector {
 	public:
@@ -177,3 +182,8 @@ class BOPCol_BoxBndTreeSelector : public BOPCol_BoxBndTree::Selector {
 };
 
 
+%extend BOPCol_BoxBndTreeSelector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

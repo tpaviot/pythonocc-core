@@ -117,6 +117,11 @@ class AppParCurves {
 };
 
 
+%extend AppParCurves {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_Array1OfConstraintCouple;
 class AppParCurves_Array1OfConstraintCouple {
 	public:
@@ -199,6 +204,11 @@ class AppParCurves_Array1OfConstraintCouple {
 };
 
 
+%extend AppParCurves_Array1OfConstraintCouple {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_Array1OfMultiBSpCurve;
 class AppParCurves_Array1OfMultiBSpCurve {
 	public:
@@ -281,6 +291,11 @@ class AppParCurves_Array1OfMultiBSpCurve {
 };
 
 
+%extend AppParCurves_Array1OfMultiBSpCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_Array1OfMultiCurve;
 class AppParCurves_Array1OfMultiCurve {
 	public:
@@ -363,6 +378,11 @@ class AppParCurves_Array1OfMultiCurve {
 };
 
 
+%extend AppParCurves_Array1OfMultiCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_Array1OfMultiPoint;
 class AppParCurves_Array1OfMultiPoint {
 	public:
@@ -445,6 +465,11 @@ class AppParCurves_Array1OfMultiPoint {
 };
 
 
+%extend AppParCurves_Array1OfMultiPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_ConstraintCouple;
 class AppParCurves_ConstraintCouple {
 	public:
@@ -495,6 +520,11 @@ class AppParCurves_ConstraintCouple {
 };
 
 
+%extend AppParCurves_ConstraintCouple {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_HArray1OfConstraintCouple;
 class AppParCurves_HArray1OfConstraintCouple : public MMgt_TShared {
 	public:
@@ -611,6 +641,11 @@ class Handle_AppParCurves_HArray1OfConstraintCouple : public Handle_MMgt_TShared
     }
 };
 
+%extend AppParCurves_HArray1OfConstraintCouple {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_HArray1OfMultiBSpCurve;
 class AppParCurves_HArray1OfMultiBSpCurve : public MMgt_TShared {
 	public:
@@ -727,6 +762,11 @@ class Handle_AppParCurves_HArray1OfMultiBSpCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend AppParCurves_HArray1OfMultiBSpCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_HArray1OfMultiCurve;
 class AppParCurves_HArray1OfMultiCurve : public MMgt_TShared {
 	public:
@@ -843,6 +883,11 @@ class Handle_AppParCurves_HArray1OfMultiCurve : public Handle_MMgt_TShared {
     }
 };
 
+%extend AppParCurves_HArray1OfMultiCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_HArray1OfMultiPoint;
 class AppParCurves_HArray1OfMultiPoint : public MMgt_TShared {
 	public:
@@ -959,6 +1004,11 @@ class Handle_AppParCurves_HArray1OfMultiPoint : public Handle_MMgt_TShared {
     }
 };
 
+%extend AppParCurves_HArray1OfMultiPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_MultiCurve;
 class AppParCurves_MultiCurve {
 	public:
@@ -1211,6 +1261,11 @@ class AppParCurves_MultiCurve {
         };
 
 
+%extend AppParCurves_MultiCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_MultiPoint;
 class AppParCurves_MultiPoint {
 	public:
@@ -1363,6 +1418,11 @@ class AppParCurves_MultiPoint {
         };
 
 
+%extend AppParCurves_MultiPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve;
 class AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve : public TCollection_SeqNode {
 	public:
@@ -1429,6 +1489,11 @@ class Handle_AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve : public Handle_
     }
 };
 
+%extend AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_SequenceNodeOfSequenceOfMultiCurve;
 class AppParCurves_SequenceNodeOfSequenceOfMultiCurve : public TCollection_SeqNode {
 	public:
@@ -1495,6 +1560,11 @@ class Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve : public Handle_TCo
     }
 };
 
+%extend AppParCurves_SequenceNodeOfSequenceOfMultiCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_SequenceOfMultiBSpCurve;
 class AppParCurves_SequenceOfMultiBSpCurve : public TCollection_BaseSequence {
 	public:
@@ -1633,6 +1703,11 @@ class AppParCurves_SequenceOfMultiBSpCurve : public TCollection_BaseSequence {
 };
 
 
+%extend AppParCurves_SequenceOfMultiBSpCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_SequenceOfMultiCurve;
 class AppParCurves_SequenceOfMultiCurve : public TCollection_BaseSequence {
 	public:
@@ -1771,6 +1846,11 @@ class AppParCurves_SequenceOfMultiCurve : public TCollection_BaseSequence {
 };
 
 
+%extend AppParCurves_SequenceOfMultiCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppParCurves_MultiBSpCurve;
 class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 	public:
@@ -1941,3 +2021,8 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
         };
 
 
+%extend AppParCurves_MultiBSpCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

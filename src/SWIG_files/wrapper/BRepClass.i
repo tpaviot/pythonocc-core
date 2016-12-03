@@ -90,6 +90,11 @@ class BRepClass_Edge {
 };
 
 
+%extend BRepClass_Edge {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass_FClass2dOfFClassifier;
 class BRepClass_FClass2dOfFClassifier {
 	public:
@@ -138,6 +143,11 @@ class BRepClass_FClass2dOfFClassifier {
 };
 
 
+%extend BRepClass_FClass2dOfFClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass_FClassifier;
 class BRepClass_FClassifier {
 	public:
@@ -192,6 +202,11 @@ class BRepClass_FClassifier {
 };
 
 
+%extend BRepClass_FClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass_FaceExplorer;
 class BRepClass_FaceExplorer {
 	public:
@@ -302,6 +317,11 @@ class BRepClass_FaceExplorer {
 };
 
 
+%extend BRepClass_FaceExplorer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass_FacePassiveClassifier;
 class BRepClass_FacePassiveClassifier {
 	public:
@@ -350,6 +370,11 @@ class BRepClass_FacePassiveClassifier {
 };
 
 
+%extend BRepClass_FacePassiveClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepClass_Intersector;
 class BRepClass_Intersector : public Geom2dInt_IntConicCurveOfGInter {
 	public:
@@ -390,3 +415,8 @@ class BRepClass_Intersector : public Geom2dInt_IntConicCurveOfGInter {
 };
 
 
+%extend BRepClass_Intersector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

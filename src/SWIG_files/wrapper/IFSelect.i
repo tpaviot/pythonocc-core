@@ -128,6 +128,11 @@ class IFSelect {
 };
 
 
+%extend IFSelect {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_Activator;
 class IFSelect_Activator : public MMgt_TShared {
 	public:
@@ -316,6 +321,11 @@ class Handle_IFSelect_Activator : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_Activator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_AppliedModifiers;
 class IFSelect_AppliedModifiers : public MMgt_TShared {
 	public:
@@ -432,6 +442,11 @@ class Handle_IFSelect_AppliedModifiers : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_AppliedModifiers {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_ContextModif;
 class IFSelect_ContextModif {
 	public:
@@ -658,6 +673,11 @@ class IFSelect_ContextModif {
 };
 
 
+%extend IFSelect_ContextModif {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_ContextWrite;
 class IFSelect_ContextWrite {
 	public:
@@ -838,6 +858,11 @@ class IFSelect_ContextWrite {
 };
 
 
+%extend IFSelect_ContextWrite {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_Dispatch;
 class IFSelect_Dispatch : public MMgt_TShared {
 	public:
@@ -996,6 +1021,11 @@ class Handle_IFSelect_Dispatch : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_Dispatch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_EditForm;
 class IFSelect_EditForm : public MMgt_TShared {
 	public:
@@ -1401,6 +1431,11 @@ class Handle_IFSelect_EditForm : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_EditForm {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_Editor;
 class IFSelect_Editor : public MMgt_TShared {
 	public:
@@ -1659,6 +1694,11 @@ class Handle_IFSelect_Editor : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_Editor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class IFSelect_Functions {
 	public:
 		%feature("compactdefaultargs") GiveEntity;
@@ -1714,6 +1754,11 @@ class IFSelect_Functions {
 };
 
 
+%extend IFSelect_Functions {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_GeneralModifier;
 class IFSelect_GeneralModifier : public MMgt_TShared {
 	public:
@@ -1826,6 +1871,11 @@ class Handle_IFSelect_GeneralModifier : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_GeneralModifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_HSeqOfSelection;
 class IFSelect_HSeqOfSelection : public MMgt_TShared {
 	public:
@@ -2010,6 +2060,11 @@ class Handle_IFSelect_HSeqOfSelection : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_HSeqOfSelection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_IntParam;
 class IFSelect_IntParam : public MMgt_TShared {
 	public:
@@ -2090,6 +2145,11 @@ class Handle_IFSelect_IntParam : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_IntParam {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_ListEditor;
 class IFSelect_ListEditor : public MMgt_TShared {
 	public:
@@ -2284,6 +2344,11 @@ class Handle_IFSelect_ListEditor : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_ListEditor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_ModelCopier;
 class IFSelect_ModelCopier : public MMgt_TShared {
 	public:
@@ -2542,6 +2607,11 @@ class Handle_IFSelect_ModelCopier : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_ModelCopier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_PacketList;
 class IFSelect_PacketList : public MMgt_TShared {
 	public:
@@ -2692,6 +2762,11 @@ class Handle_IFSelect_PacketList : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_PacketList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_Selection;
 class IFSelect_Selection : public MMgt_TShared {
 	public:
@@ -2782,6 +2857,11 @@ class Handle_IFSelect_Selection : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_Selection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectionIterator;
 class IFSelect_SelectionIterator {
 	public:
@@ -2844,6 +2924,11 @@ class IFSelect_SelectionIterator {
 };
 
 
+%extend IFSelect_SelectionIterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SequenceNodeOfSequenceOfAppliedModifiers;
 class IFSelect_SequenceNodeOfSequenceOfAppliedModifiers : public TCollection_SeqNode {
 	public:
@@ -2910,6 +2995,11 @@ class Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers : public Handle_T
     }
 };
 
+%extend IFSelect_SequenceNodeOfSequenceOfAppliedModifiers {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SequenceNodeOfSequenceOfGeneralModifier;
 class IFSelect_SequenceNodeOfSequenceOfGeneralModifier : public TCollection_SeqNode {
 	public:
@@ -2976,6 +3066,11 @@ class Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier : public Handle_TC
     }
 };
 
+%extend IFSelect_SequenceNodeOfSequenceOfGeneralModifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SequenceNodeOfSequenceOfInterfaceModel;
 class IFSelect_SequenceNodeOfSequenceOfInterfaceModel : public TCollection_SeqNode {
 	public:
@@ -3042,6 +3137,11 @@ class Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel : public Handle_TCo
     }
 };
 
+%extend IFSelect_SequenceNodeOfSequenceOfInterfaceModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SequenceNodeOfTSeqOfDispatch;
 class IFSelect_SequenceNodeOfTSeqOfDispatch : public TCollection_SeqNode {
 	public:
@@ -3108,6 +3208,11 @@ class Handle_IFSelect_SequenceNodeOfTSeqOfDispatch : public Handle_TCollection_S
     }
 };
 
+%extend IFSelect_SequenceNodeOfTSeqOfDispatch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SequenceNodeOfTSeqOfSelection;
 class IFSelect_SequenceNodeOfTSeqOfSelection : public TCollection_SeqNode {
 	public:
@@ -3174,6 +3279,11 @@ class Handle_IFSelect_SequenceNodeOfTSeqOfSelection : public Handle_TCollection_
     }
 };
 
+%extend IFSelect_SequenceNodeOfTSeqOfSelection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SequenceOfAppliedModifiers;
 class IFSelect_SequenceOfAppliedModifiers : public TCollection_BaseSequence {
 	public:
@@ -3312,6 +3422,11 @@ class IFSelect_SequenceOfAppliedModifiers : public TCollection_BaseSequence {
 };
 
 
+%extend IFSelect_SequenceOfAppliedModifiers {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SequenceOfGeneralModifier;
 class IFSelect_SequenceOfGeneralModifier : public TCollection_BaseSequence {
 	public:
@@ -3450,6 +3565,11 @@ class IFSelect_SequenceOfGeneralModifier : public TCollection_BaseSequence {
 };
 
 
+%extend IFSelect_SequenceOfGeneralModifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SequenceOfInterfaceModel;
 class IFSelect_SequenceOfInterfaceModel : public TCollection_BaseSequence {
 	public:
@@ -3588,6 +3708,11 @@ class IFSelect_SequenceOfInterfaceModel : public TCollection_BaseSequence {
 };
 
 
+%extend IFSelect_SequenceOfInterfaceModel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SessionDumper;
 class IFSelect_SessionDumper : public MMgt_TShared {
 	public:
@@ -3674,6 +3799,11 @@ class Handle_IFSelect_SessionDumper : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_SessionDumper {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SessionFile;
 class IFSelect_SessionFile {
 	public:
@@ -3958,6 +4088,11 @@ class IFSelect_SessionFile {
 };
 
 
+%extend IFSelect_SessionFile {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_ShareOut;
 class IFSelect_ShareOut : public MMgt_TShared {
 	public:
@@ -4270,6 +4405,11 @@ class Handle_IFSelect_ShareOut : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_ShareOut {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_ShareOutResult;
 class IFSelect_ShareOutResult {
 	public:
@@ -4418,6 +4558,11 @@ class IFSelect_ShareOutResult {
 };
 
 
+%extend IFSelect_ShareOutResult {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_Signature;
 class IFSelect_Signature : public Interface_SignType {
 	public:
@@ -4558,6 +4703,11 @@ class Handle_IFSelect_Signature : public Handle_Interface_SignType {
     }
 };
 
+%extend IFSelect_Signature {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SignatureList;
 class IFSelect_SignatureList : public MMgt_TShared {
 	public:
@@ -4751,6 +4901,11 @@ class Handle_IFSelect_SignatureList : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_SignatureList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_TSeqOfDispatch;
 class IFSelect_TSeqOfDispatch : public TCollection_BaseSequence {
 	public:
@@ -4889,6 +5044,11 @@ class IFSelect_TSeqOfDispatch : public TCollection_BaseSequence {
 };
 
 
+%extend IFSelect_TSeqOfDispatch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_TSeqOfSelection;
 class IFSelect_TSeqOfSelection : public TCollection_BaseSequence {
 	public:
@@ -5027,6 +5187,11 @@ class IFSelect_TSeqOfSelection : public TCollection_BaseSequence {
 };
 
 
+%extend IFSelect_TSeqOfSelection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_Transformer;
 class IFSelect_Transformer : public MMgt_TShared {
 	public:
@@ -5117,6 +5282,11 @@ class Handle_IFSelect_Transformer : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_Transformer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_WorkLibrary;
 class IFSelect_WorkLibrary : public Standard_Transient {
 	public:
@@ -5271,6 +5441,11 @@ class Handle_IFSelect_WorkLibrary : public Handle_Standard_Transient {
     }
 };
 
+%extend IFSelect_WorkLibrary {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_WorkSession;
 class IFSelect_WorkSession : public MMgt_TShared {
 	public:
@@ -6675,6 +6850,11 @@ class Handle_IFSelect_WorkSession : public Handle_MMgt_TShared {
     }
 };
 
+%extend IFSelect_WorkSession {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_Act;
 class IFSelect_Act : public IFSelect_Activator {
 	public:
@@ -6791,6 +6971,11 @@ class Handle_IFSelect_Act : public Handle_IFSelect_Activator {
     }
 };
 
+%extend IFSelect_Act {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_BasicDumper;
 class IFSelect_BasicDumper : public IFSelect_SessionDumper {
 	public:
@@ -6871,6 +7056,11 @@ class Handle_IFSelect_BasicDumper : public Handle_IFSelect_SessionDumper {
     }
 };
 
+%extend IFSelect_BasicDumper {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_CheckCounter;
 class IFSelect_CheckCounter : public IFSelect_SignatureList {
 	public:
@@ -6959,6 +7149,11 @@ class Handle_IFSelect_CheckCounter : public Handle_IFSelect_SignatureList {
     }
 };
 
+%extend IFSelect_CheckCounter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_DispGlobal;
 class IFSelect_DispGlobal : public IFSelect_Dispatch {
 	public:
@@ -7053,6 +7248,11 @@ class Handle_IFSelect_DispGlobal : public Handle_IFSelect_Dispatch {
     }
 };
 
+%extend IFSelect_DispGlobal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_DispPerCount;
 class IFSelect_DispPerCount : public IFSelect_Dispatch {
 	public:
@@ -7167,6 +7367,11 @@ class Handle_IFSelect_DispPerCount : public Handle_IFSelect_Dispatch {
     }
 };
 
+%extend IFSelect_DispPerCount {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_DispPerFiles;
 class IFSelect_DispPerFiles : public IFSelect_Dispatch {
 	public:
@@ -7281,6 +7486,11 @@ class Handle_IFSelect_DispPerFiles : public Handle_IFSelect_Dispatch {
     }
 };
 
+%extend IFSelect_DispPerFiles {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_DispPerOne;
 class IFSelect_DispPerOne : public IFSelect_Dispatch {
 	public:
@@ -7375,6 +7585,11 @@ class Handle_IFSelect_DispPerOne : public Handle_IFSelect_Dispatch {
     }
 };
 
+%extend IFSelect_DispPerOne {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_DispPerSignature;
 class IFSelect_DispPerSignature : public IFSelect_Dispatch {
 	public:
@@ -7479,6 +7694,11 @@ class Handle_IFSelect_DispPerSignature : public Handle_IFSelect_Dispatch {
     }
 };
 
+%extend IFSelect_DispPerSignature {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_Modifier;
 class IFSelect_Modifier : public IFSelect_GeneralModifier {
 	public:
@@ -7545,6 +7765,11 @@ class Handle_IFSelect_Modifier : public Handle_IFSelect_GeneralModifier {
     }
 };
 
+%extend IFSelect_Modifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_ParamEditor;
 class IFSelect_ParamEditor : public IFSelect_Editor {
 	public:
@@ -7677,6 +7902,11 @@ class Handle_IFSelect_ParamEditor : public Handle_IFSelect_Editor {
     }
 };
 
+%extend IFSelect_ParamEditor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectBase;
 class IFSelect_SelectBase : public IFSelect_Selection {
 	public:
@@ -7737,6 +7967,11 @@ class Handle_IFSelect_SelectBase : public Handle_IFSelect_Selection {
     }
 };
 
+%extend IFSelect_SelectBase {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectCombine;
 class IFSelect_SelectCombine : public IFSelect_Selection {
 	public:
@@ -7845,6 +8080,11 @@ class Handle_IFSelect_SelectCombine : public Handle_IFSelect_Selection {
     }
 };
 
+%extend IFSelect_SelectCombine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectControl;
 class IFSelect_SelectControl : public IFSelect_Selection {
 	public:
@@ -7939,6 +8179,11 @@ class Handle_IFSelect_SelectControl : public Handle_IFSelect_Selection {
     }
 };
 
+%extend IFSelect_SelectControl {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectDeduct;
 class IFSelect_SelectDeduct : public IFSelect_Selection {
 	public:
@@ -8039,6 +8284,11 @@ class Handle_IFSelect_SelectDeduct : public Handle_IFSelect_Selection {
     }
 };
 
+%extend IFSelect_SelectDeduct {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SessionPilot;
 class IFSelect_SessionPilot : public IFSelect_Activator {
 	public:
@@ -8295,6 +8545,11 @@ class Handle_IFSelect_SessionPilot : public Handle_IFSelect_Activator {
     }
 };
 
+%extend IFSelect_SessionPilot {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SignCategory;
 class IFSelect_SignCategory : public IFSelect_Signature {
 	public:
@@ -8363,6 +8618,11 @@ class Handle_IFSelect_SignCategory : public Handle_IFSelect_Signature {
     }
 };
 
+%extend IFSelect_SignCategory {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SignCounter;
 class IFSelect_SignCounter : public IFSelect_SignatureList {
 	public:
@@ -8567,6 +8827,11 @@ class Handle_IFSelect_SignCounter : public Handle_IFSelect_SignatureList {
     }
 };
 
+%extend IFSelect_SignCounter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SignMultiple;
 class IFSelect_SignMultiple : public IFSelect_Signature {
 	public:
@@ -8663,6 +8928,11 @@ class Handle_IFSelect_SignMultiple : public Handle_IFSelect_Signature {
     }
 };
 
+%extend IFSelect_SignMultiple {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SignType;
 class IFSelect_SignType : public IFSelect_Signature {
 	public:
@@ -8733,6 +9003,11 @@ class Handle_IFSelect_SignType : public Handle_IFSelect_Signature {
     }
 };
 
+%extend IFSelect_SignType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SignValidity;
 class IFSelect_SignValidity : public IFSelect_Signature {
 	public:
@@ -8811,6 +9086,11 @@ class Handle_IFSelect_SignValidity : public Handle_IFSelect_Signature {
     }
 };
 
+%extend IFSelect_SignValidity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_TransformStandard;
 class IFSelect_TransformStandard : public IFSelect_Transformer {
 	public:
@@ -9027,6 +9307,11 @@ class Handle_IFSelect_TransformStandard : public Handle_IFSelect_Transformer {
     }
 };
 
+%extend IFSelect_TransformStandard {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_GraphCounter;
 class IFSelect_GraphCounter : public IFSelect_SignCounter {
 	public:
@@ -9113,6 +9398,11 @@ class Handle_IFSelect_GraphCounter : public Handle_IFSelect_SignCounter {
     }
 };
 
+%extend IFSelect_GraphCounter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_ModifEditForm;
 class IFSelect_ModifEditForm : public IFSelect_Modifier {
 	public:
@@ -9199,6 +9489,11 @@ class Handle_IFSelect_ModifEditForm : public Handle_IFSelect_Modifier {
     }
 };
 
+%extend IFSelect_ModifEditForm {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_ModifReorder;
 class IFSelect_ModifReorder : public IFSelect_Modifier {
 	public:
@@ -9279,6 +9574,11 @@ class Handle_IFSelect_ModifReorder : public Handle_IFSelect_Modifier {
     }
 };
 
+%extend IFSelect_ModifReorder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectAnyList;
 class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 	public:
@@ -9451,6 +9751,11 @@ class Handle_IFSelect_SelectAnyList : public Handle_IFSelect_SelectDeduct {
     }
 };
 
+%extend IFSelect_SelectAnyList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectDiff;
 class IFSelect_SelectDiff : public IFSelect_SelectControl {
 	public:
@@ -9523,6 +9828,11 @@ class Handle_IFSelect_SelectDiff : public Handle_IFSelect_SelectControl {
     }
 };
 
+%extend IFSelect_SelectDiff {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectEntityNumber;
 class IFSelect_SelectEntityNumber : public IFSelect_SelectBase {
 	public:
@@ -9609,6 +9919,11 @@ class Handle_IFSelect_SelectEntityNumber : public Handle_IFSelect_SelectBase {
     }
 };
 
+%extend IFSelect_SelectEntityNumber {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectExplore;
 class IFSelect_SelectExplore : public IFSelect_SelectDeduct {
 	public:
@@ -9701,6 +10016,11 @@ class Handle_IFSelect_SelectExplore : public Handle_IFSelect_SelectDeduct {
     }
 };
 
+%extend IFSelect_SelectExplore {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectExtract;
 class IFSelect_SelectExtract : public IFSelect_SelectDeduct {
 	public:
@@ -9811,6 +10131,11 @@ class Handle_IFSelect_SelectExtract : public Handle_IFSelect_SelectDeduct {
     }
 };
 
+%extend IFSelect_SelectExtract {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectIntersection;
 class IFSelect_SelectIntersection : public IFSelect_SelectCombine {
 	public:
@@ -9883,6 +10208,11 @@ class Handle_IFSelect_SelectIntersection : public Handle_IFSelect_SelectCombine 
     }
 };
 
+%extend IFSelect_SelectIntersection {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectModelEntities;
 class IFSelect_SelectModelEntities : public IFSelect_SelectBase {
 	public:
@@ -9963,6 +10293,11 @@ class Handle_IFSelect_SelectModelEntities : public Handle_IFSelect_SelectBase {
     }
 };
 
+%extend IFSelect_SelectModelEntities {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectModelRoots;
 class IFSelect_SelectModelRoots : public IFSelect_SelectBase {
 	public:
@@ -10035,6 +10370,11 @@ class Handle_IFSelect_SelectModelRoots : public Handle_IFSelect_SelectBase {
     }
 };
 
+%extend IFSelect_SelectModelRoots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectPointed;
 class IFSelect_SelectPointed : public IFSelect_SelectBase {
 	public:
@@ -10221,6 +10561,11 @@ class Handle_IFSelect_SelectPointed : public Handle_IFSelect_SelectBase {
     }
 };
 
+%extend IFSelect_SelectPointed {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectShared;
 class IFSelect_SelectShared : public IFSelect_SelectDeduct {
 	public:
@@ -10293,6 +10638,11 @@ class Handle_IFSelect_SelectShared : public Handle_IFSelect_SelectDeduct {
     }
 };
 
+%extend IFSelect_SelectShared {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectSharing;
 class IFSelect_SelectSharing : public IFSelect_SelectDeduct {
 	public:
@@ -10365,6 +10715,11 @@ class Handle_IFSelect_SelectSharing : public Handle_IFSelect_SelectDeduct {
     }
 };
 
+%extend IFSelect_SelectSharing {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectSuite;
 class IFSelect_SelectSuite : public IFSelect_SelectDeduct {
 	public:
@@ -10483,6 +10838,11 @@ class Handle_IFSelect_SelectSuite : public Handle_IFSelect_SelectDeduct {
     }
 };
 
+%extend IFSelect_SelectSuite {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectUnion;
 class IFSelect_SelectUnion : public IFSelect_SelectCombine {
 	public:
@@ -10555,6 +10915,11 @@ class Handle_IFSelect_SelectUnion : public Handle_IFSelect_SelectCombine {
     }
 };
 
+%extend IFSelect_SelectUnion {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SignAncestor;
 class IFSelect_SignAncestor : public IFSelect_SignType {
 	public:
@@ -10625,6 +10990,11 @@ class Handle_IFSelect_SignAncestor : public Handle_IFSelect_SignType {
     }
 };
 
+%extend IFSelect_SignAncestor {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectAnyType;
 class IFSelect_SelectAnyType : public IFSelect_SelectExtract {
 	public:
@@ -10695,6 +11065,11 @@ class Handle_IFSelect_SelectAnyType : public Handle_IFSelect_SelectExtract {
     }
 };
 
+%extend IFSelect_SelectAnyType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectErrorEntities;
 class IFSelect_SelectErrorEntities : public IFSelect_SelectExtract {
 	public:
@@ -10771,6 +11146,11 @@ class Handle_IFSelect_SelectErrorEntities : public Handle_IFSelect_SelectExtract
     }
 };
 
+%extend IFSelect_SelectErrorEntities {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectFlag;
 class IFSelect_SelectFlag : public IFSelect_SelectExtract {
 	public:
@@ -10863,6 +11243,11 @@ class Handle_IFSelect_SelectFlag : public Handle_IFSelect_SelectExtract {
     }
 };
 
+%extend IFSelect_SelectFlag {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectInList;
 class IFSelect_SelectInList : public IFSelect_SelectAnyList {
 	public:
@@ -10939,6 +11324,11 @@ class Handle_IFSelect_SelectInList : public Handle_IFSelect_SelectAnyList {
     }
 };
 
+%extend IFSelect_SelectInList {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectRange;
 class IFSelect_SelectRange : public IFSelect_SelectExtract {
 	public:
@@ -11085,6 +11475,11 @@ class Handle_IFSelect_SelectRange : public Handle_IFSelect_SelectExtract {
     }
 };
 
+%extend IFSelect_SelectRange {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectRootComps;
 class IFSelect_SelectRootComps : public IFSelect_SelectExtract {
 	public:
@@ -11169,6 +11564,11 @@ class Handle_IFSelect_SelectRootComps : public Handle_IFSelect_SelectExtract {
     }
 };
 
+%extend IFSelect_SelectRootComps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectRoots;
 class IFSelect_SelectRoots : public IFSelect_SelectExtract {
 	public:
@@ -11253,6 +11653,11 @@ class Handle_IFSelect_SelectRoots : public Handle_IFSelect_SelectExtract {
     }
 };
 
+%extend IFSelect_SelectRoots {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectSent;
 class IFSelect_SelectSent : public IFSelect_SelectExtract {
 	public:
@@ -11353,6 +11758,11 @@ class Handle_IFSelect_SelectSent : public Handle_IFSelect_SelectExtract {
     }
 };
 
+%extend IFSelect_SelectSent {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectSignature;
 class IFSelect_SelectSignature : public IFSelect_SelectExtract {
 	public:
@@ -11495,6 +11905,11 @@ class Handle_IFSelect_SelectSignature : public Handle_IFSelect_SelectExtract {
     }
 };
 
+%extend IFSelect_SelectSignature {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectSignedShared;
 class IFSelect_SelectSignedShared : public IFSelect_SelectExplore {
 	public:
@@ -11599,6 +12014,11 @@ class Handle_IFSelect_SelectSignedShared : public Handle_IFSelect_SelectExplore 
     }
 };
 
+%extend IFSelect_SelectSignedShared {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectSignedSharing;
 class IFSelect_SelectSignedSharing : public IFSelect_SelectExplore {
 	public:
@@ -11703,6 +12123,11 @@ class Handle_IFSelect_SelectSignedSharing : public Handle_IFSelect_SelectExplore
     }
 };
 
+%extend IFSelect_SelectSignedSharing {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectUnknownEntities;
 class IFSelect_SelectUnknownEntities : public IFSelect_SelectExtract {
 	public:
@@ -11779,6 +12204,11 @@ class Handle_IFSelect_SelectUnknownEntities : public Handle_IFSelect_SelectExtra
     }
 };
 
+%extend IFSelect_SelectUnknownEntities {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectIncorrectEntities;
 class IFSelect_SelectIncorrectEntities : public IFSelect_SelectFlag {
 	public:
@@ -11837,6 +12267,11 @@ class Handle_IFSelect_SelectIncorrectEntities : public Handle_IFSelect_SelectFla
     }
 };
 
+%extend IFSelect_SelectIncorrectEntities {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IFSelect_SelectType;
 class IFSelect_SelectType : public IFSelect_SelectAnyType {
 	public:
@@ -11923,3 +12358,8 @@ class Handle_IFSelect_SelectType : public Handle_IFSelect_SelectAnyType {
     }
 };
 
+%extend IFSelect_SelectType {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

@@ -98,6 +98,11 @@ class AppCont_FitFunction {
 };
 
 
+%extend AppCont_FitFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppCont_FitFunction2d;
 class AppCont_FitFunction2d {
 	public:
@@ -140,6 +145,11 @@ class AppCont_FitFunction2d {
 };
 
 
+%extend AppCont_FitFunction2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppCont_Function;
 class AppCont_Function {
 	public:
@@ -182,6 +192,11 @@ class AppCont_Function {
 };
 
 
+%extend AppCont_Function {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor AppCont_Function2d;
 class AppCont_Function2d {
 	public:
@@ -224,6 +239,11 @@ class AppCont_Function2d {
 };
 
 
+%extend AppCont_Function2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class AppCont_FunctionTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -329,6 +349,11 @@ class AppCont_FunctionTool {
 };
 
 
+%extend AppCont_FunctionTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class AppCont_FunctionTool2d {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -434,3 +459,8 @@ class AppCont_FunctionTool2d {
 };
 
 
+%extend AppCont_FunctionTool2d {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

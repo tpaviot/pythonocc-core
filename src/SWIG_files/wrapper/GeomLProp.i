@@ -102,6 +102,11 @@ class GeomLProp {
 };
 
 
+%extend GeomLProp {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomLProp_CLProps;
 class GeomLProp_CLProps {
 	public:
@@ -192,6 +197,11 @@ class GeomLProp_CLProps {
 };
 
 
+%extend GeomLProp_CLProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class GeomLProp_CurveTool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -281,6 +291,11 @@ class GeomLProp_CurveTool {
 };
 
 
+%extend GeomLProp_CurveTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor GeomLProp_SLProps;
 class GeomLProp_SLProps {
 	public:
@@ -417,6 +432,11 @@ class GeomLProp_SLProps {
 };
 
 
+%extend GeomLProp_SLProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class GeomLProp_SurfaceTool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -516,3 +536,8 @@ class GeomLProp_SurfaceTool {
 };
 
 
+%extend GeomLProp_SurfaceTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

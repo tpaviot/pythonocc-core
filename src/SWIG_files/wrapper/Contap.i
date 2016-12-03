@@ -164,6 +164,11 @@ class Contap_ArcFunction : public math_FunctionWithDerivative {
 };
 
 
+%extend Contap_ArcFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_ContAna;
 class Contap_ContAna {
 	public:
@@ -276,6 +281,11 @@ class Contap_ContAna {
 };
 
 
+%extend Contap_ContAna {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_Contour;
 class Contap_Contour {
 	public:
@@ -438,6 +448,11 @@ class Contap_Contour {
 };
 
 
+%extend Contap_Contour {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Contap_HContTool {
 	public:
 		%feature("compactdefaultargs") NbSamplesU;
@@ -629,6 +644,11 @@ class Contap_HContTool {
 };
 
 
+%extend Contap_HContTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Contap_HCurve2dTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -844,6 +864,11 @@ class Contap_HCurve2dTool {
 };
 
 
+%extend Contap_HCurve2dTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_Line;
 class Contap_Line {
 	public:
@@ -954,6 +979,11 @@ class Contap_Line {
 };
 
 
+%extend Contap_Line {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_Point;
 class Contap_Point {
 	public:
@@ -1104,6 +1134,11 @@ class Contap_Point {
 };
 
 
+%extend Contap_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking;
 class Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public TCollection_SeqNode {
 	public:
@@ -1170,6 +1205,11 @@ class Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public Handle_
     }
 };
 
+%extend Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch;
 class Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch : public TCollection_SeqNode {
 	public:
@@ -1236,6 +1276,11 @@ class Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch : public Handle
     }
 };
 
+%extend Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch;
 class Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch : public TCollection_SeqNode {
 	public:
@@ -1302,6 +1347,11 @@ class Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch : public Handle_T
     }
 };
 
+%extend Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_SequenceNodeOfTheSequenceOfLine;
 class Contap_SequenceNodeOfTheSequenceOfLine : public TCollection_SeqNode {
 	public:
@@ -1368,6 +1418,11 @@ class Handle_Contap_SequenceNodeOfTheSequenceOfLine : public Handle_TCollection_
     }
 };
 
+%extend Contap_SequenceNodeOfTheSequenceOfLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_SequenceNodeOfTheSequenceOfPoint;
 class Contap_SequenceNodeOfTheSequenceOfPoint : public TCollection_SeqNode {
 	public:
@@ -1434,6 +1489,11 @@ class Handle_Contap_SequenceNodeOfTheSequenceOfPoint : public Handle_TCollection
     }
 };
 
+%extend Contap_SequenceNodeOfTheSequenceOfPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_SequenceOfIWLineOfTheIWalking;
 class Contap_SequenceOfIWLineOfTheIWalking : public TCollection_BaseSequence {
 	public:
@@ -1572,6 +1632,11 @@ class Contap_SequenceOfIWLineOfTheIWalking : public TCollection_BaseSequence {
 };
 
 
+%extend Contap_SequenceOfIWLineOfTheIWalking {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_SequenceOfPathPointOfTheSearch;
 class Contap_SequenceOfPathPointOfTheSearch : public TCollection_BaseSequence {
 	public:
@@ -1710,6 +1775,11 @@ class Contap_SequenceOfPathPointOfTheSearch : public TCollection_BaseSequence {
 };
 
 
+%extend Contap_SequenceOfPathPointOfTheSearch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_SequenceOfSegmentOfTheSearch;
 class Contap_SequenceOfSegmentOfTheSearch : public TCollection_BaseSequence {
 	public:
@@ -1848,6 +1918,11 @@ class Contap_SequenceOfSegmentOfTheSearch : public TCollection_BaseSequence {
 };
 
 
+%extend Contap_SequenceOfSegmentOfTheSearch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_SurfFunction;
 class Contap_SurfFunction : public math_FunctionSetWithDerivatives {
 	public:
@@ -1990,6 +2065,11 @@ class Contap_SurfFunction : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend Contap_SurfFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 class Contap_SurfProps {
 	public:
 		%feature("compactdefaultargs") Normale;
@@ -2051,6 +2131,11 @@ class Contap_SurfProps {
 };
 
 
+%extend Contap_SurfProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_TheHSequenceOfPoint;
 class Contap_TheHSequenceOfPoint : public MMgt_TShared {
 	public:
@@ -2235,6 +2320,11 @@ class Handle_Contap_TheHSequenceOfPoint : public Handle_MMgt_TShared {
     }
 };
 
+%extend Contap_TheHSequenceOfPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_TheIWLineOfTheIWalking;
 class Contap_TheIWLineOfTheIWalking : public MMgt_TShared {
 	public:
@@ -2451,6 +2541,11 @@ class Handle_Contap_TheIWLineOfTheIWalking : public Handle_MMgt_TShared {
     }
 };
 
+%extend Contap_TheIWLineOfTheIWalking {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_TheIWalking;
 class Contap_TheIWalking {
 	public:
@@ -2527,6 +2622,11 @@ class Contap_TheIWalking {
 };
 
 
+%extend Contap_TheIWalking {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_ThePathPointOfTheSearch;
 class Contap_ThePathPointOfTheSearch {
 	public:
@@ -2613,6 +2713,11 @@ class Contap_ThePathPointOfTheSearch {
 };
 
 
+%extend Contap_ThePathPointOfTheSearch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_TheSearch;
 class Contap_TheSearch {
 	public:
@@ -2665,6 +2770,11 @@ class Contap_TheSearch {
 };
 
 
+%extend Contap_TheSearch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_TheSearchInside;
 class Contap_TheSearchInside {
 	public:
@@ -2725,6 +2835,11 @@ class Contap_TheSearchInside {
 };
 
 
+%extend Contap_TheSearchInside {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_TheSegmentOfTheSearch;
 class Contap_TheSegmentOfTheSearch {
 	public:
@@ -2769,6 +2884,11 @@ class Contap_TheSegmentOfTheSearch {
 };
 
 
+%extend Contap_TheSegmentOfTheSearch {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_TheSequenceOfLine;
 class Contap_TheSequenceOfLine : public TCollection_BaseSequence {
 	public:
@@ -2907,6 +3027,11 @@ class Contap_TheSequenceOfLine : public TCollection_BaseSequence {
 };
 
 
+%extend Contap_TheSequenceOfLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Contap_TheSequenceOfPoint;
 class Contap_TheSequenceOfPoint : public TCollection_BaseSequence {
 	public:
@@ -3045,3 +3170,8 @@ class Contap_TheSequenceOfPoint : public TCollection_BaseSequence {
 };
 
 
+%extend Contap_TheSequenceOfPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};

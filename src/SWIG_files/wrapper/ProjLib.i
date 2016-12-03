@@ -190,6 +190,11 @@ class ProjLib {
 };
 
 
+%extend ProjLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_CompProjectedCurve;
 class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 	public:
@@ -430,6 +435,11 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 };
 
 
+%extend ProjLib_CompProjectedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_ComputeApprox;
 class ProjLib_ComputeApprox {
 	public:
@@ -462,6 +472,11 @@ class ProjLib_ComputeApprox {
 };
 
 
+%extend ProjLib_ComputeApprox {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_ComputeApproxOnPolarSurface;
 class ProjLib_ComputeApproxOnPolarSurface {
 	public:
@@ -548,6 +563,11 @@ class ProjLib_ComputeApproxOnPolarSurface {
 };
 
 
+%extend ProjLib_ComputeApproxOnPolarSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_HCompProjectedCurve;
 class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d {
 	public:
@@ -624,6 +644,11 @@ class Handle_ProjLib_HCompProjectedCurve : public Handle_Adaptor2d_HCurve2d {
     }
 };
 
+%extend ProjLib_HCompProjectedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_HProjectedCurve;
 class ProjLib_HProjectedCurve : public Adaptor2d_HCurve2d {
 	public:
@@ -700,6 +725,11 @@ class Handle_ProjLib_HProjectedCurve : public Handle_Adaptor2d_HCurve2d {
     }
 };
 
+%extend ProjLib_HProjectedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_HSequenceOfHSequenceOfPnt;
 class ProjLib_HSequenceOfHSequenceOfPnt : public MMgt_TShared {
 	public:
@@ -884,6 +914,11 @@ class Handle_ProjLib_HSequenceOfHSequenceOfPnt : public Handle_MMgt_TShared {
     }
 };
 
+%extend ProjLib_HSequenceOfHSequenceOfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_PrjFunc;
 class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 	public:
@@ -952,6 +987,11 @@ class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 };
 
 
+%extend ProjLib_PrjFunc {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_PrjResolve;
 class ProjLib_PrjResolve {
 	public:
@@ -1002,6 +1042,11 @@ class ProjLib_PrjResolve {
 };
 
 
+%extend ProjLib_PrjResolve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_ProjectOnPlane;
 class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 	public:
@@ -1242,6 +1287,11 @@ class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 };
 
 
+%extend ProjLib_ProjectOnPlane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_ProjectOnSurface;
 class ProjLib_ProjectOnSurface {
 	public:
@@ -1274,6 +1324,11 @@ class ProjLib_ProjectOnSurface {
 };
 
 
+%extend ProjLib_ProjectOnSurface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_ProjectedCurve;
 class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 	public:
@@ -1508,6 +1563,11 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 };
 
 
+%extend ProjLib_ProjectedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_Projector;
 class ProjLib_Projector {
 	public:
@@ -1650,6 +1710,11 @@ class ProjLib_Projector {
 };
 
 
+%extend ProjLib_Projector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt;
 class ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public TCollection_SeqNode {
 	public:
@@ -1716,6 +1781,11 @@ class Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public Handle_TCol
     }
 };
 
+%extend ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_SequenceOfHSequenceOfPnt;
 class ProjLib_SequenceOfHSequenceOfPnt : public TCollection_BaseSequence {
 	public:
@@ -1854,6 +1924,11 @@ class ProjLib_SequenceOfHSequenceOfPnt : public TCollection_BaseSequence {
 };
 
 
+%extend ProjLib_SequenceOfHSequenceOfPnt {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_Cone;
 class ProjLib_Cone : public ProjLib_Projector {
 	public:
@@ -1930,6 +2005,11 @@ class ProjLib_Cone : public ProjLib_Projector {
 };
 
 
+%extend ProjLib_Cone {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_Cylinder;
 class ProjLib_Cylinder : public ProjLib_Projector {
 	public:
@@ -2016,6 +2096,11 @@ class ProjLib_Cylinder : public ProjLib_Projector {
 };
 
 
+%extend ProjLib_Cylinder {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_Plane;
 class ProjLib_Plane : public ProjLib_Projector {
 	public:
@@ -2122,6 +2207,11 @@ class ProjLib_Plane : public ProjLib_Projector {
 };
 
 
+%extend ProjLib_Plane {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_Sphere;
 class ProjLib_Sphere : public ProjLib_Projector {
 	public:
@@ -2196,6 +2286,11 @@ class ProjLib_Sphere : public ProjLib_Projector {
 };
 
 
+%extend ProjLib_Sphere {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor ProjLib_Torus;
 class ProjLib_Torus : public ProjLib_Projector {
 	public:
@@ -2262,3 +2357,8 @@ class ProjLib_Torus : public ProjLib_Projector {
 };
 
 
+%extend ProjLib_Torus {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
