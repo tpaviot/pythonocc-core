@@ -1,4 +1,4 @@
-##Copyright 2011-2014 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2011-2016 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -15,51 +15,32 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function
+from __future__ import print_function, absolute_import
 
-import webbrowser
+import os
 import tempfile
 
 from OCC.Visualization import Tesselator
-from OCC.TopExp import TopExp_Explorer
-from OCC.TopAbs import TopAbs_FACE
-import OCC
-import os
-try:  # python2
-    import urlparse
-    import urllib
-except ImportError:  # python3
-    import urllib.parse as urlparse
-    import urllib.request as urllib
+from OCC.gp import gp_Vec
+from OCC import VERSION as OCC_VERSION
 
-# <script type="text/javascript" src="@x3dom-full.jsPath@/x3dom-full.js"></script>
-    
+from .simple_server import start_server
+
 HEADER = """
 <head>
     <title>pythonOCC @VERSION@ x3dom renderer</title>
     <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
     <meta name='Keywords' content='WebGl,pythonOCC'>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="@jspath@/x3dom.css" charset="utf-8" ></link>
-    <script type="text/javascript" src="@jspath@/x3dom-full.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://x3dom.org/release/x3dom.css" charset="utf-8" ></link>
+    <script type="text/javascript" src="http://x3dom.org/release/x3dom-full.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
     <style type="text/css">
         body {
-            background-color: @background-color@;
+            background: linear-gradient(@bg_gradient_color1@, @bg_gradient_color2@);
             margin: 0px;
             overflow: hidden;
         }
-        #info {
-            position: absolute;
-            top: 96%;
-            width: 96%;
-            color: #808080;
-            padding: 5px;
-            font-family: Monospace;
-            font-size: 13px;
-            text-align: right;
-            opacity: 1;
-            }
         #pythonocc_rocks {
             padding: 5px;
             position: absolute;
@@ -81,7 +62,7 @@ HEADER = """
             position: absolute;
             left: 85%;
             top: 1%;
-            height: 60px;
+            height: 22px;
             width: 200px;
             border-radius: 5px;
             border: 2px solid #f7941e;
@@ -106,138 +87,139 @@ HEADER = """
 BODY = """
 <body>
     <div id="x3d_scene">@X3DSCENE@</div>
-    <div id="info">
-        <a href="htpp://www.x3dom.org" target="_blank"> x3dom </a> based renderer
-    </div>
     <div id="pythonocc_rocks">
-        <b>pythonOCC @VERSION@ x3dom renderer</b><hr>
-        CAD in a browser
+        <b>pythonOCC @VERSION@ <a href="htpp://www.x3dom.org" target="_blank">x3dom</a> renderer</b><hr>
+        Check our blog at
         <a style="font-size:14px;" href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
     <div id="selection_info">
-        <b>Selection</b><hr>
-        <span id="lastClickedObject">id: -</span>
+        <input type="button" value="Fit All" onclick="fitAll();">
     </div>
     <script>
-    x3dom.runtime.ready = function()
-    {
+    function fitAll(){
         document.getElementsByTagName('x3d')[0].runtime.showAll();
     }
     </script>
-     <script>
-        //Round a float value to x.xx format
-        function roundWithTwoDecimals(value)
-        {
-            return (Math.round(value * 100)) / 100;
-        }
-        //Handle click on any group member
-        function handleGroupClick(event)
-        {
-            console.log(event);
-            //Display coordinates of hitting point (rounded)
-            //var coordinates = event.hitPnt;
-            //$('#coordX').html(roundWithTwoDecimals(coordinates[0]));
-            //$('#coordY').html(roundWithTwoDecimals(coordinates[1]));
-            //$('#coordZ').html(roundWithTwoDecimals(coordinates[2]));
-        }
-        //Handle click on a shape
-        function handleSingleClick(shape)
-        {
-            $('#lastClickedObject').html('id: ' + $(shape).attr("def"));
-        }
-        $(document).ready(function(){
-            //Add a onclick callback to every shape
-            $("shape").each(function() {
-                $(this).attr("onclick", "handleSingleClick(this)");
-            });
-        });
-        </script>
 </body>
 """
 
 
-def path2url(path):
-    """
-    Converts a file path into a file URL
-    """
-    return urlparse.urljoin('file:', urllib.pathname2url(path))
+def ExportEdgeToILS(edge_point_set):
+    str_x3d_to_return = "\t<LineSet vertexCount='%i' lit='false' solid='false' pickable='false'>" % len(edge_point_set)
+    str_x3d_to_return += "<Coordinate point='"
+    for p in edge_point_set:
+        str_x3d_to_return += "%g %g %g " % (p[0], p[1], p[2])
+    str_x3d_to_return += "'/></LineSet>\n"
+    return str_x3d_to_return
 
 
 class HTMLHeader(object):
-    def __init__(self, background_color='#000000'):
-        self._background_color = background_color
+    def __init__(self, bg_gradient_color1="#ced7de", bg_gradient_color2="#808080"):
+        self._bg_gradient_color1 = bg_gradient_color1
+        self._bg_gradient_color2 = bg_gradient_color2
+
 
     def get_str(self):
-        x3dom_build_location = path2url(os.sep.join([OCC.__path__[0], 'Display', 'WebGl', 'js']))
-        header_str = HEADER.replace('@background-color@', '%s' % self._background_color)
-        header_str = header_str.replace('@jspath@', '%s' % x3dom_build_location)
-        header_str = header_str.replace('@VERSION@', OCC.VERSION)
+        header_str = HEADER.replace('@bg_gradient_color1@', '%s' % self._bg_gradient_color1)
+        header_str = header_str.replace('@bg_gradient_color2@', '%s' % self._bg_gradient_color2)
+        header_str = header_str.replace('@VERSION@', OCC_VERSION)
         return header_str
 
 
 class HTMLBody(object):
-    def __init__(self, background_color, x3d_filename):
-        self._background_color = background_color
-        self._x3d_filename = x3d_filename
+    def __init__(self, x3d_shapes_dict):
+        self._x3d_shapes_dict = x3d_shapes_dict
 
     def get_str(self):
         # get the location where pythonocc is running from
-        body_str = BODY.replace('@background-color@', '%s' % self._background_color)
-        body_str = body_str.replace('@VERSION@', OCC.VERSION)
-        x3dfile = open(self._x3d_filename, 'r')
-        x3dfile_content = x3dfile.read()
-        x3dfile.close()
-        body_str = body_str.replace('@X3DSCENE@', x3dfile_content)
+        body_str = BODY.replace('@VERSION@', OCC_VERSION)
+        x3dcontent = '\n<x3d style="width:100%;border: none" >\n<scene>\n'
+        for shp in self._x3d_shapes_dict:
+            trans, ori = self._x3d_shapes_dict[shp]
+            vx, vy, vz = trans
+            ori_vx, ori_vy, ori_vz, angle = ori
+            x3dcontent += '\t\t<inline mapDEFToID="true" url="shp%s.x3d"></inline>\n' % shp
+        x3dcontent += "</scene>\n</x3d>\n"
+        body_str = body_str.replace('@X3DSCENE@', x3dcontent)
         return body_str
 
 
 class X3DExporter(object):
     """ A class for exporting a TopoDS_Shape to an x3d file """
-    def __init__(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
+    def __init__(self,
+                 shape,  # the TopoDS shape to mesh
+                 vertex_shader,  # the vertex_shader, passed as a string
+                 fragment_shader,  # the fragment shader, passed as a string
+                 export_edges,  # if yes, edges are exported to IndexedLineSet (might be SLOWW)
+                 color,  # the default shape color
+                 specular_color,  # shape specular color (white by default)
+                 shininess,  # shape shininess
+                 transparency,  # shape transparency
+                 line_color,  # edge color
+                 line_width,  # edge liewidth,
+                 mesh_quality  # mesh quality default is 1., good is <1, bad is >1
+                ):
         self._shape = shape
         self._vs = vertex_shader
         self._fs = fragment_shader
-        self._map_faces_to_mesh = map_faces_to_mesh
+        self._export_edges = export_edges
+        self._color = color
+        self._shininess = shininess
+        self._specular_color = specular_color
+        self._transparency = transparency
+        self._mesh_quality = mesh_quality
         # the list of indexed face sets that compose the shape
+        # if ever the map_faces_to_mesh option is enabled, this list
+        # maybe composed of dozains of IndexedFaceSet
         self._indexed_face_sets = []
+        self._indexed_line_sets = []
 
     def compute(self):
-        # get faces
-        explorer = TopExp_Explorer()
-        explorer.Init(self._shape, TopAbs_FACE)
-        if self._map_faces_to_mesh:  # one mesh per face
-            faces = []
-            while explorer.More():
-                current_face = explorer.Current()
-                faces.append(current_face)
-                explorer.Next()
-            # loop over faces
-            for face in faces:
-                face_tesselator = Tesselator(face)
-                self._indexed_face_sets.append(face_tesselator.ExportShapeToX3DIndexedFaceSet())
-        else:  # only one mesh for the whole shape
-            shape_tesselator = Tesselator(self._shape)
-            self._indexed_face_sets.append(shape_tesselator.ExportShapeToX3DIndexedFaceSet())
+        shape_tesselator = Tesselator(self._shape)
+        shape_tesselator.Compute(compute_edges=self._export_edges,
+        	                     mesh_quality=self._mesh_quality)
+        self._indexed_face_sets.append(shape_tesselator.ExportShapeToX3DIndexedFaceSet())
+        # then process edges
+        if self._export_edges:
+            # get number of edges
+            nbr_edges = shape_tesselator.ObjGetEdgeCount()
+            for i_edge in range(nbr_edges):
+                edge_point_set = []
+                nbr_vertices = shape_tesselator.ObjEdgeGetVertexCount(i_edge)
+                for i_vert in range(nbr_vertices):
+                    edge_point_set.append(shape_tesselator.GetEdgeVertex(i_edge, i_vert))
+                ils = ExportEdgeToILS(edge_point_set)
+                self._indexed_line_sets.append(ils)
 
     def write_to_file(self, filename):
         # write header
         f = open(filename, "w")
         f.write("""<?xml version="1.0" encoding="UTF-8"?>
-<X3D profile="Immersive" version="3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.2.xsd">
+<X3D style="width:100%;border: none" profile="Immersive" version="3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.2.xsd">
 <head>
-    <meta name="generator" content="pythonOCC (www.pythonocc.org)"/>
+    <meta name="generator" content="pythonOCC X3D exporter (www.pythonocc.org)"/>
 </head>
 <Scene>
         """)
-        f.write('<Group onclick="handleGroupClick(event)">\n')
         shape_id = 0
         for indexed_face_set in self._indexed_face_sets:
-            f.write('<Shape DEF="shape_%i"><Appearance>\n' % shape_id)
+            f.write('<Shape DEF="shape%i"><Appearance>\n' % shape_id)
             #
             # set Material or shader
             #
             if self._vs is None and self._fs is None:
-                f.write("<Material diffuseColor='0.65 0.65 0.65' shininess='0.9' specularColor='1 1 1'></Material>\n")
+                f.write("<Material diffuseColor=")
+                f.write("'%g %g %g'" % (self._color[0],
+                                        self._color[1],
+                                        self._color[2]))
+                f.write(" shininess=")
+                f.write("'%g'" % self._shininess)
+                f.write(" specularColor=")
+                f.write("'%g %g %g'" % (self._specular_color[0],
+                                        self._specular_color[1],
+                                        self._specular_color[2]))
+                f.write(" transparency='%g'>\n" % self._transparency)
+                f.write("</Material>\n")
             else:  # set shaders
                 f.write('<ComposedShader><ShaderPart type="VERTEX" style="display:none;">\n')
                 f.write(self._vs)
@@ -250,61 +232,91 @@ class X3DExporter(object):
             f.write(indexed_face_set)
             f.write("</Shape>\n")
             shape_id += 1
-        f.write("</Group>\n")
+        # and now, process edges
+        edge_id = 0
+        for indexed_line_set in self._indexed_line_sets:
+            f.write('<Shape DEF="edg%i">' % edge_id)
+            f.write(indexed_line_set)
+            f.write("</Shape>\n")
+            edge_id += 1
         f.write('</Scene>\n</X3D>\n')
         f.close()
 
-def test_X3DExporter():
-    from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-    box_shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-    # loop over faces
-    x3d_exporter = X3DExporter(box_shp)
-    x3d_exporter.compute()
-    x3d_exporter.write_to_file("popo.x3d")
-
 
 class X3DomRenderer(object):
-    def __init__(self, background_color="#123345", path=None):
-        self._background_color = background_color
+    def __init__(self, path=None):
         if not path:  # by default, write to a temp directory
             self._path = tempfile.mkdtemp()
         else:
             self._path = path
-        self._html_filename = "x3dom_topods_shape.html"
-        self._x3d_filename = os.path.join(self._path, 'shape.x3d')
-        self._html_filename = os.path.join(self._path, 'x3dom_topods_shape.html')
+        self._html_filename = os.path.join(self._path, 'index.html')
+        self._x3d_shapes = {}
+        print("X3DomRenderer initiliazed. Waiting for shapes to be added to the buffer.")
 
-    def create_files(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
-        # First, the x3d file
-        x3d_exporter = X3DExporter(shape, vertex_shader, fragment_shader, map_faces_to_mesh)
+    def DisplayShape(self,
+                     shape,
+                     vertex_shader=None,
+                     fragment_shader=None,
+                     export_edges=False,
+                     color=(0.65, 0.65, 0.65),
+                     specular_color=(1, 1, 1),
+                     shininess=0.9,
+                     transparency=0.,
+                     line_color=(0, 0., 0.),
+                     line_width=2.,
+                     mesh_quality=1.):
+        """ Adds a shape to the rendering buffer. This class computes the x3d file
+        """
+        shape_hash = hash(shape)
+        x3d_exporter = X3DExporter(shape, vertex_shader, fragment_shader,
+                                   export_edges, color,
+                                   specular_color, shininess, transparency,
+                                   line_color, line_width, mesh_quality)
         x3d_exporter.compute()
-        x3d_exporter.write_to_file(self._x3d_filename)
-        # then the html file
-        self.GenerateHTMLFile()
-        return self._x3d_filename, self._html_filename
+        x3d_filename = os.path.join(self._path, "shp%s.x3d" % shape_hash)
+        # the x3d filename is computed from the shape hash
+        x3d_exporter.write_to_file(x3d_filename)
+        # get shape translation and orientation
+        trans = shape.Location().Transformation().TranslationPart().Coord()  # vector
+        v = gp_Vec()
+        angle = shape.Location().Transformation().GetRotation().GetVectorAndAngle(v)
+        ori = (v.X(), v.Y(), v.Z(), angle)  # angles
+        # fill the shape dictionnary with shape hash, translation and orientation
+        self._x3d_shapes[shape_hash] = [trans, ori]
 
-    def DisplayShape(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
-        self.create_files(shape, vertex_shader, fragment_shader, map_faces_to_mesh)
-        # open the file in the browser
-        _path = "file:///{0}".format(os.path.join(os.getcwd(),
-                                     self._html_filename))
-        webbrowser.open_new_tab(_path)
+    def render(self, server_port=8080):
+        """ Call the render() method to display the X3D scene.
+        """
+        # log path
+        print("Files written to %s" % self._path)
+        # first generate the HTML root file
+        self.GenerateHTMLFile()
+        # then create a simple web server
+        os.chdir(self._path)
+        print("## Serving at port", server_port, "using SimpleHTTPServer")
+        print("## Open your webbrowser at the URL: http://localhost:%i" % server_port)
+        print("## CTRL-C to shutdown the server")
+        start_server(server_port)
+
 
     def GenerateHTMLFile(self):
         """ Generate the HTML file to be rendered wy the web browser
         """
+        print("File written to %s" % self._path)
         fp = open(self._html_filename, "w")
         fp.write("<!DOCTYPE HTML>")
         fp.write('<html lang="en">')
         # header
-        fp.write(HTMLHeader(self._background_color).get_str())
+        fp.write(HTMLHeader().get_str())
         # body
-        fp.write(HTMLBody(self._background_color, self._x3d_filename).get_str())
+        fp.write(HTMLBody(self._x3d_shapes).get_str())
         fp.write("</html>\n")
         fp.close()
 
+
 if __name__ == "__main__":
     from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-    box_shp = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+    box = BRepPrimAPI_MakeBox(1., 2., 3.).Shape()
     my_ren = X3DomRenderer()
-    my_ren.DisplayShape(box_shp)
+    my_ren.DisplayShape(box, export_edges=True)
+    my_ren.render()

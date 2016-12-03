@@ -16,6 +16,7 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 from functools import wraps
+from math import radians
 
 from OCC.BRepBndLib import brepbndlib_Add
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
@@ -29,7 +30,7 @@ from OCC.Bnd import Bnd_Box
 from OCC.GeomAbs import GeomAbs_C0
 from OCC.GeomAPI import GeomAPI_PointsToBSpline
 from OCC.TColgp import TColgp_Array1OfPnt
-from OCC.gp import gp_Vec, gp_Pnt, gp_Trsf
+from OCC.gp import gp_Vec, gp_Pnt, gp_Trsf, gp_OX, gp_OY, gp_OZ
 
 
 def make_edge(*args):
@@ -75,7 +76,6 @@ def make_face(*args):
     assert face.IsDone()
     result = face.Face()
     return result
-
 
 
 class assert_isdone(object):
@@ -199,6 +199,29 @@ def translate_shp(shp, vec, copy=False):
     brep_trns.Build()
     return brep_trns.Shape()
 
+
+def rotate_shp_3_axis(shape, rx, ry, rz, unity="deg"):
+    """ Rotate a shape around (O,x), (O,y) and (O,z).
+
+    @param rx_degree : rotation around (O,x)
+    @param ry_degree : rotation around (O,y)
+    @param rz_degree : rotation around (O,z)
+
+    @return : the rotated shape.
+    """
+    if unity == "deg":  # convert angle to radians
+        rx = radians(rx)
+        ry = radians(ry)
+        rz = radians(rz)
+    alpha = gp_Trsf()
+    alpha.SetRotation(gp_OX(), rx)
+    beta = gp_Trsf()
+    beta.SetRotation(gp_OY(), ry)
+    gamma = gp_Trsf()
+    gamma.SetRotation(gp_OZ(), rz)
+    brep_trns = BRepBuilderAPI_Transform(shape, alpha*beta*gamma, False)
+    shp = brep_trns.Shape()
+    return shp
 
 def make_extrusion(face, length, vector=gp_Vec(0., 0., 1.)):
     ''' creates a extrusion from a face, along the vector vector.
