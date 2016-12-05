@@ -24,11 +24,13 @@ can compile/use it :
 
 - OpenCascade Community Edition 0.17.x (https://github.com/tpaviot/oce),
 
+- FreeType 2.6.3 (https://www.freetype.org/),
+
 - SWIG 3.0.9 or higher (http://www.swig.org),
 
 - CMake 2.8 or higher (http://www.cmake.org).
 
-**Important**: the OCE version has to match the pythonocc-core version, which is currently **0.16**
+**Important**: the OCE version has to match the pythonocc-core version, which is currently **0.17.x**
 
 Create a local copy of the repository
 -------------------------------------
