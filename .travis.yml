@@ -2,14 +2,23 @@ sudo: false
 
 language: cpp
 
-#os: 
-#  - osx
-#  - linux
+# the secure below is the binstar token
+# to genrate this secure
+# first create an anconda cloud token
+# $ anaconda auth -n the_token_name --max-age 22896000 -c --scopes api
+# the token is return as something like "yh-6654-12334_111225"
+# then encrypt the token
+# You have to be in the directory where you installed the local copy of the repository
+# $ cd [your_dev_dir]/pythonocc-core
+# $ travis encrypt BINSTAR_TOKEN="yh-6654-12334_111225"
+# !!be careful about the typo BINSTAR_TOKEN with the proper case. Otherwise
+# !!the $BINSTAR_TOKEN env var value will be null and the line
+# !!anaconda -t $BINSTAR_TOKEN upload *.bz2 will not be run properly
+# after that, copy/paste the secure on the following line
+env:
+  global:
+    - secure: "XObUZlAdB3tRpDtd0z0LaxbOnkpiulNloSevDl5g8+Z3bsBk6jX0GTkVKSryxwe2H7v+YE8crShPykBvi/MlbXOy5S2nO/PjDxJFBQDsGFygrpOnjJ2bZ0IWSLeHADwVoiZZC2yHmkcaq+c5h/fFNyepfai42jhNLFR69adXOSk="
 
-#compiler: REMOVE comments to test both gcc and clang compilers
-  #- gcc
-  #- clang
-# Install packages for cross-compilation to 32 Bit
 addons:
   apt:
     packages:
@@ -20,25 +29,14 @@ addons:
 
 matrix:
   include:
-    #- env: PYTHON="2.7" CONDA_PY=27 ARCH="x86"
-    #  os: linux
     - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
       os: linux
     - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
       os: osx
-    #- env: PYTHON="3.4" CONDA_PY=34 ARCH="x86"
-    #  os: linux
-    - env: PYTHON="3.4" CONDA_PY=34 ARCH="x86_64"
-      os: linux
-    - env: PYTHON="3.4" CONDA_PY=34 ARCH="x86_64"
-      os: osx
-    #- env: PYTHON="3.5" CONDA_PY=35 ARCH="x86"
-    #  os: linux
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: linux
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: osx
-
 # Use miniconda to install binary versions of numpy etc. from continuum
 # analytic's repository. Follows an approach described by Dan Blanchard:
 # https://gist.github.com/dan-blanchard/7045057
@@ -55,7 +53,7 @@ before_install:
       else
       wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-$ARCH.sh -O miniconda.sh;
       fi;
-    fi
+    fi;
   - chmod +x miniconda.sh
   # When we are installing the 32 Bit conda on a 64 Bit system, the miniconda
   # installer will ask for a "yes" despite the -b flag, so we pipe in a yes
@@ -69,12 +67,23 @@ before_install:
   - conda info -a
    # download/install OCE from DLR-SC channel
   - conda config --add channels https://conda.anaconda.org/dlr-sc
+  - conda config --add channels https://conda.anaconda.org/tpaviot
   # install everything required to build the receipe
   - conda install conda-build=1.20 anaconda-client
 
 
 script:
   - conda build ci/conda
+
+# automative upload to anaconda cloud only
+# if the build was triggered by a cron
+# that was only nightly builds are uploaded
+# in case of a relase, replace the "nightly" label with "main"
+after_success:
+  - python ci/move-conda-package.py
+  - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
+     anaconda -t $BINSTAR_TOKEN upload *.bz2 -l nightly;
+    fi;
 
 branches:
   only:
