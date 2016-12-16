@@ -23,7 +23,8 @@ pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/p
 This will get you up and running in minutes whether you run win32/win64/linux64/osx64:
 
 ```bash
-conda install -c pythonocc -c dlr-sc pythonocc-core
+# install pythonocc in an environment named `pythonocc` with python 3.5; use python=2 for legacy python 2.7.12
+conda create -n pythonocc -c pythonocc -c dlr-sc pythonocc-core==0.17.1 python=3
 ```
 
 How to compile ?
