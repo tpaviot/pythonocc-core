@@ -1,6 +1,7 @@
 [![Travis Build Status](https://travis-ci.org/tpaviot/pythonocc-core.png?branch=master)](https://travis-ci.org/tpaviot/pythonocc-core)
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/oyeifkxtknl2tslq?svg=true)](https://ci.appveyor.com/project/tpaviot/pythonocc-core)
-[![Conda installer](https://anaconda.org/dlr-sc/pythonocc-core/badges/installer/conda.svg)](https://anaconda.org/dlr-sc/pythonocc-core)
+[![Conda installer](https://anaconda.org/pythonocc/pythonocc-core/badges/installer/conda.svg)](https://anaconda.org/dlr-sc/pythonocc-core)
+[![Anaconda cloud]](https://anaconda.org/pythonocc/pythonocc-core/badges/version.svg)
 [![Join the chat at https://gitter.im/tpaviot/pythonocc-core](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tpaviot/pythonocc-core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 pythonocc-core
@@ -18,11 +19,11 @@ Latest release : [pythonocc-core 0.17.1 (december 2016)](https://github.com/tpav
 How to quicky download/install binaries ?
 -----------------------------------------
 
-pythonocc provides precompiled [conda packages](https://anaconda.org/DLR-SC/pythonocc-core). 
+pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the dlr-sc conda repository).
 This will get you up and running in minutes whether you run win32/win64/linux64/osx64:
 
 ```bash
-conda install -c https://conda.anaconda.org/dlr-sc pythonocc-core
+conda install -c pythonocc -c dlr-sc pythonocc-core
 ```
 
 How to compile ?
@@ -47,8 +48,10 @@ We use the following online resources:
        https://ci.appveyor.com/project/tpaviot/pythonocc-core
   * Travic-CI
        https://travis-ci.org/tpaviot/pythonocc-core
-  * twitter
+  * Twitter
        https://twitter.com/pythonocc
+  * Anaconda cloud
+       https://anaconda.org/pythonocc
 
 how do __oce__ and __pythonocc__ relate?
 ----------------------------------------
