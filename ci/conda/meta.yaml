@@ -1,14 +1,13 @@
-﻿package:
+﻿# change the version numer to "0.17.1" or "0.18" in cas of a release build
+package:
   name: pythonocc-core
-  version: "0.17.1"
+  version: "nightly"
 
 source:
   path: ../..
   patches:
     - fix_graphicshr_location.patch [win]
     - fix_GeomFill_BSplineCurves_Init_method.patch
-
-build:
 
 build:
   script_env:

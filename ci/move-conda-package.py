@@ -1,10 +1,23 @@
-import sys
-import os
-import glob
 import shutil
-from conda_build.config import config
+import fnmatch
+import os
+import sys
 
-binary_package_glob = os.path.join(config.bldpkgs_dir, '{0}*.tar.bz2'.format('pythonocc-core'))
-binary_package = glob.glob(binary_package_glob)[0]
+# Find all .bz2 binary packages below
+# home/travis/miniconda/conda-bld/
+binary_packages = []
+if sys.platform.startswith("linux"):
+	HOME = os.path.join(os.sep, 'home')  # /home
+elif sys.platform.startswith("darwin"):
+	HOME = os.path.join(os.sep, 'Users')  # /Users
+path_to_recurse = os.path.join(HOME, 'travis', 'miniconda', 'conda-bld')
+if not os.path.isdir(path_to_recurse):
+    print('warning: %s not found' % path_to_recurse)
+for root, dirnames, filenames in os.walk(path_to_recurse):
+    for filename in fnmatch.filter(filenames, '*.tar.bz2'):
+        binary_packages.append(os.path.join(root, filename))
 
-shutil.move(binary_package, '.')
+# move all binary packages up to .
+for binary_package in binary_packages:
+    print("Moving %s up to ." % binary_package)
+    shutil.move(binary_package, '.')
