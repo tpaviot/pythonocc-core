@@ -1,7 +1,7 @@
 [![Travis Build Status](https://travis-ci.org/tpaviot/pythonocc-core.png?branch=master)](https://travis-ci.org/tpaviot/pythonocc-core)
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/oyeifkxtknl2tslq?svg=true)](https://ci.appveyor.com/project/tpaviot/pythonocc-core)
 [![Conda installer](https://anaconda.org/pythonocc/pythonocc-core/badges/installer/conda.svg)](https://anaconda.org/dlr-sc/pythonocc-core)
-[![Anaconda cloud]](https://anaconda.org/pythonocc/pythonocc-core/badges/version.svg)
+[![Anaconda-Server Badge](https://anaconda.org/pythonocc/pythonocc-core/badges/version.svg)](https://anaconda.org/pythonocc/pythonocc-core)
 [![Join the chat at https://gitter.im/tpaviot/pythonocc-core](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tpaviot/pythonocc-core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 pythonocc-core
