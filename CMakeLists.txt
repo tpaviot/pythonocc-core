@@ -1,4 +1,4 @@
-##Copyright (c) 2011-2014 Thomas Paviot (tpaviot@gmail.com)
+##Copyright (c) 2011-2016 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -20,9 +20,9 @@ project(PYTHONOCC)
 # set pythonOCC version
 set(PYTHONOCC_VERSION_MAJOR 0)
 set(PYTHONOCC_VERSION_MINOR 17)
-set(PYTHONOCC_VERSION_PATCH 1)
+set(PYTHONOCC_VERSION_PATCH 2)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-set(PYTHONOCC_VERSION_DEVEL)
+set(PYTHONOCC_VERSION_DEVEL -dev
 
 cmake_minimum_required(VERSION 2.6)
 
