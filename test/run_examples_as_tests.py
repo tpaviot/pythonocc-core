@@ -34,7 +34,8 @@ tests_to_exclude = ['core_display_signal_slots.py',
                     'core_display_quality.py',
                     'core_display_export_to_EF.py',
                     'core_matplotlib_box.py',
-                    'core_font_3d_console.py']
+                    'core_font_3d_console.py',
+                    'core_visualization_camera.py']
 # for OSX travis-ci.org, remove tests that take too long
 if sys.platform == 'darwin':
     tests_to_exclude.extend(['core_geometry_splinecage.py',  # buggy
