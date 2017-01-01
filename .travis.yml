@@ -65,8 +65,10 @@ before_install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
-   # download/install OCE from DLR-SC channel
+  # download/install OCE from DLR-SC channel
   - conda config --add channels https://conda.anaconda.org/dlr-sc
+  # on osx, need for pyobjc-core, available at erik's repository
+  - conda config --add channels https://conda.anaconda.org/erik
   - conda config --add channels https://conda.anaconda.org/tpaviot
   # install everything required to build the receipe
   - conda install conda-build=1.20 anaconda-client
