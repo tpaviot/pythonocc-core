@@ -90,7 +90,6 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         return win_id
 
     def resizeEvent(self, event):
-        super(qtBaseViewer,self).resizeEvent(event)
         if self._inited:
             self._display.OnResize()
 
@@ -210,9 +209,6 @@ class qtViewer3d(qtBaseViewer):
             painter.drawRect(rect)
             painter.end()
             self.doneCurrent()
-
-    def resizeGL(self, width, height):
-        self.setupViewport(width, height)
 
     def ZoomAll(self, evt):
         self._display.FitAll()
