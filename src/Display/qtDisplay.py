@@ -30,6 +30,10 @@ from OCC.Display import OCCViewer
 from OCC.Display.backend import get_qt_modules
 
 QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
+# check if signal available, not available
+# on PySide
+HAVE_PYQT_SIGNAL = hasattr(QtCore, 'pyqtSignal')
+
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
@@ -98,7 +102,8 @@ class qtViewer3d(qtBaseViewer):
 
     # emit signal when selection is changed
     # is a list of TopoDS_*
-    sig_topods_selected = QtCore.pyqtSignal(list)
+    if HAVE_PYQT_SIGNAL:
+        sig_topods_selected = QtCore.pyqtSignal(list)
 
     def __init__(self, *kargs):
         qtBaseViewer.__init__(self, *kargs)
@@ -267,7 +272,7 @@ class qtViewer3d(qtBaseViewer):
                     # single select otherwise
                     self._display.Select(pt.x, pt.y)
 
-                    if self._display.selected_shapes is not None:
+                    if (self._display.selected_shapes is not None) and HAVE_PYQT_SIGNAL:
                         self.sig_topods_selected.emit(self._display.selected_shapes)
 
 
