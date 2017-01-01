@@ -98,6 +98,26 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
             self._display.OnResize()
 
 
+def handle_retina(_nsview_pointer):
+    screen = QtGui.QGuiApplication.instance().primaryScreen()
+    pixelDensity = screen.physicalDotsPerInch()
+
+    if pixelDensity >= 147:
+
+        try:
+            import objc
+        except ImportError:
+            log.critical("pyobjc is not installed... try pip installing it \npip install pyobjc")
+        else:
+            nsview = objc.objc_object(c_void_p=_nsview_pointer)
+            nsview.setWantsBestResolutionOpenGLSurface_(True)
+            scaleFactor = nsview.backingScaleFactor()
+            rec1 = screen.geometry()
+            nsview.setBounds_(
+                ((rec1.x(), rec1.y()), (rec1.width() * scaleFactor, rec1.height() * scaleFactor))
+            )
+
+
 class qtViewer3d(qtBaseViewer):
 
     # emit signal when selection is changed
@@ -134,6 +154,9 @@ class qtViewer3d(qtBaseViewer):
         self._qApp = value
 
     def InitDriver(self):
+        if sys.platform == "darwin":
+            handle_retina(self.GetHandle())
+
         self._display = OCCViewer.Viewer3d(self.GetHandle())
         self._display.Create()
         # background gradient
