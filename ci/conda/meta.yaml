@@ -38,7 +38,7 @@ requirements:
     - oce ==0.17.2
     - python
     - freetype
-    - pyobjc-core       [osx]
+    - pyobjc-core       [osx and py27]
 
 test:
   requires:
