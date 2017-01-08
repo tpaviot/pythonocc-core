@@ -463,13 +463,7 @@ std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
   int *texcoords_idx = new int[3];
   int *normals_idx = new int[3];
   
-  str1 << "<IndexedFaceSet coordIndex='";
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        // vertex indices
-        str1 << i*3 << " " << 1+i*3 << " " << 2+i*3 << " -1\n";
-    } 
-    str1 << "' solid='false'>\n";
+  str1 << "<TriangleSet solid='false'>\n";
     // write points coordinates
     str1 << "<Coordinate point='";
     for (int i=0;i<tot_triangle_count;i++) {
@@ -483,7 +477,7 @@ std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
         str1 << locVertexcoord[vertices_idx[2]]<<" "<<locVertexcoord[vertices_idx[2]+1]<<" "
             << locVertexcoord[vertices_idx[2]+2]<<"\n";
     }
-    str1 << "' containerField='coord'></Coordinate>\n";
+    str1 << "'></Coordinate>\n";
     // write normals
     str1 << "<Normal vector='";
     for (int i=0;i<tot_triangle_count;i++) {
@@ -498,9 +492,9 @@ std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
         str1 << locNormalcoord[normals_idx[2]]<<" "<<locNormalcoord[normals_idx[2]+1]<<" "
             << locNormalcoord[normals_idx[2]+2] << "\n";
     }
-    str1 << "' containerField='normal'></Normal>\n";
+    str1 << "'></Normal>\n";
     // close all markups
-    str1 << "</IndexedFaceSet>\n";
+    str1 << "</TriangleSet>\n";
     
     delete [] vertices_idx;
     delete [] texcoords_idx;

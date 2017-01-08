@@ -32,9 +32,9 @@ HEADER = """
     <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
     <meta name='Keywords' content='WebGl,pythonOCC'>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="http://x3dom.org/release/x3dom.css" charset="utf-8" ></link>
-    <script type="text/javascript" src="http://x3dom.org/release/x3dom-full.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
+    <link rel="stylesheet" type="text/css" href="https://x3dom.org/release/x3dom.css" charset="utf-8" ></link>
+    <script type="text/javascript" src="https://x3dom.org/release/x3dom-full.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
     <style type="text/css">
         body {
             background: linear-gradient(@bg_gradient_color1@, @bg_gradient_color2@);
@@ -88,7 +88,7 @@ BODY = """
 <body>
     <div id="x3d_scene">@X3DSCENE@</div>
     <div id="pythonocc_rocks">
-        <b>pythonOCC @VERSION@ <a href="htpp://www.x3dom.org" target="_blank">x3dom</a> renderer</b><hr>
+        <b>pythonOCC @VERSION@ <a href="https://www.x3dom.org" target="_blank">x3dom</a> renderer</b><hr>
         Check our blog at
         <a style="font-size:14px;" href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
@@ -105,7 +105,7 @@ BODY = """
 
 
 def ExportEdgeToILS(edge_point_set):
-    str_x3d_to_return = "\t<LineSet vertexCount='%i' lit='false' solid='false' pickable='false'>" % len(edge_point_set)
+    str_x3d_to_return = "\t<LineSet vertexCount='%i'>" % len(edge_point_set)
     str_x3d_to_return += "<Coordinate point='"
     for p in edge_point_set:
         str_x3d_to_return += "%g %g %g " % (p[0], p[1], p[2])
@@ -127,19 +127,22 @@ class HTMLHeader(object):
 
 
 class HTMLBody(object):
-    def __init__(self, x3d_shapes_dict):
-        self._x3d_shapes_dict = x3d_shapes_dict
+    def __init__(self, x3d_shapes):
+        """ x3d_shapes is a list that contains uid for each shape
+        """
+        self._x3d_shapes = x3d_shapes
 
     def get_str(self):
         # get the location where pythonocc is running from
         body_str = BODY.replace('@VERSION@', OCC_VERSION)
-        x3dcontent = '\n<x3d style="width:100%;border: none" >\n<scene>\n'
-        for shp in self._x3d_shapes_dict:
-            trans, ori = self._x3d_shapes_dict[shp]
-            vx, vy, vz = trans
-            ori_vx, ori_vy, ori_vz, angle = ori
-            x3dcontent += '\t\t<inline mapDEFToID="true" url="shp%s.x3d"></inline>\n' % shp
-        x3dcontent += "</scene>\n</x3d>\n"
+        x3dcontent = '\n\t<X3D style="width:100%;border: none" >\n\t\t<Scene>\n'
+        for shp_uid in self._x3d_shapes:
+            # TODO: here is the code related to orientation/translation
+            # trans, ori = self._x3d_shapes_dict[shp]
+            # vx, vy, vz = trans
+            # ori_vx, ori_vy, ori_vz, angle = ori
+            x3dcontent += '\t\t\t<Inline mapDEFToID="true" url="shp%s.x3d"></Inline>\n' % shp_uid
+        x3dcontent += "\t\t</Scene>\n\t</X3D>\n"
         body_str = body_str.replace('@X3DSCENE@', x3dcontent)
         return body_str
 
@@ -171,14 +174,14 @@ class X3DExporter(object):
         # the list of indexed face sets that compose the shape
         # if ever the map_faces_to_mesh option is enabled, this list
         # maybe composed of dozains of IndexedFaceSet
-        self._indexed_face_sets = []
-        self._indexed_line_sets = []
+        self._triangle_sets = []
+        self._line_sets = []
 
     def compute(self):
         shape_tesselator = Tesselator(self._shape)
         shape_tesselator.Compute(compute_edges=self._export_edges,
-        	                     mesh_quality=self._mesh_quality)
-        self._indexed_face_sets.append(shape_tesselator.ExportShapeToX3DIndexedFaceSet())
+                                 mesh_quality=self._mesh_quality)
+        self._triangle_sets.append(shape_tesselator.ExportShapeToX3DIndexedFaceSet())
         # then process edges
         if self._export_edges:
             # get number of edges
@@ -189,20 +192,25 @@ class X3DExporter(object):
                 for i_vert in range(nbr_vertices):
                     edge_point_set.append(shape_tesselator.GetEdgeVertex(i_edge, i_vert))
                 ils = ExportEdgeToILS(edge_point_set)
-                self._indexed_line_sets.append(ils)
+                self._line_sets.append(ils)
 
     def write_to_file(self, filename):
         # write header
         f = open(filename, "w")
         f.write("""<?xml version="1.0" encoding="UTF-8"?>
-<X3D style="width:100%;border: none" profile="Immersive" version="3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.2.xsd">
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile="Immersive" version="3.3" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.3.xsd">
 <head>
-    <meta name="generator" content="pythonOCC X3D exporter (www.pythonocc.org)"/>
+    <meta name="generator" content="pythonocc-%s X3D exporter (www.pythonocc.org)"/>
+    <meta name="title" content="%s"/>
+    <meta name="creator" content="pythonocc-%s generator"/>
+    <meta name="identifier" content="http://www.pythonocc.org"/>
+    <meta name="description" content="pythonocc-%s x3dom based shape rendering"/>
 </head>
 <Scene>
-        """)
+        """ % (OCC_VERSION, os.path.basename(filename), OCC_VERSION, OCC_VERSION))
         shape_id = 0
-        for indexed_face_set in self._indexed_face_sets:
+        for triangle_set in self._triangle_sets:
             f.write('<Shape DEF="shape%i"><Appearance>\n' % shape_id)
             #
             # set Material or shader
@@ -229,16 +237,24 @@ class X3DExporter(object):
                 f.write('</ShaderPart></ComposedShader>\n')
             f.write('</Appearance>\n')
             # export triangles
-            f.write(indexed_face_set)
+            f.write(triangle_set)
             f.write("</Shape>\n")
             shape_id += 1
         # and now, process edges
         edge_id = 0
-        for indexed_line_set in self._indexed_line_sets:
-            f.write('<Shape DEF="edg%i">' % edge_id)
-            f.write(indexed_line_set)
-            f.write("</Shape>\n")
+        # below '0' means show all
+        # -1 means doesn' show line
+        # the "Switch" node selects the group to be displayed
+        f.write("<Switch whichChoice='0'>\n")
+        f.write("\t<Group>\n")
+        for line_set in self._line_sets:
+            f.write('\t\t<Shape DEF="edg%i">\n' % edge_id)
+            f.write('\t\t\t<Appearance><Material emissiveColor="0 0 0"/></Appearance>\n\t\t')  # empty appearance, but the x3d validator complains if nothing set
+            f.write(line_set)
+            f.write("\t\t</Shape>\n")
             edge_id += 1
+        f.write("\t</Group>\n")
+        f.write("</Switch>\n")
         f.write('</Scene>\n</X3D>\n')
         f.close()
 
@@ -250,7 +266,7 @@ class X3DomRenderer(object):
         else:
             self._path = path
         self._html_filename = os.path.join(self._path, 'index.html')
-        self._x3d_shapes = {}
+        self._x3d_shapes = []
         print("X3DomRenderer initiliazed. Waiting for shapes to be added to the buffer.")
 
     def DisplayShape(self,
@@ -276,13 +292,15 @@ class X3DomRenderer(object):
         x3d_filename = os.path.join(self._path, "shp%s.x3d" % shape_hash)
         # the x3d filename is computed from the shape hash
         x3d_exporter.write_to_file(x3d_filename)
+        ## TODO : orientation and translation
         # get shape translation and orientation
-        trans = shape.Location().Transformation().TranslationPart().Coord()  # vector
-        v = gp_Vec()
-        angle = shape.Location().Transformation().GetRotation().GetVectorAndAngle(v)
-        ori = (v.X(), v.Y(), v.Z(), angle)  # angles
+        # trans = shape.Location().Transformation().TranslationPart().Coord()  # vector
+        # v = gp_Vec()
+        # angle = shape.Location().Transformation().GetRotation().GetVectorAndAngle(v)
+        # ori = (v.X(), v.Y(), v.Z(), angle)  # angles
         # fill the shape dictionnary with shape hash, translation and orientation
-        self._x3d_shapes[shape_hash] = [trans, ori]
+        #  self._x3d_shapes[shape_hash] = [trans, ori]
+        self._x3d_shapes.append(shape_hash)
 
     def render(self, server_port=8080):
         """ Call the render() method to display the X3D scene.

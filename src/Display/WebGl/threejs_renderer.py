@@ -116,14 +116,14 @@ BODY_Part0 = """
 <body>
     <div id="container"></div>
     <div id="pythonocc_rocks">
-        <b>pythonOCC @VERSION@ <a href="http://github.com/mrdoob/three.js" target="_blank">three.js</a> renderer</b><hr>
+        <b>pythonOCC @VERSION@ <a href="https://github.com/mrdoob/three.js" target="_blank">three.js</a> renderer</b><hr>
         Check our blog at
         <a style="font-size:14px;" href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
 
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r82/build/three.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r82/examples/js/controls/OrbitControls.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r82/examples/js/libs/stats.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r83/build/three.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r83/examples/js/controls/OrbitControls.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r83/examples/js/libs/stats.min.js"></script>
 
 """
 
