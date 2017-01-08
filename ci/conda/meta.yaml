@@ -1,10 +1,11 @@
 ﻿# change the version numer to "0.17.1" or "0.18" in cas of a release build
 package:
   name: pythonocc-core
-  version: "nightly"
+  version: 0.17.2
 
 source:
-  path: ../..
+  fn: 0.17.2.tar.gz
+  url: https://github.com/tpaviot/pythonocc-core/archive/0.17.2.tar.gz
   patches:
     - fix_graphicshr_location.patch [win]
     - fix_GeomFill_BSplineCurves_Init_method.patch
@@ -14,7 +15,7 @@ build:
     - CC
     - CXX
 
-  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+  number: 1
   binary_relocation: false [osx]
   features:
     - vc9               [win and py27]
@@ -46,4 +47,4 @@ test:
 about:
   home: https://github.com/tpaviot/pythonocc-core
   license: LGPL
-  summary: A python wrapper for the OCE library
+  summary: An industrial strength 3D CAD python package

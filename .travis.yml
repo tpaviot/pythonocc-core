@@ -83,9 +83,7 @@ script:
 # in case of a relase, replace the "nightly" label with "main"
 after_success:
   - python ci/move-conda-package.py
-  - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
-     anaconda -t $BINSTAR_TOKEN upload *.bz2 --force;
-    fi;
+  - anaconda -t $BINSTAR_TOKEN upload *.bz2 --force
 
 branches:
   only:
