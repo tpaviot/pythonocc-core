@@ -1,4 +1,24 @@
 =============================
+Version 0.17.2 - January 2017
+
+This release requires oce-0.17.0 or oce-0.17.1 or oce-0.17.2. Prefer the latter.
+
+* webgl: upgrade three.js to r83; use https for three.js library
+
+* webgl: X3D quality improvements; use https; replaced IndexedFaceSet with TriangleSet
+
+* examples: added point cloud and glsl examples
+
+* gui: osx qtDisplay supports Retina displays
+
+* gui: fixed a regression in qtDisplay
+
+* gui: fixed PySide support
+
+* ci/cd: travis upoads nightly builds to http://anaconda.com/tpaviot, conda packages
+on appveyor are available for download as artifacts
+
+=============================
 Version 0.17.1 - December 2016
 
 This release requires oce-0.17.0 or oce-0.17.1 or oce-0.17.2. Prefer the latter.
