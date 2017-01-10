@@ -1,11 +1,10 @@
 ﻿# change the version numer to "0.17.1" or "0.18" in cas of a release build
 package:
   name: pythonocc-core
-  version: 0.17.2
+  version: "nightly"
 
 source:
-  fn: 0.17.2.tar.gz
-  url: https://github.com/tpaviot/pythonocc-core/archive/0.17.2.tar.gz
+  path: ../..
   patches:
     - fix_graphicshr_location.patch [win]
     - fix_GeomFill_BSplineCurves_Init_method.patch
@@ -15,7 +14,7 @@ build:
     - CC
     - CXX
 
-  number: 1
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
   binary_relocation: false [osx]
   features:
     - vc9               [win and py27]
