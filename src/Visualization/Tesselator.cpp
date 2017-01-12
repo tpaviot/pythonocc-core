@@ -20,6 +20,7 @@
 #include <sstream>
 #include <algorithm>
 #include <cmath>
+#include <iomanip>
 //---------------------------------------------------------------------------
 #include <TopExp_Explorer.hxx>
 #include <Bnd_Box.hxx>
@@ -360,7 +361,7 @@ void Tesselator::ComputeDefaultDeviation()
     Standard_Real yDim = std::abs((long)aYmax - (long)aYmin);
     Standard_Real zDim = std::abs((long)aZmax - (long)aZmin);
 
-    Standard_Real adeviation = std::max(aXmax-aXmin, std::max(aYmax-aYmin, aZmax-aZmin)) * 1e-2 ;
+    Standard_Real adeviation = std::max(aXmax-aXmin, std::max(aYmax-aYmin, aZmax-aZmin)) * 2e-2 ;
     myDeviation = adeviation;
 }
 
@@ -440,67 +441,77 @@ void Tesselator::ComputeEdges()
   }
 }
 
-std::string Tesselator::ExportToSharedVertices()
+
+std::string formatFloatNumber(float f) 
 {
-    std::stringstream str1;
-    int v1=0;
-    int v2=0;
-    int v3=0;
-    for (int i=0;i<tot_triangle_count;i++) {
-        str1 << "Triangle number " << i <<"\n";
-        GetTriangleIndex(i, v1, v2, v3);
-        str1 << "\tindex vertex0 : " << v1 << "\n"; 
-        str1 << "\tindex vertex1 : " << v2 << "\n";
-        str1 << "\tindex vertex2 : " << v3 << "\n";
-    }
-    return str1.str();
+  // returns string representation of the float number f.
+  // set precision to 4 digits
+  // set epsilon to 1e-3
+  float epsilon = 1e-3;
+  std::stringstream formatted_float;
+  if (std::abs(f) < epsilon) {
+    f = 0.;
+  }
+  formatted_float << std::setprecision(4) << f;
+  // 4 is perfect for the default quality
+  // for lower quality, it can be down to 3 or 2
+  // for better quality, up to 5 or 6
+  return formatted_float.str();
 }
 
 std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
 {
-  std::stringstream str1;
+  std::stringstream str_ifs, str_vertices, str_normals;
   int *vertices_idx = new int[3];
   int *texcoords_idx = new int[3];
   int *normals_idx = new int[3];
+  // traverse triangles and write vertices and normals strings
+  for (int i=0;i<tot_triangle_count;i++) {
+      ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
+      // VERTICES
+      // First Vertex
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[0]]) << " ";
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[0]+1]) <<" ";
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[0]+2]) <<"\n";
+      // Second vertex
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[1]]) << " ";
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[1]+1]) << " ";
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[1]+2]) << "\n";
+      // Third vertex
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[2]]) << " ";
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[2]+1]) << " ";
+      str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[2]+2]) << "\n";
+      // NORMALS
+      // First normal
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[0]]) << " ";
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[0]+1]) << " ";
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[0]+2]) << "\n";
+      // Second normal
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[1]]) << " ";
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[1]+1]) << " ";
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[1]+2]) << "\n";
+      // Third normal
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[2]]) << " ";
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[2]+1]) << " ";
+      str_normals << formatFloatNumber(locNormalcoord[normals_idx[2]+2]) << "\n";
+  }
+  str_ifs << "<TriangleSet solid='false'>\n";
+  // write points coordinates
+  str_ifs << "<Coordinate point='";
+  str_ifs << str_vertices.str();
+  str_ifs << "'></Coordinate>\n";
+  // write normals
+  str_ifs << "<Normal vector='";
+  str_ifs << str_normals.str();
+  str_ifs << "'></Normal>\n";
+  // close all markups
+  str_ifs << "</TriangleSet>\n";
+    
+  delete [] vertices_idx;
+  delete [] texcoords_idx;
+  delete [] normals_idx;  
   
-  str1 << "<TriangleSet solid='false'>\n";
-    // write points coordinates
-    str1 << "<Coordinate point='";
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        str1 <<locVertexcoord[vertices_idx[0]]<< " " <<locVertexcoord[vertices_idx[0]+1]<<" "
-            << locVertexcoord[vertices_idx[0]+2]<<"\n";
-        // Second vertex
-        str1 <<locVertexcoord[vertices_idx[1]]<<" "<<locVertexcoord[vertices_idx[1]+1]<<" "
-            << locVertexcoord[vertices_idx[1]+2]<<"\n";
-        // Third vertex
-        str1 << locVertexcoord[vertices_idx[2]]<<" "<<locVertexcoord[vertices_idx[2]+1]<<" "
-            << locVertexcoord[vertices_idx[2]+2]<<"\n";
-    }
-    str1 << "'></Coordinate>\n";
-    // write normals
-    str1 << "<Normal vector='";
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        // First normal
-        str1 << locNormalcoord[normals_idx[0]]<<" "<<locNormalcoord[normals_idx[0]+1]<<" "
-            << locNormalcoord[normals_idx[0]+2]<<"\n";
-        // Second normal
-        str1 << locNormalcoord[normals_idx[1]]<<" "<<locNormalcoord[normals_idx[1]+1]<<" "
-            << locNormalcoord[normals_idx[1]+2]<<"\n";
-        // Third normal
-        str1 << locNormalcoord[normals_idx[2]]<<" "<<locNormalcoord[normals_idx[2]+1]<<" "
-            << locNormalcoord[normals_idx[2]+2] << "\n";
-    }
-    str1 << "'></Normal>\n";
-    // close all markups
-    str1 << "</TriangleSet>\n";
-    
-    delete [] vertices_idx;
-    delete [] texcoords_idx;
-    delete [] normals_idx;
-    
-    return str1.str();
+  return str_ifs.str();
 }
 
 void Tesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, int diffB)
@@ -523,253 +534,110 @@ void Tesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, int dif
 
 }
 
-std::string Tesselator::ExportShapeToThreejsJSONString(char *shape_function_name)
+std::string Tesselator::ExportShapeToThreejsJSONString(char *shape_function_name, bool export_uv)
 {
     // a method that export a shape to a JSON BufferGeometry object
-    std::stringstream str_three_js;
+    std::stringstream str_3js, str_vertices, str_normals, str_uvs;
     int *vertices_idx = new int[3];
     int *texcoords_idx = new int[3];
     int *normals_idx = new int[3];
-    str_three_js << "{\n";
-    str_three_js << "    \"metadata\": {\n";
-    str_three_js << "        \"version\": 4.4,\n";
-    str_three_js << "        \"type\": \"BufferGeometry\",\n";
-    str_three_js << "        \"generator\": \"pythonOCC\"\n";
-    str_three_js << "    },\n";
-    str_three_js << "    \"uuid\": \"" << shape_function_name << "\",\n";
-    str_three_js << "    \"type\": \"BufferGeometry\",\n";
-    str_three_js << "    \"data\": {\n";
-    str_three_js << "        \"attributes\": {\n";
-    str_three_js << "            \"position\": {\n";
-    str_three_js << "                \"itemSize\": 3,\n";
-    str_three_js << "                \"type\": \"Float32Array\",\n";
-    str_three_js << "                \"array\": [";
-    // write vertex coordinates
+    // loop over triangles and write vertices, normals and uvs if enabled
     for (int i=0;i<tot_triangle_count;i++) {
         ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
+        // write vertex coordinates
         // First vertex
-        str_three_js <<locVertexcoord[vertices_idx[0]]<<","<<locVertexcoord[vertices_idx[0]+1]<<","
-            << locVertexcoord[vertices_idx[0]+2]<<",";
+        str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[0]]) << ",";
+        str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[0]+1]) << ",";
+        str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[0]+2]) << ",";
         // Second vertex
-        str_three_js <<locVertexcoord[vertices_idx[1]]<<","<<locVertexcoord[vertices_idx[1]+1]<<","
-            << locVertexcoord[vertices_idx[1]+2]<<",";
+        str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[1]]) << ",";
+        str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[1]+1]) << ",";
+        str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[1]+2]) << ",";
         // Third vertex
-        str_three_js <<locVertexcoord[vertices_idx[2]]<<","<<locVertexcoord[vertices_idx[2]+1]<<","
-            << locVertexcoord[vertices_idx[2]+2];
+        str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[2]]) << ",";
+        str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[2]+1]) << ",";
+        str_vertices << formatFloatNumber(locVertexcoord[vertices_idx[2]+2]);
         // Be careful, JSON parsers don't like trailing commas !!!
         if (i != tot_triangle_count-1) {
-          str_three_js <<",";
+          str_vertices << ",";
         }
-    }
-    str_three_js << "]\n";
-    str_three_js << "            },\n";
-    str_three_js << "            \"normal\": {\n";
-    str_three_js << "                \"itemSize\": 3,\n";
-    str_three_js << "                \"type\": \"Float32Array\",\n";
-    str_three_js << "                \"array\": [";
-    // write normals
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        // First normal
-        str_three_js << locNormalcoord[normals_idx[0]]<<","<<locNormalcoord[normals_idx[0]+1]<<","
-            << locNormalcoord[normals_idx[0]+2]<<",";
+        // NORMALS
+          // First normal
+        str_normals << formatFloatNumber(locNormalcoord[normals_idx[0]]) << ",";
+        str_normals << formatFloatNumber(locNormalcoord[normals_idx[0]+1]) << ",";
+        str_normals << formatFloatNumber(locNormalcoord[normals_idx[0]+2]) << ",";
         // Second normal
-        str_three_js << locNormalcoord[normals_idx[1]]<<","<<locNormalcoord[normals_idx[1]+1]<<","
-            << locNormalcoord[normals_idx[1]+2]<<",";
+        str_normals << formatFloatNumber(locNormalcoord[normals_idx[1]]) << ",";
+        str_normals << formatFloatNumber(locNormalcoord[normals_idx[1]+1]) << ",";
+        str_normals << formatFloatNumber(locNormalcoord[normals_idx[1]+2]) << ",";
         // Third normal
-        str_three_js << locNormalcoord[normals_idx[2]]<<","<<locNormalcoord[normals_idx[2]+1]<<","
-            << locNormalcoord[normals_idx[2]+2];
+        str_normals << formatFloatNumber(locNormalcoord[normals_idx[2]]) << ",";
+        str_normals << formatFloatNumber(locNormalcoord[normals_idx[2]+1]) << ",";
+        str_normals << formatFloatNumber(locNormalcoord[normals_idx[2]+2]);
         // Be careful, JSON parsers don't like trailing commas !!!
         if (i != tot_triangle_count-1) {
-          str_three_js <<",";
+          str_normals << ",";
+        }
+        // UVs
+        if (export_uv) {
+          str_uvs << formatFloatNumber(locTexcoord[texcoords_idx[0]])<<",";
+          str_uvs << formatFloatNumber(locTexcoord[texcoords_idx[0]+2])<<",";
+          str_uvs << formatFloatNumber(locTexcoord[texcoords_idx[1]])<<",";
+          str_uvs << formatFloatNumber(locTexcoord[texcoords_idx[1]+2])<<",";
+          str_uvs << formatFloatNumber(locTexcoord[texcoords_idx[2]])<<",";
+          str_uvs << formatFloatNumber(locTexcoord[texcoords_idx[2]+2]);
+          // Be careful, JSON parsers don't like trailing commas !!!
+          if (i != tot_triangle_count-1) {
+            str_uvs <<",";
+          }
         }
     }
-    str_three_js << "]\n";
-    str_three_js << "            },\n";
-    str_three_js << "            \"uv\": {\n";
-    str_three_js << "                \"itemSize\": 2,\n";
-    str_three_js << "                \"type\": \"Float32Array\",\n";
-    str_three_js << "                \"array\": [";
-    // export uv
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        str_three_js << locTexcoord[texcoords_idx[0]]<<","<<locTexcoord[texcoords_idx[0]+2]<<",";
-        str_three_js << locTexcoord[texcoords_idx[1]]<<","<<locTexcoord[texcoords_idx[1]+2]<<",";
-        str_three_js << locTexcoord[texcoords_idx[2]]<<","<<locTexcoord[texcoords_idx[2]+2];
-        // Be careful, JSON parsers don't like trailing commas !!!
-        if (i != tot_triangle_count-1) {
-          str_three_js <<",";
-        }
+    str_3js << "{\n";
+    str_3js << "\t\"metadata\": {\n";
+    str_3js << "\t\t\"version\": 4.4,\n";
+    str_3js << "\t\t\"type\": \"BufferGeometry\",\n";
+    str_3js << "\t\t\"generator\": \"pythonOCC\"\n";
+    str_3js << "\t},\n";
+    str_3js << "\t\"uuid\": \"" << shape_function_name << "\",\n";
+    str_3js << "\t\"type\": \"BufferGeometry\",\n";
+    str_3js << "\t\"data\": {\n";
+    str_3js << "\t\"attributes\": {\n";
+    str_3js << "\t\t\t\"position\": {\n";
+    str_3js << "\t\t\t\t\"itemSize\": 3,\n";
+    str_3js << "\t\t\t\t\"type\": \"Float32Array\",\n";
+    str_3js << "\t\t\t\t\"array\": [";
+    // write vertices
+    str_3js << str_vertices.str();
+    str_3js << "]\n";
+    str_3js << "\t\t\t},\n";
+    str_3js << "\t\t\t\"normal\": {\n";
+    str_3js << "\t\t\t\t\"itemSize\": 3,\n";
+    str_3js << "\t\t\t\t\"type\": \"Float32Array\",\n";
+    str_3js << "\t\t\t\t\"array\": [";
+    // write normals
+    str_3js << str_normals.str();
+    str_3js << "]\n";
+    if (export_uv) {
+      str_3js << "\t\t\t},\n";
+      str_3js << "\t\t\t\"uv\": {\n";
+      str_3js << "\t\t\t\t\"itemSize\": 2,\n";
+      str_3js << "\t\t\t\t\"type\": \"Float32Array\",\n";
+      str_3js << "\t\t\t\t\"array\": [";
+      // write uvs coordinates
+      str_3js << str_uvs.str();
+      str_3js << "]\n";
     }
-    str_three_js << "]\n";
-    str_three_js << "              }\n";
+    str_3js << "\t\t\t}\n";
     // close all brackets
-    str_three_js << "        }\n";
-    str_three_js << "    }\n";
-    str_three_js << "}\n";
+    str_3js << "\t\t}\n";
+    str_3js << "\t}\n";
+    str_3js << "}\n";
+
     delete [] vertices_idx;
     delete [] texcoords_idx;
     delete [] normals_idx;
-    return str_three_js.str();
-}
 
-std::string Tesselator::ExportShapeToThreejsBufferGeometryString(char *shape_function_name)
-{
-    std::stringstream str_three_js;
-    int *vertices_idx = new int[3];
-    int *texcoords_idx = new int[3];
-    int *normals_idx = new int[3];
-    // write header
-    str_three_js << "var ";
-    str_three_js << shape_function_name;
-    str_three_js << "_geometry = new THREE.BufferGeometry();\n";
-    str_three_js << "var ";
-    str_three_js << shape_function_name;
-    str_three_js << "_vertices = new Float32Array( [\n";
-    // first write vertices coords
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        // First vertex
-        str_three_js <<locVertexcoord[vertices_idx[0]]<<","<<locVertexcoord[vertices_idx[0]+1]<<","
-            << locVertexcoord[vertices_idx[0]+2]<<",\n";
-        // Second vertex
-        str_three_js <<locVertexcoord[vertices_idx[1]]<<","<<locVertexcoord[vertices_idx[1]+1]<<","
-            << locVertexcoord[vertices_idx[1]+2]<<",\n";
-        // Third vertex
-        str_three_js <<locVertexcoord[vertices_idx[2]]<<","<<locVertexcoord[vertices_idx[2]+1]<<","
-            << locVertexcoord[vertices_idx[2]+2]<<",\n";
-    }
-    str_three_js << "]);\n";
-    // write normals
-    str_three_js << shape_function_name;
-    str_three_js << "_normals = new Float32Array( [\n";
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        // First normal
-        str_three_js << locNormalcoord[normals_idx[0]]<<","<<locNormalcoord[normals_idx[0]+1]<<","
-            << locNormalcoord[normals_idx[0]+2]<<",\n";
-        // Second normal
-        str_three_js << locNormalcoord[normals_idx[1]]<<","<<locNormalcoord[normals_idx[1]+1]<<","
-            << locNormalcoord[normals_idx[1]+2]<<",\n";
-        // Third normal
-        str_three_js << locNormalcoord[normals_idx[2]]<<","<<locNormalcoord[normals_idx[2]+1]<<","
-            << locNormalcoord[normals_idx[2]+2];
-        str_three_js << ",\n";
-    }
-    str_three_js << "]);\n";
-    // texture coordinates
-    // at last, write texcoords
-    str_three_js << shape_function_name;
-    str_three_js << "_uvs = new Float32Array( [\n";
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        str_three_js << locTexcoord[texcoords_idx[0]]<<","<<locTexcoord[texcoords_idx[0]+2]<<",";
-        str_three_js << locTexcoord[texcoords_idx[1]]<<","<<locTexcoord[texcoords_idx[1]+2]<<",";
-        str_three_js << locTexcoord[texcoords_idx[2]]<<","<<locTexcoord[texcoords_idx[2]+2]<<",\n";
-    }
-    str_three_js << "]);\n";
-    // vertices
-    str_three_js << shape_function_name;
-    str_three_js << "_geometry.addAttribute( 'position', new THREE.BufferAttribute( ";
-    str_three_js << shape_function_name;
-    str_three_js << "_vertices, 3));\n";
-    // normals
-    str_three_js << shape_function_name;
-    str_three_js << "_geometry.addAttribute( 'normal', new THREE.BufferAttribute( ";
-    str_three_js << shape_function_name;
-    str_three_js << "_normals, 3));\n";
-    // uvs
-    str_three_js << shape_function_name;
-    str_three_js << "_geometry.addAttribute( 'uv', new THREE.BufferAttribute( ";
-    str_three_js << shape_function_name;
-    str_three_js << "_uvs, 2));\n";
-    delete [] vertices_idx;
-    delete [] texcoords_idx;
-    delete [] normals_idx;
-    return str_three_js.str();
-}
-
-std::string Tesselator::ExportShapeToThreejsString(char *shape_function_name)
-{
-    std::stringstream str_three_js;
-    int *vertices_idx = new int[3];
-    int *texcoords_idx = new int[3];
-    int *normals_idx = new int[3];
-    // write header
-    str_three_js << "var ";
-    str_three_js << shape_function_name;
-    str_three_js << " = function () {\n";
-    str_three_js << "var scope = this;\n";
-    str_three_js << "THREE.Geometry.call(this);\n";
-    // first write vertices coords
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        // First vertex
-        str_three_js << "v("<<locVertexcoord[vertices_idx[0]]<<","<<locVertexcoord[vertices_idx[0]+1]<<","
-            << locVertexcoord[vertices_idx[0]+2]<<");\n";
-        // Second vertex
-        str_three_js << "v("<<locVertexcoord[vertices_idx[1]]<<","<<locVertexcoord[vertices_idx[1]+1]<<","
-            << locVertexcoord[vertices_idx[1]+2]<<");\n";
-        // Third vertex
-        str_three_js << "v("<<locVertexcoord[vertices_idx[2]]<<","<<locVertexcoord[vertices_idx[2]+1]<<","
-            << locVertexcoord[vertices_idx[2]+2]<<");\n";
-    }
-    // write normals
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        // vertex indices
-        str_three_js << "f3("<<i*3<<","<<1+i*3<<","<<2+i*3<<",";
-        // First normal
-        str_three_js << locNormalcoord[normals_idx[0]]<<","<<locNormalcoord[normals_idx[0]+1]<<","
-            << locNormalcoord[normals_idx[0]+2]<<",";
-        // Second normal
-        str_three_js << locNormalcoord[normals_idx[1]]<<","<<locNormalcoord[normals_idx[1]+1]<<","
-            << locNormalcoord[normals_idx[1]+2]<<",";
-        // Third normal
-        str_three_js << locNormalcoord[normals_idx[2]]<<","<<locNormalcoord[normals_idx[2]+1]<<","
-            << locNormalcoord[normals_idx[2]+2];
-        str_three_js << ");\n";
-    }
-
-    // at last, write texcoords
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        str_three_js << "uvs(";
-        str_three_js << locTexcoord[texcoords_idx[0]]<<","<<locTexcoord[texcoords_idx[0]+2]<<",";
-        str_three_js << locTexcoord[texcoords_idx[1]]<<","<<locTexcoord[texcoords_idx[1]+2]<<",";
-        str_three_js << locTexcoord[texcoords_idx[2]]<<","<<locTexcoord[texcoords_idx[2]+2];
-        str_three_js << ");\n";
-    }
-
-    // footer
-    str_three_js << "function v( x, y, z ) {\n";
-    str_three_js<< "  scope.vertices.push(new THREE.Vector3(x,y,z));\n";
-    str_three_js<<"}\n";
-    str_three_js <<"function f3( a, b, c, n1_x,n1_y,n1_z,n2_x,n2_y,n2_z,n3_x,n3_y,n3_z ) {\n";
-    str_three_js << "  scope.faces.push(new THREE.Face3(a,b,c,[new THREE.Vector3(n1_x,n1_y,n1_z),\n";
-    str_three_js << "new THREE.Vector3( n2_x, n2_y, n2_z ), new THREE.Vector3( n3_x, n3_y, n3_z ) ]  ) );\n";
-    str_three_js << "}\n";
-    str_three_js << "function uvs(a,b,c,d,e,f) {\n";
-    str_three_js << "scope.faceVertexUvs[ 0 ].push( [new THREE.Vector2(a,b), new THREE.Vector2(c,d), new THREE.Vector2(e,f)] );\n";
-    str_three_js << "}\n}\n";
-    str_three_js << shape_function_name;
-    str_three_js << ".prototype = new THREE.Geometry();\n";
-    str_three_js << shape_function_name;
-    str_three_js << ".prototype.constructor = ";
-    str_three_js << shape_function_name;
-    str_three_js << ";\n";
-    delete [] vertices_idx;
-    delete [] texcoords_idx;
-    delete [] normals_idx;
-    return str_three_js.str();
-}
-
-void Tesselator::ExportShapeToThreejs(char *shape_function_name, char * filename)
-{
-    ofstream js_file;
-    js_file.open (filename);
-    js_file << ExportShapeToThreejsBufferGeometryString(shape_function_name);
-    js_file.close();
+    return str_3js.str();
 }
 
 //---------------------------------------------------------------------------

@@ -109,10 +109,7 @@ class Tesselator
       float* VerticesList();
       float* NormalsList();
       float* TextureCoordinatesList();
-      void ExportShapeToThreejs(char *shape_function_name, char *filename);
-      std::string ExportShapeToThreejsJSONString(char *shape_function_name);
-      std::string ExportShapeToThreejsString(char *shape_function_name);
-      std::string ExportShapeToThreejsBufferGeometryString(char *shape_function_name);
+      std::string ExportShapeToThreejsJSONString(char *shape_function_name, bool export_uv=false);
       std::string ExportShapeToX3DIndexedFaceSet();
       void ExportShapeToX3D(char *filename, int diffR=1, int diffG=0, int diffB=0);
       int ObjGetTriangleCount();
@@ -122,6 +119,5 @@ class Tesselator
       int ObjGetEdgeCount();
       int ObjEdgeGetVertexCount(int iEdge);
       void ObjGetTriangle(int trianglenum, int *vertices, int *texcoords, int *normals);
-      std::string ExportToSharedVertices();
 };
 #endif
