@@ -1,5 +1,4 @@
-cd /D "%SRC_DIR%/test"
-
+cd ..\work\test
 python run_tests.py
 python run_examples_as_tests.py
 python core_webgl_unittest.py
