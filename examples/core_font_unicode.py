@@ -1,4 +1,4 @@
-# coding: utf8
+# -*- coding: utf-8 -*-
 ##Copyright 2016 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
