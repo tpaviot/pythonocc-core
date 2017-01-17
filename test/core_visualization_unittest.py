@@ -77,13 +77,13 @@ class TestTesselator(unittest.TestCase):
         tess.ExportShapeToX3D(os.path.join("test_io", "sphere.x3d"))
         self.assert_(os.path.exists(os.path.join("test_io", "sphere.x3d")))
 
-    def test_export_to_x3d_IndexedFaceSet(self):
-        """ 3rd test : export a sphere to an X3D IndexedFaceSet triangle mesh """
+    def test_export_to_x3d_TriangleSet(self):
+        """ 3rd test : export a sphere to an X3D TriangleSet triangle mesh """
         a_sphere = BRepPrimAPI_MakeBox(10., 10., 10.).Shape()
         tess = Tesselator(a_sphere)
         tess.Compute()
         ifs = tess.ExportShapeToX3DIndexedFaceSet()
-        self.assert_(ifs.startswith("<IndexedFaceSet"))
+        self.assert_(ifs.startswith("<TriangleSet"))
         self.assert_("0 10 0" in ifs)  # a vertex
         self.assert_("0 0 1" in ifs)  # a normal
 
