@@ -27,10 +27,10 @@ requirements:
     - python
     - oce ==0.17.2
     - cmake
-    - ninja             [win]
+    - ninja
     - swig
     - freetype
-
+    - gcc               [linux]
   run:
     - pyqt
     - wxpython          [py27]

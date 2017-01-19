@@ -13,7 +13,7 @@ else
 fi
 
 # Configure step
-cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=$PREFIX \
  -DCMAKE_BUILD_TYPE=Release \
  -DCMAKE_PREFIX_PATH=$PREFIX \
  -DCMAKE_SYSTEM_PREFIX_PATH=$PREFIX \
@@ -21,12 +21,17 @@ cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
  -DPYTHON_INCLUDE_DIR:PATH=$PREFIX/include/python$MY_PY_VER \
  -DPYTHON_LIBRARY:FILEPATH=$PREFIX/lib/${PY_LIB} \
  .
-
 # Build step
-make -j 4
+# on linux travis, limit the number of concurrent jobs otherwise
+# gcc gets out of memory
+if [ `uname` == Darwin ]; then
+ninja
+else
+ninja -j 3
+fi
 
 # Install step
-make install
+ninja install
 
 # copy the source
 mkdir -p $PREFIX/src

@@ -69,13 +69,14 @@ before_install:
   - conda config --add channels https://conda.anaconda.org/dlr-sc
   # on osx, need for pyobjc-core, available at erik's repository
   - conda config --add channels https://conda.anaconda.org/erik
+  - conda config --add channels https://conda.anaconda.org/conda-forge
   - conda config --add channels https://conda.anaconda.org/tpaviot
   # install everything required to build the receipe
-  - conda install conda-build=1.21 anaconda-client
+  - conda install conda-build anaconda-client
 
 
 script:
-  - conda build ci/conda
+  - conda build ci/conda --no-remove-work-dir
 
 # automative upload to anaconda cloud only
 # if the build was triggered by a cron
