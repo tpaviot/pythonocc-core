@@ -71,6 +71,7 @@ before_install:
   - conda config --add channels https://conda.anaconda.org/erik
   - conda config --add channels https://conda.anaconda.org/conda-forge
   - conda config --add channels https://conda.anaconda.org/tpaviot
+  - conda config --add channels https://conda.anaconda.org/oce
   # install everything required to build the receipe
   - conda install conda-build anaconda-client
 
