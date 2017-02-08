@@ -176,6 +176,7 @@ class X3DExporter(object):
         # maybe composed of dozains of IndexedFaceSet
         self._triangle_sets = []
         self._line_sets = []
+        self._x3d_string = ""  # the string that contains the x3d description
 
     def compute(self):
         shape_tesselator = Tesselator(self._shape)
@@ -194,68 +195,72 @@ class X3DExporter(object):
                 ils = ExportEdgeToILS(edge_point_set)
                 self._line_sets.append(ils)
 
-    def write_to_file(self, filename):
-        # write header
-        f = open(filename, "w")
-        f.write("""<?xml version="1.0" encoding="UTF-8"?>
+    def to_x3dfile_string(self):
+        x3dfile_str = """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
 <X3D profile="Immersive" version="3.3" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.3.xsd">
 <head>
     <meta name="generator" content="pythonocc-%s X3D exporter (www.pythonocc.org)"/>
-    <meta name="title" content="%s"/>
+    <meta name="title" content="shape-export.x3d"/>
     <meta name="creator" content="pythonocc-%s generator"/>
     <meta name="identifier" content="http://www.pythonocc.org"/>
     <meta name="description" content="pythonocc-%s x3dom based shape rendering"/>
 </head>
 <Scene>
-        """ % (OCC_VERSION, os.path.basename(filename), OCC_VERSION, OCC_VERSION))
+        """ % (OCC_VERSION, OCC_VERSION, OCC_VERSION)
         shape_id = 0
         for triangle_set in self._triangle_sets:
-            f.write('<Shape DEF="shape%i"><Appearance>\n' % shape_id)
+            x3dfile_str += '<Shape DEF="shape%i"><Appearance>\n' % shape_id
             #
             # set Material or shader
             #
             if self._vs is None and self._fs is None:
-                f.write("<Material diffuseColor=")
-                f.write("'%g %g %g'" % (self._color[0],
+                x3dfile_str += "<Material diffuseColor="
+                x3dfile_str += "'%g %g %g'" % (self._color[0],
                                         self._color[1],
-                                        self._color[2]))
-                f.write(" shininess=")
-                f.write("'%g'" % self._shininess)
-                f.write(" specularColor=")
-                f.write("'%g %g %g'" % (self._specular_color[0],
+                                        self._color[2])
+                x3dfile_str += " shininess="
+                x3dfile_str += "'%g'" % self._shininess
+                x3dfile_str += " specularColor="
+                x3dfile_str += "'%g %g %g'" % (self._specular_color[0],
                                         self._specular_color[1],
-                                        self._specular_color[2]))
-                f.write(" transparency='%g'>\n" % self._transparency)
-                f.write("</Material>\n")
+                                        self._specular_color[2])
+                x3dfile_str += " transparency='%g'>\n" % self._transparency
+                x3dfile_str += "</Material>\n"
             else:  # set shaders
-                f.write('<ComposedShader><ShaderPart type="VERTEX" style="display:none;">\n')
-                f.write(self._vs)
-                f.write('</ShaderPart>\n')
-                f.write('<ShaderPart type="FRAGMENT" style="display:none;">\n')
-                f.write(self._fs)
-                f.write('</ShaderPart></ComposedShader>\n')
-            f.write('</Appearance>\n')
+                x3dfile_str += '<ComposedShader><ShaderPart type="VERTEX" style="display:none;">\n'
+                x3dfile_str += self._vs
+                x3dfile_str += '</ShaderPart>\n'
+                x3dfile_str += '<ShaderPart type="FRAGMENT" style="display:none;">\n'
+                x3dfile_str += self._fs
+                x3dfile_str += '</ShaderPart></ComposedShader>\n'
+            x3dfile_str += '</Appearance>\n'
             # export triangles
-            f.write(triangle_set)
-            f.write("</Shape>\n")
+            x3dfile_str += triangle_set
+            x3dfile_str += "</Shape>\n"
             shape_id += 1
         # and now, process edges
-        edge_id = 0
-        # below '0' means show all
-        # -1 means doesn' show line
-        # the "Switch" node selects the group to be displayed
-        f.write("<Switch whichChoice='0'>\n")
-        f.write("\t<Group>\n")
-        for line_set in self._line_sets:
-            f.write('\t\t<Shape DEF="edg%i">\n' % edge_id)
-            f.write('\t\t\t<Appearance><Material emissiveColor="0 0 0"/></Appearance>\n\t\t')  # empty appearance, but the x3d validator complains if nothing set
-            f.write(line_set)
-            f.write("\t\t</Shape>\n")
-            edge_id += 1
-        f.write("\t</Group>\n")
-        f.write("</Switch>\n")
-        f.write('</Scene>\n</X3D>\n')
+        if self._export_edges:
+            edge_id = 0
+            # below '0' means show all
+            # -1 means doesn' show line
+            # the "Switch" node selects the group to be displayed
+            x3dfile_str += "<Switch whichChoice='0'>\n"
+            x3dfile_str += "\t<Group>\n"
+            for line_set in self._line_sets:
+                x3dfile_str += '\t\t<Shape DEF="edg%i">\n' % edge_id
+                x3dfile_str += '\t\t\t<Appearance><Material emissiveColor="0 0 0"/></Appearance>\n\t\t'  # empty appearance, but the x3d validator complains if nothing set
+                x3dfile_str += line_set
+                x3dfile_str += "\t\t</Shape>\n"
+                edge_id += 1
+            x3dfile_str += "\t</Group>\n"
+            x3dfile_str += "</Switch>\n"
+        x3dfile_str += '</Scene>\n</X3D>\n'
+        return x3dfile_str
+   
+    def write_to_file(self, filename):
+        f = open(filename, "w")
+        f.write(self.to_x3dfile_string())
         f.close()
 
 

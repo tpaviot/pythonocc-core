@@ -90,7 +90,7 @@ HEADER = """
             padding: 5px;
             position: absolute;
             left: 1%;
-            top: 85%;
+            top: 88%;
             height: 60px;
             width: 305px;
             border-radius: 5px;
@@ -99,8 +99,8 @@ HEADER = """
             font-family: Arial;
             background-color: #414042;
             color: #ffffff;
-            font-size: 16px;
-            opacity: 0.7;
+            font-size: 14px;
+            opacity: 0.5;
         }
         a {
             color: #f7941e;
@@ -116,14 +116,16 @@ BODY_Part0 = """
 <body>
     <div id="container"></div>
     <div id="pythonocc_rocks">
-        <b>pythonOCC @VERSION@ <a href="https://github.com/mrdoob/three.js" target="_blank">three.js</a> renderer</b><hr>
-        Check our blog at
-        <a style="font-size:14px;" href=http://www.pythonocc.org>http://www.pythonocc.org</a>
+        Commands: <b>t</b> toggle visibility
+        <hr>
+        pythonocc-@VERSION@ <a href="https://github.com/mrdoob/three.js" target="_blank">three.js</a> renderer
+        <br>Check our blog at
+        <a href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
 
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r83/build/three.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r83/examples/js/controls/OrbitControls.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r83/examples/js/libs/stats.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r84/examples/js/controls/OrbitControls.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r84/examples/js/libs/stats.min.js"></script>
 
 """
 
@@ -190,6 +192,7 @@ BODY_Part2 = """
             stats.domElement.style.top = '0px';
             container.appendChild(stats.domElement);
             // add events
+            document.addEventListener('keypress', onDocumentKeyPress, false);
             document.addEventListener('click', onDocumentMouseClick, false);
             window.addEventListener('resize', onWindowResize, false);
         }
@@ -208,6 +211,15 @@ BODY_Part2 = """
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        function onDocumentKeyPress(event) {
+          event.preventDefault();
+          if (event.key=="t") {  // t key
+              if (selected_target) {
+                    selected_target.material.visible = !selected_target.material.visible;
+                }
+          }
+
         }
         function onDocumentMouseClick(event) {
             event.preventDefault();
@@ -373,6 +385,7 @@ class ThreejsRenderer(object):
         # tesselate
         tess = Tesselator(shape)
         tess.Compute(compute_edges=export_edges, mesh_quality=mesh_quality)
+        print("Number of triangles: %i" % tess.ObjGetTriangleCount())
         # export to 3JS
         shape_full_path = os.path.join(self._path, shape_hash + '.json')
         # add this shape to the shape dict, sotres everything related to it

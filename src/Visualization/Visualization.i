@@ -74,13 +74,9 @@ class Tesselator {
 	int ObjGetEdgeCount();
 	int ObjEdgeGetVertexCount(int iEdge);
     std::string ExportShapeToX3DIndexedFaceSet();
-	void ExportShapeToThreejs(char *shape_function_name, char *filename);
-	std::string ExportShapeToThreejsString(char *shape_function_name);
-	std::string ExportShapeToThreejsJSONString(char *shape_function_name);
-	std::string ExportShapeToThreejsBufferGeometryString(char *shape_function_name);
+	std::string ExportShapeToThreejsJSONString(char *shape_function_name, bool export_uv=false);
 	%feature("kwargs") ExportShapeToX3D;
 	void ExportShapeToX3D(char *filename, int diffR=1, int diffG=0, int diffB=0);
-	std::string ExportToSharedVertices();
 };
 
 class Display3d {
