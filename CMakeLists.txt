@@ -96,7 +96,6 @@ set(SWIG_FILES_PATH src/SWIG_files/wrapper)
 ############
 find_package(Freetype REQUIRED)
 include_directories(${FREETYPE_INCLUDE_DIRS})
-link_directories(${FREETYPE_LIBRARIES})
     
 ################################
 # OCE include and lib location #
