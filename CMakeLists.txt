@@ -112,6 +112,7 @@ if(DEFINED OCE_INCLUDE_PATH)
 # find OCE automatically
 else(OCE_INCLUDE_PATH)
   find_package(OCE 0.18 REQUIRED)
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DOCC_VERSION_HEX=0x060901) # oce0.17.2
   if(OCE_FOUND)
     message(STATUS "OpenCASCADE Community Edition (OCE) found.")
     include_directories(${OCE_INCLUDE_DIRS})
@@ -131,14 +132,14 @@ if(PYTHONOCC_WRAP_SMESH)
   set(SMESH_LIB_PATH /usr/local/lib CACHE PATH "SMESH lib path")
   include_directories(${SMESH_INCLUDE_PATH})
   link_directories(${SMESH_LIB_PATH})
-  set(SMESH_LIBRARIES SMESH)
+  set(SMESH_LIBRARIES DriverDAT Driver DriverSTL DriverUNV SMESHDS SMDS StdMeshers SMESH)
 endif(PYTHONOCC_WRAP_SMESH)
 
 ##############################################
 # Installation directory                     #
 # by default, installed to site-packages/OCC #
 ##############################################
-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from __future__ import print_function; from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE )
+execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE )
 set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory" )
 
 # List of OCE shared libraries to link with
@@ -231,6 +232,14 @@ option_with_default(PYTHONOCC_WRAP_SMESH "Compile SMESH wrapper" FALSE)
 ######################
 if(PYTHONOCC_WRAP_SMESH)
   include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SMESH_Modules.cmake)
+  # need boost headers to compile
+  #set(Boost_USE_STATIC_LIBS ON)
+  #find_package(Boost COMPONENTS filesystem thread)
+  #include_directories(${Boost_INCLUDE_DIRS})
+  include_directories(D:/Devel/smesh/boost-1.52.0)
+  # need vtk headers to compile
+  #find_package(VTK COMPONENTS vtkCommonCore vtkCommonDataModel vtkIOLegacy vtkFiltersVerdict)
+  #include_directories(${VTK_INCLUDE_DIRS})
 endif(PYTHONOCC_WRAP_SMESH)
 
 ###################
@@ -336,7 +345,7 @@ if(PYTHONOCC_WRAP_SMESH)
     set(FILE ${SWIG_FILES_PATH}/${SMESH_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
     swig_add_module(${SMESH_MODULE} python ${FILE})
-    swig_link_libraries(${SMESH_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_OCAF_LIBRARIES} ${SMESH_LIBRARIES})
+    swig_link_libraries(${SMESH_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OCE_OCAF_LIBRARIES} ${SMESH_LIBRARIES})
   endforeach(SMESH_MODULE)
 endif(PYTHONOCC_WRAP_SMESH)
 
