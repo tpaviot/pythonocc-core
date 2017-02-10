@@ -27,12 +27,14 @@ requirements:
     - ninja ==1.7.2
     - swig ==3.0.11
     - freetype ==2.7
+    - smesh ==6.7.4
 
   run:
     - pyqt >=5
     - oce ==0.18.1
     - python
     - freetype ==2.7
+    - smesh ==6.7.4
 
 test:
   requires:

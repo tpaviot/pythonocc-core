@@ -76,6 +76,7 @@ install:
     - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/conda-forge"
     - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/dlr-sc"
     - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/oce"
+    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/pythonocc"
 
 build: off
 
