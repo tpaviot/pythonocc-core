@@ -29,7 +29,11 @@ except:
     HAVE_OCAF = False
 # Create test suite
 import core_webgl_unittest
-
+try:
+    import core_smesh_unittest
+    HAVE_SMESH = True
+except:
+    HAVE_SMESH = False
 suite = unittest.TestSuite()
 
 # Get all test suites from modules
@@ -42,6 +46,9 @@ if HAVE_OCAF:
     tests.append(suite4)
 suite5 = core_webgl_unittest.suite()
 tests.append(suite5)
+if HAVE_SMESH:
+    suite6 = core_smesh_unittest.suite()
+    tests.append(suite6)
 # Add test cases
 suite.addTests(tests)
 
