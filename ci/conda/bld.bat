@@ -1,9 +1,9 @@
 mkdir build
 cd build
-dir "%PREFIX%"/include
+
 REM Remove dot from PY_VER for use in library name
 set MY_PY_VER=%PY_VER:.=%
-dir "%PREFIX%"/include
+
 REM Configure step
 cmake -G "Ninja" -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
  -DCMAKE_BUILD_TYPE=Release ^
@@ -13,7 +13,7 @@ cmake -G "Ninja" -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
  -DPYTHON_INCLUDE_DIR:PATH="%PREFIX%"/include ^
  -DPYTHON_LIBRARY:FILEPATH="%PREFIX%"/libs/python%MY_PY_VER%.lib ^
  -DPYTHONOCC_WRAP_SMESH=ON ^
- -DSMESH_INCLUDE_PATH:PATH="%PREFIX%"/include/smesh ^
+ -DSMESH_INCLUDE_PATH:PATH="%LIBRARY_PREFIX%"/include/smesh ^
  ..
 if errorlevel 1 exit 1
  
