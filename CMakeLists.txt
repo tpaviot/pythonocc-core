@@ -204,7 +204,7 @@ if(WIN32)
     message(STATUS "Found MSVC compiler: ${MSVC} ${MSVC_VERSION}")
     set(LIBRARY_OUTPUT_PATH bin/)
     # prevent bigobj fatal error C1148 issue, and remove C4244 verbose warning
-    add_definitions("/bigobj /wd4244")
+    add_definitions("/bigobj /wd4244 /wd4251 /wd4275 /wd4290")
   elseif (BORLAND) # The compiler used is BORLAND
     set(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
   else()
@@ -233,10 +233,8 @@ option_with_default(PYTHONOCC_WRAP_SMESH "Compile SMESH wrapper" FALSE)
 if(PYTHONOCC_WRAP_SMESH)
   include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SMESH_Modules.cmake)
   # need boost headers to compile
-  #set(Boost_USE_STATIC_LIBS ON)
-  #find_package(Boost COMPONENTS filesystem thread)
-  #include_directories(${Boost_INCLUDE_DIRS})
-  include_directories(D:/Devel/smesh/boost-1.52.0)
+  find_package(Boost)
+  include_directories(${Boost_INCLUDE_DIRS})
   # need vtk headers to compile
   #find_package(VTK COMPONENTS vtkCommonCore vtkCommonDataModel vtkIOLegacy vtkFiltersVerdict)
   #include_directories(${VTK_INCLUDE_DIRS})
