@@ -133,6 +133,9 @@ if(PYTHONOCC_WRAP_SMESH)
   include_directories(${SMESH_INCLUDE_PATH})
   link_directories(${SMESH_LIB_PATH})
   set(SMESH_LIBRARIES DriverDAT Driver DriverSTL DriverUNV SMESHDS SMDS StdMeshers SMESH)
+  if(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN)
+    set(SMESH_LIBRARIES NETGENPlugin ${SMESH_LIBRARIES})
+  endif(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN)
 endif(PYTHONOCC_WRAP_SMESH)
 
 ##############################################
@@ -231,6 +234,7 @@ option_with_default(PYTHONOCC_WRAP_SMESH "Compile SMESH wrapper" FALSE)
 # SMESH Modules list #
 ######################
 if(PYTHONOCC_WRAP_SMESH)
+  option_with_default(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN "Compile NETGENPlugin wrapper" FALSE)
   include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SMESH_Modules.cmake)
   # need boost headers to compile
   find_package(Boost)

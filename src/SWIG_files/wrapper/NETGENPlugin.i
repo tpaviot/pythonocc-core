@@ -219,6 +219,49 @@ enum Fineness {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor NETGENPlugin_Mesher;
+class NETGENPlugin_Mesher {
+	public:
+		%feature("compactdefaultargs") NETGENPlugin_Mesher;
+		%feature("autodoc", "	:param mesh:
+	:type mesh: SMESH_Mesh *
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param isVolume:
+	:type isVolume: bool
+	:rtype: None
+") NETGENPlugin_Mesher;
+		 NETGENPlugin_Mesher (SMESH_Mesh * mesh,const TopoDS_Shape & aShape,const bool isVolume);
+		%feature("compactdefaultargs") SetParameters;
+		%feature("autodoc", "	:param hyp:
+	:type hyp: NETGENPlugin_Hypothesis *
+	:rtype: None
+") SetParameters;
+		void SetParameters (const NETGENPlugin_Hypothesis * hyp);
+		%feature("compactdefaultargs") SetParameters;
+		%feature("autodoc", "	:param hyp:
+	:type hyp: NETGENPlugin_SimpleHypothesis_2D *
+	:rtype: None
+") SetParameters;
+		void SetParameters (const NETGENPlugin_SimpleHypothesis_2D * hyp);
+		%feature("compactdefaultargs") Compute;
+		%feature("autodoc", "	:rtype: bool
+") Compute;
+		bool Compute ();
+		%feature("compactdefaultargs") Evaluate;
+		%feature("autodoc", "	:param aResMap:
+	:type aResMap: MapShapeNbElems &
+	:rtype: bool
+") Evaluate;
+		bool Evaluate (MapShapeNbElems & aResMap);
+};
+
+
+%extend NETGENPlugin_Mesher {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor NETGENPlugin_NETGEN_2D;
 class NETGENPlugin_NETGEN_2D : public SMESH_2D_Algo {
 	public:
@@ -232,6 +275,16 @@ class NETGENPlugin_NETGEN_2D : public SMESH_2D_Algo {
 	:rtype: None
 ") NETGENPlugin_NETGEN_2D;
 		 NETGENPlugin_NETGEN_2D (int hypId,int studyId,SMESH_Gen * gen);
+		%feature("compactdefaultargs") CheckHypothesis;
+		%feature("autodoc", "	:param aMesh:
+	:type aMesh: SMESH_Mesh &
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aStatus:
+	:type aStatus: SMESH_Hypothesis::Hypothesis_Status &
+	:rtype: bool
+") CheckHypothesis;
+		bool CheckHypothesis (SMESH_Mesh & aMesh,const TopoDS_Shape & aShape,SMESH_Hypothesis::Hypothesis_Status & aStatus);
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	:param aMesh:
 	:type aMesh: SMESH_Mesh &
@@ -271,6 +324,16 @@ class NETGENPlugin_NETGEN_2D3D : public SMESH_3D_Algo {
 	:rtype: None
 ") NETGENPlugin_NETGEN_2D3D;
 		 NETGENPlugin_NETGEN_2D3D (int hypId,int studyId,SMESH_Gen * gen);
+		%feature("compactdefaultargs") CheckHypothesis;
+		%feature("autodoc", "	:param aMesh:
+	:type aMesh: SMESH_Mesh &
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aStatus:
+	:type aStatus: SMESH_Hypothesis::Hypothesis_Status &
+	:rtype: bool
+") CheckHypothesis;
+		bool CheckHypothesis (SMESH_Mesh & aMesh,const TopoDS_Shape & aShape,SMESH_Hypothesis::Hypothesis_Status & aStatus);
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	:param aMesh:
 	:type aMesh: SMESH_Mesh &
@@ -297,45 +360,6 @@ class NETGENPlugin_NETGEN_2D3D : public SMESH_3D_Algo {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor NETGENPlugin_NETGEN_2D_ONLY;
-class NETGENPlugin_NETGEN_2D_ONLY : public SMESH_2D_Algo {
-	public:
-		%feature("compactdefaultargs") NETGENPlugin_NETGEN_2D_ONLY;
-		%feature("autodoc", "	:param hypId:
-	:type hypId: int
-	:param studyId:
-	:type studyId: int
-	:param gen:
-	:type gen: SMESH_Gen *
-	:rtype: None
-") NETGENPlugin_NETGEN_2D_ONLY;
-		 NETGENPlugin_NETGEN_2D_ONLY (int hypId,int studyId,SMESH_Gen * gen);
-		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	:param aMesh:
-	:type aMesh: SMESH_Mesh &
-	:param aShape:
-	:type aShape: TopoDS_Shape &
-	:rtype: bool
-") Compute;
-		bool Compute (SMESH_Mesh & aMesh,const TopoDS_Shape & aShape);
-		%feature("compactdefaultargs") Evaluate;
-		%feature("autodoc", "	:param aMesh:
-	:type aMesh: SMESH_Mesh &
-	:param aShape:
-	:type aShape: TopoDS_Shape &
-	:param aResMap:
-	:type aResMap: MapShapeNbElems &
-	:rtype: bool
-") Evaluate;
-		bool Evaluate (SMESH_Mesh & aMesh,const TopoDS_Shape & aShape,MapShapeNbElems & aResMap);
-};
-
-
-%extend NETGENPlugin_NETGEN_2D_ONLY {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor NETGENPlugin_NETGEN_3D;
 class NETGENPlugin_NETGEN_3D : public SMESH_3D_Algo {
 	public:
@@ -349,6 +373,16 @@ class NETGENPlugin_NETGEN_3D : public SMESH_3D_Algo {
 	:rtype: None
 ") NETGENPlugin_NETGEN_3D;
 		 NETGENPlugin_NETGEN_3D (int hypId,int studyId,SMESH_Gen * gen);
+		%feature("compactdefaultargs") CheckHypothesis;
+		%feature("autodoc", "	:param aMesh:
+	:type aMesh: SMESH_Mesh &
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aStatus:
+	:type aStatus: SMESH_Hypothesis::Hypothesis_Status &
+	:rtype: bool
+") CheckHypothesis;
+		bool CheckHypothesis (SMESH_Mesh & aMesh,const TopoDS_Shape & aShape,SMESH_Hypothesis::Hypothesis_Status & aStatus);
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	:param aMesh:
 	:type aMesh: SMESH_Mesh &
