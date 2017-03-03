@@ -27,7 +27,7 @@ requirements:
     - oce ==0.17.3
     - cmake
     - ninja
-    - swig
+    - swig ==3.0.12
     - freetype
     - gcc               [linux]
 
