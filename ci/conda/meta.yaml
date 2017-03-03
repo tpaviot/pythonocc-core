@@ -7,7 +7,6 @@ source:
   path: ../..
   patches:
     - fix_graphicshr_location.patch [win]
-    - fix_GeomFill_BSplineCurves_Init_method.patch
 
 build:
   script_env:
