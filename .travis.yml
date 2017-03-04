@@ -37,6 +37,10 @@ matrix:
       os: linux
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: osx
+    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
+      os: linux
+    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
+      os: osx
 # Use miniconda to install binary versions of numpy etc. from continuum
 # analytic's repository. Follows an approach described by Dan Blanchard:
 # https://gist.github.com/dan-blanchard/7045057
