@@ -1,4 +1,4 @@
-version: pythonocc-core-0.17.2-dev.{build}
+version: pythonocc-core-0.17.3-dev.{build}
 
 environment:
   global:
@@ -36,6 +36,18 @@ environment:
       CONDA_PY: "35"
       CONDA_NPY: "18"
       CONDA_INSTALL_LOCN: "C:\\Miniconda35-x64"
+    - PYTHON: "C:\\Python36_32"
+      PYTHON_VERSION: "3.6"
+      PYTHON_ARCH: "32"
+      CONDA_PY: "36"
+      CONDA_NPY: "18"
+      CONDA_INSTALL_LOCN: "C:\\Miniconda36"
+    - PYTHON: "C:\\Python36_64"
+      PYTHON_VERSION: "3.6"
+      PYTHON_ARCH: "64"
+      CONDA_PY: "36"
+      CONDA_NPY: "18"
+      CONDA_INSTALL_LOCN: "C:\\Miniconda36-x64"
 # We always use a 64-bit machine, but can build x86 distributions
 # with the TARGET_ARCH variable (which is used by CMD_IN_ENV).
 platform:
@@ -61,6 +73,7 @@ install:
     - cmd: conda config --set show_channel_urls true
     - cmd: conda update --yes --quiet conda
     - cmd: conda install --yes conda-build
+    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/conda-forge"
     - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/dlr-sc"
     - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/oce"
 

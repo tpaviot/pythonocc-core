@@ -7,7 +7,6 @@ source:
   path: ../..
   patches:
     - fix_graphicshr_location.patch [win]
-    - fix_GeomFill_BSplineCurves_Init_method.patch
 
 build:
   script_env:
@@ -25,17 +24,16 @@ requirements:
   build:
     - patch             [win]
     - python
-    - oce ==0.17.2
+    - oce ==0.17.3
     - cmake
     - ninja
     - swig
     - freetype
     - gcc               [linux]
+
   run:
-    - pyqt
-    - wxpython          [py27]
-    - pyside            [py27]
-    - oce ==0.17.2
+    - pyqt >=5
+    - oce ==0.17.3
     - python
     - freetype
     - pyobjc-core       [osx and py27]
@@ -43,6 +41,9 @@ requirements:
 test:
   requires:
     - scipy
+    - wxpython          [py27]
+    - pyside            [py27]
+
 about:
   home: https://github.com/tpaviot/pythonocc-core
   license: LGPL
