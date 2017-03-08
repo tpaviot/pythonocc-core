@@ -67,7 +67,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<SMESH_ComputeError.hxx>
 #include<SMESH_Controls.hxx>
 #include<SMESH_DefineArray2.hxx>
-#include<SMESH_DefineIndexedMap.hxx>
 #include<SMESH_DriverDAT.hxx>
 #include<SMESH_DriverSTL.hxx>
 #include<SMESH_DriverUNV.hxx>
@@ -76,7 +75,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<SMESH_Group.hxx>
 #include<SMESH_Hypothesis.hxx>
 #include<SMESH_IndexedDataMapOfShapeIndexedMapOfShape.hxx>
-#include<SMESH_IndexedMap.hxx>
 #include<SMESH_Mesh.hxx>
 #include<SMESH_MeshEditor.hxx>
 #include<SMESH_MesherHelper.hxx>
