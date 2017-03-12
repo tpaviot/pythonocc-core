@@ -41,6 +41,7 @@ test:
     - scipy
     - wxpython          [py27]
     - pyside            [py27]
+    - smesh ==6.7.2
 
 about:
   home: https://github.com/tpaviot/pythonocc-core
