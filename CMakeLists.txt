@@ -270,6 +270,19 @@ ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Font3d.cpp
 swig_add_module(Addons python ${ADDONS_SOURCE_FILES})
 swig_link_libraries(Addons ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
 
+############
+# Splitter #
+############
+execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Splitter)
+set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter/GEOMAlgo.i PROPERTIES CPLUSPLUS ON)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter)
+set(SPLITTER_SOURCE_FILES
+${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter/GEOMAlgo.i
+${CMAKE_CURRENT_SOURCE_DIR}/src/Splitter/GEOMAlgo_Splitter.cxx
+)
+swig_add_module(GEOMAlgo python ${SPLITTER_SOURCE_FILES})
+swig_link_libraries(GEOMAlgo ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
+
 ################
 # DataExchange #
 ################
@@ -344,6 +357,9 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE DESTINATION ${PYTHONOCC_INSTAL
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 # install __init__.py file
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/__init__.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+# install Splitter
+install(FILES ${BUILD_DIR}/GEOMAlgo.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(TARGETS _GEOMAlgo DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 
 #######################
 # pythonOCC Packaging #
