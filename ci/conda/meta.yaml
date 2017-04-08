@@ -1,7 +1,7 @@
-﻿# change the version numer to "0.17.1" or "0.18" in cas of a release build
+﻿# change the version numer to "0.17.1" or "0.18" in case of a release build
 package:
   name: pythonocc-core
-  version: "nightly"
+  version: 0.17.3
 
 source:
   path: ../..

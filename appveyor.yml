@@ -1,4 +1,4 @@
-version: pythonocc-core-0.17.3-dev.{build}
+version: pythonocc-core-0.17.3.{build}
 
 environment:
   global:

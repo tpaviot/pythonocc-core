@@ -1,4 +1,20 @@
 =============================
+Version 0.17.3 - March 2017
+
+This release requires oce-0.17.0, oce-0.17.1, oce-0.17.2 or
+oce-0.17.3. Prefer the latter.
+
+* wrapper : new GEAOMAlgo_Splitter, and related example, from Salome 8.2
+
+* examples : core_geometry_line_properties, 
+
+* webgl : toggle visibility feature for 3js renderer, teselator clean up,
+increased default deviation (i.e. decreased default quality), set precision to 4 digits,
+speed up generation for json and xml exporters
+
+* ci/cd : many conda and appveyor fixes/improvements
+
+=============================
 Version 0.17.2 - January 2017
 
 This release requires oce-0.17.0 or oce-0.17.1 or oce-0.17.2. Prefer the latter.

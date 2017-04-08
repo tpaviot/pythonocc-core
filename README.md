@@ -14,7 +14,7 @@ pythonocc is a python library whose purpose is to provide 3D modeling
 features. It is intended to developers who aim at developing
 CAD/PDM/PLM applications.
 
-Latest release : [pythonocc-core 0.17.2 (january 2017)](https://github.com/tpaviot/pythonocc-core/releases/tag/0.17.2)
+Latest release : [pythonocc-core 0.17.3 (march 2017)](https://github.com/tpaviot/pythonocc-core/releases/tag/0.17.3)
 
 How to quicky download/install binaries ?
 -----------------------------------------
@@ -24,12 +24,12 @@ This will get you up and running in minutes whether you run win32/win64/linux64/
 
 ```bash
 # install pythonocc in an environment named `pythonocc` with python 3.5; use python=2 for legacy python 2.7.12
-conda create -n pythonocc -c pythonocc -c dlr-sc pythonocc-core==0.17.2 python=3
+conda create -n pythonocc -c pythonocc -c oce pythonocc-core==0.17.3 python=3
 ```
 
 Nightly builds are available from another repository. If you want to test features under development that have not been released yet:
 ```bash
-conda install -c tpaviot -c dlr-sc pythonocc-core==nightly
+conda install -c tpaviot -c oce pythonocc-core==nightly
 ```
 
 How to compile ?
