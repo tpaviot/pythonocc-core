@@ -1,0 +1,1017 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.IntWalk module &mdash; pythonocc API 0.17.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.17.3 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.17.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.IntWalk module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.IntWalk module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.IntWalk.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-intwalk-module">
+<h1>OCC.IntWalk module<a class="headerlink" href="#occ-intwalk-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.IntWalk"></span><dl class="class">
+<dt id="OCC.IntWalk.IntWalk_PWalking">
+<em class="property">class </em><code class="descname">IntWalk_PWalking</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<ul class="simple">
+<li>Constructor used to set the data to compute intersection lines between Caro1 and Caro2. Deflection is the maximum deflection admitted between two consecutive points on the resulting polyline. TolTangency is the tolerance to find a tangent point. Func is the criterion which has to be evaluated at each solution point (each point of the line). It is necessary to call the Perform method to compute the intersection lines. The line found starts at a point on or in 2 natural domains of surfaces. It can be closed in the standard case if it is open it stops and begins at the border of one of the domains. If an open line stops at the middle of a domain, one stops at the tangent point. Epsilon is SquareTolerance of points confusion.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Caro1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>Caro2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>TolTangency</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Epsilon</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Deflection</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Increment</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the intersection line containing the exact point Poin. This line is a polygonal line. Deflection is the maximum deflection admitted between two consecutive points on the resulting polyline. TolTangency is the tolerance to find a tangent point. Func is the criterion which has to be evaluated at each solution point (each point of the line). The line found starts at a point on or in 2 natural domains of surfaces. It can be closed in the standard case if it is open it stops and begins at the border of one of the domains. If an open line stops at the middle of a domain, one stops at the tangent point. Epsilon is SquareTolerance of points confusion.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Caro1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>Caro2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>TolTangency</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Epsilon</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Deflection</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Increment</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>U1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>V1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>U2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>V2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.AddAPoint">
+<code class="descname">AddAPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.AddAPoint" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>line</strong> (<em>Handle_IntSurf_LineOn2S &amp;</em>) &#8211; </li>
+<li><strong>POn2S</strong> (<em>IntSurf_PntOn2S &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.IsClosed">
+<code class="descname">IsClosed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.IsClosed" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the line is closed. An exception is raised if IsDone returns False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the calculus was successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.Line">
+<code class="descname">Line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.Line" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.IntSurf.html#OCC.IntSurf.Handle_IntSurf_LineOn2S" title="OCC.IntSurf.Handle_IntSurf_LineOn2S">Handle_IntSurf_LineOn2S</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.NbPoints">
+<code class="descname">NbPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.NbPoints" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of points of the resulting polyline. An exception is raised if IsDone returns False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>calculate the line of intersection</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ParDep</strong> (<em>TColStd_Array1OfReal &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>calculate the line of intersection. The regulation of steps is done using min and max values on u and v. (if this data is not presented as in the previous method, the initial steps are calculated starting from min and max uv of faces).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ParDep</strong> (<em>TColStd_Array1OfReal &amp;</em>) &#8211; </li>
+<li><strong>u1min</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>v1min</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>u2min</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>v2min</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>u1max</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>v1max</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>u2max</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>v2max</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.PerformFirstPoint">
+<code class="descname">PerformFirstPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.PerformFirstPoint" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>calculate the first point of a line of intersection</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ParDep</strong> (<em>TColStd_Array1OfReal &amp;</em>) &#8211; </li>
+<li><strong>FirstPoint</strong> (<em>IntSurf_PntOn2S &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.PutToBoundary">
+<code class="descname">PutToBoundary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.PutToBoundary" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theASurf1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>theASurf2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.RepartirOuDiviser">
+<code class="descname">RepartirOuDiviser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.RepartirOuDiviser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>DejaReparti</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>ChoixIso</strong> (<em>IntImp_ConstIsoparametric &amp;</em>) &#8211; </li>
+<li><strong>Arrive</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.SeekAdditionalPoints">
+<code class="descname">SeekAdditionalPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.SeekAdditionalPoints" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theASurf1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>theASurf2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>theMinNbPoints</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.TangentAtFirst">
+<code class="descname">TangentAtFirst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.TangentAtFirst" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the surface are tangent at the first point of the line. An exception is raised if IsDone returns False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.TangentAtLast">
+<code class="descname">TangentAtLast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.TangentAtLast" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the surface are tangent at the last point of the line. An exception is raised if IsDone returns False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.TangentAtLine">
+<code class="descname">TangentAtLine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.TangentAtLine" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Dir" title="OCC.gp.gp_Dir">gp_Dir</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.TestArret">
+<code class="descname">TestArret</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.TestArret" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>DejaReparti</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Param</strong> (<em>TColStd_Array1OfReal &amp;</em>) &#8211; </li>
+<li><strong>ChoixIso</strong> (<em>IntImp_ConstIsoparametric &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.TestDeflection">
+<code class="descname">TestDeflection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.TestDeflection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">IntWalk_StatusDeflection</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_PWalking.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point of range Index on the polyline. An exception is raised if IsDone returns False. An exception is raised if Index&lt;=0 or Index&gt;NbPoints.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.IntSurf.html#OCC.IntSurf.IntSurf_PntOn2S" title="OCC.IntSurf.IntSurf_PntOn2S">IntSurf_PntOn2S</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.IntWalk.IntWalk_PWalking.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.IntWalk.IntWalk_PWalking.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S">
+<em class="property">class </em><code class="descname">IntWalk_TheFunctionOfTheInt2S</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_FunctionSetWithDerivatives" title="OCC.math.math_FunctionSetWithDerivatives"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_FunctionSetWithDerivatives</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.AuxillarSurface1">
+<code class="descname">AuxillarSurface1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.AuxillarSurface1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Adaptor3d.html#OCC.Adaptor3d.Handle_Adaptor3d_HSurface" title="OCC.Adaptor3d.Handle_Adaptor3d_HSurface">Handle_Adaptor3d_HSurface</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.AuxillarSurface2">
+<code class="descname">AuxillarSurface2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.AuxillarSurface2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Adaptor3d.html#OCC.Adaptor3d.Handle_Adaptor3d_HSurface" title="OCC.Adaptor3d.Handle_Adaptor3d_HSurface">Handle_Adaptor3d_HSurface</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.ComputeParameters">
+<code class="descname">ComputeParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.ComputeParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ChoixIso</strong> (<em>IntImp_ConstIsoparametric</em>) &#8211; </li>
+<li><strong>Param</strong> (<em>TColStd_Array1OfReal &amp;</em>) &#8211; </li>
+<li><strong>UVap</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+<li><strong>BornInf</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+<li><strong>BornSup</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+<li><strong>Tolerance</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.Direction">
+<code class="descname">Direction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.Direction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Dir" title="OCC.gp.gp_Dir">gp_Dir</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.DirectionOnS1">
+<code class="descname">DirectionOnS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.DirectionOnS1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Dir2d" title="OCC.gp.gp_Dir2d">gp_Dir2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.DirectionOnS2">
+<code class="descname">DirectionOnS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.DirectionOnS2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Dir2d" title="OCC.gp.gp_Dir2d">gp_Dir2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.IsTangent">
+<code class="descname">IsTangent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.IsTangent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>UVap</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+<li><strong>Param</strong> (<em>TColStd_Array1OfReal &amp;</em>) &#8211; </li>
+<li><strong>BestChoix</strong> (<em>IntImp_ConstIsoparametric &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.Point">
+<code class="descname">Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.Point" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.Root">
+<code class="descname">Root</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.Root" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.IntWalk.IntWalk_TheInt2S">
+<em class="property">class </em><code class="descname">IntWalk_TheInt2S</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheInt2S" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Param</strong> (<em>TColStd_Array1OfReal &amp;</em>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>TolTangency</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>S1</strong> &#8211; </li>
+<li><strong>S2</strong> &#8211; </li>
+<li><strong>TolTangency</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheInt2S.Direction">
+<code class="descname">Direction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheInt2S.Direction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Dir" title="OCC.gp.gp_Dir">gp_Dir</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheInt2S.DirectionOnS1">
+<code class="descname">DirectionOnS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheInt2S.DirectionOnS1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Dir2d" title="OCC.gp.gp_Dir2d">gp_Dir2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheInt2S.DirectionOnS2">
+<code class="descname">DirectionOnS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheInt2S.DirectionOnS2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Dir2d" title="OCC.gp.gp_Dir2d">gp_Dir2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheInt2S.Function">
+<code class="descname">Function</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheInt2S.Function" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S" title="OCC.IntWalk.IntWalk_TheFunctionOfTheInt2S">IntWalk_TheFunctionOfTheInt2S</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheInt2S.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheInt2S.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheInt2S.IsEmpty">
+<code class="descname">IsEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheInt2S.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheInt2S.IsTangent">
+<code class="descname">IsTangent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheInt2S.IsTangent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheInt2S.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheInt2S.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Param</strong> (<em>TColStd_Array1OfReal &amp;</em>) &#8211; </li>
+<li><strong>Rsnld</strong> (<em>math_FunctionSetRoot &amp;</em>) &#8211; </li>
+<li><strong>Param</strong> &#8211; </li>
+<li><strong>Rsnld</strong> &#8211; </li>
+<li><strong>ChoixIso</strong> (<em>IntImp_ConstIsoparametric</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">IntImp_ConstIsoparametric</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">IntImp_ConstIsoparametric</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.IntWalk_TheInt2S.Point">
+<code class="descname">Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheInt2S.Point" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.IntSurf.html#OCC.IntSurf.IntSurf_PntOn2S" title="OCC.IntSurf.IntSurf_PntOn2S">IntSurf_PntOn2S</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.IntWalk.IntWalk_TheInt2S.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.IntWalk.IntWalk_TheInt2S.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.IntWalk.IntWalk_WalkingData">
+<em class="property">class </em><code class="descname">IntWalk_WalkingData</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.IntWalk_WalkingData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="OCC.IntWalk.IntWalk_WalkingData.etat">
+<code class="descname">etat</code><a class="headerlink" href="#OCC.IntWalk.IntWalk_WalkingData.etat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.IntWalk.IntWalk_WalkingData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.IntWalk.IntWalk_WalkingData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.IntWalk.IntWalk_WalkingData.ustart">
+<code class="descname">ustart</code><a class="headerlink" href="#OCC.IntWalk.IntWalk_WalkingData.ustart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.IntWalk.IntWalk_WalkingData.vstart">
+<code class="descname">vstart</code><a class="headerlink" href="#OCC.IntWalk.IntWalk_WalkingData.vstart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.IntWalk.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="OCC.IntWalk.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.IntWalk.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.IntWalk.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.IntWalk.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.IntWalk.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.IntWalk.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.17.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

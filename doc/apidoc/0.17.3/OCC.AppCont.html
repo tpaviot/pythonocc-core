@@ -1,0 +1,1252 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.AppCont module &mdash; pythonocc API 0.17.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.17.3 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.17.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.AppCont module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.AppCont module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.AppCont.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-appcont-module">
+<h1>OCC.AppCont module<a class="headerlink" href="#occ-appcont-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.AppCont"></span><dl class="class">
+<dt id="OCC.AppCont.AppCont_FitFunction">
+<em class="property">class </em><code class="descname">AppCont_FitFunction</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FitFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SSP</strong> (<em>AppCont_Function &amp;</em>) &#8211; </li>
+<li><strong>U0</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>U1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>FirstCons</strong> (<em>AppParCurves_Constraint</em>) &#8211; </li>
+<li><strong>LastCons</strong> (<em>AppParCurves_Constraint</em>) &#8211; </li>
+<li><strong>Deg</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>NbPoints</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; default value is 24</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_FitFunction.Error">
+<code class="descname">Error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FitFunction.Error" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>MaxE3d</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>MaxE2d</strong> (<em>float &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_FitFunction.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FitFunction.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_FitFunction.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FitFunction.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.AppParCurves.html#OCC.AppParCurves.AppParCurves_MultiCurve" title="OCC.AppParCurves.AppParCurves_MultiCurve">AppParCurves_MultiCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.AppCont.AppCont_FitFunction.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.AppCont.AppCont_FitFunction.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.AppCont.AppCont_FitFunction2d">
+<em class="property">class </em><code class="descname">AppCont_FitFunction2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FitFunction2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SSP</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </li>
+<li><strong>U0</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>U1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>FirstCons</strong> (<em>AppParCurves_Constraint</em>) &#8211; </li>
+<li><strong>LastCons</strong> (<em>AppParCurves_Constraint</em>) &#8211; </li>
+<li><strong>Deg</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>NbPoints</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; default value is 24</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_FitFunction2d.Error">
+<code class="descname">Error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FitFunction2d.Error" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>MaxE3d</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>MaxE2d</strong> (<em>float &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_FitFunction2d.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FitFunction2d.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_FitFunction2d.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FitFunction2d.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.AppParCurves.html#OCC.AppParCurves.AppParCurves_MultiCurve" title="OCC.AppParCurves.AppParCurves_MultiCurve">AppParCurves_MultiCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.AppCont.AppCont_FitFunction2d.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.AppCont.AppCont_FitFunction2d.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.AppCont.AppCont_Function">
+<em class="property">class </em><code class="descname">AppCont_Function</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_Function.D1">
+<code class="descname">D1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function.D1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the point and the derivative values at the parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) &#8211; </li>
+<li><strong>V</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_Function.Delete">
+<code class="descname">Delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function.Delete" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_Function.FirstParameter">
+<code class="descname">FirstParameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function.FirstParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the first parameter of the function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_Function.LastParameter">
+<code class="descname">LastParameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function.LastParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the last parameter of the function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_Function.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the point at parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.AppCont.AppCont_Function.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.AppCont.AppCont_Function.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.AppCont.AppCont_Function2d">
+<em class="property">class </em><code class="descname">AppCont_Function2d</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_Function2d.D1">
+<code class="descname">D1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function2d.D1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the point and the derivative values at the parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>V</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_Function2d.Delete">
+<code class="descname">Delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function2d.Delete" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_Function2d.FirstParameter">
+<code class="descname">FirstParameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function2d.FirstParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the first parameter of the function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_Function2d.LastParameter">
+<code class="descname">LastParameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function2d.LastParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the last parameter of the function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.AppCont_Function2d.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_Function2d.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the point at parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.AppCont.AppCont_Function2d.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.AppCont.AppCont_Function2d.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.AppCont.AppCont_FunctionTool">
+<em class="property">class </em><code class="descname">AppCont_FunctionTool</code><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool.D1">
+<em class="property">static </em><code class="descname">D1</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool.D1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>&lt;tabV&gt; is an array of only 1 element, the derivative value at the parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </li>
+<li><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>tabV</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabV2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabV</strong> &#8211; </li>
+<li><strong>tabV2d</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool.FirstParameter">
+<em class="property">static </em><code class="descname">FirstParameter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool.FirstParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the first parameter of the Function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool.LastParameter">
+<em class="property">static </em><code class="descname">LastParameter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool.LastParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the last parameter of the Function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool.NbP2d">
+<em class="property">static </em><code class="descname">NbP2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool.NbP2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool.NbP3d">
+<em class="property">static </em><code class="descname">NbP3d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool.NbP3d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns 1. (the approximation will be done only for one function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool.Value">
+<em class="property">static </em><code class="descname">Value</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>&lt;tabP&gt; is an array of only 1 element, the point value at the parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </li>
+<li><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>tabPt</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabPt2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabPt</strong> &#8211; </li>
+<li><strong>tabPt2d</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.AppCont.AppCont_FunctionTool.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d">
+<em class="property">class </em><code class="descname">AppCont_FunctionTool2d</code><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d.D1">
+<em class="property">static </em><code class="descname">D1</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d.D1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>&lt;tabV&gt; is an array of only 1 element, the derivative value at the parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </li>
+<li><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>tabV</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabV2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabV</strong> &#8211; </li>
+<li><strong>tabV2d</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d.FirstParameter">
+<em class="property">static </em><code class="descname">FirstParameter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d.FirstParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the first parameter of the Function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d.LastParameter">
+<em class="property">static </em><code class="descname">LastParameter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d.LastParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the last parameter of the Function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d.NbP2d">
+<em class="property">static </em><code class="descname">NbP2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d.NbP2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns 1. (the approximation will be done only for one function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d.NbP3d">
+<em class="property">static </em><code class="descname">NbP3d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d.NbP3d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d.Value">
+<em class="property">static </em><code class="descname">Value</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>&lt;tabP&gt; is an array of only 1 element, the point value at the parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </li>
+<li><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>tabPt</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabPt2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabPt</strong> &#8211; </li>
+<li><strong>tabPt2d</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d_D1">
+<code class="descname">AppCont_FunctionTool2d_D1</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d_D1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>&lt;tabV&gt; is an array of only 1 element, the derivative value at the parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </li>
+<li><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>tabV</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabV2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabV</strong> &#8211; </li>
+<li><strong>tabV2d</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d_FirstParameter">
+<code class="descname">AppCont_FunctionTool2d_FirstParameter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d_FirstParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the first parameter of the Function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d_LastParameter">
+<code class="descname">AppCont_FunctionTool2d_LastParameter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d_LastParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the last parameter of the Function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d_NbP2d">
+<code class="descname">AppCont_FunctionTool2d_NbP2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d_NbP2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns 1. (the approximation will be done only for one function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d_NbP3d">
+<code class="descname">AppCont_FunctionTool2d_NbP3d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d_NbP3d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool2d_Value">
+<code class="descname">AppCont_FunctionTool2d_Value</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool2d_Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>&lt;tabP&gt; is an array of only 1 element, the point value at the parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>AppCont_Function2d &amp;</em>) &#8211; </li>
+<li><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>tabPt</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabPt2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabPt</strong> &#8211; </li>
+<li><strong>tabPt2d</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool_D1">
+<code class="descname">AppCont_FunctionTool_D1</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool_D1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>&lt;tabV&gt; is an array of only 1 element, the derivative value at the parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </li>
+<li><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>tabV</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabV2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabV</strong> &#8211; </li>
+<li><strong>tabV2d</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool_FirstParameter">
+<code class="descname">AppCont_FunctionTool_FirstParameter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool_FirstParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the first parameter of the Function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool_LastParameter">
+<code class="descname">AppCont_FunctionTool_LastParameter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool_LastParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the last parameter of the Function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool_NbP2d">
+<code class="descname">AppCont_FunctionTool_NbP2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool_NbP2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool_NbP3d">
+<code class="descname">AppCont_FunctionTool_NbP3d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool_NbP3d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns 1. (the approximation will be done only for one function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.AppCont_FunctionTool_Value">
+<code class="descname">AppCont_FunctionTool_Value</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.AppCont_FunctionTool_Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>&lt;tabP&gt; is an array of only 1 element, the point value at the parameter &lt;U&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>AppCont_Function &amp;</em>) &#8211; </li>
+<li><strong>U</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>tabPt</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabPt2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) &#8211; </li>
+<li><strong>C</strong> &#8211; </li>
+<li><strong>U</strong> &#8211; </li>
+<li><strong>tabPt</strong> &#8211; </li>
+<li><strong>tabPt2d</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.AppCont.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="OCC.AppCont.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.AppCont.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.AppCont.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.AppCont.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.AppCont.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.AppCont.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.17.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

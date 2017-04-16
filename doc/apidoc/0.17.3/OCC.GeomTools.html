@@ -1,0 +1,1638 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.GeomTools module &mdash; pythonocc API 0.17.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.17.3 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.17.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.GeomTools module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.GeomTools module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.GeomTools.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-geomtools-module">
+<h1>OCC.GeomTools module<a class="headerlink" href="#occ-geomtools-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.GeomTools"></span><dl class="class">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet">
+<em class="property">class </em><code class="descname">GeomTools_Curve2dSet</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<ul class="simple">
+<li>Returns an empty set of Curves.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Incorporate a new Curve in the set and returns its index.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Clears the content of the set.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.Curve2d">
+<code class="descname">Curve2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.Curve2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Curve of index &lt;I&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve">Handle_Geom2d_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.DumpToString">
+<code class="descname">DumpToString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.DumpToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>GeomTools_Curve2dSet_DumpToString(GeomTools_Curve2dSet self) -&gt; std::string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.GetProgress">
+<code class="descname">GetProgress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.GetProgress" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Message.html#OCC.Message.Handle_Message_ProgressIndicator" title="OCC.Message.Handle_Message_ProgressIndicator">Handle_Message_ProgressIndicator</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.Index">
+<code class="descname">Index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.Index" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the index of &lt;L&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.PrintCurve2d">
+<em class="property">static </em><code class="descname">PrintCurve2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.PrintCurve2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Dumps the curve on the stream, if compact is True use the compact format that can be read back.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+<li><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.ReadCurve2d">
+<em class="property">static </em><code class="descname">ReadCurve2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.ReadCurve2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads the curve from the stream. The curve is assumed to have been writtent with the Print method (compact = True).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Standard_IStream</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.ReadFromString">
+<code class="descname">ReadFromString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.ReadFromString" title="Permalink to this definition">¶</a></dt>
+<dd><p>GeomTools_Curve2dSet_ReadFromString(GeomTools_Curve2dSet self, std::string src)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.SetProgress">
+<code class="descname">SetProgress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.SetProgress" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>PR</strong> (<em>Handle_Message_ProgressIndicator &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.WriteToString">
+<code class="descname">WriteToString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.WriteToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>GeomTools_Curve2dSet_WriteToString(GeomTools_Curve2dSet self) -&gt; std::string</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet_PrintCurve2d">
+<code class="descname">GeomTools_Curve2dSet_PrintCurve2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet_PrintCurve2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Dumps the curve on the stream, if compact is True use the compact format that can be read back.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+<li><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.GeomTools_Curve2dSet_ReadCurve2d">
+<code class="descname">GeomTools_Curve2dSet_ReadCurve2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_Curve2dSet_ReadCurve2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads the curve from the stream. The curve is assumed to have been writtent with the Print method (compact = True).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Standard_IStream</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomTools.GeomTools_CurveSet">
+<em class="property">class </em><code class="descname">GeomTools_CurveSet</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<ul class="simple">
+<li>Returns an empty set of Curves.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Incorporate a new Curve in the set and returns its index.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Clears the content of the set.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.Curve">
+<code class="descname">Curve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.Curve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Curve of index &lt;I&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Curve" title="OCC.Geom.Handle_Geom_Curve">Handle_Geom_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.DumpToString">
+<code class="descname">DumpToString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.DumpToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>GeomTools_CurveSet_DumpToString(GeomTools_CurveSet self) -&gt; std::string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.GetProgress">
+<code class="descname">GetProgress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.GetProgress" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Message.html#OCC.Message.Handle_Message_ProgressIndicator" title="OCC.Message.Handle_Message_ProgressIndicator">Handle_Message_ProgressIndicator</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.Index">
+<code class="descname">Index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.Index" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the index of &lt;L&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.PrintCurve">
+<em class="property">static </em><code class="descname">PrintCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.PrintCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Dumps the curve on the stream, if compact is True use the compact format that can be read back.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+<li><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.ReadCurve">
+<em class="property">static </em><code class="descname">ReadCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.ReadCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads the curve from the stream. The curve is assumed to have been writtent with the Print method (compact = True).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Standard_IStream</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.ReadFromString">
+<code class="descname">ReadFromString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.ReadFromString" title="Permalink to this definition">¶</a></dt>
+<dd><p>GeomTools_CurveSet_ReadFromString(GeomTools_CurveSet self, std::string src)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.SetProgress">
+<code class="descname">SetProgress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.SetProgress" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>PR</strong> (<em>Handle_Message_ProgressIndicator &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.WriteToString">
+<code class="descname">WriteToString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.WriteToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>GeomTools_CurveSet_WriteToString(GeomTools_CurveSet self) -&gt; std::string</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomTools.GeomTools_CurveSet.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.GeomTools_CurveSet_PrintCurve">
+<code class="descname">GeomTools_CurveSet_PrintCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet_PrintCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Dumps the curve on the stream, if compact is True use the compact format that can be read back.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+<li><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.GeomTools_CurveSet_ReadCurve">
+<code class="descname">GeomTools_CurveSet_ReadCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_CurveSet_ReadCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads the curve from the stream. The curve is assumed to have been writtent with the Print method (compact = True).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Standard_IStream</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet">
+<em class="property">class </em><code class="descname">GeomTools_SurfaceSet</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<ul class="simple">
+<li>Returns an empty set of Surfaces.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Incorporate a new Surface in the set and returns its index.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Clears the content of the set.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.DumpToString">
+<code class="descname">DumpToString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.DumpToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>GeomTools_SurfaceSet_DumpToString(GeomTools_SurfaceSet self) -&gt; std::string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.GetProgress">
+<code class="descname">GetProgress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.GetProgress" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Message.html#OCC.Message.Handle_Message_ProgressIndicator" title="OCC.Message.Handle_Message_ProgressIndicator">Handle_Message_ProgressIndicator</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.Index">
+<code class="descname">Index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.Index" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the index of &lt;L&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.PrintSurface">
+<em class="property">static </em><code class="descname">PrintSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.PrintSurface" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Dumps the surface on the stream, if compact is True use the compact format that can be read back.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+<li><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.ReadFromString">
+<code class="descname">ReadFromString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.ReadFromString" title="Permalink to this definition">¶</a></dt>
+<dd><p>GeomTools_SurfaceSet_ReadFromString(GeomTools_SurfaceSet self, std::string src)</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.ReadSurface">
+<em class="property">static </em><code class="descname">ReadSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.ReadSurface" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads the surface from the stream. The surface is assumed to have been writtent with the Print method (compact = True).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Standard_IStream</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.SetProgress">
+<code class="descname">SetProgress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.SetProgress" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>PR</strong> (<em>Handle_Message_ProgressIndicator &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.Surface">
+<code class="descname">Surface</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.Surface" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Surface of index &lt;I&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Surface" title="OCC.Geom.Handle_Geom_Surface">Handle_Geom_Surface</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.WriteToString">
+<code class="descname">WriteToString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.WriteToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>GeomTools_SurfaceSet_WriteToString(GeomTools_SurfaceSet self) -&gt; std::string</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet_PrintSurface">
+<code class="descname">GeomTools_SurfaceSet_PrintSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet_PrintSurface" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Dumps the surface on the stream, if compact is True use the compact format that can be read back.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+<li><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.GeomTools_SurfaceSet_ReadSurface">
+<code class="descname">GeomTools_SurfaceSet_ReadSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_SurfaceSet_ReadSurface" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads the surface from the stream. The surface is assumed to have been writtent with the Print method (compact = True).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Standard_IStream</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomTools.GeomTools_UndefinedTypeHandler">
+<em class="property">class </em><code class="descname">GeomTools_UndefinedTypeHandler</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_UndefinedTypeHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.MMgt_TShared" title="OCC.MMgt.MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.MMgt_TShared</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_UndefinedTypeHandler.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_UndefinedTypeHandler.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_UndefinedTypeHandler.PrintCurve">
+<code class="descname">PrintCurve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_UndefinedTypeHandler.PrintCurve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+<li><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_UndefinedTypeHandler.PrintCurve2d">
+<code class="descname">PrintCurve2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_UndefinedTypeHandler.PrintCurve2d" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+<li><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_UndefinedTypeHandler.PrintSurface">
+<code class="descname">PrintSurface</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_UndefinedTypeHandler.PrintSurface" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+<li><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_UndefinedTypeHandler.ReadCurve">
+<code class="descname">ReadCurve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_UndefinedTypeHandler.ReadCurve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ctype</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Standard_IStream</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_UndefinedTypeHandler.ReadCurve2d">
+<code class="descname">ReadCurve2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_UndefinedTypeHandler.ReadCurve2d" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ctype</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Standard_IStream</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.GeomTools_UndefinedTypeHandler.ReadSurface">
+<code class="descname">ReadSurface</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.GeomTools_UndefinedTypeHandler.ReadSurface" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ctype</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Standard_IStream</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomTools.GeomTools_UndefinedTypeHandler.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomTools.GeomTools_UndefinedTypeHandler.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler">
+<em class="property">class </em><code class="descname">Handle_GeomTools_UndefinedTypeHandler</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.Handle_MMgt_TShared" title="OCC.MMgt.Handle_MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.Handle_MMgt_TShared</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomTools.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="OCC.GeomTools.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomTools.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomTools.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomTools.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomTools.geomtools">
+<em class="property">class </em><code class="descname">geomtools</code><a class="headerlink" href="#OCC.GeomTools.geomtools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.geomtools.Dump">
+<em class="property">static </em><code class="descname">Dump</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools.Dump" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>A set of Curves from Geom2d. Dumps the surface on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Dumps the Curve on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Dumps the Curve on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.geomtools.GetReal">
+<em class="property">static </em><code class="descname">GetReal</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools.GetReal" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads the Standard_Real value from the stream. Zero is read in case of error</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+<li><strong>theValue</strong> (<em>float &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.geomtools.GetUndefinedTypeHandler">
+<em class="property">static </em><code class="descname">GetUndefinedTypeHandler</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools.GetUndefinedTypeHandler" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler" title="OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler">Handle_GeomTools_UndefinedTypeHandler</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.geomtools.Read">
+<em class="property">static </em><code class="descname">Read</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools.Read" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads the surface from the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Reads the Curve from the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Reads the Curve from the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.geomtools.SetUndefinedTypeHandler">
+<em class="property">static </em><code class="descname">SetUndefinedTypeHandler</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools.SetUndefinedTypeHandler" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aHandler</strong> (<em>Handle_GeomTools_UndefinedTypeHandler &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomTools.geomtools.Write">
+<em class="property">static </em><code class="descname">Write</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools.Write" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes the surface on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Writes the Curve on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Writes the Curve on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomTools.geomtools.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomTools.geomtools.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.geomtools_Dump">
+<code class="descname">geomtools_Dump</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools_Dump" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>A set of Curves from Geom2d. Dumps the surface on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Dumps the Curve on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Dumps the Curve on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.geomtools_GetReal">
+<code class="descname">geomtools_GetReal</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools_GetReal" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads the Standard_Real value from the stream. Zero is read in case of error</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+<li><strong>theValue</strong> (<em>float &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.geomtools_GetUndefinedTypeHandler">
+<code class="descname">geomtools_GetUndefinedTypeHandler</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools_GetUndefinedTypeHandler" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler" title="OCC.GeomTools.Handle_GeomTools_UndefinedTypeHandler">Handle_GeomTools_UndefinedTypeHandler</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.geomtools_Read">
+<code class="descname">geomtools_Read</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools_Read" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads the surface from the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Reads the Curve from the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Reads the Curve from the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+<li><strong>IS</strong> (<em>Standard_IStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.geomtools_SetUndefinedTypeHandler">
+<code class="descname">geomtools_SetUndefinedTypeHandler</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools_SetUndefinedTypeHandler" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aHandler</strong> (<em>Handle_GeomTools_UndefinedTypeHandler &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.geomtools_Write">
+<code class="descname">geomtools_Write</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.geomtools_Write" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes the surface on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Writes the Curve on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Writes the Curve on the stream.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomTools.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomTools.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.17.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
