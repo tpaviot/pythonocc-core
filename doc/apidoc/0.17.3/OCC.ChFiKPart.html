@@ -1,0 +1,881 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.ChFiKPart module &mdash; pythonocc API 0.17.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.17.3 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.17.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.ChFiKPart module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.ChFiKPart module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.ChFiKPart.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-chfikpart-module">
+<h1>OCC.ChFiKPart module<a class="headerlink" href="#occ-chfikpart-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.ChFiKPart"></span><dl class="class">
+<dt id="OCC.ChFiKPart.ChFiKPart_ComputeData">
+<em class="property">class </em><code class="descname">ChFiKPart_ComputeData</code><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_ComputeData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.ChFiKPart.ChFiKPart_ComputeData.Compute">
+<em class="property">static </em><code class="descname">Compute</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_ComputeData.Compute" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes a simple fillet in several particular cases.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>DStr</strong> (<em>TopOpeBRepDS_DataStructure &amp;</em>) &#8211; </li>
+<li><strong>Data</strong> (<em>Handle_ChFiDS_SurfData &amp;</em>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>Or1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Sp</strong> (<em>Handle_ChFiDS_Spine &amp;</em>) &#8211; </li>
+<li><strong>Iedge</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.ChFiKPart.ChFiKPart_ComputeData.ComputeCorner">
+<em class="property">static </em><code class="descname">ComputeCorner</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_ComputeData.ComputeCorner" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes a toric or spheric corner fillet.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>DStr</strong> (<em>TopOpeBRepDS_DataStructure &amp;</em>) &#8211; </li>
+<li><strong>Data</strong> (<em>Handle_ChFiDS_SurfData &amp;</em>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>OrFace1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrFace2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Or1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>minRad</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>majRad</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>P1S1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P2S1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P1S2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P2S2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes spheric corner fillet with non iso pcurve on S2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>DStr</strong> (<em>TopOpeBRepDS_DataStructure &amp;</em>) &#8211; </li>
+<li><strong>Data</strong> (<em>Handle_ChFiDS_SurfData &amp;</em>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>OrFace1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrFace2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Or1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Rad</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>PS1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P1S2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P2S2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a toric corner rotule.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>DStr</strong> (<em>TopOpeBRepDS_DataStructure &amp;</em>) &#8211; </li>
+<li><strong>Data</strong> (<em>Handle_ChFiDS_SurfData &amp;</em>) &#8211; </li>
+<li><strong>S</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>OfS</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OS1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OS2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Radius</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.ChFiKPart.ChFiKPart_ComputeData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_ComputeData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.ChFiKPart.ChFiKPart_ComputeData_Compute">
+<code class="descname">ChFiKPart_ComputeData_Compute</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_ComputeData_Compute" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes a simple fillet in several particular cases.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>DStr</strong> (<em>TopOpeBRepDS_DataStructure &amp;</em>) &#8211; </li>
+<li><strong>Data</strong> (<em>Handle_ChFiDS_SurfData &amp;</em>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>Or1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Sp</strong> (<em>Handle_ChFiDS_Spine &amp;</em>) &#8211; </li>
+<li><strong>Iedge</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.ChFiKPart.ChFiKPart_ComputeData_ComputeCorner">
+<code class="descname">ChFiKPart_ComputeData_ComputeCorner</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_ComputeData_ComputeCorner" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes a toric or spheric corner fillet.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>DStr</strong> (<em>TopOpeBRepDS_DataStructure &amp;</em>) &#8211; </li>
+<li><strong>Data</strong> (<em>Handle_ChFiDS_SurfData &amp;</em>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>OrFace1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrFace2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Or1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>minRad</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>majRad</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>P1S1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P2S1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P1S2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P2S2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes spheric corner fillet with non iso pcurve on S2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>DStr</strong> (<em>TopOpeBRepDS_DataStructure &amp;</em>) &#8211; </li>
+<li><strong>Data</strong> (<em>Handle_ChFiDS_SurfData &amp;</em>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>OrFace1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrFace2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Or1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Rad</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>PS1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P1S2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P2S2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a toric corner rotule.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>DStr</strong> (<em>TopOpeBRepDS_DataStructure &amp;</em>) &#8211; </li>
+<li><strong>Data</strong> (<em>Handle_ChFiDS_SurfData &amp;</em>) &#8211; </li>
+<li><strong>S</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>OfS</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OS</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OS1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OS2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Radius</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.ChFiKPart.ChFiKPart_DataMapIteratorOfRstMap">
+<em class="property">class </em><code class="descname">ChFiKPart_DataMapIteratorOfRstMap</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_DataMapIteratorOfRstMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMapIterator" title="OCC.TCollection.TCollection_BasicMapIterator"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMapIterator</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>ChFiKPart_RstMap &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_DataMapIteratorOfRstMap.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_DataMapIteratorOfRstMap.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>ChFiKPart_RstMap &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_DataMapIteratorOfRstMap.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_DataMapIteratorOfRstMap.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_DataMapIteratorOfRstMap.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_DataMapIteratorOfRstMap.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Adaptor2d.html#OCC.Adaptor2d.Handle_Adaptor2d_HCurve2d" title="OCC.Adaptor2d.Handle_Adaptor2d_HCurve2d">Handle_Adaptor2d_HCurve2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.ChFiKPart.ChFiKPart_DataMapIteratorOfRstMap.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_DataMapIteratorOfRstMap.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap">
+<em class="property">class </em><code class="descname">ChFiKPart_DataMapNodeOfRstMap</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_MapNode" title="OCC.TCollection.TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_MapNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>int &amp;</em>) &#8211; </li>
+<li><strong>I</strong> (<em>Handle_Adaptor2d_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>n</strong> (<em>TCollection_MapNodePtr &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap.GetKey">
+<code class="descname">GetKey</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap.GetKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>ChFiKPart_DataMapNodeOfRstMap_GetKey(ChFiKPart_DataMapNodeOfRstMap self) -&gt; Standard_Integer</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap.SetKey">
+<code class="descname">SetKey</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap.SetKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>ChFiKPart_DataMapNodeOfRstMap_SetKey(ChFiKPart_DataMapNodeOfRstMap self, Standard_Integer value)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Adaptor2d.html#OCC.Adaptor2d.Handle_Adaptor2d_HCurve2d" title="OCC.Adaptor2d.Handle_Adaptor2d_HCurve2d">Handle_Adaptor2d_HCurve2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_DataMapNodeOfRstMap.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap">
+<em class="property">class </em><code class="descname">ChFiKPart_RstMap</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMap" title="OCC.TCollection.TCollection_BasicMap"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMap</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; default value is 1</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>ChFiKPart_RstMap &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.ChFiKPart.ChFiKPart_RstMap" title="OCC.ChFiKPart.ChFiKPart_RstMap">ChFiKPart_RstMap</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.Bind">
+<code class="descname">Bind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.Bind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>int &amp;</em>) &#8211; </li>
+<li><strong>I</strong> (<em>Handle_Adaptor2d_HCurve2d &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.ChangeFind">
+<code class="descname">ChangeFind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.ChangeFind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>int &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Adaptor2d.html#OCC.Adaptor2d.Handle_Adaptor2d_HCurve2d" title="OCC.Adaptor2d.Handle_Adaptor2d_HCurve2d">Handle_Adaptor2d_HCurve2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.ChangeFind1">
+<code class="descname">ChangeFind1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.ChangeFind1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>int &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.Find">
+<code class="descname">Find</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.Find" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>int &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Adaptor2d.html#OCC.Adaptor2d.Handle_Adaptor2d_HCurve2d" title="OCC.Adaptor2d.Handle_Adaptor2d_HCurve2d">Handle_Adaptor2d_HCurve2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.Find1">
+<code class="descname">Find1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.Find1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>int &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.IsBound">
+<code class="descname">IsBound</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.IsBound" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>int &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.ReSize">
+<code class="descname">ReSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.ReSize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>ChFiKPart_RstMap &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.ChFiKPart.ChFiKPart_RstMap" title="OCC.ChFiKPart.ChFiKPart_RstMap">ChFiKPart_RstMap</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.UnBind">
+<code class="descname">UnBind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.UnBind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>int &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.ChFiKPart.ChFiKPart_RstMap.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFiKPart.ChFiKPart_RstMap.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap">
+<em class="property">class </em><code class="descname">Handle_ChFiKPart_DataMapNodeOfRstMap</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_MapNode" title="OCC.TCollection.Handle_TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_MapNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFiKPart.Handle_ChFiKPart_DataMapNodeOfRstMap.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.ChFiKPart.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="OCC.ChFiKPart.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.ChFiKPart.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFiKPart.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFiKPart.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.ChFiKPart.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFiKPart.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.17.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

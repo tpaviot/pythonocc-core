@@ -1,0 +1,1391 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.FairCurve module &mdash; pythonocc API 0.17.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.17.3 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.17.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.FairCurve module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.FairCurve module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.FairCurve.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-faircurve-module">
+<h1>OCC.FairCurve module<a class="headerlink" href="#occ-faircurve-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.FairCurve"></span><dl class="class">
+<dt id="OCC.FairCurve.FairCurve_Batten">
+<em class="property">class </em><code class="descname">FairCurve_Batten</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<ul class="simple">
+<li>Constructor with the two points and the geometrical characteristics of the batten (elastic beam) Height is the height of the deformation, and Slope is the slope value, initialized at 0. The user can then supply the desired slope value by the method, SetSlope. Other parameters are initialized as follow : - FreeSliding = False - ConstraintOrder1 = 1 - ConstraintOrder2 = 1 - Angle1 = 0 - Angle2 = 0 - SlidingFactor = 1 Exceptions NegativeValue if Height is less than or equal to 0. NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>Height</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Slope</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.Compute">
+<code class="descname">Compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.Compute" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Performs the algorithm, using the arguments Code, NbIterations and Tolerance and computes the curve with respect to the constraints. Code will have one of the following values: - OK - NotConverged - InfiniteSliding - NullHeight The parameters Tolerance and NbIterations control how precise the computation is, and how long it will take.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Code</strong> (<em>FairCurve_AnalysisCode &amp;</em>) &#8211; </li>
+<li><strong>NbIterations</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; default value is 50</li>
+<li><strong>Tolerance</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.Curve">
+<code class="descname">Curve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.Curve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the computed curve a 2d BSpline.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_BSplineCurve" title="OCC.Geom2d.Handle_Geom2d_BSplineCurve">Handle_Geom2d_BSplineCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.Delete">
+<code class="descname">Delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.Delete" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.DumpToString">
+<code class="descname">DumpToString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.DumpToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>FairCurve_Batten_DumpToString(FairCurve_Batten self) -&gt; std::string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.GetAngle1">
+<code class="descname">GetAngle1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.GetAngle1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the established first angle.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.GetAngle2">
+<code class="descname">GetAngle2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.GetAngle2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the established second angle.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.GetConstraintOrder1">
+<code class="descname">GetConstraintOrder1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.GetConstraintOrder1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the established first constraint order.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.GetConstraintOrder2">
+<code class="descname">GetConstraintOrder2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.GetConstraintOrder2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the established second constraint order.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.GetFreeSliding">
+<code class="descname">GetFreeSliding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.GetFreeSliding" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the initial free sliding value, false by default. Free sliding is generally more aesthetically pleasing than constrained sliding. However, the computation can fail with values such as angles greater than PI/2. This is because the resulting batten length is theoretically infinite.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.GetHeight">
+<code class="descname">GetHeight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.GetHeight" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the thickness of the lathe.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.GetP1">
+<code class="descname">GetP1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.GetP1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the established location of the point P1.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.GetP2">
+<code class="descname">GetP2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.GetP2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the established location of the point P2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.GetSlidingFactor">
+<code class="descname">GetSlidingFactor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.GetSlidingFactor" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the initial sliding factor.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.GetSlope">
+<code class="descname">GetSlope</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.GetSlope" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the established slope value.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.SetAngle1">
+<code class="descname">SetAngle1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.SetAngle1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to change the angle Angle1 at the first point, P1. The default setting is 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Angle1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.SetAngle2">
+<code class="descname">SetAngle2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.SetAngle2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to change the angle Angle2 at the second point, P2. The default setting is 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Angle2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.SetConstraintOrder1">
+<code class="descname">SetConstraintOrder1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.SetConstraintOrder1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to change the order of the constraint on the first point. ConstraintOrder has the default setting of 1. The following settings are available: - 0-the curve must pass through a point - 1-the curve must pass through a point and have a given tangent - 2-the curve must pass through a point, have a given tangent and a given curvature. The third setting is only valid for FairCurve_MinimalVariation curves. These constraints, though geometric, represent the mechanical constraints due, for example, to the resistance of the material the actual physical batten is made of.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ConstraintOrder</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.SetConstraintOrder2">
+<code class="descname">SetConstraintOrder2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.SetConstraintOrder2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to change the order of the constraint on the second point. ConstraintOrder is initialized with the default setting of 1. The following settings are available: - 0-the curve must pass through a point - 1-the curve must pass through a point and have a given tangent - 2-the curve must pass through a point, have a given tangent and a given curvature. The third setting is only valid for FairCurve_MinimalVariation curves. These constraints, though geometric, represent the mechanical constraints due, for example, to the resistance of the material the actual physical batten is made of.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ConstraintOrder</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.SetFreeSliding">
+<code class="descname">SetFreeSliding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.SetFreeSliding" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Freesliding is initialized with the default setting false. When Freesliding is set to true and, as a result, sliding is free, the sliding factor is automatically computed to satisfy the equilibrium of the batten.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>FreeSliding</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.SetHeight">
+<code class="descname">SetHeight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.SetHeight" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to change the height of the deformation. Raises NegativeValue; &#8211; if Height &lt;= 0 if Height &lt;= 0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Height</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.SetP1">
+<code class="descname">SetP1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.SetP1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to change the location of the point, P1, and in doing so, modify the curve. Warning This method changes the angle as well as the point. Exceptions NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.SetP2">
+<code class="descname">SetP2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.SetP2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to change the location of the point, P1, and in doing so, modify the curve. Warning This method changes the angle as well as the point. Exceptions NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.SetSlidingFactor">
+<code class="descname">SetSlidingFactor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.SetSlidingFactor" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to change the ratio SlidingFactor. This compares the length of the batten and the reference length, which is, in turn, a function of the constraints. This modification has one of the following two effects: - if you increase the value, it inflates the batten - if you decrease the value, it flattens the batten. When sliding is free, the sliding factor is automatically computed to satisfy the equilibrium of the batten. When sliding is imposed, a value is required for the sliding factor. SlidingFactor is initialized with the default setting of 1.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>SlidingFactor</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.SetSlope">
+<code class="descname">SetSlope</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.SetSlope" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to set the slope value, Slope.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Slope</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Batten.SlidingOfReference">
+<code class="descname">SlidingOfReference</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.SlidingOfReference" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the real number value for length Sliding of Reference for new constraints. If you want to give a specific length to a batten curve, use the following syntax: b.SetSlidingFactor(L / b.SlidingOfReference()) where b is the name of the batten curve object.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FairCurve.FairCurve_Batten.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.FairCurve_Batten.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FairCurve.FairCurve_BattenLaw">
+<em class="property">class </em><code class="descname">FairCurve_BattenLaw</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_BattenLaw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_Function" title="OCC.math.math_Function"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_Function</span></code></a></p>
+<ul class="simple">
+<li>Constructor of linear batten with Heigth : the Heigth at the middle point Slope : the geometric slope of the batten Sliding : Active Length of the batten without extension</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Heigth</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Slope</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Sliding</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_BattenLaw.SetHeigth">
+<code class="descname">SetHeigth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_BattenLaw.SetHeigth" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Change the value of Heigth at the middle point.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Heigth</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_BattenLaw.SetSliding">
+<code class="descname">SetSliding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_BattenLaw.SetSliding" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Change the value of sliding</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Sliding</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_BattenLaw.SetSlope">
+<code class="descname">SetSlope</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_BattenLaw.SetSlope" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Change the value of the geometric slope.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Slope</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FairCurve.FairCurve_BattenLaw.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.FairCurve_BattenLaw.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FairCurve.FairCurve_DistributionOfEnergy">
+<em class="property">class </em><code class="descname">FairCurve_DistributionOfEnergy</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_DistributionOfEnergy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_FunctionSet" title="OCC.math.math_FunctionSet"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_FunctionSet</span></code></a></p>
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_DistributionOfEnergy.SetDerivativeOrder">
+<code class="descname">SetDerivativeOrder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_DistributionOfEnergy.SetDerivativeOrder" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>DerivativeOrder</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FairCurve.FairCurve_DistributionOfEnergy.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.FairCurve_DistributionOfEnergy.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FairCurve.FairCurve_DistributionOfJerk">
+<em class="property">class </em><code class="descname">FairCurve_DistributionOfJerk</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_DistributionOfJerk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FairCurve.FairCurve_DistributionOfEnergy" title="OCC.FairCurve.FairCurve_DistributionOfEnergy"><code class="xref py py-class docutils literal"><span class="pre">OCC.FairCurve.FairCurve_DistributionOfEnergy</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BSplOrder</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>FlatKnots</strong> (<em>Handle_TColStd_HArray1OfReal &amp;</em>) &#8211; </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.Handle_TColgp_HArray1OfPnt2d" title="OCC.TColgp.Handle_TColgp_HArray1OfPnt2d"><em>Handle_TColgp_HArray1OfPnt2d</em></a>) &#8211; </li>
+<li><strong>DerivativeOrder</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>Law</strong> (<em>FairCurve_BattenLaw &amp;</em>) &#8211; </li>
+<li><strong>NbValAux</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.FairCurve.FairCurve_DistributionOfJerk.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.FairCurve_DistributionOfJerk.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FairCurve.FairCurve_DistributionOfSagging">
+<em class="property">class </em><code class="descname">FairCurve_DistributionOfSagging</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_DistributionOfSagging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FairCurve.FairCurve_DistributionOfEnergy" title="OCC.FairCurve.FairCurve_DistributionOfEnergy"><code class="xref py py-class docutils literal"><span class="pre">OCC.FairCurve.FairCurve_DistributionOfEnergy</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BSplOrder</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>FlatKnots</strong> (<em>Handle_TColStd_HArray1OfReal &amp;</em>) &#8211; </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.Handle_TColgp_HArray1OfPnt2d" title="OCC.TColgp.Handle_TColgp_HArray1OfPnt2d"><em>Handle_TColgp_HArray1OfPnt2d</em></a>) &#8211; </li>
+<li><strong>DerivativeOrder</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>Law</strong> (<em>FairCurve_BattenLaw &amp;</em>) &#8211; </li>
+<li><strong>NbValAux</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.FairCurve.FairCurve_DistributionOfSagging.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.FairCurve_DistributionOfSagging.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FairCurve.FairCurve_DistributionOfTension">
+<em class="property">class </em><code class="descname">FairCurve_DistributionOfTension</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_DistributionOfTension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FairCurve.FairCurve_DistributionOfEnergy" title="OCC.FairCurve.FairCurve_DistributionOfEnergy"><code class="xref py py-class docutils literal"><span class="pre">OCC.FairCurve.FairCurve_DistributionOfEnergy</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BSplOrder</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>FlatKnots</strong> (<em>Handle_TColStd_HArray1OfReal &amp;</em>) &#8211; </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.Handle_TColgp_HArray1OfPnt2d" title="OCC.TColgp.Handle_TColgp_HArray1OfPnt2d"><em>Handle_TColgp_HArray1OfPnt2d</em></a>) &#8211; </li>
+<li><strong>DerivativeOrder</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>LengthSliding</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Law</strong> (<em>FairCurve_BattenLaw &amp;</em>) &#8211; </li>
+<li><strong>NbValAux</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; default value is 0</li>
+<li><strong>Uniform</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_DistributionOfTension.SetLengthSliding">
+<code class="descname">SetLengthSliding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_DistributionOfTension.SetLengthSliding" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>change the length sliding</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>LengthSliding</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FairCurve.FairCurve_DistributionOfTension.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.FairCurve_DistributionOfTension.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FairCurve.FairCurve_Energy">
+<em class="property">class </em><code class="descname">FairCurve_Energy</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_MultipleVarFunctionWithHessian" title="OCC.math.math_MultipleVarFunctionWithHessian"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_MultipleVarFunctionWithHessian</span></code></a></p>
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Energy.Poles">
+<code class="descname">Poles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Energy.Poles" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return the poles</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.Handle_TColgp_HArray1OfPnt2d" title="OCC.TColgp.Handle_TColgp_HArray1OfPnt2d">Handle_TColgp_HArray1OfPnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Energy.Values">
+<code class="descname">Values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Energy.Values" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>computes the Energy &lt;E&gt; and the gradient &lt;G&gt; of the energy for the variable &lt;X&gt;. Returns True if the computation was done successfully, False otherwise.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+<li><strong>E</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>G</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>computes the Energy &lt;E&gt;, the gradient &lt;G&gt; and the Hessian &lt;H&gt; of the energy for the variable &lt;X&gt;. Returns True if the computation was done successfully, False otherwise.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+<li><strong>E</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>G</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+<li><strong>H</strong> (<em>math_Matrix &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_Energy.Variable">
+<code class="descname">Variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Energy.Variable" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>compute the variables &lt;X&gt; wich correspond with the field &lt;MyPoles&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>math_Vector &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FairCurve.FairCurve_Energy.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.FairCurve_Energy.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FairCurve.FairCurve_EnergyOfBatten">
+<em class="property">class </em><code class="descname">FairCurve_EnergyOfBatten</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_EnergyOfBatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FairCurve.FairCurve_Energy" title="OCC.FairCurve.FairCurve_Energy"><code class="xref py py-class docutils literal"><span class="pre">OCC.FairCurve.FairCurve_Energy</span></code></a></p>
+<ul class="simple">
+<li>Angles corresspond to the Ox axis</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BSplOrder</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>FlatKnots</strong> (<em>Handle_TColStd_HArray1OfReal &amp;</em>) &#8211; </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.Handle_TColgp_HArray1OfPnt2d" title="OCC.TColgp.Handle_TColgp_HArray1OfPnt2d"><em>Handle_TColgp_HArray1OfPnt2d</em></a>) &#8211; </li>
+<li><strong>ContrOrder1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>ContrOrder2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>Law</strong> (<em>FairCurve_BattenLaw &amp;</em>) &#8211; </li>
+<li><strong>LengthSliding</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>FreeSliding</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_True</li>
+<li><strong>Angle1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 0</li>
+<li><strong>Angle2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_EnergyOfBatten.LengthSliding">
+<code class="descname">LengthSliding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_EnergyOfBatten.LengthSliding" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return the lengthSliding = P1P2 + Sliding</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_EnergyOfBatten.Status">
+<code class="descname">Status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_EnergyOfBatten.Status" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return the status</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">FairCurve_AnalysisCode</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FairCurve.FairCurve_EnergyOfBatten.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.FairCurve_EnergyOfBatten.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FairCurve.FairCurve_EnergyOfMVC">
+<em class="property">class </em><code class="descname">FairCurve_EnergyOfMVC</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_EnergyOfMVC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FairCurve.FairCurve_Energy" title="OCC.FairCurve.FairCurve_Energy"><code class="xref py py-class docutils literal"><span class="pre">OCC.FairCurve.FairCurve_Energy</span></code></a></p>
+<ul class="simple">
+<li>Angles corresspond to the Ox axis</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BSplOrder</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>FlatKnots</strong> (<em>Handle_TColStd_HArray1OfReal &amp;</em>) &#8211; </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.Handle_TColgp_HArray1OfPnt2d" title="OCC.TColgp.Handle_TColgp_HArray1OfPnt2d"><em>Handle_TColgp_HArray1OfPnt2d</em></a>) &#8211; </li>
+<li><strong>ContrOrder1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>ContrOrder2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>Law</strong> (<em>FairCurve_BattenLaw &amp;</em>) &#8211; </li>
+<li><strong>PhysicalRatio</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>LengthSliding</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>FreeSliding</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_True</li>
+<li><strong>Angle1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 0</li>
+<li><strong>Angle2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 0</li>
+<li><strong>Curvature1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 0</li>
+<li><strong>Curvature2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_EnergyOfMVC.LengthSliding">
+<code class="descname">LengthSliding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_EnergyOfMVC.LengthSliding" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return the lengthSliding = P1P2 + Sliding</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_EnergyOfMVC.Status">
+<code class="descname">Status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_EnergyOfMVC.Status" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return the status</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">FairCurve_AnalysisCode</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FairCurve.FairCurve_EnergyOfMVC.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.FairCurve_EnergyOfMVC.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FairCurve.FairCurve_MinimalVariation">
+<em class="property">class </em><code class="descname">FairCurve_MinimalVariation</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_MinimalVariation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FairCurve.FairCurve_Batten" title="OCC.FairCurve.FairCurve_Batten"><code class="xref py py-class docutils literal"><span class="pre">OCC.FairCurve.FairCurve_Batten</span></code></a></p>
+<ul class="simple">
+<li>Constructs the two contact points P1 and P2 and the geometrical characteristics of the batten (elastic beam) These include the real number values for height of deformation Height, slope value Slope, and kind of energy PhysicalRatio. The kinds of energy include: - Jerk (0) - Sagging (1). Note that the default setting for Physical Ration is in FairCurve_Batten Other parameters are initialized as follow : - FreeSliding = False - ConstraintOrder1 = 1 - ConstraintOrder2 = 1 - Angle1 = 0 - Angle2 = 0 - Curvature1 = 0 - Curvature2 = 0 - SlidingFactor = 1 Warning If PhysicalRatio equals 1, you cannot impose constraints on curvature. Exceptions NegativeValue if Height is less than or equal to 0. NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case. Definition of the geometricals constraints</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) &#8211; </li>
+<li><strong>Heigth</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Slope</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 0</li>
+<li><strong>PhysicalRatio</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_MinimalVariation.DumpToString">
+<code class="descname">DumpToString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_MinimalVariation.DumpToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>FairCurve_MinimalVariation_DumpToString(FairCurve_MinimalVariation self) -&gt; std::string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_MinimalVariation.GetCurvature1">
+<code class="descname">GetCurvature1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_MinimalVariation.GetCurvature1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the first established curvature.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_MinimalVariation.GetCurvature2">
+<code class="descname">GetCurvature2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_MinimalVariation.GetCurvature2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the second established curvature.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_MinimalVariation.GetPhysicalRatio">
+<code class="descname">GetPhysicalRatio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_MinimalVariation.GetPhysicalRatio" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the physical ratio, or kind of energy.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_MinimalVariation.SetCurvature1">
+<code class="descname">SetCurvature1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_MinimalVariation.SetCurvature1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to set a new constraint on curvature at the first point.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Curvature</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_MinimalVariation.SetCurvature2">
+<code class="descname">SetCurvature2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_MinimalVariation.SetCurvature2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to set a new constraint on curvature at the second point.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Curvature</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.FairCurve_MinimalVariation.SetPhysicalRatio">
+<code class="descname">SetPhysicalRatio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_MinimalVariation.SetPhysicalRatio" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows you to set the physical ratio Ratio. The kinds of energy which you can specify include: 0 is only &#8216;Jerk&#8217; Energy 1 is only &#8216;Sagging&#8217; Energy like batten Warning: if Ratio is 1 it is impossible to impose curvature constraints. Raises DomainError if Ratio &lt; 0 or Ratio &gt; 1</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Ratio</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FairCurve.FairCurve_MinimalVariation.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.FairCurve_MinimalVariation.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FairCurve.FairCurve_Newton">
+<em class="property">class </em><code class="descname">FairCurve_Newton</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.FairCurve_Newton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_NewtonMinimum" title="OCC.math.math_NewtonMinimum"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_NewtonMinimum</span></code></a></p>
+<ul class="simple">
+<li>&#8211; Given the starting point StartingPoint, The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H &lt; Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: Obsolete Constructor (because IsConverged can not be redefined with this. )</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>math_MultipleVarFunctionWithHessian &amp;</em>) &#8211; </li>
+<li><strong>StartingPoint</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+<li><strong>SpatialTolerance</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 1.0e-7</li>
+<li><strong>CriteriumTolerance</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 1.0e-2</li>
+<li><strong>NbIterations</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; default value is 40</li>
+<li><strong>Convexity</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 1.0e-6</li>
+<li><strong>WithSingularity</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H &lt; Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: This constructor do not computation</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>math_MultipleVarFunctionWithHessian &amp;</em>) &#8211; </li>
+<li><strong>SpatialTolerance</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 1.0e-7</li>
+<li><strong>Tolerance</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 1.0e-7</li>
+<li><strong>NbIterations</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; default value is 40</li>
+<li><strong>Convexity</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 1.0e-6</li>
+<li><strong>WithSingularity</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.FairCurve.FairCurve_Newton.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.FairCurve_Newton.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FairCurve.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="OCC.FairCurve.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FairCurve.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FairCurve.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FairCurve.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.FairCurve.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FairCurve.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.17.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

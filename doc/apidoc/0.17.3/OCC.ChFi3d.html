@@ -1,0 +1,2186 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.ChFi3d module &mdash; pythonocc API 0.17.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.17.3 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.17.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.ChFi3d module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.ChFi3d module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.ChFi3d.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-chfi3d-module">
+<h1>OCC.ChFi3d module<a class="headerlink" href="#occ-chfi3d-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.ChFi3d"></span><dl class="class">
+<dt id="OCC.ChFi3d.ChFi3d_Builder">
+<em class="property">class </em><code class="descname">ChFi3d_Builder</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Abscissa">
+<code class="descname">Abscissa</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Abscissa" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the abscissa of the vertex V on the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.BadShape">
+<code class="descname">BadShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.BadShape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>if (HasResult()) returns partial result if (!HasResult())</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Builder">
+<code class="descname">Builder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Builder" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Builder of topologic operations.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopOpeBRepBuild.html#OCC.TopOpeBRepBuild.Handle_TopOpeBRepBuild_HBuilder" title="OCC.TopOpeBRepBuild.Handle_TopOpeBRepBuild_HBuilder">Handle_TopOpeBRepBuild_HBuilder</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Closed">
+<code class="descname">Closed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Closed" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the contour of index IC is closed</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.ClosedAndTangent">
+<code class="descname">ClosedAndTangent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.ClosedAndTangent" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the contour of index IC is closed an tangent.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Compute">
+<code class="descname">Compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Compute" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>general calculation of geometry on all edges, topologic reconstruction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.ComputedSurface">
+<code class="descname">ComputedSurface</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.ComputedSurface" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the IS&#8217;th surface calculated on the contour IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>IS</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Surface" title="OCC.Geom.Handle_Geom_Surface">Handle_Geom_Surface</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Contains">
+<code class="descname">Contains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Contains" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the number of the contour containing E or 0 if E does not belong to any contour.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>gives the number of the contour containing E or 0 if E does not belong to any contour. Sets in IndexInSpine the index of E in the contour if it&#8217;s found</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+<li><strong>IndexInSpine</strong> (<em>int &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Delete">
+<code class="descname">Delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Delete" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.FaultyContour">
+<code class="descname">FaultyContour</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.FaultyContour" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of I&#8217;th contour on which the calculation has failed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.FaultyVertex">
+<code class="descname">FaultyVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.FaultyVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the IV&#8217;th vertex on which the calculation has failed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IV</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.FirstVertex">
+<code class="descname">FirstVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.FirstVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the First vertex V of the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Generated">
+<code class="descname">Generated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Generated" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Advanced function for the history</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>EouV</strong> (<em>TopoDS_Shape &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.HasResult">
+<code class="descname">HasResult</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.HasResult" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns True if a partial result has been calculated</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns True if the computation is success</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.LastVertex">
+<code class="descname">LastVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.LastVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the Last vertex V of the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Length">
+<code class="descname">Length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Length" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the length of the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.NbComputedSurfaces">
+<code class="descname">NbComputedSurfaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.NbComputedSurfaces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of surfaces calculated on the contour IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.NbElements">
+<code class="descname">NbElements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.NbElements" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the number of disjoint contours on which the fillets are calculated</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.NbFaultyContours">
+<code class="descname">NbFaultyContours</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.NbFaultyContours" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of contours on which the calculation has failed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.NbFaultyVertices">
+<code class="descname">NbFaultyVertices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.NbFaultyVertices" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of vertices on which the calculation has failed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.PerformTwoCornerbyInter">
+<code class="descname">PerformTwoCornerbyInter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.PerformTwoCornerbyInter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.RelativeAbscissa">
+<code class="descname">RelativeAbscissa</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.RelativeAbscissa" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the relative abscissa([0.,1.]) of the vertex V on the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Remove">
+<code class="descname">Remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>extracts from the list the contour containing edge E.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Reset">
+<code class="descname">Reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Reset" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reset all results of compute and returns the algorythm in the state of the last acquisition to enable modification of contours or areas.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.SetContinuity">
+<code class="descname">SetContinuity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.SetContinuity" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>InternalContinuity</strong> (<em>GeomAbs_Shape</em>) &#8211; </li>
+<li><strong>AngularTolerance</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.SetParams">
+<code class="descname">SetParams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.SetParams" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tang</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Tesp</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>T2d</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>TApp3d</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>TolApp2d</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Fleche</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Shape">
+<code class="descname">Shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Shape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>if (Isdone()) makes the result. if (!Isdone())</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.SplitKPart">
+<code class="descname">SplitKPart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.SplitKPart" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Method, implemented in the inheritants, calculates the elements of construction of the surface (fillet or chamfer).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Data</strong> (<em>Handle_ChFiDS_SurfData &amp;</em>) &#8211; </li>
+<li><strong>SetData</strong> (<em>ChFiDS_SequenceOfSurfData &amp;</em>) &#8211; </li>
+<li><strong>Spine</strong> (<em>Handle_ChFiDS_Spine &amp;</em>) &#8211; </li>
+<li><strong>Iedge</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I1</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I2</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>Intf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Intl</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.StripeStatus">
+<code class="descname">StripeStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.StripeStatus" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>for the stripe IC ,indication on the cause of failure WalkingFailure,TwistedSurface,Error, Ok</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">ChFiDS_ErrorStatus</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the n&#8217;th set of edges (contour) if I &gt;NbElements()</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.ChFiDS.html#OCC.ChFiDS.Handle_ChFiDS_Spine" title="OCC.ChFiDS.Handle_ChFiDS_Spine">Handle_ChFiDS_Spine</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.ChFi3d.ChFi3d_Builder.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_Builder.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder">
+<em class="property">class </em><code class="descname">ChFi3d_ChBuilder</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.ChFi3d.ChFi3d_Builder" title="OCC.ChFi3d.ChFi3d_Builder"><code class="xref py py-class docutils literal"><span class="pre">OCC.ChFi3d.ChFi3d_Builder</span></code></a></p>
+<ul class="simple">
+<li>initializes the Builder with the Shape &lt;S&gt; for the computation of chamfers</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) &#8211; </li>
+<li><strong>Ta</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 1.0e-2</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>initializes a contour with the edge &lt;E&gt; as first (the next are found by propagation ). The two distances (parameters of the chamfer) must be set after. if the edge &lt;E&gt; has more than 2 adjacent faces</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>initializes a new contour with the edge &lt;E&gt; as first (the next are found by propagation ), and the distance &lt;Dis&gt; if the edge &lt;E&gt; has more than 2 adjacent faces</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>initializes a new contour with the edge &lt;E&gt; as first (the next are found by propagation ), and the distance &lt;Dis1&gt; and &lt;Dis2&gt; if the edge &lt;E&gt; has more than 2 adjacent faces</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Dis2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.AddDA">
+<code class="descname">AddDA</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.AddDA" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>initializes a new contour with the edge &lt;E&gt; as first (the next are found by propagation ), and the distance &lt;Dis1&gt; and &lt;Angle&gt; if the edge &lt;E&gt; has more than 2 adjacent faces</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Angle</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.Dists">
+<code class="descname">Dists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.Dists" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the distances &lt;Dis1&gt; and &lt;Dis2&gt; of the fillet contour of index &lt;IC&gt; in the DS</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>Dis1</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Dis2</strong> (<em>float &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.FindChoiceDistAngle">
+<code class="descname">FindChoiceDistAngle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.FindChoiceDistAngle" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Choice</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>DisOnF1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.GetDist">
+<code class="descname">GetDist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.GetDist" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the distances &lt;Dis&gt; of the fillet contour of index &lt;IC&gt; in the DS</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>Dis</strong> (<em>float &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.GetDistAngle">
+<code class="descname">GetDistAngle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.GetDistAngle" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the distances &lt;Dis&gt; and &lt;Angle&gt; of the fillet contour of index &lt;IC&gt; in the DS</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>Dis</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Angle</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>DisOnFace1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.IsChamfer">
+<code class="descname">IsChamfer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.IsChamfer" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>renvoi la methode des chanfreins utilisee</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">ChFiDS_ChamfMethod</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.NbSurf">
+<code class="descname">NbSurf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.NbSurf" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.PerformSurf">
+<code class="descname">PerformSurf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.PerformSurf" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Methode, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Data</strong> (<em>ChFiDS_SequenceOfSurfData &amp;</em>) &#8211; </li>
+<li><strong>Guide</strong> (<em>Handle_ChFiDS_HElSpine &amp;</em>) &#8211; </li>
+<li><strong>Spine</strong> (<em>Handle_ChFiDS_Spine &amp;</em>) &#8211; </li>
+<li><strong>Choix</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I1</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I2</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>MaxStep</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Fleche</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>TolGuide</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>First</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Last</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Inside</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Appro</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Forward</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecOnS1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecOnS2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Soldep</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+<li><strong>Intf</strong> (<em>int &amp;</em>) &#8211; </li>
+<li><strong>Intl</strong> (<em>int &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Method, implemented in the inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Data</strong> (<em>ChFiDS_SequenceOfSurfData &amp;</em>) &#8211; </li>
+<li><strong>Guide</strong> (<em>Handle_ChFiDS_HElSpine &amp;</em>) &#8211; </li>
+<li><strong>Spine</strong> (<em>Handle_ChFiDS_Spine &amp;</em>) &#8211; </li>
+<li><strong>Choix</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I1</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>PC1</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Sref1</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>PCref1</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Decroch1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I2</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>MaxStep</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Fleche</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>TolGuide</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>First</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Last</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Inside</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Appro</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Forward</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecP</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecS</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecRst</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Soldep</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Method, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Data</strong> (<em>ChFiDS_SequenceOfSurfData &amp;</em>) &#8211; </li>
+<li><strong>Guide</strong> (<em>Handle_ChFiDS_HElSpine &amp;</em>) &#8211; </li>
+<li><strong>Spine</strong> (<em>Handle_ChFiDS_Spine &amp;</em>) &#8211; </li>
+<li><strong>Choix</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I1</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>Or1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I2</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>PC2</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Sref2</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>PCref2</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Decroch2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>MaxStep</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Fleche</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>TolGuide</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>First</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Last</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Inside</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Appro</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Forward</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecP</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecS</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecRst</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Soldep</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Method, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Data</strong> (<em>ChFiDS_SequenceOfSurfData &amp;</em>) &#8211; </li>
+<li><strong>Guide</strong> (<em>Handle_ChFiDS_HElSpine &amp;</em>) &#8211; </li>
+<li><strong>Spine</strong> (<em>Handle_ChFiDS_Spine &amp;</em>) &#8211; </li>
+<li><strong>Choix</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I1</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>PC1</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Sref1</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>PCref1</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Decroch1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Or1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I2</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>PC2</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Sref2</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>PCref2</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Decroch2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>MaxStep</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Fleche</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>TolGuide</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>First</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Last</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Inside</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Appro</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Forward</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecP1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecRst1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecP2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecRst2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Soldep</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.ResetContour">
+<code class="descname">ResetContour</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.ResetContour" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reset tous rayons du contour IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.Sect">
+<code class="descname">Sect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.Sect" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>IS</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.ChFiDS.html#OCC.ChFiDS.Handle_ChFiDS_SecHArray1" title="OCC.ChFiDS.Handle_ChFiDS_SecHArray1">Handle_ChFiDS_SecHArray1</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.SetDist">
+<code class="descname">SetDist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.SetDist" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>set the distance &lt;Dis&gt; of the fillet contour of index &lt;IC&gt; in the DS with &lt;Dis&gt; on &lt;F&gt;. if the face &lt;F&gt; is not one of common faces of an edge of the contour &lt;IC&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.SetDistAngle">
+<code class="descname">SetDistAngle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.SetDistAngle" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>set the distance &lt;Dis&gt; and &lt;Angle&gt; of the fillet contour of index &lt;IC&gt; in the DS with &lt;Dis&gt; on &lt;F&gt;. if the face &lt;F&gt; is not one of common faces of an edge of the contour &lt;IC&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Angle</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.SetDists">
+<code class="descname">SetDists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.SetDists" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>set the distances &lt;Dis1&gt; and &lt;Dis2&gt; of the fillet contour of index &lt;IC&gt; in the DS with &lt;Dis1&gt; on &lt;F&gt;. if the face &lt;F&gt; is not one of common faces of an edge of the contour &lt;IC&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>Dis2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.SimulSurf">
+<code class="descname">SimulSurf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.SimulSurf" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Data</strong> (<em>Handle_ChFiDS_SurfData &amp;</em>) &#8211; </li>
+<li><strong>Guide</strong> (<em>Handle_ChFiDS_HElSpine &amp;</em>) &#8211; </li>
+<li><strong>Spine</strong> (<em>Handle_ChFiDS_Spine &amp;</em>) &#8211; </li>
+<li><strong>Choix</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>S1</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I1</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>PC1</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Sref1</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>PCref1</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Decroch1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>S2</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>I2</strong> (<em>Handle_Adaptor3d_TopolTool &amp;</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>Fleche</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>TolGuide</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>First</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Last</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Inside</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Appro</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Forward</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecP</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecS</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecRst</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Soldep</strong> (<em>math_Vector &amp;</em>) &#8211; </li>
+<li><strong>Data</strong> &#8211; </li>
+<li><strong>Guide</strong> &#8211; </li>
+<li><strong>Spine</strong> &#8211; </li>
+<li><strong>Choix</strong> &#8211; </li>
+<li><strong>S1</strong> &#8211; </li>
+<li><strong>I1</strong> &#8211; </li>
+<li><strong>Or1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>S2</strong> &#8211; </li>
+<li><strong>I2</strong> &#8211; </li>
+<li><strong>PC2</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Sref2</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) &#8211; </li>
+<li><strong>PCref2</strong> (<em>Handle_BRepAdaptor_HCurve2d &amp;</em>) &#8211; </li>
+<li><strong>Decroch2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Fleche</strong> &#8211; </li>
+<li><strong>TolGuide</strong> &#8211; </li>
+<li><strong>First</strong> &#8211; </li>
+<li><strong>Last</strong> &#8211; </li>
+<li><strong>Inside</strong> &#8211; </li>
+<li><strong>Appro</strong> &#8211; </li>
+<li><strong>Forward</strong> &#8211; </li>
+<li><strong>RecP</strong> &#8211; </li>
+<li><strong>RecS</strong> &#8211; </li>
+<li><strong>RecRst</strong> &#8211; </li>
+<li><strong>Soldep</strong> &#8211; </li>
+<li><strong>Data</strong> &#8211; </li>
+<li><strong>Guide</strong> &#8211; </li>
+<li><strong>Spine</strong> &#8211; </li>
+<li><strong>Choix</strong> &#8211; </li>
+<li><strong>S1</strong> &#8211; </li>
+<li><strong>I1</strong> &#8211; </li>
+<li><strong>PC1</strong> &#8211; </li>
+<li><strong>Sref1</strong> &#8211; </li>
+<li><strong>PCref1</strong> &#8211; </li>
+<li><strong>Decroch1</strong> &#8211; </li>
+<li><strong>Or1</strong> &#8211; </li>
+<li><strong>S2</strong> &#8211; </li>
+<li><strong>I2</strong> &#8211; </li>
+<li><strong>PC2</strong> &#8211; </li>
+<li><strong>Sref2</strong> &#8211; </li>
+<li><strong>PCref2</strong> &#8211; </li>
+<li><strong>Decroch2</strong> &#8211; </li>
+<li><strong>Or2</strong> &#8211; </li>
+<li><strong>Fleche</strong> &#8211; </li>
+<li><strong>TolGuide</strong> &#8211; </li>
+<li><strong>First</strong> &#8211; </li>
+<li><strong>Last</strong> &#8211; </li>
+<li><strong>Inside</strong> &#8211; </li>
+<li><strong>Appro</strong> &#8211; </li>
+<li><strong>Forward</strong> &#8211; </li>
+<li><strong>RecP1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecRst1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecP2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>RecRst2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; </li>
+<li><strong>Soldep</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.Simulate">
+<code class="descname">Simulate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.Simulate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.ChFi3d.ChFi3d_ChBuilder.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_ChBuilder.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder">
+<em class="property">class </em><code class="descname">ChFi3d_FilBuilder</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.ChFi3d.ChFi3d_Builder" title="OCC.ChFi3d.ChFi3d_Builder"><code class="xref py py-class docutils literal"><span class="pre">OCC.ChFi3d.ChFi3d_Builder</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) &#8211; </li>
+<li><strong>FShape</strong> (<em>ChFi3d_FilletShape</em>) &#8211; default value is ChFi3d_Rational</li>
+<li><strong>Ta</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; default value is 1.0e-2</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>initialisation of a contour with the first edge (the following are found by propagation). Attention, you need to start with SetRadius.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>initialisation of the constant vector the corresponding 1st edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Radius</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.GetBounds">
+<code class="descname">GetBounds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.GetBounds" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in First and Last les extremities of the part of variable vector framing E, returns False if E is flagged as edge constant.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+<li><strong>First</strong> (<em>float &amp;</em>) &#8211; </li>
+<li><strong>Last</strong> (<em>float &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.GetFilletShape">
+<code class="descname">GetFilletShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.GetFilletShape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the type of fillet surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">ChFi3d_FilletShape</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.GetLaw">
+<code class="descname">GetLaw</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.GetLaw" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the rule of elementary evolution of the part to variable vector framing E, returns a rule zero if E is flagged as edge constant.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Law.html#OCC.Law.Handle_Law_Function" title="OCC.Law.Handle_Law_Function">Handle_Law_Function</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.IsConstant">
+<code class="descname">IsConstant</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.IsConstant" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true the contour is flaged as edge constant.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns true E is flagged as edge constant.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.NbSurf">
+<code class="descname">NbSurf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.NbSurf" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.Radius">
+<code class="descname">Radius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.Radius" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the vector if the contour is flagged as edge constant.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the vector if E is flagged as edge constant.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.ResetContour">
+<code class="descname">ResetContour</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.ResetContour" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reset all vectors of contour IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.Sect">
+<code class="descname">Sect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.Sect" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>IS</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.ChFiDS.html#OCC.ChFiDS.Handle_ChFiDS_SecHArray1" title="OCC.ChFiDS.Handle_ChFiDS_SecHArray1">Handle_ChFiDS_SecHArray1</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.SetFilletShape">
+<code class="descname">SetFilletShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.SetFilletShape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the type of fillet surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>FShape</strong> (<em>ChFi3d_FilletShape</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.SetLaw">
+<code class="descname">SetLaw</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.SetLaw" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the rule of elementary evolution of the part to variable vector framing E.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+<li><strong>L</strong> (<em>Handle_Law_Function &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.SetRadius">
+<code class="descname">SetRadius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.SetRadius" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Set the radius of the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Law_Function &amp;</em>) &#8211; </li>
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>IinC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Set a constant on edge E of the contour of index IC. Since then E is flagged as constant.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Radius</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Set a vector on vertex V of the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Radius</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; </li>
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Set a vertex on the point of parametre U in the edge IinC of the contour of index IC</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>UandR</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_XY" title="OCC.gp.gp_XY"><em>gp_XY</em></a>) &#8211; </li>
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>IinC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.Simulate">
+<code class="descname">Simulate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.Simulate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.UnSet">
+<code class="descname">UnSet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.UnSet" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Extracts the flag constant and the vector of edge E.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Extracts the vector of the vertex V.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.ChFi3d.ChFi3d_FilBuilder.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_FilBuilder.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.ChFi3d.ChFi3d_SearchSing">
+<em class="property">class </em><code class="descname">ChFi3d_SearchSing</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_SearchSing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_FunctionWithDerivative" title="OCC.math.math_FunctionWithDerivative"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_FunctionWithDerivative</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C1</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+<li><strong>C2</strong> (<em>Handle_Geom_Curve &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.ChFi3d.ChFi3d_SearchSing.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFi3d.ChFi3d_SearchSing.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.ChFi3d.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="OCC.ChFi3d.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.ChFi3d.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFi3d.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.ChFi3d.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.ChFi3d.chfi3d">
+<em class="property">class </em><code class="descname">chfi3d</code><a class="headerlink" href="#OCC.ChFi3d.chfi3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.ChFi3d.chfi3d.ConcaveSide">
+<em class="property">static </em><code class="descname">ConcaveSide</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.chfi3d.ConcaveSide" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns Reversed in Or1 and(or) Or2 if the concave edge defined by the interior of faces F1 and F2, in the neighbourhood of their boundary E is of the edge opposite to the normal of their surface support. The orientation of faces is not taken into consideration in the calculation. The function returns 0 if the calculation fails (tangence), if not, it returns the number of choice of the fillet or chamfer corresponding to the orientations calculated and to the tangent to the guide line read in E.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>BRepAdaptor_Surface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>BRepAdaptor_Surface &amp;</em>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+<li><strong>Or1</strong> (<em>TopAbs_Orientation &amp;</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.ChFi3d.chfi3d.NextSide">
+<em class="property">static </em><code class="descname">NextSide</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.chfi3d.NextSide" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Same as ConcaveSide, but the orientations are logically deduced from the result of the call of ConcaveSide on the first pair of faces of the fillet or chamnfer.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Or1</strong> (<em>TopAbs_Orientation &amp;</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation &amp;</em>) &#8211; </li>
+<li><strong>OrSave1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrSave2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>ChoixSauv</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Same as the other NextSide, but the calculation is done on an edge only.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Or</strong> (<em>TopAbs_Orientation &amp;</em>) &#8211; </li>
+<li><strong>OrSave</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrFace</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.ChFi3d.chfi3d.SameSide">
+<em class="property">static </em><code class="descname">SameSide</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.chfi3d.SameSide" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Enables to determine while processing an angle, if two fillets or chamfers constituting a face have identic or opposed concave edges.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Or</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrSave1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrSave2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrFace1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrFace2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.ChFi3d.chfi3d.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.ChFi3d.chfi3d.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.ChFi3d.chfi3d_ConcaveSide">
+<code class="descname">chfi3d_ConcaveSide</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.chfi3d_ConcaveSide" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns Reversed in Or1 and(or) Or2 if the concave edge defined by the interior of faces F1 and F2, in the neighbourhood of their boundary E is of the edge opposite to the normal of their surface support. The orientation of faces is not taken into consideration in the calculation. The function returns 0 if the calculation fails (tangence), if not, it returns the number of choice of the fillet or chamfer corresponding to the orientations calculated and to the tangent to the guide line read in E.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>BRepAdaptor_Surface &amp;</em>) &#8211; </li>
+<li><strong>S2</strong> (<em>BRepAdaptor_Surface &amp;</em>) &#8211; </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) &#8211; </li>
+<li><strong>Or1</strong> (<em>TopAbs_Orientation &amp;</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation &amp;</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.ChFi3d.chfi3d_NextSide">
+<code class="descname">chfi3d_NextSide</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.chfi3d_NextSide" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Same as ConcaveSide, but the orientations are logically deduced from the result of the call of ConcaveSide on the first pair of faces of the fillet or chamnfer.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Or1</strong> (<em>TopAbs_Orientation &amp;</em>) &#8211; </li>
+<li><strong>Or2</strong> (<em>TopAbs_Orientation &amp;</em>) &#8211; </li>
+<li><strong>OrSave1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrSave2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>ChoixSauv</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Same as the other NextSide, but the calculation is done on an edge only.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Or</strong> (<em>TopAbs_Orientation &amp;</em>) &#8211; </li>
+<li><strong>OrSave</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrFace</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.ChFi3d.chfi3d_SameSide">
+<code class="descname">chfi3d_SameSide</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.chfi3d_SameSide" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Enables to determine while processing an angle, if two fillets or chamfers constituting a face have identic or opposed concave edges.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Or</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrSave1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrSave2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrFace1</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+<li><strong>OrFace2</strong> (<em>TopAbs_Orientation</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.ChFi3d.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.ChFi3d.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.17.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.Display.backend module &mdash; pythonocc API 0.17.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.17.3 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.17.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.Display.backend module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.Display.backend module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.Display.backend.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-OCC.Display.backend">
+<span id="occ-display-backend-module"></span><h1>OCC.Display.backend module<a class="headerlink" href="#module-OCC.Display.backend" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="OCC.Display.backend.get_loaded_backend">
+<code class="descname">get_loaded_backend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.backend.get_loaded_backend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="OCC.Display.backend.get_qt_modules">
+<code class="descname">get_qt_modules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.backend.get_qt_modules" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>tuple <span class="classifier-delimiter">:</span> <span class="classifier">( QtCore, QtGui, QtWidgets, QtOpenGL )</span></dt>
+<dd>here QtWidgets shadows QtGui when a PyQt4 or PySide module is loaded
+this is the most coherent way to get PyQt5 compliant code</dd>
+</dl>
+<dl class="docutils">
+<dt>ValueError</dt>
+<dd>when no Qt backend has been yet loaded
+informs the user to call <cite>load_backend</cite> or that no Qt python module
+( PyQt5, PyQt4 or PySide ) is found</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Display.backend.load_backend">
+<code class="descname">load_backend</code><span class="sig-paren">(</span><em>backend_str=None</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.backend.load_backend" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads a gui backend</p>
+<p>If no Qt (such as PyQt5, PyQt4 or PySide) backend is found, wx is loaded</p>
+<dl class="docutils">
+<dt>The search order for pythonocc compatible gui modules is:</dt>
+<dd>PyQt5, PyQt4, PySide, Wx</dd>
+</dl>
+<p>Wx is imported when no Qt backend is found.</p>
+<p>backend_str : str</p>
+<blockquote>
+<div><p>specifies which backend to load</p>
+<p>backend_str is one of ( &#8220;qt-pyqt5&#8221;, &#8220;qt-pyqt4&#8221;, &#8220;qt-pyside&#8221;, &#8220;wx&#8221; )</p>
+<p>if no value has been set, load the first module in gui module search
+order</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>str</dt>
+<dd>the name of the loaded backend
+one of ( &#8220;qt-pyqt5&#8221;, &#8220;qt-pyqt4&#8221;, &#8220;qt-pyside&#8221;, &#8220;wx&#8221; )</dd>
+</dl>
+<dl class="docutils">
+<dt>ValueError</dt>
+<dd><ul class="first last simple">
+<li>when a backend is already loaded</li>
+<li>when an invalid backend_str is specified</li>
+</ul>
+</dd>
+<dt>ImportError</dt>
+<dd>when the backend specified in <code class="docutils literal"><span class="pre">backend_str</span></code> could not be imported</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Display.backend.load_pyqt4">
+<code class="descname">load_pyqt4</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.backend.load_pyqt4" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns True is PyQt4 found, else False</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Display.backend.load_pyqt5">
+<code class="descname">load_pyqt5</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.backend.load_pyqt5" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns True is PyQt5 found, else False</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Display.backend.load_pyside">
+<code class="descname">load_pyside</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.backend.load_pyside" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns True is PySide found, else False</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Display.backend.load_wx">
+<code class="descname">load_wx</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.backend.load_wx" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns True is wxPython found, else False</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Display.backend.loaded_backend">
+<code class="descname">loaded_backend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.backend.loaded_backend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.17.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

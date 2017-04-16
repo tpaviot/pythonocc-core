@@ -1,0 +1,531 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.Display.OCCViewer module &mdash; pythonocc API 0.17.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.17.3 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.17.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.Display.OCCViewer module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.Display.OCCViewer module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.Display.OCCViewer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-OCC.Display.OCCViewer">
+<span id="occ-display-occviewer-module"></span><h1>OCC.Display.OCCViewer module<a class="headerlink" href="#module-OCC.Display.OCCViewer" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OCC.Display.OCCViewer.Viewer3d">
+<em class="property">class </em><code class="descname">Viewer3d</code><span class="sig-paren">(</span><em>window_handle</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Visualization.html#OCC.Visualization.Display3d" title="OCC.Visualization.Display3d"><code class="xref py py-class docutils literal"><span class="pre">OCC.Visualization.Display3d</span></code></a></p>
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.Create">
+<code class="descname">Create</code><span class="sig-paren">(</span><em>create_default_lights=True</em>, <em>draw_face_boundaries=True</em>, <em>phong_shading=True</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.Create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.DisableAntiAliasing">
+<code class="descname">DisableAntiAliasing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.DisableAntiAliasing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.DisplayColoredShape">
+<code class="descname">DisplayColoredShape</code><span class="sig-paren">(</span><em>shapes</em>, <em>color='YELLOW'</em>, <em>update=False</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.DisplayColoredShape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.DisplayMessage">
+<code class="descname">DisplayMessage</code><span class="sig-paren">(</span><em>point</em>, <em>text_to_write</em>, <em>height=None</em>, <em>message_color=None</em>, <em>update=False</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.DisplayMessage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Point:</th><td class="field-body">a gp_Pnt or gp_Pnt2d instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Text_to_write:</th><td class="field-body">a string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Message_color:</th><td class="field-body">triple with the range 0-1</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.DisplayShape">
+<code class="descname">DisplayShape</code><span class="sig-paren">(</span><em>shapes</em>, <em>material=None</em>, <em>texture=None</em>, <em>color=None</em>, <em>transparency=None</em>, <em>update=False</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.DisplayShape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.DisplayVector">
+<code class="descname">DisplayVector</code><span class="sig-paren">(</span><em>vec</em>, <em>pnt</em>, <em>update=False</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.DisplayVector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.DynamicZoom">
+<code class="descname">DynamicZoom</code><span class="sig-paren">(</span><em>X1</em>, <em>Y1</em>, <em>X2</em>, <em>Y2</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.DynamicZoom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.EnableAntiAliasing">
+<code class="descname">EnableAntiAliasing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.EnableAntiAliasing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.EraseAll">
+<code class="descname">EraseAll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.EraseAll" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.ExportToImage">
+<code class="descname">ExportToImage</code><span class="sig-paren">(</span><em>image_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.ExportToImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.FitAll">
+<code class="descname">FitAll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.FitAll" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.GetSelectedShape">
+<code class="descname">GetSelectedShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.GetSelectedShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current selected shape</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.GetSelectedShapes">
+<code class="descname">GetSelectedShapes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.GetSelectedShapes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.MoveTo">
+<code class="descname">MoveTo</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.MoveTo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.OnResize">
+<code class="descname">OnResize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.OnResize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.Pan">
+<code class="descname">Pan</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.Pan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.Repaint">
+<code class="descname">Repaint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.Repaint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.ResetView">
+<code class="descname">ResetView</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.ResetView" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.Rotation">
+<code class="descname">Rotation</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.Rotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.Select">
+<code class="descname">Select</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.Select" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SelectArea">
+<code class="descname">SelectArea</code><span class="sig-paren">(</span><em>Xmin</em>, <em>Ymin</em>, <em>Xmax</em>, <em>Ymax</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SelectArea" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetBackgroundImage">
+<code class="descname">SetBackgroundImage</code><span class="sig-paren">(</span><em>image_filename</em>, <em>stretch=True</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetBackgroundImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetDoubleBuffer">
+<code class="descname">SetDoubleBuffer</code><span class="sig-paren">(</span><em>on_or_off</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetDoubleBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>enables double buffering when shapes are moved in the viewer
+a very shaky picture is drawn, since double buffering
+is disabled by default. fixed here...</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetModeHLR">
+<code class="descname">SetModeHLR</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetModeHLR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetModeShaded">
+<code class="descname">SetModeShaded</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetModeShaded" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetModeWireFrame">
+<code class="descname">SetModeWireFrame</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetModeWireFrame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetOrthographic">
+<code class="descname">SetOrthographic</code><span class="sig-paren">(</span><em>_bool</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetOrthographic" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets whether this view is a orthographic or perspective view
+&#64;param _bool:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetSelectionMode">
+<code class="descname">SetSelectionMode</code><span class="sig-paren">(</span><em>mode=None</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetSelectionMode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetSelectionModeEdge">
+<code class="descname">SetSelectionModeEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetSelectionModeEdge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetSelectionModeFace">
+<code class="descname">SetSelectionModeFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetSelectionModeFace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetSelectionModeNeutral">
+<code class="descname">SetSelectionModeNeutral</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetSelectionModeNeutral" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetSelectionModeShape">
+<code class="descname">SetSelectionModeShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetSelectionModeShape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.SetSelectionModeVertex">
+<code class="descname">SetSelectionModeVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.SetSelectionModeVertex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.ShiftSelect">
+<code class="descname">ShiftSelect</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.ShiftSelect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.StartRotation">
+<code class="descname">StartRotation</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.StartRotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.Tumble">
+<code class="descname">Tumble</code><span class="sig-paren">(</span><em>num_images</em>, <em>animation=True</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.Tumble" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.View_Bottom">
+<code class="descname">View_Bottom</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.View_Bottom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.View_Front">
+<code class="descname">View_Front</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.View_Front" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.View_Iso">
+<code class="descname">View_Iso</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.View_Iso" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.View_Left">
+<code class="descname">View_Left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.View_Left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.View_Rear">
+<code class="descname">View_Rear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.View_Rear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.View_Right">
+<code class="descname">View_Right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.View_Right" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.View_Top">
+<code class="descname">View_Top</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.View_Top" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.Zoom">
+<code class="descname">Zoom</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.Zoom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.ZoomArea">
+<code class="descname">ZoomArea</code><span class="sig-paren">(</span><em>X1</em>, <em>Y1</em>, <em>X2</em>, <em>Y2</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.ZoomArea" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.ZoomFactor">
+<code class="descname">ZoomFactor</code><span class="sig-paren">(</span><em>zoom_factor</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.ZoomFactor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.display_graduated_trihedron">
+<code class="descname">display_graduated_trihedron</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.display_graduated_trihedron" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.display_trihedron">
+<code class="descname">display_trihedron</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.display_trihedron" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show a black trihedron in lower right corner</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.register_select_callback">
+<code class="descname">register_select_callback</code><span class="sig-paren">(</span><em>callback</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.register_select_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a callback that will be called each time a shape s selected</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.set_bg_gradient_color">
+<code class="descname">set_bg_gradient_color</code><span class="sig-paren">(</span><em>R1</em>, <em>G1</em>, <em>B1</em>, <em>R2</em>, <em>G2</em>, <em>B2</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.set_bg_gradient_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>set a bg vertical gradient color.
+R, G and B are floats.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.set_raytracing_mode">
+<code class="descname">set_raytracing_mode</code><span class="sig-paren">(</span><em>shadows=True</em>, <em>reflections=True</em>, <em>antialiasing=True</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.set_raytracing_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Display.OCCViewer.Viewer3d.unregister_callback">
+<code class="descname">unregister_callback</code><span class="sig-paren">(</span><em>callback</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.Viewer3d.unregister_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a callback from the callback list</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Display.OCCViewer.get_color_from_name">
+<code class="descname">get_color_from_name</code><span class="sig-paren">(</span><em>color_name</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.get_color_from_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>from the string &#8216;WHITE&#8217;, returns Quantity_Color
+WHITE.
+color_name is the color name, case insensitive.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Display.OCCViewer.rgb_color">
+<code class="descname">rgb_color</code><span class="sig-paren">(</span><em>r</em>, <em>g</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.rgb_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="OCC.Display.OCCViewer.to_string">
+<code class="descname">to_string</code><span class="sig-paren">(</span><em>_string</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Display.OCCViewer.to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.17.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
