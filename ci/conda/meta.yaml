@@ -24,7 +24,7 @@ requirements:
   build:
     - patch             [win]
     - python
-    - oce ==0.17.3
+    - oce ==0.18.1
     - cmake
     - ninja
     - swig
@@ -33,7 +33,7 @@ requirements:
 
   run:
     - pyqt >=5
-    - oce ==0.17.3
+    - oce ==0.18.1
     - python
     - freetype
     - pyobjc-core       [osx and py27]
