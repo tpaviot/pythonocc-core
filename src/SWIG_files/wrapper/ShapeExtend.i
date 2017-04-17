@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1233,7 +1233,7 @@ class ShapeExtend_DataMapOfShapeListOfMsg : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: ShapeExtend_DataMapOfShapeListOfMsg &
 	:rtype: ShapeExtend_DataMapOfShapeListOfMsg
-") operator=;
+") operator =;
 		ShapeExtend_DataMapOfShapeListOfMsg & operator = (const ShapeExtend_DataMapOfShapeListOfMsg & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1316,7 +1316,7 @@ class ShapeExtend_DataMapOfTransientListOfMsg : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: ShapeExtend_DataMapOfTransientListOfMsg &
 	:rtype: ShapeExtend_DataMapOfTransientListOfMsg
-") operator=;
+") operator =;
 		ShapeExtend_DataMapOfTransientListOfMsg & operator = (const ShapeExtend_DataMapOfTransientListOfMsg & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

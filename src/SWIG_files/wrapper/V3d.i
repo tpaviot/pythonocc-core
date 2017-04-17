@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -51,9 +51,9 @@ def register_handle(handle, base_object):
 };
 
 /* typedefs */
+typedef Standard_Real V3d_Parameter;
 typedef V3d_View * V3d_ViewPointer;
 typedef V3d_Viewer * V3d_ViewerPointer;
-typedef Standard_Real V3d_Parameter;
 typedef Standard_Real V3d_Coordinate;
 typedef V3d_LayerMgr * V3d_LayerMgrPointer;
 /* end typedefs declaration */
@@ -63,6 +63,7 @@ enum V3d_StereoDumpOptions {
 	V3d_SDO_MONO = 0,
 	V3d_SDO_LEFT_EYE = 1,
 	V3d_SDO_RIGHT_EYE = 2,
+	V3d_SDO_BLENDED = 3,
 };
 
 enum V3d_TypeOfAxe {
@@ -397,11 +398,11 @@ class V3d_ColorScale : public Aspect_ColorScale {
 		%feature("compactdefaultargs") V3d_ColorScale;
 		%feature("autodoc", "	* Returns returns ColorScale from V3d. Returns View from V3d.
 
-	:param aMgr:
-	:type aMgr: Handle_V3d_LayerMgr &
+	:param theMgr:
+	:type theMgr: Handle_V3d_LayerMgr &
 	:rtype: None
 ") V3d_ColorScale;
-		 V3d_ColorScale (const Handle_V3d_LayerMgr & aMgr);
+		 V3d_ColorScale (const Handle_V3d_LayerMgr & theMgr);
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "	:rtype: None
 ") Display;
@@ -415,59 +416,59 @@ class V3d_ColorScale : public Aspect_ColorScale {
 ") IsDisplayed;
 		Standard_Boolean IsDisplayed ();
 		%feature("compactdefaultargs") PaintRect;
-		%feature("autodoc", "	:param X:
-	:type X: int
-	:param Y:
-	:type Y: int
-	:param W:
-	:type W: int
-	:param H:
-	:type H: int
-	:param aColor:
-	:type aColor: Quantity_Color &
-	:param aFilled: default value is Standard_False
-	:type aFilled: bool
+		%feature("autodoc", "	:param theX:
+	:type theX: int
+	:param theY:
+	:type theY: int
+	:param theWidth:
+	:type theWidth: int
+	:param theHeight:
+	:type theHeight: int
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:param theFilled: default value is Standard_False
+	:type theFilled: bool
 	:rtype: void
 ") PaintRect;
-		virtual void PaintRect (const Standard_Integer X,const Standard_Integer Y,const Standard_Integer W,const Standard_Integer H,const Quantity_Color & aColor,const Standard_Boolean aFilled = Standard_False);
+		virtual void PaintRect (const Standard_Integer theX,const Standard_Integer theY,const Standard_Integer theWidth,const Standard_Integer theHeight,const Quantity_Color & theColor,const Standard_Boolean theFilled = Standard_False);
 		%feature("compactdefaultargs") PaintText;
-		%feature("autodoc", "	:param aText:
-	:type aText: TCollection_ExtendedString &
-	:param X:
-	:type X: int
-	:param Y:
-	:type Y: int
-	:param aColor:
-	:type aColor: Quantity_Color &
+		%feature("autodoc", "	:param theText:
+	:type theText: TCollection_ExtendedString &
+	:param theX:
+	:type theX: int
+	:param theY:
+	:type theY: int
+	:param theColor:
+	:type theColor: Quantity_Color &
 	:rtype: void
 ") PaintText;
-		virtual void PaintText (const TCollection_ExtendedString & aText,const Standard_Integer X,const Standard_Integer Y,const Quantity_Color & aColor);
+		virtual void PaintText (const TCollection_ExtendedString & theText,const Standard_Integer theX,const Standard_Integer theY,const Quantity_Color & theColor);
 		%feature("compactdefaultargs") TextWidth;
-		%feature("autodoc", "	:param aText:
-	:type aText: TCollection_ExtendedString &
+		%feature("autodoc", "	:param theText:
+	:type theText: TCollection_ExtendedString &
 	:rtype: int
 ") TextWidth;
-		virtual Standard_Integer TextWidth (const TCollection_ExtendedString & aText);
+		virtual Standard_Integer TextWidth (const TCollection_ExtendedString & theText);
 		%feature("compactdefaultargs") TextHeight;
-		%feature("autodoc", "	:param aText:
-	:type aText: TCollection_ExtendedString &
+		%feature("autodoc", "	:param theText:
+	:type theText: TCollection_ExtendedString &
 	:rtype: int
 ") TextHeight;
-		virtual Standard_Integer TextHeight (const TCollection_ExtendedString & aText);
+		virtual Standard_Integer TextHeight (const TCollection_ExtendedString & theText);
 		%feature("compactdefaultargs") TextSize;
-		%feature("autodoc", "	:param AText:
-	:type AText: TCollection_ExtendedString &
-	:param AHeight:
-	:type AHeight: int
-	:param AWidth:
-	:type AWidth: int &
-	:param AnAscent:
-	:type AnAscent: int &
-	:param ADescent:
-	:type ADescent: int &
+		%feature("autodoc", "	:param theText:
+	:type theText: TCollection_ExtendedString &
+	:param theHeight:
+	:type theHeight: int
+	:param theWidth:
+	:type theWidth: int &
+	:param theAscent:
+	:type theAscent: int &
+	:param theDescent:
+	:type theDescent: int &
 	:rtype: None
 ") TextSize;
-		void TextSize (const TCollection_ExtendedString & AText,const Standard_Integer AHeight,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		void TextSize (const TCollection_ExtendedString & theText,const Standard_Integer theHeight,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") DrawScale;
 		%feature("autodoc", "	:rtype: None
 ") DrawScale;
@@ -1485,14 +1486,6 @@ class V3d_View : public MMgt_TShared {
 	:rtype: bool
 ") IsActiveLight;
 		Standard_Boolean IsActiveLight (const Handle_V3d_Light & aLight);
-		%feature("compactdefaultargs") SetTransparency;
-		%feature("autodoc", "	* Activate/Deactivate the transparency in this view.
-
-	:param AnActivity: default value is Standard_False
-	:type AnActivity: bool
-	:rtype: None
-") SetTransparency;
-		void SetTransparency (const Standard_Boolean AnActivity = Standard_False);
 		%feature("compactdefaultargs") SetImmediateUpdate;
 		%feature("autodoc", "	* sets the immediate update mode and returns the previous one.
 
@@ -1550,171 +1543,17 @@ class V3d_View : public MMgt_TShared {
 		%feature("compactdefaultargs") GetGraduatedTrihedron;
 		%feature("autodoc", "	* Returns data of a graduated trihedron.
 
-	:param xname:
-	:type xname: TCollection_ExtendedString &
-	:param yname:
-	:type yname: TCollection_ExtendedString &
-	:param zname:
-	:type zname: TCollection_ExtendedString &
-	:param xdrawname:
-	:type xdrawname: bool
-	:param ydrawname:
-	:type ydrawname: bool
-	:param zdrawname:
-	:type zdrawname: bool
-	:param xdrawvalues:
-	:type xdrawvalues: bool
-	:param ydrawvalues:
-	:type ydrawvalues: bool
-	:param zdrawvalues:
-	:type zdrawvalues: bool
-	:param drawgrid:
-	:type drawgrid: bool
-	:param drawaxes:
-	:type drawaxes: bool
-	:param nbx:
-	:type nbx: int &
-	:param nby:
-	:type nby: int &
-	:param nbz:
-	:type nbz: int &
-	:param xoffset:
-	:type xoffset: int &
-	:param yoffset:
-	:type yoffset: int &
-	:param zoffset:
-	:type zoffset: int &
-	:param xaxisoffset:
-	:type xaxisoffset: int &
-	:param yaxisoffset:
-	:type yaxisoffset: int &
-	:param zaxisoffset:
-	:type zaxisoffset: int &
-	:param xdrawtickmarks:
-	:type xdrawtickmarks: bool
-	:param ydrawtickmarks:
-	:type ydrawtickmarks: bool
-	:param zdrawtickmarks:
-	:type zdrawtickmarks: bool
-	:param xtickmarklength:
-	:type xtickmarklength: int &
-	:param ytickmarklength:
-	:type ytickmarklength: int &
-	:param ztickmarklength:
-	:type ztickmarklength: int &
-	:param gridcolor:
-	:type gridcolor: Quantity_Color &
-	:param xnamecolor:
-	:type xnamecolor: Quantity_Color &
-	:param ynamecolor:
-	:type ynamecolor: Quantity_Color &
-	:param znamecolor:
-	:type znamecolor: Quantity_Color &
-	:param xcolor:
-	:type xcolor: Quantity_Color &
-	:param ycolor:
-	:type ycolor: Quantity_Color &
-	:param zcolor:
-	:type zcolor: Quantity_Color &
-	:param fontOfNames:
-	:type fontOfNames: TCollection_AsciiString &
-	:param styleOfNames:
-	:type styleOfNames: Font_FontAspect &
-	:param sizeOfNames:
-	:type sizeOfNames: int &
-	:param fontOfValues:
-	:type fontOfValues: TCollection_AsciiString &
-	:param styleOfValues:
-	:type styleOfValues: Font_FontAspect &
-	:param sizeOfValues:
-	:type sizeOfValues: int &
-	:rtype: None
+	:rtype: Graphic3d_GraduatedTrihedron
 ") GetGraduatedTrihedron;
-		void GetGraduatedTrihedron (TCollection_ExtendedString & xname,TCollection_ExtendedString & yname,TCollection_ExtendedString & zname,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Quantity_Color & gridcolor,Quantity_Color & xnamecolor,Quantity_Color & ynamecolor,Quantity_Color & znamecolor,Quantity_Color & xcolor,Quantity_Color & ycolor,Quantity_Color & zcolor,TCollection_AsciiString & fontOfNames,Font_FontAspect & styleOfNames,Standard_Integer &OutValue,TCollection_AsciiString & fontOfValues,Font_FontAspect & styleOfValues,Standard_Integer &OutValue);
+		const Graphic3d_GraduatedTrihedron & GetGraduatedTrihedron ();
 		%feature("compactdefaultargs") GraduatedTrihedronDisplay;
 		%feature("autodoc", "	* Displays a graduated trihedron.
 
-	:param xname: default value is 'X'
-	:type xname: TCollection_ExtendedString &
-	:param yname: default value is 'Y'
-	:type yname: TCollection_ExtendedString &
-	:param zname: default value is 'Z'
-	:type zname: TCollection_ExtendedString &
-	:param xdrawname: default value is Standard_True
-	:type xdrawname: bool
-	:param ydrawname: default value is Standard_True
-	:type ydrawname: bool
-	:param zdrawname: default value is Standard_True
-	:type zdrawname: bool
-	:param xdrawvalues: default value is Standard_True
-	:type xdrawvalues: bool
-	:param ydrawvalues: default value is Standard_True
-	:type ydrawvalues: bool
-	:param zdrawvalues: default value is Standard_True
-	:type zdrawvalues: bool
-	:param drawgrid: default value is Standard_True
-	:type drawgrid: bool
-	:param drawaxes: default value is Standard_True
-	:type drawaxes: bool
-	:param nbx: default value is 3
-	:type nbx: int
-	:param nby: default value is 3
-	:type nby: int
-	:param nbz: default value is 3
-	:type nbz: int
-	:param xoffset: default value is 10
-	:type xoffset: int
-	:param yoffset: default value is 10
-	:type yoffset: int
-	:param zoffset: default value is 10
-	:type zoffset: int
-	:param xaxisoffset: default value is 30
-	:type xaxisoffset: int
-	:param yaxisoffset: default value is 30
-	:type yaxisoffset: int
-	:param zaxisoffset: default value is 30
-	:type zaxisoffset: int
-	:param xdrawtickmarks: default value is Standard_True
-	:type xdrawtickmarks: bool
-	:param ydrawtickmarks: default value is Standard_True
-	:type ydrawtickmarks: bool
-	:param zdrawtickmarks: default value is Standard_True
-	:type zdrawtickmarks: bool
-	:param xtickmarklength: default value is 10
-	:type xtickmarklength: int
-	:param ytickmarklength: default value is 10
-	:type ytickmarklength: int
-	:param ztickmarklength: default value is 10
-	:type ztickmarklength: int
-	:param gridcolor: default value is Quantity_NOC_WHITE
-	:type gridcolor: Quantity_Color &
-	:param xnamecolor: default value is Quantity_NOC_RED
-	:type xnamecolor: Quantity_Color &
-	:param ynamecolor: default value is Quantity_NOC_GREEN
-	:type ynamecolor: Quantity_Color &
-	:param znamecolor: default value is Quantity_NOC_BLUE1
-	:type znamecolor: Quantity_Color &
-	:param xcolor: default value is Quantity_NOC_RED
-	:type xcolor: Quantity_Color &
-	:param ycolor: default value is Quantity_NOC_GREEN
-	:type ycolor: Quantity_Color &
-	:param zcolor: default value is Quantity_NOC_BLUE1
-	:type zcolor: Quantity_Color &
-	:param fontOfNames: default value is 'Arial'
-	:type fontOfNames: TCollection_AsciiString &
-	:param styleOfNames: default value is Font_FA_Bold
-	:type styleOfNames: Font_FontAspect
-	:param sizeOfNames: default value is 12
-	:type sizeOfNames: int
-	:param fontOfValues: default value is 'Arial'
-	:type fontOfValues: TCollection_AsciiString &
-	:param styleOfValues: default value is Font_FA_Regular
-	:type styleOfValues: Font_FontAspect
-	:param sizeOfValues: default value is 12
-	:type sizeOfValues: int
+	:param theTrigedronData:
+	:type theTrigedronData: Graphic3d_GraduatedTrihedron &
 	:rtype: None
 ") GraduatedTrihedronDisplay;
-		void GraduatedTrihedronDisplay (const TCollection_ExtendedString & xname = "X",const TCollection_ExtendedString & yname = "Y",const TCollection_ExtendedString & zname = "Z",const Standard_Boolean xdrawname = Standard_True,const Standard_Boolean ydrawname = Standard_True,const Standard_Boolean zdrawname = Standard_True,const Standard_Boolean xdrawvalues = Standard_True,const Standard_Boolean ydrawvalues = Standard_True,const Standard_Boolean zdrawvalues = Standard_True,const Standard_Boolean drawgrid = Standard_True,const Standard_Boolean drawaxes = Standard_True,const Standard_Integer nbx = 3,const Standard_Integer nby = 3,const Standard_Integer nbz = 3,const Standard_Integer xoffset = 10,const Standard_Integer yoffset = 10,const Standard_Integer zoffset = 10,const Standard_Integer xaxisoffset = 30,const Standard_Integer yaxisoffset = 30,const Standard_Integer zaxisoffset = 30,const Standard_Boolean xdrawtickmarks = Standard_True,const Standard_Boolean ydrawtickmarks = Standard_True,const Standard_Boolean zdrawtickmarks = Standard_True,const Standard_Integer xtickmarklength = 10,const Standard_Integer ytickmarklength = 10,const Standard_Integer ztickmarklength = 10,const Quantity_Color & gridcolor = Quantity_NOC_WHITE,const Quantity_Color & xnamecolor = Quantity_NOC_RED,const Quantity_Color & ynamecolor = Quantity_NOC_GREEN,const Quantity_Color & znamecolor = Quantity_NOC_BLUE1,const Quantity_Color & xcolor = Quantity_NOC_RED,const Quantity_Color & ycolor = Quantity_NOC_GREEN,const Quantity_Color & zcolor = Quantity_NOC_BLUE1,const TCollection_AsciiString & fontOfNames = "Arial",const Font_FontAspect styleOfNames = Font_FA_Bold,const Standard_Integer sizeOfNames = 12,const TCollection_AsciiString & fontOfValues = "Arial",const Font_FontAspect styleOfValues = Font_FA_Regular,const Standard_Integer sizeOfValues = 12);
+		void GraduatedTrihedronDisplay (const Graphic3d_GraduatedTrihedron & theTrigedronData);
 		%feature("compactdefaultargs") GraduatedTrihedronErase;
 		%feature("autodoc", "	* Erases a graduated trihedron from the view.
 
@@ -2115,6 +1954,18 @@ class V3d_View : public MMgt_TShared {
 	:rtype: None
 ") FitAll;
 		void FitAll (const Quantity_Coefficient theMargin = 0.01,const Standard_Boolean theToUpdate = Standard_True);
+		%feature("compactdefaultargs") FitAll;
+		%feature("autodoc", "	* Adjust view parameters to fit the displayed scene, respecting height / width ratio according to the custom bounding box given. Throws program error exception if margin coefficient is < 0 or >= 1. Updates the view. @param theBox [in] the custom bounding box to fit. @param theMargin [in] the margin coefficient for view borders. @param theToUpdate [in] flag to perform view update.
+
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:param theMargin: default value is 0.01
+	:type theMargin: Quantity_Coefficient
+	:param theToUpdate: default value is Standard_True
+	:type theToUpdate: bool
+	:rtype: None
+") FitAll;
+		void FitAll (const Bnd_Box & theBox,const Quantity_Coefficient theMargin = 0.01,const Standard_Boolean theToUpdate = Standard_True);
 		%feature("compactdefaultargs") DepthFitAll;
 		%feature("autodoc", "	* Adjusts the viewing volume so as not to clip the displayed objects by front and back and back clipping planes. Also sets depth value automatically depending on the calculated Z size and Aspect parameter. NOTE than the original XY size of the view is NOT modified .
 
@@ -2499,12 +2350,6 @@ class V3d_View : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_TextureEnv
 ") TextureEnv;
 		Handle_Graphic3d_TextureEnv TextureEnv ();
-		%feature("compactdefaultargs") Transparency;
-		%feature("autodoc", "	* Returns the transparency activity.
-
-	:rtype: bool
-") Transparency;
-		Standard_Boolean Transparency ();
 		%feature("compactdefaultargs") Visualization;
 		%feature("autodoc", "	* Returns the current visualisation mode.
 
@@ -2823,18 +2668,18 @@ class V3d_View : public MMgt_TShared {
 		%feature("autodoc", "	* Adds clip plane to the view. The composition of clip planes truncates the rendering space to convex volume. Number of supported clip planes can be consulted by PlaneLimit method of associated Visual3d_View. Please be aware that the planes which exceed the limit are ignored during rendering. @param thePlane [in] the clip plane to be added to view.
 
 	:param thePlane:
-	:type thePlane: Graphic3d_ClipPlane_Handle &
+	:type thePlane: Handle_Graphic3d_ClipPlane &
 	:rtype: void
 ") AddClipPlane;
-		virtual void AddClipPlane (const Graphic3d_ClipPlane_Handle & thePlane);
+		virtual void AddClipPlane (const Handle_Graphic3d_ClipPlane & thePlane);
 		%feature("compactdefaultargs") RemoveClipPlane;
 		%feature("autodoc", "	* Removes clip plane from the view. @param thePlane [in] the clip plane to be removed from view.
 
 	:param thePlane:
-	:type thePlane: Graphic3d_ClipPlane_Handle &
+	:type thePlane: Handle_Graphic3d_ClipPlane &
 	:rtype: void
 ") RemoveClipPlane;
-		virtual void RemoveClipPlane (const Graphic3d_ClipPlane_Handle & thePlane);
+		virtual void RemoveClipPlane (const Handle_Graphic3d_ClipPlane & thePlane);
 		%feature("compactdefaultargs") SetClipPlanes;
 		%feature("autodoc", "	* Sets sequence of clip planes to the view. The planes that have been set before are removed from the view. The composition of clip planes truncates the rendering space to convex volume. Number of supported clip planes can be consulted by PlaneLimit method of associated Visual3d_View. Please be aware that the planes which exceed the limit are ignored during rendering. @param thePlanes [in] the clip planes to set.
 
@@ -2853,16 +2698,16 @@ class V3d_View : public MMgt_TShared {
 		%feature("autodoc", "	* Change camera used by view.
 
 	:param theCamera:
-	:type theCamera: Graphic3d_Camera_Handle &
+	:type theCamera: Handle_Graphic3d_Camera &
 	:rtype: None
 ") SetCamera;
-		void SetCamera (const Graphic3d_Camera_Handle & theCamera);
+		void SetCamera (const Handle_Graphic3d_Camera & theCamera);
 		%feature("compactdefaultargs") Camera;
 		%feature("autodoc", "	* Returns camera object of the view. returns: handle to camera object, or NULL if 3D view does not use the camera approach.
 
-	:rtype: Graphic3d_Camera_Handle
+	:rtype: Handle_Graphic3d_Camera
 ") Camera;
-		const Graphic3d_Camera_Handle & Camera ();
+		Handle_Graphic3d_Camera Camera ();
 		%feature("compactdefaultargs") RenderingParams;
 		%feature("autodoc", "	* Returns current rendering parameters and effect settings.
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -167,7 +167,7 @@ class AppParCurves_Array1OfConstraintCouple {
 		%feature("autodoc", "	:param Other:
 	:type Other: AppParCurves_Array1OfConstraintCouple &
 	:rtype: AppParCurves_Array1OfConstraintCouple
-") operator=;
+") operator =;
 		const AppParCurves_Array1OfConstraintCouple & operator = (const AppParCurves_Array1OfConstraintCouple & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -254,7 +254,7 @@ class AppParCurves_Array1OfMultiBSpCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: AppParCurves_Array1OfMultiBSpCurve &
 	:rtype: AppParCurves_Array1OfMultiBSpCurve
-") operator=;
+") operator =;
 		const AppParCurves_Array1OfMultiBSpCurve & operator = (const AppParCurves_Array1OfMultiBSpCurve & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -341,7 +341,7 @@ class AppParCurves_Array1OfMultiCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: AppParCurves_Array1OfMultiCurve &
 	:rtype: AppParCurves_Array1OfMultiCurve
-") operator=;
+") operator =;
 		const AppParCurves_Array1OfMultiCurve & operator = (const AppParCurves_Array1OfMultiCurve & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -428,7 +428,7 @@ class AppParCurves_Array1OfMultiPoint {
 		%feature("autodoc", "	:param Other:
 	:type Other: AppParCurves_Array1OfMultiPoint &
 	:rtype: AppParCurves_Array1OfMultiPoint
-") operator=;
+") operator =;
 		const AppParCurves_Array1OfMultiPoint & operator = (const AppParCurves_Array1OfMultiPoint & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1034,10 +1034,6 @@ class AppParCurves_MultiCurve {
 	:rtype: None
 ") AppParCurves_MultiCurve;
 		 AppParCurves_MultiCurve (const AppParCurves_Array1OfMultiPoint & tabMU);
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") SetNbPoles;
 		%feature("autodoc", "	* The number of poles of the MultiCurve will be set to <nbPoles>.
 
@@ -1311,10 +1307,6 @@ class AppParCurves_MultiPoint {
 	:rtype: None
 ") AppParCurves_MultiPoint;
 		 AppParCurves_MultiPoint (const TColgp_Array1OfPnt & tabP,const TColgp_Array1OfPnt2d & tabP2d);
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "	* the 3d Point of range Index of this MultiPoint is set to <Point>. An exception is raised if Index < 0 or Index > number of 3d Points.
 
@@ -1592,7 +1584,7 @@ class AppParCurves_SequenceOfMultiBSpCurve : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: AppParCurves_SequenceOfMultiBSpCurve &
 	:rtype: AppParCurves_SequenceOfMultiBSpCurve
-") operator=;
+") operator =;
 		const AppParCurves_SequenceOfMultiBSpCurve & operator = (const AppParCurves_SequenceOfMultiBSpCurve & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1735,7 +1727,7 @@ class AppParCurves_SequenceOfMultiCurve : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: AppParCurves_SequenceOfMultiCurve &
 	:rtype: AppParCurves_SequenceOfMultiCurve
-") operator=;
+") operator =;
 		const AppParCurves_SequenceOfMultiCurve & operator = (const AppParCurves_SequenceOfMultiCurve & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

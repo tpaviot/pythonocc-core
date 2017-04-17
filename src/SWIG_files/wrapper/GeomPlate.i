@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -126,7 +126,7 @@ class GeomPlate_Array1OfHCurveOnSurface {
 		%feature("autodoc", "	:param Other:
 	:type Other: GeomPlate_Array1OfHCurveOnSurface &
 	:rtype: GeomPlate_Array1OfHCurveOnSurface
-") operator=;
+") operator =;
 		const GeomPlate_Array1OfHCurveOnSurface & operator = (const GeomPlate_Array1OfHCurveOnSurface & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -213,7 +213,7 @@ class GeomPlate_Array1OfSequenceOfReal {
 		%feature("autodoc", "	:param Other:
 	:type Other: GeomPlate_Array1OfSequenceOfReal &
 	:rtype: GeomPlate_Array1OfSequenceOfReal
-") operator=;
+") operator =;
 		const GeomPlate_Array1OfSequenceOfReal & operator = (const GeomPlate_Array1OfSequenceOfReal & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2042,7 +2042,7 @@ class GeomPlate_SequenceOfAij : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: GeomPlate_SequenceOfAij &
 	:rtype: GeomPlate_SequenceOfAij
-") operator=;
+") operator =;
 		const GeomPlate_SequenceOfAij & operator = (const GeomPlate_SequenceOfAij & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2185,7 +2185,7 @@ class GeomPlate_SequenceOfCurveConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: GeomPlate_SequenceOfCurveConstraint &
 	:rtype: GeomPlate_SequenceOfCurveConstraint
-") operator=;
+") operator =;
 		const GeomPlate_SequenceOfCurveConstraint & operator = (const GeomPlate_SequenceOfCurveConstraint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2328,7 +2328,7 @@ class GeomPlate_SequenceOfPointConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: GeomPlate_SequenceOfPointConstraint &
 	:rtype: GeomPlate_SequenceOfPointConstraint
-") operator=;
+") operator =;
 		const GeomPlate_SequenceOfPointConstraint & operator = (const GeomPlate_SequenceOfPointConstraint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

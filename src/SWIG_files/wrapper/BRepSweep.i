@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -191,10 +191,6 @@ class BRepSweep_Iterator {
 %nodefaultctor BRepSweep_NumLinearRegularSweep;
 class BRepSweep_NumLinearRegularSweep {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") MakeEmptyVertex;
 		%feature("autodoc", "	* Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents.
 
@@ -737,10 +733,6 @@ class BRepSweep_Tool {
 %nodefaultctor BRepSweep_Trsf;
 class BRepSweep_Trsf : public BRepSweep_NumLinearRegularSweep {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* ends the construction of the swept primitive calling the virtual geometric functions that can't be called in the initialize.
 
@@ -1271,10 +1263,6 @@ class BRepSweep_Translation : public BRepSweep_Trsf {
 	:rtype: None
 ") BRepSweep_Translation;
 		 BRepSweep_Translation (const TopoDS_Shape & S,const Sweep_NumShape & N,const TopLoc_Location & L,const gp_Vec & V,const Standard_Boolean C,const Standard_Boolean Canonize = Standard_True);
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") MakeEmptyVertex;
 		%feature("autodoc", "	* Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents.
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -101,7 +101,7 @@ class TColQuantity_Array1OfLength {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColQuantity_Array1OfLength &
 	:rtype: TColQuantity_Array1OfLength
-") operator=;
+") operator =;
 		const TColQuantity_Array1OfLength & operator = (const TColQuantity_Array1OfLength & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -192,7 +192,7 @@ class TColQuantity_Array2OfLength {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColQuantity_Array2OfLength &
 	:rtype: TColQuantity_Array2OfLength
-") operator=;
+") operator =;
 		const TColQuantity_Array2OfLength & operator = (const TColQuantity_Array2OfLength & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int

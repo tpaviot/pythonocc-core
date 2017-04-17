@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -280,7 +280,7 @@ class CSLib_Class2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: CSLib_Class2d &
 	:rtype: CSLib_Class2d
-") operator=;
+") operator =;
 		const CSLib_Class2d & operator = (const CSLib_Class2d & Other);
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "	:rtype: None

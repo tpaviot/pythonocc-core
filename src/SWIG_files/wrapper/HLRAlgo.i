@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -200,7 +200,7 @@ class HLRAlgo_Array1OfPHDat {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRAlgo_Array1OfPHDat &
 	:rtype: HLRAlgo_Array1OfPHDat
-") operator=;
+") operator =;
 		const HLRAlgo_Array1OfPHDat & operator = (const HLRAlgo_Array1OfPHDat & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -287,7 +287,7 @@ class HLRAlgo_Array1OfPINod {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRAlgo_Array1OfPINod &
 	:rtype: HLRAlgo_Array1OfPINod
-") operator=;
+") operator =;
 		const HLRAlgo_Array1OfPINod & operator = (const HLRAlgo_Array1OfPINod & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -374,7 +374,7 @@ class HLRAlgo_Array1OfPISeg {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRAlgo_Array1OfPISeg &
 	:rtype: HLRAlgo_Array1OfPISeg
-") operator=;
+") operator =;
 		const HLRAlgo_Array1OfPISeg & operator = (const HLRAlgo_Array1OfPISeg & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -461,7 +461,7 @@ class HLRAlgo_Array1OfTData {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRAlgo_Array1OfTData &
 	:rtype: HLRAlgo_Array1OfTData
-") operator=;
+") operator =;
 		const HLRAlgo_Array1OfTData & operator = (const HLRAlgo_Array1OfTData & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1822,7 +1822,7 @@ class HLRAlgo_InterferenceList {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRAlgo_InterferenceList &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const HLRAlgo_InterferenceList & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -2276,7 +2276,7 @@ class HLRAlgo_ListOfBPoint {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRAlgo_ListOfBPoint &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const HLRAlgo_ListOfBPoint & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int

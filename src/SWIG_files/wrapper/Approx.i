@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -113,7 +113,7 @@ class Approx_Array1OfAdHSurface {
 		%feature("autodoc", "	:param Other:
 	:type Other: Approx_Array1OfAdHSurface &
 	:rtype: Approx_Array1OfAdHSurface
-") operator=;
+") operator =;
 		const Approx_Array1OfAdHSurface & operator = (const Approx_Array1OfAdHSurface & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -200,7 +200,7 @@ class Approx_Array1OfGTrsf2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: Approx_Array1OfGTrsf2d &
 	:rtype: Approx_Array1OfGTrsf2d
-") operator=;
+") operator =;
 		const Approx_Array1OfGTrsf2d & operator = (const Approx_Array1OfGTrsf2d & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -869,7 +869,7 @@ class Approx_FitAndDivide2d {
 	public:
 		%feature("compactdefaultargs") Approx_FitAndDivide2d;
 		%feature("autodoc", "	:param Line:
-	:type Line: AppCont_Function2d &
+	:type Line: AppCont_Function &
 	:param degreemin: default value is 3
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -886,7 +886,7 @@ class Approx_FitAndDivide2d {
 	:type LastC: AppParCurves_Constraint
 	:rtype: None
 ") Approx_FitAndDivide2d;
-		 Approx_FitAndDivide2d (const AppCont_Function2d & Line,const Standard_Integer degreemin = 3,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-5,const Standard_Real Tolerance2d = 1.0e-5,const Standard_Boolean cutting = Standard_False,const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint,const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
+		 Approx_FitAndDivide2d (const AppCont_Function & Line,const Standard_Integer degreemin = 3,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-5,const Standard_Real Tolerance2d = 1.0e-5,const Standard_Boolean cutting = Standard_False,const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint,const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
 		%feature("compactdefaultargs") Approx_FitAndDivide2d;
 		%feature("autodoc", "	:param degreemin: default value is 3
 	:type degreemin: int
@@ -907,10 +907,10 @@ class Approx_FitAndDivide2d {
 		 Approx_FitAndDivide2d (const Standard_Integer degreemin = 3,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-05,const Standard_Real Tolerance2d = 1.0e-05,const Standard_Boolean cutting = Standard_False,const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint,const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	:param Line:
-	:type Line: AppCont_Function2d &
+	:type Line: AppCont_Function &
 	:rtype: None
 ") Perform;
-		void Perform (const AppCont_Function2d & Line);
+		void Perform (const AppCont_Function & Line);
 		%feature("compactdefaultargs") SetDegrees;
 		%feature("autodoc", "	:param degreemin:
 	:type degreemin: int
@@ -1270,100 +1270,6 @@ class Approx_MCurvesToBSpCurve {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor Approx_MyLeastSquareOfFitAndDivide;
-class Approx_MyLeastSquareOfFitAndDivide {
-	public:
-		%feature("compactdefaultargs") Approx_MyLeastSquareOfFitAndDivide;
-		%feature("autodoc", "	:param SSP:
-	:type SSP: AppCont_Function &
-	:param U0:
-	:type U0: float
-	:param U1:
-	:type U1: float
-	:param FirstCons:
-	:type FirstCons: AppParCurves_Constraint
-	:param LastCons:
-	:type LastCons: AppParCurves_Constraint
-	:param Deg:
-	:type Deg: int
-	:param NbPoints: default value is 24
-	:type NbPoints: int
-	:rtype: None
-") Approx_MyLeastSquareOfFitAndDivide;
-		 Approx_MyLeastSquareOfFitAndDivide (const AppCont_Function & SSP,const Standard_Real U0,const Standard_Real U1,const AppParCurves_Constraint FirstCons,const AppParCurves_Constraint LastCons,const Standard_Integer Deg,const Standard_Integer NbPoints = 24);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
-") Value;
-		const AppParCurves_MultiCurve & Value ();
-		%feature("compactdefaultargs") Error;
-		%feature("autodoc", "	:param F:
-	:type F: float &
-	:param MaxE3d:
-	:type MaxE3d: float &
-	:param MaxE2d:
-	:type MaxE2d: float &
-	:rtype: None
-") Error;
-		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-};
-
-
-%extend Approx_MyLeastSquareOfFitAndDivide {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Approx_MyLeastSquareOfFitAndDivide2d;
-class Approx_MyLeastSquareOfFitAndDivide2d {
-	public:
-		%feature("compactdefaultargs") Approx_MyLeastSquareOfFitAndDivide2d;
-		%feature("autodoc", "	:param SSP:
-	:type SSP: AppCont_Function2d &
-	:param U0:
-	:type U0: float
-	:param U1:
-	:type U1: float
-	:param FirstCons:
-	:type FirstCons: AppParCurves_Constraint
-	:param LastCons:
-	:type LastCons: AppParCurves_Constraint
-	:param Deg:
-	:type Deg: int
-	:param NbPoints: default value is 24
-	:type NbPoints: int
-	:rtype: None
-") Approx_MyLeastSquareOfFitAndDivide2d;
-		 Approx_MyLeastSquareOfFitAndDivide2d (const AppCont_Function2d & SSP,const Standard_Real U0,const Standard_Real U1,const AppParCurves_Constraint FirstCons,const AppParCurves_Constraint LastCons,const Standard_Integer Deg,const Standard_Integer NbPoints = 24);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
-") Value;
-		const AppParCurves_MultiCurve & Value ();
-		%feature("compactdefaultargs") Error;
-		%feature("autodoc", "	:param F:
-	:type F: float &
-	:param MaxE3d:
-	:type MaxE3d: float &
-	:param MaxE2d:
-	:type MaxE2d: float &
-	:rtype: None
-") Error;
-		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-};
-
-
-%extend Approx_MyLeastSquareOfFitAndDivide2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor Approx_SameParameter;
 class Approx_SameParameter {
 	public:
@@ -1533,7 +1439,7 @@ class Approx_SequenceOfHArray1OfReal : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Approx_SequenceOfHArray1OfReal &
 	:rtype: Approx_SequenceOfHArray1OfReal
-") operator=;
+") operator =;
 		const Approx_SequenceOfHArray1OfReal & operator = (const Approx_SequenceOfHArray1OfReal & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

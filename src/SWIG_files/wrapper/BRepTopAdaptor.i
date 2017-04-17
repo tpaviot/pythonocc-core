@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -204,7 +204,7 @@ class BRepTopAdaptor_FClass2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepTopAdaptor_FClass2d &
 	:rtype: BRepTopAdaptor_FClass2d
-") operator=;
+") operator =;
 		const BRepTopAdaptor_FClass2d & operator = (const BRepTopAdaptor_FClass2d & Other);
 		%feature("compactdefaultargs") TestOnRestriction;
 		%feature("autodoc", "	* Test a point with +- an offset (Tol) and returns On if some points are OUT an some are IN (Caution: Internal use . see the code for more details)
@@ -346,7 +346,7 @@ class BRepTopAdaptor_MapOfShapeTool : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepTopAdaptor_MapOfShapeTool &
 	:rtype: BRepTopAdaptor_MapOfShapeTool
-") operator=;
+") operator =;
 		BRepTopAdaptor_MapOfShapeTool & operator = (const BRepTopAdaptor_MapOfShapeTool & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

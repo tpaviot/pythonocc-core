@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -594,9 +594,11 @@ class ShapeProcess_OperLibrary {
 	:type M: Handle_BRepTools_Modification &
 	:param map:
 	:type map: TopTools_DataMapOfShapeShape &
+	:param msg: default value is 0
+	:type msg: Handle_ShapeExtend_MsgRegistrator &
 	:rtype: TopoDS_Shape
 ") ApplyModifier;
-		static TopoDS_Shape ApplyModifier (const TopoDS_Shape & S,const Handle_ShapeProcess_ShapeContext & context,const Handle_BRepTools_Modification & M,TopTools_DataMapOfShapeShape & map);
+		static TopoDS_Shape ApplyModifier (const TopoDS_Shape & S,const Handle_ShapeProcess_ShapeContext & context,const Handle_BRepTools_Modification & M,TopTools_DataMapOfShapeShape & map,const Handle_ShapeExtend_MsgRegistrator & msg = 0);
 };
 
 
@@ -833,9 +835,11 @@ class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 		%feature("compactdefaultargs") RecordModification;
 		%feature("autodoc", "	:param repl:
 	:type repl: TopTools_DataMapOfShapeShape &
+	:param msg: default value is 0
+	:type msg: Handle_ShapeExtend_MsgRegistrator &
 	:rtype: None
 ") RecordModification;
-		void RecordModification (const TopTools_DataMapOfShapeShape & repl);
+		void RecordModification (const TopTools_DataMapOfShapeShape & repl,const Handle_ShapeExtend_MsgRegistrator & msg = 0);
 		%feature("compactdefaultargs") RecordModification;
 		%feature("autodoc", "	:param repl:
 	:type repl: Handle_ShapeBuild_ReShape &
@@ -857,9 +861,11 @@ class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 	:type sh: TopoDS_Shape &
 	:param repl:
 	:type repl: BRepTools_Modifier &
+	:param msg: default value is 0
+	:type msg: Handle_ShapeExtend_MsgRegistrator &
 	:rtype: None
 ") RecordModification;
-		void RecordModification (const TopoDS_Shape & sh,const BRepTools_Modifier & repl);
+		void RecordModification (const TopoDS_Shape & sh,const BRepTools_Modifier & repl,const Handle_ShapeExtend_MsgRegistrator & msg = 0);
 		%feature("compactdefaultargs") AddMessage;
 		%feature("autodoc", "	* Record a message for shape S Shape S should be one of subshapes of original shape (or whole one), but not one of intermediate shapes Records only if Message() is not Null
 

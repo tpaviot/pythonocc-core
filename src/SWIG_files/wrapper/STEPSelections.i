@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1206,7 +1206,7 @@ class STEPSelections_SequenceOfAssemblyComponent : public TCollection_BaseSequen
 		%feature("autodoc", "	:param Other:
 	:type Other: STEPSelections_SequenceOfAssemblyComponent &
 	:rtype: STEPSelections_SequenceOfAssemblyComponent
-") operator=;
+") operator =;
 		const STEPSelections_SequenceOfAssemblyComponent & operator = (const STEPSelections_SequenceOfAssemblyComponent & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1349,7 +1349,7 @@ class STEPSelections_SequenceOfAssemblyLink : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: STEPSelections_SequenceOfAssemblyLink &
 	:rtype: STEPSelections_SequenceOfAssemblyLink
-") operator=;
+") operator =;
 		const STEPSelections_SequenceOfAssemblyLink & operator = (const STEPSelections_SequenceOfAssemblyLink & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

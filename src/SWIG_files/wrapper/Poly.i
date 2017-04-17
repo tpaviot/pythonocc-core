@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -235,7 +235,7 @@ class Poly_Array1OfTriangle {
 		%feature("autodoc", "	:param Other:
 	:type Other: Poly_Array1OfTriangle &
 	:rtype: Poly_Array1OfTriangle
-") operator=;
+") operator =;
 		const Poly_Array1OfTriangle & operator = (const Poly_Array1OfTriangle & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1247,6 +1247,12 @@ class Poly_Triangulation : public MMgt_TShared {
 	:rtype: None
 ") Poly_Triangulation;
 		 Poly_Triangulation (const TColgp_Array1OfPnt & Nodes,const TColgp_Array1OfPnt2d & UVNodes,const Poly_Array1OfTriangle & Triangles);
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "	* Creates full copy of current triangulation.
+
+	:rtype: Handle_Poly_Triangulation
+") Copy;
+		Handle_Poly_Triangulation Copy ();
 		%feature("compactdefaultargs") Deflection;
 		%feature("autodoc", "	* Returns the deflection of this triangulation.
 

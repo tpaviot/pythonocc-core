@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -300,7 +300,7 @@ class CPnts_AbscissaPoint {
 ") Init;
 		void Init (const Adaptor2d_Curve2d & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Computes the point at the distance <Abscissa> of the curve.
+		%feature("autodoc", "	* Computes the point at the distance <Abscissa> of the curve. U0 is the parameter of the point from which the distance is measured.
 
 	:param Abscissa:
 	:type Abscissa: float
@@ -312,7 +312,7 @@ class CPnts_AbscissaPoint {
 ") Perform;
 		void Perform (const Standard_Real Abscissa,const Standard_Real U0,const Standard_Real Resolution);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Computes the point at the distance <Abscissa> of the curve.
+		%feature("autodoc", "	* Computes the point at the distance <Abscissa> of the curve. U0 is the parameter of the point from which the distance is measured and Ui is the starting value for the iterative process (should be close to the final solution).
 
 	:param Abscissa:
 	:type Abscissa: float
@@ -326,7 +326,7 @@ class CPnts_AbscissaPoint {
 ") Perform;
 		void Perform (const Standard_Real Abscissa,const Standard_Real U0,const Standard_Real Ui,const Standard_Real Resolution);
 		%feature("compactdefaultargs") AdvPerform;
-		%feature("autodoc", "	* Computes the point at the distance <Abscissa> of the curve; performs more appropriate tolerance managment; to use this method in right way it is necessary to call empty consructor. then call method Init with Tolerance = Resolution, then call AdvPermorm.
+		%feature("autodoc", "	* Computes the point at the distance <Abscissa> of the curve; performs more appropriate tolerance managment; to use this method in right way it is necessary to call empty consructor. then call method Init with Tolerance = Resolution, then call AdvPermorm. U0 is the parameter of the point from which the distance is measured and Ui is the starting value for the iterative process (should be close to the final solution).
 
 	:param Abscissa:
 	:type Abscissa: float

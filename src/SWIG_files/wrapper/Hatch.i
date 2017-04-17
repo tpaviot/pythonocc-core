@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -508,7 +508,7 @@ class Hatch_SequenceOfLine : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Hatch_SequenceOfLine &
 	:rtype: Hatch_SequenceOfLine
-") operator=;
+") operator =;
 		const Hatch_SequenceOfLine & operator = (const Hatch_SequenceOfLine & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -651,7 +651,7 @@ class Hatch_SequenceOfParameter : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Hatch_SequenceOfParameter &
 	:rtype: Hatch_SequenceOfParameter
-") operator=;
+") operator =;
 		const Hatch_SequenceOfParameter & operator = (const Hatch_SequenceOfParameter & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

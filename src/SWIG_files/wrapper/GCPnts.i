@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -609,9 +609,11 @@ class GCPnts_TangentialDeflection {
 	:type MinimumOfPoints: int
 	:param UTol: default value is 1.0e-9
 	:type UTol: float
+	:param theMinLen: default value is 1.0e-7
+	:type theMinLen: float
 	:rtype: None
 ") GCPnts_TangentialDeflection;
-		 GCPnts_TangentialDeflection (const Adaptor3d_Curve & C,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9);
+		 GCPnts_TangentialDeflection (const Adaptor3d_Curve & C,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9,const Standard_Real theMinLen = 1.0e-7);
 		%feature("compactdefaultargs") GCPnts_TangentialDeflection;
 		%feature("autodoc", "	:param C:
 	:type C: Adaptor3d_Curve &
@@ -627,9 +629,11 @@ class GCPnts_TangentialDeflection {
 	:type MinimumOfPoints: int
 	:param UTol: default value is 1.0e-9
 	:type UTol: float
+	:param theMinLen: default value is 1.0e-7
+	:type theMinLen: float
 	:rtype: None
 ") GCPnts_TangentialDeflection;
-		 GCPnts_TangentialDeflection (const Adaptor3d_Curve & C,const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9);
+		 GCPnts_TangentialDeflection (const Adaptor3d_Curve & C,const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9,const Standard_Real theMinLen = 1.0e-7);
 		%feature("compactdefaultargs") GCPnts_TangentialDeflection;
 		%feature("autodoc", "	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -641,9 +645,11 @@ class GCPnts_TangentialDeflection {
 	:type MinimumOfPoints: int
 	:param UTol: default value is 1.0e-9
 	:type UTol: float
+	:param theMinLen: default value is 1.0e-7
+	:type theMinLen: float
 	:rtype: None
 ") GCPnts_TangentialDeflection;
-		 GCPnts_TangentialDeflection (const Adaptor2d_Curve2d & C,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9);
+		 GCPnts_TangentialDeflection (const Adaptor2d_Curve2d & C,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9,const Standard_Real theMinLen = 1.0e-7);
 		%feature("compactdefaultargs") GCPnts_TangentialDeflection;
 		%feature("autodoc", "	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -659,9 +665,11 @@ class GCPnts_TangentialDeflection {
 	:type MinimumOfPoints: int
 	:param UTol: default value is 1.0e-9
 	:type UTol: float
+	:param theMinLen: default value is 1.0e-7
+	:type theMinLen: float
 	:rtype: None
 ") GCPnts_TangentialDeflection;
-		 GCPnts_TangentialDeflection (const Adaptor2d_Curve2d & C,const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9);
+		 GCPnts_TangentialDeflection (const Adaptor2d_Curve2d & C,const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9,const Standard_Real theMinLen = 1.0e-7);
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "	:param C:
 	:type C: Adaptor3d_Curve &
@@ -673,9 +681,11 @@ class GCPnts_TangentialDeflection {
 	:type MinimumOfPoints: int
 	:param UTol: default value is 1.0e-9
 	:type UTol: float
+	:param theMinLen: default value is 1.0e-7
+	:type theMinLen: float
 	:rtype: None
 ") Initialize;
-		void Initialize (const Adaptor3d_Curve & C,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9);
+		void Initialize (const Adaptor3d_Curve & C,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9,const Standard_Real theMinLen = 1.0e-7);
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "	:param C:
 	:type C: Adaptor3d_Curve &
@@ -691,9 +701,11 @@ class GCPnts_TangentialDeflection {
 	:type MinimumOfPoints: int
 	:param UTol: default value is 1.0e-9
 	:type UTol: float
+	:param theMinLen: default value is 1.0e-7
+	:type theMinLen: float
 	:rtype: None
 ") Initialize;
-		void Initialize (const Adaptor3d_Curve & C,const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9);
+		void Initialize (const Adaptor3d_Curve & C,const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9,const Standard_Real theMinLen = 1.0e-7);
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -705,9 +717,11 @@ class GCPnts_TangentialDeflection {
 	:type MinimumOfPoints: int
 	:param UTol: default value is 1.0e-9
 	:type UTol: float
+	:param theMinLen: default value is 1.0e-7
+	:type theMinLen: float
 	:rtype: None
 ") Initialize;
-		void Initialize (const Adaptor2d_Curve2d & C,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9);
+		void Initialize (const Adaptor2d_Curve2d & C,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9,const Standard_Real theMinLen = 1.0e-7);
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -723,9 +737,11 @@ class GCPnts_TangentialDeflection {
 	:type MinimumOfPoints: int
 	:param UTol: default value is 1.0e-9
 	:type UTol: float
+	:param theMinLen: default value is 1.0e-7
+	:type theMinLen: float
 	:rtype: None
 ") Initialize;
-		void Initialize (const Adaptor2d_Curve2d & C,const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9);
+		void Initialize (const Adaptor2d_Curve2d & C,const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Real AngularDeflection,const Standard_Real CurvatureDeflection,const Standard_Integer MinimumOfPoints = 2,const Standard_Real UTol = 1.0e-9,const Standard_Real theMinLen = 1.0e-7);
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "	* Add point to already calculated points (or replace existing) Returns index of new added point or founded with parametric tolerance (replaced if theIsReplace is true)
 
@@ -754,6 +770,20 @@ class GCPnts_TangentialDeflection {
 	:rtype: gp_Pnt
 ") Value;
 		gp_Pnt Value (const Standard_Integer I);
+		%feature("compactdefaultargs") ArcAngularStep;
+		%feature("autodoc", "	* Computes angular step for the arc using the given parameters.
+
+	:param theRadius:
+	:type theRadius: float
+	:param theLinearDeflection:
+	:type theLinearDeflection: float
+	:param theAngularDeflection:
+	:type theAngularDeflection: float
+	:param theMinLength:
+	:type theMinLength: float
+	:rtype: float
+") ArcAngularStep;
+		static Standard_Real ArcAngularStep (const Standard_Real theRadius,const Standard_Real theLinearDeflection,const Standard_Real theAngularDeflection,const Standard_Real theMinLength);
 };
 
 

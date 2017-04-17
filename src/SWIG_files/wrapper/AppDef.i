@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -101,7 +101,7 @@ class AppDef_Array1OfMultiPointConstraint {
 		%feature("autodoc", "	:param Other:
 	:type Other: AppDef_Array1OfMultiPointConstraint &
 	:rtype: AppDef_Array1OfMultiPointConstraint
-") operator=;
+") operator =;
 		const AppDef_Array1OfMultiPointConstraint & operator = (const AppDef_Array1OfMultiPointConstraint & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int

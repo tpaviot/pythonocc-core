@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -912,7 +912,7 @@ class BRepAlgo_DataMapOfShapeBoolean : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepAlgo_DataMapOfShapeBoolean &
 	:rtype: BRepAlgo_DataMapOfShapeBoolean
-") operator=;
+") operator =;
 		BRepAlgo_DataMapOfShapeBoolean & operator = (const BRepAlgo_DataMapOfShapeBoolean & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -995,7 +995,7 @@ class BRepAlgo_DataMapOfShapeInterference : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepAlgo_DataMapOfShapeInterference &
 	:rtype: BRepAlgo_DataMapOfShapeInterference
-") operator=;
+") operator =;
 		BRepAlgo_DataMapOfShapeInterference & operator = (const BRepAlgo_DataMapOfShapeInterference & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1714,7 +1714,7 @@ class BRepAlgo_SequenceOfSequenceOfInteger : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepAlgo_SequenceOfSequenceOfInteger &
 	:rtype: BRepAlgo_SequenceOfSequenceOfInteger
-") operator=;
+") operator =;
 		const BRepAlgo_SequenceOfSequenceOfInteger & operator = (const BRepAlgo_SequenceOfSequenceOfInteger & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -61,6 +61,10 @@ enum BRepOffset_Error {
 	BRepOffset_ExtentFaceFailed = 3,
 	BRepOffset_RadiusEqualOffset = 4,
 	BRepOffset_UnknownError = 5,
+	BRepOffset_BadNormalsOnGeometry = 6,
+	BRepOffset_C0Geometry = 7,
+	BRepOffset_NullOffset = 8,
+	BRepOffset_NotConnectedShell = 9,
 };
 
 enum BRepOffset_Mode {
@@ -603,7 +607,7 @@ class BRepOffset_DataMapOfShapeListOfInterval : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepOffset_DataMapOfShapeListOfInterval &
 	:rtype: BRepOffset_DataMapOfShapeListOfInterval
-") operator=;
+") operator =;
 		BRepOffset_DataMapOfShapeListOfInterval & operator = (const BRepOffset_DataMapOfShapeListOfInterval & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -686,7 +690,7 @@ class BRepOffset_DataMapOfShapeMapOfShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepOffset_DataMapOfShapeMapOfShape &
 	:rtype: BRepOffset_DataMapOfShapeMapOfShape
-") operator=;
+") operator =;
 		BRepOffset_DataMapOfShapeMapOfShape & operator = (const BRepOffset_DataMapOfShapeMapOfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -769,7 +773,7 @@ class BRepOffset_DataMapOfShapeOffset : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepOffset_DataMapOfShapeOffset &
 	:rtype: BRepOffset_DataMapOfShapeOffset
-") operator=;
+") operator =;
 		BRepOffset_DataMapOfShapeOffset & operator = (const BRepOffset_DataMapOfShapeOffset & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1194,7 +1198,7 @@ class BRepOffset_ListOfInterval {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepOffset_ListOfInterval &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const BRepOffset_ListOfInterval & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1470,6 +1474,18 @@ class BRepOffset_MakeOffset {
 	:rtype: TopTools_IndexedMapOfShape
 ") ClosingFaces;
 		const TopTools_IndexedMapOfShape & ClosingFaces ();
+		%feature("compactdefaultargs") CheckInputData;
+		%feature("autodoc", "	* Makes pre analysis of possibility offset perform. Use method Error() to get more information. Finds first error. List of checks: 1) Check for existence object with non-null offset. 2) Check for connectivity in offset shell. 3) Check continuity of input surfaces. 4) Check for normals existence on grid. returns 1 if possible make computations and 0 if not possible.
+
+	:rtype: bool
+") CheckInputData;
+		Standard_Boolean CheckInputData ();
+		%feature("compactdefaultargs") GetBadShape;
+		%feature("autodoc", "	* Return bad shape, which obtained in CheckInputData.
+
+	:rtype: TopoDS_Shape
+") GetBadShape;
+		const TopoDS_Shape  GetBadShape ();
 };
 
 

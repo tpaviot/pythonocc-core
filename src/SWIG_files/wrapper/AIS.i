@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -53,8 +53,8 @@ def register_handle(handle, base_object):
 /* typedefs */
 typedef NCollection_List <Handle_Standard_Transient> AIS_NListTransient;
 typedef AIS_NListTransient::Iterator AIS_NListIteratorOfListTransient;
-typedef AIS_InteractiveContext * AIS_PToContext;
 typedef NCollection_DataMap <Handle_Standard_Transient , AIS_NListIteratorOfListTransient> AIS_NDataMapOfTransientIteratorOfListTransient;
+typedef AIS_InteractiveContext * AIS_PToContext;
 /* end typedefs declaration */
 
 /* public enums */
@@ -601,7 +601,7 @@ class AIS {
 		%feature("autodoc", "	:param aPres:
 	:type aPres: Handle_Prs3d_Presentation &
 	:param aDrawer:
-	:type aDrawer: Handle_AIS_Drawer &
+	:type aDrawer: Handle_Prs3d_Drawer &
 	:param anEdge:
 	:type anEdge: TopoDS_Edge &
 	:param ProjCurve:
@@ -620,12 +620,12 @@ class AIS {
 	:type aCallTOL: Aspect_TypeOfLine
 	:rtype: void
 ") ComputeProjEdgePresentation;
-		static void ComputeProjEdgePresentation (const Handle_Prs3d_Presentation & aPres,const Handle_AIS_Drawer & aDrawer,const TopoDS_Edge & anEdge,const Handle_Geom_Curve & ProjCurve,const gp_Pnt & FirstP,const gp_Pnt & LastP,const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE,const Standard_Real aWidth = 2,const Aspect_TypeOfLine aProjTOL = Aspect_TOL_DASH,const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT);
+		static void ComputeProjEdgePresentation (const Handle_Prs3d_Presentation & aPres,const Handle_Prs3d_Drawer & aDrawer,const TopoDS_Edge & anEdge,const Handle_Geom_Curve & ProjCurve,const gp_Pnt & FirstP,const gp_Pnt & LastP,const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE,const Standard_Real aWidth = 2,const Aspect_TypeOfLine aProjTOL = Aspect_TOL_DASH,const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT);
 		%feature("compactdefaultargs") ComputeProjVertexPresentation;
 		%feature("autodoc", "	:param aPres:
 	:type aPres: Handle_Prs3d_Presentation &
 	:param aDrawer:
-	:type aDrawer: Handle_AIS_Drawer &
+	:type aDrawer: Handle_Prs3d_Drawer &
 	:param aVertex:
 	:type aVertex: TopoDS_Vertex &
 	:param ProjPoint:
@@ -640,7 +640,7 @@ class AIS {
 	:type aCallTOL: Aspect_TypeOfLine
 	:rtype: void
 ") ComputeProjVertexPresentation;
-		static void ComputeProjVertexPresentation (const Handle_Prs3d_Presentation & aPres,const Handle_AIS_Drawer & aDrawer,const TopoDS_Vertex & aVertex,const gp_Pnt & ProjPoint,const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE,const Standard_Real aWidth = 2,const Aspect_TypeOfMarker aProjTOM = Aspect_TOM_PLUS,const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT);
+		static void ComputeProjVertexPresentation (const Handle_Prs3d_Presentation & aPres,const Handle_Prs3d_Drawer & aDrawer,const TopoDS_Vertex & aVertex,const gp_Pnt & ProjPoint,const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE,const Standard_Real aWidth = 2,const Aspect_TypeOfMarker aProjTOM = Aspect_TOM_PLUS,const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT);
 };
 
 
@@ -948,6 +948,116 @@ class Handle_AIS_C0RegularityFilter : public Handle_SelectMgr_Filter {
 };
 
 %extend AIS_C0RegularityFilter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor AIS_ColoredDrawer;
+class AIS_ColoredDrawer : public Prs3d_Drawer {
+	public:
+		bool myIsHidden;
+		bool myHasOwnColor;
+		bool myHasOwnWidth;
+		%feature("compactdefaultargs") AIS_ColoredDrawer;
+		%feature("autodoc", "	:param theLink:
+	:type theLink: Handle_Prs3d_Drawer &
+	:rtype: None
+") AIS_ColoredDrawer;
+		 AIS_ColoredDrawer (const Handle_Prs3d_Drawer & theLink);
+		%feature("compactdefaultargs") IsHidden;
+		%feature("autodoc", "	:rtype: bool
+") IsHidden;
+		Standard_Boolean IsHidden ();
+		%feature("compactdefaultargs") SetHidden;
+		%feature("autodoc", "	:param theToHide:
+	:type theToHide: bool
+	:rtype: None
+") SetHidden;
+		void SetHidden (const Standard_Boolean theToHide);
+		%feature("compactdefaultargs") HasOwnColor;
+		%feature("autodoc", "	:rtype: bool
+") HasOwnColor;
+		Standard_Boolean HasOwnColor ();
+		%feature("compactdefaultargs") UnsetOwnColor;
+		%feature("autodoc", "	:rtype: None
+") UnsetOwnColor;
+		void UnsetOwnColor ();
+		%feature("compactdefaultargs") SetOwnColor;
+		%feature("autodoc", "	:param &:
+	:type &: Quantity_Color
+	:rtype: None
+") SetOwnColor;
+		void SetOwnColor (const Quantity_Color &);
+		%feature("compactdefaultargs") HasOwnWidth;
+		%feature("autodoc", "	:rtype: bool
+") HasOwnWidth;
+		Standard_Boolean HasOwnWidth ();
+		%feature("compactdefaultargs") UnsetOwnWidth;
+		%feature("autodoc", "	:rtype: None
+") UnsetOwnWidth;
+		void UnsetOwnWidth ();
+		%feature("compactdefaultargs") SetOwnWidth;
+		%feature("autodoc", "	:param Standard_Real:
+	:type Standard_Real: 
+	:rtype: None
+") SetOwnWidth;
+		void SetOwnWidth (const Standard_Real);
+		%feature("compactdefaultargs") DEFINE_STANDARD_RTTI;
+		%feature("autodoc", "	:param :
+	:type : AIS_ColoredDrawer
+	:rtype: None
+") DEFINE_STANDARD_RTTI;
+		 DEFINE_STANDARD_RTTI (AIS_ColoredDrawer );
+};
+
+
+%extend AIS_ColoredDrawer {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_ColoredDrawer(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_ColoredDrawer::Handle_AIS_ColoredDrawer %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_AIS_ColoredDrawer;
+class Handle_AIS_ColoredDrawer : public Handle_Prs3d_Drawer {
+
+    public:
+        // constructors
+        Handle_AIS_ColoredDrawer();
+        Handle_AIS_ColoredDrawer(const Handle_AIS_ColoredDrawer &aHandle);
+        Handle_AIS_ColoredDrawer(const AIS_ColoredDrawer *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_AIS_ColoredDrawer DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_AIS_ColoredDrawer {
+    AIS_ColoredDrawer* _get_reference() {
+    return (AIS_ColoredDrawer*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_ColoredDrawer {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
+%extend AIS_ColoredDrawer {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1429,7 +1539,7 @@ class AIS_DataMapOfILC : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: AIS_DataMapOfILC &
 	:rtype: AIS_DataMapOfILC
-") operator=;
+") operator =;
 		AIS_DataMapOfILC & operator = (const AIS_DataMapOfILC & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1512,7 +1622,7 @@ class AIS_DataMapOfIOStatus : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: AIS_DataMapOfIOStatus &
 	:rtype: AIS_DataMapOfIOStatus
-") operator=;
+") operator =;
 		AIS_DataMapOfIOStatus & operator = (const AIS_DataMapOfIOStatus & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1595,7 +1705,7 @@ class AIS_DataMapOfSelStat : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: AIS_DataMapOfSelStat &
 	:rtype: AIS_DataMapOfSelStat
-") operator=;
+") operator =;
 		AIS_DataMapOfSelStat & operator = (const AIS_DataMapOfSelStat & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1678,7 +1788,7 @@ class AIS_DataMapofIntegerListOfinteractive : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: AIS_DataMapofIntegerListOfinteractive &
 	:rtype: AIS_DataMapofIntegerListOfinteractive
-") operator=;
+") operator =;
 		AIS_DataMapofIntegerListOfinteractive & operator = (const AIS_DataMapofIntegerListOfinteractive & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1849,587 +1959,6 @@ class Handle_AIS_DimensionOwner : public Handle_SelectMgr_EntityOwner {
 };
 
 %extend AIS_DimensionOwner {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AIS_Drawer;
-class AIS_Drawer : public Prs3d_Drawer {
-	public:
-		%feature("compactdefaultargs") AIS_Drawer;
-		%feature("autodoc", "	* Constructs an empty attribute management framework.
-
-	:rtype: None
-") AIS_Drawer;
-		 AIS_Drawer ();
-		%feature("compactdefaultargs") TypeOfDeflection;
-		%feature("autodoc", "	* Returns the type of chordal deflection: relative to the size of the object or absolute.
-
-	:rtype: Aspect_TypeOfDeflection
-") TypeOfDeflection;
-		Aspect_TypeOfDeflection TypeOfDeflection ();
-		%feature("compactdefaultargs") MaximalChordialDeviation;
-		%feature("autodoc", "	* Returns the maximal chordal deviation. The default value is 0.1. Drawings of curves or patches are made with respect to an absolute maximal chordal deviation.
-
-	:rtype: Quantity_Length
-") MaximalChordialDeviation;
-		Quantity_Length MaximalChordialDeviation ();
-		%feature("compactdefaultargs") SetDeviationCoefficient;
-		%feature("autodoc", "	* Sets the hasOwnDeviationCoefficient flag to Standard_False
-
-	:rtype: None
-") SetDeviationCoefficient;
-		void SetDeviationCoefficient ();
-		%feature("compactdefaultargs") SetHLRDeviationCoefficient;
-		%feature("autodoc", "	* Sets the deviation coefficient aCoefficient for removal of hidden lines created by different viewpoints in different presentations. The Default value is 0.02.
-
-	:rtype: None
-") SetHLRDeviationCoefficient;
-		void SetHLRDeviationCoefficient ();
-		%feature("compactdefaultargs") SetDeviationAngle;
-		%feature("autodoc", "	* Sets the hasOwnDeviationAngle flag to Standard_False
-
-	:rtype: None
-") SetDeviationAngle;
-		void SetDeviationAngle ();
-		%feature("compactdefaultargs") SetHLRAngle;
-		%feature("autodoc", "	* Sets the angle of maximum chordal deviation for removal of hidden lines created by different viewpoints in different presentations. The default value is 20*PI/180.
-
-	:rtype: None
-") SetHLRAngle;
-		void SetHLRAngle ();
-		%feature("compactdefaultargs") SetDeviationCoefficient;
-		%feature("autodoc", "	* Sets the hasOwnDeviationCoefficient flag to Standard_True, sets myOwnDeviationCoefficient and myPreviousDeviationCoefficient
-
-	:param aCoefficient:
-	:type aCoefficient: float
-	:rtype: None
-") SetDeviationCoefficient;
-		void SetDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("compactdefaultargs") SetHLRDeviationCoefficient;
-		%feature("autodoc", "	* Sets the hasOwnHLRDeviationCoefficient flag to Standard_True, sets myOwnHLRDeviationCoefficient and myPreviousHLRDeviationCoefficient
-
-	:param aCoefficient:
-	:type aCoefficient: float
-	:rtype: None
-") SetHLRDeviationCoefficient;
-		void SetHLRDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("compactdefaultargs") SetDeviationAngle;
-		%feature("autodoc", "	* Sets the hasOwnDeviationAngle flag to Standard_True, sets myOwnDeviationAngle and myPreviousDeviationAngle
-
-	:param anAngle:
-	:type anAngle: float
-	:rtype: void
-") SetDeviationAngle;
-		virtual void SetDeviationAngle (const Standard_Real anAngle);
-		%feature("compactdefaultargs") SetHLRAngle;
-		%feature("autodoc", "	* Sets the hasOwnHLRDeviationAngle flag to Standard_True, sets myOwnHLRDeviationAngle and myPreviousHLRDeviationAngle
-
-	:param anAngle:
-	:type anAngle: float
-	:rtype: None
-") SetHLRAngle;
-		void SetHLRAngle (const Standard_Real anAngle);
-		%feature("compactdefaultargs") SetTypeOfHLR;
-		%feature("autodoc", "	* Sets the type of HLR algorithm used by drawer's interactive objects
-
-	:param theTypeOfHLR:
-	:type theTypeOfHLR: Prs3d_TypeOfHLR
-	:rtype: None
-") SetTypeOfHLR;
-		void SetTypeOfHLR (const Prs3d_TypeOfHLR theTypeOfHLR);
-		%feature("compactdefaultargs") TypeOfHLR;
-		%feature("autodoc", "	* Returns the type of HLR algorithm currently in use.
-
-	:rtype: Prs3d_TypeOfHLR
-") TypeOfHLR;
-		Prs3d_TypeOfHLR TypeOfHLR ();
-		%feature("compactdefaultargs") DeviationCoefficient;
-		%feature("autodoc", "	* Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through the method: SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient.
-
-	:rtype: float
-") DeviationCoefficient;
-		Standard_Real DeviationCoefficient ();
-		%feature("compactdefaultargs") HLRDeviationCoefficient;
-		%feature("autodoc", "	* Returns the real number value of the HLR deviation coefficient in this framework, if the flag hasOwnHLRDeviationCoefficient is true. If hasOwnHLRDeviationCoefficient is false, the shape's HLR deviation coefficient is used. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient give the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. To find the hidden lines, hidden line display mode entails recalculation of the view at each different projector perspective. Since hidden lines entail calculations of more than usual complexity to decompose them into these triangles, a deviation coefficient allowing greater tolerance is used. This increases efficiency in calculation. The Default value is 0.02.
-
-	:rtype: float
-") HLRDeviationCoefficient;
-		Standard_Real HLRDeviationCoefficient ();
-		%feature("compactdefaultargs") DeviationAngle;
-		%feature("autodoc", "	* Returns myOwnDeviationAngle if hasOwnDeviationAngle is True else gets myDeviationAngle field from Prs3d_Drawer
-
-	:rtype: float
-") DeviationAngle;
-		virtual Standard_Real DeviationAngle ();
-		%feature("compactdefaultargs") HLRAngle;
-		%feature("autodoc", "	* Returns the real number value of the deviation angle in hidden line removal views. The default value is 20*PI/180.
-
-	:rtype: float
-") HLRAngle;
-		Standard_Real HLRAngle ();
-		%feature("compactdefaultargs") PreviousDeviationCoefficient;
-		%feature("autodoc", "	* Saves the previous value used for the chordal deviation coefficient. The default value is 0.1.
-
-	:rtype: float
-") PreviousDeviationCoefficient;
-		Standard_Real PreviousDeviationCoefficient ();
-		%feature("compactdefaultargs") PreviousHLRDeviationCoefficient;
-		%feature("autodoc", "	* returns myPreviousHLRDeviationCoefficient
-
-	:rtype: float
-") PreviousHLRDeviationCoefficient;
-		Standard_Real PreviousHLRDeviationCoefficient ();
-		%feature("compactdefaultargs") PreviousDeviationAngle;
-		%feature("autodoc", "	* returns myPreviousDeviationAngle
-
-	:rtype: float
-") PreviousDeviationAngle;
-		Standard_Real PreviousDeviationAngle ();
-		%feature("compactdefaultargs") PreviousHLRDeviationAngle;
-		%feature("autodoc", "	* returns myPreviousHLRDeviationAngle
-
-	:rtype: float
-") PreviousHLRDeviationAngle;
-		Standard_Real PreviousHLRDeviationAngle ();
-		%feature("compactdefaultargs") IsOwnDeviationCoefficient;
-		%feature("autodoc", "	* Returns true if the there is a local setting for deviation coefficient in this framework for a specific interactive object.
-
-	:rtype: bool
-") IsOwnDeviationCoefficient;
-		Standard_Boolean IsOwnDeviationCoefficient ();
-		%feature("compactdefaultargs") IsOwnHLRDeviationCoefficient;
-		%feature("autodoc", "	* Returns true if the there is a setting for HLR deviation coefficient in this framework for a specific interactive object.
-
-	:rtype: bool
-") IsOwnHLRDeviationCoefficient;
-		Standard_Boolean IsOwnHLRDeviationCoefficient ();
-		%feature("compactdefaultargs") IsOwnDeviationAngle;
-		%feature("autodoc", "	* Returns true if the there is a local setting for deviation angle in this framework for a specific interactive object.
-
-	:rtype: bool
-") IsOwnDeviationAngle;
-		Standard_Boolean IsOwnDeviationAngle ();
-		%feature("compactdefaultargs") IsOwnHLRDeviationAngle;
-		%feature("autodoc", "	* Returns true if the there is a setting for HLR deviation angle in this framework for a specific interactive object.
-
-	:rtype: bool
-") IsOwnHLRDeviationAngle;
-		Standard_Boolean IsOwnHLRDeviationAngle ();
-		%feature("compactdefaultargs") Discretisation;
-		%feature("autodoc", "	* Draws algorithms using discretisation, a default number of points has been set to 17. You can use the method Prs3d_Drawer_SetDiscretisation to change this value.
-
-	:rtype: int
-") Discretisation;
-		Standard_Integer Discretisation ();
-		%feature("compactdefaultargs") MaximalParameterValue;
-		%feature("autodoc", "	* Sets the maximum value allowed for the first and last parameters of an infinite curve. By default, this value is 500000.
-
-	:rtype: float
-") MaximalParameterValue;
-		Standard_Real MaximalParameterValue ();
-		%feature("compactdefaultargs") IsoOnPlane;
-		%feature("autodoc", "	* returns True if the drawing of isos on planes is enabled.
-
-	:rtype: bool
-") IsoOnPlane;
-		Standard_Boolean IsoOnPlane ();
-		%feature("compactdefaultargs") UIsoAspect;
-		%feature("autodoc", "	* Defines the attributes which are used when drawing an U isoparametric curve of a face. Defines the number of U isoparametric curves to be drawn for a single face. The LineAspect for U isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY75 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
-
-	:rtype: Handle_Prs3d_IsoAspect
-") UIsoAspect;
-		Handle_Prs3d_IsoAspect UIsoAspect ();
-		%feature("compactdefaultargs") HasUIsoAspect;
-		%feature("autodoc", "	* Returns true if the Drawer has a UIso aspect setting active.
-
-	:rtype: bool
-") HasUIsoAspect;
-		Standard_Boolean HasUIsoAspect ();
-		%feature("compactdefaultargs") VIsoAspect;
-		%feature("autodoc", "	* Defines the attributes which are used when drawing an V isoparametric curve of a face. Defines the number of V isoparametric curves to be drawn for a single face. The LineAspect for V isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY82 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
-
-	:rtype: Handle_Prs3d_IsoAspect
-") VIsoAspect;
-		Handle_Prs3d_IsoAspect VIsoAspect ();
-		%feature("compactdefaultargs") HasVIsoAspect;
-		%feature("autodoc", "	* Returns true if the Drawer has a VIso aspect setting active.
-
-	:rtype: bool
-") HasVIsoAspect;
-		Standard_Boolean HasVIsoAspect ();
-		%feature("compactdefaultargs") FreeBoundaryAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_FreeBoundaryAspect. Stores the values for presentation of free boundaries, in other words, boundaries which are not shared . The LineAspect for the free boundaries can be edited. The default values are: Color: Quantity_NOC_GREEN Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by Prs3d_WFShape.
-
-	:rtype: Handle_Prs3d_LineAspect
-") FreeBoundaryAspect;
-		Handle_Prs3d_LineAspect FreeBoundaryAspect ();
-		%feature("compactdefaultargs") HasFreeBoundaryAspect;
-		%feature("autodoc", "	* Returns true if the Drawer has a free boundary aspect setting active.
-
-	:rtype: bool
-") HasFreeBoundaryAspect;
-		Standard_Boolean HasFreeBoundaryAspect ();
-		%feature("compactdefaultargs") FreeBoundaryDraw;
-		%feature("autodoc", "	* returns True if the drawing of the free boundaries is enabled.
-
-	:rtype: bool
-") FreeBoundaryDraw;
-		Standard_Boolean FreeBoundaryDraw ();
-		%feature("compactdefaultargs") WireAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_WireAspect. This method provides wire aspect settings. The LineAspect for wires can be edited. The default values are: Color: Quantity_NOC_RED Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the following algorithms: Prs3d_WFShape
-
-	:rtype: Handle_Prs3d_LineAspect
-") WireAspect;
-		Handle_Prs3d_LineAspect WireAspect ();
-		%feature("compactdefaultargs") HasLineAspect;
-		%feature("autodoc", "	* Returns true if the Interactive Object has a line visualization aspect.
-
-	:rtype: bool
-") HasLineAspect;
-		Standard_Boolean HasLineAspect ();
-		%feature("compactdefaultargs") HasWireAspect;
-		%feature("autodoc", "	* Returns true if the Drawer has a wire aspect setting active.
-
-	:rtype: bool
-") HasWireAspect;
-		Standard_Boolean HasWireAspect ();
-		%feature("compactdefaultargs") WireDraw;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_WireDraw. This method returns true if drawing of wires is enabled. The default setting is true.
-
-	:rtype: bool
-") WireDraw;
-		Standard_Boolean WireDraw ();
-		%feature("compactdefaultargs") UnFreeBoundaryAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_UnFreeBoundaryAspect, which provides settings for shared boundary line aspects. The LineAspect for shared boundaries can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the following algorithms: Prs3d_WFShape
-
-	:rtype: Handle_Prs3d_LineAspect
-") UnFreeBoundaryAspect;
-		Handle_Prs3d_LineAspect UnFreeBoundaryAspect ();
-		%feature("compactdefaultargs") HasUnFreeBoundaryAspect;
-		%feature("autodoc", "	* Returns true if the Drawer has an unfree boundary aspect setting active.
-
-	:rtype: bool
-") HasUnFreeBoundaryAspect;
-		Standard_Boolean HasUnFreeBoundaryAspect ();
-		%feature("compactdefaultargs") UnFreeBoundaryDraw;
-		%feature("autodoc", "	* Returns True if the drawing of the shared boundaries is enabled. True is the default setting.
-
-	:rtype: bool
-") UnFreeBoundaryDraw;
-		Standard_Boolean UnFreeBoundaryDraw ();
-		%feature("compactdefaultargs") LineAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_LineAspect, which provides settings for line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the following algorithms: Prs3d_Curve Prs3d_Line Prs3d_HLRShape
-
-	:rtype: Handle_Prs3d_LineAspect
-") LineAspect;
-		Handle_Prs3d_LineAspect LineAspect ();
-		%feature("compactdefaultargs") HasTextAspect;
-		%feature("autodoc", "	:rtype: bool
-") HasTextAspect;
-		Standard_Boolean HasTextAspect ();
-		%feature("compactdefaultargs") TextAspect;
-		%feature("autodoc", "	:rtype: Handle_Prs3d_TextAspect
-") TextAspect;
-		Handle_Prs3d_TextAspect TextAspect ();
-		%feature("compactdefaultargs") LineArrowDraw;
-		%feature("autodoc", "	* Returns True if the drawing of an arrow at the end of each line is enabled. The default setting is False.
-
-	:rtype: bool
-") LineArrowDraw;
-		Standard_Boolean LineArrowDraw ();
-		%feature("compactdefaultargs") ArrowAspect;
-		%feature("autodoc", "	:rtype: Handle_Prs3d_ArrowAspect
-") ArrowAspect;
-		Handle_Prs3d_ArrowAspect ArrowAspect ();
-		%feature("compactdefaultargs") PointAspect;
-		%feature("autodoc", "	* Returns the point aspect setting. The default values are: Color: Quantity_NOC_YELLOW Type of marker: Aspect_TOM_PLUS Scale: 1. These attributes are used by the following algorithms: Prs3d_Point
-
-	:rtype: Handle_Prs3d_PointAspect
-") PointAspect;
-		Handle_Prs3d_PointAspect PointAspect ();
-		%feature("compactdefaultargs") HasPointAspect;
-		%feature("autodoc", "	* Returns true if the Drawer has a point aspect setting active.
-
-	:rtype: bool
-") HasPointAspect;
-		Standard_Boolean HasPointAspect ();
-		%feature("compactdefaultargs") SetVertexDrawMode;
-		%feature("autodoc", "	* Sets the mode of visualization of vertices by AIS_Shape and helper algorithms. By default, only isolated vertices not belonging to any face are drawn, that corresponds to <b>Prs3d_VDM_Isolated</b> mode. Switching to <b>Prs3d_VDM_Isolated</b> mode makes all shape's vertices visible. To inherit this parameter from the global drawer instance ('the link') when it is present, <b>Prs3d_VDM_Inherited</b> value should be used.
-
-	:param theMode:
-	:type theMode: Prs3d_VertexDrawMode
-	:rtype: None
-") SetVertexDrawMode;
-		void SetVertexDrawMode (const Prs3d_VertexDrawMode theMode);
-		%feature("compactdefaultargs") VertexDrawMode;
-		%feature("autodoc", "	* Returns the current mode of visualization of vertices of a TopoDS_Shape instance.
-
-	:rtype: Prs3d_VertexDrawMode
-") VertexDrawMode;
-		Prs3d_VertexDrawMode VertexDrawMode ();
-		%feature("compactdefaultargs") IsOwnVertexDrawMode;
-		%feature("autodoc", "	* Returns true if the vertex draw mode is not equal to <b>Prs3d_VDM_Inherited</b>. This means that individual vertex draw mode value (i.e. not inherited from the global drawer) is used for a specific interactive object.
-
-	:rtype: bool
-") IsOwnVertexDrawMode;
-		Standard_Boolean IsOwnVertexDrawMode ();
-		%feature("compactdefaultargs") ShadingAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_ShadingAspect, which provides settings for shading aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Material: Graphic3d_NOM_BRASS hading aspect is obtained through decomposition of 3D faces into triangles, each side of each triangle being a chord of the corresponding curved edge in the face. Reflection of light in each projector perspective is then calculated for each of the resultant triangular planes.
-
-	:rtype: Handle_Prs3d_ShadingAspect
-") ShadingAspect;
-		Handle_Prs3d_ShadingAspect ShadingAspect ();
-		%feature("compactdefaultargs") HasShadingAspect;
-		%feature("autodoc", "	* Returns True if the Drawer has shading aspect active.
-
-	:rtype: bool
-") HasShadingAspect;
-		Standard_Boolean HasShadingAspect ();
-		%feature("compactdefaultargs") ShadingAspectGlobal;
-		%feature("autodoc", "	* Provides the attributes for hidden line removal.
-
-	:rtype: bool
-") ShadingAspectGlobal;
-		Standard_Boolean ShadingAspectGlobal ();
-		%feature("compactdefaultargs") DrawHiddenLine;
-		%feature("autodoc", "	* Returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
-
-	:rtype: bool
-") DrawHiddenLine;
-		Standard_Boolean DrawHiddenLine ();
-		%feature("compactdefaultargs") HiddenLineAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_HiddenLineAspect, which provides settings for hidden line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_DASH Width: 1.
-
-	:rtype: Handle_Prs3d_LineAspect
-") HiddenLineAspect;
-		Handle_Prs3d_LineAspect HiddenLineAspect ();
-		%feature("compactdefaultargs") SeenLineAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_SeenLineAspect, which provides settings for seen line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1.
-
-	:rtype: Handle_Prs3d_LineAspect
-") SeenLineAspect;
-		Handle_Prs3d_LineAspect SeenLineAspect ();
-		%feature("compactdefaultargs") HasPlaneAspect;
-		%feature("autodoc", "	:rtype: bool
-") HasPlaneAspect;
-		Standard_Boolean HasPlaneAspect ();
-		%feature("compactdefaultargs") PlaneAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_PlaneAspect. This method provides settings for the appearance of planes.
-
-	:rtype: Handle_Prs3d_PlaneAspect
-") PlaneAspect;
-		Handle_Prs3d_PlaneAspect PlaneAspect ();
-		%feature("compactdefaultargs") VectorAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_VectorAspect, which provides settings for the appearance of vectors. These settings can be edited. The default values are: Color: Quantity_NOC_SKYBLUE Type of line: Aspect_TOL_SOLID Width: 1.
-
-	:rtype: Handle_Prs3d_LineAspect
-") VectorAspect;
-		Handle_Prs3d_LineAspect VectorAspect ();
-		%feature("compactdefaultargs") SetFaceBoundaryDraw;
-		%feature("autodoc", "	* Enables or disables drawing of face boundaries for shading presentations. The method sets drawing flag owned by the drawer that will be used during visualization instead of the one set in link. theIsEnabled is a boolean flag indicating whether the face boundaries should be drawn or not.
-
-	:param theIsEnabled:
-	:type theIsEnabled: bool
-	:rtype: None
-") SetFaceBoundaryDraw;
-		void SetFaceBoundaryDraw (const Standard_Boolean theIsEnabled);
-		%feature("compactdefaultargs") IsFaceBoundaryDraw;
-		%feature("autodoc", "	* Checks whether the drawing of face boundaries is enabled or not.
-
-	:rtype: bool
-") IsFaceBoundaryDraw;
-		Standard_Boolean IsFaceBoundaryDraw ();
-		%feature("compactdefaultargs") SetFaceBoundaryAspect;
-		%feature("autodoc", "	* Sets line aspect for face boundaries. The method sets line aspect owned by the drawer that will be used during visualization instead of the one set in link. theAspect is the line aspect that determines the look of the face boundaries.
-
-	:param theAspect:
-	:type theAspect: Handle_Prs3d_LineAspect &
-	:rtype: None
-") SetFaceBoundaryAspect;
-		void SetFaceBoundaryAspect (const Handle_Prs3d_LineAspect & theAspect);
-		%feature("compactdefaultargs") FaceBoundaryAspect;
-		%feature("autodoc", "	* Returns line aspect of face boundaries.
-
-	:rtype: Handle_Prs3d_LineAspect
-") FaceBoundaryAspect;
-		Handle_Prs3d_LineAspect FaceBoundaryAspect ();
-		%feature("compactdefaultargs") IsOwnFaceBoundaryDraw;
-		%feature("autodoc", "	* Returns true if the drawer has its own attribute for 'draw face boundaries' flag that overrides the one in the link.
-
-	:rtype: bool
-") IsOwnFaceBoundaryDraw;
-		Standard_Boolean IsOwnFaceBoundaryDraw ();
-		%feature("compactdefaultargs") IsOwnFaceBoundaryAspect;
-		%feature("autodoc", "	* Returns true if the drawer has its own attribute for face boundaries aspect that overrides the one in the link.
-
-	:rtype: bool
-") IsOwnFaceBoundaryAspect;
-		Standard_Boolean IsOwnFaceBoundaryAspect ();
-		%feature("compactdefaultargs") HasDatumAspect;
-		%feature("autodoc", "	:rtype: bool
-") HasDatumAspect;
-		Standard_Boolean HasDatumAspect ();
-		%feature("compactdefaultargs") DatumAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_DatumAspect, which provides settings for the appearance of datums. These settings can be edited. The default values for the three axes are: Color: Quantity_NOC_PEACHPUFF Type of line: Aspect_TOL_SOLID Width: 1.
-
-	:rtype: Handle_Prs3d_DatumAspect
-") DatumAspect;
-		Handle_Prs3d_DatumAspect DatumAspect ();
-		%feature("compactdefaultargs") DimensionAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_DimensionAspect, which provides settings for the appearance of dimensions.
-
-	:rtype: Handle_Prs3d_DimensionAspect
-") DimensionAspect;
-		Handle_Prs3d_DimensionAspect DimensionAspect ();
-		%feature("compactdefaultargs") HasDimensionAspect;
-		%feature("autodoc", "	:rtype: bool
-") HasDimensionAspect;
-		Standard_Boolean HasDimensionAspect ();
-		%feature("compactdefaultargs") SetDimLengthModelUnits;
-		%feature("autodoc", "	* Sets dimension length model units for computing of dimension presentation.
-
-	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
-	:rtype: None
-") SetDimLengthModelUnits;
-		void SetDimLengthModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("compactdefaultargs") SetDimAngleModelUnits;
-		%feature("autodoc", "	* Sets dimension angle model units for computing of dimension presentation.
-
-	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
-	:rtype: None
-") SetDimAngleModelUnits;
-		void SetDimAngleModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("compactdefaultargs") DimAngleModelUnits;
-		%feature("autodoc", "	* Returns angle model units for the dimension presentation.
-
-	:rtype: TCollection_AsciiString
-") DimAngleModelUnits;
-		const TCollection_AsciiString & DimAngleModelUnits ();
-		%feature("compactdefaultargs") DimLengthModelUnits;
-		%feature("autodoc", "	* Returns length model units for the dimension presentation.
-
-	:rtype: TCollection_AsciiString
-") DimLengthModelUnits;
-		const TCollection_AsciiString & DimLengthModelUnits ();
-		%feature("compactdefaultargs") SetDimLengthDisplayUnits;
-		%feature("autodoc", "	* Sets length units in which value for dimension presentation is displayed.
-
-	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
-	:rtype: None
-") SetDimLengthDisplayUnits;
-		void SetDimLengthDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("compactdefaultargs") SetDimAngleDisplayUnits;
-		%feature("autodoc", "	* Sets angle units in which value for dimension presentation is displayed.
-
-	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
-	:rtype: None
-") SetDimAngleDisplayUnits;
-		void SetDimAngleDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("compactdefaultargs") DimLengthDisplayUnits;
-		%feature("autodoc", "	* Returns length units in which dimension presentation is displayed.
-
-	:rtype: TCollection_AsciiString
-") DimLengthDisplayUnits;
-		const TCollection_AsciiString & DimLengthDisplayUnits ();
-		%feature("compactdefaultargs") DimAngleDisplayUnits;
-		%feature("autodoc", "	* Returns angle units in which dimension presentation is displayed.
-
-	:rtype: TCollection_AsciiString
-") DimAngleDisplayUnits;
-		const TCollection_AsciiString & DimAngleDisplayUnits ();
-		%feature("compactdefaultargs") SectionAspect;
-		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_SectionAspect, which provides settings for wires which highlight sections. The LineAspect for the wire can be edited. The default values are: Color: Quantity_NOC_ORANGE Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the following algorithms: Prs3d_WFShape
-
-	:rtype: Handle_Prs3d_LineAspect
-") SectionAspect;
-		Handle_Prs3d_LineAspect SectionAspect ();
-		%feature("compactdefaultargs") Link;
-		%feature("autodoc", "	:rtype: Handle_Prs3d_Drawer
-") Link;
-		Handle_Prs3d_Drawer Link ();
-		%feature("compactdefaultargs") HasLink;
-		%feature("autodoc", "	:rtype: bool
-") HasLink;
-		Standard_Boolean HasLink ();
-		%feature("compactdefaultargs") Link;
-		%feature("autodoc", "	:param aDrawer:
-	:type aDrawer: Handle_Prs3d_Drawer &
-	:rtype: None
-") Link;
-		void Link (const Handle_Prs3d_Drawer & aDrawer);
-		%feature("compactdefaultargs") ClearLocalAttributes;
-		%feature("autodoc", "	* Removes attributes stored in a Local Context.
-
-	:rtype: void
-") ClearLocalAttributes;
-		virtual void ClearLocalAttributes ();
-		%feature("compactdefaultargs") WasLastLocal;
-		%feature("autodoc", "	* Returns true if the last called attribute was local; false if it was global.
-
-	:rtype: bool
-") WasLastLocal;
-		Standard_Boolean WasLastLocal ();
-		%feature("compactdefaultargs") HasLocalAttributes;
-		%feature("autodoc", "	* Returns true if a Local Context has stored attributes for Interactive Objects.
-
-	:rtype: bool
-") HasLocalAttributes;
-		Standard_Boolean HasLocalAttributes ();
-};
-
-
-%extend AIS_Drawer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_Drawer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_Drawer::Handle_AIS_Drawer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_Drawer;
-class Handle_AIS_Drawer : public Handle_Prs3d_Drawer {
-
-    public:
-        // constructors
-        Handle_AIS_Drawer();
-        Handle_AIS_Drawer(const Handle_AIS_Drawer &aHandle);
-        Handle_AIS_Drawer(const AIS_Drawer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_Drawer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_Drawer {
-    AIS_Drawer* _get_reference() {
-    return (AIS_Drawer*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_Drawer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend AIS_Drawer {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2961,7 +2490,7 @@ class AIS_IndexedDataMapOfOwnerPrs : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: AIS_IndexedDataMapOfOwnerPrs &
 	:rtype: AIS_IndexedDataMapOfOwnerPrs
-") operator=;
+") operator =;
 		AIS_IndexedDataMapOfOwnerPrs & operator = (const AIS_IndexedDataMapOfOwnerPrs & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -3093,21 +2622,23 @@ class AIS_InteractiveContext : public MMgt_TShared {
 ") Display;
 		void Display (const Handle_AIS_InteractiveObject & anIobj,const Standard_Boolean updateviewer = Standard_True);
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "	* Controls the choice between the using the display and selection modes of open local context which you have defined and activating those available by default. If no Local Context is opened. and the Interactive Object aniobj has no display mode of its own, the default display mode, 0, is used. Likewise, if aniobj has no selection mode of its own, the default one, 0, is used. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated. If aSelectionMode equals -1, anIobj will not be activated: it will be displayed but will not be selectable. Use this if you want to view the object in open local context without selection. Note: This option is only available in Local Context. If allowDecomposition equals true, anIObj can have subshapes detected by selection mechanisms. anIObj must be able to give a shape selection modes which fit the AIS_Shape selection modes: - vertices: 1 - edges: 2 - wires: 3.
+		%feature("autodoc", "	* Controls the choice between the using the display and selection modes of open local context which you have defined and activating those available by default. If no Local Context is opened. and the Interactive Object theIObj has no display mode of its own, the default display mode, 0, is used. Likewise, if theIObj has no selection mode of its own, the default one, 0, is used. If a local context is open and if theToUpdateViewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated. If theSelectionMode equals -1, theIObj will not be activated: it will be displayed but will not be selectable. Use this if you want to view the object in open local context without selection. Note: This option is only available in Local Context. If theToAllowDecomposition equals true, theIObj can have subshapes detected by selection mechanisms. theIObj must be able to give a shape selection modes which fit the AIS_Shape selection modes: - vertices: 1 - edges: 2 - wires: 3.
 
-	:param anIobj:
-	:type anIobj: Handle_AIS_InteractiveObject &
-	:param amode:
-	:type amode: int
-	:param aSelectionMode:
-	:type aSelectionMode: int
-	:param updateviewer: default value is Standard_True
-	:type updateviewer: bool
-	:param allowdecomposition: default value is Standard_True
-	:type allowdecomposition: bool
+	:param theIObj:
+	:type theIObj: Handle_AIS_InteractiveObject &
+	:param theDispMode:
+	:type theDispMode: int
+	:param theSelectionMode:
+	:type theSelectionMode: int
+	:param theToUpdateViewer: default value is Standard_True
+	:type theToUpdateViewer: bool
+	:param theToAllowDecomposition: default value is Standard_True
+	:type theToAllowDecomposition: bool
+	:param theDispStatus: default value is AIS_DS_None
+	:type theDispStatus: AIS_DisplayStatus
 	:rtype: None
 ") Display;
-		void Display (const Handle_AIS_InteractiveObject & anIobj,const Standard_Integer amode,const Standard_Integer aSelectionMode,const Standard_Boolean updateviewer = Standard_True,const Standard_Boolean allowdecomposition = Standard_True);
+		void Display (const Handle_AIS_InteractiveObject & theIObj,const Standard_Integer theDispMode,const Standard_Integer theSelectionMode,const Standard_Boolean theToUpdateViewer = Standard_True,const Standard_Boolean theToAllowDecomposition = Standard_True,const AIS_DisplayStatus theDispStatus = AIS_DS_None);
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "	* Allows you to load the Interactive Object aniobj with a given selection mode SelectionMode, and/or with the desired decomposition option, whether the object is visualized or not. If AllowDecomp = Standard_True and, if the interactive object is of the 'Shape' type, these 'standard' selection modes will be automatically activated as a function of the modes present in the Local Context. The loaded objects will be selectable but displayable in highlighting only when detected by the Selector. This method is available only when Local Contexts are open.
 
@@ -3172,16 +2703,6 @@ class AIS_InteractiveContext : public MMgt_TShared {
 	:rtype: bool
 ") KeepTemporary;
 		Standard_Boolean KeepTemporary (const Handle_AIS_InteractiveObject & anIObj,const Standard_Integer InWhichLocal = -1);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* Removes the interactive object aniobj from all viewers. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
-
-	:param aniobj:
-	:type aniobj: Handle_AIS_InteractiveObject &
-	:param updateviewer: default value is Standard_True
-	:type updateviewer: bool
-	:rtype: None
-") Clear;
-		void Clear (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
 		%feature("compactdefaultargs") ClearPrs;
 		%feature("autodoc", "	* Empties the graphic presentation of the mode indexed by aMode. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated. Warning Removes anIobj. anIobj is still active if it was previously activated.
 
@@ -3255,7 +2776,7 @@ class AIS_InteractiveContext : public MMgt_TShared {
 ") SetDisplayPriority;
 		void SetDisplayPriority (const Handle_AIS_InteractiveObject & anIobj,const Standard_Integer aPriority);
 		%feature("compactdefaultargs") SetZLayer;
-		%feature("autodoc", "	* Set Z layer id for interactive object. The layer can be specified for displayed object only. The Z layers can be used to display temporarily presentations of some object in front of the other objects in the scene. The ids for Z layers are generated by V3d_Viewer. Note that Z layers differ from under-/overlayer in V3d_View: under-/overlayer are intended for specific 2D drawings that appear behind/in front of all 3D presentations, while SetZLayer() method applies to regular 3D presentations and does not imply any specific drawing methods.
+		%feature("autodoc", "	* Set Z layer id for interactive object. The Z layers can be used to display temporarily presentations of some object in front of the other objects in the scene. The ids for Z layers are generated by V3d_Viewer.
 
 	:param theIObj:
 	:type theIObj: Handle_AIS_InteractiveObject &
@@ -3265,7 +2786,7 @@ class AIS_InteractiveContext : public MMgt_TShared {
 ") SetZLayer;
 		void SetZLayer (const Handle_AIS_InteractiveObject & theIObj,const Standard_Integer theLayerId);
 		%feature("compactdefaultargs") GetZLayer;
-		%feature("autodoc", "	* Get Z layer id set for displayed interactive object. If the object doesn't exists in context or has no computed presentations, the method returns -1.
+		%feature("autodoc", "	* Get Z layer id set for displayed interactive object.
 
 	:param theIObj:
 	:type theIObj: Handle_AIS_InteractiveObject &
@@ -3366,48 +2887,32 @@ class AIS_InteractiveContext : public MMgt_TShared {
 	:rtype: None
 ") UnsetSelectionMode;
 		void UnsetSelectionMode (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("compactdefaultargs") SetSensitivityMode;
-		%feature("autodoc", "	* Sets the selection sensitivity mode. SM_WINDOW mode uses the specified pixel tolerance to compute the sensitivity value, SM_VIEW mode allows to define the sensitivity manually.
-
-	:param aMode:
-	:type aMode: StdSelect_SensitivityMode
-	:rtype: None
-") SetSensitivityMode;
-		void SetSensitivityMode (const StdSelect_SensitivityMode aMode);
-		%feature("compactdefaultargs") SensitivityMode;
-		%feature("autodoc", "	* Returns the selection sensitivity mode.
-
-	:rtype: StdSelect_SensitivityMode
-") SensitivityMode;
-		StdSelect_SensitivityMode SensitivityMode ();
-		%feature("compactdefaultargs") SetSensitivity;
-		%feature("autodoc", "	* Sets the sensitivity aPrecision according to the view size for the current context or local context if any is activated. Sets the sensitivity aPrecision in pixels for the current context or local context if any is activated. By default, this sensitivity is equal to 4 pixels. When a local context is open, the defined sensitivity applies to this local context instead of the main context.
-
-	:param aPrecision:
-	:type aPrecision: float
-	:rtype: None
-") SetSensitivity;
-		void SetSensitivity (const Standard_Real aPrecision);
-		%feature("compactdefaultargs") Sensitivity;
-		%feature("autodoc", "	* Returns the selection sensitivity value.
-
-	:rtype: float
-") Sensitivity;
-		Standard_Real Sensitivity ();
 		%feature("compactdefaultargs") SetPixelTolerance;
-		%feature("autodoc", "	* Define the current selection pixel sensitivity for this context or local context if any one is activated. Warning: When a local context is open the sensitivity is apply on it instead on the main context.
+		%feature("autodoc", "	* Disables the mechanism of adaptive tolerance calculation in SelectMgr_ViewerSelector and sets the given tolerance for ALL sensitive entities activated. For more information, see SelectMgr_ViewerSelector documentation Warning: When a local context is open the sensitivity is apply on it instead on the main context.
 
-	:param aPrecision: default value is 4
+	:param aPrecision: default value is 2
 	:type aPrecision: int
 	:rtype: None
 ") SetPixelTolerance;
-		void SetPixelTolerance (const Standard_Integer aPrecision = 4);
+		void SetPixelTolerance (const Standard_Integer aPrecision = 2);
 		%feature("compactdefaultargs") PixelTolerance;
 		%feature("autodoc", "	* Returns the pixel tolerance.
 
 	:rtype: int
 ") PixelTolerance;
 		Standard_Integer PixelTolerance ();
+		%feature("compactdefaultargs") SetSelectionSensitivity;
+		%feature("autodoc", "	* Allows to manage sensitivity of a particular selection of interactive object theObject and changes previous sensitivity value of all sensitive entities in selection with theMode to the given theNewSensitivity.
+
+	:param theObject:
+	:type theObject: Handle_AIS_InteractiveObject &
+	:param theMode:
+	:type theMode: int
+	:param theNewSensitivity:
+	:type theNewSensitivity: int
+	:rtype: None
+") SetSelectionSensitivity;
+		void SetSelectionSensitivity (const Handle_AIS_InteractiveObject & theObject,const Standard_Integer theMode,const Standard_Integer theNewSensitivity);
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "	* Puts the location aLocation on the initial graphic representation and the selection for the entity aniobj. In other words, aniobj is visible and selectable at a position other than initial position. Graphic and selection primitives are not recomputed. To clean the view correctly, you must reset the previous location.
 
@@ -3556,12 +3061,12 @@ class AIS_InteractiveContext : public MMgt_TShared {
 	:param aniobj:
 	:type aniobj: Handle_AIS_InteractiveObject &
 	:param aDrawer:
-	:type aDrawer: Handle_AIS_Drawer &
+	:type aDrawer: Handle_Prs3d_Drawer &
 	:param updateviewer: default value is Standard_True
 	:type updateviewer: bool
 	:rtype: None
 ") SetLocalAttributes;
-		void SetLocalAttributes (const Handle_AIS_InteractiveObject & aniobj,const Handle_AIS_Drawer & aDrawer,const Standard_Boolean updateviewer = Standard_True);
+		void SetLocalAttributes (const Handle_AIS_InteractiveObject & aniobj,const Handle_Prs3d_Drawer & aDrawer,const Standard_Boolean updateviewer = Standard_True);
 		%feature("compactdefaultargs") UnsetLocalAttributes;
 		%feature("autodoc", "	* Removes the settings for local attributes of the entity anObj and returns to the Neutral Point attributes or those of the previous local context. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
@@ -3919,7 +3424,7 @@ class AIS_InteractiveContext : public MMgt_TShared {
 ") SetDeviationCoefficient;
 		void SetDeviationCoefficient (const Standard_Real aCoefficient);
 		%feature("compactdefaultargs") DeviationCoefficient;
-		%feature("autodoc", "	* Returns the deviation coefficient. Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through AIS_Drawer::SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient.
+		%feature("autodoc", "	* Returns the deviation coefficient. Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through Prs3d_Drawer::SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient.
 
 	:rtype: float
 ") DeviationCoefficient;
@@ -4406,14 +3911,14 @@ class AIS_InteractiveContext : public MMgt_TShared {
 		%feature("autodoc", "	* Returns a collection containing all entity owners created for the interactive object <theIObj> in the selection mode theMode (in all active modes if the Mode == -1)
 
 	:param theOwners:
-	:type theOwners: SelectMgr_IndexedMapOfOwner &
+	:type theOwners: Handle_SelectMgr_IndexedMapOfOwner &
 	:param theIObj:
 	:type theIObj: Handle_AIS_InteractiveObject &
 	:param theMode: default value is -1
 	:type theMode: int
 	:rtype: None
 ") EntityOwners;
-		void EntityOwners (SelectMgr_IndexedMapOfOwner & theOwners,const Handle_AIS_InteractiveObject & theIObj,const Standard_Integer theMode = -1);
+		void EntityOwners (Handle_SelectMgr_IndexedMapOfOwner & theOwners,const Handle_AIS_InteractiveObject & theIObj,const Standard_Integer theMode = -1);
 		%feature("compactdefaultargs") Interactive;
 		%feature("autodoc", "	* Returns the location of the selected Interactive Object.
 
@@ -4627,9 +4132,11 @@ class AIS_InteractiveContext : public MMgt_TShared {
 	:type anIobj: Handle_AIS_InteractiveObject &
 	:param aMode: default value is 0
 	:type aMode: int
+	:param theIsForce: default value is Standard_False
+	:type theIsForce: bool
 	:rtype: None
 ") Activate;
-		void Activate (const Handle_AIS_InteractiveObject & anIobj,const Standard_Integer aMode = 0);
+		void Activate (const Handle_AIS_InteractiveObject & anIobj,const Standard_Integer aMode = 0,const Standard_Boolean theIsForce = Standard_False);
 		%feature("compactdefaultargs") Deactivate;
 		%feature("autodoc", "	* Deactivates all the activated selection modes of an object.
 
@@ -4914,18 +4421,6 @@ class AIS_InteractiveContext : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: int
 ") HighestIndex;
 		Standard_Integer HighestIndex ();
-		%feature("compactdefaultargs") DisplayActiveAreas;
-		%feature("autodoc", "	:param aView:
-	:type aView: Handle_V3d_View &
-	:rtype: None
-") DisplayActiveAreas;
-		void DisplayActiveAreas (const Handle_V3d_View & aView);
-		%feature("compactdefaultargs") ClearActiveAreas;
-		%feature("autodoc", "	:param aView:
-	:type aView: Handle_V3d_View &
-	:rtype: None
-") ClearActiveAreas;
-		void ClearActiveAreas (const Handle_V3d_View & aView);
 		%feature("compactdefaultargs") DisplayActiveSensitive;
 		%feature("autodoc", "	:param aView:
 	:type aView: Handle_V3d_View &
@@ -4938,6 +4433,18 @@ class AIS_InteractiveContext : public MMgt_TShared {
 	:rtype: None
 ") ClearActiveSensitive;
 		void ClearActiveSensitive (const Handle_V3d_View & aView);
+		%feature("compactdefaultargs") FitSelected;
+		%feature("autodoc", "	* Fits the view correspondingly to the bounds of selected objects. Infinite objects are ignored if infinite state of AIS_InteractiveObject is set to true.
+
+	:param theView:
+	:type theView: Handle_V3d_View &
+	:param theMargin: default value is 0.01
+	:type theMargin: float
+	:param theToUpdate: default value is Standard_True
+	:type theToUpdate: bool
+	:rtype: None
+") FitSelected;
+		void FitSelected (const Handle_V3d_View & theView,const Standard_Real theMargin = 0.01,const Standard_Boolean theToUpdate = Standard_True);
 		%feature("compactdefaultargs") DisplayActiveSensitive;
 		%feature("autodoc", "	:param anObject:
 	:type anObject: Handle_AIS_InteractiveObject &
@@ -4946,14 +4453,6 @@ class AIS_InteractiveContext : public MMgt_TShared {
 	:rtype: None
 ") DisplayActiveSensitive;
 		void DisplayActiveSensitive (const Handle_AIS_InteractiveObject & anObject,const Handle_V3d_View & aView);
-		%feature("compactdefaultargs") DisplayActiveAreas;
-		%feature("autodoc", "	:param anObject:
-	:type anObject: Handle_AIS_InteractiveObject &
-	:param aView:
-	:type aView: Handle_V3d_View &
-	:rtype: None
-") DisplayActiveAreas;
-		void DisplayActiveAreas (const Handle_AIS_InteractiveObject & anObject,const Handle_V3d_View & aView);
 		%feature("compactdefaultargs") IsInLocal;
 		%feature("autodoc", "	* returns if possible, the first local context where the object is seen
 
@@ -4964,6 +4463,48 @@ class AIS_InteractiveContext : public MMgt_TShared {
 	:rtype: bool
 ") IsInLocal;
 		Standard_Boolean IsInLocal (const Handle_AIS_InteractiveObject & anObject,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") RebuildSelectionStructs;
+		%feature("autodoc", "	* Rebuilds 1st level of BVH selection forcibly
+
+	:rtype: None
+") RebuildSelectionStructs;
+		void RebuildSelectionStructs ();
+		%feature("compactdefaultargs") SetViewAffinity;
+		%feature("autodoc", "	* setup object visibility in specified view, has no effect if object is not disaplyed in this context.
+
+	:param theIObj:
+	:type theIObj: Handle_AIS_InteractiveObject &
+	:param theView:
+	:type theView: Handle_V3d_View &
+	:param theIsVisible:
+	:type theIsVisible: bool
+	:rtype: None
+") SetViewAffinity;
+		void SetViewAffinity (const Handle_AIS_InteractiveObject & theIObj,const Handle_V3d_View & theView,const Standard_Boolean theIsVisible);
+		%feature("compactdefaultargs") Disconnect;
+		%feature("autodoc", "	* Disconnects theObjToDisconnect from theAssembly and removes dependent selection structures
+
+	:param theAssembly:
+	:type theAssembly: Handle_AIS_InteractiveObject &
+	:param theObjToDisconnect: default value is NULL
+	:type theObjToDisconnect: Handle_AIS_InteractiveObject &
+	:rtype: None
+") Disconnect;
+		void Disconnect (const Handle_AIS_InteractiveObject & theAssembly,const Handle_AIS_InteractiveObject & theObjToDisconnect = NULL);
+		%feature("compactdefaultargs") ObjectsForView;
+		%feature("autodoc", "	* Query objects visible or hidden in specified view due to affinity mask.
+
+	:param theListOfIO:
+	:type theListOfIO: AIS_ListOfInteractive &
+	:param theView:
+	:type theView: Handle_V3d_View &
+	:param theIsVisibleInView:
+	:type theIsVisibleInView: bool
+	:param theStatus: default value is AIS_DS_None
+	:type theStatus: AIS_DisplayStatus
+	:rtype: None
+") ObjectsForView;
+		void ObjectsForView (AIS_ListOfInteractive & theListOfIO,const Handle_V3d_View & theView,const Standard_Boolean theIsVisibleInView,const AIS_DisplayStatus theStatus = AIS_DS_None);
 };
 
 
@@ -5100,7 +4641,7 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 ") DefaultDisplayMode;
 		virtual Standard_Integer DefaultDisplayMode ();
 		%feature("compactdefaultargs") Redisplay;
-		%feature("autodoc", "	* Updates the active presentation; if <AllModes> = Standard_True all the presentations inside are recomputed.
+		%feature("autodoc", "	* Updates the active presentation; if <AllModes> = Standard_True all the presentations inside are recomputed. IMPORTANT: It is preferable to call Redisplay method of corresponding AIS_InteractiveContext instance for cases when it is accessible. This method just redirects call to myCTXPtr, so this class field must be up to date for proper result.
 
 	:param AllModes: default value is Standard_False
 	:type AllModes: bool
@@ -5379,20 +4920,6 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 	:rtype: void
 ") UnsetTransparency;
 		virtual void UnsetTransparency ();
-		%feature("compactdefaultargs") SetAttributes;
-		%feature("autodoc", "	* Initializes the drawing tool aDrawer.
-
-	:param aDrawer:
-	:type aDrawer: Handle_AIS_Drawer &
-	:rtype: void
-") SetAttributes;
-		virtual void SetAttributes (const Handle_AIS_Drawer & aDrawer);
-		%feature("compactdefaultargs") Attributes;
-		%feature("autodoc", "	* Returns the attributes settings.
-
-	:rtype: Handle_AIS_Drawer
-") Attributes;
-		Handle_AIS_Drawer Attributes ();
 		%feature("compactdefaultargs") UnsetAttributes;
 		%feature("autodoc", "	* Clears settings provided by the drawing tool aDrawer.
 
@@ -5461,6 +4988,14 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 	:rtype: void
 ") PolygonOffsets;
 		virtual void PolygonOffsets (Standard_Integer &OutValue,Standard_ShortReal & aFactor,Standard_ShortReal & aUnits);
+		%feature("compactdefaultargs") BoundingBox;
+		%feature("autodoc", "	* Returns bounding box of object correspondingly to its current display mode.
+
+	:param theBndBox:
+	:type theBndBox: Bnd_Box &
+	:rtype: void
+") BoundingBox;
+		virtual void BoundingBox (Bnd_Box & theBndBox);
 };
 
 
@@ -5646,7 +5181,7 @@ class AIS_ListOfInteractive {
 		%feature("autodoc", "	:param Other:
 	:type Other: AIS_ListOfInteractive &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const AIS_ListOfInteractive & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -5811,14 +5346,6 @@ class AIS_LocalContext : public MMgt_TShared {
 	:rtype: None
 ") Terminate;
 		void Terminate (const Standard_Boolean updateviewer = Standard_True);
-		%feature("compactdefaultargs") HasSameProjector;
-		%feature("autodoc", "	* compares the current projector of the localContext with <aPrj> returns True if the projectors are identical. (no need to update projection of selection primitives when closing the local context)....
-
-	:param aPrj:
-	:type aPrj: Handle_Select3D_Projector &
-	:rtype: bool
-") HasSameProjector;
-		Standard_Boolean HasSameProjector (const Handle_Select3D_Projector & aPrj);
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "	* returns true if done...
 
@@ -6219,6 +5746,12 @@ class AIS_LocalContext : public MMgt_TShared {
 	:rtype: bool
 ") HasShape;
 		Standard_Boolean HasShape ();
+		%feature("compactdefaultargs") HasSelectedShape;
+		%feature("autodoc", "	* returns true if current selection is not empty and the owner of selected object contains a shape. This method does not take into account decomposition status of detected shape.
+
+	:rtype: bool
+") HasSelectedShape;
+		Standard_Boolean HasSelectedShape ();
 		%feature("compactdefaultargs") SelectedShape;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") SelectedShape;
@@ -6261,24 +5794,6 @@ class AIS_LocalContext : public MMgt_TShared {
 	:rtype: None
 ") SetDisplayPriority;
 		void SetDisplayPriority (const Handle_AIS_InteractiveObject & anObject,const Standard_Integer Prior);
-		%feature("compactdefaultargs") SetZLayer;
-		%feature("autodoc", "	* Set Z layer id for interactive object. The layer can be specified for displayed object only. The Z layers can be used to display temporarily presentations of some object in front of the other objects in the scene. The ids for Z layers are generated by V3d_Viewer. Note that Z layers differ from under-/overlayer in V3d_View: under-/overlayer are intended for specific 2D drawings that appear behind/in front of all 3D presentations, while SetZLayer() method applies to regular 3D presentations and does not imply any specific drawing methods.
-
-	:param theIObj:
-	:type theIObj: Handle_AIS_InteractiveObject &
-	:param theLayerId:
-	:type theLayerId: int
-	:rtype: None
-") SetZLayer;
-		void SetZLayer (const Handle_AIS_InteractiveObject & theIObj,const Standard_Integer theLayerId);
-		%feature("compactdefaultargs") GetZLayer;
-		%feature("autodoc", "	* Get Z layer id set for displayed interactive object. If the object doesn't exists in context or has no computed presentations, the method returns -1.
-
-	:param theIObj:
-	:type theIObj: Handle_AIS_InteractiveObject &
-	:rtype: int
-") GetZLayer;
-		Standard_Integer GetZLayer (const Handle_AIS_InteractiveObject & theIObj);
 		%feature("compactdefaultargs") DisplayedObjects;
 		%feature("autodoc", "	:param theMapToFill:
 	:type theMapToFill: TColStd_MapOfTransient &
@@ -6359,34 +5874,6 @@ class AIS_LocalContext : public MMgt_TShared {
 	:rtype: bool
 ") IsHilighted;
 		Standard_Boolean IsHilighted (const Handle_AIS_InteractiveObject & anObject,Standard_Boolean &OutValue,Quantity_NameOfColor & HiCol);
-		%feature("compactdefaultargs") SetSensitivityMode;
-		%feature("autodoc", "	* Sets the selection sensitivity mode. SM_WINDOW mode uses the specified pixel tolerance to compute the sensitivity value, SM_VIEW mode allows to define the sensitivity manually.
-
-	:param aMode:
-	:type aMode: StdSelect_SensitivityMode
-	:rtype: None
-") SetSensitivityMode;
-		void SetSensitivityMode (const StdSelect_SensitivityMode aMode);
-		%feature("compactdefaultargs") SensitivityMode;
-		%feature("autodoc", "	* Returns the selection sensitivity mode.
-
-	:rtype: StdSelect_SensitivityMode
-") SensitivityMode;
-		StdSelect_SensitivityMode SensitivityMode ();
-		%feature("compactdefaultargs") SetSensitivity;
-		%feature("autodoc", "	* Define the current selection sensitivity for this local context according to the view size.
-
-	:param aPrecision:
-	:type aPrecision: float
-	:rtype: None
-") SetSensitivity;
-		void SetSensitivity (const Standard_Real aPrecision);
-		%feature("compactdefaultargs") Sensitivity;
-		%feature("autodoc", "	* Returns the selection sensitivity value.
-
-	:rtype: float
-") Sensitivity;
-		Standard_Real Sensitivity ();
 		%feature("compactdefaultargs") SetPixelTolerance;
 		%feature("autodoc", "	* Define the current selection sensitivity for this local context according to the view size.
 
@@ -6401,6 +5888,18 @@ class AIS_LocalContext : public MMgt_TShared {
 	:rtype: int
 ") PixelTolerance;
 		Standard_Integer PixelTolerance ();
+		%feature("compactdefaultargs") SetSelectionSensitivity;
+		%feature("autodoc", "	* Allows to manage sensitivity of a particular selection of interactive object theObject and changes previous sensitivity value of all sensitive entities in selection with theMode to the given theNewSensitivity.
+
+	:param theObject:
+	:type theObject: Handle_AIS_InteractiveObject &
+	:param theMode:
+	:type theMode: int
+	:param theNewSensitivity:
+	:type theNewSensitivity: int
+	:rtype: None
+") SetSelectionSensitivity;
+		void SetSelectionSensitivity (const Handle_AIS_InteractiveObject & theObject,const Standard_Integer theMode,const Standard_Integer theNewSensitivity);
 		%feature("compactdefaultargs") BeginImmediateDraw;
 		%feature("autodoc", "	* Resets the transient list of presentations previously displayed in immediate mode and begins accumulation of new list by following AddToImmediateList()/Color()/Highlight() calls.
 
@@ -6437,14 +5936,6 @@ class AIS_LocalContext : public MMgt_TShared {
 	:rtype: bool
 ") IsImmediateModeOn;
 		Standard_Boolean IsImmediateModeOn ();
-		%feature("compactdefaultargs") UpdateConversion;
-		%feature("autodoc", "	:rtype: None
-") UpdateConversion;
-		void UpdateConversion ();
-		%feature("compactdefaultargs") UpdateSort;
-		%feature("autodoc", "	:rtype: None
-") UpdateSort;
-		void UpdateSort ();
 		%feature("compactdefaultargs") LoadContextObjects;
 		%feature("autodoc", "	:rtype: None
 ") LoadContextObjects;
@@ -6453,18 +5944,6 @@ class AIS_LocalContext : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: None
 ") UnloadContextObjects;
 		void UnloadContextObjects ();
-		%feature("compactdefaultargs") DisplayAreas;
-		%feature("autodoc", "	:param aviou:
-	:type aviou: Handle_V3d_View &
-	:rtype: None
-") DisplayAreas;
-		void DisplayAreas (const Handle_V3d_View & aviou);
-		%feature("compactdefaultargs") ClearAreas;
-		%feature("autodoc", "	:param aView:
-	:type aView: Handle_V3d_View &
-	:rtype: None
-") ClearAreas;
-		void ClearAreas (const Handle_V3d_View & aView);
 		%feature("compactdefaultargs") DisplaySensitive;
 		%feature("autodoc", "	:param aView:
 	:type aView: Handle_V3d_View &
@@ -6792,7 +6271,7 @@ class AIS_MapOfInteractive : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: AIS_MapOfInteractive &
 	:rtype: AIS_MapOfInteractive
-") operator=;
+") operator =;
 		AIS_MapOfInteractive & operator = (const AIS_MapOfInteractive & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -7188,7 +6667,7 @@ class AIS_SequenceOfDimension : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: AIS_SequenceOfDimension &
 	:rtype: AIS_SequenceOfDimension
-") operator=;
+") operator =;
 		const AIS_SequenceOfDimension & operator = (const AIS_SequenceOfDimension & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -7331,7 +6810,7 @@ class AIS_SequenceOfInteractive : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: AIS_SequenceOfInteractive &
 	:rtype: AIS_SequenceOfInteractive
-") operator=;
+") operator =;
 		const AIS_SequenceOfInteractive & operator = (const AIS_SequenceOfInteractive & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -7971,116 +7450,6 @@ class Handle_AIS_Circle : public Handle_AIS_InteractiveObject {
 };
 
 %extend AIS_Circle {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AIS_ColoredDrawer;
-class AIS_ColoredDrawer : public AIS_Drawer {
-	public:
-		bool myIsHidden;
-		bool myHasOwnColor;
-		bool myHasOwnWidth;
-		%feature("compactdefaultargs") AIS_ColoredDrawer;
-		%feature("autodoc", "	:param theLink:
-	:type theLink: Handle_AIS_Drawer &
-	:rtype: None
-") AIS_ColoredDrawer;
-		 AIS_ColoredDrawer (const Handle_AIS_Drawer & theLink);
-		%feature("compactdefaultargs") IsHidden;
-		%feature("autodoc", "	:rtype: bool
-") IsHidden;
-		Standard_Boolean IsHidden ();
-		%feature("compactdefaultargs") SetHidden;
-		%feature("autodoc", "	:param theToHide:
-	:type theToHide: bool
-	:rtype: None
-") SetHidden;
-		void SetHidden (const Standard_Boolean theToHide);
-		%feature("compactdefaultargs") HasOwnColor;
-		%feature("autodoc", "	:rtype: bool
-") HasOwnColor;
-		Standard_Boolean HasOwnColor ();
-		%feature("compactdefaultargs") UnsetOwnColor;
-		%feature("autodoc", "	:rtype: None
-") UnsetOwnColor;
-		void UnsetOwnColor ();
-		%feature("compactdefaultargs") SetOwnColor;
-		%feature("autodoc", "	:param &:
-	:type &: Quantity_Color
-	:rtype: None
-") SetOwnColor;
-		void SetOwnColor (const Quantity_Color &);
-		%feature("compactdefaultargs") HasOwnWidth;
-		%feature("autodoc", "	:rtype: bool
-") HasOwnWidth;
-		Standard_Boolean HasOwnWidth ();
-		%feature("compactdefaultargs") UnsetOwnWidth;
-		%feature("autodoc", "	:rtype: None
-") UnsetOwnWidth;
-		void UnsetOwnWidth ();
-		%feature("compactdefaultargs") SetOwnWidth;
-		%feature("autodoc", "	:param Standard_Real:
-	:type Standard_Real: 
-	:rtype: None
-") SetOwnWidth;
-		void SetOwnWidth (const Standard_Real);
-		%feature("compactdefaultargs") DEFINE_STANDARD_RTTI;
-		%feature("autodoc", "	:param :
-	:type : AIS_ColoredDrawer
-	:rtype: None
-") DEFINE_STANDARD_RTTI;
-		 DEFINE_STANDARD_RTTI (AIS_ColoredDrawer );
-};
-
-
-%extend AIS_ColoredDrawer {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_AIS_ColoredDrawer(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_AIS_ColoredDrawer::Handle_AIS_ColoredDrawer %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_AIS_ColoredDrawer;
-class Handle_AIS_ColoredDrawer : public Handle_AIS_Drawer {
-
-    public:
-        // constructors
-        Handle_AIS_ColoredDrawer();
-        Handle_AIS_ColoredDrawer(const Handle_AIS_ColoredDrawer &aHandle);
-        Handle_AIS_ColoredDrawer(const AIS_ColoredDrawer *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_AIS_ColoredDrawer DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_AIS_ColoredDrawer {
-    AIS_ColoredDrawer* _get_reference() {
-    return (AIS_ColoredDrawer*)$self->Access();
-    }
-};
-
-%extend Handle_AIS_ColoredDrawer {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend AIS_ColoredDrawer {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8993,10 +8362,10 @@ class AIS_Plane : public AIS_InteractiveObject {
 		%feature("autodoc", "	* Sets the type of sensitivity for the plane.
 
 	:param theTypeOfSensitivity:
-	:type theTypeOfSensitivity: Select3D_TypeOfSensitivity
+	:type theTypeOfSensitivity: Select3D_TypeOfSensitivity &
 	:rtype: None
 ") SetTypeOfSensitivity;
-		void SetTypeOfSensitivity (const Select3D_TypeOfSensitivity theTypeOfSensitivity);
+		void SetTypeOfSensitivity (const Select3D_TypeOfSensitivity & theTypeOfSensitivity);
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
@@ -9887,7 +9256,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 ") SetOwnDeviationCoefficient;
 		void SetOwnDeviationCoefficient (const Standard_Real aCoefficient);
 		%feature("compactdefaultargs") SetOwnHLRDeviationCoefficient;
-		%feature("autodoc", "	* sets myOwnHLRDeviationCoefficient field in AIS_Drawer & recomputes presentation
+		%feature("autodoc", "	* sets myOwnHLRDeviationCoefficient field in Prs3d_Drawer & recomputes presentation
 
 	:param aCoefficient:
 	:type aCoefficient: float
@@ -9909,7 +9278,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 ") UserAngle;
 		Standard_Real UserAngle ();
 		%feature("compactdefaultargs") SetOwnDeviationAngle;
-		%feature("autodoc", "	* sets myOwnDeviationAngle field in AIS_Drawer & recomputes presentation
+		%feature("autodoc", "	* sets myOwnDeviationAngle field in Prs3d_Drawer & recomputes presentation
 
 	:param anAngle:
 	:type anAngle: float
@@ -9925,7 +9294,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 ") SetHLRAngleAndDeviation;
 		void SetHLRAngleAndDeviation (const Standard_Real anAngle);
 		%feature("compactdefaultargs") SetOwnHLRDeviationAngle;
-		%feature("autodoc", "	* sets myOwnHLRDeviationAngle field in AIS_Drawer & recomputes presentation
+		%feature("autodoc", "	* sets myOwnHLRDeviationAngle field in Prs3d_Drawer & recomputes presentation
 
 	:param anAngle:
 	:type anAngle: float
@@ -9987,7 +9356,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 ") TypeOfHLR;
 		Prs3d_TypeOfHLR TypeOfHLR ();
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	* Sets the color aColor in the reconstructed compound shape. Acts via the Drawer methods below on the appearance of: - free boundaries: AIS_Drawer_FreeBoundaryAspect, - isos: AIS_Drawer_UIsoAspect, AIS_Drawer_VIsoAspect, - shared boundaries: AIS_Drawer_UnFreeBoundaryAspect, - shading: AIS_Drawer_ShadingAspect, - visible line color in hidden line mode: AIS_Drawer_SeenLineAspect - hidden line color in hidden line mode: AIS_Drawer_HiddenLineAspect.
+		%feature("autodoc", "	* Sets the color aColor in the reconstructed compound shape. Acts via the Drawer methods below on the appearance of: - free boundaries: Prs3d_Drawer_FreeBoundaryAspect, - isos: Prs3d_Drawer_UIsoAspect, Prs3dDrawer_VIsoAspect, - shared boundaries: Prs3d_Drawer_UnFreeBoundaryAspect, - shading: Prs3d_Drawer_ShadingAspect, - visible line color in hidden line mode: Prs3d_Drawer_SeenLineAspect - hidden line color in hidden line mode: Prs3d_Drawer_HiddenLineAspect.
 
 	:param aColor:
 	:type aColor: Quantity_NameOfColor
@@ -10007,7 +9376,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 ") UnsetColor;
 		virtual void UnsetColor ();
 		%feature("compactdefaultargs") SetWidth;
-		%feature("autodoc", "	* Sets the value aValue for line width in the reconstructed compound shape.
+		%feature("autodoc", "	* Sets the value aValue for line width in the reconstructed compound shape. Changes line aspects for lines-only presentation modes like Wireframe and Bounding Box. Doesn't change face boundary line aspect.
 
 	:param aValue:
 	:type aValue: float
@@ -10227,6 +9596,165 @@ class Handle_AIS_SignatureFilter : public Handle_AIS_TypeFilter {
 };
 
 %extend AIS_SignatureFilter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor AIS_TextLabel;
+class AIS_TextLabel : public AIS_InteractiveObject {
+	public:
+		%feature("compactdefaultargs") AIS_TextLabel;
+		%feature("autodoc", "	* Default constructor
+
+	:rtype: None
+") AIS_TextLabel;
+		 AIS_TextLabel ();
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "	* Setup color of entire text.
+
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:rtype: void
+") SetColor;
+		virtual void SetColor (const Quantity_Color & theColor);
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "	* Setup color of entire text.
+
+	:param theColor:
+	:type theColor: Quantity_NameOfColor
+	:rtype: void
+") SetColor;
+		virtual void SetColor (const Quantity_NameOfColor theColor);
+		%feature("compactdefaultargs") SetText;
+		%feature("autodoc", "	* Setup text.
+
+	:param theText:
+	:type theText: TCollection_ExtendedString &
+	:rtype: None
+") SetText;
+		void SetText (const TCollection_ExtendedString & theText);
+		%feature("compactdefaultargs") SetPosition;
+		%feature("autodoc", "	* Setup position.
+
+	:param thePosition:
+	:type thePosition: gp_Pnt
+	:rtype: None
+") SetPosition;
+		void SetPosition (const gp_Pnt & thePosition);
+		%feature("compactdefaultargs") SetHJustification;
+		%feature("autodoc", "	* Setup horizontal justification.
+
+	:param theHJust:
+	:type theHJust: Graphic3d_HorizontalTextAlignment
+	:rtype: None
+") SetHJustification;
+		void SetHJustification (const Graphic3d_HorizontalTextAlignment theHJust);
+		%feature("compactdefaultargs") SetVJustification;
+		%feature("autodoc", "	* Setup vertical justification.
+
+	:param theVJust:
+	:type theVJust: Graphic3d_VerticalTextAlignment
+	:rtype: None
+") SetVJustification;
+		void SetVJustification (const Graphic3d_VerticalTextAlignment theVJust);
+		%feature("compactdefaultargs") SetAngle;
+		%feature("autodoc", "	* Setup angle.
+
+	:param theAngle:
+	:type theAngle: float
+	:rtype: None
+") SetAngle;
+		void SetAngle (const Standard_Real theAngle);
+		%feature("compactdefaultargs") SetZoomable;
+		%feature("autodoc", "	* Setup zoomable property.
+
+	:param theIsZoomable:
+	:type theIsZoomable: bool
+	:rtype: None
+") SetZoomable;
+		void SetZoomable (const Standard_Boolean theIsZoomable);
+		%feature("compactdefaultargs") SetHeight;
+		%feature("autodoc", "	* Setup height.
+
+	:param theHeight:
+	:type theHeight: float
+	:rtype: None
+") SetHeight;
+		void SetHeight (const Standard_Real theHeight);
+		%feature("compactdefaultargs") SetFontAspect;
+		%feature("autodoc", "	* Setup font aspect.
+
+	:param theFontAspect:
+	:type theFontAspect: Font_FontAspect
+	:rtype: None
+") SetFontAspect;
+		void SetFontAspect (const Font_FontAspect theFontAspect);
+		%feature("compactdefaultargs") SetFont;
+		%feature("autodoc", "	* Setup font.
+
+	:param theFont:
+	:type theFont: char *
+	:rtype: None
+") SetFont;
+		void SetFont (const char * theFont);
+		%feature("compactdefaultargs") DEFINE_STANDARD_RTTI;
+		%feature("autodoc", "	* CASCADE RTTI
+
+	:param :
+	:type : AIS_TextLabel
+	:rtype: None
+") DEFINE_STANDARD_RTTI;
+		 DEFINE_STANDARD_RTTI (AIS_TextLabel );
+};
+
+
+%extend AIS_TextLabel {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AIS_TextLabel(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_AIS_TextLabel::Handle_AIS_TextLabel %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_AIS_TextLabel;
+class Handle_AIS_TextLabel : public Handle_AIS_InteractiveObject {
+
+    public:
+        // constructors
+        Handle_AIS_TextLabel();
+        Handle_AIS_TextLabel(const Handle_AIS_TextLabel &aHandle);
+        Handle_AIS_TextLabel(const AIS_TextLabel *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_AIS_TextLabel DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_AIS_TextLabel {
+    AIS_TextLabel* _get_reference() {
+    return (AIS_TextLabel*)$self->Access();
+    }
+};
+
+%extend Handle_AIS_TextLabel {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
+%extend AIS_TextLabel {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -11145,6 +10673,14 @@ class AIS_ColoredShape : public AIS_Shape {
 	:rtype: void
 ") SetTransparency;
 		virtual void SetTransparency (const Standard_Real theValue);
+		%feature("compactdefaultargs") SetMaterial;
+		%feature("autodoc", "	* Sets the material aspect.
+
+	:param theAspect:
+	:type theAspect: Graphic3d_MaterialAspect &
+	:rtype: void
+") SetMaterial;
+		virtual void SetMaterial (const Graphic3d_MaterialAspect & theAspect);
 		%feature("compactdefaultargs") DEFINE_STANDARD_RTTI;
 		%feature("autodoc", "	:param :
 	:type : AIS_ColoredShape
@@ -11581,7 +11117,7 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 	:param aPresentation:
 	:type aPresentation: Handle_Prs3d_Presentation &
 	:param aDrawer:
-	:type aDrawer: Handle_AIS_Drawer &
+	:type aDrawer: Handle_Prs3d_Drawer &
 	:param ArrowSize:
 	:type ArrowSize: float
 	:param FirstEdge:
@@ -11610,14 +11146,14 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 	:type SymbolPrs: DsgPrs_ArrowSide &
 	:rtype: void
 ") ComputeTwoEdgesLength;
-		static void ComputeTwoEdgesLength (const Handle_Prs3d_Presentation & aPresentation,const Handle_AIS_Drawer & aDrawer,const Standard_Real ArrowSize,const TopoDS_Edge & FirstEdge,const TopoDS_Edge & SecondEdge,const Handle_Geom_Plane & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
+		static void ComputeTwoEdgesLength (const Handle_Prs3d_Presentation & aPresentation,const Handle_Prs3d_Drawer & aDrawer,const Standard_Real ArrowSize,const TopoDS_Edge & FirstEdge,const TopoDS_Edge & SecondEdge,const Handle_Geom_Plane & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
 		%feature("compactdefaultargs") ComputeTwoVerticesLength;
 		%feature("autodoc", "	* Computes the interval position between two vertexs. FirstAttach, SecondAttach are the returned extreme points of the interval.
 
 	:param aPresentation:
 	:type aPresentation: Handle_Prs3d_Presentation &
 	:param aDrawer:
-	:type aDrawer: Handle_AIS_Drawer &
+	:type aDrawer: Handle_Prs3d_Drawer &
 	:param ArrowSize:
 	:type ArrowSize: float
 	:param FirstVertex:
@@ -11648,14 +11184,14 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 	:type SymbolPrs: DsgPrs_ArrowSide &
 	:rtype: void
 ") ComputeTwoVerticesLength;
-		static void ComputeTwoVerticesLength (const Handle_Prs3d_Presentation & aPresentation,const Handle_AIS_Drawer & aDrawer,const Standard_Real ArrowSize,const TopoDS_Vertex & FirstVertex,const TopoDS_Vertex & SecondVertex,const Handle_Geom_Plane & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,const AIS_TypeOfDist TypeDist,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
+		static void ComputeTwoVerticesLength (const Handle_Prs3d_Presentation & aPresentation,const Handle_Prs3d_Drawer & aDrawer,const Standard_Real ArrowSize,const TopoDS_Vertex & FirstVertex,const TopoDS_Vertex & SecondVertex,const Handle_Geom_Plane & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,const AIS_TypeOfDist TypeDist,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
 		%feature("compactdefaultargs") ComputeOneEdgeOneVertexLength;
 		%feature("autodoc", "	* Compute the interval location between a vertex and an edge. Edge may be a line or a circle.
 
 	:param aPresentation:
 	:type aPresentation: Handle_Prs3d_Presentation &
 	:param aDrawer:
-	:type aDrawer: Handle_AIS_Drawer &
+	:type aDrawer: Handle_Prs3d_Drawer &
 	:param ArrowSize:
 	:type ArrowSize: float
 	:param FirstShape:
@@ -11684,7 +11220,7 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 	:type SymbolPrs: DsgPrs_ArrowSide &
 	:rtype: void
 ") ComputeOneEdgeOneVertexLength;
-		static void ComputeOneEdgeOneVertexLength (const Handle_Prs3d_Presentation & aPresentation,const Handle_AIS_Drawer & aDrawer,const Standard_Real ArrowSize,const TopoDS_Shape & FirstShape,const TopoDS_Shape & SecondShape,const Handle_Geom_Plane & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
+		static void ComputeOneEdgeOneVertexLength (const Handle_Prs3d_Presentation & aPresentation,const Handle_Prs3d_Drawer & aDrawer,const Standard_Real ArrowSize,const TopoDS_Shape & FirstShape,const TopoDS_Shape & SecondShape,const Handle_Geom_Plane & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
 };
 
 

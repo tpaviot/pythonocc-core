@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1521,7 +1521,7 @@ class Contap_SequenceOfIWLineOfTheIWalking : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Contap_SequenceOfIWLineOfTheIWalking &
 	:rtype: Contap_SequenceOfIWLineOfTheIWalking
-") operator=;
+") operator =;
 		const Contap_SequenceOfIWLineOfTheIWalking & operator = (const Contap_SequenceOfIWLineOfTheIWalking & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1664,7 +1664,7 @@ class Contap_SequenceOfPathPointOfTheSearch : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Contap_SequenceOfPathPointOfTheSearch &
 	:rtype: Contap_SequenceOfPathPointOfTheSearch
-") operator=;
+") operator =;
 		const Contap_SequenceOfPathPointOfTheSearch & operator = (const Contap_SequenceOfPathPointOfTheSearch & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1807,7 +1807,7 @@ class Contap_SequenceOfSegmentOfTheSearch : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Contap_SequenceOfSegmentOfTheSearch &
 	:rtype: Contap_SequenceOfSegmentOfTheSearch
-") operator=;
+") operator =;
 		const Contap_SequenceOfSegmentOfTheSearch & operator = (const Contap_SequenceOfSegmentOfTheSearch & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2916,7 +2916,7 @@ class Contap_TheSequenceOfLine : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Contap_TheSequenceOfLine &
 	:rtype: Contap_TheSequenceOfLine
-") operator=;
+") operator =;
 		const Contap_TheSequenceOfLine & operator = (const Contap_TheSequenceOfLine & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -3059,7 +3059,7 @@ class Contap_TheSequenceOfPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Contap_TheSequenceOfPoint &
 	:rtype: Contap_TheSequenceOfPoint
-") operator=;
+") operator =;
 		const Contap_TheSequenceOfPoint & operator = (const Contap_TheSequenceOfPoint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

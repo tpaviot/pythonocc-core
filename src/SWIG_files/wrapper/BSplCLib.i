@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -235,9 +235,11 @@ class BSplCLib {
 	:type Mults: TColStd_Array1OfInteger &
 	:param KnotSeq:
 	:type KnotSeq: TColStd_Array1OfReal &
+	:param Periodic: default value is Standard_False
+	:type Periodic: bool
 	:rtype: void
 ") KnotSequence;
-		static void KnotSequence (const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults,TColStd_Array1OfReal & KnotSeq);
+		static void KnotSequence (const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults,TColStd_Array1OfReal & KnotSeq,const Standard_Boolean Periodic = Standard_False);
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "	* Computes the sequence of knots KnotSeq with repetition of the knots of multiplicity greater than 1. //! Length of KnotSeq must be KnotSequenceLength(Mults,Degree,Periodic)
 
@@ -1683,9 +1685,11 @@ class BSplCLib {
 	:type FirstNonZeroBsplineIndex: int &
 	:param BsplineBasis:
 	:type BsplineBasis: math_Matrix &
+	:param isPeriodic: default value is Standard_False
+	:type isPeriodic: bool
 	:rtype: int
 ") EvalBsplineBasis;
-		static Standard_Integer EvalBsplineBasis (const Standard_Integer Side,const Standard_Integer DerivativeOrder,const Standard_Integer Order,const TColStd_Array1OfReal & FlatKnots,const Standard_Real Parameter,Standard_Integer &OutValue,math_Matrix & BsplineBasis);
+		static Standard_Integer EvalBsplineBasis (const Standard_Integer Side,const Standard_Integer DerivativeOrder,const Standard_Integer Order,const TColStd_Array1OfReal & FlatKnots,const Standard_Real Parameter,Standard_Integer &OutValue,math_Matrix & BsplineBasis,const Standard_Boolean isPeriodic = Standard_False);
 		%feature("compactdefaultargs") BuildBSpMatrix;
 		%feature("autodoc", "	* This Builds a fully blown Matrix of (ni) Bi (tj) //! with i and j within 1..Order + NumPoles The integer ni is the ith slot of the array OrderArray, tj is the jth slot of the array Parameters
 

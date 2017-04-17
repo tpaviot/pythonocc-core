@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -3311,7 +3311,7 @@ class IFSelect_SequenceOfAppliedModifiers : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IFSelect_SequenceOfAppliedModifiers &
 	:rtype: IFSelect_SequenceOfAppliedModifiers
-") operator=;
+") operator =;
 		const IFSelect_SequenceOfAppliedModifiers & operator = (const IFSelect_SequenceOfAppliedModifiers & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -3454,7 +3454,7 @@ class IFSelect_SequenceOfGeneralModifier : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IFSelect_SequenceOfGeneralModifier &
 	:rtype: IFSelect_SequenceOfGeneralModifier
-") operator=;
+") operator =;
 		const IFSelect_SequenceOfGeneralModifier & operator = (const IFSelect_SequenceOfGeneralModifier & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -3597,7 +3597,7 @@ class IFSelect_SequenceOfInterfaceModel : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IFSelect_SequenceOfInterfaceModel &
 	:rtype: IFSelect_SequenceOfInterfaceModel
-") operator=;
+") operator =;
 		const IFSelect_SequenceOfInterfaceModel & operator = (const IFSelect_SequenceOfInterfaceModel & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -4933,7 +4933,7 @@ class IFSelect_TSeqOfDispatch : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IFSelect_TSeqOfDispatch &
 	:rtype: IFSelect_TSeqOfDispatch
-") operator=;
+") operator =;
 		const IFSelect_TSeqOfDispatch & operator = (const IFSelect_TSeqOfDispatch & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -5076,7 +5076,7 @@ class IFSelect_TSeqOfSelection : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IFSelect_TSeqOfSelection &
 	:rtype: IFSelect_TSeqOfSelection
-") operator=;
+") operator =;
 		const IFSelect_TSeqOfSelection & operator = (const IFSelect_TSeqOfSelection & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

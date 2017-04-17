@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -101,7 +101,7 @@ class TColGeom2d_Array1OfBSplineCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom2d_Array1OfBSplineCurve &
 	:rtype: TColGeom2d_Array1OfBSplineCurve
-") operator=;
+") operator =;
 		const TColGeom2d_Array1OfBSplineCurve & operator = (const TColGeom2d_Array1OfBSplineCurve & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -188,7 +188,7 @@ class TColGeom2d_Array1OfBezierCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom2d_Array1OfBezierCurve &
 	:rtype: TColGeom2d_Array1OfBezierCurve
-") operator=;
+") operator =;
 		const TColGeom2d_Array1OfBezierCurve & operator = (const TColGeom2d_Array1OfBezierCurve & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -275,7 +275,7 @@ class TColGeom2d_Array1OfCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom2d_Array1OfCurve &
 	:rtype: TColGeom2d_Array1OfCurve
-") operator=;
+") operator =;
 		const TColGeom2d_Array1OfCurve & operator = (const TColGeom2d_Array1OfCurve & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1298,7 +1298,7 @@ class TColGeom2d_SequenceOfBoundedCurve : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom2d_SequenceOfBoundedCurve &
 	:rtype: TColGeom2d_SequenceOfBoundedCurve
-") operator=;
+") operator =;
 		const TColGeom2d_SequenceOfBoundedCurve & operator = (const TColGeom2d_SequenceOfBoundedCurve & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1441,7 +1441,7 @@ class TColGeom2d_SequenceOfCurve : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom2d_SequenceOfCurve &
 	:rtype: TColGeom2d_SequenceOfCurve
-") operator=;
+") operator =;
 		const TColGeom2d_SequenceOfCurve & operator = (const TColGeom2d_SequenceOfCurve & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1584,7 +1584,7 @@ class TColGeom2d_SequenceOfGeometry : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom2d_SequenceOfGeometry &
 	:rtype: TColGeom2d_SequenceOfGeometry
-") operator=;
+") operator =;
 		const TColGeom2d_SequenceOfGeometry & operator = (const TColGeom2d_SequenceOfGeometry & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

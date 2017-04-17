@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -50,12 +50,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<math_GaussSingleIntegration.hxx>
 #include<math_GlobOptMin.hxx>
 #include<math_Householder.hxx>
-#include<math_IntegerRandom.hxx>
 #include<math_IntegerVector.hxx>
 #include<math_Jacobi.hxx>
 #include<math_KronrodSingleIntegration.hxx>
 #include<math_Matrix.hxx>
-#include<math_Memory.hxx>
 #include<math_MultipleVarFunction.hxx>
 #include<math_MultipleVarFunctionWithGradient.hxx>
 #include<math_MultipleVarFunctionWithHessian.hxx>
@@ -67,7 +65,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<math_PSO.hxx>
 #include<math_PSOParticlesPool.hxx>
 #include<math_QuickSortOfValueAndWeight.hxx>
-#include<math_RealRandom.hxx>
 #include<math_Recipes.hxx>
 #include<math_SingleTab.hxx>
 #include<math_SingularMatrix.hxx>
@@ -270,6 +267,47 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColStd_StdMapNodeOfMapOfInteger.hxx>
 #include<TColStd_StdMapNodeOfMapOfReal.hxx>
 #include<TColStd_StdMapNodeOfMapOfTransient.hxx>
+#include<gp.hxx>
+#include<gp_Ax1.hxx>
+#include<gp_Ax2.hxx>
+#include<gp_Ax22d.hxx>
+#include<gp_Ax2d.hxx>
+#include<gp_Ax3.hxx>
+#include<gp_Circ.hxx>
+#include<gp_Circ2d.hxx>
+#include<gp_Cone.hxx>
+#include<gp_Cylinder.hxx>
+#include<gp_Dir.hxx>
+#include<gp_Dir2d.hxx>
+#include<gp_Elips.hxx>
+#include<gp_Elips2d.hxx>
+#include<gp_EulerSequence.hxx>
+#include<gp_GTrsf.hxx>
+#include<gp_GTrsf2d.hxx>
+#include<gp_Hypr.hxx>
+#include<gp_Hypr2d.hxx>
+#include<gp_Lin.hxx>
+#include<gp_Lin2d.hxx>
+#include<gp_Mat.hxx>
+#include<gp_Mat2d.hxx>
+#include<gp_Parab.hxx>
+#include<gp_Parab2d.hxx>
+#include<gp_Pln.hxx>
+#include<gp_Pnt.hxx>
+#include<gp_Pnt2d.hxx>
+#include<gp_Quaternion.hxx>
+#include<gp_QuaternionNLerp.hxx>
+#include<gp_QuaternionSLerp.hxx>
+#include<gp_Sphere.hxx>
+#include<gp_Torus.hxx>
+#include<gp_Trsf.hxx>
+#include<gp_Trsf2d.hxx>
+#include<gp_TrsfForm.hxx>
+#include<gp_Vec.hxx>
+#include<gp_Vec2d.hxx>
+#include<gp_VectorWithNullMagnitude.hxx>
+#include<gp_XY.hxx>
+#include<gp_XYZ.hxx>
 #include<Adaptor3d_Curve.hxx>
 #include<Adaptor3d_CurveOnSurface.hxx>
 #include<Adaptor3d_CurveOnSurfacePtr.hxx>
@@ -340,6 +378,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -349,6 +388,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -532,3 +572,4 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %};
 %import Standard.i
 %import TColStd.i
+%import gp.i

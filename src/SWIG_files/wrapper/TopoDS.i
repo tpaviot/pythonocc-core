@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -530,7 +530,7 @@ class TopoDS_ListOfShape {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopoDS_ListOfShape &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopoDS_ListOfShape & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int

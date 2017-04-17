@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1577,10 +1577,6 @@ class ProjLib_Projector {
 	:rtype: None
 ") ProjLib_Projector;
 		 ProjLib_Projector ();
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
@@ -1813,7 +1809,7 @@ class ProjLib_SequenceOfHSequenceOfPnt : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: ProjLib_SequenceOfHSequenceOfPnt &
 	:rtype: ProjLib_SequenceOfHSequenceOfPnt
-") operator=;
+") operator =;
 		const ProjLib_SequenceOfHSequenceOfPnt & operator = (const ProjLib_SequenceOfHSequenceOfPnt & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

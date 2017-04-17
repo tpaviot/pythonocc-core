@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -203,7 +203,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: Standard_Character
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const Standard_Character other);
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
@@ -217,7 +217,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: int
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const Standard_Integer other);
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
@@ -231,7 +231,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: float
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const Standard_Real other);
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "	* Appends <other> to me. This is an unary operator. ex: aString += 'Dummy' To catenate more than one CString, you must put a AsciiString before. Example: aString += 'Hello ' + 'Dolly' IS NOT VALID ! But astring += anotherString + 'Hello ' + 'Dolly' is valid.
@@ -245,7 +245,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: char *
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const char * other);
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "	* Appends <other> to me. This is an unary operator. Example: aString += anotherString
@@ -259,7 +259,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: TCollection_AsciiString &
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const TCollection_AsciiString & other);
 		%feature("compactdefaultargs") Capitalize;
 		%feature("autodoc", "	* Converts the first character into its corresponding upper-case character and the other characters into lowercase Example: before me = 'hellO ' after me = 'Hello '
@@ -279,7 +279,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: Standard_Character
 	:rtype: TCollection_AsciiString
-") operator+;
+") operator +;
 		TCollection_AsciiString operator + (const Standard_Character other);
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 15; Example: aString contains 'I say ' gives 'I say 15' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
@@ -293,7 +293,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: int
 	:rtype: TCollection_AsciiString
-") operator+;
+") operator +;
 		TCollection_AsciiString operator + (const Standard_Integer other);
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 15.15; Example: aString contains 'I say ' gives 'I say 15.15' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
@@ -307,7 +307,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: float
 	:rtype: TCollection_AsciiString
-") operator+;
+") operator +;
 		TCollection_AsciiString operator + (const Standard_Real other);
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 'Dummy' Example: aString contains 'I say ' aString = aString + 'Hello ' + 'Dolly' gives 'I say Hello Dolly' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
@@ -321,7 +321,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: char *
 	:rtype: TCollection_AsciiString
-") operator+;
+") operator +;
 		TCollection_AsciiString operator + (const char * other);
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "	* Appends <other> to me. Example: aString = aString + anotherString
@@ -335,7 +335,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
-") operator+;
+") operator +;
 		TCollection_AsciiString operator + (const TCollection_AsciiString & other);
 		%feature("compactdefaultargs") Center;
 		%feature("autodoc", "	* Modifies this ASCII string so that its length becomes equal to Width and the new characters are equal to Filler. New characters are added both at the beginning and at the end of this string. If Width is less than the length of this ASCII string, nothing happens. Example TCollection_AsciiString myAlphabet('abcdef'); myAlphabet.Center(9,' '); assert ( myAlphabet == ' abcdef ' );
@@ -377,7 +377,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param fromwhere:
 	:type fromwhere: char *
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const char * fromwhere);
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "	* Copy <fromwhere> to <self>. Used as operator = Example: aString = anotherString;
@@ -391,7 +391,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param fromwhere:
 	:type fromwhere: TCollection_AsciiString &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TCollection_AsciiString & fromwhere);
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "	* Frees memory allocated by AsciiString.
@@ -579,7 +579,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: char *
 	:rtype: bool
-") operator<;
+") operator <;
 		Standard_Boolean operator < (const char * other);
 		%feature("compactdefaultargs") IsLess;
 		%feature("autodoc", "	* Returns True if <self> is 'ASCII' less than <other>.
@@ -593,7 +593,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: TCollection_AsciiString &
 	:rtype: bool
-") operator<;
+") operator <;
 		Standard_Boolean operator < (const TCollection_AsciiString & other);
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "	* Returns True if <self> is 'ASCII' greater than <other>.
@@ -607,7 +607,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: char *
 	:rtype: bool
-") operator>;
+") operator >;
 		Standard_Boolean operator > (const char * other);
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "	* Returns True if <self> is 'ASCII' greater than <other>.
@@ -621,7 +621,7 @@ class TCollection_AsciiString {
 		%feature("autodoc", "	:param other:
 	:type other: TCollection_AsciiString &
 	:rtype: bool
-") operator>;
+") operator >;
 		Standard_Boolean operator > (const TCollection_AsciiString & other);
 		%feature("compactdefaultargs") IntegerValue;
 		%feature("autodoc", "	* Converts a AsciiString containing a numeric expression to an Integer. Example: '215' returns 215.
@@ -1138,7 +1138,7 @@ class TCollection_ExtendedString {
 		%feature("autodoc", "	:param other:
 	:type other: TCollection_ExtendedString &
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const TCollection_ExtendedString & other);
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "	* Appends <other> to me.
@@ -1152,7 +1152,7 @@ class TCollection_ExtendedString {
 		%feature("autodoc", "	:param other:
 	:type other: TCollection_ExtendedString &
 	:rtype: TCollection_ExtendedString
-") operator+;
+") operator +;
 		TCollection_ExtendedString operator + (const TCollection_ExtendedString & other);
 		%feature("compactdefaultargs") ChangeAll;
 		%feature("autodoc", "	* Substitutes all the characters equal to aChar by NewChar in the ExtendedString <self>. The substitution can be case sensitive. If you don't use default case sensitive, no matter wether aChar is uppercase or not.
@@ -1182,7 +1182,7 @@ class TCollection_ExtendedString {
 		%feature("autodoc", "	:param fromwhere:
 	:type fromwhere: TCollection_ExtendedString &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TCollection_ExtendedString & fromwhere);
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "	* Frees memory allocated by ExtendedString.
@@ -1210,6 +1210,12 @@ class TCollection_ExtendedString {
 	:rtype: None
 ") Insert;
 		void Insert (const Standard_Integer where,const TCollection_ExtendedString & what);
+		%feature("compactdefaultargs") IsEmpty;
+		%feature("autodoc", "	* Returns True if this string contains no characters.
+
+	:rtype: bool
+") IsEmpty;
+		Standard_Boolean IsEmpty ();
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "	* Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==
 
@@ -1310,7 +1316,7 @@ class TCollection_ExtendedString {
 		%feature("autodoc", "	:param other:
 	:type other: Standard_ExtString
 	:rtype: bool
-") operator<;
+") operator <;
 		Standard_Boolean operator < (const Standard_ExtString other);
 		%feature("compactdefaultargs") IsLess;
 		%feature("autodoc", "	* Returns True if <self> is less than <other>.
@@ -1324,7 +1330,7 @@ class TCollection_ExtendedString {
 		%feature("autodoc", "	:param other:
 	:type other: TCollection_ExtendedString &
 	:rtype: bool
-") operator<;
+") operator <;
 		Standard_Boolean operator < (const TCollection_ExtendedString & other);
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "	* Returns True if <self> is greater than <other>.
@@ -1338,7 +1344,7 @@ class TCollection_ExtendedString {
 		%feature("autodoc", "	:param other:
 	:type other: Standard_ExtString
 	:rtype: bool
-") operator>;
+") operator >;
 		Standard_Boolean operator > (const Standard_ExtString other);
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "	* Returns True if <self> is greater than <other>.
@@ -1352,7 +1358,7 @@ class TCollection_ExtendedString {
 		%feature("autodoc", "	:param other:
 	:type other: TCollection_ExtendedString &
 	:rtype: bool
-") operator>;
+") operator >;
 		Standard_Boolean operator > (const TCollection_ExtendedString & other);
 		%feature("compactdefaultargs") IsAscii;
 		%feature("autodoc", "	* Returns True if the ExtendedString contains only 'Ascii Range' characters .

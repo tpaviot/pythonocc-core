@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -47,6 +47,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<GeomInt_TheMultiLineToolOfWLApprox.hxx>
 #include<GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx>
 #include<GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx>
+#include<GeomInt_VectorOfReal.hxx>
 #include<GeomInt_WLApprox.hxx>
 #include<GeomInt.hxx>
 #include<Standard.hxx>
@@ -162,12 +163,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<math_GaussSingleIntegration.hxx>
 #include<math_GlobOptMin.hxx>
 #include<math_Householder.hxx>
-#include<math_IntegerRandom.hxx>
 #include<math_IntegerVector.hxx>
 #include<math_Jacobi.hxx>
 #include<math_KronrodSingleIntegration.hxx>
 #include<math_Matrix.hxx>
-#include<math_Memory.hxx>
 #include<math_MultipleVarFunction.hxx>
 #include<math_MultipleVarFunctionWithGradient.hxx>
 #include<math_MultipleVarFunctionWithHessian.hxx>
@@ -179,7 +178,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<math_PSO.hxx>
 #include<math_PSOParticlesPool.hxx>
 #include<math_QuickSortOfValueAndWeight.hxx>
-#include<math_RealRandom.hxx>
 #include<math_Recipes.hxx>
 #include<math_SingleTab.hxx>
 #include<math_SingularMatrix.hxx>
@@ -432,27 +430,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<gp_VectorWithNullMagnitude.hxx>
 #include<gp_XY.hxx>
 #include<gp_XYZ.hxx>
-#include<Adaptor3d_Curve.hxx>
-#include<Adaptor3d_CurveOnSurface.hxx>
-#include<Adaptor3d_CurveOnSurfacePtr.hxx>
-#include<Adaptor3d_CurvePtr.hxx>
-#include<Adaptor3d_HCurve.hxx>
-#include<Adaptor3d_HCurveOnSurface.hxx>
-#include<Adaptor3d_HIsoCurve.hxx>
-#include<Adaptor3d_HOffsetCurve.hxx>
-#include<Adaptor3d_HSurface.hxx>
-#include<Adaptor3d_HSurfaceOfLinearExtrusion.hxx>
-#include<Adaptor3d_HSurfaceOfRevolution.hxx>
-#include<Adaptor3d_HSurfaceTool.hxx>
-#include<Adaptor3d_HVertex.hxx>
-#include<Adaptor3d_InterFunc.hxx>
-#include<Adaptor3d_IsoCurve.hxx>
-#include<Adaptor3d_OffsetCurve.hxx>
-#include<Adaptor3d_Surface.hxx>
-#include<Adaptor3d_SurfaceOfLinearExtrusion.hxx>
-#include<Adaptor3d_SurfaceOfRevolution.hxx>
-#include<Adaptor3d_SurfacePtr.hxx>
-#include<Adaptor3d_TopolTool.hxx>
 #include<IntPatch_ALine.hxx>
 #include<IntPatch_ALineToWLine.hxx>
 #include<IntPatch_ArcFunction.hxx>
@@ -469,6 +446,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntPatch_Line.hxx>
 #include<IntPatch_LineConstructor.hxx>
 #include<IntPatch_Point.hxx>
+#include<IntPatch_PointLine.hxx>
 #include<IntPatch_PolyArc.hxx>
 #include<IntPatch_Polygo.hxx>
 #include<IntPatch_Polyhedron.hxx>
@@ -496,6 +474,44 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntPatch_TheSOnBounds.hxx>
 #include<IntPatch_TheSurfFunction.hxx>
 #include<IntPatch_WLine.hxx>
+#include<Bnd_Array1OfBox.hxx>
+#include<Bnd_Array1OfBox2d.hxx>
+#include<Bnd_Array1OfSphere.hxx>
+#include<Bnd_B2d.hxx>
+#include<Bnd_B2f.hxx>
+#include<Bnd_B3d.hxx>
+#include<Bnd_B3f.hxx>
+#include<Bnd_BoundSortBox.hxx>
+#include<Bnd_BoundSortBox2d.hxx>
+#include<Bnd_Box.hxx>
+#include<Bnd_Box2d.hxx>
+#include<Bnd_HArray1OfBox.hxx>
+#include<Bnd_HArray1OfBox2d.hxx>
+#include<Bnd_HArray1OfSphere.hxx>
+#include<Bnd_SeqOfBox.hxx>
+#include<Bnd_SequenceNodeOfSeqOfBox.hxx>
+#include<Bnd_Sphere.hxx>
+#include<Adaptor3d_Curve.hxx>
+#include<Adaptor3d_CurveOnSurface.hxx>
+#include<Adaptor3d_CurveOnSurfacePtr.hxx>
+#include<Adaptor3d_CurvePtr.hxx>
+#include<Adaptor3d_HCurve.hxx>
+#include<Adaptor3d_HCurveOnSurface.hxx>
+#include<Adaptor3d_HIsoCurve.hxx>
+#include<Adaptor3d_HOffsetCurve.hxx>
+#include<Adaptor3d_HSurface.hxx>
+#include<Adaptor3d_HSurfaceOfLinearExtrusion.hxx>
+#include<Adaptor3d_HSurfaceOfRevolution.hxx>
+#include<Adaptor3d_HSurfaceTool.hxx>
+#include<Adaptor3d_HVertex.hxx>
+#include<Adaptor3d_InterFunc.hxx>
+#include<Adaptor3d_IsoCurve.hxx>
+#include<Adaptor3d_OffsetCurve.hxx>
+#include<Adaptor3d_Surface.hxx>
+#include<Adaptor3d_SurfaceOfLinearExtrusion.hxx>
+#include<Adaptor3d_SurfaceOfRevolution.hxx>
+#include<Adaptor3d_SurfacePtr.hxx>
+#include<Adaptor3d_TopolTool.hxx>
 #include<TopAbs.hxx>
 #include<TopAbs_Orientation.hxx>
 #include<TopAbs_ShapeEnum.hxx>
@@ -529,8 +545,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Approx_HArray1OfAdHSurface.hxx>
 #include<Approx_HArray1OfGTrsf2d.hxx>
 #include<Approx_MCurvesToBSpCurve.hxx>
-#include<Approx_MyLeastSquareOfFitAndDivide.hxx>
-#include<Approx_MyLeastSquareOfFitAndDivide2d.hxx>
 #include<Approx_ParametrizationType.hxx>
 #include<Approx_SameParameter.hxx>
 #include<Approx_SequenceNodeOfSequenceOfHArray1OfReal.hxx>
@@ -614,6 +628,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -623,6 +638,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -708,6 +724,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -717,6 +734,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -906,8 +924,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import GeomAdaptor.i
 %import Geom2d.i
 %import gp.i
-%import Adaptor3d.i
 %import IntPatch.i
+%import Bnd.i
+%import Adaptor3d.i
 %import TopAbs.i
 %import TCollection.i
 %import Approx.i

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -71,24 +71,6 @@ class XCAFPrs {
 	:rtype: void
 ") CollectStyleSettings;
 		static void CollectStyleSettings (const TDF_Label & L,const TopLoc_Location & loc,XCAFPrs_DataMapOfShapeStyle & settings);
-		%feature("compactdefaultargs") DispatchStyles;
-		%feature("autodoc", "	* Iterates on shape (recursively) and splits it on parts each of which has its own style (basing on settings collected by CollectStyleSettings()) The DefStyle is default style applied to a shape if no specific style assignment is applied to it If force is True, the <shape> is added to a map even if no styles are redefined for it or its subshapes The context is for internal use, it indicates the type of the shape to which <shape> belongs
-
-	:param shape:
-	:type shape: TopoDS_Shape &
-	:param settings:
-	:type settings: XCAFPrs_DataMapOfShapeStyle &
-	:param items:
-	:type items: XCAFPrs_DataMapOfStyleShape &
-	:param DefStyle:
-	:type DefStyle: XCAFPrs_Style &
-	:param force: default value is Standard_True
-	:type force: bool
-	:param context: default value is TopAbs_SHAPE
-	:type context: TopAbs_ShapeEnum
-	:rtype: bool
-") DispatchStyles;
-		static Standard_Boolean DispatchStyles (const TopoDS_Shape & shape,const XCAFPrs_DataMapOfShapeStyle & settings,XCAFPrs_DataMapOfStyleShape & items,const XCAFPrs_Style & DefStyle,const Standard_Boolean force = Standard_True,const TopAbs_ShapeEnum context = TopAbs_SHAPE);
 		%feature("compactdefaultargs") SetViewNameMode;
 		%feature("autodoc", "	* Set ViewNameMode for indicate display names or not.
 
@@ -523,7 +505,7 @@ class XCAFPrs_DataMapOfShapeStyle : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: XCAFPrs_DataMapOfShapeStyle &
 	:rtype: XCAFPrs_DataMapOfShapeStyle
-") operator=;
+") operator =;
 		XCAFPrs_DataMapOfShapeStyle & operator = (const XCAFPrs_DataMapOfShapeStyle & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -606,7 +588,7 @@ class XCAFPrs_DataMapOfStyleShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: XCAFPrs_DataMapOfStyleShape &
 	:rtype: XCAFPrs_DataMapOfStyleShape
-") operator=;
+") operator =;
 		XCAFPrs_DataMapOfStyleShape & operator = (const XCAFPrs_DataMapOfStyleShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -689,7 +671,7 @@ class XCAFPrs_DataMapOfStyleTransient : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: XCAFPrs_DataMapOfStyleTransient &
 	:rtype: XCAFPrs_DataMapOfStyleTransient
-") operator=;
+") operator =;
 		XCAFPrs_DataMapOfStyleTransient & operator = (const XCAFPrs_DataMapOfStyleTransient & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

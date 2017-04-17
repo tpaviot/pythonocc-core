@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -2926,7 +2926,7 @@ class gp_Dir {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_Dir
 	:rtype: None
-") operator^=;
+") operator ^=;
 		void operator ^= (const gp_Dir & Right);
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "	* Computes the triple vector product. <self> ^ (V1 ^ V2) Raises the exception ConstructionError if V1 and V2 are parallel or <self> and (V1^V2) are parallel because the computed vector can't be normalized to create a direction.
@@ -2940,7 +2940,7 @@ class gp_Dir {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_Dir
 	:rtype: gp_Dir
-") operator^;
+") operator ^;
 		gp_Dir operator ^ (const gp_Dir & Right);
 		%feature("compactdefaultargs") CrossCross;
 		%feature("autodoc", "	:param V1:
@@ -2972,7 +2972,7 @@ class gp_Dir {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Dir
 	:rtype: float
-") operator*;
+") operator *;
 		Standard_Real operator * (const gp_Dir & Other);
 		%feature("compactdefaultargs") DotCross;
 		%feature("autodoc", "	* Computes the triple scalar product <self> * (V1 ^ V2). Warnings : The computed vector V1' = V1 ^ V2 is not normalized to create a unitary vector. So this method never raises an exception even if V1 and V2 are parallel.
@@ -2996,7 +2996,7 @@ class gp_Dir {
 		gp_Dir Reversed ();
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "	:rtype: gp_Dir
-") operator-;
+") operator -;
 		gp_Dir operator - ();
 		%feature("compactdefaultargs") Mirror;
 		%feature("autodoc", "	:param V:
@@ -3259,7 +3259,7 @@ class gp_Dir2d {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_Dir2d
 	:rtype: float
-") operator^;
+") operator ^;
 		Standard_Real operator ^ (const gp_Dir2d & Right);
 		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "	* Computes the scalar product
@@ -3273,7 +3273,7 @@ class gp_Dir2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Dir2d
 	:rtype: float
-") operator*;
+") operator *;
 		Standard_Real operator * (const gp_Dir2d & Other);
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "	:rtype: None
@@ -3287,7 +3287,7 @@ class gp_Dir2d {
 		gp_Dir2d Reversed ();
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "	:rtype: gp_Dir2d
-") operator-;
+") operator -;
 		gp_Dir2d operator - ();
 		%feature("compactdefaultargs") Mirror;
 		%feature("autodoc", "	:param V:
@@ -4150,14 +4150,26 @@ class gp_GTrsf {
 	:rtype: gp_GTrsf
 ") Multiplied;
 		gp_GTrsf Multiplied (const gp_GTrsf & T);
+		%feature("compactdefaultargs") operator *;
+		%feature("autodoc", "	:param T:
+	:type T: gp_GTrsf
+	:rtype: gp_GTrsf
+") operator *;
+		gp_GTrsf operator * (const gp_GTrsf & T);
 		%feature("compactdefaultargs") Multiply;
-		%feature("autodoc", "	* Computes the transformation composed with <self> and T. <self> = <self> * T C++: alias operator *=
+		%feature("autodoc", "	* Computes the transformation composed with <self> and T. <self> = <self> * T
 
 	:param T:
 	:type T: gp_GTrsf
 	:rtype: None
 ") Multiply;
 		void Multiply (const gp_GTrsf & T);
+		%feature("compactdefaultargs") operator *=;
+		%feature("autodoc", "	:param T:
+	:type T: gp_GTrsf
+	:rtype: None
+") operator *=;
+		void operator *= (const gp_GTrsf & T);
 		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "	* Computes the product of the transformation T and this transformation and assigns the result to this transformation. this = T * this
 
@@ -4373,7 +4385,7 @@ class gp_GTrsf2d {
 		%feature("autodoc", "	:param T:
 	:type T: gp_GTrsf2d
 	:rtype: gp_GTrsf2d
-") operator*;
+") operator *;
 		gp_GTrsf2d operator * (const gp_GTrsf2d & T);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	:param T:
@@ -4385,7 +4397,7 @@ class gp_GTrsf2d {
 		%feature("autodoc", "	:param T:
 	:type T: gp_GTrsf2d
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const gp_GTrsf2d & T);
 		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "	* Computes the product of the transformation T and this transformation, and assigns the result to this transformation: this = T * this
@@ -5942,7 +5954,7 @@ class gp_Mat {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const gp_Mat & Other);
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Computes the sum of this matrix and the matrix Other for each coefficient of the matrix : <self>.Coef(i,j) + <Other>.Coef(i,j)
@@ -5956,7 +5968,7 @@ class gp_Mat {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat
 	:rtype: gp_Mat
-") operator+;
+") operator +;
 		gp_Mat operator + (const gp_Mat & Other);
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "	:param Scalar:
@@ -5968,7 +5980,7 @@ class gp_Mat {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator/=;
+") operator /=;
 		void operator /= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* Divides all the coefficients of the matrix by Scalar
@@ -5982,7 +5994,7 @@ class gp_Mat {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_Mat
-") operator/;
+") operator /;
 		gp_Mat operator / (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Invert;
 		%feature("autodoc", "	:rtype: None
@@ -6006,7 +6018,7 @@ class gp_Mat {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat
 	:rtype: gp_Mat
-") operator*;
+") operator *;
 		gp_Mat operator * (const gp_Mat & Other);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Computes the product of two matrices <self> = <Other> * <self>.
@@ -6020,7 +6032,7 @@ class gp_Mat {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const gp_Mat & Other);
 		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "	:param Other:
@@ -6038,7 +6050,7 @@ class gp_Mat {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_Mat
-") operator*;
+") operator *;
 		gp_Mat operator * (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Multiplies all the coefficients of the matrix by Scalar
@@ -6052,7 +6064,7 @@ class gp_Mat {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Power;
 		%feature("autodoc", "	:param N:
@@ -6078,7 +6090,7 @@ class gp_Mat {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const gp_Mat & Other);
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* cOmputes for each coefficient of the matrix : <self>.Coef(i,j) - <Other>.Coef(i,j)
@@ -6092,7 +6104,7 @@ class gp_Mat {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat
 	:rtype: gp_Mat
-") operator-;
+") operator -;
 		gp_Mat operator - (const gp_Mat & Other);
 		%feature("compactdefaultargs") Transpose;
 		%feature("autodoc", "	:rtype: None
@@ -6287,7 +6299,7 @@ class gp_Mat2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat2d
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const gp_Mat2d & Other);
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Computes the sum of this matrix and the matrix Other.for each coefficient of the matrix : <self>.Coef(i,j) + <Other>.Coef(i,j) Note: - operator += assigns the result to this matrix, while - operator + creates a new one.
@@ -6301,7 +6313,7 @@ class gp_Mat2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat2d
 	:rtype: gp_Mat2d
-") operator+;
+") operator +;
 		gp_Mat2d operator + (const gp_Mat2d & Other);
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "	:param Scalar:
@@ -6313,7 +6325,7 @@ class gp_Mat2d {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator/=;
+") operator /=;
 		void operator /= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* Divides all the coefficients of the matrix by a scalar.
@@ -6327,7 +6339,7 @@ class gp_Mat2d {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_Mat2d
-") operator/;
+") operator /;
 		gp_Mat2d operator / (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Invert;
 		%feature("autodoc", "	:rtype: None
@@ -6349,7 +6361,7 @@ class gp_Mat2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat2d
 	:rtype: gp_Mat2d
-") operator*;
+") operator *;
 		gp_Mat2d operator * (const gp_Mat2d & Other);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Computes the product of two matrices <self> * <Other>
@@ -6377,7 +6389,7 @@ class gp_Mat2d {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_Mat2d
-") operator*;
+") operator *;
 		gp_Mat2d operator * (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Multiplies all the coefficients of the matrix by a scalar.
@@ -6391,7 +6403,7 @@ class gp_Mat2d {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Power;
 		%feature("autodoc", "	:param N:
@@ -6417,7 +6429,7 @@ class gp_Mat2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat2d
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const gp_Mat2d & Other);
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* Computes for each coefficient of the matrix : <self>.Coef(i,j) - <Other>.Coef(i,j)
@@ -6431,7 +6443,7 @@ class gp_Mat2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Mat2d
 	:rtype: gp_Mat2d
-") operator-;
+") operator -;
 		gp_Mat2d operator - (const gp_Mat2d & Other);
 		%feature("compactdefaultargs") Transpose;
 		%feature("autodoc", "	:rtype: None
@@ -8177,7 +8189,7 @@ class gp_Quaternion {
 		%feature("autodoc", "	:param theScale:
 	:type theScale: float
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Standard_Real theScale);
 		%feature("compactdefaultargs") Scaled;
 		%feature("autodoc", "	* Returns scaled quaternion
@@ -8191,7 +8203,7 @@ class gp_Quaternion {
 		%feature("autodoc", "	:param theScale:
 	:type theScale: float
 	:rtype: gp_Quaternion
-") operator*;
+") operator *;
 		gp_Quaternion operator * (const Standard_Real theScale);
 		%feature("compactdefaultargs") StabilizeLength;
 		%feature("autodoc", "	* Stabilize quaternion length within 1 - 1/4. This operation is a lot faster than normalization and preserve length goes to 0 or infinity
@@ -8219,7 +8231,7 @@ class gp_Quaternion {
 		gp_Quaternion Negated ();
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "	:rtype: gp_Quaternion
-") operator-;
+") operator -;
 		gp_Quaternion operator - ();
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Makes sum of quaternion components; result is 'rotations mix'
@@ -8233,7 +8245,7 @@ class gp_Quaternion {
 		%feature("autodoc", "	:param theOther:
 	:type theOther: gp_Quaternion
 	:rtype: gp_Quaternion
-") operator+;
+") operator +;
 		gp_Quaternion operator + (const gp_Quaternion & theOther);
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* Makes difference of quaternion components; result is 'rotations mix'
@@ -8247,7 +8259,7 @@ class gp_Quaternion {
 		%feature("autodoc", "	:param theOther:
 	:type theOther: gp_Quaternion
 	:rtype: gp_Quaternion
-") operator-;
+") operator -;
 		gp_Quaternion operator - (const gp_Quaternion & theOther);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* Multiply function - work the same as Matrices multiplying. qq' = (cross(v,v') + wv' + w'v, ww' - dot(v,v')) Result is rotation combination: q' than q (here q=this, q'=theQ). Notices than: qq' != q'q; qq^-1 = q;
@@ -8261,7 +8273,7 @@ class gp_Quaternion {
 		%feature("autodoc", "	:param theOther:
 	:type theOther: gp_Quaternion
 	:rtype: gp_Quaternion
-") operator*;
+") operator *;
 		gp_Quaternion operator * (const gp_Quaternion & theOther);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* Adds componnets of other quaternion; result is 'rotations mix'
@@ -8275,7 +8287,7 @@ class gp_Quaternion {
 		%feature("autodoc", "	:param theOther:
 	:type theOther: gp_Quaternion
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const gp_Quaternion & theOther);
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "	* Subtracts componnets of other quaternion; result is 'rotations mix'
@@ -8289,7 +8301,7 @@ class gp_Quaternion {
 		%feature("autodoc", "	:param theOther:
 	:type theOther: gp_Quaternion
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const gp_Quaternion & theOther);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Adds rotation by multiplication
@@ -8303,7 +8315,7 @@ class gp_Quaternion {
 		%feature("autodoc", "	:param theOther:
 	:type theOther: gp_Quaternion
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const gp_Quaternion & theOther);
 		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "	* Computes inner product / scalar product / Dot
@@ -8331,7 +8343,7 @@ class gp_Quaternion {
 		%feature("autodoc", "	:param theVec:
 	:type theVec: gp_Vec
 	:rtype: gp_Vec
-") operator*;
+") operator *;
 		gp_Vec operator * (const gp_Vec & theVec);
 };
 
@@ -9266,7 +9278,7 @@ class gp_Trsf {
 		%feature("autodoc", "	:param T:
 	:type T: gp_Trsf
 	:rtype: gp_Trsf
-") operator*;
+") operator *;
 		gp_Trsf operator * (const gp_Trsf & T);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Computes the transformation composed with <self> and T. <self> = <self> * T
@@ -9280,7 +9292,7 @@ class gp_Trsf {
 		%feature("autodoc", "	:param T:
 	:type T: gp_Trsf
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const gp_Trsf & T);
 		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "	* Computes the transformation composed with <self> and T. <self> = T * <self>
@@ -9535,7 +9547,7 @@ class gp_Trsf2d {
 		%feature("autodoc", "	:param T:
 	:type T: gp_Trsf2d
 	:rtype: gp_Trsf2d
-") operator*;
+") operator *;
 		gp_Trsf2d operator * (const gp_Trsf2d & T);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Computes the transformation composed from <self> and T. <self> = <self> * T
@@ -9549,7 +9561,7 @@ class gp_Trsf2d {
 		%feature("autodoc", "	:param T:
 	:type T: gp_Trsf2d
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const gp_Trsf2d & T);
 		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "	* Computes the transformation composed from <self> and T. <self> = T * <self>
@@ -9861,7 +9873,9 @@ class gp_Vec {
 ") SquareMagnitude;
 		Standard_Real SquareMagnitude ();
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param Other:
+		%feature("autodoc", "	* Adds two vectors
+
+	:param Other:
 	:type Other: gp_Vec
 	:rtype: None
 ") Add;
@@ -9870,10 +9884,10 @@ class gp_Vec {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Vec
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const gp_Vec & Other);
 		%feature("compactdefaultargs") Added;
-		%feature("autodoc", "	* Adds two vectors Subtracts two vectors
+		%feature("autodoc", "	* Adds two vectors
 
 	:param Other:
 	:type Other: gp_Vec
@@ -9884,10 +9898,12 @@ class gp_Vec {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Vec
 	:rtype: gp_Vec
-") operator+;
+") operator +;
 		gp_Vec operator + (const gp_Vec & Other);
 		%feature("compactdefaultargs") Subtract;
-		%feature("autodoc", "	:param Right:
+		%feature("autodoc", "	* Subtracts two vectors
+
+	:param Right:
 	:type Right: gp_Vec
 	:rtype: None
 ") Subtract;
@@ -9896,7 +9912,7 @@ class gp_Vec {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_Vec
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const gp_Vec & Right);
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* Subtracts two vectors
@@ -9910,10 +9926,12 @@ class gp_Vec {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_Vec
 	:rtype: gp_Vec
-") operator-;
+") operator -;
 		gp_Vec operator - (const gp_Vec & Right);
 		%feature("compactdefaultargs") Multiply;
-		%feature("autodoc", "	:param Scalar:
+		%feature("autodoc", "	* Multiplies a vector by a scalar
+
+	:param Scalar:
 	:type Scalar: float
 	:rtype: None
 ") Multiply;
@@ -9922,7 +9940,7 @@ class gp_Vec {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* Multiplies a vector by a scalar
@@ -9936,10 +9954,12 @@ class gp_Vec {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_Vec
-") operator*;
+") operator *;
 		gp_Vec operator * (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Divide;
-		%feature("autodoc", "	:param Scalar:
+		%feature("autodoc", "	* Divides a vector by a scalar
+
+	:param Scalar:
 	:type Scalar: float
 	:rtype: None
 ") Divide;
@@ -9948,10 +9968,10 @@ class gp_Vec {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator/=;
+") operator /=;
 		void operator /= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Divided;
-		%feature("autodoc", "	* Divides a vector by a scalar computes the cross product between two vectors
+		%feature("autodoc", "	* Divides a vector by a scalar
 
 	:param Scalar:
 	:type Scalar: float
@@ -9962,10 +9982,12 @@ class gp_Vec {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_Vec
-") operator/;
+") operator /;
 		gp_Vec operator / (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Cross;
-		%feature("autodoc", "	:param Right:
+		%feature("autodoc", "	* computes the cross product between two vectors
+
+	:param Right:
 	:type Right: gp_Vec
 	:rtype: None
 ") Cross;
@@ -9974,7 +9996,7 @@ class gp_Vec {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_Vec
 	:rtype: None
-") operator^=;
+") operator ^=;
 		void operator ^= (const gp_Vec & Right);
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "	* computes the cross product between two vectors
@@ -9988,7 +10010,7 @@ class gp_Vec {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_Vec
 	:rtype: gp_Vec
-") operator^;
+") operator ^;
 		gp_Vec operator ^ (const gp_Vec & Right);
 		%feature("compactdefaultargs") CrossMagnitude;
 		%feature("autodoc", "	* Computes the magnitude of the cross product between <self> and Right. Returns || <self> ^ Right ||
@@ -9999,7 +10021,7 @@ class gp_Vec {
 ") CrossMagnitude;
 		Standard_Real CrossMagnitude (const gp_Vec & Right);
 		%feature("compactdefaultargs") CrossSquareMagnitude;
-		%feature("autodoc", "	* Computes the square magnitude of the cross product between <self> and Right. Returns || <self> ^ Right ||**2 Computes the triple vector product. <self> ^ (V1 ^ V2)
+		%feature("autodoc", "	* Computes the square magnitude of the cross product between <self> and Right. Returns || <self> ^ Right ||**2
 
 	:param Right:
 	:type Right: gp_Vec
@@ -10007,7 +10029,9 @@ class gp_Vec {
 ") CrossSquareMagnitude;
 		Standard_Real CrossSquareMagnitude (const gp_Vec & Right);
 		%feature("compactdefaultargs") CrossCross;
-		%feature("autodoc", "	:param V1:
+		%feature("autodoc", "	* Computes the triple vector product. <self> ^= (V1 ^ V2)
+
+	:param V1:
 	:type V1: gp_Vec
 	:param V2:
 	:type V2: gp_Vec
@@ -10036,10 +10060,10 @@ class gp_Vec {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Vec
 	:rtype: float
-") operator*;
+") operator *;
 		Standard_Real operator * (const gp_Vec & Other);
 		%feature("compactdefaultargs") DotCross;
-		%feature("autodoc", "	* Computes the triple scalar product <self> * (V1 ^ V2). normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from gp.
+		%feature("autodoc", "	* Computes the triple scalar product <self> * (V1 ^ V2).
 
 	:param V1:
 	:type V1: gp_Vec
@@ -10049,17 +10073,21 @@ class gp_Vec {
 ") DotCross;
 		Standard_Real DotCross (const gp_Vec & V1,const gp_Vec & V2);
 		%feature("compactdefaultargs") Normalize;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from gp.
+
+	:rtype: None
 ") Normalize;
 		void Normalize ();
 		%feature("compactdefaultargs") Normalized;
-		%feature("autodoc", "	* normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from gp. Reverses the direction of a vector
+		%feature("autodoc", "	* normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from gp.
 
 	:rtype: gp_Vec
 ") Normalized;
 		gp_Vec Normalized ();
 		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Reverses the direction of a vector
+
+	:rtype: None
 ") Reverse;
 		void Reverse ();
 		%feature("compactdefaultargs") Reversed;
@@ -10070,10 +10098,10 @@ class gp_Vec {
 		gp_Vec Reversed ();
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "	:rtype: gp_Vec
-") operator-;
+") operator -;
 		gp_Vec operator - ();
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "	* <self> is setted to the following linear form : A1 * V1 + A2 * V2 + A3 * V3 + V4
+		%feature("autodoc", "	* <self> is set to the following linear form : A1 * V1 + A2 * V2 + A3 * V3 + V4
 
 	:param A1:
 	:type A1: float
@@ -10093,7 +10121,7 @@ class gp_Vec {
 ") SetLinearForm;
 		void SetLinearForm (const Standard_Real A1,const gp_Vec & V1,const Standard_Real A2,const gp_Vec & V2,const Standard_Real A3,const gp_Vec & V3,const gp_Vec & V4);
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "	* <self> is setted to the following linear form : A1 * V1 + A2 * V2 + A3 * V3
+		%feature("autodoc", "	* <self> is set to the following linear form : A1 * V1 + A2 * V2 + A3 * V3
 
 	:param A1:
 	:type A1: float
@@ -10111,7 +10139,7 @@ class gp_Vec {
 ") SetLinearForm;
 		void SetLinearForm (const Standard_Real A1,const gp_Vec & V1,const Standard_Real A2,const gp_Vec & V2,const Standard_Real A3,const gp_Vec & V3);
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "	* <self> is setted to the following linear form : A1 * V1 + A2 * V2 + V3
+		%feature("autodoc", "	* <self> is set to the following linear form : A1 * V1 + A2 * V2 + V3
 
 	:param A1:
 	:type A1: float
@@ -10127,7 +10155,7 @@ class gp_Vec {
 ") SetLinearForm;
 		void SetLinearForm (const Standard_Real A1,const gp_Vec & V1,const Standard_Real A2,const gp_Vec & V2,const gp_Vec & V3);
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "	* <self> is setted to the following linear form : A1 * V1 + A2 * V2
+		%feature("autodoc", "	* <self> is set to the following linear form : A1 * V1 + A2 * V2
 
 	:param A1:
 	:type A1: float
@@ -10141,7 +10169,7 @@ class gp_Vec {
 ") SetLinearForm;
 		void SetLinearForm (const Standard_Real A1,const gp_Vec & V1,const Standard_Real A2,const gp_Vec & V2);
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "	* <self> is setted to the following linear form : A1 * V1 + V2
+		%feature("autodoc", "	* <self> is set to the following linear form : A1 * V1 + V2
 
 	:param A1:
 	:type A1: float
@@ -10153,7 +10181,7 @@ class gp_Vec {
 ") SetLinearForm;
 		void SetLinearForm (const Standard_Real A1,const gp_Vec & V1,const gp_Vec & V2);
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "	* <self> is setted to the following linear form : V1 + V2
+		%feature("autodoc", "	* <self> is set to the following linear form : V1 + V2
 
 	:param V1:
 	:type V1: gp_Vec
@@ -10229,7 +10257,7 @@ class gp_Vec {
 ") Scale;
 		void Scale (const Standard_Real S);
 		%feature("compactdefaultargs") Scaled;
-		%feature("autodoc", "	* Scales a vector. S is the scaling value. Transforms a vector with the transformation T.
+		%feature("autodoc", "	* Scales a vector. S is the scaling value.
 
 	:param S:
 	:type S: float
@@ -10237,7 +10265,9 @@ class gp_Vec {
 ") Scaled;
 		gp_Vec Scaled (const Standard_Real S);
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	:param T:
+		%feature("autodoc", "	* Transforms a vector with the transformation T.
+
+	:param T:
 	:type T: gp_Trsf
 	:rtype: None
 ") Transform;
@@ -10288,7 +10318,7 @@ class gp_Vec2d {
 ") gp_Vec2d;
 		 gp_Vec2d (const gp_XY & Coord);
 		%feature("compactdefaultargs") gp_Vec2d;
-		%feature("autodoc", "	* Creates a point with its two cartesian coordinates.
+		%feature("autodoc", "	* Creates a point with its two Cartesian coordinates.
 
 	:param Xv:
 	:type Xv: float
@@ -10459,7 +10489,7 @@ class gp_Vec2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Vec2d
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const gp_Vec2d & Other);
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Adds two vectors
@@ -10473,7 +10503,7 @@ class gp_Vec2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Vec2d
 	:rtype: gp_Vec2d
-") operator+;
+") operator +;
 		gp_Vec2d operator + (const gp_Vec2d & Other);
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "	* Computes the crossing product between two vectors
@@ -10487,7 +10517,7 @@ class gp_Vec2d {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_Vec2d
 	:rtype: float
-") operator^;
+") operator ^;
 		Standard_Real operator ^ (const gp_Vec2d & Right);
 		%feature("compactdefaultargs") CrossMagnitude;
 		%feature("autodoc", "	* Computes the magnitude of the cross product between <self> and Right. Returns || <self> ^ Right ||
@@ -10515,7 +10545,7 @@ class gp_Vec2d {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator/=;
+") operator /=;
 		void operator /= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* divides a vector by a scalar
@@ -10529,7 +10559,7 @@ class gp_Vec2d {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_Vec2d
-") operator/;
+") operator /;
 		gp_Vec2d operator / (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "	* Computes the scalar product
@@ -10543,7 +10573,7 @@ class gp_Vec2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Vec2d
 	:rtype: float
-") operator*;
+") operator *;
 		Standard_Real operator * (const gp_Vec2d & Other);
 		%feature("compactdefaultargs") GetNormal;
 		%feature("autodoc", "	:rtype: gp_Vec2d
@@ -10559,7 +10589,7 @@ class gp_Vec2d {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* Normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from package gp.
@@ -10573,7 +10603,7 @@ class gp_Vec2d {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_Vec2d
-") operator*;
+") operator *;
 		gp_Vec2d operator * (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Normalize;
 		%feature("autodoc", "	:rtype: None
@@ -10590,17 +10620,19 @@ class gp_Vec2d {
 ") Reverse;
 		void Reverse ();
 		%feature("compactdefaultargs") Reversed;
-		%feature("autodoc", "	* Reverses the direction of a vector Subtracts two vectors
+		%feature("autodoc", "	* Reverses the direction of a vector
 
 	:rtype: gp_Vec2d
 ") Reversed;
 		gp_Vec2d Reversed ();
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "	:rtype: gp_Vec2d
-") operator-;
+") operator -;
 		gp_Vec2d operator - ();
 		%feature("compactdefaultargs") Subtract;
-		%feature("autodoc", "	:param Right:
+		%feature("autodoc", "	* Subtracts two vectors
+
+	:param Right:
 	:type Right: gp_Vec2d
 	:rtype: None
 ") Subtract;
@@ -10609,7 +10641,7 @@ class gp_Vec2d {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_Vec2d
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const gp_Vec2d & Right);
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* Subtracts two vectors
@@ -10623,10 +10655,10 @@ class gp_Vec2d {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_Vec2d
 	:rtype: gp_Vec2d
-") operator-;
+") operator -;
 		gp_Vec2d operator - (const gp_Vec2d & Right);
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "	* <self> is setted to the following linear form : A1 * V1 + A2 * V2 + V3
+		%feature("autodoc", "	* <self> is set to the following linear form : A1 * V1 + A2 * V2 + V3
 
 	:param A1:
 	:type A1: float
@@ -10642,7 +10674,7 @@ class gp_Vec2d {
 ") SetLinearForm;
 		void SetLinearForm (const Standard_Real A1,const gp_Vec2d & V1,const Standard_Real A2,const gp_Vec2d & V2,const gp_Vec2d & V3);
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "	* <self> is setted to the following linear form : A1 * V1 + A2 * V2
+		%feature("autodoc", "	* <self> is set to the following linear form : A1 * V1 + A2 * V2
 
 	:param A1:
 	:type A1: float
@@ -10656,7 +10688,7 @@ class gp_Vec2d {
 ") SetLinearForm;
 		void SetLinearForm (const Standard_Real A1,const gp_Vec2d & V1,const Standard_Real A2,const gp_Vec2d & V2);
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "	* <self> is setted to the following linear form : A1 * V1 + V2
+		%feature("autodoc", "	* <self> is set to the following linear form : A1 * V1 + V2
 
 	:param A1:
 	:type A1: float
@@ -10668,7 +10700,7 @@ class gp_Vec2d {
 ") SetLinearForm;
 		void SetLinearForm (const Standard_Real A1,const gp_Vec2d & V1,const gp_Vec2d & V2);
 		%feature("compactdefaultargs") SetLinearForm;
-		%feature("autodoc", "	* <self> is setted to the following linear form : Left + Right //! Performs the symmetrical transformation of a vector with respect to the vector V which is the center of the symmetry.
+		%feature("autodoc", "	* <self> is set to the following linear form : Left + Right
 
 	:param Left:
 	:type Left: gp_Vec2d
@@ -10678,13 +10710,15 @@ class gp_Vec2d {
 ") SetLinearForm;
 		void SetLinearForm (const gp_Vec2d & Left,const gp_Vec2d & Right);
 		%feature("compactdefaultargs") Mirror;
-		%feature("autodoc", "	:param V:
+		%feature("autodoc", "	* Performs the symmetrical transformation of a vector with respect to the vector V which is the center of the symmetry.
+
+	:param V:
 	:type V: gp_Vec2d
 	:rtype: None
 ") Mirror;
 		void Mirror (const gp_Vec2d & V);
 		%feature("compactdefaultargs") Mirrored;
-		%feature("autodoc", "	* Performs the symmetrical transformation of a vector with respect to the vector V which is the center of the symmetry. //! Performs the symmetrical transformation of a vector with respect to an axis placement which is the axis of the symmetry.
+		%feature("autodoc", "	* Performs the symmetrical transformation of a vector with respect to the vector V which is the center of the symmetry.
 
 	:param V:
 	:type V: gp_Vec2d
@@ -10692,7 +10726,9 @@ class gp_Vec2d {
 ") Mirrored;
 		gp_Vec2d Mirrored (const gp_Vec2d & V);
 		%feature("compactdefaultargs") Mirror;
-		%feature("autodoc", "	:param A1:
+		%feature("autodoc", "	* Performs the symmetrical transformation of a vector with respect to an axis placement which is the axis of the symmetry.
+
+	:param A1:
 	:type A1: gp_Ax2d
 	:rtype: None
 ") Mirror;
@@ -10884,7 +10920,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_XY
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const gp_XY & Other);
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Computes the sum of this number pair and number pair Other new.X() = <self>.X() + Other.X() new.Y() = <self>.Y() + Other.Y()
@@ -10898,7 +10934,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_XY
 	:rtype: gp_XY
-") operator+;
+") operator +;
 		gp_XY operator + (const gp_XY & Other);
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "	* Real D = <self>.X() * Other.Y() - <self>.Y() * Other.X()
@@ -10912,7 +10948,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_XY
 	:rtype: float
-") operator^;
+") operator ^;
 		Standard_Real operator ^ (const gp_XY & Right);
 		%feature("compactdefaultargs") CrossMagnitude;
 		%feature("autodoc", "	* computes the magnitude of the cross product between <self> and Right. Returns || <self> ^ Right ||
@@ -10942,7 +10978,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator/=;
+") operator /=;
 		void operator /= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* Divides <self> by a real.
@@ -10956,7 +10992,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_XY
-") operator/;
+") operator /;
 		gp_XY operator / (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "	* Computes the scalar product between <self> and Other
@@ -10970,7 +11006,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_XY
 	:rtype: float
-") operator*;
+") operator *;
 		Standard_Real operator * (const gp_XY & Other);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* <self>.X() = <self>.X() * Scalar; <self>.Y() = <self>.Y() * Scalar;
@@ -10984,7 +11020,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* <self>.X() = <self>.X() * Other.X(); <self>.Y() = <self>.Y() * Other.Y();
@@ -10998,7 +11034,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_XY
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const gp_XY & Other);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* <self> = Matrix * <self>
@@ -11012,7 +11048,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Matrix:
 	:type Matrix: gp_Mat2d
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const gp_Mat2d & Matrix);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* New.X() = <self>.X() * Scalar; New.Y() = <self>.Y() * Scalar;
@@ -11026,7 +11062,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_XY
-") operator*;
+") operator *;
 		gp_XY operator * (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* new.X() = <self>.X() * Other.X(); new.Y() = <self>.Y() * Other.Y();
@@ -11048,7 +11084,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Matrix:
 	:type Matrix: gp_Mat2d
 	:rtype: gp_XY
-") operator*;
+") operator *;
 		gp_XY operator * (const gp_Mat2d & Matrix);
 		%feature("compactdefaultargs") Normalize;
 		%feature("autodoc", "	* <self>.X() = <self>.X()/ <self>.Modulus() <self>.Y() = <self>.Y()/ <self>.Modulus() Raises ConstructionError if <self>.Modulus() <= Resolution from gp
@@ -11076,7 +11112,7 @@ class gp_XY {
 		gp_XY Reversed ();
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "	:rtype: gp_XY
-") operator-;
+") operator -;
 		gp_XY operator - ();
 		%feature("compactdefaultargs") SetLinearForm;
 		%feature("autodoc", "	* Computes the following linear combination and assigns the result to this number pair: A1 * XY1 + A2 * XY2
@@ -11142,7 +11178,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_XY
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const gp_XY & Right);
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* new.X() = <self>.X() - Other.X() new.Y() = <self>.Y() - Other.Y()
@@ -11156,7 +11192,7 @@ class gp_XY {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_XY
 	:rtype: gp_XY
-") operator-;
+") operator -;
 		gp_XY operator - (const gp_XY & Right);
 		%feature("compactdefaultargs") _CSFDB_Getgp_XYx;
 		%feature("autodoc", "	:rtype: float
@@ -11295,6 +11331,18 @@ class gp_XYZ {
 	:rtype: float
 ") Z;
 		Standard_Real Z ();
+		%feature("compactdefaultargs") GetData;
+		%feature("autodoc", "	* Returns a const ptr to coordinates location. Is useful for algorithms, but DOES NOT PERFORM ANY CHECKS!
+
+	:rtype: float *
+") GetData;
+		const Standard_Real * GetData ();
+		%feature("compactdefaultargs") ChangeData;
+		%feature("autodoc", "	* Returns a ptr to coordinates location. Is useful for algorithms, but DOES NOT PERFORM ANY CHECKS!
+
+	:rtype: float *
+") ChangeData;
+		Standard_Real * ChangeData ();
 		%feature("compactdefaultargs") Modulus;
 		%feature("autodoc", "	* computes Sqrt (X*X + Y*Y + Z*Z) where X, Y and Z are the three coordinates of this XYZ object.
 
@@ -11329,7 +11377,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_XYZ
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const gp_XYZ & Other);
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* new.X() = <self>.X() + Other.X() new.Y() = <self>.Y() + Other.Y() new.Z() = <self>.Z() + Other.Z()
@@ -11343,7 +11391,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_XYZ
 	:rtype: gp_XYZ
-") operator+;
+") operator +;
 		gp_XYZ operator + (const gp_XYZ & Other);
 		%feature("compactdefaultargs") Cross;
 		%feature("autodoc", "	* <self>.X() = <self>.Y() * Other.Z() - <self>.Z() * Other.Y() <self>.Y() = <self>.Z() * Other.X() - <self>.X() * Other.Z() <self>.Z() = <self>.X() * Other.Y() - <self>.Y() * Other.X()
@@ -11357,7 +11405,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_XYZ
 	:rtype: None
-") operator^=;
+") operator ^=;
 		void operator ^= (const gp_XYZ & Right);
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "	* new.X() = <self>.Y() * Other.Z() - <self>.Z() * Other.Y() new.Y() = <self>.Z() * Other.X() - <self>.X() * Other.Z() new.Z() = <self>.X() * Other.Y() - <self>.Y() * Other.X()
@@ -11371,7 +11419,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_XYZ
 	:rtype: gp_XYZ
-") operator^;
+") operator ^;
 		gp_XYZ operator ^ (const gp_XYZ & Right);
 		%feature("compactdefaultargs") CrossMagnitude;
 		%feature("autodoc", "	* Computes the magnitude of the cross product between <self> and Right. Returns || <self> ^ Right ||
@@ -11421,7 +11469,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator/=;
+") operator /=;
 		void operator /= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* divides <self> by a real.
@@ -11435,7 +11483,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_XYZ
-") operator/;
+") operator /;
 		gp_XYZ operator / (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "	* computes the scalar product between <self> and Other
@@ -11449,7 +11497,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_XYZ
 	:rtype: float
-") operator*;
+") operator *;
 		Standard_Real operator * (const gp_XYZ & Other);
 		%feature("compactdefaultargs") DotCross;
 		%feature("autodoc", "	* computes the triple scalar product
@@ -11473,7 +11521,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* <self>.X() = <self>.X() * Other.X(); <self>.Y() = <self>.Y() * Other.Y(); <self>.Z() = <self>.Z() * Other.Z();
@@ -11487,7 +11535,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_XYZ
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const gp_XYZ & Other);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* <self> = Matrix * <self>
@@ -11501,7 +11549,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Matrix:
 	:type Matrix: gp_Mat
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const gp_Mat & Matrix);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* New.X() = <self>.X() * Scalar; New.Y() = <self>.Y() * Scalar; New.Z() = <self>.Z() * Scalar;
@@ -11515,7 +11563,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: gp_XYZ
-") operator*;
+") operator *;
 		gp_XYZ operator * (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* new.X() = <self>.X() * Other.X(); new.Y() = <self>.Y() * Other.Y(); new.Z() = <self>.Z() * Other.Z();
@@ -11537,7 +11585,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Matrix:
 	:type Matrix: gp_Mat
 	:rtype: gp_XYZ
-") operator*;
+") operator *;
 		gp_XYZ operator * (const gp_Mat & Matrix);
 		%feature("compactdefaultargs") Normalize;
 		%feature("autodoc", "	* <self>.X() = <self>.X()/ <self>.Modulus() <self>.Y() = <self>.Y()/ <self>.Modulus() <self>.Z() = <self>.Z()/ <self>.Modulus() Raised if <self>.Modulus() <= Resolution from gp
@@ -11575,7 +11623,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_XYZ
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const gp_XYZ & Right);
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* new.X() = <self>.X() - Other.X() new.Y() = <self>.Y() - Other.Y() new.Z() = <self>.Z() - Other.Z()
@@ -11589,7 +11637,7 @@ class gp_XYZ {
 		%feature("autodoc", "	:param Right:
 	:type Right: gp_XYZ
 	:rtype: gp_XYZ
-") operator-;
+") operator -;
 		gp_XYZ operator - (const gp_XYZ & Right);
 		%feature("compactdefaultargs") SetLinearForm;
 		%feature("autodoc", "	* <self> is set to the following linear form : A1 * XYZ1 + A2 * XYZ2 + A3 * XYZ3 + XYZ4

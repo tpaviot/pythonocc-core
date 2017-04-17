@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -101,7 +101,7 @@ class StepRepr_Array1OfMaterialPropertyRepresentation {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepRepr_Array1OfMaterialPropertyRepresentation &
 	:rtype: StepRepr_Array1OfMaterialPropertyRepresentation
-") operator=;
+") operator =;
 		const StepRepr_Array1OfMaterialPropertyRepresentation & operator = (const StepRepr_Array1OfMaterialPropertyRepresentation & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -188,7 +188,7 @@ class StepRepr_Array1OfPropertyDefinitionRepresentation {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepRepr_Array1OfPropertyDefinitionRepresentation &
 	:rtype: StepRepr_Array1OfPropertyDefinitionRepresentation
-") operator=;
+") operator =;
 		const StepRepr_Array1OfPropertyDefinitionRepresentation & operator = (const StepRepr_Array1OfPropertyDefinitionRepresentation & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -275,7 +275,7 @@ class StepRepr_Array1OfRepresentationItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepRepr_Array1OfRepresentationItem &
 	:rtype: StepRepr_Array1OfRepresentationItem
-") operator=;
+") operator =;
 		const StepRepr_Array1OfRepresentationItem & operator = (const StepRepr_Array1OfRepresentationItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -3316,7 +3316,7 @@ class StepRepr_SequenceOfMaterialPropertyRepresentation : public TCollection_Bas
 		%feature("autodoc", "	:param Other:
 	:type Other: StepRepr_SequenceOfMaterialPropertyRepresentation &
 	:rtype: StepRepr_SequenceOfMaterialPropertyRepresentation
-") operator=;
+") operator =;
 		const StepRepr_SequenceOfMaterialPropertyRepresentation & operator = (const StepRepr_SequenceOfMaterialPropertyRepresentation & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -3459,7 +3459,7 @@ class StepRepr_SequenceOfRepresentationItem : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepRepr_SequenceOfRepresentationItem &
 	:rtype: StepRepr_SequenceOfRepresentationItem
-") operator=;
+") operator =;
 		const StepRepr_SequenceOfRepresentationItem & operator = (const StepRepr_SequenceOfRepresentationItem & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

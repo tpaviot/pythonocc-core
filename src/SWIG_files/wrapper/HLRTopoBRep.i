@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -568,7 +568,7 @@ class HLRTopoBRep_DataMapOfShapeFaceData : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRTopoBRep_DataMapOfShapeFaceData &
 	:rtype: HLRTopoBRep_DataMapOfShapeFaceData
-") operator=;
+") operator =;
 		HLRTopoBRep_DataMapOfShapeFaceData & operator = (const HLRTopoBRep_DataMapOfShapeFaceData & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -858,7 +858,7 @@ class HLRTopoBRep_ListOfVData {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRTopoBRep_ListOfVData &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const HLRTopoBRep_ListOfVData & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -989,7 +989,7 @@ class HLRTopoBRep_MapOfShapeListOfVData : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRTopoBRep_MapOfShapeListOfVData &
 	:rtype: HLRTopoBRep_MapOfShapeListOfVData
-") operator=;
+") operator =;
 		HLRTopoBRep_MapOfShapeListOfVData & operator = (const HLRTopoBRep_MapOfShapeListOfVData & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

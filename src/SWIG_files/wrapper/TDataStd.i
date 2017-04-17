@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -531,7 +531,7 @@ class TDataStd_ByteArray : public TDF_Attribute {
 ") GetID;
 		static const Standard_GUID & GetID ();
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Finds or creates an attribute with the array. If <isDelta> == False, DefaultDeltaOnModification is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
+		%feature("autodoc", "	* Finds or creates an attribute with the array on the specified label. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
 
 	:param label:
 	:type label: TDF_Label &
@@ -1615,7 +1615,7 @@ class TDataStd_DataMapOfStringByte : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDataStd_DataMapOfStringByte &
 	:rtype: TDataStd_DataMapOfStringByte
-") operator=;
+") operator =;
 		TDataStd_DataMapOfStringByte & operator = (const TDataStd_DataMapOfStringByte & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1698,7 +1698,7 @@ class TDataStd_DataMapOfStringHArray1OfInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDataStd_DataMapOfStringHArray1OfInteger &
 	:rtype: TDataStd_DataMapOfStringHArray1OfInteger
-") operator=;
+") operator =;
 		TDataStd_DataMapOfStringHArray1OfInteger & operator = (const TDataStd_DataMapOfStringHArray1OfInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1781,7 +1781,7 @@ class TDataStd_DataMapOfStringHArray1OfReal : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDataStd_DataMapOfStringHArray1OfReal &
 	:rtype: TDataStd_DataMapOfStringHArray1OfReal
-") operator=;
+") operator =;
 		TDataStd_DataMapOfStringHArray1OfReal & operator = (const TDataStd_DataMapOfStringHArray1OfReal & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1864,7 +1864,7 @@ class TDataStd_DataMapOfStringReal : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDataStd_DataMapOfStringReal &
 	:rtype: TDataStd_DataMapOfStringReal
-") operator=;
+") operator =;
 		TDataStd_DataMapOfStringReal & operator = (const TDataStd_DataMapOfStringReal & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1947,7 +1947,7 @@ class TDataStd_DataMapOfStringString : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDataStd_DataMapOfStringString &
 	:rtype: TDataStd_DataMapOfStringString
-") operator=;
+") operator =;
 		TDataStd_DataMapOfStringString & operator = (const TDataStd_DataMapOfStringString & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2638,7 +2638,7 @@ class TDataStd_ExtStringArray : public TDF_Attribute {
 ") GetID;
 		static const Standard_GUID & GetID ();
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Finds, or creates, an ExtStringArray attribute with <lower> and <upper> bounds. The ExtStringArray attribute is returned. If <isDelta> == False, DefaultDeltaOnModification is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
+		%feature("autodoc", "	* Finds, or creates, an ExtStringArray attribute with <lower> and <upper> bounds on the specified label. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
 
 	:param label:
 	:type label: TDF_Label &
@@ -3879,7 +3879,7 @@ class TDataStd_IntegerArray : public TDF_Attribute {
 ") GetID;
 		static const Standard_GUID & GetID ();
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Finds or creates on the <label> an integer array attribute with the specified <lower> and <upper> boundaries. If <isDelta> == False, DefaultDeltaOnModification is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
+		%feature("autodoc", "	* Finds or creates on the <label> an integer array attribute with the specified <lower> and <upper> boundaries. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
 
 	:param label:
 	:type label: TDF_Label &
@@ -4278,7 +4278,7 @@ class TDataStd_LabelArray1 {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDataStd_LabelArray1 &
 	:rtype: TDataStd_LabelArray1
-") operator=;
+") operator =;
 		const TDataStd_LabelArray1 & operator = (const TDataStd_LabelArray1 & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -4559,7 +4559,7 @@ class TDataStd_ListOfByte {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDataStd_ListOfByte &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TDataStd_ListOfByte & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -4694,7 +4694,7 @@ class TDataStd_ListOfExtendedString {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDataStd_ListOfExtendedString &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TDataStd_ListOfExtendedString & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -5590,7 +5590,7 @@ class TDataStd_RealArray : public TDF_Attribute {
 ") GetID;
 		static const Standard_GUID & GetID ();
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Finds or creates on the <label> a real array attribute with the specified <lower> and <upper> boundaries. If attribute is already set, all input parameters are refused and the found attribute is returned.
+		%feature("autodoc", "	* Finds or creates on the <label> a real array attribute with the specified <lower> and <upper> boundaries. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, input parameter <isDelta> is refused and the found attribute returned.
 
 	:param label:
 	:type label: TDF_Label &

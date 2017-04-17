@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1945,7 +1945,7 @@ class StepBasic_Array1OfApproval {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepBasic_Array1OfApproval &
 	:rtype: StepBasic_Array1OfApproval
-") operator=;
+") operator =;
 		const StepBasic_Array1OfApproval & operator = (const StepBasic_Array1OfApproval & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2032,7 +2032,7 @@ class StepBasic_Array1OfDerivedUnitElement {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepBasic_Array1OfDerivedUnitElement &
 	:rtype: StepBasic_Array1OfDerivedUnitElement
-") operator=;
+") operator =;
 		const StepBasic_Array1OfDerivedUnitElement & operator = (const StepBasic_Array1OfDerivedUnitElement & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2119,7 +2119,7 @@ class StepBasic_Array1OfDocument {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepBasic_Array1OfDocument &
 	:rtype: StepBasic_Array1OfDocument
-") operator=;
+") operator =;
 		const StepBasic_Array1OfDocument & operator = (const StepBasic_Array1OfDocument & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2206,7 +2206,7 @@ class StepBasic_Array1OfNamedUnit {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepBasic_Array1OfNamedUnit &
 	:rtype: StepBasic_Array1OfNamedUnit
-") operator=;
+") operator =;
 		const StepBasic_Array1OfNamedUnit & operator = (const StepBasic_Array1OfNamedUnit & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2293,7 +2293,7 @@ class StepBasic_Array1OfOrganization {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepBasic_Array1OfOrganization &
 	:rtype: StepBasic_Array1OfOrganization
-") operator=;
+") operator =;
 		const StepBasic_Array1OfOrganization & operator = (const StepBasic_Array1OfOrganization & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2380,7 +2380,7 @@ class StepBasic_Array1OfPerson {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepBasic_Array1OfPerson &
 	:rtype: StepBasic_Array1OfPerson
-") operator=;
+") operator =;
 		const StepBasic_Array1OfPerson & operator = (const StepBasic_Array1OfPerson & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2467,7 +2467,7 @@ class StepBasic_Array1OfProduct {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepBasic_Array1OfProduct &
 	:rtype: StepBasic_Array1OfProduct
-") operator=;
+") operator =;
 		const StepBasic_Array1OfProduct & operator = (const StepBasic_Array1OfProduct & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2554,7 +2554,7 @@ class StepBasic_Array1OfProductContext {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepBasic_Array1OfProductContext &
 	:rtype: StepBasic_Array1OfProductContext
-") operator=;
+") operator =;
 		const StepBasic_Array1OfProductContext & operator = (const StepBasic_Array1OfProductContext & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2641,7 +2641,7 @@ class StepBasic_Array1OfProductDefinition {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepBasic_Array1OfProductDefinition &
 	:rtype: StepBasic_Array1OfProductDefinition
-") operator=;
+") operator =;
 		const StepBasic_Array1OfProductDefinition & operator = (const StepBasic_Array1OfProductDefinition & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2728,7 +2728,7 @@ class StepBasic_Array1OfUncertaintyMeasureWithUnit {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepBasic_Array1OfUncertaintyMeasureWithUnit &
 	:rtype: StepBasic_Array1OfUncertaintyMeasureWithUnit
-") operator=;
+") operator =;
 		const StepBasic_Array1OfUncertaintyMeasureWithUnit & operator = (const StepBasic_Array1OfUncertaintyMeasureWithUnit & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int

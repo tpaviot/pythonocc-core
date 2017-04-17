@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -101,7 +101,7 @@ class Plate_Array1OfPinpointConstraint {
 		%feature("autodoc", "	:param Other:
 	:type Other: Plate_Array1OfPinpointConstraint &
 	:rtype: Plate_Array1OfPinpointConstraint
-") operator=;
+") operator =;
 		const Plate_Array1OfPinpointConstraint & operator = (const Plate_Array1OfPinpointConstraint & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -846,7 +846,7 @@ class Plate_Plate {
 		%feature("autodoc", "	:param Ref:
 	:type Ref: Plate_Plate &
 	:rtype: Plate_Plate
-") operator=;
+") operator =;
 		Plate_Plate & operator = (const Plate_Plate & Ref);
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "	:param PConst:
@@ -1247,7 +1247,7 @@ class Plate_SequenceOfLinearScalarConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Plate_SequenceOfLinearScalarConstraint &
 	:rtype: Plate_SequenceOfLinearScalarConstraint
-") operator=;
+") operator =;
 		const Plate_SequenceOfLinearScalarConstraint & operator = (const Plate_SequenceOfLinearScalarConstraint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1390,7 +1390,7 @@ class Plate_SequenceOfLinearXYZConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Plate_SequenceOfLinearXYZConstraint &
 	:rtype: Plate_SequenceOfLinearXYZConstraint
-") operator=;
+") operator =;
 		const Plate_SequenceOfLinearXYZConstraint & operator = (const Plate_SequenceOfLinearXYZConstraint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1533,7 +1533,7 @@ class Plate_SequenceOfPinpointConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Plate_SequenceOfPinpointConstraint &
 	:rtype: Plate_SequenceOfPinpointConstraint
-") operator=;
+") operator =;
 		const Plate_SequenceOfPinpointConstraint & operator = (const Plate_SequenceOfPinpointConstraint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

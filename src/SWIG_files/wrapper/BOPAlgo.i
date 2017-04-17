@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -144,205 +144,6 @@ class BOPAlgo_Algo {
 
 
 %extend BOPAlgo_Algo {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BOPAlgo_ArgumentAnalyzer;
-class BOPAlgo_ArgumentAnalyzer {
-	public:
-		%feature("compactdefaultargs") BOPAlgo_ArgumentAnalyzer;
-		%feature("autodoc", "	* empty constructor
-
-	:rtype: None
-") BOPAlgo_ArgumentAnalyzer;
-		 BOPAlgo_ArgumentAnalyzer ();
-		%feature("compactdefaultargs") SetShape1;
-		%feature("autodoc", "	* sets object shape
-
-	:param TheShape:
-	:type TheShape: TopoDS_Shape &
-	:rtype: None
-") SetShape1;
-		void SetShape1 (const TopoDS_Shape & TheShape);
-		%feature("compactdefaultargs") SetShape2;
-		%feature("autodoc", "	* sets tool shape
-
-	:param TheShape:
-	:type TheShape: TopoDS_Shape &
-	:rtype: None
-") SetShape2;
-		void SetShape2 (const TopoDS_Shape & TheShape);
-		%feature("compactdefaultargs") GetShape1;
-		%feature("autodoc", "	* returns object shape;
-
-	:rtype: TopoDS_Shape
-") GetShape1;
-		const TopoDS_Shape  GetShape1 ();
-		%feature("compactdefaultargs") GetShape2;
-		%feature("autodoc", "	* returns tool shape
-
-	:rtype: TopoDS_Shape
-") GetShape2;
-		const TopoDS_Shape  GetShape2 ();
-		%feature("compactdefaultargs") OperationType;
-		%feature("autodoc", "	* returns ref
-
-	:rtype: BOPAlgo_Operation
-") OperationType;
-		BOPAlgo_Operation & OperationType ();
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetStopOnFirstFaulty() {
-                return (Standard_Boolean) $self->StopOnFirstFaulty();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetStopOnFirstFaulty(Standard_Boolean value ) {
-                $self->StopOnFirstFaulty()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetArgumentTypeMode() {
-                return (Standard_Boolean) $self->ArgumentTypeMode();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetArgumentTypeMode(Standard_Boolean value ) {
-                $self->ArgumentTypeMode()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetSelfInterMode() {
-                return (Standard_Boolean) $self->SelfInterMode();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetSelfInterMode(Standard_Boolean value ) {
-                $self->SelfInterMode()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetSmallEdgeMode() {
-                return (Standard_Boolean) $self->SmallEdgeMode();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetSmallEdgeMode(Standard_Boolean value ) {
-                $self->SmallEdgeMode()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetRebuildFaceMode() {
-                return (Standard_Boolean) $self->RebuildFaceMode();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetRebuildFaceMode(Standard_Boolean value ) {
-                $self->RebuildFaceMode()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetTangentMode() {
-                return (Standard_Boolean) $self->TangentMode();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetTangentMode(Standard_Boolean value ) {
-                $self->TangentMode()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetMergeVertexMode() {
-                return (Standard_Boolean) $self->MergeVertexMode();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetMergeVertexMode(Standard_Boolean value ) {
-                $self->MergeVertexMode()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetMergeEdgeMode() {
-                return (Standard_Boolean) $self->MergeEdgeMode();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetMergeEdgeMode(Standard_Boolean value ) {
-                $self->MergeEdgeMode()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetContinuityMode() {
-                return (Standard_Boolean) $self->ContinuityMode();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetContinuityMode(Standard_Boolean value ) {
-                $self->ContinuityMode()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetCurveOnSurfaceMode() {
-                return (Standard_Boolean) $self->CurveOnSurfaceMode();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetCurveOnSurfaceMode(Standard_Boolean value ) {
-                $self->CurveOnSurfaceMode()=value;
-                }
-            };
-            		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* performs analysis
-
-	:rtype: None
-") Perform;
-		void Perform ();
-		%feature("compactdefaultargs") HasFaulty;
-		%feature("autodoc", "	* result of test
-
-	:rtype: bool
-") HasFaulty;
-		Standard_Boolean HasFaulty ();
-		%feature("compactdefaultargs") GetCheckResult;
-		%feature("autodoc", "	* returns a result of test
-
-	:rtype: BOPAlgo_ListOfCheckResult
-") GetCheckResult;
-		const BOPAlgo_ListOfCheckResult & GetCheckResult ();
-};
-
-
-%extend BOPAlgo_ArgumentAnalyzer {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -696,6 +497,219 @@ class BOPAlgo_WireEdgeSet {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor BOPAlgo_ArgumentAnalyzer;
+class BOPAlgo_ArgumentAnalyzer : public BOPAlgo_Algo {
+	public:
+		%feature("compactdefaultargs") BOPAlgo_ArgumentAnalyzer;
+		%feature("autodoc", "	* empty constructor
+
+	:rtype: None
+") BOPAlgo_ArgumentAnalyzer;
+		 BOPAlgo_ArgumentAnalyzer ();
+		%feature("compactdefaultargs") SetShape1;
+		%feature("autodoc", "	* sets object shape
+
+	:param TheShape:
+	:type TheShape: TopoDS_Shape &
+	:rtype: None
+") SetShape1;
+		void SetShape1 (const TopoDS_Shape & TheShape);
+		%feature("compactdefaultargs") SetShape2;
+		%feature("autodoc", "	* sets tool shape
+
+	:param TheShape:
+	:type TheShape: TopoDS_Shape &
+	:rtype: None
+") SetShape2;
+		void SetShape2 (const TopoDS_Shape & TheShape);
+		%feature("compactdefaultargs") GetShape1;
+		%feature("autodoc", "	* returns object shape;
+
+	:rtype: TopoDS_Shape
+") GetShape1;
+		const TopoDS_Shape  GetShape1 ();
+		%feature("compactdefaultargs") GetShape2;
+		%feature("autodoc", "	* returns tool shape
+
+	:rtype: TopoDS_Shape
+") GetShape2;
+		const TopoDS_Shape  GetShape2 ();
+		%feature("compactdefaultargs") OperationType;
+		%feature("autodoc", "	* returns ref
+
+	:rtype: BOPAlgo_Operation
+") OperationType;
+		BOPAlgo_Operation & OperationType ();
+
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetStopOnFirstFaulty() {
+                return (Standard_Boolean) $self->StopOnFirstFaulty();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetStopOnFirstFaulty(Standard_Boolean value ) {
+                $self->StopOnFirstFaulty()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetArgumentTypeMode() {
+                return (Standard_Boolean) $self->ArgumentTypeMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetArgumentTypeMode(Standard_Boolean value ) {
+                $self->ArgumentTypeMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetSelfInterMode() {
+                return (Standard_Boolean) $self->SelfInterMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetSelfInterMode(Standard_Boolean value ) {
+                $self->SelfInterMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetSmallEdgeMode() {
+                return (Standard_Boolean) $self->SmallEdgeMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetSmallEdgeMode(Standard_Boolean value ) {
+                $self->SmallEdgeMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetRebuildFaceMode() {
+                return (Standard_Boolean) $self->RebuildFaceMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetRebuildFaceMode(Standard_Boolean value ) {
+                $self->RebuildFaceMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetTangentMode() {
+                return (Standard_Boolean) $self->TangentMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetTangentMode(Standard_Boolean value ) {
+                $self->TangentMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetMergeVertexMode() {
+                return (Standard_Boolean) $self->MergeVertexMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetMergeVertexMode(Standard_Boolean value ) {
+                $self->MergeVertexMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetMergeEdgeMode() {
+                return (Standard_Boolean) $self->MergeEdgeMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetMergeEdgeMode(Standard_Boolean value ) {
+                $self->MergeEdgeMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetContinuityMode() {
+                return (Standard_Boolean) $self->ContinuityMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetContinuityMode(Standard_Boolean value ) {
+                $self->ContinuityMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetCurveOnSurfaceMode() {
+                return (Standard_Boolean) $self->CurveOnSurfaceMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetCurveOnSurfaceMode(Standard_Boolean value ) {
+                $self->CurveOnSurfaceMode()=value;
+                }
+            };
+            		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* performs analysis
+
+	:rtype: None
+") Perform;
+		void Perform ();
+		%feature("compactdefaultargs") HasFaulty;
+		%feature("autodoc", "	* result of test
+
+	:rtype: bool
+") HasFaulty;
+		Standard_Boolean HasFaulty ();
+		%feature("compactdefaultargs") GetCheckResult;
+		%feature("autodoc", "	* returns a result of test
+
+	:rtype: BOPAlgo_ListOfCheckResult
+") GetCheckResult;
+		const BOPAlgo_ListOfCheckResult & GetCheckResult ();
+		%feature("compactdefaultargs") SetFuzzyValue;
+		%feature("autodoc", "	* Sets the additional tolerance
+
+	:param theFuzz:
+	:type theFuzz: float
+	:rtype: None
+") SetFuzzyValue;
+		void SetFuzzyValue (const Standard_Real theFuzz);
+		%feature("compactdefaultargs") FuzzyValue;
+		%feature("autodoc", "	* Returns the additional tolerance
+
+	:rtype: float
+") FuzzyValue;
+		Standard_Real FuzzyValue ();
+};
+
+
+%extend BOPAlgo_ArgumentAnalyzer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BOPAlgo_BuilderArea;
 %ignore BOPAlgo_BuilderArea::~BOPAlgo_BuilderArea();
 class BOPAlgo_BuilderArea : public BOPAlgo_Algo {
@@ -817,16 +831,22 @@ class BOPAlgo_PaveFiller : public BOPAlgo_Algo {
 		%feature("autodoc", "	:rtype: BOPDS_PDS
 ") PDS;
 		BOPDS_PDS PDS ();
-		%feature("compactdefaultargs") Arguments;
-		%feature("autodoc", "	:rtype: BOPCol_ListOfShape
-") Arguments;
-		const BOPCol_ListOfShape & Arguments ();
 		%feature("compactdefaultargs") SetArguments;
 		%feature("autodoc", "	:param theLS:
 	:type theLS: BOPCol_ListOfShape &
 	:rtype: None
 ") SetArguments;
 		void SetArguments (const BOPCol_ListOfShape & theLS);
+		%feature("compactdefaultargs") SetArguments;
+		%feature("autodoc", "	:param theLS:
+	:type theLS: TopTools_ListOfShape &
+	:rtype: None
+") SetArguments;
+		void SetArguments (const TopTools_ListOfShape & theLS);
+		%feature("compactdefaultargs") Arguments;
+		%feature("autodoc", "	:rtype: BOPCol_ListOfShape
+") Arguments;
+		const BOPCol_ListOfShape & Arguments ();
 		%feature("compactdefaultargs") Context;
 		%feature("autodoc", "	:rtype: Handle_IntTools_Context
 ") Context;
@@ -841,6 +861,20 @@ class BOPAlgo_PaveFiller : public BOPAlgo_Algo {
 		%feature("autodoc", "	:rtype: void
 ") Perform;
 		virtual void Perform ();
+		%feature("compactdefaultargs") SetFuzzyValue;
+		%feature("autodoc", "	* Sets the additional tolerance
+
+	:param theFuzz:
+	:type theFuzz: float
+	:rtype: None
+") SetFuzzyValue;
+		void SetFuzzyValue (const Standard_Real theFuzz);
+		%feature("compactdefaultargs") FuzzyValue;
+		%feature("autodoc", "	* Returns the additional tolerance
+
+	:rtype: float
+") FuzzyValue;
+		Standard_Real FuzzyValue ();
 };
 
 
@@ -989,11 +1023,17 @@ class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 ") AddArgument;
 		virtual void AddArgument (const TopoDS_Shape & theShape);
 		%feature("compactdefaultargs") SetArguments;
-		%feature("autodoc", "	:param theShapes:
-	:type theShapes: BOPCol_ListOfShape &
+		%feature("autodoc", "	:param theLS:
+	:type theLS: TopTools_ListOfShape &
+	:rtype: None
+") SetArguments;
+		void SetArguments (const TopTools_ListOfShape & theLS);
+		%feature("compactdefaultargs") SetArguments;
+		%feature("autodoc", "	:param theLS:
+	:type theLS: BOPCol_ListOfShape &
 	:rtype: void
 ") SetArguments;
-		virtual void SetArguments (const BOPCol_ListOfShape & theShapes);
+		virtual void SetArguments (const BOPCol_ListOfShape & theLS);
 		%feature("compactdefaultargs") Arguments;
 		%feature("autodoc", "	:rtype: BOPCol_ListOfShape
 ") Arguments;
@@ -1060,6 +1100,20 @@ class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 	:rtype: BOPCol_DataMapOfShapeListOfShape
 ") Splits;
 		const BOPCol_DataMapOfShapeListOfShape & Splits ();
+		%feature("compactdefaultargs") SetFuzzyValue;
+		%feature("autodoc", "	* Sets the additional tolerance
+
+	:param theFuzz:
+	:type theFuzz: float
+	:rtype: None
+") SetFuzzyValue;
+		void SetFuzzyValue (const Standard_Real theFuzz);
+		%feature("compactdefaultargs") FuzzyValue;
+		%feature("autodoc", "	* Returns the additional tolerance
+
+	:rtype: float
+") FuzzyValue;
+		Standard_Real FuzzyValue ();
 };
 
 
@@ -1224,6 +1278,18 @@ class BOPAlgo_BOP : public BOPAlgo_Builder {
 	:rtype: void
 ") AddTool;
 		virtual void AddTool (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") SetTools;
+		%feature("autodoc", "	:param theShapes:
+	:type theShapes: TopTools_ListOfShape &
+	:rtype: void
+") SetTools;
+		virtual void SetTools (const TopTools_ListOfShape & theShapes);
+		%feature("compactdefaultargs") SetTools;
+		%feature("autodoc", "	:param theShapes:
+	:type theShapes: BOPCol_ListOfShape &
+	:rtype: void
+") SetTools;
+		virtual void SetTools (const BOPCol_ListOfShape & theShapes);
 		%feature("compactdefaultargs") SetOperation;
 		%feature("autodoc", "	:param theOperation:
 	:type theOperation: BOPAlgo_Operation

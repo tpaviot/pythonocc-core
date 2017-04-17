@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -311,8 +311,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TCollection_SeqNode.hxx>
 #include<TCollection_SeqNodePtr.hxx>
 #include<TCollection_Side.hxx>
-#include<Aspect.hxx>
-#include<Aspect_Array1OfEdge.hxx>
 #include<Aspect_AspectFillArea.hxx>
 #include<Aspect_AspectFillAreaDefinitionError.hxx>
 #include<Aspect_AspectLine.hxx>
@@ -321,20 +319,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_AspectMarkerDefinitionError.hxx>
 #include<Aspect_Background.hxx>
 #include<Aspect_BadAccess.hxx>
-#include<Aspect_CardinalPoints.hxx>
 #include<Aspect_CircularGrid.hxx>
 #include<Aspect_CLayer2d.hxx>
 #include<Aspect_ColorScale.hxx>
 #include<Aspect_Convert.hxx>
 #include<Aspect_Display.hxx>
 #include<Aspect_DisplayConnectionDefinitionError.hxx>
-#include<Aspect_DisplayConnection_Handle.hxx>
 #include<Aspect_Drawable.hxx>
 #include<Aspect_DriverDefinitionError.hxx>
-#include<Aspect_Edge.hxx>
-#include<Aspect_EdgeDefinitionError.hxx>
 #include<Aspect_FillMethod.hxx>
-#include<Aspect_FormatOfSheetPaper.hxx>
 #include<Aspect_GenId.hxx>
 #include<Aspect_GradientBackground.hxx>
 #include<Aspect_GradientFillMethod.hxx>
@@ -356,23 +349,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_TypeOfColorScaleData.hxx>
 #include<Aspect_TypeOfColorScaleOrientation.hxx>
 #include<Aspect_TypeOfColorScalePosition.hxx>
-#include<Aspect_TypeOfColorSpace.hxx>
 #include<Aspect_TypeOfConstraint.hxx>
 #include<Aspect_TypeOfDeflection.hxx>
 #include<Aspect_TypeOfDisplayText.hxx>
 #include<Aspect_TypeOfDrawMode.hxx>
 #include<Aspect_TypeOfEdge.hxx>
 #include<Aspect_TypeOfFacingModel.hxx>
-#include<Aspect_TypeOfFont.hxx>
 #include<Aspect_TypeOfHighlightMethod.hxx>
 #include<Aspect_TypeOfLayer.hxx>
 #include<Aspect_TypeOfLine.hxx>
 #include<Aspect_TypeOfMarker.hxx>
 #include<Aspect_TypeOfPrimitive.hxx>
-#include<Aspect_TypeOfRenderingMode.hxx>
 #include<Aspect_TypeOfResize.hxx>
 #include<Aspect_TypeOfStyleText.hxx>
-#include<Aspect_TypeOfText.hxx>
 #include<Aspect_TypeOfTriedronEcho.hxx>
 #include<Aspect_TypeOfTriedronPosition.hxx>
 #include<Aspect_TypeOfUpdate.hxx>
@@ -403,12 +392,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_BndBox4d.hxx>
 #include<Graphic3d_BndBox4f.hxx>
 #include<Graphic3d_BoundBuffer.hxx>
-#include<Graphic3d_BoundBuffer_Handle.hxx>
 #include<Graphic3d_Buffer.hxx>
 #include<Graphic3d_BufferType.hxx>
-#include<Graphic3d_Buffer_Handle.hxx>
 #include<Graphic3d_Camera.hxx>
-#include<Graphic3d_Camera_Handle.hxx>
 #include<Graphic3d_CAspectFillArea.hxx>
 #include<Graphic3d_CAspectLine.hxx>
 #include<Graphic3d_CAspectMarker.hxx>
@@ -417,14 +403,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_CBitFields20.hxx>
 #include<Graphic3d_CBitFields4.hxx>
 #include<Graphic3d_CBitFields8.hxx>
-#include<Graphic3d_CGraduatedTrihedron.hxx>
 #include<Graphic3d_CLight.hxx>
 #include<Graphic3d_ClipPlane.hxx>
-#include<Graphic3d_ClipPlane_Handle.hxx>
-#include<Graphic3d_CPick.hxx>
 #include<Graphic3d_CStructure.hxx>
 #include<Graphic3d_CStructurePtr.hxx>
-#include<Graphic3d_CStructure_Handle.hxx>
 #include<Graphic3d_CTexture.hxx>
 #include<Graphic3d_CTransPersStruct.hxx>
 #include<Graphic3d_CUserDraw.hxx>
@@ -432,6 +414,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_CycleError.hxx>
 #include<Graphic3d_DataStructureManager.hxx>
 #include<Graphic3d_ExportFormat.hxx>
+#include<Graphic3d_GraduatedTrihedron.hxx>
 #include<Graphic3d_GraphicDriver.hxx>
 #include<Graphic3d_Group.hxx>
 #include<Graphic3d_GroupAspect.hxx>
@@ -439,16 +422,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_HorizontalTextAlignment.hxx>
 #include<Graphic3d_HSequenceOfStructure.hxx>
 #include<Graphic3d_IndexBuffer.hxx>
-#include<Graphic3d_IndexBuffer_Handle.hxx>
+#include<Graphic3d_IndexedMapOfAddress.hxx>
 #include<Graphic3d_InitialisationError.hxx>
 #include<Graphic3d_LevelOfTextureAnisotropy.hxx>
 #include<Graphic3d_ListIteratorOfListOfShortReal.hxx>
 #include<Graphic3d_ListNodeOfListOfShortReal.hxx>
 #include<Graphic3d_ListOfShortReal.hxx>
 #include<Graphic3d_MapIteratorOfMapOfStructure.hxx>
+#include<Graphic3d_MapOfObject.hxx>
 #include<Graphic3d_MapOfStructure.hxx>
 #include<Graphic3d_MarkerImage.hxx>
-#include<Graphic3d_MarkerImage_Handle.hxx>
 #include<Graphic3d_Mat4.hxx>
 #include<Graphic3d_Mat4d.hxx>
 #include<Graphic3d_MaterialAspect.hxx>
@@ -459,6 +442,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_NameOfTextureEnv.hxx>
 #include<Graphic3d_NameOfTexturePlane.hxx>
 #include<Graphic3d_NListOfHAsciiString.hxx>
+#include<Graphic3d_NMapOfTransient.hxx>
 #include<Graphic3d_PriorityDefinitionError.hxx>
 #include<Graphic3d_PtrFrameBuffer.hxx>
 #include<Graphic3d_RenderingMode.hxx>
@@ -466,16 +450,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_SequenceNodeOfSequenceOfStructure.hxx>
 #include<Graphic3d_SequenceOfGroup.hxx>
 #include<Graphic3d_SequenceOfHClipPlane.hxx>
-#include<Graphic3d_SequenceOfHClipPlane_Handle.hxx>
 #include<Graphic3d_SequenceOfStructure.hxx>
 #include<Graphic3d_ShaderObject.hxx>
-#include<Graphic3d_ShaderObject_Handle.hxx>
 #include<Graphic3d_ShaderProgram.hxx>
-#include<Graphic3d_ShaderProgram_Handle.hxx>
 #include<Graphic3d_ShaderVariable.hxx>
-#include<Graphic3d_ShaderVariable_Handle.hxx>
 #include<Graphic3d_SortType.hxx>
-#include<Graphic3d_StdMapNodeOfMapOfStructure.hxx>
+#include<Graphic3d_StereoMode.hxx>
 #include<Graphic3d_Structure.hxx>
 #include<Graphic3d_StructureDefinitionError.hxx>
 #include<Graphic3d_StructureManager.hxx>
@@ -494,6 +474,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_TextureRoot.hxx>
 #include<Graphic3d_TransformError.hxx>
 #include<Graphic3d_TransModeFlags.hxx>
+#include<Graphic3d_TypeOfBackground.hxx>
 #include<Graphic3d_TypeOfComposition.hxx>
 #include<Graphic3d_TypeOfConnection.hxx>
 #include<Graphic3d_TypeOfMaterial.hxx>
@@ -514,6 +495,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_VectorError.hxx>
 #include<Graphic3d_Vertex.hxx>
 #include<Graphic3d_VerticalTextAlignment.hxx>
+#include<Graphic3d_ViewAffinity.hxx>
+#include<Graphic3d_ZLayerId.hxx>
 #include<Graphic3d_ZLayerSettings.hxx>
 #include<TColStd_Array1OfAsciiString.hxx>
 #include<TColStd_Array1OfBoolean.hxx>
@@ -795,7 +778,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopLoc_SListNodeOfItemLocation.hxx>
 #include<TopLoc_SListOfItemLocation.hxx>
 #include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#include<TopLoc_TrsfPtr.hxx>
 #include<Poly.hxx>
 #include<Poly_Array1OfTriangle.hxx>
 #include<Poly_CoherentLink.hxx>
@@ -894,6 +876,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -903,6 +886,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>

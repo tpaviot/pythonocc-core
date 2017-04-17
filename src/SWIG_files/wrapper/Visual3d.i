@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -54,7 +54,7 @@ def register_handle(handle, base_object):
 typedef NCollection_List <Handle_Visual3d_LayerItem> Visual3d_NListOfLayerItem;
 typedef Visual3d_View * Visual3d_ViewPtr;
 typedef Visual3d_ViewManager * Visual3d_ViewManagerPtr;
-typedef NCollection_DataMap <Standard_Integer , Graphic3d_ZLayerSettings> Visual3d_MapOfZLayerSettings;
+typedef NCollection_DataMap <Graphic3d_ZLayerId , Graphic3d_ZLayerSettings> Visual3d_MapOfZLayerSettings;
 /* end typedefs declaration */
 
 /* public enums */
@@ -1581,7 +1581,7 @@ class Visual3d_SequenceOfLight : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Visual3d_SequenceOfLight &
 	:rtype: Visual3d_SequenceOfLight
-") operator=;
+") operator =;
 		const Visual3d_SequenceOfLight & operator = (const Visual3d_SequenceOfLight & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1724,7 +1724,7 @@ class Visual3d_SequenceOfView : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Visual3d_SequenceOfView &
 	:rtype: Visual3d_SequenceOfView
-") operator=;
+") operator =;
 		const Visual3d_SequenceOfView & operator = (const Visual3d_SequenceOfView & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2184,173 +2184,19 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") TriedronEcho;
 		void TriedronEcho (const Aspect_TypeOfTriedronEcho AType = Aspect_TOTE_NONE);
 		%feature("compactdefaultargs") GetGraduatedTrihedron;
-		%feature("autodoc", "	* Returns data of a graduated trihedron if displayed (return value is True)
+		%feature("autodoc", "	* Returns data of a graduated trihedron
 
-	:param xname:
-	:type xname: TCollection_ExtendedString &
-	:param yname:
-	:type yname: TCollection_ExtendedString &
-	:param zname:
-	:type zname: TCollection_ExtendedString &
-	:param xdrawname:
-	:type xdrawname: bool
-	:param ydrawname:
-	:type ydrawname: bool
-	:param zdrawname:
-	:type zdrawname: bool
-	:param xdrawvalues:
-	:type xdrawvalues: bool
-	:param ydrawvalues:
-	:type ydrawvalues: bool
-	:param zdrawvalues:
-	:type zdrawvalues: bool
-	:param drawgrid:
-	:type drawgrid: bool
-	:param drawaxes:
-	:type drawaxes: bool
-	:param nbx:
-	:type nbx: int &
-	:param nby:
-	:type nby: int &
-	:param nbz:
-	:type nbz: int &
-	:param xoffset:
-	:type xoffset: int &
-	:param yoffset:
-	:type yoffset: int &
-	:param zoffset:
-	:type zoffset: int &
-	:param xaxisoffset:
-	:type xaxisoffset: int &
-	:param yaxisoffset:
-	:type yaxisoffset: int &
-	:param zaxisoffset:
-	:type zaxisoffset: int &
-	:param xdrawtickmarks:
-	:type xdrawtickmarks: bool
-	:param ydrawtickmarks:
-	:type ydrawtickmarks: bool
-	:param zdrawtickmarks:
-	:type zdrawtickmarks: bool
-	:param xtickmarklength:
-	:type xtickmarklength: int &
-	:param ytickmarklength:
-	:type ytickmarklength: int &
-	:param ztickmarklength:
-	:type ztickmarklength: int &
-	:param gridcolor:
-	:type gridcolor: Quantity_Color &
-	:param xnamecolor:
-	:type xnamecolor: Quantity_Color &
-	:param ynamecolor:
-	:type ynamecolor: Quantity_Color &
-	:param znamecolor:
-	:type znamecolor: Quantity_Color &
-	:param xcolor:
-	:type xcolor: Quantity_Color &
-	:param ycolor:
-	:type ycolor: Quantity_Color &
-	:param zcolor:
-	:type zcolor: Quantity_Color &
-	:param fontOfNames:
-	:type fontOfNames: TCollection_AsciiString &
-	:param styleOfNames:
-	:type styleOfNames: Font_FontAspect &
-	:param sizeOfNames:
-	:type sizeOfNames: int &
-	:param fontOfValues:
-	:type fontOfValues: TCollection_AsciiString &
-	:param styleOfValues:
-	:type styleOfValues: Font_FontAspect &
-	:param sizeOfValues:
-	:type sizeOfValues: int &
-	:rtype: bool
+	:rtype: Graphic3d_GraduatedTrihedron
 ") GetGraduatedTrihedron;
-		Standard_Boolean GetGraduatedTrihedron (TCollection_ExtendedString & xname,TCollection_ExtendedString & yname,TCollection_ExtendedString & zname,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Quantity_Color & gridcolor,Quantity_Color & xnamecolor,Quantity_Color & ynamecolor,Quantity_Color & znamecolor,Quantity_Color & xcolor,Quantity_Color & ycolor,Quantity_Color & zcolor,TCollection_AsciiString & fontOfNames,Font_FontAspect & styleOfNames,Standard_Integer &OutValue,TCollection_AsciiString & fontOfValues,Font_FontAspect & styleOfValues,Standard_Integer &OutValue);
+		const Graphic3d_GraduatedTrihedron & GetGraduatedTrihedron ();
 		%feature("compactdefaultargs") GraduatedTrihedronDisplay;
 		%feature("autodoc", "	* Displays a graduated trihedron.
 
-	:param xname:
-	:type xname: TCollection_ExtendedString &
-	:param yname:
-	:type yname: TCollection_ExtendedString &
-	:param zname:
-	:type zname: TCollection_ExtendedString &
-	:param xdrawname:
-	:type xdrawname: bool
-	:param ydrawname:
-	:type ydrawname: bool
-	:param zdrawname:
-	:type zdrawname: bool
-	:param xdrawvalues:
-	:type xdrawvalues: bool
-	:param ydrawvalues:
-	:type ydrawvalues: bool
-	:param zdrawvalues:
-	:type zdrawvalues: bool
-	:param drawgrid:
-	:type drawgrid: bool
-	:param drawaxes:
-	:type drawaxes: bool
-	:param nbx:
-	:type nbx: int
-	:param nby:
-	:type nby: int
-	:param nbz:
-	:type nbz: int
-	:param xoffset:
-	:type xoffset: int
-	:param yoffset:
-	:type yoffset: int
-	:param zoffset:
-	:type zoffset: int
-	:param xaxisoffset:
-	:type xaxisoffset: int
-	:param yaxisoffset:
-	:type yaxisoffset: int
-	:param zaxisoffset:
-	:type zaxisoffset: int
-	:param xdrawtickmarks:
-	:type xdrawtickmarks: bool
-	:param ydrawtickmarks:
-	:type ydrawtickmarks: bool
-	:param zdrawtickmarks:
-	:type zdrawtickmarks: bool
-	:param xtickmarklength:
-	:type xtickmarklength: int
-	:param ytickmarklength:
-	:type ytickmarklength: int
-	:param ztickmarklength:
-	:type ztickmarklength: int
-	:param gridcolor:
-	:type gridcolor: Quantity_Color &
-	:param xnamecolor:
-	:type xnamecolor: Quantity_Color &
-	:param ynamecolor:
-	:type ynamecolor: Quantity_Color &
-	:param znamecolor:
-	:type znamecolor: Quantity_Color &
-	:param xcolor:
-	:type xcolor: Quantity_Color &
-	:param ycolor:
-	:type ycolor: Quantity_Color &
-	:param zcolor:
-	:type zcolor: Quantity_Color &
-	:param fontOfNames:
-	:type fontOfNames: TCollection_AsciiString &
-	:param styleOfNames:
-	:type styleOfNames: Font_FontAspect
-	:param sizeOfNames:
-	:type sizeOfNames: int
-	:param fontOfValues:
-	:type fontOfValues: TCollection_AsciiString &
-	:param styleOfValues:
-	:type styleOfValues: Font_FontAspect
-	:param sizeOfValues:
-	:type sizeOfValues: int
+	:param theTrigedronData:
+	:type theTrigedronData: Graphic3d_GraduatedTrihedron &
 	:rtype: None
 ") GraduatedTrihedronDisplay;
-		void GraduatedTrihedronDisplay (const TCollection_ExtendedString & xname,const TCollection_ExtendedString & yname,const TCollection_ExtendedString & zname,const Standard_Boolean xdrawname,const Standard_Boolean ydrawname,const Standard_Boolean zdrawname,const Standard_Boolean xdrawvalues,const Standard_Boolean ydrawvalues,const Standard_Boolean zdrawvalues,const Standard_Boolean drawgrid,const Standard_Boolean drawaxes,const Standard_Integer nbx,const Standard_Integer nby,const Standard_Integer nbz,const Standard_Integer xoffset,const Standard_Integer yoffset,const Standard_Integer zoffset,const Standard_Integer xaxisoffset,const Standard_Integer yaxisoffset,const Standard_Integer zaxisoffset,const Standard_Boolean xdrawtickmarks,const Standard_Boolean ydrawtickmarks,const Standard_Boolean zdrawtickmarks,const Standard_Integer xtickmarklength,const Standard_Integer ytickmarklength,const Standard_Integer ztickmarklength,const Quantity_Color & gridcolor,const Quantity_Color & xnamecolor,const Quantity_Color & ynamecolor,const Quantity_Color & znamecolor,const Quantity_Color & xcolor,const Quantity_Color & ycolor,const Quantity_Color & zcolor,const TCollection_AsciiString & fontOfNames,const Font_FontAspect styleOfNames,const Standard_Integer sizeOfNames,const TCollection_AsciiString & fontOfValues,const Font_FontAspect styleOfValues,const Standard_Integer sizeOfValues);
+		void GraduatedTrihedronDisplay (const Graphic3d_GraduatedTrihedron & theTrigedronData);
 		%feature("compactdefaultargs") GraduatedTrihedronErase;
 		%feature("autodoc", "	* Erases a graduated trihedron from the view.
 
@@ -2460,23 +2306,23 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 		%feature("compactdefaultargs") DefaultCamera;
 		%feature("autodoc", "	* returns the default camera of <self>.
 
-	:rtype: Graphic3d_Camera_Handle
+	:rtype: Handle_Graphic3d_Camera
 ") DefaultCamera;
-		const Graphic3d_Camera_Handle & DefaultCamera ();
+		Handle_Graphic3d_Camera DefaultCamera ();
 		%feature("compactdefaultargs") Camera;
 		%feature("autodoc", "	* returns the camera of <self>.
 
-	:rtype: Graphic3d_Camera_Handle
+	:rtype: Handle_Graphic3d_Camera
 ") Camera;
-		const Graphic3d_Camera_Handle & Camera ();
+		Handle_Graphic3d_Camera Camera ();
 		%feature("compactdefaultargs") SetCamera;
 		%feature("autodoc", "	* Set camera object to provide orientation and projection matrices for graphic driver.
 
 	:param theCamera:
-	:type theCamera: Graphic3d_Camera_Handle &
+	:type theCamera: Handle_Graphic3d_Camera &
 	:rtype: None
 ") SetCamera;
-		void SetCamera (const Graphic3d_Camera_Handle & theCamera);
+		void SetCamera (const Handle_Graphic3d_Camera & theCamera);
 		%feature("compactdefaultargs") Window;
 		%feature("autodoc", "	* Returns the window associated to the view <self>. Warning: Raises ViewDefinitionError if the associated window isn't defined.
 
@@ -2551,14 +2397,6 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 	:rtype: Handle_Graphic3d_GraphicDriver
 ") GraphicDriver;
 		Handle_Graphic3d_GraphicDriver GraphicDriver ();
-		%feature("compactdefaultargs") SetTransparency;
-		%feature("autodoc", "	* if <AFlag> is Standard_True then the transparency is managed in the view <self>. Default Standard_False
-
-	:param AFlag:
-	:type AFlag: bool
-	:rtype: None
-") SetTransparency;
-		void SetTransparency (const Standard_Boolean AFlag);
 		%feature("compactdefaultargs") ZBufferIsActivated;
 		%feature("autodoc", "	* Returns Standard_True if the ZBuffer is activated in the view <self> and Standard_False if not.
 
@@ -2703,6 +2541,18 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 	:rtype: bool
 ") Export;
 		Standard_Boolean Export (const char * theFileName,const Graphic3d_ExportFormat theFormat,const Graphic3d_SortType theSortType = Graphic3d_ST_BSP_Tree,const Standard_Real thePrecision = 0.005,const Standard_Address theProgressBarFunc = NULL,const Standard_Address theProgressObject = NULL);
+		%feature("compactdefaultargs") HiddenObjects;
+		%feature("autodoc", "	* Returns map of objects hidden within this specific view (not viewer-wise).
+
+	:rtype: Handle_Graphic3d_NMapOfTransient
+") HiddenObjects;
+		Handle_Graphic3d_NMapOfTransient HiddenObjects ();
+		%feature("compactdefaultargs") ChangeHiddenObjects;
+		%feature("autodoc", "	* Returns map of objects hidden within this specific view (not viewer-wise).
+
+	:rtype: Handle_Graphic3d_NMapOfTransient
+") ChangeHiddenObjects;
+		Handle_Graphic3d_NMapOfTransient ChangeHiddenObjects ();
 };
 
 
@@ -2828,12 +2678,12 @@ class Visual3d_ViewManager : public Graphic3d_StructureManager {
 	:rtype: Handle_Visual3d_HSequenceOfView
 ") ActivatedView;
 		Handle_Visual3d_HSequenceOfView ActivatedView ();
-		%feature("compactdefaultargs") DefinedView;
+		%feature("compactdefaultargs") DefinedViews;
 		%feature("autodoc", "	* Returns the group of views defined in the visualiser <self>.
 
-	:rtype: Handle_Visual3d_HSequenceOfView
-") DefinedView;
-		Handle_Visual3d_HSequenceOfView DefinedView ();
+	:rtype: Visual3d_SequenceOfView
+") DefinedViews;
+		const Visual3d_SequenceOfView & DefinedViews ();
 		%feature("compactdefaultargs") MaxNumOfViews;
 		%feature("autodoc", "	* Returns the theoretical maximum number of definable views in the view manager <self>. Warning: It's not possible to accept an infinite number of definable views because each view must have an identification and we have different view managers.
 
@@ -2888,52 +2738,44 @@ class Visual3d_ViewManager : public Graphic3d_StructureManager {
 	:param theStructure:
 	:type theStructure: Handle_Graphic3d_Structure &
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: None
 ") ChangeZLayer;
-		void ChangeZLayer (const Handle_Graphic3d_Structure & theStructure,const Standard_Integer theLayerId);
-		%feature("compactdefaultargs") GetZLayer;
-		%feature("autodoc", "	* Get Z layer ID assigned for the structure.
-
-	:param theStructure:
-	:type theStructure: Handle_Graphic3d_Structure &
-	:rtype: int
-") GetZLayer;
-		Standard_Integer GetZLayer (const Handle_Graphic3d_Structure & theStructure);
+		void ChangeZLayer (const Handle_Graphic3d_Structure & theStructure,const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") SetZLayerSettings;
 		%feature("autodoc", "	* Sets the settings for a single Z layer for all managed views.
 
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings &
 	:rtype: None
 ") SetZLayerSettings;
-		void SetZLayerSettings (const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings & theSettings);
+		void SetZLayerSettings (const Graphic3d_ZLayerId theLayerId,const Graphic3d_ZLayerSettings & theSettings);
 		%feature("compactdefaultargs") ZLayerSettings;
 		%feature("autodoc", "	* Returns the settings of a single Z layer.
 
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: Graphic3d_ZLayerSettings
 ") ZLayerSettings;
-		Graphic3d_ZLayerSettings ZLayerSettings (const Standard_Integer theLayerId);
+		Graphic3d_ZLayerSettings ZLayerSettings (const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") AddZLayer;
 		%feature("autodoc", "	* Add a new top-level Z layer and get its ID as <theLayerId> value. The method returns Standard_False if the layer can not be created. The layer mechanism allows to display structures in higher layers in overlay of structures in lower layers.
 
 	:param theLayerId:
-	:type theLayerId: int &
+	:type theLayerId: Graphic3d_ZLayerId &
 	:rtype: bool
 ") AddZLayer;
-		Standard_Boolean AddZLayer (Standard_Integer &OutValue);
+		Standard_Boolean AddZLayer (Graphic3d_ZLayerId & theLayerId);
 		%feature("compactdefaultargs") RemoveZLayer;
 		%feature("autodoc", "	* Remove Z layer with ID <theLayerId>. Method returns Standard_False if the layer can not be removed or doesn't exists. By default, there are always default bottom-level layer that can't be removed.
 
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: bool
 ") RemoveZLayer;
-		Standard_Boolean RemoveZLayer (const Standard_Integer theLayerId);
+		Standard_Boolean RemoveZLayer (const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") GetAllZLayers;
 		%feature("autodoc", "	* Return all Z layer ids in sequence ordered by overlay level from lowest layer to highest ( foreground ). The first layer ID in sequence is the default layer that can't be removed.
 
@@ -3060,20 +2902,6 @@ class Visual3d_ViewManager : public Graphic3d_StructureManager {
 	:rtype: None
 ") ReCompute;
 		void ReCompute (const Handle_Graphic3d_Structure & AStructure,const Handle_Graphic3d_DataStructureManager & AProjector);
-		%feature("compactdefaultargs") Transparency;
-		%feature("autodoc", "	* Returns Standard_True if the transparency is activated in all activated views. Default Standard_False
-
-	:rtype: bool
-") Transparency;
-		Standard_Boolean Transparency ();
-		%feature("compactdefaultargs") SetTransparency;
-		%feature("autodoc", "	* if <AFlag> is Standard_True then the transparency is managed. Default Standard_False
-
-	:param AFlag:
-	:type AFlag: bool
-	:rtype: None
-") SetTransparency;
-		void SetTransparency (const Standard_Boolean AFlag);
 		%feature("compactdefaultargs") ZBufferAuto;
 		%feature("autodoc", "	* Returns Standard_True if the zbuffer activity is managed automatically. Default Standard_False
 

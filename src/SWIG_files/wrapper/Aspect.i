@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -53,56 +53,19 @@ def register_handle(handle, base_object):
 /* typedefs */
 typedef void * Aspect_Display;
 typedef unsigned long Aspect_Drawable;
-typedef Handle_Aspect_DisplayConnection Aspect_DisplayConnection_Handle;
 typedef CALL_DEF_LAYER Aspect_CLayer2d;
 typedef int ( * Aspect_GraphicCallbackProc ) ( Aspect_Drawable theWindowID , void * theUserData , Aspect_GraphicCallbackStruct * theCallData );
-typedef void * 	 Aspect_RenderingContext;
+typedef void * Aspect_RenderingContext;
 typedef unsigned long Aspect_Handle;
 typedef void * HANDLE;
 /* end typedefs declaration */
 
 /* public enums */
-enum Aspect_CardinalPoints {
-	Aspect_CP_North = 0,
-	Aspect_CP_NorthEast = 1,
-	Aspect_CP_East = 2,
-	Aspect_CP_SouthEast = 3,
-	Aspect_CP_South = 4,
-	Aspect_CP_SouthWest = 5,
-	Aspect_CP_West = 6,
-	Aspect_CP_NorthWest = 7,
-	Aspect_CP_Center = 8,
-};
-
 enum Aspect_FillMethod {
 	Aspect_FM_NONE = 0,
 	Aspect_FM_CENTERED = 1,
 	Aspect_FM_TILED = 2,
 	Aspect_FM_STRETCH = 3,
-};
-
-enum Aspect_FormatOfSheetPaper {
-	Aspect_FOSP_A0 = 0,
-	Aspect_FOSP_A1 = 1,
-	Aspect_FOSP_A2 = 2,
-	Aspect_FOSP_A3 = 3,
-	Aspect_FOSP_A4 = 4,
-	Aspect_FOSP_A5 = 5,
-	Aspect_FOSP_K_LONG = 6,
-	Aspect_FOSP_K_SHORT = 7,
-	Aspect_FOSP_J_LONG = 8,
-	Aspect_FOSP_J_SHORT = 9,
-	Aspect_FOSP_H_LONG = 10,
-	Aspect_FOSP_H_SHORT = 11,
-	Aspect_FOSP_G_LONG = 12,
-	Aspect_FOSP_G_SHORT = 13,
-	Aspect_FOSP_F = 14,
-	Aspect_FOSP_E = 15,
-	Aspect_FOSP_D = 16,
-	Aspect_FOSP_C = 17,
-	Aspect_FOSP_B = 18,
-	Aspect_FOSP_A = 19,
-	Aspect_FOSP_UNKNOWN = 20,
 };
 
 enum Aspect_GradientFillMethod {
@@ -186,12 +149,6 @@ enum Aspect_TypeOfColorScalePosition {
 	Aspect_TOCSP_CENTER = 3,
 };
 
-enum Aspect_TypeOfColorSpace {
-	Aspect_TOCS_BlackAndWhite = 0,
-	Aspect_TOCS_GreyScale = 1,
-	Aspect_TOCS_RGB = 2,
-};
-
 enum Aspect_TypeOfConstraint {
 	Aspect_TOC_BOTTOM_LEFT = 0,
 	Aspect_TOC_BOTTOM_RIGHT = 1,
@@ -228,14 +185,6 @@ enum Aspect_TypeOfFacingModel {
 	Aspect_TOFM_BOTH_SIDE = 0,
 	Aspect_TOFM_BACK_SIDE = 1,
 	Aspect_TOFM_FRONT_SIDE = 2,
-};
-
-enum Aspect_TypeOfFont {
-	Aspect_TOF_DEFAULT = 0,
-	Aspect_TOF_COURIER = 1,
-	Aspect_TOF_HELVETICA = 2,
-	Aspect_TOF_TIMES = 3,
-	Aspect_TOF_USERDEFINED = 4,
 };
 
 enum Aspect_TypeOfHighlightMethod {
@@ -284,12 +233,6 @@ enum Aspect_TypeOfPrimitive {
 	Aspect_TOP_MARKERS = 7,
 };
 
-enum Aspect_TypeOfRenderingMode {
-	Aspect_TORM_IMMEDIAT = 0,
-	Aspect_TORM_RETAIN = 1,
-	Aspect_TORM_CLEAR_AND_RETAIN = 2,
-};
-
 enum Aspect_TypeOfResize {
 	Aspect_TOR_UNKNOWN = 0,
 	Aspect_TOR_NO_BORDER = 1,
@@ -306,11 +249,6 @@ enum Aspect_TypeOfResize {
 enum Aspect_TypeOfStyleText {
 	Aspect_TOST_NORMAL = 0,
 	Aspect_TOST_ANNOTATION = 1,
-};
-
-enum Aspect_TypeOfText {
-	Aspect_TOT_SOLID = 0,
-	Aspect_TOT_OUTLINE = 1,
 };
 
 enum Aspect_TypeOfTriedronEcho {
@@ -371,134 +309,6 @@ enum Aspect_XAtom {
 
 /* end public enums declaration */
 
-%rename(aspect) Aspect;
-class Aspect {
-	public:
-		%feature("compactdefaultargs") ValuesOfFOSP;
-		%feature("autodoc", "	* Returns the format size according to the default LENGTH unit of the required format <aFOSP>. Returns more the normalized format name.
-
-	:param aFOSP:
-	:type aFOSP: Aspect_FormatOfSheetPaper
-	:param aWidth:
-	:type aWidth: Quantity_Length &
-	:param aHeight:
-	:type aHeight: Quantity_Length &
-	:rtype: char *
-") ValuesOfFOSP;
-		static const char * ValuesOfFOSP (const Aspect_FormatOfSheetPaper aFOSP,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") ToCString;
-		%feature("autodoc", "	* Translates an ExtendedString to a CString depending of the local format.
-
-	:param aString:
-	:type aString: TCollection_ExtendedString &
-	:rtype: char *
-") ToCString;
-		static const char * ToCString (const TCollection_ExtendedString & aString);
-		%feature("compactdefaultargs") Inverse;
-		%feature("autodoc", "	* Inverses <aMat> a 4x4 matrix.
-
-	:param aMat:
-	:type aMat: TColStd_Array2OfReal &
-	:param Inv:
-	:type Inv: TColStd_Array2OfReal &
-	:rtype: bool
-") Inverse;
-		static Standard_Boolean Inverse (const TColStd_Array2OfReal & aMat,TColStd_Array2OfReal & Inv);
-};
-
-
-%extend Aspect {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Aspect_Array1OfEdge;
-class Aspect_Array1OfEdge {
-	public:
-		%feature("compactdefaultargs") Aspect_Array1OfEdge;
-		%feature("autodoc", "	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") Aspect_Array1OfEdge;
-		 Aspect_Array1OfEdge (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Aspect_Array1OfEdge;
-		%feature("autodoc", "	:param Item:
-	:type Item: Aspect_Edge &
-	:param Low:
-	:type Low: int
-	:param Up:
-	:type Up: int
-	:rtype: None
-") Aspect_Array1OfEdge;
-		 Aspect_Array1OfEdge (const Aspect_Edge & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param V:
-	:type V: Aspect_Edge &
-	:rtype: None
-") Init;
-		void Init (const Aspect_Edge & V);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
-		%feature("compactdefaultargs") IsAllocated;
-		%feature("autodoc", "	:rtype: bool
-") IsAllocated;
-		Standard_Boolean IsAllocated ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: Aspect_Array1OfEdge &
-	:rtype: Aspect_Array1OfEdge
-") Assign;
-		const Aspect_Array1OfEdge & Assign (const Aspect_Array1OfEdge & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: Aspect_Array1OfEdge &
-	:rtype: Aspect_Array1OfEdge
-") operator=;
-		const Aspect_Array1OfEdge & operator = (const Aspect_Array1OfEdge & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:param Value:
-	:type Value: Aspect_Edge &
-	:rtype: None
-") SetValue;
-		void SetValue (const Standard_Integer Index,const Aspect_Edge & Value);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Aspect_Edge
-") Value;
-		const Aspect_Edge & Value (const Standard_Integer Index);
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	:param Index:
-	:type Index: int
-	:rtype: Aspect_Edge
-") ChangeValue;
-		Aspect_Edge & ChangeValue (const Standard_Integer Index);
-};
-
-
-%extend Aspect_Array1OfEdge {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor Aspect_AspectFillArea;
 class Aspect_AspectFillArea : public MMgt_TShared {
 	public:
@@ -881,27 +691,27 @@ class Aspect_ColorScale : public MMgt_TShared {
 		%feature("compactdefaultargs") FindColor;
 		%feature("autodoc", "	* Calculate color according passed value; returns true if value is in range or false, if isn't
 
-	:param Value:
-	:type Value: float
-	:param Color:
-	:type Color: Quantity_Color &
+	:param theValue:
+	:type theValue: float
+	:param theColor:
+	:type theColor: Quantity_Color &
 	:rtype: bool
 ") FindColor;
-		Standard_Boolean FindColor (const Standard_Real Value,Quantity_Color & Color);
+		Standard_Boolean FindColor (const Standard_Real theValue,Quantity_Color & theColor);
 		%feature("compactdefaultargs") FindColor;
-		%feature("autodoc", "	:param Value:
-	:type Value: float
-	:param Min:
-	:type Min: float
-	:param Max:
-	:type Max: float
-	:param ColorsCount:
-	:type ColorsCount: int
-	:param Color:
-	:type Color: Quantity_Color &
+		%feature("autodoc", "	:param theValue:
+	:type theValue: float
+	:param theMin:
+	:type theMin: float
+	:param theMax:
+	:type theMax: float
+	:param theColorsCount:
+	:type theColorsCount: int
+	:param theColor:
+	:type theColor: Quantity_Color &
 	:rtype: bool
 ") FindColor;
-		static Standard_Boolean FindColor (const Standard_Real Value,const Standard_Real Min,const Standard_Real Max,const Standard_Integer ColorsCount,Quantity_Color & Color);
+		static Standard_Boolean FindColor (const Standard_Real theValue,const Standard_Real theMin,const Standard_Real theMax,const Standard_Integer theColorsCount,Quantity_Color & theColor);
 		%feature("compactdefaultargs") GetMin;
 		%feature("autodoc", "	* Returns minimal value of color scale;
 
@@ -917,10 +727,10 @@ class Aspect_ColorScale : public MMgt_TShared {
 		%feature("compactdefaultargs") GetRange;
 		%feature("autodoc", "	* Returns minimal and maximal values of color scale;
 
-	:param aMin:
-	:type aMin: float &
-	:param aMax:
-	:type aMax: float &
+	:param theMin:
+	:type theMin: float &
+	:param theMax:
+	:type theMax: float &
 	:rtype: None
 ") GetRange;
 		void GetRange (Standard_Real &OutValue,Standard_Real &OutValue);
@@ -957,35 +767,35 @@ class Aspect_ColorScale : public MMgt_TShared {
 		%feature("compactdefaultargs") GetLabel;
 		%feature("autodoc", "	* Returns the user specified label with index <anIndex>. Returns empty string if label not defined.
 
-	:param anIndex:
-	:type anIndex: int
+	:param theIndex:
+	:type theIndex: int
 	:rtype: TCollection_ExtendedString
 ") GetLabel;
-		TCollection_ExtendedString GetLabel (const Standard_Integer anIndex);
+		TCollection_ExtendedString GetLabel (const Standard_Integer theIndex);
 		%feature("compactdefaultargs") GetColor;
 		%feature("autodoc", "	* Returns the user specified color from color map with index <anIndex>. Returns default color if index out of range in color map.
 
-	:param anIndex:
-	:type anIndex: int
+	:param theIndex:
+	:type theIndex: int
 	:rtype: Quantity_Color
 ") GetColor;
-		Quantity_Color GetColor (const Standard_Integer anIndex);
+		Quantity_Color GetColor (const Standard_Integer theIndex);
 		%feature("compactdefaultargs") GetLabels;
 		%feature("autodoc", "	* Returns the user specified labels.
 
-	:param aLabels:
-	:type aLabels: TColStd_SequenceOfExtendedString &
+	:param theLabels:
+	:type theLabels: TColStd_SequenceOfExtendedString &
 	:rtype: None
 ") GetLabels;
-		void GetLabels (TColStd_SequenceOfExtendedString & aLabels);
+		void GetLabels (TColStd_SequenceOfExtendedString & theLabels);
 		%feature("compactdefaultargs") GetColors;
 		%feature("autodoc", "	* Returns the user specified colors.
 
-	:param aColors:
-	:type aColors: Aspect_SequenceOfColor &
+	:param theColors:
+	:type theColors: Aspect_SequenceOfColor &
 	:rtype: None
 ") GetColors;
-		void GetColors (Aspect_SequenceOfColor & aColors);
+		void GetColors (Aspect_SequenceOfColor & theColors);
 		%feature("compactdefaultargs") GetLabelPosition;
 		%feature("autodoc", "	* Returns the position of labels concerning color filled rectangles.
 
@@ -1013,144 +823,144 @@ class Aspect_ColorScale : public MMgt_TShared {
 		%feature("compactdefaultargs") SetMin;
 		%feature("autodoc", "	* Sets the minimal value of color scale.
 
-	:param aMin:
-	:type aMin: float
+	:param theMin:
+	:type theMin: float
 	:rtype: None
 ") SetMin;
-		void SetMin (const Standard_Real aMin);
+		void SetMin (const Standard_Real theMin);
 		%feature("compactdefaultargs") SetMax;
 		%feature("autodoc", "	* Sets the maximal value of color scale.
 
-	:param aMax:
-	:type aMax: float
+	:param theMax:
+	:type theMax: float
 	:rtype: None
 ") SetMax;
-		void SetMax (const Standard_Real aMax);
+		void SetMax (const Standard_Real theMax);
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", "	* Sets the minimal and maximal value of color scale.
 
-	:param aMin:
-	:type aMin: float
-	:param aMax:
-	:type aMax: float
+	:param theMin:
+	:type theMin: float
+	:param theMax:
+	:type theMax: float
 	:rtype: None
 ") SetRange;
-		void SetRange (const Standard_Real aMin,const Standard_Real aMax);
+		void SetRange (const Standard_Real theMin,const Standard_Real theMax);
 		%feature("compactdefaultargs") SetLabelType;
 		%feature("autodoc", "	* Sets the type of labels. Aspect_TOCSD_AUTO - labels as boundary values for intervals Aspect_TOCSD_USER - user specified label is used
 
-	:param aType:
-	:type aType: Aspect_TypeOfColorScaleData
+	:param theType:
+	:type theType: Aspect_TypeOfColorScaleData
 	:rtype: None
 ") SetLabelType;
-		void SetLabelType (const Aspect_TypeOfColorScaleData aType);
+		void SetLabelType (const Aspect_TypeOfColorScaleData theType);
 		%feature("compactdefaultargs") SetColorType;
 		%feature("autodoc", "	* Sets the type of colors. Aspect_TOCSD_AUTO - value between Red and Blue Aspect_TOCSD_USER - user specified color from color map
 
-	:param aType:
-	:type aType: Aspect_TypeOfColorScaleData
+	:param theType:
+	:type theType: Aspect_TypeOfColorScaleData
 	:rtype: None
 ") SetColorType;
-		void SetColorType (const Aspect_TypeOfColorScaleData aType);
+		void SetColorType (const Aspect_TypeOfColorScaleData theType);
 		%feature("compactdefaultargs") SetNumberOfIntervals;
 		%feature("autodoc", "	* Sets the number of color scale intervals.
 
-	:param aNum:
-	:type aNum: int
+	:param theNum:
+	:type theNum: int
 	:rtype: None
 ") SetNumberOfIntervals;
-		void SetNumberOfIntervals (const Standard_Integer aNum);
+		void SetNumberOfIntervals (const Standard_Integer theNum);
 		%feature("compactdefaultargs") SetTitle;
 		%feature("autodoc", "	* Sets the color scale title string.
 
-	:param aTitle:
-	:type aTitle: TCollection_ExtendedString &
+	:param theTitle:
+	:type theTitle: TCollection_ExtendedString &
 	:rtype: None
 ") SetTitle;
-		void SetTitle (const TCollection_ExtendedString & aTitle);
+		void SetTitle (const TCollection_ExtendedString & theTitle);
 		%feature("compactdefaultargs") SetFormat;
 		%feature("autodoc", "	* Sets the color scale auto label format specification.
 
-	:param aFormat:
-	:type aFormat: TCollection_AsciiString &
+	:param theFormat:
+	:type theFormat: TCollection_AsciiString &
 	:rtype: None
 ") SetFormat;
-		void SetFormat (const TCollection_AsciiString & aFormat);
+		void SetFormat (const TCollection_AsciiString & theFormat);
 		%feature("compactdefaultargs") SetLabel;
 		%feature("autodoc", "	* Sets the color scale label at index. Index started from 1.
 
-	:param aLabel:
-	:type aLabel: TCollection_ExtendedString &
+	:param theLabel:
+	:type theLabel: TCollection_ExtendedString &
 	:param anIndex: default value is -1
 	:type anIndex: int
 	:rtype: None
 ") SetLabel;
-		void SetLabel (const TCollection_ExtendedString & aLabel,const Standard_Integer anIndex = -1);
+		void SetLabel (const TCollection_ExtendedString & theLabel,const Standard_Integer anIndex = -1);
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "	* Sets the color scale color at index. Index started from 1.
 
-	:param aColor:
-	:type aColor: Quantity_Color &
-	:param anIndex: default value is -1
-	:type anIndex: int
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:param theIndex: default value is -1
+	:type theIndex: int
 	:rtype: None
 ") SetColor;
-		void SetColor (const Quantity_Color & aColor,const Standard_Integer anIndex = -1);
+		void SetColor (const Quantity_Color & theColor,const Standard_Integer theIndex = -1);
 		%feature("compactdefaultargs") SetLabels;
 		%feature("autodoc", "	* Sets the color scale labels.
 
-	:param aSeq:
-	:type aSeq: TColStd_SequenceOfExtendedString &
+	:param theSeq:
+	:type theSeq: TColStd_SequenceOfExtendedString &
 	:rtype: None
 ") SetLabels;
-		void SetLabels (const TColStd_SequenceOfExtendedString & aSeq);
+		void SetLabels (const TColStd_SequenceOfExtendedString & theSeq);
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "	* Sets the color scale colors.
 
-	:param aSeq:
-	:type aSeq: Aspect_SequenceOfColor &
+	:param theSeq:
+	:type theSeq: Aspect_SequenceOfColor &
 	:rtype: None
 ") SetColors;
-		void SetColors (const Aspect_SequenceOfColor & aSeq);
+		void SetColors (const Aspect_SequenceOfColor & theSeq);
 		%feature("compactdefaultargs") SetLabelPosition;
 		%feature("autodoc", "	* Sets the color scale labels position concerning color filled rectangles.
 
-	:param aPos:
-	:type aPos: Aspect_TypeOfColorScalePosition
+	:param thePos:
+	:type thePos: Aspect_TypeOfColorScalePosition
 	:rtype: None
 ") SetLabelPosition;
-		void SetLabelPosition (const Aspect_TypeOfColorScalePosition aPos);
+		void SetLabelPosition (const Aspect_TypeOfColorScalePosition thePos);
 		%feature("compactdefaultargs") SetTitlePosition;
 		%feature("autodoc", "	* Sets the color scale title position.
 
-	:param aPos:
-	:type aPos: Aspect_TypeOfColorScalePosition
+	:param thePos:
+	:type thePos: Aspect_TypeOfColorScalePosition
 	:rtype: None
 ") SetTitlePosition;
-		void SetTitlePosition (const Aspect_TypeOfColorScalePosition aPos);
+		void SetTitlePosition (const Aspect_TypeOfColorScalePosition thePos);
 		%feature("compactdefaultargs") SetReversed;
 		%feature("autodoc", "	* Sets true if the labels and colors used in reversed order.
 
-	:param aReverse:
-	:type aReverse: bool
+	:param theReverse:
+	:type theReverse: bool
 	:rtype: None
 ") SetReversed;
-		void SetReversed (const Standard_Boolean aReverse);
+		void SetReversed (const Standard_Boolean theReverse);
 		%feature("compactdefaultargs") SetLabelAtBorder;
 		%feature("autodoc", "	* Sets true if the labels placed at border of color filled rectangles.
 
-	:param anOn:
-	:type anOn: bool
+	:param theOn:
+	:type theOn: bool
 	:rtype: None
 ") SetLabelAtBorder;
-		void SetLabelAtBorder (const Standard_Boolean anOn);
+		void SetLabelAtBorder (const Standard_Boolean theOn);
 		%feature("compactdefaultargs") GetSize;
 		%feature("autodoc", "	* Returns the size of color scale.
 
-	:param aWidth:
-	:type aWidth: float &
-	:param aHeight:
-	:type aHeight: float &
+	:param theWidth:
+	:type theWidth: float &
+	:param theHeight:
+	:type theHeight: float &
 	:rtype: None
 ") GetSize;
 		void GetSize (Standard_Real &OutValue,Standard_Real &OutValue);
@@ -1169,36 +979,36 @@ class Aspect_ColorScale : public MMgt_TShared {
 		%feature("compactdefaultargs") SetSize;
 		%feature("autodoc", "	* Sets the size of color scale.
 
-	:param aWidth:
-	:type aWidth: float
-	:param aHeight:
-	:type aHeight: float
+	:param theWidth:
+	:type theWidth: float
+	:param theHeight:
+	:type theHeight: float
 	:rtype: None
 ") SetSize;
-		void SetSize (const Standard_Real aWidth,const Standard_Real aHeight);
+		void SetSize (const Standard_Real theWidth,const Standard_Real theHeight);
 		%feature("compactdefaultargs") SetWidth;
 		%feature("autodoc", "	* Sets the width of color scale.
 
-	:param aWidth:
-	:type aWidth: float
+	:param theWidth:
+	:type theWidth: float
 	:rtype: None
 ") SetWidth;
-		void SetWidth (const Standard_Real aWidth);
+		void SetWidth (const Standard_Real theWidth);
 		%feature("compactdefaultargs") SetHeight;
 		%feature("autodoc", "	* Sets the height of color scale.
 
-	:param aHeight:
-	:type aHeight: float
+	:param theHeight:
+	:type theHeight: float
 	:rtype: None
 ") SetHeight;
-		void SetHeight (const Standard_Real aHeight);
+		void SetHeight (const Standard_Real theHeight);
 		%feature("compactdefaultargs") GetPosition;
 		%feature("autodoc", "	* Returns the position of color scale.
 
-	:param aX:
-	:type aX: float &
-	:param aY:
-	:type aY: float &
+	:param theX:
+	:type theX: float &
+	:param theY:
+	:type theY: float &
 	:rtype: None
 ") GetPosition;
 		void GetPosition (Standard_Real &OutValue,Standard_Real &OutValue);
@@ -1217,79 +1027,91 @@ class Aspect_ColorScale : public MMgt_TShared {
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", "	* Sets the position of color scale.
 
-	:param aX:
-	:type aX: float
-	:param aY:
-	:type aY: float
+	:param theX:
+	:type theX: float
+	:param theY:
+	:type theY: float
 	:rtype: None
 ") SetPosition;
-		void SetPosition (const Standard_Real aX,const Standard_Real aY);
+		void SetPosition (const Standard_Real theX,const Standard_Real theY);
 		%feature("compactdefaultargs") SetXPosition;
 		%feature("autodoc", "	* Sets the X position of color scale.
 
-	:param aX:
-	:type aX: float
+	:param theX:
+	:type theX: float
 	:rtype: None
 ") SetXPosition;
-		void SetXPosition (const Standard_Real aX);
+		void SetXPosition (const Standard_Real theX);
 		%feature("compactdefaultargs") SetYPosition;
 		%feature("autodoc", "	* Sets the Y position of color scale.
 
-	:param aY:
-	:type aY: float
+	:param theY:
+	:type theY: float
 	:rtype: None
 ") SetYPosition;
-		void SetYPosition (const Standard_Real aY);
+		void SetYPosition (const Standard_Real theY);
 		%feature("compactdefaultargs") GetTextHeight;
-		%feature("autodoc", "	:rtype: int
+		%feature("autodoc", "	* Returns the height of text of color scale.
+
+	:rtype: int
 ") GetTextHeight;
 		Standard_Integer GetTextHeight ();
 		%feature("compactdefaultargs") SetTextHeight;
-		%feature("autodoc", "	:param aHeigh:
-	:type aHeigh: int
+		%feature("autodoc", "	* Sets the height of text of color scale.
+
+	:param theHeight:
+	:type theHeight: int
 	:rtype: None
 ") SetTextHeight;
-		void SetTextHeight (const Standard_Integer aHeigh);
+		void SetTextHeight (const Standard_Integer theHeight);
 		%feature("compactdefaultargs") PaintRect;
-		%feature("autodoc", "	:param X:
-	:type X: int
-	:param Y:
-	:type Y: int
-	:param W:
-	:type W: int
-	:param H:
-	:type H: int
-	:param aColor:
-	:type aColor: Quantity_Color &
-	:param aFilled: default value is Standard_False
-	:type aFilled: bool
+		%feature("autodoc", "	* Draws a rectangle. @param theX [in] the X coordinate of rectangle position. @param theY [in] the Y coordinate of rectangle position. @param theWidth [in] the width of rectangle. @param theHeight [in] the height of rectangle. @param theColor [in] the color of rectangle. @param theFilled [in] defines if rectangle must be filled.
+
+	:param theX:
+	:type theX: int
+	:param theY:
+	:type theY: int
+	:param theWidth:
+	:type theWidth: int
+	:param theHeight:
+	:type theHeight: int
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:param theFilled: default value is Standard_False
+	:type theFilled: bool
 	:rtype: void
 ") PaintRect;
-		virtual void PaintRect (const Standard_Integer X,const Standard_Integer Y,const Standard_Integer W,const Standard_Integer H,const Quantity_Color & aColor,const Standard_Boolean aFilled = Standard_False);
+		virtual void PaintRect (const Standard_Integer theX,const Standard_Integer theY,const Standard_Integer theWidth,const Standard_Integer theHeight,const Quantity_Color & theColor,const Standard_Boolean theFilled = Standard_False);
 		%feature("compactdefaultargs") PaintText;
-		%feature("autodoc", "	:param aText:
-	:type aText: TCollection_ExtendedString &
-	:param X:
-	:type X: int
-	:param Y:
-	:type Y: int
-	:param aColor:
-	:type aColor: Quantity_Color &
+		%feature("autodoc", "	* Draws a text. @param theText [in] the text to draw. @param theX [in] the X coordinate of text position. @param theY [in] the Y coordinate of text position. @param theColor [in] the color of text.
+
+	:param theText:
+	:type theText: TCollection_ExtendedString &
+	:param theX:
+	:type theX: int
+	:param theY:
+	:type theY: int
+	:param theColor:
+	:type theColor: Quantity_Color &
 	:rtype: void
 ") PaintText;
-		virtual void PaintText (const TCollection_ExtendedString & aText,const Standard_Integer X,const Standard_Integer Y,const Quantity_Color & aColor);
+		virtual void PaintText (const TCollection_ExtendedString & theText,const Standard_Integer theX,const Standard_Integer theY,const Quantity_Color & theColor);
 		%feature("compactdefaultargs") TextWidth;
-		%feature("autodoc", "	:param aText:
-	:type aText: TCollection_ExtendedString &
+		%feature("autodoc", "	* Returns the width of text. @param theText [in] the text of which to calculate width.
+
+	:param theText:
+	:type theText: TCollection_ExtendedString &
 	:rtype: int
 ") TextWidth;
-		virtual Standard_Integer TextWidth (const TCollection_ExtendedString & aText);
+		virtual Standard_Integer TextWidth (const TCollection_ExtendedString & theText);
 		%feature("compactdefaultargs") TextHeight;
-		%feature("autodoc", "	:param aText:
-	:type aText: TCollection_ExtendedString &
+		%feature("autodoc", "	* Returns the height of text. @param theText [in] the text of which to calculate height.
+
+	:param theText:
+	:type theText: TCollection_ExtendedString &
 	:rtype: int
 ") TextHeight;
-		virtual Standard_Integer TextHeight (const TCollection_ExtendedString & aText);
+		virtual Standard_Integer TextHeight (const TCollection_ExtendedString & theText);
 };
 
 
@@ -1340,77 +1162,6 @@ class Handle_Aspect_ColorScale : public Handle_MMgt_TShared {
 };
 
 %extend Aspect_ColorScale {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Aspect_Edge;
-class Aspect_Edge {
-	public:
-		%feature("compactdefaultargs") Aspect_Edge;
-		%feature("autodoc", "	* Creates an edge.
-
-	:rtype: None
-") Aspect_Edge;
-		 Aspect_Edge ();
-		%feature("compactdefaultargs") Aspect_Edge;
-		%feature("autodoc", "	* Creates an edge from an index of vertices in a table of vertices. <AType> indicates if this edge is seen or not. Warning: Raises EdgeDefinitionError if AIndex1 == AIndex2.
-
-	:param AIndex1:
-	:type AIndex1: int
-	:param AIndex2:
-	:type AIndex2: int
-	:param AType:
-	:type AType: Aspect_TypeOfEdge
-	:rtype: None
-") Aspect_Edge;
-		 Aspect_Edge (const Standard_Integer AIndex1,const Standard_Integer AIndex2,const Aspect_TypeOfEdge AType);
-		%feature("compactdefaultargs") SetValues;
-		%feature("autodoc", "	* Updates the values of an edge <self>. Warning: Raises EdgeDefinitionError if AIndex1 == AIndex2.
-
-	:param AIndex1:
-	:type AIndex1: int
-	:param AIndex2:
-	:type AIndex2: int
-	:param AType:
-	:type AType: Aspect_TypeOfEdge
-	:rtype: None
-") SetValues;
-		void SetValues (const Standard_Integer AIndex1,const Standard_Integer AIndex2,const Aspect_TypeOfEdge AType);
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "	* Returns the index of the vertices and the type of edge <self>.
-
-	:param AIndex1:
-	:type AIndex1: int &
-	:param AIndex2:
-	:type AIndex2: int &
-	:param AType:
-	:type AType: Aspect_TypeOfEdge &
-	:rtype: None
-") Values;
-		void Values (Standard_Integer &OutValue,Standard_Integer &OutValue,Aspect_TypeOfEdge & AType);
-		%feature("compactdefaultargs") FirstIndex;
-		%feature("autodoc", "	* Returns the index of the begin of the edge <self>.
-
-	:rtype: int
-") FirstIndex;
-		Standard_Integer FirstIndex ();
-		%feature("compactdefaultargs") LastIndex;
-		%feature("autodoc", "	* Returns the index of the end of the edge <self>.
-
-	:rtype: int
-") LastIndex;
-		Standard_Integer LastIndex ();
-		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "	* Returns the type of the edge <self>.
-
-	:rtype: Aspect_TypeOfEdge
-") Type;
-		Aspect_TypeOfEdge Type ();
-};
-
-
-%extend Aspect_Edge {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1492,6 +1243,7 @@ class Aspect_GraphicCallbackStruct {
 		int reason;
 		int wsID;
 		int viewID;
+		bool IsCoreProfile;
 		Handle_Standard_Transient glContext;
 };
 
@@ -1818,7 +1570,7 @@ class Aspect_SequenceOfColor : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Aspect_SequenceOfColor &
 	:rtype: Aspect_SequenceOfColor
-") operator=;
+") operator =;
 		const Aspect_SequenceOfColor & operator = (const Aspect_SequenceOfColor & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -773,7 +773,7 @@ class Convert_SequenceOfArray1OfPoles : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Convert_SequenceOfArray1OfPoles &
 	:rtype: Convert_SequenceOfArray1OfPoles
-") operator=;
+") operator =;
 		const Convert_SequenceOfArray1OfPoles & operator = (const Convert_SequenceOfArray1OfPoles & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

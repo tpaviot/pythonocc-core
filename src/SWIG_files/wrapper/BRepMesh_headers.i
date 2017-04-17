@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -28,11 +28,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepMesh_DiscretFactory.hxx>
 #include<BRepMesh_DiscretRoot.hxx>
 #include<BRepMesh_Edge.hxx>
-#include<BRepMesh_EdgeChecker.hxx>
 #include<BRepMesh_EdgeParameterProvider.hxx>
 #include<BRepMesh_EdgeTessellationExtractor.hxx>
 #include<BRepMesh_EdgeTessellator.hxx>
-#include<BRepMesh_FaceChecker.hxx>
 #include<BRepMesh_FactoryError.hxx>
 #include<BRepMesh_FastDiscret.hxx>
 #include<BRepMesh_FastDiscretFace.hxx>
@@ -389,51 +387,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopoDS_UnCompatibleShapes.hxx>
 #include<TopoDS_Vertex.hxx>
 #include<TopoDS_Wire.hxx>
-#include<Poly.hxx>
-#include<Poly_Array1OfTriangle.hxx>
-#include<Poly_CoherentLink.hxx>
-#include<Poly_CoherentNode.hxx>
-#include<Poly_CoherentTriangle.hxx>
-#include<Poly_CoherentTriangulation.hxx>
-#include<Poly_CoherentTriPtr.hxx>
-#include<Poly_Connect.hxx>
-#include<Poly_HArray1OfTriangle.hxx>
-#include<Poly_ListOfTriangulation.hxx>
-#include<Poly_MakeLoops.hxx>
-#include<Poly_Polygon2D.hxx>
-#include<Poly_Polygon3D.hxx>
-#include<Poly_PolygonOnTriangulation.hxx>
-#include<Poly_Triangle.hxx>
-#include<Poly_Triangulation.hxx>
-#include<TopLoc_Datum3D.hxx>
-#include<TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
-#include<TopLoc_IndexedMapOfLocation.hxx>
-#include<TopLoc_ItemLocation.hxx>
-#include<TopLoc_Location.hxx>
-#include<TopLoc_MapIteratorOfMapOfLocation.hxx>
-#include<TopLoc_MapLocationHasher.hxx>
-#include<TopLoc_MapOfLocation.hxx>
-#include<TopLoc_SListNodeOfItemLocation.hxx>
-#include<TopLoc_SListOfItemLocation.hxx>
-#include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#include<TopLoc_TrsfPtr.hxx>
-#include<Bnd_Array1OfBox.hxx>
-#include<Bnd_Array1OfBox2d.hxx>
-#include<Bnd_Array1OfSphere.hxx>
-#include<Bnd_B2d.hxx>
-#include<Bnd_B2f.hxx>
-#include<Bnd_B3d.hxx>
-#include<Bnd_B3f.hxx>
-#include<Bnd_BoundSortBox.hxx>
-#include<Bnd_BoundSortBox2d.hxx>
-#include<Bnd_Box.hxx>
-#include<Bnd_Box2d.hxx>
-#include<Bnd_HArray1OfBox.hxx>
-#include<Bnd_HArray1OfBox2d.hxx>
-#include<Bnd_HArray1OfSphere.hxx>
-#include<Bnd_SeqOfBox.hxx>
-#include<Bnd_SequenceNodeOfSeqOfBox.hxx>
-#include<Bnd_Sphere.hxx>
 #include<TopTools.hxx>
 #include<TopTools_Array1OfListOfShape.hxx>
 #include<TopTools_Array1OfShape.hxx>
@@ -509,15 +462,50 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepAdaptor_HCurve2d.hxx>
 #include<BRepAdaptor_HSurface.hxx>
 #include<BRepAdaptor_Surface.hxx>
-#include<GeomAbs_BSplKnotDistribution.hxx>
-#include<GeomAbs_CurveForm.hxx>
-#include<GeomAbs_CurveType.hxx>
-#include<GeomAbs_IsoType.hxx>
-#include<GeomAbs_JoinType.hxx>
-#include<GeomAbs_Shape.hxx>
-#include<GeomAbs_SurfaceForm.hxx>
-#include<GeomAbs_SurfaceType.hxx>
-#include<GeomAbs_UVSense.hxx>
+#include<Poly.hxx>
+#include<Poly_Array1OfTriangle.hxx>
+#include<Poly_CoherentLink.hxx>
+#include<Poly_CoherentNode.hxx>
+#include<Poly_CoherentTriangle.hxx>
+#include<Poly_CoherentTriangulation.hxx>
+#include<Poly_CoherentTriPtr.hxx>
+#include<Poly_Connect.hxx>
+#include<Poly_HArray1OfTriangle.hxx>
+#include<Poly_ListOfTriangulation.hxx>
+#include<Poly_MakeLoops.hxx>
+#include<Poly_Polygon2D.hxx>
+#include<Poly_Polygon3D.hxx>
+#include<Poly_PolygonOnTriangulation.hxx>
+#include<Poly_Triangle.hxx>
+#include<Poly_Triangulation.hxx>
+#include<Bnd_Array1OfBox.hxx>
+#include<Bnd_Array1OfBox2d.hxx>
+#include<Bnd_Array1OfSphere.hxx>
+#include<Bnd_B2d.hxx>
+#include<Bnd_B2f.hxx>
+#include<Bnd_B3d.hxx>
+#include<Bnd_B3f.hxx>
+#include<Bnd_BoundSortBox.hxx>
+#include<Bnd_BoundSortBox2d.hxx>
+#include<Bnd_Box.hxx>
+#include<Bnd_Box2d.hxx>
+#include<Bnd_HArray1OfBox.hxx>
+#include<Bnd_HArray1OfBox2d.hxx>
+#include<Bnd_HArray1OfSphere.hxx>
+#include<Bnd_SeqOfBox.hxx>
+#include<Bnd_SequenceNodeOfSeqOfBox.hxx>
+#include<Bnd_Sphere.hxx>
+#include<TopLoc_Datum3D.hxx>
+#include<TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
+#include<TopLoc_IndexedMapOfLocation.hxx>
+#include<TopLoc_ItemLocation.hxx>
+#include<TopLoc_Location.hxx>
+#include<TopLoc_MapIteratorOfMapOfLocation.hxx>
+#include<TopLoc_MapLocationHasher.hxx>
+#include<TopLoc_MapOfLocation.hxx>
+#include<TopLoc_SListNodeOfItemLocation.hxx>
+#include<TopLoc_SListOfItemLocation.hxx>
+#include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
 #include<TShort_Array1OfShortReal.hxx>
 #include<TShort_Array2OfShortReal.hxx>
 #include<TShort_HArray1OfShortReal.hxx>
@@ -638,7 +626,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopLoc_SListNodeOfItemLocation.hxx>
 #include<TopLoc_SListOfItemLocation.hxx>
 #include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#include<TopLoc_TrsfPtr.hxx>
 #include<Geom2d_AxisPlacement.hxx>
 #include<Geom2d_BezierCurve.hxx>
 #include<Geom2d_BoundedCurve.hxx>
@@ -710,6 +697,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -719,6 +707,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -907,9 +896,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import TColStd.i
 %import TCollection.i
 %import TopoDS.i
-%import Poly.i
-%import TopLoc.i
-%import Bnd.i
 %import TopTools.i
 %import BRepAdaptor.i
-%import GeomAbs.i
+%import Poly.i
+%import Bnd.i
+%import TopLoc.i

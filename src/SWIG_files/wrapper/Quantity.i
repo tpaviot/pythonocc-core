@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -776,7 +776,7 @@ class Quantity_Array1OfCoefficient {
 		%feature("autodoc", "	:param Other:
 	:type Other: Quantity_Array1OfCoefficient &
 	:rtype: Quantity_Array1OfCoefficient
-") operator=;
+") operator =;
 		const Quantity_Array1OfCoefficient & operator = (const Quantity_Array1OfCoefficient & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -863,7 +863,7 @@ class Quantity_Array1OfColor {
 		%feature("autodoc", "	:param Other:
 	:type Other: Quantity_Array1OfColor &
 	:rtype: Quantity_Array1OfColor
-") operator=;
+") operator =;
 		const Quantity_Array1OfColor & operator = (const Quantity_Array1OfColor & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -954,7 +954,7 @@ class Quantity_Array2OfColor {
 		%feature("autodoc", "	:param Other:
 	:type Other: Quantity_Array2OfColor &
 	:rtype: Quantity_Array2OfColor
-") operator=;
+") operator =;
 		const Quantity_Array2OfColor & operator = (const Quantity_Array2OfColor & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1057,7 +1057,7 @@ class Quantity_Color {
 		%feature("autodoc", "	:param Other:
 	:type Other: Quantity_Color &
 	:rtype: Quantity_Color
-") operator=;
+") operator =;
 		Quantity_Color & operator = (const Quantity_Color & Other);
 		%feature("compactdefaultargs") ChangeContrast;
 		%feature("autodoc", "	* Increases or decreases the contrast by <ADelta>. <ADelta> is a percentage. Any value greater than zero will increase the contrast. The variation is expressed as a percentage of the current value. It is a variation of the saturation.
@@ -1521,7 +1521,7 @@ class Quantity_Date {
 		%feature("autodoc", "	:param aPeriod:
 	:type aPeriod: Quantity_Period &
 	:rtype: Quantity_Date
-") operator-;
+") operator -;
 		Quantity_Date operator - (const Quantity_Period & aPeriod);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* Adds a Period to a Date and returns the new Date.
@@ -1535,7 +1535,7 @@ class Quantity_Date {
 		%feature("autodoc", "	:param aPeriod:
 	:type aPeriod: Quantity_Period &
 	:rtype: Quantity_Date
-") operator+;
+") operator +;
 		Quantity_Date operator + (const Quantity_Period & aPeriod);
 		%feature("compactdefaultargs") Year;
 		%feature("autodoc", "	* Returns year of a Date.
@@ -1619,7 +1619,7 @@ class Quantity_Date {
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Date &
 	:rtype: bool
-") operator<;
+") operator <;
 		Standard_Boolean operator < (const Quantity_Date & anOther);
 		%feature("compactdefaultargs") IsLater;
 		%feature("autodoc", "	* Returns True if <self> is later then <other>.
@@ -1633,7 +1633,7 @@ class Quantity_Date {
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Date &
 	:rtype: bool
-") operator>;
+") operator >;
 		Standard_Boolean operator > (const Quantity_Date & anOther);
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "	* Checks the validity of a date - returns true if a date defined from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0) is valid. A date must satisfy the conditions above: - yyyy is greater than or equal to 1979, - mm lies within the range [1, 12] (with 1 corresponding to January and 12 to December), - dd lies within a valid range for the month mm (from 1 to 28, 29, 30 or 31 depending on mm and whether yyyy is a leap year or not), - hh lies within the range [0, 23], - mn lies within the range [0, 59], - ss lies within the range [0, 59], - mis lies within the range [0, 999], - mics lies within the range [0, 999].C
@@ -1913,7 +1913,7 @@ class Quantity_Period {
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Period &
 	:rtype: Quantity_Period
-") operator-;
+") operator -;
 		Quantity_Period operator - (const Quantity_Period & anOther);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* Adds one Period to another one.
@@ -1927,7 +1927,7 @@ class Quantity_Period {
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Period &
 	:rtype: Quantity_Period
-") operator+;
+") operator +;
 		Quantity_Period operator + (const Quantity_Period & anOther);
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "	* Returns True if both <self> and <other> are equal.
@@ -1963,7 +1963,7 @@ class Quantity_Period {
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Period &
 	:rtype: bool
-") operator<;
+") operator <;
 		Standard_Boolean operator < (const Quantity_Period & anOther);
 		%feature("compactdefaultargs") IsLonger;
 		%feature("autodoc", "	* Returns True if <self> is longer then <other>.
@@ -1977,7 +1977,7 @@ class Quantity_Period {
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Period &
 	:rtype: bool
-") operator>;
+") operator >;
 		Standard_Boolean operator > (const Quantity_Period & anOther);
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "	* Checks the validity of a Period in form (dd,hh,mn,ss,mil,mic) With: 0 <= dd 0 <= hh 0 <= mn 0 <= ss 0 <= mis 0 <= mics

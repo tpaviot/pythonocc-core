@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -431,43 +431,23 @@ class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 class FairCurve_Newton : public math_NewtonMinimum {
 	public:
 		%feature("compactdefaultargs") FairCurve_Newton;
-		%feature("autodoc", "	* -- Given the starting point StartingPoint, The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: Obsolete Constructor (because IsConverged can not be redefined with this. )
-
-	:param F:
-	:type F: math_MultipleVarFunctionWithHessian &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
-	:param SpatialTolerance: default value is 1.0e-7
-	:type SpatialTolerance: float
-	:param CriteriumTolerance: default value is 1.0e-2
-	:type CriteriumTolerance: float
-	:param NbIterations: default value is 40
-	:type NbIterations: int
-	:param Convexity: default value is 1.0e-6
-	:type Convexity: float
-	:param WithSingularity: default value is Standard_True
-	:type WithSingularity: bool
-	:rtype: None
-") FairCurve_Newton;
-		 FairCurve_Newton (math_MultipleVarFunctionWithHessian & F,const math_Vector & StartingPoint,const Standard_Real SpatialTolerance = 1.0e-7,const Standard_Real CriteriumTolerance = 1.0e-2,const Standard_Integer NbIterations = 40,const Standard_Real Convexity = 1.0e-6,const Standard_Boolean WithSingularity = Standard_True);
-		%feature("compactdefaultargs") FairCurve_Newton;
 		%feature("autodoc", "	* The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: This constructor do not computation
 
-	:param F:
-	:type F: math_MultipleVarFunctionWithHessian &
-	:param SpatialTolerance: default value is 1.0e-7
-	:type SpatialTolerance: float
-	:param Tolerance: default value is 1.0e-7
-	:type Tolerance: float
-	:param NbIterations: default value is 40
-	:type NbIterations: int
-	:param Convexity: default value is 1.0e-6
-	:type Convexity: float
-	:param WithSingularity: default value is Standard_True
-	:type WithSingularity: bool
+	:param theFunction:
+	:type theFunction: math_MultipleVarFunctionWithHessian &
+	:param theSpatialTolerance: default value is 1.0e-7
+	:type theSpatialTolerance: float
+	:param theCriteriumTolerance: default value is 1.0e-7
+	:type theCriteriumTolerance: float
+	:param theNbIterations: default value is 40
+	:type theNbIterations: int
+	:param theConvexity: default value is 1.0e-6
+	:type theConvexity: float
+	:param theWithSingularity: default value is Standard_True
+	:type theWithSingularity: bool
 	:rtype: None
 ") FairCurve_Newton;
-		 FairCurve_Newton (math_MultipleVarFunctionWithHessian & F,const Standard_Real SpatialTolerance = 1.0e-7,const Standard_Real Tolerance = 1.0e-7,const Standard_Integer NbIterations = 40,const Standard_Real Convexity = 1.0e-6,const Standard_Boolean WithSingularity = Standard_True);
+		 FairCurve_Newton (const math_MultipleVarFunctionWithHessian & theFunction,const Standard_Real theSpatialTolerance = 1.0e-7,const Standard_Real theCriteriumTolerance = 1.0e-7,const Standard_Integer theNbIterations = 40,const Standard_Real theConvexity = 1.0e-6,const Standard_Boolean theWithSingularity = Standard_True);
 		%feature("compactdefaultargs") IsConverged;
 		%feature("autodoc", "	* This method is called at the end of each iteration to check the convergence : || Xi+1 - Xi || < SpatialTolerance/100 Or || Xi+1 - Xi || < SpatialTolerance and |F(Xi+1) - F(Xi)| < CriteriumTolerance * |F(xi)| It can be redefined in a sub-class to implement a specific test.
 

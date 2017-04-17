@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -269,7 +269,7 @@ class TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference &
 	:rtype: TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference
-") operator=;
+") operator =;
 		const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference & operator = (const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2535,7 +2535,7 @@ class TopOpeBRepDS_DataMapOfCheckStatus : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_DataMapOfCheckStatus &
 	:rtype: TopOpeBRepDS_DataMapOfCheckStatus
-") operator=;
+") operator =;
 		TopOpeBRepDS_DataMapOfCheckStatus & operator = (const TopOpeBRepDS_DataMapOfCheckStatus & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2618,7 +2618,7 @@ class TopOpeBRepDS_DataMapOfIntegerListOfInterference : public TCollection_Basic
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_DataMapOfIntegerListOfInterference &
 	:rtype: TopOpeBRepDS_DataMapOfIntegerListOfInterference
-") operator=;
+") operator =;
 		TopOpeBRepDS_DataMapOfIntegerListOfInterference & operator = (const TopOpeBRepDS_DataMapOfIntegerListOfInterference & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2701,7 +2701,7 @@ class TopOpeBRepDS_DataMapOfInterferenceListOfInterference : public TCollection_
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_DataMapOfInterferenceListOfInterference &
 	:rtype: TopOpeBRepDS_DataMapOfInterferenceListOfInterference
-") operator=;
+") operator =;
 		TopOpeBRepDS_DataMapOfInterferenceListOfInterference & operator = (const TopOpeBRepDS_DataMapOfInterferenceListOfInterference & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2784,7 +2784,7 @@ class TopOpeBRepDS_DataMapOfInterferenceShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_DataMapOfInterferenceShape &
 	:rtype: TopOpeBRepDS_DataMapOfInterferenceShape
-") operator=;
+") operator =;
 		TopOpeBRepDS_DataMapOfInterferenceShape & operator = (const TopOpeBRepDS_DataMapOfInterferenceShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2867,7 +2867,7 @@ class TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State : public TCollection_BasicM
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State &
 	:rtype: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
-") operator=;
+") operator =;
 		TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & operator = (const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2950,7 +2950,7 @@ class TopOpeBRepDS_DataMapOfShapeState : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_DataMapOfShapeState &
 	:rtype: TopOpeBRepDS_DataMapOfShapeState
-") operator=;
+") operator =;
 		TopOpeBRepDS_DataMapOfShapeState & operator = (const TopOpeBRepDS_DataMapOfShapeState & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -3841,7 +3841,7 @@ class TopOpeBRepDS_DoubleMapOfIntegerShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_DoubleMapOfIntegerShape &
 	:rtype: TopOpeBRepDS_DoubleMapOfIntegerShape
-") operator=;
+") operator =;
 		TopOpeBRepDS_DoubleMapOfIntegerShape & operator = (const TopOpeBRepDS_DoubleMapOfIntegerShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4788,7 +4788,7 @@ class TopOpeBRepDS_GeometryData {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_GeometryData &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopOpeBRepDS_GeometryData & Other);
 		%feature("compactdefaultargs") Interferences;
 		%feature("autodoc", "	:rtype: TopOpeBRepDS_ListOfInterference
@@ -5240,7 +5240,7 @@ class TopOpeBRepDS_IndexedDataMapOfShapeWithState : public TCollection_BasicMap 
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_IndexedDataMapOfShapeWithState &
 	:rtype: TopOpeBRepDS_IndexedDataMapOfShapeWithState
-") operator=;
+") operator =;
 		TopOpeBRepDS_IndexedDataMapOfShapeWithState & operator = (const TopOpeBRepDS_IndexedDataMapOfShapeWithState & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -5355,7 +5355,7 @@ class TopOpeBRepDS_IndexedDataMapOfVertexPoint : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_IndexedDataMapOfVertexPoint &
 	:rtype: TopOpeBRepDS_IndexedDataMapOfVertexPoint
-") operator=;
+") operator =;
 		TopOpeBRepDS_IndexedDataMapOfVertexPoint & operator = (const TopOpeBRepDS_IndexedDataMapOfVertexPoint & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -5998,7 +5998,7 @@ class TopOpeBRepDS_ListOfInterference {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_ListOfInterference &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopOpeBRepDS_ListOfInterference & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -6166,7 +6166,7 @@ class TopOpeBRepDS_MapOfCurve : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_MapOfCurve &
 	:rtype: TopOpeBRepDS_MapOfCurve
-") operator=;
+") operator =;
 		TopOpeBRepDS_MapOfCurve & operator = (const TopOpeBRepDS_MapOfCurve & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -6249,7 +6249,7 @@ class TopOpeBRepDS_MapOfIntegerShapeData : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_MapOfIntegerShapeData &
 	:rtype: TopOpeBRepDS_MapOfIntegerShapeData
-") operator=;
+") operator =;
 		TopOpeBRepDS_MapOfIntegerShapeData & operator = (const TopOpeBRepDS_MapOfIntegerShapeData & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -6332,7 +6332,7 @@ class TopOpeBRepDS_MapOfPoint : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_MapOfPoint &
 	:rtype: TopOpeBRepDS_MapOfPoint
-") operator=;
+") operator =;
 		TopOpeBRepDS_MapOfPoint & operator = (const TopOpeBRepDS_MapOfPoint & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -6415,7 +6415,7 @@ class TopOpeBRepDS_MapOfShapeData : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_MapOfShapeData &
 	:rtype: TopOpeBRepDS_MapOfShapeData
-") operator=;
+") operator =;
 		TopOpeBRepDS_MapOfShapeData & operator = (const TopOpeBRepDS_MapOfShapeData & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -6530,7 +6530,7 @@ class TopOpeBRepDS_MapOfSurface : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_MapOfSurface &
 	:rtype: TopOpeBRepDS_MapOfSurface
-") operator=;
+") operator =;
 		TopOpeBRepDS_MapOfSurface & operator = (const TopOpeBRepDS_MapOfSurface & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -6900,7 +6900,7 @@ class TopOpeBRepDS_ShapeSurface : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_ShapeSurface &
 	:rtype: TopOpeBRepDS_ShapeSurface
-") operator=;
+") operator =;
 		TopOpeBRepDS_ShapeSurface & operator = (const TopOpeBRepDS_ShapeSurface & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -7052,7 +7052,7 @@ class TopOpeBRepDS_Surface {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_Surface &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopOpeBRepDS_Surface & Other);
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "	:rtype: Handle_Geom_Surface

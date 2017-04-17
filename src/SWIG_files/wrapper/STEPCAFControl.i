@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -895,7 +895,7 @@ class STEPCAFControl_DataMapOfLabelExternFile : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: STEPCAFControl_DataMapOfLabelExternFile &
 	:rtype: STEPCAFControl_DataMapOfLabelExternFile
-") operator=;
+") operator =;
 		STEPCAFControl_DataMapOfLabelExternFile & operator = (const STEPCAFControl_DataMapOfLabelExternFile & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -978,7 +978,7 @@ class STEPCAFControl_DataMapOfLabelShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: STEPCAFControl_DataMapOfLabelShape &
 	:rtype: STEPCAFControl_DataMapOfLabelShape
-") operator=;
+") operator =;
 		STEPCAFControl_DataMapOfLabelShape & operator = (const STEPCAFControl_DataMapOfLabelShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1061,7 +1061,7 @@ class STEPCAFControl_DataMapOfPDExternFile : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: STEPCAFControl_DataMapOfPDExternFile &
 	:rtype: STEPCAFControl_DataMapOfPDExternFile
-") operator=;
+") operator =;
 		STEPCAFControl_DataMapOfPDExternFile & operator = (const STEPCAFControl_DataMapOfPDExternFile & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1144,7 +1144,7 @@ class STEPCAFControl_DataMapOfSDRExternFile : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: STEPCAFControl_DataMapOfSDRExternFile &
 	:rtype: STEPCAFControl_DataMapOfSDRExternFile
-") operator=;
+") operator =;
 		STEPCAFControl_DataMapOfSDRExternFile & operator = (const STEPCAFControl_DataMapOfSDRExternFile & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1227,7 +1227,7 @@ class STEPCAFControl_DataMapOfShapePD : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: STEPCAFControl_DataMapOfShapePD &
 	:rtype: STEPCAFControl_DataMapOfShapePD
-") operator=;
+") operator =;
 		STEPCAFControl_DataMapOfShapePD & operator = (const STEPCAFControl_DataMapOfShapePD & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1310,7 +1310,7 @@ class STEPCAFControl_DataMapOfShapeSDR : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: STEPCAFControl_DataMapOfShapeSDR &
 	:rtype: STEPCAFControl_DataMapOfShapeSDR
-") operator=;
+") operator =;
 		STEPCAFControl_DataMapOfShapeSDR & operator = (const STEPCAFControl_DataMapOfShapeSDR & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

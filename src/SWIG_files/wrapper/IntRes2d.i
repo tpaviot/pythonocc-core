@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -450,7 +450,7 @@ class IntRes2d_IntersectionSegment {
 ") IntRes2d_IntersectionSegment;
 		 IntRes2d_IntersectionSegment (const Standard_Boolean Oppos);
 		%feature("compactdefaultargs") IsOpposite;
-		%feature("autodoc", "	* Returns True if the intersection segment has got the same orientation on both curves.
+		%feature("autodoc", "	* Returns False if the intersection segment has got the same orientation on both curves.
 
 	:rtype: bool
 ") IsOpposite;
@@ -694,7 +694,7 @@ class IntRes2d_SequenceOfIntersectionPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntRes2d_SequenceOfIntersectionPoint &
 	:rtype: IntRes2d_SequenceOfIntersectionPoint
-") operator=;
+") operator =;
 		const IntRes2d_SequenceOfIntersectionPoint & operator = (const IntRes2d_SequenceOfIntersectionPoint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -837,7 +837,7 @@ class IntRes2d_SequenceOfIntersectionSegment : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntRes2d_SequenceOfIntersectionSegment &
 	:rtype: IntRes2d_SequenceOfIntersectionSegment
-") operator=;
+") operator =;
 		const IntRes2d_SequenceOfIntersectionSegment & operator = (const IntRes2d_SequenceOfIntersectionSegment & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

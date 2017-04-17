@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -433,7 +433,7 @@ class Draft_DataMapOfEdgeEdgeInfo : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Draft_DataMapOfEdgeEdgeInfo &
 	:rtype: Draft_DataMapOfEdgeEdgeInfo
-") operator=;
+") operator =;
 		Draft_DataMapOfEdgeEdgeInfo & operator = (const Draft_DataMapOfEdgeEdgeInfo & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -516,7 +516,7 @@ class Draft_DataMapOfFaceFaceInfo : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Draft_DataMapOfFaceFaceInfo &
 	:rtype: Draft_DataMapOfFaceFaceInfo
-") operator=;
+") operator =;
 		Draft_DataMapOfFaceFaceInfo & operator = (const Draft_DataMapOfFaceFaceInfo & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -599,7 +599,7 @@ class Draft_DataMapOfVertexVertexInfo : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Draft_DataMapOfVertexVertexInfo &
 	:rtype: Draft_DataMapOfVertexVertexInfo
-") operator=;
+") operator =;
 		Draft_DataMapOfVertexVertexInfo & operator = (const Draft_DataMapOfVertexVertexInfo & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

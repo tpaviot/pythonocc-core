@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -302,6 +302,22 @@ class GeomConvert_ApproxCurve {
 	:rtype: None
 ") GeomConvert_ApproxCurve;
 		 GeomConvert_ApproxCurve (const Handle_Geom_Curve & Curve,const Standard_Real Tol3d,const GeomAbs_Shape Order,const Standard_Integer MaxSegments,const Standard_Integer MaxDegree);
+		%feature("compactdefaultargs") GeomConvert_ApproxCurve;
+		%feature("autodoc", "	* Constructs a curve approximation framework defined by - - the Curve, - the tolerance value Tol3d, - the degree of continuity Order, - the maximum number of segments MaxSegments allowed in the resulting BSpline curve, and - the highest degree MaxDeg which the polynomial defining the BSpline curve may have.
+
+	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param Tol3d:
+	:type Tol3d: float
+	:param Order:
+	:type Order: GeomAbs_Shape
+	:param MaxSegments:
+	:type MaxSegments: int
+	:param MaxDegree:
+	:type MaxDegree: int
+	:rtype: None
+") GeomConvert_ApproxCurve;
+		 GeomConvert_ApproxCurve (const Handle_Adaptor3d_HCurve & Curve,const Standard_Real Tol3d,const GeomAbs_Shape Order,const Standard_Integer MaxSegments,const Standard_Integer MaxDegree);
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "	* Returns the BSpline curve resulting from the approximation algorithm.
 
@@ -367,6 +383,28 @@ class GeomConvert_ApproxSurface {
 	:rtype: None
 ") GeomConvert_ApproxSurface;
 		 GeomConvert_ApproxSurface (const Handle_Geom_Surface & Surf,const Standard_Real Tol3d,const GeomAbs_Shape UContinuity,const GeomAbs_Shape VContinuity,const Standard_Integer MaxDegU,const Standard_Integer MaxDegV,const Standard_Integer MaxSegments,const Standard_Integer PrecisCode);
+		%feature("compactdefaultargs") GeomConvert_ApproxSurface;
+		%feature("autodoc", "	* Constructs a surface approximation framework defined by - the Surf - the tolerance value Tol3d - the degree of continuity UContinuity, VContinuity in the directions of the U and V parameters - the highest degree MaxDegU, MaxDegV which the polynomial defining the BSpline curve may have in the directions of the U and V parameters - the maximum number of segments MaxSegments allowed in the resulting BSpline curve - the index of precision PrecisCode.
+
+	:param Surf:
+	:type Surf: Handle_Adaptor3d_HSurface &
+	:param Tol3d:
+	:type Tol3d: float
+	:param UContinuity:
+	:type UContinuity: GeomAbs_Shape
+	:param VContinuity:
+	:type VContinuity: GeomAbs_Shape
+	:param MaxDegU:
+	:type MaxDegU: int
+	:param MaxDegV:
+	:type MaxDegV: int
+	:param MaxSegments:
+	:type MaxSegments: int
+	:param PrecisCode:
+	:type PrecisCode: int
+	:rtype: None
+") GeomConvert_ApproxSurface;
+		 GeomConvert_ApproxSurface (const Handle_Adaptor3d_HSurface & Surf,const Standard_Real Tol3d,const GeomAbs_Shape UContinuity,const GeomAbs_Shape VContinuity,const Standard_Integer MaxDegU,const Standard_Integer MaxDegV,const Standard_Integer MaxSegments,const Standard_Integer PrecisCode);
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "	* Returns the BSpline surface resulting from the approximation algorithm.
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -534,7 +534,7 @@ class IntSurf_ListOfPntOn2S {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntSurf_ListOfPntOn2S &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const IntSurf_ListOfPntOn2S & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -948,6 +948,18 @@ class IntSurf_PntOn2S {
 	:rtype: None
 ") Parameters;
 		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") IsSame;
+		%feature("autodoc", "	* Returns True if 2D- and 3D-coordinates of theOterPoint are equal to corresponding coordinates of me (with given tolerance). If theTol2D == 0.0 we will compare 3D-points only.
+
+	:param theOterPoint:
+	:type theOterPoint: IntSurf_PntOn2S &
+	:param theTol3D: default value is 0.0
+	:type theTol3D: float
+	:param theTol2D: default value is 0.0
+	:type theTol2D: float
+	:rtype: bool
+") IsSame;
+		Standard_Boolean IsSame (const IntSurf_PntOn2S & theOterPoint,const Standard_Real theTol3D = 0.0,const Standard_Real theTol2D = 0.0);
 };
 
 
@@ -1441,7 +1453,7 @@ class IntSurf_SequenceOfCouple : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntSurf_SequenceOfCouple &
 	:rtype: IntSurf_SequenceOfCouple
-") operator=;
+") operator =;
 		const IntSurf_SequenceOfCouple & operator = (const IntSurf_SequenceOfCouple & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1584,7 +1596,7 @@ class IntSurf_SequenceOfInteriorPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntSurf_SequenceOfInteriorPoint &
 	:rtype: IntSurf_SequenceOfInteriorPoint
-") operator=;
+") operator =;
 		const IntSurf_SequenceOfInteriorPoint & operator = (const IntSurf_SequenceOfInteriorPoint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1727,7 +1739,7 @@ class IntSurf_SequenceOfPathPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntSurf_SequenceOfPathPoint &
 	:rtype: IntSurf_SequenceOfPathPoint
-") operator=;
+") operator =;
 		const IntSurf_SequenceOfPathPoint & operator = (const IntSurf_SequenceOfPathPoint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

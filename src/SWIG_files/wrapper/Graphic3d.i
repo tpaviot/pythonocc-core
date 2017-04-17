@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -52,37 +52,33 @@ def register_handle(handle, base_object):
 
 /* typedefs */
 typedef NCollection_Vec4 <Standard_Integer> Graphic3d_Vec4i;
-typedef Graphic3d_UniformValue <Graphic3d_Vec4i> Graphic3d_UniformVec4i;
+typedef NCollection_Vec2 <Standard_Character> Graphic3d_Vec2b;
 typedef NCollection_Vec2 <Standard_Real> Graphic3d_Vec2d;
-typedef Handle_Graphic3d_Buffer Graphic3d_Buffer_Handle;
-typedef NCollection_Vec4 <Standard_ShortReal> Graphic3d_Vec4;
 typedef NCollection_Vec2 <Standard_Integer> Graphic3d_Vec2i;
 typedef NCollection_Vec4 <Standard_Character> Graphic3d_Vec4b;
 typedef Standard_Integer Graphic3d_TransModeFlags;
 typedef NCollection_Vec3 <Standard_Character> Graphic3d_Vec3b;
-typedef NCollection_Vec2 <Standard_Character> Graphic3d_Vec2b;
 typedef Graphic3d_CAspectText CALL_DEF_CONTEXTTEXT;
 typedef Graphic3d_StructureManager * Graphic3d_StructureManagerPtr;
 typedef NCollection_Vec2 <unsigned int> Graphic3d_Vec2u;
+typedef NCollection_Vec3 <Standard_Real> Graphic3d_Vec3d;
 typedef NCollection_Vec4 <unsigned int> Graphic3d_Vec4u;
 typedef NCollection_Mat4 <Standard_Real> Graphic3d_Mat4d;
 typedef Graphic3d_CStructure * Graphic3d_CStructurePtr;
+typedef NCollection_Map <Handle_Graphic3d_Structure> Graphic3d_MapOfStructure;
 typedef CALL_DEF_TRANSFORM_PERSISTENCE Graphic3d_CTransPersStruct;
 typedef NCollection_Vec2 <Standard_ShortReal> Graphic3d_Vec2;
 typedef NCollection_Vec3 <Standard_ShortReal> Graphic3d_Vec3;
-typedef Handle_Graphic3d_CStructure Graphic3d_CStructure_Handle;
-typedef Handle_Graphic3d_ShaderObject Graphic3d_ShaderObject_Handle;
+typedef NCollection_Vec4 <Standard_ShortReal> Graphic3d_Vec4;
 typedef Graphic3d_CAspectMarker CALL_DEF_CONTEXTMARKER;
-typedef Handle_Graphic3d_ClipPlane Graphic3d_ClipPlane_Handle;
+typedef Graphic3d_CAspectFillArea CALL_DEF_CONTEXTFILLAREA;
 typedef Graphic3d_UniformValue <Graphic3d_Vec3> Graphic3d_UniformVec3;
 typedef Graphic3d_UniformValue <Graphic3d_Vec2> Graphic3d_UniformVec2;
-typedef Handle_Graphic3d_IndexBuffer Graphic3d_IndexBuffer_Handle;
+typedef NCollection_Map <const Standard_Transient *> Graphic3d_NMapOfTransient;
 typedef Graphic3d_UniformValue <Graphic3d_Vec4> Graphic3d_UniformVec4;
-typedef Handle_Graphic3d_ShaderProgram Graphic3d_ShaderProgram_Handle;
-typedef Handle_Graphic3d_Camera Graphic3d_Camera_Handle;
 typedef Graphic3d_CAspectLine CALL_DEF_CONTEXTLINE;
 typedef NCollection_Vec4 <Standard_Byte> Graphic3d_Vec4ub;
-typedef NCollection_Vec3 <Standard_Real> Graphic3d_Vec3d;
+typedef Standard_Integer Graphic3d_ZLayerId;
 typedef Graphic3d_FrameBuffer * Graphic3d_PtrFrameBuffer;
 typedef NCollection_Vec3 <Standard_Integer> Graphic3d_Vec3i;
 typedef NCollection_List <Handle_TCollection_HAsciiString> Graphic3d_NListOfHAsciiString;
@@ -91,22 +87,22 @@ typedef CALL_DEF_USERDRAW Graphic3d_CUserDraw;
 typedef Graphic3d_UniformValue <Graphic3d_Vec3i> Graphic3d_UniformVec3i;
 typedef NCollection_Vec4 <Standard_Real> Graphic3d_Vec4d;
 typedef Graphic3d_Structure * Graphic3d_StructurePtr;
-typedef NCollection_Handle <Graphic3d_SequenceOfHClipPlane> Handle_Graphic3d_SequenceOfHClipPlane;
 typedef NCollection_Mat4 <Standard_ShortReal> Graphic3d_Mat4;
-typedef CALL_DEF_PICK Graphic3d_CPick;
 typedef NCollection_Sequence <Handle_Graphic3d_ShaderObject> Graphic3d_ShaderObjectList;
 typedef NCollection_Sequence <Handle_Graphic3d_ClipPlane> Graphic3d_SequenceOfHClipPlane;
-typedef Handle_Graphic3d_BoundBuffer Graphic3d_BoundBuffer_Handle;
 typedef Graphic3d_UniformValue <Standard_ShortReal> Graphic3d_UniformFloat;
+typedef NCollection_IndexedMap <const Standard_Address> Graphic3d_IndexedMapOfAddress;
+typedef NCollection_Handle <Graphic3d_NMapOfTransient> Handle_Graphic3d_NMapOfTransient;
 typedef BVH_Box <Standard_Real , 4> Graphic3d_BndBox4d;
-typedef Handle_Graphic3d_MarkerImage Graphic3d_MarkerImage_Handle;
 typedef BVH_Box <Standard_ShortReal , 4> Graphic3d_BndBox4f;
 typedef NCollection_Sequence <Handle_Graphic3d_ShaderVariable> Graphic3d_ShaderVariableList;
 typedef NCollection_Sequence <Handle_Graphic3d_Group> Graphic3d_SequenceOfGroup;
-typedef Graphic3d_CAspectFillArea CALL_DEF_CONTEXTFILLAREA;
+typedef Graphic3d_UniformValue <Graphic3d_Vec4i> Graphic3d_UniformVec4i;
 typedef NCollection_Vec2 <Standard_Byte> Graphic3d_Vec2ub;
+typedef Graphic3d_MapOfStructure::Iterator Graphic3d_MapIteratorOfMapOfStructure;
 typedef Graphic3d_UniformValue <Graphic3d_Vec2i> Graphic3d_UniformVec2i;
 typedef NCollection_Vec3 <Standard_Byte> Graphic3d_Vec3ub;
+typedef NCollection_DataMap <const Standard_Transient * , Handle_Graphic3d_ViewAffinity> Graphic3d_MapOfObject;
 typedef NCollection_Vec3 <unsigned int> Graphic3d_Vec3u;
 /* end typedefs declaration */
 
@@ -251,6 +247,18 @@ enum Graphic3d_SortType {
 	Graphic3d_ST_BSP_Tree = 1,
 };
 
+enum Graphic3d_StereoMode {
+	Graphic3d_StereoMode_QuadBuffer = 0,
+	Graphic3d_StereoMode_Anaglyph = 1,
+	Graphic3d_StereoMode_RowInterlaced = 2,
+	Graphic3d_StereoMode_ColumnInterlaced = 3,
+	Graphic3d_StereoMode_ChessBoard = 4,
+	Graphic3d_StereoMode_SideBySide = 5,
+	Graphic3d_StereoMode_OverUnder = 6,
+	Graphic3d_StereoMode_SoftPageFlip = 7,
+	Graphic3d_StereoMode_NB = 8,
+};
+
 enum Graphic3d_TextPath {
 	Graphic3d_TP_UP = 0,
 	Graphic3d_TP_DOWN = 1,
@@ -264,7 +272,15 @@ enum  {
 	Graphic3d_TMF_ZoomPers = 2,
 	Graphic3d_TMF_RotatePers = 8,
 	Graphic3d_TMF_TriedronPers = 32,
+	Graphic3d_TMF_2d = 64,
+	Graphic3d_TMF_2d_IsTopDown = 65,
 	Graphic3d_TMF_FullPers = Graphic3d_TMF_PanPers | Graphic3d_TMF_ZoomPers | Graphic3d_TMF_RotatePers,
+};
+
+enum Graphic3d_TypeOfBackground {
+	Graphic3d_TOB_NONE = 0,
+	Graphic3d_TOB_GRADIENT = 1,
+	Graphic3d_TOB_TEXTURE = 2,
 };
 
 enum Graphic3d_TypeOfComposition {
@@ -358,6 +374,15 @@ enum Graphic3d_VerticalTextAlignment {
 	Graphic3d_VTA_TOP = 2,
 };
 
+enum  {
+	Graphic3d_ZLayerId_UNKNOWN = - 1,
+	Graphic3d_ZLayerId_Default = 0,
+	Graphic3d_ZLayerId_Top = - 2,
+	Graphic3d_ZLayerId_Topmost = - 3,
+	Graphic3d_ZLayerId_TopOSD = - 4,
+	Graphic3d_ZLayerId_BotOSD = - 5,
+};
+
 enum Graphic3d_ZLayerSetting {
 	Graphic3d_ZLayerDepthTest = 1,
 	Graphic3d_ZLayerDepthWrite = 2,
@@ -412,7 +437,7 @@ class Graphic3d_Array1OfVector {
 		%feature("autodoc", "	:param Other:
 	:type Other: Graphic3d_Array1OfVector &
 	:rtype: Graphic3d_Array1OfVector
-") operator=;
+") operator =;
 		const Graphic3d_Array1OfVector & operator = (const Graphic3d_Array1OfVector & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -499,7 +524,7 @@ class Graphic3d_Array1OfVertex {
 		%feature("autodoc", "	:param Other:
 	:type Other: Graphic3d_Array1OfVertex &
 	:rtype: Graphic3d_Array1OfVertex
-") operator=;
+") operator =;
 		const Graphic3d_Array1OfVertex & operator = (const Graphic3d_Array1OfVertex & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -590,7 +615,7 @@ class Graphic3d_Array2OfVertex {
 		%feature("autodoc", "	:param Other:
 	:type Other: Graphic3d_Array2OfVertex &
 	:rtype: Graphic3d_Array2OfVertex
-") operator=;
+") operator =;
 		const Graphic3d_Array2OfVertex & operator = (const Graphic3d_Array2OfVertex & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -665,6 +690,12 @@ class Graphic3d_ArrayOfPrimitives : public MMgt_TShared {
 	:rtype: int
 ") AddVertex;
 		Standard_Integer AddVertex (const gp_Pnt & aVertice);
+		%feature("compactdefaultargs") AddVertex;
+		%feature("autodoc", "	:param theVertex:
+	:type theVertex: Graphic3d_Vec3 &
+	:rtype: int
+") AddVertex;
+		Standard_Integer AddVertex (const Graphic3d_Vec3 & theVertex);
 		%feature("compactdefaultargs") AddVertex;
 		%feature("autodoc", "	* Adds a vertice in the array. returns the actual vertex number.
 
@@ -1048,21 +1079,21 @@ class Graphic3d_ArrayOfPrimitives : public MMgt_TShared {
 		%feature("compactdefaultargs") Indices;
 		%feature("autodoc", "	* Returns optional index buffer.
 
-	:rtype: Graphic3d_IndexBuffer_Handle
+	:rtype: Handle_Graphic3d_IndexBuffer
 ") Indices;
-		const Graphic3d_IndexBuffer_Handle & Indices ();
+		Handle_Graphic3d_IndexBuffer Indices ();
 		%feature("compactdefaultargs") Attributes;
 		%feature("autodoc", "	* Returns vertex attributes buffer (colors, normals, texture coordinates).
 
-	:rtype: Graphic3d_Buffer_Handle
+	:rtype: Handle_Graphic3d_Buffer
 ") Attributes;
-		const Graphic3d_Buffer_Handle & Attributes ();
+		Handle_Graphic3d_Buffer Attributes ();
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "	* Returns optional bounds buffer.
 
-	:rtype: Graphic3d_BoundBuffer_Handle
+	:rtype: Handle_Graphic3d_BoundBuffer
 ") Bounds;
-		const Graphic3d_BoundBuffer_Handle & Bounds ();
+		Handle_Graphic3d_BoundBuffer Bounds ();
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "	* Returns the type of this primitive
 
@@ -1428,10 +1459,10 @@ class Graphic3d_AspectFillArea3d : public Aspect_AspectFillArea {
 		%feature("autodoc", "	* Sets up OpenGL/GLSL shader program.
 
 	:param theProgram:
-	:type theProgram: Graphic3d_ShaderProgram_Handle &
+	:type theProgram: Handle_Graphic3d_ShaderProgram &
 	:rtype: None
 ") SetShaderProgram;
-		void SetShaderProgram (const Graphic3d_ShaderProgram_Handle & theProgram);
+		void SetShaderProgram (const Handle_Graphic3d_ShaderProgram & theProgram);
 		%feature("compactdefaultargs") BackFace;
 		%feature("autodoc", "	* Returns the Back Face Removal status. Standard_True if SuppressBackFace is activated.
 
@@ -1483,9 +1514,9 @@ class Graphic3d_AspectFillArea3d : public Aspect_AspectFillArea {
 ") PolygonOffsets;
 		void PolygonOffsets (Standard_Integer &OutValue,Standard_ShortReal & aFactor,Standard_ShortReal & aUnits);
 		%feature("compactdefaultargs") ShaderProgram;
-		%feature("autodoc", "	:rtype: Graphic3d_ShaderProgram_Handle
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_ShaderProgram
 ") ShaderProgram;
-		const Graphic3d_ShaderProgram_Handle & ShaderProgram ();
+		Handle_Graphic3d_ShaderProgram ShaderProgram ();
 };
 
 
@@ -1565,14 +1596,14 @@ class Graphic3d_AspectLine3d : public Aspect_AspectLine {
 		%feature("autodoc", "	* Sets up OpenGL/GLSL shader program.
 
 	:param theProgram:
-	:type theProgram: Graphic3d_ShaderProgram_Handle &
+	:type theProgram: Handle_Graphic3d_ShaderProgram &
 	:rtype: None
 ") SetShaderProgram;
-		void SetShaderProgram (const Graphic3d_ShaderProgram_Handle & theProgram);
+		void SetShaderProgram (const Handle_Graphic3d_ShaderProgram & theProgram);
 		%feature("compactdefaultargs") ShaderProgram;
-		%feature("autodoc", "	:rtype: Graphic3d_ShaderProgram_Handle
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_ShaderProgram
 ") ShaderProgram;
-		const Graphic3d_ShaderProgram_Handle & ShaderProgram ();
+		Handle_Graphic3d_ShaderProgram ShaderProgram ();
 };
 
 
@@ -1681,17 +1712,17 @@ class Graphic3d_AspectMarker3d : public Aspect_AspectMarker {
 		%feature("compactdefaultargs") GetMarkerImage;
 		%feature("autodoc", "	* Returns marker's image texture. Could be null handle if marker aspect has been initialized as default type of marker.
 
-	:rtype: Graphic3d_MarkerImage_Handle
+	:rtype: Handle_Graphic3d_MarkerImage
 ") GetMarkerImage;
-		const Graphic3d_MarkerImage_Handle & GetMarkerImage ();
+		Handle_Graphic3d_MarkerImage GetMarkerImage ();
 		%feature("compactdefaultargs") SetMarkerImage;
 		%feature("autodoc", "	* Set marker's image texture.
 
 	:param theImage:
-	:type theImage: Graphic3d_MarkerImage_Handle &
+	:type theImage: Handle_Graphic3d_MarkerImage &
 	:rtype: None
 ") SetMarkerImage;
-		void SetMarkerImage (const Graphic3d_MarkerImage_Handle & theImage);
+		void SetMarkerImage (const Handle_Graphic3d_MarkerImage & theImage);
 		%feature("compactdefaultargs") SetBitMap;
 		%feature("autodoc", "	:param theWidth:
 	:type theWidth: int
@@ -1706,14 +1737,14 @@ class Graphic3d_AspectMarker3d : public Aspect_AspectMarker {
 		%feature("autodoc", "	* Sets up OpenGL/GLSL shader program.
 
 	:param theProgram:
-	:type theProgram: Graphic3d_ShaderProgram_Handle &
+	:type theProgram: Handle_Graphic3d_ShaderProgram &
 	:rtype: None
 ") SetShaderProgram;
-		void SetShaderProgram (const Graphic3d_ShaderProgram_Handle & theProgram);
+		void SetShaderProgram (const Handle_Graphic3d_ShaderProgram & theProgram);
 		%feature("compactdefaultargs") ShaderProgram;
-		%feature("autodoc", "	:rtype: Graphic3d_ShaderProgram_Handle
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_ShaderProgram
 ") ShaderProgram;
-		const Graphic3d_ShaderProgram_Handle & ShaderProgram ();
+		Handle_Graphic3d_ShaderProgram ShaderProgram ();
 };
 
 
@@ -1897,10 +1928,10 @@ class Graphic3d_AspectText3d : public MMgt_TShared {
 		%feature("autodoc", "	* Sets up OpenGL/GLSL shader program.
 
 	:param theProgram:
-	:type theProgram: Graphic3d_ShaderProgram_Handle &
+	:type theProgram: Handle_Graphic3d_ShaderProgram &
 	:rtype: None
 ") SetShaderProgram;
-		void SetShaderProgram (const Graphic3d_ShaderProgram_Handle & theProgram);
+		void SetShaderProgram (const Handle_Graphic3d_ShaderProgram & theProgram);
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "	* Returns the current values of the group <self>.
 
@@ -1986,9 +2017,9 @@ class Graphic3d_AspectText3d : public MMgt_TShared {
 ") Values;
 		void Values (Quantity_Color & AColor,const char * & AFont,Standard_Real &OutValue,Standard_Real &OutValue,Aspect_TypeOfStyleText & AStyle,Aspect_TypeOfDisplayText & ADisplayType,Quantity_Color & AColorSubTitle,Standard_Boolean &OutValue,Standard_Real &OutValue,Font_FontAspect & ATextFontAspect);
 		%feature("compactdefaultargs") ShaderProgram;
-		%feature("autodoc", "	:rtype: Graphic3d_ShaderProgram_Handle
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_ShaderProgram
 ") ShaderProgram;
-		const Graphic3d_ShaderProgram_Handle & ShaderProgram ();
+		Handle_Graphic3d_ShaderProgram ShaderProgram ();
 };
 
 
@@ -2066,6 +2097,145 @@ class Graphic3d_Attribute {
 
 
 %extend Graphic3d_Attribute {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor Graphic3d_AxisAspect;
+class Graphic3d_AxisAspect {
+	public:
+		%feature("compactdefaultargs") Graphic3d_AxisAspect;
+		%feature("autodoc", "	:param theName: default value is ""
+	:type theName: TCollection_ExtendedString
+	:param theNameColor: default value is Quantity_NOC_BLACK
+	:type theNameColor: Quantity_Color
+	:param theColor: default value is Quantity_NOC_BLACK
+	:type theColor: Quantity_Color
+	:param theValuesOffset: default value is 10
+	:type theValuesOffset: int
+	:param theNameOffset: default value is 30
+	:type theNameOffset: int
+	:param theTickmarksNumber: default value is 5
+	:type theTickmarksNumber: int
+	:param theTickmarksLength: default value is 10
+	:type theTickmarksLength: int
+	:param theToDrawName: default value is Standard_True
+	:type theToDrawName: bool
+	:param theToDrawValues: default value is Standard_True
+	:type theToDrawValues: bool
+	:param theToDrawTickmarks: default value is Standard_True
+	:type theToDrawTickmarks: bool
+	:rtype: None
+") Graphic3d_AxisAspect;
+		 Graphic3d_AxisAspect (const TCollection_ExtendedString theName = "",const Quantity_Color theNameColor = Quantity_NOC_BLACK,const Quantity_Color theColor = Quantity_NOC_BLACK,const Standard_Integer theValuesOffset = 10,const Standard_Integer theNameOffset = 30,const Standard_Integer theTickmarksNumber = 5,const Standard_Integer theTickmarksLength = 10,const Standard_Boolean theToDrawName = Standard_True,const Standard_Boolean theToDrawValues = Standard_True,const Standard_Boolean theToDrawTickmarks = Standard_True);
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "	:param theName:
+	:type theName: TCollection_ExtendedString &
+	:rtype: None
+") SetName;
+		void SetName (const TCollection_ExtendedString & theName);
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") Name;
+		const TCollection_ExtendedString & Name ();
+		%feature("compactdefaultargs") ToDrawName;
+		%feature("autodoc", "	:rtype: bool
+") ToDrawName;
+		const Standard_Boolean ToDrawName ();
+		%feature("compactdefaultargs") SetDrawName;
+		%feature("autodoc", "	:param theToDraw:
+	:type theToDraw: bool
+	:rtype: None
+") SetDrawName;
+		void SetDrawName (const Standard_Boolean theToDraw);
+		%feature("compactdefaultargs") ToDrawTickmarks;
+		%feature("autodoc", "	:rtype: bool
+") ToDrawTickmarks;
+		const Standard_Boolean ToDrawTickmarks ();
+		%feature("compactdefaultargs") SetDrawTickmarks;
+		%feature("autodoc", "	:param theToDraw:
+	:type theToDraw: bool
+	:rtype: None
+") SetDrawTickmarks;
+		void SetDrawTickmarks (const Standard_Boolean theToDraw);
+		%feature("compactdefaultargs") ToDrawValues;
+		%feature("autodoc", "	:rtype: bool
+") ToDrawValues;
+		const Standard_Boolean ToDrawValues ();
+		%feature("compactdefaultargs") SetDrawValues;
+		%feature("autodoc", "	:param theToDraw:
+	:type theToDraw: bool
+	:rtype: None
+") SetDrawValues;
+		void SetDrawValues (const Standard_Boolean theToDraw);
+		%feature("compactdefaultargs") NameColor;
+		%feature("autodoc", "	:rtype: Quantity_Color
+") NameColor;
+		const Quantity_Color & NameColor ();
+		%feature("compactdefaultargs") SetNameColor;
+		%feature("autodoc", "	:param theColor:
+	:type theColor: Quantity_Color &
+	:rtype: None
+") SetNameColor;
+		void SetNameColor (const Quantity_Color & theColor);
+		%feature("compactdefaultargs") Color;
+		%feature("autodoc", "	* Color of axis and values
+
+	:rtype: Quantity_Color
+") Color;
+		const Quantity_Color & Color ();
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "	* Sets color of axis and values
+
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:rtype: None
+") SetColor;
+		void SetColor (const Quantity_Color & theColor);
+		%feature("compactdefaultargs") TickmarksNumber;
+		%feature("autodoc", "	:rtype: int
+") TickmarksNumber;
+		const Standard_Integer TickmarksNumber ();
+		%feature("compactdefaultargs") SetTickmarksNumber;
+		%feature("autodoc", "	:param theValue:
+	:type theValue: int
+	:rtype: None
+") SetTickmarksNumber;
+		void SetTickmarksNumber (const Standard_Integer theValue);
+		%feature("compactdefaultargs") TickmarksLength;
+		%feature("autodoc", "	:rtype: int
+") TickmarksLength;
+		const Standard_Integer TickmarksLength ();
+		%feature("compactdefaultargs") SetTickmarksLength;
+		%feature("autodoc", "	:param theValue:
+	:type theValue: int
+	:rtype: None
+") SetTickmarksLength;
+		void SetTickmarksLength (const Standard_Integer theValue);
+		%feature("compactdefaultargs") ValuesOffset;
+		%feature("autodoc", "	:rtype: int
+") ValuesOffset;
+		const Standard_Integer ValuesOffset ();
+		%feature("compactdefaultargs") SetValuesOffset;
+		%feature("autodoc", "	:param theValue:
+	:type theValue: int
+	:rtype: None
+") SetValuesOffset;
+		void SetValuesOffset (const Standard_Integer theValue);
+		%feature("compactdefaultargs") NameOffset;
+		%feature("autodoc", "	:rtype: int
+") NameOffset;
+		const Standard_Integer NameOffset ();
+		%feature("compactdefaultargs") SetNameOffset;
+		%feature("autodoc", "	:param theValue:
+	:type theValue: int
+	:rtype: None
+") SetNameOffset;
+		void SetNameOffset (const Standard_Integer theValue);
+};
+
+
+%extend Graphic3d_AxisAspect {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2336,61 +2506,6 @@ class Graphic3d_CBitFields8 {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor Graphic3d_CGraduatedTrihedron;
-class Graphic3d_CGraduatedTrihedron {
-	public:
-		TCollection_ExtendedString xname;
-		TCollection_ExtendedString yname;
-		TCollection_ExtendedString zname;
-		bool xdrawname;
-		bool ydrawname;
-		bool zdrawname;
-		bool xdrawvalues;
-		bool ydrawvalues;
-		bool zdrawvalues;
-		bool drawgrid;
-		bool drawaxes;
-		int nbx;
-		int nby;
-		int nbz;
-		int xoffset;
-		int yoffset;
-		int zoffset;
-		int xaxisoffset;
-		int yaxisoffset;
-		int zaxisoffset;
-		bool xdrawtickmarks;
-		bool ydrawtickmarks;
-		bool zdrawtickmarks;
-		int xtickmarklength;
-		int ytickmarklength;
-		int ztickmarklength;
-		Quantity_Color gridcolor;
-		Quantity_Color xnamecolor;
-		Quantity_Color ynamecolor;
-		Quantity_Color znamecolor;
-		Quantity_Color xcolor;
-		Quantity_Color ycolor;
-		Quantity_Color zcolor;
-		TCollection_AsciiString fontOfNames;
-		Font_FontAspect styleOfNames;
-		int sizeOfNames;
-		TCollection_AsciiString fontOfValues;
-		Font_FontAspect styleOfValues;
-		int sizeOfValues;
-		Visual3d_View * ptrVisual3dView;
-		%feature("compactdefaultargs") Graphic3d_CGraduatedTrihedron;
-		%feature("autodoc", "	:rtype: None
-") Graphic3d_CGraduatedTrihedron;
-		 Graphic3d_CGraduatedTrihedron ();
-};
-
-
-%extend Graphic3d_CGraduatedTrihedron {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor Graphic3d_CLight;
 class Graphic3d_CLight {
 	public:
@@ -2468,6 +2583,7 @@ class Graphic3d_CLight {
 class Graphic3d_CStructure : public Standard_Transient {
 	public:
 		int Id;
+		Graphic3d_ZLayerId myZLayer;
 		int Priority;
 		int PreviousPriority;
 		CALL_DEF_CONTEXTLINE ContextLine;
@@ -2478,11 +2594,11 @@ class Graphic3d_CStructure : public Standard_Transient {
 		float Transformation[16];
 		Graphic3d_TypeOfComposition Composition;
 		int ContainsFacet;
+		Handle_Graphic3d_ViewAffinity ViewAffinity;
 		unsigned IsInfinite;
 		unsigned stick;
 		unsigned highlight;
 		unsigned visible;
-		unsigned pick;
 		unsigned HLRValidation;
 		unsigned IsForHighlight;
 		unsigned IsMutable;
@@ -2526,12 +2642,32 @@ class Graphic3d_CStructure : public Standard_Transient {
 	:rtype: Graphic3d_BndBox4f
 ") ChangeBoundingBox;
 		Graphic3d_BndBox4f & ChangeBoundingBox ();
-		%feature("compactdefaultargs") UpdateNamedStatus;
+		%feature("compactdefaultargs") IsVisible;
+		%feature("autodoc", "	* Return structure visibility flag
+
+	:rtype: bool
+") IsVisible;
+		bool IsVisible ();
+		%feature("compactdefaultargs") SetZLayer;
+		%feature("autodoc", "	* Set z layer ID to display the structure in specified layer
+
+	:param theLayerIndex:
+	:type theLayerIndex: Graphic3d_ZLayerId
+	:rtype: None
+") SetZLayer;
+		void SetZLayer (const Graphic3d_ZLayerId theLayerIndex);
+		%feature("compactdefaultargs") ZLayer;
+		%feature("autodoc", "	* Get z layer ID
+
+	:rtype: Graphic3d_ZLayerId
+") ZLayer;
+		Graphic3d_ZLayerId ZLayer ();
+		%feature("compactdefaultargs") OnVisibilityChanged;
 		%feature("autodoc", "	* Update structure visibility state
 
 	:rtype: None
-") UpdateNamedStatus;
-		void UpdateNamedStatus ();
+") OnVisibilityChanged;
+		void OnVisibilityChanged ();
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	* Clear graphic data
 
@@ -3534,6 +3670,180 @@ class Handle_Graphic3d_DataStructureManager : public Handle_MMgt_TShared {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor Graphic3d_GraduatedTrihedron;
+class Graphic3d_GraduatedTrihedron {
+	public:
+		Visual3d_View * PtrVisual3dView;
+		%feature("compactdefaultargs") Graphic3d_GraduatedTrihedron;
+		%feature("autodoc", "	* Default constructor Constructs the default graduated trihedron with grid, X, Y, Z axes, and tickmarks
+
+	:param theNamesFont: default value is 'Arial'
+	:type theNamesFont: TCollection_AsciiString &
+	:param theNamesStyle: default value is Font_FA_Bold
+	:type theNamesStyle: Font_FontAspect &
+	:param theNamesSize: default value is 12
+	:type theNamesSize: int
+	:param theValuesFont: default value is 'Arial'
+	:type theValuesFont: TCollection_AsciiString &
+	:param theValuesStyle: default value is Font_FA_Regular
+	:type theValuesStyle: Font_FontAspect &
+	:param theValuesSize: default value is 12
+	:type theValuesSize: int
+	:param theArrowsLength: default value is 30.0f
+	:type theArrowsLength: Standard_ShortReal
+	:param theGridColor: default value is Quantity_NOC_WHITE
+	:type theGridColor: Quantity_Color
+	:param theToDrawGrid: default value is Standard_True
+	:type theToDrawGrid: bool
+	:param theToDrawAxes: default value is Standard_True
+	:type theToDrawAxes: bool
+	:rtype: None
+") Graphic3d_GraduatedTrihedron;
+		 Graphic3d_GraduatedTrihedron (const TCollection_AsciiString & theNamesFont = "Arial",const Font_FontAspect & theNamesStyle = Font_FA_Bold,const Standard_Integer theNamesSize = 12,const TCollection_AsciiString & theValuesFont = "Arial",const Font_FontAspect & theValuesStyle = Font_FA_Regular,const Standard_Integer theValuesSize = 12,const Standard_ShortReal theArrowsLength = 30.0f,const Quantity_Color theGridColor = Quantity_NOC_WHITE,const Standard_Boolean theToDrawGrid = Standard_True,const Standard_Boolean theToDrawAxes = Standard_True);
+		%feature("compactdefaultargs") ChangeXAxisAspect;
+		%feature("autodoc", "	:rtype: Graphic3d_AxisAspect
+") ChangeXAxisAspect;
+		Graphic3d_AxisAspect & ChangeXAxisAspect ();
+		%feature("compactdefaultargs") ChangeYAxisAspect;
+		%feature("autodoc", "	:rtype: Graphic3d_AxisAspect
+") ChangeYAxisAspect;
+		Graphic3d_AxisAspect & ChangeYAxisAspect ();
+		%feature("compactdefaultargs") ChangeZAxisAspect;
+		%feature("autodoc", "	:rtype: Graphic3d_AxisAspect
+") ChangeZAxisAspect;
+		Graphic3d_AxisAspect & ChangeZAxisAspect ();
+		%feature("compactdefaultargs") ChangeAxisAspect;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: int
+	:rtype: Graphic3d_AxisAspect
+") ChangeAxisAspect;
+		Graphic3d_AxisAspect & ChangeAxisAspect (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") XAxisAspect;
+		%feature("autodoc", "	:rtype: Graphic3d_AxisAspect
+") XAxisAspect;
+		const Graphic3d_AxisAspect & XAxisAspect ();
+		%feature("compactdefaultargs") YAxisAspect;
+		%feature("autodoc", "	:rtype: Graphic3d_AxisAspect
+") YAxisAspect;
+		const Graphic3d_AxisAspect & YAxisAspect ();
+		%feature("compactdefaultargs") ZAxisAspect;
+		%feature("autodoc", "	:rtype: Graphic3d_AxisAspect
+") ZAxisAspect;
+		const Graphic3d_AxisAspect & ZAxisAspect ();
+		%feature("compactdefaultargs") AxisAspect;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: int
+	:rtype: Graphic3d_AxisAspect
+") AxisAspect;
+		const Graphic3d_AxisAspect & AxisAspect (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") ArrowsLength;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") ArrowsLength;
+		const Standard_ShortReal ArrowsLength ();
+		%feature("compactdefaultargs") SetArrowsLength;
+		%feature("autodoc", "	:param theValue:
+	:type theValue: Standard_ShortReal
+	:rtype: None
+") SetArrowsLength;
+		void SetArrowsLength (const Standard_ShortReal theValue);
+		%feature("compactdefaultargs") GridColor;
+		%feature("autodoc", "	:rtype: Quantity_Color
+") GridColor;
+		const Quantity_Color & GridColor ();
+		%feature("compactdefaultargs") SetGridColor;
+		%feature("autodoc", "	:param theColor:
+	:type theColor: Quantity_Color &
+	:rtype: None
+") SetGridColor;
+		void SetGridColor (const Quantity_Color & theColor);
+		%feature("compactdefaultargs") ToDrawGrid;
+		%feature("autodoc", "	:rtype: bool
+") ToDrawGrid;
+		const Standard_Boolean ToDrawGrid ();
+		%feature("compactdefaultargs") SetDrawGrid;
+		%feature("autodoc", "	:param theToDraw:
+	:type theToDraw: bool
+	:rtype: None
+") SetDrawGrid;
+		void SetDrawGrid (const Standard_Boolean theToDraw);
+		%feature("compactdefaultargs") ToDrawAxes;
+		%feature("autodoc", "	:rtype: bool
+") ToDrawAxes;
+		const Standard_Boolean ToDrawAxes ();
+		%feature("compactdefaultargs") SetDrawAxes;
+		%feature("autodoc", "	:param theToDraw:
+	:type theToDraw: bool
+	:rtype: None
+") SetDrawAxes;
+		void SetDrawAxes (const Standard_Boolean theToDraw);
+		%feature("compactdefaultargs") NamesFont;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") NamesFont;
+		const TCollection_AsciiString & NamesFont ();
+		%feature("compactdefaultargs") SetNamesFont;
+		%feature("autodoc", "	:param theFont:
+	:type theFont: TCollection_AsciiString &
+	:rtype: None
+") SetNamesFont;
+		void SetNamesFont (const TCollection_AsciiString & theFont);
+		%feature("compactdefaultargs") NamesFontAspect;
+		%feature("autodoc", "	:rtype: Font_FontAspect
+") NamesFontAspect;
+		Font_FontAspect NamesFontAspect ();
+		%feature("compactdefaultargs") SetNamesFontAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Font_FontAspect
+	:rtype: None
+") SetNamesFontAspect;
+		void SetNamesFontAspect (Font_FontAspect theAspect);
+		%feature("compactdefaultargs") NamesSize;
+		%feature("autodoc", "	:rtype: int
+") NamesSize;
+		const Standard_Integer NamesSize ();
+		%feature("compactdefaultargs") SetNamesSize;
+		%feature("autodoc", "	:param theValue:
+	:type theValue: int
+	:rtype: None
+") SetNamesSize;
+		void SetNamesSize (const Standard_Integer theValue);
+		%feature("compactdefaultargs") ValuesFont;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") ValuesFont;
+		const TCollection_AsciiString & ValuesFont ();
+		%feature("compactdefaultargs") SetValuesFont;
+		%feature("autodoc", "	:param theFont:
+	:type theFont: TCollection_AsciiString &
+	:rtype: None
+") SetValuesFont;
+		void SetValuesFont (const TCollection_AsciiString & theFont);
+		%feature("compactdefaultargs") ValuesFontAspect;
+		%feature("autodoc", "	:rtype: Font_FontAspect
+") ValuesFontAspect;
+		Font_FontAspect ValuesFontAspect ();
+		%feature("compactdefaultargs") SetValuesFontAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Font_FontAspect
+	:rtype: None
+") SetValuesFontAspect;
+		void SetValuesFontAspect (Font_FontAspect theAspect);
+		%feature("compactdefaultargs") ValuesSize;
+		%feature("autodoc", "	:rtype: int
+") ValuesSize;
+		const Standard_Integer ValuesSize ();
+		%feature("compactdefaultargs") SetValuesSize;
+		%feature("autodoc", "	:param theValue:
+	:type theValue: int
+	:rtype: None
+") SetValuesSize;
+		void SetValuesSize (const Standard_Integer theValue);
+};
+
+
+%extend Graphic3d_GraduatedTrihedron {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_GraphicDriver;
 class Graphic3d_GraphicDriver : public MMgt_TShared {
 	public:
@@ -3560,39 +3870,39 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 
 	:param theCView:
 	:type theCView: Graphic3d_CView &
-	:param theCStructure:
-	:type theCStructure: Graphic3d_CStructure &
+	:param theStructure:
+	:type theStructure: Handle_Graphic3d_Structure &
 	:param thePriority:
 	:type thePriority: int
 	:rtype: void
 ") DisplayStructure;
-		virtual void DisplayStructure (const Graphic3d_CView & theCView,Graphic3d_CStructure & theCStructure,const Standard_Integer thePriority);
+		virtual void DisplayStructure (const Graphic3d_CView & theCView,const Handle_Graphic3d_Structure & theStructure,const Standard_Integer thePriority);
 		%feature("compactdefaultargs") EraseStructure;
 		%feature("autodoc", "	* call_togl_erasestructure
 
 	:param theCView:
 	:type theCView: Graphic3d_CView &
-	:param theCStructure:
-	:type theCStructure: Graphic3d_CStructure &
+	:param theStructure:
+	:type theStructure: Handle_Graphic3d_Structure &
 	:rtype: void
 ") EraseStructure;
-		virtual void EraseStructure (const Graphic3d_CView & theCView,Graphic3d_CStructure & theCStructure);
+		virtual void EraseStructure (const Graphic3d_CView & theCView,const Handle_Graphic3d_Structure & theStructure);
 		%feature("compactdefaultargs") RemoveStructure;
 		%feature("autodoc", "	* call_togl_removestructure
 
 	:param theCStructure:
-	:type theCStructure: Graphic3d_CStructure_Handle &
+	:type theCStructure: Handle_Graphic3d_CStructure &
 	:rtype: void
 ") RemoveStructure;
-		virtual void RemoveStructure (Graphic3d_CStructure_Handle & theCStructure);
+		virtual void RemoveStructure (Handle_Graphic3d_CStructure & theCStructure);
 		%feature("compactdefaultargs") Structure;
 		%feature("autodoc", "	* Creates new empty graphic structure
 
 	:param theManager:
 	:type theManager: Handle_Graphic3d_StructureManager &
-	:rtype: Graphic3d_CStructure_Handle
+	:rtype: Handle_Graphic3d_CStructure
 ") Structure;
-		virtual Graphic3d_CStructure_Handle Structure (const Handle_Graphic3d_StructureManager & theManager);
+		virtual Handle_Graphic3d_CStructure Structure (const Handle_Graphic3d_StructureManager & theManager);
 		%feature("compactdefaultargs") ActivateView;
 		%feature("autodoc", "	* call_togl_activateview
 
@@ -3775,16 +4085,6 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 	:rtype: void
 ") SetVisualisation;
 		virtual void SetVisualisation (const Graphic3d_CView & ACView);
-		%feature("compactdefaultargs") Transparency;
-		%feature("autodoc", "	* call_togl_transparency
-
-	:param ACView:
-	:type ACView: Graphic3d_CView &
-	:param AFlag:
-	:type AFlag: bool
-	:rtype: void
-") Transparency;
-		virtual void Transparency (const Graphic3d_CView & ACView,const Standard_Boolean AFlag);
 		%feature("compactdefaultargs") View;
 		%feature("autodoc", "	* call_togl_view
 
@@ -3820,6 +4120,8 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 		%feature("compactdefaultargs") ZBufferTriedronSetup;
 		%feature("autodoc", "	* call_togl_ztriedron_setup
 
+	:param theCView:
+	:type theCView: Graphic3d_CView &
 	:param XColor: default value is Quantity_NOC_RED
 	:type XColor: Quantity_NameOfColor
 	:param YColor: default value is Quantity_NOC_GREEN
@@ -3834,7 +4136,7 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 	:type NbFacettes: int
 	:rtype: void
 ") ZBufferTriedronSetup;
-		virtual void ZBufferTriedronSetup (const Quantity_NameOfColor XColor = Quantity_NOC_RED,const Quantity_NameOfColor YColor = Quantity_NOC_GREEN,const Quantity_NameOfColor ZColor = Quantity_NOC_BLUE1,const Standard_Real SizeRatio = 0.8,const Standard_Real AxisDiametr = 0.05,const Standard_Integer NbFacettes = 12);
+		virtual void ZBufferTriedronSetup (const Graphic3d_CView & theCView,const Quantity_NameOfColor XColor = Quantity_NOC_RED,const Quantity_NameOfColor YColor = Quantity_NOC_GREEN,const Quantity_NameOfColor ZColor = Quantity_NOC_BLUE1,const Standard_Real SizeRatio = 0.8,const Standard_Real AxisDiametr = 0.05,const Standard_Integer NbFacettes = 12);
 		%feature("compactdefaultargs") TriedronDisplay;
 		%feature("autodoc", "	* call_togl_triedron_display
 
@@ -3872,39 +4174,33 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 		%feature("compactdefaultargs") GraduatedTrihedronDisplay;
 		%feature("autodoc", "	* call_togl_graduatedtrihedron_display
 
-	:param view:
-	:type view: Graphic3d_CView &
-	:param cubic:
-	:type cubic: Graphic3d_CGraduatedTrihedron &
+	:param theView:
+	:type theView: Graphic3d_CView &
+	:param theCubic:
+	:type theCubic: Graphic3d_GraduatedTrihedron &
 	:rtype: void
 ") GraduatedTrihedronDisplay;
-		virtual void GraduatedTrihedronDisplay (const Graphic3d_CView & view,const Graphic3d_CGraduatedTrihedron & cubic);
+		virtual void GraduatedTrihedronDisplay (const Graphic3d_CView & theView,const Graphic3d_GraduatedTrihedron & theCubic);
 		%feature("compactdefaultargs") GraduatedTrihedronErase;
 		%feature("autodoc", "	* call_togl_graduatedtrihedron_erase
 
-	:param view:
-	:type view: Graphic3d_CView &
+	:param theView:
+	:type theView: Graphic3d_CView &
 	:rtype: void
 ") GraduatedTrihedronErase;
-		virtual void GraduatedTrihedronErase (const Graphic3d_CView & view);
+		virtual void GraduatedTrihedronErase (const Graphic3d_CView & theView);
 		%feature("compactdefaultargs") GraduatedTrihedronMinMaxValues;
-		%feature("autodoc", "	* call_togl_graduatedtrihedron_minmaxvalues
+		%feature("autodoc", "	* Sets minimum and maximum points of scene bounding box for Graduated Trihedron stored in graphic view object. @param theView [in] current graphic view @param theMin [in] the minimum point of scene. @param theMax [in] the maximum point of scene.
 
-	:param xmin:
-	:type xmin: Standard_ShortReal
-	:param ymin:
-	:type ymin: Standard_ShortReal
-	:param zmin:
-	:type zmin: Standard_ShortReal
-	:param xmax:
-	:type xmax: Standard_ShortReal
-	:param ymax:
-	:type ymax: Standard_ShortReal
-	:param zmax:
-	:type zmax: Standard_ShortReal
+	:param theView:
+	:type theView: Graphic3d_CView &
+	:param theMin:
+	:type theMin: Graphic3d_Vec3
+	:param theMax:
+	:type theMax: Graphic3d_Vec3
 	:rtype: void
 ") GraduatedTrihedronMinMaxValues;
-		virtual void GraduatedTrihedronMinMaxValues (const Standard_ShortReal xmin,const Standard_ShortReal ymin,const Standard_ShortReal zmin,const Standard_ShortReal xmax,const Standard_ShortReal ymax,const Standard_ShortReal zmax);
+		virtual void GraduatedTrihedronMinMaxValues (const Graphic3d_CView & theView,const Graphic3d_Vec3 theMin,const Graphic3d_Vec3 theMax);
 		%feature("compactdefaultargs") SetImmediateModeDrawToFront;
 		%feature("autodoc", "	* @param theDrawToFrontBuffer Advanced option to modify rendering mode: 1. True. Drawing immediate mode structures directly to the front buffer over the scene image. Fast, so preferred for interactive work (used by default). However these extra drawings will be missed in image dump since it is performed from back buffer. Notice that since no pre-buffering used the V-Sync will be ignored and rendering could be seen in run-time (in case of slow hardware) and/or tearing may appear. So this is strongly recommended to draw only simple (fast) structures. 2. False. Drawing immediate mode structures to the back buffer. The complete scene is redrawn first, so this mode is slower if scene contains complex data and/or V-Sync is turned on. But it works in any case and is especially useful for view dump because the dump image is read from the back buffer. returns previous mode.
 
@@ -3920,11 +4216,11 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 
 	:param theCView:
 	:type theCView: Graphic3d_CView &
-	:param theCStructure:
-	:type theCStructure: Graphic3d_CStructure &
+	:param theStructure:
+	:type theStructure: Handle_Graphic3d_Structure &
 	:rtype: void
 ") DisplayImmediateStructure;
-		virtual void DisplayImmediateStructure (const Graphic3d_CView & theCView,const Graphic3d_CStructure & theCStructure);
+		virtual void DisplayImmediateStructure (const Graphic3d_CView & theCView,const Handle_Graphic3d_Structure & theStructure);
 		%feature("compactdefaultargs") EraseImmediateStructure;
 		%feature("autodoc", "	* Erases immediate structure
 
@@ -4299,38 +4595,28 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 	:param theCView:
 	:type theCView: Graphic3d_CView &
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: void
 ") AddZLayer;
-		virtual void AddZLayer (const Graphic3d_CView & theCView,const Standard_Integer theLayerId);
+		virtual void AddZLayer (const Graphic3d_CView & theCView,const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") RemoveZLayer;
 		%feature("autodoc", "	* Remove Z layer from the specified view. All structures displayed at the moment in layer will be displayed in default layer ( the bottom-level z layer ). To unset layer ID from associated structures use method UnsetZLayer (...).
 
 	:param theCView:
 	:type theCView: Graphic3d_CView &
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: void
 ") RemoveZLayer;
-		virtual void RemoveZLayer (const Graphic3d_CView & theCView,const Standard_Integer theLayerId);
+		virtual void RemoveZLayer (const Graphic3d_CView & theCView,const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") UnsetZLayer;
 		%feature("autodoc", "	* Unset Z layer ID for all structures. The structure indexes will be set to default layer ( the bottom-level z layer with ID = 0 ).
 
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: void
 ") UnsetZLayer;
-		virtual void UnsetZLayer (const Standard_Integer theLayerId);
-		%feature("compactdefaultargs") ChangeZLayer;
-		%feature("autodoc", "	* Change Z layer of a structure. The new z layer ID will be used to define the associated layer for structure on display.
-
-	:param theCStructure:
-	:type theCStructure: Graphic3d_CStructure &
-	:param theLayerId:
-	:type theLayerId: int
-	:rtype: void
-") ChangeZLayer;
-		virtual void ChangeZLayer (const Graphic3d_CStructure & theCStructure,const Standard_Integer theLayerId);
+		virtual void UnsetZLayer (const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") ChangeZLayer;
 		%feature("autodoc", "	* Change Z layer of a structure already presented in view.
 
@@ -4339,30 +4625,22 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 	:param theCView:
 	:type theCView: Graphic3d_CView &
 	:param theNewLayerId:
-	:type theNewLayerId: int
+	:type theNewLayerId: Graphic3d_ZLayerId
 	:rtype: void
 ") ChangeZLayer;
-		virtual void ChangeZLayer (const Graphic3d_CStructure & theCStructure,const Graphic3d_CView & theCView,const Standard_Integer theNewLayerId);
-		%feature("compactdefaultargs") GetZLayer;
-		%feature("autodoc", "	* Get Z layer ID of structure. If the structure doesn't exists in graphic driver, the method returns -1.
-
-	:param theCStructure:
-	:type theCStructure: Graphic3d_CStructure &
-	:rtype: int
-") GetZLayer;
-		virtual Standard_Integer GetZLayer (const Graphic3d_CStructure & theCStructure);
+		virtual void ChangeZLayer (const Graphic3d_CStructure & theCStructure,const Graphic3d_CView & theCView,const Graphic3d_ZLayerId theNewLayerId);
 		%feature("compactdefaultargs") SetZLayerSettings;
 		%feature("autodoc", "	* Sets the settings for a single Z layer of specified view.
 
 	:param theCView:
 	:type theCView: Graphic3d_CView &
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings &
 	:rtype: void
 ") SetZLayerSettings;
-		virtual void SetZLayerSettings (const Graphic3d_CView & theCView,const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings & theSettings);
+		virtual void SetZLayerSettings (const Graphic3d_CView & theCView,const Graphic3d_ZLayerId theLayerId,const Graphic3d_ZLayerSettings & theSettings);
 		%feature("compactdefaultargs") ChangePriority;
 		%feature("autodoc", "	* Changes the priority of a structure within its Z layer in the specified view.
 
@@ -4391,14 +4669,6 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 	:rtype: None
 ") PrintCLight;
 		void PrintCLight (const Graphic3d_CLight & ACLight,const Standard_Integer AField);
-		%feature("compactdefaultargs") PrintCPick;
-		%feature("autodoc", "	:param ACPick:
-	:type ACPick: Graphic3d_CPick &
-	:param AField:
-	:type AField: int
-	:rtype: None
-") PrintCPick;
-		void PrintCPick (const Graphic3d_CPick & ACPick,const Standard_Integer AField);
 		%feature("compactdefaultargs") PrintCStructure;
 		%feature("autodoc", "	:param ACStructure:
 	:type ACStructure: Graphic3d_CStructure &
@@ -4474,9 +4744,9 @@ class Graphic3d_GraphicDriver : public MMgt_TShared {
 		%feature("compactdefaultargs") GetDisplayConnection;
 		%feature("autodoc", "	* returns Handle to display connection
 
-	:rtype: Aspect_DisplayConnection_Handle
+	:rtype: Handle_Aspect_DisplayConnection
 ") GetDisplayConnection;
-		const Aspect_DisplayConnection_Handle & GetDisplayConnection ();
+		Handle_Aspect_DisplayConnection GetDisplayConnection ();
 		%feature("compactdefaultargs") IsDeviceLost;
 		%feature("autodoc", "	:rtype: bool
 ") IsDeviceLost;
@@ -4714,16 +4984,16 @@ class Graphic3d_Group : public MMgt_TShared {
 	:param theType:
 	:type theType: Graphic3d_TypeOfPrimitiveArray
 	:param theIndices:
-	:type theIndices: Graphic3d_IndexBuffer_Handle &
+	:type theIndices: Handle_Graphic3d_IndexBuffer &
 	:param theAttribs:
-	:type theAttribs: Graphic3d_Buffer_Handle &
+	:type theAttribs: Handle_Graphic3d_Buffer &
 	:param theBounds:
-	:type theBounds: Graphic3d_BoundBuffer_Handle &
+	:type theBounds: Handle_Graphic3d_BoundBuffer &
 	:param theToEvalMinMax: default value is Standard_True
 	:type theToEvalMinMax: bool
 	:rtype: void
 ") AddPrimitiveArray;
-		virtual void AddPrimitiveArray (const Graphic3d_TypeOfPrimitiveArray theType,const Graphic3d_IndexBuffer_Handle & theIndices,const Graphic3d_Buffer_Handle & theAttribs,const Graphic3d_BoundBuffer_Handle & theBounds,const Standard_Boolean theToEvalMinMax = Standard_True);
+		virtual void AddPrimitiveArray (const Graphic3d_TypeOfPrimitiveArray theType,const Handle_Graphic3d_IndexBuffer & theIndices,const Handle_Graphic3d_Buffer & theAttribs,const Handle_Graphic3d_BoundBuffer & theBounds,const Standard_Boolean theToEvalMinMax = Standard_True);
 		%feature("compactdefaultargs") AddPrimitiveArray;
 		%feature("autodoc", "	* Adds an array of primitives for display
 
@@ -5224,7 +5494,7 @@ class Graphic3d_ListOfShortReal {
 		%feature("autodoc", "	:param Other:
 	:type Other: Graphic3d_ListOfShortReal &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const Graphic3d_ListOfShortReal & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -5332,100 +5602,6 @@ class Graphic3d_ListOfShortReal {
 
 
 %extend Graphic3d_ListOfShortReal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Graphic3d_MapIteratorOfMapOfStructure;
-class Graphic3d_MapIteratorOfMapOfStructure : public TCollection_BasicMapIterator {
-	public:
-		%feature("compactdefaultargs") Graphic3d_MapIteratorOfMapOfStructure;
-		%feature("autodoc", "	:rtype: None
-") Graphic3d_MapIteratorOfMapOfStructure;
-		 Graphic3d_MapIteratorOfMapOfStructure ();
-		%feature("compactdefaultargs") Graphic3d_MapIteratorOfMapOfStructure;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: Graphic3d_MapOfStructure &
-	:rtype: None
-") Graphic3d_MapIteratorOfMapOfStructure;
-		 Graphic3d_MapIteratorOfMapOfStructure (const Graphic3d_MapOfStructure & aMap);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param aMap:
-	:type aMap: Graphic3d_MapOfStructure &
-	:rtype: None
-") Initialize;
-		void Initialize (const Graphic3d_MapOfStructure & aMap);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
-") Key;
-		Handle_Graphic3d_Structure Key ();
-};
-
-
-%extend Graphic3d_MapIteratorOfMapOfStructure {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Graphic3d_MapOfStructure;
-class Graphic3d_MapOfStructure : public TCollection_BasicMap {
-	public:
-		%feature("compactdefaultargs") Graphic3d_MapOfStructure;
-		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: int
-	:rtype: None
-") Graphic3d_MapOfStructure;
-		 Graphic3d_MapOfStructure (const Standard_Integer NbBuckets = 1);
-		%feature("compactdefaultargs") Graphic3d_MapOfStructure;
-		%feature("autodoc", "	:param Other:
-	:type Other: Graphic3d_MapOfStructure &
-	:rtype: None
-") Graphic3d_MapOfStructure;
-		 Graphic3d_MapOfStructure (const Graphic3d_MapOfStructure & Other);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: Graphic3d_MapOfStructure &
-	:rtype: Graphic3d_MapOfStructure
-") Assign;
-		Graphic3d_MapOfStructure & Assign (const Graphic3d_MapOfStructure & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: Graphic3d_MapOfStructure &
-	:rtype: Graphic3d_MapOfStructure
-") operator=;
-		Graphic3d_MapOfStructure & operator = (const Graphic3d_MapOfStructure & Other);
-		%feature("compactdefaultargs") ReSize;
-		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: int
-	:rtype: None
-") ReSize;
-		void ReSize (const Standard_Integer NbBuckets);
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param aKey:
-	:type aKey: Handle_Graphic3d_Structure &
-	:rtype: bool
-") Add;
-		Standard_Boolean Add (const Handle_Graphic3d_Structure & aKey);
-		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	:param aKey:
-	:type aKey: Handle_Graphic3d_Structure &
-	:rtype: bool
-") Contains;
-		Standard_Boolean Contains (const Handle_Graphic3d_Structure & aKey);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param aKey:
-	:type aKey: Handle_Graphic3d_Structure &
-	:rtype: bool
-") Remove;
-		Standard_Boolean Remove (const Handle_Graphic3d_Structure & aKey);
-};
-
-
-%extend Graphic3d_MapOfStructure {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5903,12 +6079,29 @@ class Graphic3d_MaterialAspect {
 %nodefaultctor Graphic3d_RenderingParams;
 class Graphic3d_RenderingParams {
 	public:
+/* public enums */
+enum Anaglyph {
+	Anaglyph_RedCyan_Simple = 0,
+	Anaglyph_RedCyan_Optimized = 1,
+	Anaglyph_YellowBlue_Simple = 2,
+	Anaglyph_YellowBlue_Optimized = 3,
+	Anaglyph_GreenMagenta_Simple = 4,
+	Anaglyph_UserDefined = 5,
+};
+
+/* end public enums declaration */
+
 		Graphic3d_RenderingMode Method;
 		int RaytracingDepth;
 		bool IsShadowEnabled;
 		bool IsReflectionEnabled;
 		bool IsAntialiasingEnabled;
 		bool IsTransparentShadowEnabled;
+		Graphic3d_StereoMode StereoMode;
+		Anaglyph AnaglyphFilter;
+		Graphic3d_Mat4 AnaglyphLeft;
+		Graphic3d_Mat4 AnaglyphRight;
+		bool ToReverseStereo;
 		%feature("compactdefaultargs") Graphic3d_RenderingParams;
 		%feature("autodoc", "	* Creates default rendering parameters.
 
@@ -6021,7 +6214,7 @@ class Graphic3d_SequenceOfStructure : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Graphic3d_SequenceOfStructure &
 	:rtype: Graphic3d_SequenceOfStructure
-") operator=;
+") operator =;
 		const Graphic3d_SequenceOfStructure & operator = (const Graphic3d_SequenceOfStructure & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -6287,6 +6480,20 @@ enum ShaderName {
 	:rtype: TCollection_AsciiString
 ") GetId;
 		const TCollection_AsciiString & GetId ();
+		%feature("compactdefaultargs") Header;
+		%feature("autodoc", "	* Returns GLSL header (version code and extensions).
+
+	:rtype: TCollection_AsciiString
+") Header;
+		const TCollection_AsciiString & Header ();
+		%feature("compactdefaultargs") SetHeader;
+		%feature("autodoc", "	* Setup GLSL header containing language version code and used extensions. Will be prepended to the very beginning of the source code. Example: @code #version 300 es #extension GL_ARB_bindless_texture : require @endcode
+
+	:param theHeader:
+	:type theHeader: TCollection_AsciiString &
+	:rtype: None
+") SetHeader;
+		void SetHeader (const TCollection_AsciiString & theHeader);
 		%feature("compactdefaultargs") AttachShader;
 		%feature("autodoc", "	* Attaches shader object to the program object.
 
@@ -6456,75 +6663,6 @@ class Handle_Graphic3d_ShaderVariable : public Handle_Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor Graphic3d_StdMapNodeOfMapOfStructure;
-class Graphic3d_StdMapNodeOfMapOfStructure : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") Graphic3d_StdMapNodeOfMapOfStructure;
-		%feature("autodoc", "	:param K:
-	:type K: Handle_Graphic3d_Structure &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") Graphic3d_StdMapNodeOfMapOfStructure;
-		 Graphic3d_StdMapNodeOfMapOfStructure (const Handle_Graphic3d_Structure & K,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Key;
-		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
-") Key;
-		Handle_Graphic3d_Structure Key ();
-};
-
-
-%extend Graphic3d_StdMapNodeOfMapOfStructure {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_Graphic3d_StdMapNodeOfMapOfStructure(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_Graphic3d_StdMapNodeOfMapOfStructure::Handle_Graphic3d_StdMapNodeOfMapOfStructure %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_Graphic3d_StdMapNodeOfMapOfStructure;
-class Handle_Graphic3d_StdMapNodeOfMapOfStructure : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_Graphic3d_StdMapNodeOfMapOfStructure();
-        Handle_Graphic3d_StdMapNodeOfMapOfStructure(const Handle_Graphic3d_StdMapNodeOfMapOfStructure &aHandle);
-        Handle_Graphic3d_StdMapNodeOfMapOfStructure(const Graphic3d_StdMapNodeOfMapOfStructure *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_Graphic3d_StdMapNodeOfMapOfStructure DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_Graphic3d_StdMapNodeOfMapOfStructure {
-    Graphic3d_StdMapNodeOfMapOfStructure* _get_reference() {
-    return (Graphic3d_StdMapNodeOfMapOfStructure*)$self->Access();
-    }
-};
-
-%extend Handle_Graphic3d_StdMapNodeOfMapOfStructure {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend Graphic3d_StdMapNodeOfMapOfStructure {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor Graphic3d_Structure;
 class Graphic3d_Structure : public MMgt_TShared {
 	public:
@@ -6566,14 +6704,6 @@ class Graphic3d_Structure : public MMgt_TShared {
 	:rtype: void
 ") Display;
 		virtual void Display ();
-		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "	* Displays the structure <self> in all the views of the visualiser, while modifying its current priority. Note: Display Priorities Structure display priorities control the order in which structures are redrawn. When you display a structure, you specify its priority. The lower the value, the lower the display priority. When the display is regenerated, the structures with the lowest priority are drawn first. For structures with the same display priority, the order in which they were displayed determines the drawing order. Open CASCADE supports 11 structure display priorities, 0 to 10. Warning: Raises PriorityDefinitionError if <Priority> is greater than 10 or a negative value.
-
-	:param Priority:
-	:type Priority: int
-	:rtype: None
-") Display;
-		void Display (const Standard_Integer Priority);
 		%feature("compactdefaultargs") DisplayPriority;
 		%feature("autodoc", "	* Returns the current display priority for the structure <self>.
 
@@ -6587,13 +6717,17 @@ class Graphic3d_Structure : public MMgt_TShared {
 ") Erase;
 		virtual void Erase ();
 		%feature("compactdefaultargs") Highlight;
-		%feature("autodoc", "	* Highlights the structure <self> in all the views of the visualiser, using the following methods: //! TOHM_COLOR		= drawn in the highlight color (default white) TOHM_BLINK		= blinking TOHM_BOUNDBOX	= enclosed by the boundary box (default white)
+		%feature("autodoc", "	* Highlights the structure <self> in all the views of the visualiser, using the following methods: TOHM_COLOR = drawn in the highlight color TOHM_BOUNDBOX = enclosed by the boundary box
 
-	:param Method:
-	:type Method: Aspect_TypeOfHighlightMethod
+	:param theMethod:
+	:type theMethod: Aspect_TypeOfHighlightMethod
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:param theToUpdateMgr: default value is Standard_True
+	:type theToUpdateMgr: bool
 	:rtype: None
 ") Highlight;
-		void Highlight (const Aspect_TypeOfHighlightMethod Method);
+		void Highlight (const Aspect_TypeOfHighlightMethod theMethod,const Quantity_Color & theColor,const Standard_Boolean theToUpdateMgr = Standard_True);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	* Suppress the structure <self>. It will be erased at the next screen update. Warning: No more graphic operations in <self> after this call. Category: Methods to modify the class definition
 
@@ -6606,14 +6740,6 @@ class Graphic3d_Structure : public MMgt_TShared {
 	:rtype: None
 ") CalculateBoundBox;
 		void CalculateBoundBox ();
-		%feature("compactdefaultargs") SetHighlightColor;
-		%feature("autodoc", "	* Modifies the highlight color for the Highlight method with the highlight method TOHM_COLOR or TOHM_BOUNDBOX.
-
-	:param AColor:
-	:type AColor: Quantity_Color &
-	:rtype: None
-") SetHighlightColor;
-		void SetHighlightColor (const Quantity_Color & AColor);
 		%feature("compactdefaultargs") SetInfiniteState;
 		%feature("autodoc", "	* If <theToSet> is Standard_True then <self> is infinite and the MinMaxValues method method return : theXMin = theYMin = theZMin = RealFirst(). theXMax = theYMax = theZMax = RealLast(). By default, <self> is not infinite but empty.
 
@@ -6640,16 +6766,16 @@ class Graphic3d_Structure : public MMgt_TShared {
 		%feature("autodoc", "	* Set Z layer ID for the structure. The Z layer mechanism allows to display structures presented in higher layers in overlay of structures in lower layers by switching off z buffer depth test between layers
 
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: None
 ") SetZLayer;
-		void SetZLayer (const Standard_Integer theLayerId);
+		void SetZLayer (const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") GetZLayer;
 		%feature("autodoc", "	* Get Z layer ID of displayed structure. The method returns -1 if the structure has no ID (deleted from graphic driver).
 
-	:rtype: int
+	:rtype: Graphic3d_ZLayerId
 ") GetZLayer;
-		Standard_Integer GetZLayer ();
+		Graphic3d_ZLayerId GetZLayer ();
 		%feature("compactdefaultargs") SetClipPlanes;
 		%feature("autodoc", "	* Changes a sequence of clip planes slicing the structure on rendering. @param thePlanes [in] the set of clip planes.
 
@@ -6664,14 +6790,6 @@ class Graphic3d_Structure : public MMgt_TShared {
 	:rtype: Graphic3d_SequenceOfHClipPlane
 ") GetClipPlanes;
 		const Graphic3d_SequenceOfHClipPlane & GetClipPlanes ();
-		%feature("compactdefaultargs") SetPick;
-		%feature("autodoc", "	* Modifies the detectability indicator to Standard_True or Standard_False for the structure <self>. The default value at the definition of <self> is Standard_True.
-
-	:param AValue:
-	:type AValue: bool
-	:rtype: None
-") SetPick;
-		void SetPick (const Standard_Boolean AValue);
 		%feature("compactdefaultargs") SetPrimitivesAspect;
 		%feature("autodoc", "	* Modifies the default attributes for lines in the structure <self>.
 
@@ -6868,12 +6986,6 @@ class Graphic3d_Structure : public MMgt_TShared {
 	:rtype: bool
 ") IsHighlighted;
 		virtual Standard_Boolean IsHighlighted ();
-		%feature("compactdefaultargs") IsSelectable;
-		%feature("autodoc", "	* Returns the detectability indicator for the structure <self>.
-
-	:rtype: bool
-") IsSelectable;
-		Standard_Boolean IsSelectable ();
 		%feature("compactdefaultargs") IsRotated;
 		%feature("autodoc", "	* Returns Standard_True if the structure <self> is rotated. <=> The transformation != Identity, != Scale, != Translation.
 
@@ -7211,9 +7323,9 @@ class Graphic3d_Structure : public MMgt_TShared {
 		%feature("compactdefaultargs") CStructure;
 		%feature("autodoc", "	* Returns the low-level structure
 
-	:rtype: Graphic3d_CStructure_Handle
+	:rtype: Handle_Graphic3d_CStructure
 ") CStructure;
-		const Graphic3d_CStructure_Handle & CStructure ();
+		Handle_Graphic3d_CStructure CStructure ();
 };
 
 
@@ -7339,14 +7451,6 @@ class Graphic3d_StructureManager : public MMgt_TShared {
 	:rtype: None
 ") HighlightedStructures;
 		void HighlightedStructures (Graphic3d_MapOfStructure & SG);
-		%feature("compactdefaultargs") PickStructures;
-		%feature("autodoc", "	* Returns the set of detectable structures in a visualiser <self>.
-
-	:param SG:
-	:type SG: Graphic3d_MapOfStructure &
-	:rtype: None
-") PickStructures;
-		void PickStructures (Graphic3d_MapOfStructure & SG);
 		%feature("compactdefaultargs") FillArea3dAspect;
 		%feature("autodoc", "	* Returns the values of the current default attributes.
 
@@ -7415,52 +7519,44 @@ class Graphic3d_StructureManager : public MMgt_TShared {
 	:param theStructure:
 	:type theStructure: Handle_Graphic3d_Structure &
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: void
 ") ChangeZLayer;
-		virtual void ChangeZLayer (const Handle_Graphic3d_Structure & theStructure,const Standard_Integer theLayerId);
-		%feature("compactdefaultargs") GetZLayer;
-		%feature("autodoc", "	* Get Z layer ID assigned to structure. If the structure has no layer ID (deleted from graphic driver), the method returns -1.
-
-	:param theStructure:
-	:type theStructure: Handle_Graphic3d_Structure &
-	:rtype: int
-") GetZLayer;
-		virtual Standard_Integer GetZLayer (const Handle_Graphic3d_Structure & theStructure);
+		virtual void ChangeZLayer (const Handle_Graphic3d_Structure & theStructure,const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") SetZLayerSettings;
 		%feature("autodoc", "	* Sets the settings for a single Z layer for all managed views.
 
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings &
 	:rtype: void
 ") SetZLayerSettings;
-		virtual void SetZLayerSettings (const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings & theSettings);
+		virtual void SetZLayerSettings (const Graphic3d_ZLayerId theLayerId,const Graphic3d_ZLayerSettings & theSettings);
 		%feature("compactdefaultargs") ZLayerSettings;
 		%feature("autodoc", "	* Returns the settings of a single Z layer.
 
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: Graphic3d_ZLayerSettings
 ") ZLayerSettings;
-		virtual Graphic3d_ZLayerSettings ZLayerSettings (const Standard_Integer theLayerId);
+		virtual Graphic3d_ZLayerSettings ZLayerSettings (const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") AddZLayer;
 		%feature("autodoc", "	* Add a new top-level Z layer and get its ID as <theLayerId> value. The method returns Standard_False if the layer can not be created. The z layer mechanism allows to display structures in higher layers in overlay of structures in lower layers.
 
 	:param theLayerId:
-	:type theLayerId: int &
+	:type theLayerId: Graphic3d_ZLayerId &
 	:rtype: bool
 ") AddZLayer;
-		virtual Standard_Boolean AddZLayer (Standard_Integer &OutValue);
+		virtual Standard_Boolean AddZLayer (Graphic3d_ZLayerId & theLayerId);
 		%feature("compactdefaultargs") RemoveZLayer;
 		%feature("autodoc", "	* Remove Z layer with ID <theLayerId>. Method returns Standard_False if the layer can not be removed or doesn't exists. By default, there is always a default bottom-level layer that can't be removed.
 
 	:param theLayerId:
-	:type theLayerId: int
+	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: bool
 ") RemoveZLayer;
-		virtual Standard_Boolean RemoveZLayer (const Standard_Integer theLayerId);
+		virtual Standard_Boolean RemoveZLayer (const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") GetAllZLayers;
 		%feature("autodoc", "	* Return all Z layer ids in sequence ordered by level from lowest layer to highest. The first layer ID in sequence is the default layer that can't be removed.
 
@@ -7611,6 +7707,24 @@ class Graphic3d_StructureManager : public MMgt_TShared {
 	:rtype: None
 ") RecomputeStructures;
 		void RecomputeStructures (const Graphic3d_MapOfStructure & theStructures);
+		%feature("compactdefaultargs") RegisterObject;
+		%feature("autodoc", "	:param theObject:
+	:type theObject: Handle_Standard_Transient &
+	:rtype: Handle_Graphic3d_ViewAffinity
+") RegisterObject;
+		Handle_Graphic3d_ViewAffinity RegisterObject (const Handle_Standard_Transient & theObject);
+		%feature("compactdefaultargs") UnregisterObject;
+		%feature("autodoc", "	:param theObject:
+	:type theObject: Handle_Standard_Transient &
+	:rtype: None
+") UnregisterObject;
+		void UnregisterObject (const Handle_Standard_Transient & theObject);
+		%feature("compactdefaultargs") ObjectAffinity;
+		%feature("autodoc", "	:param theObject:
+	:type theObject: Handle_Standard_Transient &
+	:rtype: Handle_Graphic3d_ViewAffinity
+") ObjectAffinity;
+		Handle_Graphic3d_ViewAffinity ObjectAffinity (const Handle_Standard_Transient & theObject);
 };
 
 
@@ -8344,14 +8458,98 @@ class Graphic3d_Vertex : public TEL_POINT {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor Graphic3d_ViewAffinity;
+class Graphic3d_ViewAffinity : public Standard_Transient {
+	public:
+		%feature("compactdefaultargs") Graphic3d_ViewAffinity;
+		%feature("autodoc", "	* Empty constructor.
+
+	:rtype: None
+") Graphic3d_ViewAffinity;
+		 Graphic3d_ViewAffinity ();
+		%feature("compactdefaultargs") IsVisible;
+		%feature("autodoc", "	* Return visibility flag.
+
+	:param theViewId:
+	:type theViewId: int
+	:rtype: bool
+") IsVisible;
+		bool IsVisible (const Standard_Integer theViewId);
+		%feature("compactdefaultargs") SetVisible;
+		%feature("autodoc", "	* Setup visibility flag.
+
+	:param theViewId:
+	:type theViewId: int
+	:param theIsVisible:
+	:type theIsVisible: bool
+	:rtype: None
+") SetVisible;
+		void SetVisible (const Standard_Integer theViewId,const bool theIsVisible);
+};
+
+
+%extend Graphic3d_ViewAffinity {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Graphic3d_ViewAffinity(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Graphic3d_ViewAffinity::Handle_Graphic3d_ViewAffinity %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_Graphic3d_ViewAffinity;
+class Handle_Graphic3d_ViewAffinity : public Handle_Standard_Transient {
+
+    public:
+        // constructors
+        Handle_Graphic3d_ViewAffinity();
+        Handle_Graphic3d_ViewAffinity(const Handle_Graphic3d_ViewAffinity &aHandle);
+        Handle_Graphic3d_ViewAffinity(const Graphic3d_ViewAffinity *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_Graphic3d_ViewAffinity DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_Graphic3d_ViewAffinity {
+    Graphic3d_ViewAffinity* _get_reference() {
+    return (Graphic3d_ViewAffinity*)$self->Access();
+    }
+};
+
+%extend Handle_Graphic3d_ViewAffinity {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
+%extend Graphic3d_ViewAffinity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor Graphic3d_ZLayerSettings;
 class Graphic3d_ZLayerSettings {
 	public:
 		Standard_ShortReal DepthOffsetFactor;
 		Standard_ShortReal DepthOffsetUnits;
 		int Flags;
+		bool IsImmediate;
 		%feature("compactdefaultargs") Graphic3d_ZLayerSettings;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Default settings.
+
+	:rtype: None
 ") Graphic3d_ZLayerSettings;
 		 Graphic3d_ZLayerSettings ();
 		%feature("compactdefaultargs") IsSettingEnabled;
@@ -9076,6 +9274,14 @@ class Graphic3d_TextureEnv : public Graphic3d_TextureRoot {
 	:rtype: None
 ") Graphic3d_TextureEnv;
 		 Graphic3d_TextureEnv (const Graphic3d_NameOfTextureEnv theName);
+		%feature("compactdefaultargs") Graphic3d_TextureEnv;
+		%feature("autodoc", "	* Creates an environment texture from the pixmap.
+
+	:param thePixMap:
+	:type thePixMap: Image_PixMap_Handle &
+	:rtype: None
+") Graphic3d_TextureEnv;
+		 Graphic3d_TextureEnv (const Image_PixMap_Handle & thePixMap);
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	* Returns the name of the predefined textures or NOT_ENV_UNKNOWN when the name is given as a filename.
 

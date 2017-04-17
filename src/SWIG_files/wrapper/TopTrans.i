@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -105,7 +105,7 @@ class TopTrans_Array2OfOrientation {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTrans_Array2OfOrientation &
 	:rtype: TopTrans_Array2OfOrientation
-") operator=;
+") operator =;
 		const TopTrans_Array2OfOrientation & operator = (const TopTrans_Array2OfOrientation & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int

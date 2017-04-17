@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1114,7 +1114,7 @@ class TopOpeBRepTool_DataMapOfOrientedShapeC2DF : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepTool_DataMapOfOrientedShapeC2DF &
 	:rtype: TopOpeBRepTool_DataMapOfOrientedShapeC2DF
-") operator=;
+") operator =;
 		TopOpeBRepTool_DataMapOfOrientedShapeC2DF & operator = (const TopOpeBRepTool_DataMapOfOrientedShapeC2DF & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1197,7 +1197,7 @@ class TopOpeBRepTool_DataMapOfShapeListOfC2DF : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepTool_DataMapOfShapeListOfC2DF &
 	:rtype: TopOpeBRepTool_DataMapOfShapeListOfC2DF
-") operator=;
+") operator =;
 		TopOpeBRepTool_DataMapOfShapeListOfC2DF & operator = (const TopOpeBRepTool_DataMapOfShapeListOfC2DF & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1280,7 +1280,7 @@ class TopOpeBRepTool_DataMapOfShapeface : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepTool_DataMapOfShapeface &
 	:rtype: TopOpeBRepTool_DataMapOfShapeface
-") operator=;
+") operator =;
 		TopOpeBRepTool_DataMapOfShapeface & operator = (const TopOpeBRepTool_DataMapOfShapeface & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2092,7 +2092,7 @@ class TopOpeBRepTool_IndexedDataMapOfShapeBox : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepTool_IndexedDataMapOfShapeBox &
 	:rtype: TopOpeBRepTool_IndexedDataMapOfShapeBox
-") operator=;
+") operator =;
 		TopOpeBRepTool_IndexedDataMapOfShapeBox & operator = (const TopOpeBRepTool_IndexedDataMapOfShapeBox & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2207,7 +2207,7 @@ class TopOpeBRepTool_IndexedDataMapOfShapeBox2d : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepTool_IndexedDataMapOfShapeBox2d &
 	:rtype: TopOpeBRepTool_IndexedDataMapOfShapeBox2d
-") operator=;
+") operator =;
 		TopOpeBRepTool_IndexedDataMapOfShapeBox2d & operator = (const TopOpeBRepTool_IndexedDataMapOfShapeBox2d & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2322,7 +2322,7 @@ class TopOpeBRepTool_IndexedDataMapOfShapeconnexity : public TCollection_BasicMa
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepTool_IndexedDataMapOfShapeconnexity &
 	:rtype: TopOpeBRepTool_IndexedDataMapOfShapeconnexity
-") operator=;
+") operator =;
 		TopOpeBRepTool_IndexedDataMapOfShapeconnexity & operator = (const TopOpeBRepTool_IndexedDataMapOfShapeconnexity & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2437,7 +2437,7 @@ class TopOpeBRepTool_IndexedDataMapOfSolidClassifier : public TCollection_BasicM
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepTool_IndexedDataMapOfSolidClassifier &
 	:rtype: TopOpeBRepTool_IndexedDataMapOfSolidClassifier
-") operator=;
+") operator =;
 		TopOpeBRepTool_IndexedDataMapOfSolidClassifier & operator = (const TopOpeBRepTool_IndexedDataMapOfSolidClassifier & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2664,7 +2664,7 @@ class TopOpeBRepTool_ListOfC2DF {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepTool_ListOfC2DF &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopOpeBRepTool_ListOfC2DF & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int

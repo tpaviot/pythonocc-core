@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,6 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %{
+#include<BRepLib_CheckCurveOnSurface.hxx>
 #include<BRepLib_Command.hxx>
 #include<BRepLib_EdgeError.hxx>
 #include<BRepLib_FaceError.hxx>
@@ -261,6 +262,28 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopTools_ShapeSet.hxx>
 #include<TopTools_StdMapNodeOfMapOfOrientedShape.hxx>
 #include<TopTools_StdMapNodeOfMapOfShape.hxx>
+#include<Geom2d_AxisPlacement.hxx>
+#include<Geom2d_BezierCurve.hxx>
+#include<Geom2d_BoundedCurve.hxx>
+#include<Geom2d_BSplineCurve.hxx>
+#include<Geom2d_CartesianPoint.hxx>
+#include<Geom2d_Circle.hxx>
+#include<Geom2d_Conic.hxx>
+#include<Geom2d_Curve.hxx>
+#include<Geom2d_Direction.hxx>
+#include<Geom2d_Ellipse.hxx>
+#include<Geom2d_Geometry.hxx>
+#include<Geom2d_Hyperbola.hxx>
+#include<Geom2d_Line.hxx>
+#include<Geom2d_OffsetCurve.hxx>
+#include<Geom2d_Parabola.hxx>
+#include<Geom2d_Point.hxx>
+#include<Geom2d_Transformation.hxx>
+#include<Geom2d_TrimmedCurve.hxx>
+#include<Geom2d_UndefinedDerivative.hxx>
+#include<Geom2d_UndefinedValue.hxx>
+#include<Geom2d_Vector.hxx>
+#include<Geom2d_VectorWithMagnitude.hxx>
 #include<TopLoc_Datum3D.hxx>
 #include<TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
 #include<TopLoc_IndexedMapOfLocation.hxx>
@@ -272,7 +295,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopLoc_SListNodeOfItemLocation.hxx>
 #include<TopLoc_SListOfItemLocation.hxx>
 #include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#include<TopLoc_TrsfPtr.hxx>
 #include<gp.hxx>
 #include<gp_Ax1.hxx>
 #include<gp_Ax2.hxx>
@@ -314,28 +336,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<gp_VectorWithNullMagnitude.hxx>
 #include<gp_XY.hxx>
 #include<gp_XYZ.hxx>
-#include<Geom2d_AxisPlacement.hxx>
-#include<Geom2d_BezierCurve.hxx>
-#include<Geom2d_BoundedCurve.hxx>
-#include<Geom2d_BSplineCurve.hxx>
-#include<Geom2d_CartesianPoint.hxx>
-#include<Geom2d_Circle.hxx>
-#include<Geom2d_Conic.hxx>
-#include<Geom2d_Curve.hxx>
-#include<Geom2d_Direction.hxx>
-#include<Geom2d_Ellipse.hxx>
-#include<Geom2d_Geometry.hxx>
-#include<Geom2d_Hyperbola.hxx>
-#include<Geom2d_Line.hxx>
-#include<Geom2d_OffsetCurve.hxx>
-#include<Geom2d_Parabola.hxx>
-#include<Geom2d_Point.hxx>
-#include<Geom2d_Transformation.hxx>
-#include<Geom2d_TrimmedCurve.hxx>
-#include<Geom2d_UndefinedDerivative.hxx>
-#include<Geom2d_UndefinedValue.hxx>
-#include<Geom2d_Vector.hxx>
-#include<Geom2d_VectorWithMagnitude.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
@@ -385,6 +385,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -394,6 +395,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -580,6 +582,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import TopoDS.i
 %import GeomAbs.i
 %import TopTools.i
+%import Geom2d.i
 %import TopLoc.i
 %import gp.i
-%import Geom2d.i

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -85,7 +85,7 @@ class Geom2dAPI_ExtremaCurveCurve {
 		Standard_Integer NbExtrema ();
 		%feature("compactdefaultargs") operator Standard_Integer;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Integer;
+") operator Standard_Integer;
 		 operator Standard_Integer ();
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "	* Returns the points P1 on the first curve and P2 on the second curve, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
@@ -147,7 +147,7 @@ class Geom2dAPI_ExtremaCurveCurve {
 		Quantity_Length LowerDistance ();
 		%feature("compactdefaultargs") operator Standard_Real;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Real;
+") operator Standard_Real;
 		 operator Standard_Real ();
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "	:rtype: Extrema_ExtCC2d
@@ -621,7 +621,7 @@ class Geom2dAPI_ProjectPointOnCurve {
 		Standard_Integer NbPoints ();
 		%feature("compactdefaultargs") operator Standard_Integer;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Integer;
+") operator Standard_Integer;
 		 operator Standard_Integer ();
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	* Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
@@ -665,7 +665,7 @@ class Geom2dAPI_ProjectPointOnCurve {
 		gp_Pnt2d NearestPoint ();
 		%feature("compactdefaultargs") operator gp_Pnt2d;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Pnt2d;
+") operator gp_Pnt2d;
 		 operator gp_Pnt2d ();
 		%feature("compactdefaultargs") LowerDistanceParameter;
 		%feature("autodoc", "	* Returns the parameter on the curve of the nearest orthogonal projection of the point. Exceptions StdFail_NotDone if this algorithm fails.
@@ -681,7 +681,7 @@ class Geom2dAPI_ProjectPointOnCurve {
 		Quantity_Length LowerDistance ();
 		%feature("compactdefaultargs") operator Standard_Real;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Real;
+") operator Standard_Real;
 		 operator Standard_Real ();
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "	* return the algorithmic object from Extrema

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -150,7 +150,7 @@ class StepGeom_Array1OfBoundaryCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepGeom_Array1OfBoundaryCurve &
 	:rtype: StepGeom_Array1OfBoundaryCurve
-") operator=;
+") operator =;
 		const StepGeom_Array1OfBoundaryCurve & operator = (const StepGeom_Array1OfBoundaryCurve & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -237,7 +237,7 @@ class StepGeom_Array1OfCartesianPoint {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepGeom_Array1OfCartesianPoint &
 	:rtype: StepGeom_Array1OfCartesianPoint
-") operator=;
+") operator =;
 		const StepGeom_Array1OfCartesianPoint & operator = (const StepGeom_Array1OfCartesianPoint & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -324,7 +324,7 @@ class StepGeom_Array1OfCompositeCurveSegment {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepGeom_Array1OfCompositeCurveSegment &
 	:rtype: StepGeom_Array1OfCompositeCurveSegment
-") operator=;
+") operator =;
 		const StepGeom_Array1OfCompositeCurveSegment & operator = (const StepGeom_Array1OfCompositeCurveSegment & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -411,7 +411,7 @@ class StepGeom_Array1OfCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepGeom_Array1OfCurve &
 	:rtype: StepGeom_Array1OfCurve
-") operator=;
+") operator =;
 		const StepGeom_Array1OfCurve & operator = (const StepGeom_Array1OfCurve & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -498,7 +498,7 @@ class StepGeom_Array1OfPcurveOrSurface {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepGeom_Array1OfPcurveOrSurface &
 	:rtype: StepGeom_Array1OfPcurveOrSurface
-") operator=;
+") operator =;
 		const StepGeom_Array1OfPcurveOrSurface & operator = (const StepGeom_Array1OfPcurveOrSurface & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -585,7 +585,7 @@ class StepGeom_Array1OfSurfaceBoundary {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepGeom_Array1OfSurfaceBoundary &
 	:rtype: StepGeom_Array1OfSurfaceBoundary
-") operator=;
+") operator =;
 		const StepGeom_Array1OfSurfaceBoundary & operator = (const StepGeom_Array1OfSurfaceBoundary & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -672,7 +672,7 @@ class StepGeom_Array1OfTrimmingSelect {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepGeom_Array1OfTrimmingSelect &
 	:rtype: StepGeom_Array1OfTrimmingSelect
-") operator=;
+") operator =;
 		const StepGeom_Array1OfTrimmingSelect & operator = (const StepGeom_Array1OfTrimmingSelect & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -763,7 +763,7 @@ class StepGeom_Array2OfCartesianPoint {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepGeom_Array2OfCartesianPoint &
 	:rtype: StepGeom_Array2OfCartesianPoint
-") operator=;
+") operator =;
 		const StepGeom_Array2OfCartesianPoint & operator = (const StepGeom_Array2OfCartesianPoint & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -872,7 +872,7 @@ class StepGeom_Array2OfSurfacePatch {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepGeom_Array2OfSurfacePatch &
 	:rtype: StepGeom_Array2OfSurfacePatch
-") operator=;
+") operator =;
 		const StepGeom_Array2OfSurfacePatch & operator = (const StepGeom_Array2OfSurfacePatch & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int

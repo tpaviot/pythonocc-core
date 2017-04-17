@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -371,7 +371,7 @@ class BRepPrim_FaceBuilder {
 		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") operator TopoDS_Face;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Face;
+") operator TopoDS_Face;
 		 operator TopoDS_Face ();
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "	* Returns the edge of index <I> 1 - Edge VMin 2 - Edge UMax 3 - Edge VMax 4 - Edge UMin
@@ -677,10 +677,6 @@ class BRepPrim_GWedge {
 %nodefaultctor BRepPrim_OneAxis;
 class BRepPrim_OneAxis {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") SetMeridianOffset;
 		%feature("autodoc", "	* The MeridianOffset is added to the parameters on the meridian curve and to the V values of the pcurves. This is used for the sphere for example, to give a range on the meridian edge which is not VMin, VMax.
 

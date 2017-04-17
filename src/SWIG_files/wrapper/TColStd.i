@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -101,7 +101,7 @@ class TColStd_Array1OfAsciiString {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array1OfAsciiString &
 	:rtype: TColStd_Array1OfAsciiString
-") operator=;
+") operator =;
 		const TColStd_Array1OfAsciiString & operator = (const TColStd_Array1OfAsciiString & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -188,7 +188,7 @@ class TColStd_Array1OfBoolean {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array1OfBoolean &
 	:rtype: TColStd_Array1OfBoolean
-") operator=;
+") operator =;
 		const TColStd_Array1OfBoolean & operator = (const TColStd_Array1OfBoolean & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -275,7 +275,7 @@ class TColStd_Array1OfByte {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array1OfByte &
 	:rtype: TColStd_Array1OfByte
-") operator=;
+") operator =;
 		const TColStd_Array1OfByte & operator = (const TColStd_Array1OfByte & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -362,7 +362,7 @@ class TColStd_Array1OfCharacter {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array1OfCharacter &
 	:rtype: TColStd_Array1OfCharacter
-") operator=;
+") operator =;
 		const TColStd_Array1OfCharacter & operator = (const TColStd_Array1OfCharacter & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -449,7 +449,7 @@ class TColStd_Array1OfExtendedString {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array1OfExtendedString &
 	:rtype: TColStd_Array1OfExtendedString
-") operator=;
+") operator =;
 		const TColStd_Array1OfExtendedString & operator = (const TColStd_Array1OfExtendedString & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -536,7 +536,7 @@ class TColStd_Array1OfInteger {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array1OfInteger &
 	:rtype: TColStd_Array1OfInteger
-") operator=;
+") operator =;
 		const TColStd_Array1OfInteger & operator = (const TColStd_Array1OfInteger & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -623,7 +623,7 @@ class TColStd_Array1OfListOfInteger {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array1OfListOfInteger &
 	:rtype: TColStd_Array1OfListOfInteger
-") operator=;
+") operator =;
 		const TColStd_Array1OfListOfInteger & operator = (const TColStd_Array1OfListOfInteger & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -710,7 +710,7 @@ class TColStd_Array1OfReal {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array1OfReal &
 	:rtype: TColStd_Array1OfReal
-") operator=;
+") operator =;
 		const TColStd_Array1OfReal & operator = (const TColStd_Array1OfReal & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -797,7 +797,7 @@ class TColStd_Array1OfTransient {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array1OfTransient &
 	:rtype: TColStd_Array1OfTransient
-") operator=;
+") operator =;
 		const TColStd_Array1OfTransient & operator = (const TColStd_Array1OfTransient & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -888,7 +888,7 @@ class TColStd_Array2OfBoolean {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array2OfBoolean &
 	:rtype: TColStd_Array2OfBoolean
-") operator=;
+") operator =;
 		const TColStd_Array2OfBoolean & operator = (const TColStd_Array2OfBoolean & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -997,7 +997,7 @@ class TColStd_Array2OfCharacter {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array2OfCharacter &
 	:rtype: TColStd_Array2OfCharacter
-") operator=;
+") operator =;
 		const TColStd_Array2OfCharacter & operator = (const TColStd_Array2OfCharacter & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1106,7 +1106,7 @@ class TColStd_Array2OfInteger {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array2OfInteger &
 	:rtype: TColStd_Array2OfInteger
-") operator=;
+") operator =;
 		const TColStd_Array2OfInteger & operator = (const TColStd_Array2OfInteger & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1215,7 +1215,7 @@ class TColStd_Array2OfReal {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array2OfReal &
 	:rtype: TColStd_Array2OfReal
-") operator=;
+") operator =;
 		const TColStd_Array2OfReal & operator = (const TColStd_Array2OfReal & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1324,7 +1324,7 @@ class TColStd_Array2OfTransient {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_Array2OfTransient &
 	:rtype: TColStd_Array2OfTransient
-") operator=;
+") operator =;
 		const TColStd_Array2OfTransient & operator = (const TColStd_Array2OfTransient & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -2245,7 +2245,7 @@ class TColStd_DataMapOfAsciiStringInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_DataMapOfAsciiStringInteger &
 	:rtype: TColStd_DataMapOfAsciiStringInteger
-") operator=;
+") operator =;
 		TColStd_DataMapOfAsciiStringInteger & operator = (const TColStd_DataMapOfAsciiStringInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2328,7 +2328,7 @@ class TColStd_DataMapOfIntegerInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_DataMapOfIntegerInteger &
 	:rtype: TColStd_DataMapOfIntegerInteger
-") operator=;
+") operator =;
 		TColStd_DataMapOfIntegerInteger & operator = (const TColStd_DataMapOfIntegerInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2411,7 +2411,7 @@ class TColStd_DataMapOfIntegerListOfInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_DataMapOfIntegerListOfInteger &
 	:rtype: TColStd_DataMapOfIntegerListOfInteger
-") operator=;
+") operator =;
 		TColStd_DataMapOfIntegerListOfInteger & operator = (const TColStd_DataMapOfIntegerListOfInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2494,7 +2494,7 @@ class TColStd_DataMapOfIntegerReal : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_DataMapOfIntegerReal &
 	:rtype: TColStd_DataMapOfIntegerReal
-") operator=;
+") operator =;
 		TColStd_DataMapOfIntegerReal & operator = (const TColStd_DataMapOfIntegerReal & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2577,7 +2577,7 @@ class TColStd_DataMapOfIntegerTransient : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_DataMapOfIntegerTransient &
 	:rtype: TColStd_DataMapOfIntegerTransient
-") operator=;
+") operator =;
 		TColStd_DataMapOfIntegerTransient & operator = (const TColStd_DataMapOfIntegerTransient & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2660,7 +2660,7 @@ class TColStd_DataMapOfStringInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_DataMapOfStringInteger &
 	:rtype: TColStd_DataMapOfStringInteger
-") operator=;
+") operator =;
 		TColStd_DataMapOfStringInteger & operator = (const TColStd_DataMapOfStringInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2743,7 +2743,7 @@ class TColStd_DataMapOfTransientTransient : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_DataMapOfTransientTransient &
 	:rtype: TColStd_DataMapOfTransientTransient
-") operator=;
+") operator =;
 		TColStd_DataMapOfTransientTransient & operator = (const TColStd_DataMapOfTransientTransient & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -6146,7 +6146,7 @@ class TColStd_IndexedDataMapOfTransientTransient : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_IndexedDataMapOfTransientTransient &
 	:rtype: TColStd_IndexedDataMapOfTransientTransient
-") operator=;
+") operator =;
 		TColStd_IndexedDataMapOfTransientTransient & operator = (const TColStd_IndexedDataMapOfTransientTransient & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -6555,7 +6555,7 @@ class TColStd_IndexedMapOfInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_IndexedMapOfInteger &
 	:rtype: TColStd_IndexedMapOfInteger
-") operator=;
+") operator =;
 		TColStd_IndexedMapOfInteger & operator = (const TColStd_IndexedMapOfInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -6636,7 +6636,7 @@ class TColStd_IndexedMapOfReal : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_IndexedMapOfReal &
 	:rtype: TColStd_IndexedMapOfReal
-") operator=;
+") operator =;
 		TColStd_IndexedMapOfReal & operator = (const TColStd_IndexedMapOfReal & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -6717,7 +6717,7 @@ class TColStd_IndexedMapOfTransient : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_IndexedMapOfTransient &
 	:rtype: TColStd_IndexedMapOfTransient
-") operator=;
+") operator =;
 		TColStd_IndexedMapOfTransient & operator = (const TColStd_IndexedMapOfTransient & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -7264,7 +7264,7 @@ class TColStd_ListOfAsciiString {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfAsciiString &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TColStd_ListOfAsciiString & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -7399,7 +7399,7 @@ class TColStd_ListOfInteger {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfInteger &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TColStd_ListOfInteger & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -7552,7 +7552,7 @@ class TColStd_ListOfReal {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfReal &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TColStd_ListOfReal & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -7705,7 +7705,7 @@ class TColStd_ListOfTransient {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfTransient &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TColStd_ListOfTransient & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -8043,7 +8043,7 @@ class TColStd_MapOfAsciiString : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_MapOfAsciiString &
 	:rtype: TColStd_MapOfAsciiString
-") operator=;
+") operator =;
 		TColStd_MapOfAsciiString & operator = (const TColStd_MapOfAsciiString & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -8106,7 +8106,7 @@ class TColStd_MapOfInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_MapOfInteger &
 	:rtype: TColStd_MapOfInteger
-") operator=;
+") operator =;
 		TColStd_MapOfInteger & operator = (const TColStd_MapOfInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -8169,7 +8169,7 @@ class TColStd_MapOfReal : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_MapOfReal &
 	:rtype: TColStd_MapOfReal
-") operator=;
+") operator =;
 		TColStd_MapOfReal & operator = (const TColStd_MapOfReal & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -8232,7 +8232,7 @@ class TColStd_MapOfTransient : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_MapOfTransient &
 	:rtype: TColStd_MapOfTransient
-") operator=;
+") operator =;
 		TColStd_MapOfTransient & operator = (const TColStd_MapOfTransient & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -9015,7 +9015,7 @@ class TColStd_SequenceOfAddress : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SequenceOfAddress &
 	:rtype: TColStd_SequenceOfAddress
-") operator=;
+") operator =;
 		const TColStd_SequenceOfAddress & operator = (const TColStd_SequenceOfAddress & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -9158,7 +9158,7 @@ class TColStd_SequenceOfAsciiString : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SequenceOfAsciiString &
 	:rtype: TColStd_SequenceOfAsciiString
-") operator=;
+") operator =;
 		const TColStd_SequenceOfAsciiString & operator = (const TColStd_SequenceOfAsciiString & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -9301,7 +9301,7 @@ class TColStd_SequenceOfBoolean : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SequenceOfBoolean &
 	:rtype: TColStd_SequenceOfBoolean
-") operator=;
+") operator =;
 		const TColStd_SequenceOfBoolean & operator = (const TColStd_SequenceOfBoolean & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -9444,7 +9444,7 @@ class TColStd_SequenceOfExtendedString : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SequenceOfExtendedString &
 	:rtype: TColStd_SequenceOfExtendedString
-") operator=;
+") operator =;
 		const TColStd_SequenceOfExtendedString & operator = (const TColStd_SequenceOfExtendedString & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -9587,7 +9587,7 @@ class TColStd_SequenceOfHAsciiString : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SequenceOfHAsciiString &
 	:rtype: TColStd_SequenceOfHAsciiString
-") operator=;
+") operator =;
 		const TColStd_SequenceOfHAsciiString & operator = (const TColStd_SequenceOfHAsciiString & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -9730,7 +9730,7 @@ class TColStd_SequenceOfHExtendedString : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SequenceOfHExtendedString &
 	:rtype: TColStd_SequenceOfHExtendedString
-") operator=;
+") operator =;
 		const TColStd_SequenceOfHExtendedString & operator = (const TColStd_SequenceOfHExtendedString & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -9873,7 +9873,7 @@ class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SequenceOfInteger &
 	:rtype: TColStd_SequenceOfInteger
-") operator=;
+") operator =;
 		const TColStd_SequenceOfInteger & operator = (const TColStd_SequenceOfInteger & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -10016,7 +10016,7 @@ class TColStd_SequenceOfReal : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SequenceOfReal &
 	:rtype: TColStd_SequenceOfReal
-") operator=;
+") operator =;
 		const TColStd_SequenceOfReal & operator = (const TColStd_SequenceOfReal & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -10159,7 +10159,7 @@ class TColStd_SequenceOfTransient : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SequenceOfTransient &
 	:rtype: TColStd_SequenceOfTransient
-") operator=;
+") operator =;
 		const TColStd_SequenceOfTransient & operator = (const TColStd_SequenceOfTransient & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

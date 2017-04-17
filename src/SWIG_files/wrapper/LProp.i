@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -253,7 +253,7 @@ class LProp_SequenceOfCIType : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: LProp_SequenceOfCIType &
 	:rtype: LProp_SequenceOfCIType
-") operator=;
+") operator =;
 		const LProp_SequenceOfCIType & operator = (const LProp_SequenceOfCIType & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

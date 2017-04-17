@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -81,15 +81,17 @@ enum BRepCheck_Status {
 	BRepCheck_InvalidImbricationOfWires = 23,
 	BRepCheck_EmptyShell = 24,
 	BRepCheck_RedundantFace = 25,
-	BRepCheck_UnorientableShape = 26,
-	BRepCheck_NotClosed = 27,
-	BRepCheck_NotConnected = 28,
-	BRepCheck_SubshapeNotInShape = 29,
-	BRepCheck_BadOrientation = 30,
-	BRepCheck_BadOrientationOfSubshape = 31,
-	BRepCheck_InvalidPolygonOnTriangulation = 32,
-	BRepCheck_InvalidToleranceValue = 33,
-	BRepCheck_CheckFail = 34,
+	BRepCheck_InvalidImbricationOfShells = 26,
+	BRepCheck_UnorientableShape = 27,
+	BRepCheck_NotClosed = 28,
+	BRepCheck_NotConnected = 29,
+	BRepCheck_SubshapeNotInShape = 30,
+	BRepCheck_BadOrientation = 31,
+	BRepCheck_BadOrientationOfSubshape = 32,
+	BRepCheck_InvalidPolygonOnTriangulation = 33,
+	BRepCheck_InvalidToleranceValue = 34,
+	BRepCheck_EnclosedRegion = 35,
+	BRepCheck_CheckFail = 36,
 };
 
 /* end public enums declaration */
@@ -423,7 +425,7 @@ class BRepCheck_DataMapOfShapeListOfStatus : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepCheck_DataMapOfShapeListOfStatus &
 	:rtype: BRepCheck_DataMapOfShapeListOfStatus
-") operator=;
+") operator =;
 		BRepCheck_DataMapOfShapeListOfStatus & operator = (const BRepCheck_DataMapOfShapeListOfStatus & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -506,7 +508,7 @@ class BRepCheck_DataMapOfShapeResult : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepCheck_DataMapOfShapeResult &
 	:rtype: BRepCheck_DataMapOfShapeResult
-") operator=;
+") operator =;
 		BRepCheck_DataMapOfShapeResult & operator = (const BRepCheck_DataMapOfShapeResult & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -701,7 +703,7 @@ class BRepCheck_ListOfStatus {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepCheck_ListOfStatus &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const BRepCheck_ListOfStatus & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1267,6 +1269,91 @@ class Handle_BRepCheck_Shell : public Handle_BRepCheck_Result {
 };
 
 %extend BRepCheck_Shell {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor BRepCheck_Solid;
+class BRepCheck_Solid : public BRepCheck_Result {
+	public:
+		%feature("compactdefaultargs") BRepCheck_Solid;
+		%feature("autodoc", "	* Constructor <theS> is the solid to check
+
+	:param theS:
+	:type theS: TopoDS_Solid &
+	:rtype: None
+") BRepCheck_Solid;
+		 BRepCheck_Solid (const TopoDS_Solid & theS);
+		%feature("compactdefaultargs") InContext;
+		%feature("autodoc", "	* Checks the solid in context of the shape <theContextShape>
+
+	:param theContextShape:
+	:type theContextShape: TopoDS_Shape &
+	:rtype: void
+") InContext;
+		virtual void InContext (const TopoDS_Shape & theContextShape);
+		%feature("compactdefaultargs") Minimum;
+		%feature("autodoc", "	* Checks the solid per se. //! The scan area is: 1. Shells that overlaps each other Status: BRepCheck_InvalidImbricationOfShells //! 2. Detached parts of the solid (vertices, edges) that have non-internal orientation Status: BRepCheck_BadOrientationOfSubshape //! 3. For closed, non-internal shells: 3.1 Shells containing entities of the solid that are outside towards the shells Status: BRepCheck_SubshapeNotInShape //! 3.2 Shells that encloses other Shells (for non-holes) Status: BRepCheck_EnclosedRegion
+
+	:rtype: void
+") Minimum;
+		virtual void Minimum ();
+		%feature("compactdefaultargs") Blind;
+		%feature("autodoc", "	* see the parent class for more details
+
+	:rtype: void
+") Blind;
+		virtual void Blind ();
+};
+
+
+%extend BRepCheck_Solid {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepCheck_Solid(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_BRepCheck_Solid::Handle_BRepCheck_Solid %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_BRepCheck_Solid;
+class Handle_BRepCheck_Solid : public Handle_BRepCheck_Result {
+
+    public:
+        // constructors
+        Handle_BRepCheck_Solid();
+        Handle_BRepCheck_Solid(const Handle_BRepCheck_Solid &aHandle);
+        Handle_BRepCheck_Solid(const BRepCheck_Solid *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_BRepCheck_Solid DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_BRepCheck_Solid {
+    BRepCheck_Solid* _get_reference() {
+    return (BRepCheck_Solid*)$self->Access();
+    }
+};
+
+%extend Handle_BRepCheck_Solid {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
+%extend BRepCheck_Solid {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

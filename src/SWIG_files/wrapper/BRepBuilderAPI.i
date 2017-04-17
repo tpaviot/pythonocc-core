@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -225,6 +225,131 @@ class BRepBuilderAPI_Command {
 
 
 %extend BRepBuilderAPI_Command {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor BRepBuilderAPI_FastSewing;
+class BRepBuilderAPI_FastSewing : public Standard_Transient {
+	public:
+typedef unsigned int FS_VARStatuses;
+/* public enums */
+enum FS_Statuses {
+	FS_OK = 0,
+	FS_Degenerated = 1,
+	FS_FindVertexError = 2,
+	FS_FindEdgeError = 4,
+	FS_FaceWithNullSurface = 8,
+	FS_NotNaturalBoundsFace = 16,
+	FS_InfiniteSurface = 32,
+	FS_EmptyInput = 64,
+	FS_Exception = 128,
+};
+
+/* end public enums declaration */
+
+		%feature("compactdefaultargs") BRepBuilderAPI_FastSewing;
+		%feature("autodoc", "	* Creates an object with tolerance of connexity
+
+	:param theTolerance: default value is 1.0e-06
+	:type theTolerance: float
+	:rtype: None
+") BRepBuilderAPI_FastSewing;
+		 BRepBuilderAPI_FastSewing (const Standard_Real theTolerance = 1.0e-06);
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Adds faces of a shape
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: bool
+") Add;
+		Standard_Boolean Add (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "	* Adds a surface
+
+	:param theSurface:
+	:type theSurface: Handle_Geom_Surface &
+	:rtype: bool
+") Add;
+		Standard_Boolean Add (const Handle_Geom_Surface & theSurface);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Compute resulted shape
+
+	:param :
+	:type : void
+	:rtype: None
+") Perform;
+		void Perform (void );
+		%feature("compactdefaultargs") SetTolerance;
+		%feature("autodoc", "	* Sets tolerance
+
+	:param theToler:
+	:type theToler: float
+	:rtype: None
+") SetTolerance;
+		void SetTolerance (const Standard_Real theToler);
+		%feature("compactdefaultargs") GetTolerance;
+		%feature("autodoc", "	* Returns tolerance
+
+	:rtype: float
+") GetTolerance;
+		Standard_Real GetTolerance ();
+		%feature("compactdefaultargs") GetResult;
+		%feature("autodoc", "	* Returns resulted shape
+
+	:rtype: TopoDS_Shape
+") GetResult;
+		const TopoDS_Shape  GetResult ();
+};
+
+
+%extend BRepBuilderAPI_FastSewing {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepBuilderAPI_FastSewing(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_BRepBuilderAPI_FastSewing::Handle_BRepBuilderAPI_FastSewing %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_BRepBuilderAPI_FastSewing;
+class Handle_BRepBuilderAPI_FastSewing : public Handle_Standard_Transient {
+
+    public:
+        // constructors
+        Handle_BRepBuilderAPI_FastSewing();
+        Handle_BRepBuilderAPI_FastSewing(const Handle_BRepBuilderAPI_FastSewing &aHandle);
+        Handle_BRepBuilderAPI_FastSewing(const BRepBuilderAPI_FastSewing *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_BRepBuilderAPI_FastSewing DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_BRepBuilderAPI_FastSewing {
+    BRepBuilderAPI_FastSewing* _get_reference() {
+    return (BRepBuilderAPI_FastSewing*)$self->Access();
+    }
+};
+
+%extend Handle_BRepBuilderAPI_FastSewing {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
+%extend BRepBuilderAPI_FastSewing {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -800,10 +925,10 @@ class BRepBuilderAPI_MakeShape : public BRepBuilderAPI_Command {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape  Shape ();
+		virtual const TopoDS_Shape  Shape ();
 		%feature("compactdefaultargs") operator TopoDS_Shape;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Shape;
+") operator TopoDS_Shape;
 		 operator TopoDS_Shape ();
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "	* Returns the list of shapes generated from the shape <S>.
@@ -1344,7 +1469,7 @@ class BRepBuilderAPI_MakeEdge : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Edge;
+") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Vertex1;
 		%feature("autodoc", "	* Returns the first vertex of the edge. May be Null.
@@ -1709,7 +1834,7 @@ class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Edge;
+") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Vertex1;
 		%feature("autodoc", "	* Returns the first vertex of the edge. May be Null.
@@ -2054,7 +2179,7 @@ class BRepBuilderAPI_MakeFace : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") operator TopoDS_Face;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Face;
+") operator TopoDS_Face;
 		 operator TopoDS_Face ();
 };
 
@@ -2195,7 +2320,7 @@ class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Edge;
+") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Wire;
 		%feature("autodoc", "	* Returns the constructed polygonal wire, or the already built part of the polygonal wire under construction. Exceptions StdFail_NotDone if the wire is not built, i.e. if fewer than two vertices have been chained together by this construction algorithm.
@@ -2205,7 +2330,7 @@ class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Wire  Wire ();
 		%feature("compactdefaultargs") operator TopoDS_Wire;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Wire;
+") operator TopoDS_Wire;
 		 operator TopoDS_Wire ();
 };
 
@@ -2290,7 +2415,7 @@ class BRepBuilderAPI_MakeShell : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Shell;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Shell;
+") operator TopoDS_Shell;
 		 operator TopoDS_Shell ();
 };
 
@@ -2387,7 +2512,7 @@ class BRepBuilderAPI_MakeSolid : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Solid;
+") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "	:param S:
@@ -2422,7 +2547,7 @@ class BRepBuilderAPI_MakeVertex : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Vertex  Vertex ();
 		%feature("compactdefaultargs") operator TopoDS_Vertex;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Vertex;
+") operator TopoDS_Vertex;
 		 operator TopoDS_Vertex ();
 };
 
@@ -2547,7 +2672,7 @@ class BRepBuilderAPI_MakeWire : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Wire  Wire ();
 		%feature("compactdefaultargs") operator TopoDS_Wire;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Wire;
+") operator TopoDS_Wire;
 		 operator TopoDS_Wire ();
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "	* Returns the last edge added to the wire under construction. Warning - This edge can be different from the original one (the argument of the function Add, for instance,) - A null edge is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectable..
@@ -2587,7 +2712,7 @@ class BRepBuilderAPI_ModifyShape : public BRepBuilderAPI_MakeShape {
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ModifiedShape;
-		virtual const TopoDS_Shape  ModifiedShape (const TopoDS_Shape & S);
+		virtual TopoDS_Shape ModifiedShape (const TopoDS_Shape & S);
 };
 
 
@@ -2606,25 +2731,29 @@ class BRepBuilderAPI_Copy : public BRepBuilderAPI_ModifyShape {
 ") BRepBuilderAPI_Copy;
 		 BRepBuilderAPI_Copy ();
 		%feature("compactdefaultargs") BRepBuilderAPI_Copy;
-		%feature("autodoc", "	* Constructs a copy framework and copies the shape S. Use the function Shape to access the result. If copyGeom is False, only topological objects will be copied, while geometry will be shared with original shape. Note: the constructed framework can be reused to copy other shapes: just specify them with the function Perform.
+		%feature("autodoc", "	* Constructs a copy framework and copies the shape S. Use the function Shape to access the result. If copyMesh is True, triangulation contained in original shape will be copied along with geometry (by default, triangulation gets lost). If copyGeom is False, only topological objects will be copied, while geometry and triangulation will be shared with original shape. Note: the constructed framework can be reused to copy other shapes: just specify them with the function Perform.
 
 	:param S:
 	:type S: TopoDS_Shape &
 	:param copyGeom: default value is Standard_True
 	:type copyGeom: bool
+	:param copyMesh: default value is Standard_False
+	:type copyMesh: bool
 	:rtype: None
 ") BRepBuilderAPI_Copy;
-		 BRepBuilderAPI_Copy (const TopoDS_Shape & S,const Standard_Boolean copyGeom = Standard_True);
+		 BRepBuilderAPI_Copy (const TopoDS_Shape & S,const Standard_Boolean copyGeom = Standard_True,const Standard_Boolean copyMesh = Standard_False);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Copies the shape S. Use the function Shape to access the result. If copyGeom is False, only topological objects will be copied, while geometry will be shared with original shape.
+		%feature("autodoc", "	* Copies the shape S. Use the function Shape to access the result. If copyMesh is True, triangulation contained in original shape will be copied along with geometry (by default, triangulation gets lost). If copyGeom is False, only topological objects will be copied, while geometry and triangulation will be shared with original shape.
 
 	:param S:
 	:type S: TopoDS_Shape &
 	:param copyGeom: default value is Standard_True
 	:type copyGeom: bool
+	:param copyMesh: default value is Standard_False
+	:type copyMesh: bool
 	:rtype: None
 ") Perform;
-		void Perform (const TopoDS_Shape & S,const Standard_Boolean copyGeom = Standard_True);
+		void Perform (const TopoDS_Shape & S,const Standard_Boolean copyGeom = Standard_True,const Standard_Boolean copyMesh = Standard_False);
 };
 
 
@@ -2681,7 +2810,7 @@ class BRepBuilderAPI_GTransform : public BRepBuilderAPI_ModifyShape {
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ModifiedShape;
-		virtual const TopoDS_Shape  ModifiedShape (const TopoDS_Shape & S);
+		virtual TopoDS_Shape ModifiedShape (const TopoDS_Shape & S);
 };
 
 
@@ -2767,7 +2896,7 @@ class BRepBuilderAPI_Transform : public BRepBuilderAPI_ModifyShape {
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ModifiedShape;
-		virtual const TopoDS_Shape  ModifiedShape (const TopoDS_Shape & S);
+		virtual TopoDS_Shape ModifiedShape (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
 

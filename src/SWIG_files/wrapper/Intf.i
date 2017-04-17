@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -149,7 +149,7 @@ class Intf_Array1OfLin {
 		%feature("autodoc", "	:param Other:
 	:type Other: Intf_Array1OfLin &
 	:rtype: Intf_Array1OfLin
-") operator=;
+") operator =;
 		const Intf_Array1OfLin & operator = (const Intf_Array1OfLin & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -676,7 +676,7 @@ class Intf_SeqOfSectionLine : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Intf_SeqOfSectionLine &
 	:rtype: Intf_SeqOfSectionLine
-") operator=;
+") operator =;
 		const Intf_SeqOfSectionLine & operator = (const Intf_SeqOfSectionLine & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -819,7 +819,7 @@ class Intf_SeqOfSectionPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Intf_SeqOfSectionPoint &
 	:rtype: Intf_SeqOfSectionPoint
-") operator=;
+") operator =;
 		const Intf_SeqOfSectionPoint & operator = (const Intf_SeqOfSectionPoint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -962,7 +962,7 @@ class Intf_SeqOfTangentZone : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Intf_SeqOfTangentZone &
 	:rtype: Intf_SeqOfTangentZone
-") operator=;
+") operator =;
 		const Intf_SeqOfTangentZone & operator = (const Intf_SeqOfTangentZone & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

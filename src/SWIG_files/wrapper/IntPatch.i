@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -867,7 +867,9 @@ class IntPatch_ImpImpIntersection {
 ") IntPatch_ImpImpIntersection;
 		 IntPatch_ImpImpIntersection ();
 		%feature("compactdefaultargs") IntPatch_ImpImpIntersection;
-		%feature("autodoc", "	:param S1:
+		%feature("autodoc", "	* Flag theIsReqToKeepRLine has been enterred only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided.
+
+	:param S1:
 	:type S1: Handle_Adaptor3d_HSurface &
 	:param D1:
 	:type D1: Handle_Adaptor3d_TopolTool &
@@ -879,11 +881,15 @@ class IntPatch_ImpImpIntersection {
 	:type TolArc: float
 	:param TolTang:
 	:type TolTang: float
+	:param theIsReqToKeepRLine: default value is Standard_False
+	:type theIsReqToKeepRLine: bool
 	:rtype: None
 ") IntPatch_ImpImpIntersection;
-		 IntPatch_ImpImpIntersection (const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_TopolTool & D1,const Handle_Adaptor3d_HSurface & S2,const Handle_Adaptor3d_TopolTool & D2,const Standard_Real TolArc,const Standard_Real TolTang);
+		 IntPatch_ImpImpIntersection (const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_TopolTool & D1,const Handle_Adaptor3d_HSurface & S2,const Handle_Adaptor3d_TopolTool & D2,const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Boolean theIsReqToKeepRLine = Standard_False);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param S1:
+		%feature("autodoc", "	* Flag theIsReqToKeepRLine has been enterred only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided.
+
+	:param S1:
 	:type S1: Handle_Adaptor3d_HSurface &
 	:param D1:
 	:type D1: Handle_Adaptor3d_TopolTool &
@@ -897,9 +903,11 @@ class IntPatch_ImpImpIntersection {
 	:type TolTang: float
 	:param isTheTrimmed: default value is Standard_False
 	:type isTheTrimmed: bool
+	:param theIsReqToKeepRLine: default value is Standard_False
+	:type theIsReqToKeepRLine: bool
 	:rtype: None
 ") Perform;
-		void Perform (const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_TopolTool & D1,const Handle_Adaptor3d_HSurface & S2,const Handle_Adaptor3d_TopolTool & D2,const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Boolean isTheTrimmed = Standard_False);
+		void Perform (const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_TopolTool & D1,const Handle_Adaptor3d_HSurface & S2,const Handle_Adaptor3d_TopolTool & D2,const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Boolean isTheTrimmed = Standard_False,const Standard_Boolean theIsReqToKeepRLine = Standard_False);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns True if the calculus was succesfull.
 
@@ -1168,7 +1176,9 @@ class IntPatch_Intersection {
 ") SetTolerances;
 		void SetTolerances (const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Real UVMaxStep,const Standard_Real Fleche);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param S1:
+		%feature("autodoc", "	* Flag theIsReqToKeepRLine has been enterred only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided.
+
+	:param S1:
 	:type S1: Handle_Adaptor3d_HSurface &
 	:param D1:
 	:type D1: Handle_Adaptor3d_TopolTool &
@@ -1182,9 +1192,11 @@ class IntPatch_Intersection {
 	:type TolTang: float
 	:param isGeomInt: default value is Standard_True
 	:type isGeomInt: bool
+	:param theIsReqToKeepRLine: default value is Standard_False
+	:type theIsReqToKeepRLine: bool
 	:rtype: None
 ") Perform;
-		void Perform (const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_TopolTool & D1,const Handle_Adaptor3d_HSurface & S2,const Handle_Adaptor3d_TopolTool & D2,const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Boolean isGeomInt = Standard_True);
+		void Perform (const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_TopolTool & D1,const Handle_Adaptor3d_HSurface & S2,const Handle_Adaptor3d_TopolTool & D2,const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Boolean isGeomInt = Standard_True,const Standard_Boolean theIsReqToKeepRLine = Standard_False);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* If isGeomInt == Standard_False, then method Param-Param intersection will be used.
 
@@ -2651,7 +2663,7 @@ class IntPatch_SequenceOfIWLineOfTheIWalking : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntPatch_SequenceOfIWLineOfTheIWalking &
 	:rtype: IntPatch_SequenceOfIWLineOfTheIWalking
-") operator=;
+") operator =;
 		const IntPatch_SequenceOfIWLineOfTheIWalking & operator = (const IntPatch_SequenceOfIWLineOfTheIWalking & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2794,7 +2806,7 @@ class IntPatch_SequenceOfLine : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntPatch_SequenceOfLine &
 	:rtype: IntPatch_SequenceOfLine
-") operator=;
+") operator =;
 		const IntPatch_SequenceOfLine & operator = (const IntPatch_SequenceOfLine & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2937,7 +2949,7 @@ class IntPatch_SequenceOfPathPointOfTheSOnBounds : public TCollection_BaseSequen
 		%feature("autodoc", "	:param Other:
 	:type Other: IntPatch_SequenceOfPathPointOfTheSOnBounds &
 	:rtype: IntPatch_SequenceOfPathPointOfTheSOnBounds
-") operator=;
+") operator =;
 		const IntPatch_SequenceOfPathPointOfTheSOnBounds & operator = (const IntPatch_SequenceOfPathPointOfTheSOnBounds & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -3080,7 +3092,7 @@ class IntPatch_SequenceOfPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntPatch_SequenceOfPoint &
 	:rtype: IntPatch_SequenceOfPoint
-") operator=;
+") operator =;
 		const IntPatch_SequenceOfPoint & operator = (const IntPatch_SequenceOfPoint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -3223,7 +3235,7 @@ class IntPatch_SequenceOfSegmentOfTheSOnBounds : public TCollection_BaseSequence
 		%feature("autodoc", "	:param Other:
 	:type Other: IntPatch_SequenceOfSegmentOfTheSOnBounds &
 	:rtype: IntPatch_SequenceOfSegmentOfTheSOnBounds
-") operator=;
+") operator =;
 		const IntPatch_SequenceOfSegmentOfTheSOnBounds & operator = (const IntPatch_SequenceOfSegmentOfTheSOnBounds & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -4586,6 +4598,77 @@ class Handle_IntPatch_GLine : public Handle_IntPatch_Line {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor IntPatch_PointLine;
+class IntPatch_PointLine : public IntPatch_Line {
+	public:
+		%feature("compactdefaultargs") NbPnts;
+		%feature("autodoc", "	* Returns the number of intersection points.
+
+	:rtype: int
+") NbPnts;
+		virtual Standard_Integer NbPnts ();
+		%feature("compactdefaultargs") Point;
+		%feature("autodoc", "	* Returns the intersection point of range Index.
+
+	:param Index:
+	:type Index: int
+	:rtype: IntSurf_PntOn2S
+") Point;
+		virtual const IntSurf_PntOn2S & Point (const Standard_Integer Index);
+};
+
+
+%extend IntPatch_PointLine {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntPatch_PointLine(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_IntPatch_PointLine::Handle_IntPatch_PointLine %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_IntPatch_PointLine;
+class Handle_IntPatch_PointLine : public Handle_IntPatch_Line {
+
+    public:
+        // constructors
+        Handle_IntPatch_PointLine();
+        Handle_IntPatch_PointLine(const Handle_IntPatch_PointLine &aHandle);
+        Handle_IntPatch_PointLine(const IntPatch_PointLine *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_IntPatch_PointLine DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_IntPatch_PointLine {
+    IntPatch_PointLine* _get_reference() {
+    return (IntPatch_PointLine*)$self->Access();
+    }
+};
+
+%extend Handle_IntPatch_PointLine {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
+%extend IntPatch_PointLine {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor IntPatch_PolyArc;
 class IntPatch_PolyArc : public IntPatch_Polygo {
 	public:
@@ -4693,7 +4776,7 @@ class IntPatch_PolyLine : public IntPatch_Polygo {
 	}
 };
 %nodefaultctor IntPatch_RLine;
-class IntPatch_RLine : public IntPatch_Line {
+class IntPatch_RLine : public IntPatch_PointLine {
 	public:
 		%feature("compactdefaultargs") IntPatch_RLine;
 		%feature("autodoc", "	* Creates a restriction as an intersection line when the transitions are In or Out.
@@ -4909,7 +4992,7 @@ class IntPatch_RLine : public IntPatch_Line {
 %}
 
 %nodefaultctor Handle_IntPatch_RLine;
-class Handle_IntPatch_RLine : public Handle_IntPatch_Line {
+class Handle_IntPatch_RLine : public Handle_IntPatch_PointLine {
 
     public:
         // constructors
@@ -4942,7 +5025,7 @@ class Handle_IntPatch_RLine : public Handle_IntPatch_Line {
 	}
 };
 %nodefaultctor IntPatch_WLine;
-class IntPatch_WLine : public IntPatch_Line {
+class IntPatch_WLine : public IntPatch_PointLine {
 	public:
 		%feature("compactdefaultargs") IntPatch_WLine;
 		%feature("autodoc", "	* Creates a WLine as an intersection when the transitions are In or Out.
@@ -5176,6 +5259,24 @@ class IntPatch_WLine : public IntPatch_Line {
 		%feature("autodoc", "	:rtype: Handle_Adaptor2d_HCurve2d
 ") GetArcOnS2;
 		Handle_Adaptor2d_HCurve2d GetArcOnS2 ();
+		%feature("compactdefaultargs") ClearVertexes;
+		%feature("autodoc", "	:rtype: None
+") ClearVertexes;
+		void ClearVertexes ();
+		%feature("compactdefaultargs") RemoveVertex;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: int
+	:rtype: None
+") RemoveVertex;
+		void RemoveVertex (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") InsertVertexBefore;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: int
+	:param thePnt:
+	:type thePnt: IntPatch_Point &
+	:rtype: None
+") InsertVertexBefore;
+		void InsertVertexBefore (const Standard_Integer theIndex,const IntPatch_Point & thePnt);
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "	:rtype: None
 ") Dump;
@@ -5202,7 +5303,7 @@ class IntPatch_WLine : public IntPatch_Line {
 %}
 
 %nodefaultctor Handle_IntPatch_WLine;
-class Handle_IntPatch_WLine : public Handle_IntPatch_Line {
+class Handle_IntPatch_WLine : public Handle_IntPatch_PointLine {
 
     public:
         // constructors

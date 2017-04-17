@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -41,6 +41,33 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDocStd_XLinkPtr.hxx>
 #include<TDocStd_XLinkRoot.hxx>
 #include<TDocStd_XLinkTool.hxx>
+#include<CDM_Application.hxx>
+#include<CDM_CanCloseStatus.hxx>
+#include<CDM_COutMessageDriver.hxx>
+#include<CDM_DataMapIteratorOfMetaDataLookUpTable.hxx>
+#include<CDM_DataMapIteratorOfPresentationDirectory.hxx>
+#include<CDM_DataMapNodeOfMetaDataLookUpTable.hxx>
+#include<CDM_DataMapNodeOfPresentationDirectory.hxx>
+#include<CDM_Document.hxx>
+#include<CDM_DocumentHasher.hxx>
+#include<CDM_DocumentPointer.hxx>
+#include<CDM_ListIteratorOfListOfDocument.hxx>
+#include<CDM_ListIteratorOfListOfReferences.hxx>
+#include<CDM_ListNodeOfListOfDocument.hxx>
+#include<CDM_ListNodeOfListOfReferences.hxx>
+#include<CDM_ListOfDocument.hxx>
+#include<CDM_ListOfReferences.hxx>
+#include<CDM_MapIteratorOfMapOfDocument.hxx>
+#include<CDM_MapOfDocument.hxx>
+#include<CDM_MessageDriver.hxx>
+#include<CDM_MetaData.hxx>
+#include<CDM_MetaDataLookUpTable.hxx>
+#include<CDM_NamesDirectory.hxx>
+#include<CDM_NullMessageDriver.hxx>
+#include<CDM_PresentationDirectory.hxx>
+#include<CDM_Reference.hxx>
+#include<CDM_ReferenceIterator.hxx>
+#include<CDM_StdMapNodeOfMapOfDocument.hxx>
 #include<TColStd_Array1OfAsciiString.hxx>
 #include<TColStd_Array1OfBoolean.hxx>
 #include<TColStd_Array1OfByte.hxx>
@@ -153,6 +180,55 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColStd_StdMapNodeOfMapOfInteger.hxx>
 #include<TColStd_StdMapNodeOfMapOfReal.hxx>
 #include<TColStd_StdMapNodeOfMapOfTransient.hxx>
+#include<Resource_ConvertUnicode.hxx>
+#include<Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString.hxx>
+#include<Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString.hxx>
+#include<Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString.hxx>
+#include<Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString.hxx>
+#include<Resource_DataMapOfAsciiStringAsciiString.hxx>
+#include<Resource_DataMapOfAsciiStringExtendedString.hxx>
+#include<Resource_FormatType.hxx>
+#include<Resource_LexicalCompare.hxx>
+#include<Resource_Manager.hxx>
+#include<Resource_NoSuchResource.hxx>
+#include<Resource_QuickSortOfArray1.hxx>
+#include<Resource_Unicode.hxx>
+#include<CDF.hxx>
+#include<CDF_Application.hxx>
+#include<CDF_Directory.hxx>
+#include<CDF_DirectoryIterator.hxx>
+#include<CDF_FWOSDriver.hxx>
+#include<CDF_MetaDataDriver.hxx>
+#include<CDF_MetaDataDriverError.hxx>
+#include<CDF_MetaDataDriverFactory.hxx>
+#include<CDF_Session.hxx>
+#include<CDF_Store.hxx>
+#include<CDF_StoreList.hxx>
+#include<CDF_StoreSetNameStatus.hxx>
+#include<CDF_SubComponentStatus.hxx>
+#include<CDF_Timer.hxx>
+#include<CDF_TryStoreStatus.hxx>
+#include<CDF_TypeOfActivation.hxx>
+#include<PCDM.hxx>
+#include<PCDM_BaseDriverPointer.hxx>
+#include<PCDM_Document.hxx>
+#include<PCDM_DOMHeaderParser.hxx>
+#include<PCDM_DriverError.hxx>
+#include<PCDM_Reader.hxx>
+#include<PCDM_ReaderStatus.hxx>
+#include<PCDM_ReadWriter.hxx>
+#include<PCDM_ReadWriter_1.hxx>
+#include<PCDM_Reference.hxx>
+#include<PCDM_ReferenceIterator.hxx>
+#include<PCDM_RetrievalDriver.hxx>
+#include<PCDM_SequenceNodeOfSequenceOfDocument.hxx>
+#include<PCDM_SequenceNodeOfSequenceOfReference.hxx>
+#include<PCDM_SequenceOfDocument.hxx>
+#include<PCDM_SequenceOfReference.hxx>
+#include<PCDM_StorageDriver.hxx>
+#include<PCDM_StoreStatus.hxx>
+#include<PCDM_TypeOfFileDriver.hxx>
+#include<PCDM_Writer.hxx>
 #include<TDF.hxx>
 #include<TDF_Attribute.hxx>
 #include<TDF_AttributeArray1.hxx>
@@ -236,19 +312,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDF_TagSource.hxx>
 #include<TDF_Tool.hxx>
 #include<TDF_Transaction.hxx>
-#include<Resource_ConvertUnicode.hxx>
-#include<Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString.hxx>
-#include<Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString.hxx>
-#include<Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString.hxx>
-#include<Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString.hxx>
-#include<Resource_DataMapOfAsciiStringAsciiString.hxx>
-#include<Resource_DataMapOfAsciiStringExtendedString.hxx>
-#include<Resource_FormatType.hxx>
-#include<Resource_LexicalCompare.hxx>
-#include<Resource_Manager.hxx>
-#include<Resource_NoSuchResource.hxx>
-#include<Resource_QuickSortOfArray1.hxx>
-#include<Resource_Unicode.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
@@ -298,6 +361,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -307,6 +371,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -489,4 +554,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_TypedCallBack.hxx>
 %};
 %import TDocStd.i
+%import CDM.i
 %import TColStd.i

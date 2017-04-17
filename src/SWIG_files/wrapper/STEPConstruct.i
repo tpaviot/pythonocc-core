@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -787,7 +787,7 @@ class STEPConstruct_DataMapOfAsciiStringTransient : public TCollection_BasicMap 
 		%feature("autodoc", "	:param Other:
 	:type Other: STEPConstruct_DataMapOfAsciiStringTransient &
 	:rtype: STEPConstruct_DataMapOfAsciiStringTransient
-") operator=;
+") operator =;
 		STEPConstruct_DataMapOfAsciiStringTransient & operator = (const STEPConstruct_DataMapOfAsciiStringTransient & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -870,7 +870,7 @@ class STEPConstruct_DataMapOfPointTransient : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: STEPConstruct_DataMapOfPointTransient &
 	:rtype: STEPConstruct_DataMapOfPointTransient
-") operator=;
+") operator =;
 		STEPConstruct_DataMapOfPointTransient & operator = (const STEPConstruct_DataMapOfPointTransient & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

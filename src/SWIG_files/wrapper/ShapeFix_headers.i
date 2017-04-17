@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -28,6 +28,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<ShapeFix_Face.hxx>
 #include<ShapeFix_FaceConnect.hxx>
 #include<ShapeFix_FixSmallFace.hxx>
+#include<ShapeFix_FixSmallSolid.hxx>
 #include<ShapeFix_FreeBounds.hxx>
 #include<ShapeFix_IntersectionTool.hxx>
 #include<ShapeFix_Root.hxx>
@@ -174,6 +175,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Message_SequenceOfProgressScale.hxx>
 #include<Message_Status.hxx>
 #include<Message_StatusType.hxx>
+#include<ShapeExtend.hxx>
+#include<ShapeExtend_BasicMsgRegistrator.hxx>
+#include<ShapeExtend_ComplexCurve.hxx>
+#include<ShapeExtend_CompositeSurface.hxx>
+#include<ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg.hxx>
+#include<ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg.hxx>
+#include<ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg.hxx>
+#include<ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg.hxx>
+#include<ShapeExtend_DataMapOfShapeListOfMsg.hxx>
+#include<ShapeExtend_DataMapOfTransientListOfMsg.hxx>
+#include<ShapeExtend_Explorer.hxx>
+#include<ShapeExtend_MsgRegistrator.hxx>
+#include<ShapeExtend_Parametrisation.hxx>
+#include<ShapeExtend_Status.hxx>
+#include<ShapeExtend_WireData.hxx>
 #include<ShapeBuild.hxx>
 #include<ShapeBuild_Edge.hxx>
 #include<ShapeBuild_ReShape.hxx>
@@ -273,7 +289,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopLoc_SListNodeOfItemLocation.hxx>
 #include<TopLoc_SListOfItemLocation.hxx>
 #include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#include<TopLoc_TrsfPtr.hxx>
 #include<ShapeAnalysis.hxx>
 #include<ShapeAnalysis_BoxBndTree.hxx>
 #include<ShapeAnalysis_CheckSmallFace.hxx>
@@ -298,21 +313,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<ShapeAnalysis_Wire.hxx>
 #include<ShapeAnalysis_WireOrder.hxx>
 #include<ShapeAnalysis_WireVertex.hxx>
-#include<ShapeExtend.hxx>
-#include<ShapeExtend_BasicMsgRegistrator.hxx>
-#include<ShapeExtend_ComplexCurve.hxx>
-#include<ShapeExtend_CompositeSurface.hxx>
-#include<ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg.hxx>
-#include<ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg.hxx>
-#include<ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg.hxx>
-#include<ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg.hxx>
-#include<ShapeExtend_DataMapOfShapeListOfMsg.hxx>
-#include<ShapeExtend_DataMapOfTransientListOfMsg.hxx>
-#include<ShapeExtend_Explorer.hxx>
-#include<ShapeExtend_MsgRegistrator.hxx>
-#include<ShapeExtend_Parametrisation.hxx>
-#include<ShapeExtend_Status.hxx>
-#include<ShapeExtend_WireData.hxx>
 #include<Geom2d_AxisPlacement.hxx>
 #include<Geom2d_BezierCurve.hxx>
 #include<Geom2d_BoundedCurve.hxx>
@@ -528,6 +528,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepBuilderAPI_Copy.hxx>
 #include<BRepBuilderAPI_EdgeError.hxx>
 #include<BRepBuilderAPI_FaceError.hxx>
+#include<BRepBuilderAPI_FastSewing.hxx>
 #include<BRepBuilderAPI_FindPlane.hxx>
 #include<BRepBuilderAPI_GTransform.hxx>
 #include<BRepBuilderAPI_MakeEdge.hxx>
@@ -605,6 +606,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -614,6 +616,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -798,6 +801,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import TopoDS.i
 %import Standard.i
 %import Message.i
+%import ShapeExtend.i
 %import ShapeBuild.i
 %import TCollection.i
 %import Bnd.i
@@ -806,7 +810,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import Geom.i
 %import TopLoc.i
 %import ShapeAnalysis.i
-%import ShapeExtend.i
 %import Geom2d.i
 %import TopAbs.i
 %import TopTools.i

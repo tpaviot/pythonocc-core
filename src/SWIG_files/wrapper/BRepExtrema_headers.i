@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -20,15 +20,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %{
 #include<BRepExtrema_DistanceSS.hxx>
 #include<BRepExtrema_DistShapeShape.hxx>
+#include<BRepExtrema_ElementFilter.hxx>
 #include<BRepExtrema_ExtCC.hxx>
 #include<BRepExtrema_ExtCF.hxx>
 #include<BRepExtrema_ExtFF.hxx>
 #include<BRepExtrema_ExtPC.hxx>
 #include<BRepExtrema_ExtPF.hxx>
+#include<BRepExtrema_MapOfIntegerPackedMapOfInteger.hxx>
+#include<BRepExtrema_OverlapTool.hxx>
 #include<BRepExtrema_Poly.hxx>
+#include<BRepExtrema_SelfIntersection.hxx>
 #include<BRepExtrema_SeqOfSolution.hxx>
+#include<BRepExtrema_ShapeProximity.hxx>
 #include<BRepExtrema_SolutionElem.hxx>
 #include<BRepExtrema_SupportType.hxx>
+#include<BRepExtrema_TriangleSet.hxx>
 #include<BRepExtrema_UnCompatibleShape.hxx>
 #include<TopoDS.hxx>
 #include<TopoDS_Builder.hxx>
@@ -71,8 +77,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Extrema_CurveTool.hxx>
 #include<Extrema_ECC.hxx>
 #include<Extrema_ECC2d.hxx>
-#include<Extrema_ELCC.hxx>
-#include<Extrema_ELCC2d.hxx>
 #include<Extrema_ElementType.hxx>
 #include<Extrema_ELPCOfLocateExtPC.hxx>
 #include<Extrema_ELPCOfLocateExtPC2d.hxx>
@@ -344,6 +348,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -353,6 +358,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>

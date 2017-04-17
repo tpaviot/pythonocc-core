@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -132,7 +132,7 @@ class gce_MakeMirror {
 		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Trsf;
+") operator gp_Trsf;
 		 operator gp_Trsf ();
 };
 
@@ -185,7 +185,7 @@ class gce_MakeMirror2d {
 		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Trsf2d;
+") operator gp_Trsf2d;
 		 operator gp_Trsf2d ();
 };
 
@@ -242,7 +242,7 @@ class gce_MakeRotation {
 		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Trsf;
+") operator gp_Trsf;
 		 operator gp_Trsf ();
 };
 
@@ -277,7 +277,7 @@ class gce_MakeRotation2d {
 		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Trsf2d;
+") operator gp_Trsf2d;
 		 operator gp_Trsf2d ();
 };
 
@@ -312,7 +312,7 @@ class gce_MakeScale {
 		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Trsf;
+") operator gp_Trsf;
 		 operator gp_Trsf ();
 };
 
@@ -347,7 +347,7 @@ class gce_MakeScale2d {
 		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Trsf2d;
+") operator gp_Trsf2d;
 		 operator gp_Trsf2d ();
 };
 
@@ -390,7 +390,7 @@ class gce_MakeTranslation {
 		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Trsf;
+") operator gp_Trsf;
 		 operator gp_Trsf ();
 };
 
@@ -433,7 +433,7 @@ class gce_MakeTranslation2d {
 		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Trsf2d;
+") operator gp_Trsf2d;
 		 operator gp_Trsf2d ();
 };
 
@@ -568,7 +568,7 @@ class gce_MakeCirc : public gce_Root {
 		const gp_Circ  Operator ();
 		%feature("compactdefaultargs") operator gp_Circ;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Circ;
+") operator gp_Circ;
 		 operator gp_Circ ();
 };
 
@@ -671,7 +671,7 @@ class gce_MakeCirc2d : public gce_Root {
 		const gp_Circ2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Circ2d;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Circ2d;
+") operator gp_Circ2d;
 		 operator gp_Circ2d ();
 };
 
@@ -780,7 +780,7 @@ class gce_MakeCone : public gce_Root {
 		const gp_Cone  Operator ();
 		%feature("compactdefaultargs") operator gp_Cone;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Cone;
+") operator gp_Cone;
 		 operator gp_Cone ();
 };
 
@@ -865,7 +865,7 @@ class gce_MakeCylinder : public gce_Root {
 		const gp_Cylinder  Operator ();
 		%feature("compactdefaultargs") operator gp_Cylinder;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Cylinder;
+") operator gp_Cylinder;
 		 operator gp_Cylinder ();
 };
 
@@ -928,7 +928,7 @@ class gce_MakeDir : public gce_Root {
 		const gp_Dir  Operator ();
 		%feature("compactdefaultargs") operator gp_Dir;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Dir;
+") operator gp_Dir;
 		 operator gp_Dir ();
 };
 
@@ -989,7 +989,7 @@ class gce_MakeDir2d : public gce_Root {
 		const gp_Dir2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Dir2d;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Dir2d;
+") operator gp_Dir2d;
 		 operator gp_Dir2d ();
 };
 
@@ -1038,7 +1038,7 @@ class gce_MakeElips : public gce_Root {
 		const gp_Elips  Operator ();
 		%feature("compactdefaultargs") operator gp_Elips;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Elips;
+") operator gp_Elips;
 		 operator gp_Elips ();
 };
 
@@ -1101,7 +1101,7 @@ class gce_MakeElips2d : public gce_Root {
 		const gp_Elips2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Elips2d;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Elips2d;
+") operator gp_Elips2d;
 		 operator gp_Elips2d ();
 };
 
@@ -1150,7 +1150,7 @@ class gce_MakeHypr : public gce_Root {
 		const gp_Hypr  Operator ();
 		%feature("compactdefaultargs") operator gp_Hypr;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Hypr;
+") operator gp_Hypr;
 		 operator gp_Hypr ();
 };
 
@@ -1213,7 +1213,7 @@ class gce_MakeHypr2d : public gce_Root {
 		const gp_Hypr2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Hypr2d;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Hypr2d;
+") operator gp_Hypr2d;
 		 operator gp_Hypr2d ();
 };
 
@@ -1276,7 +1276,7 @@ class gce_MakeLin : public gce_Root {
 		const gp_Lin  Operator ();
 		%feature("compactdefaultargs") operator gp_Lin;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Lin;
+") operator gp_Lin;
 		 operator gp_Lin ();
 };
 
@@ -1361,7 +1361,7 @@ class gce_MakeLin2d : public gce_Root {
 		gp_Lin2d Operator ();
 		%feature("compactdefaultargs") operator gp_Lin2d;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Lin2d;
+") operator gp_Lin2d;
 		 operator gp_Lin2d ();
 };
 
@@ -1406,7 +1406,7 @@ class gce_MakeParab : public gce_Root {
 		const gp_Parab  Operator ();
 		%feature("compactdefaultargs") operator gp_Parab;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Parab;
+") operator gp_Parab;
 		 operator gp_Parab ();
 };
 
@@ -1487,7 +1487,7 @@ class gce_MakeParab2d : public gce_Root {
 		const gp_Parab2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Parab2d;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Parab2d;
+") operator gp_Parab2d;
 		 operator gp_Parab2d ();
 };
 
@@ -1594,7 +1594,7 @@ class gce_MakePln : public gce_Root {
 		const gp_Pln  Operator ();
 		%feature("compactdefaultargs") operator gp_Pln;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Pln;
+") operator gp_Pln;
 		 operator gp_Pln ();
 };
 

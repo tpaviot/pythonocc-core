@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -281,6 +281,28 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<ShapeExtend_Parametrisation.hxx>
 #include<ShapeExtend_Status.hxx>
 #include<ShapeExtend_WireData.hxx>
+#include<Message.hxx>
+#include<Message_Algorithm.hxx>
+#include<Message_ExecStatus.hxx>
+#include<Message_Gravity.hxx>
+#include<Message_HArrayOfMsg.hxx>
+#include<Message_ListIteratorOfListOfMsg.hxx>
+#include<Message_ListNodeOfListOfMsg.hxx>
+#include<Message_ListOfMsg.hxx>
+#include<Message_Messenger.hxx>
+#include<Message_Msg.hxx>
+#include<Message_MsgFile.hxx>
+#include<Message_Printer.hxx>
+#include<Message_PrinterOStream.hxx>
+#include<Message_ProgressIndicator.hxx>
+#include<Message_ProgressScale.hxx>
+#include<Message_ProgressSentry.hxx>
+#include<Message_SequenceNodeOfSequenceOfPrinters.hxx>
+#include<Message_SequenceNodeOfSequenceOfProgressScale.hxx>
+#include<Message_SequenceOfPrinters.hxx>
+#include<Message_SequenceOfProgressScale.hxx>
+#include<Message_Status.hxx>
+#include<Message_StatusType.hxx>
 #include<TColStd_Array1OfAsciiString.hxx>
 #include<TColStd_Array1OfBoolean.hxx>
 #include<TColStd_Array1OfByte.hxx>
@@ -478,7 +500,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopLoc_SListNodeOfItemLocation.hxx>
 #include<TopLoc_SListOfItemLocation.hxx>
 #include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#include<TopLoc_TrsfPtr.hxx>
 #include<ShapeAnalysis.hxx>
 #include<ShapeAnalysis_BoxBndTree.hxx>
 #include<ShapeAnalysis_CheckSmallFace.hxx>
@@ -664,6 +685,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepBuilderAPI_Copy.hxx>
 #include<BRepBuilderAPI_EdgeError.hxx>
 #include<BRepBuilderAPI_FaceError.hxx>
+#include<BRepBuilderAPI_FastSewing.hxx>
 #include<BRepBuilderAPI_FindPlane.hxx>
 #include<BRepBuilderAPI_GTransform.hxx>
 #include<BRepBuilderAPI_MakeEdge.hxx>
@@ -741,6 +763,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -750,6 +773,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -941,6 +965,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import TopAbs.i
 %import ShapeBuild.i
 %import ShapeExtend.i
+%import Message.i
 %import TColStd.i
 %import TopTools.i
 %import GeomAbs.i

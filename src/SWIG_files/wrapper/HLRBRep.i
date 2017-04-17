@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -295,7 +295,7 @@ class HLRBRep_Array1OfEData {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRBRep_Array1OfEData &
 	:rtype: HLRBRep_Array1OfEData
-") operator=;
+") operator =;
 		const HLRBRep_Array1OfEData & operator = (const HLRBRep_Array1OfEData & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -382,7 +382,7 @@ class HLRBRep_Array1OfFData {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRBRep_Array1OfFData &
 	:rtype: HLRBRep_Array1OfFData
-") operator=;
+") operator =;
 		const HLRBRep_Array1OfFData & operator = (const HLRBRep_Array1OfFData & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -453,7 +453,7 @@ class HLRBRep_BCurveTool {
 	:type S: GeomAbs_Shape
 	:rtype: int
 ") NbIntervals;
-		static Standard_Integer NbIntervals (BRepAdaptor_Curve & C,const GeomAbs_Shape S);
+		static Standard_Integer NbIntervals (const BRepAdaptor_Curve & C,const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
@@ -465,7 +465,7 @@ class HLRBRep_BCurveTool {
 	:type S: GeomAbs_Shape
 	:rtype: void
 ") Intervals;
-		static void Intervals (BRepAdaptor_Curve & C,TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		static void Intervals (const BRepAdaptor_Curve & C,TColStd_Array1OfReal & T,const GeomAbs_Shape S);
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "	:param C:
 	:type C: BRepAdaptor_Curve &
@@ -4403,7 +4403,7 @@ class HLRBRep_ListOfBPnt2D {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRBRep_ListOfBPnt2D &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const HLRBRep_ListOfBPnt2D & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -4538,7 +4538,7 @@ class HLRBRep_ListOfBPoint {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRBRep_ListOfBPoint &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const HLRBRep_ListOfBPoint & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -5426,7 +5426,7 @@ class HLRBRep_SeqOfShapeBounds : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRBRep_SeqOfShapeBounds &
 	:rtype: HLRBRep_SeqOfShapeBounds
-") operator=;
+") operator =;
 		const HLRBRep_SeqOfShapeBounds & operator = (const HLRBRep_SeqOfShapeBounds & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -5569,7 +5569,7 @@ class HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public TColle
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter &
 	:rtype: HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter
-") operator=;
+") operator =;
 		const HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter & operator = (const HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -7113,20 +7113,6 @@ class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter : public Intf_Polygon2d {
 	:rtype: None
 ") HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
 		 HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter (const Standard_Address & Curve,const Standard_Integer NbPnt,const IntRes2d_Domain & Domain,const Standard_Real Tol);
-		%feature("compactdefaultargs") HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
-		%feature("autodoc", "	:param Curve:
-	:type Curve: Standard_Address &
-	:param NbPnt:
-	:type NbPnt: int
-	:param Domain:
-	:type Domain: IntRes2d_Domain &
-	:param Tol:
-	:type Tol: float
-	:param OtherBox:
-	:type OtherBox: Bnd_Box2d &
-	:rtype: None
-") HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
-		 HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter (const Standard_Address & Curve,const Standard_Integer NbPnt,const IntRes2d_Domain & Domain,const Standard_Real Tol,const Bnd_Box2d & OtherBox);
 		%feature("compactdefaultargs") ComputeWithBox;
 		%feature("autodoc", "	:param Curve:
 	:type Curve: Standard_Address &

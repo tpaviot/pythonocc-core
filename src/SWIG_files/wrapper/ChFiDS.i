@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -293,6 +293,14 @@ class ChFiDS_ElSpine : public Adaptor3d_Curve {
 		%feature("autodoc", "	:rtype: float
 ") LastParameter;
 		virtual Standard_Real LastParameter ();
+		%feature("compactdefaultargs") GetSavedFirstParameter;
+		%feature("autodoc", "	:rtype: float
+") GetSavedFirstParameter;
+		Standard_Real GetSavedFirstParameter ();
+		%feature("compactdefaultargs") GetSavedLastParameter;
+		%feature("autodoc", "	:rtype: float
+") GetSavedLastParameter;
+		Standard_Real GetSavedLastParameter ();
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "	:rtype: GeomAbs_Shape
 ") Continuity;
@@ -409,6 +417,14 @@ class ChFiDS_ElSpine : public Adaptor3d_Curve {
 	:rtype: None
 ") LastParameter;
 		void LastParameter (const Standard_Real P);
+		%feature("compactdefaultargs") SaveFirstParameter;
+		%feature("autodoc", "	:rtype: None
+") SaveFirstParameter;
+		void SaveFirstParameter ();
+		%feature("compactdefaultargs") SaveLastParameter;
+		%feature("autodoc", "	:rtype: None
+") SaveLastParameter;
+		void SaveLastParameter ();
 		%feature("compactdefaultargs") SetOrigin;
 		%feature("autodoc", "	:param O:
 	:type O: float
@@ -431,6 +447,16 @@ class ChFiDS_ElSpine : public Adaptor3d_Curve {
 	:rtype: None
 ") LastPointAndTgt;
 		void LastPointAndTgt (gp_Pnt & P,gp_Vec & T);
+		%feature("compactdefaultargs") NbVertices;
+		%feature("autodoc", "	:rtype: int
+") NbVertices;
+		Standard_Integer NbVertices ();
+		%feature("compactdefaultargs") VertexWithTangent;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:rtype: gp_Ax1
+") VertexWithTangent;
+		const gp_Ax1  VertexWithTangent (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetFirstPointAndTgt;
 		%feature("autodoc", "	:param P:
 	:type P: gp_Pnt
@@ -447,6 +473,12 @@ class ChFiDS_ElSpine : public Adaptor3d_Curve {
 	:rtype: None
 ") SetLastPointAndTgt;
 		void SetLastPointAndTgt (const gp_Pnt & P,const gp_Vec & T);
+		%feature("compactdefaultargs") AddVertexWithTangent;
+		%feature("autodoc", "	:param anAx1:
+	:type anAx1: gp_Ax1
+	:rtype: None
+") AddVertexWithTangent;
+		void AddVertexWithTangent (const gp_Ax1 & anAx1);
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "	:param C:
 	:type C: Handle_Geom_Curve &
@@ -991,7 +1023,7 @@ class ChFiDS_IndexedDataMapOfVertexListOfStripe : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiDS_IndexedDataMapOfVertexListOfStripe &
 	:rtype: ChFiDS_IndexedDataMapOfVertexListOfStripe
-") operator=;
+") operator =;
 		ChFiDS_IndexedDataMapOfVertexListOfStripe & operator = (const ChFiDS_IndexedDataMapOfVertexListOfStripe & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1434,7 +1466,7 @@ class ChFiDS_ListOfHElSpine {
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiDS_ListOfHElSpine &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const ChFiDS_ListOfHElSpine & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1569,7 +1601,7 @@ class ChFiDS_ListOfStripe {
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiDS_ListOfStripe &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const ChFiDS_ListOfStripe & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1808,7 +1840,7 @@ class ChFiDS_Regularities {
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiDS_Regularities &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const ChFiDS_Regularities & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1965,7 +1997,7 @@ class ChFiDS_SecArray1 {
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiDS_SecArray1 &
 	:rtype: ChFiDS_SecArray1
-") operator=;
+") operator =;
 		const ChFiDS_SecArray1 & operator = (const ChFiDS_SecArray1 & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2297,7 +2329,7 @@ class ChFiDS_SequenceOfSpine : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiDS_SequenceOfSpine &
 	:rtype: ChFiDS_SequenceOfSpine
-") operator=;
+") operator =;
 		const ChFiDS_SequenceOfSpine & operator = (const ChFiDS_SequenceOfSpine & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2440,7 +2472,7 @@ class ChFiDS_SequenceOfSurfData : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiDS_SequenceOfSurfData &
 	:rtype: ChFiDS_SequenceOfSurfData
-") operator=;
+") operator =;
 		const ChFiDS_SequenceOfSurfData & operator = (const ChFiDS_SequenceOfSurfData & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -3405,7 +3437,7 @@ class ChFiDS_StripeArray1 {
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiDS_StripeArray1 &
 	:rtype: ChFiDS_StripeArray1
-") operator=;
+") operator =;
 		const ChFiDS_StripeArray1 & operator = (const ChFiDS_StripeArray1 & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int

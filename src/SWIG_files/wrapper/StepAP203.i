@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -192,7 +192,7 @@ class StepAP203_Array1OfApprovedItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP203_Array1OfApprovedItem &
 	:rtype: StepAP203_Array1OfApprovedItem
-") operator=;
+") operator =;
 		const StepAP203_Array1OfApprovedItem & operator = (const StepAP203_Array1OfApprovedItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -279,7 +279,7 @@ class StepAP203_Array1OfCertifiedItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP203_Array1OfCertifiedItem &
 	:rtype: StepAP203_Array1OfCertifiedItem
-") operator=;
+") operator =;
 		const StepAP203_Array1OfCertifiedItem & operator = (const StepAP203_Array1OfCertifiedItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -366,7 +366,7 @@ class StepAP203_Array1OfChangeRequestItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP203_Array1OfChangeRequestItem &
 	:rtype: StepAP203_Array1OfChangeRequestItem
-") operator=;
+") operator =;
 		const StepAP203_Array1OfChangeRequestItem & operator = (const StepAP203_Array1OfChangeRequestItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -453,7 +453,7 @@ class StepAP203_Array1OfClassifiedItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP203_Array1OfClassifiedItem &
 	:rtype: StepAP203_Array1OfClassifiedItem
-") operator=;
+") operator =;
 		const StepAP203_Array1OfClassifiedItem & operator = (const StepAP203_Array1OfClassifiedItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -540,7 +540,7 @@ class StepAP203_Array1OfContractedItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP203_Array1OfContractedItem &
 	:rtype: StepAP203_Array1OfContractedItem
-") operator=;
+") operator =;
 		const StepAP203_Array1OfContractedItem & operator = (const StepAP203_Array1OfContractedItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -627,7 +627,7 @@ class StepAP203_Array1OfDateTimeItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP203_Array1OfDateTimeItem &
 	:rtype: StepAP203_Array1OfDateTimeItem
-") operator=;
+") operator =;
 		const StepAP203_Array1OfDateTimeItem & operator = (const StepAP203_Array1OfDateTimeItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -714,7 +714,7 @@ class StepAP203_Array1OfPersonOrganizationItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP203_Array1OfPersonOrganizationItem &
 	:rtype: StepAP203_Array1OfPersonOrganizationItem
-") operator=;
+") operator =;
 		const StepAP203_Array1OfPersonOrganizationItem & operator = (const StepAP203_Array1OfPersonOrganizationItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -801,7 +801,7 @@ class StepAP203_Array1OfSpecifiedItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP203_Array1OfSpecifiedItem &
 	:rtype: StepAP203_Array1OfSpecifiedItem
-") operator=;
+") operator =;
 		const StepAP203_Array1OfSpecifiedItem & operator = (const StepAP203_Array1OfSpecifiedItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -888,7 +888,7 @@ class StepAP203_Array1OfStartRequestItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP203_Array1OfStartRequestItem &
 	:rtype: StepAP203_Array1OfStartRequestItem
-") operator=;
+") operator =;
 		const StepAP203_Array1OfStartRequestItem & operator = (const StepAP203_Array1OfStartRequestItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -975,7 +975,7 @@ class StepAP203_Array1OfWorkItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP203_Array1OfWorkItem &
 	:rtype: StepAP203_Array1OfWorkItem
-") operator=;
+") operator =;
 		const StepAP203_Array1OfWorkItem & operator = (const StepAP203_Array1OfWorkItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int

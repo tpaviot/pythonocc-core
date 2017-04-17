@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -322,8 +322,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Extrema_CurveTool.hxx>
 #include<Extrema_ECC.hxx>
 #include<Extrema_ECC2d.hxx>
-#include<Extrema_ELCC.hxx>
-#include<Extrema_ELCC2d.hxx>
 #include<Extrema_ElementType.hxx>
 #include<Extrema_ELPCOfLocateExtPC.hxx>
 #include<Extrema_ELPCOfLocateExtPC2d.hxx>
@@ -457,6 +455,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -466,6 +465,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -607,8 +607,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Approx_HArray1OfAdHSurface.hxx>
 #include<Approx_HArray1OfGTrsf2d.hxx>
 #include<Approx_MCurvesToBSpCurve.hxx>
-#include<Approx_MyLeastSquareOfFitAndDivide.hxx>
-#include<Approx_MyLeastSquareOfFitAndDivide2d.hxx>
 #include<Approx_ParametrizationType.hxx>
 #include<Approx_SameParameter.hxx>
 #include<Approx_SequenceNodeOfSequenceOfHArray1OfReal.hxx>
@@ -665,6 +663,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -674,6 +673,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>

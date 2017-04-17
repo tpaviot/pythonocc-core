@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -633,7 +633,7 @@ class TNaming_DataMapOfShapePtrRefShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TNaming_DataMapOfShapePtrRefShape &
 	:rtype: TNaming_DataMapOfShapePtrRefShape
-") operator=;
+") operator =;
 		TNaming_DataMapOfShapePtrRefShape & operator = (const TNaming_DataMapOfShapePtrRefShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -716,7 +716,7 @@ class TNaming_DataMapOfShapeShapesSet : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TNaming_DataMapOfShapeShapesSet &
 	:rtype: TNaming_DataMapOfShapeShapesSet
-") operator=;
+") operator =;
 		TNaming_DataMapOfShapeShapesSet & operator = (const TNaming_DataMapOfShapeShapesSet & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1500,7 +1500,7 @@ class TNaming_ListOfIndexedDataMapOfShapeListOfShape {
 		%feature("autodoc", "	:param Other:
 	:type Other: TNaming_ListOfIndexedDataMapOfShapeListOfShape &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TNaming_ListOfIndexedDataMapOfShapeListOfShape & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1635,7 +1635,7 @@ class TNaming_ListOfMapOfShape {
 		%feature("autodoc", "	:param Other:
 	:type Other: TNaming_ListOfMapOfShape &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TNaming_ListOfMapOfShape & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1770,7 +1770,7 @@ class TNaming_ListOfNamedShape {
 		%feature("autodoc", "	:param Other:
 	:type Other: TNaming_ListOfNamedShape &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TNaming_ListOfNamedShape & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -2053,7 +2053,7 @@ class TNaming_MapOfNamedShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TNaming_MapOfNamedShape &
 	:rtype: TNaming_MapOfNamedShape
-") operator=;
+") operator =;
 		TNaming_MapOfNamedShape & operator = (const TNaming_MapOfNamedShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2604,10 +2604,10 @@ class TNaming_NamingTool {
 	:param NS:
 	:type NS: Handle_TNaming_NamedShape &
 	:param MS:
-	:type MS: TopTools_MapOfShape &
+	:type MS: TopTools_IndexedMapOfShape &
 	:rtype: void
 ") CurrentShape;
-		static void CurrentShape (const TDF_LabelMap & Valid,const TDF_LabelMap & Forbiden,const Handle_TNaming_NamedShape & NS,TopTools_MapOfShape & MS);
+		static void CurrentShape (const TDF_LabelMap & Valid,const TDF_LabelMap & Forbiden,const Handle_TNaming_NamedShape & NS,TopTools_IndexedMapOfShape & MS);
 		%feature("compactdefaultargs") CurrentShapeFromShape;
 		%feature("autodoc", "	:param Valid:
 	:type Valid: TDF_LabelMap &
@@ -2618,10 +2618,10 @@ class TNaming_NamingTool {
 	:param S:
 	:type S: TopoDS_Shape &
 	:param MS:
-	:type MS: TopTools_MapOfShape &
+	:type MS: TopTools_IndexedMapOfShape &
 	:rtype: void
 ") CurrentShapeFromShape;
-		static void CurrentShapeFromShape (const TDF_LabelMap & Valid,const TDF_LabelMap & Forbiden,const TDF_Label & Acces,const TopoDS_Shape & S,TopTools_MapOfShape & MS);
+		static void CurrentShapeFromShape (const TDF_LabelMap & Valid,const TDF_LabelMap & Forbiden,const TDF_Label & Acces,const TopoDS_Shape & S,TopTools_IndexedMapOfShape & MS);
 		%feature("compactdefaultargs") BuildDescendants;
 		%feature("autodoc", "	:param NS:
 	:type NS: Handle_TNaming_NamedShape &
