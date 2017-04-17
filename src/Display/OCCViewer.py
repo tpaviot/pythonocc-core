@@ -20,7 +20,6 @@
 from __future__ import print_function
 
 import os
-import sys
 import math
 import itertools
 
@@ -54,6 +53,7 @@ from OCC.Aspect import Aspect_TOTP_RIGHT_LOWER
 # On Windows, the CSF_GraphicShr env variable must be set up
 # and point to the TKOpenGl.dll library.
 #
+import sys
 if sys.platform == "win32":  # all of this is win specific
     # if the CSF_GraphicShr variable is not set
     # it should point to the TKOpenGl.dll library that is shipped with pythonocc binary
@@ -109,6 +109,7 @@ class Viewer3d(OCC.Visualization.Display3d):
         self._struc_mgr = None
         self.selected_shapes = []
         self._select_callbacks = []
+        self._inited = False
 
     def register_select_callback(self, callback):
         """ Adds a callback that will be called each time a shape s selected
@@ -133,8 +134,40 @@ class Viewer3d(OCC.Visualization.Display3d):
         self.View.ZFitAll()
         self.View.FitAll()
 
-    def Create(self, create_default_lights=True, draw_face_boundaries=True, phong_shading=True):
-        self.Init(self._window_handle)
+    def Create(self,
+               draw_face_boundaries=True,
+               phong_shading=True,
+               create_default_lights=True,
+               ffpEnabled=True,
+               buffersNoSwapEnabled=False,
+               glslWarningsEnabled=False
+               ):
+
+
+        """
+
+        Parameters
+        ----------
+        draw_face_boundaries
+            draw the boundary edges of faces
+
+        phong_shading
+            performs phong normal interpolation of the mesh vertices
+            resulting in improved shading quality
+
+        create_default_lights
+
+        ffpEnabled
+            enables Shader rather than Fixed Function Pipeline
+
+
+        buffersNoSwapEnabled
+
+        glslWarningsEnabled
+            output shader compilation issues to stdout
+
+        """
+        self.Init(self._window_handle, ffpEnabled, buffersNoSwapEnabled, glslWarningsEnabled)
         self.Context_handle = self.GetContext()
         self.Viewer_handle = self.GetViewer()
         self.View_handle = self.GetView()
@@ -245,8 +278,12 @@ class Viewer3d(OCC.Visualization.Display3d):
         """ set a bg vertical gradient color.
         R, G and B are floats.
         """
-        aColor1 = rgb_color(float(R1)/255., float(G1)/255., float(B1)/255.)
-        aColor2 = rgb_color(float(R2)/255., float(G2)/255., float(B2)/255.)
+        aColor1 = Quantity_Color(float(R1)/255.,
+                                 float(G1)/255.,
+                                 float(B1)/255., Quantity_TOC_RGB)
+        aColor2 = Quantity_Color(float(R2)/255.,
+                                 float(G2)/255.,
+                                 float(B2)/255., Quantity_TOC_RGB)
         self.View.SetBgGradientColors(aColor1, aColor2, 2, True)
 
     def SetBackgroundImage(self, image_filename, stretch=True):
@@ -443,6 +480,7 @@ class Viewer3d(OCC.Visualization.Display3d):
         self.Repaint()
 
     def EraseAll(self):
+        self._objects_displayed = []
         # nessecary to remove text added by DisplayMessage
         self.Context.PurgeDisplay()
         self.Context.EraseAll()

@@ -39,17 +39,47 @@
   #include <Xw_Window.hxx>
 #endif
 
+#include <Graphic3d_RenderingMode.hxx>
+
 class Display3d 
 {	
 public:
 	Standard_EXPORT Display3d();
 	Standard_EXPORT virtual ~Display3d();
-	Standard_EXPORT void Init(long window_handle);
+	Standard_EXPORT void Init(long window_handle,
+                              bool ffpEnabled=false,
+                              bool buffersNoSwapEnabled=false,
+                              bool glslWarningsEnabled=true);
+
 	Standard_EXPORT Handle_V3d_View& GetView() {return myV3dView;};
 	Standard_EXPORT Handle_V3d_Viewer& GetViewer() {return myV3dViewer;};
 	Standard_EXPORT Handle_AIS_InteractiveContext GetContext() {return myAISContext;};
 	Standard_EXPORT void Test();
-    
+
+//    Standard_EXPORT void ChangeRenderingParams( // Specifies rendering mode
+//                                                // - Graphic3d_RM_RASTERIZATION: enables OpenGL rasterization mode;
+//                                                // - Graphic3d_RM_RAYTRACING: enables GPU ray-tracing mode.
+//                                                int RenderingMethod,
+//                                                // Maximum ray-tracing depth.
+//                                                int RaytracingDepth,
+//                                                // Enables/disables shadows rendering.
+//                                                bool IsShadowEnabled,
+//                                                // Enables/disables specular reflections.
+//                                                bool IsReflectionEnabled,
+//                                                // Enables/disables adaptive anti-aliasing.
+//                                                bool IsAntialiasingEnabled,
+//                                                // Enables/disables light propagation through transparent media.
+//                                                bool IsTransparentShadowEnabled);
+//{
+//  GetView()->ChangeRenderingParams().Method = RenderingMethod;
+//  GetView()->ChangeRenderingParams().RaytracingDepth = RaytracingDepth;
+//  GetView()->ChangeRenderingParams().IsShadowEnabled = IsShadowEnabled;
+//  GetView()->ChangeRenderingParams().IsReflectionEnabled = IsReflectionEnabled;
+//  GetView()->ChangeRenderingParams().IsAntialiasingEnabled = IsAntialiasingEnabled;
+//  GetView()->ChangeRenderingParams().IsTransparentShadowEnabled = IsTransparentShadowEnabled;
+//}
+
+
 protected:
    Handle_AIS_InteractiveContext myAISContext;
    Handle_V3d_Viewer myV3dViewer;
