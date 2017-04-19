@@ -211,12 +211,18 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 )
 
 LIST(APPEND OCE_TOOLKIT_VISUALIZATION
+# TKVoxel
+        Voxel
+# TKMeshVS
+        MeshVS
 # TKService
         Aspect
         SelectBasics
         Image
         InterfaceGraphic
         TColQuantity
+# TKNIS
+        NIS
 # TKV3d
         V3d
         Graphic3d
@@ -229,25 +235,16 @@ LIST(APPEND OCE_TOOLKIT_VISUALIZATION
         AIS
         DsgPrs
         StdSelect
-# TKMeshVS
-        MeshVS
         )
 
 LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
-# TKSTL
-        StlMesh
-        StlAPI
-        StlTransfer
-        RWStl
-# TKSTEPBase
-        StepBasic
-        RWStepBasic
-        StepRepr
-        RWStepRepr
-        StepGeom
-        RWStepGeom
-        StepShape
-        RWStepShape
+# TKIGES
+        IGESControl
+# TKSTEPAttr
+        RWStepDimTol
+        RWStepVisual
+        StepDimTol
+        StepVisual
 # TKSTEP
         StepAP214
         RWStepAP214
@@ -262,8 +259,25 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
         STEPControl
         STEPSelections
         StepAP209
-# TKIGES
-        IGESControl
+# TKSTEP209
+        RWStepElement
+        RWStepFEA
+        StepElement
+        StepFEA
+# TKSTL
+        StlMesh
+        StlAPI
+        StlTransfer
+        RWStl
+# TKSTEPBase
+        StepBasic
+        RWStepBasic
+        StepRepr
+        RWStepRepr
+        StepGeom
+        RWStepGeom
+        StepShape
+        RWStepShape
 # TKXSBase
         Interface
         IFSelect
@@ -282,6 +296,11 @@ LIST(APPEND OCE_TOOLKIT_OCAF
         TFunction
         TDocStd
         AppStdL
+# TKCDF
+        CDF
+        CDM
+        PCDM
+        UTL
 # TKXCAF
         XCAFApp
         XCAFDoc
