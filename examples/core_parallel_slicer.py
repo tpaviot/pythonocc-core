@@ -67,7 +67,6 @@ def vectorized_slicer(li):
         section.Build()
         if section.IsDone():
             _slices.append(section.Shape())
-        section.Destroy()
     return _slices
 
 
