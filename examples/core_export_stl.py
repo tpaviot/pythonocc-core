@@ -29,9 +29,6 @@ stl_output_dir = os.path.abspath(os.path.join(directory, "models"))
 assert os.path.isdir(stl_output_dir)
 stl_output_file = os.path.join(stl_output_dir, "box.stl")
 
-# its advisable to write binary STL files, this result in a
-# file size reduction of ~10*
-stl_ascii_format = False
-
-stl_export = StlAPI_Writer()
-stl_export.Write(my_box, stl_output_file, stl_ascii_format)
+stl_exporter = StlAPI_Writer()
+stl_exporter.SetASCIIMode(True)  # change to False if you need binary export
+stl_exporter.Write(my_box, stl_output_file)
