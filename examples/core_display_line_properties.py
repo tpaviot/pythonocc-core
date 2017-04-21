@@ -23,9 +23,9 @@ import sys
 
 from OCC.gp import gp_Pnt, gp_Dir
 from OCC.Geom import Geom_Line
-from OCC.AIS import AIS_Line, AIS_Drawer
+from OCC.AIS import AIS_Line
 from OCC.Quantity import Quantity_NOC_RED
-from OCC.Prs3d import (Prs3d_LineAspect)
+from OCC.Prs3d import (Prs3d_LineAspect, Prs3d_Drawer)
 from OCC.Aspect import Aspect_TOL_DASH
 
 from OCC.Display.SimpleGui import init_display
@@ -46,9 +46,8 @@ def line():
     # but actually we need to edit more, not just color. Line width and style as well
     # To do that, we need to do use AIS_Drawer and apply it to ais_line1
     width = 1.0
-    drawer = AIS_Drawer()
+    drawer = Prs3d_Drawer()
     asp = Prs3d_LineAspect(Quantity_NOC_RED, Aspect_TOL_DASH, width)
-    drawer.SetLineAspect(asp.GetHandle())
     ais_line1.SetAttributes(drawer.GetHandle())
 
     display.Context.Display(ais_line1.GetHandle(), False)
@@ -59,10 +58,9 @@ def line():
         line2 = Geom_Line(p2, d2)
 
         ais_line2 = AIS_Line(line2.GetHandle())
-        #  ais_line2.SetColor(Quantity_NOC_RED)
-
+    
         width = float(i)
-        drawer = AIS_Drawer()
+        drawer = ais_line2.Attributes().GetObject()
         asp = Prs3d_LineAspect(9*i, i, width)
         drawer.SetLineAspect(asp.GetHandle())
         ais_line2.SetAttributes(drawer.GetHandle())
