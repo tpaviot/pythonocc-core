@@ -53,7 +53,7 @@ aProgram.AttachShader(fs_shader)
 aProgram.AttachShader(vs_shader)
 
 # attach the shader to the AIS_Shape representation that renders the sphere
-aspect = anIO.Attributes().GetObject().ShadingAspect().GetObject().aspect().GetObject()
+aspect = anIO.Attributes().GetObject().ShadingAspect().GetObject().Aspect().GetObject()
 
 if aProgram.IsDone():
     aspect.SetShaderProgram(aProgram.GetHandle())
