@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -382,7 +382,7 @@ class Geom2d_Transformation : public MMgt_TShared {
 		%feature("autodoc", "	:param Other:
 	:type Other: Handle_Geom2d_Transformation &
 	:rtype: Handle_Geom2d_Transformation
-") operator*;
+") operator *;
 		Handle_Geom2d_Transformation operator * (const Handle_Geom2d_Transformation & Other);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Computes the transformation composed with Other and <self> . <self> = <self> * Other. //! Computes the following composition of transformations if N > 0 <self> * <self> * .......* <self>. if N = 0 Identity if N < 0 <self>.Invert() * .........* <self>.Invert()
@@ -396,7 +396,7 @@ class Geom2d_Transformation : public MMgt_TShared {
 		%feature("autodoc", "	:param Other:
 	:type Other: Handle_Geom2d_Transformation &
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Handle_Geom2d_Transformation & Other);
 		%feature("compactdefaultargs") Power;
 		%feature("autodoc", "	* Raised if N < 0 and if the transformation is not inversible
@@ -1528,7 +1528,7 @@ class Geom2d_Direction : public Geom2d_Vector {
 		%feature("autodoc", "	:param Other:
 	:type Other: Handle_Geom2d_Vector &
 	:rtype: float
-") operator^;
+") operator ^;
 		Standard_Real operator ^ (const Handle_Geom2d_Vector & Other);
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "	* Applies the transformation T to this unit vector, then normalizes it.
@@ -1893,15 +1893,17 @@ class Handle_Geom2d_Line : public Handle_Geom2d_Curve {
 class Geom2d_OffsetCurve : public Geom2d_Curve {
 	public:
 		%feature("compactdefaultargs") Geom2d_OffsetCurve;
-		%feature("autodoc", "	* Constructs a curve offset from the basis curve C, where Offset is the distance between the offset curve and the basis curve at any point. A point on the offset curve is built by measuring the offset value along a normal vector at a point on C. This normal vector is obtained by rotating the vector tangential to C at 90 degrees in the anti-trigonometric sense. The side of C on which the offset value is measured is indicated by this normal vector if Offset is positive, or in the inverse sense if Offset is negative. Warnings : In this package the entities are not shared. The OffsetCurve is built with a copy of the curve C. So when C is modified the OffsetCurve is not modified Warning! ConstructionError raised if the basis curve C is not at least C1. No check is done to know if ||V^Z|| != 0.0 at any point.
+		%feature("autodoc", "	* Constructs a curve offset from the basis curve C, where Offset is the distance between the offset curve and the basis curve at any point. A point on the offset curve is built by measuring the offset value along a normal vector at a point on C. This normal vector is obtained by rotating the vector tangential to C at 90 degrees in the anti-trigonometric sense. The side of C on which the offset value is measured is indicated by this normal vector if Offset is positive, or in the inverse sense if Offset is negative. If isNotCheckC0 = True checking if basis curve has C0-continuity is not made. Warnings : In this package the entities are not shared. The OffsetCurve is built with a copy of the curve C. So when C is modified the OffsetCurve is not modified Warning! if isNotCheckC0 = false, ConstructionError raised if the basis curve C is not at least C1. No check is done to know if ||V^Z|| != 0.0 at any point.
 
 	:param C:
 	:type C: Handle_Geom2d_Curve &
 	:param Offset:
 	:type Offset: float
+	:param isNotCheckC0: default value is Standard_False
+	:type isNotCheckC0: bool
 	:rtype: None
 ") Geom2d_OffsetCurve;
-		 Geom2d_OffsetCurve (const Handle_Geom2d_Curve & C,const Standard_Real Offset);
+		 Geom2d_OffsetCurve (const Handle_Geom2d_Curve & C,const Standard_Real Offset,const Standard_Boolean isNotCheckC0 = Standard_False);
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "	* Changes the direction of parametrization of <self>. As a result: - the basis curve is reversed, - the start point of the initial curve becomes the end point of the reversed curve, - the end point of the initial curve becomes the start point of the reversed curve, and - the first and last parameters are recomputed.
 
@@ -1917,13 +1919,15 @@ class Geom2d_OffsetCurve : public Geom2d_Curve {
 ") ReversedParameter;
 		Standard_Real ReversedParameter (const Standard_Real U);
 		%feature("compactdefaultargs") SetBasisCurve;
-		%feature("autodoc", "	* Changes this offset curve by assigning C as the basis curve from which it is built. Exceptions Standard_ConstructionError if the curve C is not at least 'C1' continuous.
+		%feature("autodoc", "	* Changes this offset curve by assigning C as the basis curve from which it is built. If isNotCheckC0 = True checking if basis curve has C0-continuity is not made. Exceptions if isNotCheckC0 = false, Standard_ConstructionError if the curve C is not at least 'C1' continuous.
 
 	:param C:
 	:type C: Handle_Geom2d_Curve &
+	:param isNotCheckC0: default value is Standard_False
+	:type isNotCheckC0: bool
 	:rtype: None
 ") SetBasisCurve;
-		void SetBasisCurve (const Handle_Geom2d_Curve & C);
+		void SetBasisCurve (const Handle_Geom2d_Curve & C,const Standard_Boolean isNotCheckC0 = Standard_False);
 		%feature("compactdefaultargs") SetOffsetValue;
 		%feature("autodoc", "	* Changes this offset curve by assigning D as the offset value.
 
@@ -2134,6 +2138,12 @@ class Geom2d_OffsetCurve : public Geom2d_Curve {
 	:rtype: Handle_Geom2d_Geometry
 ") Copy;
 		Handle_Geom2d_Geometry Copy ();
+		%feature("compactdefaultargs") GetBasisCurveContinuity;
+		%feature("autodoc", "	* Returns continuity of the basis curve.
+
+	:rtype: GeomAbs_Shape
+") GetBasisCurveContinuity;
+		GeomAbs_Shape GetBasisCurveContinuity ();
 };
 
 
@@ -2275,7 +2285,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "	:param Other:
 	:type Other: Handle_Geom2d_Vector &
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const Handle_Geom2d_Vector & Other);
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* Adds the vector Other to <self>.
@@ -2289,7 +2299,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "	:param Other:
 	:type Other: Handle_Geom2d_Vector &
 	:rtype: Handle_Geom2d_VectorWithMagnitude
-") operator+;
+") operator +;
 		Handle_Geom2d_VectorWithMagnitude operator + (const Handle_Geom2d_Vector & Other);
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "	* Computes the cross product between <self> and Other <self> ^ Other. A new vector is returned.
@@ -2303,7 +2313,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "	:param Other:
 	:type Other: Handle_Geom2d_Vector &
 	:rtype: float
-") operator^;
+") operator ^;
 		Standard_Real operator ^ (const Handle_Geom2d_Vector & Other);
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "	* Divides <self> by a scalar.
@@ -2317,7 +2327,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator/=;
+") operator /=;
 		void operator /= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* Divides <self> by a scalar. A new vector is returned.
@@ -2331,7 +2341,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: Handle_Geom2d_VectorWithMagnitude
-") operator/;
+") operator /;
 		Handle_Geom2d_VectorWithMagnitude operator / (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* Computes the product of the vector <self> by a scalar. A new vector is returned. //! -C++: alias operator * Collision with same operator defined for the class Vector!
@@ -2353,7 +2363,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "	:param Scalar:
 	:type Scalar: float
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Standard_Real Scalar);
 		%feature("compactdefaultargs") Normalize;
 		%feature("autodoc", "	* Normalizes <self>. //! Raised if the magnitude of the vector is lower or equal to Resolution from package gp.
@@ -2379,7 +2389,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "	:param Other:
 	:type Other: Handle_Geom2d_Vector &
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const Handle_Geom2d_Vector & Other);
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* Subtracts the vector Other to <self>. A new vector is returned.
@@ -2393,7 +2403,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "	:param Other:
 	:type Other: Handle_Geom2d_Vector &
 	:rtype: Handle_Geom2d_VectorWithMagnitude
-") operator-;
+") operator -;
 		Handle_Geom2d_VectorWithMagnitude operator - (const Handle_Geom2d_Vector & Other);
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "	* Applies the transformation T to this vector.
@@ -2772,6 +2782,18 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:rtype: bool
 ") IsCN;
 		Standard_Boolean IsCN (const Standard_Integer N);
+		%feature("compactdefaultargs") IsG1;
+		%feature("autodoc", "	* Check if curve has at least G1 continuity in interval [theTf, theTl] Returns true if IsCN(1) or angle betweem 'left' and 'right' first derivatives at knots with C0 continuity is less then theAngTol only knots in interval [theTf, theTl] is checked
+
+	:param theTf:
+	:type theTf: float
+	:param theTl:
+	:type theTl: float
+	:param theAngTol:
+	:type theAngTol: float
+	:rtype: bool
+") IsG1;
+		Standard_Boolean IsG1 (const Standard_Real theTf,const Standard_Real theTl,const Standard_Real theAngTol);
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "	* Returns true if the distance between the first point and the last point of the curve is lower or equal to Resolution from package gp. Warnings : The first and the last point can be different from the first pole and the last pole of the curve.
 
@@ -2988,6 +3010,12 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:rtype: None
 ") Knots;
 		void Knots (TColStd_Array1OfReal & K);
+		%feature("compactdefaultargs") Knots;
+		%feature("autodoc", "	* returns the knot values of the B-spline curve;
+
+	:rtype: TColStd_Array1OfReal
+") Knots;
+		const TColStd_Array1OfReal & Knots ();
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "	* Returns the knots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : K = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of K is not equal to NbPoles + Degree + 1
 
@@ -2996,6 +3024,12 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:rtype: None
 ") KnotSequence;
 		void KnotSequence (TColStd_Array1OfReal & K);
+		%feature("compactdefaultargs") KnotSequence;
+		%feature("autodoc", "	* Returns the knots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : K = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+
+	:rtype: TColStd_Array1OfReal
+") KnotSequence;
+		const TColStd_Array1OfReal & KnotSequence ();
 		%feature("compactdefaultargs") KnotDistribution;
 		%feature("autodoc", "	* Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the knots differ by a positive constant from the preceding knot the BSpline Curve can be : - Uniform if all the knots are of multiplicity 1, - QuasiUniform if all the knots are of multiplicity 1 except for the first and last knot which are of multiplicity Degree + 1, - PiecewiseBezier if the first and last knots have multiplicity Degree + 1 and if interior knots have multiplicity Degree A piecewise Bezier with only two knots is a BezierCurve. else the curve is non uniform. The tolerance criterion is Epsilon from class Real.
 
@@ -3046,6 +3080,12 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:rtype: None
 ") Multiplicities;
 		void Multiplicities (TColStd_Array1OfInteger & M);
+		%feature("compactdefaultargs") Multiplicities;
+		%feature("autodoc", "	* returns the multiplicity of the knots of the curve.
+
+	:rtype: TColStd_Array1OfInteger
+") Multiplicities;
+		const TColStd_Array1OfInteger & Multiplicities ();
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "	* Returns the number of knots. This method returns the number of knot without repetition of multiple knots.
 
@@ -3074,6 +3114,12 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:rtype: None
 ") Poles;
 		void Poles (TColgp_Array1OfPnt2d & P);
+		%feature("compactdefaultargs") Poles;
+		%feature("autodoc", "	* Returns the poles of the B-spline curve;
+
+	:rtype: TColgp_Array1OfPnt2d
+") Poles;
+		const TColgp_Array1OfPnt2d & Poles ();
 		%feature("compactdefaultargs") StartPoint;
 		%feature("autodoc", "	* Returns the start point of the curve. Warnings : This point is different from the first pole of the curve if the multiplicity of the first knot is lower than Degree.
 
@@ -3096,6 +3142,12 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:rtype: None
 ") Weights;
 		void Weights (TColStd_Array1OfReal & W);
+		%feature("compactdefaultargs") Weights;
+		%feature("autodoc", "	* Returns the weights of the B-spline curve;
+
+	:rtype: TColStd_Array1OfReal
+") Weights;
+		const TColStd_Array1OfReal & Weights ();
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "	* Applies the transformation T to this BSpline curve.
 
@@ -4635,7 +4687,7 @@ class Handle_Geom2d_Parabola : public Handle_Geom2d_Conic {
 class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 	public:
 		%feature("compactdefaultargs") Geom2d_TrimmedCurve;
-		%feature("autodoc", "	* Creates a trimmed curve from the basis curve C limited between U1 and U2. //! . U1 can be greater or lower than U2. . The returned curve is oriented from U1 to U2. . If the basis curve C is periodic there is an ambiguity because two parts are available. In this case by default the trimmed curve has the same orientation as the basis curve (Sense = True). If Sense = False then the orientation of the trimmed curve is opposite to the orientation of the basis curve C. If the curve is closed but not periodic it is not possible to keep the part of the curve including the junction point (except if the junction point is at the beginning or at the end of the trimmed curve) because you could lose the fundamental characteristics of the basis curve which are used for example to compute the derivatives of the trimmed curve. So for a closed curve the rules are the same as for a open curve. Warnings : In this package the entities are not shared. The TrimmedCurve is built with a copy of the curve C. So when C is modified the TrimmedCurve is not modified Warnings : If <C> is periodic, parametrics bounds of the TrimmedCurve, can be different to [<U1>;<U2>}, if <U1> or <U2> are not in the principal period. Include : For more explanation see the scheme given with this class. Raises ConstructionError the C is not periodic and U1 or U2 are out of the bounds of C. Raised if U1 = U2.
+		%feature("autodoc", "	* Creates a trimmed curve from the basis curve C limited between U1 and U2. //! . U1 can be greater or lower than U2. . The returned curve is oriented from U1 to U2. . If the basis curve C is periodic there is an ambiguity because two parts are available. In this case by default the trimmed curve has the same orientation as the basis curve (Sense = True). If Sense = False then the orientation of the trimmed curve is opposite to the orientation of the basis curve C. If the curve is closed but not periodic it is not possible to keep the part of the curve including the junction point (except if the junction point is at the beginning or at the end of the trimmed curve) because you could lose the fundamental characteristics of the basis curve which are used for example to compute the derivatives of the trimmed curve. So for a closed curve the rules are the same as for a open curve. Warnings : In this package the entities are not shared. The TrimmedCurve is built with a copy of the curve C. So when C is modified the TrimmedCurve is not modified Warnings : If <C> is periodic and <theAdjustPeriodic> is True, parametrics bounds of the TrimmedCurve, can be different to [<U1>;<U2>}, if <U1> or <U2> are not in the principal period. Include : For more explanation see the scheme given with this class. Raises ConstructionError the C is not periodic and U1 or U2 are out of the bounds of C. Raised if U1 = U2.
 
 	:param C:
 	:type C: Handle_Geom2d_Curve &
@@ -4645,9 +4697,11 @@ class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 	:type U2: float
 	:param Sense: default value is Standard_True
 	:type Sense: bool
+	:param theAdjustPeriodic: default value is Standard_True
+	:type theAdjustPeriodic: bool
 	:rtype: None
 ") Geom2d_TrimmedCurve;
-		 Geom2d_TrimmedCurve (const Handle_Geom2d_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Boolean Sense = Standard_True);
+		 Geom2d_TrimmedCurve (const Handle_Geom2d_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Boolean Sense = Standard_True,const Standard_Boolean theAdjustPeriodic = Standard_True);
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "	* Changes the direction of parametrization of <self>. The first and the last parametric values are modified. The 'StartPoint' of the initial curve becomes the 'EndPoint' of the reversed curve and the 'EndPoint' of the initial curve becomes the 'StartPoint' of the reversed curve. Example - If the trimmed curve is defined by: - a basis curve whose parameter range is [ 0.,1. ], and - the two trim values U1 (first parameter) and U2 (last parameter), the reversed trimmed curve is defined by: - the reversed basis curve, whose parameter range is still [ 0.,1. ], and - the two trim values 1. - U2 (first parameter) and 1. - U1 (last parameter).
 
@@ -4663,7 +4717,7 @@ class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 ") ReversedParameter;
 		Standard_Real ReversedParameter (const Standard_Real U);
 		%feature("compactdefaultargs") SetTrim;
-		%feature("autodoc", "	* Changes this trimmed curve, by redefining the parameter values U1 and U2, which limit its basis curve. Note: If the basis curve is periodic, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. Warning If the basis curve is periodic, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. Exceptions Standard_ConstructionError if: - the basis curve is not periodic, and either U1 or U2 are outside the bounds of the basis curve, or - U1 is equal to U2.
+		%feature("autodoc", "	* Changes this trimmed curve, by redefining the parameter values U1 and U2, which limit its basis curve. Note: If the basis curve is periodic, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. Warning If the basis curve is periodic and theAdjustPeriodic is True, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. If theAdjustPeriodic is False, parameters U1 and U2 will stay unchanged. Exceptions Standard_ConstructionError if: - the basis curve is not periodic, and either U1 or U2 are outside the bounds of the basis curve, or - U1 is equal to U2.
 
 	:param U1:
 	:type U1: float
@@ -4671,9 +4725,11 @@ class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 	:type U2: float
 	:param Sense: default value is Standard_True
 	:type Sense: bool
+	:param theAdjustPeriodic: default value is Standard_True
+	:type theAdjustPeriodic: bool
 	:rtype: None
 ") SetTrim;
-		void SetTrim (const Standard_Real U1,const Standard_Real U2,const Standard_Boolean Sense = Standard_True);
+		void SetTrim (const Standard_Real U1,const Standard_Real U2,const Standard_Boolean Sense = Standard_True,const Standard_Boolean theAdjustPeriodic = Standard_True);
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "	* Returns the basis curve. Warning This function does not return a constant reference. Consequently, any modification of the returned value directly modifies the trimmed curve.
 

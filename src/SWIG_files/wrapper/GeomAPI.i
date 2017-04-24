@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -160,7 +160,7 @@ class GeomAPI_ExtremaCurveCurve {
 		Standard_Integer NbExtrema ();
 		%feature("compactdefaultargs") operator Standard_Integer;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Integer;
+") operator Standard_Integer;
 		 operator Standard_Integer ();
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "	* Returns the points P1 on the first curve and P2 on the second curve, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
@@ -222,7 +222,7 @@ class GeomAPI_ExtremaCurveCurve {
 		Quantity_Length LowerDistance ();
 		%feature("compactdefaultargs") operator Standard_Real;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Real;
+") operator Standard_Real;
 		 operator Standard_Real ();
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "	* return the algorithmic object from Extrema
@@ -345,7 +345,7 @@ class GeomAPI_ExtremaCurveSurface {
 		Standard_Integer NbExtrema ();
 		%feature("compactdefaultargs") operator Standard_Integer;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Integer;
+") operator Standard_Integer;
 		 operator Standard_Integer ();
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "	* Returns the points P1 on the curve and P2 on the surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
@@ -411,7 +411,7 @@ class GeomAPI_ExtremaCurveSurface {
 		Quantity_Length LowerDistance ();
 		%feature("compactdefaultargs") operator Standard_Real;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Real;
+") operator Standard_Real;
 		 operator Standard_Real ();
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "	* Missing detailed docstringic object from Extrema
@@ -516,7 +516,7 @@ class GeomAPI_ExtremaSurfaceSurface {
 		Standard_Integer NbExtrema ();
 		%feature("compactdefaultargs") operator Standard_Integer;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Integer;
+") operator Standard_Integer;
 		 operator Standard_Integer ();
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "	* Returns the points P1 on the first surface and P2 on the second surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
@@ -586,7 +586,7 @@ class GeomAPI_ExtremaSurfaceSurface {
 		Quantity_Length LowerDistance ();
 		%feature("compactdefaultargs") operator Standard_Real;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Real;
+") operator Standard_Real;
 		 operator Standard_Real ();
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "	* return the algorithmic object from Extrema
@@ -1316,7 +1316,7 @@ class GeomAPI_ProjectPointOnCurve {
 		Standard_Integer NbPoints ();
 		%feature("compactdefaultargs") operator Standard_Integer;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Integer;
+") operator Standard_Integer;
 		 operator Standard_Integer ();
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	* Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
@@ -1360,7 +1360,7 @@ class GeomAPI_ProjectPointOnCurve {
 		gp_Pnt NearestPoint ();
 		%feature("compactdefaultargs") operator gp_Pnt;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Pnt;
+") operator gp_Pnt;
 		 operator gp_Pnt ();
 		%feature("compactdefaultargs") LowerDistanceParameter;
 		%feature("autodoc", "	* Returns the parameter on the curve of the nearest orthogonal projection of the point. Exceptions: StdFail_NotDone if this algorithm fails.
@@ -1376,7 +1376,7 @@ class GeomAPI_ProjectPointOnCurve {
 		Quantity_Length LowerDistance ();
 		%feature("compactdefaultargs") operator Standard_Real;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Real;
+") operator Standard_Real;
 		 operator Standard_Real ();
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "	* return the algorithmic object from Extrema
@@ -1585,7 +1585,7 @@ class GeomAPI_ProjectPointOnSurf {
 		Standard_Integer NbPoints ();
 		%feature("compactdefaultargs") operator Standard_Integer;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Integer;
+") operator Standard_Integer;
 		 operator Standard_Integer ();
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	* Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
@@ -1623,7 +1623,7 @@ class GeomAPI_ProjectPointOnSurf {
 		gp_Pnt NearestPoint ();
 		%feature("compactdefaultargs") operator gp_Pnt;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Pnt;
+") operator gp_Pnt;
 		 operator gp_Pnt ();
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "	* Returns the parameters (U,V) on the surface of the nearest computed orthogonal projection of the point. Exceptions StdFail_NotDone if projection fails.
@@ -1643,7 +1643,7 @@ class GeomAPI_ProjectPointOnSurf {
 		Quantity_Length LowerDistance ();
 		%feature("compactdefaultargs") operator Standard_Real;
 		%feature("autodoc", "	:rtype: 
-") operatorStandard_Real;
+") operator Standard_Real;
 		 operator Standard_Real ();
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "	* return the algorithmic object from Extrema

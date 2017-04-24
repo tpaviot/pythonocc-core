@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -673,7 +673,7 @@ class LocOpe_DataMapOfShapePnt : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: LocOpe_DataMapOfShapePnt &
 	:rtype: LocOpe_DataMapOfShapePnt
-") operator=;
+") operator =;
 		LocOpe_DataMapOfShapePnt & operator = (const LocOpe_DataMapOfShapePnt & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1659,7 +1659,7 @@ class LocOpe_SequenceOfCirc : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: LocOpe_SequenceOfCirc &
 	:rtype: LocOpe_SequenceOfCirc
-") operator=;
+") operator =;
 		const LocOpe_SequenceOfCirc & operator = (const LocOpe_SequenceOfCirc & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1802,7 +1802,7 @@ class LocOpe_SequenceOfLin : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: LocOpe_SequenceOfLin &
 	:rtype: LocOpe_SequenceOfLin
-") operator=;
+") operator =;
 		const LocOpe_SequenceOfLin & operator = (const LocOpe_SequenceOfLin & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1945,7 +1945,7 @@ class LocOpe_SequenceOfPntFace : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: LocOpe_SequenceOfPntFace &
 	:rtype: LocOpe_SequenceOfPntFace
-") operator=;
+") operator =;
 		const LocOpe_SequenceOfPntFace & operator = (const LocOpe_SequenceOfPntFace & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

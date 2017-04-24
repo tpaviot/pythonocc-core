@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -24,6 +24,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<ShapeCustom_Curve.hxx>
 #include<ShapeCustom_Curve2d.hxx>
 #include<ShapeCustom_DirectModification.hxx>
+#include<ShapeCustom_Modification.hxx>
 #include<ShapeCustom_RestrictionParameters.hxx>
 #include<ShapeCustom_Surface.hxx>
 #include<ShapeCustom_SweptToElementary.hxx>
@@ -294,81 +295,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Geom_UndefinedValue.hxx>
 #include<Geom_Vector.hxx>
 #include<Geom_VectorWithMagnitude.hxx>
-#include<TopLoc_Datum3D.hxx>
-#include<TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
-#include<TopLoc_IndexedMapOfLocation.hxx>
-#include<TopLoc_ItemLocation.hxx>
-#include<TopLoc_Location.hxx>
-#include<TopLoc_MapIteratorOfMapOfLocation.hxx>
-#include<TopLoc_MapLocationHasher.hxx>
-#include<TopLoc_MapOfLocation.hxx>
-#include<TopLoc_SListNodeOfItemLocation.hxx>
-#include<TopLoc_SListOfItemLocation.hxx>
-#include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#include<TopLoc_TrsfPtr.hxx>
-#include<gp.hxx>
-#include<gp_Ax1.hxx>
-#include<gp_Ax2.hxx>
-#include<gp_Ax22d.hxx>
-#include<gp_Ax2d.hxx>
-#include<gp_Ax3.hxx>
-#include<gp_Circ.hxx>
-#include<gp_Circ2d.hxx>
-#include<gp_Cone.hxx>
-#include<gp_Cylinder.hxx>
-#include<gp_Dir.hxx>
-#include<gp_Dir2d.hxx>
-#include<gp_Elips.hxx>
-#include<gp_Elips2d.hxx>
-#include<gp_EulerSequence.hxx>
-#include<gp_GTrsf.hxx>
-#include<gp_GTrsf2d.hxx>
-#include<gp_Hypr.hxx>
-#include<gp_Hypr2d.hxx>
-#include<gp_Lin.hxx>
-#include<gp_Lin2d.hxx>
-#include<gp_Mat.hxx>
-#include<gp_Mat2d.hxx>
-#include<gp_Parab.hxx>
-#include<gp_Parab2d.hxx>
-#include<gp_Pln.hxx>
-#include<gp_Pnt.hxx>
-#include<gp_Pnt2d.hxx>
-#include<gp_Quaternion.hxx>
-#include<gp_QuaternionNLerp.hxx>
-#include<gp_QuaternionSLerp.hxx>
-#include<gp_Sphere.hxx>
-#include<gp_Torus.hxx>
-#include<gp_Trsf.hxx>
-#include<gp_Trsf2d.hxx>
-#include<gp_TrsfForm.hxx>
-#include<gp_Vec.hxx>
-#include<gp_Vec2d.hxx>
-#include<gp_VectorWithNullMagnitude.hxx>
-#include<gp_XY.hxx>
-#include<gp_XYZ.hxx>
-#include<Geom2d_AxisPlacement.hxx>
-#include<Geom2d_BezierCurve.hxx>
-#include<Geom2d_BoundedCurve.hxx>
-#include<Geom2d_BSplineCurve.hxx>
-#include<Geom2d_CartesianPoint.hxx>
-#include<Geom2d_Circle.hxx>
-#include<Geom2d_Conic.hxx>
-#include<Geom2d_Curve.hxx>
-#include<Geom2d_Direction.hxx>
-#include<Geom2d_Ellipse.hxx>
-#include<Geom2d_Geometry.hxx>
-#include<Geom2d_Hyperbola.hxx>
-#include<Geom2d_Line.hxx>
-#include<Geom2d_OffsetCurve.hxx>
-#include<Geom2d_Parabola.hxx>
-#include<Geom2d_Point.hxx>
-#include<Geom2d_Transformation.hxx>
-#include<Geom2d_TrimmedCurve.hxx>
-#include<Geom2d_UndefinedDerivative.hxx>
-#include<Geom2d_UndefinedValue.hxx>
-#include<Geom2d_Vector.hxx>
-#include<Geom2d_VectorWithMagnitude.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
@@ -418,6 +344,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -427,6 +354,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -435,7 +363,96 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceOfVec2d.hxx>
 #include<TColgp_SequenceOfXY.hxx>
 #include<TColgp_SequenceOfXYZ.hxx>
+#include<Geom2d_AxisPlacement.hxx>
+#include<Geom2d_BezierCurve.hxx>
+#include<Geom2d_BoundedCurve.hxx>
+#include<Geom2d_BSplineCurve.hxx>
+#include<Geom2d_CartesianPoint.hxx>
+#include<Geom2d_Circle.hxx>
+#include<Geom2d_Conic.hxx>
+#include<Geom2d_Curve.hxx>
+#include<Geom2d_Direction.hxx>
+#include<Geom2d_Ellipse.hxx>
+#include<Geom2d_Geometry.hxx>
+#include<Geom2d_Hyperbola.hxx>
+#include<Geom2d_Line.hxx>
+#include<Geom2d_OffsetCurve.hxx>
+#include<Geom2d_Parabola.hxx>
+#include<Geom2d_Point.hxx>
+#include<Geom2d_Transformation.hxx>
+#include<Geom2d_TrimmedCurve.hxx>
+#include<Geom2d_UndefinedDerivative.hxx>
+#include<Geom2d_UndefinedValue.hxx>
+#include<Geom2d_Vector.hxx>
+#include<Geom2d_VectorWithMagnitude.hxx>
+#include<ShapeExtend.hxx>
+#include<ShapeExtend_BasicMsgRegistrator.hxx>
+#include<ShapeExtend_ComplexCurve.hxx>
+#include<ShapeExtend_CompositeSurface.hxx>
+#include<ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg.hxx>
+#include<ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg.hxx>
+#include<ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg.hxx>
+#include<ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg.hxx>
+#include<ShapeExtend_DataMapOfShapeListOfMsg.hxx>
+#include<ShapeExtend_DataMapOfTransientListOfMsg.hxx>
+#include<ShapeExtend_Explorer.hxx>
+#include<ShapeExtend_MsgRegistrator.hxx>
+#include<ShapeExtend_Parametrisation.hxx>
+#include<ShapeExtend_Status.hxx>
+#include<ShapeExtend_WireData.hxx>
 #include<MMgt_TShared.hxx>
+#include<gp.hxx>
+#include<gp_Ax1.hxx>
+#include<gp_Ax2.hxx>
+#include<gp_Ax22d.hxx>
+#include<gp_Ax2d.hxx>
+#include<gp_Ax3.hxx>
+#include<gp_Circ.hxx>
+#include<gp_Circ2d.hxx>
+#include<gp_Cone.hxx>
+#include<gp_Cylinder.hxx>
+#include<gp_Dir.hxx>
+#include<gp_Dir2d.hxx>
+#include<gp_Elips.hxx>
+#include<gp_Elips2d.hxx>
+#include<gp_EulerSequence.hxx>
+#include<gp_GTrsf.hxx>
+#include<gp_GTrsf2d.hxx>
+#include<gp_Hypr.hxx>
+#include<gp_Hypr2d.hxx>
+#include<gp_Lin.hxx>
+#include<gp_Lin2d.hxx>
+#include<gp_Mat.hxx>
+#include<gp_Mat2d.hxx>
+#include<gp_Parab.hxx>
+#include<gp_Parab2d.hxx>
+#include<gp_Pln.hxx>
+#include<gp_Pnt.hxx>
+#include<gp_Pnt2d.hxx>
+#include<gp_Quaternion.hxx>
+#include<gp_QuaternionNLerp.hxx>
+#include<gp_QuaternionSLerp.hxx>
+#include<gp_Sphere.hxx>
+#include<gp_Torus.hxx>
+#include<gp_Trsf.hxx>
+#include<gp_Trsf2d.hxx>
+#include<gp_TrsfForm.hxx>
+#include<gp_Vec.hxx>
+#include<gp_Vec2d.hxx>
+#include<gp_VectorWithNullMagnitude.hxx>
+#include<gp_XY.hxx>
+#include<gp_XYZ.hxx>
+#include<TopLoc_Datum3D.hxx>
+#include<TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
+#include<TopLoc_IndexedMapOfLocation.hxx>
+#include<TopLoc_ItemLocation.hxx>
+#include<TopLoc_Location.hxx>
+#include<TopLoc_MapIteratorOfMapOfLocation.hxx>
+#include<TopLoc_MapLocationHasher.hxx>
+#include<TopLoc_MapOfLocation.hxx>
+#include<TopLoc_SListNodeOfItemLocation.hxx>
+#include<TopLoc_SListOfItemLocation.hxx>
+#include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
 #include<BRep_Builder.hxx>
 #include<BRep_Curve3D.hxx>
 #include<BRep_CurveOn2Surfaces.hxx>
@@ -608,6 +625,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -617,6 +635,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -806,8 +825,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import Standard.i
 %import GeomAbs.i
 %import Geom.i
-%import TopLoc.i
-%import gp.i
-%import Geom2d.i
 %import TColgp.i
+%import Geom2d.i
+%import ShapeExtend.i
 %import MMgt.i
+%import gp.i
+%import TopLoc.i

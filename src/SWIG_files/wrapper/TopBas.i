@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -187,7 +187,7 @@ class TopBas_ListOfTestInterference {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopBas_ListOfTestInterference &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopBas_ListOfTestInterference & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int

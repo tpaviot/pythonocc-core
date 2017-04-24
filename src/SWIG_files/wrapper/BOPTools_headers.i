@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -22,7 +22,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPTools_AlgoTools2D.hxx>
 #include<BOPTools_AlgoTools3D.hxx>
 #include<BOPTools_ConnexityBlock.hxx>
-#include<BOPTools_CoupleOfShape.hxx>
 #include<BOPTools_EdgeSet.hxx>
 #include<BOPTools_ListOfConnexityBlock.hxx>
 #include<BOPTools_ListOfCoupleOfShape.hxx>
@@ -61,7 +60,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopoDS_UnCompatibleShapes.hxx>
 #include<TopoDS_Vertex.hxx>
 #include<TopoDS_Wire.hxx>
-#include<BOPCol_Array1.hxx>
 #include<BOPCol_BaseAllocator.hxx>
 #include<BOPCol_Box2DBndTree.hxx>
 #include<BOPCol_BoxBndTree.hxx>
@@ -74,13 +72,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPCol_DataMapOfShapeAddress.hxx>
 #include<BOPCol_DataMapOfShapeInteger.hxx>
 #include<BOPCol_DataMapOfShapeListOfShape.hxx>
+#include<BOPCol_DataMapOfShapeReal.hxx>
 #include<BOPCol_DataMapOfShapeShape.hxx>
 #include<BOPCol_DataMapOfTransientAddress.hxx>
 #include<BOPCol_IndexedDataMapOfIntegerListOfInteger.hxx>
 #include<BOPCol_IndexedDataMapOfShapeBox.hxx>
 #include<BOPCol_IndexedDataMapOfShapeInteger.hxx>
 #include<BOPCol_IndexedDataMapOfShapeListOfShape.hxx>
+#include<BOPCol_IndexedDataMapOfShapeShape.hxx>
 #include<BOPCol_IndexedMapOfInteger.hxx>
+#include<BOPCol_IndexedMapOfOrientedShape.hxx>
 #include<BOPCol_IndexedMapOfShape.hxx>
 #include<BOPCol_ListOfInteger.hxx>
 #include<BOPCol_ListOfListOfShape.hxx>
@@ -89,12 +90,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPCol_MapOfOrientedShape.hxx>
 #include<BOPCol_MapOfShape.hxx>
 #include<BOPCol_NCVector.hxx>
+#include<BOPCol_Parallel.hxx>
 #include<BOPCol_PInteger.hxx>
 #include<BOPCol_PListOfInteger.hxx>
 #include<BOPCol_SequenceOfPnt2d.hxx>
 #include<BOPCol_SequenceOfReal.hxx>
 #include<BOPCol_SequenceOfShape.hxx>
-#include<BOPCol_TBB.hxx>
 #include<BOPCol_VectorOfInteger.hxx>
 #include<TopAbs.hxx>
 #include<TopAbs_Orientation.hxx>
@@ -285,6 +286,28 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntTools_SurfaceRangeSampleMapHasher.hxx>
 #include<IntTools_Tools.hxx>
 #include<IntTools_TopolTool.hxx>
+#include<Geom2d_AxisPlacement.hxx>
+#include<Geom2d_BezierCurve.hxx>
+#include<Geom2d_BoundedCurve.hxx>
+#include<Geom2d_BSplineCurve.hxx>
+#include<Geom2d_CartesianPoint.hxx>
+#include<Geom2d_Circle.hxx>
+#include<Geom2d_Conic.hxx>
+#include<Geom2d_Curve.hxx>
+#include<Geom2d_Direction.hxx>
+#include<Geom2d_Ellipse.hxx>
+#include<Geom2d_Geometry.hxx>
+#include<Geom2d_Hyperbola.hxx>
+#include<Geom2d_Line.hxx>
+#include<Geom2d_OffsetCurve.hxx>
+#include<Geom2d_Parabola.hxx>
+#include<Geom2d_Point.hxx>
+#include<Geom2d_Transformation.hxx>
+#include<Geom2d_TrimmedCurve.hxx>
+#include<Geom2d_UndefinedDerivative.hxx>
+#include<Geom2d_UndefinedValue.hxx>
+#include<Geom2d_Vector.hxx>
+#include<Geom2d_VectorWithMagnitude.hxx>
 #include<Geom_Axis1Placement.hxx>
 #include<Geom_Axis2Placement.hxx>
 #include<Geom_AxisPlacement.hxx>
@@ -328,28 +351,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Geom_UndefinedValue.hxx>
 #include<Geom_Vector.hxx>
 #include<Geom_VectorWithMagnitude.hxx>
-#include<Geom2d_AxisPlacement.hxx>
-#include<Geom2d_BezierCurve.hxx>
-#include<Geom2d_BoundedCurve.hxx>
-#include<Geom2d_BSplineCurve.hxx>
-#include<Geom2d_CartesianPoint.hxx>
-#include<Geom2d_Circle.hxx>
-#include<Geom2d_Conic.hxx>
-#include<Geom2d_Curve.hxx>
-#include<Geom2d_Direction.hxx>
-#include<Geom2d_Ellipse.hxx>
-#include<Geom2d_Geometry.hxx>
-#include<Geom2d_Hyperbola.hxx>
-#include<Geom2d_Line.hxx>
-#include<Geom2d_OffsetCurve.hxx>
-#include<Geom2d_Parabola.hxx>
-#include<Geom2d_Point.hxx>
-#include<Geom2d_Transformation.hxx>
-#include<Geom2d_TrimmedCurve.hxx>
-#include<Geom2d_UndefinedDerivative.hxx>
-#include<Geom2d_UndefinedValue.hxx>
-#include<Geom2d_Vector.hxx>
-#include<Geom2d_VectorWithMagnitude.hxx>
+#include<BRepAdaptor_Array1OfCurve.hxx>
+#include<BRepAdaptor_CompCurve.hxx>
+#include<BRepAdaptor_Curve.hxx>
+#include<BRepAdaptor_Curve2d.hxx>
+#include<BRepAdaptor_HArray1OfCurve.hxx>
+#include<BRepAdaptor_HCompCurve.hxx>
+#include<BRepAdaptor_HCurve.hxx>
+#include<BRepAdaptor_HCurve2d.hxx>
+#include<BRepAdaptor_HSurface.hxx>
+#include<BRepAdaptor_Surface.hxx>
 #include<ProjLib.hxx>
 #include<ProjLib_CompProjectedCurve.hxx>
 #include<ProjLib_ComputeApprox.hxx>
@@ -472,6 +483,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -481,6 +493,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -668,7 +681,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import gp.i
 %import Standard.i
 %import IntTools.i
-%import Geom.i
 %import Geom2d.i
+%import Geom.i
+%import BRepAdaptor.i
 %import ProjLib.i
 %import NCollection.i

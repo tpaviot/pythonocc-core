@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1084,7 +1084,7 @@ class Law_Laws {
 		%feature("autodoc", "	:param Other:
 	:type Other: Law_Laws &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const Law_Laws & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int

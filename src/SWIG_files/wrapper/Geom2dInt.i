@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -858,7 +858,7 @@ class Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public TCol
 		%feature("autodoc", "	:param Other:
 	:type Other: Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter &
 	:rtype: Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter
-") operator=;
+") operator =;
 		const Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter & operator = (const Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1523,20 +1523,6 @@ class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter : public Intf_Polygon2d
 	:rtype: None
 ") Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter;
 		 Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter (const Adaptor2d_Curve2d & Curve,const Standard_Integer NbPnt,const IntRes2d_Domain & Domain,const Standard_Real Tol);
-		%feature("compactdefaultargs") Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter;
-		%feature("autodoc", "	:param Curve:
-	:type Curve: Adaptor2d_Curve2d &
-	:param NbPnt:
-	:type NbPnt: int
-	:param Domain:
-	:type Domain: IntRes2d_Domain &
-	:param Tol:
-	:type Tol: float
-	:param OtherBox:
-	:type OtherBox: Bnd_Box2d &
-	:rtype: None
-") Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter;
-		 Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter (const Adaptor2d_Curve2d & Curve,const Standard_Integer NbPnt,const IntRes2d_Domain & Domain,const Standard_Real Tol,const Bnd_Box2d & OtherBox);
 		%feature("compactdefaultargs") ComputeWithBox;
 		%feature("autodoc", "	:param Curve:
 	:type Curve: Adaptor2d_Curve2d &

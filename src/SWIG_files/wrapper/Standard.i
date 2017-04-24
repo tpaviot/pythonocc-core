@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -378,7 +378,7 @@ class Standard_GUID {
 		%feature("autodoc", "	:param uid:
 	:type uid: Standard_GUID &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const Standard_GUID & uid);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param uid:
@@ -390,7 +390,7 @@ class Standard_GUID {
 		%feature("autodoc", "	:param uid:
 	:type uid: Standard_UUID &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const Standard_UUID & uid);
 
         %feature("autodoc", "1");
@@ -685,7 +685,7 @@ class Standard_Transient {
 	:param &:
 	:type &: Standard_Transient
 	:rtype: Standard_Transient
-") operator=;
+") operator =;
 		Standard_Transient & operator = (const Standard_Transient &);
 		%feature("compactdefaultargs") Delete;
 		%feature("autodoc", "	* Memory deallocator for transient classes

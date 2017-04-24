@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -101,7 +101,7 @@ class Bnd_Array1OfBox {
 		%feature("autodoc", "	:param Other:
 	:type Other: Bnd_Array1OfBox &
 	:rtype: Bnd_Array1OfBox
-") operator=;
+") operator =;
 		const Bnd_Array1OfBox & operator = (const Bnd_Array1OfBox & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -188,7 +188,7 @@ class Bnd_Array1OfBox2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: Bnd_Array1OfBox2d &
 	:rtype: Bnd_Array1OfBox2d
-") operator=;
+") operator =;
 		const Bnd_Array1OfBox2d & operator = (const Bnd_Array1OfBox2d & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -275,7 +275,7 @@ class Bnd_Array1OfSphere {
 		%feature("autodoc", "	:param Other:
 	:type Other: Bnd_Array1OfSphere &
 	:rtype: Bnd_Array1OfSphere
-") operator=;
+") operator =;
 		const Bnd_Array1OfSphere & operator = (const Bnd_Array1OfSphere & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2081,7 +2081,7 @@ class Bnd_SeqOfBox : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Bnd_SeqOfBox &
 	:rtype: Bnd_SeqOfBox
-") operator=;
+") operator =;
 		const Bnd_SeqOfBox & operator = (const Bnd_SeqOfBox & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

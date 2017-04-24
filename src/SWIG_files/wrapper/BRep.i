@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1252,7 +1252,7 @@ class BRep_ListOfCurveRepresentation {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRep_ListOfCurveRepresentation &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const BRep_ListOfCurveRepresentation & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1387,7 +1387,7 @@ class BRep_ListOfPointRepresentation {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRep_ListOfPointRepresentation &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const BRep_ListOfPointRepresentation & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -2016,7 +2016,7 @@ class Handle_BRep_TVertex : public Handle_TopoDS_TVertex {
 class BRep_Tool {
 	public:
 		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	* If S is Solid or Shell, returns True if it has no free boundaries (edges). If S is Wire, returns True if it has no free ends (vertices). (Internal and External sub-shepes are ignored in this check.) For other shape types returns S.Closed().
+		%feature("autodoc", "	* If S is Shell, returns True if it has no free boundaries (edges). If S is Wire, returns True if it has no free ends (vertices). (Internal and External sub-shepes are ignored in these checks) If S is Edge, returns True if its vertices are the same. For other shape types returns S.Closed().
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -2302,9 +2302,11 @@ class BRep_Tool {
 	:type E: TopoDS_Edge &
 	:param T:
 	:type T: Handle_Poly_Triangulation &
+	:param L:
+	:type L: TopLoc_Location &
 	:rtype: bool
 ") IsClosed;
-		static Standard_Boolean IsClosed (const TopoDS_Edge & E,const Handle_Poly_Triangulation & T);
+		static Standard_Boolean IsClosed (const TopoDS_Edge & E,const Handle_Poly_Triangulation & T,const TopLoc_Location & L);
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "	* Returns the tolerance for <E>.
 

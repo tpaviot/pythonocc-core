@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -902,7 +902,7 @@ class TDocStd_LabelIDMapDataMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDocStd_LabelIDMapDataMap &
 	:rtype: TDocStd_LabelIDMapDataMap
-") operator=;
+") operator =;
 		TDocStd_LabelIDMapDataMap & operator = (const TDocStd_LabelIDMapDataMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1677,7 +1677,7 @@ class TDocStd_SequenceOfApplicationDelta : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDocStd_SequenceOfApplicationDelta &
 	:rtype: TDocStd_SequenceOfApplicationDelta
-") operator=;
+") operator =;
 		const TDocStd_SequenceOfApplicationDelta & operator = (const TDocStd_SequenceOfApplicationDelta & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1820,7 +1820,7 @@ class TDocStd_SequenceOfDocument : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDocStd_SequenceOfDocument &
 	:rtype: TDocStd_SequenceOfDocument
-") operator=;
+") operator =;
 		const TDocStd_SequenceOfDocument & operator = (const TDocStd_SequenceOfDocument & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

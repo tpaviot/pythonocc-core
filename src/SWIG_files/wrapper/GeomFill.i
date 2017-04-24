@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -819,7 +819,7 @@ class GeomFill_Array1OfLocationLaw {
 		%feature("autodoc", "	:param Other:
 	:type Other: GeomFill_Array1OfLocationLaw &
 	:rtype: GeomFill_Array1OfLocationLaw
-") operator=;
+") operator =;
 		const GeomFill_Array1OfLocationLaw & operator = (const GeomFill_Array1OfLocationLaw & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -906,7 +906,7 @@ class GeomFill_Array1OfSectionLaw {
 		%feature("autodoc", "	:param Other:
 	:type Other: GeomFill_Array1OfSectionLaw &
 	:rtype: GeomFill_Array1OfSectionLaw
-") operator=;
+") operator =;
 		const GeomFill_Array1OfSectionLaw & operator = (const GeomFill_Array1OfSectionLaw & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -3494,10 +3494,6 @@ class GeomFill_Profiler {
 		%feature("autodoc", "	:rtype: None
 ") GeomFill_Profiler;
 		 GeomFill_Profiler ();
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") AddCurve;
 		%feature("autodoc", "	:param Curve:
 	:type Curve: Handle_Geom_Curve &
@@ -4228,7 +4224,7 @@ class GeomFill_SequenceOfAx2 : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: GeomFill_SequenceOfAx2 &
 	:rtype: GeomFill_SequenceOfAx2
-") operator=;
+") operator =;
 		const GeomFill_SequenceOfAx2 & operator = (const GeomFill_SequenceOfAx2 & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -4371,7 +4367,7 @@ class GeomFill_SequenceOfTrsf : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: GeomFill_SequenceOfTrsf &
 	:rtype: GeomFill_SequenceOfTrsf
-") operator=;
+") operator =;
 		const GeomFill_SequenceOfTrsf & operator = (const GeomFill_SequenceOfTrsf & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

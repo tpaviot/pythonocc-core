@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -101,7 +101,7 @@ class BRepAdaptor_Array1OfCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepAdaptor_Array1OfCurve &
 	:rtype: BRepAdaptor_Array1OfCurve
-") operator=;
+") operator =;
 		const BRepAdaptor_Array1OfCurve & operator = (const BRepAdaptor_Array1OfCurve & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int

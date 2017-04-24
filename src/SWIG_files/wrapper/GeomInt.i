@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -51,6 +51,7 @@ def register_handle(handle, base_object):
 };
 
 /* typedefs */
+typedef NCollection_Vector <Standard_Real> GeomInt_VectorOfReal;
 /* end typedefs declaration */
 
 /* public enums */
@@ -699,6 +700,60 @@ class GeomInt_IntSS {
 	:rtype: gp_Pnt2d
 ") Pnt2d;
 		gp_Pnt2d Pnt2d (const Standard_Integer Index,const Standard_Boolean OnFirst);
+		%feature("compactdefaultargs") TreatRLine;
+		%feature("autodoc", "	* converts RLine to Geom(2d)_Curve.
+
+	:param theRL:
+	:type theRL: Handle_IntPatch_RLine &
+	:param theHS1:
+	:type theHS1: Handle_GeomAdaptor_HSurface &
+	:param theHS2:
+	:type theHS2: Handle_GeomAdaptor_HSurface &
+	:param theC3d:
+	:type theC3d: Handle_Geom_Curve &
+	:param theC2d1:
+	:type theC2d1: Handle_Geom2d_Curve &
+	:param theC2d2:
+	:type theC2d2: Handle_Geom2d_Curve &
+	:param theTolReached:
+	:type theTolReached: float &
+	:rtype: void
+") TreatRLine;
+		static void TreatRLine (const Handle_IntPatch_RLine & theRL,const Handle_GeomAdaptor_HSurface & theHS1,const Handle_GeomAdaptor_HSurface & theHS2,Handle_Geom_Curve & theC3d,Handle_Geom2d_Curve & theC2d1,Handle_Geom2d_Curve & theC2d2,Standard_Real &OutValue);
+		%feature("compactdefaultargs") BuildPCurves;
+		%feature("autodoc", "	* creates 2D-curve on given surface from given 3D-curve
+
+	:param f:
+	:type f: float
+	:param l:
+	:type l: float
+	:param Tol:
+	:type Tol: float &
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:param C2d:
+	:type C2d: Handle_Geom2d_Curve &
+	:rtype: void
+") BuildPCurves;
+		static void BuildPCurves (const Standard_Real f,const Standard_Real l,Standard_Real &OutValue,const Handle_Geom_Surface & S,const Handle_Geom_Curve & C,Handle_Geom2d_Curve & C2d);
+		%feature("compactdefaultargs") TrimILineOnSurfBoundaries;
+		%feature("autodoc", "	* puts into theArrayOfParameters the parameters of intersection points of given theC2d1 and theC2d2 curves with the boundaries of the source surface.
+
+	:param theC2d1:
+	:type theC2d1: Handle_Geom2d_Curve &
+	:param theC2d2:
+	:type theC2d2: Handle_Geom2d_Curve &
+	:param theBound1:
+	:type theBound1: Bnd_Box2d &
+	:param theBound2:
+	:type theBound2: Bnd_Box2d &
+	:param theArrayOfParameters:
+	:type theArrayOfParameters: GeomInt_VectorOfReal &
+	:rtype: void
+") TrimILineOnSurfBoundaries;
+		static void TrimILineOnSurfBoundaries (const Handle_Geom2d_Curve & theC2d1,const Handle_Geom2d_Curve & theC2d2,const Bnd_Box2d & theBound1,const Bnd_Box2d & theBound2,GeomInt_VectorOfReal & theArrayOfParameters);
 };
 
 
@@ -1878,7 +1933,7 @@ class GeomInt_SequenceOfParameterAndOrientation : public TCollection_BaseSequenc
 		%feature("autodoc", "	:param Other:
 	:type Other: GeomInt_SequenceOfParameterAndOrientation &
 	:rtype: GeomInt_SequenceOfParameterAndOrientation
-") operator=;
+") operator =;
 		const GeomInt_SequenceOfParameterAndOrientation & operator = (const GeomInt_SequenceOfParameterAndOrientation & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2687,6 +2742,10 @@ class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
 		%feature("autodoc", "	:rtype: GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox
 ") Function;
 		GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox & Function ();
+		%feature("compactdefaultargs") ChangePoint;
+		%feature("autodoc", "	:rtype: IntSurf_PntOn2S
+") ChangePoint;
+		IntSurf_PntOn2S & ChangePoint ();
 };
 
 
@@ -2870,6 +2929,10 @@ class GeomInt_TheMultiLineOfWLApprox {
 	:rtype: GeomInt_TheMultiLineOfWLApprox
 ") MakeMLBetween;
 		GeomInt_TheMultiLineOfWLApprox MakeMLBetween (const Standard_Integer Low,const Standard_Integer High,const Standard_Integer NbPointsToInsert);
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
+		void Dump ();
 };
 
 
@@ -3022,6 +3085,12 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 	:rtype: Approx_Status
 ") WhatStatus;
 		static Approx_Status WhatStatus (const GeomInt_TheMultiLineOfWLApprox & ML,const Standard_Integer I1,const Standard_Integer I2);
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "	:param ML:
+	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:rtype: void
+") Dump;
+		static void Dump (const GeomInt_TheMultiLineOfWLApprox & ML);
 };
 
 

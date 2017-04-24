@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -113,7 +113,7 @@ class StepShape_Array1OfConnectedEdgeSet {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepShape_Array1OfConnectedEdgeSet &
 	:rtype: StepShape_Array1OfConnectedEdgeSet
-") operator=;
+") operator =;
 		const StepShape_Array1OfConnectedEdgeSet & operator = (const StepShape_Array1OfConnectedEdgeSet & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -200,7 +200,7 @@ class StepShape_Array1OfConnectedFaceSet {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepShape_Array1OfConnectedFaceSet &
 	:rtype: StepShape_Array1OfConnectedFaceSet
-") operator=;
+") operator =;
 		const StepShape_Array1OfConnectedFaceSet & operator = (const StepShape_Array1OfConnectedFaceSet & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -287,7 +287,7 @@ class StepShape_Array1OfEdge {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepShape_Array1OfEdge &
 	:rtype: StepShape_Array1OfEdge
-") operator=;
+") operator =;
 		const StepShape_Array1OfEdge & operator = (const StepShape_Array1OfEdge & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -374,7 +374,7 @@ class StepShape_Array1OfFace {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepShape_Array1OfFace &
 	:rtype: StepShape_Array1OfFace
-") operator=;
+") operator =;
 		const StepShape_Array1OfFace & operator = (const StepShape_Array1OfFace & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -461,7 +461,7 @@ class StepShape_Array1OfFaceBound {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepShape_Array1OfFaceBound &
 	:rtype: StepShape_Array1OfFaceBound
-") operator=;
+") operator =;
 		const StepShape_Array1OfFaceBound & operator = (const StepShape_Array1OfFaceBound & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -548,7 +548,7 @@ class StepShape_Array1OfGeometricSetSelect {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepShape_Array1OfGeometricSetSelect &
 	:rtype: StepShape_Array1OfGeometricSetSelect
-") operator=;
+") operator =;
 		const StepShape_Array1OfGeometricSetSelect & operator = (const StepShape_Array1OfGeometricSetSelect & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -635,7 +635,7 @@ class StepShape_Array1OfOrientedClosedShell {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepShape_Array1OfOrientedClosedShell &
 	:rtype: StepShape_Array1OfOrientedClosedShell
-") operator=;
+") operator =;
 		const StepShape_Array1OfOrientedClosedShell & operator = (const StepShape_Array1OfOrientedClosedShell & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -722,7 +722,7 @@ class StepShape_Array1OfOrientedEdge {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepShape_Array1OfOrientedEdge &
 	:rtype: StepShape_Array1OfOrientedEdge
-") operator=;
+") operator =;
 		const StepShape_Array1OfOrientedEdge & operator = (const StepShape_Array1OfOrientedEdge & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -809,7 +809,7 @@ class StepShape_Array1OfShell {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepShape_Array1OfShell &
 	:rtype: StepShape_Array1OfShell
-") operator=;
+") operator =;
 		const StepShape_Array1OfShell & operator = (const StepShape_Array1OfShell & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -896,7 +896,7 @@ class StepShape_Array1OfValueQualifier {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepShape_Array1OfValueQualifier &
 	:rtype: StepShape_Array1OfValueQualifier
-") operator=;
+") operator =;
 		const StepShape_Array1OfValueQualifier & operator = (const StepShape_Array1OfValueQualifier & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int

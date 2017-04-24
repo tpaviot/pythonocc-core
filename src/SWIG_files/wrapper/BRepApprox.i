@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -2261,6 +2261,10 @@ class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 		%feature("autodoc", "	:rtype: BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox
 ") Function;
 		BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox & Function ();
+		%feature("compactdefaultargs") ChangePoint;
+		%feature("autodoc", "	:rtype: IntSurf_PntOn2S
+") ChangePoint;
+		IntSurf_PntOn2S & ChangePoint ();
 };
 
 
@@ -2444,6 +2448,10 @@ class BRepApprox_TheMultiLineOfApprox {
 	:rtype: BRepApprox_TheMultiLineOfApprox
 ") MakeMLBetween;
 		BRepApprox_TheMultiLineOfApprox MakeMLBetween (const Standard_Integer Low,const Standard_Integer High,const Standard_Integer NbPointsToInsert);
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
+		void Dump ();
 };
 
 
@@ -2596,6 +2604,12 @@ class BRepApprox_TheMultiLineToolOfApprox {
 	:rtype: Approx_Status
 ") WhatStatus;
 		static Approx_Status WhatStatus (const BRepApprox_TheMultiLineOfApprox & ML,const Standard_Integer I1,const Standard_Integer I2);
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "	:param ML:
+	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:rtype: void
+") Dump;
+		static void Dump (const BRepApprox_TheMultiLineOfApprox & ML);
 };
 
 

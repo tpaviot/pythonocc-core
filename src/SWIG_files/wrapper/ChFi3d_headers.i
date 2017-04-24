@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -413,12 +413,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<math_GaussSingleIntegration.hxx>
 #include<math_GlobOptMin.hxx>
 #include<math_Householder.hxx>
-#include<math_IntegerRandom.hxx>
 #include<math_IntegerVector.hxx>
 #include<math_Jacobi.hxx>
 #include<math_KronrodSingleIntegration.hxx>
 #include<math_Matrix.hxx>
-#include<math_Memory.hxx>
 #include<math_MultipleVarFunction.hxx>
 #include<math_MultipleVarFunctionWithGradient.hxx>
 #include<math_MultipleVarFunctionWithHessian.hxx>
@@ -430,7 +428,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<math_PSO.hxx>
 #include<math_PSOParticlesPool.hxx>
 #include<math_QuickSortOfValueAndWeight.hxx>
-#include<math_RealRandom.hxx>
 #include<math_Recipes.hxx>
 #include<math_SingleTab.hxx>
 #include<math_SingularMatrix.hxx>
@@ -924,12 +921,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<math_GaussSingleIntegration.hxx>
 #include<math_GlobOptMin.hxx>
 #include<math_Householder.hxx>
-#include<math_IntegerRandom.hxx>
 #include<math_IntegerVector.hxx>
 #include<math_Jacobi.hxx>
 #include<math_KronrodSingleIntegration.hxx>
 #include<math_Matrix.hxx>
-#include<math_Memory.hxx>
 #include<math_MultipleVarFunction.hxx>
 #include<math_MultipleVarFunctionWithGradient.hxx>
 #include<math_MultipleVarFunctionWithHessian.hxx>
@@ -941,7 +936,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<math_PSO.hxx>
 #include<math_PSOParticlesPool.hxx>
 #include<math_QuickSortOfValueAndWeight.hxx>
-#include<math_RealRandom.hxx>
 #include<math_Recipes.hxx>
 #include<math_SingleTab.hxx>
 #include<math_SingularMatrix.hxx>
@@ -964,8 +958,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Extrema_CurveTool.hxx>
 #include<Extrema_ECC.hxx>
 #include<Extrema_ECC2d.hxx>
-#include<Extrema_ELCC.hxx>
-#include<Extrema_ELCC2d.hxx>
 #include<Extrema_ElementType.hxx>
 #include<Extrema_ELPCOfLocateExtPC.hxx>
 #include<Extrema_ELPCOfLocateExtPC2d.hxx>
@@ -1118,6 +1110,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -1127,6 +1120,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>

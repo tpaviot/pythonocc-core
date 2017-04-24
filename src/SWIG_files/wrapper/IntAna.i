@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -983,7 +983,7 @@ class IntAna_ListOfCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntAna_ListOfCurve &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const IntAna_ListOfCurve & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -873,7 +873,7 @@ class StlMesh_SequenceOfMesh : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: StlMesh_SequenceOfMesh &
 	:rtype: StlMesh_SequenceOfMesh
-") operator=;
+") operator =;
 		const StlMesh_SequenceOfMesh & operator = (const StlMesh_SequenceOfMesh & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1016,7 +1016,7 @@ class StlMesh_SequenceOfMeshDomain : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: StlMesh_SequenceOfMeshDomain &
 	:rtype: StlMesh_SequenceOfMeshDomain
-") operator=;
+") operator =;
 		const StlMesh_SequenceOfMeshDomain & operator = (const StlMesh_SequenceOfMeshDomain & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1159,7 +1159,7 @@ class StlMesh_SequenceOfMeshTriangle : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: StlMesh_SequenceOfMeshTriangle &
 	:rtype: StlMesh_SequenceOfMeshTriangle
-") operator=;
+") operator =;
 		const StlMesh_SequenceOfMeshTriangle & operator = (const StlMesh_SequenceOfMeshTriangle & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

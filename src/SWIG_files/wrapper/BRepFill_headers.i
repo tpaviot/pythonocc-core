@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -60,8 +60,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepFill_ListOfOffsetWire.hxx>
 #include<BRepFill_LocationLaw.hxx>
 #include<BRepFill_MultiLine.hxx>
-#include<BRepFill_MultiLineTool.hxx>
-#include<BRepFill_MyLeastSquareOfComputeCLine.hxx>
 #include<BRepFill_NSections.hxx>
 #include<BRepFill_OffsetAncestors.hxx>
 #include<BRepFill_OffsetWire.hxx>
@@ -629,6 +627,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -638,6 +637,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -724,6 +724,62 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<GeomFill_TrihedronLaw.hxx>
 #include<GeomFill_TrihedronWithGuide.hxx>
 #include<GeomFill_UniformSection.hxx>
+#include<AppCont_ContMatrices.hxx>
+#include<AppCont_Function.hxx>
+#include<AppCont_LeastSquare.hxx>
+#include<NCollection_AccAllocator.hxx>
+#include<NCollection_AlignedAllocator.hxx>
+#include<NCollection_Array1.hxx>
+#include<NCollection_Array2.hxx>
+#include<NCollection_BaseAllocator.hxx>
+#include<NCollection_BaseList.hxx>
+#include<NCollection_BaseMap.hxx>
+#include<NCollection_BaseVector.hxx>
+#include<NCollection_Buffer.hxx>
+#include<NCollection_Comparator.hxx>
+#include<NCollection_DefaultHasher.hxx>
+#include<NCollection_DefineAlloc.hxx>
+#include<NCollection_DefineArray1.hxx>
+#include<NCollection_DefineArray2.hxx>
+#include<NCollection_DefineDataMap.hxx>
+#include<NCollection_DefineDoubleMap.hxx>
+#include<NCollection_DefineHArray1.hxx>
+#include<NCollection_DefineHArray2.hxx>
+#include<NCollection_DefineHSequence.hxx>
+#include<NCollection_DefineIndexedDataMap.hxx>
+#include<NCollection_DefineIndexedMap.hxx>
+#include<NCollection_DefineList.hxx>
+#include<NCollection_DefineMap.hxx>
+#include<NCollection_DefineSequence.hxx>
+#include<NCollection_DefineVector.hxx>
+#include<NCollection_Handle.hxx>
+#include<NCollection_HArray1.hxx>
+#include<NCollection_HArray2.hxx>
+#include<NCollection_HeapAllocator.hxx>
+#include<NCollection_HSequence.hxx>
+#include<NCollection_IncAllocator.hxx>
+#include<NCollection_List.hxx>
+#include<NCollection_ListNode.hxx>
+#include<NCollection_LocalArray.hxx>
+#include<NCollection_Mat4.hxx>
+#include<NCollection_QuickSort.hxx>
+#include<NCollection_Sequence.hxx>
+#include<NCollection_SparseArray.hxx>
+#include<NCollection_SparseArrayBase.hxx>
+#include<NCollection_StdAllocator.hxx>
+#include<NCollection_String.hxx>
+#include<NCollection_TListIterator.hxx>
+#include<NCollection_TListNode.hxx>
+#include<NCollection_TypeDef.hxx>
+#include<NCollection_UBTree.hxx>
+#include<NCollection_UBTreeFiller.hxx>
+#include<NCollection_UtfIterator.hxx>
+#include<NCollection_UtfString.hxx>
+#include<NCollection_Vec2.hxx>
+#include<NCollection_Vec3.hxx>
+#include<NCollection_Vec4.hxx>
+#include<NCollection_Vector.hxx>
+#include<NCollection_WinHeapAllocator.hxx>
 #include<BRepMAT2d_BisectingLocus.hxx>
 #include<BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.hxx>
 #include<BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.hxx>
@@ -805,7 +861,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopLoc_SListNodeOfItemLocation.hxx>
 #include<TopLoc_SListOfItemLocation.hxx>
 #include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#include<TopLoc_TrsfPtr.hxx>
 #include<Plate_Array1OfPinpointConstraint.hxx>
 #include<Plate_D1.hxx>
 #include<Plate_D2.hxx>
@@ -923,8 +978,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Approx_HArray1OfAdHSurface.hxx>
 #include<Approx_HArray1OfGTrsf2d.hxx>
 #include<Approx_MCurvesToBSpCurve.hxx>
-#include<Approx_MyLeastSquareOfFitAndDivide.hxx>
-#include<Approx_MyLeastSquareOfFitAndDivide2d.hxx>
 #include<Approx_ParametrizationType.hxx>
 #include<Approx_SameParameter.hxx>
 #include<Approx_SequenceNodeOfSequenceOfHArray1OfReal.hxx>
@@ -981,6 +1034,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -990,6 +1044,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -1187,6 +1242,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import GeomAbs.i
 %import MMgt.i
 %import GeomFill.i
+%import AppCont.i
+%import NCollection.i
 %import BRepMAT2d.i
 %import Law.i
 %import Bisector.i

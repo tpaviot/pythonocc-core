@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -125,7 +125,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_Version.hxx>
 #include<Standard_WayOfLife.hxx>
 #include<Standard_values.h>
-#include<BOPCol_Array1.hxx>
 #include<BOPCol_BaseAllocator.hxx>
 #include<BOPCol_Box2DBndTree.hxx>
 #include<BOPCol_BoxBndTree.hxx>
@@ -138,13 +137,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPCol_DataMapOfShapeAddress.hxx>
 #include<BOPCol_DataMapOfShapeInteger.hxx>
 #include<BOPCol_DataMapOfShapeListOfShape.hxx>
+#include<BOPCol_DataMapOfShapeReal.hxx>
 #include<BOPCol_DataMapOfShapeShape.hxx>
 #include<BOPCol_DataMapOfTransientAddress.hxx>
 #include<BOPCol_IndexedDataMapOfIntegerListOfInteger.hxx>
 #include<BOPCol_IndexedDataMapOfShapeBox.hxx>
 #include<BOPCol_IndexedDataMapOfShapeInteger.hxx>
 #include<BOPCol_IndexedDataMapOfShapeListOfShape.hxx>
+#include<BOPCol_IndexedDataMapOfShapeShape.hxx>
 #include<BOPCol_IndexedMapOfInteger.hxx>
+#include<BOPCol_IndexedMapOfOrientedShape.hxx>
 #include<BOPCol_IndexedMapOfShape.hxx>
 #include<BOPCol_ListOfInteger.hxx>
 #include<BOPCol_ListOfListOfShape.hxx>
@@ -153,12 +155,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPCol_MapOfOrientedShape.hxx>
 #include<BOPCol_MapOfShape.hxx>
 #include<BOPCol_NCVector.hxx>
+#include<BOPCol_Parallel.hxx>
 #include<BOPCol_PInteger.hxx>
 #include<BOPCol_PListOfInteger.hxx>
 #include<BOPCol_SequenceOfPnt2d.hxx>
 #include<BOPCol_SequenceOfReal.hxx>
 #include<BOPCol_SequenceOfShape.hxx>
-#include<BOPCol_TBB.hxx>
 #include<BOPCol_VectorOfInteger.hxx>
 #include<Message.hxx>
 #include<Message_Algorithm.hxx>
@@ -403,7 +405,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPTools_AlgoTools2D.hxx>
 #include<BOPTools_AlgoTools3D.hxx>
 #include<BOPTools_ConnexityBlock.hxx>
-#include<BOPTools_CoupleOfShape.hxx>
 #include<BOPTools_EdgeSet.hxx>
 #include<BOPTools_ListOfConnexityBlock.hxx>
 #include<BOPTools_ListOfCoupleOfShape.hxx>
@@ -466,6 +467,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -475,6 +477,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>

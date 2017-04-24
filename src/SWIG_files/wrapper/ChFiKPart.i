@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -316,7 +316,7 @@ class ChFiKPart_RstMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiKPart_RstMap &
 	:rtype: ChFiKPart_RstMap
-") operator=;
+") operator =;
 		ChFiKPart_RstMap & operator = (const ChFiKPart_RstMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

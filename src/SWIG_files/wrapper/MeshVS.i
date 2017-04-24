@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -52,8 +52,10 @@ def register_handle(handle, base_object):
 
 /* typedefs */
 typedef Standard_Integer MeshVS_DisplayModeFlags;
-typedef Standard_Integer MeshVS_BuilderPriority;
+typedef NCollection_List <Handle_TColgp_HArray1OfPnt>::Iterator MeshVS_PolyhedronVertsIter;
+typedef NCollection_List <Handle_TColgp_HArray1OfPnt> MeshVS_PolyhedronVerts;
 typedef MeshVS_Mesh * MeshVS_MeshPtr;
+typedef Standard_Integer MeshVS_BuilderPriority;
 typedef std::pair <Standard_Integer , Standard_Integer> MeshVS_NodePair;
 /* end typedefs declaration */
 
@@ -206,7 +208,7 @@ class MeshVS_Array1OfSequenceOfInteger {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_Array1OfSequenceOfInteger &
 	:rtype: MeshVS_Array1OfSequenceOfInteger
-") operator=;
+") operator =;
 		const MeshVS_Array1OfSequenceOfInteger & operator = (const MeshVS_Array1OfSequenceOfInteger & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1593,7 +1595,7 @@ class MeshVS_DataMapOfColorMapOfInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_DataMapOfColorMapOfInteger &
 	:rtype: MeshVS_DataMapOfColorMapOfInteger
-") operator=;
+") operator =;
 		MeshVS_DataMapOfColorMapOfInteger & operator = (const MeshVS_DataMapOfColorMapOfInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1676,7 +1678,7 @@ class MeshVS_DataMapOfHArray1OfSequenceOfInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_DataMapOfHArray1OfSequenceOfInteger &
 	:rtype: MeshVS_DataMapOfHArray1OfSequenceOfInteger
-") operator=;
+") operator =;
 		MeshVS_DataMapOfHArray1OfSequenceOfInteger & operator = (const MeshVS_DataMapOfHArray1OfSequenceOfInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1759,7 +1761,7 @@ class MeshVS_DataMapOfIntegerAsciiString : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_DataMapOfIntegerAsciiString &
 	:rtype: MeshVS_DataMapOfIntegerAsciiString
-") operator=;
+") operator =;
 		MeshVS_DataMapOfIntegerAsciiString & operator = (const MeshVS_DataMapOfIntegerAsciiString & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1842,7 +1844,7 @@ class MeshVS_DataMapOfIntegerBoolean : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_DataMapOfIntegerBoolean &
 	:rtype: MeshVS_DataMapOfIntegerBoolean
-") operator=;
+") operator =;
 		MeshVS_DataMapOfIntegerBoolean & operator = (const MeshVS_DataMapOfIntegerBoolean & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1925,7 +1927,7 @@ class MeshVS_DataMapOfIntegerColor : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_DataMapOfIntegerColor &
 	:rtype: MeshVS_DataMapOfIntegerColor
-") operator=;
+") operator =;
 		MeshVS_DataMapOfIntegerColor & operator = (const MeshVS_DataMapOfIntegerColor & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2008,7 +2010,7 @@ class MeshVS_DataMapOfIntegerMaterial : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_DataMapOfIntegerMaterial &
 	:rtype: MeshVS_DataMapOfIntegerMaterial
-") operator=;
+") operator =;
 		MeshVS_DataMapOfIntegerMaterial & operator = (const MeshVS_DataMapOfIntegerMaterial & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2091,7 +2093,7 @@ class MeshVS_DataMapOfIntegerMeshEntityOwner : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_DataMapOfIntegerMeshEntityOwner &
 	:rtype: MeshVS_DataMapOfIntegerMeshEntityOwner
-") operator=;
+") operator =;
 		MeshVS_DataMapOfIntegerMeshEntityOwner & operator = (const MeshVS_DataMapOfIntegerMeshEntityOwner & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2174,7 +2176,7 @@ class MeshVS_DataMapOfIntegerOwner : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_DataMapOfIntegerOwner &
 	:rtype: MeshVS_DataMapOfIntegerOwner
-") operator=;
+") operator =;
 		MeshVS_DataMapOfIntegerOwner & operator = (const MeshVS_DataMapOfIntegerOwner & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2257,7 +2259,7 @@ class MeshVS_DataMapOfIntegerTwoColors : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_DataMapOfIntegerTwoColors &
 	:rtype: MeshVS_DataMapOfIntegerTwoColors
-") operator=;
+") operator =;
 		MeshVS_DataMapOfIntegerTwoColors & operator = (const MeshVS_DataMapOfIntegerTwoColors & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2340,7 +2342,7 @@ class MeshVS_DataMapOfIntegerVector : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_DataMapOfIntegerVector &
 	:rtype: MeshVS_DataMapOfIntegerVector
-") operator=;
+") operator =;
 		MeshVS_DataMapOfIntegerVector & operator = (const MeshVS_DataMapOfIntegerVector & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2423,7 +2425,7 @@ class MeshVS_DataMapOfTwoColorsMapOfInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_DataMapOfTwoColorsMapOfInteger &
 	:rtype: MeshVS_DataMapOfTwoColorsMapOfInteger
-") operator=;
+") operator =;
 		MeshVS_DataMapOfTwoColorsMapOfInteger & operator = (const MeshVS_DataMapOfTwoColorsMapOfInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2977,63 +2979,43 @@ class Handle_MeshVS_Drawer : public Handle_MMgt_TShared {
 class MeshVS_DummySensitiveEntity : public SelectBasics_SensitiveEntity {
 	public:
 		%feature("compactdefaultargs") MeshVS_DummySensitiveEntity;
-		%feature("autodoc", "	:param OwnerId:
-	:type OwnerId: Handle_SelectBasics_EntityOwner &
+		%feature("autodoc", "	:param theOwnerId:
+	:type theOwnerId: Handle_SelectBasics_EntityOwner &
 	:rtype: None
 ") MeshVS_DummySensitiveEntity;
-		 MeshVS_DummySensitiveEntity (const Handle_SelectBasics_EntityOwner & OwnerId);
-		%feature("compactdefaultargs") Areas;
-		%feature("autodoc", "	:param aresult:
-	:type aresult: SelectBasics_ListOfBox2d &
-	:rtype: void
-") Areas;
-		virtual void Areas (SelectBasics_ListOfBox2d & aresult);
+		 MeshVS_DummySensitiveEntity (const Handle_SelectBasics_EntityOwner & theOwnerId);
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param thePickArgs:
-	:type thePickArgs: SelectBasics_PickArgs &
-	:param theMatchDMin:
-	:type theMatchDMin: float &
-	:param theMatchDepth:
-	:type theMatchDepth: float &
+		%feature("autodoc", "	:param theMgr:
+	:type theMgr: SelectBasics_SelectingVolumeManager &
+	:param thePickResult:
+	:type thePickResult: SelectBasics_PickResult &
 	:rtype: bool
 ") Matches;
-		virtual Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param XMin:
-	:type XMin: float
-	:param YMin:
-	:type YMin: float
-	:param XMax:
-	:type XMax: float
-	:param YMax:
-	:type YMax: float
-	:param aTol:
-	:type aTol: float
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param Polyline:
-	:type Polyline: TColgp_Array1OfPnt2d
-	:param aBox:
-	:type aBox: Bnd_Box2d &
-	:param aTol:
-	:type aTol: float
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("compactdefaultargs") Is3D;
-		%feature("autodoc", "	:rtype: bool
-") Is3D;
-		virtual Standard_Boolean Is3D ();
-		%feature("compactdefaultargs") NeedsConversion;
-		%feature("autodoc", "	:rtype: bool
-") NeedsConversion;
-		virtual Standard_Boolean NeedsConversion ();
-		%feature("compactdefaultargs") MaxBoxes;
+		virtual Standard_Boolean Matches (SelectBasics_SelectingVolumeManager & theMgr,SelectBasics_PickResult & thePickResult);
+		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "	:rtype: int
-") MaxBoxes;
-		virtual Standard_Integer MaxBoxes ();
+") NbSubElements;
+		virtual Standard_Integer NbSubElements ();
+		%feature("compactdefaultargs") BoundingBox;
+		%feature("autodoc", "	:rtype: Select3D_BndBox3d
+") BoundingBox;
+		virtual Select3D_BndBox3d BoundingBox ();
+		%feature("compactdefaultargs") BVH;
+		%feature("autodoc", "	:rtype: void
+") BVH;
+		virtual void BVH ();
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	:rtype: void
+") Clear;
+		virtual void Clear ();
+		%feature("compactdefaultargs") HasInitLocation;
+		%feature("autodoc", "	:rtype: bool
+") HasInitLocation;
+		virtual Standard_Boolean HasInitLocation ();
+		%feature("compactdefaultargs") InvInitLocation;
+		%feature("autodoc", "	:rtype: gp_Trsf
+") InvInitLocation;
+		virtual gp_Trsf InvInitLocation ();
 };
 
 
@@ -3265,7 +3247,7 @@ class MeshVS_MapOfTwoNodes : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_MapOfTwoNodes &
 	:rtype: MeshVS_MapOfTwoNodes
-") operator=;
+") operator =;
 		MeshVS_MapOfTwoNodes & operator = (const MeshVS_MapOfTwoNodes & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4140,36 +4122,6 @@ class MeshVS_SensitiveFace : public Select3D_SensitiveFace {
 	:rtype: None
 ") MeshVS_SensitiveFace;
 		 MeshVS_SensitiveFace (const Handle_SelectBasics_EntityOwner & theOwner,const TColgp_Array1OfPnt & thePoints,const Select3D_TypeOfSensitivity theSensType = Select3D_TOS_INTERIOR);
-		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "	:param aProjector:
-	:type aProjector: Handle_Select3D_Projector &
-	:rtype: void
-") Project;
-		virtual void Project (const Handle_Select3D_Projector & aProjector);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param XMin:
-	:type XMin: float
-	:param YMin:
-	:type YMin: float
-	:param XMax:
-	:type XMax: float
-	:param YMax:
-	:type YMax: float
-	:param aTol:
-	:type aTol: float
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param Polyline:
-	:type Polyline: TColgp_Array1OfPnt2d
-	:param aBox:
-	:type aBox: Bnd_Box2d &
-	:param aTol:
-	:type aTol: float
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
 };
 
 
@@ -4240,57 +4192,27 @@ class MeshVS_SensitiveMesh : public Select3D_SensitiveEntity {
 ") GetMode;
 		Standard_Integer GetMode ();
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "	:param aLocation:
-	:type aLocation: TopLoc_Location &
-	:rtype: Handle_Select3D_SensitiveEntity
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveEntity
 ") GetConnected;
-		virtual Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & aLocation);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param thePickArgs:
-	:type thePickArgs: SelectBasics_PickArgs &
-	:param theMatchDMin:
-	:type theMatchDMin: float &
-	:param theMatchDepth:
-	:type theMatchDepth: float &
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param XMin:
-	:type XMin: float
-	:param YMin:
-	:type YMin: float
-	:param XMax:
-	:type XMax: float
-	:param YMax:
-	:type YMax: float
-	:param aTol:
-	:type aTol: float
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param Polyline:
-	:type Polyline: TColgp_Array1OfPnt2d
-	:param aBox:
-	:type aBox: Bnd_Box2d &
-	:param aTol:
-	:type aTol: float
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "	:param aProjector:
-	:type aProjector: Handle_Select3D_Projector &
-	:rtype: None
-") Project;
-		void Project (const Handle_Select3D_Projector & aProjector);
-		%feature("compactdefaultargs") Areas;
-		%feature("autodoc", "	:param boxes:
-	:type boxes: SelectBasics_ListOfBox2d &
-	:rtype: None
-") Areas;
-		void Areas (SelectBasics_ListOfBox2d & boxes);
+		virtual Handle_Select3D_SensitiveEntity GetConnected ();
+		%feature("compactdefaultargs") NbSubElements;
+		%feature("autodoc", "	* Returns the amount of mesh nodes
+
+	:rtype: int
+") NbSubElements;
+		virtual Standard_Integer NbSubElements ();
+		%feature("compactdefaultargs") BoundingBox;
+		%feature("autodoc", "	* Returns bounding box of mesh
+
+	:rtype: Select3D_BndBox3d
+") BoundingBox;
+		virtual Select3D_BndBox3d BoundingBox ();
+		%feature("compactdefaultargs") CenterOfGeometry;
+		%feature("autodoc", "	* Returns center of mesh
+
+	:rtype: gp_Pnt
+") CenterOfGeometry;
+		virtual gp_Pnt CenterOfGeometry ();
 };
 
 
@@ -4349,73 +4271,41 @@ class Handle_MeshVS_SensitiveMesh : public Handle_Select3D_SensitiveEntity {
 class MeshVS_SensitivePolyhedron : public Select3D_SensitiveEntity {
 	public:
 		%feature("compactdefaultargs") MeshVS_SensitivePolyhedron;
-		%feature("autodoc", "	:param Owner:
-	:type Owner: Handle_SelectBasics_EntityOwner &
-	:param Nodes:
-	:type Nodes: TColgp_Array1OfPnt
-	:param Topo:
-	:type Topo: Handle_MeshVS_HArray1OfSequenceOfInteger &
+		%feature("autodoc", "	:param theOwner:
+	:type theOwner: Handle_SelectBasics_EntityOwner &
+	:param theNodes:
+	:type theNodes: TColgp_Array1OfPnt
+	:param theTopo:
+	:type theTopo: Handle_MeshVS_HArray1OfSequenceOfInteger &
 	:rtype: None
 ") MeshVS_SensitivePolyhedron;
-		 MeshVS_SensitivePolyhedron (const Handle_SelectBasics_EntityOwner & Owner,const TColgp_Array1OfPnt & Nodes,const Handle_MeshVS_HArray1OfSequenceOfInteger & Topo);
-		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "	:param aProjector:
-	:type aProjector: Handle_Select3D_Projector &
-	:rtype: void
-") Project;
-		virtual void Project (const Handle_Select3D_Projector & aProjector);
+		 MeshVS_SensitivePolyhedron (const Handle_SelectBasics_EntityOwner & theOwner,const TColgp_Array1OfPnt & theNodes,const Handle_MeshVS_HArray1OfSequenceOfInteger & theTopo);
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "	:param aLocation:
-	:type aLocation: TopLoc_Location &
-	:rtype: Handle_Select3D_SensitiveEntity
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveEntity
 ") GetConnected;
-		virtual Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & aLocation);
+		virtual Handle_Select3D_SensitiveEntity GetConnected ();
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param thePickArgs:
-	:type thePickArgs: SelectBasics_PickArgs &
-	:param theMatchDMin:
-	:type theMatchDMin: float &
-	:param theMatchDepth:
-	:type theMatchDepth: float &
+		%feature("autodoc", "	:param theMgr:
+	:type theMgr: SelectBasics_SelectingVolumeManager &
+	:param thePickResult:
+	:type thePickResult: SelectBasics_PickResult &
 	:rtype: bool
 ") Matches;
-		virtual Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param XMin:
-	:type XMin: float
-	:param YMin:
-	:type YMin: float
-	:param XMax:
-	:type XMax: float
-	:param YMax:
-	:type YMax: float
-	:param aTol:
-	:type aTol: float
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param Polyline:
-	:type Polyline: TColgp_Array1OfPnt2d
-	:param aBox:
-	:type aBox: Bnd_Box2d &
-	:param aTol:
-	:type aTol: float
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("compactdefaultargs") ComputeDepth;
-		%feature("autodoc", "	:param EyeLine:
-	:type EyeLine: gp_Lin
-	:rtype: float
-") ComputeDepth;
-		virtual Standard_Real ComputeDepth (const gp_Lin & EyeLine);
-		%feature("compactdefaultargs") Areas;
-		%feature("autodoc", "	:param aResult:
-	:type aResult: SelectBasics_ListOfBox2d &
-	:rtype: void
-") Areas;
-		virtual void Areas (SelectBasics_ListOfBox2d & aResult);
+		virtual Standard_Boolean Matches (SelectBasics_SelectingVolumeManager & theMgr,SelectBasics_PickResult & thePickResult);
+		%feature("compactdefaultargs") NbSubElements;
+		%feature("autodoc", "	* Returns the amount of nodes of polyhedron
+
+	:rtype: int
+") NbSubElements;
+		virtual Standard_Integer NbSubElements ();
+		%feature("compactdefaultargs") BoundingBox;
+		%feature("autodoc", "	:rtype: Select3D_BndBox3d
+") BoundingBox;
+		virtual Select3D_BndBox3d BoundingBox ();
+		%feature("compactdefaultargs") CenterOfGeometry;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") CenterOfGeometry;
+		virtual gp_Pnt CenterOfGeometry ();
 };
 
 
@@ -4476,45 +4366,13 @@ class MeshVS_SensitiveSegment : public Select3D_SensitiveSegment {
 		%feature("compactdefaultargs") MeshVS_SensitiveSegment;
 		%feature("autodoc", "	:param theOwner:
 	:type theOwner: Handle_SelectBasics_EntityOwner &
-	:param theFirstP:
-	:type theFirstP: gp_Pnt
-	:param theLastP:
-	:type theLastP: gp_Pnt
-	:param theMaxRect: default value is 1
-	:type theMaxRect: int
+	:param theFirstPnt:
+	:type theFirstPnt: gp_Pnt
+	:param theLastPnt:
+	:type theLastPnt: gp_Pnt
 	:rtype: None
 ") MeshVS_SensitiveSegment;
-		 MeshVS_SensitiveSegment (const Handle_SelectBasics_EntityOwner & theOwner,const gp_Pnt & theFirstP,const gp_Pnt & theLastP,const Standard_Integer theMaxRect = 1);
-		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "	:param aProjector:
-	:type aProjector: Handle_Select3D_Projector &
-	:rtype: void
-") Project;
-		virtual void Project (const Handle_Select3D_Projector & aProjector);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param XMin:
-	:type XMin: float
-	:param YMin:
-	:type YMin: float
-	:param XMax:
-	:type XMax: float
-	:param YMax:
-	:type YMax: float
-	:param aTol:
-	:type aTol: float
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	:param Polyline:
-	:type Polyline: TColgp_Array1OfPnt2d
-	:param aBox:
-	:type aBox: Bnd_Box2d &
-	:param aTol:
-	:type aTol: float
-	:rtype: bool
-") Matches;
-		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
+		 MeshVS_SensitiveSegment (const Handle_SelectBasics_EntityOwner & theOwner,const gp_Pnt & theFirstPnt,const gp_Pnt & theLastPnt);
 };
 
 
@@ -4667,7 +4525,7 @@ class MeshVS_SequenceOfPrsBuilder : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: MeshVS_SequenceOfPrsBuilder &
 	:rtype: MeshVS_SequenceOfPrsBuilder
-") operator=;
+") operator =;
 		const MeshVS_SequenceOfPrsBuilder & operator = (const MeshVS_SequenceOfPrsBuilder & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

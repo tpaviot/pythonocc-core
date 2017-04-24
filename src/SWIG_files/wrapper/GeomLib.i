@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -354,7 +354,7 @@ class GeomLib_Array1OfMat {
 		%feature("autodoc", "	:param Other:
 	:type Other: GeomLib_Array1OfMat &
 	:rtype: GeomLib_Array1OfMat
-") operator=;
+") operator =;
 		const GeomLib_Array1OfMat & operator = (const GeomLib_Array1OfMat & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int

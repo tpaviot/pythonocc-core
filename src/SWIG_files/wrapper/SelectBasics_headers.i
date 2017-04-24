@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -18,19 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %{
-#include<SelectBasics_BasicTool.hxx>
 #include<SelectBasics_EntityOwner.hxx>
-#include<SelectBasics_ListIteratorOfListOfBox2d.hxx>
-#include<SelectBasics_ListIteratorOfListOfSensitive.hxx>
-#include<SelectBasics_ListNodeOfListOfBox2d.hxx>
-#include<SelectBasics_ListNodeOfListOfSensitive.hxx>
-#include<SelectBasics_ListOfBox2d.hxx>
-#include<SelectBasics_ListOfSensitive.hxx>
-#include<SelectBasics_PickArgs.hxx>
+#include<SelectBasics_PickResult.hxx>
+#include<SelectBasics_SelectingVolumeManager.hxx>
 #include<SelectBasics_SensitiveEntity.hxx>
-#include<SelectBasics_SequenceNodeOfSequenceOfOwner.hxx>
-#include<SelectBasics_SequenceOfOwner.hxx>
-#include<SelectBasics_SortAlgo.hxx>
 #include<SelectBasics.hxx>
 #include<Standard.hxx>
 #include<Standard_AbortiveTransaction.hxx>
@@ -112,6 +103,71 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_Version.hxx>
 #include<Standard_WayOfLife.hxx>
 #include<Standard_values.h>
+#include<MMgt_TShared.hxx>
+#include<TopLoc_Datum3D.hxx>
+#include<TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
+#include<TopLoc_IndexedMapOfLocation.hxx>
+#include<TopLoc_ItemLocation.hxx>
+#include<TopLoc_Location.hxx>
+#include<TopLoc_MapIteratorOfMapOfLocation.hxx>
+#include<TopLoc_MapLocationHasher.hxx>
+#include<TopLoc_MapOfLocation.hxx>
+#include<TopLoc_SListNodeOfItemLocation.hxx>
+#include<TopLoc_SListOfItemLocation.hxx>
+#include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
+#include<NCollection_AccAllocator.hxx>
+#include<NCollection_AlignedAllocator.hxx>
+#include<NCollection_Array1.hxx>
+#include<NCollection_Array2.hxx>
+#include<NCollection_BaseAllocator.hxx>
+#include<NCollection_BaseList.hxx>
+#include<NCollection_BaseMap.hxx>
+#include<NCollection_BaseVector.hxx>
+#include<NCollection_Buffer.hxx>
+#include<NCollection_Comparator.hxx>
+#include<NCollection_DefaultHasher.hxx>
+#include<NCollection_DefineAlloc.hxx>
+#include<NCollection_DefineArray1.hxx>
+#include<NCollection_DefineArray2.hxx>
+#include<NCollection_DefineDataMap.hxx>
+#include<NCollection_DefineDoubleMap.hxx>
+#include<NCollection_DefineHArray1.hxx>
+#include<NCollection_DefineHArray2.hxx>
+#include<NCollection_DefineHSequence.hxx>
+#include<NCollection_DefineIndexedDataMap.hxx>
+#include<NCollection_DefineIndexedMap.hxx>
+#include<NCollection_DefineList.hxx>
+#include<NCollection_DefineMap.hxx>
+#include<NCollection_DefineSequence.hxx>
+#include<NCollection_DefineVector.hxx>
+#include<NCollection_Handle.hxx>
+#include<NCollection_HArray1.hxx>
+#include<NCollection_HArray2.hxx>
+#include<NCollection_HeapAllocator.hxx>
+#include<NCollection_HSequence.hxx>
+#include<NCollection_IncAllocator.hxx>
+#include<NCollection_List.hxx>
+#include<NCollection_ListNode.hxx>
+#include<NCollection_LocalArray.hxx>
+#include<NCollection_Mat4.hxx>
+#include<NCollection_QuickSort.hxx>
+#include<NCollection_Sequence.hxx>
+#include<NCollection_SparseArray.hxx>
+#include<NCollection_SparseArrayBase.hxx>
+#include<NCollection_StdAllocator.hxx>
+#include<NCollection_String.hxx>
+#include<NCollection_TListIterator.hxx>
+#include<NCollection_TListNode.hxx>
+#include<NCollection_TypeDef.hxx>
+#include<NCollection_UBTree.hxx>
+#include<NCollection_UBTreeFiller.hxx>
+#include<NCollection_UtfIterator.hxx>
+#include<NCollection_UtfString.hxx>
+#include<NCollection_Vec2.hxx>
+#include<NCollection_Vec3.hxx>
+#include<NCollection_Vec4.hxx>
+#include<NCollection_Vector.hxx>
+#include<NCollection_WinHeapAllocator.hxx>
 #include<gp.hxx>
 #include<gp_Ax1.hxx>
 #include<gp_Ax2.hxx>
@@ -202,6 +258,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -211,6 +268,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -219,19 +277,27 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceOfVec2d.hxx>
 #include<TColgp_SequenceOfXY.hxx>
 #include<TColgp_SequenceOfXYZ.hxx>
-#include<MMgt_TShared.hxx>
-#include<TopLoc_Datum3D.hxx>
-#include<TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
-#include<TopLoc_IndexedMapOfLocation.hxx>
-#include<TopLoc_ItemLocation.hxx>
-#include<TopLoc_Location.hxx>
-#include<TopLoc_MapIteratorOfMapOfLocation.hxx>
-#include<TopLoc_MapLocationHasher.hxx>
-#include<TopLoc_MapOfLocation.hxx>
-#include<TopLoc_SListNodeOfItemLocation.hxx>
-#include<TopLoc_SListOfItemLocation.hxx>
-#include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#include<TopLoc_TrsfPtr.hxx>
+#include<Select3D_BndBox3d.hxx>
+#include<Select3D_BVHPrimitiveContent.hxx>
+#include<Select3D_EntitySequence.hxx>
+#include<Select3D_InteriorSensitivePointSet.hxx>
+#include<Select3D_Macro.hxx>
+#include<Select3D_Pnt.hxx>
+#include<Select3D_PointData.hxx>
+#include<Select3D_SensitiveBox.hxx>
+#include<Select3D_SensitiveCircle.hxx>
+#include<Select3D_SensitiveCurve.hxx>
+#include<Select3D_SensitiveEntity.hxx>
+#include<Select3D_SensitiveFace.hxx>
+#include<Select3D_SensitiveGroup.hxx>
+#include<Select3D_SensitivePoint.hxx>
+#include<Select3D_SensitivePoly.hxx>
+#include<Select3D_SensitiveSegment.hxx>
+#include<Select3D_SensitiveSet.hxx>
+#include<Select3D_SensitiveTriangle.hxx>
+#include<Select3D_SensitiveTriangulation.hxx>
+#include<Select3D_SensitiveWire.hxx>
+#include<Select3D_TypeOfSensitivity.hxx>
 #include<Bnd_Array1OfBox.hxx>
 #include<Bnd_Array1OfBox2d.hxx>
 #include<Bnd_Array1OfSphere.hxx>
@@ -249,23 +315,70 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Bnd_SeqOfBox.hxx>
 #include<Bnd_SequenceNodeOfSeqOfBox.hxx>
 #include<Bnd_Sphere.hxx>
-#include<TCollection.hxx>
-#include<TCollection_AsciiString.hxx>
-#include<TCollection_BaseSequence.hxx>
-#include<TCollection_BasicMap.hxx>
-#include<TCollection_BasicMapIterator.hxx>
-#include<TCollection_CompareOfInteger.hxx>
-#include<TCollection_CompareOfReal.hxx>
-#include<TCollection_ExtendedString.hxx>
-#include<TCollection_HAsciiString.hxx>
-#include<TCollection_HExtendedString.hxx>
-#include<TCollection_MapNode.hxx>
-#include<TCollection_MapNodePtr.hxx>
-#include<TCollection_PrivCompareOfInteger.hxx>
-#include<TCollection_PrivCompareOfReal.hxx>
-#include<TCollection_SeqNode.hxx>
-#include<TCollection_SeqNodePtr.hxx>
-#include<TCollection_Side.hxx>
+#include<Geom_Axis1Placement.hxx>
+#include<Geom_Axis2Placement.hxx>
+#include<Geom_AxisPlacement.hxx>
+#include<Geom_BezierCurve.hxx>
+#include<Geom_BezierSurface.hxx>
+#include<Geom_BoundedCurve.hxx>
+#include<Geom_BoundedSurface.hxx>
+#include<Geom_BSplineCurve.hxx>
+#include<Geom_BSplineSurface.hxx>
+#include<Geom_CartesianPoint.hxx>
+#include<Geom_Circle.hxx>
+#include<Geom_Conic.hxx>
+#include<Geom_ConicalSurface.hxx>
+#include<Geom_Curve.hxx>
+#include<Geom_CylindricalSurface.hxx>
+#include<Geom_Direction.hxx>
+#include<Geom_ElementarySurface.hxx>
+#include<Geom_Ellipse.hxx>
+#include<Geom_Geometry.hxx>
+#include<Geom_HSequenceOfBSplineSurface.hxx>
+#include<Geom_Hyperbola.hxx>
+#include<Geom_Line.hxx>
+#include<Geom_OffsetCurve.hxx>
+#include<Geom_OffsetSurface.hxx>
+#include<Geom_OsculatingSurface.hxx>
+#include<Geom_Parabola.hxx>
+#include<Geom_Plane.hxx>
+#include<Geom_Point.hxx>
+#include<Geom_RectangularTrimmedSurface.hxx>
+#include<Geom_SequenceNodeOfSequenceOfBSplineSurface.hxx>
+#include<Geom_SequenceOfBSplineSurface.hxx>
+#include<Geom_SphericalSurface.hxx>
+#include<Geom_Surface.hxx>
+#include<Geom_SurfaceOfLinearExtrusion.hxx>
+#include<Geom_SurfaceOfRevolution.hxx>
+#include<Geom_SweptSurface.hxx>
+#include<Geom_ToroidalSurface.hxx>
+#include<Geom_Transformation.hxx>
+#include<Geom_TrimmedCurve.hxx>
+#include<Geom_UndefinedDerivative.hxx>
+#include<Geom_UndefinedValue.hxx>
+#include<Geom_Vector.hxx>
+#include<Geom_VectorWithMagnitude.hxx>
+#include<Select3D_BndBox3d.hxx>
+#include<Select3D_BVHPrimitiveContent.hxx>
+#include<Select3D_EntitySequence.hxx>
+#include<Select3D_InteriorSensitivePointSet.hxx>
+#include<Select3D_Macro.hxx>
+#include<Select3D_Pnt.hxx>
+#include<Select3D_PointData.hxx>
+#include<Select3D_SensitiveBox.hxx>
+#include<Select3D_SensitiveCircle.hxx>
+#include<Select3D_SensitiveCurve.hxx>
+#include<Select3D_SensitiveEntity.hxx>
+#include<Select3D_SensitiveFace.hxx>
+#include<Select3D_SensitiveGroup.hxx>
+#include<Select3D_SensitivePoint.hxx>
+#include<Select3D_SensitivePoly.hxx>
+#include<Select3D_SensitiveSegment.hxx>
+#include<Select3D_SensitiveSet.hxx>
+#include<Select3D_SensitiveTriangle.hxx>
+#include<Select3D_SensitiveTriangulation.hxx>
+#include<Select3D_SensitiveWire.hxx>
+#include<Select3D_TypeOfSensitivity.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
@@ -315,6 +428,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -324,6 +438,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -506,9 +621,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_TypedCallBack.hxx>
 %};
 %import Standard.i
-%import gp.i
-%import TColgp.i
 %import MMgt.i
 %import TopLoc.i
-%import Bnd.i
-%import TCollection.i
+%import NCollection.i
+%import gp.i
+%import TColgp.i
+%import Select3D.i

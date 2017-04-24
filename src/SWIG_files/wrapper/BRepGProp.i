@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -532,6 +532,33 @@ class BRepGProp_Face {
 
 
 %extend BRepGProp_Face {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor BRepGProp_Gauss;
+class BRepGProp_Gauss {
+	public:
+/* public enums */
+enum BRepGProp_GaussType {
+	Vinert = 0,
+	Sinert = 1,
+};
+
+/* end public enums declaration */
+
+		%feature("compactdefaultargs") BRepGProp_Gauss;
+		%feature("autodoc", "	* Constructor
+
+	:param theType:
+	:type theType: BRepGProp_GaussType
+	:rtype: None
+") BRepGProp_Gauss;
+		 BRepGProp_Gauss (const BRepGProp_GaussType theType);
+};
+
+
+%extend BRepGProp_Gauss {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

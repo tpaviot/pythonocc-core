@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -101,7 +101,7 @@ class TColgp_Array1OfCirc2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array1OfCirc2d
 	:rtype: TColgp_Array1OfCirc2d
-") operator=;
+") operator =;
 		const TColgp_Array1OfCirc2d & operator = (const TColgp_Array1OfCirc2d & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -188,7 +188,7 @@ class TColgp_Array1OfDir {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array1OfDir
 	:rtype: TColgp_Array1OfDir
-") operator=;
+") operator =;
 		const TColgp_Array1OfDir & operator = (const TColgp_Array1OfDir & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -275,7 +275,7 @@ class TColgp_Array1OfDir2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array1OfDir2d
 	:rtype: TColgp_Array1OfDir2d
-") operator=;
+") operator =;
 		const TColgp_Array1OfDir2d & operator = (const TColgp_Array1OfDir2d & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -362,7 +362,7 @@ class TColgp_Array1OfLin2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array1OfLin2d
 	:rtype: TColgp_Array1OfLin2d
-") operator=;
+") operator =;
 		const TColgp_Array1OfLin2d & operator = (const TColgp_Array1OfLin2d & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -449,7 +449,7 @@ class TColgp_Array1OfPnt {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array1OfPnt
 	:rtype: TColgp_Array1OfPnt
-") operator=;
+") operator =;
 		const TColgp_Array1OfPnt & operator = (const TColgp_Array1OfPnt & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -536,7 +536,7 @@ class TColgp_Array1OfPnt2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array1OfPnt2d
 	:rtype: TColgp_Array1OfPnt2d
-") operator=;
+") operator =;
 		const TColgp_Array1OfPnt2d & operator = (const TColgp_Array1OfPnt2d & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -623,7 +623,7 @@ class TColgp_Array1OfVec {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array1OfVec
 	:rtype: TColgp_Array1OfVec
-") operator=;
+") operator =;
 		const TColgp_Array1OfVec & operator = (const TColgp_Array1OfVec & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -710,7 +710,7 @@ class TColgp_Array1OfVec2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array1OfVec2d
 	:rtype: TColgp_Array1OfVec2d
-") operator=;
+") operator =;
 		const TColgp_Array1OfVec2d & operator = (const TColgp_Array1OfVec2d & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -797,7 +797,7 @@ class TColgp_Array1OfXY {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array1OfXY
 	:rtype: TColgp_Array1OfXY
-") operator=;
+") operator =;
 		const TColgp_Array1OfXY & operator = (const TColgp_Array1OfXY & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -884,7 +884,7 @@ class TColgp_Array1OfXYZ {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array1OfXYZ
 	:rtype: TColgp_Array1OfXYZ
-") operator=;
+") operator =;
 		const TColgp_Array1OfXYZ & operator = (const TColgp_Array1OfXYZ & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -975,7 +975,7 @@ class TColgp_Array2OfCirc2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array2OfCirc2d
 	:rtype: TColgp_Array2OfCirc2d
-") operator=;
+") operator =;
 		const TColgp_Array2OfCirc2d & operator = (const TColgp_Array2OfCirc2d & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1084,7 +1084,7 @@ class TColgp_Array2OfDir {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array2OfDir
 	:rtype: TColgp_Array2OfDir
-") operator=;
+") operator =;
 		const TColgp_Array2OfDir & operator = (const TColgp_Array2OfDir & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1193,7 +1193,7 @@ class TColgp_Array2OfDir2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array2OfDir2d
 	:rtype: TColgp_Array2OfDir2d
-") operator=;
+") operator =;
 		const TColgp_Array2OfDir2d & operator = (const TColgp_Array2OfDir2d & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1302,7 +1302,7 @@ class TColgp_Array2OfLin2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array2OfLin2d
 	:rtype: TColgp_Array2OfLin2d
-") operator=;
+") operator =;
 		const TColgp_Array2OfLin2d & operator = (const TColgp_Array2OfLin2d & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1411,7 +1411,7 @@ class TColgp_Array2OfPnt {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array2OfPnt
 	:rtype: TColgp_Array2OfPnt
-") operator=;
+") operator =;
 		const TColgp_Array2OfPnt & operator = (const TColgp_Array2OfPnt & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1520,7 +1520,7 @@ class TColgp_Array2OfPnt2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array2OfPnt2d
 	:rtype: TColgp_Array2OfPnt2d
-") operator=;
+") operator =;
 		const TColgp_Array2OfPnt2d & operator = (const TColgp_Array2OfPnt2d & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1629,7 +1629,7 @@ class TColgp_Array2OfVec {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array2OfVec
 	:rtype: TColgp_Array2OfVec
-") operator=;
+") operator =;
 		const TColgp_Array2OfVec & operator = (const TColgp_Array2OfVec & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1738,7 +1738,7 @@ class TColgp_Array2OfVec2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array2OfVec2d
 	:rtype: TColgp_Array2OfVec2d
-") operator=;
+") operator =;
 		const TColgp_Array2OfVec2d & operator = (const TColgp_Array2OfVec2d & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1847,7 +1847,7 @@ class TColgp_Array2OfXY {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array2OfXY
 	:rtype: TColgp_Array2OfXY
-") operator=;
+") operator =;
 		const TColgp_Array2OfXY & operator = (const TColgp_Array2OfXY & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1956,7 +1956,7 @@ class TColgp_Array2OfXYZ {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_Array2OfXYZ
 	:rtype: TColgp_Array2OfXYZ
-") operator=;
+") operator =;
 		const TColgp_Array2OfXYZ & operator = (const TColgp_Array2OfXYZ & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -6279,6 +6279,77 @@ class Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d : public Handle_TColle
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor TColgp_SequenceNodeOfSequenceOfAx1;
+class TColgp_SequenceNodeOfSequenceOfAx1 : public TCollection_SeqNode {
+	public:
+		%feature("compactdefaultargs") TColgp_SequenceNodeOfSequenceOfAx1;
+		%feature("autodoc", "	:param I:
+	:type I: gp_Ax1
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColgp_SequenceNodeOfSequenceOfAx1;
+		 TColgp_SequenceNodeOfSequenceOfAx1 (const gp_Ax1 & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	:rtype: gp_Ax1
+") Value;
+		gp_Ax1  Value ();
+};
+
+
+%extend TColgp_SequenceNodeOfSequenceOfAx1 {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TColgp_SequenceNodeOfSequenceOfAx1(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_TColgp_SequenceNodeOfSequenceOfAx1::Handle_TColgp_SequenceNodeOfSequenceOfAx1 %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_TColgp_SequenceNodeOfSequenceOfAx1;
+class Handle_TColgp_SequenceNodeOfSequenceOfAx1 : public Handle_TCollection_SeqNode {
+
+    public:
+        // constructors
+        Handle_TColgp_SequenceNodeOfSequenceOfAx1();
+        Handle_TColgp_SequenceNodeOfSequenceOfAx1(const Handle_TColgp_SequenceNodeOfSequenceOfAx1 &aHandle);
+        Handle_TColgp_SequenceNodeOfSequenceOfAx1(const TColgp_SequenceNodeOfSequenceOfAx1 *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_TColgp_SequenceNodeOfSequenceOfAx1 DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_TColgp_SequenceNodeOfSequenceOfAx1 {
+    TColgp_SequenceNodeOfSequenceOfAx1* _get_reference() {
+    return (TColgp_SequenceNodeOfSequenceOfAx1*)$self->Access();
+    }
+};
+
+%extend Handle_TColgp_SequenceNodeOfSequenceOfAx1 {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
+%extend TColgp_SequenceNodeOfSequenceOfAx1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceNodeOfSequenceOfDir;
 class TColgp_SequenceNodeOfSequenceOfDir : public TCollection_SeqNode {
 	public:
@@ -6874,7 +6945,7 @@ class TColgp_SequenceOfArray1OfPnt2d : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_SequenceOfArray1OfPnt2d
 	:rtype: TColgp_SequenceOfArray1OfPnt2d
-") operator=;
+") operator =;
 		const TColgp_SequenceOfArray1OfPnt2d & operator = (const TColgp_SequenceOfArray1OfPnt2d & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -6990,6 +7061,149 @@ class TColgp_SequenceOfArray1OfPnt2d : public TCollection_BaseSequence {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor TColgp_SequenceOfAx1;
+class TColgp_SequenceOfAx1 : public TCollection_BaseSequence {
+	public:
+		%feature("compactdefaultargs") TColgp_SequenceOfAx1;
+		%feature("autodoc", "	:rtype: None
+") TColgp_SequenceOfAx1;
+		 TColgp_SequenceOfAx1 ();
+		%feature("compactdefaultargs") TColgp_SequenceOfAx1;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColgp_SequenceOfAx1
+	:rtype: None
+") TColgp_SequenceOfAx1;
+		 TColgp_SequenceOfAx1 (const TColgp_SequenceOfAx1 & Other);
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("compactdefaultargs") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColgp_SequenceOfAx1
+	:rtype: TColgp_SequenceOfAx1
+") Assign;
+		const TColgp_SequenceOfAx1 & Assign (const TColgp_SequenceOfAx1 & Other);
+		%feature("compactdefaultargs") operator =;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColgp_SequenceOfAx1
+	:rtype: TColgp_SequenceOfAx1
+") operator =;
+		const TColgp_SequenceOfAx1 & operator = (const TColgp_SequenceOfAx1 & Other);
+		%feature("compactdefaultargs") Append;
+		%feature("autodoc", "	:param T:
+	:type T: gp_Ax1
+	:rtype: None
+") Append;
+		void Append (const gp_Ax1 & T);
+		%feature("compactdefaultargs") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColgp_SequenceOfAx1
+	:rtype: None
+") Append;
+		void Append (TColgp_SequenceOfAx1 & S);
+		%feature("compactdefaultargs") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: gp_Ax1
+	:rtype: None
+") Prepend;
+		void Prepend (const gp_Ax1 & T);
+		%feature("compactdefaultargs") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColgp_SequenceOfAx1
+	:rtype: None
+") Prepend;
+		void Prepend (TColgp_SequenceOfAx1 & S);
+		%feature("compactdefaultargs") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:param T:
+	:type T: gp_Ax1
+	:rtype: None
+") InsertBefore;
+		void InsertBefore (const Standard_Integer Index,const gp_Ax1 & T);
+		%feature("compactdefaultargs") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:param S:
+	:type S: TColgp_SequenceOfAx1
+	:rtype: None
+") InsertBefore;
+		void InsertBefore (const Standard_Integer Index,TColgp_SequenceOfAx1 & S);
+		%feature("compactdefaultargs") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:param T:
+	:type T: gp_Ax1
+	:rtype: None
+") InsertAfter;
+		void InsertAfter (const Standard_Integer Index,const gp_Ax1 & T);
+		%feature("compactdefaultargs") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:param S:
+	:type S: TColgp_SequenceOfAx1
+	:rtype: None
+") InsertAfter;
+		void InsertAfter (const Standard_Integer Index,TColgp_SequenceOfAx1 & S);
+		%feature("compactdefaultargs") First;
+		%feature("autodoc", "	:rtype: gp_Ax1
+") First;
+		const gp_Ax1  First ();
+		%feature("compactdefaultargs") Last;
+		%feature("autodoc", "	:rtype: gp_Ax1
+") Last;
+		const gp_Ax1  Last ();
+		%feature("compactdefaultargs") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:param Sub:
+	:type Sub: TColgp_SequenceOfAx1
+	:rtype: None
+") Split;
+		void Split (const Standard_Integer Index,TColgp_SequenceOfAx1 & Sub);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:rtype: gp_Ax1
+") Value;
+		const gp_Ax1  Value (const Standard_Integer Index);
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:param I:
+	:type I: gp_Ax1
+	:rtype: None
+") SetValue;
+		void SetValue (const Standard_Integer Index,const gp_Ax1 & I);
+		%feature("compactdefaultargs") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:rtype: gp_Ax1
+") ChangeValue;
+		gp_Ax1  ChangeValue (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: int
+	:rtype: None
+") Remove;
+		void Remove (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: int
+	:param ToIndex:
+	:type ToIndex: int
+	:rtype: None
+") Remove;
+		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
+};
+
+
+%extend TColgp_SequenceOfAx1 {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor TColgp_SequenceOfDir;
 class TColgp_SequenceOfDir : public TCollection_BaseSequence {
 	public:
@@ -7017,7 +7231,7 @@ class TColgp_SequenceOfDir : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_SequenceOfDir
 	:rtype: TColgp_SequenceOfDir
-") operator=;
+") operator =;
 		const TColgp_SequenceOfDir & operator = (const TColgp_SequenceOfDir & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -7160,7 +7374,7 @@ class TColgp_SequenceOfDir2d : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_SequenceOfDir2d
 	:rtype: TColgp_SequenceOfDir2d
-") operator=;
+") operator =;
 		const TColgp_SequenceOfDir2d & operator = (const TColgp_SequenceOfDir2d & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -7303,7 +7517,7 @@ class TColgp_SequenceOfPnt : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_SequenceOfPnt
 	:rtype: TColgp_SequenceOfPnt
-") operator=;
+") operator =;
 		const TColgp_SequenceOfPnt & operator = (const TColgp_SequenceOfPnt & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -7446,7 +7660,7 @@ class TColgp_SequenceOfPnt2d : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_SequenceOfPnt2d
 	:rtype: TColgp_SequenceOfPnt2d
-") operator=;
+") operator =;
 		const TColgp_SequenceOfPnt2d & operator = (const TColgp_SequenceOfPnt2d & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -7589,7 +7803,7 @@ class TColgp_SequenceOfVec : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_SequenceOfVec
 	:rtype: TColgp_SequenceOfVec
-") operator=;
+") operator =;
 		const TColgp_SequenceOfVec & operator = (const TColgp_SequenceOfVec & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -7732,7 +7946,7 @@ class TColgp_SequenceOfVec2d : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_SequenceOfVec2d
 	:rtype: TColgp_SequenceOfVec2d
-") operator=;
+") operator =;
 		const TColgp_SequenceOfVec2d & operator = (const TColgp_SequenceOfVec2d & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -7875,7 +8089,7 @@ class TColgp_SequenceOfXY : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_SequenceOfXY
 	:rtype: TColgp_SequenceOfXY
-") operator=;
+") operator =;
 		const TColgp_SequenceOfXY & operator = (const TColgp_SequenceOfXY & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -8018,7 +8232,7 @@ class TColgp_SequenceOfXYZ : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColgp_SequenceOfXYZ
 	:rtype: TColgp_SequenceOfXYZ
-") operator=;
+") operator =;
 		const TColgp_SequenceOfXYZ & operator = (const TColgp_SequenceOfXYZ & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -599,7 +599,7 @@ class Geom_SequenceOfBSplineSurface : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Geom_SequenceOfBSplineSurface &
 	:rtype: Geom_SequenceOfBSplineSurface
-") operator=;
+") operator =;
 		const Geom_SequenceOfBSplineSurface & operator = (const Geom_SequenceOfBSplineSurface & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -3214,7 +3214,7 @@ class Handle_Geom_Line : public Handle_Geom_Curve {
 class Geom_OffsetCurve : public Geom_Curve {
 	public:
 		%feature("compactdefaultargs") Geom_OffsetCurve;
-		%feature("autodoc", "	* C is the basis curve, Offset is the distance between <self> and the basis curve at any point. V defines the fixed reference direction (offset direction). If P is a point on the basis curve and T the first derivative with non zero length at this point, the corresponding point on the offset curve is in the direction of the vector-product N = V ^ T where N is a unitary vector. Warnings : In this package the entities are not shared. The OffsetCurve is built with a copy of the curve C. So when C is modified the OffsetCurve is not modified //! Raised if the basis curve C is not at least C1. Warnings : No check is done to know if ||V^T|| != 0.0 at any point.
+		%feature("autodoc", "	* C is the basis curve, Offset is the distance between <self> and the basis curve at any point. V defines the fixed reference direction (offset direction). If P is a point on the basis curve and T the first derivative with non zero length at this point, the corresponding point on the offset curve is in the direction of the vector-product N = V ^ T where N is a unitary vector. If isNotCheckC0 = True checking if basis curve has C0-continuity is not made. Warnings : In this package the entities are not shared. The OffsetCurve is built with a copy of the curve C. So when C is modified the OffsetCurve is not modified //! Raised if the basis curve C is not at least C1. Warnings : No check is done to know if ||V^T|| != 0.0 at any point.
 
 	:param C:
 	:type C: Handle_Geom_Curve &
@@ -3222,9 +3222,11 @@ class Geom_OffsetCurve : public Geom_Curve {
 	:type Offset: float
 	:param V:
 	:type V: gp_Dir
+	:param isNotCheckC0: default value is Standard_False
+	:type isNotCheckC0: bool
 	:rtype: None
 ") Geom_OffsetCurve;
-		 Geom_OffsetCurve (const Handle_Geom_Curve & C,const Standard_Real Offset,const gp_Dir & V);
+		 Geom_OffsetCurve (const Handle_Geom_Curve & C,const Standard_Real Offset,const gp_Dir & V,const Standard_Boolean isNotCheckC0 = Standard_False);
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "	* Changes the orientation of this offset curve. As a result: - the basis curve is reversed, - the start point of the initial curve becomes the end point of the reversed curve, - the end point of the initial curve becomes the start point of the reversed curve, and - the first and last parameters are recomputed.
 
@@ -3240,13 +3242,15 @@ class Geom_OffsetCurve : public Geom_Curve {
 ") ReversedParameter;
 		Standard_Real ReversedParameter (const Standard_Real U);
 		%feature("compactdefaultargs") SetBasisCurve;
-		%feature("autodoc", "	* Changes this offset curve by assigning C as the basis curve from which it is built. Exceptions Standard_ConstructionError if the curve C is not at least 'C1' continuous.
+		%feature("autodoc", "	* Changes this offset curve by assigning C as the basis curve from which it is built. If isNotCheckC0 = True checking if basis curve has C0-continuity is not made. Exceptions Standard_ConstructionError if the curve C is not at least 'C1' continuous.
 
 	:param C:
 	:type C: Handle_Geom_Curve &
+	:param isNotCheckC0: default value is Standard_False
+	:type isNotCheckC0: bool
 	:rtype: None
 ") SetBasisCurve;
-		void SetBasisCurve (const Handle_Geom_Curve & C);
+		void SetBasisCurve (const Handle_Geom_Curve & C,const Standard_Boolean isNotCheckC0 = Standard_False);
 		%feature("compactdefaultargs") SetDirection;
 		%feature("autodoc", "	* Changes this offset curve by assigning V as the reference vector used to compute the offset direction.
 
@@ -3483,6 +3487,12 @@ class Geom_OffsetCurve : public Geom_Curve {
 	:rtype: Handle_Geom_Geometry
 ") Copy;
 		Handle_Geom_Geometry Copy ();
+		%feature("compactdefaultargs") GetBasisCurveContinuity;
+		%feature("autodoc", "	* Returns continuity of the basis curve.
+
+	:rtype: GeomAbs_Shape
+") GetBasisCurveContinuity;
+		GeomAbs_Shape GetBasisCurveContinuity ();
 };
 
 
@@ -3541,23 +3551,27 @@ class Handle_Geom_OffsetCurve : public Handle_Geom_Curve {
 class Geom_OffsetSurface : public Geom_Surface {
 	public:
 		%feature("compactdefaultargs") Geom_OffsetSurface;
-		%feature("autodoc", "	* Constructs a surface offset from the basis surface S, where Offset is the distance between the offset surface and the basis surface at any point. A point on the offset surface is built by measuring the offset value along a normal vector at a point on S. This normal vector is given by the cross product D1u^D1v, where D1u and D1v are the vectors tangential to the basis surface in the u and v parametric directions at this point. The side of S on which the offset value is measured is indicated by this normal vector if Offset is positive, or is the inverse sense if Offset is negative. Warnings : - The offset surface is built with a copy of the surface S. Therefore, when S is modified the offset surface is not modified. - No check is made at the time of construction to detect points on S with multiple possible normal directions. Raised if S is not at least C1. Warnings : No check is done to verify that a unique normal direction is defined at any point of the basis surface S.
+		%feature("autodoc", "	* Constructs a surface offset from the basis surface S, where Offset is the distance between the offset surface and the basis surface at any point. A point on the offset surface is built by measuring the offset value along a normal vector at a point on S. This normal vector is given by the cross product D1u^D1v, where D1u and D1v are the vectors tangential to the basis surface in the u and v parametric directions at this point. The side of S on which the offset value is measured is indicated by this normal vector if Offset is positive, or is the inverse sense if Offset is negative. If isNotCheckC0 = True checking if basis surface has C0-continuity is not made. Warnings : - The offset surface is built with a copy of the surface S. Therefore, when S is modified the offset surface is not modified. - No check is made at the time of construction to detect points on S with multiple possible normal directions. Raised if S is not at least C1. Warnings : No check is done to verify that a unique normal direction is defined at any point of the basis surface S.
 
 	:param S:
 	:type S: Handle_Geom_Surface &
 	:param Offset:
 	:type Offset: float
+	:param isNotCheckC0: default value is Standard_False
+	:type isNotCheckC0: bool
 	:rtype: None
 ") Geom_OffsetSurface;
-		 Geom_OffsetSurface (const Handle_Geom_Surface & S,const Standard_Real Offset);
+		 Geom_OffsetSurface (const Handle_Geom_Surface & S,const Standard_Real Offset,const Standard_Boolean isNotCheckC0 = Standard_False);
 		%feature("compactdefaultargs") SetBasisSurface;
-		%feature("autodoc", "	* Raised if S is not at least C1. Warnings : No check is done to verify that a unique normal direction is defined at any point of the basis surface S. Exceptions Standard_ConstructionError if the surface S is not at least 'C1' continuous.
+		%feature("autodoc", "	* Raised if S is not at least C1. Warnings : No check is done to verify that a unique normal direction is defined at any point of the basis surface S. If isNotCheckC0 = True checking if basis surface has C0-continuity is not made. Exceptions Standard_ConstructionError if the surface S is not at least 'C1' continuous.
 
 	:param S:
 	:type S: Handle_Geom_Surface &
+	:param isNotCheckC0: default value is Standard_False
+	:type isNotCheckC0: bool
 	:rtype: None
 ") SetBasisSurface;
-		void SetBasisSurface (const Handle_Geom_Surface & S);
+		void SetBasisSurface (const Handle_Geom_Surface & S,const Standard_Boolean isNotCheckC0 = Standard_False);
 		%feature("compactdefaultargs") SetOffsetValue;
 		%feature("autodoc", "	* Changes this offset surface by assigning D as the offset value.
 
@@ -4048,6 +4062,12 @@ class Geom_OffsetSurface : public Geom_Surface {
 	:rtype: bool
 ") VOsculatingSurface;
 		Standard_Boolean VOsculatingSurface (const Standard_Real U,const Standard_Real V,Standard_Boolean &OutValue,Handle_Geom_BSplineSurface & VOsculSurf);
+		%feature("compactdefaultargs") GetBasisSurfContinuity;
+		%feature("autodoc", "	* Returns continuity of the basis surface.
+
+	:rtype: GeomAbs_Shape
+") GetBasisSurfContinuity;
+		GeomAbs_Shape GetBasisSurfContinuity ();
 };
 
 
@@ -4737,6 +4757,18 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:rtype: bool
 ") IsCN;
 		Standard_Boolean IsCN (const Standard_Integer N);
+		%feature("compactdefaultargs") IsG1;
+		%feature("autodoc", "	* Check if curve has at least G1 continuity in interval [theTf, theTl] Returns true if IsCN(1) or angle betweem 'left' and 'right' first derivatives at knots with C0 continuity is less then theAngTol only knots in interval [theTf, theTl] is checked
+
+	:param theTf:
+	:type theTf: float
+	:param theTl:
+	:type theTl: float
+	:param theAngTol:
+	:type theAngTol: float
+	:rtype: bool
+") IsG1;
+		Standard_Boolean IsG1 (const Standard_Real theTf,const Standard_Real theTl,const Standard_Real theAngTol);
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "	* Returns true if the distance between the first point and the last point of the curve is lower or equal to Resolution from package gp. Warnings : The first and the last point can be different from the first pole and the last pole of the curve.
 
@@ -4957,6 +4989,12 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:rtype: None
 ") Knots;
 		void Knots (TColStd_Array1OfReal & K);
+		%feature("compactdefaultargs") Knots;
+		%feature("autodoc", "	* returns the knot values of the B-spline curve; Warning A knot with a multiplicity greater than 1 is not repeated in the knot table. The Multiplicity function can be used to obtain the multiplicity of each knot.
+
+	:rtype: TColStd_Array1OfReal
+") Knots;
+		const TColStd_Array1OfReal & Knots ();
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "	* Returns K, the knots sequence of this BSpline curve. In this sequence, knots with a multiplicity greater than 1 are repeated. In the case of a non-periodic curve the length of the sequence must be equal to the sum of the NbKnots multiplicities of the knots of the curve (where NbKnots is the number of knots of this BSpline curve). This sum is also equal to : NbPoles + Degree + 1 where NbPoles is the number of poles and Degree the degree of this BSpline curve. In the case of a periodic curve, if there are k periodic knots, the period is Knot(k+1) - Knot(1). The initial sequence is built by writing knots 1 to k+1, which are repeated according to their corresponding multiplicities. If Degree is the degree of the curve, the degree of continuity of the curve at the knot of index 1 (or k+1) is equal to c = Degree + 1 - Mult(1). c knots are then inserted at the beginning and end of the initial sequence: - the c values of knots preceding the first item Knot(k+1) in the initial sequence are inserted at the beginning; the period is subtracted from these c values; - the c values of knots following the last item Knot(1) in the initial sequence are inserted at the end; the period is added to these c values. The length of the sequence must therefore be equal to: NbPoles + 2*Degree - Mult(1) + 2. Example For a non-periodic BSpline curve of degree 2 where: - the array of knots is: { k1 k2 k3 k4 }, - with associated multiplicities: { 3 1 2 3 }, the knot sequence is: K = { k1 k1 k1 k2 k3 k3 k4 k4 k4 } For a periodic BSpline curve of degree 4 , which is 'C1' continuous at the first knot, and where : - the periodic knots are: { k1 k2 k3 (k4) } (3 periodic knots: the points of parameter k1 and k4 are identical, the period is p = k4 - k1), - with associated multiplicities: { 3 1 2 (3) }, the degree of continuity at knots k1 and k4 is: Degree + 1 - Mult(i) = 2. 2 supplementary knots are added at the beginning and end of the sequence: - at the beginning: the 2 knots preceding k4 minus the period; in this example, this is k3 - p both times; - at the end: the 2 knots following k1 plus the period; in this example, this is k2 + p and k3 + p. The knot sequence is therefore: K = { k3-p k3-p k1 k1 k1 k2 k3 k3 k4 k4 k4 k2+p k3+p } Exceptions Standard_DimensionError if the array K is not of the appropriate length.Returns the knots sequence.
 
@@ -4965,6 +5003,12 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:rtype: None
 ") KnotSequence;
 		void KnotSequence (TColStd_Array1OfReal & K);
+		%feature("compactdefaultargs") KnotSequence;
+		%feature("autodoc", "	* returns the knots of the B-spline curve. Knots with multiplicit greater than 1 are repeated
+
+	:rtype: TColStd_Array1OfReal
+") KnotSequence;
+		const TColStd_Array1OfReal & KnotSequence ();
 		%feature("compactdefaultargs") KnotDistribution;
 		%feature("autodoc", "	* Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the knots differ by a positive constant from the preceding knot the BSpline Curve can be : - Uniform if all the knots are of multiplicity 1, - QuasiUniform if all the knots are of multiplicity 1 except for the first and last knot which are of multiplicity Degree + 1, - PiecewiseBezier if the first and last knots have multiplicity Degree + 1 and if interior knots have multiplicity Degree A piecewise Bezier with only two knots is a BezierCurve. else the curve is non uniform. The tolerance criterion is Epsilon from class Real.
 
@@ -5015,6 +5059,12 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:rtype: None
 ") Multiplicities;
 		void Multiplicities (TColStd_Array1OfInteger & M);
+		%feature("compactdefaultargs") Multiplicities;
+		%feature("autodoc", "	* returns the multiplicity of the knots of the curve.
+
+	:rtype: TColStd_Array1OfInteger
+") Multiplicities;
+		const TColStd_Array1OfInteger & Multiplicities ();
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "	* Returns the number of knots. This method returns the number of knot without repetition of multiple knots.
 
@@ -5043,6 +5093,12 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:rtype: None
 ") Poles;
 		void Poles (TColgp_Array1OfPnt & P);
+		%feature("compactdefaultargs") Poles;
+		%feature("autodoc", "	* Returns the poles of the B-spline curve;
+
+	:rtype: TColgp_Array1OfPnt
+") Poles;
+		const TColgp_Array1OfPnt & Poles ();
 		%feature("compactdefaultargs") StartPoint;
 		%feature("autodoc", "	* Returns the start point of the curve. Warnings : This point is different from the first pole of the curve if the multiplicity of the first knot is lower than Degree.
 
@@ -5065,6 +5121,12 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:rtype: None
 ") Weights;
 		void Weights (TColStd_Array1OfReal & W);
+		%feature("compactdefaultargs") Weights;
+		%feature("autodoc", "	* Returns the weights of the B-spline curve;
+
+	:rtype: TColStd_Array1OfReal
+") Weights;
+		const TColStd_Array1OfReal & Weights ();
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "	* Applies the transformation T to this BSpline curve.
 
@@ -5842,6 +5904,12 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:rtype: None
 ") Poles;
 		void Poles (TColgp_Array2OfPnt & P);
+		%feature("compactdefaultargs") Poles;
+		%feature("autodoc", "	* Returns the poles of the B-spline surface.
+
+	:rtype: TColgp_Array2OfPnt
+") Poles;
+		const TColgp_Array2OfPnt & Poles ();
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "	* Returns the degree of the normalized B-splines Ni,n in the U direction.
 
@@ -5870,6 +5938,12 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:rtype: None
 ") UKnots;
 		void UKnots (TColStd_Array1OfReal & Ku);
+		%feature("compactdefaultargs") UKnots;
+		%feature("autodoc", "	* Returns the knots in the U direction.
+
+	:rtype: TColStd_Array1OfReal
+") UKnots;
+		const TColStd_Array1OfReal & UKnots ();
 		%feature("compactdefaultargs") UKnotSequence;
 		%feature("autodoc", "	* Returns the uknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of Ku is not equal to NbUPoles + UDegree + 1
 
@@ -5878,6 +5952,12 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:rtype: None
 ") UKnotSequence;
 		void UKnotSequence (TColStd_Array1OfReal & Ku);
+		%feature("compactdefaultargs") UKnotSequence;
+		%feature("autodoc", "	* Returns the uknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+
+	:rtype: TColStd_Array1OfReal
+") UKnotSequence;
+		const TColStd_Array1OfReal & UKnotSequence ();
 		%feature("compactdefaultargs") UMultiplicity;
 		%feature("autodoc", "	* Returns the multiplicity value of knot of range UIndex in the u direction. Raised if UIndex < 1 or UIndex > NbUKnots.
 
@@ -5894,6 +5974,12 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:rtype: None
 ") UMultiplicities;
 		void UMultiplicities (TColStd_Array1OfInteger & Mu);
+		%feature("compactdefaultargs") UMultiplicities;
+		%feature("autodoc", "	* Returns the multiplicities of the knots in the U direction.
+
+	:rtype: TColStd_Array1OfInteger
+") UMultiplicities;
+		const TColStd_Array1OfInteger & UMultiplicities ();
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "	* Returns the degree of the normalized B-splines Ni,d in the V direction.
 
@@ -5922,6 +6008,12 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:rtype: None
 ") VKnots;
 		void VKnots (TColStd_Array1OfReal & Kv);
+		%feature("compactdefaultargs") VKnots;
+		%feature("autodoc", "	* Returns the knots in the V direction.
+
+	:rtype: TColStd_Array1OfReal
+") VKnots;
+		const TColStd_Array1OfReal & VKnots ();
 		%feature("compactdefaultargs") VKnotSequence;
 		%feature("autodoc", "	* Returns the vknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : Kv = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of Kv is not equal to NbVPoles + VDegree + 1
 
@@ -5930,6 +6022,12 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:rtype: None
 ") VKnotSequence;
 		void VKnotSequence (TColStd_Array1OfReal & Kv);
+		%feature("compactdefaultargs") VKnotSequence;
+		%feature("autodoc", "	* Returns the vknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+
+	:rtype: TColStd_Array1OfReal
+") VKnotSequence;
+		const TColStd_Array1OfReal & VKnotSequence ();
 		%feature("compactdefaultargs") VMultiplicity;
 		%feature("autodoc", "	* Returns the multiplicity value of knot of range VIndex in the v direction. Raised if VIndex < 1 or VIndex > NbVKnots
 
@@ -5946,6 +6044,12 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:rtype: None
 ") VMultiplicities;
 		void VMultiplicities (TColStd_Array1OfInteger & Mv);
+		%feature("compactdefaultargs") VMultiplicities;
+		%feature("autodoc", "	* Returns the multiplicities of the knots in the V direction.
+
+	:rtype: TColStd_Array1OfInteger
+") VMultiplicities;
+		const TColStd_Array1OfInteger & VMultiplicities ();
 		%feature("compactdefaultargs") Weight;
 		%feature("autodoc", "	* Returns the weight value of range UIndex, VIndex. //! Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or VIndex > NbVPoles.
 
@@ -5957,13 +6061,19 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 ") Weight;
 		Standard_Real Weight (const Standard_Integer UIndex,const Standard_Integer VIndex);
 		%feature("compactdefaultargs") Weights;
-		%feature("autodoc", "	* Returns the weights of the B-spline surface. //! Raised if the length of W in the U and V direction is not equal to NbUPoles and NbVPoles. value and derivatives computation
+		%feature("autodoc", "	* Returns the weights of the B-spline surface. //! Raised if the length of W in the U and V direction is not equal to NbUPoles and NbVPoles.
 
 	:param W:
 	:type W: TColStd_Array2OfReal &
 	:rtype: None
 ") Weights;
 		void Weights (TColStd_Array2OfReal & W);
+		%feature("compactdefaultargs") Weights;
+		%feature("autodoc", "	* Returns the weights of the B-spline surface. value and derivatives computation
+
+	:rtype: TColStd_Array2OfReal
+") Weights;
+		const TColStd_Array2OfReal & Weights ();
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "	:param U:
 	:type U: float
@@ -11234,7 +11344,7 @@ class Handle_Geom_ToroidalSurface : public Handle_Geom_ElementarySurface {
 class Geom_TrimmedCurve : public Geom_BoundedCurve {
 	public:
 		%feature("compactdefaultargs") Geom_TrimmedCurve;
-		%feature("autodoc", "	* Constructs a trimmed curve from the basis curve C which is limited between parameter values U1 and U2. Note: - U1 can be greater or less than U2; in both cases, the returned curve is oriented from U1 to U2. - If the basis curve C is periodic, there is an ambiguity because two parts are available. In this case, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. - If the curve is closed but not periodic, it is not possible to keep the part of the curve which includes the junction point (except if the junction point is at the beginning or at the end of the trimmed curve). If you tried to do this, you could alter the fundamental characteristics of the basis curve, which are used, for example, to compute the derivatives of the trimmed curve. The rules for a closed curve are therefore the same as those for an open curve. Warning: The trimmed curve is built from a copy of curve C. Therefore, when C is modified, the trimmed curve is not modified. - If the basis curve is periodic, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. Exceptions Standard_ConstructionError if: - C is not periodic and U1 or U2 is outside the bounds of C, or - U1 is equal to U2.
+		%feature("autodoc", "	* Constructs a trimmed curve from the basis curve C which is limited between parameter values U1 and U2. Note: - U1 can be greater or less than U2; in both cases, the returned curve is oriented from U1 to U2. - If the basis curve C is periodic, there is an ambiguity because two parts are available. In this case, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. - If the curve is closed but not periodic, it is not possible to keep the part of the curve which includes the junction point (except if the junction point is at the beginning or at the end of the trimmed curve). If you tried to do this, you could alter the fundamental characteristics of the basis curve, which are used, for example, to compute the derivatives of the trimmed curve. The rules for a closed curve are therefore the same as those for an open curve. Warning: The trimmed curve is built from a copy of curve C. Therefore, when C is modified, the trimmed curve is not modified. - If the basis curve is periodic and theAdjustPeriodic is True, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. When theAdjustPeriodic is False, parameters U1 and U2 will be the same, without adjustment into the first period. Exceptions Standard_ConstructionError if: - C is not periodic and U1 or U2 is outside the bounds of C, or - U1 is equal to U2.
 
 	:param C:
 	:type C: Handle_Geom_Curve &
@@ -11244,9 +11354,11 @@ class Geom_TrimmedCurve : public Geom_BoundedCurve {
 	:type U2: float
 	:param Sense: default value is Standard_True
 	:type Sense: bool
+	:param theAdjustPeriodic: default value is Standard_True
+	:type theAdjustPeriodic: bool
 	:rtype: None
 ") Geom_TrimmedCurve;
-		 Geom_TrimmedCurve (const Handle_Geom_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Boolean Sense = Standard_True);
+		 Geom_TrimmedCurve (const Handle_Geom_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Boolean Sense = Standard_True,const Standard_Boolean theAdjustPeriodic = Standard_True);
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "	* Changes the orientation of this trimmed curve. As a result: - the basis curve is reversed, - the start point of the initial curve becomes the end point of the reversed curve, - the end point of the initial curve becomes the start point of the reversed curve, - the first and last parameters are recomputed. If the trimmed curve was defined by: - a basis curve whose parameter range is [ 0., 1. ], - the two trim values U1 (first parameter) and U2 (last parameter), the reversed trimmed curve is defined by: - the reversed basis curve, whose parameter range is still [ 0., 1. ], - the two trim values 1. - U2 (first parameter) and 1. - U1 (last parameter).
 
@@ -11262,7 +11374,7 @@ class Geom_TrimmedCurve : public Geom_BoundedCurve {
 ") ReversedParameter;
 		Standard_Real ReversedParameter (const Standard_Real U);
 		%feature("compactdefaultargs") SetTrim;
-		%feature("autodoc", "	* Changes this trimmed curve, by redefining the parameter values U1 and U2 which limit its basis curve. Note: If the basis curve is periodic, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. Warning If the basis curve is periodic, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. Exceptions Standard_ConstructionError if: - the basis curve is not periodic, and either U1 or U2 are outside the bounds of the basis curve, or - U1 is equal to U2.
+		%feature("autodoc", "	* Changes this trimmed curve, by redefining the parameter values U1 and U2 which limit its basis curve. Note: If the basis curve is periodic, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. Warning If the basis curve is periodic and theAdjustPeriodic is True, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. When theAdjustPeriodic is False, parameters U1 and U2 will be the same, without adjustment into the first period. Exceptions Standard_ConstructionError if: - the basis curve is not periodic, and either U1 or U2 are outside the bounds of the basis curve, or - U1 is equal to U2.
 
 	:param U1:
 	:type U1: float
@@ -11270,9 +11382,11 @@ class Geom_TrimmedCurve : public Geom_BoundedCurve {
 	:type U2: float
 	:param Sense: default value is Standard_True
 	:type Sense: bool
+	:param theAdjustPeriodic: default value is Standard_True
+	:type theAdjustPeriodic: bool
 	:rtype: None
 ") SetTrim;
-		void SetTrim (const Standard_Real U1,const Standard_Real U2,const Standard_Boolean Sense = Standard_True);
+		void SetTrim (const Standard_Real U1,const Standard_Real U2,const Standard_Boolean Sense = Standard_True,const Standard_Boolean theAdjustPeriodic = Standard_True);
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "	* Returns the basis curve. Warning This function does not return a constant reference. Consequently, any modification of the returned value directly modifies the trimmed curve.
 

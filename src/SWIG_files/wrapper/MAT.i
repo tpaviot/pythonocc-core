@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1071,7 +1071,7 @@ class MAT_DataMapOfIntegerArc : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT_DataMapOfIntegerArc &
 	:rtype: MAT_DataMapOfIntegerArc
-") operator=;
+") operator =;
 		MAT_DataMapOfIntegerArc & operator = (const MAT_DataMapOfIntegerArc & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1154,7 +1154,7 @@ class MAT_DataMapOfIntegerBasicElt : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT_DataMapOfIntegerBasicElt &
 	:rtype: MAT_DataMapOfIntegerBasicElt
-") operator=;
+") operator =;
 		MAT_DataMapOfIntegerBasicElt & operator = (const MAT_DataMapOfIntegerBasicElt & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1237,7 +1237,7 @@ class MAT_DataMapOfIntegerBisector : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT_DataMapOfIntegerBisector &
 	:rtype: MAT_DataMapOfIntegerBisector
-") operator=;
+") operator =;
 		MAT_DataMapOfIntegerBisector & operator = (const MAT_DataMapOfIntegerBisector & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1320,7 +1320,7 @@ class MAT_DataMapOfIntegerNode : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT_DataMapOfIntegerNode &
 	:rtype: MAT_DataMapOfIntegerNode
-") operator=;
+") operator =;
 		MAT_DataMapOfIntegerNode & operator = (const MAT_DataMapOfIntegerNode & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2320,7 +2320,7 @@ class MAT_SequenceOfArc : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT_SequenceOfArc &
 	:rtype: MAT_SequenceOfArc
-") operator=;
+") operator =;
 		const MAT_SequenceOfArc & operator = (const MAT_SequenceOfArc & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2463,7 +2463,7 @@ class MAT_SequenceOfBasicElt : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT_SequenceOfBasicElt &
 	:rtype: MAT_SequenceOfBasicElt
-") operator=;
+") operator =;
 		const MAT_SequenceOfBasicElt & operator = (const MAT_SequenceOfBasicElt & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

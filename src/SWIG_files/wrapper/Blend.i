@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -958,6 +958,14 @@ class Blend_Point {
 	:rtype: None
 ") SetValue;
 		void SetValue (const gp_Pnt & Pt1,const gp_Pnt & Pt2,const Standard_Real Param,const Standard_Real PC1,const Standard_Real PC2);
+		%feature("compactdefaultargs") SetParameter;
+		%feature("autodoc", "	* Changes parameter on existing point
+
+	:param Param:
+	:type Param: float
+	:rtype: None
+") SetParameter;
+		void SetParameter (const Standard_Real Param);
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	:rtype: float
 ") Parameter;
@@ -1170,7 +1178,7 @@ class Blend_SequenceOfPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Blend_SequenceOfPoint &
 	:rtype: Blend_SequenceOfPoint
-") operator=;
+") operator =;
 		const Blend_SequenceOfPoint & operator = (const Blend_SequenceOfPoint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

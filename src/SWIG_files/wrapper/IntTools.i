@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -188,7 +188,7 @@ class IntTools_Array1OfRange {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_Array1OfRange &
 	:rtype: IntTools_Array1OfRange
-") operator=;
+") operator =;
 		const IntTools_Array1OfRange & operator = (const IntTools_Array1OfRange & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -275,7 +275,7 @@ class IntTools_Array1OfRoots {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_Array1OfRoots &
 	:rtype: IntTools_Array1OfRoots
-") operator=;
+") operator =;
 		const IntTools_Array1OfRoots & operator = (const IntTools_Array1OfRoots & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -548,7 +548,7 @@ class IntTools_CommonPrt {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_CommonPrt &
 	:rtype: IntTools_CommonPrt
-") operator=;
+") operator =;
 		IntTools_CommonPrt & operator = (const IntTools_CommonPrt & Other);
 		%feature("compactdefaultargs") SetEdge1;
 		%feature("autodoc", "	* Sets the first edge.
@@ -973,6 +973,18 @@ class IntTools_Context : public MMgt_TShared {
 	:rtype: bool
 ") IsPointInFace;
 		Standard_Boolean IsPointInFace (const TopoDS_Face & aF,const gp_Pnt2d & aP2D);
+		%feature("compactdefaultargs") IsPointInFace;
+		%feature("autodoc", "	* Returns true if the point aP2D is inside the boundaries of the face aF, otherwise returns false
+
+	:param aP3D:
+	:type aP3D: gp_Pnt
+	:param aF:
+	:type aF: TopoDS_Face &
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") IsPointInFace;
+		Standard_Boolean IsPointInFace (const gp_Pnt & aP3D,const TopoDS_Face & aF,const Standard_Real aTol);
 		%feature("compactdefaultargs") IsPointInOnFace;
 		%feature("autodoc", "	* Returns true if the point aP2D is inside or on the boundaries of aF
 
@@ -1085,6 +1097,28 @@ class IntTools_Context : public MMgt_TShared {
 	:rtype: bool
 ") ProjectPointOnEdge;
 		Standard_Boolean ProjectPointOnEdge (const gp_Pnt & aP,const TopoDS_Edge & aE,Standard_Real &OutValue);
+		%feature("compactdefaultargs") BndBox;
+		%feature("autodoc", "	:param theS:
+	:type theS: TopoDS_Shape &
+	:rtype: Bnd_Box
+") BndBox;
+		Bnd_Box & BndBox (const TopoDS_Shape & theS);
+		%feature("compactdefaultargs") IsInfiniteFace;
+		%feature("autodoc", "	* Returns true if the solid <theFace> has infinite bounds
+
+	:param theFace:
+	:type theFace: TopoDS_Face &
+	:rtype: bool
+") IsInfiniteFace;
+		Standard_Boolean IsInfiniteFace (const TopoDS_Face & theFace);
+		%feature("compactdefaultargs") SetPOnSProjectionTolerance;
+		%feature("autodoc", "	* Sets tolerance to be used for projection of point on surface. Clears map of already cached projectors in order to maintain correct value for all projectors
+
+	:param theValue:
+	:type theValue: float
+	:rtype: None
+") SetPOnSProjectionTolerance;
+		void SetPOnSProjectionTolerance (const Standard_Real theValue);
 };
 
 
@@ -1558,7 +1592,7 @@ class IntTools_DataMapOfCurveSampleBox : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_DataMapOfCurveSampleBox &
 	:rtype: IntTools_DataMapOfCurveSampleBox
-") operator=;
+") operator =;
 		IntTools_DataMapOfCurveSampleBox & operator = (const IntTools_DataMapOfCurveSampleBox & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1641,7 +1675,7 @@ class IntTools_DataMapOfSurfaceSampleBox : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_DataMapOfSurfaceSampleBox &
 	:rtype: IntTools_DataMapOfSurfaceSampleBox
-") operator=;
+") operator =;
 		IntTools_DataMapOfSurfaceSampleBox & operator = (const IntTools_DataMapOfSurfaceSampleBox & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2330,7 +2364,7 @@ class IntTools_IndexedDataMapOfTransientAddress : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_IndexedDataMapOfTransientAddress &
 	:rtype: IntTools_IndexedDataMapOfTransientAddress
-") operator=;
+") operator =;
 		IntTools_IndexedDataMapOfTransientAddress & operator = (const IntTools_IndexedDataMapOfTransientAddress & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2773,7 +2807,7 @@ class IntTools_ListOfBox {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_ListOfBox &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const IntTools_ListOfBox & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -2908,7 +2942,7 @@ class IntTools_ListOfCurveRangeSample {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_ListOfCurveRangeSample &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const IntTools_ListOfCurveRangeSample & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -3043,7 +3077,7 @@ class IntTools_ListOfSurfaceRangeSample {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_ListOfSurfaceRangeSample &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const IntTools_ListOfSurfaceRangeSample & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -3242,7 +3276,7 @@ class IntTools_MapOfCurveSample : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_MapOfCurveSample &
 	:rtype: IntTools_MapOfCurveSample
-") operator=;
+") operator =;
 		IntTools_MapOfCurveSample & operator = (const IntTools_MapOfCurveSample & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -3305,7 +3339,7 @@ class IntTools_MapOfSurfaceSample : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_MapOfSurfaceSample &
 	:rtype: IntTools_MapOfSurfaceSample
-") operator=;
+") operator =;
 		IntTools_MapOfSurfaceSample & operator = (const IntTools_MapOfSurfaceSample & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4278,7 +4312,7 @@ class IntTools_SequenceOfCommonPrts : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_SequenceOfCommonPrts &
 	:rtype: IntTools_SequenceOfCommonPrts
-") operator=;
+") operator =;
 		const IntTools_SequenceOfCommonPrts & operator = (const IntTools_SequenceOfCommonPrts & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -4421,7 +4455,7 @@ class IntTools_SequenceOfCurves : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_SequenceOfCurves &
 	:rtype: IntTools_SequenceOfCurves
-") operator=;
+") operator =;
 		const IntTools_SequenceOfCurves & operator = (const IntTools_SequenceOfCurves & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -4564,7 +4598,7 @@ class IntTools_SequenceOfPntOn2Faces : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_SequenceOfPntOn2Faces &
 	:rtype: IntTools_SequenceOfPntOn2Faces
-") operator=;
+") operator =;
 		const IntTools_SequenceOfPntOn2Faces & operator = (const IntTools_SequenceOfPntOn2Faces & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -4707,7 +4741,7 @@ class IntTools_SequenceOfRanges : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_SequenceOfRanges &
 	:rtype: IntTools_SequenceOfRanges
-") operator=;
+") operator =;
 		const IntTools_SequenceOfRanges & operator = (const IntTools_SequenceOfRanges & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -4850,7 +4884,7 @@ class IntTools_SequenceOfRoots : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_SequenceOfRoots &
 	:rtype: IntTools_SequenceOfRoots
-") operator=;
+") operator =;
 		const IntTools_SequenceOfRoots & operator = (const IntTools_SequenceOfRoots & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -5212,7 +5246,7 @@ class IntTools_SurfaceRangeLocalizeData {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_SurfaceRangeLocalizeData &
 	:rtype: IntTools_SurfaceRangeLocalizeData
-") operator=;
+") operator =;
 		IntTools_SurfaceRangeLocalizeData & operator = (const IntTools_SurfaceRangeLocalizeData & Other);
 		%feature("compactdefaultargs") GetNbSampleU;
 		%feature("autodoc", "	:rtype: int
@@ -5477,7 +5511,7 @@ class IntTools_SurfaceRangeSample {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntTools_SurfaceRangeSample &
 	:rtype: IntTools_SurfaceRangeSample
-") operator=;
+") operator =;
 		IntTools_SurfaceRangeSample & operator = (const IntTools_SurfaceRangeSample & Other);
 		%feature("compactdefaultargs") SetRanges;
 		%feature("autodoc", "	:param theRangeU:
@@ -5903,6 +5937,26 @@ class IntTools_Tools {
 	:rtype: int
 ") SegPln;
 		static Standard_Integer SegPln (const gp_Lin & theLin,const Standard_Real theTLin1,const Standard_Real theTLin2,const Standard_Real theTolLin,const gp_Pln & thePln,const Standard_Real theTolPln,gp_Pnt & theP,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") ComputeTolerance;
+		%feature("autodoc", "	* Computes the max distance between points taken from 3D and 2D curves by the same parameter
+
+	:param theCurve3D:
+	:type theCurve3D: Handle_Geom_Curve &
+	:param theCurve2D:
+	:type theCurve2D: Handle_Geom2d_Curve &
+	:param theSurf:
+	:type theSurf: Handle_Geom_Surface &
+	:param theFirst:
+	:type theFirst: float
+	:param theLast:
+	:type theLast: float
+	:param theMaxDist:
+	:type theMaxDist: float &
+	:param theMaxPar:
+	:type theMaxPar: float &
+	:rtype: bool
+") ComputeTolerance;
+		static Standard_Boolean ComputeTolerance (const Handle_Geom_Curve & theCurve3D,const Handle_Geom2d_Curve & theCurve2D,const Handle_Geom_Surface & theSurf,const Standard_Real theFirst,const Standard_Real theLast,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
 

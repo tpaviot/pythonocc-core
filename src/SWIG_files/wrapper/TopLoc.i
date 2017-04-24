@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -51,7 +51,6 @@ def register_handle(handle, base_object):
 };
 
 /* typedefs */
-typedef gp_Trsf * TopLoc_TrsfPtr;
 /* end typedefs declaration */
 
 /* public enums */
@@ -257,7 +256,7 @@ class TopLoc_IndexedMapOfLocation : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopLoc_IndexedMapOfLocation &
 	:rtype: TopLoc_IndexedMapOfLocation
-") operator=;
+") operator =;
 		TopLoc_IndexedMapOfLocation & operator = (const TopLoc_IndexedMapOfLocation & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -323,33 +322,9 @@ class TopLoc_ItemLocation {
 	:type D: Handle_TopLoc_Datum3D &
 	:param P:
 	:type P: int
-	:param fromTrsf: default value is Standard_False
-	:type fromTrsf: bool
 	:rtype: None
 ") TopLoc_ItemLocation;
-		 TopLoc_ItemLocation (const Handle_TopLoc_Datum3D & D,const Standard_Integer P,const Standard_Boolean fromTrsf = Standard_False);
-		%feature("compactdefaultargs") TopLoc_ItemLocation;
-		%feature("autodoc", "	:param anOther:
-	:type anOther: TopLoc_ItemLocation &
-	:rtype: None
-") TopLoc_ItemLocation;
-		 TopLoc_ItemLocation (const TopLoc_ItemLocation & anOther);
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param anOther:
-	:type anOther: TopLoc_ItemLocation &
-	:rtype: TopLoc_ItemLocation
-") Assign;
-		TopLoc_ItemLocation & Assign (const TopLoc_ItemLocation & anOther);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param anOther:
-	:type anOther: TopLoc_ItemLocation &
-	:rtype: TopLoc_ItemLocation
-") operator=;
-		TopLoc_ItemLocation & operator = (const TopLoc_ItemLocation & anOther);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: None
-") Destroy;
-		void Destroy ();
+		 TopLoc_ItemLocation (const Handle_TopLoc_Datum3D & D,const Standard_Integer P);
 };
 
 
@@ -421,7 +396,7 @@ class TopLoc_Location {
 		const gp_Trsf  Transformation ();
 		%feature("compactdefaultargs") operator gp_Trsf;
 		%feature("autodoc", "	:rtype: 
-") operatorgp_Trsf;
+") operator gp_Trsf;
 		 operator gp_Trsf ();
 		%feature("compactdefaultargs") Inverted;
 		%feature("autodoc", "	* Returns the inverse of <self>. //! <self> * Inverted() is an Identity.
@@ -441,7 +416,7 @@ class TopLoc_Location {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopLoc_Location &
 	:rtype: TopLoc_Location
-") operator*;
+") operator *;
 		TopLoc_Location operator * (const TopLoc_Location & Other);
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* Returns <self> / <Other>.
@@ -455,7 +430,7 @@ class TopLoc_Location {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopLoc_Location &
 	:rtype: TopLoc_Location
-") operator/;
+") operator /;
 		TopLoc_Location operator / (const TopLoc_Location & Other);
 		%feature("compactdefaultargs") Predivided;
 		%feature("autodoc", "	* Returns <Other>.Inverted() * <self>.
@@ -629,7 +604,7 @@ class TopLoc_MapOfLocation : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopLoc_MapOfLocation &
 	:rtype: TopLoc_MapOfLocation
-") operator=;
+") operator =;
 		TopLoc_MapOfLocation & operator = (const TopLoc_MapOfLocation & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -779,7 +754,7 @@ class TopLoc_SListOfItemLocation {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopLoc_SListOfItemLocation &
 	:rtype: TopLoc_SListOfItemLocation
-") operator=;
+") operator =;
 		TopLoc_SListOfItemLocation & operator = (const TopLoc_SListOfItemLocation & Other);
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
@@ -797,40 +772,12 @@ class TopLoc_SListOfItemLocation {
 	:rtype: TopLoc_ItemLocation
 ") Value;
 		const TopLoc_ItemLocation & Value ();
-		%feature("compactdefaultargs") ChangeValue;
-		%feature("autodoc", "	* Returns the current value of the list. An error is raised if the list is empty. This value may be modified. A method modifying the value can be called. The value will be modified in the list.
-
-	:rtype: TopLoc_ItemLocation
-") ChangeValue;
-		TopLoc_ItemLocation & ChangeValue ();
-		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	* Changes the current value in the list. An error is raised if the list is empty.
-
-	:param anItem:
-	:type anItem: TopLoc_ItemLocation &
-	:rtype: None
-") SetValue;
-		void SetValue (const TopLoc_ItemLocation & anItem);
 		%feature("compactdefaultargs") Tail;
 		%feature("autodoc", "	* Returns the current tail of the list. On an empty list the tail is the list itself.
 
 	:rtype: TopLoc_SListOfItemLocation
 ") Tail;
 		const TopLoc_SListOfItemLocation & Tail ();
-		%feature("compactdefaultargs") ChangeTail;
-		%feature("autodoc", "	* Returns the current tail of the list. This tail may be modified. A method modifying the tail can be called. The tail will be modified in the list.
-
-	:rtype: TopLoc_SListOfItemLocation
-") ChangeTail;
-		TopLoc_SListOfItemLocation & ChangeTail ();
-		%feature("compactdefaultargs") SetTail;
-		%feature("autodoc", "	* Changes the current tail in the list. On an empty list SetTail is Assign.
-
-	:param aList:
-	:type aList: TopLoc_SListOfItemLocation &
-	:rtype: None
-") SetTail;
-		void SetTail (const TopLoc_SListOfItemLocation & aList);
 		%feature("compactdefaultargs") Construct;
 		%feature("autodoc", "	* Replaces the list by a list with <anItem> as Value and the list <self> as tail.
 
@@ -839,28 +786,12 @@ class TopLoc_SListOfItemLocation {
 	:rtype: None
 ") Construct;
 		void Construct (const TopLoc_ItemLocation & anItem);
-		%feature("compactdefaultargs") Constructed;
-		%feature("autodoc", "	* Returns a new list with <anItem> as Value an the list <self> as tail.
-
-	:param anItem:
-	:type anItem: TopLoc_ItemLocation &
-	:rtype: TopLoc_SListOfItemLocation
-") Constructed;
-		TopLoc_SListOfItemLocation Constructed (const TopLoc_ItemLocation & anItem);
 		%feature("compactdefaultargs") ToTail;
 		%feature("autodoc", "	* Replaces the list <self> by its tail.
 
 	:rtype: None
 ") ToTail;
 		void ToTail ();
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	* Sets the iterator to iterate on the content of <aList>. This is Assign().
-
-	:param aList:
-	:type aList: TopLoc_SListOfItemLocation &
-	:rtype: None
-") Initialize;
-		void Initialize (const TopLoc_SListOfItemLocation & aList);
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	* Returns True if the iterator has a current value. This is !IsEmpty()
 

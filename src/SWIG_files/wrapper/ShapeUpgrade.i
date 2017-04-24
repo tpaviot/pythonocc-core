@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -273,6 +273,32 @@ class ShapeUpgrade_ShapeDivide {
 	:rtype: None
 ") SetContext;
 		void SetContext (const Handle_ShapeBuild_ReShape & context);
+		%feature("compactdefaultargs") SetMsgRegistrator;
+		%feature("autodoc", "	* Sets message registrator
+
+	:param msgreg:
+	:type msgreg: Handle_ShapeExtend_BasicMsgRegistrator &
+	:rtype: void
+") SetMsgRegistrator;
+		virtual void SetMsgRegistrator (const Handle_ShapeExtend_BasicMsgRegistrator & msgreg);
+		%feature("compactdefaultargs") MsgRegistrator;
+		%feature("autodoc", "	* Returns message registrator
+
+	:rtype: Handle_ShapeExtend_BasicMsgRegistrator
+") MsgRegistrator;
+		Handle_ShapeExtend_BasicMsgRegistrator MsgRegistrator ();
+		%feature("compactdefaultargs") SendMsg;
+		%feature("autodoc", "	* Sends a message to be attached to the shape. Calls corresponding message of message registrator.
+
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param message:
+	:type message: Message_Msg &
+	:param gravity: default value is Message_Info
+	:type gravity: Message_Gravity
+	:rtype: None
+") SendMsg;
+		void SendMsg (const TopoDS_Shape & shape,const Message_Msg & message,const Message_Gravity gravity = Message_Info);
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "	* Queries the status of last call to Perform OK : no splitting was done (or no call to Perform) DONE1: some edges were splitted DONE2: surface was splitted FAIL1: some errors occured
 
@@ -315,7 +341,7 @@ class ShapeUpgrade_ShellSewing {
 ") ShapeUpgrade_ShellSewing;
 		 ShapeUpgrade_ShellSewing ();
 		%feature("compactdefaultargs") ApplySewing;
-		%feature("autodoc", "	* Builds a new shape from a former one, by calling Sewing from BRepOffsetAPI. Rebuilt solids are oriented to be 'not infinite' //! If <tol> is not given (i.e. value 0. by default), it is computed as the mean tolerance recorded in <shape> //! If no shell has been sewed, this method returns the input shape
+		%feature("autodoc", "	* Builds a new shape from a former one, by calling Sewing from BRepBuilderAPI. Rebuilt solids are oriented to be 'not infinite' //! If <tol> is not given (i.e. value 0. by default), it is computed as the mean tolerance recorded in <shape> //! If no shell has been sewed, this method returns the input shape
 
 	:param shape:
 	:type shape: TopoDS_Shape &

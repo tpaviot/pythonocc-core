@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -59,10 +59,6 @@ def register_handle(handle, base_object):
 %nodefaultctor ApproxInt_SvSurfaces;
 class ApproxInt_SvSurfaces {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	* returns True if Tg,Tguv1 Tguv2 can be computed.
 

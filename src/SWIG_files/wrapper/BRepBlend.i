@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -2610,7 +2610,7 @@ class BRepBlend_SequenceOfLine : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepBlend_SequenceOfLine &
 	:rtype: BRepBlend_SequenceOfLine
-") operator=;
+") operator =;
 		const BRepBlend_SequenceOfLine & operator = (const BRepBlend_SequenceOfLine & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2753,7 +2753,7 @@ class BRepBlend_SequenceOfPointOnRst : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepBlend_SequenceOfPointOnRst &
 	:rtype: BRepBlend_SequenceOfPointOnRst
-") operator=;
+") operator =;
 		const BRepBlend_SequenceOfPointOnRst & operator = (const BRepBlend_SequenceOfPointOnRst & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -4148,9 +4148,11 @@ class BRepBlend_Walking {
 	:type Domain1: Handle_Adaptor3d_TopolTool &
 	:param Domain2:
 	:type Domain2: Handle_Adaptor3d_TopolTool &
+	:param HGuide:
+	:type HGuide: Handle_ChFiDS_HElSpine &
 	:rtype: None
 ") BRepBlend_Walking;
-		 BRepBlend_Walking (const Handle_Adaptor3d_HSurface & Surf1,const Handle_Adaptor3d_HSurface & Surf2,const Handle_Adaptor3d_TopolTool & Domain1,const Handle_Adaptor3d_TopolTool & Domain2);
+		 BRepBlend_Walking (const Handle_Adaptor3d_HSurface & Surf1,const Handle_Adaptor3d_HSurface & Surf2,const Handle_Adaptor3d_TopolTool & Domain1,const Handle_Adaptor3d_TopolTool & Domain2,const Handle_ChFiDS_HElSpine & HGuide);
 		%feature("compactdefaultargs") SetDomainsToRecadre;
 		%feature("autodoc", "	:param RecDomain1:
 	:type RecDomain1: Handle_Adaptor3d_TopolTool &

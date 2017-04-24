@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -97,13 +97,15 @@ class Bisector_Bisec {
 	:type V2: gp_Vec2d
 	:param Sense:
 	:type Sense: float
+	:param ajointype:
+	:type ajointype: GeomAbs_JoinType
 	:param Tolerance:
 	:type Tolerance: float
 	:param oncurve: default value is Standard_True
 	:type oncurve: bool
 	:rtype: None
 ") Perform;
-		void Perform (const Handle_Geom2d_Curve & Cu1,const Handle_Geom2d_Curve & Cu2,const gp_Pnt2d & P,const gp_Vec2d & V1,const gp_Vec2d & V2,const Standard_Real Sense,const Standard_Real Tolerance,const Standard_Boolean oncurve = Standard_True);
+		void Perform (const Handle_Geom2d_Curve & Cu1,const Handle_Geom2d_Curve & Cu2,const gp_Pnt2d & P,const gp_Vec2d & V1,const gp_Vec2d & V2,const Standard_Real Sense,const GeomAbs_JoinType ajointype,const Standard_Real Tolerance,const Standard_Boolean oncurve = Standard_True);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Performs the bisecting line between the curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 
@@ -624,13 +626,15 @@ class Bisector_BisecAna : public Bisector_Curve {
 	:type V2: gp_Vec2d
 	:param Sense:
 	:type Sense: float
+	:param jointype:
+	:type jointype: GeomAbs_JoinType
 	:param Tolerance:
 	:type Tolerance: float
 	:param oncurve: default value is Standard_True
 	:type oncurve: bool
 	:rtype: None
 ") Perform;
-		void Perform (const Handle_Geom2d_Curve & Cu1,const Handle_Geom2d_Curve & Cu2,const gp_Pnt2d & P,const gp_Vec2d & V1,const gp_Vec2d & V2,const Standard_Real Sense,const Standard_Real Tolerance,const Standard_Boolean oncurve = Standard_True);
+		void Perform (const Handle_Geom2d_Curve & Cu1,const Handle_Geom2d_Curve & Cu2,const gp_Pnt2d & P,const gp_Vec2d & V1,const gp_Vec2d & V2,const Standard_Real Sense,const GeomAbs_JoinType jointype,const Standard_Real Tolerance,const Standard_Boolean oncurve = Standard_True);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Performs the bisecting line between the curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1462,7 +1462,7 @@ class BRepOffsetAPI_SequenceOfSequenceOfReal : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepOffsetAPI_SequenceOfSequenceOfReal &
 	:rtype: BRepOffsetAPI_SequenceOfSequenceOfReal
-") operator=;
+") operator =;
 		const BRepOffsetAPI_SequenceOfSequenceOfReal & operator = (const BRepOffsetAPI_SequenceOfSequenceOfReal & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1605,7 +1605,7 @@ class BRepOffsetAPI_SequenceOfSequenceOfShape : public TCollection_BaseSequence 
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepOffsetAPI_SequenceOfSequenceOfShape &
 	:rtype: BRepOffsetAPI_SequenceOfSequenceOfShape
-") operator=;
+") operator =;
 		const BRepOffsetAPI_SequenceOfSequenceOfShape & operator = (const BRepOffsetAPI_SequenceOfSequenceOfShape & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1765,7 +1765,9 @@ class BRepOffsetAPI_ThruSections : public BRepBuilderAPI_MakeShape {
 ") AddVertex;
 		void AddVertex (const TopoDS_Vertex & aVertex);
 		%feature("compactdefaultargs") CheckCompatibility;
-		%feature("autodoc", "	:param check: default value is Standard_True
+		%feature("autodoc", "	* Sets/unsets the option to compute origin and orientation on wires to avoid twisted results and update wires to have same number of edges.
+
+	:param check: default value is Standard_True
 	:type check: bool
 	:rtype: None
 ") CheckCompatibility;

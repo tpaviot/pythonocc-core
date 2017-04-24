@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -302,7 +302,7 @@ class Resource_DataMapOfAsciiStringAsciiString : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Resource_DataMapOfAsciiStringAsciiString &
 	:rtype: Resource_DataMapOfAsciiStringAsciiString
-") operator=;
+") operator =;
 		Resource_DataMapOfAsciiStringAsciiString & operator = (const Resource_DataMapOfAsciiStringAsciiString & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -385,7 +385,7 @@ class Resource_DataMapOfAsciiStringExtendedString : public TCollection_BasicMap 
 		%feature("autodoc", "	:param Other:
 	:type Other: Resource_DataMapOfAsciiStringExtendedString &
 	:rtype: Resource_DataMapOfAsciiStringExtendedString
-") operator=;
+") operator =;
 		Resource_DataMapOfAsciiStringExtendedString & operator = (const Resource_DataMapOfAsciiStringExtendedString & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -585,6 +585,18 @@ class Resource_Manager : public MMgt_TShared {
 	:rtype: void
 ") SetResource;
 		virtual void SetResource (const char * aResourceName,const Standard_ExtString aValue);
+		%feature("compactdefaultargs") GetResourcePath;
+		%feature("autodoc", "	* Gets the resource file full path by its name. If corresponding environment variable is not set or file doesn't exist returns empty string.
+
+	:param aPath:
+	:type aPath: TCollection_AsciiString &
+	:param aName:
+	:type aName: char *
+	:param isUserDefaults:
+	:type isUserDefaults: bool
+	:rtype: void
+") GetResourcePath;
+		static void GetResourcePath (TCollection_AsciiString & aPath,const char * aName,const Standard_Boolean isUserDefaults);
 };
 
 

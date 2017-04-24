@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -136,7 +136,7 @@ class Interface_Array1OfFileParameter {
 		%feature("autodoc", "	:param Other:
 	:type Other: Interface_Array1OfFileParameter &
 	:rtype: Interface_Array1OfFileParameter
-") operator=;
+") operator =;
 		const Interface_Array1OfFileParameter & operator = (const Interface_Array1OfFileParameter & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -223,7 +223,7 @@ class Interface_Array1OfHAsciiString {
 		%feature("autodoc", "	:param Other:
 	:type Other: Interface_Array1OfHAsciiString &
 	:rtype: Interface_Array1OfHAsciiString
-") operator=;
+") operator =;
 		const Interface_Array1OfHAsciiString & operator = (const Interface_Array1OfHAsciiString & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1626,10 +1626,6 @@ class Interface_CopyTool {
 	:rtype: Interface_EntityIterator
 ") RootResult;
 		Interface_EntityIterator RootResult (const Standard_Boolean withreports = Standard_False);
-		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", "	:rtype: void
-") Destroy;
-		virtual void Destroy ();
 };
 
 
@@ -1776,7 +1772,7 @@ class Interface_DataMapOfTransientInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Interface_DataMapOfTransientInteger &
 	:rtype: Interface_DataMapOfTransientInteger
-") operator=;
+") operator =;
 		Interface_DataMapOfTransientInteger & operator = (const Interface_DataMapOfTransientInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4374,7 +4370,7 @@ class Interface_IndexedMapOfAsciiString : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Interface_IndexedMapOfAsciiString &
 	:rtype: Interface_IndexedMapOfAsciiString
-") operator=;
+") operator =;
 		Interface_IndexedMapOfAsciiString & operator = (const Interface_IndexedMapOfAsciiString & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -5451,7 +5447,7 @@ class Interface_MSG {
 		const char * Value ();
 		%feature("compactdefaultargs") operator Standard_CString;
 		%feature("autodoc", "	:rtype: None
-") operatorStandard_CString;
+") operator Standard_CString;
 		 operator Standard_CString ();
 
         %feature("autodoc", "1");
@@ -6651,7 +6647,7 @@ class Interface_SequenceOfCheck : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Interface_SequenceOfCheck &
 	:rtype: Interface_SequenceOfCheck
-") operator=;
+") operator =;
 		const Interface_SequenceOfCheck & operator = (const Interface_SequenceOfCheck & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

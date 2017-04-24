@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -289,7 +289,7 @@ class BRepClass3d_MapOfInter : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepClass3d_MapOfInter &
 	:rtype: BRepClass3d_MapOfInter
-") operator=;
+") operator =;
 		BRepClass3d_MapOfInter & operator = (const BRepClass3d_MapOfInter & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

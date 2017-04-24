@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -2397,7 +2397,7 @@ class AdvApp2Var_SequenceOfNode : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: AdvApp2Var_SequenceOfNode &
 	:rtype: AdvApp2Var_SequenceOfNode
-") operator=;
+") operator =;
 		const AdvApp2Var_SequenceOfNode & operator = (const AdvApp2Var_SequenceOfNode & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2540,7 +2540,7 @@ class AdvApp2Var_SequenceOfPatch : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: AdvApp2Var_SequenceOfPatch &
 	:rtype: AdvApp2Var_SequenceOfPatch
-") operator=;
+") operator =;
 		const AdvApp2Var_SequenceOfPatch & operator = (const AdvApp2Var_SequenceOfPatch & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2683,7 +2683,7 @@ class AdvApp2Var_SequenceOfStrip : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: AdvApp2Var_SequenceOfStrip &
 	:rtype: AdvApp2Var_SequenceOfStrip
-") operator=;
+") operator =;
 		const AdvApp2Var_SequenceOfStrip & operator = (const AdvApp2Var_SequenceOfStrip & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2826,7 +2826,7 @@ class AdvApp2Var_Strip : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: AdvApp2Var_Strip &
 	:rtype: AdvApp2Var_Strip
-") operator=;
+") operator =;
 		const AdvApp2Var_Strip & operator = (const AdvApp2Var_Strip & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

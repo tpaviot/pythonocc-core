@@ -49,7 +49,6 @@ def boolean_cut(shapeToCutFrom, cuttingShape):
     cut.RefineEdges()
     cut.FuseEdges()
     shp = cut.Shape()
-    cut.Destroy()
     return shp
 
 

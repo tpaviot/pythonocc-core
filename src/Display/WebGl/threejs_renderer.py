@@ -123,9 +123,9 @@ BODY_Part0 = """
         <a href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
 
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r84/examples/js/controls/OrbitControls.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r84/examples/js/libs/stats.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r85/build/three.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r85/examples/js/controls/OrbitControls.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r85/examples/js/libs/stats.min.js"></script>
 
 """
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -56,10 +56,91 @@ def register_handle(handle, base_object):
 /* public enums */
 /* end public enums declaration */
 
-%nodefaultctor AppCont_FitFunction;
-class AppCont_FitFunction {
+%nodefaultctor AppCont_Function;
+class AppCont_Function {
 	public:
-		%feature("compactdefaultargs") AppCont_FitFunction;
+		%feature("compactdefaultargs") GetNumberOfPoints;
+		%feature("autodoc", "	* Get number of 3d and 2d points returned by 'Value' and 'D1' functions.
+
+	:param theNbPnt:
+	:type theNbPnt: int &
+	:param theNbPnt2d:
+	:type theNbPnt2d: int &
+	:rtype: None
+") GetNumberOfPoints;
+		void GetNumberOfPoints (Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") GetNbOf3dPoints;
+		%feature("autodoc", "	* Get number of 3d points returned by 'Value' and 'D1' functions.
+
+	:rtype: int
+") GetNbOf3dPoints;
+		Standard_Integer GetNbOf3dPoints ();
+		%feature("compactdefaultargs") GetNbOf2dPoints;
+		%feature("autodoc", "	* Get number of 2d points returned by 'Value' and 'D1' functions.
+
+	:rtype: int
+") GetNbOf2dPoints;
+		Standard_Integer GetNbOf2dPoints ();
+		%feature("compactdefaultargs") FirstParameter;
+		%feature("autodoc", "	* Returns the first parameter of the function.
+
+	:rtype: float
+") FirstParameter;
+		virtual Standard_Real FirstParameter ();
+		%feature("compactdefaultargs") LastParameter;
+		%feature("autodoc", "	* Returns the last parameter of the function.
+
+	:rtype: float
+") LastParameter;
+		virtual Standard_Real LastParameter ();
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the point at parameter <theU>.
+
+	:param theU:
+	:type theU: float
+	:param thePnt2d:
+	:type thePnt2d: NCollection_Array1<gp_Pnt2d>
+	:param thePnt:
+	:type thePnt: NCollection_Array1<gp_Pnt>
+	:rtype: bool
+") Value;
+		virtual Standard_Boolean Value (const Standard_Real theU,NCollection_Array1<gp_Pnt2d> & thePnt2d,NCollection_Array1<gp_Pnt> & thePnt);
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "	* Returns the derivative at parameter <theU>.
+
+	:param theU:
+	:type theU: float
+	:param theVec2d:
+	:type theVec2d: NCollection_Array1<gp_Vec2d>
+	:param theVec:
+	:type theVec: NCollection_Array1<gp_Vec>
+	:rtype: bool
+") D1;
+		virtual Standard_Boolean D1 (const Standard_Real theU,NCollection_Array1<gp_Vec2d> & theVec2d,NCollection_Array1<gp_Vec> & theVec);
+		%feature("compactdefaultargs") PeriodInformation;
+		%feature("autodoc", "	* Return information about peridicity in output paramateters space. @param theDimIdx Defines index in output parameters space. 1 <= theDimIdx <= 3 * myNbPnt + 2 * myNbPnt2d.
+
+	:param Standard_Integer:
+	:type Standard_Integer: 
+	:param IsPeriodic:
+	:type IsPeriodic: bool
+	:param thePeriod:
+	:type thePeriod: float &
+	:rtype: void
+") PeriodInformation;
+		virtual void PeriodInformation (const Standard_Integer,Standard_Boolean &OutValue,Standard_Real &OutValue);
+};
+
+
+%extend AppCont_Function {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor AppCont_LeastSquare;
+class AppCont_LeastSquare {
+	public:
+		%feature("compactdefaultargs") AppCont_LeastSquare;
 		%feature("autodoc", "	:param SSP:
 	:type SSP: AppCont_Function &
 	:param U0:
@@ -72,15 +153,11 @@ class AppCont_FitFunction {
 	:type LastCons: AppParCurves_Constraint
 	:param Deg:
 	:type Deg: int
-	:param NbPoints: default value is 24
+	:param NbPoints:
 	:type NbPoints: int
 	:rtype: None
-") AppCont_FitFunction;
-		 AppCont_FitFunction (const AppCont_Function & SSP,const Standard_Real U0,const Standard_Real U1,const AppParCurves_Constraint FirstCons,const AppParCurves_Constraint LastCons,const Standard_Integer Deg,const Standard_Integer NbPoints = 24);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
+") AppCont_LeastSquare;
+		 AppCont_LeastSquare (const AppCont_Function & SSP,const Standard_Real U0,const Standard_Real U1,const AppParCurves_Constraint FirstCons,const AppParCurves_Constraint LastCons,const Standard_Integer Deg,const Standard_Integer NbPoints);
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
 ") Value;
@@ -95,371 +172,14 @@ class AppCont_FitFunction {
 	:rtype: None
 ") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-};
-
-
-%extend AppCont_FitFunction {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppCont_FitFunction2d;
-class AppCont_FitFunction2d {
-	public:
-		%feature("compactdefaultargs") AppCont_FitFunction2d;
-		%feature("autodoc", "	:param SSP:
-	:type SSP: AppCont_Function2d &
-	:param U0:
-	:type U0: float
-	:param U1:
-	:type U1: float
-	:param FirstCons:
-	:type FirstCons: AppParCurves_Constraint
-	:param LastCons:
-	:type LastCons: AppParCurves_Constraint
-	:param Deg:
-	:type Deg: int
-	:param NbPoints: default value is 24
-	:type NbPoints: int
-	:rtype: None
-") AppCont_FitFunction2d;
-		 AppCont_FitFunction2d (const AppCont_Function2d & SSP,const Standard_Real U0,const Standard_Real U1,const AppParCurves_Constraint FirstCons,const AppParCurves_Constraint LastCons,const Standard_Integer Deg,const Standard_Integer NbPoints = 24);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
-") Value;
-		const AppParCurves_MultiCurve & Value ();
-		%feature("compactdefaultargs") Error;
-		%feature("autodoc", "	:param F:
-	:type F: float &
-	:param MaxE3d:
-	:type MaxE3d: float &
-	:param MaxE2d:
-	:type MaxE2d: float &
-	:rtype: None
-") Error;
-		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
 
-%extend AppCont_FitFunction2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppCont_Function;
-class AppCont_Function {
-	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	* returns the first parameter of the function.
-
-	:rtype: float
-") FirstParameter;
-		virtual Standard_Real FirstParameter ();
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	* returns the last parameter of the function.
-
-	:rtype: float
-") LastParameter;
-		virtual Standard_Real LastParameter ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* returns the point at parameter <U>.
-
-	:param U:
-	:type U: float
-	:rtype: gp_Pnt
-") Value;
-		virtual gp_Pnt Value (const Standard_Real U);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* returns the point and the derivative values at the parameter <U>.
-
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt
-	:param V:
-	:type V: gp_Vec
-	:rtype: bool
-") D1;
-		virtual Standard_Boolean D1 (const Standard_Real U,gp_Pnt & P,gp_Vec & V);
-};
-
-
-%extend AppCont_Function {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor AppCont_Function2d;
-class AppCont_Function2d {
-	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	* returns the first parameter of the function.
-
-	:rtype: float
-") FirstParameter;
-		virtual Standard_Real FirstParameter ();
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	* returns the last parameter of the function.
-
-	:rtype: float
-") LastParameter;
-		virtual Standard_Real LastParameter ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* returns the point at parameter <U>.
-
-	:param U:
-	:type U: float
-	:rtype: gp_Pnt2d
-") Value;
-		virtual gp_Pnt2d Value (const Standard_Real U);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* returns the point and the derivative values at the parameter <U>.
-
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:param V:
-	:type V: gp_Vec2d
-	:rtype: bool
-") D1;
-		virtual Standard_Boolean D1 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V);
-};
-
-
-%extend AppCont_Function2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class AppCont_FunctionTool {
-	public:
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	* returns the first parameter of the Function.
-
-	:param C:
-	:type C: AppCont_Function &
-	:rtype: float
-") FirstParameter;
-		static Standard_Real FirstParameter (const AppCont_Function & C);
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	* returns the last parameter of the Function.
-
-	:param C:
-	:type C: AppCont_Function &
-	:rtype: float
-") LastParameter;
-		static Standard_Real LastParameter (const AppCont_Function & C);
-		%feature("compactdefaultargs") NbP2d;
-		%feature("autodoc", "	* Returns 0.
-
-	:param C:
-	:type C: AppCont_Function &
-	:rtype: int
-") NbP2d;
-		static Standard_Integer NbP2d (const AppCont_Function & C);
-		%feature("compactdefaultargs") NbP3d;
-		%feature("autodoc", "	* Returns 1. (the approximation will be done only for one function.
-
-	:param C:
-	:type C: AppCont_Function &
-	:rtype: int
-") NbP3d;
-		static Standard_Integer NbP3d (const AppCont_Function & C);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* <tabP> is an array of only 1 element, the point value at the parameter <U>.
-
-	:param C:
-	:type C: AppCont_Function &
-	:param U:
-	:type U: float
-	:param tabPt:
-	:type tabPt: TColgp_Array1OfPnt
-	:rtype: void
-") Value;
-		static void Value (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfPnt & tabPt);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* <tabV> is an array of only 1 element, the derivative value at the parameter <U>.
-
-	:param C:
-	:type C: AppCont_Function &
-	:param U:
-	:type U: float
-	:param tabV:
-	:type tabV: TColgp_Array1OfVec
-	:rtype: bool
-") D1;
-		static Standard_Boolean D1 (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfVec & tabV);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param C:
-	:type C: AppCont_Function &
-	:param U:
-	:type U: float
-	:param tabPt2d:
-	:type tabPt2d: TColgp_Array1OfPnt2d
-	:rtype: void
-") Value;
-		static void Value (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfPnt2d & tabPt2d);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param C:
-	:type C: AppCont_Function &
-	:param U:
-	:type U: float
-	:param tabPt:
-	:type tabPt: TColgp_Array1OfPnt
-	:param tabPt2d:
-	:type tabPt2d: TColgp_Array1OfPnt2d
-	:rtype: void
-") Value;
-		static void Value (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfPnt & tabPt,TColgp_Array1OfPnt2d & tabPt2d);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param C:
-	:type C: AppCont_Function &
-	:param U:
-	:type U: float
-	:param tabV2d:
-	:type tabV2d: TColgp_Array1OfVec2d
-	:rtype: bool
-") D1;
-		static Standard_Boolean D1 (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfVec2d & tabV2d);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param C:
-	:type C: AppCont_Function &
-	:param U:
-	:type U: float
-	:param tabV:
-	:type tabV: TColgp_Array1OfVec
-	:param tabV2d:
-	:type tabV2d: TColgp_Array1OfVec2d
-	:rtype: bool
-") D1;
-		static Standard_Boolean D1 (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfVec & tabV,TColgp_Array1OfVec2d & tabV2d);
-};
-
-
-%extend AppCont_FunctionTool {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class AppCont_FunctionTool2d {
-	public:
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	* returns the first parameter of the Function.
-
-	:param C:
-	:type C: AppCont_Function2d &
-	:rtype: float
-") FirstParameter;
-		static Standard_Real FirstParameter (const AppCont_Function2d & C);
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	* returns the last parameter of the Function.
-
-	:param C:
-	:type C: AppCont_Function2d &
-	:rtype: float
-") LastParameter;
-		static Standard_Real LastParameter (const AppCont_Function2d & C);
-		%feature("compactdefaultargs") NbP2d;
-		%feature("autodoc", "	* Returns 1. (the approximation will be done only for one function.
-
-	:param C:
-	:type C: AppCont_Function2d &
-	:rtype: int
-") NbP2d;
-		static Standard_Integer NbP2d (const AppCont_Function2d & C);
-		%feature("compactdefaultargs") NbP3d;
-		%feature("autodoc", "	* Returns 0.
-
-	:param C:
-	:type C: AppCont_Function2d &
-	:rtype: int
-") NbP3d;
-		static Standard_Integer NbP3d (const AppCont_Function2d & C);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* <tabP> is an array of only 1 element, the point value at the parameter <U>.
-
-	:param C:
-	:type C: AppCont_Function2d &
-	:param U:
-	:type U: float
-	:param tabPt:
-	:type tabPt: TColgp_Array1OfPnt2d
-	:rtype: void
-") Value;
-		static void Value (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfPnt2d & tabPt);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* <tabV> is an array of only 1 element, the derivative value at the parameter <U>.
-
-	:param C:
-	:type C: AppCont_Function2d &
-	:param U:
-	:type U: float
-	:param tabV:
-	:type tabV: TColgp_Array1OfVec2d
-	:rtype: bool
-") D1;
-		static Standard_Boolean D1 (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfVec2d & tabV);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param C:
-	:type C: AppCont_Function2d &
-	:param U:
-	:type U: float
-	:param tabPt2d:
-	:type tabPt2d: TColgp_Array1OfPnt
-	:rtype: void
-") Value;
-		static void Value (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfPnt & tabPt2d);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param C:
-	:type C: AppCont_Function2d &
-	:param U:
-	:type U: float
-	:param tabPt:
-	:type tabPt: TColgp_Array1OfPnt
-	:param tabPt2d:
-	:type tabPt2d: TColgp_Array1OfPnt2d
-	:rtype: void
-") Value;
-		static void Value (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfPnt & tabPt,TColgp_Array1OfPnt2d & tabPt2d);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param C:
-	:type C: AppCont_Function2d &
-	:param U:
-	:type U: float
-	:param tabV2d:
-	:type tabV2d: TColgp_Array1OfVec
-	:rtype: bool
-") D1;
-		static Standard_Boolean D1 (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfVec & tabV2d);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param C:
-	:type C: AppCont_Function2d &
-	:param U:
-	:type U: float
-	:param tabV:
-	:type tabV: TColgp_Array1OfVec
-	:param tabV2d:
-	:type tabV2d: TColgp_Array1OfVec2d
-	:rtype: bool
-") D1;
-		static Standard_Boolean D1 (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfVec & tabV,TColgp_Array1OfVec2d & tabV2d);
-};
-
-
-%extend AppCont_FunctionTool2d {
+%extend AppCont_LeastSquare {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

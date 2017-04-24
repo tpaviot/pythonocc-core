@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -414,12 +414,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_BndBox4d.hxx>
 #include<Graphic3d_BndBox4f.hxx>
 #include<Graphic3d_BoundBuffer.hxx>
-#include<Graphic3d_BoundBuffer_Handle.hxx>
 #include<Graphic3d_Buffer.hxx>
 #include<Graphic3d_BufferType.hxx>
-#include<Graphic3d_Buffer_Handle.hxx>
 #include<Graphic3d_Camera.hxx>
-#include<Graphic3d_Camera_Handle.hxx>
 #include<Graphic3d_CAspectFillArea.hxx>
 #include<Graphic3d_CAspectLine.hxx>
 #include<Graphic3d_CAspectMarker.hxx>
@@ -428,14 +425,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_CBitFields20.hxx>
 #include<Graphic3d_CBitFields4.hxx>
 #include<Graphic3d_CBitFields8.hxx>
-#include<Graphic3d_CGraduatedTrihedron.hxx>
 #include<Graphic3d_CLight.hxx>
 #include<Graphic3d_ClipPlane.hxx>
-#include<Graphic3d_ClipPlane_Handle.hxx>
-#include<Graphic3d_CPick.hxx>
 #include<Graphic3d_CStructure.hxx>
 #include<Graphic3d_CStructurePtr.hxx>
-#include<Graphic3d_CStructure_Handle.hxx>
 #include<Graphic3d_CTexture.hxx>
 #include<Graphic3d_CTransPersStruct.hxx>
 #include<Graphic3d_CUserDraw.hxx>
@@ -443,6 +436,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_CycleError.hxx>
 #include<Graphic3d_DataStructureManager.hxx>
 #include<Graphic3d_ExportFormat.hxx>
+#include<Graphic3d_GraduatedTrihedron.hxx>
 #include<Graphic3d_GraphicDriver.hxx>
 #include<Graphic3d_Group.hxx>
 #include<Graphic3d_GroupAspect.hxx>
@@ -450,16 +444,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_HorizontalTextAlignment.hxx>
 #include<Graphic3d_HSequenceOfStructure.hxx>
 #include<Graphic3d_IndexBuffer.hxx>
-#include<Graphic3d_IndexBuffer_Handle.hxx>
+#include<Graphic3d_IndexedMapOfAddress.hxx>
 #include<Graphic3d_InitialisationError.hxx>
 #include<Graphic3d_LevelOfTextureAnisotropy.hxx>
 #include<Graphic3d_ListIteratorOfListOfShortReal.hxx>
 #include<Graphic3d_ListNodeOfListOfShortReal.hxx>
 #include<Graphic3d_ListOfShortReal.hxx>
 #include<Graphic3d_MapIteratorOfMapOfStructure.hxx>
+#include<Graphic3d_MapOfObject.hxx>
 #include<Graphic3d_MapOfStructure.hxx>
 #include<Graphic3d_MarkerImage.hxx>
-#include<Graphic3d_MarkerImage_Handle.hxx>
 #include<Graphic3d_Mat4.hxx>
 #include<Graphic3d_Mat4d.hxx>
 #include<Graphic3d_MaterialAspect.hxx>
@@ -470,6 +464,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_NameOfTextureEnv.hxx>
 #include<Graphic3d_NameOfTexturePlane.hxx>
 #include<Graphic3d_NListOfHAsciiString.hxx>
+#include<Graphic3d_NMapOfTransient.hxx>
 #include<Graphic3d_PriorityDefinitionError.hxx>
 #include<Graphic3d_PtrFrameBuffer.hxx>
 #include<Graphic3d_RenderingMode.hxx>
@@ -477,16 +472,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_SequenceNodeOfSequenceOfStructure.hxx>
 #include<Graphic3d_SequenceOfGroup.hxx>
 #include<Graphic3d_SequenceOfHClipPlane.hxx>
-#include<Graphic3d_SequenceOfHClipPlane_Handle.hxx>
 #include<Graphic3d_SequenceOfStructure.hxx>
 #include<Graphic3d_ShaderObject.hxx>
-#include<Graphic3d_ShaderObject_Handle.hxx>
 #include<Graphic3d_ShaderProgram.hxx>
-#include<Graphic3d_ShaderProgram_Handle.hxx>
 #include<Graphic3d_ShaderVariable.hxx>
-#include<Graphic3d_ShaderVariable_Handle.hxx>
 #include<Graphic3d_SortType.hxx>
-#include<Graphic3d_StdMapNodeOfMapOfStructure.hxx>
+#include<Graphic3d_StereoMode.hxx>
 #include<Graphic3d_Structure.hxx>
 #include<Graphic3d_StructureDefinitionError.hxx>
 #include<Graphic3d_StructureManager.hxx>
@@ -505,6 +496,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_TextureRoot.hxx>
 #include<Graphic3d_TransformError.hxx>
 #include<Graphic3d_TransModeFlags.hxx>
+#include<Graphic3d_TypeOfBackground.hxx>
 #include<Graphic3d_TypeOfComposition.hxx>
 #include<Graphic3d_TypeOfConnection.hxx>
 #include<Graphic3d_TypeOfMaterial.hxx>
@@ -525,34 +517,36 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_VectorError.hxx>
 #include<Graphic3d_Vertex.hxx>
 #include<Graphic3d_VerticalTextAlignment.hxx>
+#include<Graphic3d_ViewAffinity.hxx>
+#include<Graphic3d_ZLayerId.hxx>
 #include<Graphic3d_ZLayerSettings.hxx>
 #include<SelectMgr_AndFilter.hxx>
+#include<SelectMgr_BaseFrustum.hxx>
 #include<SelectMgr_CompositionFilter.hxx>
-#include<SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive.hxx>
 #include<SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors.hxx>
-#include<SelectMgr_DataMapIteratorOfDataMapOfSelectionActivation.hxx>
-#include<SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive.hxx>
 #include<SelectMgr_DataMapNodeOfDataMapOfObjectSelectors.hxx>
-#include<SelectMgr_DataMapNodeOfDataMapOfSelectionActivation.hxx>
-#include<SelectMgr_DataMapOfIntegerSensitive.hxx>
 #include<SelectMgr_DataMapOfObjectSelectors.hxx>
-#include<SelectMgr_DataMapOfSelectionActivation.hxx>
 #include<SelectMgr_EntityOwner.hxx>
 #include<SelectMgr_Filter.hxx>
+#include<SelectMgr_Frustum.hxx>
+#include<SelectMgr_FrustumBuilder.hxx>
 #include<SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion.hxx>
 #include<SelectMgr_IndexedDataMapOfOwnerCriterion.hxx>
-#include<SelectMgr_IndexedMapNodeOfIndexedMapOfOwner.hxx>
 #include<SelectMgr_IndexedMapOfOwner.hxx>
 #include<SelectMgr_ListIteratorOfListOfFilter.hxx>
 #include<SelectMgr_ListNodeOfListOfFilter.hxx>
 #include<SelectMgr_ListOfFilter.hxx>
 #include<SelectMgr_OrFilter.hxx>
+#include<SelectMgr_RectangularFrustum.hxx>
 #include<SelectMgr_SelectableObject.hxx>
+#include<SelectMgr_SelectableObjectSet.hxx>
+#include<SelectMgr_SelectingVolumeManager.hxx>
 #include<SelectMgr_Selection.hxx>
 #include<SelectMgr_SelectionManager.hxx>
+#include<SelectMgr_SensitiveEntity.hxx>
+#include<SelectMgr_SensitiveEntitySet.hxx>
 #include<SelectMgr_SequenceNodeOfSequenceOfFilter.hxx>
 #include<SelectMgr_SequenceNodeOfSequenceOfOwner.hxx>
-#include<SelectMgr_SequenceNodeOfSequenceOfSelection.hxx>
 #include<SelectMgr_SequenceNodeOfSequenceOfSelector.hxx>
 #include<SelectMgr_SequenceOfFilter.hxx>
 #include<SelectMgr_SequenceOfOwner.hxx>
@@ -561,7 +555,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<SelectMgr_SOPtr.hxx>
 #include<SelectMgr_SortCriterion.hxx>
 #include<SelectMgr_StateOfSelection.hxx>
+#include<SelectMgr_TriangularFrustum.hxx>
+#include<SelectMgr_TriangularFrustumSet.hxx>
+#include<SelectMgr_TypeOfBVHUpdate.hxx>
 #include<SelectMgr_TypeOfUpdate.hxx>
+#include<SelectMgr_VectorTypes.hxx>
 #include<SelectMgr_ViewerSelector.hxx>
 #include<gp.hxx>
 #include<gp_Ax1.hxx>
@@ -671,6 +669,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -680,6 +679,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -689,19 +689,31 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceOfXY.hxx>
 #include<TColgp_SequenceOfXYZ.hxx>
 #include<SelectBasics.hxx>
-#include<SelectBasics_BasicTool.hxx>
 #include<SelectBasics_EntityOwner.hxx>
-#include<SelectBasics_ListIteratorOfListOfBox2d.hxx>
-#include<SelectBasics_ListIteratorOfListOfSensitive.hxx>
-#include<SelectBasics_ListNodeOfListOfBox2d.hxx>
-#include<SelectBasics_ListNodeOfListOfSensitive.hxx>
-#include<SelectBasics_ListOfBox2d.hxx>
-#include<SelectBasics_ListOfSensitive.hxx>
-#include<SelectBasics_PickArgs.hxx>
+#include<SelectBasics_PickResult.hxx>
+#include<SelectBasics_SelectingVolumeManager.hxx>
 #include<SelectBasics_SensitiveEntity.hxx>
-#include<SelectBasics_SequenceNodeOfSequenceOfOwner.hxx>
-#include<SelectBasics_SequenceOfOwner.hxx>
-#include<SelectBasics_SortAlgo.hxx>
+#include<Select3D_BndBox3d.hxx>
+#include<Select3D_BVHPrimitiveContent.hxx>
+#include<Select3D_EntitySequence.hxx>
+#include<Select3D_InteriorSensitivePointSet.hxx>
+#include<Select3D_Macro.hxx>
+#include<Select3D_Pnt.hxx>
+#include<Select3D_PointData.hxx>
+#include<Select3D_SensitiveBox.hxx>
+#include<Select3D_SensitiveCircle.hxx>
+#include<Select3D_SensitiveCurve.hxx>
+#include<Select3D_SensitiveEntity.hxx>
+#include<Select3D_SensitiveFace.hxx>
+#include<Select3D_SensitiveGroup.hxx>
+#include<Select3D_SensitivePoint.hxx>
+#include<Select3D_SensitivePoly.hxx>
+#include<Select3D_SensitiveSegment.hxx>
+#include<Select3D_SensitiveSet.hxx>
+#include<Select3D_SensitiveTriangle.hxx>
+#include<Select3D_SensitiveTriangulation.hxx>
+#include<Select3D_SensitiveWire.hxx>
+#include<Select3D_TypeOfSensitivity.hxx>
 #include<AIS.hxx>
 #include<AIS_AngleDimension.hxx>
 #include<AIS_AttributeFilter.hxx>
@@ -735,7 +747,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_DisplayMode.hxx>
 #include<AIS_DisplaySpecialSymbol.hxx>
 #include<AIS_DisplayStatus.hxx>
-#include<AIS_Drawer.hxx>
 #include<AIS_EllipseRadiusDimension.hxx>
 #include<AIS_EqualDistanceRelation.hxx>
 #include<AIS_EqualRadiusRelation.hxx>
@@ -792,6 +803,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AIS_StdMapNodeOfMapOfInteractive.hxx>
 #include<AIS_SymmetricRelation.hxx>
 #include<AIS_TangentRelation.hxx>
+#include<AIS_TextLabel.hxx>
 #include<AIS_TexturedShape.hxx>
 #include<AIS_Triangulation.hxx>
 #include<AIS_Trihedron.hxx>
@@ -845,47 +857,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Prs3d_TypeOfLinePicking.hxx>
 #include<Prs3d_VertexDrawMode.hxx>
 #include<Prs3d_WFShape.hxx>
-#include<Select3D_Box2d.hxx>
-#include<Select3D_ListIteratorOfListOfSensitive.hxx>
-#include<Select3D_ListIteratorOfListOfSensitiveTriangle.hxx>
-#include<Select3D_ListNodeOfListOfSensitive.hxx>
-#include<Select3D_ListNodeOfListOfSensitiveTriangle.hxx>
-#include<Select3D_ListOfSensitive.hxx>
-#include<Select3D_ListOfSensitiveTriangle.hxx>
-#include<Select3D_Macro.hxx>
-#include<Select3D_Pnt.hxx>
-#include<Select3D_Pnt2d.hxx>
-#include<Select3D_PointData.hxx>
-#include<Select3D_Projector.hxx>
-#include<Select3D_SensitiveBox.hxx>
-#include<Select3D_SensitiveCircle.hxx>
-#include<Select3D_SensitiveCurve.hxx>
-#include<Select3D_SensitiveEntity.hxx>
-#include<Select3D_SensitiveEntitySequence.hxx>
-#include<Select3D_SensitiveFace.hxx>
-#include<Select3D_SensitiveGroup.hxx>
-#include<Select3D_SensitivePoint.hxx>
-#include<Select3D_SensitivePoly.hxx>
-#include<Select3D_SensitiveSegment.hxx>
-#include<Select3D_SensitiveTriangle.hxx>
-#include<Select3D_SensitiveTriangulation.hxx>
-#include<Select3D_SensitiveWire.hxx>
-#include<Select3D_SequenceNodeOfSensitiveEntitySequence.hxx>
-#include<Select3D_TypeOfSensitivity.hxx>
-#include<TopLoc_Datum3D.hxx>
-#include<TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
-#include<TopLoc_IndexedMapOfLocation.hxx>
-#include<TopLoc_ItemLocation.hxx>
-#include<TopLoc_Location.hxx>
-#include<TopLoc_MapIteratorOfMapOfLocation.hxx>
-#include<TopLoc_MapLocationHasher.hxx>
-#include<TopLoc_MapOfLocation.hxx>
-#include<TopLoc_SListNodeOfItemLocation.hxx>
-#include<TopLoc_SListOfItemLocation.hxx>
-#include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#include<TopLoc_TrsfPtr.hxx>
-#include<Aspect.hxx>
-#include<Aspect_Array1OfEdge.hxx>
 #include<Aspect_AspectFillArea.hxx>
 #include<Aspect_AspectFillAreaDefinitionError.hxx>
 #include<Aspect_AspectLine.hxx>
@@ -894,20 +865,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_AspectMarkerDefinitionError.hxx>
 #include<Aspect_Background.hxx>
 #include<Aspect_BadAccess.hxx>
-#include<Aspect_CardinalPoints.hxx>
 #include<Aspect_CircularGrid.hxx>
 #include<Aspect_CLayer2d.hxx>
 #include<Aspect_ColorScale.hxx>
 #include<Aspect_Convert.hxx>
 #include<Aspect_Display.hxx>
 #include<Aspect_DisplayConnectionDefinitionError.hxx>
-#include<Aspect_DisplayConnection_Handle.hxx>
 #include<Aspect_Drawable.hxx>
 #include<Aspect_DriverDefinitionError.hxx>
-#include<Aspect_Edge.hxx>
-#include<Aspect_EdgeDefinitionError.hxx>
 #include<Aspect_FillMethod.hxx>
-#include<Aspect_FormatOfSheetPaper.hxx>
 #include<Aspect_GenId.hxx>
 #include<Aspect_GradientBackground.hxx>
 #include<Aspect_GradientFillMethod.hxx>
@@ -929,23 +895,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_TypeOfColorScaleData.hxx>
 #include<Aspect_TypeOfColorScaleOrientation.hxx>
 #include<Aspect_TypeOfColorScalePosition.hxx>
-#include<Aspect_TypeOfColorSpace.hxx>
 #include<Aspect_TypeOfConstraint.hxx>
 #include<Aspect_TypeOfDeflection.hxx>
 #include<Aspect_TypeOfDisplayText.hxx>
 #include<Aspect_TypeOfDrawMode.hxx>
 #include<Aspect_TypeOfEdge.hxx>
 #include<Aspect_TypeOfFacingModel.hxx>
-#include<Aspect_TypeOfFont.hxx>
 #include<Aspect_TypeOfHighlightMethod.hxx>
 #include<Aspect_TypeOfLayer.hxx>
 #include<Aspect_TypeOfLine.hxx>
 #include<Aspect_TypeOfMarker.hxx>
 #include<Aspect_TypeOfPrimitive.hxx>
-#include<Aspect_TypeOfRenderingMode.hxx>
 #include<Aspect_TypeOfResize.hxx>
 #include<Aspect_TypeOfStyleText.hxx>
-#include<Aspect_TypeOfText.hxx>
 #include<Aspect_TypeOfTriedronEcho.hxx>
 #include<Aspect_TypeOfTriedronPosition.hxx>
 #include<Aspect_TypeOfUpdate.hxx>
@@ -1227,7 +1189,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<V3d_PositionLight.hxx>
 #include<V3d_RectangularGrid.hxx>
 #include<V3d_SpotLight.hxx>
-#include<V3d_Static.hxx>
 #include<V3d_StereoDumpOptions.hxx>
 #include<V3d_TypeOfAxe.hxx>
 #include<V3d_TypeOfBackfacingModel.hxx>
@@ -1247,6 +1208,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<V3d_Viewer.hxx>
 #include<V3d_ViewerPointer.hxx>
 #include<V3d_ViewPointer.hxx>
+#include<TopLoc_MapIteratorOfMapOfLocation.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
@@ -1296,6 +1258,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -1305,6 +1268,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -1497,9 +1461,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import Bnd.i
 %import TColgp.i
 %import SelectBasics.i
+%import Select3D.i
 %import AIS.i
 %import PrsMgr.i
 %import Prs3d.i
-%import Select3D.i
-%import TopLoc.i
 %import Aspect.i

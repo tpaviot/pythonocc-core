@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -59,18 +59,16 @@ def register_handle(handle, base_object):
 %rename(stltransfer) StlTransfer;
 class StlTransfer {
 	public:
-		%feature("compactdefaultargs") BuildIncrementalMesh;
-		%feature("autodoc", "	:param Shape:
+		%feature("compactdefaultargs") RetrieveMesh;
+		%feature("autodoc", "	* Retrieve a Mesh data-structure from the Shape, convert and store it into the Mesh.
+
+	:param Shape:
 	:type Shape: TopoDS_Shape &
-	:param Deflection:
-	:type Deflection: float
-	:param InParallel:
-	:type InParallel: bool
 	:param Mesh:
 	:type Mesh: Handle_StlMesh_Mesh &
 	:rtype: void
-") BuildIncrementalMesh;
-		static void BuildIncrementalMesh (const TopoDS_Shape & Shape,const Standard_Real Deflection,const Standard_Boolean InParallel,const Handle_StlMesh_Mesh & Mesh);
+") RetrieveMesh;
+		static void RetrieveMesh (const TopoDS_Shape & Shape,const Handle_StlMesh_Mesh & Mesh);
 };
 
 

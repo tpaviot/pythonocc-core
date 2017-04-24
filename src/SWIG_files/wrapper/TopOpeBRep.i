@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -149,7 +149,7 @@ class TopOpeBRep_Array1OfLineInter {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRep_Array1OfLineInter &
 	:rtype: TopOpeBRep_Array1OfLineInter
-") operator=;
+") operator =;
 		const TopOpeBRep_Array1OfLineInter & operator = (const TopOpeBRep_Array1OfLineInter & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -236,7 +236,7 @@ class TopOpeBRep_Array1OfVPointInter {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRep_Array1OfVPointInter &
 	:rtype: TopOpeBRep_Array1OfVPointInter
-") operator=;
+") operator =;
 		const TopOpeBRep_Array1OfVPointInter & operator = (const TopOpeBRep_Array1OfVPointInter & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -617,7 +617,7 @@ class TopOpeBRep_DataMapOfTopolTool : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRep_DataMapOfTopolTool &
 	:rtype: TopOpeBRep_DataMapOfTopolTool
-") operator=;
+") operator =;
 		TopOpeBRep_DataMapOfTopolTool & operator = (const TopOpeBRep_DataMapOfTopolTool & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2722,7 +2722,7 @@ class TopOpeBRep_ListOfBipoint {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRep_ListOfBipoint &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopOpeBRep_ListOfBipoint & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -3230,7 +3230,7 @@ class TopOpeBRep_SequenceOfPoint2d : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRep_SequenceOfPoint2d &
 	:rtype: TopOpeBRep_SequenceOfPoint2d
-") operator=;
+") operator =;
 		const TopOpeBRep_SequenceOfPoint2d & operator = (const TopOpeBRep_SequenceOfPoint2d & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

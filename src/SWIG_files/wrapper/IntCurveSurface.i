@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -446,7 +446,7 @@ class IntCurveSurface_SequenceOfPnt : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntCurveSurface_SequenceOfPnt &
 	:rtype: IntCurveSurface_SequenceOfPnt
-") operator=;
+") operator =;
 		const IntCurveSurface_SequenceOfPnt & operator = (const IntCurveSurface_SequenceOfPnt & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -589,7 +589,7 @@ class IntCurveSurface_SequenceOfSeg : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntCurveSurface_SequenceOfSeg &
 	:rtype: IntCurveSurface_SequenceOfSeg
-") operator=;
+") operator =;
 		const IntCurveSurface_SequenceOfSeg & operator = (const IntCurveSurface_SequenceOfSeg & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

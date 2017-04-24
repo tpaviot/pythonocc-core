@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -68,13 +68,15 @@ class GeomAdaptor {
 ") MakeCurve;
 		static Handle_Geom_Curve MakeCurve (const Adaptor3d_Curve & C);
 		%feature("compactdefaultargs") MakeSurface;
-		%feature("autodoc", "	* Build a Geom_Surface using the informations from the Surface from Adaptor3d
+		%feature("autodoc", "	* Build a Geom_Surface using the informations from the Surface from Adaptor3d @param theS - Surface adaptor to convert. @param theTrimFlag - True if perform trim surface values by adaptor and false otherwise.
 
 	:param S:
 	:type S: Adaptor3d_Surface &
+	:param theTrimFlag: default value is Standard_True
+	:type theTrimFlag: bool
 	:rtype: Handle_Geom_Surface
 ") MakeSurface;
-		static Handle_Geom_Surface MakeSurface (const Adaptor3d_Surface & S);
+		static Handle_Geom_Surface MakeSurface (const Adaptor3d_Surface & S,const Standard_Boolean theTrimFlag = Standard_True);
 };
 
 

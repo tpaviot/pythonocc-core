@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -762,7 +762,7 @@ class ShapeAnalysis_DataMapOfShapeListOfReal : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: ShapeAnalysis_DataMapOfShapeListOfReal &
 	:rtype: ShapeAnalysis_DataMapOfShapeListOfReal
-") operator=;
+") operator =;
 		ShapeAnalysis_DataMapOfShapeListOfReal & operator = (const ShapeAnalysis_DataMapOfShapeListOfReal & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1995,7 +1995,7 @@ class ShapeAnalysis_SequenceOfFreeBounds : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: ShapeAnalysis_SequenceOfFreeBounds &
 	:rtype: ShapeAnalysis_SequenceOfFreeBounds
-") operator=;
+") operator =;
 		const ShapeAnalysis_SequenceOfFreeBounds & operator = (const ShapeAnalysis_SequenceOfFreeBounds & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -3487,13 +3487,15 @@ class ShapeAnalysis_Wire : public MMgt_TShared {
 ") CheckNotchedEdges;
 		Standard_Boolean CheckNotchedEdges (const Standard_Integer num,Standard_Integer &OutValue,Standard_Real &OutValue,const Standard_Real Tolerance = 0.0);
 		%feature("compactdefaultargs") CheckSmallArea;
-		%feature("autodoc", "	* Checks if wire has parametric area less than prec2d.
+		%feature("autodoc", "	* Checks if wire has parametric area less than precision.
 
-	:param prec2d: default value is 0
-	:type prec2d: float
+	:param theWire:
+	:type theWire: TopoDS_Wire &
+	:param theIsOuterWire:
+	:type theIsOuterWire: bool
 	:rtype: bool
 ") CheckSmallArea;
-		Standard_Boolean CheckSmallArea (const Standard_Real prec2d = 0);
+		Standard_Boolean CheckSmallArea (const TopoDS_Wire & theWire,const Standard_Boolean theIsOuterWire);
 		%feature("compactdefaultargs") CheckShapeConnect;
 		%feature("autodoc", "	* Checks with what orientation <shape> (wire or edge) can be connected to the wire. Tests distances with starting <preci> from <SBWD> (close confusion), but if given <prec> is greater, tests with <prec> (coarse confusion). The smallest found distance can be returned by MinDistance3d //! Returns: False if status is FAIL (see below) Status: DONE1 : If <shape> follows <SBWD>, direct sense (normal) DONE2 : If <shape> follows <SBWD>, but if reversed DONE3 : If <shape> preceeds <SBWD>, direct sense DONE4 : If <shape> preceeds <SBWD>, but if reversed FAIL1 : If <shape> is neither an edge nor a wire FAIL2 : If <shape> cannot be connected to <SBWD> //! DONE5 : To the tail of <SBWD> the <shape> is closer with direct sense DONE6 : To the head of <SBWD> the <shape> is closer with direct sense //! Remark: Statuses DONE1 - DONE4, FAIL1 - FAIL2 are basic and describe the nearest connection of the <shape> to <SBWD>. Statuses DONE5 and DONE6 are advanced and are to be used when analyzing with what sense (direct or reversed) the <shape> should be connected to <SBWD>: For tail of <SBWD> if DONE4 is True <shape> should be direct, otherwise reversed. For head of <SBWD> if DONE5 is True <shape> should be direct, otherwise reversed.
 
@@ -3536,6 +3538,28 @@ class ShapeAnalysis_Wire : public MMgt_TShared {
 	:rtype: bool
 ") CheckLoop;
 		Standard_Boolean CheckLoop (TopTools_IndexedMapOfShape & aMapLoopVertices,TopTools_DataMapOfShapeListOfShape & aMapVertexEdges,TopTools_MapOfShape & aMapSmallEdges,TopTools_MapOfShape & aMapSeemEdges);
+		%feature("compactdefaultargs") CheckTail;
+		%feature("autodoc", "	:param theEdge1:
+	:type theEdge1: TopoDS_Edge &
+	:param theEdge2:
+	:type theEdge2: TopoDS_Edge &
+	:param theMaxSine:
+	:type theMaxSine: float
+	:param theMaxWidth:
+	:type theMaxWidth: float
+	:param theMaxTolerance:
+	:type theMaxTolerance: float
+	:param theEdge11:
+	:type theEdge11: TopoDS_Edge &
+	:param theEdge12:
+	:type theEdge12: TopoDS_Edge &
+	:param theEdge21:
+	:type theEdge21: TopoDS_Edge &
+	:param theEdge22:
+	:type theEdge22: TopoDS_Edge &
+	:rtype: bool
+") CheckTail;
+		Standard_Boolean CheckTail (const TopoDS_Edge & theEdge1,const TopoDS_Edge & theEdge2,const Standard_Real theMaxSine,const Standard_Real theMaxWidth,const Standard_Real theMaxTolerance,TopoDS_Edge & theEdge11,TopoDS_Edge & theEdge12,TopoDS_Edge & theEdge21,TopoDS_Edge & theEdge22);
 		%feature("compactdefaultargs") StatusOrder;
 		%feature("autodoc", "	:param Status:
 	:type Status: ShapeExtend_Status

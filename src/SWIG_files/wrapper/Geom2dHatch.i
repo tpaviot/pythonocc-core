@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1067,7 +1067,7 @@ class Geom2dHatch_Hatchings : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Geom2dHatch_Hatchings &
 	:rtype: Geom2dHatch_Hatchings
-") operator=;
+") operator =;
 		Geom2dHatch_Hatchings & operator = (const Geom2dHatch_Hatchings & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1243,7 +1243,7 @@ class Geom2dHatch_MapOfElements : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Geom2dHatch_MapOfElements &
 	:rtype: Geom2dHatch_MapOfElements
-") operator=;
+") operator =;
 		Geom2dHatch_MapOfElements & operator = (const Geom2dHatch_MapOfElements & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -449,6 +449,10 @@ class IntWalk_TheInt2S {
 		%feature("autodoc", "	:rtype: IntWalk_TheFunctionOfTheInt2S
 ") Function;
 		IntWalk_TheFunctionOfTheInt2S & Function ();
+		%feature("compactdefaultargs") ChangePoint;
+		%feature("autodoc", "	:rtype: IntSurf_PntOn2S
+") ChangePoint;
+		IntSurf_PntOn2S & ChangePoint ();
 };
 
 

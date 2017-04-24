@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -706,22 +706,6 @@ class BOPTools_AlgoTools {
 ") IsInvertedSolid;
 		static Standard_Boolean IsInvertedSolid (const TopoDS_Solid & theSolid);
 		%feature("compactdefaultargs") ComputeTolerance;
-		%feature("autodoc", "	* Computes the max distance between points taken from 3D and 2D curves by the same parameter
-
-	:param theCurve3D:
-	:type theCurve3D: Handle_Geom_Curve &
-	:param theCurve2D:
-	:type theCurve2D: Handle_Geom2d_Curve &
-	:param theSurf:
-	:type theSurf: Handle_Geom_Surface &
-	:param theMaxDist:
-	:type theMaxDist: float &
-	:param theMaxPar:
-	:type theMaxPar: float &
-	:rtype: bool
-") ComputeTolerance;
-		static Standard_Boolean ComputeTolerance (const Handle_Geom_Curve & theCurve3D,const Handle_Geom2d_Curve & theCurve2D,const Handle_Geom_Surface & theSurf,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") ComputeTolerance;
 		%feature("autodoc", "	* Computes the necessary value of the tolerance for the edge
 
 	:param theFace:
@@ -746,7 +730,7 @@ class BOPTools_AlgoTools {
 class BOPTools_AlgoTools2D {
 	public:
 		%feature("compactdefaultargs") BuildPCurveForEdgeOnFace;
-		%feature("autodoc", "	* Compute P-Curve for the edge <aE> on the face <aF>
+		%feature("autodoc", "	* Compute P-Curve for the edge <aE> on the face <aF> Raises exception Standard_ConstructionError if projection algorithm fails
 
 	:param aE:
 	:type aE: TopoDS_Edge &
@@ -768,7 +752,7 @@ class BOPTools_AlgoTools2D {
 ") EdgeTangent;
 		static Standard_Boolean EdgeTangent (const TopoDS_Edge & anE,const Standard_Real aT,gp_Vec & Tau);
 		%feature("compactdefaultargs") PointOnSurface;
-		%feature("autodoc", "	* Compute surface parameters <U,V> of the face <aF> for the point from the edge <aE> at parameter <aT>.
+		%feature("autodoc", "	* Compute surface parameters <U,V> of the face <aF> for the point from the edge <aE> at parameter <aT>. If <aE> has't pcurve on surface, algorithm tries to get it by projection and can raise exception Standard_ConstructionError if projection algorithm fails
 
 	:param aE:
 	:type aE: TopoDS_Edge &
@@ -841,6 +825,22 @@ class BOPTools_AlgoTools2D {
 	:rtype: void
 ") AdjustPCurveOnFace;
 		static void AdjustPCurveOnFace (const TopoDS_Face & aF,const Standard_Real aT1,const Standard_Real aT2,const Handle_Geom2d_Curve & aC2D,Handle_Geom2d_Curve & aC2DA);
+		%feature("compactdefaultargs") AdjustPCurveOnFace;
+		%feature("autodoc", "	* Adjust P-Curve <aC2D> (3D-curve <C3D>) on surface <aF> . [aT1, aT2] - range to adjust
+
+	:param aF:
+	:type aF: BRepAdaptor_Surface &
+	:param aT1:
+	:type aT1: float
+	:param aT2:
+	:type aT2: float
+	:param aC2D:
+	:type aC2D: Handle_Geom2d_Curve &
+	:param aC2DA:
+	:type aC2DA: Handle_Geom2d_Curve &
+	:rtype: void
+") AdjustPCurveOnFace;
+		static void AdjustPCurveOnFace (const BRepAdaptor_Surface & aF,const Standard_Real aT1,const Standard_Real aT2,const Handle_Geom2d_Curve & aC2D,Handle_Geom2d_Curve & aC2DA);
 		%feature("compactdefaultargs") IntermediatePoint;
 		%feature("autodoc", "	* Compute intermediate value in between [aFirst, aLast] .
 
@@ -867,6 +867,18 @@ class BOPTools_AlgoTools2D {
 	:rtype: void
 ") BuildPCurveForEdgeOnPlane;
 		static void BuildPCurveForEdgeOnPlane (const TopoDS_Edge & theE,const TopoDS_Face & theF);
+		%feature("compactdefaultargs") BuildPCurveForEdgeOnPlane;
+		%feature("autodoc", "	:param theE:
+	:type theE: TopoDS_Edge &
+	:param theF:
+	:type theF: TopoDS_Face &
+	:param theC2D:
+	:type theC2D: Handle_Geom2d_Curve &
+	:param bToUpdate:
+	:type bToUpdate: bool
+	:rtype: void
+") BuildPCurveForEdgeOnPlane;
+		static void BuildPCurveForEdgeOnPlane (const TopoDS_Edge & theE,const TopoDS_Face & theF,Handle_Geom2d_Curve & theC2D,Standard_Boolean &OutValue);
 		%feature("compactdefaultargs") BuildPCurveForEdgesOnPlane;
 		%feature("autodoc", "	:param theLE:
 	:type theLE: BOPCol_ListOfShape &
@@ -876,7 +888,7 @@ class BOPTools_AlgoTools2D {
 ") BuildPCurveForEdgesOnPlane;
 		static void BuildPCurveForEdgesOnPlane (const BOPCol_ListOfShape & theLE,const TopoDS_Face & theF);
 		%feature("compactdefaultargs") Make2D;
-		%feature("autodoc", "	* Make P-Curve <aC> for the edge <aE> on surface <aF> . [aFirst, aLast] - range of the P-Curve [aToler] - reached tolerance
+		%feature("autodoc", "	* Make P-Curve <aC> for the edge <aE> on surface <aF> . [aFirst, aLast] - range of the P-Curve [aToler] - reached tolerance Raises exception Standard_ConstructionError if algorithm fails
 
 	:param aE:
 	:type aE: TopoDS_Edge &
@@ -894,7 +906,7 @@ class BOPTools_AlgoTools2D {
 ") Make2D;
 		static void Make2D (const TopoDS_Edge & aE,const TopoDS_Face & aF,Handle_Geom2d_Curve & aC,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") MakePCurveOnFace;
-		%feature("autodoc", "	* Make P-Curve <aC> for the 3D-curve <C3D> on surface <aF> . [aToler] - reached tolerance
+		%feature("autodoc", "	* Make P-Curve <aC> for the 3D-curve <C3D> on surface <aF> . [aToler] - reached tolerance Raises exception Standard_ConstructionError if projection algorithm fails
 
 	:param aF:
 	:type aF: TopoDS_Face &
@@ -908,7 +920,7 @@ class BOPTools_AlgoTools2D {
 ") MakePCurveOnFace;
 		static void MakePCurveOnFace (const TopoDS_Face & aF,const Handle_Geom_Curve & C3D,Handle_Geom2d_Curve & aC,Standard_Real &OutValue);
 		%feature("compactdefaultargs") MakePCurveOnFace;
-		%feature("autodoc", "	* Make P-Curve <aC> for the 3D-curve <C3D> on surface <aF> . [aT1, aT2] - range to build [aToler] - reached tolerance
+		%feature("autodoc", "	* Make P-Curve <aC> for the 3D-curve <C3D> on surface <aF> . [aT1, aT2] - range to build [aToler] - reached tolerance Raises exception Standard_ConstructionError if projection algorithm fails
 
 	:param aF:
 	:type aF: TopoDS_Face &
@@ -935,6 +947,20 @@ class BOPTools_AlgoTools2D {
 	:rtype: void
 ") MakePCurveOfType;
 		static void MakePCurveOfType (const ProjLib_ProjectedCurve & PC,Handle_Geom2d_Curve & aC);
+		%feature("compactdefaultargs") AttachExistingPCurve;
+		%feature("autodoc", "	* Attach P-Curve from the edge <aEold> on surface <aF> to the edge <aEnew> Returns 0 in case of success
+
+	:param aEold:
+	:type aEold: TopoDS_Edge &
+	:param aEnew:
+	:type aEnew: TopoDS_Edge &
+	:param aF:
+	:type aF: TopoDS_Face &
+	:param aCtx:
+	:type aCtx: Handle_IntTools_Context &
+	:rtype: int
+") AttachExistingPCurve;
+		static Standard_Integer AttachExistingPCurve (const TopoDS_Edge & aEold,const TopoDS_Edge & aEnew,const TopoDS_Face & aF,const Handle_IntTools_Context & aCtx);
 };
 
 
@@ -1186,41 +1212,6 @@ class BOPTools_ConnexityBlock {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor BOPTools_CoupleOfShape;
-class BOPTools_CoupleOfShape {
-	public:
-		%feature("compactdefaultargs") BOPTools_CoupleOfShape;
-		%feature("autodoc", "	:rtype: None
-") BOPTools_CoupleOfShape;
-		 BOPTools_CoupleOfShape ();
-		%feature("compactdefaultargs") SetShape1;
-		%feature("autodoc", "	:param theShape:
-	:type theShape: TopoDS_Shape &
-	:rtype: None
-") SetShape1;
-		void SetShape1 (const TopoDS_Shape & theShape);
-		%feature("compactdefaultargs") Shape1;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Shape1;
-		const TopoDS_Shape  Shape1 ();
-		%feature("compactdefaultargs") SetShape2;
-		%feature("autodoc", "	:param theShape:
-	:type theShape: TopoDS_Shape &
-	:rtype: None
-") SetShape2;
-		void SetShape2 (const TopoDS_Shape & theShape);
-		%feature("compactdefaultargs") Shape2;
-		%feature("autodoc", "	:rtype: TopoDS_Shape
-") Shape2;
-		const TopoDS_Shape  Shape2 ();
-};
-
-
-%extend BOPTools_CoupleOfShape {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor BOPTools_EdgeSet;
 class BOPTools_EdgeSet {
 	public:
@@ -1309,7 +1300,7 @@ class BOPTools_Set {
 		%feature("autodoc", "	:param Other:
 	:type Other: BOPTools_Set &
 	:rtype: BOPTools_Set
-") operator=;
+") operator =;
 		BOPTools_Set & operator = (const BOPTools_Set & Other);
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "	:rtype: TopoDS_Shape
@@ -1450,7 +1441,7 @@ class BOPTools_ShapeSet {
 		%feature("autodoc", "	:param theSet:
 	:type theSet: BOPTools_ShapeSet &
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const BOPTools_ShapeSet & theSet);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None

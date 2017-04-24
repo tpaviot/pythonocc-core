@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -211,7 +211,7 @@ class HatchGen_Domains : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: HatchGen_Domains &
 	:rtype: HatchGen_Domains
-") operator=;
+") operator =;
 		const HatchGen_Domains & operator = (const HatchGen_Domains & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -471,7 +471,7 @@ class HatchGen_PointsOnElement : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: HatchGen_PointsOnElement &
 	:rtype: HatchGen_PointsOnElement
-") operator=;
+") operator =;
 		const HatchGen_PointsOnElement & operator = (const HatchGen_PointsOnElement & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -614,7 +614,7 @@ class HatchGen_PointsOnHatching : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: HatchGen_PointsOnHatching &
 	:rtype: HatchGen_PointsOnHatching
-") operator=;
+") operator =;
 		const HatchGen_PointsOnHatching & operator = (const HatchGen_PointsOnHatching & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1043,12 +1043,6 @@ class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 	:rtype: None
 ") HatchGen_PointOnHatching;
 		 HatchGen_PointOnHatching (const IntRes2d_IntersectionPoint & Point);
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	* linux porting
-
-	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "	* Adds a point on element to the point.
 

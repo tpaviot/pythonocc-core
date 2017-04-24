@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -502,7 +502,7 @@ class Intrv_SequenceOfInterval : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Intrv_SequenceOfInterval &
 	:rtype: Intrv_SequenceOfInterval
-") operator=;
+") operator =;
 		const Intrv_SequenceOfInterval & operator = (const Intrv_SequenceOfInterval & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

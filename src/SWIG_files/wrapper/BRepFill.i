@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1242,7 +1242,7 @@ class BRepFill_DataMapOfNodeDataMapOfShapeShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_DataMapOfNodeDataMapOfShapeShape &
 	:rtype: BRepFill_DataMapOfNodeDataMapOfShapeShape
-") operator=;
+") operator =;
 		BRepFill_DataMapOfNodeDataMapOfShapeShape & operator = (const BRepFill_DataMapOfNodeDataMapOfShapeShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1325,7 +1325,7 @@ class BRepFill_DataMapOfNodeShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_DataMapOfNodeShape &
 	:rtype: BRepFill_DataMapOfNodeShape
-") operator=;
+") operator =;
 		BRepFill_DataMapOfNodeShape & operator = (const BRepFill_DataMapOfNodeShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1408,7 +1408,7 @@ class BRepFill_DataMapOfOrientedShapeListOfShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_DataMapOfOrientedShapeListOfShape &
 	:rtype: BRepFill_DataMapOfOrientedShapeListOfShape
-") operator=;
+") operator =;
 		BRepFill_DataMapOfOrientedShapeListOfShape & operator = (const BRepFill_DataMapOfOrientedShapeListOfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1491,7 +1491,7 @@ class BRepFill_DataMapOfShapeDataMapOfShapeListOfShape : public TCollection_Basi
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_DataMapOfShapeDataMapOfShapeListOfShape &
 	:rtype: BRepFill_DataMapOfShapeDataMapOfShapeListOfShape
-") operator=;
+") operator =;
 		BRepFill_DataMapOfShapeDataMapOfShapeListOfShape & operator = (const BRepFill_DataMapOfShapeDataMapOfShapeListOfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1574,7 +1574,7 @@ class BRepFill_DataMapOfShapeHArray2OfShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_DataMapOfShapeHArray2OfShape &
 	:rtype: BRepFill_DataMapOfShapeHArray2OfShape
-") operator=;
+") operator =;
 		BRepFill_DataMapOfShapeHArray2OfShape & operator = (const BRepFill_DataMapOfShapeHArray2OfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1657,7 +1657,7 @@ class BRepFill_DataMapOfShapeSequenceOfPnt : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_DataMapOfShapeSequenceOfPnt &
 	:rtype: BRepFill_DataMapOfShapeSequenceOfPnt
-") operator=;
+") operator =;
 		BRepFill_DataMapOfShapeSequenceOfPnt & operator = (const BRepFill_DataMapOfShapeSequenceOfPnt & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1740,7 +1740,7 @@ class BRepFill_DataMapOfShapeSequenceOfReal : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_DataMapOfShapeSequenceOfReal &
 	:rtype: BRepFill_DataMapOfShapeSequenceOfReal
-") operator=;
+") operator =;
 		BRepFill_DataMapOfShapeSequenceOfReal & operator = (const BRepFill_DataMapOfShapeSequenceOfReal & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2401,7 +2401,7 @@ class BRepFill_IndexedDataMapOfOrientedShapeListOfShape : public TCollection_Bas
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_IndexedDataMapOfOrientedShapeListOfShape &
 	:rtype: BRepFill_IndexedDataMapOfOrientedShapeListOfShape
-") operator=;
+") operator =;
 		BRepFill_IndexedDataMapOfOrientedShapeListOfShape & operator = (const BRepFill_IndexedDataMapOfOrientedShapeListOfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2628,7 +2628,7 @@ class BRepFill_ListOfOffsetWire {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_ListOfOffsetWire &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const BRepFill_ListOfOffsetWire & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -2946,7 +2946,7 @@ class Handle_BRepFill_LocationLaw : public Handle_MMgt_TShared {
 	}
 };
 %nodefaultctor BRepFill_MultiLine;
-class BRepFill_MultiLine {
+class BRepFill_MultiLine : public AppCont_Function {
 	public:
 		%feature("compactdefaultargs") BRepFill_MultiLine;
 		%feature("autodoc", "	:rtype: None
@@ -2999,13 +2999,13 @@ class BRepFill_MultiLine {
 
 	:rtype: float
 ") FirstParameter;
-		Standard_Real FirstParameter ();
+		virtual Standard_Real FirstParameter ();
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "	* returns the last parameter of the Bissectrice.
 
 	:rtype: float
 ") LastParameter;
-		Standard_Real LastParameter ();
+		virtual Standard_Real LastParameter ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the current point on the 3d curve
 
@@ -3042,175 +3042,34 @@ class BRepFill_MultiLine {
 	:rtype: None
 ") Value3dOnF1OnF2;
 		void Value3dOnF1OnF2 (const Standard_Real U,gp_Pnt & P3d,gp_Pnt2d & PF1,gp_Pnt2d & PF2);
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	* Returns the point at parameter <theU>.
+
+	:param theU:
+	:type theU: float
+	:param thePnt2d:
+	:type thePnt2d: NCollection_Array1<gp_Pnt2d>
+	:param thePnt:
+	:type thePnt: NCollection_Array1<gp_Pnt>
+	:rtype: bool
+") Value;
+		virtual Standard_Boolean Value (const Standard_Real theU,NCollection_Array1<gp_Pnt2d> & thePnt2d,NCollection_Array1<gp_Pnt> & thePnt);
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "	* Returns the derivative at parameter <theU>.
+
+	:param theU:
+	:type theU: float
+	:param theVec2d:
+	:type theVec2d: NCollection_Array1<gp_Vec2d>
+	:param theVec:
+	:type theVec: NCollection_Array1<gp_Vec>
+	:rtype: bool
+") D1;
+		virtual Standard_Boolean D1 (const Standard_Real theU,NCollection_Array1<gp_Vec2d> & theVec2d,NCollection_Array1<gp_Vec> & theVec);
 };
 
 
 %extend BRepFill_MultiLine {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-class BRepFill_MultiLineTool {
-	public:
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	* returns the first parameter of the Line.
-
-	:param ML:
-	:type ML: BRepFill_MultiLine &
-	:rtype: float
-") FirstParameter;
-		static Standard_Real FirstParameter (const BRepFill_MultiLine & ML);
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	* returns the last parameter of the Line.
-
-	:param ML:
-	:type ML: BRepFill_MultiLine &
-	:rtype: float
-") LastParameter;
-		static Standard_Real LastParameter (const BRepFill_MultiLine & ML);
-		%feature("compactdefaultargs") NbP2d;
-		%feature("autodoc", "	* Returns the number of 2d points of a MLine
-
-	:param ML:
-	:type ML: BRepFill_MultiLine &
-	:rtype: int
-") NbP2d;
-		static Standard_Integer NbP2d (const BRepFill_MultiLine & ML);
-		%feature("compactdefaultargs") NbP3d;
-		%feature("autodoc", "	* Returns the number of 3d points of a MLine.
-
-	:param ML:
-	:type ML: BRepFill_MultiLine &
-	:rtype: int
-") NbP3d;
-		static Standard_Integer NbP3d (const BRepFill_MultiLine & ML);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
-
-	:param ML:
-	:type ML: BRepFill_MultiLine &
-	:param U:
-	:type U: float
-	:param tabPt:
-	:type tabPt: TColgp_Array1OfPnt
-	:rtype: void
-") Value;
-		static void Value (const BRepFill_MultiLine & ML,const Standard_Real U,TColgp_Array1OfPnt & tabPt);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
-
-	:param ML:
-	:type ML: BRepFill_MultiLine &
-	:param U:
-	:type U: float
-	:param tabPt2d:
-	:type tabPt2d: TColgp_Array1OfPnt2d
-	:rtype: void
-") Value;
-		static void Value (const BRepFill_MultiLine & ML,const Standard_Real U,TColgp_Array1OfPnt2d & tabPt2d);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* returns the 3d and 2d points of the multipoint <MPointIndex>.
-
-	:param ML:
-	:type ML: BRepFill_MultiLine &
-	:param U:
-	:type U: float
-	:param tabPt:
-	:type tabPt: TColgp_Array1OfPnt
-	:param tabPt2d:
-	:type tabPt2d: TColgp_Array1OfPnt2d
-	:rtype: void
-") Value;
-		static void Value (const BRepFill_MultiLine & ML,const Standard_Real U,TColgp_Array1OfPnt & tabPt,TColgp_Array1OfPnt2d & tabPt2d);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* returns the 3d derivative values of the multipoint <MPointIndex> when only 3d points exist. returns False if the derivative cannot be computed.
-
-	:param ML:
-	:type ML: BRepFill_MultiLine &
-	:param U:
-	:type U: float
-	:param tabV:
-	:type tabV: TColgp_Array1OfVec
-	:rtype: bool
-") D1;
-		static Standard_Boolean D1 (const BRepFill_MultiLine & ML,const Standard_Real U,TColgp_Array1OfVec & tabV);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* returns the 2d derivative values of the multipoint <MPointIndex> only when 2d points exist. returns False if the derivative cannot be computed.
-
-	:param ML:
-	:type ML: BRepFill_MultiLine &
-	:param U:
-	:type U: float
-	:param tabV2d:
-	:type tabV2d: TColgp_Array1OfVec2d
-	:rtype: bool
-") D1;
-		static Standard_Boolean D1 (const BRepFill_MultiLine & ML,const Standard_Real U,TColgp_Array1OfVec2d & tabV2d);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* returns the 3d and 2d derivative values of the multipoint <MPointIndex>. returns False if the derivative cannot be computed.
-
-	:param ML:
-	:type ML: BRepFill_MultiLine &
-	:param U:
-	:type U: float
-	:param tabV:
-	:type tabV: TColgp_Array1OfVec
-	:param tabV2d:
-	:type tabV2d: TColgp_Array1OfVec2d
-	:rtype: bool
-") D1;
-		static Standard_Boolean D1 (const BRepFill_MultiLine & ML,const Standard_Real U,TColgp_Array1OfVec & tabV,TColgp_Array1OfVec2d & tabV2d);
-};
-
-
-%extend BRepFill_MultiLineTool {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepFill_MyLeastSquareOfComputeCLine;
-class BRepFill_MyLeastSquareOfComputeCLine {
-	public:
-		%feature("compactdefaultargs") BRepFill_MyLeastSquareOfComputeCLine;
-		%feature("autodoc", "	:param SSP:
-	:type SSP: BRepFill_MultiLine &
-	:param U0:
-	:type U0: float
-	:param U1:
-	:type U1: float
-	:param FirstCons:
-	:type FirstCons: AppParCurves_Constraint
-	:param LastCons:
-	:type LastCons: AppParCurves_Constraint
-	:param Deg:
-	:type Deg: int
-	:param NbPoints: default value is 24
-	:type NbPoints: int
-	:rtype: None
-") BRepFill_MyLeastSquareOfComputeCLine;
-		 BRepFill_MyLeastSquareOfComputeCLine (const BRepFill_MultiLine & SSP,const Standard_Real U0,const Standard_Real U1,const AppParCurves_Constraint FirstCons,const AppParCurves_Constraint LastCons,const Standard_Integer Deg,const Standard_Integer NbPoints = 24);
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
-") Value;
-		const AppParCurves_MultiCurve & Value ();
-		%feature("compactdefaultargs") Error;
-		%feature("autodoc", "	:param F:
-	:type F: float &
-	:param MaxE3d:
-	:type MaxE3d: float &
-	:param MaxE2d:
-	:type MaxE2d: float &
-	:rtype: None
-") Error;
-		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-};
-
-
-%extend BRepFill_MyLeastSquareOfComputeCLine {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4214,7 +4073,7 @@ class BRepFill_SequenceOfEdgeFaceAndOrder : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_SequenceOfEdgeFaceAndOrder &
 	:rtype: BRepFill_SequenceOfEdgeFaceAndOrder
-") operator=;
+") operator =;
 		const BRepFill_SequenceOfEdgeFaceAndOrder & operator = (const BRepFill_SequenceOfEdgeFaceAndOrder & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -4357,7 +4216,7 @@ class BRepFill_SequenceOfFaceAndOrder : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_SequenceOfFaceAndOrder &
 	:rtype: BRepFill_SequenceOfFaceAndOrder
-") operator=;
+") operator =;
 		const BRepFill_SequenceOfFaceAndOrder & operator = (const BRepFill_SequenceOfFaceAndOrder & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -4500,7 +4359,7 @@ class BRepFill_SequenceOfSection : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepFill_SequenceOfSection &
 	:rtype: BRepFill_SequenceOfSection
-") operator=;
+") operator =;
 		const BRepFill_SequenceOfSection & operator = (const BRepFill_SequenceOfSection & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -4753,11 +4612,13 @@ class BRepFill_TrimEdgeTool {
 	:type Edge1: TopoDS_Edge &
 	:param Edge2:
 	:type Edge2: TopoDS_Edge &
+	:param theJoinType:
+	:type theJoinType: GeomAbs_JoinType
 	:param Params:
 	:type Params: TColgp_SequenceOfPnt
 	:rtype: None
 ") IntersectWith;
-		void IntersectWith (const TopoDS_Edge & Edge1,const TopoDS_Edge & Edge2,TColgp_SequenceOfPnt & Params);
+		void IntersectWith (const TopoDS_Edge & Edge1,const TopoDS_Edge & Edge2,const GeomAbs_JoinType theJoinType,TColgp_SequenceOfPnt & Params);
 		%feature("compactdefaultargs") AddOrConfuse;
 		%feature("autodoc", "	:param Start:
 	:type Start: bool

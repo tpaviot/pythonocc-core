@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -150,7 +150,7 @@ class Storage_ArrayOfCallBack {
 		%feature("autodoc", "	:param Other:
 	:type Other: Storage_ArrayOfCallBack &
 	:rtype: Storage_ArrayOfCallBack
-") operator=;
+") operator =;
 		const Storage_ArrayOfCallBack & operator = (const Storage_ArrayOfCallBack & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -237,7 +237,7 @@ class Storage_ArrayOfSchema {
 		%feature("autodoc", "	:param Other:
 	:type Other: Storage_ArrayOfSchema &
 	:rtype: Storage_ArrayOfSchema
-") operator=;
+") operator =;
 		const Storage_ArrayOfSchema & operator = (const Storage_ArrayOfSchema & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -658,7 +658,7 @@ class Storage_BaseDriver {
 		%feature("autodoc", "	:param aValue:
 	:type aValue: Standard_Character &
 	:rtype: Storage_BaseDriver
-") operator>>;
+") operator >>;
 		Storage_BaseDriver & operator >> (Standard_Character & aValue);
 		%feature("compactdefaultargs") GetExtCharacter;
 		%feature("autodoc", "	:param aValue:
@@ -670,7 +670,7 @@ class Storage_BaseDriver {
 		%feature("autodoc", "	:param aValue:
 	:type aValue: Standard_ExtCharacter &
 	:rtype: Storage_BaseDriver
-") operator>>;
+") operator >>;
 		Storage_BaseDriver & operator >> (Standard_ExtCharacter & aValue);
 		%feature("compactdefaultargs") GetInteger;
 		%feature("autodoc", "	:param aValue:
@@ -682,7 +682,7 @@ class Storage_BaseDriver {
 		%feature("autodoc", "	:param aValue:
 	:type aValue: int &
 	:rtype: Storage_BaseDriver
-") operator>>;
+") operator >>;
 		Storage_BaseDriver & operator >> (Standard_Integer &OutValue);
 		%feature("compactdefaultargs") GetBoolean;
 		%feature("autodoc", "	:param aValue:
@@ -694,7 +694,7 @@ class Storage_BaseDriver {
 		%feature("autodoc", "	:param aValue:
 	:type aValue: bool
 	:rtype: Storage_BaseDriver
-") operator>>;
+") operator >>;
 		Storage_BaseDriver & operator >> (Standard_Boolean &OutValue);
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", "	:param aValue:
@@ -706,7 +706,7 @@ class Storage_BaseDriver {
 		%feature("autodoc", "	:param aValue:
 	:type aValue: float &
 	:rtype: Storage_BaseDriver
-") operator>>;
+") operator >>;
 		Storage_BaseDriver & operator >> (Standard_Real &OutValue);
 		%feature("compactdefaultargs") GetShortReal;
 		%feature("autodoc", "	:param aValue:
@@ -718,7 +718,7 @@ class Storage_BaseDriver {
 		%feature("autodoc", "	:param aValue:
 	:type aValue: Standard_ShortReal &
 	:rtype: Storage_BaseDriver
-") operator>>;
+") operator >>;
 		Storage_BaseDriver & operator >> (Standard_ShortReal & aValue);
 		%feature("compactdefaultargs") Close;
 		%feature("autodoc", "	:rtype: Storage_Error
@@ -2208,7 +2208,7 @@ class Storage_MapOfCallBack : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Storage_MapOfCallBack &
 	:rtype: Storage_MapOfCallBack
-") operator=;
+") operator =;
 		Storage_MapOfCallBack & operator = (const Storage_MapOfCallBack & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2291,7 +2291,7 @@ class Storage_MapOfPers : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Storage_MapOfPers &
 	:rtype: Storage_MapOfPers
-") operator=;
+") operator =;
 		Storage_MapOfPers & operator = (const Storage_MapOfPers & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2400,7 +2400,7 @@ class Storage_PArray {
 		%feature("autodoc", "	:param Other:
 	:type Other: Storage_PArray &
 	:rtype: Storage_PArray
-") operator=;
+") operator =;
 		const Storage_PArray & operator = (const Storage_PArray & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2461,7 +2461,7 @@ class Storage_PType : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Storage_PType &
 	:rtype: Storage_PType
-") operator=;
+") operator =;
 		Storage_PType & operator = (const Storage_PType & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -3107,7 +3107,7 @@ class Storage_SeqOfRoot : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Storage_SeqOfRoot &
 	:rtype: Storage_SeqOfRoot
-") operator=;
+") operator =;
 		const Storage_SeqOfRoot & operator = (const Storage_SeqOfRoot & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

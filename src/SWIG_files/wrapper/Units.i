@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -494,7 +494,7 @@ class Units_Measurement {
 		%feature("autodoc", "	:param ameasurement:
 	:type ameasurement: Units_Measurement &
 	:rtype: Units_Measurement
-") operator+;
+") operator +;
 		Units_Measurement operator + (const Units_Measurement & ameasurement);
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "	* Returns (if it is possible) a measurement which is the subtraction of <self> and <ameasurement>. The chosen returned unit is the unit of <self>.
@@ -508,7 +508,7 @@ class Units_Measurement {
 		%feature("autodoc", "	:param ameasurement:
 	:type ameasurement: Units_Measurement &
 	:rtype: Units_Measurement
-") operator-;
+") operator -;
 		Units_Measurement operator - (const Units_Measurement & ameasurement);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Returns a measurement which is the multiplication of <self> and <ameasurement>.
@@ -522,7 +522,7 @@ class Units_Measurement {
 		%feature("autodoc", "	:param ameasurement:
 	:type ameasurement: Units_Measurement &
 	:rtype: Units_Measurement
-") operator*;
+") operator *;
 		Units_Measurement operator * (const Units_Measurement & ameasurement);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Returns a measurement which is the multiplication of <self> with the value <avalue>.
@@ -536,7 +536,7 @@ class Units_Measurement {
 		%feature("autodoc", "	:param avalue:
 	:type avalue: float
 	:rtype: Units_Measurement
-") operator*;
+") operator *;
 		Units_Measurement operator * (const Standard_Real avalue);
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "	* Returns a measurement which is the division of <self> by <ameasurement>.
@@ -550,7 +550,7 @@ class Units_Measurement {
 		%feature("autodoc", "	:param ameasurement:
 	:type ameasurement: Units_Measurement &
 	:rtype: Units_Measurement
-") operator/;
+") operator /;
 		Units_Measurement operator / (const Units_Measurement & ameasurement);
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "	* Returns a measurement which is the division of <self> by the constant <avalue>.
@@ -564,7 +564,7 @@ class Units_Measurement {
 		%feature("autodoc", "	:param avalue:
 	:type avalue: float
 	:rtype: Units_Measurement
-") operator/;
+") operator /;
 		Units_Measurement operator / (const Standard_Real avalue);
 		%feature("compactdefaultargs") Power;
 		%feature("autodoc", "	* Returns a measurement which is <self> powered <anexponent>.
@@ -619,7 +619,7 @@ class Units_QtsSequence : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Units_QtsSequence &
 	:rtype: Units_QtsSequence
-") operator=;
+") operator =;
 		const Units_QtsSequence & operator = (const Units_QtsSequence & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1223,7 +1223,7 @@ class Units_TksSequence : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Units_TksSequence &
 	:rtype: Units_TksSequence
-") operator=;
+") operator =;
 		const Units_TksSequence & operator = (const Units_TksSequence & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2524,7 +2524,7 @@ class Units_UtsSequence : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Units_UtsSequence &
 	:rtype: Units_UtsSequence
-") operator=;
+") operator =;
 		const Units_UtsSequence & operator = (const Units_UtsSequence & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

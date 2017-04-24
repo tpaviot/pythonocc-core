@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -367,7 +367,7 @@ class ShapeBuild_ReShape : public BRepTools_ReShape {
 	:type status: ShapeExtend_Status
 	:rtype: bool
 ") Status;
-		Standard_Boolean Status (const ShapeExtend_Status status);
+		virtual Standard_Boolean Status (const ShapeExtend_Status status);
 };
 
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -851,7 +851,7 @@ class BiTgte_DataMapOfShapeBox : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BiTgte_DataMapOfShapeBox &
 	:rtype: BiTgte_DataMapOfShapeBox
-") operator=;
+") operator =;
 		BiTgte_DataMapOfShapeBox & operator = (const BiTgte_DataMapOfShapeBox & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

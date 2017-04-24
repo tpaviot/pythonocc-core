@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -189,10 +189,10 @@ class PrsMgr_PresentationManager : public MMgt_TShared {
 		%feature("autodoc", "	* Creates a framework to manage displays and graphic entities with the 3D view theStructureManager.
 
 	:param theStructureManager:
-	:type theStructureManager: Handle_Graphic3d_StructureManager &
+	:type theStructureManager: Handle_Visual3d_ViewManager &
 	:rtype: None
 ") PrsMgr_PresentationManager;
-		 PrsMgr_PresentationManager (const Handle_Graphic3d_StructureManager & theStructureManager);
+		 PrsMgr_PresentationManager (const Handle_Visual3d_ViewManager & theStructureManager);
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "	* Displays the presentation of the object in the given Presentation manager with the given mode. The mode should be enumerated by the object which inherits PresentableObject.
 
@@ -366,9 +366,11 @@ class PrsMgr_PresentationManager : public MMgt_TShared {
 	:type theColor: Quantity_NameOfColor
 	:param theMode: default value is 0
 	:type theMode: int
+	:param theSelObj: default value is NULL
+	:type theSelObj: Handle_PrsMgr_PresentableObject &
 	:rtype: None
 ") Color;
-		void Color (const Handle_PrsMgr_PresentableObject & thePrsObject,const Quantity_NameOfColor theColor = Quantity_NOC_YELLOW,const Standard_Integer theMode = 0);
+		void Color (const Handle_PrsMgr_PresentableObject & thePrsObject,const Quantity_NameOfColor theColor = Quantity_NOC_YELLOW,const Standard_Integer theMode = 0,const Handle_PrsMgr_PresentableObject & theSelObj = NULL);
 		%feature("compactdefaultargs") BoundBox;
 		%feature("autodoc", "	* highlights the boundbox of the presentation
 
@@ -446,15 +448,19 @@ class PrsMgr_PresentationManager : public MMgt_TShared {
 ") HasPresentation;
 		Standard_Boolean HasPresentation (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
 		%feature("compactdefaultargs") Presentation;
-		%feature("autodoc", "	* Returns the presentation Presentation of the presentable object thePrsObject in this framework. thePrsObject has the display mode theMode.
+		%feature("autodoc", "	* Returns the presentation Presentation of the presentable object thePrsObject in this framework. When theToCreate is true - automatically creates presentation for specified mode when not exist. Optional argument theSelObj specifies parent decomposed object to inherit its view affinity.
 
 	:param thePrsObject:
 	:type thePrsObject: Handle_PrsMgr_PresentableObject &
 	:param theMode: default value is 0
 	:type theMode: int
+	:param theToCreate: default value is Standard_False
+	:type theToCreate: bool
+	:param theSelObj: default value is NULL
+	:type theSelObj: Handle_PrsMgr_PresentableObject &
 	:rtype: Handle_PrsMgr_Presentation
 ") Presentation;
-		Handle_PrsMgr_Presentation Presentation (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0);
+		Handle_PrsMgr_Presentation Presentation (const Handle_PrsMgr_PresentableObject & thePrsObject,const Standard_Integer theMode = 0,const Standard_Boolean theToCreate = Standard_False,const Handle_PrsMgr_PresentableObject & theSelObj = NULL);
 };
 
 
@@ -536,7 +542,7 @@ class PrsMgr_Presentations : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: PrsMgr_Presentations &
 	:rtype: PrsMgr_Presentations
-") operator=;
+") operator =;
 		const PrsMgr_Presentations & operator = (const PrsMgr_Presentations & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

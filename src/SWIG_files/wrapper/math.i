@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -170,7 +170,7 @@ class math_Array1OfValueAndWeight {
 		%feature("autodoc", "	:param Other:
 	:type Other: math_Array1OfValueAndWeight &
 	:rtype: math_Array1OfValueAndWeight
-") operator=;
+") operator =;
 		const math_Array1OfValueAndWeight & operator = (const math_Array1OfValueAndWeight & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -216,12 +216,10 @@ class math_Array1OfValueAndWeight {
 class math_BFGS {
 	public:
 		%feature("compactdefaultargs") math_BFGS;
-		%feature("autodoc", "	* Given the starting point StartingPoint, the Broyden-Fletcher-Goldfarb-Shanno variant of Davidson-Fletcher-Powell minimization is done on the function F. The tolerance required on F is given by Tolerance. The solution F = Fi is found when : 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS). The maximum number of iterations allowed is given by NbIterations.
+		%feature("autodoc", "	* Initializes the computation of the minimum of a function with NbVariables. Tolerance, ZEPS and NbIterations are described in the method Perform. Warning: A call to the Perform method must be made after this initialization to effectively compute the minimum of the function F.
 
-	:param F:
-	:type F: math_MultipleVarFunctionWithGradient &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:param NbVariables:
+	:type NbVariables: int
 	:param Tolerance: default value is 1.0e-8
 	:type Tolerance: float
 	:param NbIterations: default value is 200
@@ -230,27 +228,9 @@ class math_BFGS {
 	:type ZEPS: float
 	:rtype: None
 ") math_BFGS;
-		 math_BFGS (math_MultipleVarFunctionWithGradient & F,const math_Vector & StartingPoint,const Standard_Real Tolerance = 1.0e-8,const Standard_Integer NbIterations = 200,const Standard_Real ZEPS = 1.0e-12);
-		%feature("compactdefaultargs") math_BFGS;
-		%feature("autodoc", "	* Initializes the computation of the minimum of F. Warning A call to the Perform method must be made after this initialization to effectively compute the minimum of the function F.
-
-	:param F:
-	:type F: math_MultipleVarFunctionWithGradient &
-	:param Tolerance: default value is 1.0e-8
-	:type Tolerance: float
-	:param NbIterations: default value is 200
-	:type NbIterations: int
-	:param ZEPS: default value is 1.0e-12
-	:type ZEPS: float
-	:rtype: None
-") math_BFGS;
-		 math_BFGS (math_MultipleVarFunctionWithGradient & F,const Standard_Real Tolerance = 1.0e-8,const Standard_Integer NbIterations = 200,const Standard_Real ZEPS = 1.0e-12);
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
+		 math_BFGS (const Standard_Integer NbVariables,const Standard_Real Tolerance = 1.0e-8,const Standard_Integer NbIterations = 200,const Standard_Real ZEPS = 1.0e-12);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Is used internally by the constructors.
+		%feature("autodoc", "	* Given the starting point StartingPoint, minimization is done on the function F. The solution F = Fi is found when : 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS). Tolerance, ZEPS and maximum number of iterations are given in the constructor.
 
 	:param F:
 	:type F: math_MultipleVarFunctionWithGradient &
@@ -333,7 +313,15 @@ class math_BFGS {
 class math_BissecNewton {
 	public:
 		%feature("compactdefaultargs") math_BissecNewton;
-		%feature("autodoc", "	* A combination of Newton-Raphson and bissection methods is done to find the root of the function F between the bounds Bound1 and Bound2. on the function F. The tolerance required on the root is given by TolX. The solution is found when : abs(Xi - Xi-1) <= TolX and F(Xi) * F(Xi-1) <= 0 The maximum number of iterations allowed is given by NbIterations.
+		%feature("autodoc", "	* Constructor. @param theXTolerance - algorithm tolerance.
+
+	:param theXTolerance:
+	:type theXTolerance: float
+	:rtype: None
+") math_BissecNewton;
+		 math_BissecNewton (const Standard_Real theXTolerance);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* A combination of Newton-Raphson and bissection methods is done to find the root of the function F between the bounds Bound1 and Bound2 on the function F. The tolerance required on the root is given by TolX. The solution is found when: abs(Xi - Xi-1) <= TolX and F(Xi) * F(Xi-1) <= 0 The maximum number of iterations allowed is given by NbIterations.
 
 	:param F:
 	:type F: math_FunctionWithDerivative &
@@ -341,21 +329,19 @@ class math_BissecNewton {
 	:type Bound1: float
 	:param Bound2:
 	:type Bound2: float
-	:param TolX:
-	:type TolX: float
 	:param NbIterations: default value is 100
 	:type NbIterations: int
 	:rtype: None
-") math_BissecNewton;
-		 math_BissecNewton (math_FunctionWithDerivative & F,const Standard_Real Bound1,const Standard_Real Bound2,const Standard_Real TolX,const Standard_Integer NbIterations = 100);
+") Perform;
+		void Perform (math_FunctionWithDerivative & F,const Standard_Real Bound1,const Standard_Real Bound2,const Standard_Integer NbIterations = 100);
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "	* This method is called at the end of each iteration to check if the solution has been found. It can be redefined in a sub-class to implement a specific test to stop the iterations.
 
-	:param F:
-	:type F: math_FunctionWithDerivative &
+	:param theFunction:
+	:type theFunction: math_FunctionWithDerivative &
 	:rtype: bool
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached (math_FunctionWithDerivative & F);
+		Standard_Boolean IsSolutionReached (math_FunctionWithDerivative & theFunction);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Tests is the root has been successfully found.
 
@@ -388,7 +374,13 @@ class math_BissecNewton {
             self->Dump(s);
             return s.str();}
         };
-        };
+        		%feature("compactdefaultargs") Delete;
+		%feature("autodoc", "	* Destructor alias.
+
+	:rtype: None
+") Delete;
+		void Delete ();
+};
 
 
 %extend math_BissecNewton {
@@ -577,28 +569,14 @@ class math_BrentMinimum {
 	:rtype: None
 ") math_BrentMinimum;
 		 math_BrentMinimum (const Standard_Real TolX,const Standard_Real Fbx,const Standard_Integer NbIterations = 100,const Standard_Real ZEPS = 1.0e-12);
-		%feature("compactdefaultargs") math_BrentMinimum;
-		%feature("autodoc", "	* Given a bracketing triplet of abscissae Ax, Bx, Cx (such as Bx is between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx)) the Brent minimization is done on the function F. The tolerance required on F is given by Tolerance. The solution is found when : abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS; The maximum number of iterations allowed is given by NbIterations.
+		%feature("compactdefaultargs") Delete;
+		%feature("autodoc", "	* Destructor alias.
 
-	:param F:
-	:type F: math_Function &
-	:param Ax:
-	:type Ax: float
-	:param Bx:
-	:type Bx: float
-	:param Cx:
-	:type Cx: float
-	:param TolX:
-	:type TolX: float
-	:param NbIterations: default value is 100
-	:type NbIterations: int
-	:param ZEPS: default value is 1.0e-12
-	:type ZEPS: float
 	:rtype: None
-") math_BrentMinimum;
-		 math_BrentMinimum (math_Function & F,const Standard_Real Ax,const Standard_Real Bx,const Standard_Real Cx,const Standard_Real TolX,const Standard_Integer NbIterations = 100,const Standard_Real ZEPS = 1.0e-12);
+") Delete;
+		void Delete ();
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Brent minimization is performed on function F from a given bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx)) Warning The initialization constructors must have been called before the call to the Perform method.
+		%feature("autodoc", "	* Brent minimization is performed on function F from a given bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx)) The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
 
 	:param F:
 	:type F: math_Function &
@@ -614,11 +592,11 @@ class math_BrentMinimum {
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "	* This method is called at the end of each iteration to check if the solution is found. It can be redefined in a sub-class to implement a specific test to stop the iterations.
 
-	:param F:
-	:type F: math_Function &
+	:param theFunction:
+	:type theFunction: math_Function &
 	:rtype: bool
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached (math_Function & F);
+		Standard_Boolean IsSolutionReached (math_Function & theFunction);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns true if the computations are successful, otherwise returns false.
 
@@ -1085,57 +1063,43 @@ class math_EigenValuesSearcher {
 class math_FRPR {
 	public:
 		%feature("compactdefaultargs") math_FRPR;
-		%feature("autodoc", "	* Computes FRPR minimization function F from input vector StartingPoint. The solution F = Fi is found when 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS). The maximum number of iterations allowed is given by NbIterations.
+		%feature("autodoc", "	* Initializes the computation of the minimum of F. Warning: constructor does not perform computations.
 
-	:param F:
-	:type F: math_MultipleVarFunctionWithGradient &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
-	:param Tolerance:
-	:type Tolerance: float
-	:param NbIterations: default value is 200
-	:type NbIterations: int
-	:param ZEPS: default value is 1.0e-12
-	:type ZEPS: float
+	:param theFunction:
+	:type theFunction: math_MultipleVarFunctionWithGradient &
+	:param theTolerance:
+	:type theTolerance: float
+	:param theNbIterations: default value is 200
+	:type theNbIterations: int
+	:param theZEPS: default value is 1.0e-12
+	:type theZEPS: float
 	:rtype: None
 ") math_FRPR;
-		 math_FRPR (math_MultipleVarFunctionWithGradient & F,const math_Vector & StartingPoint,const Standard_Real Tolerance,const Standard_Integer NbIterations = 200,const Standard_Real ZEPS = 1.0e-12);
-		%feature("compactdefaultargs") math_FRPR;
-		%feature("autodoc", "	* Purpose Initializes the computation of the minimum of F. Warning A call to the Perform method must be made after this initialization to compute the minimum of the function.
-
-	:param F:
-	:type F: math_MultipleVarFunctionWithGradient &
-	:param Tolerance:
-	:type Tolerance: float
-	:param NbIterations: default value is 200
-	:type NbIterations: int
-	:param ZEPS: default value is 1.0e-12
-	:type ZEPS: float
-	:rtype: None
-") math_FRPR;
-		 math_FRPR (math_MultipleVarFunctionWithGradient & F,const Standard_Real Tolerance,const Standard_Integer NbIterations = 200,const Standard_Real ZEPS = 1.0e-12);
+		 math_FRPR (const math_MultipleVarFunctionWithGradient & theFunction,const Standard_Real theTolerance,const Standard_Integer theNbIterations = 200,const Standard_Real theZEPS = 1.0e-12);
 		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Use this method after a call to the initialization constructor to compute the minimum of function F. Warning The initialization constructor must have been called before the Perform method is called
+		%feature("autodoc", "	* Destructor alias.
 
-	:param F:
-	:type F: math_MultipleVarFunctionWithGradient &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:rtype: None
+") Delete;
+		void Delete ();
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* The solution F = Fi is found when 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
+
+	:param theFunction:
+	:type theFunction: math_MultipleVarFunctionWithGradient &
+	:param theStartingPoint:
+	:type theStartingPoint: math_Vector &
 	:rtype: None
 ") Perform;
-		void Perform (math_MultipleVarFunctionWithGradient & F,const math_Vector & StartingPoint);
+		void Perform (math_MultipleVarFunctionWithGradient & theFunction,const math_Vector & theStartingPoint);
 		%feature("compactdefaultargs") IsSolutionReached;
-		%feature("autodoc", "	* The solution F = Fi is found when : 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS. The maximum number of iterations allowed is given by NbIterations.
+		%feature("autodoc", "	* The solution F = Fi is found when: 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS. The maximum number of iterations allowed is given by NbIterations.
 
-	:param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:param theFunction:
+	:type theFunction: math_MultipleVarFunctionWithGradient &
 	:rtype: bool
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & F);
+		Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & theFunction);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns true if the computations are successful, otherwise returns false.
 
@@ -1522,10 +1486,6 @@ class math_FunctionSample {
 %nodefaultctor math_FunctionSet;
 class math_FunctionSet {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "	* Returns the number of variables of the function.
 
@@ -1587,44 +1547,12 @@ class math_FunctionSetRoot {
 	:rtype: None
 ") math_FunctionSetRoot;
 		 math_FunctionSetRoot (math_FunctionSetWithDerivatives & F,const Standard_Integer NbIterations = 100);
-		%feature("compactdefaultargs") math_FunctionSetRoot;
-		%feature("autodoc", "	* is used to improve the root of the function F from the initial guess StartingPoint. The maximum number of iterations allowed is given by NbIterations. In this case, the solution is found when: abs(Xi - Xi-1)(j) <= Tolerance(j) for all unknowns.
-
-	:param F:
-	:type F: math_FunctionSetWithDerivatives &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
-	:param Tolerance:
-	:type Tolerance: math_Vector &
-	:param NbIterations: default value is 100
-	:type NbIterations: int
-	:rtype: None
-") math_FunctionSetRoot;
-		 math_FunctionSetRoot (math_FunctionSetWithDerivatives & F,const math_Vector & StartingPoint,const math_Vector & Tolerance,const Standard_Integer NbIterations = 100);
-		%feature("compactdefaultargs") math_FunctionSetRoot;
-		%feature("autodoc", "	* is used to improve the root of the function F from the initial guess StartingPoint. The maximum number of iterations allowed is given by NbIterations. In this case, the solution is found when: abs(Xi - Xi-1) <= Tolerance for all unknowns.
-
-	:param F:
-	:type F: math_FunctionSetWithDerivatives &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
-	:param Tolerance:
-	:type Tolerance: math_Vector &
-	:param infBound:
-	:type infBound: math_Vector &
-	:param supBound:
-	:type supBound: math_Vector &
-	:param NbIterations: default value is 100
-	:type NbIterations: int
-	:param theStopOnDivergent: default value is Standard_False
-	:type theStopOnDivergent: bool
-	:rtype: None
-") math_FunctionSetRoot;
-		 math_FunctionSetRoot (math_FunctionSetWithDerivatives & F,const math_Vector & StartingPoint,const math_Vector & Tolerance,const math_Vector & infBound,const math_Vector & supBound,const Standard_Integer NbIterations = 100,const Standard_Boolean theStopOnDivergent = Standard_False);
 		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
+		%feature("autodoc", "	* Destructor alias.
+
+	:rtype: None
 ") Delete;
-		virtual void Delete ();
+		void Delete ();
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "	* Initializes the tolerance values.
 
@@ -1633,22 +1561,6 @@ class math_FunctionSetRoot {
 	:rtype: None
 ") SetTolerance;
 		void SetTolerance (const math_Vector & Tolerance);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Improves the root of function F from the initial guess StartingPoint. infBound and supBound may be given to constrain the solution. Warning This method is called when computation of the solution is not performed by the constructors.
-
-	:param F:
-	:type F: math_FunctionSetWithDerivatives &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
-	:param infBound:
-	:type infBound: math_Vector &
-	:param supBound:
-	:type supBound: math_Vector &
-	:param theStopOnDivergent: default value is Standard_False
-	:type theStopOnDivergent: bool
-	:rtype: None
-") Perform;
-		void Perform (math_FunctionSetWithDerivatives & F,const math_Vector & StartingPoint,const math_Vector & infBound,const math_Vector & supBound,const Standard_Boolean theStopOnDivergent = Standard_False);
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "	* This routine is called at the end of each iteration to check if the solution was found. It can be redefined in a sub-class to implement a specific test to stop the iterations. In this case, the solution is found when: abs(Xi - Xi-1) <= Tolerance for all unknowns.
 
@@ -1656,7 +1568,35 @@ class math_FunctionSetRoot {
 	:type F: math_FunctionSetWithDerivatives &
 	:rtype: bool
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached (math_FunctionSetWithDerivatives & F);
+		Standard_Boolean IsSolutionReached (math_FunctionSetWithDerivatives & F);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Improves the root of function from the initial guess point. The infinum and supremum may be given to constrain the solution. In this case, the solution is found when: abs(Xi - Xi-1)(j) <= Tolerance(j) for all unknowns.
+
+	:param theFunction:
+	:type theFunction: math_FunctionSetWithDerivatives &
+	:param theStartingPoint:
+	:type theStartingPoint: math_Vector &
+	:param theStopOnDivergent: default value is Standard_False
+	:type theStopOnDivergent: bool
+	:rtype: None
+") Perform;
+		void Perform (math_FunctionSetWithDerivatives & theFunction,const math_Vector & theStartingPoint,const Standard_Boolean theStopOnDivergent = Standard_False);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Improves the root of function from the initial guess point. The infinum and supremum may be given to constrain the solution. In this case, the solution is found when: abs(Xi - Xi-1) <= Tolerance for all unknowns.
+
+	:param theFunction:
+	:type theFunction: math_FunctionSetWithDerivatives &
+	:param theStartingPoint:
+	:type theStartingPoint: math_Vector &
+	:param theInfBound:
+	:type theInfBound: math_Vector &
+	:param theSupBound:
+	:type theSupBound: math_Vector &
+	:param theStopOnDivergent: default value is Standard_False
+	:type theStopOnDivergent: bool
+	:rtype: None
+") Perform;
+		void Perform (math_FunctionSetWithDerivatives & theFunction,const math_Vector & theStartingPoint,const math_Vector & theInfBound,const math_Vector & theSupBound,const Standard_Boolean theStopOnDivergent = Standard_False);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns true if the computations are successful, otherwise returns false.
 
@@ -2010,10 +1950,10 @@ class math_GlobOptMin {
 		%feature("compactdefaultargs") math_GlobOptMin;
 		%feature("autodoc", "	:param theFunc:
 	:type theFunc: math_MultipleVarFunction *
-	:param theA:
-	:type theA: math_Vector &
-	:param theB:
-	:type theB: math_Vector &
+	:param theLowerBorder:
+	:type theLowerBorder: math_Vector &
+	:param theUpperBorder:
+	:type theUpperBorder: math_Vector &
 	:param theC: default value is 9
 	:type theC: float
 	:param theDiscretizationTol: default value is 1.0e-2
@@ -2022,14 +1962,14 @@ class math_GlobOptMin {
 	:type theSameTol: float
 	:rtype: None
 ") math_GlobOptMin;
-		 math_GlobOptMin (math_MultipleVarFunction * theFunc,const math_Vector & theA,const math_Vector & theB,const Standard_Real theC = 9,const Standard_Real theDiscretizationTol = 1.0e-2,const Standard_Real theSameTol = 1.0e-7);
+		 math_GlobOptMin (math_MultipleVarFunction * theFunc,const math_Vector & theLowerBorder,const math_Vector & theUpperBorder,const Standard_Real theC = 9,const Standard_Real theDiscretizationTol = 1.0e-2,const Standard_Real theSameTol = 1.0e-7);
 		%feature("compactdefaultargs") SetGlobalParams;
 		%feature("autodoc", "	:param theFunc:
 	:type theFunc: math_MultipleVarFunction *
-	:param theA:
-	:type theA: math_Vector &
-	:param theB:
-	:type theB: math_Vector &
+	:param theLowerBorder:
+	:type theLowerBorder: math_Vector &
+	:param theUpperBorder:
+	:type theUpperBorder: math_Vector &
 	:param theC: default value is 9
 	:type theC: float
 	:param theDiscretizationTol: default value is 1.0e-2
@@ -2038,7 +1978,7 @@ class math_GlobOptMin {
 	:type theSameTol: float
 	:rtype: None
 ") SetGlobalParams;
-		void SetGlobalParams (math_MultipleVarFunction * theFunc,const math_Vector & theA,const math_Vector & theB,const Standard_Real theC = 9,const Standard_Real theDiscretizationTol = 1.0e-2,const Standard_Real theSameTol = 1.0e-7);
+		void SetGlobalParams (math_MultipleVarFunction * theFunc,const math_Vector & theLowerBorder,const math_Vector & theUpperBorder,const Standard_Real theC = 9,const Standard_Real theDiscretizationTol = 1.0e-2,const Standard_Real theSameTol = 1.0e-7);
 		%feature("compactdefaultargs") SetLocalParams;
 		%feature("autodoc", "	:param theLocalA:
 	:type theLocalA: math_Vector &
@@ -2064,9 +2004,13 @@ class math_GlobOptMin {
 ") GetTol;
 		void GetTol (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* @param isFindSingleSolution - defines whether to find single solution or all solutions.
+
+	:param isFindSingleSolution: default value is Standard_False
+	:type isFindSingleSolution: bool
+	:rtype: None
 ") Perform;
-		void Perform ();
+		void Perform (const Standard_Boolean isFindSingleSolution = Standard_False);
 		%feature("compactdefaultargs") GetF;
 		%feature("autodoc", "	* Get best functional value.
 
@@ -2080,7 +2024,7 @@ class math_GlobOptMin {
 ") NbExtrema;
 		Standard_Integer NbExtrema ();
 		%feature("compactdefaultargs") Points;
-		%feature("autodoc", "	* Return solution i, 1 <= i <= NbExtrema.
+		%feature("autodoc", "	* Return solution theIndex, 1 <= theIndex <= NbExtrema.
 
 	:param theIndex:
 	:type theIndex: int
@@ -2178,39 +2122,6 @@ class math_Householder {
 
 
 %extend math_Householder {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor math_IntegerRandom;
-class math_IntegerRandom {
-	public:
-		%feature("compactdefaultargs") math_IntegerRandom;
-		%feature("autodoc", "	* creates a Integer random generator between the values Lower and Upper.
-
-	:param Lower:
-	:type Lower: int
-	:param Upper:
-	:type Upper: int
-	:rtype: None
-") math_IntegerRandom;
-		 math_IntegerRandom (const Standard_Integer Lower,const Standard_Integer Upper);
-		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "	* reinitializes the random generator
-
-	:rtype: None
-") Reset;
-		void Reset ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	* returns the next random number.
-
-	:rtype: int
-") Next;
-		Standard_Integer Next ();
-};
-
-
-%extend math_IntegerRandom {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2356,7 +2267,7 @@ class math_IntegerVector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: int
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Standard_Integer theRight);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* returns the product of an IntegerVector by an integer value.
@@ -2370,7 +2281,7 @@ class math_IntegerVector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: int
 	:rtype: math_IntegerVector
-") operator*;
+") operator *;
 		math_IntegerVector operator * (const Standard_Integer theRight);
 		%feature("compactdefaultargs") TMultiplied;
 		%feature("autodoc", "	* returns the product of a vector and a real value.
@@ -2392,7 +2303,7 @@ class math_IntegerVector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: math_IntegerVector &
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const math_IntegerVector & theRight);
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* adds the IntegerVector 'theRight' to an IntegerVector. An exception is raised if the IntegerVectors have not the same length. An exception is raised if the lengths are not equal.
@@ -2406,7 +2317,7 @@ class math_IntegerVector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: math_IntegerVector &
 	:rtype: math_IntegerVector
-") operator+;
+") operator +;
 		math_IntegerVector operator + (const math_IntegerVector & theRight);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* sets an IntegerVector to the sum of the IntegerVector 'theLeft' and the IntegerVector 'theRight'. An exception is raised if the lengths are different.
@@ -2448,7 +2359,7 @@ class math_IntegerVector {
 		%feature("autodoc", "	:param theOther:
 	:type theOther: math_IntegerVector &
 	:rtype: math_IntegerVector
-") operator=;
+") operator =;
 		math_IntegerVector & operator = (const math_IntegerVector & theOther);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* returns the inner product of 2 IntegerVectors. An exception is raised if the lengths are not equal.
@@ -2462,7 +2373,7 @@ class math_IntegerVector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: math_IntegerVector &
 	:rtype: int
-") operator*;
+") operator *;
 		Standard_Integer operator * (const math_IntegerVector & theRight);
 		%feature("compactdefaultargs") Opposite;
 		%feature("autodoc", "	* returns the opposite of an IntegerVector.
@@ -2472,7 +2383,7 @@ class math_IntegerVector {
 		math_IntegerVector Opposite ();
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "	:rtype: math_IntegerVector
-") operator-;
+") operator -;
 		math_IntegerVector operator - ();
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "	* returns the subtraction of 'theRight' from 'me'. An exception is raised if the IntegerVectors have not the same length.
@@ -2486,7 +2397,7 @@ class math_IntegerVector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: math_IntegerVector &
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const math_IntegerVector & theRight);
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* returns the subtraction of 'theRight' from 'me'. An exception is raised if the IntegerVectors have not the same length.
@@ -2500,7 +2411,7 @@ class math_IntegerVector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: math_IntegerVector &
 	:rtype: math_IntegerVector
-") operator-;
+") operator -;
 		math_IntegerVector operator - (const math_IntegerVector & theRight);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* returns the multiplication of an integer by an IntegerVector.
@@ -2861,7 +2772,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Right:
 	:type Right: float
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Standard_Real Right);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* multiplies all the elements of a matrix by the value <Right>.
@@ -2875,7 +2786,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Right:
 	:type Right: float
 	:rtype: math_Matrix
-") operator*;
+") operator *;
 		math_Matrix operator * (const Standard_Real Right);
 		%feature("compactdefaultargs") TMultiplied;
 		%feature("autodoc", "	* Sets this matrix to the product of the transposed matrix TLeft, and the matrix Right. Example math_Matrix A (1, 3, 1, 3); math_Matrix B (1, 3, 1, 3); // A = ... , B = ... math_Matrix C (1, 3, 1, 3); C.Multiply(A, B); Exceptions Standard_DimensionError if matrices are of incompatible dimensions, i.e. if: - the number of columns of matrix Left, or the number of rows of matrix TLeft is not equal to the number of rows of matrix Right, or - the number of rows of matrix Left, or the number of columns of matrix TLeft is not equal to the number of rows of this matrix, or - the number of columns of matrix Right is not equal to the number of columns of this matrix.
@@ -2897,7 +2808,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Right:
 	:type Right: float
 	:rtype: None
-") operator/=;
+") operator /=;
 		void operator /= (const Standard_Real Right);
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* divides all the elements of a matrix by the value <Right>. An exception is raised if <Right> = 0.
@@ -2911,7 +2822,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Right:
 	:type Right: float
 	:rtype: math_Matrix
-") operator/;
+") operator /;
 		math_Matrix operator / (const Standard_Real Right);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* adds the matrix <Right> to a matrix. An exception is raised if the dimensions are different. Warning In order to save time when copying matrices, it is preferable to use operator += or the function Add whenever possible.
@@ -2925,7 +2836,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Right:
 	:type Right: math_Matrix &
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const math_Matrix & Right);
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* adds the matrix <Right> to a matrix. An exception is raised if the dimensions are different.
@@ -2939,7 +2850,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Right:
 	:type Right: math_Matrix &
 	:rtype: math_Matrix
-") operator+;
+") operator +;
 		math_Matrix operator + (const math_Matrix & Right);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* sets a matrix to the addition of <Left> and <Right>. An exception is raised if the dimensions are different.
@@ -2963,7 +2874,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Right:
 	:type Right: math_Matrix &
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const math_Matrix & Right);
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* Returns the result of the subtraction of <Right> from <self>. An exception is raised if the dimensions are different.
@@ -2977,7 +2888,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Right:
 	:type Right: math_Matrix &
 	:rtype: math_Matrix
-") operator-;
+") operator -;
 		math_Matrix operator - (const math_Matrix & Right);
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	* Sets the values of this matrix, - from index I1 to index I2 on the row dimension, and - from index J1 to index J2 on the column dimension, to those of matrix M. Exceptions Standard_DimensionError if: - I1 is less than the index of the lower row bound of this matrix, or - I2 is greater than the index of the upper row bound of this matrix, or - J1 is less than the index of the lower column bound of this matrix, or - J2 is greater than the index of the upper column bound of this matrix, or - I2 - I1 + 1 is not equal to the number of rows of matrix M, or - J2 - J1 + 1 is not equal to the number of columns of matrix M.
@@ -3141,7 +3052,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Other:
 	:type Other: math_Matrix &
 	:rtype: math_Matrix
-") operator=;
+") operator =;
 		math_Matrix & operator = (const math_Matrix & Other);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* Returns the product of 2 matrices. An exception is raised if the dimensions are different.
@@ -3155,7 +3066,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Right:
 	:type Right: math_Matrix &
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const math_Matrix & Right);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* Returns the product of 2 matrices. An exception is raised if the dimensions are different.
@@ -3169,7 +3080,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Right:
 	:type Right: math_Matrix &
 	:rtype: math_Matrix
-") operator*;
+") operator *;
 		math_Matrix operator * (const math_Matrix & Right);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* Returns the product of a matrix by a vector. An exception is raised if the dimensions are different.
@@ -3183,7 +3094,7 @@ class math_Matrix {
 		%feature("autodoc", "	:param Right:
 	:type Right: math_Vector &
 	:rtype: math_Vector
-") operator*;
+") operator *;
 		math_Vector operator * (const math_Vector & Right);
 		%feature("compactdefaultargs") Opposite;
 		%feature("autodoc", "	* Returns the opposite of a matrix. An exception is raised if the dimensions are different.
@@ -3193,7 +3104,7 @@ class math_Matrix {
 		math_Matrix Opposite ();
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "	:rtype: math_Matrix
-") operator-;
+") operator -;
 		math_Matrix operator - ();
 
         %feature("autodoc", "1");
@@ -3214,10 +3125,6 @@ class math_Matrix {
 %nodefaultctor math_MultipleVarFunction;
 class math_MultipleVarFunction {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "	* Returns the number of variables of the function
 
@@ -3363,71 +3270,37 @@ class math_NewtonFunctionRoot {
 class math_NewtonFunctionSetRoot {
 	public:
 		%feature("compactdefaultargs") math_NewtonFunctionSetRoot;
-		%feature("autodoc", "	* This constructor should be used in a sub-class to initialize correctly all the fields of this class. The range (1, F.NbVariables()) must be especially respected for all vectors and matrix declarations.
+		%feature("autodoc", "	* Initialize correctly all the fields of this class. The range (1, F.NbVariables()) must be especially respected for all vectors and matrix declarations.
 
-	:param F:
-	:type F: math_FunctionSetWithDerivatives &
-	:param XTol:
-	:type XTol: math_Vector &
-	:param FTol:
-	:type FTol: float
-	:param NbIterations: default value is 100
-	:type NbIterations: int
+	:param theFunction:
+	:type theFunction: math_FunctionSetWithDerivatives &
+	:param theXTolerance:
+	:type theXTolerance: math_Vector &
+	:param theFTolerance:
+	:type theFTolerance: float
+	:param tehNbIterations: default value is 100
+	:type tehNbIterations: int
 	:rtype: None
 ") math_NewtonFunctionSetRoot;
-		 math_NewtonFunctionSetRoot (math_FunctionSetWithDerivatives & F,const math_Vector & XTol,const Standard_Real FTol,const Standard_Integer NbIterations = 100);
+		 math_NewtonFunctionSetRoot (math_FunctionSetWithDerivatives & theFunction,const math_Vector & theXTolerance,const Standard_Real theFTolerance,const Standard_Integer tehNbIterations = 100);
 		%feature("compactdefaultargs") math_NewtonFunctionSetRoot;
 		%feature("autodoc", "	* This constructor should be used in a sub-class to initialize correctly all the fields of this class. The range (1, F.NbVariables()) must be especially respected for all vectors and matrix declarations. The method SetTolerance must be called before performing the algorithm.
 
-	:param F:
-	:type F: math_FunctionSetWithDerivatives &
-	:param FTol:
-	:type FTol: float
-	:param NbIterations: default value is 100
-	:type NbIterations: int
+	:param theFunction:
+	:type theFunction: math_FunctionSetWithDerivatives &
+	:param theFTolerance:
+	:type theFTolerance: float
+	:param theNbIterations: default value is 100
+	:type theNbIterations: int
 	:rtype: None
 ") math_NewtonFunctionSetRoot;
-		 math_NewtonFunctionSetRoot (math_FunctionSetWithDerivatives & F,const Standard_Real FTol,const Standard_Integer NbIterations = 100);
-		%feature("compactdefaultargs") math_NewtonFunctionSetRoot;
-		%feature("autodoc", "	* The Newton method is done to improve the root of the function F from the initial guess StartingPoint. The tolerance required on the root is given by Tolerance. The solution is found when : abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i; The maximum number of iterations allowed is given by NbIterations.
-
-	:param F:
-	:type F: math_FunctionSetWithDerivatives &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
-	:param XTol:
-	:type XTol: math_Vector &
-	:param FTol:
-	:type FTol: float
-	:param NbIterations: default value is 100
-	:type NbIterations: int
-	:rtype: None
-") math_NewtonFunctionSetRoot;
-		 math_NewtonFunctionSetRoot (math_FunctionSetWithDerivatives & F,const math_Vector & StartingPoint,const math_Vector & XTol,const Standard_Real FTol,const Standard_Integer NbIterations = 100);
-		%feature("compactdefaultargs") math_NewtonFunctionSetRoot;
-		%feature("autodoc", "	* The Newton method is done to improve the root of the function F from the initial guess StartingPoint. The tolerance required on the root is given by Tolerance. The solution is found when : abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i; The maximum number of iterations allowed is given by NbIterations.
-
-	:param F:
-	:type F: math_FunctionSetWithDerivatives &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
-	:param InfBound:
-	:type InfBound: math_Vector &
-	:param SupBound:
-	:type SupBound: math_Vector &
-	:param XTol:
-	:type XTol: math_Vector &
-	:param FTol:
-	:type FTol: float
-	:param NbIterations: default value is 100
-	:type NbIterations: int
-	:rtype: None
-") math_NewtonFunctionSetRoot;
-		 math_NewtonFunctionSetRoot (math_FunctionSetWithDerivatives & F,const math_Vector & StartingPoint,const math_Vector & InfBound,const math_Vector & SupBound,const math_Vector & XTol,const Standard_Real FTol,const Standard_Integer NbIterations = 100);
+		 math_NewtonFunctionSetRoot (math_FunctionSetWithDerivatives & theFunction,const Standard_Real theFTolerance,const Standard_Integer theNbIterations = 100);
 		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
+		%feature("autodoc", "	* Destructor alias.
+
+	:rtype: None
 ") Delete;
-		virtual void Delete ();
+		void Delete ();
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "	* Initializes the tolerance values for the unknowns.
 
@@ -3437,19 +3310,29 @@ class math_NewtonFunctionSetRoot {
 ") SetTolerance;
 		void SetTolerance (const math_Vector & XTol);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Improves the root of function F from the initial guess StartingPoint. infBound and supBound may be given, to constrain the solution. Warning This method must be called when the solution is not computed by the constructors.
+		%feature("autodoc", "	* The Newton method is done to improve the root of the function from the initial guess point. The solution is found when: abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;
 
-	:param F:
-	:type F: math_FunctionSetWithDerivatives &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
-	:param InfBound:
-	:type InfBound: math_Vector &
-	:param SupBound:
-	:type SupBound: math_Vector &
+	:param theFunction:
+	:type theFunction: math_FunctionSetWithDerivatives &
+	:param theStartingPoint:
+	:type theStartingPoint: math_Vector &
 	:rtype: None
 ") Perform;
-		void Perform (math_FunctionSetWithDerivatives & F,const math_Vector & StartingPoint,const math_Vector & InfBound,const math_Vector & SupBound);
+		void Perform (math_FunctionSetWithDerivatives & theFunction,const math_Vector & theStartingPoint);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* The Newton method is done to improve the root of the function from the initial guess point. Bounds may be given, to constrain the solution. The solution is found when: abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;
+
+	:param theFunction:
+	:type theFunction: math_FunctionSetWithDerivatives &
+	:param theStartingPoint:
+	:type theStartingPoint: math_Vector &
+	:param theInfBound:
+	:type theInfBound: math_Vector &
+	:param theSupBound:
+	:type theSupBound: math_Vector &
+	:rtype: None
+") Perform;
+		void Perform (math_FunctionSetWithDerivatives & theFunction,const math_Vector & theStartingPoint,const math_Vector & theInfBound,const math_Vector & theSupBound);
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "	* This method is called at the end of each iteration to check if the solution is found. Vectors DeltaX, Fvalues and Jacobian Matrix are consistent with the possible solution Vector Sol and can be inspected to decide whether the solution is reached or not.
 
@@ -3457,7 +3340,7 @@ class math_NewtonFunctionSetRoot {
 	:type F: math_FunctionSetWithDerivatives &
 	:rtype: bool
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached (math_FunctionSetWithDerivatives & F);
+		Standard_Boolean IsSolutionReached (math_FunctionSetWithDerivatives & F);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns true if the computations are successful, otherwise returns false.
 
@@ -3532,59 +3415,43 @@ class math_NewtonFunctionSetRoot {
 class math_NewtonMinimum {
 	public:
 		%feature("compactdefaultargs") math_NewtonMinimum;
-		%feature("autodoc", "	* -- Given the starting point StartingPoint, The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: Obsolete Constructor (because IsConverged can not be redefined with this. )
+		%feature("autodoc", "	* The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: This constructor does not perform computation.
 
-	:param F:
-	:type F: math_MultipleVarFunctionWithHessian &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
-	:param Tolerance: default value is 1.0e-7
-	:type Tolerance: float
-	:param NbIterations: default value is 40
-	:type NbIterations: int
-	:param Convexity: default value is 1.0e-6
-	:type Convexity: float
-	:param WithSingularity: default value is Standard_True
-	:type WithSingularity: bool
+	:param theFunction:
+	:type theFunction: math_MultipleVarFunctionWithHessian &
+	:param theTolerance: default value is 1.0e-7
+	:type theTolerance: float
+	:param theNbIterations: default value is 40
+	:type theNbIterations: int
+	:param theConvexity: default value is 1.0e-6
+	:type theConvexity: float
+	:param theWithSingularity: default value is Standard_True
+	:type theWithSingularity: bool
 	:rtype: None
 ") math_NewtonMinimum;
-		 math_NewtonMinimum (math_MultipleVarFunctionWithHessian & F,const math_Vector & StartingPoint,const Standard_Real Tolerance = 1.0e-7,const Standard_Integer NbIterations = 40,const Standard_Real Convexity = 1.0e-6,const Standard_Boolean WithSingularity = Standard_True);
-		%feature("compactdefaultargs") math_NewtonMinimum;
-		%feature("autodoc", "	* The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: This constructor do not computation
-
-	:param F:
-	:type F: math_MultipleVarFunctionWithHessian &
-	:param Tolerance: default value is 1.0e-7
-	:type Tolerance: float
-	:param NbIterations: default value is 40
-	:type NbIterations: int
-	:param Convexity: default value is 1.0e-6
-	:type Convexity: float
-	:param WithSingularity: default value is Standard_True
-	:type WithSingularity: bool
-	:rtype: None
-") math_NewtonMinimum;
-		 math_NewtonMinimum (math_MultipleVarFunctionWithHessian & F,const Standard_Real Tolerance = 1.0e-7,const Standard_Integer NbIterations = 40,const Standard_Real Convexity = 1.0e-6,const Standard_Boolean WithSingularity = Standard_True);
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
+		 math_NewtonMinimum (const math_MultipleVarFunctionWithHessian & theFunction,const Standard_Real theTolerance = 1.0e-7,const Standard_Integer theNbIterations = 40,const Standard_Real theConvexity = 1.0e-6,const Standard_Boolean theWithSingularity = Standard_True);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Search the solution.
 
-	:param F:
-	:type F: math_MultipleVarFunctionWithHessian &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:param theFunction:
+	:type theFunction: math_MultipleVarFunctionWithHessian &
+	:param theStartingPoint:
+	:type theStartingPoint: math_Vector &
 	:rtype: None
 ") Perform;
-		void Perform (math_MultipleVarFunctionWithHessian & F,const math_Vector & StartingPoint);
+		void Perform (math_MultipleVarFunctionWithHessian & theFunction,const math_Vector & theStartingPoint);
+		%feature("compactdefaultargs") Delete;
+		%feature("autodoc", "	* Destructor alias.
+
+	:rtype: None
+") Delete;
+		void Delete ();
 		%feature("compactdefaultargs") IsConverged;
-		%feature("autodoc", "	* This method is called at the end of each iteration to check the convergence : || Xi+1 - Xi || < Tolerance or || F(Xi+1) - F(Xi)|| < Tolerance * || F(Xi) || It can be redefined in a sub-class to implement a specific test.
+		%feature("autodoc", "	* This method is called at the end of each iteration to check the convergence: || Xi+1 - Xi || < Tolerance or || F(Xi+1) - F(Xi)|| < Tolerance * || F(Xi) || It can be redefined in a sub-class to implement a specific test.
 
 	:rtype: bool
 ") IsConverged;
-		virtual Standard_Boolean IsConverged ();
+		Standard_Boolean IsConverged ();
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Tests if an error has occured.
 
@@ -3605,6 +3472,16 @@ class math_NewtonMinimum {
 	:rtype: None
 ") Location;
 		void Location (math_Vector & Loc);
+		%feature("compactdefaultargs") SetBoundary;
+		%feature("autodoc", "	* Set boundaries.
+
+	:param theLeftBorder:
+	:type theLeftBorder: math_Vector &
+	:param theRightBorder:
+	:type theRightBorder: math_Vector &
+	:rtype: None
+") SetBoundary;
+		void SetBoundary (const math_Vector & theLeftBorder,const math_Vector & theRightBorder);
 		%feature("compactdefaultargs") Minimum;
 		%feature("autodoc", "	* returns the value of the minimum. Exception NotDone is raised if the minimum was not found.
 
@@ -3743,61 +3620,45 @@ class math_PSOParticlesPool {
 class math_Powell {
 	public:
 		%feature("compactdefaultargs") math_Powell;
-		%feature("autodoc", "	* Computes Powell minimization on the function F given StartingPoint, and an initial matrix StartingDirection whose columns contain the initial set of directions. The solution F = Fi is found when 2.0 * abs(Fi - Fi-1) = <Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS). The maximum number of iterations allowed is given by NbIterations.
+		%feature("autodoc", "	* Constructor. Initialize new entity.
 
-	:param F:
-	:type F: math_MultipleVarFunction &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
-	:param StartingDirections:
-	:type StartingDirections: math_Matrix &
-	:param Tolerance:
-	:type Tolerance: float
-	:param NbIterations: default value is 200
-	:type NbIterations: int
-	:param ZEPS: default value is 1.0e-12
-	:type ZEPS: float
+	:param theFunction:
+	:type theFunction: math_MultipleVarFunction &
+	:param theTolerance:
+	:type theTolerance: float
+	:param theNbIterations: default value is 200
+	:type theNbIterations: int
+	:param theZEPS: default value is 1.0e-12
+	:type theZEPS: float
 	:rtype: None
 ") math_Powell;
-		 math_Powell (math_MultipleVarFunction & F,const math_Vector & StartingPoint,const math_Matrix & StartingDirections,const Standard_Real Tolerance,const Standard_Integer NbIterations = 200,const Standard_Real ZEPS = 1.0e-12);
-		%feature("compactdefaultargs") math_Powell;
-		%feature("autodoc", "	* is used in a sub-class to initialize correctly all the fields of this class.
-
-	:param F:
-	:type F: math_MultipleVarFunction &
-	:param Tolerance:
-	:type Tolerance: float
-	:param NbIterations: default value is 200
-	:type NbIterations: int
-	:param ZEPS: default value is 1.0e-12
-	:type ZEPS: float
-	:rtype: None
-") math_Powell;
-		 math_Powell (math_MultipleVarFunction & F,const Standard_Real Tolerance,const Standard_Integer NbIterations = 200,const Standard_Real ZEPS = 1.0e-12);
+		 math_Powell (const math_MultipleVarFunction & theFunction,const Standard_Real theTolerance,const Standard_Integer theNbIterations = 200,const Standard_Real theZEPS = 1.0e-12);
 		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Use this method after a call to the initialization constructor to compute the minimum of function F. Warning The initialization constructor must have been called before the Perform method is called.
+		%feature("autodoc", "	* Destructor alias
 
-	:param F:
-	:type F: math_MultipleVarFunction &
-	:param StartingPoint:
-	:type StartingPoint: math_Vector &
-	:param StartingDirections:
-	:type StartingDirections: math_Matrix &
+	:rtype: None
+") Delete;
+		void Delete ();
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Computes Powell minimization on the function F given theStartingPoint, and an initial matrix theStartingDirection whose columns contain the initial set of directions. The solution F = Fi is found when: 2.0 * abs(Fi - Fi-1) =< Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
+
+	:param theFunction:
+	:type theFunction: math_MultipleVarFunction &
+	:param theStartingPoint:
+	:type theStartingPoint: math_Vector &
+	:param theStartingDirections:
+	:type theStartingDirections: math_Matrix &
 	:rtype: None
 ") Perform;
-		void Perform (math_MultipleVarFunction & F,const math_Vector & StartingPoint,const math_Matrix & StartingDirections);
+		void Perform (math_MultipleVarFunction & theFunction,const math_Vector & theStartingPoint,const math_Matrix & theStartingDirections);
 		%feature("compactdefaultargs") IsSolutionReached;
-		%feature("autodoc", "	* solution F = Fi is found when : 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS. The maximum number of iterations allowed is given by NbIterations.
+		%feature("autodoc", "	* Solution F = Fi is found when: 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS. The maximum number of iterations allowed is given by NbIterations.
 
-	:param F:
-	:type F: math_MultipleVarFunction &
+	:param theFunction:
+	:type theFunction: math_MultipleVarFunction &
 	:rtype: bool
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunction & F);
+		Standard_Boolean IsSolutionReached (math_MultipleVarFunction & theFunction);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns true if the computations are successful, otherwise returns false.
 
@@ -3860,39 +3721,6 @@ class math_QuickSortOfValueAndWeight {
 
 
 %extend math_QuickSortOfValueAndWeight {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor math_RealRandom;
-class math_RealRandom {
-	public:
-		%feature("compactdefaultargs") math_RealRandom;
-		%feature("autodoc", "	* creates a real random generator between the values Lower and Upper.
-
-	:param Lower:
-	:type Lower: float
-	:param Upper:
-	:type Upper: float
-	:rtype: None
-") math_RealRandom;
-		 math_RealRandom (const Standard_Real Lower,const Standard_Real Upper);
-		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "	* reinitializes the random generator
-
-	:rtype: None
-") Reset;
-		void Reset ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	* returns the next random number.
-
-	:rtype: float
-") Next;
-		Standard_Real Next ();
-};
-
-
-%extend math_RealRandom {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4218,6 +4046,22 @@ class math_Vector {
 	:rtype: None
 ") math_Vector;
 		 math_Vector (const Standard_Address theTab,const Standard_Integer theLower,const Standard_Integer theUpper);
+		%feature("compactdefaultargs") math_Vector;
+		%feature("autodoc", "	* Constructor for converting gp_XY to math_Vector
+
+	:param Other:
+	:type Other: gp_XY
+	:rtype: None
+") math_Vector;
+		 math_Vector (const gp_XY & Other);
+		%feature("compactdefaultargs") math_Vector;
+		%feature("autodoc", "	* Constructor for converting gp_XYZ to math_Vector
+
+	:param Other:
+	:type Other: gp_XYZ
+	:rtype: None
+") math_Vector;
+		 math_Vector (const gp_XYZ & Other);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Initialize all the elements of a vector with 'theInitialValue'.
 
@@ -4334,7 +4178,7 @@ class math_Vector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: float
 	:rtype: None
-") operator*=;
+") operator *=;
 		void operator *= (const Standard_Real theRight);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* returns the product of a vector and a real value.
@@ -4348,7 +4192,7 @@ class math_Vector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: float
 	:rtype: math_Vector
-") operator*;
+") operator *;
 		math_Vector operator * (const Standard_Real theRight);
 		%feature("compactdefaultargs") TMultiplied;
 		%feature("autodoc", "	* returns the product of a vector and a real value.
@@ -4370,7 +4214,7 @@ class math_Vector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: float
 	:rtype: None
-") operator/=;
+") operator /=;
 		void operator /= (const Standard_Real theRight);
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "	* divides a vector by the value 'theRight'. An exception is raised if 'theRight' = 0.
@@ -4384,7 +4228,7 @@ class math_Vector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: float
 	:rtype: math_Vector
-") operator/;
+") operator /;
 		math_Vector operator / (const Standard_Real theRight);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* adds the vector 'theRight' to a vector. An exception is raised if the vectors have not the same length. Warning In order to avoid time-consuming copying of vectors, it is preferable to use operator += or the function Add whenever possible.
@@ -4398,7 +4242,7 @@ class math_Vector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: math_Vector &
 	:rtype: None
-") operator+=;
+") operator +=;
 		void operator += (const math_Vector & theRight);
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "	* adds the vector theRight to a vector. An exception is raised if the vectors have not the same length. An exception is raised if the lengths are not equal.
@@ -4412,7 +4256,7 @@ class math_Vector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: math_Vector &
 	:rtype: math_Vector
-") operator+;
+") operator +;
 		math_Vector operator + (const math_Vector & theRight);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* sets a vector to the product of the vector 'theLeft' with the matrix 'theRight'.
@@ -4494,7 +4338,7 @@ class math_Vector {
 		%feature("autodoc", "	:param theOther:
 	:type theOther: math_Vector &
 	:rtype: math_Vector
-") operator=;
+") operator =;
 		math_Vector & operator = (const math_Vector & theOther);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* returns the inner product of 2 vectors. An exception is raised if the lengths are not equal.
@@ -4508,7 +4352,7 @@ class math_Vector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: math_Vector &
 	:rtype: float
-") operator*;
+") operator *;
 		Standard_Real operator * (const math_Vector & theRight);
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "	* returns the product of a vector by a matrix.
@@ -4522,7 +4366,7 @@ class math_Vector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: math_Matrix &
 	:rtype: math_Vector
-") operator*;
+") operator *;
 		math_Vector operator * (const math_Matrix & theRight);
 		%feature("compactdefaultargs") Opposite;
 		%feature("autodoc", "	* returns the opposite of a vector.
@@ -4532,7 +4376,7 @@ class math_Vector {
 		math_Vector Opposite ();
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "	:rtype: math_Vector
-") operator-;
+") operator -;
 		math_Vector operator - ();
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "	* returns the subtraction of 'theRight' from 'me'. An exception is raised if the vectors have not the same length.
@@ -4546,7 +4390,7 @@ class math_Vector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: math_Vector &
 	:rtype: None
-") operator-=;
+") operator -=;
 		void operator -= (const math_Vector & theRight);
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "	* returns the subtraction of 'theRight' from 'me'. An exception is raised if the vectors have not the same length.
@@ -4560,7 +4404,7 @@ class math_Vector {
 		%feature("autodoc", "	:param theRight:
 	:type theRight: math_Vector &
 	:rtype: math_Vector
-") operator-;
+") operator -;
 		math_Vector operator - (const math_Vector & theRight);
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "	* returns the multiplication of a real by a vector. 'me' = 'theLeft' * 'theRight'
@@ -4646,10 +4490,6 @@ class math_FunctionSetWithDerivatives : public math_FunctionSet {
 %nodefaultctor math_FunctionWithDerivative;
 class math_FunctionWithDerivative : public math_Function {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Computes the value <F>of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 
@@ -4693,10 +4533,6 @@ class math_FunctionWithDerivative : public math_Function {
 %nodefaultctor math_MultipleVarFunctionWithGradient;
 class math_MultipleVarFunctionWithGradient : public math_MultipleVarFunction {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "	* Returns the number of variables of the function.
 
@@ -4746,10 +4582,6 @@ class math_MultipleVarFunctionWithGradient : public math_MultipleVarFunction {
 %nodefaultctor math_MultipleVarFunctionWithHessian;
 class math_MultipleVarFunctionWithHessian : public math_MultipleVarFunctionWithGradient {
 	public:
-		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "	:rtype: void
-") Delete;
-		virtual void Delete ();
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "	* returns the number of variables of the function.
 

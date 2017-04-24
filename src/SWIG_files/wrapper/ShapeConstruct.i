@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -530,7 +530,7 @@ class ShapeConstruct_ProjectCurveOnSurface : public MMgt_TShared {
 ") Status;
 		Standard_Boolean Status (const ShapeExtend_Status Status);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Computes the projection of 3d curve onto a surface using the standard algorithm from ProjLib. Returns False if standard projector fails or raises an exception or cuts the curve by parametrical bounds of the surface. Else, if pcurve computed successfully, returns True. The continuity, maxdeg and nbinterval are parameters of call to Approx_CurveOnSurface. If nbinterval is equal to -1 (default), this value is computed depending on source 3d curve and surface.
+		%feature("autodoc", "	* Computes the projection of 3d curve onto a surface using the specialized algorithm. Returns False if projector fails, otherwise, if pcurve computed successfully, returns True. The continuity, maxdeg and nbinterval are parameters of call to Approx_CurveOnSurface. If nbinterval is equal to -1 (default), this value is computed depending on source 3d curve and surface. The output curve 2D is guaranteed to be same-parameter with input curve 3D on the interval [First, Last]. If the output curve lies on a direct line the infinite line is returned, in the case same-parameter condition is satisfied.
 
 	:param c3d:
 	:type c3d: Handle_Geom_Curve &
@@ -570,7 +570,7 @@ class ShapeConstruct_ProjectCurveOnSurface : public MMgt_TShared {
 ") PerformByProjLib;
 		Standard_Boolean PerformByProjLib (Handle_Geom_Curve & c3d,const Standard_Real First,const Standard_Real Last,Handle_Geom2d_Curve & c2d,const GeomAbs_Shape continuity = GeomAbs_C1,const Standard_Integer maxdeg = 12,const Standard_Integer nbinterval = -1);
 		%feature("compactdefaultargs") PerformAdvanced;
-		%feature("autodoc", "	* Computes the projection of 3d curve onto a surface using either standard projector (method PerformByStandard()) or internal one (method Perform()). The selection is done by analyzing the surface and 3d curve and is aimed to filter the cases potentially dangerous for the standard projector. If the standard projector fails, internal one is used.
+		%feature("autodoc", "	* Computes the projection of 3d curve onto a surface using either standard projector (method PerformByProjLib()) or internal one (method Perform()). The selection is done by analyzing the surface and 3d curve and is aimed to filter the cases potentially dangerous for the standard projector. If the standard projector fails, internal one is used.
 
 	:param c3d:
 	:type c3d: Handle_Geom_Curve &

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -310,6 +310,27 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<GeomAbs_SurfaceForm.hxx>
 #include<GeomAbs_SurfaceType.hxx>
 #include<GeomAbs_UVSense.hxx>
+#include<Adaptor3d_Curve.hxx>
+#include<Adaptor3d_CurveOnSurface.hxx>
+#include<Adaptor3d_CurveOnSurfacePtr.hxx>
+#include<Adaptor3d_CurvePtr.hxx>
+#include<Adaptor3d_HCurve.hxx>
+#include<Adaptor3d_HCurveOnSurface.hxx>
+#include<Adaptor3d_HIsoCurve.hxx>
+#include<Adaptor3d_HOffsetCurve.hxx>
+#include<Adaptor3d_HSurface.hxx>
+#include<Adaptor3d_HSurfaceOfLinearExtrusion.hxx>
+#include<Adaptor3d_HSurfaceOfRevolution.hxx>
+#include<Adaptor3d_HSurfaceTool.hxx>
+#include<Adaptor3d_HVertex.hxx>
+#include<Adaptor3d_InterFunc.hxx>
+#include<Adaptor3d_IsoCurve.hxx>
+#include<Adaptor3d_OffsetCurve.hxx>
+#include<Adaptor3d_Surface.hxx>
+#include<Adaptor3d_SurfaceOfLinearExtrusion.hxx>
+#include<Adaptor3d_SurfaceOfRevolution.hxx>
+#include<Adaptor3d_SurfacePtr.hxx>
+#include<Adaptor3d_TopolTool.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
@@ -359,6 +380,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -368,6 +390,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -425,6 +448,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -434,6 +458,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -621,4 +646,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import TColGeom.i
 %import TColStd.i
 %import GeomAbs.i
+%import Adaptor3d.i
 %import TColgp.i

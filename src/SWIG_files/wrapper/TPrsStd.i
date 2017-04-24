@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -891,7 +891,7 @@ class TPrsStd_DataMapOfGUIDDriver : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TPrsStd_DataMapOfGUIDDriver &
 	:rtype: TPrsStd_DataMapOfGUIDDriver
-") operator=;
+") operator =;
 		TPrsStd_DataMapOfGUIDDriver & operator = (const TPrsStd_DataMapOfGUIDDriver & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

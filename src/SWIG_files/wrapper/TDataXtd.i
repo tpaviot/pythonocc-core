@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -180,7 +180,7 @@ class TDataXtd_Array1OfTrsf {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDataXtd_Array1OfTrsf &
 	:rtype: TDataXtd_Array1OfTrsf
-") operator=;
+") operator =;
 		const TDataXtd_Array1OfTrsf & operator = (const TDataXtd_Array1OfTrsf & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int

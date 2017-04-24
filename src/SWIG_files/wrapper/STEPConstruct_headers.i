@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -142,7 +142,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopLoc_SListNodeOfItemLocation.hxx>
 #include<TopLoc_SListOfItemLocation.hxx>
 #include<TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#include<TopLoc_TrsfPtr.hxx>
 #include<StepShape_AdvancedBrepShapeRepresentation.hxx>
 #include<StepShape_AdvancedFace.hxx>
 #include<StepShape_AngleRelator.hxx>
@@ -915,6 +914,117 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<XSControl_Utils.hxx>
 #include<XSControl_WorkSession.hxx>
 #include<XSControl_Writer.hxx>
+#include<StepVisual_AnnotationOccurrence.hxx>
+#include<StepVisual_AnnotationText.hxx>
+#include<StepVisual_AnnotationTextOccurrence.hxx>
+#include<StepVisual_AreaInSet.hxx>
+#include<StepVisual_AreaOrView.hxx>
+#include<StepVisual_Array1OfBoxCharacteristicSelect.hxx>
+#include<StepVisual_Array1OfCurveStyleFontPattern.hxx>
+#include<StepVisual_Array1OfDirectionCountSelect.hxx>
+#include<StepVisual_Array1OfFillStyleSelect.hxx>
+#include<StepVisual_Array1OfInvisibleItem.hxx>
+#include<StepVisual_Array1OfLayeredItem.hxx>
+#include<StepVisual_Array1OfPresentationStyleAssignment.hxx>
+#include<StepVisual_Array1OfPresentationStyleSelect.hxx>
+#include<StepVisual_Array1OfStyleContextSelect.hxx>
+#include<StepVisual_Array1OfSurfaceStyleElementSelect.hxx>
+#include<StepVisual_Array1OfTextOrCharacter.hxx>
+#include<StepVisual_BackgroundColour.hxx>
+#include<StepVisual_BoxCharacteristicSelect.hxx>
+#include<StepVisual_CameraImage.hxx>
+#include<StepVisual_CameraImage2dWithScale.hxx>
+#include<StepVisual_CameraImage3dWithScale.hxx>
+#include<StepVisual_CameraModel.hxx>
+#include<StepVisual_CameraModelD2.hxx>
+#include<StepVisual_CameraModelD3.hxx>
+#include<StepVisual_CameraUsage.hxx>
+#include<StepVisual_CentralOrParallel.hxx>
+#include<StepVisual_Colour.hxx>
+#include<StepVisual_ColourRgb.hxx>
+#include<StepVisual_ColourSpecification.hxx>
+#include<StepVisual_CompositeText.hxx>
+#include<StepVisual_CompositeTextWithExtent.hxx>
+#include<StepVisual_ContextDependentInvisibility.hxx>
+#include<StepVisual_ContextDependentOverRidingStyledItem.hxx>
+#include<StepVisual_CurveStyle.hxx>
+#include<StepVisual_CurveStyleFont.hxx>
+#include<StepVisual_CurveStyleFontPattern.hxx>
+#include<StepVisual_CurveStyleFontSelect.hxx>
+#include<StepVisual_DirectionCountSelect.hxx>
+#include<StepVisual_DraughtingAnnotationOccurrence.hxx>
+#include<StepVisual_DraughtingModel.hxx>
+#include<StepVisual_DraughtingPreDefinedColour.hxx>
+#include<StepVisual_DraughtingPreDefinedCurveFont.hxx>
+#include<StepVisual_ExternallyDefinedCurveFont.hxx>
+#include<StepVisual_ExternallyDefinedTextFont.hxx>
+#include<StepVisual_FillAreaStyle.hxx>
+#include<StepVisual_FillAreaStyleColour.hxx>
+#include<StepVisual_FillStyleSelect.hxx>
+#include<StepVisual_FontSelect.hxx>
+#include<StepVisual_HArray1OfBoxCharacteristicSelect.hxx>
+#include<StepVisual_HArray1OfCurveStyleFontPattern.hxx>
+#include<StepVisual_HArray1OfDirectionCountSelect.hxx>
+#include<StepVisual_HArray1OfFillStyleSelect.hxx>
+#include<StepVisual_HArray1OfInvisibleItem.hxx>
+#include<StepVisual_HArray1OfLayeredItem.hxx>
+#include<StepVisual_HArray1OfPresentationStyleAssignment.hxx>
+#include<StepVisual_HArray1OfPresentationStyleSelect.hxx>
+#include<StepVisual_HArray1OfStyleContextSelect.hxx>
+#include<StepVisual_HArray1OfSurfaceStyleElementSelect.hxx>
+#include<StepVisual_HArray1OfTextOrCharacter.hxx>
+#include<StepVisual_Invisibility.hxx>
+#include<StepVisual_InvisibilityContext.hxx>
+#include<StepVisual_InvisibleItem.hxx>
+#include<StepVisual_LayeredItem.hxx>
+#include<StepVisual_MarkerMember.hxx>
+#include<StepVisual_MarkerSelect.hxx>
+#include<StepVisual_MarkerType.hxx>
+#include<StepVisual_MechanicalDesignGeometricPresentationArea.hxx>
+#include<StepVisual_MechanicalDesignGeometricPresentationRepresentation.hxx>
+#include<StepVisual_OverRidingStyledItem.hxx>
+#include<StepVisual_PlanarBox.hxx>
+#include<StepVisual_PlanarExtent.hxx>
+#include<StepVisual_PointStyle.hxx>
+#include<StepVisual_PreDefinedColour.hxx>
+#include<StepVisual_PreDefinedCurveFont.hxx>
+#include<StepVisual_PreDefinedItem.hxx>
+#include<StepVisual_PreDefinedTextFont.hxx>
+#include<StepVisual_PresentationArea.hxx>
+#include<StepVisual_PresentationLayerAssignment.hxx>
+#include<StepVisual_PresentationLayerUsage.hxx>
+#include<StepVisual_PresentationRepresentation.hxx>
+#include<StepVisual_PresentationRepresentationSelect.hxx>
+#include<StepVisual_PresentationSet.hxx>
+#include<StepVisual_PresentationSize.hxx>
+#include<StepVisual_PresentationSizeAssignmentSelect.hxx>
+#include<StepVisual_PresentationStyleAssignment.hxx>
+#include<StepVisual_PresentationStyleByContext.hxx>
+#include<StepVisual_PresentationStyleSelect.hxx>
+#include<StepVisual_PresentationView.hxx>
+#include<StepVisual_PresentedItem.hxx>
+#include<StepVisual_PresentedItemRepresentation.hxx>
+#include<StepVisual_StyleContextSelect.hxx>
+#include<StepVisual_StyledItem.hxx>
+#include<StepVisual_SurfaceSide.hxx>
+#include<StepVisual_SurfaceSideStyle.hxx>
+#include<StepVisual_SurfaceStyleBoundary.hxx>
+#include<StepVisual_SurfaceStyleControlGrid.hxx>
+#include<StepVisual_SurfaceStyleElementSelect.hxx>
+#include<StepVisual_SurfaceStyleFillArea.hxx>
+#include<StepVisual_SurfaceStyleParameterLine.hxx>
+#include<StepVisual_SurfaceStyleSegmentationCurve.hxx>
+#include<StepVisual_SurfaceStyleSilhouette.hxx>
+#include<StepVisual_SurfaceStyleUsage.hxx>
+#include<StepVisual_Template.hxx>
+#include<StepVisual_TemplateInstance.hxx>
+#include<StepVisual_TextLiteral.hxx>
+#include<StepVisual_TextOrCharacter.hxx>
+#include<StepVisual_TextPath.hxx>
+#include<StepVisual_TextStyle.hxx>
+#include<StepVisual_TextStyleForDefinedFont.hxx>
+#include<StepVisual_TextStyleWithBoxCharacteristics.hxx>
+#include<StepVisual_ViewVolume.hxx>
 #include<Quantity_AbsorbedDose.hxx>
 #include<Quantity_Acceleration.hxx>
 #include<Quantity_AcousticIntensity.hxx>
@@ -1410,6 +1520,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_HSequenceOfXY.hxx>
 #include<TColgp_HSequenceOfXYZ.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceNodeOfSequenceOfAx1.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfPnt.hxx>
@@ -1419,6 +1530,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColgp_SequenceNodeOfSequenceOfXY.hxx>
 #include<TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
 #include<TColgp_SequenceOfArray1OfPnt2d.hxx>
+#include<TColgp_SequenceOfAx1.hxx>
 #include<TColgp_SequenceOfDir.hxx>
 #include<TColgp_SequenceOfDir2d.hxx>
 #include<TColgp_SequenceOfPnt.hxx>
@@ -1613,4 +1725,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import TColStd.i
 %import gp.i
 %import XSControl.i
+%import StepVisual.i
 %import Quantity.i

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -136,7 +136,7 @@ class Expr_Array1OfGeneralExpression {
 		%feature("autodoc", "	:param Other:
 	:type Other: Expr_Array1OfGeneralExpression &
 	:rtype: Expr_Array1OfGeneralExpression
-") operator=;
+") operator =;
 		const Expr_Array1OfGeneralExpression & operator = (const Expr_Array1OfGeneralExpression & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -223,7 +223,7 @@ class Expr_Array1OfNamedUnknown {
 		%feature("autodoc", "	:param Other:
 	:type Other: Expr_Array1OfNamedUnknown &
 	:rtype: Expr_Array1OfNamedUnknown
-") operator=;
+") operator =;
 		const Expr_Array1OfNamedUnknown & operator = (const Expr_Array1OfNamedUnknown & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -310,7 +310,7 @@ class Expr_Array1OfSingleRelation {
 		%feature("autodoc", "	:param Other:
 	:type Other: Expr_Array1OfSingleRelation &
 	:rtype: Expr_Array1OfSingleRelation
-") operator=;
+") operator =;
 		const Expr_Array1OfSingleRelation & operator = (const Expr_Array1OfSingleRelation & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -896,7 +896,7 @@ class Expr_MapOfNamedUnknown : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: Expr_MapOfNamedUnknown &
 	:rtype: Expr_MapOfNamedUnknown
-") operator=;
+") operator =;
 		Expr_MapOfNamedUnknown & operator = (const Expr_MapOfNamedUnknown & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1189,7 +1189,7 @@ class Expr_SequenceOfGeneralExpression : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Expr_SequenceOfGeneralExpression &
 	:rtype: Expr_SequenceOfGeneralExpression
-") operator=;
+") operator =;
 		const Expr_SequenceOfGeneralExpression & operator = (const Expr_SequenceOfGeneralExpression & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1332,7 +1332,7 @@ class Expr_SequenceOfGeneralRelation : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Expr_SequenceOfGeneralRelation &
 	:rtype: Expr_SequenceOfGeneralRelation
-") operator=;
+") operator =;
 		const Expr_SequenceOfGeneralRelation & operator = (const Expr_SequenceOfGeneralRelation & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

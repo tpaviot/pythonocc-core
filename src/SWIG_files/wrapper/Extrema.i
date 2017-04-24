@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -122,7 +122,7 @@ class Extrema_Array1OfPOnCurv {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_Array1OfPOnCurv &
 	:rtype: Extrema_Array1OfPOnCurv
-") operator=;
+") operator =;
 		const Extrema_Array1OfPOnCurv & operator = (const Extrema_Array1OfPOnCurv & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -209,7 +209,7 @@ class Extrema_Array1OfPOnCurv2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_Array1OfPOnCurv2d &
 	:rtype: Extrema_Array1OfPOnCurv2d
-") operator=;
+") operator =;
 		const Extrema_Array1OfPOnCurv2d & operator = (const Extrema_Array1OfPOnCurv2d & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -296,7 +296,7 @@ class Extrema_Array1OfPOnSurf {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_Array1OfPOnSurf &
 	:rtype: Extrema_Array1OfPOnSurf
-") operator=;
+") operator =;
 		const Extrema_Array1OfPOnSurf & operator = (const Extrema_Array1OfPOnSurf & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -387,7 +387,7 @@ class Extrema_Array2OfPOnCurv {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_Array2OfPOnCurv &
 	:rtype: Extrema_Array2OfPOnCurv
-") operator=;
+") operator =;
 		const Extrema_Array2OfPOnCurv & operator = (const Extrema_Array2OfPOnCurv & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -496,7 +496,7 @@ class Extrema_Array2OfPOnCurv2d {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_Array2OfPOnCurv2d &
 	:rtype: Extrema_Array2OfPOnCurv2d
-") operator=;
+") operator =;
 		const Extrema_Array2OfPOnCurv2d & operator = (const Extrema_Array2OfPOnCurv2d & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -605,7 +605,7 @@ class Extrema_Array2OfPOnSurf {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_Array2OfPOnSurf &
 	:rtype: Extrema_Array2OfPOnSurf
-") operator=;
+") operator =;
 		const Extrema_Array2OfPOnSurf & operator = (const Extrema_Array2OfPOnSurf & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -714,7 +714,7 @@ class Extrema_Array2OfPOnSurfParams {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_Array2OfPOnSurfParams &
 	:rtype: Extrema_Array2OfPOnSurfParams
-") operator=;
+") operator =;
 		const Extrema_Array2OfPOnSurfParams & operator = (const Extrema_Array2OfPOnSurfParams & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1527,6 +1527,10 @@ class Extrema_ECC {
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") IsParallel;
+		%feature("autodoc", "	:rtype: bool
+") IsParallel;
+		Standard_Boolean IsParallel ();
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "	:rtype: int
 ") NbExt;
@@ -1616,6 +1620,10 @@ class Extrema_ECC2d {
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") IsParallel;
+		%feature("autodoc", "	:rtype: bool
+") IsParallel;
+		Standard_Boolean IsParallel ();
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "	:rtype: int
 ") NbExt;
@@ -1640,184 +1648,6 @@ class Extrema_ECC2d {
 
 
 %extend Extrema_ECC2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Extrema_ELCC;
-class Extrema_ELCC {
-	public:
-		%feature("compactdefaultargs") Extrema_ELCC;
-		%feature("autodoc", "	:rtype: None
-") Extrema_ELCC;
-		 Extrema_ELCC ();
-		%feature("compactdefaultargs") Extrema_ELCC;
-		%feature("autodoc", "	:param C1:
-	:type C1: Adaptor3d_Curve &
-	:param C2:
-	:type C2: Adaptor3d_Curve &
-	:rtype: None
-") Extrema_ELCC;
-		 Extrema_ELCC (const Adaptor3d_Curve & C1,const Adaptor3d_Curve & C2);
-		%feature("compactdefaultargs") Extrema_ELCC;
-		%feature("autodoc", "	:param C1:
-	:type C1: Adaptor3d_Curve &
-	:param C2:
-	:type C2: Adaptor3d_Curve &
-	:param Uinf:
-	:type Uinf: float
-	:param Usup:
-	:type Usup: float
-	:param Vinf:
-	:type Vinf: float
-	:param Vsup:
-	:type Vsup: float
-	:rtype: None
-") Extrema_ELCC;
-		 Extrema_ELCC (const Adaptor3d_Curve & C1,const Adaptor3d_Curve & C2,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup);
-		%feature("compactdefaultargs") SetParams;
-		%feature("autodoc", "	:param C1:
-	:type C1: Adaptor3d_Curve &
-	:param C2:
-	:type C2: Adaptor3d_Curve &
-	:param Uinf:
-	:type Uinf: float
-	:param Usup:
-	:type Usup: float
-	:param Vinf:
-	:type Vinf: float
-	:param Vsup:
-	:type Vsup: float
-	:rtype: None
-") SetParams;
-		void SetParams (const Adaptor3d_Curve & C1,const Adaptor3d_Curve & C2,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup);
-		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "	:param Tol:
-	:type Tol: float
-	:rtype: None
-") SetTolerance;
-		void SetTolerance (const Standard_Real Tol);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:rtype: None
-") Perform;
-		void Perform ();
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "	:rtype: int
-") NbExt;
-		Standard_Integer NbExt ();
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "	:param N: default value is 1
-	:type N: int
-	:rtype: float
-") SquareDistance;
-		Standard_Real SquareDistance (const Standard_Integer N = 1);
-		%feature("compactdefaultargs") Points;
-		%feature("autodoc", "	:param N:
-	:type N: int
-	:param P1:
-	:type P1: Extrema_POnCurv &
-	:param P2:
-	:type P2: Extrema_POnCurv &
-	:rtype: None
-") Points;
-		void Points (const Standard_Integer N,Extrema_POnCurv & P1,Extrema_POnCurv & P2);
-};
-
-
-%extend Extrema_ELCC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor Extrema_ELCC2d;
-class Extrema_ELCC2d {
-	public:
-		%feature("compactdefaultargs") Extrema_ELCC2d;
-		%feature("autodoc", "	:rtype: None
-") Extrema_ELCC2d;
-		 Extrema_ELCC2d ();
-		%feature("compactdefaultargs") Extrema_ELCC2d;
-		%feature("autodoc", "	:param C1:
-	:type C1: Adaptor2d_Curve2d &
-	:param C2:
-	:type C2: Adaptor2d_Curve2d &
-	:rtype: None
-") Extrema_ELCC2d;
-		 Extrema_ELCC2d (const Adaptor2d_Curve2d & C1,const Adaptor2d_Curve2d & C2);
-		%feature("compactdefaultargs") Extrema_ELCC2d;
-		%feature("autodoc", "	:param C1:
-	:type C1: Adaptor2d_Curve2d &
-	:param C2:
-	:type C2: Adaptor2d_Curve2d &
-	:param Uinf:
-	:type Uinf: float
-	:param Usup:
-	:type Usup: float
-	:param Vinf:
-	:type Vinf: float
-	:param Vsup:
-	:type Vsup: float
-	:rtype: None
-") Extrema_ELCC2d;
-		 Extrema_ELCC2d (const Adaptor2d_Curve2d & C1,const Adaptor2d_Curve2d & C2,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup);
-		%feature("compactdefaultargs") SetParams;
-		%feature("autodoc", "	:param C1:
-	:type C1: Adaptor2d_Curve2d &
-	:param C2:
-	:type C2: Adaptor2d_Curve2d &
-	:param Uinf:
-	:type Uinf: float
-	:param Usup:
-	:type Usup: float
-	:param Vinf:
-	:type Vinf: float
-	:param Vsup:
-	:type Vsup: float
-	:rtype: None
-") SetParams;
-		void SetParams (const Adaptor2d_Curve2d & C1,const Adaptor2d_Curve2d & C2,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup);
-		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "	:param Tol:
-	:type Tol: float
-	:rtype: None
-") SetTolerance;
-		void SetTolerance (const Standard_Real Tol);
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:rtype: None
-") Perform;
-		void Perform ();
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
-") IsDone;
-		Standard_Boolean IsDone ();
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "	:rtype: int
-") NbExt;
-		Standard_Integer NbExt ();
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "	:param N: default value is 1
-	:type N: int
-	:rtype: float
-") SquareDistance;
-		Standard_Real SquareDistance (const Standard_Integer N = 1);
-		%feature("compactdefaultargs") Points;
-		%feature("autodoc", "	:param N:
-	:type N: int
-	:param P1:
-	:type P1: Extrema_POnCurv2d &
-	:param P2:
-	:type P2: Extrema_POnCurv2d &
-	:rtype: None
-") Points;
-		void Points (const Standard_Integer N,Extrema_POnCurv2d & P1,Extrema_POnCurv2d & P2);
-};
-
-
-%extend Extrema_ELCC2d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8505,6 +8335,18 @@ class Extrema_POnSurf {
 	:rtype: gp_Pnt
 ") Value;
 		const gp_Pnt  Value ();
+		%feature("compactdefaultargs") SetParameters;
+		%feature("autodoc", "	* Sets the params of current POnSurf instance. (e.g. to the point to be projected).
+
+	:param theU:
+	:type theU: float
+	:param theV:
+	:type theV: float
+	:param thePnt:
+	:type thePnt: gp_Pnt
+	:rtype: None
+") SetParameters;
+		void SetParameters (const Standard_Real theU,const Standard_Real theV,const gp_Pnt & thePnt);
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Returns the parameter values on the surface.
 
@@ -8550,7 +8392,7 @@ class Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC : public TCollection_BaseSequen
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC &
 	:rtype: Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC
-") operator=;
+") operator =;
 		const Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC & operator = (const Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -8693,7 +8535,7 @@ class Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d : public TCollection_BaseSequ
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d &
 	:rtype: Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d
-") operator=;
+") operator =;
 		const Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d & operator = (const Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC2d & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -8836,7 +8678,7 @@ class Extrema_SeqPCOfPCFOfEPCOfExtPC : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_SeqPCOfPCFOfEPCOfExtPC &
 	:rtype: Extrema_SeqPCOfPCFOfEPCOfExtPC
-") operator=;
+") operator =;
 		const Extrema_SeqPCOfPCFOfEPCOfExtPC & operator = (const Extrema_SeqPCOfPCFOfEPCOfExtPC & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -8979,7 +8821,7 @@ class Extrema_SeqPCOfPCFOfEPCOfExtPC2d : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_SeqPCOfPCFOfEPCOfExtPC2d &
 	:rtype: Extrema_SeqPCOfPCFOfEPCOfExtPC2d
-") operator=;
+") operator =;
 		const Extrema_SeqPCOfPCFOfEPCOfExtPC2d & operator = (const Extrema_SeqPCOfPCFOfEPCOfExtPC2d & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -9122,7 +8964,7 @@ class Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC : public TCollection_BaseSequen
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC &
 	:rtype: Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC
-") operator=;
+") operator =;
 		const Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC & operator = (const Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -9265,7 +9107,7 @@ class Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC2d : public TCollection_BaseSequ
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC2d &
 	:rtype: Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC2d
-") operator=;
+") operator =;
 		const Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC2d & operator = (const Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC2d & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -9408,7 +9250,7 @@ class Extrema_SeqPOnCOfCCLocFOfLocECC : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_SeqPOnCOfCCLocFOfLocECC &
 	:rtype: Extrema_SeqPOnCOfCCLocFOfLocECC
-") operator=;
+") operator =;
 		const Extrema_SeqPOnCOfCCLocFOfLocECC & operator = (const Extrema_SeqPOnCOfCCLocFOfLocECC & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -9551,7 +9393,7 @@ class Extrema_SeqPOnCOfCCLocFOfLocECC2d : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_SeqPOnCOfCCLocFOfLocECC2d &
 	:rtype: Extrema_SeqPOnCOfCCLocFOfLocECC2d
-") operator=;
+") operator =;
 		const Extrema_SeqPOnCOfCCLocFOfLocECC2d & operator = (const Extrema_SeqPOnCOfCCLocFOfLocECC2d & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -10475,7 +10317,7 @@ class Extrema_SequenceOfPOnCurv : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_SequenceOfPOnCurv &
 	:rtype: Extrema_SequenceOfPOnCurv
-") operator=;
+") operator =;
 		const Extrema_SequenceOfPOnCurv & operator = (const Extrema_SequenceOfPOnCurv & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -10618,7 +10460,7 @@ class Extrema_SequenceOfPOnCurv2d : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_SequenceOfPOnCurv2d &
 	:rtype: Extrema_SequenceOfPOnCurv2d
-") operator=;
+") operator =;
 		const Extrema_SequenceOfPOnCurv2d & operator = (const Extrema_SequenceOfPOnCurv2d & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -10761,7 +10603,7 @@ class Extrema_SequenceOfPOnSurf : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Extrema_SequenceOfPOnSurf &
 	:rtype: Extrema_SequenceOfPOnSurf
-") operator=;
+") operator =;
 		const Extrema_SequenceOfPOnSurf & operator = (const Extrema_SequenceOfPOnSurf & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -761,7 +761,7 @@ class ExprIntrp_SequenceOfNamedExpression : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: ExprIntrp_SequenceOfNamedExpression &
 	:rtype: ExprIntrp_SequenceOfNamedExpression
-") operator=;
+") operator =;
 		const ExprIntrp_SequenceOfNamedExpression & operator = (const ExprIntrp_SequenceOfNamedExpression & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -904,7 +904,7 @@ class ExprIntrp_SequenceOfNamedFunction : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: ExprIntrp_SequenceOfNamedFunction &
 	:rtype: ExprIntrp_SequenceOfNamedFunction
-") operator=;
+") operator =;
 		const ExprIntrp_SequenceOfNamedFunction & operator = (const ExprIntrp_SequenceOfNamedFunction & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1043,7 +1043,7 @@ class ExprIntrp_StackOfGeneralExpression {
 		%feature("autodoc", "	:param Other:
 	:type Other: ExprIntrp_StackOfGeneralExpression &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const ExprIntrp_StackOfGeneralExpression & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1178,7 +1178,7 @@ class ExprIntrp_StackOfGeneralFunction {
 		%feature("autodoc", "	:param Other:
 	:type Other: ExprIntrp_StackOfGeneralFunction &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const ExprIntrp_StackOfGeneralFunction & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1313,7 +1313,7 @@ class ExprIntrp_StackOfGeneralRelation {
 		%feature("autodoc", "	:param Other:
 	:type Other: ExprIntrp_StackOfGeneralRelation &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const ExprIntrp_StackOfGeneralRelation & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int

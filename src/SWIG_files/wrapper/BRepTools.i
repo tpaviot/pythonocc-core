@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -498,7 +498,7 @@ class BRepTools_MapOfVertexPnt2d : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepTools_MapOfVertexPnt2d &
 	:rtype: BRepTools_MapOfVertexPnt2d
-") operator=;
+") operator =;
 		BRepTools_MapOfVertexPnt2d & operator = (const BRepTools_MapOfVertexPnt2d & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -583,6 +583,16 @@ class BRepTools_Modification : public MMgt_TShared {
 	:rtype: bool
 ") NewSurface;
 		virtual Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
+		%feature("compactdefaultargs") NewTriangulation;
+		%feature("autodoc", "	* Returns true if the face has been modified according to changed triangulation. If the face has been modified: - T is a new triangulation on the face
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param T:
+	:type T: Handle_Poly_Triangulation &
+	:rtype: bool
+") NewTriangulation;
+		virtual Standard_Boolean NewTriangulation (const TopoDS_Face & F,Handle_Poly_Triangulation & T);
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "	* Returns true if the edge, E, has been modified. If the edge has been modified: - C is the new geometry associated with the edge, - L is its new location, and - Tol is the new tolerance. If the edge has not been modified, this function returns false, and the values of C, L and Tol are not significant.
 
@@ -857,9 +867,9 @@ class BRepTools_ReShape : public MMgt_TShared {
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	* Clears all substitutions requests
 
-	:rtype: None
+	:rtype: void
 ") Clear;
-		void Clear ();
+		virtual void Clear ();
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	* Sets a request to Remove a Shape If <oriented> is True, only for a shape with the SAME orientation. Else, whatever the orientation
 
@@ -867,9 +877,9 @@ class BRepTools_ReShape : public MMgt_TShared {
 	:type shape: TopoDS_Shape &
 	:param oriented: default value is Standard_False
 	:type oriented: bool
-	:rtype: None
+	:rtype: void
 ") Remove;
-		void Remove (const TopoDS_Shape & shape,const Standard_Boolean oriented = Standard_False);
+		virtual void Remove (const TopoDS_Shape & shape,const Standard_Boolean oriented = Standard_False);
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "	* Sets a request to Replace a Shape by a new one If <oriented> is True, only if the orientation is the same Else, whatever the orientation, and the new shape takes the same orientation as <newshape> if the replaced one has the same as <shape>, else it is reversed
 
@@ -879,9 +889,9 @@ class BRepTools_ReShape : public MMgt_TShared {
 	:type newshape: TopoDS_Shape &
 	:param oriented: default value is Standard_False
 	:type oriented: bool
-	:rtype: None
+	:rtype: void
 ") Replace;
-		void Replace (const TopoDS_Shape & shape,const TopoDS_Shape & newshape,const Standard_Boolean oriented = Standard_False);
+		virtual void Replace (const TopoDS_Shape & shape,const TopoDS_Shape & newshape,const Standard_Boolean oriented = Standard_False);
 		%feature("compactdefaultargs") IsRecorded;
 		%feature("autodoc", "	* Tells if a shape is recorded for Replace/Remove
 
@@ -889,7 +899,7 @@ class BRepTools_ReShape : public MMgt_TShared {
 	:type shape: TopoDS_Shape &
 	:rtype: bool
 ") IsRecorded;
-		Standard_Boolean IsRecorded (const TopoDS_Shape & shape);
+		virtual Standard_Boolean IsRecorded (const TopoDS_Shape & shape);
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item
 
@@ -897,7 +907,7 @@ class BRepTools_ReShape : public MMgt_TShared {
 	:type shape: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape Value (const TopoDS_Shape & shape);
+		virtual TopoDS_Shape Value (const TopoDS_Shape & shape);
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "	* Returns a complete substitution status for a shape 0 : not recorded, <newsh> = original <shape> < 0: to be removed, <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape.
 
@@ -932,33 +942,19 @@ class BRepTools_ReShape : public MMgt_TShared {
 	:rtype: TopoDS_Shape
 ") Apply;
 		virtual TopoDS_Shape Apply (const TopoDS_Shape & shape,const TopAbs_ShapeEnum until = TopAbs_SHAPE);
+		%feature("compactdefaultargs") ModeConsiderLocation;
+		%feature("autodoc", "	* Returns (modifiable) the flag which defines whether Location of shape take into account during replacing shapes.
 
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetModeConsiderLocation() {
-                return (Standard_Boolean) $self->ModeConsiderLocation();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetModeConsiderLocation(Standard_Boolean value ) {
-                $self->ModeConsiderLocation()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetModeConsiderOrientation() {
-                return (Standard_Boolean) $self->ModeConsiderOrientation();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetModeConsiderOrientation(Standard_Boolean value ) {
-                $self->ModeConsiderOrientation()=value;
-                }
-            };
-            };
+	:rtype: bool
+") ModeConsiderLocation;
+		virtual Standard_Boolean & ModeConsiderLocation ();
+		%feature("compactdefaultargs") ModeConsiderOrientation;
+		%feature("autodoc", "	* Returns (modifiable) the flag which defines whether Orientation of shape take into account during replacing shapes.
+
+	:rtype: bool
+") ModeConsiderOrientation;
+		virtual Standard_Boolean & ModeConsiderOrientation ();
+};
 
 
 %extend BRepTools_ReShape {

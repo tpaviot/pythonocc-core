@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -609,7 +609,7 @@ class TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape : public TCollection_
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape &
 	:rtype: TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape
-") operator=;
+") operator =;
 		TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape & operator = (const TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1723,7 +1723,7 @@ class TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo : public TCollection_Basic
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo &
 	:rtype: TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo
-") operator=;
+") operator =;
 		TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo & operator = (const TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2274,7 +2274,7 @@ class TopOpeBRepBuild_ListOfListOfLoop {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepBuild_ListOfListOfLoop &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopOpeBRepBuild_ListOfListOfLoop & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -2409,7 +2409,7 @@ class TopOpeBRepBuild_ListOfLoop {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepBuild_ListOfLoop &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopOpeBRepBuild_ListOfLoop & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -2544,7 +2544,7 @@ class TopOpeBRepBuild_ListOfPave {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepBuild_ListOfPave &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopOpeBRepBuild_ListOfPave & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -2679,7 +2679,7 @@ class TopOpeBRepBuild_ListOfShapeListOfShape {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepBuild_ListOfShapeListOfShape &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopOpeBRepBuild_ListOfShapeListOfShape & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int

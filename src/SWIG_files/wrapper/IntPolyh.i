@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -414,7 +414,7 @@ class IntPolyh_Point {
 		%feature("autodoc", "	:param Pt:
 	:type Pt: IntPolyh_Point &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const IntPolyh_Point & Pt);
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "	:param v1:
@@ -488,7 +488,7 @@ class IntPolyh_Point {
 		%feature("autodoc", "	:param P1:
 	:type P1: IntPolyh_Point &
 	:rtype: IntPolyh_Point
-") operator+;
+") operator +;
 		IntPolyh_Point operator + (const IntPolyh_Point & P1);
 		%feature("compactdefaultargs") Sub;
 		%feature("autodoc", "	:param P1:
@@ -500,7 +500,7 @@ class IntPolyh_Point {
 		%feature("autodoc", "	:param P1:
 	:type P1: IntPolyh_Point &
 	:rtype: IntPolyh_Point
-") operator-;
+") operator -;
 		IntPolyh_Point operator - (const IntPolyh_Point & P1);
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "	:param rr:
@@ -512,7 +512,7 @@ class IntPolyh_Point {
 		%feature("autodoc", "	:param rr:
 	:type rr: float
 	:rtype: IntPolyh_Point
-") operator/;
+") operator /;
 		IntPolyh_Point operator / (const Standard_Real rr);
 		%feature("compactdefaultargs") Multiplication;
 		%feature("autodoc", "	:param rr:
@@ -524,7 +524,7 @@ class IntPolyh_Point {
 		%feature("autodoc", "	:param rr:
 	:type rr: float
 	:rtype: IntPolyh_Point
-") operator*;
+") operator *;
 		IntPolyh_Point operator * (const Standard_Real rr);
 		%feature("compactdefaultargs") SquareModulus;
 		%feature("autodoc", "	:rtype: float
@@ -619,7 +619,7 @@ class IntPolyh_SectionLine {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntPolyh_SectionLine &
 	:rtype: IntPolyh_SectionLine
-") operator=;
+") operator =;
 		IntPolyh_SectionLine & operator = (const IntPolyh_SectionLine & Other);
 		%feature("compactdefaultargs") GetN;
 		%feature("autodoc", "	:rtype: int
@@ -682,7 +682,7 @@ class IntPolyh_SeqOfStartPoints : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: IntPolyh_SeqOfStartPoints &
 	:rtype: IntPolyh_SeqOfStartPoints
-") operator=;
+") operator =;
 		const IntPolyh_SeqOfStartPoints & operator = (const IntPolyh_SeqOfStartPoints & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -990,7 +990,7 @@ class IntPolyh_StartPoint {
 		%feature("autodoc", "	:param StPt:
 	:type StPt: IntPolyh_StartPoint &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const IntPolyh_StartPoint & StPt);
 		%feature("compactdefaultargs") SetXYZ;
 		%feature("autodoc", "	:param XX:

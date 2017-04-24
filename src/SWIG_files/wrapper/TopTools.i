@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -131,7 +131,7 @@ class TopTools_Array1OfListOfShape {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_Array1OfListOfShape &
 	:rtype: TopTools_Array1OfListOfShape
-") operator=;
+") operator =;
 		const TopTools_Array1OfListOfShape & operator = (const TopTools_Array1OfListOfShape & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -218,7 +218,7 @@ class TopTools_Array1OfShape {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_Array1OfShape &
 	:rtype: TopTools_Array1OfShape
-") operator=;
+") operator =;
 		const TopTools_Array1OfShape & operator = (const TopTools_Array1OfShape & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -309,7 +309,7 @@ class TopTools_Array2OfShape {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_Array2OfShape &
 	:rtype: TopTools_Array2OfShape
-") operator=;
+") operator =;
 		const TopTools_Array2OfShape & operator = (const TopTools_Array2OfShape & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1533,7 +1533,7 @@ class TopTools_DataMapOfIntegerListOfShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_DataMapOfIntegerListOfShape &
 	:rtype: TopTools_DataMapOfIntegerListOfShape
-") operator=;
+") operator =;
 		TopTools_DataMapOfIntegerListOfShape & operator = (const TopTools_DataMapOfIntegerListOfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1616,7 +1616,7 @@ class TopTools_DataMapOfIntegerShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_DataMapOfIntegerShape &
 	:rtype: TopTools_DataMapOfIntegerShape
-") operator=;
+") operator =;
 		TopTools_DataMapOfIntegerShape & operator = (const TopTools_DataMapOfIntegerShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1699,7 +1699,7 @@ class TopTools_DataMapOfOrientedShapeInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_DataMapOfOrientedShapeInteger &
 	:rtype: TopTools_DataMapOfOrientedShapeInteger
-") operator=;
+") operator =;
 		TopTools_DataMapOfOrientedShapeInteger & operator = (const TopTools_DataMapOfOrientedShapeInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1782,7 +1782,7 @@ class TopTools_DataMapOfOrientedShapeShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_DataMapOfOrientedShapeShape &
 	:rtype: TopTools_DataMapOfOrientedShapeShape
-") operator=;
+") operator =;
 		TopTools_DataMapOfOrientedShapeShape & operator = (const TopTools_DataMapOfOrientedShapeShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1865,7 +1865,7 @@ class TopTools_DataMapOfShapeInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_DataMapOfShapeInteger &
 	:rtype: TopTools_DataMapOfShapeInteger
-") operator=;
+") operator =;
 		TopTools_DataMapOfShapeInteger & operator = (const TopTools_DataMapOfShapeInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1948,7 +1948,7 @@ class TopTools_DataMapOfShapeListOfInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_DataMapOfShapeListOfInteger &
 	:rtype: TopTools_DataMapOfShapeListOfInteger
-") operator=;
+") operator =;
 		TopTools_DataMapOfShapeListOfInteger & operator = (const TopTools_DataMapOfShapeListOfInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2031,7 +2031,7 @@ class TopTools_DataMapOfShapeListOfShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_DataMapOfShapeListOfShape &
 	:rtype: TopTools_DataMapOfShapeListOfShape
-") operator=;
+") operator =;
 		TopTools_DataMapOfShapeListOfShape & operator = (const TopTools_DataMapOfShapeListOfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2114,7 +2114,7 @@ class TopTools_DataMapOfShapeReal : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_DataMapOfShapeReal &
 	:rtype: TopTools_DataMapOfShapeReal
-") operator=;
+") operator =;
 		TopTools_DataMapOfShapeReal & operator = (const TopTools_DataMapOfShapeReal & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2197,7 +2197,7 @@ class TopTools_DataMapOfShapeSequenceOfShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_DataMapOfShapeSequenceOfShape &
 	:rtype: TopTools_DataMapOfShapeSequenceOfShape
-") operator=;
+") operator =;
 		TopTools_DataMapOfShapeSequenceOfShape & operator = (const TopTools_DataMapOfShapeSequenceOfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2280,7 +2280,7 @@ class TopTools_DataMapOfShapeShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_DataMapOfShapeShape &
 	:rtype: TopTools_DataMapOfShapeShape
-") operator=;
+") operator =;
 		TopTools_DataMapOfShapeShape & operator = (const TopTools_DataMapOfShapeShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -3229,7 +3229,7 @@ class TopTools_IndexedDataMapOfShapeAddress : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_IndexedDataMapOfShapeAddress &
 	:rtype: TopTools_IndexedDataMapOfShapeAddress
-") operator=;
+") operator =;
 		TopTools_IndexedDataMapOfShapeAddress & operator = (const TopTools_IndexedDataMapOfShapeAddress & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -3344,7 +3344,7 @@ class TopTools_IndexedDataMapOfShapeListOfShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_IndexedDataMapOfShapeListOfShape &
 	:rtype: TopTools_IndexedDataMapOfShapeListOfShape
-") operator=;
+") operator =;
 		TopTools_IndexedDataMapOfShapeListOfShape & operator = (const TopTools_IndexedDataMapOfShapeListOfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -3459,7 +3459,7 @@ class TopTools_IndexedDataMapOfShapeShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_IndexedDataMapOfShapeShape &
 	:rtype: TopTools_IndexedDataMapOfShapeShape
-") operator=;
+") operator =;
 		TopTools_IndexedDataMapOfShapeShape & operator = (const TopTools_IndexedDataMapOfShapeShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -3760,7 +3760,7 @@ class TopTools_IndexedMapOfOrientedShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_IndexedMapOfOrientedShape &
 	:rtype: TopTools_IndexedMapOfOrientedShape
-") operator=;
+") operator =;
 		TopTools_IndexedMapOfOrientedShape & operator = (const TopTools_IndexedMapOfOrientedShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -3841,7 +3841,7 @@ class TopTools_IndexedMapOfShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_IndexedMapOfShape &
 	:rtype: TopTools_IndexedMapOfShape
-") operator=;
+") operator =;
 		TopTools_IndexedMapOfShape & operator = (const TopTools_IndexedMapOfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4028,7 +4028,7 @@ class TopTools_ListOfShape {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_ListOfShape &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TopTools_ListOfShape & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -4307,7 +4307,7 @@ class TopTools_MapOfOrientedShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_MapOfOrientedShape &
 	:rtype: TopTools_MapOfOrientedShape
-") operator=;
+") operator =;
 		TopTools_MapOfOrientedShape & operator = (const TopTools_MapOfOrientedShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4370,7 +4370,7 @@ class TopTools_MapOfShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_MapOfShape &
 	:rtype: TopTools_MapOfShape
-") operator=;
+") operator =;
 		TopTools_MapOfShape & operator = (const TopTools_MapOfShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4585,7 +4585,7 @@ class TopTools_SequenceOfShape : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_SequenceOfShape &
 	:rtype: TopTools_SequenceOfShape
-") operator=;
+") operator =;
 		const TopTools_SequenceOfShape & operator = (const TopTools_SequenceOfShape & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -101,7 +101,7 @@ class TShort_Array1OfShortReal {
 		%feature("autodoc", "	:param Other:
 	:type Other: TShort_Array1OfShortReal &
 	:rtype: TShort_Array1OfShortReal
-") operator=;
+") operator =;
 		const TShort_Array1OfShortReal & operator = (const TShort_Array1OfShortReal & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -192,7 +192,7 @@ class TShort_Array2OfShortReal {
 		%feature("autodoc", "	:param Other:
 	:type Other: TShort_Array2OfShortReal &
 	:rtype: TShort_Array2OfShortReal
-") operator=;
+") operator =;
 		const TShort_Array2OfShortReal & operator = (const TShort_Array2OfShortReal & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -807,7 +807,7 @@ class TShort_SequenceOfShortReal : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TShort_SequenceOfShortReal &
 	:rtype: TShort_SequenceOfShortReal
-") operator=;
+") operator =;
 		const TShort_SequenceOfShortReal & operator = (const TShort_SequenceOfShortReal & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

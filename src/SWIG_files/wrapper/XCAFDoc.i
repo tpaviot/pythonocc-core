@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1040,7 +1040,7 @@ class XCAFDoc_DataMapOfShapeLabel : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: XCAFDoc_DataMapOfShapeLabel &
 	:rtype: XCAFDoc_DataMapOfShapeLabel
-") operator=;
+") operator =;
 		XCAFDoc_DataMapOfShapeLabel & operator = (const XCAFDoc_DataMapOfShapeLabel & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2156,7 +2156,7 @@ class XCAFDoc_GraphNodeSequence : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: XCAFDoc_GraphNodeSequence &
 	:rtype: XCAFDoc_GraphNodeSequence
-") operator=;
+") operator =;
 		const XCAFDoc_GraphNodeSequence & operator = (const XCAFDoc_GraphNodeSequence & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

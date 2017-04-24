@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -100,7 +100,7 @@ enum BRepLib_WireError {
 class BRepLib {
 	public:
 		%feature("compactdefaultargs") Precision;
-		%feature("autodoc", "	* Sets the default precision. The current Precision is returned.
+		%feature("autodoc", "	* Computes the max distance between edge and its 2d representation on the face. Sets the default precision. The current Precision is returned.
 
 	:param P:
 	:type P: float
@@ -295,10 +295,157 @@ class BRepLib {
 	:rtype: void
 ") ReverseSortFaces;
 		static void ReverseSortFaces (const TopoDS_Shape & S,TopTools_ListOfShape & LF);
+		%feature("compactdefaultargs") EnsureNormalConsistency;
+		%feature("autodoc", "	* Corrects the normals in Poly_Triangulation of faces, in such way that normals at nodes lying along smooth edges have the same value on both adjacent triangulations. Returns True if any correction is done.
+
+	:param S:
+	:type S: TopoDS_Shape &
+	:param theAngTol: default value is 0.001
+	:type theAngTol: float
+	:param ForceComputeNormals: default value is Standard_False
+	:type ForceComputeNormals: bool
+	:rtype: bool
+") EnsureNormalConsistency;
+		static Standard_Boolean EnsureNormalConsistency (const TopoDS_Shape & S,const Standard_Real theAngTol = 0.001,const Standard_Boolean ForceComputeNormals = Standard_False);
 };
 
 
 %extend BRepLib {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor BRepLib_CheckCurveOnSurface;
+class BRepLib_CheckCurveOnSurface {
+	public:
+		%feature("compactdefaultargs") BRepLib_CheckCurveOnSurface;
+		%feature("autodoc", "	* Empty contructor
+
+	:rtype: None
+") BRepLib_CheckCurveOnSurface;
+		 BRepLib_CheckCurveOnSurface ();
+		%feature("compactdefaultargs") BRepLib_CheckCurveOnSurface;
+		%feature("autodoc", "	* Contructor
+
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param theFace:
+	:type theFace: TopoDS_Face &
+	:rtype: None
+") BRepLib_CheckCurveOnSurface;
+		 BRepLib_CheckCurveOnSurface (const TopoDS_Edge & theEdge,const TopoDS_Face & theFace);
+		%feature("compactdefaultargs") BRepLib_CheckCurveOnSurface;
+		%feature("autodoc", "	* Contructor
+
+	:param theCurve:
+	:type theCurve: Handle_Geom_Curve &
+	:param thePCurve:
+	:type thePCurve: Handle_Geom2d_Curve &
+	:param theSurface:
+	:type theSurface: Handle_Geom_Surface &
+	:param theFirst:
+	:type theFirst: float
+	:param theLast:
+	:type theLast: float
+	:rtype: None
+") BRepLib_CheckCurveOnSurface;
+		 BRepLib_CheckCurveOnSurface (const Handle_Geom_Curve & theCurve,const Handle_Geom2d_Curve & thePCurve,const Handle_Geom_Surface & theSurface,const Standard_Real theFirst,const Standard_Real theLast);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Sets the data for the algorithm
+
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param theFace:
+	:type theFace: TopoDS_Face &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Edge & theEdge,const TopoDS_Face & theFace);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Sets the data for the algorithm
+
+	:param theCurve:
+	:type theCurve: Handle_Geom_Curve &
+	:param thePCurve:
+	:type thePCurve: Handle_Geom2d_Curve &
+	:param theSurface:
+	:type theSurface: Handle_Geom_Surface &
+	:param theFirst:
+	:type theFirst: float
+	:param theLast:
+	:type theLast: float
+	:rtype: None
+") Init;
+		void Init (const Handle_Geom_Curve & theCurve,const Handle_Geom2d_Curve & thePCurve,const Handle_Geom_Surface & theSurface,const Standard_Real theFirst,const Standard_Real theLast);
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", "	* Returns my3DCurve
+
+	:rtype: Handle_Geom_Curve
+") Curve;
+		Handle_Geom_Curve Curve ();
+		%feature("compactdefaultargs") PCurve;
+		%feature("autodoc", "	* Returns my2DCurve
+
+	:rtype: Handle_Geom2d_Curve
+") PCurve;
+		Handle_Geom2d_Curve PCurve ();
+		%feature("compactdefaultargs") PCurve2;
+		%feature("autodoc", "	* Returns my2DCurve
+
+	:rtype: Handle_Geom2d_Curve
+") PCurve2;
+		Handle_Geom2d_Curve PCurve2 ();
+		%feature("compactdefaultargs") Surface;
+		%feature("autodoc", "	* Returns mySurface
+
+	:rtype: Handle_Geom_Surface
+") Surface;
+		Handle_Geom_Surface Surface ();
+		%feature("compactdefaultargs") Range;
+		%feature("autodoc", "	* Returns the range
+
+	:param theFirst:
+	:type theFirst: float &
+	:param theLast:
+	:type theLast: float &
+	:rtype: None
+") Range;
+		void Range (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Performs the calculation If isTheMultyTheadDisabled == True then computation will be made without any parallelization.
+
+	:param isTheMultyTheradDisabled: default value is Standard_False
+	:type isTheMultyTheradDisabled: bool
+	:rtype: None
+") Perform;
+		void Perform (const Standard_Boolean isTheMultyTheradDisabled = Standard_False);
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* Returns true if the max distance has been found
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") ErrorStatus;
+		%feature("autodoc", "	* Returns error status The possible values are: 0 - OK; 1 - null curve or surface or 2d curve; 2 - invalid parametric range; 3 - error in calculations.
+
+	:rtype: int
+") ErrorStatus;
+		Standard_Integer ErrorStatus ();
+		%feature("compactdefaultargs") MaxDistance;
+		%feature("autodoc", "	* Returns max distance
+
+	:rtype: float
+") MaxDistance;
+		Standard_Real MaxDistance ();
+		%feature("compactdefaultargs") MaxParameter;
+		%feature("autodoc", "	* Returns parameter in which the distance is maximal
+
+	:rtype: float
+") MaxParameter;
+		Standard_Real MaxParameter ();
+};
+
+
+%extend BRepLib_CheckCurveOnSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -489,7 +636,7 @@ class BRepLib_MakeShape : public BRepLib_Command {
 		const TopoDS_Shape  Shape ();
 		%feature("compactdefaultargs") operator TopoDS_Shape;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Shape;
+") operator TopoDS_Shape;
 		 operator TopoDS_Shape ();
 		%feature("compactdefaultargs") FaceStatus;
 		%feature("autodoc", "	* returns the status of the Face after the shape creation.
@@ -1040,7 +1187,7 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Edge;
+") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Vertex1;
 		%feature("autodoc", "	* Returns the first vertex of the edge. May be Null.
@@ -1401,7 +1548,7 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Edge;
+") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Vertex1;
 		%feature("autodoc", "	* Returns the first vertex of the edge. May be Null.
@@ -1738,8 +1885,20 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") operator TopoDS_Face;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Face;
+") operator TopoDS_Face;
 		 operator TopoDS_Face ();
+		%feature("compactdefaultargs") IsDegenerated;
+		%feature("autodoc", "	* Checks the specified curve is degenerated according to specified tolerance. Returns <theActTol> less than <theMaxTol>, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell.
+
+	:param theCurve:
+	:type theCurve: Handle_Geom_Curve &
+	:param theMaxTol:
+	:type theMaxTol: float
+	:param theActTol:
+	:type theActTol: float &
+	:rtype: bool
+") IsDegenerated;
+		static Standard_Boolean IsDegenerated (const Handle_Geom_Curve & theCurve,const Standard_Real theMaxTol,Standard_Real &OutValue);
 };
 
 
@@ -1863,7 +2022,7 @@ class BRepLib_MakePolygon : public BRepLib_MakeShape {
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Edge;
+") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Wire;
 		%feature("autodoc", "	:rtype: TopoDS_Wire
@@ -1871,7 +2030,7 @@ class BRepLib_MakePolygon : public BRepLib_MakeShape {
 		const TopoDS_Wire  Wire ();
 		%feature("compactdefaultargs") operator TopoDS_Wire;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Wire;
+") operator TopoDS_Wire;
 		 operator TopoDS_Wire ();
 };
 
@@ -1944,7 +2103,7 @@ class BRepLib_MakeShell : public BRepLib_MakeShape {
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Shell;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Shell;
+") operator TopoDS_Shell;
 		 operator TopoDS_Shell ();
 };
 
@@ -2035,7 +2194,7 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Solid;
+") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 		%feature("compactdefaultargs") FaceStatus;
 		%feature("autodoc", "	* returns the status of the Face after the shape creation.
@@ -2068,7 +2227,7 @@ class BRepLib_MakeVertex : public BRepLib_MakeShape {
 		const TopoDS_Vertex  Vertex ();
 		%feature("compactdefaultargs") operator TopoDS_Vertex;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Vertex;
+") operator TopoDS_Vertex;
 		 operator TopoDS_Vertex ();
 };
 
@@ -2185,7 +2344,7 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 		const TopoDS_Wire  Wire ();
 		%feature("compactdefaultargs") operator TopoDS_Wire;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Wire;
+") operator TopoDS_Wire;
 		 operator TopoDS_Wire ();
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "	* Returns the last edge added to the wire.

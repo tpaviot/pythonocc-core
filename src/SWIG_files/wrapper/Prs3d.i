@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -118,7 +118,7 @@ class Prs3d {
 ") MatchSegment;
 		static Standard_Boolean MatchSegment (const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const gp_Pnt & p1,const gp_Pnt & p2,Standard_Real &OutValue);
 		%feature("compactdefaultargs") GetDeflection;
-		%feature("autodoc", "	* Computes the absolute deflection value depending on the type of deflection in theDrawer: <ul> <li><b>Aspect_TOD_RELATIVE</b>: the absolute deflection is computed using the relative deviation coefficient from theDrawer and the shape's bounding box;</li> <li><b>Aspect_TOD_ABSOLUTE</b>: the maximal chordial deviation from theDrawer is returned.</li> </ul> This function should always be used to compute the deflection value for building discrete representations of the shape (triangualtion, wireframe) to avoid incosistencies between different representations of the shape and undesirable visual artifacts.
+		%feature("autodoc", "	* Computes the absolute deflection value depending on the type of deflection in theDrawer: <ul> <li><b>Aspect_TOD_RELATIVE</b>: the absolute deflection is computed using the relative deviation coefficient from theDrawer and the shape's bounding box;</li> <li><b>Aspect_TOD_ABSOLUTE</b>: the maximal chordial deviation from theDrawer is returned.</li> </ul> In case of the type of deflection in theDrawer computed relative deflection for shape is stored as absolute deflection. It is necessary to use it later on for sub-shapes. This function should always be used to compute the deflection value for building discrete representations of the shape (triangualtion, wireframe) to avoid incosistencies between different representations of the shape and undesirable visual artifacts.
 
 	:param theShape:
 	:type theShape: TopoDS_Shape &
@@ -247,569 +247,907 @@ class Prs3d_DimensionUnits {
 class Prs3d_Drawer : public MMgt_TShared {
 	public:
 		%feature("compactdefaultargs") Prs3d_Drawer;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Default constructor.
+
+	:rtype: None
 ") Prs3d_Drawer;
 		 Prs3d_Drawer ();
 		%feature("compactdefaultargs") SetTypeOfDeflection;
 		%feature("autodoc", "	* Sets the type of chordal deflection. This indicates whether the deflection value is absolute or relative to the size of the object.
 
-	:param aTypeOfDeflection:
-	:type aTypeOfDeflection: Aspect_TypeOfDeflection
-	:rtype: void
+	:param theTypeOfDeflection:
+	:type theTypeOfDeflection: Aspect_TypeOfDeflection
+	:rtype: None
 ") SetTypeOfDeflection;
-		virtual void SetTypeOfDeflection (const Aspect_TypeOfDeflection aTypeOfDeflection);
+		void SetTypeOfDeflection (const Aspect_TypeOfDeflection theTypeOfDeflection);
 		%feature("compactdefaultargs") TypeOfDeflection;
 		%feature("autodoc", "	* Returns the type of chordal deflection. This indicates whether the deflection value is absolute or relative to the size of the object.
 
 	:rtype: Aspect_TypeOfDeflection
 ") TypeOfDeflection;
-		virtual Aspect_TypeOfDeflection TypeOfDeflection ();
-		%feature("compactdefaultargs") SetMaximalChordialDeviation;
-		%feature("autodoc", "	* Defines the maximal chordial deviation when drawing any curve; Even if the type of deviation is set to TOD_Relative, this value is used by: //! Prs3d_DeflectionCurve Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
+		Aspect_TypeOfDeflection TypeOfDeflection ();
+		%feature("compactdefaultargs") HasOwnTypeOfDeflection;
+		%feature("autodoc", "	* Returns true if the drawer has a type of deflection setting active.
 
-	:param aChordialDeviation:
-	:type aChordialDeviation: Quantity_Length
-	:rtype: void
+	:rtype: bool
+") HasOwnTypeOfDeflection;
+		Standard_Boolean HasOwnTypeOfDeflection ();
+		%feature("compactdefaultargs") SetMaximalChordialDeviation;
+		%feature("autodoc", "	* Defines the maximal chordial deviation when drawing any curve. Even if the type of deviation is set to TOD_Relative, this value is used by: Prs3d_DeflectionCurve Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
+
+	:param theChordialDeviation:
+	:type theChordialDeviation: Quantity_Length
+	:rtype: None
 ") SetMaximalChordialDeviation;
-		virtual void SetMaximalChordialDeviation (const Quantity_Length aChordialDeviation);
+		void SetMaximalChordialDeviation (const Quantity_Length theChordialDeviation);
 		%feature("compactdefaultargs") MaximalChordialDeviation;
-		%feature("autodoc", "	* returns the maximal chordial deviation. Default value is 0.1
+		%feature("autodoc", "	* Returns the maximal chordal deviation. The default value is 0.1. Drawings of curves or patches are made with respect to an absolute maximal chordal deviation.
 
 	:rtype: Quantity_Length
 ") MaximalChordialDeviation;
-		virtual Quantity_Length MaximalChordialDeviation ();
-		%feature("compactdefaultargs") SetDeviationCoefficient;
-		%feature("autodoc", "	* Sets the deviation coefficient aCoefficient.
-
-	:param aCoefficient:
-	:type aCoefficient: float
-	:rtype: void
-") SetDeviationCoefficient;
-		virtual void SetDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("compactdefaultargs") DeviationCoefficient;
-		%feature("autodoc", "	* Returns the deviation coefficient.
-
-	:rtype: float
-") DeviationCoefficient;
-		virtual Standard_Real DeviationCoefficient ();
-		%feature("compactdefaultargs") SetHLRDeviationCoefficient;
-		%feature("autodoc", "	* Sets the deviation coefficient aCoefficient for removal of hidden lines created by different viewpoints in different presentations. The Default value is 0.02.
-
-	:param aCoefficient:
-	:type aCoefficient: float
-	:rtype: void
-") SetHLRDeviationCoefficient;
-		virtual void SetHLRDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("compactdefaultargs") HLRDeviationCoefficient;
-		%feature("autodoc", "	* Returns the real number value of the hidden line removal deviation coefficient.
-
-	:rtype: float
-") HLRDeviationCoefficient;
-		virtual Standard_Real HLRDeviationCoefficient ();
-		%feature("compactdefaultargs") SetHLRAngle;
-		%feature("autodoc", "	* Sets anAngle, the angle of maximum chordal deviation for removal of hidden lines created by different viewpoints in different presentations. The default value is 20*PI/180.
-
-	:param anAngle:
-	:type anAngle: float
-	:rtype: void
-") SetHLRAngle;
-		virtual void SetHLRAngle (const Standard_Real anAngle);
-		%feature("compactdefaultargs") HLRAngle;
-		%feature("autodoc", "	* Returns the real number value of the deviation angle in hidden line removal views. The default value is 20*PI/180.
-
-	:rtype: float
-") HLRAngle;
-		virtual Standard_Real HLRAngle ();
-		%feature("compactdefaultargs") SetDeviationAngle;
-		%feature("autodoc", "	* Sets deviation angle
-
-	:param anAngle:
-	:type anAngle: float
-	:rtype: void
-") SetDeviationAngle;
-		virtual void SetDeviationAngle (const Standard_Real anAngle);
-		%feature("compactdefaultargs") DeviationAngle;
-		%feature("autodoc", "	* Returns the value for deviation angle.
-
-	:rtype: float
-") DeviationAngle;
-		virtual Standard_Real DeviationAngle ();
-		%feature("compactdefaultargs") SetDiscretisation;
-		%feature("autodoc", "	* Sets the discretisation parameter d.
-
-	:param d:
-	:type d: int
-	:rtype: void
-") SetDiscretisation;
-		virtual void SetDiscretisation (const Standard_Integer d);
-		%feature("compactdefaultargs") Discretisation;
-		%feature("autodoc", "	* Returns the discretisation setting.
-
-	:rtype: int
-") Discretisation;
-		virtual Standard_Integer Discretisation ();
-		%feature("compactdefaultargs") SetMaximalParameterValue;
-		%feature("autodoc", "	* defines the maximum value allowed for the first and last parameters of an infinite curve. Default value: 500.
-
-	:param Value:
-	:type Value: float
-	:rtype: void
-") SetMaximalParameterValue;
-		virtual void SetMaximalParameterValue (const Standard_Real Value);
-		%feature("compactdefaultargs") MaximalParameterValue;
-		%feature("autodoc", "	* Sets the maximum value allowed for the first and last parameters of an infinite curve. By default, this value is 500000.
-
-	:rtype: float
-") MaximalParameterValue;
-		virtual Standard_Real MaximalParameterValue ();
-		%feature("compactdefaultargs") SetIsoOnPlane;
-		%feature("autodoc", "	* Sets IsoOnPlane on or off by setting the parameter OnOff to true or false.
-
-	:param OnOff:
-	:type OnOff: bool
-	:rtype: void
-") SetIsoOnPlane;
-		virtual void SetIsoOnPlane (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") IsoOnPlane;
-		%feature("autodoc", "	* Returns True if the drawing of isos on planes is enabled.
+		Quantity_Length MaximalChordialDeviation ();
+		%feature("compactdefaultargs") HasOwnMaximalChordialDeviation;
+		%feature("autodoc", "	* Returns true if the drawer has a maximal chordial deviation setting active.
 
 	:rtype: bool
-") IsoOnPlane;
-		virtual Standard_Boolean IsoOnPlane ();
+") HasOwnMaximalChordialDeviation;
+		Standard_Boolean HasOwnMaximalChordialDeviation ();
 		%feature("compactdefaultargs") SetTypeOfHLR;
 		%feature("autodoc", "	* Sets the type of HLR algorithm used by drawer's interactive objects
 
 	:param theTypeOfHLR:
 	:type theTypeOfHLR: Prs3d_TypeOfHLR
-	:rtype: void
+	:rtype: None
 ") SetTypeOfHLR;
-		virtual void SetTypeOfHLR (const Prs3d_TypeOfHLR theTypeOfHLR);
+		void SetTypeOfHLR (const Prs3d_TypeOfHLR theTypeOfHLR);
 		%feature("compactdefaultargs") TypeOfHLR;
-		%feature("autodoc", "	* Gets the myTypeOfHLR value
+		%feature("autodoc", "	* Returns the type of HLR algorithm currently in use.
 
 	:rtype: Prs3d_TypeOfHLR
 ") TypeOfHLR;
-		virtual Prs3d_TypeOfHLR TypeOfHLR ();
+		Prs3d_TypeOfHLR TypeOfHLR ();
+		%feature("compactdefaultargs") HasOwnTypeOfHLR;
+		%feature("autodoc", "	* Returns true if the type of HLR is not equal to Prs3d_TOH_NotSet.
+
+	:rtype: bool
+") HasOwnTypeOfHLR;
+		Standard_Boolean HasOwnTypeOfHLR ();
+		%feature("compactdefaultargs") SetMaximalParameterValue;
+		%feature("autodoc", "	* Defines the maximum value allowed for the first and last parameters of an infinite curve.
+
+	:param theValue:
+	:type theValue: float
+	:rtype: None
+") SetMaximalParameterValue;
+		void SetMaximalParameterValue (const Standard_Real theValue);
+		%feature("compactdefaultargs") MaximalParameterValue;
+		%feature("autodoc", "	* Sets the maximum value allowed for the first and last parameters of an infinite curve. By default, this value is 500000.
+
+	:rtype: float
+") MaximalParameterValue;
+		Standard_Real MaximalParameterValue ();
+		%feature("compactdefaultargs") HasOwnMaximalParameterValue;
+		%feature("autodoc", "	* Returns true if the drawer has a maximum value allowed for the first and last parameters of an infinite curve setting active.
+
+	:rtype: bool
+") HasOwnMaximalParameterValue;
+		Standard_Boolean HasOwnMaximalParameterValue ();
+		%feature("compactdefaultargs") SetIsoOnPlane;
+		%feature("autodoc", "	* Sets IsoOnPlane on or off by setting the parameter theIsEnabled to true or false.
+
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: None
+") SetIsoOnPlane;
+		void SetIsoOnPlane (const Standard_Boolean theIsEnabled);
+		%feature("compactdefaultargs") IsoOnPlane;
+		%feature("autodoc", "	* Returns True if the drawing of isos on planes is enabled.
+
+	:rtype: bool
+") IsoOnPlane;
+		Standard_Boolean IsoOnPlane ();
+		%feature("compactdefaultargs") HasOwnIsoOnPlane;
+		%feature("autodoc", "	* Returns true if the drawer has IsoOnPlane setting active.
+
+	:rtype: bool
+") HasOwnIsoOnPlane;
+		Standard_Boolean HasOwnIsoOnPlane ();
+		%feature("compactdefaultargs") SetDiscretisation;
+		%feature("autodoc", "	* Sets the discretisation parameter theValue.
+
+	:param theValue:
+	:type theValue: int
+	:rtype: None
+") SetDiscretisation;
+		void SetDiscretisation (const Standard_Integer theValue);
+		%feature("compactdefaultargs") Discretisation;
+		%feature("autodoc", "	* Returns the discretisation setting.
+
+	:rtype: int
+") Discretisation;
+		Standard_Integer Discretisation ();
+		%feature("compactdefaultargs") HasOwnDiscretisation;
+		%feature("autodoc", "	* Returns true if the drawer has discretisation setting active.
+
+	:rtype: bool
+") HasOwnDiscretisation;
+		Standard_Boolean HasOwnDiscretisation ();
+		%feature("compactdefaultargs") SetDeviationCoefficient;
+		%feature("autodoc", "	* Sets the deviation coefficient theCoefficient. Also sets the hasOwnDeviationCoefficient flag to Standard_True and myPreviousDeviationCoefficient
+
+	:param theCoefficient:
+	:type theCoefficient: float
+	:rtype: None
+") SetDeviationCoefficient;
+		void SetDeviationCoefficient (const Standard_Real theCoefficient);
+		%feature("compactdefaultargs") DeviationCoefficient;
+		%feature("autodoc", "	* Returns the deviation coefficient. Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through the method: SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient.
+
+	:rtype: float
+") DeviationCoefficient;
+		Standard_Real DeviationCoefficient ();
+		%feature("compactdefaultargs") SetDeviationCoefficient;
+		%feature("autodoc", "	* Sets the hasOwnDeviationCoefficient flag to Standard_False
+
+	:rtype: None
+") SetDeviationCoefficient;
+		void SetDeviationCoefficient ();
+		%feature("compactdefaultargs") HasOwnDeviationCoefficient;
+		%feature("autodoc", "	* Returns true if there is a local setting for deviation coefficient in this framework for a specific interactive object.
+
+	:rtype: bool
+") HasOwnDeviationCoefficient;
+		Standard_Boolean HasOwnDeviationCoefficient ();
+		%feature("compactdefaultargs") PreviousDeviationCoefficient;
+		%feature("autodoc", "	* Saves the previous value used for the chordal deviation coefficient.
+
+	:rtype: float
+") PreviousDeviationCoefficient;
+		Standard_Real PreviousDeviationCoefficient ();
+		%feature("compactdefaultargs") SetHLRDeviationCoefficient;
+		%feature("autodoc", "	* Sets the deviation coefficient aCoefficient for removal of hidden lines created by different viewpoints in different presentations. The Default value is 0.02. Also sets the hasOwnHLRDeviationCoefficient flag to Standard_True and myPreviousHLRDeviationCoefficient
+
+	:param theCoefficient:
+	:type theCoefficient: float
+	:rtype: None
+") SetHLRDeviationCoefficient;
+		void SetHLRDeviationCoefficient (const Standard_Real theCoefficient);
+		%feature("compactdefaultargs") HLRDeviationCoefficient;
+		%feature("autodoc", "	* Returns the real number value of the hidden line removal deviation coefficient in this framework, if the flag hasOwnHLRDeviationCoefficient is true or there is no Link. Else the shape's HLR deviation coefficient is used. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient give the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. To find the hidden lines, hidden line display mode entails recalculation of the view at each different projector perspective. Since hidden lines entail calculations of more than usual complexity to decompose them into these triangles, a deviation coefficient allowing greater tolerance is used. This increases efficiency in calculation. The Default value is 0.02.
+
+	:rtype: float
+") HLRDeviationCoefficient;
+		Standard_Real HLRDeviationCoefficient ();
+		%feature("compactdefaultargs") SetHLRDeviationCoefficient;
+		%feature("autodoc", "	* Sets the hasOwnHLRDeviationCoefficient flag to Standard_False
+
+	:rtype: None
+") SetHLRDeviationCoefficient;
+		void SetHLRDeviationCoefficient ();
+		%feature("compactdefaultargs") HasOwnHLRDeviationCoefficient;
+		%feature("autodoc", "	* Returns true if the there is a setting for HLR deviation coefficient in this framework for a specific interactive object.
+
+	:rtype: bool
+") HasOwnHLRDeviationCoefficient;
+		Standard_Boolean HasOwnHLRDeviationCoefficient ();
+		%feature("compactdefaultargs") PreviousHLRDeviationCoefficient;
+		%feature("autodoc", "	* Returns the previous value of the hidden line removal deviation coefficient.
+
+	:rtype: float
+") PreviousHLRDeviationCoefficient;
+		Standard_Real PreviousHLRDeviationCoefficient ();
+		%feature("compactdefaultargs") SetDeviationAngle;
+		%feature("autodoc", "	* Sets the deviation angle theAngle. Also sets the hasOwnDeviationAngle flag to Standard_True, and myPreviousDeviationAngle.
+
+	:param theAngle:
+	:type theAngle: float
+	:rtype: None
+") SetDeviationAngle;
+		void SetDeviationAngle (const Standard_Real theAngle);
+		%feature("compactdefaultargs") DeviationAngle;
+		%feature("autodoc", "	* Returns the value for deviation angle.
+
+	:rtype: float
+") DeviationAngle;
+		Standard_Real DeviationAngle ();
+		%feature("compactdefaultargs") SetDeviationAngle;
+		%feature("autodoc", "	* Sets the hasOwnDeviationAngle flag to Standard_False
+
+	:rtype: None
+") SetDeviationAngle;
+		void SetDeviationAngle ();
+		%feature("compactdefaultargs") HasOwnDeviationAngle;
+		%feature("autodoc", "	* Returns true if the there is a local setting for deviation angle in this framework for a specific interactive object.
+
+	:rtype: bool
+") HasOwnDeviationAngle;
+		Standard_Boolean HasOwnDeviationAngle ();
+		%feature("compactdefaultargs") PreviousDeviationAngle;
+		%feature("autodoc", "	* Returns the previous deviation angle
+
+	:rtype: float
+") PreviousDeviationAngle;
+		Standard_Real PreviousDeviationAngle ();
+		%feature("compactdefaultargs") SetHLRAngle;
+		%feature("autodoc", "	* Sets anAngle, the angle of maximum chordal deviation for removal of hidden lines created by different viewpoints in different presentations. The default value is 20 * M_PI / 180. Also sets the hasOwnHLRDeviationAngle flag to Standard_True and myPreviousHLRDeviationAngle.
+
+	:param theAngle:
+	:type theAngle: float
+	:rtype: None
+") SetHLRAngle;
+		void SetHLRAngle (const Standard_Real theAngle);
+		%feature("compactdefaultargs") HLRAngle;
+		%feature("autodoc", "	* Returns the real number value of the deviation angle in hidden line removal views. The default value is 20 * M_PI / 180.
+
+	:rtype: float
+") HLRAngle;
+		Standard_Real HLRAngle ();
+		%feature("compactdefaultargs") SetHLRAngle;
+		%feature("autodoc", "	* Sets the hasOwnHLRDeviationAngle flag to Standard_False
+
+	:rtype: None
+") SetHLRAngle;
+		void SetHLRAngle ();
+		%feature("compactdefaultargs") HasOwnHLRDeviationAngle;
+		%feature("autodoc", "	* Returns true if the there is a setting for HLR deviation angle in this framework for a specific interactive object.
+
+	:rtype: bool
+") HasOwnHLRDeviationAngle;
+		Standard_Boolean HasOwnHLRDeviationAngle ();
+		%feature("compactdefaultargs") PreviousHLRDeviationAngle;
+		%feature("autodoc", "	* Returns the previous value of the HLR deviation angle.
+
+	:rtype: float
+") PreviousHLRDeviationAngle;
+		Standard_Real PreviousHLRDeviationAngle ();
+		%feature("compactdefaultargs") SetAutoTriangulation;
+		%feature("autodoc", "	* Sets IsAutoTriangulated on or off by setting the parameter theIsEnabled to true or false. If this flag is True automatic re-triangulation with deflection-check logic will be applied. Else this feature will be disable and triangulation is expected to be computed by application itself and no shading presentation at all if unavailable.
+
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: None
+") SetAutoTriangulation;
+		void SetAutoTriangulation (const Standard_Boolean theIsEnabled);
+		%feature("compactdefaultargs") IsAutoTriangulation;
+		%feature("autodoc", "	* Returns True if automatic triangulation is enabled.
+
+	:rtype: bool
+") IsAutoTriangulation;
+		Standard_Boolean IsAutoTriangulation ();
+		%feature("compactdefaultargs") HasOwnIsAutoTriangulation;
+		%feature("autodoc", "	* Returns true if the drawer has IsoOnPlane setting active.
+
+	:rtype: bool
+") HasOwnIsAutoTriangulation;
+		Standard_Boolean HasOwnIsAutoTriangulation ();
 		%feature("compactdefaultargs") UIsoAspect;
 		%feature("autodoc", "	* Defines the attributes which are used when drawing an U isoparametric curve of a face. Defines the number of U isoparametric curves to be drawn for a single face. The LineAspect for U isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY75 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 //! These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
 
 	:rtype: Handle_Prs3d_IsoAspect
 ") UIsoAspect;
-		virtual Handle_Prs3d_IsoAspect UIsoAspect ();
+		Handle_Prs3d_IsoAspect UIsoAspect ();
 		%feature("compactdefaultargs") SetUIsoAspect;
-		%feature("autodoc", "	:param anAspect:
-	:type anAspect: Handle_Prs3d_IsoAspect &
-	:rtype: void
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Handle_Prs3d_IsoAspect &
+	:rtype: None
 ") SetUIsoAspect;
-		virtual void SetUIsoAspect (const Handle_Prs3d_IsoAspect & anAspect);
+		void SetUIsoAspect (const Handle_Prs3d_IsoAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnUIsoAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for UIso aspect that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnUIsoAspect;
+		Standard_Boolean HasOwnUIsoAspect ();
 		%feature("compactdefaultargs") VIsoAspect;
 		%feature("autodoc", "	* Defines the attributes which are used when drawing an V isoparametric curve of a face. Defines the number of V isoparametric curves to be drawn for a single face. The LineAspect for V isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY82 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 //! These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
 
 	:rtype: Handle_Prs3d_IsoAspect
 ") VIsoAspect;
-		virtual Handle_Prs3d_IsoAspect VIsoAspect ();
+		Handle_Prs3d_IsoAspect VIsoAspect ();
 		%feature("compactdefaultargs") SetVIsoAspect;
-		%feature("autodoc", "	* Sets the appearance of V isoparameters - anAspect.
+		%feature("autodoc", "	* Sets the appearance of V isoparameters - theAspect.
 
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_IsoAspect &
-	:rtype: void
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_IsoAspect &
+	:rtype: None
 ") SetVIsoAspect;
-		virtual void SetVIsoAspect (const Handle_Prs3d_IsoAspect & anAspect);
-		%feature("compactdefaultargs") FreeBoundaryAspect;
-		%feature("autodoc", "	* Stores the values for presentation of free boundaries, in other words, boundaries which are not shared. The LineAspect for the free boundaries can be edited. The default values are: Color: Quantity_NOC_GREEN Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the algorithm Prs3d_WFShape
-
-	:rtype: Handle_Prs3d_LineAspect
-") FreeBoundaryAspect;
-		virtual Handle_Prs3d_LineAspect FreeBoundaryAspect ();
-		%feature("compactdefaultargs") SetFreeBoundaryAspect;
-		%feature("autodoc", "	* Sets the parameter anAspect for the display of free boundaries.
-
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_LineAspect &
-	:rtype: void
-") SetFreeBoundaryAspect;
-		virtual void SetFreeBoundaryAspect (const Handle_Prs3d_LineAspect & anAspect);
-		%feature("compactdefaultargs") SetFreeBoundaryDraw;
-		%feature("autodoc", "	* Sets free boundary drawing on or off by setting the parameter OnOff to true or false.
-
-	:param OnOff:
-	:type OnOff: bool
-	:rtype: void
-") SetFreeBoundaryDraw;
-		virtual void SetFreeBoundaryDraw (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") FreeBoundaryDraw;
-		%feature("autodoc", "	* Returns True if the drawing of the shared boundaries is disabled. True is the default setting.
+		void SetVIsoAspect (const Handle_Prs3d_IsoAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnVIsoAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for VIso aspect that overrides the one in the link.
 
 	:rtype: bool
-") FreeBoundaryDraw;
-		virtual Standard_Boolean FreeBoundaryDraw ();
+") HasOwnVIsoAspect;
+		Standard_Boolean HasOwnVIsoAspect ();
 		%feature("compactdefaultargs") WireAspect;
-		%feature("autodoc", "	* Returns wire aspect settings. The LineAspect for the wire can be edited. The default values are: Color: Quantity_NOC_RED Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the algorithm Prs3d_WFShape
+		%feature("autodoc", "	* Returns wire aspect settings. The LineAspect for the free boundaries can be edited. The default values are: Color: Quantity_NOC_GREEN Type of line: Aspect_TOL_SOLID Width: 1.0 These attributes are used by the algorithm Prs3d_WFShape.
 
 	:rtype: Handle_Prs3d_LineAspect
 ") WireAspect;
-		virtual Handle_Prs3d_LineAspect WireAspect ();
+		Handle_Prs3d_LineAspect WireAspect ();
 		%feature("compactdefaultargs") SetWireAspect;
-		%feature("autodoc", "	* Sets the parameter anAspect for display of wires.
+		%feature("autodoc", "	* Sets the parameter theAspect for display of wires.
 
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_LineAspect &
-	:rtype: void
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_LineAspect &
+	:rtype: None
 ") SetWireAspect;
-		virtual void SetWireAspect (const Handle_Prs3d_LineAspect & anAspect);
-		%feature("compactdefaultargs") SetWireDraw;
-		%feature("autodoc", "	* Sets WireDraw on or off by setting the parameter OnOff to true or false.
+		void SetWireAspect (const Handle_Prs3d_LineAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnWireAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for wire aspect that overrides the one in the link.
 
-	:param OnOff:
-	:type OnOff: bool
-	:rtype: void
+	:rtype: bool
+") HasOwnWireAspect;
+		Standard_Boolean HasOwnWireAspect ();
+		%feature("compactdefaultargs") SetWireDraw;
+		%feature("autodoc", "	* Sets WireDraw on or off by setting the parameter theIsEnabled to true or false.
+
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: None
 ") SetWireDraw;
-		virtual void SetWireDraw (const Standard_Boolean OnOff);
+		void SetWireDraw (const Standard_Boolean theIsEnabled);
 		%feature("compactdefaultargs") WireDraw;
-		%feature("autodoc", "	* returns True if the drawing of the wire is enabled.
+		%feature("autodoc", "	* Returns True if the drawing of the wire is enabled.
 
 	:rtype: bool
 ") WireDraw;
-		virtual Standard_Boolean WireDraw ();
-		%feature("compactdefaultargs") UnFreeBoundaryAspect;
-		%feature("autodoc", "	* Returns settings for shared boundary line aspects. The LineAspect for the unfree boundaries can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the algorithm Prs3d_WFShape
-
-	:rtype: Handle_Prs3d_LineAspect
-") UnFreeBoundaryAspect;
-		virtual Handle_Prs3d_LineAspect UnFreeBoundaryAspect ();
-		%feature("compactdefaultargs") SetUnFreeBoundaryAspect;
-		%feature("autodoc", "	* Sets the parameter anAspect for the display of shared boundaries.
-
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_LineAspect &
-	:rtype: void
-") SetUnFreeBoundaryAspect;
-		virtual void SetUnFreeBoundaryAspect (const Handle_Prs3d_LineAspect & anAspect);
-		%feature("compactdefaultargs") SetUnFreeBoundaryDraw;
-		%feature("autodoc", "	* Sets FreeBoundaryDraw on or off by setting the parameter OnOff to true or false. By default the unfree boundaries are drawn.
-
-	:param OnOff:
-	:type OnOff: bool
-	:rtype: void
-") SetUnFreeBoundaryDraw;
-		virtual void SetUnFreeBoundaryDraw (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") UnFreeBoundaryDraw;
-		%feature("autodoc", "	* Returns True if the drawing of the shared boundaries is enabled. True is the default setting.
+		Standard_Boolean WireDraw ();
+		%feature("compactdefaultargs") HasOwnWireDraw;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for 'draw wires' flag that overrides the one in the link.
 
 	:rtype: bool
-") UnFreeBoundaryDraw;
-		virtual Standard_Boolean UnFreeBoundaryDraw ();
+") HasOwnWireDraw;
+		Standard_Boolean HasOwnWireDraw ();
+		%feature("compactdefaultargs") PointAspect;
+		%feature("autodoc", "	* Returns the point aspect setting. The default values are Color: Quantity_NOC_YELLOW Type of marker: Aspect_TOM_PLUS Scale: 1.0 These attributes are used by the algorithms Prs3d_Point.
+
+	:rtype: Handle_Prs3d_PointAspect
+") PointAspect;
+		Handle_Prs3d_PointAspect PointAspect ();
+		%feature("compactdefaultargs") SetPointAspect;
+		%feature("autodoc", "	* Sets the parameter theAspect for display attributes of points
+
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_PointAspect &
+	:rtype: None
+") SetPointAspect;
+		void SetPointAspect (const Handle_Prs3d_PointAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnPointAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for point aspect that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnPointAspect;
+		Standard_Boolean HasOwnPointAspect ();
 		%feature("compactdefaultargs") LineAspect;
-		%feature("autodoc", "	* Returns settings for line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the following algorithms: Prs3d_Curve Prs3d_Line Prs3d_HLRShape
+		%feature("autodoc", "	* Returns settings for line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1.0 These attributes are used by the following algorithms: Prs3d_Curve Prs3d_Line Prs3d_HLRShape
 
 	:rtype: Handle_Prs3d_LineAspect
 ") LineAspect;
-		virtual Handle_Prs3d_LineAspect LineAspect ();
+		Handle_Prs3d_LineAspect LineAspect ();
 		%feature("compactdefaultargs") SetLineAspect;
-		%feature("autodoc", "	* Sets the parameter anAspect for display attributes of lines.
+		%feature("autodoc", "	* Sets the parameter theAspect for display attributes of lines.
 
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_LineAspect &
-	:rtype: void
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_LineAspect &
+	:rtype: None
 ") SetLineAspect;
-		virtual void SetLineAspect (const Handle_Prs3d_LineAspect & anAspect);
+		void SetLineAspect (const Handle_Prs3d_LineAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnLineAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for line aspect that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnLineAspect;
+		Standard_Boolean HasOwnLineAspect ();
 		%feature("compactdefaultargs") TextAspect;
 		%feature("autodoc", "	* Returns settings for text aspect. These settings can be edited. The default value is: - Color: Quantity_NOC_YELLOW
 
 	:rtype: Handle_Prs3d_TextAspect
 ") TextAspect;
-		virtual Handle_Prs3d_TextAspect TextAspect ();
+		Handle_Prs3d_TextAspect TextAspect ();
 		%feature("compactdefaultargs") SetTextAspect;
-		%feature("autodoc", "	* Sets the parameter anAspect for display attributes of text.
+		%feature("autodoc", "	* Sets the parameter theAspect for display attributes of text.
 
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_TextAspect &
-	:rtype: void
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_TextAspect &
+	:rtype: None
 ") SetTextAspect;
-		virtual void SetTextAspect (const Handle_Prs3d_TextAspect & anAspect);
-		%feature("compactdefaultargs") SetLineArrowDraw;
-		%feature("autodoc", "	* enables the drawing of an arrow at the end of each line. By default the arrows are not drawn.
-
-	:param OnOff:
-	:type OnOff: bool
-	:rtype: void
-") SetLineArrowDraw;
-		virtual void SetLineArrowDraw (const Standard_Boolean OnOff);
-		%feature("compactdefaultargs") LineArrowDraw;
-		%feature("autodoc", "	* Returns True if drawing an arrow at the end of each edge is enabled and False otherwise (the default).
+		void SetTextAspect (const Handle_Prs3d_TextAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnTextAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for text aspect that overrides the one in the link.
 
 	:rtype: bool
-") LineArrowDraw;
-		virtual Standard_Boolean LineArrowDraw ();
-		%feature("compactdefaultargs") ArrowAspect;
-		%feature("autodoc", "	* Returns the attributes for display of arrows.
-
-	:rtype: Handle_Prs3d_ArrowAspect
-") ArrowAspect;
-		virtual Handle_Prs3d_ArrowAspect ArrowAspect ();
-		%feature("compactdefaultargs") SetArrowAspect;
-		%feature("autodoc", "	* Sets the parameter anAspect for display attributes of arrows.
-
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_ArrowAspect &
-	:rtype: void
-") SetArrowAspect;
-		virtual void SetArrowAspect (const Handle_Prs3d_ArrowAspect & anAspect);
-		%feature("compactdefaultargs") PointAspect;
-		%feature("autodoc", "	* Returns the point aspect setting. The default values are Color: Quantity_NOC_YELLOW Type of marker: Aspect_TOM_PLUS Scale: 1. These attributes are used by the algorithms Prs3d_Point.
-
-	:rtype: Handle_Prs3d_PointAspect
-") PointAspect;
-		virtual Handle_Prs3d_PointAspect PointAspect ();
-		%feature("compactdefaultargs") SetPointAspect;
-		%feature("autodoc", "	* Sets the parameter anAspect for display attributes of points
-
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_PointAspect &
-	:rtype: void
-") SetPointAspect;
-		virtual void SetPointAspect (const Handle_Prs3d_PointAspect & anAspect);
-		%feature("compactdefaultargs") SetVertexDrawMode;
-		%feature("autodoc", "	* Sets the mode of visualization of vertices of a TopoDS_Shape instance. By default, only stand-alone vertices (not belonging topologically to an edge) are drawn, that corresponds to <b>Prs3d_VDM_Standalone</b> mode. Switching to <b>Prs3d_VDM_Standalone</b> mode makes all shape's vertices visible. To inherit this parameter from the global drawer instance ('the link') when it is present, <b>Prs3d_VDM_Inherited</b> value should be used.
-
-	:param theMode:
-	:type theMode: Prs3d_VertexDrawMode
-	:rtype: void
-") SetVertexDrawMode;
-		virtual void SetVertexDrawMode (const Prs3d_VertexDrawMode theMode);
-		%feature("compactdefaultargs") VertexDrawMode;
-		%feature("autodoc", "	* Returns the current mode of visualization of vertices of a TopoDS_Shape instance.
-
-	:rtype: Prs3d_VertexDrawMode
-") VertexDrawMode;
-		virtual Prs3d_VertexDrawMode VertexDrawMode ();
+") HasOwnTextAspect;
+		Standard_Boolean HasOwnTextAspect ();
 		%feature("compactdefaultargs") ShadingAspect;
 		%feature("autodoc", "	* Returns settings for shading aspects. These settings can be edited. The default values are: - Color: Quantity_NOC_YELLOW - Material: Graphic3d_NOM_BRASS Shading aspect is obtained through decomposition of 3d faces into triangles, each side of each triangle being a chord of the corresponding curved edge in the face. Reflection of light in each projector perspective is then calculated for each of the resultant triangular planes.
 
 	:rtype: Handle_Prs3d_ShadingAspect
 ") ShadingAspect;
-		virtual Handle_Prs3d_ShadingAspect ShadingAspect ();
+		Handle_Prs3d_ShadingAspect ShadingAspect ();
 		%feature("compactdefaultargs") SetShadingAspect;
-		%feature("autodoc", "	* Sets the parameter anAspect for display attributes of shading.
+		%feature("autodoc", "	* Sets the parameter theAspect for display attributes of shading.
 
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_ShadingAspect &
-	:rtype: void
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_ShadingAspect &
+	:rtype: None
 ") SetShadingAspect;
-		virtual void SetShadingAspect (const Handle_Prs3d_ShadingAspect & anAspect);
-		%feature("compactdefaultargs") SetShadingAspectGlobal;
-		%feature("autodoc", "	* indicates that the ShadingAspect will be apply to the whole presentation. This allows to modify the aspect without recomputing the content of the presentation.
-
-	:param aValue:
-	:type aValue: bool
-	:rtype: void
-") SetShadingAspectGlobal;
-		virtual void SetShadingAspectGlobal (const Standard_Boolean aValue);
-		%feature("compactdefaultargs") ShadingAspectGlobal;
-		%feature("autodoc", "	:rtype: bool
-") ShadingAspectGlobal;
-		virtual Standard_Boolean ShadingAspectGlobal ();
-		%feature("compactdefaultargs") DrawHiddenLine;
-		%feature("autodoc", "	* returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
+		void SetShadingAspect (const Handle_Prs3d_ShadingAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnShadingAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for shading aspect that overrides the one in the link.
 
 	:rtype: bool
-") DrawHiddenLine;
-		virtual Standard_Boolean DrawHiddenLine ();
-		%feature("compactdefaultargs") EnableDrawHiddenLine;
-		%feature("autodoc", "	* Enables the DrawHiddenLine function.
+") HasOwnShadingAspect;
+		Standard_Boolean HasOwnShadingAspect ();
+		%feature("compactdefaultargs") ShadingAspectGlobal;
+		%feature("autodoc", "	* Returns True if the ShadingAspect is applied to the whole presentation.
 
-	:rtype: void
-") EnableDrawHiddenLine;
-		virtual void EnableDrawHiddenLine ();
-		%feature("compactdefaultargs") DisableDrawHiddenLine;
-		%feature("autodoc", "	* Disables the DrawHiddenLine function.
+	:rtype: bool
+") ShadingAspectGlobal;
+		Standard_Boolean ShadingAspectGlobal ();
+		%feature("compactdefaultargs") SetShadingAspectGlobal;
+		%feature("autodoc", "	* Indicates that the ShadingAspect will be apply to the whole presentation. This allows to modify the aspect without recomputing the content of the presentation.
 
-	:rtype: void
-") DisableDrawHiddenLine;
-		virtual void DisableDrawHiddenLine ();
-		%feature("compactdefaultargs") HiddenLineAspect;
-		%feature("autodoc", "	* Returns settings for hidden line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_DASH Width: 1.
+	:param theValue:
+	:type theValue: bool
+	:rtype: None
+") SetShadingAspectGlobal;
+		void SetShadingAspectGlobal (const Standard_Boolean theValue);
+		%feature("compactdefaultargs") HasOwnShadingAspectGlobal;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for ShadingAspectGlobal flag that overrides the one in the link.
 
-	:rtype: Handle_Prs3d_LineAspect
-") HiddenLineAspect;
-		virtual Handle_Prs3d_LineAspect HiddenLineAspect ();
-		%feature("compactdefaultargs") SetHiddenLineAspect;
-		%feature("autodoc", "	* Sets the parameter anAspect for the display of hidden lines in hidden line removal mode.
-
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_LineAspect &
-	:rtype: void
-") SetHiddenLineAspect;
-		virtual void SetHiddenLineAspect (const Handle_Prs3d_LineAspect & anAspect);
+	:rtype: bool
+") HasOwnShadingAspectGlobal;
+		Standard_Boolean HasOwnShadingAspectGlobal ();
 		%feature("compactdefaultargs") SeenLineAspect;
-		%feature("autodoc", "	* Returns settings for seen line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1.
+		%feature("autodoc", "	* Returns settings for seen line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1.0
 
 	:rtype: Handle_Prs3d_LineAspect
 ") SeenLineAspect;
-		virtual Handle_Prs3d_LineAspect SeenLineAspect ();
+		Handle_Prs3d_LineAspect SeenLineAspect ();
 		%feature("compactdefaultargs") SetSeenLineAspect;
-		%feature("autodoc", "	* Sets the parameter anAspect for the display of seen lines in hidden line removal mode.
+		%feature("autodoc", "	* Sets the parameter theAspect for the display of seen lines in hidden line removal mode.
 
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_LineAspect &
-	:rtype: void
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_LineAspect &
+	:rtype: None
 ") SetSeenLineAspect;
-		virtual void SetSeenLineAspect (const Handle_Prs3d_LineAspect & anAspect);
+		void SetSeenLineAspect (const Handle_Prs3d_LineAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnSeenLineAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for seen line aspect that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnSeenLineAspect;
+		Standard_Boolean HasOwnSeenLineAspect ();
 		%feature("compactdefaultargs") PlaneAspect;
 		%feature("autodoc", "	* Returns settings for the appearance of planes.
 
 	:rtype: Handle_Prs3d_PlaneAspect
 ") PlaneAspect;
-		virtual Handle_Prs3d_PlaneAspect PlaneAspect ();
+		Handle_Prs3d_PlaneAspect PlaneAspect ();
 		%feature("compactdefaultargs") SetPlaneAspect;
-		%feature("autodoc", "	* Sets the parameter anAspect for the display of planes.
+		%feature("autodoc", "	* Sets the parameter theAspect for the display of planes.
 
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_PlaneAspect &
-	:rtype: void
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_PlaneAspect &
+	:rtype: None
 ") SetPlaneAspect;
-		virtual void SetPlaneAspect (const Handle_Prs3d_PlaneAspect & anAspect);
+		void SetPlaneAspect (const Handle_Prs3d_PlaneAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnPlaneAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for plane aspect that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnPlaneAspect;
+		Standard_Boolean HasOwnPlaneAspect ();
+		%feature("compactdefaultargs") ArrowAspect;
+		%feature("autodoc", "	* Returns the attributes for display of arrows.
+
+	:rtype: Handle_Prs3d_ArrowAspect
+") ArrowAspect;
+		Handle_Prs3d_ArrowAspect ArrowAspect ();
+		%feature("compactdefaultargs") SetArrowAspect;
+		%feature("autodoc", "	* Sets the parameter theAspect for display attributes of arrows.
+
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_ArrowAspect &
+	:rtype: None
+") SetArrowAspect;
+		void SetArrowAspect (const Handle_Prs3d_ArrowAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnArrowAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for arrow aspect that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnArrowAspect;
+		Standard_Boolean HasOwnArrowAspect ();
+		%feature("compactdefaultargs") SetLineArrowDraw;
+		%feature("autodoc", "	* Enables the drawing of an arrow at the end of each line. By default the arrows are not drawn.
+
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: None
+") SetLineArrowDraw;
+		void SetLineArrowDraw (const Standard_Boolean theIsEnabled);
+		%feature("compactdefaultargs") LineArrowDraw;
+		%feature("autodoc", "	* Returns True if drawing an arrow at the end of each edge is enabled and False otherwise (the default).
+
+	:rtype: bool
+") LineArrowDraw;
+		Standard_Boolean LineArrowDraw ();
+		%feature("compactdefaultargs") HasOwnLineArrowDraw;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for 'draw arrow' flag that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnLineArrowDraw;
+		Standard_Boolean HasOwnLineArrowDraw ();
+		%feature("compactdefaultargs") HiddenLineAspect;
+		%feature("autodoc", "	* Returns settings for hidden line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_DASH Width: 1.0
+
+	:rtype: Handle_Prs3d_LineAspect
+") HiddenLineAspect;
+		Handle_Prs3d_LineAspect HiddenLineAspect ();
+		%feature("compactdefaultargs") SetHiddenLineAspect;
+		%feature("autodoc", "	* Sets the parameter theAspect for the display of hidden lines in hidden line removal mode.
+
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_LineAspect &
+	:rtype: None
+") SetHiddenLineAspect;
+		void SetHiddenLineAspect (const Handle_Prs3d_LineAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnHiddenLineAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for hidden lines aspect that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnHiddenLineAspect;
+		Standard_Boolean HasOwnHiddenLineAspect ();
+		%feature("compactdefaultargs") DrawHiddenLine;
+		%feature("autodoc", "	* Returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
+
+	:rtype: bool
+") DrawHiddenLine;
+		Standard_Boolean DrawHiddenLine ();
+		%feature("compactdefaultargs") EnableDrawHiddenLine;
+		%feature("autodoc", "	* Enables the DrawHiddenLine function.
+
+	:rtype: None
+") EnableDrawHiddenLine;
+		void EnableDrawHiddenLine ();
+		%feature("compactdefaultargs") DisableDrawHiddenLine;
+		%feature("autodoc", "	* Disables the DrawHiddenLine function.
+
+	:rtype: None
+") DisableDrawHiddenLine;
+		void DisableDrawHiddenLine ();
+		%feature("compactdefaultargs") HasOwnDrawHiddenLine;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for 'draw hidden lines' flag that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnDrawHiddenLine;
+		Standard_Boolean HasOwnDrawHiddenLine ();
 		%feature("compactdefaultargs") VectorAspect;
-		%feature("autodoc", "	* Returns settings for the appearance of vectors. These settings can be edited. The default values are: Color: Quantity_NOC_SKYBLUE Type of line: Aspect_TOL_SOLID Width: 1.
+		%feature("autodoc", "	* Returns settings for the appearance of vectors. These settings can be edited. The default values are: Color: Quantity_NOC_SKYBLUE Type of line: Aspect_TOL_SOLID Width: 1.0
 
 	:rtype: Handle_Prs3d_LineAspect
 ") VectorAspect;
-		virtual Handle_Prs3d_LineAspect VectorAspect ();
+		Handle_Prs3d_LineAspect VectorAspect ();
 		%feature("compactdefaultargs") SetVectorAspect;
-		%feature("autodoc", "	* Sets the modality anAspect for the display of vectors.
+		%feature("autodoc", "	* Sets the modality theAspect for the display of vectors.
 
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_LineAspect &
-	:rtype: void
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_LineAspect &
+	:rtype: None
 ") SetVectorAspect;
-		virtual void SetVectorAspect (const Handle_Prs3d_LineAspect & anAspect);
+		void SetVectorAspect (const Handle_Prs3d_LineAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnVectorAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for vector aspect that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnVectorAspect;
+		Standard_Boolean HasOwnVectorAspect ();
+		%feature("compactdefaultargs") SetVertexDrawMode;
+		%feature("autodoc", "	* Sets the mode of visualization of vertices of a TopoDS_Shape instance. By default, only stand-alone vertices (not belonging topologically to an edge) are drawn, that corresponds to Prs3d_VDM_Standalone mode. Switching to Prs3d_VDM_Standalone mode makes all shape's vertices visible. To inherit this parameter from the global drawer instance ('the link') when it is present, Prs3d_VDM_Inherited value should be used.
+
+	:param theMode:
+	:type theMode: Prs3d_VertexDrawMode
+	:rtype: None
+") SetVertexDrawMode;
+		void SetVertexDrawMode (const Prs3d_VertexDrawMode theMode);
+		%feature("compactdefaultargs") VertexDrawMode;
+		%feature("autodoc", "	* Returns the current mode of visualization of vertices of a TopoDS_Shape instance.
+
+	:rtype: Prs3d_VertexDrawMode
+") VertexDrawMode;
+		Prs3d_VertexDrawMode VertexDrawMode ();
+		%feature("compactdefaultargs") HasOwnVertexDrawMode;
+		%feature("autodoc", "	* Returns true if the vertex draw mode is not equal to <b>Prs3d_VDM_Inherited</b>. This means that individual vertex draw mode value (i.e. not inherited from the global drawer) is used for a specific interactive object.
+
+	:rtype: bool
+") HasOwnVertexDrawMode;
+		Standard_Boolean HasOwnVertexDrawMode ();
 		%feature("compactdefaultargs") DatumAspect;
-		%feature("autodoc", "	* Returns settings for the appearance of datums. These settings can be edited. The default values for the three axes are: Color: Quantity_NOC_PEACHPUFF Type of line: Aspect_TOL_SOLID Width: 1.
+		%feature("autodoc", "	* Returns settings for the appearance of datums. These settings can be edited. The default values for the three axes are: Color: Quantity_NOC_PEACHPUFF Type of line: Aspect_TOL_SOLID Width: 1.0
 
 	:rtype: Handle_Prs3d_DatumAspect
 ") DatumAspect;
-		virtual Handle_Prs3d_DatumAspect DatumAspect ();
+		Handle_Prs3d_DatumAspect DatumAspect ();
 		%feature("compactdefaultargs") SetDatumAspect;
-		%feature("autodoc", "	* Sets the modality anAspect for the display of datums.
-
-	:param anAspect:
-	:type anAspect: Handle_Prs3d_DatumAspect &
-	:rtype: void
-") SetDatumAspect;
-		virtual void SetDatumAspect (const Handle_Prs3d_DatumAspect & anAspect);
-		%feature("compactdefaultargs") DimensionAspect;
-		%feature("autodoc", "	* Returns settings for the appearance of dimensions.
-
-	:rtype: Handle_Prs3d_DimensionAspect
-") DimensionAspect;
-		virtual Handle_Prs3d_DimensionAspect DimensionAspect ();
-		%feature("compactdefaultargs") SetDimensionAspect;
-		%feature("autodoc", "	* Sets the settings for the appearance of dimensions.
+		%feature("autodoc", "	* Sets the modality theAspect for the display of datums.
 
 	:param theAspect:
-	:type theAspect: Handle_Prs3d_DimensionAspect &
-	:rtype: void
-") SetDimensionAspect;
-		virtual void SetDimensionAspect (const Handle_Prs3d_DimensionAspect & theAspect);
-		%feature("compactdefaultargs") SetDimLengthModelUnits;
-		%feature("autodoc", "	* Sets dimension length model units for computing of dimension presentation.
+	:type theAspect: Handle_Prs3d_DatumAspect &
+	:rtype: None
+") SetDatumAspect;
+		void SetDatumAspect (const Handle_Prs3d_DatumAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnDatumAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for datum aspect that overrides the one in the link.
 
-	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
-	:rtype: void
-") SetDimLengthModelUnits;
-		virtual void SetDimLengthModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("compactdefaultargs") SetDimAngleModelUnits;
-		%feature("autodoc", "	* Sets dimension angle model units for computing of dimension presentation.
-
-	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
-	:rtype: void
-") SetDimAngleModelUnits;
-		virtual void SetDimAngleModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("compactdefaultargs") DimLengthModelUnits;
-		%feature("autodoc", "	* Returns length model units for the dimension presentation.
-
-	:rtype: TCollection_AsciiString
-") DimLengthModelUnits;
-		virtual const TCollection_AsciiString & DimLengthModelUnits ();
-		%feature("compactdefaultargs") DimAngleModelUnits;
-		%feature("autodoc", "	* Returns angle model units for the dimension presentation.
-
-	:rtype: TCollection_AsciiString
-") DimAngleModelUnits;
-		virtual const TCollection_AsciiString & DimAngleModelUnits ();
-		%feature("compactdefaultargs") SetDimLengthDisplayUnits;
-		%feature("autodoc", "	* Sets length units in which value for dimension presentation is displayed.
-
-	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
-	:rtype: void
-") SetDimLengthDisplayUnits;
-		virtual void SetDimLengthDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("compactdefaultargs") SetDimAngleDisplayUnits;
-		%feature("autodoc", "	* Sets angle units in which value for dimension presentation is displayed.
-
-	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
-	:rtype: void
-") SetDimAngleDisplayUnits;
-		virtual void SetDimAngleDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("compactdefaultargs") DimLengthDisplayUnits;
-		%feature("autodoc", "	* Returns length units in which dimension presentation is displayed.
-
-	:rtype: TCollection_AsciiString
-") DimLengthDisplayUnits;
-		virtual const TCollection_AsciiString & DimLengthDisplayUnits ();
-		%feature("compactdefaultargs") DimAngleDisplayUnits;
-		%feature("autodoc", "	* Returns angle units in which dimension presentation is displayed.
-
-	:rtype: TCollection_AsciiString
-") DimAngleDisplayUnits;
-		virtual const TCollection_AsciiString & DimAngleDisplayUnits ();
+	:rtype: bool
+") HasOwnDatumAspect;
+		Standard_Boolean HasOwnDatumAspect ();
 		%feature("compactdefaultargs") SectionAspect;
-		%feature("autodoc", "	* The LineAspect for the wire can be edited. The default values are: Color: Quantity_NOC_ORANGE Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the algorithm Prs3d_WFShape.
+		%feature("autodoc", "	* The LineAspect for the wire can be edited. The default values are: Color: Quantity_NOC_ORANGE Type of line: Aspect_TOL_SOLID Width: 1.0 These attributes are used by the algorithm Prs3d_WFShape.
 
 	:rtype: Handle_Prs3d_LineAspect
 ") SectionAspect;
-		virtual Handle_Prs3d_LineAspect SectionAspect ();
+		Handle_Prs3d_LineAspect SectionAspect ();
 		%feature("compactdefaultargs") SetSectionAspect;
 		%feature("autodoc", "	* Sets the parameter theAspect for display attributes of sections.
 
 	:param theAspect:
 	:type theAspect: Handle_Prs3d_LineAspect &
-	:rtype: void
+	:rtype: None
 ") SetSectionAspect;
-		virtual void SetSectionAspect (const Handle_Prs3d_LineAspect & theAspect);
-		%feature("compactdefaultargs") SetFaceBoundaryDraw;
-		%feature("autodoc", "	* Enables or disables face boundary drawing for shading presentations. theIsEnabled is a boolean flag indicating whether the face boundaries should be drawn or not.
-
-	:param theIsEnabled:
-	:type theIsEnabled: bool
-	:rtype: void
-") SetFaceBoundaryDraw;
-		virtual void SetFaceBoundaryDraw (const Standard_Boolean theIsEnabled);
-		%feature("compactdefaultargs") IsFaceBoundaryDraw;
-		%feature("autodoc", "	* Checks whether the face boundary drawing is enabled or not.
+		void SetSectionAspect (const Handle_Prs3d_LineAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnSectionAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for section aspect that overrides the one in the link.
 
 	:rtype: bool
-") IsFaceBoundaryDraw;
-		virtual Standard_Boolean IsFaceBoundaryDraw ();
-		%feature("compactdefaultargs") SetFaceBoundaryAspect;
-		%feature("autodoc", "	* Sets line aspect for face boundaries. theAspect is the line aspect that determines the look of the face boundaries.
+") HasOwnSectionAspect;
+		Standard_Boolean HasOwnSectionAspect ();
+		%feature("compactdefaultargs") SetFreeBoundaryAspect;
+		%feature("autodoc", "	* Sets the parameter theAspect for the display of free boundaries. The method sets aspect owned by the drawer that will be used during visualization instead of the one set in link.
 
 	:param theAspect:
 	:type theAspect: Handle_Prs3d_LineAspect &
-	:rtype: void
+	:rtype: None
+") SetFreeBoundaryAspect;
+		void SetFreeBoundaryAspect (const Handle_Prs3d_LineAspect & theAspect);
+		%feature("compactdefaultargs") FreeBoundaryAspect;
+		%feature("autodoc", "	* Returns the values for presentation of free boundaries, in other words, boundaries which are not shared. The LineAspect for the free boundaries can be edited. The default values are: Color: Quantity_NOC_GREEN Type of line: Aspect_TOL_SOLID Width: 1.0 These attributes are used by the algorithm Prs3d_WFShape
+
+	:rtype: Handle_Prs3d_LineAspect
+") FreeBoundaryAspect;
+		Handle_Prs3d_LineAspect FreeBoundaryAspect ();
+		%feature("compactdefaultargs") HasOwnFreeBoundaryAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for free boundaries aspect that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnFreeBoundaryAspect;
+		Standard_Boolean HasOwnFreeBoundaryAspect ();
+		%feature("compactdefaultargs") SetFreeBoundaryDraw;
+		%feature("autodoc", "	* Enables or disables drawing of free boundaries for shading presentations. The method sets drawing flag owned by the drawer that will be used during visualization instead of the one set in link. theIsEnabled is a boolean flag indicating whether the free boundaries should be drawn or not.
+
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: None
+") SetFreeBoundaryDraw;
+		void SetFreeBoundaryDraw (const Standard_Boolean theIsEnabled);
+		%feature("compactdefaultargs") FreeBoundaryDraw;
+		%feature("autodoc", "	* Returns True if the drawing of the free boundaries is enabled True is the default setting.
+
+	:rtype: bool
+") FreeBoundaryDraw;
+		Standard_Boolean FreeBoundaryDraw ();
+		%feature("compactdefaultargs") HasOwnFreeBoundaryDraw;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for 'draw free boundaries' flag that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnFreeBoundaryDraw;
+		Standard_Boolean HasOwnFreeBoundaryDraw ();
+		%feature("compactdefaultargs") SetUnFreeBoundaryAspect;
+		%feature("autodoc", "	* Sets the parameter theAspect for the display of shared boundaries. The method sets aspect owned by the drawer that will be used during visualization instead of the one set in link.
+
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_LineAspect &
+	:rtype: None
+") SetUnFreeBoundaryAspect;
+		void SetUnFreeBoundaryAspect (const Handle_Prs3d_LineAspect & theAspect);
+		%feature("compactdefaultargs") UnFreeBoundaryAspect;
+		%feature("autodoc", "	* Returns settings for shared boundary line aspects. The LineAspect for the unfree boundaries can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the algorithm Prs3d_WFShape
+
+	:rtype: Handle_Prs3d_LineAspect
+") UnFreeBoundaryAspect;
+		Handle_Prs3d_LineAspect UnFreeBoundaryAspect ();
+		%feature("compactdefaultargs") HasOwnUnFreeBoundaryAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for unfree boundaries aspect that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnUnFreeBoundaryAspect;
+		Standard_Boolean HasOwnUnFreeBoundaryAspect ();
+		%feature("compactdefaultargs") SetUnFreeBoundaryDraw;
+		%feature("autodoc", "	* Enables or disables drawing of shared boundaries for shading presentations. The method sets drawing flag owned by the drawer that will be used during visualization instead of the one set in link. theIsEnabled is a boolean flag indicating whether the shared boundaries should be drawn or not.
+
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: None
+") SetUnFreeBoundaryDraw;
+		void SetUnFreeBoundaryDraw (const Standard_Boolean theIsEnabled);
+		%feature("compactdefaultargs") UnFreeBoundaryDraw;
+		%feature("autodoc", "	* Returns True if the drawing of the shared boundaries is enabled. True is the default setting.
+
+	:rtype: bool
+") UnFreeBoundaryDraw;
+		Standard_Boolean UnFreeBoundaryDraw ();
+		%feature("compactdefaultargs") HasOwnUnFreeBoundaryDraw;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for 'draw shared boundaries' flag that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnUnFreeBoundaryDraw;
+		Standard_Boolean HasOwnUnFreeBoundaryDraw ();
+		%feature("compactdefaultargs") SetFaceBoundaryAspect;
+		%feature("autodoc", "	* Sets line aspect for face boundaries. The method sets line aspect owned by the drawer that will be used during visualization instead of the one set in link. theAspect is the line aspect that determines the look of the face boundaries.
+
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_LineAspect &
+	:rtype: None
 ") SetFaceBoundaryAspect;
-		virtual void SetFaceBoundaryAspect (const Handle_Prs3d_LineAspect & theAspect);
+		void SetFaceBoundaryAspect (const Handle_Prs3d_LineAspect & theAspect);
 		%feature("compactdefaultargs") FaceBoundaryAspect;
 		%feature("autodoc", "	* Returns line aspect of face boundaries.
 
 	:rtype: Handle_Prs3d_LineAspect
 ") FaceBoundaryAspect;
-		virtual Handle_Prs3d_LineAspect FaceBoundaryAspect ();
+		Handle_Prs3d_LineAspect FaceBoundaryAspect ();
+		%feature("compactdefaultargs") HasOwnFaceBoundaryAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for face boundaries aspect that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnFaceBoundaryAspect;
+		Standard_Boolean HasOwnFaceBoundaryAspect ();
+		%feature("compactdefaultargs") SetFaceBoundaryDraw;
+		%feature("autodoc", "	* Enables or disables face boundary drawing for shading presentations. The method sets drawing flag owned by the drawer that will be used during visualization instead of the one set in link. theIsEnabled is a boolean flag indicating whether the face boundaries should be drawn or not.
+
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: None
+") SetFaceBoundaryDraw;
+		void SetFaceBoundaryDraw (const Standard_Boolean theIsEnabled);
+		%feature("compactdefaultargs") FaceBoundaryDraw;
+		%feature("autodoc", "	* Checks whether the face boundary drawing is enabled or not.
+
+	:rtype: bool
+") FaceBoundaryDraw;
+		Standard_Boolean FaceBoundaryDraw ();
+		%feature("compactdefaultargs") HasOwnFaceBoundaryDraw;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for 'draw face boundaries' flag that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnFaceBoundaryDraw;
+		Standard_Boolean HasOwnFaceBoundaryDraw ();
+		%feature("compactdefaultargs") DimensionAspect;
+		%feature("autodoc", "	* Returns settings for the appearance of dimensions.
+
+	:rtype: Handle_Prs3d_DimensionAspect
+") DimensionAspect;
+		Handle_Prs3d_DimensionAspect DimensionAspect ();
+		%feature("compactdefaultargs") SetDimensionAspect;
+		%feature("autodoc", "	* Sets the settings for the appearance of dimensions. The method sets aspect owned by the drawer that will be used during visualization instead of the one set in link.
+
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_DimensionAspect &
+	:rtype: None
+") SetDimensionAspect;
+		void SetDimensionAspect (const Handle_Prs3d_DimensionAspect & theAspect);
+		%feature("compactdefaultargs") HasOwnDimensionAspect;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for the appearance of dimensions that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnDimensionAspect;
+		Standard_Boolean HasOwnDimensionAspect ();
+		%feature("compactdefaultargs") SetDimLengthModelUnits;
+		%feature("autodoc", "	* Sets dimension length model units for computing of dimension presentation. The method sets value owned by the drawer that will be used during visualization instead of the one set in link.
+
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: None
+") SetDimLengthModelUnits;
+		void SetDimLengthModelUnits (const TCollection_AsciiString & theUnits);
+		%feature("compactdefaultargs") SetDimAngleModelUnits;
+		%feature("autodoc", "	* Sets dimension angle model units for computing of dimension presentation. The method sets value owned by the drawer that will be used during visualization instead of the one set in link.
+
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: None
+") SetDimAngleModelUnits;
+		void SetDimAngleModelUnits (const TCollection_AsciiString & theUnits);
+		%feature("compactdefaultargs") DimLengthModelUnits;
+		%feature("autodoc", "	* Returns length model units for the dimension presentation.
+
+	:rtype: TCollection_AsciiString
+") DimLengthModelUnits;
+		const TCollection_AsciiString & DimLengthModelUnits ();
+		%feature("compactdefaultargs") DimAngleModelUnits;
+		%feature("autodoc", "	* Returns angle model units for the dimension presentation.
+
+	:rtype: TCollection_AsciiString
+") DimAngleModelUnits;
+		const TCollection_AsciiString & DimAngleModelUnits ();
+		%feature("compactdefaultargs") HasOwnDimLengthModelUnits;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for dimension length model units that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnDimLengthModelUnits;
+		Standard_Boolean HasOwnDimLengthModelUnits ();
+		%feature("compactdefaultargs") HasOwnDimAngleModelUnits;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for dimension angle model units that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnDimAngleModelUnits;
+		Standard_Boolean HasOwnDimAngleModelUnits ();
+		%feature("compactdefaultargs") SetDimLengthDisplayUnits;
+		%feature("autodoc", "	* Sets length units in which value for dimension presentation is displayed. The method sets value owned by the drawer that will be used during visualization instead of the one set in link.
+
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: None
+") SetDimLengthDisplayUnits;
+		void SetDimLengthDisplayUnits (const TCollection_AsciiString & theUnits);
+		%feature("compactdefaultargs") SetDimAngleDisplayUnits;
+		%feature("autodoc", "	* Sets angle units in which value for dimension presentation is displayed. The method sets value owned by the drawer that will be used during visualization instead of the one set in link.
+
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: None
+") SetDimAngleDisplayUnits;
+		void SetDimAngleDisplayUnits (const TCollection_AsciiString & theUnits);
+		%feature("compactdefaultargs") DimLengthDisplayUnits;
+		%feature("autodoc", "	* Returns length units in which dimension presentation is displayed.
+
+	:rtype: TCollection_AsciiString
+") DimLengthDisplayUnits;
+		const TCollection_AsciiString & DimLengthDisplayUnits ();
+		%feature("compactdefaultargs") DimAngleDisplayUnits;
+		%feature("autodoc", "	* Returns angle units in which dimension presentation is displayed.
+
+	:rtype: TCollection_AsciiString
+") DimAngleDisplayUnits;
+		const TCollection_AsciiString & DimAngleDisplayUnits ();
+		%feature("compactdefaultargs") HasOwnDimLengthDisplayUnits;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for length units in which dimension presentation is displayed that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnDimLengthDisplayUnits;
+		Standard_Boolean HasOwnDimLengthDisplayUnits ();
+		%feature("compactdefaultargs") HasOwnDimAngleDisplayUnits;
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for angle units in which dimension presentation is displayed that overrides the one in the link.
+
+	:rtype: bool
+") HasOwnDimAngleDisplayUnits;
+		Standard_Boolean HasOwnDimAngleDisplayUnits ();
+		%feature("compactdefaultargs") Link;
+		%feature("autodoc", "	* Returns the drawer to which the current object references.
+
+	:rtype: Handle_Prs3d_Drawer
+") Link;
+		Handle_Prs3d_Drawer Link ();
+		%feature("compactdefaultargs") HasLink;
+		%feature("autodoc", "	* Returns true if the current object has a link on the other drawer.
+
+	:rtype: bool
+") HasLink;
+		Standard_Boolean HasLink ();
+		%feature("compactdefaultargs") Link;
+		%feature("autodoc", "	* Sets theDrawer as a link to which the current object references.
+
+	:param theDrawer:
+	:type theDrawer: Handle_Prs3d_Drawer &
+	:rtype: None
+") Link;
+		void Link (const Handle_Prs3d_Drawer & theDrawer);
+		%feature("compactdefaultargs") ClearLocalAttributes;
+		%feature("autodoc", "	* Removes local attributes.
+
+	:rtype: None
+") ClearLocalAttributes;
+		void ClearLocalAttributes ();
 };
 
 
@@ -1054,42 +1392,12 @@ class Prs3d_Presentation : public Graphic3d_Structure {
 	:rtype: void
 ") Compute;
 		virtual void Compute (const Handle_Graphic3d_DataStructureManager & aProjector,const TColStd_Array2OfReal & AMatrix,Handle_Graphic3d_Structure & aStructure);
-		%feature("compactdefaultargs") Highlight;
-		%feature("autodoc", "	* displays the whole content of the presentation in white.
-
-	:rtype: None
-") Highlight;
-		void Highlight ();
-		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "	* displays the whole content of the presentation in the specified color.
-
-	:param aColor:
-	:type aColor: Quantity_NameOfColor
-	:rtype: None
-") Color;
-		void Color (const Quantity_NameOfColor aColor);
-		%feature("compactdefaultargs") BoundBox;
-		%feature("autodoc", "	:rtype: None
-") BoundBox;
-		void BoundBox ();
-		%feature("compactdefaultargs") SetIsForHighlight;
-		%feature("autodoc", "	* marks the structure <self> representing wired structure needed for highlight only so it won't be added to BVH tree.
-
-	:param isForHighlight:
-	:type isForHighlight: bool
-	:rtype: void
-") SetIsForHighlight;
-		virtual void SetIsForHighlight (const Standard_Boolean isForHighlight);
 		%feature("compactdefaultargs") SetShadingAspect;
 		%feature("autodoc", "	:param aShadingAspect:
 	:type aShadingAspect: Handle_Prs3d_ShadingAspect &
 	:rtype: None
 ") SetShadingAspect;
 		void SetShadingAspect (const Handle_Prs3d_ShadingAspect & aShadingAspect);
-		%feature("compactdefaultargs") IsPickable;
-		%feature("autodoc", "	:rtype: bool
-") IsPickable;
-		Standard_Boolean IsPickable ();
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "	:param aTransformation:
 	:type aTransformation: Handle_Geom_Transformation &
@@ -1142,14 +1450,6 @@ class Prs3d_Presentation : public Graphic3d_Structure {
 		%feature("autodoc", "	:rtype: None
 ") RemoveAll;
 		void RemoveAll ();
-		%feature("compactdefaultargs") SetPickable;
-		%feature("autodoc", "	:rtype: None
-") SetPickable;
-		void SetPickable ();
-		%feature("compactdefaultargs") SetUnPickable;
-		%feature("autodoc", "	:rtype: None
-") SetUnPickable;
-		void SetUnPickable ();
 };
 
 
@@ -1507,6 +1807,12 @@ class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 	:rtype: None
 ") Prs3d_ArrowAspect;
 		 Prs3d_ArrowAspect (const Quantity_PlaneAngle anAngle,const Quantity_Length aLength);
+		%feature("compactdefaultargs") Prs3d_ArrowAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Handle_Graphic3d_AspectLine3d &
+	:rtype: None
+") Prs3d_ArrowAspect;
+		 Prs3d_ArrowAspect (const Handle_Graphic3d_AspectLine3d & theAspect);
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "	* defines the angle of the arrows.
 
@@ -1551,6 +1857,12 @@ class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_AspectLine3d
 ") Aspect;
 		Handle_Graphic3d_AspectLine3d Aspect ();
+		%feature("compactdefaultargs") SetAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Handle_Graphic3d_AspectLine3d &
+	:rtype: None
+") SetAspect;
+		void SetAspect (const Handle_Graphic3d_AspectLine3d & theAspect);
 };
 
 
@@ -2022,6 +2334,12 @@ class Prs3d_LineAspect : public Prs3d_BasicAspect {
 	:rtype: None
 ") Prs3d_LineAspect;
 		 Prs3d_LineAspect (const Quantity_Color & aColor,const Aspect_TypeOfLine aType,const Standard_Real aWidth);
+		%feature("compactdefaultargs") Prs3d_LineAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Handle_Graphic3d_AspectLine3d &
+	:rtype: None
+") Prs3d_LineAspect;
+		 Prs3d_LineAspect (const Handle_Graphic3d_AspectLine3d & theAspect);
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "	:param aColor:
 	:type aColor: Quantity_Color &
@@ -2058,6 +2376,12 @@ class Prs3d_LineAspect : public Prs3d_BasicAspect {
 	:rtype: Handle_Graphic3d_AspectLine3d
 ") Aspect;
 		Handle_Graphic3d_AspectLine3d Aspect ();
+		%feature("compactdefaultargs") SetAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Handle_Graphic3d_AspectLine3d &
+	:rtype: None
+") SetAspect;
+		void SetAspect (const Handle_Graphic3d_AspectLine3d & theAspect);
 };
 
 
@@ -2356,6 +2680,12 @@ class Prs3d_PointAspect : public Prs3d_BasicAspect {
 	:rtype: None
 ") Prs3d_PointAspect;
 		 Prs3d_PointAspect (const Quantity_Color & AColor,const Standard_Integer AWidth,const Standard_Integer AHeight,const Handle_TColStd_HArray1OfByte & ATexture);
+		%feature("compactdefaultargs") Prs3d_PointAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Handle_Graphic3d_AspectMarker3d &
+	:rtype: None
+") Prs3d_PointAspect;
+		 Prs3d_PointAspect (const Handle_Graphic3d_AspectMarker3d & theAspect);
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "	:param aColor:
 	:type aColor: Quantity_Color &
@@ -2390,6 +2720,12 @@ class Prs3d_PointAspect : public Prs3d_BasicAspect {
 		%feature("autodoc", "	:rtype: Handle_Graphic3d_AspectMarker3d
 ") Aspect;
 		Handle_Graphic3d_AspectMarker3d Aspect ();
+		%feature("compactdefaultargs") SetAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Handle_Graphic3d_AspectMarker3d &
+	:rtype: None
+") SetAspect;
+		void SetAspect (const Handle_Graphic3d_AspectMarker3d & theAspect);
 		%feature("compactdefaultargs") GetTextureSize;
 		%feature("autodoc", "	* Returns marker's texture size.
 
@@ -2403,9 +2739,9 @@ class Prs3d_PointAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") GetTexture;
 		%feature("autodoc", "	* Returns marker's texture.
 
-	:rtype: Graphic3d_MarkerImage_Handle
+	:rtype: Handle_Graphic3d_MarkerImage
 ") GetTexture;
-		const Graphic3d_MarkerImage_Handle & GetTexture ();
+		Handle_Graphic3d_MarkerImage GetTexture ();
 };
 
 
@@ -2536,6 +2872,12 @@ class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 	:rtype: None
 ") Prs3d_ShadingAspect;
 		 Prs3d_ShadingAspect ();
+		%feature("compactdefaultargs") Prs3d_ShadingAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Handle_Graphic3d_AspectFillArea3d &
+	:rtype: None
+") Prs3d_ShadingAspect;
+		 Prs3d_ShadingAspect (const Handle_Graphic3d_AspectFillArea3d & theAspect);
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "	* Change the polygons interior color and material ambient color.
 
@@ -2584,14 +2926,6 @@ class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 	:rtype: None
 ") SetTransparency;
 		void SetTransparency (const Standard_Real aValue,const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
-		%feature("compactdefaultargs") SetAspect;
-		%feature("autodoc", "	* Change the polygons aspect properties.
-
-	:param Asp:
-	:type Asp: Handle_Graphic3d_AspectFillArea3d &
-	:rtype: None
-") SetAspect;
-		void SetAspect (const Handle_Graphic3d_AspectFillArea3d & Asp);
 		%feature("compactdefaultargs") Color;
 		%feature("autodoc", "	* Returns the polygons color.
 
@@ -2599,7 +2933,7 @@ class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 	:type aModel: Aspect_TypeOfFacingModel
 	:rtype: Quantity_Color
 ") Color;
-		Quantity_Color Color (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
+		const Quantity_Color & Color (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
 		%feature("compactdefaultargs") Material;
 		%feature("autodoc", "	* Returns the polygons material aspect.
 
@@ -2607,7 +2941,7 @@ class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 	:type aModel: Aspect_TypeOfFacingModel
 	:rtype: Graphic3d_MaterialAspect
 ") Material;
-		Graphic3d_MaterialAspect Material (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
+		const Graphic3d_MaterialAspect & Material (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
 		%feature("compactdefaultargs") Transparency;
 		%feature("autodoc", "	* Returns the polygons transparency value.
 
@@ -2622,6 +2956,12 @@ class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 	:rtype: Handle_Graphic3d_AspectFillArea3d
 ") Aspect;
 		Handle_Graphic3d_AspectFillArea3d Aspect ();
+		%feature("compactdefaultargs") SetAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Handle_Graphic3d_AspectFillArea3d &
+	:rtype: None
+") SetAspect;
+		void SetAspect (const Handle_Graphic3d_AspectFillArea3d & theAspect);
 };
 
 
@@ -2723,6 +3063,12 @@ class Prs3d_TextAspect : public Prs3d_BasicAspect {
 	:rtype: None
 ") Prs3d_TextAspect;
 		 Prs3d_TextAspect ();
+		%feature("compactdefaultargs") Prs3d_TextAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Handle_Graphic3d_AspectText3d &
+	:rtype: None
+") Prs3d_TextAspect;
+		 Prs3d_TextAspect (const Handle_Graphic3d_AspectText3d & theAspect);
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "	:param aColor:
 	:type aColor: Quantity_Color &
@@ -2837,6 +3183,12 @@ class Prs3d_TextAspect : public Prs3d_BasicAspect {
 	:rtype: Handle_Graphic3d_AspectText3d
 ") Aspect;
 		Handle_Graphic3d_AspectText3d Aspect ();
+		%feature("compactdefaultargs") SetAspect;
+		%feature("autodoc", "	:param theAspect:
+	:type theAspect: Handle_Graphic3d_AspectText3d &
+	:rtype: None
+") SetAspect;
+		void SetAspect (const Handle_Graphic3d_AspectText3d & theAspect);
 };
 
 

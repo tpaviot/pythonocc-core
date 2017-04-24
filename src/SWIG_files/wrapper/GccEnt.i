@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -176,7 +176,7 @@ class GccEnt_Array1OfPosition {
 		%feature("autodoc", "	:param Other:
 	:type Other: GccEnt_Array1OfPosition &
 	:rtype: GccEnt_Array1OfPosition
-") operator=;
+") operator =;
 		const GccEnt_Array1OfPosition & operator = (const GccEnt_Array1OfPosition & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int

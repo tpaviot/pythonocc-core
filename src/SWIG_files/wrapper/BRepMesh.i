@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -51,8 +51,7 @@ def register_handle(handle, base_object):
 };
 
 /* typedefs */
-typedef BRepMesh::NCollection_Array1 <BRepMesh_Vertex> BRepMesh::Array1OfVertexOfDelaun;
-typedef BRepMesh::NCollection_DataMap <TopoDS_Vertex , Standard_Integer , TopTools_ShapeMapHasher> BRepMesh::DMapOfVertexInteger;
+typedef BRepMesh::NCollection_DataMap <Handle_Poly_Triangulation , Standard_Boolean> BRepMesh::DMapOfTriangulationBool;
 typedef BRepMesh::NCollection_Handle <BndBox2dTree> BRepMesh::HBndBox2dTree;
 typedef BRepMesh::NCollection_UBTreeFiller <Standard_Integer , Bnd_Box2d> BRepMesh::BndBox2dTreeFiller;
 typedef BRepMesh::NCollection_IndexedDataMap <BRepMesh_Edge , BRepMesh_PairOfIndex> BRepMesh::IDMapOfLink;
@@ -63,11 +62,12 @@ typedef BRepMesh::NCollection_EBTree <Standard_Integer , Bnd_Box2d> BRepMesh::Bn
 typedef BRepMesh::NCollection_Array1 <Standard_Integer> BRepMesh::Array1OfInteger;
 typedef BRepMesh::NCollection_Array1 <Standard_Real> BRepMesh::Array1OfReal;
 typedef BRepMesh::NCollection_Sequence <Standard_Real> BRepMesh::SequenceOfReal;
-typedef BRepMesh::NCollection_IndexedMap <BRepMesh_Triangle> BRepMesh::IMapOfElement;
+typedef BRepMesh::NCollection_DataMap <TopoDS_Edge , DMapOfTriangulationBool , TopTools_ShapeMapHasher> BRepMesh::DMapOfEdgeListOfTriangulationBool;
+typedef BRepMesh::NCollection_DataMap <TopoDS_Shape , BRepMesh_PairOfPolygon , TopTools_ShapeMapHasher> BRepMesh::DMapOfShapePairOfPolygon;
 typedef Standard_Integer ( * BRepMesh_PluginEntryType ) ( const TopoDS_Shape & theShape , const Standard_Real theLinDeflection , const Standard_Real theAngDeflection , BRepMesh_DiscretRoot * & theMeshAlgoInstance );
 typedef BRepMesh::NCollection_Sequence <Bnd_B2d> BRepMesh::SequenceOfBndB2d;
-typedef BRepMesh::NCollection_Array1 <Segment> BRepMesh::Array1OfSegments;
-typedef BRepMesh::NCollection_DataMap <TopoDS_Shape , BRepMesh_PairOfPolygon , TopTools_ShapeMapHasher> BRepMesh::DMapOfShapePairOfPolygon;
+typedef BRepMesh::NCollection_Array1 <BRepMesh_Vertex> BRepMesh::Array1OfVertexOfDelaun;
+typedef BRepMesh::NCollection_IndexedMap <BRepMesh_Triangle> BRepMesh::IMapOfElement;
 typedef BRepMesh::NCollection_DataMap <TopoDS_Face , Handle_BRepMesh_FaceAttribute , TopTools_ShapeMapHasher> BRepMesh::DMapOfFaceAttribute;
 typedef BRepMesh::NCollection_Map <TopoDS_Shape , TopTools_ShapeMapHasher> BRepMesh::MapOfShape;
 typedef BRepMesh::NCollection_List <Standard_Integer> BRepMesh::ListOfInteger;
@@ -76,23 +76,25 @@ typedef BRepMesh::NCollection_Array1 <SegmentsTree> BRepMesh::Array1OfSegmentsTr
 typedef BRepMesh::NCollection_Handle <DMapOfIntegerListOfXY> BRepMesh::HDMapOfIntegerListOfXY;
 typedef BRepMesh::NCollection_Vector <Standard_Integer> BRepMesh::VectorOfInteger;
 typedef BRepMesh::NCollection_IndexedMap <Standard_Real> BRepMesh::IMapOfReal;
-typedef BRepMesh::NCollection_CellFilter <BRepMesh_VertexInspector> BRepMesh::VertexCellFilter;
+typedef BRepMesh::NCollection_DataMap <TopoDS_Vertex , Standard_Integer , TopTools_ShapeMapHasher> BRepMesh::DMapOfVertexInteger;
 typedef BRepMesh::NCollection_Handle <DMapOfVertexInteger> BRepMesh::HDMapOfVertexInteger;
-typedef BRepMesh::NCollection_Handle <MapOfInteger> BRepMesh::HMapOfInteger;
 typedef BRepMesh::NCollection_DataMap <Standard_Integer , ListOfXY> BRepMesh::DMapOfIntegerListOfXY;
 typedef BRepMesh::NCollection_List <BRepMesh_Vertex> BRepMesh::ListOfVertex;
 typedef BRepMesh::NCollection_List <gp_XY> BRepMesh::ListOfXY;
-typedef BRepMesh::NCollection_Map <Handle_Poly_Triangulation> BRepMesh::MapOfTriangulation;
+typedef BRepMesh::NCollection_Handle <MapOfInteger> BRepMesh::HMapOfInteger;
 typedef BRepMesh::NCollection_Sequence <Standard_Integer> BRepMesh::SequenceOfInteger;
 typedef BRepMesh::NCollection_Handle <IMapOfInteger> BRepMesh::HIMapOfInteger;
 typedef BRepMesh::NCollection_Handle <BRepMesh_Classifier> BRepMesh::HClassifier;
 typedef BRepMesh::NCollection_DataMap <Standard_Integer , ListOfInteger> BRepMesh::DMapOfIntegerListOfInteger;
 typedef std::pair <HArray1OfSegments , HBndBox2dTree> BRepMesh::SegmentsTree;
+typedef BRepMesh::NCollection_Array1 <Segment> BRepMesh::Array1OfSegments;
 typedef BRepMesh::NCollection_Handle <Array1OfSegments> BRepMesh::HArray1OfSegments;
+typedef BRepMesh::NCollection_Handle <SequenceOfBndB2d> BRepMesh::HSequenceOfBndB2d;
+typedef BRepMesh::NCollection_CellFilter <BRepMesh_VertexInspector> BRepMesh::VertexCellFilter;
 typedef BRepMesh::NCollection_Handle <DMapOfShapePairOfPolygon> BRepMesh::HDMapOfShapePairOfPolygon;
 typedef BRepMesh::NCollection_Handle <BRepMesh_VertexTool> BRepMesh::HVertexTool;
 typedef BRepMesh::NCollection_DataMap <Standard_Integer , Standard_Integer> BRepMesh::MapOfIntegerInteger;
-typedef BRepMesh::NCollection_DataMap <TopoDS_Edge , MapOfTriangulation , TopTools_ShapeMapHasher> BRepMesh::DMapOfEdgeListOfTriangulation;
+typedef BRepMesh::NCollection_Handle <SequenceOfInteger> BRepMesh::HSequenceOfInteger;
 typedef BRepMesh::NCollection_CellFilter <BRepMesh_CircleInspector> BRepMesh::CircleCellFilter;
 typedef BRepMesh::NCollection_Vector <BRepMesh_Vertex> BRepMesh::VectorOfVertex;
 typedef BRepMesh::NCollection_IndexedMap <Standard_Integer> BRepMesh::IMapOfInteger;
@@ -329,6 +331,22 @@ class BRepMesh_CircleTool {
 	:rtype: None
 ") Bind;
 		void Bind (const Standard_Integer theIndex,const gp_Circ2d & theCircle);
+		%feature("compactdefaultargs") MakeCircle;
+		%feature("autodoc", "	* Computes circle on three points. @param thePoint1 first point. @param thePoint2 second point. @param thePoint3 third point. @param[out] theLocation center of computed circle. @param[out] theRadius radius of computed circle. returns False in case of impossibility to build a circle on the given points, True elsewhere.
+
+	:param thePoint1:
+	:type thePoint1: gp_XY
+	:param thePoint2:
+	:type thePoint2: gp_XY
+	:param thePoint3:
+	:type thePoint3: gp_XY
+	:param theLocation:
+	:type theLocation: gp_XY
+	:param theRadius:
+	:type theRadius: float &
+	:rtype: bool
+") MakeCircle;
+		static Standard_Boolean MakeCircle (const gp_XY & thePoint1,const gp_XY & thePoint2,const gp_XY & thePoint3,gp_XY & theLocation,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "	* Computes circle on three points and bind it to the tool. @param theIndex index a circle should be bound with. @param thePoint1 first point. @param thePoint2 second point. @param thePoint3 third point. returns False in case of impossibility to build a circle on the given points, True elsewhere.
 
@@ -804,6 +822,12 @@ class BRepMesh_Delaun {
 	:rtype: inline  BRepMesh_Triangle
 ") GetTriangle;
 		inline const BRepMesh_Triangle & GetTriangle (const Standard_Integer theIndex);
+		%feature("compactdefaultargs") Circles;
+		%feature("autodoc", "	* Returns tool used to build mesh consistent to Delaunay criteria.
+
+	:rtype: inline  BRepMesh_CircleTool
+") Circles;
+		inline const BRepMesh_CircleTool & Circles ();
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "	* Test is the given triangle contains the given vertex. If theEdgeOn != 0 the vertex lies onto the edge index returned through this parameter.
 
@@ -1013,103 +1037,9 @@ class Handle_BRepMesh_DiscretRoot : public Handle_Standard_Transient {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor BRepMesh_EdgeChecker;
-class BRepMesh_EdgeChecker {
-	public:
-		%feature("compactdefaultargs") BRepMesh_EdgeChecker;
-		%feature("autodoc", "	* Constructor @param theFaceTri Poly triangulation of face the edges relie to. @param theFaceLoc Face location to be used to extract polygon on triangulation. @param theMutex Upper level shared mutex to protect isFailed flag from concurrent write access. @param isFailed Upper level shared flag indicating that polygon on triangulation of checked edge is not consistent. If this flag is set to True, other tasks will not check details of their data.
-
-	:param theFaceTri:
-	:type theFaceTri: Handle_Poly_Triangulation &
-	:param theFaceLoc:
-	:type theFaceLoc: TopLoc_Location &
-	:param theMutex:
-	:type theMutex: Standard_Mutex &
-	:param isFailed:
-	:type isFailed: bool
-	:rtype: None
-") BRepMesh_EdgeChecker;
-		 BRepMesh_EdgeChecker (Handle_Poly_Triangulation & theFaceTri,TopLoc_Location & theFaceLoc,Standard_Mutex & theMutex,Standard_Boolean &OutValue);
-};
-
-
-%extend BRepMesh_EdgeChecker {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-%nodefaultctor BRepMesh_FaceChecker;
-class BRepMesh_FaceChecker {
-	public:
-		%feature("compactdefaultargs") BRepMesh_FaceChecker;
-		%feature("autodoc", "	* Constructor @param isInParallel Flag indicates that face edges should be checked in parallel.
-
-	:param isInParallel:
-	:type isInParallel: bool
-	:rtype: None
-") BRepMesh_FaceChecker;
-		 BRepMesh_FaceChecker (const Standard_Boolean isInParallel);
-		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "	* Returns status of the check.
-
-	:rtype: bool
-") IsValid;
-		Standard_Boolean IsValid ();
-};
-
-
-%extend BRepMesh_FaceChecker {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor BRepMesh_FastDiscret;
 class BRepMesh_FastDiscret : public Standard_Transient {
 	public:
-		%feature("compactdefaultargs") BRepMesh_FastDiscret;
-		%feature("autodoc", "	:param defle:
-	:type defle: float
-	:param angle:
-	:type angle: float
-	:param B:
-	:type B: Bnd_Box &
-	:param withShare: default value is Standard_True
-	:type withShare: bool
-	:param inshape: default value is Standard_False
-	:type inshape: bool
-	:param relative: default value is Standard_False
-	:type relative: bool
-	:param shapetrigu: default value is Standard_False
-	:type shapetrigu: bool
-	:param isInParallel: default value is Standard_False
-	:type isInParallel: bool
-	:rtype: None
-") BRepMesh_FastDiscret;
-		 BRepMesh_FastDiscret (const Standard_Real defle,const Standard_Real angle,const Bnd_Box & B,const Standard_Boolean withShare = Standard_True,const Standard_Boolean inshape = Standard_False,const Standard_Boolean relative = Standard_False,const Standard_Boolean shapetrigu = Standard_False,const Standard_Boolean isInParallel = Standard_False);
-		%feature("compactdefaultargs") BRepMesh_FastDiscret;
-		%feature("autodoc", "	* if the boolean <relative> is True, the deflection used for the polygonalisation of each edge will be <defle> * Size of Edge. the deflection used for the faces will be the maximum deflection of their edges. if <shapetrigu> is True, the triangulation, if exists with a correct deflection, can be used to re-triangulate the shape. if <inshape> is True, the calculated triangulation will be stored in the shape.
-
-	:param shape:
-	:type shape: TopoDS_Shape &
-	:param defle:
-	:type defle: float
-	:param angle:
-	:type angle: float
-	:param B:
-	:type B: Bnd_Box &
-	:param withShare: default value is Standard_True
-	:type withShare: bool
-	:param inshape: default value is Standard_False
-	:type inshape: bool
-	:param relative: default value is Standard_False
-	:type relative: bool
-	:param shapetrigu: default value is Standard_False
-	:type shapetrigu: bool
-	:param isInParallel: default value is Standard_False
-	:type isInParallel: bool
-	:rtype: None
-") BRepMesh_FastDiscret;
-		 BRepMesh_FastDiscret (const TopoDS_Shape & shape,const Standard_Real defle,const Standard_Real angle,const Bnd_Box & B,const Standard_Boolean withShare = Standard_True,const Standard_Boolean inshape = Standard_False,const Standard_Boolean relative = Standard_False,const Standard_Boolean shapetrigu = Standard_False,const Standard_Boolean isInParallel = Standard_False);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Build triangulation on the whole shape.
 
@@ -1264,11 +1194,19 @@ class Handle_BRepMesh_FastDiscret : public Handle_Standard_Transient {
 class BRepMesh_FastDiscretFace : public Standard_Transient {
 	public:
 		%feature("compactdefaultargs") BRepMesh_FastDiscretFace;
-		%feature("autodoc", "	:param theAngle:
+		%feature("autodoc", "	* Constructor. @param theAngle deviation angle to be used for surface tessellation. @param isInternalVerticesMode flag enabling/disabling internal vertices mode. @param isControlSurfaceDeflection enables/disables adaptive reconfiguration of mesh.
+
+	:param theAngle:
 	:type theAngle: float
+	:param theMinSize:
+	:type theMinSize: float
+	:param isInternalVerticesMode:
+	:type isInternalVerticesMode: bool
+	:param isControlSurfaceDeflection:
+	:type isControlSurfaceDeflection: bool
 	:rtype: None
 ") BRepMesh_FastDiscretFace;
-		 BRepMesh_FastDiscretFace (const Standard_Real theAngle);
+		 BRepMesh_FastDiscretFace (const Standard_Real theAngle,const Standard_Real theMinSize,const Standard_Boolean isInternalVerticesMode,const Standard_Boolean isControlSurfaceDeflection);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	:param theAttribute:
 	:type theAttribute: Handle_BRepMesh_FaceAttribute &
@@ -1344,46 +1282,6 @@ enum IntFlag {
 
 /* end public enums declaration */
 
-		%feature("compactdefaultargs") BRepMesh_GeomTool;
-		%feature("autodoc", "	* Constructor. Initiates discretization of the given geometric curve. @param theCurve curve to be discretized. @param theFirstParam first parameter of the curve. @param theLastParam last parameter of the curve. @param theLinDeflection linear deflection. @param theAngDeflection angular deflection. @param theMinPointsNb minimum nuber of points to be produced.
-
-	:param theCurve:
-	:type theCurve: BRepAdaptor_Curve &
-	:param theFirstParam:
-	:type theFirstParam: float
-	:param theLastParam:
-	:type theLastParam: float
-	:param theLinDeflection:
-	:type theLinDeflection: float
-	:param theAngDeflection:
-	:type theAngDeflection: float
-	:param theMinPointsNb: default value is 2
-	:type theMinPointsNb: int
-	:rtype: None
-") BRepMesh_GeomTool;
-		 BRepMesh_GeomTool (const BRepAdaptor_Curve & theCurve,const Standard_Real theFirstParam,const Standard_Real theLastParam,const Standard_Real theLinDeflection,const Standard_Real theAngDeflection,const Standard_Integer theMinPointsNb = 2);
-		%feature("compactdefaultargs") BRepMesh_GeomTool;
-		%feature("autodoc", "	* Constructor. Initiates discretization of geometric curve corresponding to iso curve of the given surface. @param theSurface surface the iso curve to be taken from. @param theIsoType type of iso curve to be used, U or V. @param theParamIso parameter on the surface specifying the iso curve. @param theFirstParam first parameter of the curve. @param theLastParam last parameter of the curve. @param theLinDeflection linear deflection. @param theAngDeflection angular deflection. @param theMinPointsNb minimum nuber of points to be produced.
-
-	:param theSurface:
-	:type theSurface: Handle_BRepAdaptor_HSurface &
-	:param theIsoType:
-	:type theIsoType: GeomAbs_IsoType
-	:param theParamIso:
-	:type theParamIso: float
-	:param theFirstParam:
-	:type theFirstParam: float
-	:param theLastParam:
-	:type theLastParam: float
-	:param theLinDeflection:
-	:type theLinDeflection: float
-	:param theAngDeflection:
-	:type theAngDeflection: float
-	:param theMinPointsNb: default value is 2
-	:type theMinPointsNb: int
-	:rtype: None
-") BRepMesh_GeomTool;
-		 BRepMesh_GeomTool (const Handle_BRepAdaptor_HSurface & theSurface,const GeomAbs_IsoType theIsoType,const Standard_Real theParamIso,const Standard_Real theFirstParam,const Standard_Real theLastParam,const Standard_Real theLinDeflection,const Standard_Real theAngDeflection,const Standard_Integer theMinPointsNb = 2);
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "	* Adds point to already calculated points (or replaces existing). @param thePoint point to be added. @param theParam parameter on the curve corresponding to the given point. @param theIsReplace if True replaces existing point lying within parameteric tolerance of the given point. returns index of new added point or found with parametric tolerance
 
@@ -1434,6 +1332,60 @@ enum IntFlag {
 	:rtype: bool
 ") Value;
 		Standard_Boolean Value (const Standard_Integer theIndex,const Handle_BRepAdaptor_HSurface & theSurface,Standard_Real &OutValue,gp_Pnt & thePoint,gp_Pnt2d & theUV);
+		%feature("compactdefaultargs") Normal;
+		%feature("autodoc", "	* @name static API Computes normal to the given surface at the specified position in parametric space. @param theSurface surface the normal should be found for. @param theParamU U parameter in parametric space of the surface. @param theParamV V parameter in parametric space of the surface. @param[out] thePoint 3d point corresponding to the given parameters. @param[out] theNormal normal vector at the point specified by the parameters. returns False if the normal can not be computed, True elsewhere.
+
+	:param theSurface:
+	:type theSurface: Handle_BRepAdaptor_HSurface &
+	:param theParamU:
+	:type theParamU: float
+	:param theParamV:
+	:type theParamV: float
+	:param thePoint:
+	:type thePoint: gp_Pnt
+	:param theNormal:
+	:type theNormal: gp_Dir
+	:rtype: bool
+") Normal;
+		static Standard_Boolean Normal (const Handle_BRepAdaptor_HSurface & theSurface,const Standard_Real theParamU,const Standard_Real theParamV,gp_Pnt & thePoint,gp_Dir & theNormal);
+		%feature("compactdefaultargs") IntLinLin;
+		%feature("autodoc", "	* Checks intersection between two lines defined by two points. @param theStartPnt1 start point of first line. @param theEndPnt1 end point of first line. @param theStartPnt2 start point of second line. @param theEndPnt2 end point of second line. @param[out] theIntPnt point of intersection. @param[out] theParamOnSegment parameters of intersection point corresponding to first and second segment. returns status of intersection check.
+
+	:param theStartPnt1:
+	:type theStartPnt1: gp_XY
+	:param theEndPnt1:
+	:type theEndPnt1: gp_XY
+	:param theStartPnt2:
+	:type theStartPnt2: gp_XY
+	:param theEndPnt2:
+	:type theEndPnt2: gp_XY
+	:param theIntPnt:
+	:type theIntPnt: gp_XY
+	:param :
+	:type : float(&theParamOnSegment)
+	:rtype: IntFlag
+") IntLinLin;
+		static IntFlag IntLinLin (const gp_XY & theStartPnt1,const gp_XY & theEndPnt1,const gp_XY & theStartPnt2,const gp_XY & theEndPnt2,gp_XY & theIntPnt,Standard_Real(&theParamOnSegment) [2]);
+		%feature("compactdefaultargs") IntSegSeg;
+		%feature("autodoc", "	* Checks intersection between the two segments. Checks that intersection point lies within ranges of both segments. @param theStartPnt1 start point of first segment. @param theEndPnt1 end point of first segment. @param theStartPnt2 start point of second segment. @param theEndPnt2 end point of second segment. @param isConsiderEndPointTouch if True EndPointTouch status will be returned in case if segments are touching by end points, if False returns NoIntersection flag. @param isConsiderPointOnSegment if True PointOnSegment status will be returned in case if end point of one segment lies onto another one, if False returns NoIntersection flag. @param[out] theIntPnt point of intersection. returns status of intersection check.
+
+	:param theStartPnt1:
+	:type theStartPnt1: gp_XY
+	:param theEndPnt1:
+	:type theEndPnt1: gp_XY
+	:param theStartPnt2:
+	:type theStartPnt2: gp_XY
+	:param theEndPnt2:
+	:type theEndPnt2: gp_XY
+	:param isConsiderEndPointTouch:
+	:type isConsiderEndPointTouch: bool
+	:param isConsiderPointOnSegment:
+	:type isConsiderPointOnSegment: bool
+	:param theIntPnt:
+	:type theIntPnt: gp_Pnt2d
+	:rtype: IntFlag
+") IntSegSeg;
+		static IntFlag IntSegSeg (const gp_XY & theStartPnt1,const gp_XY & theEndPnt1,const gp_XY & theStartPnt2,const gp_XY & theEndPnt2,const Standard_Boolean isConsiderEndPointTouch,const Standard_Boolean isConsiderPointOnSegment,gp_Pnt2d & theIntPnt);
 };
 
 
@@ -2687,6 +2639,48 @@ class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 	:rtype: inline bool
 ") IsParallel;
 		inline Standard_Boolean IsParallel ();
+		%feature("compactdefaultargs") SetMinSize;
+		%feature("autodoc", "	* Sets min size parameter.
+
+	:param theMinSize:
+	:type theMinSize: float
+	:rtype: inline void
+") SetMinSize;
+		inline void SetMinSize (const Standard_Real theMinSize);
+		%feature("compactdefaultargs") GetMinSize;
+		%feature("autodoc", "	* Returns min size parameter.
+
+	:rtype: inline float
+") GetMinSize;
+		inline Standard_Real GetMinSize ();
+		%feature("compactdefaultargs") SetInternalVerticesMode;
+		%feature("autodoc", "	* Enables/disables internal vertices mode (enabled by default).
+
+	:param isEnabled:
+	:type isEnabled: bool
+	:rtype: inline void
+") SetInternalVerticesMode;
+		inline void SetInternalVerticesMode (const Standard_Boolean isEnabled);
+		%feature("compactdefaultargs") IsInternalVerticesMode;
+		%feature("autodoc", "	* Returns flag indicating is internal vertices mode enabled/disabled.
+
+	:rtype: inline bool
+") IsInternalVerticesMode;
+		inline Standard_Boolean IsInternalVerticesMode ();
+		%feature("compactdefaultargs") SetControlSurfaceDeflection;
+		%feature("autodoc", "	* Enables/disables control of deflection of mesh from real surface (enabled by default).
+
+	:param isEnabled:
+	:type isEnabled: bool
+	:rtype: inline void
+") SetControlSurfaceDeflection;
+		inline void SetControlSurfaceDeflection (const Standard_Boolean isEnabled);
+		%feature("compactdefaultargs") IsControlSurfaceDeflection;
+		%feature("autodoc", "	* Returns flag indicating is adaptive reconfiguration of mesh enabled/disabled.
+
+	:rtype: inline bool
+") IsControlSurfaceDeflection;
+		inline Standard_Boolean IsControlSurfaceDeflection ();
 		%feature("compactdefaultargs") Discret;
 		%feature("autodoc", "	* @name plugin API Plugin interface for the Mesh Factories. Initializes meshing algorithm with the given parameters. @param theShape shape to be meshed. @param theLinDeflection linear deflection. @param theAngDeflection angular deflection. @param[out] theAlgo pointer to initialized algorithm.
 

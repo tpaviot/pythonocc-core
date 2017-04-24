@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -210,7 +210,7 @@ class FEmTool_AssemblyTable {
 		%feature("autodoc", "	:param Other:
 	:type Other: FEmTool_AssemblyTable &
 	:rtype: FEmTool_AssemblyTable
-") operator=;
+") operator =;
 		const FEmTool_AssemblyTable & operator = (const FEmTool_AssemblyTable & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -867,7 +867,7 @@ class FEmTool_ListOfVectors {
 		%feature("autodoc", "	:param Other:
 	:type Other: FEmTool_ListOfVectors &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const FEmTool_ListOfVectors & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1006,7 +1006,7 @@ class FEmTool_SeqOfLinConstr : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: FEmTool_SeqOfLinConstr &
 	:rtype: FEmTool_SeqOfLinConstr
-") operator=;
+") operator =;
 		const FEmTool_SeqOfLinConstr & operator = (const FEmTool_SeqOfLinConstr & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

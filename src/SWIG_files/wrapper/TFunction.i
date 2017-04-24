@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -109,7 +109,7 @@ class TFunction_Array1OfDataMapOfGUIDDriver {
 		%feature("autodoc", "	:param Other:
 	:type Other: TFunction_Array1OfDataMapOfGUIDDriver &
 	:rtype: TFunction_Array1OfDataMapOfGUIDDriver
-") operator=;
+") operator =;
 		const TFunction_Array1OfDataMapOfGUIDDriver & operator = (const TFunction_Array1OfDataMapOfGUIDDriver & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -390,7 +390,7 @@ class TFunction_DataMapOfGUIDDriver : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TFunction_DataMapOfGUIDDriver &
 	:rtype: TFunction_DataMapOfGUIDDriver
-") operator=;
+") operator =;
 		TFunction_DataMapOfGUIDDriver & operator = (const TFunction_DataMapOfGUIDDriver & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -473,7 +473,7 @@ class TFunction_DataMapOfLabelListOfLabel : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TFunction_DataMapOfLabelListOfLabel &
 	:rtype: TFunction_DataMapOfLabelListOfLabel
-") operator=;
+") operator =;
 		TFunction_DataMapOfLabelListOfLabel & operator = (const TFunction_DataMapOfLabelListOfLabel & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -681,7 +681,7 @@ class TFunction_DoubleMapOfIntegerLabel : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TFunction_DoubleMapOfIntegerLabel &
 	:rtype: TFunction_DoubleMapOfIntegerLabel
-") operator=;
+") operator =;
 		TFunction_DoubleMapOfIntegerLabel & operator = (const TFunction_DoubleMapOfIntegerLabel & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

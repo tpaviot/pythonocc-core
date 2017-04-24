@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -398,7 +398,7 @@ class BRepMAT2d_DataMapOfBasicEltShape : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepMAT2d_DataMapOfBasicEltShape &
 	:rtype: BRepMAT2d_DataMapOfBasicEltShape
-") operator=;
+") operator =;
 		BRepMAT2d_DataMapOfBasicEltShape & operator = (const BRepMAT2d_DataMapOfBasicEltShape & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -481,7 +481,7 @@ class BRepMAT2d_DataMapOfShapeSequenceOfBasicElt : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepMAT2d_DataMapOfShapeSequenceOfBasicElt &
 	:rtype: BRepMAT2d_DataMapOfShapeSequenceOfBasicElt
-") operator=;
+") operator =;
 		BRepMAT2d_DataMapOfShapeSequenceOfBasicElt & operator = (const BRepMAT2d_DataMapOfShapeSequenceOfBasicElt & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:

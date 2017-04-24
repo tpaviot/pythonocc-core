@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -105,7 +105,7 @@ class MAT2d_Array2OfConnexion {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT2d_Array2OfConnexion &
 	:rtype: MAT2d_Array2OfConnexion
-") operator=;
+") operator =;
 		const MAT2d_Array2OfConnexion & operator = (const MAT2d_Array2OfConnexion & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1409,7 +1409,7 @@ class MAT2d_DataMapOfBiIntInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT2d_DataMapOfBiIntInteger &
 	:rtype: MAT2d_DataMapOfBiIntInteger
-") operator=;
+") operator =;
 		MAT2d_DataMapOfBiIntInteger & operator = (const MAT2d_DataMapOfBiIntInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1492,7 +1492,7 @@ class MAT2d_DataMapOfBiIntSequenceOfInteger : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT2d_DataMapOfBiIntSequenceOfInteger &
 	:rtype: MAT2d_DataMapOfBiIntSequenceOfInteger
-") operator=;
+") operator =;
 		MAT2d_DataMapOfBiIntSequenceOfInteger & operator = (const MAT2d_DataMapOfBiIntSequenceOfInteger & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1575,7 +1575,7 @@ class MAT2d_DataMapOfIntegerBisec : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT2d_DataMapOfIntegerBisec &
 	:rtype: MAT2d_DataMapOfIntegerBisec
-") operator=;
+") operator =;
 		MAT2d_DataMapOfIntegerBisec & operator = (const MAT2d_DataMapOfIntegerBisec & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1658,7 +1658,7 @@ class MAT2d_DataMapOfIntegerConnexion : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT2d_DataMapOfIntegerConnexion &
 	:rtype: MAT2d_DataMapOfIntegerConnexion
-") operator=;
+") operator =;
 		MAT2d_DataMapOfIntegerConnexion & operator = (const MAT2d_DataMapOfIntegerConnexion & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1741,7 +1741,7 @@ class MAT2d_DataMapOfIntegerPnt2d : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT2d_DataMapOfIntegerPnt2d &
 	:rtype: MAT2d_DataMapOfIntegerPnt2d
-") operator=;
+") operator =;
 		MAT2d_DataMapOfIntegerPnt2d & operator = (const MAT2d_DataMapOfIntegerPnt2d & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1824,7 +1824,7 @@ class MAT2d_DataMapOfIntegerSequenceOfConnexion : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT2d_DataMapOfIntegerSequenceOfConnexion &
 	:rtype: MAT2d_DataMapOfIntegerSequenceOfConnexion
-") operator=;
+") operator =;
 		MAT2d_DataMapOfIntegerSequenceOfConnexion & operator = (const MAT2d_DataMapOfIntegerSequenceOfConnexion & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1907,7 +1907,7 @@ class MAT2d_DataMapOfIntegerVec2d : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT2d_DataMapOfIntegerVec2d &
 	:rtype: MAT2d_DataMapOfIntegerVec2d
-") operator=;
+") operator =;
 		MAT2d_DataMapOfIntegerVec2d & operator = (const MAT2d_DataMapOfIntegerVec2d & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -2385,7 +2385,7 @@ class MAT2d_SequenceOfConnexion : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT2d_SequenceOfConnexion &
 	:rtype: MAT2d_SequenceOfConnexion
-") operator=;
+") operator =;
 		const MAT2d_SequenceOfConnexion & operator = (const MAT2d_SequenceOfConnexion & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2528,7 +2528,7 @@ class MAT2d_SequenceOfSequenceOfCurve : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT2d_SequenceOfSequenceOfCurve &
 	:rtype: MAT2d_SequenceOfSequenceOfCurve
-") operator=;
+") operator =;
 		const MAT2d_SequenceOfSequenceOfCurve & operator = (const MAT2d_SequenceOfSequenceOfCurve & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2671,7 +2671,7 @@ class MAT2d_SequenceOfSequenceOfGeometry : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: MAT2d_SequenceOfSequenceOfGeometry &
 	:rtype: MAT2d_SequenceOfSequenceOfGeometry
-") operator=;
+") operator =;
 		const MAT2d_SequenceOfSequenceOfGeometry & operator = (const MAT2d_SequenceOfSequenceOfGeometry & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

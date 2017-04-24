@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -54,6 +54,12 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
+enum StlAPI_ErrorStatus {
+	StlAPI_StatusOK = 0,
+	StlAPI_MeshIsEmpty = 1,
+	StlAPI_CannotOpenFile = 2,
+};
+
 /* end public enums declaration */
 
 %rename(stlapi) StlAPI;
@@ -68,9 +74,9 @@ class StlAPI {
 	:type aFile: char *
 	:param aAsciiMode: default value is Standard_True
 	:type aAsciiMode: bool
-	:rtype: void
+	:rtype: StlAPI_ErrorStatus
 ") Write;
-		static void Write (const TopoDS_Shape & aShape,const char * aFile,const Standard_Boolean aAsciiMode = Standard_True);
+		static StlAPI_ErrorStatus Write (const TopoDS_Shape & aShape,const char * aFile,const Standard_Boolean aAsciiMode = Standard_True);
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "	* Create a shape from a STL format.
 
@@ -116,41 +122,12 @@ class StlAPI_Reader {
 class StlAPI_Writer {
 	public:
 		%feature("compactdefaultargs") StlAPI_Writer;
-		%feature("autodoc", "	* Creates a writer object with default parameters: ASCIIMode, RelativeMode, SetCoefficent, SetDeflection. These parameters may be modified.
+		%feature("autodoc", "	* Creates a writer object with default parameters: ASCIIMode.
 
 	:rtype: None
 ") StlAPI_Writer;
 		 StlAPI_Writer ();
-		%feature("compactdefaultargs") SetDeflection;
-		%feature("autodoc", "	* Sets the deflection of the meshing algorithm. Deflection is used, only if relative mode is false
 
-	:param aDeflection:
-	:type aDeflection: float
-	:rtype: None
-") SetDeflection;
-		void SetDeflection (const Standard_Real aDeflection);
-		%feature("compactdefaultargs") SetCoefficient;
-		%feature("autodoc", "	* Sets the coeffiecient for computation of deflection through relative size of shape. Default value = 0.001
-
-	:param aCoefficient:
-	:type aCoefficient: float
-	:rtype: None
-") SetCoefficient;
-		void SetCoefficient (const Standard_Real aCoefficient);
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Boolean GetRelativeMode() {
-                return (Standard_Boolean) $self->RelativeMode();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetRelativeMode(Standard_Boolean value ) {
-                $self->RelativeMode()=value;
-                }
-            };
-            
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetASCIIMode() {
@@ -164,17 +141,15 @@ class StlAPI_Writer {
                 }
             };
             		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "	* Converts a given shape to STL format and writes it to file with a given filename.
+		%feature("autodoc", "	* Converts a given shape to STL format and writes it to file with a given filename. eturn the error state.
 
 	:param aShape:
 	:type aShape: TopoDS_Shape &
 	:param aFileName:
 	:type aFileName: char *
-	:param InParallel: default value is Standard_False
-	:type InParallel: bool
-	:rtype: None
+	:rtype: StlAPI_ErrorStatus
 ") Write;
-		void Write (const TopoDS_Shape & aShape,const char * aFileName,const Standard_Boolean InParallel = Standard_False);
+		StlAPI_ErrorStatus Write (const TopoDS_Shape & aShape,const char * aFileName);
 };
 
 

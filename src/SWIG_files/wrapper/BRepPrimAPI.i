@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -129,7 +129,7 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Shell;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Shell;
+") operator TopoDS_Shell;
 		 operator TopoDS_Shell ();
 		%feature("compactdefaultargs") Solid;
 		%feature("autodoc", "	* Returns the constructed box as a solid.
@@ -139,7 +139,7 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Solid;
+") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 		%feature("compactdefaultargs") BottomFace;
 		%feature("autodoc", "	* Returns ZMin face
@@ -216,7 +216,7 @@ class BRepPrimAPI_MakeHalfSpace : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Solid;
+") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 };
 
@@ -249,7 +249,7 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") operator TopoDS_Face;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Face;
+") operator TopoDS_Face;
 		 operator TopoDS_Face ();
 		%feature("compactdefaultargs") Shell;
 		%feature("autodoc", "	* Returns the constructed rotational primitive as a shell.
@@ -259,7 +259,7 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Shell;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Shell;
+") operator TopoDS_Shell;
 		 operator TopoDS_Shell ();
 		%feature("compactdefaultargs") Solid;
 		%feature("autodoc", "	* Returns the constructed rotational primitive as a solid.
@@ -269,7 +269,7 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Solid;
+") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 };
 
@@ -397,7 +397,7 @@ class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Shell;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Shell;
+") operator TopoDS_Shell;
 		 operator TopoDS_Shell ();
 		%feature("compactdefaultargs") Solid;
 		%feature("autodoc", "	* Returns the constructed box in the form of a solid.
@@ -407,7 +407,7 @@ class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
 		%feature("autodoc", "	:rtype: 
-") operatorTopoDS_Solid;
+") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 };
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -526,7 +526,7 @@ class NLPlate_SequenceOfHGPPConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: NLPlate_SequenceOfHGPPConstraint &
 	:rtype: NLPlate_SequenceOfHGPPConstraint
-") operator=;
+") operator =;
 		const NLPlate_SequenceOfHGPPConstraint & operator = (const NLPlate_SequenceOfHGPPConstraint & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -665,7 +665,7 @@ class NLPlate_StackOfPlate {
 		%feature("autodoc", "	:param Other:
 	:type Other: NLPlate_StackOfPlate &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const NLPlate_StackOfPlate & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int

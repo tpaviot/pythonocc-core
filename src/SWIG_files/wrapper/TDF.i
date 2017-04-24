@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -480,7 +480,7 @@ class TDF_AttributeArray1 {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_AttributeArray1 &
 	:rtype: TDF_AttributeArray1
-") operator=;
+") operator =;
 		const TDF_AttributeArray1 & operator = (const TDF_AttributeArray1 & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -541,7 +541,7 @@ class TDF_AttributeDataMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_AttributeDataMap &
 	:rtype: TDF_AttributeDataMap
-") operator=;
+") operator =;
 		TDF_AttributeDataMap & operator = (const TDF_AttributeDataMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -717,7 +717,7 @@ class TDF_AttributeDeltaList {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_AttributeDeltaList &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TDF_AttributeDeltaList & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -848,7 +848,7 @@ class TDF_AttributeDoubleMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_AttributeDoubleMap &
 	:rtype: TDF_AttributeDoubleMap
-") operator=;
+") operator =;
 		TDF_AttributeDoubleMap & operator = (const TDF_AttributeDoubleMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -945,7 +945,7 @@ class TDF_AttributeIndexedMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_AttributeIndexedMap &
 	:rtype: TDF_AttributeIndexedMap
-") operator=;
+") operator =;
 		TDF_AttributeIndexedMap & operator = (const TDF_AttributeIndexedMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1075,7 +1075,7 @@ class TDF_AttributeList {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_AttributeList &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TDF_AttributeList & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1212,7 +1212,7 @@ class TDF_AttributeMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_AttributeMap &
 	:rtype: TDF_AttributeMap
-") operator=;
+") operator =;
 		TDF_AttributeMap & operator = (const TDF_AttributeMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1277,7 +1277,7 @@ class TDF_AttributeSequence : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_AttributeSequence &
 	:rtype: TDF_AttributeSequence
-") operator=;
+") operator =;
 		const TDF_AttributeSequence & operator = (const TDF_AttributeSequence & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2588,7 +2588,7 @@ class TDF_DeltaList {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_DeltaList &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TDF_DeltaList & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -3067,7 +3067,7 @@ class TDF_GUIDProgIDMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_GUIDProgIDMap &
 	:rtype: TDF_GUIDProgIDMap
-") operator=;
+") operator =;
 		TDF_GUIDProgIDMap & operator = (const TDF_GUIDProgIDMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -3404,7 +3404,7 @@ class TDF_IDList {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_IDList &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TDF_IDList & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -3541,7 +3541,7 @@ class TDF_IDMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_IDMap &
 	:rtype: TDF_IDMap
-") operator=;
+") operator =;
 		TDF_IDMap & operator = (const TDF_IDMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4077,7 +4077,7 @@ class TDF_LabelDataMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_LabelDataMap &
 	:rtype: TDF_LabelDataMap
-") operator=;
+") operator =;
 		TDF_LabelDataMap & operator = (const TDF_LabelDataMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4160,7 +4160,7 @@ class TDF_LabelDoubleMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_LabelDoubleMap &
 	:rtype: TDF_LabelDoubleMap
-") operator=;
+") operator =;
 		TDF_LabelDoubleMap & operator = (const TDF_LabelDoubleMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4257,7 +4257,7 @@ class TDF_LabelIndexedMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_LabelIndexedMap &
 	:rtype: TDF_LabelIndexedMap
-") operator=;
+") operator =;
 		TDF_LabelIndexedMap & operator = (const TDF_LabelIndexedMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4332,7 +4332,7 @@ class TDF_LabelIntegerMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_LabelIntegerMap &
 	:rtype: TDF_LabelIntegerMap
-") operator=;
+") operator =;
 		TDF_LabelIntegerMap & operator = (const TDF_LabelIntegerMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4419,7 +4419,7 @@ class TDF_LabelList {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_LabelList &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const TDF_LabelList & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -4556,7 +4556,7 @@ class TDF_LabelMap : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_LabelMap &
 	:rtype: TDF_LabelMap
-") operator=;
+") operator =;
 		TDF_LabelMap & operator = (const TDF_LabelMap & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -4621,7 +4621,7 @@ class TDF_LabelSequence : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TDF_LabelSequence &
 	:rtype: TDF_LabelSequence
-") operator=;
+") operator =;
 		const TDF_LabelSequence & operator = (const TDF_LabelSequence & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

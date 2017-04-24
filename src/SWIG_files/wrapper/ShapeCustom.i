@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -161,193 +161,6 @@ class ShapeCustom {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor ShapeCustom_ConvertToBSpline;
-class ShapeCustom_ConvertToBSpline : public BRepTools_Modification {
-	public:
-		%feature("compactdefaultargs") ShapeCustom_ConvertToBSpline;
-		%feature("autodoc", "	:rtype: None
-") ShapeCustom_ConvertToBSpline;
-		 ShapeCustom_ConvertToBSpline ();
-		%feature("compactdefaultargs") SetExtrusionMode;
-		%feature("autodoc", "	* Sets mode for convertion of Surfaces of Linear extrusion.
-
-	:param extrMode:
-	:type extrMode: bool
-	:rtype: None
-") SetExtrusionMode;
-		void SetExtrusionMode (const Standard_Boolean extrMode);
-		%feature("compactdefaultargs") SetRevolutionMode;
-		%feature("autodoc", "	* Sets mode for convertion of Surfaces of Revolution.
-
-	:param revolMode:
-	:type revolMode: bool
-	:rtype: None
-") SetRevolutionMode;
-		void SetRevolutionMode (const Standard_Boolean revolMode);
-		%feature("compactdefaultargs") SetOffsetMode;
-		%feature("autodoc", "	* Sets mode for convertion of Offset surfaces.
-
-	:param offsetMode:
-	:type offsetMode: bool
-	:rtype: None
-") SetOffsetMode;
-		void SetOffsetMode (const Standard_Boolean offsetMode);
-		%feature("compactdefaultargs") SetPlaneMode;
-		%feature("autodoc", "	* Sets mode for convertion of Plane surfaces.
-
-	:param planeMode:
-	:type planeMode: bool
-	:rtype: None
-") SetPlaneMode;
-		void SetPlaneMode (const Standard_Boolean planeMode);
-		%feature("compactdefaultargs") NewSurface;
-		%feature("autodoc", "	* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <S>, <L>, <Tol> are not significant.
-
-	:param F:
-	:type F: TopoDS_Face &
-	:param S:
-	:type S: Handle_Geom_Surface &
-	:param L:
-	:type L: TopLoc_Location &
-	:param Tol:
-	:type Tol: float &
-	:param RevWires:
-	:type RevWires: bool
-	:param RevFace:
-	:type RevFace: bool
-	:rtype: bool
-") NewSurface;
-		Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
-		%feature("compactdefaultargs") NewCurve;
-		%feature("autodoc", "	* Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
-
-	:param E:
-	:type E: TopoDS_Edge &
-	:param C:
-	:type C: Handle_Geom_Curve &
-	:param L:
-	:type L: TopLoc_Location &
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewCurve;
-		Standard_Boolean NewCurve (const TopoDS_Edge & E,Handle_Geom_Curve & C,TopLoc_Location & L,Standard_Real &OutValue);
-		%feature("compactdefaultargs") NewPoint;
-		%feature("autodoc", "	* Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
-
-	:param V:
-	:type V: TopoDS_Vertex &
-	:param P:
-	:type P: gp_Pnt
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewPoint;
-		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
-		%feature("compactdefaultargs") NewCurve2d;
-		%feature("autodoc", "	* Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be usefull.
-
-	:param E:
-	:type E: TopoDS_Edge &
-	:param F:
-	:type F: TopoDS_Face &
-	:param NewE:
-	:type NewE: TopoDS_Edge &
-	:param NewF:
-	:type NewF: TopoDS_Face &
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewCurve2d;
-		Standard_Boolean NewCurve2d (const TopoDS_Edge & E,const TopoDS_Face & F,const TopoDS_Edge & NewE,const TopoDS_Face & NewF,Handle_Geom2d_Curve & C,Standard_Real &OutValue);
-		%feature("compactdefaultargs") NewParameter;
-		%feature("autodoc", "	* Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
-
-	:param V:
-	:type V: TopoDS_Vertex &
-	:param E:
-	:type E: TopoDS_Edge &
-	:param P:
-	:type P: float &
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewParameter;
-		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
-
-	:param E:
-	:type E: TopoDS_Edge &
-	:param F1:
-	:type F1: TopoDS_Face &
-	:param F2:
-	:type F2: TopoDS_Face &
-	:param NewE:
-	:type NewE: TopoDS_Edge &
-	:param NewF1:
-	:type NewF1: TopoDS_Face &
-	:param NewF2:
-	:type NewF2: TopoDS_Face &
-	:rtype: GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
-};
-
-
-%extend ShapeCustom_ConvertToBSpline {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_ShapeCustom_ConvertToBSpline(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_ShapeCustom_ConvertToBSpline::Handle_ShapeCustom_ConvertToBSpline %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_ShapeCustom_ConvertToBSpline;
-class Handle_ShapeCustom_ConvertToBSpline : public Handle_BRepTools_Modification {
-
-    public:
-        // constructors
-        Handle_ShapeCustom_ConvertToBSpline();
-        Handle_ShapeCustom_ConvertToBSpline(const Handle_ShapeCustom_ConvertToBSpline &aHandle);
-        Handle_ShapeCustom_ConvertToBSpline(const ShapeCustom_ConvertToBSpline *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_ShapeCustom_ConvertToBSpline DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_ShapeCustom_ConvertToBSpline {
-    ShapeCustom_ConvertToBSpline* _get_reference() {
-    return (ShapeCustom_ConvertToBSpline*)$self->Access();
-    }
-};
-
-%extend Handle_ShapeCustom_ConvertToBSpline {
-    %pythoncode {
-        def GetObject(self):
-            obj = self._get_reference()
-            register_handle(self, obj)
-            return obj
-    }
-};
-
-%extend ShapeCustom_ConvertToBSpline {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 %nodefaultctor ShapeCustom_Curve;
 class ShapeCustom_Curve {
 	public:
@@ -437,148 +250,76 @@ class ShapeCustom_Curve2d {
 	__repr__ = _dumps_object
 	}
 };
-%nodefaultctor ShapeCustom_DirectModification;
-class ShapeCustom_DirectModification : public BRepTools_Modification {
+%nodefaultctor ShapeCustom_Modification;
+class ShapeCustom_Modification : public BRepTools_Modification {
 	public:
-		%feature("compactdefaultargs") ShapeCustom_DirectModification;
-		%feature("autodoc", "	:rtype: None
-") ShapeCustom_DirectModification;
-		 ShapeCustom_DirectModification ();
-		%feature("compactdefaultargs") NewSurface;
-		%feature("autodoc", "	* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <S>, <L>, <Tol> are not significant.
+		%feature("compactdefaultargs") SetMsgRegistrator;
+		%feature("autodoc", "	* Sets message registrator
 
-	:param F:
-	:type F: TopoDS_Face &
-	:param S:
-	:type S: Handle_Geom_Surface &
-	:param L:
-	:type L: TopLoc_Location &
-	:param Tol:
-	:type Tol: float &
-	:param RevWires:
-	:type RevWires: bool
-	:param RevFace:
-	:type RevFace: bool
-	:rtype: bool
-") NewSurface;
-		Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
-		%feature("compactdefaultargs") NewCurve;
-		%feature("autodoc", "	* Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
+	:param msgreg:
+	:type msgreg: Handle_ShapeExtend_BasicMsgRegistrator &
+	:rtype: void
+") SetMsgRegistrator;
+		virtual void SetMsgRegistrator (const Handle_ShapeExtend_BasicMsgRegistrator & msgreg);
+		%feature("compactdefaultargs") MsgRegistrator;
+		%feature("autodoc", "	* Returns message registrator
 
-	:param E:
-	:type E: TopoDS_Edge &
-	:param C:
-	:type C: Handle_Geom_Curve &
-	:param L:
-	:type L: TopLoc_Location &
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewCurve;
-		Standard_Boolean NewCurve (const TopoDS_Edge & E,Handle_Geom_Curve & C,TopLoc_Location & L,Standard_Real &OutValue);
-		%feature("compactdefaultargs") NewPoint;
-		%feature("autodoc", "	* Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
+	:rtype: Handle_ShapeExtend_BasicMsgRegistrator
+") MsgRegistrator;
+		Handle_ShapeExtend_BasicMsgRegistrator MsgRegistrator ();
+		%feature("compactdefaultargs") SendMsg;
+		%feature("autodoc", "	* Sends a message to be attached to the shape. Calls corresponding message of message registrator.
 
-	:param V:
-	:type V: TopoDS_Vertex &
-	:param P:
-	:type P: gp_Pnt
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewPoint;
-		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
-		%feature("compactdefaultargs") NewCurve2d;
-		%feature("autodoc", "	* Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be usefull.
-
-	:param E:
-	:type E: TopoDS_Edge &
-	:param F:
-	:type F: TopoDS_Face &
-	:param NewE:
-	:type NewE: TopoDS_Edge &
-	:param NewF:
-	:type NewF: TopoDS_Face &
-	:param C:
-	:type C: Handle_Geom2d_Curve &
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewCurve2d;
-		Standard_Boolean NewCurve2d (const TopoDS_Edge & E,const TopoDS_Face & F,const TopoDS_Edge & NewE,const TopoDS_Face & NewF,Handle_Geom2d_Curve & C,Standard_Real &OutValue);
-		%feature("compactdefaultargs") NewParameter;
-		%feature("autodoc", "	* Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
-
-	:param V:
-	:type V: TopoDS_Vertex &
-	:param E:
-	:type E: TopoDS_Edge &
-	:param P:
-	:type P: float &
-	:param Tol:
-	:type Tol: float &
-	:rtype: bool
-") NewParameter;
-		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
-
-	:param E:
-	:type E: TopoDS_Edge &
-	:param F1:
-	:type F1: TopoDS_Face &
-	:param F2:
-	:type F2: TopoDS_Face &
-	:param NewE:
-	:type NewE: TopoDS_Edge &
-	:param NewF1:
-	:type NewF1: TopoDS_Face &
-	:param NewF2:
-	:type NewF2: TopoDS_Face &
-	:rtype: GeomAbs_Shape
-") Continuity;
-		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param message:
+	:type message: Message_Msg &
+	:param gravity: default value is Message_Info
+	:type gravity: Message_Gravity
+	:rtype: None
+") SendMsg;
+		void SendMsg (const TopoDS_Shape & shape,const Message_Msg & message,const Message_Gravity gravity = Message_Info);
 };
 
 
-%extend ShapeCustom_DirectModification {
+%extend ShapeCustom_Modification {
 	%pythoncode {
 		def GetHandle(self):
 		    try:
 		        return self.thisHandle
 		    except:
-		        self.thisHandle = Handle_ShapeCustom_DirectModification(self)
+		        self.thisHandle = Handle_ShapeCustom_Modification(self)
 		        self.thisown = False
 		        return self.thisHandle
 	}
 };
 
-%pythonappend Handle_ShapeCustom_DirectModification::Handle_ShapeCustom_DirectModification %{
+%pythonappend Handle_ShapeCustom_Modification::Handle_ShapeCustom_Modification %{
     # register the handle in the base object
     if len(args) > 0:
         register_handle(self, args[0])
 %}
 
-%nodefaultctor Handle_ShapeCustom_DirectModification;
-class Handle_ShapeCustom_DirectModification : public Handle_BRepTools_Modification {
+%nodefaultctor Handle_ShapeCustom_Modification;
+class Handle_ShapeCustom_Modification : public Handle_BRepTools_Modification {
 
     public:
         // constructors
-        Handle_ShapeCustom_DirectModification();
-        Handle_ShapeCustom_DirectModification(const Handle_ShapeCustom_DirectModification &aHandle);
-        Handle_ShapeCustom_DirectModification(const ShapeCustom_DirectModification *anItem);
+        Handle_ShapeCustom_Modification();
+        Handle_ShapeCustom_Modification(const Handle_ShapeCustom_Modification &aHandle);
+        Handle_ShapeCustom_Modification(const ShapeCustom_Modification *anItem);
         void Nullify();
         Standard_Boolean IsNull() const;
-        static const Handle_ShapeCustom_DirectModification DownCast(const Handle_Standard_Transient &AnObject);
+        static const Handle_ShapeCustom_Modification DownCast(const Handle_Standard_Transient &AnObject);
 
 };
-%extend Handle_ShapeCustom_DirectModification {
-    ShapeCustom_DirectModification* _get_reference() {
-    return (ShapeCustom_DirectModification*)$self->Access();
+%extend Handle_ShapeCustom_Modification {
+    ShapeCustom_Modification* _get_reference() {
+    return (ShapeCustom_Modification*)$self->Access();
     }
 };
 
-%extend Handle_ShapeCustom_DirectModification {
+%extend Handle_ShapeCustom_Modification {
     %pythoncode {
         def GetObject(self):
             obj = self._get_reference()
@@ -587,7 +328,7 @@ class Handle_ShapeCustom_DirectModification : public Handle_BRepTools_Modificati
     }
 };
 
-%extend ShapeCustom_DirectModification {
+%extend ShapeCustom_Modification {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1053,6 +794,348 @@ class Handle_ShapeCustom_TrsfModification : public Handle_BRepTools_TrsfModifica
 };
 
 %extend ShapeCustom_TrsfModification {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor ShapeCustom_ConvertToBSpline;
+class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification {
+	public:
+		%feature("compactdefaultargs") ShapeCustom_ConvertToBSpline;
+		%feature("autodoc", "	:rtype: None
+") ShapeCustom_ConvertToBSpline;
+		 ShapeCustom_ConvertToBSpline ();
+		%feature("compactdefaultargs") SetExtrusionMode;
+		%feature("autodoc", "	* Sets mode for convertion of Surfaces of Linear extrusion.
+
+	:param extrMode:
+	:type extrMode: bool
+	:rtype: None
+") SetExtrusionMode;
+		void SetExtrusionMode (const Standard_Boolean extrMode);
+		%feature("compactdefaultargs") SetRevolutionMode;
+		%feature("autodoc", "	* Sets mode for convertion of Surfaces of Revolution.
+
+	:param revolMode:
+	:type revolMode: bool
+	:rtype: None
+") SetRevolutionMode;
+		void SetRevolutionMode (const Standard_Boolean revolMode);
+		%feature("compactdefaultargs") SetOffsetMode;
+		%feature("autodoc", "	* Sets mode for convertion of Offset surfaces.
+
+	:param offsetMode:
+	:type offsetMode: bool
+	:rtype: None
+") SetOffsetMode;
+		void SetOffsetMode (const Standard_Boolean offsetMode);
+		%feature("compactdefaultargs") SetPlaneMode;
+		%feature("autodoc", "	* Sets mode for convertion of Plane surfaces.
+
+	:param planeMode:
+	:type planeMode: bool
+	:rtype: None
+") SetPlaneMode;
+		void SetPlaneMode (const Standard_Boolean planeMode);
+		%feature("compactdefaultargs") NewSurface;
+		%feature("autodoc", "	* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <S>, <L>, <Tol> are not significant.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param L:
+	:type L: TopLoc_Location &
+	:param Tol:
+	:type Tol: float &
+	:param RevWires:
+	:type RevWires: bool
+	:param RevFace:
+	:type RevFace: bool
+	:rtype: bool
+") NewSurface;
+		Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
+		%feature("compactdefaultargs") NewCurve;
+		%feature("autodoc", "	* Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:param L:
+	:type L: TopLoc_Location &
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewCurve;
+		Standard_Boolean NewCurve (const TopoDS_Edge & E,Handle_Geom_Curve & C,TopLoc_Location & L,Standard_Real &OutValue);
+		%feature("compactdefaultargs") NewPoint;
+		%feature("autodoc", "	* Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
+
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewPoint;
+		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
+		%feature("compactdefaultargs") NewCurve2d;
+		%feature("autodoc", "	* Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be usefull.
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:param NewE:
+	:type NewE: TopoDS_Edge &
+	:param NewF:
+	:type NewF: TopoDS_Face &
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewCurve2d;
+		Standard_Boolean NewCurve2d (const TopoDS_Edge & E,const TopoDS_Face & F,const TopoDS_Edge & NewE,const TopoDS_Face & NewF,Handle_Geom2d_Curve & C,Standard_Real &OutValue);
+		%feature("compactdefaultargs") NewParameter;
+		%feature("autodoc", "	* Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
+
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param E:
+	:type E: TopoDS_Edge &
+	:param P:
+	:type P: float &
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewParameter;
+		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:param NewE:
+	:type NewE: TopoDS_Edge &
+	:param NewF1:
+	:type NewF1: TopoDS_Face &
+	:param NewF2:
+	:type NewF2: TopoDS_Face &
+	:rtype: GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
+};
+
+
+%extend ShapeCustom_ConvertToBSpline {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeCustom_ConvertToBSpline(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ShapeCustom_ConvertToBSpline::Handle_ShapeCustom_ConvertToBSpline %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_ShapeCustom_ConvertToBSpline;
+class Handle_ShapeCustom_ConvertToBSpline : public Handle_ShapeCustom_Modification {
+
+    public:
+        // constructors
+        Handle_ShapeCustom_ConvertToBSpline();
+        Handle_ShapeCustom_ConvertToBSpline(const Handle_ShapeCustom_ConvertToBSpline &aHandle);
+        Handle_ShapeCustom_ConvertToBSpline(const ShapeCustom_ConvertToBSpline *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_ShapeCustom_ConvertToBSpline DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_ShapeCustom_ConvertToBSpline {
+    ShapeCustom_ConvertToBSpline* _get_reference() {
+    return (ShapeCustom_ConvertToBSpline*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeCustom_ConvertToBSpline {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
+%extend ShapeCustom_ConvertToBSpline {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor ShapeCustom_DirectModification;
+class ShapeCustom_DirectModification : public ShapeCustom_Modification {
+	public:
+		%feature("compactdefaultargs") ShapeCustom_DirectModification;
+		%feature("autodoc", "	:rtype: None
+") ShapeCustom_DirectModification;
+		 ShapeCustom_DirectModification ();
+		%feature("compactdefaultargs") NewSurface;
+		%feature("autodoc", "	* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <S>, <L>, <Tol> are not significant.
+
+	:param F:
+	:type F: TopoDS_Face &
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param L:
+	:type L: TopLoc_Location &
+	:param Tol:
+	:type Tol: float &
+	:param RevWires:
+	:type RevWires: bool
+	:param RevFace:
+	:type RevFace: bool
+	:rtype: bool
+") NewSurface;
+		Standard_Boolean NewSurface (const TopoDS_Face & F,Handle_Geom_Surface & S,TopLoc_Location & L,Standard_Real &OutValue,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
+		%feature("compactdefaultargs") NewCurve;
+		%feature("autodoc", "	* Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:param L:
+	:type L: TopLoc_Location &
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewCurve;
+		Standard_Boolean NewCurve (const TopoDS_Edge & E,Handle_Geom_Curve & C,TopLoc_Location & L,Standard_Real &OutValue);
+		%feature("compactdefaultargs") NewPoint;
+		%feature("autodoc", "	* Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
+
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewPoint;
+		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
+		%feature("compactdefaultargs") NewCurve2d;
+		%feature("autodoc", "	* Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be usefull.
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:param NewE:
+	:type NewE: TopoDS_Edge &
+	:param NewF:
+	:type NewF: TopoDS_Face &
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewCurve2d;
+		Standard_Boolean NewCurve2d (const TopoDS_Edge & E,const TopoDS_Face & F,const TopoDS_Edge & NewE,const TopoDS_Face & NewF,Handle_Geom2d_Curve & C,Standard_Real &OutValue);
+		%feature("compactdefaultargs") NewParameter;
+		%feature("autodoc", "	* Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
+
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param E:
+	:type E: TopoDS_Edge &
+	:param P:
+	:type P: float &
+	:param Tol:
+	:type Tol: float &
+	:rtype: bool
+") NewParameter;
+		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "	* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:param NewE:
+	:type NewE: TopoDS_Edge &
+	:param NewF1:
+	:type NewF1: TopoDS_Face &
+	:param NewF2:
+	:type NewF2: TopoDS_Face &
+	:rtype: GeomAbs_Shape
+") Continuity;
+		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
+};
+
+
+%extend ShapeCustom_DirectModification {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeCustom_DirectModification(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ShapeCustom_DirectModification::Handle_ShapeCustom_DirectModification %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_ShapeCustom_DirectModification;
+class Handle_ShapeCustom_DirectModification : public Handle_ShapeCustom_Modification {
+
+    public:
+        // constructors
+        Handle_ShapeCustom_DirectModification();
+        Handle_ShapeCustom_DirectModification(const Handle_ShapeCustom_DirectModification &aHandle);
+        Handle_ShapeCustom_DirectModification(const ShapeCustom_DirectModification *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_ShapeCustom_DirectModification DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_ShapeCustom_DirectModification {
+    ShapeCustom_DirectModification* _get_reference() {
+    return (ShapeCustom_DirectModification*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeCustom_DirectModification {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
+%extend ShapeCustom_DirectModification {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

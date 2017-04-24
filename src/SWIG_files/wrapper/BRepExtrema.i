@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -51,7 +51,9 @@ def register_handle(handle, base_object):
 };
 
 /* typedefs */
+typedef NCollection_DataMap <Standard_Integer , TColStd_PackedMapOfInteger> BRepExtrema_MapOfIntegerPackedMapOfInteger;
 typedef NCollection_Sequence <BRepExtrema_SolutionElem> BRepExtrema_SeqOfSolution;
+typedef NCollection_Vector <TopoDS_Face> BRepExtrema_ShapeList;
 /* end typedefs declaration */
 
 /* public enums */
@@ -363,6 +365,36 @@ class BRepExtrema_DistanceSS {
 
 
 %extend BRepExtrema_DistanceSS {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor BRepExtrema_ElementFilter;
+class BRepExtrema_ElementFilter {
+	public:
+/* public enums */
+enum FilterResult {
+	NoCheck = 0,
+	Overlap = 1,
+	DoCheck = 2,
+};
+
+/* end public enums declaration */
+
+		%feature("compactdefaultargs") PreCheckElements;
+		%feature("autodoc", "	* Checks if two mesh elements should be tested for overlapping/intersection (used for detection correct/incorrect cases of shared edges and vertices).
+
+	:param Standard_Integer:
+	:type Standard_Integer: 
+	:param Standard_Integer:
+	:type Standard_Integer: 
+	:rtype: FilterResult
+") PreCheckElements;
+		FilterResult PreCheckElements (const Standard_Integer,const Standard_Integer);
+};
+
+
+%extend BRepExtrema_ElementFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -923,6 +955,119 @@ class BRepExtrema_Poly {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor BRepExtrema_ShapeProximity;
+class BRepExtrema_ShapeProximity {
+	public:
+		%feature("compactdefaultargs") BRepExtrema_ShapeProximity;
+		%feature("autodoc", "	* Creates empty proximity tool.
+
+	:param theTolerance: default value is 0.0
+	:type theTolerance: float
+	:rtype: None
+") BRepExtrema_ShapeProximity;
+		 BRepExtrema_ShapeProximity (const Standard_Real theTolerance = 0.0);
+		%feature("compactdefaultargs") BRepExtrema_ShapeProximity;
+		%feature("autodoc", "	* Creates proximity tool for the given two shapes.
+
+	:param theShape1:
+	:type theShape1: TopoDS_Shape &
+	:param theShape2:
+	:type theShape2: TopoDS_Shape &
+	:param theTolerance: default value is 0.0
+	:type theTolerance: float
+	:rtype: None
+") BRepExtrema_ShapeProximity;
+		 BRepExtrema_ShapeProximity (const TopoDS_Shape & theShape1,const TopoDS_Shape & theShape2,const Standard_Real theTolerance = 0.0);
+		%feature("compactdefaultargs") Tolerance;
+		%feature("autodoc", "	* Returns tolerance value for overlap test (distance between shapes).
+
+	:rtype: float
+") Tolerance;
+		Standard_Real Tolerance ();
+		%feature("compactdefaultargs") SetTolerance;
+		%feature("autodoc", "	* Sets tolerance value for overlap test (distance between shapes).
+
+	:param theTolerance:
+	:type theTolerance: float
+	:rtype: None
+") SetTolerance;
+		void SetTolerance (const Standard_Real theTolerance);
+		%feature("compactdefaultargs") LoadShape1;
+		%feature("autodoc", "	* Loads 1st shape into proximity tool.
+
+	:param theShape1:
+	:type theShape1: TopoDS_Shape &
+	:rtype: bool
+") LoadShape1;
+		Standard_Boolean LoadShape1 (const TopoDS_Shape & theShape1);
+		%feature("compactdefaultargs") LoadShape2;
+		%feature("autodoc", "	* Loads 2nd shape into proximity tool.
+
+	:param theShape2:
+	:type theShape2: TopoDS_Shape &
+	:rtype: bool
+") LoadShape2;
+		Standard_Boolean LoadShape2 (const TopoDS_Shape & theShape2);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Performs search of overlapped faces.
+
+	:rtype: None
+") Perform;
+		void Perform ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* True if the search is completed.
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") OverlapSubShapes1;
+		%feature("autodoc", "	* Returns set of IDs of overlapped faces of 1st shape (started from 0).
+
+	:rtype: BRepExtrema_MapOfIntegerPackedMapOfInteger
+") OverlapSubShapes1;
+		const BRepExtrema_MapOfIntegerPackedMapOfInteger & OverlapSubShapes1 ();
+		%feature("compactdefaultargs") OverlapSubShapes2;
+		%feature("autodoc", "	* Returns set of IDs of overlapped faces of 2nd shape (started from 0).
+
+	:rtype: BRepExtrema_MapOfIntegerPackedMapOfInteger
+") OverlapSubShapes2;
+		const BRepExtrema_MapOfIntegerPackedMapOfInteger & OverlapSubShapes2 ();
+		%feature("compactdefaultargs") GetSubShape1;
+		%feature("autodoc", "	* Returns sub-shape from 1st shape with the given index (started from 0).
+
+	:param theID:
+	:type theID: int
+	:rtype: TopoDS_Face
+") GetSubShape1;
+		const TopoDS_Face  GetSubShape1 (const Standard_Integer theID);
+		%feature("compactdefaultargs") GetSubShape2;
+		%feature("autodoc", "	* Returns sub-shape from 1st shape with the given index (started from 0).
+
+	:param theID:
+	:type theID: int
+	:rtype: TopoDS_Face
+") GetSubShape2;
+		const TopoDS_Face  GetSubShape2 (const Standard_Integer theID);
+		%feature("compactdefaultargs") ElementSet1;
+		%feature("autodoc", "	* Returns set of all the face triangles of the 1st shape.
+
+	:rtype: Handle_BRepExtrema_TriangleSet
+") ElementSet1;
+		Handle_BRepExtrema_TriangleSet ElementSet1 ();
+		%feature("compactdefaultargs") ElementSet2;
+		%feature("autodoc", "	* Returns set of all the face triangles of the 2nd shape.
+
+	:rtype: Handle_BRepExtrema_TriangleSet
+") ElementSet2;
+		Handle_BRepExtrema_TriangleSet ElementSet2 ();
+};
+
+
+%extend BRepExtrema_ShapeProximity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor BRepExtrema_SolutionElem;
 class BRepExtrema_SolutionElem {
 	public:
@@ -1038,6 +1183,89 @@ class BRepExtrema_SolutionElem {
 
 
 %extend BRepExtrema_SolutionElem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor BRepExtrema_SelfIntersection;
+class BRepExtrema_SelfIntersection : public BRepExtrema_ElementFilter {
+	public:
+		%feature("compactdefaultargs") BRepExtrema_SelfIntersection;
+		%feature("autodoc", "	* Creates unitialized self-intersection tool.
+
+	:param theTolerance: default value is 0.0
+	:type theTolerance: float
+	:rtype: None
+") BRepExtrema_SelfIntersection;
+		 BRepExtrema_SelfIntersection (const Standard_Real theTolerance = 0.0);
+		%feature("compactdefaultargs") BRepExtrema_SelfIntersection;
+		%feature("autodoc", "	* Creates self-intersection tool for the given shape.
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theTolerance: default value is 0.0
+	:type theTolerance: float
+	:rtype: None
+") BRepExtrema_SelfIntersection;
+		 BRepExtrema_SelfIntersection (const TopoDS_Shape & theShape,const Standard_Real theTolerance = 0.0);
+		%feature("compactdefaultargs") Tolerance;
+		%feature("autodoc", "	* Returns tolerance value used for self-intersection test.
+
+	:rtype: float
+") Tolerance;
+		Standard_Real Tolerance ();
+		%feature("compactdefaultargs") SetTolerance;
+		%feature("autodoc", "	* Sets tolerance value used for self-intersection test.
+
+	:param theTolerance:
+	:type theTolerance: float
+	:rtype: None
+") SetTolerance;
+		void SetTolerance (const Standard_Real theTolerance);
+		%feature("compactdefaultargs") LoadShape;
+		%feature("autodoc", "	* Loads shape for detection of self-intersections.
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: bool
+") LoadShape;
+		Standard_Boolean LoadShape (const TopoDS_Shape & theShape);
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "	* Performs detection of self-intersections.
+
+	:rtype: None
+") Perform;
+		void Perform ();
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "	* True if the detection is completed.
+
+	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") OverlapElements;
+		%feature("autodoc", "	* Returns set of IDs of overlapped sub-shapes (started from 0).
+
+	:rtype: BRepExtrema_MapOfIntegerPackedMapOfInteger
+") OverlapElements;
+		const BRepExtrema_MapOfIntegerPackedMapOfInteger & OverlapElements ();
+		%feature("compactdefaultargs") GetSubShape;
+		%feature("autodoc", "	* Returns sub-shape from the shape for the given index (started from 0).
+
+	:param theID:
+	:type theID: int
+	:rtype: TopoDS_Face
+") GetSubShape;
+		const TopoDS_Face  GetSubShape (const Standard_Integer theID);
+		%feature("compactdefaultargs") ElementSet;
+		%feature("autodoc", "	* Returns set of all the face triangles of the shape.
+
+	:rtype: Handle_BRepExtrema_TriangleSet
+") ElementSet;
+		Handle_BRepExtrema_TriangleSet ElementSet ();
+};
+
+
+%extend BRepExtrema_SelfIntersection {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

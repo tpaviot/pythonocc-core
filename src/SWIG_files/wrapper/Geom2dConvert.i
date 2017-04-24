@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -216,6 +216,22 @@ class Geom2dConvert_ApproxCurve {
 	:rtype: None
 ") Geom2dConvert_ApproxCurve;
 		 Geom2dConvert_ApproxCurve (const Handle_Geom2d_Curve & Curve,const Standard_Real Tol2d,const GeomAbs_Shape Order,const Standard_Integer MaxSegments,const Standard_Integer MaxDegree);
+		%feature("compactdefaultargs") Geom2dConvert_ApproxCurve;
+		%feature("autodoc", "	* Constructs an approximation framework defined by - the 2D conic Curve - the tolerance value Tol2d - the degree of continuity Order - the maximum number of segments allowed MaxSegments - the highest degree MaxDegree which the polynomial defining the BSpline is allowed to have.
+
+	:param Curve:
+	:type Curve: Handle_Adaptor2d_HCurve2d &
+	:param Tol2d:
+	:type Tol2d: float
+	:param Order:
+	:type Order: GeomAbs_Shape
+	:param MaxSegments:
+	:type MaxSegments: int
+	:param MaxDegree:
+	:type MaxDegree: int
+	:rtype: None
+") Geom2dConvert_ApproxCurve;
+		 Geom2dConvert_ApproxCurve (const Handle_Adaptor2d_HCurve2d & Curve,const Standard_Real Tol2d,const GeomAbs_Shape Order,const Standard_Integer MaxSegments,const Standard_Integer MaxDegree);
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "	* Returns the 2D BSpline curve resulting from the approximation algorithm.
 

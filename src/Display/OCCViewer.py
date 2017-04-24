@@ -386,10 +386,14 @@ class Viewer3d(OCC.Visualization.Display3d):
             # computing graphic properties is expensive
             # if an iterable is found, so cluster all TopoDS_Shape under
             # an AIS_MultipleConnectedInteractive
-            shape_to_display = AIS_MultipleConnectedInteractive()
-            for i in ais_shapes:
-                shape_to_display.Connect(i)
-
+            #shape_to_display = AIS_MultipleConnectedInteractive()
+            for ais_shp in ais_shapes:
+                # TODO : following line crashes with oce-0.18
+                # why ? fix ?
+                #shape_to_display.Connect(i)
+                self.Context.Display(ais_shp, False)
+            shape_to_display = ais_shapes
+            return shape_to_display
         # set the graphic properties
         if material is None:
             #The default material is too shiny to show the object

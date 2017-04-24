@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -626,7 +626,7 @@ class Message_ListOfMsg {
 		%feature("autodoc", "	:param Other:
 	:type Other: Message_ListOfMsg &
 	:rtype: None
-") operator=;
+") operator =;
 		void operator = (const Message_ListOfMsg & Other);
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
@@ -1726,7 +1726,7 @@ class Message_SequenceOfPrinters : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Message_SequenceOfPrinters &
 	:rtype: Message_SequenceOfPrinters
-") operator=;
+") operator =;
 		const Message_SequenceOfPrinters & operator = (const Message_SequenceOfPrinters & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1869,7 +1869,7 @@ class Message_SequenceOfProgressScale : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: Message_SequenceOfProgressScale &
 	:rtype: Message_SequenceOfProgressScale
-") operator=;
+") operator =;
 		const Message_SequenceOfProgressScale & operator = (const Message_SequenceOfProgressScale & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

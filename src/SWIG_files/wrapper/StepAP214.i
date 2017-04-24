@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -1171,7 +1171,7 @@ class StepAP214_Array1OfApprovalItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfApprovalItem &
 	:rtype: StepAP214_Array1OfApprovalItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfApprovalItem & operator = (const StepAP214_Array1OfApprovalItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1258,7 +1258,7 @@ class StepAP214_Array1OfAutoDesignDateAndPersonItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfAutoDesignDateAndPersonItem &
 	:rtype: StepAP214_Array1OfAutoDesignDateAndPersonItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfAutoDesignDateAndPersonItem & operator = (const StepAP214_Array1OfAutoDesignDateAndPersonItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1345,7 +1345,7 @@ class StepAP214_Array1OfAutoDesignDateAndTimeItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfAutoDesignDateAndTimeItem &
 	:rtype: StepAP214_Array1OfAutoDesignDateAndTimeItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfAutoDesignDateAndTimeItem & operator = (const StepAP214_Array1OfAutoDesignDateAndTimeItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1432,7 +1432,7 @@ class StepAP214_Array1OfAutoDesignDatedItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfAutoDesignDatedItem &
 	:rtype: StepAP214_Array1OfAutoDesignDatedItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfAutoDesignDatedItem & operator = (const StepAP214_Array1OfAutoDesignDatedItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1519,7 +1519,7 @@ class StepAP214_Array1OfAutoDesignGeneralOrgItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfAutoDesignGeneralOrgItem &
 	:rtype: StepAP214_Array1OfAutoDesignGeneralOrgItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfAutoDesignGeneralOrgItem & operator = (const StepAP214_Array1OfAutoDesignGeneralOrgItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1606,7 +1606,7 @@ class StepAP214_Array1OfAutoDesignGroupedItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfAutoDesignGroupedItem &
 	:rtype: StepAP214_Array1OfAutoDesignGroupedItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfAutoDesignGroupedItem & operator = (const StepAP214_Array1OfAutoDesignGroupedItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1693,7 +1693,7 @@ class StepAP214_Array1OfAutoDesignPresentedItemSelect {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfAutoDesignPresentedItemSelect &
 	:rtype: StepAP214_Array1OfAutoDesignPresentedItemSelect
-") operator=;
+") operator =;
 		const StepAP214_Array1OfAutoDesignPresentedItemSelect & operator = (const StepAP214_Array1OfAutoDesignPresentedItemSelect & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1780,7 +1780,7 @@ class StepAP214_Array1OfAutoDesignReferencingItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfAutoDesignReferencingItem &
 	:rtype: StepAP214_Array1OfAutoDesignReferencingItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfAutoDesignReferencingItem & operator = (const StepAP214_Array1OfAutoDesignReferencingItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1867,7 +1867,7 @@ class StepAP214_Array1OfDateAndTimeItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfDateAndTimeItem &
 	:rtype: StepAP214_Array1OfDateAndTimeItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfDateAndTimeItem & operator = (const StepAP214_Array1OfDateAndTimeItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -1954,7 +1954,7 @@ class StepAP214_Array1OfDateItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfDateItem &
 	:rtype: StepAP214_Array1OfDateItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfDateItem & operator = (const StepAP214_Array1OfDateItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2041,7 +2041,7 @@ class StepAP214_Array1OfDocumentReferenceItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfDocumentReferenceItem &
 	:rtype: StepAP214_Array1OfDocumentReferenceItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfDocumentReferenceItem & operator = (const StepAP214_Array1OfDocumentReferenceItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2128,7 +2128,7 @@ class StepAP214_Array1OfExternalIdentificationItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfExternalIdentificationItem &
 	:rtype: StepAP214_Array1OfExternalIdentificationItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfExternalIdentificationItem & operator = (const StepAP214_Array1OfExternalIdentificationItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2215,7 +2215,7 @@ class StepAP214_Array1OfGroupItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfGroupItem &
 	:rtype: StepAP214_Array1OfGroupItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfGroupItem & operator = (const StepAP214_Array1OfGroupItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2302,7 +2302,7 @@ class StepAP214_Array1OfOrganizationItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfOrganizationItem &
 	:rtype: StepAP214_Array1OfOrganizationItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfOrganizationItem & operator = (const StepAP214_Array1OfOrganizationItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2389,7 +2389,7 @@ class StepAP214_Array1OfPersonAndOrganizationItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfPersonAndOrganizationItem &
 	:rtype: StepAP214_Array1OfPersonAndOrganizationItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfPersonAndOrganizationItem & operator = (const StepAP214_Array1OfPersonAndOrganizationItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2476,7 +2476,7 @@ class StepAP214_Array1OfPresentedItemSelect {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfPresentedItemSelect &
 	:rtype: StepAP214_Array1OfPresentedItemSelect
-") operator=;
+") operator =;
 		const StepAP214_Array1OfPresentedItemSelect & operator = (const StepAP214_Array1OfPresentedItemSelect & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -2563,7 +2563,7 @@ class StepAP214_Array1OfSecurityClassificationItem {
 		%feature("autodoc", "	:param Other:
 	:type Other: StepAP214_Array1OfSecurityClassificationItem &
 	:rtype: StepAP214_Array1OfSecurityClassificationItem
-") operator=;
+") operator =;
 		const StepAP214_Array1OfSecurityClassificationItem & operator = (const StepAP214_Array1OfSecurityClassificationItem & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int

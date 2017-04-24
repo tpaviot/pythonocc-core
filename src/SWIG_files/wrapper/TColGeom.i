@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -101,7 +101,7 @@ class TColGeom_Array1OfBSplineCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom_Array1OfBSplineCurve &
 	:rtype: TColGeom_Array1OfBSplineCurve
-") operator=;
+") operator =;
 		const TColGeom_Array1OfBSplineCurve & operator = (const TColGeom_Array1OfBSplineCurve & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -188,7 +188,7 @@ class TColGeom_Array1OfBezierCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom_Array1OfBezierCurve &
 	:rtype: TColGeom_Array1OfBezierCurve
-") operator=;
+") operator =;
 		const TColGeom_Array1OfBezierCurve & operator = (const TColGeom_Array1OfBezierCurve & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -275,7 +275,7 @@ class TColGeom_Array1OfCurve {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom_Array1OfCurve &
 	:rtype: TColGeom_Array1OfCurve
-") operator=;
+") operator =;
 		const TColGeom_Array1OfCurve & operator = (const TColGeom_Array1OfCurve & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -362,7 +362,7 @@ class TColGeom_Array1OfSurface {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom_Array1OfSurface &
 	:rtype: TColGeom_Array1OfSurface
-") operator=;
+") operator =;
 		const TColGeom_Array1OfSurface & operator = (const TColGeom_Array1OfSurface & Other);
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
@@ -453,7 +453,7 @@ class TColGeom_Array2OfBezierSurface {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom_Array2OfBezierSurface &
 	:rtype: TColGeom_Array2OfBezierSurface
-") operator=;
+") operator =;
 		const TColGeom_Array2OfBezierSurface & operator = (const TColGeom_Array2OfBezierSurface & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -562,7 +562,7 @@ class TColGeom_Array2OfSurface {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom_Array2OfSurface &
 	:rtype: TColGeom_Array2OfSurface
-") operator=;
+") operator =;
 		const TColGeom_Array2OfSurface & operator = (const TColGeom_Array2OfSurface & Other);
 		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
@@ -1871,7 +1871,7 @@ class TColGeom_SequenceOfBoundedCurve : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom_SequenceOfBoundedCurve &
 	:rtype: TColGeom_SequenceOfBoundedCurve
-") operator=;
+") operator =;
 		const TColGeom_SequenceOfBoundedCurve & operator = (const TColGeom_SequenceOfBoundedCurve & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2014,7 +2014,7 @@ class TColGeom_SequenceOfCurve : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom_SequenceOfCurve &
 	:rtype: TColGeom_SequenceOfCurve
-") operator=;
+") operator =;
 		const TColGeom_SequenceOfCurve & operator = (const TColGeom_SequenceOfCurve & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -2157,7 +2157,7 @@ class TColGeom_SequenceOfSurface : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: TColGeom_SequenceOfSurface &
 	:rtype: TColGeom_SequenceOfSurface
-") operator=;
+") operator =;
 		const TColGeom_SequenceOfSurface & operator = (const TColGeom_SequenceOfSurface & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:

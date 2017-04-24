@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -56,6 +56,12 @@ typedef Prs3d_Point <Handle_Geom_Point , StdPrs_ToolPoint> StdPrs_Point;
 /* end typedefs declaration */
 
 /* public enums */
+enum StdPrs_Volume {
+	StdPrs_Volume_Autodetection = 0,
+	StdPrs_Volume_Closed = 1,
+	StdPrs_Volume_Opened = 2,
+};
+
 /* end public enums declaration */
 
 class StdPrs_Curve : public Prs3d_Root {
@@ -444,7 +450,7 @@ class StdPrs_PoleCurve : public Prs3d_Root {
 class StdPrs_ShadedShape : public Prs3d_Root {
 	public:
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Shades <theShape>. @param theToExploreSolids when set to true, explodes compound into two groups - with closed Solids and open Shells
+		%feature("autodoc", "	* Shades <theShape>. @param theVolumeType defines the way how to interpret input shapes - as Closed volumes (to activate back-face culling and capping plane algorithms), as Open volumes (shells or solids with holes) or to perform Autodetection (would split input shape into two groups)
 
 	:param thePresentation:
 	:type thePresentation: Handle_Prs3d_Presentation &
@@ -452,13 +458,13 @@ class StdPrs_ShadedShape : public Prs3d_Root {
 	:type theShape: TopoDS_Shape &
 	:param theDrawer:
 	:type theDrawer: Handle_Prs3d_Drawer &
-	:param theToExploreSolids: default value is Standard_True
-	:type theToExploreSolids: bool
+	:param theVolume: default value is StdPrs_Volume_Autodetection
+	:type theVolume: StdPrs_Volume
 	:rtype: void
 ") Add;
-		static void Add (const Handle_Prs3d_Presentation & thePresentation,const TopoDS_Shape & theShape,const Handle_Prs3d_Drawer & theDrawer,const Standard_Boolean theToExploreSolids = Standard_True);
+		static void Add (const Handle_Prs3d_Presentation & thePresentation,const TopoDS_Shape & theShape,const Handle_Prs3d_Drawer & theDrawer,const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Shades <theShape> with texture coordinates. @param theToExploreSolids when set to true, explodes compound into two groups - with closed Solids and open Shells
+		%feature("autodoc", "	* Shades <theShape> with texture coordinates. @param theVolumeType defines the way how to interpret input shapes - as Closed volumes (to activate back-face culling and capping plane algorithms), as Open volumes (shells or solids with holes) or to perform Autodetection (would split input shape into two groups)
 
 	:param thePresentation:
 	:type thePresentation: Handle_Prs3d_Presentation &
@@ -474,11 +480,11 @@ class StdPrs_ShadedShape : public Prs3d_Root {
 	:type theUVRepeat: gp_Pnt2d
 	:param theUVScale:
 	:type theUVScale: gp_Pnt2d
-	:param theToExploreSolids: default value is Standard_True
-	:type theToExploreSolids: bool
+	:param theVolume: default value is StdPrs_Volume_Autodetection
+	:type theVolume: StdPrs_Volume
 	:rtype: void
 ") Add;
-		static void Add (const Handle_Prs3d_Presentation & thePresentation,const TopoDS_Shape & theShape,const Handle_Prs3d_Drawer & theDrawer,const Standard_Boolean theHasTexels,const gp_Pnt2d & theUVOrigin,const gp_Pnt2d & theUVRepeat,const gp_Pnt2d & theUVScale,const Standard_Boolean theToExploreSolids = Standard_True);
+		static void Add (const Handle_Prs3d_Presentation & thePresentation,const TopoDS_Shape & theShape,const Handle_Prs3d_Drawer & theDrawer,const Standard_Boolean theHasTexels,const gp_Pnt2d & theUVOrigin,const gp_Pnt2d & theUVRepeat,const gp_Pnt2d & theUVScale,const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection);
 		%feature("compactdefaultargs") Tessellate;
 		%feature("autodoc", "	* Validates triangulation within the shape and performs tessellation if necessary.
 
@@ -489,6 +495,22 @@ class StdPrs_ShadedShape : public Prs3d_Root {
 	:rtype: void
 ") Tessellate;
 		static void Tessellate (const TopoDS_Shape & theShape,const Handle_Prs3d_Drawer & theDrawer);
+		%feature("compactdefaultargs") ExploreSolids;
+		%feature("autodoc", "	* Searches closed and unclosed subshapes in shape structure and puts them into two compounds for separate processing of closed and unclosed sub-shapes
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theBuilder:
+	:type theBuilder: BRep_Builder &
+	:param theClosed:
+	:type theClosed: TopoDS_Compound &
+	:param theOpened:
+	:type theOpened: TopoDS_Compound &
+	:param theIgnore1DSubShape:
+	:type theIgnore1DSubShape: bool
+	:rtype: void
+") ExploreSolids;
+		static void ExploreSolids (const TopoDS_Shape & theShape,const BRep_Builder & theBuilder,TopoDS_Compound & theClosed,TopoDS_Compound & theOpened,const Standard_Boolean theIgnore1DSubShape);
 };
 
 

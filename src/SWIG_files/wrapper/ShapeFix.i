@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -70,9 +70,11 @@ class ShapeFix {
 	:type preci: float
 	:param theProgress: default value is 0
 	:type theProgress: Handle_Message_ProgressIndicator &
+	:param theMsgReg: default value is 0
+	:type theMsgReg: Handle_ShapeExtend_BasicMsgRegistrator &
 	:rtype: bool
 ") SameParameter;
-		static Standard_Boolean SameParameter (const TopoDS_Shape & shape,const Standard_Boolean enforce,const Standard_Real preci = 0.0,const Handle_Message_ProgressIndicator & theProgress = 0);
+		static Standard_Boolean SameParameter (const TopoDS_Shape & shape,const Standard_Boolean enforce,const Standard_Real preci = 0.0,const Handle_Message_ProgressIndicator & theProgress = 0,const Handle_ShapeExtend_BasicMsgRegistrator & theMsgReg = 0);
 		%feature("compactdefaultargs") EncodeRegularity;
 		%feature("autodoc", "	* Runs EncodeRegularity from BRepLib taking into account shared components of assemblies, so that each component is processed only once
 
@@ -252,7 +254,7 @@ class ShapeFix_DataMapOfShapeBox2d : public TCollection_BasicMap {
 		%feature("autodoc", "	:param Other:
 	:type Other: ShapeFix_DataMapOfShapeBox2d &
 	:rtype: ShapeFix_DataMapOfShapeBox2d
-") operator=;
+") operator =;
 		ShapeFix_DataMapOfShapeBox2d & operator = (const ShapeFix_DataMapOfShapeBox2d & Other);
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
@@ -1183,7 +1185,7 @@ class ShapeFix_SequenceOfWireSegment : public TCollection_BaseSequence {
 		%feature("autodoc", "	:param Other:
 	:type Other: ShapeFix_SequenceOfWireSegment &
 	:rtype: ShapeFix_SequenceOfWireSegment
-") operator=;
+") operator =;
 		const ShapeFix_SequenceOfWireSegment & operator = (const ShapeFix_SequenceOfWireSegment & Other);
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
@@ -1815,6 +1817,19 @@ class ShapeFix_Face : public ShapeFix_Root {
             
             %feature("autodoc","1");
             %extend {
+                Standard_Integer GetRemoveSmallAreaFaceMode() {
+                return (Standard_Integer) $self->RemoveSmallAreaFaceMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetRemoveSmallAreaFaceMode(Standard_Integer value ) {
+                $self->RemoveSmallAreaFaceMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
                 Standard_Integer GetFixIntersectingWiresMode() {
                 return (Standard_Integer) $self->FixIntersectingWiresMode();
                 }
@@ -1932,9 +1947,11 @@ class ShapeFix_Face : public ShapeFix_Root {
 		%feature("compactdefaultargs") FixSmallAreaWire;
 		%feature("autodoc", "	* Detects wires with small area (that is less than 100*Precision::PConfusion(). Removes these wires if they are internal. Returns : True if at least one small wire removed, False if does nothing.
 
+	:param theIsRemoveSmallFace:
+	:type theIsRemoveSmallFace: bool
 	:rtype: bool
 ") FixSmallAreaWire;
-		Standard_Boolean FixSmallAreaWire ();
+		Standard_Boolean FixSmallAreaWire (const Standard_Boolean theIsRemoveSmallFace);
 		%feature("compactdefaultargs") FixLoopWire;
 		%feature("autodoc", "	* Detects if wire has a loop and fixes this situation by splitting on the few parts. if wire has a loops and it was splitted Status was set to value ShapeExtend_DONE6.
 
@@ -2132,12 +2149,6 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 	:rtype: TopoDS_Shape
 ") FixSplitFace;
 		TopoDS_Shape FixSplitFace (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") SplitFaces;
-		%feature("autodoc", "	* Split faces by splitting vertices
-
-	:rtype: TopoDS_Shape
-") SplitFaces;
-		TopoDS_Shape SplitFaces ();
 		%feature("compactdefaultargs") SplitOneFace;
 		%feature("autodoc", "	* Compute data for face splitting.
 
@@ -2148,12 +2159,6 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 	:rtype: bool
 ") SplitOneFace;
 		Standard_Boolean SplitOneFace (TopoDS_Face & F,TopoDS_Compound & theSplittedFaces);
-		%feature("compactdefaultargs") RemoveSmallFaces;
-		%feature("autodoc", "	* Remove small faces from compound.
-
-	:rtype: TopoDS_Shape
-") RemoveSmallFaces;
-		TopoDS_Shape RemoveSmallFaces ();
 		%feature("compactdefaultargs") FixFace;
 		%feature("autodoc", "	:param F:
 	:type F: TopoDS_Face &
@@ -2224,6 +2229,113 @@ class Handle_ShapeFix_FixSmallFace : public Handle_ShapeFix_Root {
 };
 
 %extend ShapeFix_FixSmallFace {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+%nodefaultctor ShapeFix_FixSmallSolid;
+class ShapeFix_FixSmallSolid : public ShapeFix_Root {
+	public:
+		%feature("compactdefaultargs") ShapeFix_FixSmallSolid;
+		%feature("autodoc", "	* Construct
+
+	:rtype: None
+") ShapeFix_FixSmallSolid;
+		 ShapeFix_FixSmallSolid ();
+		%feature("compactdefaultargs") SetFixMode;
+		%feature("autodoc", "	* Set working mode for operator: - theMode = 0 use both WidthFactorThreshold and VolumeThreshold parameters - theMode = 1 use only WidthFactorThreshold parameter - theMode = 2 use only VolumeThreshold parameter
+
+	:param theMode:
+	:type theMode: int
+	:rtype: None
+") SetFixMode;
+		void SetFixMode (const Standard_Integer theMode);
+		%feature("compactdefaultargs") SetVolumeThreshold;
+		%feature("autodoc", "	* Set or clear volume threshold for small solids
+
+	:param theThreshold: default value is -1.0
+	:type theThreshold: float
+	:rtype: None
+") SetVolumeThreshold;
+		void SetVolumeThreshold (const Standard_Real theThreshold = -1.0);
+		%feature("compactdefaultargs") SetWidthFactorThreshold;
+		%feature("autodoc", "	* Set or clear width factor threshold for small solids
+
+	:param theThreshold: default value is -1.0
+	:type theThreshold: float
+	:rtype: None
+") SetWidthFactorThreshold;
+		void SetWidthFactorThreshold (const Standard_Real theThreshold = -1.0);
+		%feature("compactdefaultargs") Remove;
+		%feature("autodoc", "	* Remove small solids from the given shape
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theContext:
+	:type theContext: Handle_ShapeBuild_ReShape &
+	:rtype: TopoDS_Shape
+") Remove;
+		TopoDS_Shape Remove (const TopoDS_Shape & theShape,const Handle_ShapeBuild_ReShape & theContext);
+		%feature("compactdefaultargs") Merge;
+		%feature("autodoc", "	* Merge small solids in the given shape to adjacent non-small ones
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theContext:
+	:type theContext: Handle_ShapeBuild_ReShape &
+	:rtype: TopoDS_Shape
+") Merge;
+		TopoDS_Shape Merge (const TopoDS_Shape & theShape,const Handle_ShapeBuild_ReShape & theContext);
+};
+
+
+%extend ShapeFix_FixSmallSolid {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeFix_FixSmallSolid(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ShapeFix_FixSmallSolid::Handle_ShapeFix_FixSmallSolid %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_ShapeFix_FixSmallSolid;
+class Handle_ShapeFix_FixSmallSolid : public Handle_ShapeFix_Root {
+
+    public:
+        // constructors
+        Handle_ShapeFix_FixSmallSolid();
+        Handle_ShapeFix_FixSmallSolid(const Handle_ShapeFix_FixSmallSolid &aHandle);
+        Handle_ShapeFix_FixSmallSolid(const ShapeFix_FixSmallSolid *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_ShapeFix_FixSmallSolid DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_ShapeFix_FixSmallSolid {
+    ShapeFix_FixSmallSolid* _get_reference() {
+    return (ShapeFix_FixSmallSolid*)$self->Access();
+    }
+};
+
+%extend Handle_ShapeFix_FixSmallSolid {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
+%extend ShapeFix_FixSmallSolid {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2413,6 +2525,19 @@ class ShapeFix_Shape : public ShapeFix_Root {
             %extend {
                 void SetFixVertexPositionMode(Standard_Integer value ) {
                 $self->FixVertexPositionMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixVertexTolMode() {
+                return (Standard_Integer) $self->FixVertexTolMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixVertexTolMode(Standard_Integer value ) {
+                $self->FixVertexTolMode()=value;
                 }
             };
             };
@@ -3021,6 +3146,22 @@ class ShapeFix_Wire : public ShapeFix_Root {
 	:rtype: void
 ") SetPrecision;
 		virtual void SetPrecision (const Standard_Real prec);
+		%feature("compactdefaultargs") SetMaxTailAngle;
+		%feature("autodoc", "	* Sets the maximal allowed angle of the tails in radians.
+
+	:param theMaxTailAngle:
+	:type theMaxTailAngle: float
+	:rtype: None
+") SetMaxTailAngle;
+		void SetMaxTailAngle (const Standard_Real theMaxTailAngle);
+		%feature("compactdefaultargs") SetMaxTailWidth;
+		%feature("autodoc", "	* Sets the maximal allowed width of the tails.
+
+	:param theMaxTailWidth:
+	:type theMaxTailWidth: float
+	:rtype: None
+") SetMaxTailWidth;
+		void SetMaxTailWidth (const Standard_Real theMaxTailWidth);
 		%feature("compactdefaultargs") IsLoaded;
 		%feature("autodoc", "	* Tells if the wire is loaded
 
@@ -3433,6 +3574,19 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixNonAdjacentIntersectingEdgesMode()=value;
                 }
             };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixTailMode() {
+                return (Standard_Integer) $self->FixTailMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixTailMode(Standard_Integer value ) {
+                $self->FixTailMode()=value;
+                }
+            };
             		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* This method performs all the available fixes. If some fix is turned on or off explicitly by the Fix..Mode() flag, this fix is either called or not depending on that flag. Else (i.e. if flag is default) fix is called depending on the situation: some fixes are not called or are limited if order of edges in the wire is not OK, or depending on modes //! The order of the fixes and default behaviour of Perform() are: FixReorder FixSmall (with lockvtx true if ! TopoMode or if wire is not ordered) FixConnected (if wire is ordered) FixEdgeCurves (without FixShifted if wire is not ordered) FixDegenerated (if wire is ordered) FixSelfIntersection (if wire is ordered and ClosedMode is True) FixLacking (if wire is ordered)
 
@@ -3595,6 +3749,10 @@ class ShapeFix_Wire : public ShapeFix_Root {
 	:rtype: bool
 ") FixGap2d;
 		Standard_Boolean FixGap2d (const Standard_Integer num,const Standard_Boolean convert = Standard_False);
+		%feature("compactdefaultargs") FixTails;
+		%feature("autodoc", "	:rtype: bool
+") FixTails;
+		Standard_Boolean FixTails ();
 		%feature("compactdefaultargs") StatusReorder;
 		%feature("autodoc", "	:param status:
 	:type status: ShapeExtend_Status
@@ -3667,6 +3825,12 @@ class ShapeFix_Wire : public ShapeFix_Root {
 	:rtype: bool
 ") StatusRemovedSegment;
 		Standard_Boolean StatusRemovedSegment ();
+		%feature("compactdefaultargs") StatusFixTails;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusFixTails;
+		Standard_Boolean StatusFixTails (const ShapeExtend_Status status);
 		%feature("compactdefaultargs") LastFixStatus;
 		%feature("autodoc", "	* Queries the status of last call to methods Fix... of advanced level For details see corresponding methods; universal statuses are: OK : problem not detected; nothing done DONE: problem was detected and successfully fixed FAIL: problem cannot be fixed
 
