@@ -5,8 +5,7 @@ package:
 
 source:
   path: ../..
-  patches:
-    - fix_graphicshr_location.patch [win]
+
 
 build:
   script_env:
