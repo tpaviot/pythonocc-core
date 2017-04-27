@@ -210,7 +210,6 @@ class Viewer3d(OCC.Visualization.Display3d):
     def SetModeShaded(self):
         self.View.SetComputedMode(False)
         self.Context.SetDisplayMode(OCC.AIS.AIS_Shaded)
-        self.EnableAntiAliasing()
 
     def SetModeHLR(self):
         self.View.SetComputedMode(True)
