@@ -168,7 +168,7 @@ class qtViewer3d(qtBaseViewer):
         # background gradient
         self._display.display_trihedron()
         self._display.SetModeShaded()
-        self._display.EnableAntiAliasing()
+        self._display.DisableAntiAliasing()
         self._inited = True
         # dict mapping keys to functions
         self._SetupKeyMap()
@@ -196,12 +196,8 @@ class qtViewer3d(qtBaseViewer):
         self._current_cursor = "arrow"
 
     def _SetupKeyMap(self):
-        def set_shade_mode():
-            self._display.DisableAntiAliasing()
-            self._display.SetModeShaded()
-
         self._key_map = {ord('W'): self._display.SetModeWireFrame,
-                         ord('S'): set_shade_mode,
+                         ord('S'): self._display.SetModeShaded,
                          ord('A'): self._display.EnableAntiAliasing,
                          ord('B'): self._display.DisableAntiAliasing,
                          ord('H'): self._display.SetModeHLR,
