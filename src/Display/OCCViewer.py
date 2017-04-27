@@ -20,6 +20,7 @@
 from __future__ import print_function
 
 import os
+import os.path
 import sys
 import math
 import itertools
@@ -50,15 +51,36 @@ from OCC.Graphic3d import Graphic3d_NOM_NEON_GNC
 from OCC.V3d import V3d_ZBUFFER
 from OCC.Aspect import Aspect_TOTP_RIGHT_LOWER
 
-#
-# On Windows, the CSF_GraphicShr env variable must be set up
-# and point to the TKOpenGl.dll library.
-#
-if sys.platform == "win32":  # all of this is win specific
-    # if the CSF_GraphicShr variable is not set
-    # it should point to the TKOpenGl.dll library that is shipped with pythonocc binary
-    if not "CSF_GraphicShr" in os.environ:
-        os.environ["CSF_GraphicShr"] = os.path.join(os.path.dirname(OCC.Aspect.__file__), "TKOpenGl.dll")
+# On Windows, the CSF_ShadersDirectory env variable must point
+# to the oce share/src/Shaders directory, otherwise the
+# graphic display cannot be initialized
+# The strategy is the following:
+# * first, we look into the OCC pythonpackage directory itsef
+# * secondly, if the Shaders directory was not found, we set the
+# variable to run with conda.
+if sys.platform == "win32":
+    # first check if CSF_ShadersDirectory is defined
+    if "CSF_ShadersDirectory" in os.environ:
+        shaders_path = os.environ["CSF_ShadersDirectory"]
+        # raise an error, force the user to correctly set the variable
+        err_msg = "Please set the CSF_ShadersDirectory to point to a valid directory (%s is not ok)" % shaders_path
+        assert os.path.isdir(shaders_path), err_msg
+    import OCC
+    occ_package_path = os.path.dirname(OCC.__file__)
+    shaders_path_1 = os.path.join(occ_package_path, "Shaders")
+    if os.path.isdir(shaders_path_1):
+        os.environ['CSF_ShadersDirectory'] = shaders_path_1
+        print("CSF_ShadersDirectory env var set to %s" % shaders_path_1)
+    # second case, conda
+    # OCC package is located at D:\Miniconda2\envs\py018dev27\Lib\site-packages\OCC
+    # whereas the oce src/Shaders folders is at
+    #
+    else:
+        shaders_path_2 = os.path.join(occ_package_path, '..', '..', '..',
+                                      'Library', 'share', 'oce', 'src', 'Shaders')
+        if os.path.isdir(shaders_path_2):
+            os.environ['CSF_ShadersDirectory'] = shaders_path_2
+            print("CSF_ShadersDirectory env var set to %s" % shaders_path_2)
 
 
 def rgb_color(r, g, b):
