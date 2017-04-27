@@ -201,8 +201,6 @@ def init_display(backend_str=None, size=(1024, 768)):
         win.canva.InitDriver()
         win.canva.qApp = app
         display = win.canva._display
-        if sys.platform != "linux2":
-            display.EnableAntiAliasing()
         # background gradient
         display.set_bg_gradient_color(206, 215, 222, 128, 128, 128)
         # display black trihedron
