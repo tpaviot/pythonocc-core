@@ -25,6 +25,7 @@ import sys
 import math
 import itertools
 
+import OCC
 from OCC.AIS import AIS_MultipleConnectedInteractive, AIS_Shape
 from OCC.TopoDS import TopoDS_Shape
 from OCC.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
@@ -51,36 +52,31 @@ from OCC.Graphic3d import Graphic3d_NOM_NEON_GNC
 from OCC.V3d import V3d_ZBUFFER
 from OCC.Aspect import Aspect_TOTP_RIGHT_LOWER
 
-# On Windows, the CSF_ShadersDirectory env variable must point
-# to the oce share/src/Shaders directory, otherwise the
-# graphic display cannot be initialized
-# The strategy is the following:
-# * first, we look into the OCC pythonpackage directory itsef
-# * secondly, if the Shaders directory was not found, we set the
-# variable to run with conda.
+# Shaders and Units definition must be found by occ
+# the fastest way to get done is to set the CASROOT env variable
+# it must point to the /share folder.
 if sys.platform == "win32":
-    # first check if CSF_ShadersDirectory is defined
-    if "CSF_ShadersDirectory" in os.environ:
-        shaders_path = os.environ["CSF_ShadersDirectory"]
+    # do the same for Units
+    if "CASROOT" in os.environ:
+        casroot_path = os.environ["CASROOT"]
         # raise an error, force the user to correctly set the variable
-        err_msg = "Please set the CSF_ShadersDirectory to point to a valid directory (%s is not ok)" % shaders_path
-        assert os.path.isdir(shaders_path), err_msg
-    import OCC
-    occ_package_path = os.path.dirname(OCC.__file__)
-    shaders_path_1 = os.path.join(occ_package_path, "Shaders")
-    if os.path.isdir(shaders_path_1):
-        os.environ['CSF_ShadersDirectory'] = shaders_path_1
-        print("CSF_ShadersDirectory env var set to %s" % shaders_path_1)
-    # second case, conda
-    # OCC package is located at D:\Miniconda2\envs\py018dev27\Lib\site-packages\OCC
-    # whereas the oce src/Shaders folders is at
-    #
-    else:
-        shaders_path_2 = os.path.join(occ_package_path, '..', '..', '..',
-                                      'Library', 'share', 'oce', 'src', 'Shaders')
-        if os.path.isdir(shaders_path_2):
-            os.environ['CSF_ShadersDirectory'] = shaders_path_2
-            print("CSF_ShadersDirectory env var set to %s" % shaders_path_2)
+        err_msg = "Please set the CASROOT env variable (%s is not ok)" % casroot_path
+        assert os.path.isdir(casroot_path), err_msg
+    else:  # on miniconda or anaconda or whatever conda
+        occ_package_path = os.path.dirname(OCC.__file__)
+        casroot_path = os.path.join(occ_package_path, '..', '..', '..',
+                               'Library', 'share', 'oce')
+        # we check that all required files are at the right place
+        shaders_dict_found = os.path.isdir(os.path.join(casroot_path,
+                                                        'src', 'Shaders'))
+        unitlexicon_found = os.path.isfile(os.path.join(casroot_path,
+                                                        'src', 'UnitsAPI',
+                                                        'Lexi_Expr.dat'))
+        unitsdefinition_found = os.path.isfile(os.path.join(casroot_path,
+                                                        'src', 'UnitsAPI',
+                                                        'Units.dat'))
+        if shaders_dict_found and unitlexicon_found and unitsdefinition_found:
+            os.environ["CASROOT"] = casroot_path
 
 
 def rgb_color(r, g, b):
