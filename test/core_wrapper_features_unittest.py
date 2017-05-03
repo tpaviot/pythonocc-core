@@ -44,6 +44,9 @@ from OCC.ShapeAnalysis import ShapeAnalysis_Curve
 from OCC.BRep import BRep_Builder
 from OCC.ChFiDS import ChFiDS_ChamfSpine
 from OCC.Graphic3d import Graphic3d_RenderingParams
+from OCC.AIS import (Handle_AIS_Shape, Handle_AIS_Shape_DownCast,
+                     Handle_AIS_InteractiveObject,
+                     AIS_InteractiveObject)
 
 
 class TestWrapperFeatures(unittest.TestCase):
@@ -493,6 +496,15 @@ class TestWrapperFeatures(unittest.TestCase):
         assert str(p) == "class<'gp_Pnt'>"
         shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         assert "class<'TopoDS_Shape'; Type:Solid; id:" in str(shp)
+
+    def test_downcast_ais_shape(self):
+        """ Test if an AIS_Shape can be donwcasted to a TopoDS_Shape
+        """
+        ais_interactive_object_handle = Handle_AIS_InteractiveObject()
+        ais_shape_handle = Handle_AIS_Shape_DownCast(ais_interactive_object_handle)
+        assert isinstance(ais_shape_handle, Handle_AIS_Shape)
+        assert ais_shape_handle.IsNull()
+
 
 def suite():
     test_suite = unittest.TestSuite()
