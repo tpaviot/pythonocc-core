@@ -86,7 +86,7 @@ endif(MINGW)
 ########
 # SWIG #
 ########
-find_package(SWIG)
+find_package(SWIG 3.0.9)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
 
@@ -111,7 +111,7 @@ if(DEFINED OCE_INCLUDE_PATH)
 # if OCE_INCLUDE_PATH is not passed at command line,
 # find OCE automatically
 else(OCE_INCLUDE_PATH)
-  find_package(OCE REQUIRED)
+  find_package(OCE 0.18 REQUIRED)
   if(OCE_FOUND)
     message(STATUS "OpenCASCADE Community Edition (OCE) found.")
     include_directories(${OCE_INCLUDE_DIRS})

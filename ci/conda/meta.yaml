@@ -27,14 +27,16 @@ requirements:
     - cmake
     - ninja
     - swig
-    - freetype
+    - freetype ==2.6.3  [win]
+    - freetype          [osx and linux]
     - gcc               [linux]
 
   run:
     - pyqt >=5
     - oce ==0.18.1
     - python
-    - freetype
+    - freetype ==2.6.3  [win]
+    - freetype          [osx and linux]
     - pyobjc-core       [osx and py27]
 
 test:
