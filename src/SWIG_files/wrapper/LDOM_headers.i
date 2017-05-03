@@ -7978,6 +7978,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Prs3d_WFShape.hxx>
 #include<PrsMgr_ListOfPresentations.hxx>
 #include<PrsMgr_ModedPresentation.hxx>
+#include<PrsMgr_PresentableObject.hxx>
 #include<PrsMgr_PresentableObjectPointer.hxx>
 #include<PrsMgr_Presentation.hxx>
 #include<PrsMgr_Presentation3d.hxx>

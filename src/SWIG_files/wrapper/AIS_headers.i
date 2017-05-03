@@ -576,6 +576,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TCollection_Side.hxx>
 #include<PrsMgr_ListOfPresentations.hxx>
 #include<PrsMgr_ModedPresentation.hxx>
+#include<PrsMgr_PresentableObject.hxx>
 #include<PrsMgr_PresentableObjectPointer.hxx>
 #include<PrsMgr_Presentation.hxx>
 #include<PrsMgr_Presentation3d.hxx>

@@ -99,6 +99,266 @@ class PrsMgr_ModedPresentation {
 	__repr__ = _dumps_object
 	}
 };
+%nodefaultctor PrsMgr_PresentableObject;
+%ignore PrsMgr_PresentableObject::~PrsMgr_PresentableObject();
+class PrsMgr_PresentableObject : public MMgt_TShared {
+	public:
+		%feature("compactdefaultargs") Presentations;
+		%feature("autodoc", "	:rtype: PrsMgr_Presentations
+") Presentations;
+		PrsMgr_Presentations & Presentations ();
+		%feature("compactdefaultargs") TypeOfPresentation3d;
+		%feature("autodoc", "	* Returns information on whether the object accepts display in HLR mode or not.
+
+	:rtype: PrsMgr_TypeOfPresentation3d
+") TypeOfPresentation3d;
+		PrsMgr_TypeOfPresentation3d TypeOfPresentation3d ();
+		%feature("compactdefaultargs") SetTransformPersistence;
+		%feature("autodoc", "	* Sets up Transform Persistence Mode for this object. This function used to lock in object position, rotation and / or zooming relative to camera position. Object will be drawn in the origin setted by APoint parameter (except Graphic3d_TMF_TriedronPers flag - see description later). aFlag should be: - Graphic3d_TMF_None - no persistence attributes (reset); - Graphic3d_TMF_PanPers - object doesn't move; - Graphic3d_TMF_ZoomPers - object doesn't resize; - Graphic3d_TMF_RotatePers - object doesn't rotate; - Graphic3d_TMF_FullPers - pan, zoom and rotate transform persistence; - Graphic3d_TMF_TriedronPers - object behaves like trihedron; - combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_ZoomPers); - combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_RotatePers); - combination (Graphic3d_TMF_ZoomPers | Graphic3d_TMF_RotatePers). If Graphic3d_TMF_TriedronPers or Graphic3d_TMF_2d persistence mode selected APoint coordinates X and Y means: - X = 0.0, Y = 0.0 - center of view window; - X > 0.0, Y > 0.0 - right upper corner of view window; - X > 0.0, Y < 0.0 - right lower corner of view window; - X < 0.0, Y > 0.0 - left upper corner of view window; - X < 0.0, Y < 0.0 - left lower corner of view window. And Z coordinate defines the gap from border of view window (except center position).
+
+	:param aFlag:
+	:type aFlag: Graphic3d_TransModeFlags &
+	:param APoint:
+	:type APoint: gp_Pnt
+	:rtype: void
+") SetTransformPersistence;
+		virtual void SetTransformPersistence (const Graphic3d_TransModeFlags & aFlag,const gp_Pnt & APoint);
+		%feature("compactdefaultargs") SetTransformPersistence;
+		%feature("autodoc", "	* Calls previous method with point (0,0,0)
+
+	:param aFlag:
+	:type aFlag: Graphic3d_TransModeFlags &
+	:rtype: None
+") SetTransformPersistence;
+		void SetTransformPersistence (const Graphic3d_TransModeFlags & aFlag);
+		%feature("compactdefaultargs") GetTransformPersistenceMode;
+		%feature("autodoc", "	* Gets Transform Persistence Mode for this object
+
+	:rtype: Graphic3d_TransModeFlags
+") GetTransformPersistenceMode;
+		Graphic3d_TransModeFlags GetTransformPersistenceMode ();
+		%feature("compactdefaultargs") GetTransformPersistencePoint;
+		%feature("autodoc", "	* Gets point of transform persistence for this object
+
+	:rtype: gp_Pnt
+") GetTransformPersistencePoint;
+		gp_Pnt GetTransformPersistencePoint ();
+		%feature("compactdefaultargs") SetTypeOfPresentation;
+		%feature("autodoc", "	:param aType:
+	:type aType: PrsMgr_TypeOfPresentation3d
+	:rtype: None
+") SetTypeOfPresentation;
+		void SetTypeOfPresentation (const PrsMgr_TypeOfPresentation3d aType);
+		%feature("compactdefaultargs") SetToUpdate;
+		%feature("autodoc", "	* flags the Prs of mode <AMode> to be Updated. the Update will be done when needed.
+
+	:param aMode:
+	:type aMode: int
+	:rtype: None
+") SetToUpdate;
+		void SetToUpdate (const Standard_Integer aMode);
+		%feature("compactdefaultargs") SetToUpdate;
+		%feature("autodoc", "	* flags all the Presentations to be Updated.
+
+	:rtype: None
+") SetToUpdate;
+		void SetToUpdate ();
+		%feature("compactdefaultargs") ToBeUpdated;
+		%feature("autodoc", "	* gives the list of modes which are flagged 'to be updated'.
+
+	:param ListOfMode:
+	:type ListOfMode: TColStd_ListOfInteger &
+	:rtype: None
+") ToBeUpdated;
+		void ToBeUpdated (TColStd_ListOfInteger & ListOfMode);
+		%feature("compactdefaultargs") SetLocalTransformation;
+		%feature("autodoc", "	* Sets local transformation to theTransformation.
+
+	:param theTransformation:
+	:type theTransformation: gp_Trsf
+	:rtype: void
+") SetLocalTransformation;
+		virtual void SetLocalTransformation (const gp_Trsf & theTransformation);
+		%feature("compactdefaultargs") HasTransformation;
+		%feature("autodoc", "	* Returns true if object has a transformation that is different from the identity.
+
+	:rtype: bool
+") HasTransformation;
+		Standard_Boolean HasTransformation ();
+		%feature("compactdefaultargs") LocalTransformation;
+		%feature("autodoc", "	:rtype: gp_Trsf
+") LocalTransformation;
+		const gp_Trsf  LocalTransformation ();
+		%feature("compactdefaultargs") Transformation;
+		%feature("autodoc", "	:rtype: gp_Trsf
+") Transformation;
+		const gp_Trsf  Transformation ();
+		%feature("compactdefaultargs") InversedTransformation;
+		%feature("autodoc", "	:rtype: gp_Trsf
+") InversedTransformation;
+		const gp_Trsf  InversedTransformation ();
+		%feature("compactdefaultargs") ResetTransformation;
+		%feature("autodoc", "	* resets local transformation to identity.
+
+	:rtype: void
+") ResetTransformation;
+		virtual void ResetTransformation ();
+		%feature("compactdefaultargs") UpdateTransformation;
+		%feature("autodoc", "	:rtype: void
+") UpdateTransformation;
+		virtual void UpdateTransformation ();
+		%feature("compactdefaultargs") UpdateTransformation;
+		%feature("autodoc", "	:param P:
+	:type P: Handle_Prs3d_Presentation &
+	:rtype: void
+") UpdateTransformation;
+		virtual void UpdateTransformation (const Handle_Prs3d_Presentation & P);
+		%feature("compactdefaultargs") SetZLayer;
+		%feature("autodoc", "	* Set Z layer ID and update all presentations of the presentable object. The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
+
+	:param theLayerId:
+	:type theLayerId: Graphic3d_ZLayerId
+	:rtype: void
+") SetZLayer;
+		virtual void SetZLayer (const Graphic3d_ZLayerId theLayerId);
+		%feature("compactdefaultargs") ZLayer;
+		%feature("autodoc", "	* Get ID of Z layer.
+
+	:rtype: Graphic3d_ZLayerId
+") ZLayer;
+		Graphic3d_ZLayerId ZLayer ();
+		%feature("compactdefaultargs") AddClipPlane;
+		%feature("autodoc", "	* Adds clip plane for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be substracted from limit to predict the maximum possible number of object clipping planes. @param thePlane [in] the clip plane to be appended to map of clip planes.
+
+	:param thePlane:
+	:type thePlane: Handle_Graphic3d_ClipPlane &
+	:rtype: void
+") AddClipPlane;
+		virtual void AddClipPlane (const Handle_Graphic3d_ClipPlane & thePlane);
+		%feature("compactdefaultargs") RemoveClipPlane;
+		%feature("autodoc", "	* Removes previously added clip plane. @param thePlane [in] the clip plane to be removed from map of clip planes.
+
+	:param thePlane:
+	:type thePlane: Handle_Graphic3d_ClipPlane &
+	:rtype: void
+") RemoveClipPlane;
+		virtual void RemoveClipPlane (const Handle_Graphic3d_ClipPlane & thePlane);
+		%feature("compactdefaultargs") SetClipPlanes;
+		%feature("autodoc", "	* Set clip planes for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be substracted from limit to predict the maximum possible number of object clipping planes.
+
+	:param thePlanes:
+	:type thePlanes: Graphic3d_SequenceOfHClipPlane &
+	:rtype: void
+") SetClipPlanes;
+		virtual void SetClipPlanes (const Graphic3d_SequenceOfHClipPlane & thePlanes);
+		%feature("compactdefaultargs") GetClipPlanes;
+		%feature("autodoc", "	* Get clip planes. returns set of previously added clip planes for all display mode presentations.
+
+	:rtype: Graphic3d_SequenceOfHClipPlane
+") GetClipPlanes;
+		const Graphic3d_SequenceOfHClipPlane & GetClipPlanes ();
+		%feature("compactdefaultargs") SetMutable;
+		%feature("autodoc", "	* Sets if the object has mutable nature (content or location will be changed regularly). This method should be called before object displaying to take effect.
+
+	:param theIsMutable:
+	:type theIsMutable: bool
+	:rtype: void
+") SetMutable;
+		virtual void SetMutable (const Standard_Boolean theIsMutable);
+		%feature("compactdefaultargs") IsMutable;
+		%feature("autodoc", "	* Returns true if object has mutable nature (content or location are be changed regularly). Mutable object will be managed in different way than static onces (another optimizations).
+
+	:rtype: bool
+") IsMutable;
+		const Standard_Boolean IsMutable ();
+		%feature("compactdefaultargs") AddChild;
+		%feature("autodoc", "	* Makes theObject child of current object in scene hierarchy.
+
+	:param theObject:
+	:type theObject: Handle_PrsMgr_PresentableObject &
+	:rtype: void
+") AddChild;
+		virtual void AddChild (const Handle_PrsMgr_PresentableObject & theObject);
+		%feature("compactdefaultargs") RemoveChild;
+		%feature("autodoc", "	* Removes theObject from children of current object in scene hierarchy.
+
+	:param theObject:
+	:type theObject: Handle_PrsMgr_PresentableObject &
+	:rtype: void
+") RemoveChild;
+		virtual void RemoveChild (const Handle_PrsMgr_PresentableObject & theObject);
+		%feature("compactdefaultargs") Children;
+		%feature("autodoc", "	* Returns children of the current object.
+
+	:rtype: PrsMgr_ListOfPresentableObjects
+") Children;
+		const PrsMgr_ListOfPresentableObjects & Children ();
+		%feature("compactdefaultargs") HasOwnPresentations;
+		%feature("autodoc", "	* Returns true if object should have own presentations.
+
+	:rtype: bool
+") HasOwnPresentations;
+		const Standard_Boolean HasOwnPresentations ();
+		%feature("compactdefaultargs") Parent;
+		%feature("autodoc", "	* Returns parent of current object in scene hierarchy.
+
+	:rtype: PrsMgr_PresentableObjectPointer
+") Parent;
+		const PrsMgr_PresentableObjectPointer Parent ();
+};
+
+
+%extend PrsMgr_PresentableObject {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_PrsMgr_PresentableObject(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_PrsMgr_PresentableObject::Handle_PrsMgr_PresentableObject %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_PrsMgr_PresentableObject;
+class Handle_PrsMgr_PresentableObject : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_PrsMgr_PresentableObject();
+        Handle_PrsMgr_PresentableObject(const Handle_PrsMgr_PresentableObject &aHandle);
+        Handle_PrsMgr_PresentableObject(const PrsMgr_PresentableObject *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_PrsMgr_PresentableObject DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_PrsMgr_PresentableObject {
+    PrsMgr_PresentableObject* _get_reference() {
+    return (PrsMgr_PresentableObject*)$self->Access();
+    }
+};
+
+%extend Handle_PrsMgr_PresentableObject {
+    %pythoncode {
+        def GetObject(self):
+            obj = self._get_reference()
+            register_handle(self, obj)
+            return obj
+    }
+};
+
+%extend PrsMgr_PresentableObject {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor PrsMgr_Presentation;
 class PrsMgr_Presentation : public MMgt_TShared {
 	public:
