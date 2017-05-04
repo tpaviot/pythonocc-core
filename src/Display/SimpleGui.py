@@ -151,7 +151,6 @@ def init_display(backend_str=None, size=(1024, 768)):
                 QtWidgets.QMainWindow.__init__(self, *args)
                 self.canva = qtViewer3d(self)
                 self.setWindowTitle("pythonOCC-%s 3d viewer ('%s' backend)" % (VERSION, used_backend))
-                self.resize(size[0], size[1])
                 self.setCentralWidget(self.canva)
                 if sys.platform != 'darwin':
                     self.menu_bar = self.menuBar()
@@ -198,6 +197,7 @@ def init_display(backend_str=None, size=(1024, 768)):
             app = QtWidgets.QApplication(sys.argv)
         win = MainWindow()
         win.show()
+        win.resize(size[0], size[1])
         win.canva.InitDriver()
         win.canva.qApp = app
         display = win.canva._display
