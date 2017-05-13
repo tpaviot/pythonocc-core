@@ -236,9 +236,6 @@ option_with_default(PYTHONOCC_WRAP_SMESH "Compile SMESH wrapper" FALSE)
 if(PYTHONOCC_WRAP_SMESH)
   option_with_default(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN "Compile NETGENPlugin wrapper" FALSE)
   include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SMESH_Modules.cmake)
-  # need boost headers to compile
-  find_package(Boost)
-  include_directories(${Boost_INCLUDE_DIRS})
   # need vtk headers to compile
   #find_package(VTK COMPONENTS vtkCommonCore vtkCommonDataModel vtkIOLegacy vtkFiltersVerdict)
   #include_directories(${VTK_INCLUDE_DIRS})
