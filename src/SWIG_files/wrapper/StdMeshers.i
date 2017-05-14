@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -55,10 +55,10 @@ typedef std::map<TNode , TNodeColumn> TNode2ColumnMap;
 typedef std::map<double , TNodeColumn> TParam2ColumnMap;
 typedef TopTools_IndexedMapOfOrientedShape TBlockShapes;
 typedef uvPtStruct UVPtStruct;
-typedef boost::shared_ptr<SMESH_ComputeError> TError;
+typedef double Pt3[3];
 typedef boost::shared_ptr<uvPtStruct> UVPtStructPtr;
 typedef std::vector<StdMeshers_FaceSidePtr> TSideVector;
-typedef double Pt3[3];
+typedef boost::shared_ptr<SMESH_ComputeError> TError;
 typedef std::map<double , TNodeColumn>::const_iterator TParam2ColumnIt;
 typedef boost::shared_ptr<StdMeshers_FaceSide> StdMeshers_FaceSidePtr;
 typedef std::vector <const SMDS_MeshNode *> TNodeColumn;
