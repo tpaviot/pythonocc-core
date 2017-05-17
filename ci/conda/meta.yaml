@@ -21,22 +21,18 @@ build:
 
 requirements:
   build:
-    - patch             [win]
     - python
     - oce ==0.18.1
-    - cmake
-    - ninja
-    - swig
-    - freetype ==2.6.3  [win]
-    - freetype          [osx and linux]
-    - gcc               [linux]
+    - cmake ==3.8.0
+    - ninja ==1.7.2
+    - swig ==3.0.11
+    - freetype ==2.7
 
   run:
     - pyqt >=5
     - oce ==0.18.1
     - python
-    - freetype ==2.6.3  [win]
-    - freetype          [osx and linux]
+    - freetype ==2.7
     - pyobjc-core       [osx and py27]
 
 test:
