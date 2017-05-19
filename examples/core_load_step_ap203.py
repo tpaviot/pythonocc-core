@@ -1,4 +1,4 @@
-##Copyright 2010-2014 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2010-2017 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -17,13 +17,21 @@
 
 from __future__ import print_function
 
+import random
+import os
+import os.path
 import sys
 
 from OCC.STEPControl import STEPControl_Reader
 from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
+from OCC.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.Display.SimpleGui import init_display
 
+from core_topology_traverse import Topo
+
 def read_step_file(filename):
+    """ read the STEP file and returns a compound
+    """
     step_reader = STEPControl_Reader()
     status = step_reader.ReadFile(filename)
 
@@ -40,8 +48,30 @@ def read_step_file(filename):
         sys.exit(0)
     return aResShape
 
-if __name__ == "__main__":
-    the_shape = read_step_file('./models/as1_pe_203.stp')
+def import_as_one_shape(event=None):
+    shp = read_step_file(os.path.join('.', 'models', 'as1_pe_203.stp'))
+    display.EraseAll()
+    display.DisplayShape(shp, update=True)
+
+def import_as_compound(event=None):
+    compound = read_step_file(os.path.join('.', 'models', 'as1_pe_203.stp'))
+    t = Topo(compound)
+    display.EraseAll()
+    for solid in t.solids():
+        color = Quantity_Color(random.random(),
+                               random.random(),
+                               random.random(),
+                               Quantity_TOC_RGB)
+        display.DisplayColoredShape(solid, color)
+    display.FitAll()
+
+def exit(event=None):
+    sys.exit()
+
+
+if __name__ == '__main__':
     display, start_display, add_menu, add_function_to_menu = init_display()
-    display.DisplayShape(the_shape, update=True)
+    add_menu('STEP import')
+    add_function_to_menu('STEP import', import_as_one_shape)
+    add_function_to_menu('STEP import', import_as_compound)
     start_display()
