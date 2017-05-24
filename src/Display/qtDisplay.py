@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2014 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2009-2017 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -95,35 +95,11 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
 
     def resizeEvent(self, event):
         if self._inited:
-            super(qtBaseViewer,self).resizeEvent(event)
+            super(qtBaseViewer, self).resizeEvent(event)
             self._display.OnResize()
 
 
-def handle_retina(_nsview_pointer):
-    """ OSX only. hack to detect and handle Retina display
-    """
-    screen = QtGui.QGuiApplication.instance().primaryScreen()
-    pixelDensity = screen.physicalDotsPerInch()
-
-    if pixelDensity >= 147:
-        log.info("Retina display detected")
-        try:
-            import objc
-        except ImportError:
-            log.critical("pyobjc is not installed... try pip installing it \npip install pyobjc")
-        else:
-            nsview = objc.objc_object(c_void_p=_nsview_pointer)
-            nsview.setWantsBestResolutionOpenGLSurface_(True)
-            scaleFactor = nsview.backingScaleFactor()
-            rec1 = screen.geometry()
-            nsview.setBounds_(((rec1.x(),
-                                rec1.y()),
-                               (rec1.width() * scaleFactor,
-                                rec1.height() * scaleFactor)))
-
-
 class qtViewer3d(qtBaseViewer):
-
     # emit signal when selection is changed
     # is a list of TopoDS_*
     if HAVE_PYQT_SIGNAL:
@@ -158,9 +134,6 @@ class qtViewer3d(qtBaseViewer):
         self._qApp = value
 
     def InitDriver(self):
-        if sys.platform == "darwin":
-            handle_retina(self.GetHandle())
-
         self._display = OCCViewer.Viewer3d(self.GetHandle())
         self._display.Create()
         # background gradient
@@ -331,7 +304,7 @@ class qtViewer3d(qtBaseViewer):
             self._drawbox = False
         # DYNAMIC ZOOM
         elif (buttons == QtCore.Qt.RightButton and
-              not modifiers == QtCore.Qt.ShiftModifier):
+                  not modifiers == QtCore.Qt.ShiftModifier):
             self.cursor = "zoom"
             self._display.Repaint()
             self._display.DynamicZoom(abs(self.dragStartPos.x),
@@ -352,13 +325,13 @@ class qtViewer3d(qtBaseViewer):
         # DRAW BOX
         # ZOOM WINDOW
         elif (buttons == QtCore.Qt.RightButton and
-              modifiers == QtCore.Qt.ShiftModifier):
+                      modifiers == QtCore.Qt.ShiftModifier):
             self._zoom_area = True
             self.cursor = "zoom-area"
             self.DrawBox(evt)
         # SELECT AREA
         elif (buttons == QtCore.Qt.LeftButton and
-              modifiers == QtCore.Qt.ShiftModifier):
+                      modifiers == QtCore.Qt.ShiftModifier):
             self._select_area = True
             self.DrawBox(evt)
         else:
