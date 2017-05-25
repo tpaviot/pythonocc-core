@@ -23,9 +23,6 @@ import logging
 import os
 import sys
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-log = logging.getLogger(__name__)
-
 from OCC.Display import OCCViewer
 from OCC.Display.backend import get_qt_modules
 
@@ -256,7 +253,6 @@ class qtViewer3d(qtBaseViewer):
         modifiers = event.modifiers()
 
         if event.button() == QtCore.Qt.LeftButton:
-            pt = point(event.pos())
             if self._select_area:
                 [Xmin, Ymin, dx, dy] = self._drawbox
                 self._display.SelectArea(Xmin, Ymin, Xmin + dx, Ymin + dy)

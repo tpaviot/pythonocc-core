@@ -47,7 +47,6 @@ def line():
     # To do that, we need to do use AIS_Drawer and apply it to ais_line1
     width = 1.0
     drawer = Prs3d_Drawer()
-    asp = Prs3d_LineAspect(Quantity_NOC_RED, Aspect_TOL_DASH, width)
     ais_line1.SetAttributes(drawer.GetHandle())
 
     display.Context.Display(ais_line1.GetHandle(), False)
@@ -61,6 +60,7 @@ def line():
     
         width = float(i)
         drawer = ais_line2.Attributes().GetObject()
+        # asp : first parameter color, second type, last width
         asp = Prs3d_LineAspect(9*i, i, width)
         drawer.SetLineAspect(asp.GetHandle())
         ais_line2.SetAttributes(drawer.GetHandle())
