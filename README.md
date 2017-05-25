@@ -60,6 +60,8 @@ We use the following online resources:
        https://anaconda.org/pythonocc
   * Anaconda cloud repository for nightly builds
        https://anaconda.org/tpaviot/pythonocc-core
+  * LGTM code quality review
+       https://lgtm.com/projects/g/tpaviot/pythonocc-core/
 
 how do __oce__ and __pythonocc__ relate?
 ----------------------------------------
