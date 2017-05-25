@@ -71,10 +71,6 @@ before_install:
   - conda info -a
   # download/install OCE from DLR-SC channel
   - conda config --add channels https://conda.anaconda.org/dlr-sc
-  # on osx, need for pyobjc-core, available at erik's repository
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-    conda config --add channels https://conda.anaconda.org/erik;
-    fi;
   - conda config --add channels https://conda.anaconda.org/conda-forge
   - conda config --add channels https://conda.anaconda.org/tpaviot
   - conda config --add channels https://conda.anaconda.org/oce
