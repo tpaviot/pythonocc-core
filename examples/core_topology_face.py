@@ -71,8 +71,8 @@ def face():
 
     ##TopoDS_Wire YellowWire
     MW1 = BRepBuilderAPI_MakeWire(Edge1.Edge(), Edge2.Edge(), Edge3.Edge())
-    if MW1.IsDone():
-        yellow_wire = MW1.Wire()
+    assert MW1.IsDone()
+    yellow_wire = MW1.Wire()
     brown_face = BRepBuilderAPI_MakeFace(yellow_wire)
 
     #The pink face
