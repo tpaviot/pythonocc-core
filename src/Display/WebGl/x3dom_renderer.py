@@ -259,9 +259,8 @@ class X3DExporter(object):
         return x3dfile_str
    
     def write_to_file(self, filename):
-        f = open(filename, "w")
-        f.write(self.to_x3dfile_string())
-        f.close()
+        with open(filename, "w") as f:
+            f.write(self.to_x3dfile_string())
 
 
 class X3DomRenderer(object):
@@ -326,15 +325,14 @@ class X3DomRenderer(object):
         """ Generate the HTML file to be rendered wy the web browser
         """
         print("File written to %s" % self._path)
-        fp = open(self._html_filename, "w")
-        fp.write("<!DOCTYPE HTML>")
-        fp.write('<html lang="en">')
-        # header
-        fp.write(HTMLHeader().get_str())
-        # body
-        fp.write(HTMLBody(self._x3d_shapes).get_str())
-        fp.write("</html>\n")
-        fp.close()
+        with open(self._html_filename, "w") as fp:
+            fp.write("<!DOCTYPE HTML>")
+            fp.write('<html lang="en">')
+            # header
+            fp.write(HTMLHeader().get_str())
+            # body
+            fp.write(HTMLBody(self._x3d_shapes).get_str())
+            fp.write("</html>\n")
 
 
 if __name__ == "__main__":

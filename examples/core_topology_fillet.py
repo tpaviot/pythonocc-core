@@ -61,6 +61,7 @@ def fillet(event=None):
 
 
 def variable_filleting(event=None):
+    display.EraseAll()
     # Create Box
     Box = BRepPrimAPI_MakeBox(200, 200, 200).Shape()
     # Fillet
@@ -74,6 +75,9 @@ def variable_filleting(event=None):
     Rake.Build()
     if Rake.IsDone():
         evolvedBox = Rake.Shape()
+        display.DisplayShape(evolvedBox)
+    else:
+        print("Rake not done.")
     # Create Cylinder
     Cylinder = BRepPrimAPI_MakeCylinder(gp_Ax2(gp_Pnt(-300, 0, 0), gp_Dir(0, 0, 1)), 100, 200).Shape()
     fillet = BRepFilletAPI_MakeFillet(Cylinder)
@@ -89,7 +93,8 @@ def variable_filleting(event=None):
     if fillet.IsDone():
         LawEvolvedCylinder = fillet.Shape()
         display.DisplayShape(LawEvolvedCylinder)
-
+    else:
+        print("fillet not done.")  ## TODO : fillet not done
     P = gp_Pnt(350, 0, 0)
     Box2 = BRepPrimAPI_MakeBox(P, 200, 200, 200).Shape()
     afillet = BRepFilletAPI_MakeFillet(Box2)
@@ -117,12 +122,9 @@ def variable_filleting(event=None):
     afillet.Build()
     if afillet.IsDone():
         LawEvolvedBox = afillet.Shape()
-
-    display.EraseAll()
-    display.DisplayShape(Box)
-    display.EraseAll()
-    display.DisplayShape(evolvedBox)
-    display.DisplayShape(LawEvolvedBox)
+    else:
+        print("aFillet not done.") 
+        display.DisplayShape(LawEvolvedBox)
     display.FitAll()
 
 
