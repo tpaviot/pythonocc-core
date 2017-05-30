@@ -23,6 +23,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=$PREFIX \
  -DPYTHON_LIBRARY:FILEPATH=$PREFIX/lib/${PY_LIB} \
  -DPYTHONOCC_WRAP_SMESH=ON \
  -DSMESH_INCLUDE_PATH:PATH=$PREFIX/include/smesh \
+ -DSMESH_LIB_PATH:PATH=$PREFIX/lib \
  .
 # Build step
 # on linux travis, limit the number of concurrent jobs otherwise
