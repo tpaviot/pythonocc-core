@@ -24,7 +24,7 @@ This will get you up and running in minutes whether you run win32/win64/linux64/
 
 ```bash
 # install pythonocc in an environment named `pythonocc` with python 3.5; use python=2 for legacy python 2.7.12
-conda create -n pythonocc -c pythonocc -c oce pythonocc-core==0.17.3 python=3
+conda create -n pythonocc -c conda-forge -c dlr-sc -c pythonocc -c oce pythonocc-core==0.17.3 python=3
 ```
 
 Nightly builds are available from another repository. If you want to test features under development that have not been released yet:
