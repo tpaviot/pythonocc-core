@@ -2,6 +2,9 @@ sudo: false
 
 language: cpp
 
+cache:
+ apt: true
+
 # the secure below is the binstar token
 # to genrate this secure
 # first create an anconda cloud token
