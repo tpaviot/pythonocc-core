@@ -32,6 +32,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+
 %include <boost_shared_ptr.i>
 %shared_ptr(SMDS_Iterator<const SMDS_MeshElement *>)
 %shared_ptr(SMDS_Iterator<const SMDS_MeshNode *>)
@@ -39,6 +40,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %shared_ptr(SMDS_Iterator<const SMDS_MeshEdge *>)
 %shared_ptr(SMDS_Iterator<const SMDS_MeshFace *>)
 %shared_ptr(SMDS_Iterator<const SMDS_MeshVolume *>)
+%shared_ptr(SMDS_IteratorOfElements)
+
 %include SMDS_headers.i
 
 
@@ -84,6 +87,42 @@ enum SMDS_TypeOfPosition {
 
 /* end public enums declaration */
 
+%nodefaultctor SMDS_Iterator;
+template<typename VALUE> class SMDS_Iterator {
+	public:
+		%feature("compactdefaultargs") more;
+		%feature("autodoc", "	* /// Return true if and only if there are other object in this iterator
+
+	:rtype: bool
+") more;
+		bool more ();
+		%feature("compactdefaultargs") next;
+		%feature("autodoc", "	* /// Return the current object and step to the next one
+
+	:rtype: VALUE
+") next;
+		VALUE next ();
+		%feature("compactdefaultargs") remove;
+		%feature("autodoc", "	* /// Delete the current element and step to the next one
+
+	:rtype: None
+") remove;
+		void remove ();
+};
+
+
+%template(SMDS_ElemIteratorPtr) SMDS_Iterator<const SMDS_MeshElement *>;
+%template(SMDS_NodeIteratorPtr) SMDS_Iterator<const SMDS_MeshNode *>;
+%template(SMDS_0DElementIteratorPtr) SMDS_Iterator<const SMDS_Mesh0DElement *>;
+%template(SMDS_EdgeIteratorPtr) SMDS_Iterator<const SMDS_MeshEdge *>;
+%template(SMDS_FaceIteratorPtr) SMDS_Iterator<const SMDS_MeshFace *>;
+%template(SMDS_VolumeIteratorPtr) SMDS_Iterator<const SMDS_MeshVolume *>;
+
+%extend SMDS_Iterator {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 %nodefaultctor SMDS_EdgePosition;
 class SMDS_EdgePosition : public SMDS_Position {
 	public:
@@ -201,43 +240,6 @@ class SMDS_IteratorOfElements : public SMDS_ElemIterator {
 	__repr__ = _dumps_object
 	}
 };
-
-%nodefaultctor SMDS_Iterator;
-template<typename VALUE> class SMDS_Iterator {
-	public:
- 		%feature("compactdefaultargs") more;
- 		%feature("autodoc", "	* /// Return true if and only if there are other object in this iterator
- 
- 	:rtype: bool
-") more;
- 		bool more ();
- 		%feature("compactdefaultargs") next;
- 		%feature("autodoc", "	* /// Return the current object and step to the next one
- 
- 	:rtype: VALUE
-") next;
- 		VALUE next ();
- 		%feature("compactdefaultargs") remove;
- 		%feature("autodoc", "	* /// Delete the current element and step to the next one
- 
- 	:rtype: None
-") remove;
- 		void remove ();
-};
-
-%extend SMDS_Iterator {
- 	%pythoncode {
- 	__repr__ = _dumps_object
- 	}
-};
- 
-%template(SMDS_ElemIteratorPtr) SMDS_Iterator<const SMDS_MeshElement *>;
-%template(SMDS_NodeIteratorPtr) SMDS_Iterator<const SMDS_MeshNode *>;
-%template(SMDS_0DElementIteratorPtr) SMDS_Iterator<const SMDS_Mesh0DElement *>;
-%template(SMDS_EdgeIteratorPtr) SMDS_Iterator<const SMDS_MeshEdge *>;
-%template(SMDS_FaceIteratorPtr) SMDS_Iterator<const SMDS_MeshFace *>;
-%template(SMDS_VolumeIteratorPtr) SMDS_Iterator<const SMDS_MeshVolume *>;
- 
 %nodefaultctor SMDS_Mesh;
 class SMDS_Mesh : public SMDS_MeshObject {
 	public:
