@@ -147,5 +147,8 @@ def run(n_procs, compare_by_number_of_processors=False):
 if __name__ == '__main__':
     # use compare_by_number_of_processors=True to see speed up
     # per number of processor added
-    nprocs = processing.cpu_count()
+    try:
+        nprocs = processing.cpu_count()
+    except:  # travis fails to run cpu_count
+        nprocs = 1
     run(nprocs, compare_by_number_of_processors=False)

@@ -2,6 +2,9 @@ sudo: false
 
 language: cpp
 
+cache:
+ apt: true
+
 # the secure below is the binstar token
 # to genrate this secure
 # first create an anconda cloud token
@@ -39,7 +42,7 @@ matrix:
       os: osx
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
       os: linux
-    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
+    - env: PYTHON="3.6" CONDA_PY=35 ARCH="x86_64"
       os: osx
 # Use miniconda to install binary versions of numpy etc. from continuum
 # analytic's repository. Follows an approach described by Dan Blanchard:
@@ -74,6 +77,7 @@ before_install:
   - conda config --add channels https://conda.anaconda.org/conda-forge
   - conda config --add channels https://conda.anaconda.org/tpaviot
   - conda config --add channels https://conda.anaconda.org/oce
+  - conda config --add channels https://conda.anaconda.org/pythonocc
   # install everything required to build the receipe
   - conda install conda-build anaconda-client
 

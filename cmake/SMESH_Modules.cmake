@@ -1,0 +1,18 @@
+if(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN)
+  LIST(APPEND SMESH_TOOLKIT
+        SMDSAbs
+        SMDS
+        SMESH
+        SMESHDS
+        StdMeshers
+        NETGENPlugin
+)
+else(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN)
+  LIST(APPEND SMESH_TOOLKIT
+        SMDSAbs
+        SMDS
+        SMESH
+        SMESHDS
+        StdMeshers
+)
+endif(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN)
