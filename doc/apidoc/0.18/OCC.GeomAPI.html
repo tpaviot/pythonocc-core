@@ -1,0 +1,2918 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.GeomAPI module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.GeomAPI module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.GeomAPI module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.GeomAPI.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-geomapi-module">
+<h1>OCC.GeomAPI module<a class="headerlink" href="#occ-geomapi-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.GeomAPI"></span><dl class="class">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve">
+<em class="property">class </em><code class="descname">GeomAPI_ExtremaCurveCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs an empty algorithm for computing extrema between two curves. Use an Init function to define the curves on which it is going to work.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the extrema between the curves C1 and C2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C1</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>C2</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the portion of the curve C1 limited by the two points of parameter (U1min,U1max), and - the portion of the curve C2 limited by the two points of parameter (U2min,U2max). Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C1</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>C2</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>U1min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U1max</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U2min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U2max</strong> (<em>Quantity_Parameter</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.Distance">
+<code class="descname">Distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.Distance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Length</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.Extrema">
+<code class="descname">Extrema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.Extrema" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return the algorithmic object from Extrema</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Extrema.html#OCC.Extrema.Extrema_ExtCC" title="OCC.Extrema.Extrema_ExtCC">Extrema_ExtCC</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Initializes this algorithm with the given arguments and computes the extrema between the curves C1 and C2</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C1</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>C2</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initializes this algorithm with the given arguments and computes the extrema between : - the portion of the curve C1 limited by the two points of parameter (U1min,U1max), and - the portion of the curve C2 limited by the two points of parameter (U2min,U2max). Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C1</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>C2</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>U1min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U1max</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U2min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U2max</strong> (<em>Quantity_Parameter</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.LowerDistance">
+<code class="descname">LowerDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.LowerDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Length</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.LowerDistanceParameters">
+<code class="descname">LowerDistanceParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.LowerDistanceParameters" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters U1 of the point on the first curve and U2 of the point on the second curve, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U1</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>U2</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.NbExtrema">
+<code class="descname">NbExtrema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.NbExtrema" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of extrema computed by this algorithm. Note: if this algorithm fails, NbExtrema returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.NearestPoints">
+<code class="descname">NearestPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.NearestPoints" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the points P1 on the first curve and P2 on the second curve, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.Parameters">
+<code class="descname">Parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.Parameters" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters U1 of the point on the first curve and U2 of the point on the second curve, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>U1</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>U2</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.Points">
+<code class="descname">Points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.Points" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the points P1 on the first curve and P2 on the second curve, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.TotalLowerDistance">
+<code class="descname">TotalLowerDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.TotalLowerDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return the distance of the total nearest couple solution point. if &lt;myExtCC&gt; is not done</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Length</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.TotalLowerDistanceParameters">
+<code class="descname">TotalLowerDistanceParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.TotalLowerDistanceParameters" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>set in &lt;U1&gt; and &lt;U2&gt; the parameters of the couple solution points which represents the total nearest solution.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U1</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>U2</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.TotalNearestPoints">
+<code class="descname">TotalNearestPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.TotalNearestPoints" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>set in &lt;P1&gt; and &lt;P2&gt; the couple solution points such a the distance [P1,P2] is the minimum. taking in account extremity points of curves.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveSurface">
+<em class="property">class </em><code class="descname">GeomAPI_ExtremaCurveSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs an empty algorithm for computing extrema between a curve and a surface. Use an Init function to define the curve and the surface on which it is going to work.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the extrema distances between the curve &lt;C&gt; and the surface &lt;S&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Curve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>Surface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the extrema distances between the curve &lt;C&gt; and the surface &lt;S&gt;. The solution point are computed in the domain [Wmin,Wmax] of the curve and in the domain [Umin,Umax] [Vmin,Vmax] of the surface. Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Curve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>Surface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Wmin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Wmax</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Umin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Umax</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vmin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vmax</strong> (<em>Quantity_Parameter</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.Distance">
+<code class="descname">Distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.Distance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Length</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.Extrema">
+<code class="descname">Extrema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.Extrema" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Missing detailed docstringic object from Extrema</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Extrema.html#OCC.Extrema.Extrema_ExtCS" title="OCC.Extrema.Extrema_ExtCS">Extrema_ExtCS</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the extrema distances between the curve &lt;C&gt; and the surface &lt;S&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Curve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>Surface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the extrema distances between the curve &lt;C&gt; and the surface &lt;S&gt;. The solution point are computed in the domain [Wmin,Wmax] of the curve and in the domain [Umin,Umax] [Vmin,Vmax] of the surface. Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Curve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>Surface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Wmin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Wmax</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Umin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Umax</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vmin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vmax</strong> (<em>Quantity_Parameter</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.LowerDistance">
+<code class="descname">LowerDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.LowerDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Length</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.LowerDistanceParameters">
+<code class="descname">LowerDistanceParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.LowerDistanceParameters" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters W of the point on the curve and (U,V) of the point on the surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>W</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>U</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>V</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.NbExtrema">
+<code class="descname">NbExtrema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.NbExtrema" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of extrema computed by this algorithm. Note: if this algorithm fails, NbExtrema returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.NearestPoints">
+<code class="descname">NearestPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.NearestPoints" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the points PC on the curve and PS on the surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>PC</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>PS</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.Parameters">
+<code class="descname">Parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.Parameters" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters W of the point on the curve, and (U,V) of the point on the surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>W</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>U</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>V</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.Points">
+<code class="descname">Points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.Points" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the points P1 on the curve and P2 on the surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaCurveSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface">
+<em class="property">class </em><code class="descname">GeomAPI_ExtremaSurfaceSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs an empty algorithm for computing extrema between two surfaces. Use an Init function to define the surfaces on which it is going to work.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the extrema distances between the surfaces &lt;S1&gt; and &lt;S2&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the extrema distances between the portion of the surface S1 limited by the two values of parameter (U1min,U1max) in the u parametric direction, and by the two values of parameter (V1min,V1max) in the v parametric direction, and - the portion of the surface S2 limited by the two values of parameter (U2min,U2max) in the u parametric direction, and by the two values of parameter (V2min,V2max) in the v parametric direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>U1min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U1max</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>V1min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>V1max</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U2min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U2max</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>V2min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>V2max</strong> (<em>Quantity_Parameter</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.Distance">
+<code class="descname">Distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.Distance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Length</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.Extrema">
+<code class="descname">Extrema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.Extrema" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return the algorithmic object from Extrema</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Extrema.html#OCC.Extrema.Extrema_ExtSS" title="OCC.Extrema.Extrema_ExtSS">Extrema_ExtSS</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Initializes this algorithm with the given arguments and computes the extrema distances between the surfaces &lt;S1&gt; and &lt;S2&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initializes this algorithm with the given arguments and computes the extrema distances between - the portion of the surface S1 limited by the two values of parameter (U1min,U1max) in the u parametric direction, and by the two values of parameter (V1min,V1max) in the v parametric direction, and - the portion of the surface S2 limited by the two values of parameter (U2min,U2max) in the u parametric direction, and by the two values of parameter (V2min,V2max) in the v parametric direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>U1min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U1max</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>V1min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>V1max</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U2min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>U2max</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>V2min</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>V2max</strong> (<em>Quantity_Parameter</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.LowerDistance">
+<code class="descname">LowerDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.LowerDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Length</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.LowerDistanceParameters">
+<code class="descname">LowerDistanceParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.LowerDistanceParameters" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters (U1,V1) of the point on the first surface and (U2,V2) of the point on the second surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U1</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>V1</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>U2</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>V2</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.NbExtrema">
+<code class="descname">NbExtrema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.NbExtrema" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of extrema computed by this algorithm. Note: if this algorithm fails, NbExtrema returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.NearestPoints">
+<code class="descname">NearestPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.NearestPoints" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the points P1 on the first surface and P2 on the second surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.Parameters">
+<code class="descname">Parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.Parameters" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters (U1,V1) of the point on the first surface, and (U2,V2) of the point on the second surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>U1</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>V1</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>U2</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>V2</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.Points">
+<code class="descname">Points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.Points" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the points P1 on the first surface and P2 on the second surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ExtremaSurfaceSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAPI.GeomAPI_IntCS">
+<em class="property">class </em><code class="descname">GeomAPI_IntCS</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntCS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Creates an empty object. Use the function Perform for further initialization of the algorithm by the curve and the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the intersections between the curve C and the surface S. Warning Use function IsDone to verify that the intersections are computed successfully.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_IntCS.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntCS.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the intersections are successfully computed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_IntCS.NbPoints">
+<code class="descname">NbPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntCS.NbPoints" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of Intersection Points if IsDone returns True. else NotDone is raised.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_IntCS.NbSegments">
+<code class="descname">NbSegments</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntCS.NbSegments" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of computed intersection segments in case of tangential intersection. Exceptions StdFail_NotDone if the intersection algorithm fails or is not initialized.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_IntCS.Parameters">
+<code class="descname">Parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntCS.Parameters" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns parameter W on the curve and (parameters U,V) on the surface of the computed intersection point of index Index in case of cross intersection. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of computed intersection points.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>U</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>V</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>W</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the parameters of the first (U1,V1) and the last (U2,V2) points of curve’s segment on the surface in case of tangential intersection. Index is the number of computed intersection segments. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbSegments ], where NbSegments is the number of computed intersection segments.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>U1</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>V1</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>U2</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>V2</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_IntCS.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntCS.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This function Initializes an algorithm with the curve C and the surface S and computes the intersections between C and S. Warning Use function IsDone to verify that the intersections are computed successfully.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_IntCS.Point">
+<code class="descname">Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntCS.Point" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Intersection Point of range &lt;Index&gt;in case of cross intersection. Raises NotDone if the computation has failed or if the computation has not been done raises OutOfRange if Index is not in the range &lt;1..NbPoints&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_IntCS.Segment">
+<code class="descname">Segment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntCS.Segment" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the computed intersection segment of index Index in case of tangential intersection. Intersection segment is a portion of the initial curve tangent to surface. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbSegments ], where NbSegments is the number of computed intersection segments.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Curve" title="OCC.Geom.Handle_Geom_Curve">Handle_Geom_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.GeomAPI_IntCS.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntCS.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAPI.GeomAPI_IntSS">
+<em class="property">class </em><code class="descname">GeomAPI_IntSS</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntSS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs an empty object. Use the function Perform for further initialization algorithm by two surfaces.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the intersection curves between the two surfaces S1 and S2. Parameter Tol defines the precision of curves computation. For most cases the value 1.0e-7 is recommended to use. Warning Use the function IsDone to verify that the intersections are successfully computed.I</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_IntSS.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntSS.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the intersection was successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_IntSS.Line">
+<code class="descname">Line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntSS.Line" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the computed intersection curve of index Index. Exceptions StdFail_NotDone if the computation fails. Standard_OutOfRange if Index is out of range [1, NbLines] where NbLines is the number of computed intersection curves.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Curve" title="OCC.Geom.Handle_Geom_Curve">Handle_Geom_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_IntSS.NbLines">
+<code class="descname">NbLines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntSS.NbLines" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of computed intersection curves. Exceptions StdFail_NotDone if the computation fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_IntSS.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntSS.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Initializes an algorithm with the given arguments and computes the intersection curves between the two surfaces S1 and S2. Parameter Tol defines the precision of curves computation. For most cases the value 1.0e-7 is recommended to use. Warning Use function IsDone to verify that the intersections are successfully computed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.GeomAPI_IntSS.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_IntSS.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAPI.GeomAPI_Interpolate">
+<em class="property">class </em><code class="descname">GeomAPI_Interpolate</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_Interpolate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: - points are not too close to each other, or - tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be ‘C2’ continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only ‘C1’ continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning - There must be at least 2 points in the table Points. - If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. - If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions - Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. - Standard_OutOfRange if: - there are less than two points in the table Points, or - conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.Handle_TColgp_HArray1OfPnt" title="OCC.TColgp.Handle_TColgp_HArray1OfPnt"><em>Handle_TColgp_HArray1OfPnt</em></a>) – </li>
+<li><strong>PeriodicFlag</strong> (<em>bool</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points, where the parameters of each of its points are given by the parallel table Parameters. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: - points are not too close to each other, or - tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be ‘C2’ continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only ‘C1’ continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning - There must be at least 2 points in the table Points. - If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. - If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions - Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. - Standard_OutOfRange if: - there are less than two points in the table Points, or - conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.Handle_TColgp_HArray1OfPnt" title="OCC.TColgp.Handle_TColgp_HArray1OfPnt"><em>Handle_TColgp_HArray1OfPnt</em></a>) – </li>
+<li><strong>Parameters</strong> (<em>Handle_TColStd_HArray1OfReal &amp;</em>) – </li>
+<li><strong>PeriodicFlag</strong> (<em>bool</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_Interpolate.Curve">
+<code class="descname">Curve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_Interpolate.Curve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the computed BSpline curve. Raises StdFail_NotDone if the interpolation fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_BSplineCurve" title="OCC.Geom.Handle_Geom_BSplineCurve">Handle_Geom_BSplineCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_Interpolate.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_Interpolate.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the constrained BSpline curve is successfully constructed. Note: in this case, the result is given by the function Curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_Interpolate.Load">
+<code class="descname">Load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_Interpolate.Load" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Assigns this constrained BSpline curve to be tangential to vectors InitialTangent and FinalTangent at its first and last points respectively (i.e. the first and last points of the table of points through which the curve passes, as defined at the time of initialization).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>InitialTangent</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>FinalTangent</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Scale</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Assigns this constrained BSpline curve to be tangential to vectors defined in the table Tangents, which is parallel to the table of points through which the curve passes, as defined at the time of initialization. Vectors in the table Tangents are defined only if the flag given in the parallel table TangentFlags is true: only these vectors are set as tangency constraints.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tangents</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>TangentFlags</strong> (<em>Handle_TColStd_HArray1OfBoolean &amp;</em>) – </li>
+<li><strong>Scale</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_Interpolate.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_Interpolate.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the constrained BSpline curve. Use the function IsDone to verify that the computation is successful, and then the function Curve to obtain the result.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.GeomAPI_Interpolate.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_Interpolate.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAPI.GeomAPI_PointsToBSpline">
+<em class="property">class </em><code class="descname">GeomAPI_PointsToBSpline</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_PointsToBSpline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs an empty approximation algorithm. Use an Init function to define and build the BSpline curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>ParType</strong> (<em>Approx_ParametrizationType</em>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximate a BSpline Curve passing through an array of Point, which parameters are given by the array &lt;Parameters&gt;. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>Parameters</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximate a BSpline Curve passing through an array of Point using variational smoothing algorithm, which tries to minimize additional criterium: Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>Weight1</strong> (<em>float</em>) – </li>
+<li><strong>Weight2</strong> (<em>float</em>) – </li>
+<li><strong>Weight3</strong> (<em>float</em>) – </li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_PointsToBSpline.Curve">
+<code class="descname">Curve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_PointsToBSpline.Curve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the computed BSpline curve. Raises StdFail_NotDone if the curve is not built.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_BSplineCurve" title="OCC.Geom.Handle_Geom_BSplineCurve">Handle_Geom_BSplineCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_PointsToBSpline.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_PointsToBSpline.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>ParType</strong> (<em>Approx_ParametrizationType</em>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximate a BSpline Curve passing through an array of Point, which parameters are given by the array &lt;Parameters&gt;. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>Parameters</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximate a BSpline Curve passing through an array of Point using variational smoothing algorithm, which tries to minimize additional criterium: Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>Weight1</strong> (<em>float</em>) – </li>
+<li><strong>Weight2</strong> (<em>float</em>) – </li>
+<li><strong>Weight3</strong> (<em>float</em>) – </li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_PointsToBSpline.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_PointsToBSpline.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.GeomAPI_PointsToBSpline.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_PointsToBSpline.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAPI.GeomAPI_PointsToBSplineSurface">
+<em class="property">class </em><code class="descname">GeomAPI_PointsToBSplineSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_PointsToBSplineSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs an empty algorithm for approximation or interpolation of a surface. Use: - an Init function to define and build the BSpline surface by approximation, or - an Interpolate function to define and build the BSpline surface by interpolation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximates a BSpline Surface passing through an array of Points. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array2OfPnt" title="OCC.TColgp.TColgp_Array2OfPnt"><em>TColgp_Array2OfPnt</em></a>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximates a BSpline Surface passing through an array of Points. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array2OfPnt" title="OCC.TColgp.TColgp_Array2OfPnt"><em>TColgp_Array2OfPnt</em></a>) – </li>
+<li><strong>ParType</strong> (<em>Approx_ParametrizationType</em>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximates a BSpline Surface passing through an array of points using variational smoothing algorithm, which tries to minimize additional criterium: Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array2OfPnt" title="OCC.TColgp.TColgp_Array2OfPnt"><em>TColgp_Array2OfPnt</em></a>) – </li>
+<li><strong>Weight1</strong> (<em>float</em>) – </li>
+<li><strong>Weight2</strong> (<em>float</em>) – </li>
+<li><strong>Weight3</strong> (<em>float</em>) – </li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximates a BSpline Surface passing through an array of Points. //! The points will be constructed as follow: P(i,j) = gp_Pnt( X0 + (i-1)*dX , Y0 + (j-1)*dY , ZPoints(i,j) ) //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D 4- the parametrization of the surface will verify: S-&gt;Value( U, V) = gp_Pnt( U, V, Z(U,V) );</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ZPoints</strong> (<em>TColStd_Array2OfReal &amp;</em>) – </li>
+<li><strong>X0</strong> (<em>float</em>) – </li>
+<li><strong>dX</strong> (<em>float</em>) – </li>
+<li><strong>Y0</strong> (<em>float</em>) – </li>
+<li><strong>dY</strong> (<em>float</em>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_PointsToBSplineSurface.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_PointsToBSplineSurface.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Approximates a BSpline Surface passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array2OfPnt" title="OCC.TColgp.TColgp_Array2OfPnt"><em>TColgp_Array2OfPnt</em></a>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximates a BSpline Surface passing through an array of Points. //! The points will be constructed as follow: P(i,j) = gp_Pnt( X0 + (i-1)*dX , Y0 + (j-1)*dY , ZPoints(i,j) ) //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D 4- the parametrization of the surface will verify: S-&gt;Value( U, V) = gp_Pnt( U, V, Z(U,V) );</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ZPoints</strong> (<em>TColStd_Array2OfReal &amp;</em>) – </li>
+<li><strong>X0</strong> (<em>float</em>) – </li>
+<li><strong>dX</strong> (<em>float</em>) – </li>
+<li><strong>Y0</strong> (<em>float</em>) – </li>
+<li><strong>dY</strong> (<em>float</em>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximates a BSpline Surface passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least &lt;Continuity&gt; 3- the distance from the point &lt;Points&gt; to the BSpline will be lower to Tol3D</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array2OfPnt" title="OCC.TColgp.TColgp_Array2OfPnt"><em>TColgp_Array2OfPnt</em></a>) – </li>
+<li><strong>ParType</strong> (<em>Approx_ParametrizationType</em>) – </li>
+<li><strong>DegMin</strong> (<em>int</em>) – default value is 3</li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Approximates a BSpline Surface passing through an array of point using variational smoothing algorithm, which tries to minimize additional criterium: Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array2OfPnt" title="OCC.TColgp.TColgp_Array2OfPnt"><em>TColgp_Array2OfPnt</em></a>) – </li>
+<li><strong>Weight1</strong> (<em>float</em>) – </li>
+<li><strong>Weight2</strong> (<em>float</em>) – </li>
+<li><strong>Weight3</strong> (<em>float</em>) – </li>
+<li><strong>DegMax</strong> (<em>int</em>) – default value is 8</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C2</li>
+<li><strong>Tol3D</strong> (<em>float</em>) – default value is 1.0e-3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_PointsToBSplineSurface.Interpolate">
+<code class="descname">Interpolate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_PointsToBSplineSurface.Interpolate" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Interpolates a BSpline Surface passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be 3. 2- his continuity will be C2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array2OfPnt" title="OCC.TColgp.TColgp_Array2OfPnt"><em>TColgp_Array2OfPnt</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Interpolates a BSpline Surface passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be 3. 2- his continuity will be C2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array2OfPnt" title="OCC.TColgp.TColgp_Array2OfPnt"><em>TColgp_Array2OfPnt</em></a>) – </li>
+<li><strong>ParType</strong> (<em>Approx_ParametrizationType</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Interpolates a BSpline Surface passing through an array of Points. //! The points will be constructed as follow: P(i,j) = gp_Pnt( X0 + (i-1)*dX , Y0 + (j-1)*dY , ZPoints(i,j) ) //! The resulting BSpline will have the following properties: 1- his degree will be 3 2- his continuity will be C2. 4- the parametrization of the surface will verify: S-&gt;Value( U, V) = gp_Pnt( U, V, Z(U,V) );</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ZPoints</strong> (<em>TColStd_Array2OfReal &amp;</em>) – </li>
+<li><strong>X0</strong> (<em>float</em>) – </li>
+<li><strong>dX</strong> (<em>float</em>) – </li>
+<li><strong>Y0</strong> (<em>float</em>) – </li>
+<li><strong>dY</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_PointsToBSplineSurface.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_PointsToBSplineSurface.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_PointsToBSplineSurface.Surface">
+<code class="descname">Surface</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_PointsToBSplineSurface.Surface" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the approximate BSpline Surface</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_BSplineSurface" title="OCC.Geom.Handle_Geom_BSplineSurface">Handle_Geom_BSplineSurface</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.GeomAPI_PointsToBSplineSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_PointsToBSplineSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve">
+<em class="property">class </em><code class="descname">GeomAPI_ProjectPointOnCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Creates an empty object. Use an Init function for further initialization.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Create the projection of a point &lt;P&gt; on a curve &lt;Curve&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Curve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Create the projection of a point &lt;P&gt; on a curve &lt;Curve&gt; limited by the two points of parameter Umin and Usup.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Curve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>Umin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Usup</strong> (<em>Quantity_Parameter</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Distance">
+<code class="descname">Distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Distance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the distance between the point and its orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Length</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Extrema">
+<code class="descname">Extrema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Extrema" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return the algorithmic object from Extrema</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Extrema.html#OCC.Extrema.Extrema_ExtPC" title="OCC.Extrema.Extrema_ExtPC">Extrema_ExtPC</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Init the projection of a point &lt;P&gt; on a curve &lt;Curve&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Curve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Init the projection of a point &lt;P&gt; on a curve &lt;Curve&gt; limited by the two points of parameter Umin and Usup.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Curve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>Umin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Usup</strong> (<em>Quantity_Parameter</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Init the projection of a point &lt;P&gt; on a curve &lt;Curve&gt; limited by the two points of parameter Umin and Usup.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Curve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>Umin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Usup</strong> (<em>Quantity_Parameter</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.LowerDistance">
+<code class="descname">LowerDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.LowerDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the distance between the point and its nearest orthogonal projection on the curve. Exceptions: StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Length</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.LowerDistanceParameter">
+<code class="descname">LowerDistanceParameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.LowerDistanceParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter on the curve of the nearest orthogonal projection of the point. Exceptions: StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Parameter</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.NbPoints">
+<code class="descname">NbPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.NbPoints" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of computed orthogonal projection points. Note: if this algorithm fails, NbPoints returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.NearestPoint">
+<code class="descname">NearestPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.NearestPoint" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Parameter</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.-</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>U</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Performs the projection of a point on the current curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Point">
+<code class="descname">Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.Point" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf">
+<em class="property">class </em><code class="descname">GeomAPI_ProjectPointOnSurf</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Creates an empty object. Use the Init function for further initialization.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Create the projection of a point &lt;P&gt; on a surface &lt;Surface&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Surface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Algo</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Create the projection of a point &lt;P&gt; on a surface &lt;Surface&gt; Create the projection of a point &lt;P&gt; on a surface &lt;Surface&gt;. The solution are computed in the domain [Umin,Usup] [Vmin,Vsup] of the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Surface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>Algo</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+<li><strong>P</strong> – </li>
+<li><strong>Surface</strong> – </li>
+<li><strong>Umin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Usup</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vmin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vsup</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Tolerance</strong> – </li>
+<li><strong>Algo</strong> – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Init the projection of a point &lt;P&gt; on a surface &lt;Surface&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Surface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Umin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Usup</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vmin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vsup</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Algo</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Distance">
+<code class="descname">Distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Distance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the distance between the point and its orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Length</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Extrema">
+<code class="descname">Extrema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Extrema" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return the algorithmic object from Extrema</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Extrema.html#OCC.Extrema.Extrema_ExtPS" title="OCC.Extrema.Extrema_ExtPS">Extrema_ExtPS</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Surface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>Algo</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Init the projection of a point &lt;P&gt; on a surface &lt;Surface&gt;. The solution are computed in the domain [Umin,Usup] [Vmin,Vsup] of the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Surface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Algo</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+<li><strong>P</strong> – </li>
+<li><strong>Surface</strong> – </li>
+<li><strong>Umin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Usup</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vmin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vsup</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>Algo</strong> – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Init the projection for many points on a surface &lt;Surface&gt;. The solutions will be computed in the domain [Umin,Usup] [Vmin,Vsup] of the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Surface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Umin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Usup</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vmin</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Vsup</strong> (<em>Quantity_Parameter</em>) – </li>
+<li><strong>Algo</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+<li><strong>Surface</strong> – </li>
+<li><strong>Umin</strong> – </li>
+<li><strong>Usup</strong> – </li>
+<li><strong>Vmin</strong> – </li>
+<li><strong>Vsup</strong> – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>Algo</strong> – default value is Extrema_ExtAlgo_Grad</li>
+<li><strong>Surface</strong> – </li>
+<li><strong>Umin</strong> – </li>
+<li><strong>Usup</strong> – </li>
+<li><strong>Vmin</strong> – </li>
+<li><strong>Vsup</strong> – </li>
+<li><strong>Algo</strong> – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.LowerDistance">
+<code class="descname">LowerDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.LowerDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the distance between the point and its nearest orthogonal projection on the surface. Exceptions StdFail_NotDone if projection fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Quantity_Length</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.LowerDistanceParameters">
+<code class="descname">LowerDistanceParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.LowerDistanceParameters" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters (U,V) on the surface of the nearest computed orthogonal projection of the point. Exceptions StdFail_NotDone if projection fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>V</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.NbPoints">
+<code class="descname">NbPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.NbPoints" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of computed orthogonal projection points. Note: if projection fails, NbPoints returns 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.NearestPoint">
+<code class="descname">NearestPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.NearestPoint" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Parameters">
+<code class="descname">Parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Parameters" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters (U,V) on the surface of the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>U</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+<li><strong>V</strong> (<em>Quantity_Parameter &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Performs the projection of a point on the current surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Point">
+<code class="descname">Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.Point" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.GeomAPI_ProjectPointOnSurf.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAPI.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.GeomAPI.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAPI.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAPI.geomapi">
+<em class="property">class </em><code class="descname">geomapi</code><a class="headerlink" href="#OCC.GeomAPI.geomapi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.GeomAPI.geomapi.To2d">
+<em class="property">static </em><code class="descname">To2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.geomapi.To2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This function builds (in the parametric space of the plane P) a 2D curve equivalent to the 3D curve C. The 3D curve C is considered to be located in the plane P. Warning The 3D curve C must be of one of the following types: - a line - a circle - an ellipse - a hyperbola - a parabola - a Bezier curve - a BSpline curve Exceptions Standard_NoSuchObject if C is not a defined type curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pln" title="OCC.gp.gp_Pln"><em>gp_Pln</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve">Handle_Geom2d_Curve</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomAPI.geomapi.To3d">
+<em class="property">static </em><code class="descname">To3d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.geomapi.To3d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Builds a 3D curve equivalent to the 2D curve C described in the parametric space defined by the local coordinate system of plane P. The resulting 3D curve is of the same nature as that of the curve C.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pln" title="OCC.gp.gp_Pln"><em>gp_Pln</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Curve" title="OCC.Geom.Handle_Geom_Curve">Handle_Geom_Curve</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAPI.geomapi.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAPI.geomapi.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomAPI.geomapi_To2d">
+<code class="descname">geomapi_To2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.geomapi_To2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This function builds (in the parametric space of the plane P) a 2D curve equivalent to the 3D curve C. The 3D curve C is considered to be located in the plane P. Warning The 3D curve C must be of one of the following types: - a line - a circle - an ellipse - a hyperbola - a parabola - a Bezier curve - a BSpline curve Exceptions Standard_NoSuchObject if C is not a defined type curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pln" title="OCC.gp.gp_Pln"><em>gp_Pln</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve">Handle_Geom2d_Curve</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomAPI.geomapi_To3d">
+<code class="descname">geomapi_To3d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.geomapi_To3d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Builds a 3D curve equivalent to the 2D curve C described in the parametric space defined by the local coordinate system of plane P. The resulting 3D curve is of the same nature as that of the curve C.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pln" title="OCC.gp.gp_Pln"><em>gp_Pln</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Curve" title="OCC.Geom.Handle_Geom_Curve">Handle_Geom_Curve</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomAPI.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAPI.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

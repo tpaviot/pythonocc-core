@@ -1,0 +1,1873 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.GCE2d module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.GCE2d module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.GCE2d module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.GCE2d.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-gce2d-module">
+<h1>OCC.GCE2d module<a class="headerlink" href="#occ-gce2d-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.GCE2d"></span><dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfCircle">
+<em class="property">class </em><code class="descname">GCE2d_MakeArcOfCircle</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfCircle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GCE2d.GCE2d_Root" title="OCC.GCE2d.GCE2d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.GCE2d.GCE2d_Root</span></code></a></p>
+<ul class="simple">
+<li>Makes an arc of circle (TrimmedCurve from Geom2d) from a circle between two parameters Alpha1 and Alpha2. The two parameters are angles. The parameters are in radians.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Circ</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Circ2d" title="OCC.gp.gp_Circ2d"><em>gp_Circ2d</em></a>) – </li>
+<li><strong>Alpha1</strong> (<em>float</em>) – </li>
+<li><strong>Alpha2</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Makes an arc of circle (TrimmedCurve from Geom2d) from a circle between point &lt;P&gt; and the parameter Alpha. Alpha is given in radians.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Circ</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Circ2d" title="OCC.gp.gp_Circ2d"><em>gp_Circ2d</em></a>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Alpha</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Makes an arc of circle (TrimmedCurve from Geom2d) from a circle between two points P1 and P2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Circ</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Circ2d" title="OCC.gp.gp_Circ2d"><em>gp_Circ2d</em></a>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Makes an arc of circle (TrimmedCurve from Geom2d) from three points P1,P2,P3 between two points P1 and P3, and passing through the point P2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P3</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Makes an arc of circle (TrimmedCurve from Geom2d) from two points P1,P2 and the tangente to the solution at the point P1.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>V</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfCircle.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfCircle.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfCircle.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfCircle.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed arc of circle. Exceptions StdFail_NotDone if no arc of circle is constructed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfCircle.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfCircle.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfEllipse">
+<em class="property">class </em><code class="descname">GCE2d_MakeArcOfEllipse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfEllipse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GCE2d.GCE2d_Root" title="OCC.GCE2d.GCE2d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.GCE2d.GCE2d_Root</span></code></a></p>
+<ul class="simple">
+<li>Make an arc of Ellipse (TrimmedCurve from Geom2d) from a Ellipse between two parameters Alpha1 and Alpha2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Elips</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Elips2d" title="OCC.gp.gp_Elips2d"><em>gp_Elips2d</em></a>) – </li>
+<li><strong>Alpha1</strong> (<em>float</em>) – </li>
+<li><strong>Alpha2</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make an arc of Ellipse (TrimmedCurve from Geom2d) from a Ellipse between point &lt;P&gt; and the parameter Alpha.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Elips</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Elips2d" title="OCC.gp.gp_Elips2d"><em>gp_Elips2d</em></a>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Alpha</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make an arc of Ellipse (TrimmedCurve from Geom2d) from a Ellipse between two points P1 and P2. Please, note: The orientation of the arc is: - the trigonometric sense if Sense is not defined or is true (default value), or - the opposite sense if Sense is false. - Alpha1, Alpha2 and Alpha are angle values, given in radians. - IsDone always returns true.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Elips</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Elips2d" title="OCC.gp.gp_Elips2d"><em>gp_Elips2d</em></a>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfEllipse.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfEllipse.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfEllipse.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfEllipse.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed arc of ellipse.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfEllipse.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfEllipse.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfHyperbola">
+<em class="property">class </em><code class="descname">GCE2d_MakeArcOfHyperbola</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfHyperbola" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GCE2d.GCE2d_Root" title="OCC.GCE2d.GCE2d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.GCE2d.GCE2d_Root</span></code></a></p>
+<ul class="simple">
+<li>Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from a Hyperbola between two parameters Alpha1 and Alpha2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Hypr</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Hypr2d" title="OCC.gp.gp_Hypr2d"><em>gp_Hypr2d</em></a>) – </li>
+<li><strong>Alpha1</strong> (<em>float</em>) – </li>
+<li><strong>Alpha2</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from a Hyperbola between point &lt;P&gt; and the parameter Alpha.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Hypr</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Hypr2d" title="OCC.gp.gp_Hypr2d"><em>gp_Hypr2d</em></a>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Alpha</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from a Hyperbola between two points P1 and P2. Note: the orientation of the arc of hyperbola is: - the trigonometric sense if Sense is not defined or is true (default value), or - the opposite sense if Sense is false. - IsDone always returns true.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Hypr</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Hypr2d" title="OCC.gp.gp_Hypr2d"><em>gp_Hypr2d</em></a>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfHyperbola.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfHyperbola.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfHyperbola.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfHyperbola.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed arc of hyperbola.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfHyperbola.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfHyperbola.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfParabola">
+<em class="property">class </em><code class="descname">GCE2d_MakeArcOfParabola</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfParabola" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GCE2d.GCE2d_Root" title="OCC.GCE2d.GCE2d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.GCE2d.GCE2d_Root</span></code></a></p>
+<ul class="simple">
+<li>Make an arc of Parabola (TrimmedCurve from Geom2d) from a Parabola between two parameters Alpha1 and Alpha2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Parab</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Parab2d" title="OCC.gp.gp_Parab2d"><em>gp_Parab2d</em></a>) – </li>
+<li><strong>Alpha1</strong> (<em>float</em>) – </li>
+<li><strong>Alpha2</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make an arc of Parabola (TrimmedCurve from Geom2d) from a Parabola between point &lt;P&gt; and the parameter Alpha.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Parab</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Parab2d" title="OCC.gp.gp_Parab2d"><em>gp_Parab2d</em></a>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Alpha</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make an arc of Parabola (TrimmedCurve from Geom2d) from a Parabola between two points P1 and P2. Please, note: the orientation of the arc of parabola is: - the trigonometric sense if Sense is not defined or is true (default value), or - the opposite sense if Sense is false. - IsDone always returns true.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Parab</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Parab2d" title="OCC.gp.gp_Parab2d"><em>gp_Parab2d</em></a>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfParabola.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfParabola.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfParabola.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfParabola.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed arc of parabola.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeArcOfParabola.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeArcOfParabola.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeCircle">
+<em class="property">class </em><code class="descname">GCE2d_MakeCircle</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeCircle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GCE2d.GCE2d_Root" title="OCC.GCE2d.GCE2d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.GCE2d.GCE2d_Root</span></code></a></p>
+<ul class="simple">
+<li>creates a circle from a non persistent one.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Circ2d" title="OCC.gp.gp_Circ2d"><em>gp_Circ2d</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>A is the ‘XAxis’ of the circle which defines the origin of parametrization. It is not forbidden to create a circle with Radius = 0.0 The status is ‘NegativeRadius’ if Radius &lt; 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2d" title="OCC.gp.gp_Ax2d"><em>gp_Ax2d</em></a>) – </li>
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>A is the local coordinate system of the circle which defines the origin of parametrization. It is not forbidden to create a circle with Radius = 0.0 The status is ‘NegativeRadius’ if Radius &lt; 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax22d" title="OCC.gp.gp_Ax22d"><em>gp_Ax22d</em></a>) – </li>
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Circle from Geom2d &lt;TheCirc&gt; parallel to another Circ &lt;Circ&gt; with a distance &lt;Dist&gt;. If Dist is greater than zero the result is enclosing the circle &lt;Circ&gt;, else the result is enclosed by the circle &lt;Circ&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Circ</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Circ2d" title="OCC.gp.gp_Circ2d"><em>gp_Circ2d</em></a>) – </li>
+<li><strong>Dist</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Circle from Geom2d &lt;TheCirc&gt; parallel to another Circ &lt;Circ&gt; and passing through a Pnt &lt;Point&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Circ</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Circ2d" title="OCC.gp.gp_Circ2d"><em>gp_Circ2d</em></a>) – </li>
+<li><strong>Point</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Circ from gp &lt;TheCirc&gt; passing through 3 Pnt2d &lt;P1&gt;,&lt;P2&gt;,&lt;P3&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P3</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Circ from geom2d &lt;TheCirc&gt; by its center an radius.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Makes a Circle from geom2d &lt;TheCirc&gt; with its center &lt;Center&gt; and a point giving the radius. If Sense is true the local coordinate system of the solution is direct and non direct in the other case. Warning The MakeCircle class does not prevent the construction of a circle with a null radius. If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NegativeRadius if Radius is less than 0.0, or - gce_IntersectionError if points P1, P2 and P3 are collinear and the three are not coincident.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Center</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Point</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeCircle.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeCircle.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Circle" title="OCC.Geom2d.Handle_Geom2d_Circle">Handle_Geom2d_Circle</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeCircle.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeCircle.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed circle. Exceptions StdFail_NotDone if no circle is constructed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Circle" title="OCC.Geom2d.Handle_Geom2d_Circle">Handle_Geom2d_Circle</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeCircle.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeCircle.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeEllipse">
+<em class="property">class </em><code class="descname">GCE2d_MakeEllipse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeEllipse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GCE2d.GCE2d_Root" title="OCC.GCE2d.GCE2d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.GCE2d.GCE2d_Root</span></code></a></p>
+<ul class="simple">
+<li>Creates an ellipse from a non persistent one from package gp</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Elips2d" title="OCC.gp.gp_Elips2d"><em>gp_Elips2d</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>MajorAxis is the local coordinate system of the ellipse. It is the ‘XAxis’. The minor axis is the YAxis of the ellipse. Sense give the sense of parametrization of the Ellipse. It is not forbidden to create an ellipse with MajorRadius = MinorRadius. The status is ‘InvertRadius’ if MajorRadius &lt; MinorRadius or ‘NegativeRadius’ if MinorRadius &lt; 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>MajorAxis</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2d" title="OCC.gp.gp_Ax2d"><em>gp_Ax2d</em></a>) – </li>
+<li><strong>MajorRadius</strong> (<em>float</em>) – </li>
+<li><strong>MinorRadius</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Axis is the local coordinate system of the ellipse. It is not forbidden to create an ellipse with MajorRadius = MinorRadius. The status is ‘InvertRadius’ if MajorRadius &lt; MinorRadius or ‘NegativeRadius’ if MinorRadius &lt; 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Axis</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax22d" title="OCC.gp.gp_Ax22d"><em>gp_Ax22d</em></a>) – </li>
+<li><strong>MajorRadius</strong> (<em>float</em>) – </li>
+<li><strong>MinorRadius</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make an Ellipse centered on the point Center, where - the major axis of the ellipse is defined by Center and S1, - its major radius is the distance between Center and S1, and - its minor radius is the distance between S2 and the major axis. The implicit orientation of the ellipse is: - the sense defined by Axis or E, - the sense defined by points Center, S1 and S2, - the trigonometric sense if Sense is not given or is true, or - the opposite sense if Sense is false.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>S2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Center</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeEllipse.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeEllipse.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Ellipse" title="OCC.Geom2d.Handle_Geom2d_Ellipse">Handle_Geom2d_Ellipse</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeEllipse.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeEllipse.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed ellipse. Exceptions StdFail_NotDone if no ellipse is constructed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Ellipse" title="OCC.Geom2d.Handle_Geom2d_Ellipse">Handle_Geom2d_Ellipse</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeEllipse.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeEllipse.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeHyperbola">
+<em class="property">class </em><code class="descname">GCE2d_MakeHyperbola</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeHyperbola" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GCE2d.GCE2d_Root" title="OCC.GCE2d.GCE2d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.GCE2d.GCE2d_Root</span></code></a></p>
+<ul class="simple">
+<li>Creates an Hyperbola from a non persistent one from package gp</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>H</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Hypr2d" title="OCC.gp.gp_Hypr2d"><em>gp_Hypr2d</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>MajorAxis is the ‘XAxis’ of the hyperbola. The major radius of the hyperbola is on this ‘XAxis’ and the minor radius is on the ‘YAxis’ of the hyperbola. The status is ‘NegativeRadius’ if MajorRadius &lt; 0.0 or if MinorRadius &lt; 0.0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>MajorAxis</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2d" title="OCC.gp.gp_Ax2d"><em>gp_Ax2d</em></a>) – </li>
+<li><strong>MajorRadius</strong> (<em>float</em>) – </li>
+<li><strong>MinorRadius</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Axis is the local coordinate system of the hyperbola. The major radius of the hyperbola is on this ‘XAxis’ and the minor radius is on the ‘YAxis’ of the hyperbola. The status is ‘NegativeRadius’ if MajorRadius &lt; 0.0 or if MinorRadius &lt; 0.0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Axis</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax22d" title="OCC.gp.gp_Ax22d"><em>gp_Ax22d</em></a>) – </li>
+<li><strong>MajorRadius</strong> (<em>float</em>) – </li>
+<li><strong>MinorRadius</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a hyperbol centered on the origin of the coordinate system Axis, with major and minor radii MajorRadius and MinorRadius, where the major axis is the ‘X Axis’ of Axis (Axis is the local coordinate system of the hyperbola). The implicit orientation of the ellipse is: - the sense defined by Axis or H, - the sense defined by points Center, S1 and S2, - the trigonometric sense if Sense is not given or is true, or - the opposite sense if Sense is false. Warning If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NegativeRadius if MajorRadius or MinorRadius is less than 0.0, or - gce_InvertAxis if the major radius defined by Center and S1 is less than the minor radius defined by Center, S1 and S2.Make an Hyperbola with its center and two apexes.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>S2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Center</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeHyperbola.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeHyperbola.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Hyperbola" title="OCC.Geom2d.Handle_Geom2d_Hyperbola">Handle_Geom2d_Hyperbola</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeHyperbola.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeHyperbola.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed hyperbola. Exceptions: StdFail_NotDone if no hyperbola is constructed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Hyperbola" title="OCC.Geom2d.Handle_Geom2d_Hyperbola">Handle_Geom2d_Hyperbola</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeHyperbola.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeHyperbola.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeLine">
+<em class="property">class </em><code class="descname">GCE2d_MakeLine</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GCE2d.GCE2d_Root" title="OCC.GCE2d.GCE2d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.GCE2d.GCE2d_Root</span></code></a></p>
+<ul class="simple">
+<li>Creates a line located in 2D space with the axis placement A. The Location of A is the origin of the line.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>A</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2d" title="OCC.gp.gp_Ax2d"><em>gp_Ax2d</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a line from a non persistent line from package gp.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>L</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin2d" title="OCC.gp.gp_Lin2d"><em>gp_Lin2d</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>P is the origin and V is the direction of the line.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>V</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Dir2d" title="OCC.gp.gp_Dir2d"><em>gp_Dir2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Line from Geom2d &lt;TheLin&gt; parallel to another Lin &lt;Lin&gt; and passing through a Pnt &lt;Point&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Lin</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin2d" title="OCC.gp.gp_Lin2d"><em>gp_Lin2d</em></a>) – </li>
+<li><strong>Point</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Line from Geom2d &lt;TheLin&gt; parallel to another Lin &lt;Lin&gt; at a distance &lt;Dist&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Lin</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin2d" title="OCC.gp.gp_Lin2d"><em>gp_Lin2d</em></a>) – </li>
+<li><strong>Dist</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Line from Geom2d &lt;TheLin&gt; passing through 2 Pnt &lt;P1&gt;,&lt;P2&gt;. It returns false if &lt;p1&gt; and &lt;P2&gt; are confused. Warning If points P1 and P2 coincident (that is, when IsDone returns false), the Status function returns gce_ConfusedPoints.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeLine.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeLine.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Line" title="OCC.Geom2d.Handle_Geom2d_Line">Handle_Geom2d_Line</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeLine.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeLine.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed line. Exceptions StdFail_NotDone if no line is constructed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Line" title="OCC.Geom2d.Handle_Geom2d_Line">Handle_Geom2d_Line</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeLine.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeLine.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeMirror">
+<em class="property">class </em><code class="descname">GCE2d_MakeMirror</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeMirror" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Point</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Axis</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2d" title="OCC.gp.gp_Ax2d"><em>gp_Ax2d</em></a>) – </li>
+<li><strong>Line</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin2d" title="OCC.gp.gp_Lin2d"><em>gp_Lin2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a symetry transformation af axis defined by &lt;Point&gt; and &lt;Direc&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Point</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Direc</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Dir2d" title="OCC.gp.gp_Dir2d"><em>gp_Dir2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeMirror.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeMirror.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Transformation" title="OCC.Geom2d.Handle_Geom2d_Transformation">Handle_Geom2d_Transformation</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeMirror.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeMirror.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed transformation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Transformation" title="OCC.Geom2d.Handle_Geom2d_Transformation">Handle_Geom2d_Transformation</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeMirror.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeMirror.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeParabola">
+<em class="property">class </em><code class="descname">GCE2d_MakeParabola</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeParabola" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GCE2d.GCE2d_Root" title="OCC.GCE2d.GCE2d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.GCE2d.GCE2d_Root</span></code></a></p>
+<ul class="simple">
+<li>Creates a parabola from a non persistent one.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Prb</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Parab2d" title="OCC.gp.gp_Parab2d"><em>gp_Parab2d</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a parabola with its local coordinate system and it’s focal length ‘Focal’. The ‘Location’ point of ‘Axis’ is the vertex of the parabola Status is ‘NegativeFocusLength’ if Focal &lt; 0.0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Axis</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax22d" title="OCC.gp.gp_Ax22d"><em>gp_Ax22d</em></a>) – </li>
+<li><strong>Focal</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a parabola with its ‘MirrorAxis’ and it’s focal length ‘Focal’. MirrorAxis is the axis of symmetry of the curve, it is the ‘XAxis’. The ‘YAxis’ is parallel to the directrix of the parabola. The ‘Location’ point of ‘MirrorAxis’ is the vertex of the parabola Status is ‘NegativeFocusLength’ if Focal &lt; 0.0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>MirrorAxis</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2d" title="OCC.gp.gp_Ax2d"><em>gp_Ax2d</em></a>) – </li>
+<li><strong>Focal</strong> (<em>float</em>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a parabola with the local coordinate system and the focus point. The sense of parametrization is given by Sense.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>D</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax22d" title="OCC.gp.gp_Ax22d"><em>gp_Ax22d</em></a>) – </li>
+<li><strong>F</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>D is the directrix of the parabola and F the focus point. The symmetry axis ‘XAxis’ of the parabola is normal to the directrix and pass through the focus point F, but its ‘Location’ point is the vertex of the parabola. The ‘YAxis’ of the parabola is parallel to D and its ‘Location’ point is the vertex of the parabola.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>D</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2d" title="OCC.gp.gp_Ax2d"><em>gp_Ax2d</em></a>) – </li>
+<li><strong>F</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a parabola with focal point S1 and center O The branch of the parabola returned will have &lt;S1&gt; as focal point The implicit orientation of the parabola is: - the same one as the parabola Prb, - the sense defined by the coordinate system Axis or the directrix D, - the trigonometric sense if Sense is not given or is true, or - the opposite sense if Sense is false. Warning The MakeParabola class does not prevent the construction of a parabola with a null focal distance. If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NullFocusLength if Focal is less than 0.0, or - gce_NullAxis if points S1 and O are coincident.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>O</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeParabola.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeParabola.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Parabola" title="OCC.Geom2d.Handle_Geom2d_Parabola">Handle_Geom2d_Parabola</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeParabola.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeParabola.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed parabola. Exceptions StdFail_NotDone if no parabola is constructed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Parabola" title="OCC.Geom2d.Handle_Geom2d_Parabola">Handle_Geom2d_Parabola</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeParabola.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeParabola.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeRotation">
+<em class="property">class </em><code class="descname">GCE2d_MakeRotation</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeRotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs a rotation through angle Angle about the center Point.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Point</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Angle</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeRotation.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeRotation.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Transformation" title="OCC.Geom2d.Handle_Geom2d_Transformation">Handle_Geom2d_Transformation</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeRotation.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeRotation.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed transformation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Transformation" title="OCC.Geom2d.Handle_Geom2d_Transformation">Handle_Geom2d_Transformation</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeRotation.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeRotation.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeScale">
+<em class="property">class </em><code class="descname">GCE2d_MakeScale</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs a scaling transformation with - Point as the center of the transformation, and - Scale as the scale factor.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Point</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Scale</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeScale.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeScale.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Transformation" title="OCC.Geom2d.Handle_Geom2d_Transformation">Handle_Geom2d_Transformation</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeScale.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeScale.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed transformation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Transformation" title="OCC.Geom2d.Handle_Geom2d_Transformation">Handle_Geom2d_Transformation</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeScale.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeScale.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeSegment">
+<em class="property">class </em><code class="descname">GCE2d_MakeSegment</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GCE2d.GCE2d_Root" title="OCC.GCE2d.GCE2d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.GCE2d.GCE2d_Root</span></code></a></p>
+<ul class="simple">
+<li>Make a segment of Line from the 2 points &lt;P1&gt; and &lt;P2&gt;. Status is ‘ConfusedPoints’ if &lt;P1&gt; and &lt;P2&gt; are confused.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a segment of Line from the point &lt;P1&gt; with the direction &lt;P&gt; and ended by the projection of &lt;P2&gt; on the line &lt;P1,V&gt;. Status is ‘ConfusedPoints’ if &lt;P1&gt; and &lt;P2&gt; are confused.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>V</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Dir2d" title="OCC.gp.gp_Dir2d"><em>gp_Dir2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a segment of Line from the line &lt;Line&gt; between the two parameters U1 and U2. Status is ‘SameParamters’ if &lt;U1&gt; is equal &lt;U2&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Line</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin2d" title="OCC.gp.gp_Lin2d"><em>gp_Lin2d</em></a>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a segment of Line from the line &lt;Line&gt; between the point &lt;Point&gt; and the parameter Ulast. It returns NullObject if &lt;U1&gt; is equal &lt;U2&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Line</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin2d" title="OCC.gp.gp_Lin2d"><em>gp_Lin2d</em></a>) – </li>
+<li><strong>Point</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Ulast</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a segment of Line from the line &lt;Line&gt; between the two points &lt;P1&gt; and &lt;P2&gt;. It returns NullObject if &lt;P1&gt; and &lt;P2&gt; are confused. Warning If the points which limit the segment are coincident for given points or for the projection of given points on the line which supports the line segment (that is, when IsDone returns false), the Status function returns gce_ConfusedPoints. This warning only concerns the first two constructors.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Line</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin2d" title="OCC.gp.gp_Lin2d"><em>gp_Lin2d</em></a>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeSegment.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeSegment.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeSegment.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeSegment.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed line segment. Exceptions StdFail_NotDone if no line segment is constructed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeSegment.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeSegment.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_MakeTranslation">
+<em class="property">class </em><code class="descname">GCE2d_MakeTranslation</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeTranslation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs a translation along the vector Vect.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Vect</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Constructs a translation along the vector (Point1,Point2) defined from the point Point1 to the point Point2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Point1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Point2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeTranslation.Operator">
+<code class="descname">Operator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeTranslation.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Transformation" title="OCC.Geom2d.Handle_Geom2d_Transformation">Handle_Geom2d_Transformation</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_MakeTranslation.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeTranslation.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the constructed transformation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Transformation" title="OCC.Geom2d.Handle_Geom2d_Transformation">Handle_Geom2d_Transformation</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_MakeTranslation.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_MakeTranslation.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.GCE2d_Root">
+<em class="property">class </em><code class="descname">GCE2d_Root</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_Root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_Root.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_Root.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the construction is successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.GCE2d_Root.Status">
+<code class="descname">Status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.GCE2d_Root.Status" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the status of the construction - gce_Done, if the construction is successful, or - another value of the gce_ErrorType enumeration indicating why the construction failed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">gce_ErrorType</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.GCE2d_Root.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.GCE2d_Root.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCE2d.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.GCE2d.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCE2d.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCE2d.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCE2d.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GCE2d.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCE2d.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

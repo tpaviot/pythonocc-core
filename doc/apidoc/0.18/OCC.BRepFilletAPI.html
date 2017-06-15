@@ -1,0 +1,2029 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.BRepFilletAPI module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.BRepFilletAPI module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.BRepFilletAPI module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.BRepFilletAPI.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-brepfilletapi-module">
+<h1>OCC.BRepFilletAPI module<a class="headerlink" href="#occ-brepfilletapi-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.BRepFilletAPI"></span><dl class="class">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation">
+<em class="property">class </em><code class="descname">BRepFilletAPI_LocalOperation</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.BRepBuilderAPI.html#OCC.BRepBuilderAPI.BRepBuilderAPI_MakeShape" title="OCC.BRepBuilderAPI.BRepBuilderAPI_MakeShape"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepBuilderAPI.BRepBuilderAPI_MakeShape</span></code></a></p>
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Abscissa">
+<code class="descname">Abscissa</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Abscissa" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the abscissa of the vertex V on the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds a contour in the builder (builds a contour of tangent edges).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Closed">
+<code class="descname">Closed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Closed" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the contour of index IC is closed</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.ClosedAndTangent">
+<code class="descname">ClosedAndTangent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.ClosedAndTangent" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the contour of index IC is closed an tangent.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Contour">
+<code class="descname">Contour</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Contour" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the index of the contour containing the edge E, returns 0 if E doesn’t belong to any contour.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Edge">
+<code class="descname">Edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Edge J in the contour I.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>int</em>) – </li>
+<li><strong>J</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.FirstVertex">
+<code class="descname">FirstVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.FirstVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the first Vertex of the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.LastVertex">
+<code class="descname">LastVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.LastVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the last Vertex of the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Length">
+<code class="descname">Length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Length" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the length the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.NbContours">
+<code class="descname">NbContours</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.NbContours" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Number of contours.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.NbEdges">
+<code class="descname">NbEdges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.NbEdges" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Number of Edges in the contour I.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.NbSurf">
+<code class="descname">NbSurf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.NbSurf" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.RelativeAbscissa">
+<code class="descname">RelativeAbscissa</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.RelativeAbscissa" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the relative abscissa([0.,1.]) of the vertex V on the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Remove">
+<code class="descname">Remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>remove the contour containing the Edge E.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Reset">
+<code class="descname">Reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Reset" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reset all the fields updated by Build operation and leave the algorithm in the same state than before build call. It allows contours and radius modifications to build the result another time.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.ResetContour">
+<code class="descname">ResetContour</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.ResetContour" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reset the contour of index IC, there is nomore information in the contour.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Sect">
+<code class="descname">Sect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Sect" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>IS</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.ChFiDS.html#OCC.ChFiDS.Handle_ChFiDS_SecHArray1" title="OCC.ChFiDS.Handle_ChFiDS_SecHArray1">Handle_ChFiDS_SecHArray1</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Simulate">
+<code class="descname">Simulate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.Simulate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer">
+<em class="property">class </em><code class="descname">BRepFilletAPI_MakeChamfer</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation" title="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation</span></code></a></p>
+<ul class="simple">
+<li>Initializes an algorithm for computing chamfers on the shape S. The edges on which chamfers are built are defined using the Add function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds edge E to the table of edges used by this algorithm to build chamfers, where the parameters of the chamfer must be set after the</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Adds edge E to the table of edges used by this algorithm to build chamfers, where the parameters of the chamfer are given by the two distances Dis1 and Dis2; the face F identifies the side where Dis1 is measured. The Add function results in a contour being built by propagation from the edge E (i.e. the contour contains at least this edge). This contour is composed of edges of the shape which are tangential to one another and which delimit two series of tangential faces, with one series of faces being located on either side of the contour. Warning Nothing is done if edge E or the face F does not belong to the initial shape.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis</strong> (<em>float</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Adds a fillet contour in the builder (builds a contour of tangent edges to &lt;E&gt; and sets the two distances &lt;Dis1&gt; and &lt;Dis2&gt; ( parameters of the chamfer ) ).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis1</strong> (<em>float</em>) – </li>
+<li><strong>Dis2</strong> (<em>float</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.AddDA">
+<code class="descname">AddDA</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.AddDA" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds a fillet contour in the builder (builds a contour of tangent edges to &lt;E&gt; and sets the distance &lt;Dis1&gt; and angle &lt;Angle&gt; ( parameters of the chamfer ) ).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis</strong> (<em>float</em>) – </li>
+<li><strong>Angle</strong> (<em>float</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.Builder">
+<code class="descname">Builder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.Builder" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the internal filleting algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopOpeBRepBuild.html#OCC.TopOpeBRepBuild.Handle_TopOpeBRepBuild_HBuilder" title="OCC.TopOpeBRepBuild.Handle_TopOpeBRepBuild_HBuilder">Handle_TopOpeBRepBuild_HBuilder</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.Dists">
+<code class="descname">Dists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.Dists" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the distances Dis1 and Dis2 which give the parameters of the chamfer along the contour of index IC in the internal data structure of this algorithm. Warning -1. is returned if IC is outside the bounds of the table of contours.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>Dis1</strong> (<em>float &amp;</em>) – </li>
+<li><strong>Dis2</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.GetDist">
+<code class="descname">GetDist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.GetDist" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>Dis</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.GetDistAngle">
+<code class="descname">GetDistAngle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.GetDistAngle" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the distances &lt;Dis&gt; and &lt;Angle&gt; of the fillet contour of index &lt;IC&gt; in the DS</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>Dis</strong> (<em>float &amp;</em>) – </li>
+<li><strong>Angle</strong> (<em>float &amp;</em>) – </li>
+<li><strong>DisOnFace1</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.IsDistanceAngle">
+<code class="descname">IsDistanceAngle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.IsDistanceAngle" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return True if chamfer is made with distance and angle false else.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.IsSymetric">
+<code class="descname">IsSymetric</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.IsSymetric" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return True if chamfer symetric false else.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.IsTwoDistances">
+<code class="descname">IsTwoDistances</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.IsTwoDistances" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>return True if chamfer is made with two distances false else.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.SetDist">
+<code class="descname">SetDist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.SetDist" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the distances Dis1 and Dis2 which give the parameters of the chamfer along the contour of index IC generated using the Add function in the internal data structure of this algorithm. The face F identifies the side where Dis1 is measured. Warning Nothing is done if either the edge E or the face F does not belong to the initial shape.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis</strong> (<em>float</em>) – </li>
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.SetDistAngle">
+<code class="descname">SetDistAngle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.SetDistAngle" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>set the distance &lt;Dis&gt; and &lt;Angle&gt; of the fillet contour of index &lt;IC&gt; in the DS with &lt;Dis&gt; on &lt;F&gt;. if the face &lt;F&gt; is not one of common faces of an edge of the contour &lt;IC&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis</strong> (<em>float</em>) – </li>
+<li><strong>Angle</strong> (<em>float</em>) – </li>
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.SetDists">
+<code class="descname">SetDists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.SetDists" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the distances Dis1 and Dis2 which give the parameters of the chamfer along the contour of index IC generated using the Add function in the internal data structure of this algorithm. The face F identifies the side where Dis1 is measured. Warning Nothing is done if either the edge E or the face F does not belong to the initial shape.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dis1</strong> (<em>float</em>) – </li>
+<li><strong>Dis2</strong> (<em>float</em>) – </li>
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeChamfer.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet">
+<em class="property">class </em><code class="descname">BRepFilletAPI_MakeFillet</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation" title="OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepFilletAPI.BRepFilletAPI_LocalOperation</span></code></a></p>
+<ul class="simple">
+<li>Initializes the computation of the fillets. &lt;FShape&gt; sets the type of fillet surface. The default value is ChFi3d_Rational (classical nurbs representation of circles). ChFi3d_QuasiAngular corresponds to a nurbs representation of circles which parameterisation matches the circle one. ChFi3d_Polynomial corresponds to a polynomial representation of circles.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>FShape</strong> (<em>ChFi3d_FilletShape</em>) – default value is ChFi3d_Rational</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds a fillet contour in the builder (builds a contour of tangent edges). The Radius must be set after.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Adds a fillet description in the builder - builds a contour of tangent edges, - sets the radius.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Adds a fillet description in the builder - builds a contour of tangent edges, - sets a linear radius evolution law between the first and last vertex of the spine.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>R1</strong> (<em>float</em>) – </li>
+<li><strong>R2</strong> (<em>float</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Adds a fillet description in the builder - builds a contour of tangent edges, - sest the radius evolution law.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>L</strong> (<em>Handle_Law_Function &amp;</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Adds a fillet description in the builder - builds a contour of tangent edges, - sets the radius evolution law interpolating the values given in the array UandR : //! p2d.X() = relative parameter on the spine [0,1] p2d.Y() = value of the radius.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>UandR</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.BadShape">
+<code class="descname">BadShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.BadShape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>if (HasResult()) returns the partial result</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.Builder">
+<code class="descname">Builder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.Builder" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the internal topology building algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopOpeBRepBuild.html#OCC.TopOpeBRepBuild.Handle_TopOpeBRepBuild_HBuilder" title="OCC.TopOpeBRepBuild.Handle_TopOpeBRepBuild_HBuilder">Handle_TopOpeBRepBuild_HBuilder</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.ComputedSurface">
+<code class="descname">ComputedSurface</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.ComputedSurface" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the surface number IS concerning the contour IC</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>IS</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Surface" title="OCC.Geom.Handle_Geom_Surface">Handle_Geom_Surface</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.FaultyContour">
+<code class="descname">FaultyContour</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.FaultyContour" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>for each I in [1.. NbFaultyContours] returns the index IC of the contour where the computation of the fillet failed. the method NbEdges(IC) gives the number of edges in the contour IC the method Edge(IC,ie) gives the edge number ie of the contour IC</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.FaultyVertex">
+<code class="descname">FaultyVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.FaultyVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the vertex where the computation failed</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IV</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.GetBounds">
+<code class="descname">GetBounds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.GetBounds" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F</strong> (<em>float &amp;</em>) – </li>
+<li><strong>L</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.GetFilletShape">
+<code class="descname">GetFilletShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.GetFilletShape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the type of fillet shape built by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">ChFi3d_FilletShape</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.GetLaw">
+<code class="descname">GetLaw</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.GetLaw" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Law.html#OCC.Law.Handle_Law_Function" title="OCC.Law.Handle_Law_Function">Handle_Law_Function</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.HasResult">
+<code class="descname">HasResult</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.HasResult" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if a part of the result has been computed if the filling in a corner failed a shape with a hole is returned</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.IsConstant">
+<code class="descname">IsConstant</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.IsConstant" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the radius of the fillet along the contour of index IC in the internal data structure of this algorithm is constant, Warning False is returned if IC is outside the bounds of the table of contours or if E does not belong to the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns true if the radius of the fillet along the edge E of the contour of index IC in the internal data structure of this algorithm is constant. Warning False is returned if IC is outside the bounds of the table of contours or if E does not belong to the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.NbComputedSurfaces">
+<code class="descname">NbComputedSurfaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.NbComputedSurfaces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the number of surfaces which have been computed on the contour IC</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.NbFaultyContours">
+<code class="descname">NbFaultyContours</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.NbFaultyContours" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of contours where the computation of the fillet failed</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.NbFaultyVertices">
+<code class="descname">NbFaultyVertices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.NbFaultyVertices" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the number of vertices where the computation failed</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.NbSurfaces">
+<code class="descname">NbSurfaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.NbSurfaces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the number of surfaces after the shape creation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.NewFaces">
+<code class="descname">NewFaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.NewFaces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Return the faces created for surface &lt;I&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.Radius">
+<code class="descname">Radius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.Radius" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the radius of the fillet along the contour of index IC in the internal data structure of this algorithm Warning - Use this function only if the radius is constant. - -1. is returned if IC is outside the bounds of the table of contours or if E does not belong to the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the radius of the fillet along the edge E of the contour of index IC in the internal data structure of this algorithm. Warning - Use this function only if the radius is constant. - -1 is returned if IC is outside the bounds of the table of contours or if E does not belong to the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.SetContinuity">
+<code class="descname">SetContinuity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.SetContinuity" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Changes the parameters of continiuity InternalContinuity to produce fillet’surfaces with an continuity Ci (i=0,1 or 2). By defaultInternalContinuity = GeomAbs_C1. AngularTolerance is the G1 tolerance between fillet and support’faces.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>InternalContinuity</strong> (<em>GeomAbs_Shape</em>) – </li>
+<li><strong>AngularTolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.SetFilletShape">
+<code class="descname">SetFilletShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.SetFilletShape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Assigns FShape as the type of fillet shape built by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>FShape</strong> (<em>ChFi3d_FilletShape</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.SetLaw">
+<code class="descname">SetLaw</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.SetLaw" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>L</strong> (<em>Handle_Law_Function &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.SetParams">
+<code class="descname">SetParams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.SetParams" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tang</strong> (<em>float</em>) – </li>
+<li><strong>Tesp</strong> (<em>float</em>) – </li>
+<li><strong>T2d</strong> (<em>float</em>) – </li>
+<li><strong>TApp3d</strong> (<em>float</em>) – </li>
+<li><strong>TolApp2d</strong> (<em>float</em>) – </li>
+<li><strong>Fleche</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.SetRadius">
+<code class="descname">SetRadius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.SetRadius" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the parameters of the fillet along the contour of index IC generated using the Add function in the internal data structure of this algorithm, where Radius is the radius of the fillet.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>IinC</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sets the parameters of the fillet along the contour of index IC generated using the Add function in the internal data structure of this algorithm, where the radius of the fillet evolves according to a linear evolution law defined from R1 to R2, between the first and last vertices of the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>R1</strong> (<em>float</em>) – </li>
+<li><strong>R2</strong> (<em>float</em>) – </li>
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>IinC</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sets the parameters of the fillet along the contour of index IC generated using the Add function in the internal data structure of this algorithm, where the radius of the fillet evolves according to the evolution law L, between the first and last vertices of the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>L</strong> (<em>Handle_Law_Function &amp;</em>) – </li>
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>IinC</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sets the parameters of the fillet along the contour of index IC generated using the Add function in the internal data structure of this algorithm, where the radius of the fillet evolves according to the evolution law which interpolates the set of parameter and radius pairs given in the array UandR as follows: - the X coordinate of a point in UandR defines a relative parameter on the contour (i.e. a parameter between 0 and 1), - the Y coordinate of a point in UandR gives the corresponding value of the radius, and the radius evolves between the first and last vertices of the contour of index IC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>UandR</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>IinC</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Assigns Radius as the radius of the fillet on the edge E</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+<li><strong>IC</strong> (<em>int</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>Radius</strong> – </li>
+<li><strong>IC</strong> – </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.StripeStatus">
+<code class="descname">StripeStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.StripeStatus" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the status concerning the contour IC in case of error ChFiDS_Ok : the computation is Ok ChFiDS_StartsolFailure : the computation can’t start, perhaps the the radius is too big ChFiDS_TwistedSurface : the computation failed because of a twisted surface ChFiDS_WalkingFailure : there is a problem in the walking ChFiDS_Error: other error different from above</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IC</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">ChFiDS_ErrorStatus</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d">
+<em class="property">class </em><code class="descname">BRepFilletAPI_MakeFillet2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.BRepBuilderAPI.html#OCC.BRepBuilderAPI.BRepBuilderAPI_MakeShape" title="OCC.BRepBuilderAPI.BRepBuilderAPI_MakeShape"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepBuilderAPI.BRepBuilderAPI_MakeShape</span></code></a></p>
+<ul class="simple">
+<li>Initializes an empty algorithm for computing fillets and chamfers. The face on which the fillets and chamfers are built is defined using the Init function. The vertices on which fillets or chamfers are built are defined using the AddFillet or AddChamfer function. Warning The status of the initialization, as given by the Status function, can be one of the following: - ChFi2d_Ready if the initialization is correct, - ChFi2d_NotPlanar if F is not planar, - ChFi2d_NoFace if F is a null face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initializes an algorithm for computing fillets and chamfers on the face F. The vertices on which fillets or chamfers are built are defined using the AddFillet or AddChamfer function. Warning The status of the initialization, as given by the Status function, can be one of the following: - ChFi2d_Ready if the initialization is correct, - ChFi2d_NotPlanar if F is not planar, - ChFi2d_NoFace if F is a null face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.AddChamfer">
+<code class="descname">AddChamfer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.AddChamfer" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds a chamfer on the face modified by this algorithm between the two adjacent edges E1 and E2, where the extremities of the chamfer are on E1 and E2 at distances D1 and D2 respectively In cases where the edges are not rectilinear, distances are measured using the curvilinear abscissa of the edges and the angle is measured with respect to the tangent at the corresponding point. The angle Ang is given in radians. This function returns the chamfer and builds the resulting face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E1</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E2</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>D1</strong> (<em>float</em>) – </li>
+<li><strong>D2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Adds a chamfer on the face modified by this algorithm between the two edges connected by the vertex V, where E is one of the two edges. The chamfer makes an angle Ang with E and one of its extremities is on E at distance D from V. In cases where the edges are not rectilinear, distances are measured using the curvilinear abscissa of the edges and the angle is measured with respect to the tangent at the corresponding point. The angle Ang is given in radians. This function returns the chamfer and builds the resulting face. Warning The status of the construction, as given by the Status function, can be one of the following: - ChFi2d_IsDone if the chamfer is built, - ChFi2d_ParametersError if D1, D2, D or Ang is less than or equal to zero, - ChFi2d_ConnexionError if: - the edge E, E1 or E2 does not belong to the initial face, or - the edges E1 and E2 are not adjacent, or - the vertex V is not one of the limit points of the edge E, - ChFi2d_ComputationError if the parameters of the chamfer are too large to build a chamfer between the two adjacent edges, - ChFi2d_NotAuthorized if: - the edge E1, E2 or one of the two edges connected to V is a fillet or chamfer, or - a curve other than a straight line or an arc of a circle is used as E, E1 or E2. Do not use the returned chamfer if the status of the construction is not ChFi2d_IsDone.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>D</strong> (<em>float</em>) – </li>
+<li><strong>Ang</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.AddFillet">
+<code class="descname">AddFillet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.AddFillet" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds a fillet of radius Radius between the two edges adjacent to the vertex V on the face modified by this algorithm. The two edges do not need to be rectilinear. This function returns the fillet and builds the resulting face. Warning The status of the construction, as given by the Status function, can be one of the following: - ChFi2d_IsDone if the fillet is built, - ChFi2d_ConnexionError if V does not belong to the initial face, - ChFi2d_ComputationError if Radius is too large to build a fillet between the two adjacent edges, - ChFi2d_NotAuthorized - if one of the two edges connected to V is a fillet or chamfer, or - if a curve other than a straight line or an arc of a circle is used as E, E1 or E2. Do not use the returned fillet if the status of the construction is not ChFi2d_IsDone. Exceptions Standard_NegativeValue if Radius is less than or equal to zero.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.BasisEdge">
+<code class="descname">BasisEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.BasisEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the basis edge on the face modified by this algorithm from which the chamfered or filleted edge E is built. If E has not been modified, this function returns E. Warning E is returned if it does not belong to the initial face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.ChamferEdges">
+<code class="descname">ChamferEdges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.ChamferEdges" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the table of chamfers on the face modified by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_SequenceOfShape" title="OCC.TopTools.TopTools_SequenceOfShape">TopTools_SequenceOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.DescendantEdge">
+<code class="descname">DescendantEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.DescendantEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the chamfered or filleted edge built from the edge E on the face modified by this algorithm. If E has not been modified, this function returns E. Exceptions Standard_NoSuchObject if the edge E does not belong to the initial face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.FilletEdges">
+<code class="descname">FilletEdges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.FilletEdges" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the table of fillets on the face modified by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_SequenceOfShape" title="OCC.TopTools.TopTools_SequenceOfShape">TopTools_SequenceOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.HasDescendant">
+<code class="descname">HasDescendant</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.HasDescendant" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Initializes this algorithm for constructing fillets or chamfers with the face F. Warning The status of the initialization, as given by the Status function, can be one of the following: - ChFi2d_Ready if the initialization is correct, - ChFi2d_NotPlanar if F is not planar, - ChFi2d_NoFace if F is a null face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>This initialize method allow to init the builder from a face &lt;RefFace&gt; and another face &lt;ModFace&gt; which derive from &lt;RefFace&gt;. This is usefull to modify a fillet or a chamfer already created on &lt;ModFace&gt; .</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>RefFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>ModFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.IsModified">
+<code class="descname">IsModified</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.IsModified" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the edge E on the face modified by this algorithm is chamfered or filleted. Warning Returns false if E does not belong to the face modified by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.ModifyChamfer">
+<code class="descname">ModifyChamfer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.ModifyChamfer" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Modifies the chamfer Chamfer on the face modified by this algorithm, where: E1 and E2 are the two adjacent edges on which Chamfer is already built; the extremities of the new chamfer are on E1 and E2 at distances D1 and D2 respectively.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Chamfer</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E1</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E2</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>D1</strong> (<em>float</em>) – </li>
+<li><strong>D2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Modifies the chamfer Chamfer on the face modified by this algorithm, where: E is one of the two adjacent edges on which Chamfer is already built; the new chamfer makes an angle Ang with E and one of its extremities is on E at distance D from the vertex on which the chamfer is built. In cases where the edges are not rectilinear, the distances are measured using the curvilinear abscissa of the edges and the angle is measured with respect to the tangent at the corresponding point. The angle Ang is given in radians. This function returns the new chamfer and modifies the existing face. Warning The status of the construction, as given by the Status function, can be one of the following: - ChFi2d_IsDone if the chamfer is built, - ChFi2d_ParametersError if D1, D2, D or Ang is less than or equal to zero, - ChFi2d_ConnexionError if: - the edge E, E1, E2 or Chamfer does not belong to the existing face, or - the edges E1 and E2 are not adjacent, - ChFi2d_ComputationError if the parameters of the chamfer are too large to build a chamfer between the two adjacent edges, - ChFi2d_NotAuthorized if E1 or E2 is a fillet or chamfer. Do not use the returned chamfer if the status of the construction is not ChFi2d_IsDone.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Chamfer</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>D</strong> (<em>float</em>) – </li>
+<li><strong>Ang</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.ModifyFillet">
+<code class="descname">ModifyFillet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.ModifyFillet" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Assigns the radius Radius to the fillet Fillet already built on the face modified by this algorithm. This function returns the new fillet and modifies the existing face. Warning The status of the construction, as given by the Status function, can be one of the following: - ChFi2d_IsDone if the new fillet is built, - ChFi2d_ConnexionError if Fillet does not belong to the existing face, - ChFi2d_ComputationError if Radius is too large to build a fillet between the two adjacent edges. Do not use the returned fillet if the status of the construction is not ChFi2d_IsDone. Exceptions Standard_NegativeValue if Radius is less than or equal to zero.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Fillet</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.NbChamfer">
+<code class="descname">NbChamfer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.NbChamfer" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of chamfers on the face modified by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.NbCurves">
+<code class="descname">NbCurves</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.NbCurves" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the number of new curves after the shape creation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.NbFillet">
+<code class="descname">NbFillet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.NbFillet" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of fillets on the face modified by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.NewEdges">
+<code class="descname">NewEdges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.NewEdges" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Return the Edges created for curve I.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.RemoveChamfer">
+<code class="descname">RemoveChamfer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.RemoveChamfer" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Removes the chamfer Chamfer already built on the face modified by this algorithm. This function returns the vertex connecting the two adjacent edges of Chamfer and modifies the existing face. Warning - The returned vertex is only valid if the Status function returns ChFi2d_IsDone. - A null vertex is returned if the edge Chamfer does not belong to the initial face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Chamfer</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.RemoveFillet">
+<code class="descname">RemoveFillet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.RemoveFillet" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Removes the fillet Fillet already built on the face modified by this algorithm. This function returns the vertex connecting the two adjacent edges of Fillet and modifies the existing face. Warning - The returned vertex is only valid if the Status function returns ChFi2d_IsDone. - A null vertex is returned if the edge Fillet does not belong to the initial face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Fillet</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.Status">
+<code class="descname">Status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.Status" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">ChFi2d_ConstructionError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepFilletAPI.BRepFilletAPI_MakeFillet2d.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepFilletAPI.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepFilletAPI.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepFilletAPI.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepFilletAPI.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepFilletAPI.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepFilletAPI.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

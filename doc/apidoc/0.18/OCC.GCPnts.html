@@ -1,0 +1,2209 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.GCPnts module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.GCPnts module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.GCPnts module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.GCPnts.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-gcpnts-module">
+<h1>OCC.GCPnts module<a class="headerlink" href="#occ-gcpnts-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.GCPnts"></span><dl class="class">
+<dt id="OCC.GCPnts.GCPnts_AbscissaPoint">
+<em class="property">class </em><code class="descname">GCPnts_AbscissaPoint</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_AbscissaPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>the algorithm computes a point on a curve &lt;Curve&gt; at the distance &lt;Abscissa&gt; from the point of parameter &lt;U0&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U0</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>the algorithm computes a point on a curve &lt;Curve&gt; at the distance &lt;Abscissa&gt; from the point of parameter &lt;U0&gt; with the given tolerance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U0</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>the algorithm computes a point on a curve &lt;Curve&gt; at the distance &lt;Abscissa&gt; from the point of parameter &lt;U0&gt; with the given tolerance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U0</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>the algorithm computes a point on a curve &lt;Curve&gt; at the distance &lt;Abscissa&gt; from the point of parameter &lt;U0&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U0</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>the algorithm computes a point on a curve &lt;Curve&gt; at the distance &lt;Abscissa&gt; from the point of parameter &lt;U0&gt;. &lt;Ui&gt; is the starting value used in the iterative process which find the solution, it must be close to the final solution</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U0</strong> (<em>float</em>) – </li>
+<li><strong>Ui</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>the algorithm computes a point on a curve &lt;Curve&gt; at the distance &lt;Abscissa&gt; from the point of parameter &lt;U0&gt;. &lt;Ui&gt; is the starting value used in the iterative process which find the solution, it must be closed to the final solution</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U0</strong> (<em>float</em>) – </li>
+<li><strong>Ui</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>the algorithm computes a point on a curve &lt;Curve&gt; at the distance &lt;Abscissa&gt; from the point of parameter &lt;U0&gt;. &lt;Ui&gt; is the starting value used in the iterative process which find the solution, it must be close to the final solution</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U0</strong> (<em>float</em>) – </li>
+<li><strong>Ui</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>the algorithm computes a point on a curve &lt;Curve&gt; at the distance &lt;Abscissa&gt; from the point of parameter &lt;U0&gt;. &lt;Ui&gt; is the starting value used in the iterative process which find the solution, it must be close to the final solution</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U0</strong> (<em>float</em>) – </li>
+<li><strong>Ui</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_AbscissaPoint.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_AbscissaPoint.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>True if the computation was successful, False otherwise. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GCPnts.GCPnts_AbscissaPoint.Length">
+<em class="property">static </em><code class="descname">Length</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_AbscissaPoint.Length" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt; with the given tolerance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt; with the given tolerance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt; with the given tolerance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt; with the given tolerance. Constructs an empty algorithm. This function is used only for initializing a framework to compute the length of a curve (or a series of curves). Warning The function IsDone will return the value false after the use of this function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_AbscissaPoint.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_AbscissaPoint.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter on the curve of the point solution of this algorithm. Exceptions StdFail_NotDone if the computation was not successful, or was not done.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCPnts.GCPnts_AbscissaPoint.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCPnts.GCPnts_AbscissaPoint.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GCPnts.GCPnts_AbscissaPoint_Length">
+<code class="descname">GCPnts_AbscissaPoint_Length</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_AbscissaPoint_Length" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt; with the given tolerance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt; with the given tolerance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt; with the given tolerance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the length of the Curve &lt;C&gt; with the given tolerance. Constructs an empty algorithm. This function is used only for initializing a framework to compute the length of a curve (or a series of curves). Warning The function IsDone will return the value false after the use of this function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformAbscissa">
+<em class="property">class </em><code class="descname">GCPnts_QuasiUniformAbscissa</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformAbscissa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs an empty algorithm. To define the problem to be solved, use the function Initialize.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a uniform abscissa distribution of points - on the curve C where Abscissa is the curvilinear distance between two consecutive points of the distribution.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a uniform abscissa distribution of points on the part of curve C limited by the two parameter values U1 and U2, where Abscissa is the curvilinear distance between two consecutive points of the distribution. The first point of the distribution is either the origin of curve C or the point of parameter U1. The following points are computed such that the curvilinear distance between two consecutive points is equal to Abscissa. The last point of the distribution is either the end point of curve C or the point of parameter U2. However the curvilinear distance between this last point and the point just preceding it in the distribution is, of course, generally not equal to Abscissa. Use the function IsDone to verify that the computation was successful, the function NbPoints to obtain the number of points of the computed distribution, and the function Parameter to read the parameter of each point. Warning The roles of U1 and U2 are inverted if U1 &gt; U2 . Warning C is an adapted curve, that is, an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), - and those required on the curve by the computation algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a uniform abscissa distribution of points on the Curve2d &lt;C&gt;. &lt;NbPoints&gt; defines the nomber of desired points.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a Uniform abscissa distribution of points on a part of the Curve2d &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformAbscissa.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformAbscissa.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;NbPoints&gt; and</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Abscissa&gt;, &lt;U1&gt;, &lt;U2&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;NbPoints&gt; and</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Abscissa&gt;, &lt;U1&gt;, &lt;U2&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformAbscissa.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformAbscissa.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the computation was successful. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformAbscissa.NbPoints">
+<code class="descname">NbPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformAbscissa.NbPoints" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of points of the distribution computed by this algorithm. This value is either: - the one imposed on the algorithm at the time of construction (or initialization), or - the one computed by the algorithm when the curvilinear distance between two consecutive points of the distribution is imposed on the algorithm at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformAbscissa.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformAbscissa.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter of the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformAbscissa.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformAbscissa.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformDeflection">
+<em class="property">class </em><code class="descname">GCPnts_QuasiUniformDeflection</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformDeflection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs an empty algorithm. To define the problem to be solved, use the function Initialize.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a QuasiUniform Deflection distribution of points on the Curve &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a QuasiUniform Deflection distribution of points on the Curve &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a QuasiUniform Deflection distribution of points on a part of the Curve &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a QuasiUniform Deflection distribution of points on a part of the Curve &lt;C&gt;. This and the above algorithms compute a distribution of points: - on the curve C, or - on the part of curve C limited by the two parameter values U1 and U2, where the deflection resulting from the distributed points is not greater than Deflection. The first point of the distribution is either the origin of curve C or the point of parameter U1. The last point of the distribution is either the end point of curve C or the point of parameter U2. Intermediate points of the distribution are built such that the deflection is not greater than Deflection. Using the following evaluation of the deflection: if Pi and Pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of Pi and Pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2 ] on curve C). Continuity, defaulted to GeomAbs_C1, gives the degree of continuity of the curve C. (Note that C is an Adaptor3d_Curve or an Adaptor2d_Curve2d object, and does not know the degree of continuity of the underlying curve). Use the function IsDone to verify that the computation was successful, the function NbPoints to obtain the number of points of the computed distribution, and the function Parameter to read the parameter of each point. Warning - The roles of U1 and U2 are inverted if U1 &gt; U2. - Derivative functions on the curve are called according to Continuity. An error may occur if Continuity is greater than the real degree of continuity of the curve. Warning C is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), - and those required on the curve by the computation algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformDeflection.Deflection">
+<code class="descname">Deflection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformDeflection.Deflection" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the deflection between the curve and the polygon resulting from the points of the distribution computed by this algorithm. This is the value given to the algorithm at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformDeflection.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformDeflection.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Deflection&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Deflection&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Deflection&gt;, &lt;U1&gt;,&lt;U2&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Deflection&gt;, – &lt;U1&gt;,&lt;U2&gt; This and the above algorithms initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve C, or - on the part of curve C limited by the two parameter values U1 and U2, where the deflection resulting from the distributed points is not greater than Deflection. The first point of the distribution is either the origin of curve C or the point of parameter U1. The last point of the distribution is either the end point of curve C or the point of parameter U2. Intermediate points of the distribution are built in such a way that the deflection is not greater than Deflection. Using the following evaluation of the deflection: if Pi and Pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of Pi and Pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2 ] on curve C). Continuity, defaulted to GeomAbs_C1, gives the degree of continuity of the curve C. (Note that C is an Adaptor3d_Curve or an Adaptor2d_Curve2d object, and does not know the degree of continuity of the underlying curve). Use the function IsDone to verify that the computation was successful, the function NbPoints to obtain the number of points of the computed distribution, and the function Parameter to read the parameter of each point. Warning - The roles of U1 and U2 are inverted if U1 &gt; U2. - Derivative functions on the curve are called according to Continuity. An error may occur if Continuity is greater than the real degree of continuity of the curve. Warning C is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), and those required on the curve by the computation algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformDeflection.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformDeflection.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the computation was successful. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformDeflection.NbPoints">
+<code class="descname">NbPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformDeflection.NbPoints" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of points of the distribution computed by this algorithm. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformDeflection.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformDeflection.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter of the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformDeflection.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformDeflection.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCPnts.GCPnts_QuasiUniformDeflection.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCPnts.GCPnts_QuasiUniformDeflection.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCPnts.GCPnts_TangentialDeflection">
+<em class="property">class </em><code class="descname">GCPnts_TangentialDeflection</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_TangentialDeflection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>AngularDeflection</strong> (<em>float</em>) – </li>
+<li><strong>CurvatureDeflection</strong> (<em>float</em>) – </li>
+<li><strong>MinimumOfPoints</strong> (<em>int</em>) – default value is 2</li>
+<li><strong>UTol</strong> (<em>float</em>) – default value is 1.0e-9</li>
+<li><strong>theMinLen</strong> (<em>float</em>) – default value is 1.0e-7</li>
+<li><strong>C</strong> – </li>
+<li><strong>FirstParameter</strong> (<em>float</em>) – </li>
+<li><strong>LastParameter</strong> (<em>float</em>) – </li>
+<li><strong>AngularDeflection</strong> – </li>
+<li><strong>CurvatureDeflection</strong> – </li>
+<li><strong>MinimumOfPoints</strong> – default value is 2</li>
+<li><strong>UTol</strong> – default value is 1.0e-9</li>
+<li><strong>theMinLen</strong> – default value is 1.0e-7</li>
+<li><strong>C</strong> – </li>
+<li><strong>AngularDeflection</strong> – </li>
+<li><strong>CurvatureDeflection</strong> – </li>
+<li><strong>MinimumOfPoints</strong> – default value is 2</li>
+<li><strong>UTol</strong> – default value is 1.0e-9</li>
+<li><strong>theMinLen</strong> – default value is 1.0e-7</li>
+<li><strong>C</strong> – </li>
+<li><strong>FirstParameter</strong> – </li>
+<li><strong>LastParameter</strong> – </li>
+<li><strong>AngularDeflection</strong> – </li>
+<li><strong>CurvatureDeflection</strong> – </li>
+<li><strong>MinimumOfPoints</strong> – default value is 2</li>
+<li><strong>UTol</strong> – default value is 1.0e-9</li>
+<li><strong>theMinLen</strong> – default value is 1.0e-7</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_TangentialDeflection.AddPoint">
+<code class="descname">AddPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_TangentialDeflection.AddPoint" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Add point to already calculated points (or replace existing) Returns index of new added point or founded with parametric tolerance (replaced if theIsReplace is true)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePnt</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>theParam</strong> (<em>float</em>) – </li>
+<li><strong>theIsReplace</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GCPnts.GCPnts_TangentialDeflection.ArcAngularStep">
+<em class="property">static </em><code class="descname">ArcAngularStep</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_TangentialDeflection.ArcAngularStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes angular step for the arc using the given parameters.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theRadius</strong> (<em>float</em>) – </li>
+<li><strong>theLinearDeflection</strong> (<em>float</em>) – </li>
+<li><strong>theAngularDeflection</strong> (<em>float</em>) – </li>
+<li><strong>theMinLength</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_TangentialDeflection.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_TangentialDeflection.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>AngularDeflection</strong> (<em>float</em>) – </li>
+<li><strong>CurvatureDeflection</strong> (<em>float</em>) – </li>
+<li><strong>MinimumOfPoints</strong> (<em>int</em>) – default value is 2</li>
+<li><strong>UTol</strong> (<em>float</em>) – default value is 1.0e-9</li>
+<li><strong>theMinLen</strong> (<em>float</em>) – default value is 1.0e-7</li>
+<li><strong>C</strong> – </li>
+<li><strong>FirstParameter</strong> (<em>float</em>) – </li>
+<li><strong>LastParameter</strong> (<em>float</em>) – </li>
+<li><strong>AngularDeflection</strong> – </li>
+<li><strong>CurvatureDeflection</strong> – </li>
+<li><strong>MinimumOfPoints</strong> – default value is 2</li>
+<li><strong>UTol</strong> – default value is 1.0e-9</li>
+<li><strong>theMinLen</strong> – default value is 1.0e-7</li>
+<li><strong>C</strong> – </li>
+<li><strong>AngularDeflection</strong> – </li>
+<li><strong>CurvatureDeflection</strong> – </li>
+<li><strong>MinimumOfPoints</strong> – default value is 2</li>
+<li><strong>UTol</strong> – default value is 1.0e-9</li>
+<li><strong>theMinLen</strong> – default value is 1.0e-7</li>
+<li><strong>C</strong> – </li>
+<li><strong>FirstParameter</strong> – </li>
+<li><strong>LastParameter</strong> – </li>
+<li><strong>AngularDeflection</strong> – </li>
+<li><strong>CurvatureDeflection</strong> – </li>
+<li><strong>MinimumOfPoints</strong> – default value is 2</li>
+<li><strong>UTol</strong> – default value is 1.0e-9</li>
+<li><strong>theMinLen</strong> – default value is 1.0e-7</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_TangentialDeflection.NbPoints">
+<code class="descname">NbPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_TangentialDeflection.NbPoints" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_TangentialDeflection.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_TangentialDeflection.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_TangentialDeflection.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_TangentialDeflection.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCPnts.GCPnts_TangentialDeflection.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCPnts.GCPnts_TangentialDeflection.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GCPnts.GCPnts_TangentialDeflection_ArcAngularStep">
+<code class="descname">GCPnts_TangentialDeflection_ArcAngularStep</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_TangentialDeflection_ArcAngularStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes angular step for the arc using the given parameters.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theRadius</strong> (<em>float</em>) – </li>
+<li><strong>theLinearDeflection</strong> (<em>float</em>) – </li>
+<li><strong>theAngularDeflection</strong> (<em>float</em>) – </li>
+<li><strong>theMinLength</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCPnts.GCPnts_UniformAbscissa">
+<em class="property">class </em><code class="descname">GCPnts_UniformAbscissa</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformAbscissa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>creation of a indefinite UniformAbscissa</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a uniform abscissa distribution of points on the Curve &lt;C&gt;. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a Uniform abscissa distribution of points on a part of the Curve &lt;C&gt;. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a uniform abscissa distribution of points on the Curve &lt;C&gt;. &lt;NbPoints&gt; defines the nomber of desired points. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a Uniform abscissa distribution of points on a part of the Curve &lt;C&gt;. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a uniform abscissa distribution of points on the Curve2d &lt;C&gt;. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a Uniform abscissa distribution of points on a part of the Curve2d &lt;C&gt;. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a uniform abscissa distribution of points on the Curve2d &lt;C&gt;. &lt;NbPoints&gt; defines the nomber of desired points. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a Uniform abscissa distribution of points on a part of the Curve2d &lt;C&gt;. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_UniformAbscissa.Abscissa">
+<code class="descname">Abscissa</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformAbscissa.Abscissa" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returne the current abscissa ie the distance between two consecutive points</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_UniformAbscissa.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformAbscissa.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Abscissa&gt;, &lt;Toler&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Abscissa&gt;, &lt;U1&gt;, &lt;U2&gt;, &lt;Toler&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;NbPoints&gt;, &lt;Toler&gt; and</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Abscissa&gt;, &lt;U1&gt;, &lt;U2&gt;, &lt;Toler&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Abscissa&gt;, &lt;Toler&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Abscissa&gt;, &lt;U1&gt;, &lt;U2&gt;, &lt;Toler&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Abscissa</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;NbPoints&gt;, &lt;Toler&gt; and</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Abscissa&gt;, &lt;U1&gt;, &lt;U2&gt;, &lt;Toler&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>NbPoints</strong> (<em>int</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Toler</strong> (<em>float</em>) – default value is -1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_UniformAbscissa.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformAbscissa.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_UniformAbscissa.NbPoints">
+<code class="descname">NbPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformAbscissa.NbPoints" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_UniformAbscissa.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformAbscissa.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the computed Parameter of index &lt;Index&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCPnts.GCPnts_UniformAbscissa.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformAbscissa.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCPnts.GCPnts_UniformDeflection">
+<em class="property">class </em><code class="descname">GCPnts_UniformDeflection</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformDeflection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs an empty algorithm. To define the problem to be solved, use the function Initialize.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a uniform Deflection distribution of points on the Curve &lt;C&gt;. if &lt;WithControl&gt; is True,the algorithm controls the estimate deflection</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>WithControl</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a uniform Deflection distribution of points on the Curve &lt;C&gt;. if &lt;WithControl&gt; is True,the algorithm controls the estimate deflection</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>WithControl</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a Uniform Deflection distribution of points on a part of the Curve &lt;C&gt;. if &lt;WithControl&gt; is True,the algorithm controls the estimate deflection</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>WithControl</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes a Uniform Deflection distribution of points on a part of the Curve &lt;C&gt;. if &lt;WithControl&gt; is True,the algorithm controls the estimate deflection</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>WithControl</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_UniformDeflection.Deflection">
+<code class="descname">Deflection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformDeflection.Deflection" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the deflection between the curve and the polygon resulting from the points of the distribution computed by this algorithm. This value is the one given to the algorithm at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_UniformDeflection.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformDeflection.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Deflection&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>WithControl</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Deflection&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>WithControl</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Deflection&gt;, &lt;U1&gt;,&lt;U2&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>WithControl</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algoritms with &lt;C&gt;, &lt;Deflection&gt;, &lt;U1&gt;,&lt;U2&gt; This and the above methods initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve C, or - on the part of curve C limited by the two parameter values U1 and U2, where the maximum distance between C and the polygon that results from the points of the distribution is not greater than Deflection. The first point of the distribution is either the origin of curve C or the point of parameter U1. The last point of the distribution is either the end point of curve C or the point of parameter U2. Intermediate points of the distribution are built using interpolations of segments of the curve limited at the 2nd degree. The construction ensures, in a first step, that the chordal deviation for this interpolation of the curve is less than or equal to Deflection. However, it does not ensure that the chordal deviation for the curve itself is less than or equal to Deflection. To do this a check is necessary, which may generate (second step) additional intermediate points. This check is time consuming, and can be avoided by setting WithControl to false. Note that by default WithControl is true and check is performed. Use the function IsDone to verify that the computation was successful, the function NbPoints to obtain the number of points of the computed distribution, and the function Parameter to read the parameter of each point. Warning - C is necessary, ‘C2’ continuous. This property is not checked at construction time. - The roles of U1 and U2 are inverted if U1 &gt; U2. Warning C is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), - and those required on the curve by the computation algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </li>
+<li><strong>Deflection</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>WithControl</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_UniformDeflection.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformDeflection.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the computation was successful. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_UniformDeflection.NbPoints">
+<code class="descname">NbPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformDeflection.NbPoints" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of points of the distribution computed by this algorithm. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_UniformDeflection.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformDeflection.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter of the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.GCPnts_UniformDeflection.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformDeflection.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFAil_NotDone if this algorithm has not been initialized, or if the computation was not successful.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCPnts.GCPnts_UniformDeflection.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCPnts.GCPnts_UniformDeflection.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GCPnts.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.GCPnts.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GCPnts.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GCPnts.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GCPnts.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GCPnts.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GCPnts.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

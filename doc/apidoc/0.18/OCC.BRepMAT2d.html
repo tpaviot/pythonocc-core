@@ -1,0 +1,1566 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.BRepMAT2d module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.BRepMAT2d module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.BRepMAT2d module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.BRepMAT2d.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-brepmat2d-module">
+<h1>OCC.BRepMAT2d module<a class="headerlink" href="#occ-brepmat2d-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.BRepMAT2d"></span><dl class="class">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_BisectingLocus">
+<em class="property">class </em><code class="descname">BRepMAT2d_BisectingLocus</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_BisectingLocus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.BasicElt">
+<code class="descname">BasicElt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.BasicElt" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the BasicElts located at the position &lt;Index&gt; on the contour designed by &lt;IndLine&gt;. Remark: the BasicElts on a contour are sorted.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IndLine</strong> (<em>int</em>) – </li>
+<li><strong>Index</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.MAT.html#OCC.MAT.Handle_MAT_BasicElt" title="OCC.MAT.Handle_MAT_BasicElt">Handle_MAT_BasicElt</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.Compute">
+<code class="descname">Compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.Compute" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computation of the Bisector_Locus in a set of Lines defined in &lt;anExplo&gt;. The bisecting locus are computed on the side &lt;aSide&gt; from the line &lt;LineIndex&gt; in &lt;anExplo&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>anExplo</strong> (<em>BRepMAT2d_Explorer &amp;</em>) – </li>
+<li><strong>LineIndex</strong> (<em>int</em>) – default value is 1</li>
+<li><strong>aSide</strong> (<em>MAT_Side</em>) – default value is MAT_Left</li>
+<li><strong>aJoinType</strong> (<em>GeomAbs_JoinType</em>) – default value is GeomAbs_Arc</li>
+<li><strong>IsOpenResult</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.GeomBis">
+<code class="descname">GeomBis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.GeomBis" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the geometry of type &lt;Bissec&gt; linked to the arc &lt;ARC&gt;. &lt;Reverse&gt; is False when the FirstNode of &lt;anArc&gt; correspond to the first point of geometry.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>anArc</strong> (<em>Handle_MAT_Arc &amp;</em>) – </li>
+<li><strong>Reverse</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Bisector.html#OCC.Bisector.Bisector_Bisec" title="OCC.Bisector.Bisector_Bisec">Bisector_Bisec</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.GeomElt">
+<code class="descname">GeomElt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.GeomElt" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the geometry linked to the &lt;BasicElt&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aBasicElt</strong> (<em>Handle_MAT_BasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Geometry" title="OCC.Geom2d.Handle_Geom2d_Geometry">Handle_Geom2d_Geometry</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the geometry of type &lt;gp&gt; linked to the &lt;Node&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aNode</strong> (<em>Handle_MAT_Node &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.Graph">
+<code class="descname">Graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.Graph" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns &lt;theGraph&gt; of &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.MAT.html#OCC.MAT.Handle_MAT_Graph" title="OCC.MAT.Handle_MAT_Graph">Handle_MAT_Graph</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if Compute has succeeded.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.NumberOfContours">
+<code class="descname">NumberOfContours</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.NumberOfContours" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of contours.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.NumberOfElts">
+<code class="descname">NumberOfElts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.NumberOfElts" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of BasicElts on the line &lt;IndLine&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IndLine</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.NumberOfSections">
+<code class="descname">NumberOfSections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.NumberOfSections" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of sections of a curve. this curve is the Indexth curve in the IndLineth contour given by anExplo.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IndLine</strong> (<em>int</em>) – </li>
+<li><strong>Index</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_BisectingLocus.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape">
+<em class="property">class </em><code class="descname">BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMapIterator" title="OCC.TCollection.TCollection_BasicMapIterator"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMapIterator</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>BRepMAT2d_DataMapOfBasicEltShape &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>BRepMAT2d_DataMapOfBasicEltShape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.MAT.html#OCC.MAT.Handle_MAT_BasicElt" title="OCC.MAT.Handle_MAT_BasicElt">Handle_MAT_BasicElt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt">
+<em class="property">class </em><code class="descname">BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMapIterator" title="OCC.TCollection.TCollection_BasicMapIterator"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMapIterator</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>BRepMAT2d_DataMapOfShapeSequenceOfBasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>BRepMAT2d_DataMapOfShapeSequenceOfBasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.MAT.html#OCC.MAT.MAT_SequenceOfBasicElt" title="OCC.MAT.MAT_SequenceOfBasicElt">MAT_SequenceOfBasicElt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape">
+<em class="property">class </em><code class="descname">BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_MapNode" title="OCC.TCollection.TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_MapNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>Handle_MAT_BasicElt &amp;</em>) – </li>
+<li><strong>I</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>n</strong> (<em>TCollection_MapNodePtr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.MAT.html#OCC.MAT.Handle_MAT_BasicElt" title="OCC.MAT.Handle_MAT_BasicElt">Handle_MAT_BasicElt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt">
+<em class="property">class </em><code class="descname">BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_MapNode" title="OCC.TCollection.TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_MapNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>I</strong> (<em>MAT_SequenceOfBasicElt &amp;</em>) – </li>
+<li><strong>n</strong> (<em>TCollection_MapNodePtr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.MAT.html#OCC.MAT.MAT_SequenceOfBasicElt" title="OCC.MAT.MAT_SequenceOfBasicElt">MAT_SequenceOfBasicElt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape">
+<em class="property">class </em><code class="descname">BRepMAT2d_DataMapOfBasicEltShape</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMap" title="OCC.TCollection.TCollection_BasicMap"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMap</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – default value is 1</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>BRepMAT2d_DataMapOfBasicEltShape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape" title="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape">BRepMAT2d_DataMapOfBasicEltShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Bind">
+<code class="descname">Bind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Bind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>Handle_MAT_BasicElt &amp;</em>) – </li>
+<li><strong>I</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.ChangeFind">
+<code class="descname">ChangeFind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.ChangeFind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>Handle_MAT_BasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.ChangeFind1">
+<code class="descname">ChangeFind1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.ChangeFind1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>Handle_MAT_BasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Find">
+<code class="descname">Find</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Find" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>Handle_MAT_BasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Find1">
+<code class="descname">Find1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Find1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>Handle_MAT_BasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.IsBound">
+<code class="descname">IsBound</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.IsBound" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>Handle_MAT_BasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.ReSize">
+<code class="descname">ReSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.ReSize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>BRepMAT2d_DataMapOfBasicEltShape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape" title="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape">BRepMAT2d_DataMapOfBasicEltShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.UnBind">
+<code class="descname">UnBind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.UnBind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>Handle_MAT_BasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfBasicEltShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt">
+<em class="property">class </em><code class="descname">BRepMAT2d_DataMapOfShapeSequenceOfBasicElt</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMap" title="OCC.TCollection.TCollection_BasicMap"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMap</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – default value is 1</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>BRepMAT2d_DataMapOfShapeSequenceOfBasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt" title="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt">BRepMAT2d_DataMapOfShapeSequenceOfBasicElt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Bind">
+<code class="descname">Bind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Bind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>I</strong> (<em>MAT_SequenceOfBasicElt &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.ChangeFind">
+<code class="descname">ChangeFind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.ChangeFind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.MAT.html#OCC.MAT.MAT_SequenceOfBasicElt" title="OCC.MAT.MAT_SequenceOfBasicElt">MAT_SequenceOfBasicElt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.ChangeFind1">
+<code class="descname">ChangeFind1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.ChangeFind1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Find">
+<code class="descname">Find</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Find" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.MAT.html#OCC.MAT.MAT_SequenceOfBasicElt" title="OCC.MAT.MAT_SequenceOfBasicElt">MAT_SequenceOfBasicElt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Find1">
+<code class="descname">Find1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Find1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.IsBound">
+<code class="descname">IsBound</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.IsBound" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.ReSize">
+<code class="descname">ReSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.ReSize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>BRepMAT2d_DataMapOfShapeSequenceOfBasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt" title="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt">BRepMAT2d_DataMapOfShapeSequenceOfBasicElt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.UnBind">
+<code class="descname">UnBind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.UnBind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer">
+<em class="property">class </em><code class="descname">BRepMAT2d_Explorer</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aFace</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Clear the contents of &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.Contour">
+<code class="descname">Contour</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.Contour" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IndexContour</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TColGeom2d.html#OCC.TColGeom2d.TColGeom2d_SequenceOfCurve" title="OCC.TColGeom2d.TColGeom2d_SequenceOfCurve">TColGeom2d_SequenceOfCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.GetIsClosed">
+<code class="descname">GetIsClosed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.GetIsClosed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TColStd.html#OCC.TColStd.TColStd_SequenceOfBoolean" title="OCC.TColStd.TColStd_SequenceOfBoolean">TColStd_SequenceOfBoolean</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Initialisation of an Iterator on the curves of the Contour number &lt;IndexContour&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IndexContour</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.IsModified">
+<code class="descname">IsModified</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.IsModified" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aShape</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.ModifiedShape">
+<code class="descname">ModifiedShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.ModifiedShape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>If the shape is not modified, returns the shape itself.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aShape</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.More">
+<code class="descname">More</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.More" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Return False if there is no more curves on the Contour initialised by the method Init.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.Next">
+<code class="descname">Next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.Next" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Move to the next curve of the current Contour.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.NumberOfContours">
+<code class="descname">NumberOfContours</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.NumberOfContours" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Number of contours.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.NumberOfCurves">
+<code class="descname">NumberOfCurves</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.NumberOfCurves" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Number of Curves in the Contour number &lt;IndexContour&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IndexContour</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aFace</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.Shape">
+<code class="descname">Shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.Shape" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the current curve on the current Contour.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve">Handle_Geom2d_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_Explorer.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_Explorer.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo">
+<em class="property">class </em><code class="descname">BRepMAT2d_LinkTopoBilo</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Constructs the links Between S and BiLo. //! raises if &lt;S&gt; is not a face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Explo</strong> (<em>BRepMAT2d_Explorer &amp;</em>) – </li>
+<li><strong>BiLo</strong> (<em>BRepMAT2d_BisectingLocus &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.GeneratingShape">
+<code class="descname">GeneratingShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.GeneratingShape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Shape linked to &lt;aBE&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aBE</strong> (<em>Handle_MAT_BasicElt &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Initialise the Iterator on &lt;S&gt; &lt;S&gt; is an edge or a vertex of the initial wire or face. raises if &lt;S&gt; is not an edge or a vertex.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.More">
+<code class="descname">More</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.More" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if there is a current BasicElt.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.Next">
+<code class="descname">Next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.Next" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Proceed to the next BasicElt.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Constructs the links Between S and BiLo. //! raises if &lt;S&gt; is not a face or a wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Explo</strong> (<em>BRepMAT2d_Explorer &amp;</em>) – </li>
+<li><strong>BiLo</strong> (<em>BRepMAT2d_BisectingLocus &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the current BasicElt.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.MAT.html#OCC.MAT.Handle_MAT_BasicElt" title="OCC.MAT.Handle_MAT_BasicElt">Handle_MAT_BasicElt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.BRepMAT2d_LinkTopoBilo.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape">
+<em class="property">class </em><code class="descname">Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_MapNode" title="OCC.TCollection.Handle_TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_MapNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt">
+<em class="property">class </em><code class="descname">Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_MapNode" title="OCC.TCollection.Handle_TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_MapNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepMAT2d.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.BRepMAT2d.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepMAT2d.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepMAT2d.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepMAT2d.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepMAT2d.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepMAT2d.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,2717 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.BRepPrim module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.BRepPrim module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.BRepPrim module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.BRepPrim.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-brepprim-module">
+<h1>OCC.BRepPrim module<a class="headerlink" href="#occ-brepprim-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.BRepPrim"></span><dl class="class">
+<dt id="OCC.BRepPrim.BRepPrim_Builder">
+<em class="property">class </em><code class="descname">BRepPrim_Builder</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Creates an empty, useless Builder. Necesseray for compilation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates from a Builder.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>B</strong> (<em>BRep_Builder &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.AddEdgeVertex">
+<code class="descname">AddEdgeVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.AddEdgeVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds the Vertex &lt;V&gt; in the Edge &lt;E&gt;. &lt;P&gt; is the parameter of the vertex on the edge. If direct is False the Vertex is reversed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>P</strong> (<em>float</em>) – </li>
+<li><strong>direct</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Adds the Vertex &lt;V&gt; in the Edge &lt;E&gt;. &lt;P1,P2&gt; are the parameters of the vertex on the closed edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>P1</strong> (<em>float</em>) – </li>
+<li><strong>P2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.AddFaceWire">
+<code class="descname">AddFaceWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.AddFaceWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds the Wire &lt;W&gt; in the Face &lt;F&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.AddShellFace">
+<code class="descname">AddShellFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.AddShellFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds the Face &lt;F&gt; in the Shell &lt;Sh&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Sh</strong> (<em>TopoDS_Shell &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.AddWireEdge">
+<code class="descname">AddWireEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.AddWireEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds the Edge &lt;E&gt; in the Wire &lt;W&gt;, if direct is False the Edge is reversed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>direct</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.Builder">
+<code class="descname">Builder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.Builder" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.BRep.html#OCC.BRep.BRep_Builder" title="OCC.BRep.BRep_Builder">BRep_Builder</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.CompleteEdge">
+<code class="descname">CompleteEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.CompleteEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This is called once an edge is completed. It gives the opportunity to perform any post treatment.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.CompleteFace">
+<code class="descname">CompleteFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.CompleteFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This is called once a face is completed. It gives the opportunity to perform any post treatment.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.CompleteShell">
+<code class="descname">CompleteShell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.CompleteShell" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This is called once a shell is completed. It gives the opportunity to perform any post treatment.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shell &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.CompleteWire">
+<code class="descname">CompleteWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.CompleteWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This is called once a wire is completed. It gives the opportunity to perform any post treatment.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.MakeDegeneratedEdge">
+<code class="descname">MakeDegeneratedEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.MakeDegeneratedEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in &lt;E&gt; a degenerated edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.MakeEdge">
+<code class="descname">MakeEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.MakeEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in &lt;E&gt; an Edge built with the line equation &lt;L&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>L</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin" title="OCC.gp.gp_Lin"><em>gp_Lin</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns in &lt;E&gt; an Edge built with the circle equation &lt;C&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Circ" title="OCC.gp.gp_Circ"><em>gp_Circ</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.MakeFace">
+<code class="descname">MakeFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.MakeFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in &lt;F&gt; a Face built with the plane equation &lt;P&gt;. Used by all primitives.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pln" title="OCC.gp.gp_Pln"><em>gp_Pln</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.MakeShell">
+<code class="descname">MakeShell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.MakeShell" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Make a empty Shell.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shell &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.MakeVertex">
+<code class="descname">MakeVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.MakeVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in &lt;V&gt; a Vertex built with the point &lt;P&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.MakeWire">
+<code class="descname">MakeWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.MakeWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in &lt;W&gt; an empty Wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.ReverseFace">
+<code class="descname">ReverseFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.ReverseFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reverses the Face &lt;F&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.SetPCurve">
+<code class="descname">SetPCurve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.SetPCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the line &lt;L&gt; to be the curve representing the edge &lt;E&gt; in the parametric space of the surface of &lt;F&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>L</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin2d" title="OCC.gp.gp_Lin2d"><em>gp_Lin2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sets the lines &lt;L1,L2&gt; to be the curves representing the edge &lt;E&gt; in the parametric space of the closed surface of &lt;F&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>L1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin2d" title="OCC.gp.gp_Lin2d"><em>gp_Lin2d</em></a>) – </li>
+<li><strong>L2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin2d" title="OCC.gp.gp_Lin2d"><em>gp_Lin2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sets the circle &lt;C&gt; to be the curve representing the edge &lt;E&gt; in the parametric space of the surface of &lt;F&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Circ2d" title="OCC.gp.gp_Circ2d"><em>gp_Circ2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.SetParameters">
+<code class="descname">SetParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.SetParameters" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>&lt;P1,P2&gt; are the parameters of the vertex on the edge. The edge is a closed curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>P1</strong> (<em>float</em>) – </li>
+<li><strong>P2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepPrim.BRepPrim_Builder.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Builder.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepPrim.BRepPrim_Cone">
+<em class="property">class </em><code class="descname">BRepPrim_Cone</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Cone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepPrim.BRepPrim_Revolution" title="OCC.BRepPrim.BRepPrim_Revolution"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepPrim.BRepPrim_Revolution</span></code></a></p>
+<ul class="simple">
+<li>the STEP definition Angle = semi-angle of the cone Position : the coordinate system Height : height of the cone. Radius : radius of truncated face at z = 0 //! The apex is on z &lt; 0 //! Errors : Height &lt; Resolution Angle &lt; Resolution / Height Angle &gt; PI/2 - Resolution / Height</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Angle</strong> (<em>float</em>) – </li>
+<li><strong>Position</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>Height</strong> (<em>float</em>) – </li>
+<li><strong>Radius</strong> (<em>float</em>) – default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>infinite cone at origin on Z negative</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Angle</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>infinite cone at Apex on Z negative</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Angle</strong> (<em>float</em>) – </li>
+<li><strong>Apex</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>infinite cone with Axes</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Angle</strong> (<em>float</em>) – </li>
+<li><strong>Axes</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>create a Cone at origin on Z axis, of height H, radius R1 at Z = 0, R2 at Z = H, X is the origin of angles. If R1 or R2 is 0 there is an apex. Otherwise, it is a truncated cone. //! Error : R1 and R2 &lt; Resolution R1 or R2 negative Abs(R1-R2) &lt; Resolution H &lt; Resolution H negative</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>R1</strong> (<em>float</em>) – </li>
+<li><strong>R2</strong> (<em>float</em>) – </li>
+<li><strong>H</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>same as above but at a given point</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Center</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>R1</strong> (<em>float</em>) – </li>
+<li><strong>R2</strong> (<em>float</em>) – </li>
+<li><strong>H</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>same as above with given axes system.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Axes</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>R1</strong> (<em>float</em>) – </li>
+<li><strong>R2</strong> (<em>float</em>) – </li>
+<li><strong>H</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.BRepPrim.BRepPrim_Cone.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Cone.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepPrim.BRepPrim_Cylinder">
+<em class="property">class </em><code class="descname">BRepPrim_Cylinder</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Cylinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepPrim.BRepPrim_Revolution" title="OCC.BRepPrim.BRepPrim_Revolution"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepPrim.BRepPrim_Revolution</span></code></a></p>
+<ul class="simple">
+<li>the STEP definition Position : center of a Face and Axis Radius : radius of cylinder Height : distance between faces on positive side //! Errors : Height &lt; Resolution Radius &lt; Resolution</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Position</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+<li><strong>Height</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>infinite Cylinder at origin on Z negative</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Radius</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>infinite Cylinder at Center on Z negative</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Center</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>infinite Cylinder at Axes on Z negative</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Axes</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>create a Cylinder at origin on Z axis, of height H and radius R Error : Radius &lt; Resolution H &lt; Resolution H negative</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>R</strong> (<em>float</em>) – </li>
+<li><strong>H</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>same as above but at a given point</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Center</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>R</strong> (<em>float</em>) – </li>
+<li><strong>H</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.BRepPrim.BRepPrim_Cylinder.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Cylinder.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepPrim.BRepPrim_FaceBuilder">
+<em class="property">class </em><code class="descname">BRepPrim_FaceBuilder</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_FaceBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>B</strong> (<em>BRep_Builder &amp;</em>) – </li>
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>B</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_FaceBuilder.Edge">
+<code class="descname">Edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_FaceBuilder.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the edge of index &lt;I&gt; 1 - Edge VMin 2 - Edge UMax 3 - Edge VMax 4 - Edge UMin</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_FaceBuilder.Face">
+<code class="descname">Face</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_FaceBuilder.Face" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_FaceBuilder.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_FaceBuilder.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>B</strong> (<em>BRep_Builder &amp;</em>) – </li>
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>B</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_FaceBuilder.Vertex">
+<code class="descname">Vertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_FaceBuilder.Vertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the vertex of index &lt;I&gt; 1 - Vertex UMin,VMin 2 - Vertex UMax,VMin 3 - Vertex UMax,VMax 4 - Vertex UMin,VMax</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepPrim.BRepPrim_FaceBuilder.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_FaceBuilder.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge">
+<em class="property">class </em><code class="descname">BRepPrim_GWedge</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Creates a GWedge algorithm. &lt;Axes&gt; is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>B</strong> (<em>BRepPrim_Builder &amp;</em>) – </li>
+<li><strong>Axes</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>dx</strong> (<em>float</em>) – </li>
+<li><strong>dy</strong> (<em>float</em>) – </li>
+<li><strong>dz</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a GWedge primitive. &lt;Axes&gt; is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>B</strong> (<em>BRepPrim_Builder &amp;</em>) – </li>
+<li><strong>Axes</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>dx</strong> (<em>float</em>) – </li>
+<li><strong>dy</strong> (<em>float</em>) – </li>
+<li><strong>dz</strong> (<em>float</em>) – </li>
+<li><strong>ltx</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Create a GWedge primitive. &lt;Axes&gt; is the axis system for the primitive. //! all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>B</strong> (<em>BRepPrim_Builder &amp;</em>) – </li>
+<li><strong>Axes</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>xmin</strong> (<em>float</em>) – </li>
+<li><strong>ymin</strong> (<em>float</em>) – </li>
+<li><strong>zmin</strong> (<em>float</em>) – </li>
+<li><strong>z2min</strong> (<em>float</em>) – </li>
+<li><strong>x2min</strong> (<em>float</em>) – </li>
+<li><strong>xmax</strong> (<em>float</em>) – </li>
+<li><strong>ymax</strong> (<em>float</em>) – </li>
+<li><strong>zmax</strong> (<em>float</em>) – </li>
+<li><strong>z2max</strong> (<em>float</em>) – </li>
+<li><strong>x2max</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.Axes">
+<code class="descname">Axes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.Axes" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the coordinates system from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2">gp_Ax2</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.Close">
+<code class="descname">Close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.Close" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Closes &lt;self&gt; in &lt;d1&gt; direction. A face and its edges or vertices are said existant.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.Edge">
+<code class="descname">Edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Edge of &lt;self&gt; located in &lt;d1&gt;&lt;d2&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </li>
+<li><strong>d2</strong> (<em>BRepPrim_Direction</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.Face">
+<code class="descname">Face</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.Face" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Face of &lt;self&gt; located in &lt;d1&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.GetX2Max">
+<code class="descname">GetX2Max</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.GetX2Max" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns X2Max value from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.GetX2Min">
+<code class="descname">GetX2Min</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.GetX2Min" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns X2Min value from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.GetXMax">
+<code class="descname">GetXMax</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.GetXMax" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns XMax value from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.GetXMin">
+<code class="descname">GetXMin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.GetXMin" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns Xmin value from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.GetYMax">
+<code class="descname">GetYMax</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.GetYMax" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns YMax value from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.GetYMin">
+<code class="descname">GetYMin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.GetYMin" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns YMin value from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.GetZ2Max">
+<code class="descname">GetZ2Max</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.GetZ2Max" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns Z2Max value from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.GetZ2Min">
+<code class="descname">GetZ2Min</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.GetZ2Min" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns Z2Min value from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.GetZMax">
+<code class="descname">GetZMax</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.GetZMax" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns ZMax value from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.GetZMin">
+<code class="descname">GetZMin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.GetZMin" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns ZMin value from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.HasEdge">
+<code class="descname">HasEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.HasEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if &lt;self&gt; has an Edge in &lt;d1&gt;&lt;d2&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </li>
+<li><strong>d2</strong> (<em>BRepPrim_Direction</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.HasFace">
+<code class="descname">HasFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.HasFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if &lt;self&gt; has a Face in &lt;d1&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.HasVertex">
+<code class="descname">HasVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.HasVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if &lt;self&gt; has a Vertex in &lt;d1&gt;&lt;d2&gt;&lt;d3&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </li>
+<li><strong>d2</strong> (<em>BRepPrim_Direction</em>) – </li>
+<li><strong>d3</strong> (<em>BRepPrim_Direction</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.HasWire">
+<code class="descname">HasWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.HasWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if &lt;self&gt; has a Wire in &lt;d1&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.IsInfinite">
+<code class="descname">IsInfinite</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.IsInfinite" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if &lt;self&gt; is open in &lt;d1&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.Line">
+<code class="descname">Line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.Line" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the line of the Edge of &lt;self&gt; located in &lt;d1&gt;&lt;d2&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </li>
+<li><strong>d2</strong> (<em>BRepPrim_Direction</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Lin" title="OCC.gp.gp_Lin">gp_Lin</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.Open">
+<code class="descname">Open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.Open" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Opens &lt;self&gt; in &lt;d1&gt; direction. A face and its edges or vertices are said nonexistant.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.Plane">
+<code class="descname">Plane</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.Plane" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the plane of the Face of &lt;self&gt; located in &lt;d1&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pln" title="OCC.gp.gp_Pln">gp_Pln</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.Point">
+<code class="descname">Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.Point" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point of the Vertex of &lt;self&gt; located in &lt;d1&gt;&lt;d2&gt;&lt;d3&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </li>
+<li><strong>d2</strong> (<em>BRepPrim_Direction</em>) – </li>
+<li><strong>d3</strong> (<em>BRepPrim_Direction</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.Shell">
+<code class="descname">Shell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.Shell" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Shell containing the Faces of &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shell" title="OCC.TopoDS.TopoDS_Shell">TopoDS_Shell</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.Vertex">
+<code class="descname">Vertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.Vertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Vertex of &lt;self&gt; located in &lt;d1&gt;&lt;d2&gt;&lt;d3&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </li>
+<li><strong>d2</strong> (<em>BRepPrim_Direction</em>) – </li>
+<li><strong>d3</strong> (<em>BRepPrim_Direction</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.Wire">
+<code class="descname">Wire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.Wire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Wire of &lt;self&gt; located in &lt;d1&gt; direction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d1</strong> (<em>BRepPrim_Direction</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepPrim.BRepPrim_GWedge.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_GWedge.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis">
+<em class="property">class </em><code class="descname">BRepPrim_OneAxis</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.Angle">
+<code class="descname">Angle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.Angle" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>A</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.Axes">
+<code class="descname">Axes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.Axes" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Ax2 from &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2">gp_Ax2</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>A</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.AxisBottomVertex">
+<code class="descname">AxisBottomVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.AxisBottomVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Vertex at the Bottom altitude on the axis.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.AxisEdge">
+<code class="descname">AxisEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.AxisEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Edge built along the Axis and oriented on +Z of the Axis.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.AxisEndWire">
+<code class="descname">AxisEndWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.AxisEndWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Wire in the end face with the AxisEdge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.AxisStartWire">
+<code class="descname">AxisStartWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.AxisStartWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the wire in the start face with the AxisEdge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.AxisTopVertex">
+<code class="descname">AxisTopVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.AxisTopVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Vertex at the Top altitude on the axis.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.BottomEdge">
+<code class="descname">BottomEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.BottomEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the edge at VMin. If MeridianClosed() the TopEdge and the BottomEdge are the same edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.BottomEndVertex">
+<code class="descname">BottomEndVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.BottomEndVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the vertex (angle,VMax)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.BottomFace">
+<code class="descname">BottomFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.BottomFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Bottom planar Face. It is Oriented toward the -Z axis (outside).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.BottomStartVertex">
+<code class="descname">BottomStartVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.BottomStartVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the vertex (0,VMin)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.BottomWire">
+<code class="descname">BottomWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.BottomWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the wire in the bottom face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.EndBottomEdge">
+<code class="descname">EndBottomEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.EndBottomEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the linear Edge between end Face and bottom Face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.EndEdge">
+<code class="descname">EndEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.EndEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Edge at angle Angle. If !HasSides() the StartEdge and the EndEdge are the same edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.EndFace">
+<code class="descname">EndFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.EndFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Face ending the slice, it is oriented toward the exterior of the primitive.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.EndTopEdge">
+<code class="descname">EndTopEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.EndTopEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the linear Edge between end Face and top Face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.EndWire">
+<code class="descname">EndWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.EndWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Wire in the end face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.HasBottom">
+<code class="descname">HasBottom</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.HasBottom" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if there is a bottom face. //! That is neither : VMinInfinite() MeridianClosed() MeridianOnAxis(VMin)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.HasSides">
+<code class="descname">HasSides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.HasSides" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if there are Start and End faces. //! That is : 2*PI - Angle &gt; Precision::Angular()</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.HasTop">
+<code class="descname">HasTop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.HasTop" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if there is a top face. //! That is neither : VMaxInfinite() MeridianClosed() MeridianOnAxis(VMax)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.LateralEndWire">
+<code class="descname">LateralEndWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.LateralEndWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the wire with in lateral face with the end edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.LateralFace">
+<code class="descname">LateralFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.LateralFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the lateral Face. It is oriented toward the outside of the primitive.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.LateralStartWire">
+<code class="descname">LateralStartWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.LateralStartWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the wire in the lateral face with the start edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.LateralWire">
+<code class="descname">LateralWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.LateralWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the wire in the lateral face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.MakeEmptyLateralFace">
+<code class="descname">MakeEmptyLateralFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.MakeEmptyLateralFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns a face with no edges. The surface is the lateral surface with normals pointing outward. The U parameter is the angle with the origin on the X axis. The V parameter is the parameter of the meridian.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.MakeEmptyMeridianEdge">
+<code class="descname">MakeEmptyMeridianEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.MakeEmptyMeridianEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns an edge with a 3D curve made from the meridian in the XZ plane rotated by &lt;Ang&gt; around the Z-axis. Ang may be 0 or myAngle.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Ang</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.MeridianClosed">
+<code class="descname">MeridianClosed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.MeridianClosed" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the meridian is closed. Default implementation  is MeridianValue(VMin).IsEqual(MeridianValue(VMax), Precision::Confusion())</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.MeridianOnAxis">
+<code class="descname">MeridianOnAxis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.MeridianOnAxis" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the point of parameter &lt;V&gt; on the meridian is on the Axis. Default implementation is Abs(MeridianValue(V).X()) &lt; Precision::Confusion()</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.MeridianValue">
+<code class="descname">MeridianValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.MeridianValue" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the meridian point at parameter &lt;V&gt; in the plane XZ.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.SetMeridianOffset">
+<code class="descname">SetMeridianOffset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.SetMeridianOffset" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>The MeridianOffset is added to the parameters on the meridian curve and to the V values of the pcurves. This is used for the sphere for example, to give a range on the meridian edge which is not VMin, VMax.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>MeridianOffset</strong> (<em>float</em>) – default value is 0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.SetMeridianPCurve">
+<code class="descname">SetMeridianPCurve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.SetMeridianPCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the parametric curve of the edge &lt;E&gt; in the face &lt;F&gt; to be the 2d representation of the meridian.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.Shell">
+<code class="descname">Shell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.Shell" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Shell containing all the Faces of the primitive.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shell" title="OCC.TopoDS.TopoDS_Shell">TopoDS_Shell</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.StartBottomEdge">
+<code class="descname">StartBottomEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.StartBottomEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the linear Edge between start Face and bottom Face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.StartEdge">
+<code class="descname">StartEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.StartEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Edge at angle 0.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.StartFace">
+<code class="descname">StartFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.StartFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Face starting the slice, it is oriented toward the exterior of the primitive.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.StartTopEdge">
+<code class="descname">StartTopEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.StartTopEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the linear Edge between start Face and top Face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.StartWire">
+<code class="descname">StartWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.StartWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the wire in the start face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.TopEdge">
+<code class="descname">TopEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.TopEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the edge at VMax. If MeridianClosed() the TopEdge and the BottomEdge are the same edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.TopEndVertex">
+<code class="descname">TopEndVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.TopEndVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the vertex (angle,VMax)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.TopFace">
+<code class="descname">TopFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.TopFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the top planar Face. It is Oriented toward the +Z axis (outside).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.TopStartVertex">
+<code class="descname">TopStartVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.TopStartVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the vertex (0,VMax)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.TopWire">
+<code class="descname">TopWire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.TopWire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the wire in the top face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.VMax">
+<code class="descname">VMax</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.VMax" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.VMaxInfinite">
+<code class="descname">VMaxInfinite</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.VMaxInfinite" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if VMax is infinite. Default Precision::IsPositiveInfinite(VMax);</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.VMin">
+<code class="descname">VMin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.VMin" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.VMinInfinite">
+<code class="descname">VMinInfinite</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.VMinInfinite" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if VMin is infinite. Default Precision::IsNegativeInfinite(VMax);</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepPrim.BRepPrim_OneAxis.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_OneAxis.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepPrim.BRepPrim_Revolution">
+<em class="property">class </em><code class="descname">BRepPrim_Revolution</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Revolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepPrim.BRepPrim_OneAxis" title="OCC.BRepPrim.BRepPrim_OneAxis"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepPrim.BRepPrim_OneAxis</span></code></a></p>
+<ul class="simple">
+<li>Create a revolution body &lt;M&gt; is the meridian nd must be in the XZ plane of &lt;A&gt;. &lt;PM&gt; is the meridian in the XZ plane.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+<li><strong>M</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>PM</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.BRepPrim.BRepPrim_Revolution.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Revolution.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepPrim.BRepPrim_Sphere">
+<em class="property">class </em><code class="descname">BRepPrim_Sphere</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Sphere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepPrim.BRepPrim_Revolution" title="OCC.BRepPrim.BRepPrim_Revolution"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepPrim.BRepPrim_Revolution</span></code></a></p>
+<ul class="simple">
+<li>Creates a Sphere at origin with Radius. The axes of the sphere are the reference axes. An error is raised if the radius is &lt; Resolution.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Radius</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a Sphere with Center and Radius. Axes are the referrence axes. This is the STEP constructor.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Center</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a sphere with given axes system.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Axes</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>Radius</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.BRepPrim.BRepPrim_Sphere.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Sphere.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepPrim.BRepPrim_Torus">
+<em class="property">class </em><code class="descname">BRepPrim_Torus</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Torus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepPrim.BRepPrim_Revolution" title="OCC.BRepPrim.BRepPrim_Revolution"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepPrim.BRepPrim_Revolution</span></code></a></p>
+<ul class="simple">
+<li>the STEP definition Position : center and axes Major, Minor : Radii //! Errors : Major &lt; Resolution Minor &lt; Resolution</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Position</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>Major</strong> (<em>float</em>) – </li>
+<li><strong>Minor</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Torus centered at origin</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Major</strong> (<em>float</em>) – </li>
+<li><strong>Minor</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Torus at Center</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Center</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Major</strong> (<em>float</em>) – </li>
+<li><strong>Minor</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.BRepPrim.BRepPrim_Torus.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Torus.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepPrim.BRepPrim_Wedge">
+<em class="property">class </em><code class="descname">BRepPrim_Wedge</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Wedge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepPrim.BRepPrim_GWedge" title="OCC.BRepPrim.BRepPrim_GWedge"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepPrim.BRepPrim_GWedge</span></code></a></p>
+<ul class="simple">
+<li>Creates a Wedge algorithm. &lt;Axes&gt; is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Axes</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>dx</strong> (<em>float</em>) – </li>
+<li><strong>dy</strong> (<em>float</em>) – </li>
+<li><strong>dz</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a Wedge primitive. &lt;Axes&gt; is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Axes</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>dx</strong> (<em>float</em>) – </li>
+<li><strong>dy</strong> (<em>float</em>) – </li>
+<li><strong>dz</strong> (<em>float</em>) – </li>
+<li><strong>ltx</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Create a Wedge primitive. &lt;Axes&gt; is the axis system for the primitive. //! all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Axes</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Ax2" title="OCC.gp.gp_Ax2"><em>gp_Ax2</em></a>) – </li>
+<li><strong>xmin</strong> (<em>float</em>) – </li>
+<li><strong>ymin</strong> (<em>float</em>) – </li>
+<li><strong>zmin</strong> (<em>float</em>) – </li>
+<li><strong>z2min</strong> (<em>float</em>) – </li>
+<li><strong>x2min</strong> (<em>float</em>) – </li>
+<li><strong>xmax</strong> (<em>float</em>) – </li>
+<li><strong>ymax</strong> (<em>float</em>) – </li>
+<li><strong>zmax</strong> (<em>float</em>) – </li>
+<li><strong>z2max</strong> (<em>float</em>) – </li>
+<li><strong>x2max</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.BRepPrim.BRepPrim_Wedge.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepPrim.BRepPrim_Wedge.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepPrim.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.BRepPrim.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepPrim.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepPrim.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepPrim.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepPrim.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepPrim.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

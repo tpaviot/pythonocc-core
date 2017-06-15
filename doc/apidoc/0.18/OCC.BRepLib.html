@@ -1,0 +1,3801 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.BRepLib module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.BRepLib module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.BRepLib module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.BRepLib.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-breplib-module">
+<h1>OCC.BRepLib module<a class="headerlink" href="#occ-breplib-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.BRepLib"></span><dl class="class">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface">
+<em class="property">class </em><code class="descname">BRepLib_CheckCurveOnSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty contructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Contructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theEdge</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>theFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Contructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theCurve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>thePCurve</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>theSurface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>theFirst</strong> (<em>float</em>) – </li>
+<li><strong>theLast</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.Curve">
+<code class="descname">Curve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.Curve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns my3DCurve</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Curve" title="OCC.Geom.Handle_Geom_Curve">Handle_Geom_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.ErrorStatus">
+<code class="descname">ErrorStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.ErrorStatus" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns error status The possible values are: 0 - OK; 1 - null curve or surface or 2d curve; 2 - invalid parametric range; 3 - error in calculations.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the data for the algorithm</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theEdge</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>theFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sets the data for the algorithm</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theCurve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>thePCurve</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>theSurface</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>theFirst</strong> (<em>float</em>) – </li>
+<li><strong>theLast</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the max distance has been found</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.MaxDistance">
+<code class="descname">MaxDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.MaxDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns max distance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.MaxParameter">
+<code class="descname">MaxParameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.MaxParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns parameter in which the distance is maximal</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.PCurve">
+<code class="descname">PCurve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.PCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns my2DCurve</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve">Handle_Geom2d_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.PCurve2">
+<code class="descname">PCurve2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.PCurve2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns my2DCurve</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve">Handle_Geom2d_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Performs the calculation If isTheMultyTheadDisabled == True then computation will be made without any parallelization.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>isTheMultyTheradDisabled</strong> (<em>bool</em>) – default value is Standard_False</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.Range">
+<code class="descname">Range</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.Range" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the range</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theFirst</strong> (<em>float &amp;</em>) – </li>
+<li><strong>theLast</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.Surface">
+<code class="descname">Surface</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.Surface" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns mySurface</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Surface" title="OCC.Geom.Handle_Geom_Surface">Handle_Geom_Surface</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_CheckCurveOnSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_CheckCurveOnSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_Command">
+<em class="property">class </em><code class="descname">BRepLib_Command</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_Command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_Command.Check">
+<code class="descname">Check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_Command.Check" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Raises NotDone if done is false.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_Command.Delete">
+<code class="descname">Delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_Command.Delete" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_Command.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_Command.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_Command.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_Command.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_FindSurface">
+<em class="property">class </em><code class="descname">BRepLib_FindSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FindSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the Surface from the edges of &lt;S&gt; with the given tolerance. if &lt;OnlyPlane&gt; is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set. If &lt;OnlyClosed&gt; is true, then S sould be a wire and the existing surface, on which wire S is not closed in 2D, will be ignored.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – default value is -1</li>
+<li><strong>OnlyPlane</strong> (<em>bool</em>) – default value is Standard_False</li>
+<li><strong>OnlyClosed</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FindSurface.Existed">
+<code class="descname">Existed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FindSurface.Existed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FindSurface.Found">
+<code class="descname">Found</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FindSurface.Found" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FindSurface.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FindSurface.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the Surface from the edges of &lt;S&gt; with the given tolerance. if &lt;OnlyPlane&gt; is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set. If &lt;OnlyClosed&gt; is true, then S sould be a wire and the existing surface, on which wire S is not closed in 2D, will be ignored.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – default value is -1</li>
+<li><strong>OnlyPlane</strong> (<em>bool</em>) – default value is Standard_False</li>
+<li><strong>OnlyClosed</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FindSurface.Location">
+<code class="descname">Location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FindSurface.Location" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopLoc.html#OCC.TopLoc.TopLoc_Location" title="OCC.TopLoc.TopLoc_Location">TopLoc_Location</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FindSurface.Surface">
+<code class="descname">Surface</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FindSurface.Surface" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Surface" title="OCC.Geom.Handle_Geom_Surface">Handle_Geom_Surface</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FindSurface.Tolerance">
+<code class="descname">Tolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FindSurface.Tolerance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FindSurface.ToleranceReached">
+<code class="descname">ToleranceReached</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FindSurface.ToleranceReached" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_FindSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_FindSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_FuseEdges">
+<em class="property">class </em><code class="descname">BRepLib_FuseEdges</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FuseEdges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Initialise members and build construction of map of ancestors.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>PerformNow</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FuseEdges.AvoidEdges">
+<code class="descname">AvoidEdges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FuseEdges.AvoidEdges" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>set edges to avoid being fused</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theMapEdg</strong> (<em>TopTools_IndexedMapOfShape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FuseEdges.Edges">
+<code class="descname">Edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FuseEdges.Edges" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns all the list of edges to be fused each list of the map represent a set of connex edges that can be fused.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theMapLstEdg</strong> (<em>TopTools_DataMapOfIntegerListOfShape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FuseEdges.Faces">
+<code class="descname">Faces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FuseEdges.Faces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the map of modified faces.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theMapFac</strong> (<em>TopTools_DataMapOfShapeShape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FuseEdges.NbVertices">
+<code class="descname">NbVertices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FuseEdges.NbVertices" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the number of vertices candidate to be removed</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FuseEdges.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FuseEdges.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Using map of list of connex edges, fuse each list to one edge and then update myShape</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FuseEdges.ResultEdges">
+<code class="descname">ResultEdges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FuseEdges.ResultEdges" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns all the fused edges. each integer entry in the map corresponds to the integer in the DataMapOfIntegerListOfShape we get in method Edges. That is to say, to the list of edges in theMapLstEdg(i) corresponds the resulting edge theMapEdge(i)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theMapEdg</strong> (<em>TopTools_DataMapOfIntegerShape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FuseEdges.SetConcatBSpl">
+<code class="descname">SetConcatBSpl</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FuseEdges.SetConcatBSpl" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>set mode to enable concatenation G1 BSpline edges in one End Modified by IFV 19.04.07</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theConcatBSpl</strong> (<em>bool</em>) – default value is Standard_True</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_FuseEdges.Shape">
+<code class="descname">Shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_FuseEdges.Shape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns myShape modified with the list of internal edges removed from it.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_FuseEdges.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_FuseEdges.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge">
+<em class="property">class </em><code class="descname">BRepLib_MakeEdge</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepLib.BRepLib_MakeShape" title="OCC.BRepLib.BRepLib_MakeShape"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepLib.BRepLib_MakeShape</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>V1</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>V2</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>L</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> (<em>float</em>) – </li>
+<li><strong>p2</strong> (<em>float</em>) – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>L</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge.Edge">
+<code class="descname">Edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge.Error">
+<code class="descname">Error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge.Error" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the error description when NotDone.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepLib_EdgeError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>C</strong> – </li>
+<li><strong>p1</strong> (<em>float</em>) – </li>
+<li><strong>p2</strong> (<em>float</em>) – </li>
+<li><strong>C</strong> – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>C</strong> – </li>
+<li><strong>V1</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>V2</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>C</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>C</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>C</strong> – </li>
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>C</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>C</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>C</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>C</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>C</strong> – </li>
+<li><strong>S</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge.Vertex1">
+<code class="descname">Vertex1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge.Vertex1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the first vertex of the edge. May be Null.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge.Vertex2">
+<code class="descname">Vertex2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge.Vertex2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the second vertex of the edge. May be Null.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge2d">
+<em class="property">class </em><code class="descname">BRepLib_MakeEdge2d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepLib.BRepLib_MakeShape" title="OCC.BRepLib.BRepLib_MakeShape"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepLib.BRepLib_MakeShape</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>V1</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>V2</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>L</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> (<em>float</em>) – </li>
+<li><strong>p2</strong> (<em>float</em>) – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>L</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge2d.Edge">
+<code class="descname">Edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge2d.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge2d.Error">
+<code class="descname">Error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge2d.Error" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the error description when NotDone.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepLib_EdgeError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge2d.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge2d.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>C</strong> – </li>
+<li><strong>p1</strong> (<em>float</em>) – </li>
+<li><strong>p2</strong> (<em>float</em>) – </li>
+<li><strong>C</strong> – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>C</strong> – </li>
+<li><strong>V1</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>V2</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>C</strong> – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+<li><strong>C</strong> – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>p1</strong> – </li>
+<li><strong>p2</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge2d.Vertex1">
+<code class="descname">Vertex1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge2d.Vertex1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the first vertex of the edge. May be Null.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge2d.Vertex2">
+<code class="descname">Vertex2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge2d.Vertex2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the second vertex of the edge. May be Null.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_MakeEdge2d.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeEdge2d.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_MakeFace">
+<em class="property">class </em><code class="descname">BRepLib_MakeFace</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeFace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepLib.BRepLib_MakeShape" title="OCC.BRepLib.BRepLib_MakeShape"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepLib.BRepLib_MakeShape</span></code></a></p>
+<ul class="simple">
+<li>Not done.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Load a face. Usefull to add wires.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a plane.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pln" title="OCC.gp.gp_Pln"><em>gp_Pln</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a cylinder.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Cylinder" title="OCC.gp.gp_Cylinder"><em>gp_Cylinder</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a cone.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Cone" title="OCC.gp.gp_Cone"><em>gp_Cone</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a sphere.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Sphere" title="OCC.gp.gp_Sphere"><em>gp_Sphere</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a torus.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Torus" title="OCC.gp.gp_Torus"><em>gp_Torus</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>TolDegen</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a plane.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pln" title="OCC.gp.gp_Pln"><em>gp_Pln</em></a>) – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a cylinder.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Cylinder" title="OCC.gp.gp_Cylinder"><em>gp_Cylinder</em></a>) – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a cone.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Cone" title="OCC.gp.gp_Cone"><em>gp_Cone</em></a>) – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a sphere.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Sphere" title="OCC.gp.gp_Sphere"><em>gp_Sphere</em></a>) – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a torus.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Torus" title="OCC.gp.gp_Torus"><em>gp_Torus</em></a>) – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a Surface. Accepts min &amp; max parameters to construct the face’s bounds. Also accepts tolerance value (TolDegen) for resolution of degenerated edges.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+<li><strong>TolDegen</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Find a surface from the wire and make a face. if &lt;OnlyPlane&gt; is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+<li><strong>OnlyPlane</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a plane and a wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pln" title="OCC.gp.gp_Pln"><em>gp_Pln</em></a>) – </li>
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+<li><strong>Inside</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a cylinder and a wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Cylinder" title="OCC.gp.gp_Cylinder"><em>gp_Cylinder</em></a>) – </li>
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+<li><strong>Inside</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a cone and a wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Cone" title="OCC.gp.gp_Cone"><em>gp_Cone</em></a>) – </li>
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+<li><strong>Inside</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a sphere and a wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Sphere" title="OCC.gp.gp_Sphere"><em>gp_Sphere</em></a>) – </li>
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+<li><strong>Inside</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a torus and a wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Torus" title="OCC.gp.gp_Torus"><em>gp_Torus</em></a>) – </li>
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+<li><strong>Inside</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a face from a Surface and a wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+<li><strong>Inside</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Adds the wire &lt;W&gt; in the face &lt;F&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeFace.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeFace.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds the wire &lt;W&gt; in the current face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeFace.Error">
+<code class="descname">Error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeFace.Error" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepLib_FaceError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeFace.Face">
+<code class="descname">Face</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeFace.Face" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the new face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeFace.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeFace.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Load the face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates the face from the surface. If Bound is True a wire is made from the natural bounds. Accepts tolerance value (TolDegen) for resolution of degenerated edges.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Bound</strong> (<em>bool</em>) – </li>
+<li><strong>TolDegen</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates the face from the surface and the min-max values. Accepts tolerance value (TolDegen) for resolution of degenerated edges.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+<li><strong>TolDegen</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.BRepLib_MakeFace.IsDegenerated">
+<em class="property">static </em><code class="descname">IsDegenerated</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeFace.IsDegenerated" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks the specified curve is degenerated according to specified tolerance. Returns &lt;theActTol&gt; less than &lt;theMaxTol&gt;, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theCurve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>theMaxTol</strong> (<em>float</em>) – </li>
+<li><strong>theActTol</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_MakeFace.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeFace.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.BRepLib_MakeFace_IsDegenerated">
+<code class="descname">BRepLib_MakeFace_IsDegenerated</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeFace_IsDegenerated" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks the specified curve is degenerated according to specified tolerance. Returns &lt;theActTol&gt; less than &lt;theMaxTol&gt;, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theCurve</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>theMaxTol</strong> (<em>float</em>) – </li>
+<li><strong>theActTol</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_MakePolygon">
+<em class="property">class </em><code class="descname">BRepLib_MakePolygon</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakePolygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepLib.BRepLib_MakeShape" title="OCC.BRepLib.BRepLib_MakeShape"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepLib.BRepLib_MakeShape</span></code></a></p>
+<ul class="simple">
+<li>Creates an empty MakePolygon.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>P3</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Close</strong> (<em>bool</em>) – default value is Standard_False</li>
+<li><strong>P1</strong> – </li>
+<li><strong>P2</strong> – </li>
+<li><strong>P3</strong> – </li>
+<li><strong>P4</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Close</strong> – default value is Standard_False</li>
+<li><strong>V1</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>V2</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>V3</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>Close</strong> – default value is Standard_False</li>
+<li><strong>V1</strong> – </li>
+<li><strong>V2</strong> – </li>
+<li><strong>V3</strong> – </li>
+<li><strong>V4</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>Close</strong> – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakePolygon.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakePolygon.Add" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakePolygon.Added">
+<code class="descname">Added</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakePolygon.Added" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the last vertex or point was succesfully added.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakePolygon.Close">
+<code class="descname">Close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakePolygon.Close" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakePolygon.Edge">
+<code class="descname">Edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakePolygon.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the last edge added to the polygon.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakePolygon.FirstVertex">
+<code class="descname">FirstVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakePolygon.FirstVertex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakePolygon.LastVertex">
+<code class="descname">LastVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakePolygon.LastVertex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakePolygon.Wire">
+<code class="descname">Wire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakePolygon.Wire" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_MakePolygon.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakePolygon.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_MakeShape">
+<em class="property">class </em><code class="descname">BRepLib_MakeShape</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepLib.BRepLib_Command" title="OCC.BRepLib.BRepLib_Command"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepLib.BRepLib_Command</span></code></a></p>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeShape.Build">
+<code class="descname">Build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShape.Build" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This is called by Shape(). It does nothing but may be redefined.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeShape.DescendantFaces">
+<code class="descname">DescendantFaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShape.DescendantFaces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the list of generated Faces.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeShape.FaceStatus">
+<code class="descname">FaceStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShape.FaceStatus" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the status of the Face after the shape creation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">BRepLib_ShapeModification</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeShape.FacesFromEdges">
+<code class="descname">FacesFromEdges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShape.FacesFromEdges" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns a list of the created faces from the edge &lt;E&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeShape.HasDescendants">
+<code class="descname">HasDescendants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShape.HasDescendants" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the Face generates new topology.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeShape.NbSurfaces">
+<code class="descname">NbSurfaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShape.NbSurfaces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the number of surfaces after the shape creation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeShape.NewFaces">
+<code class="descname">NewFaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShape.NewFaces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Return the faces created for surface I.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>I</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeShape.Shape">
+<code class="descname">Shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShape.Shape" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_MakeShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_MakeShell">
+<em class="property">class </em><code class="descname">BRepLib_MakeShell</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepLib.BRepLib_MakeShape" title="OCC.BRepLib.BRepLib_MakeShape"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepLib.BRepLib_MakeShape</span></code></a></p>
+<ul class="simple">
+<li>Not done.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>Segment</strong> (<em>bool</em>) – default value is Standard_False</li>
+<li><strong>S</strong> – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+<li><strong>Segment</strong> – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeShell.Error">
+<code class="descname">Error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShell.Error" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepLib_ShellError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeShell.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShell.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Creates the shell from the surface and the min-max values.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+<li><strong>VMin</strong> (<em>float</em>) – </li>
+<li><strong>VMax</strong> (<em>float</em>) – </li>
+<li><strong>Segment</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeShell.Shell">
+<code class="descname">Shell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShell.Shell" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the new Shell.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shell" title="OCC.TopoDS.TopoDS_Shell">TopoDS_Shell</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_MakeShell.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeShell.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_MakeSolid">
+<em class="property">class </em><code class="descname">BRepLib_MakeSolid</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeSolid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepLib.BRepLib_MakeShape" title="OCC.BRepLib.BRepLib_MakeShape"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepLib.BRepLib_MakeShape</span></code></a></p>
+<ul class="simple">
+<li>Solid covers whole space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a solid from a CompSolid.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_CompSolid &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a solid from a shell.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shell &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a solid from two shells.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>TopoDS_Shell &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>TopoDS_Shell &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a solid from three shells.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>TopoDS_Shell &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>TopoDS_Shell &amp;</em>) – </li>
+<li><strong>S3</strong> (<em>TopoDS_Shell &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a solid from a solid. Usefull for adding later.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>So</strong> (<em>TopoDS_Solid &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Add a shell to a solid.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>So</strong> (<em>TopoDS_Solid &amp;</em>) – </li>
+<li><strong>S</strong> (<em>TopoDS_Shell &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeSolid.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeSolid.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Add the shell to the current solid.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shell &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeSolid.Solid">
+<code class="descname">Solid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeSolid.Solid" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the new Solid.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Solid" title="OCC.TopoDS.TopoDS_Solid">TopoDS_Solid</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_MakeSolid.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeSolid.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_MakeVertex">
+<em class="property">class </em><code class="descname">BRepLib_MakeVertex</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeVertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepLib.BRepLib_MakeShape" title="OCC.BRepLib.BRepLib_MakeShape"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepLib.BRepLib_MakeShape</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeVertex.Vertex">
+<code class="descname">Vertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeVertex.Vertex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_MakeVertex.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeVertex.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.BRepLib_MakeWire">
+<em class="property">class </em><code class="descname">BRepLib_MakeWire</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeWire" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepLib.BRepLib_MakeShape" title="OCC.BRepLib.BRepLib_MakeShape"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepLib.BRepLib_MakeShape</span></code></a></p>
+<ul class="simple">
+<li>NotDone MakeWire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Wire from an edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Wire from two edges.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E1</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E2</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Wire from three edges.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E1</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E2</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E3</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Wire from four edges.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E1</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E2</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E3</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E4</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Make a Wire from a Wire. Usefull for adding later.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Add an edge to a wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeWire.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeWire.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Add the edge &lt;E&gt; to the current wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Add the edges of &lt;W&gt; to the current wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Add the edges of &lt;L&gt; to the current wire. The edges are not to be consecutive. But they are to be all connected geometrically or topologically.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>L</strong> (<em>TopTools_ListOfShape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeWire.Edge">
+<code class="descname">Edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeWire.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the last edge added to the wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeWire.Error">
+<code class="descname">Error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeWire.Error" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepLib_WireError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeWire.Vertex">
+<code class="descname">Vertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeWire.Vertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the last connecting vertex.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.BRepLib_MakeWire.Wire">
+<code class="descname">Wire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeWire.Wire" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the new wire.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Wire" title="OCC.TopoDS.TopoDS_Wire">TopoDS_Wire</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.BRepLib_MakeWire.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.BRepLib_MakeWire.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.BRepLib.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepLib.breplib">
+<em class="property">class </em><code class="descname">breplib</code><a class="headerlink" href="#OCC.BRepLib.breplib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.BuildCurve3d">
+<em class="property">static </em><code class="descname">BuildCurve3d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.BuildCurve3d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the 3d curve for the edge &lt;E&gt; if it does not exist. Returns True if the curve was computed or existed. Returns False if there is no planar pcurve or the computation failed. &lt;MaxSegment&gt; &gt;= 30 in approximation</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 1.0e-5</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+<li><strong>MaxDegree</strong> (<em>int</em>) – default value is 14</li>
+<li><strong>MaxSegment</strong> (<em>int</em>) – default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.BuildCurves3d">
+<em class="property">static </em><code class="descname">BuildCurves3d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.BuildCurves3d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the 3d curves for all the edges of &lt;S&gt; return False if one of the computation failed. &lt;MaxSegment&gt; &gt;= 30 in approximation</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+<li><strong>MaxDegree</strong> (<em>int</em>) – default value is 14</li>
+<li><strong>MaxSegment</strong> (<em>int</em>) – default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the 3d curves for all the edges of &lt;S&gt; return False if one of the computation failed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.CheckSameRange">
+<em class="property">static </em><code class="descname">CheckSameRange</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.CheckSameRange" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>checks if the Edge is same range IGNORING the same range flag of the edge Confusion argument is to compare real numbers idenpendently of any model space tolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>Confusion</strong> (<em>float</em>) – default value is 1.0e-12</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.EncodeRegularity">
+<em class="property">static </em><code class="descname">EncodeRegularity</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.EncodeRegularity" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Encodes the Regularity of edges on a Shape. Warning: &lt;TolAng&gt; is an angular tolerance, expressed in Rad. Warning: If the edges’s regularity are coded before, nothing is done.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>TolAng</strong> (<em>float</em>) – default value is 1.0e-10</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Encodes the Regularity beetween &lt;F1&gt; and &lt;F2&gt; by &lt;E&gt; Warning: &lt;TolAng&gt; is an angular tolerance, expressed in Rad. Warning: If the edge’s regularity is coded before, nothing is done.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F1</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>F2</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>TolAng</strong> (<em>float</em>) – default value is 1.0e-10</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.EnsureNormalConsistency">
+<em class="property">static </em><code class="descname">EnsureNormalConsistency</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.EnsureNormalConsistency" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Corrects the normals in Poly_Triangulation of faces, in such way that normals at nodes lying along smooth edges have the same value on both adjacent triangulations. Returns True if any correction is done.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theAngTol</strong> (<em>float</em>) – default value is 0.001</li>
+<li><strong>ForceComputeNormals</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.OrientClosedSolid">
+<em class="property">static </em><code class="descname">OrientClosedSolid</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.OrientClosedSolid" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Orients the solid forward and the shell with the orientation to have matter in the solid. Returns False if the solid is unOrientable (open or incoherent)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>solid</strong> (<em>TopoDS_Solid &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepLib.breplib.Plane">
+<code class="descname">Plane</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.Plane" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the current plane to P.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<em>Handle_Geom_Plane &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the current plane.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Plane" title="OCC.Geom.Handle_Geom_Plane">Handle_Geom_Plane</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.Precision">
+<em class="property">static </em><code class="descname">Precision</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.Precision" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the max distance between edge and its 2d representation on the face. Sets the default precision. The current Precision is returned.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the default precision.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.ReverseSortFaces">
+<em class="property">static </em><code class="descname">ReverseSortFaces</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.ReverseSortFaces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sorts in LF the Faces of S on the reverse complexity of their surfaces (other,Torus,Sphere,Cone,Cylinder,Plane)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>LF</strong> (<em>TopTools_ListOfShape &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.SameParameter">
+<em class="property">static </em><code class="descname">SameParameter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.SameParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes new 2d curve(s) for the edge &lt;E&gt; to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on the Edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 1.0e-5</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes new 2d curve(s) for all the edges of &lt;S&gt; to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on an Edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 1.0e-5</li>
+<li><strong>forced</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.SameRange">
+<em class="property">static </em><code class="descname">SameRange</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.SameRange" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>will make all the curve representation have the same range domain for the parameters. This will IGNORE the same range flag value to proceed. If there is a 3D curve there it will the range of that curve. If not the first curve representation encountered in the list will give its range to the all the other curves.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 1.0e-5</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.SortFaces">
+<em class="property">static </em><code class="descname">SortFaces</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.SortFaces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sorts in LF the Faces of S on the complexity of their surfaces (Plane,Cylinder,Cone,Sphere,Torus,other)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>LF</strong> (<em>TopTools_ListOfShape &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.UpdateEdgeTol">
+<em class="property">static </em><code class="descname">UpdateEdgeTol</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.UpdateEdgeTol" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks if the edge has a Tolerance smaller than – – – – MaxToleranceToCheck if so it will compute the radius of – the cylindrical pipe surface that MinToleranceRequest is the minimum tolerance before it is usefull to start testing. Usually it should be arround 10e-5 contains all – the curve represenation of the edge returns True if the Edge tolerance had to be updated</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>MinToleranceRequest</strong> (<em>float</em>) – </li>
+<li><strong>MaxToleranceToCheck</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.UpdateEdgeTolerance">
+<em class="property">static </em><code class="descname">UpdateEdgeTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.UpdateEdgeTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>– Checks all the edges of the shape whose – – – Tolerance is smaller than MaxToleranceToCheck – Returns True if at least one edge was updated – MinToleranceRequest is the minimum tolerance before – it – is usefull to start testing. Usually it should be arround – 10e-5– //! Warning :The method is very slow as it checks all. Use only in interfaces or processing assimilate batch</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>MinToleranceRequest</strong> (<em>float</em>) – </li>
+<li><strong>MaxToleranceToCheck</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepLib.breplib.UpdateTolerances">
+<em class="property">static </em><code class="descname">UpdateTolerances</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib.UpdateTolerances" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Replaces tolerance of FACE EDGE VERTEX by the tolerance Max of their connected handling shapes. It is not necessary to use this call after SameParameter. (called in)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>verifyFaceTolerance</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepLib.breplib.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepLib.breplib.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_BuildCurve3d">
+<code class="descname">breplib_BuildCurve3d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_BuildCurve3d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the 3d curve for the edge &lt;E&gt; if it does not exist. Returns True if the curve was computed or existed. Returns False if there is no planar pcurve or the computation failed. &lt;MaxSegment&gt; &gt;= 30 in approximation</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 1.0e-5</li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+<li><strong>MaxDegree</strong> (<em>int</em>) – default value is 14</li>
+<li><strong>MaxSegment</strong> (<em>int</em>) – default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_BuildCurves3d">
+<code class="descname">breplib_BuildCurves3d</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_BuildCurves3d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the 3d curves for all the edges of &lt;S&gt; return False if one of the computation failed. &lt;MaxSegment&gt; &gt;= 30 in approximation</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>Continuity</strong> (<em>GeomAbs_Shape</em>) – default value is GeomAbs_C1</li>
+<li><strong>MaxDegree</strong> (<em>int</em>) – default value is 14</li>
+<li><strong>MaxSegment</strong> (<em>int</em>) – default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes the 3d curves for all the edges of &lt;S&gt; return False if one of the computation failed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_CheckSameRange">
+<code class="descname">breplib_CheckSameRange</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_CheckSameRange" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>checks if the Edge is same range IGNORING the same range flag of the edge Confusion argument is to compare real numbers idenpendently of any model space tolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>Confusion</strong> (<em>float</em>) – default value is 1.0e-12</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_EncodeRegularity">
+<code class="descname">breplib_EncodeRegularity</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_EncodeRegularity" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Encodes the Regularity of edges on a Shape. Warning: &lt;TolAng&gt; is an angular tolerance, expressed in Rad. Warning: If the edges’s regularity are coded before, nothing is done.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>TolAng</strong> (<em>float</em>) – default value is 1.0e-10</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Encodes the Regularity beetween &lt;F1&gt; and &lt;F2&gt; by &lt;E&gt; Warning: &lt;TolAng&gt; is an angular tolerance, expressed in Rad. Warning: If the edge’s regularity is coded before, nothing is done.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F1</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>F2</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>TolAng</strong> (<em>float</em>) – default value is 1.0e-10</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_EnsureNormalConsistency">
+<code class="descname">breplib_EnsureNormalConsistency</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_EnsureNormalConsistency" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Corrects the normals in Poly_Triangulation of faces, in such way that normals at nodes lying along smooth edges have the same value on both adjacent triangulations. Returns True if any correction is done.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theAngTol</strong> (<em>float</em>) – default value is 0.001</li>
+<li><strong>ForceComputeNormals</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_OrientClosedSolid">
+<code class="descname">breplib_OrientClosedSolid</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_OrientClosedSolid" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Orients the solid forward and the shell with the orientation to have matter in the solid. Returns False if the solid is unOrientable (open or incoherent)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>solid</strong> (<em>TopoDS_Solid &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_Precision">
+<code class="descname">breplib_Precision</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_Precision" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the max distance between edge and its 2d representation on the face. Sets the default precision. The current Precision is returned.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the default precision.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_ReverseSortFaces">
+<code class="descname">breplib_ReverseSortFaces</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_ReverseSortFaces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sorts in LF the Faces of S on the reverse complexity of their surfaces (other,Torus,Sphere,Cone,Cylinder,Plane)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>LF</strong> (<em>TopTools_ListOfShape &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_SameParameter">
+<code class="descname">breplib_SameParameter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_SameParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes new 2d curve(s) for the edge &lt;E&gt; to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on the Edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 1.0e-5</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes new 2d curve(s) for all the edges of &lt;S&gt; to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on an Edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 1.0e-5</li>
+<li><strong>forced</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_SameRange">
+<code class="descname">breplib_SameRange</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_SameRange" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>will make all the curve representation have the same range domain for the parameters. This will IGNORE the same range flag value to proceed. If there is a 3D curve there it will the range of that curve. If not the first curve representation encountered in the list will give its range to the all the other curves.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 1.0e-5</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_SortFaces">
+<code class="descname">breplib_SortFaces</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_SortFaces" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sorts in LF the Faces of S on the complexity of their surfaces (Plane,Cylinder,Cone,Sphere,Torus,other)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>LF</strong> (<em>TopTools_ListOfShape &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_UpdateEdgeTol">
+<code class="descname">breplib_UpdateEdgeTol</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_UpdateEdgeTol" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks if the edge has a Tolerance smaller than – – – – MaxToleranceToCheck if so it will compute the radius of – the cylindrical pipe surface that MinToleranceRequest is the minimum tolerance before it is usefull to start testing. Usually it should be arround 10e-5 contains all – the curve represenation of the edge returns True if the Edge tolerance had to be updated</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>MinToleranceRequest</strong> (<em>float</em>) – </li>
+<li><strong>MaxToleranceToCheck</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_UpdateEdgeTolerance">
+<code class="descname">breplib_UpdateEdgeTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_UpdateEdgeTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>– Checks all the edges of the shape whose – – – Tolerance is smaller than MaxToleranceToCheck – Returns True if at least one edge was updated – MinToleranceRequest is the minimum tolerance before – it – is usefull to start testing. Usually it should be arround – 10e-5– //! Warning :The method is very slow as it checks all. Use only in interfaces or processing assimilate batch</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>MinToleranceRequest</strong> (<em>float</em>) – </li>
+<li><strong>MaxToleranceToCheck</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.breplib_UpdateTolerances">
+<code class="descname">breplib_UpdateTolerances</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.breplib_UpdateTolerances" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Replaces tolerance of FACE EDGE VERTEX by the tolerance Max of their connected handling shapes. It is not necessary to use this call after SameParameter. (called in)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>verifyFaceTolerance</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepLib.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepLib.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

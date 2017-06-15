@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.Geom2dAdaptor module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.Geom2dAdaptor module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.Geom2dAdaptor module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.Geom2dAdaptor.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-geom2dadaptor-module">
+<h1>OCC.Geom2dAdaptor module<a class="headerlink" href="#occ-geom2dadaptor-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.Geom2dAdaptor"></span><dl class="class">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_Curve">
+<em class="property">class </em><code class="descname">Geom2dAdaptor_Curve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_Curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Adaptor2d.html#OCC.Adaptor2d.Adaptor2d_Curve2d" title="OCC.Adaptor2d.Adaptor2d_Curve2d"><code class="xref py py-class docutils literal"><span class="pre">OCC.Adaptor2d.Adaptor2d_Curve2d</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>ConstructionError is raised if Ufirst&gt;Ulast</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>UFirst</strong> (<em>float</em>) – </li>
+<li><strong>ULast</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_Curve.Curve">
+<code class="descname">Curve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_Curve.Curve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve">Handle_Geom2d_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_Curve.Load">
+<code class="descname">Load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_Curve.Load" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>ConstructionError is raised if Ufirst&gt;Ulast</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>UFirst</strong> (<em>float</em>) – </li>
+<li><strong>ULast</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_Curve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_Curve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve">
+<em class="property">class </em><code class="descname">Geom2dAdaptor_GHCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Adaptor2d.html#OCC.Adaptor2d.Adaptor2d_HCurve2d" title="OCC.Adaptor2d.Adaptor2d_HCurve2d"><code class="xref py py-class docutils literal"><span class="pre">OCC.Adaptor2d.Adaptor2d_HCurve2d</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Geom2dAdaptor_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve.ChangeCurve2d">
+<code class="descname">ChangeCurve2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve.ChangeCurve2d" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_Curve" title="OCC.Geom2dAdaptor.Geom2dAdaptor_Curve">Geom2dAdaptor_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Geom2dAdaptor_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_HCurve">
+<em class="property">class </em><code class="descname">Geom2dAdaptor_HCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_HCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve" title="OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Geom2dAdaptor.Geom2dAdaptor_GHCurve</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>AS</strong> (<em>Geom2dAdaptor_Curve &amp;</em>) – </li>
+<li><strong>S</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>ConstructionError is raised if UFirst&gt;ULast or VFirst&gt;VLast</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>UFirst</strong> (<em>float</em>) – </li>
+<li><strong>ULast</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_HCurve.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_HCurve.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dAdaptor.Geom2dAdaptor_HCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dAdaptor.Geom2dAdaptor_HCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve">
+<em class="property">class </em><code class="descname">Handle_Geom2dAdaptor_GHCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Adaptor2d.html#OCC.Adaptor2d.Handle_Adaptor2d_HCurve2d" title="OCC.Adaptor2d.Handle_Adaptor2d_HCurve2d"><code class="xref py py-class docutils literal"><span class="pre">OCC.Adaptor2d.Handle_Adaptor2d_HCurve2d</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve">
+<em class="property">class </em><code class="descname">Handle_Geom2dAdaptor_HCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve" title="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_GHCurve</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dAdaptor.Handle_Geom2dAdaptor_HCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Geom2dAdaptor.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dAdaptor.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dAdaptor.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dAdaptor.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Geom2dAdaptor.geom2dadaptor">
+<em class="property">class </em><code class="descname">geom2dadaptor</code><a class="headerlink" href="#OCC.Geom2dAdaptor.geom2dadaptor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.Geom2dAdaptor.geom2dadaptor.MakeCurve">
+<em class="property">static </em><code class="descname">MakeCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.geom2dadaptor.MakeCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Inherited from GHCurve. Provides a curve handled by reference. Creates a 2d curve from a HCurve2d. This cannot process the OtherCurves.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>HC</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve">Handle_Geom2d_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dAdaptor.geom2dadaptor.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dAdaptor.geom2dadaptor.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Geom2dAdaptor.geom2dadaptor_MakeCurve">
+<code class="descname">geom2dadaptor_MakeCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.geom2dadaptor_MakeCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Inherited from GHCurve. Provides a curve handled by reference. Creates a 2d curve from a HCurve2d. This cannot process the OtherCurves.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>HC</strong> (<em>Adaptor2d_Curve2d &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve">Handle_Geom2d_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Geom2dAdaptor.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dAdaptor.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

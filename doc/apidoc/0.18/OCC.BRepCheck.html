@@ -1,0 +1,2607 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.BRepCheck module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.BRepCheck module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.BRepCheck module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.BRepCheck.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-brepcheck-module">
+<h1>OCC.BRepCheck module<a class="headerlink" href="#occ-brepcheck-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.BRepCheck"></span><dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_Analyzer">
+<em class="property">class </em><code class="descname">BRepCheck_Analyzer</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Analyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs a shape validation object defined by the shape S. &lt;S&gt; is the shape to control. &lt;GeomControls&gt; If False only topological informaions are checked. The geometricals controls are For a Vertex : BRepCheck_InvalidToleranceValue NYI For an Edge : BRepCheck_InvalidCurveOnClosedSurface, BRepCheck_InvalidCurveOnSurface, BRepCheck_InvalidSameParameterFlag, BRepCheck_InvalidToleranceValue NYI For a face : BRepCheck_UnorientableShape, BRepCheck_IntersectingWires, BRepCheck_InvalidToleranceValue NYI For a wire : BRepCheck_SelfIntersectingWire</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>GeomControls</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Analyzer.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Analyzer.Init" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>&lt;S&gt; is the shape to control. &lt;GeomControls&gt; If False only topological informaions are checked. The geometricals controls are For a Vertex : BRepCheck_InvalidTolerance NYI For an Edge : BRepCheck_InvalidCurveOnClosedSurface, BRepCheck_InvalidCurveOnSurface, BRepCheck_InvalidSameParameterFlag, BRepCheck_InvalidTolerance NYI For a face : BRepCheck_UnorientableShape, BRepCheck_IntersectingWires, BRepCheck_InvalidTolerance NYI For a wire : BRepCheck_SelfIntersectingWire</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>GeomControls</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Analyzer.IsValid">
+<code class="descname">IsValid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Analyzer.IsValid" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>&lt;S&gt; is a subshape of the original shape. Returns &lt;STandard_True&gt; if no default has been detected on &lt;S&gt; and any of its subshape.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns true if no defect is detected on the shape S or any of its subshapes. Returns true if the shape S is valid. This function checks whether a given shape is valid by checking that: - the topology is correct - parameterization of edges in particular is correct. For the topology to be correct, the following conditions must be satisfied: - edges should have at least two vertices if they are not degenerate edges. The vertices should be within the range of the bounding edges at the tolerance specified in the vertex, - edges should share at least one face. The representation of the edges should be within the tolerance criterion assigned to them. - wires defining a face should not self-intersect and should be closed, - there should be one wire which contains all other wires inside a face, - wires should be correctly oriented with respect to each of the edges, - faces should be correctly oriented, in particular with respect to adjacent faces if these faces define a solid, - shells defining a solid should be closed. There should be one enclosing shell if the shape is a solid; To check parameterization of edge, there are 2 approaches depending on the edge?s contextual situation. - if the edge is either single, or it is in the context of a wire or a compound, its parameterization is defined by the parameterization of its 3D curve and is considered as valid. - If the edge is in the context of a face, it should have SameParameter and SameRange flags set to Standard_True. To check these flags, you should call the function BRep_Tool::SameParameter and BRep_Tool::SameRange for an edge. If at least one of these flags is set to Standard_False, the edge is considered as invalid without any additional check. If the edge is contained by a face, and it has SameParameter and SameRange flags set to Standard_True, IsValid checks whether representation of the edge on face, in context of which the edge is considered, has the same parameterization up to the tolerance value coded on the edge. For a given parameter t on the edge having C as a 3D curve and one PCurve P on a surface S (base surface of the reference face), this checks that <a href="#id7"><span class="problematic" id="id8">|C(t) - S(P(t))|</span></a> is less than or equal to tolerance, where tolerance is the tolerance value coded on the edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Analyzer.Result">
+<code class="descname">Result</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Analyzer.Result" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>SubS</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="OCC.BRepCheck.Handle_BRepCheck_Result">Handle_BRepCheck_Result</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_Analyzer.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Analyzer.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus">
+<em class="property">class </em><code class="descname">BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMapIterator" title="OCC.TCollection.TCollection_BasicMapIterator"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMapIterator</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>BRepCheck_DataMapOfShapeListOfStatus &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>BRepCheck_DataMapOfShapeListOfStatus &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.BRepCheck_ListOfStatus" title="OCC.BRepCheck.BRepCheck_ListOfStatus">BRepCheck_ListOfStatus</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeResult">
+<em class="property">class </em><code class="descname">BRepCheck_DataMapIteratorOfDataMapOfShapeResult</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMapIterator" title="OCC.TCollection.TCollection_BasicMapIterator"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMapIterator</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>BRepCheck_DataMapOfShapeResult &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeResult.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeResult.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>BRepCheck_DataMapOfShapeResult &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeResult.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeResult.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeResult.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeResult.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="OCC.BRepCheck.Handle_BRepCheck_Result">Handle_BRepCheck_Result</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeResult.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapIteratorOfDataMapOfShapeResult.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus">
+<em class="property">class </em><code class="descname">BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_MapNode" title="OCC.TCollection.TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_MapNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>I</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </li>
+<li><strong>n</strong> (<em>TCollection_MapNodePtr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.BRepCheck_ListOfStatus" title="OCC.BRepCheck.BRepCheck_ListOfStatus">BRepCheck_ListOfStatus</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeResult">
+<em class="property">class </em><code class="descname">BRepCheck_DataMapNodeOfDataMapOfShapeResult</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_MapNode" title="OCC.TCollection.TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_MapNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>I</strong> (<em>Handle_BRepCheck_Result &amp;</em>) – </li>
+<li><strong>n</strong> (<em>TCollection_MapNodePtr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeResult.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeResult.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeResult.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeResult.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeResult.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeResult.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="OCC.BRepCheck.Handle_BRepCheck_Result">Handle_BRepCheck_Result</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeResult.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapNodeOfDataMapOfShapeResult.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus">
+<em class="property">class </em><code class="descname">BRepCheck_DataMapOfShapeListOfStatus</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMap" title="OCC.TCollection.TCollection_BasicMap"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMap</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – default value is 1</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>BRepCheck_DataMapOfShapeListOfStatus &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus" title="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus">BRepCheck_DataMapOfShapeListOfStatus</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Bind">
+<code class="descname">Bind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Bind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>I</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.ChangeFind">
+<code class="descname">ChangeFind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.ChangeFind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.BRepCheck_ListOfStatus" title="OCC.BRepCheck.BRepCheck_ListOfStatus">BRepCheck_ListOfStatus</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.ChangeFind1">
+<code class="descname">ChangeFind1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.ChangeFind1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Find">
+<code class="descname">Find</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Find" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.BRepCheck_ListOfStatus" title="OCC.BRepCheck.BRepCheck_ListOfStatus">BRepCheck_ListOfStatus</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Find1">
+<code class="descname">Find1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Find1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.IsBound">
+<code class="descname">IsBound</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.IsBound" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.ReSize">
+<code class="descname">ReSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.ReSize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>BRepCheck_DataMapOfShapeListOfStatus &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus" title="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus">BRepCheck_DataMapOfShapeListOfStatus</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.UnBind">
+<code class="descname">UnBind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.UnBind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeListOfStatus.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult">
+<em class="property">class </em><code class="descname">BRepCheck_DataMapOfShapeResult</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMap" title="OCC.TCollection.TCollection_BasicMap"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMap</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – default value is 1</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>BRepCheck_DataMapOfShapeResult &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult" title="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult">BRepCheck_DataMapOfShapeResult</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Bind">
+<code class="descname">Bind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Bind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>I</strong> (<em>Handle_BRepCheck_Result &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.ChangeFind">
+<code class="descname">ChangeFind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.ChangeFind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="OCC.BRepCheck.Handle_BRepCheck_Result">Handle_BRepCheck_Result</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.ChangeFind1">
+<code class="descname">ChangeFind1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.ChangeFind1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Find">
+<code class="descname">Find</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Find" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="OCC.BRepCheck.Handle_BRepCheck_Result">Handle_BRepCheck_Result</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Find1">
+<code class="descname">Find1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Find1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.IsBound">
+<code class="descname">IsBound</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.IsBound" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.ReSize">
+<code class="descname">ReSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.ReSize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>BRepCheck_DataMapOfShapeResult &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult" title="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult">BRepCheck_DataMapOfShapeResult</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.UnBind">
+<code class="descname">UnBind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.UnBind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_DataMapOfShapeResult.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_Edge">
+<em class="property">class </em><code class="descname">BRepCheck_Edge</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.BRepCheck_Result" title="OCC.BRepCheck.BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.BRepCheck_Result</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Edge.CheckPolygonOnTriangulation">
+<code class="descname">CheckPolygonOnTriangulation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Edge.CheckPolygonOnTriangulation" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks, if polygon on triangulation of heEdge is out of 3D-curve of this edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theEdge</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">BRepCheck_Status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Edge.GeometricControls">
+<code class="descname">GeometricControls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Edge.GeometricControls" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>B</strong> (<em>bool</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Edge.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Edge.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Edge.SetStatus">
+<code class="descname">SetStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Edge.SetStatus" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets status of Edge;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theStatus</strong> (<em>BRepCheck_Status</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Edge.Tolerance">
+<code class="descname">Tolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Edge.Tolerance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_Edge.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Edge.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_Face">
+<em class="property">class </em><code class="descname">BRepCheck_Face</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Face" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.BRepCheck_Result" title="OCC.BRepCheck.BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.BRepCheck_Result</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Face.ClassifyWires">
+<code class="descname">ClassifyWires</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Face.ClassifyWires" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Update</strong> (<em>bool</em>) – default value is Standard_False</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">BRepCheck_Status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Face.GeometricControls">
+<code class="descname">GeometricControls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Face.GeometricControls" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>B</strong> (<em>bool</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Face.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Face.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Face.IntersectWires">
+<code class="descname">IntersectWires</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Face.IntersectWires" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Update</strong> (<em>bool</em>) – default value is Standard_False</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">BRepCheck_Status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Face.IsUnorientable">
+<code class="descname">IsUnorientable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Face.IsUnorientable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Face.OrientationOfWires">
+<code class="descname">OrientationOfWires</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Face.OrientationOfWires" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Update</strong> (<em>bool</em>) – default value is Standard_False</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">BRepCheck_Status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Face.SetStatus">
+<code class="descname">SetStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Face.SetStatus" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets status of Face;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theStatus</strong> (<em>BRepCheck_Status</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Face.SetUnorientable">
+<code class="descname">SetUnorientable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Face.SetUnorientable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_Face.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Face.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus">
+<em class="property">class </em><code class="descname">BRepCheck_ListIteratorOfListOfStatus</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>L</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>L</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus.More">
+<code class="descname">More</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus.More" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus.Next">
+<code class="descname">Next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus.Next" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepCheck_Status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListIteratorOfListOfStatus.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_ListNodeOfListOfStatus">
+<em class="property">class </em><code class="descname">BRepCheck_ListNodeOfListOfStatus</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListNodeOfListOfStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_MapNode" title="OCC.TCollection.TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_MapNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>BRepCheck_Status &amp;</em>) – </li>
+<li><strong>n</strong> (<em>TCollection_MapNodePtr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListNodeOfListOfStatus.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListNodeOfListOfStatus.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListNodeOfListOfStatus.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListNodeOfListOfStatus.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepCheck_Status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_ListNodeOfListOfStatus.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListNodeOfListOfStatus.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus">
+<em class="property">class </em><code class="descname">BRepCheck_ListOfStatus</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.Append">
+<code class="descname">Append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.Append" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>BRepCheck_Status &amp;</em>) – </li>
+<li><strong>I</strong> – </li>
+<li><strong>theIt</strong> (<em>BRepCheck_ListIteratorOfListOfStatus &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.Extent">
+<code class="descname">Extent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.Extent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.First">
+<code class="descname">First</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.First" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepCheck_Status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.InsertAfter">
+<code class="descname">InsertAfter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.InsertAfter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>BRepCheck_Status &amp;</em>) – </li>
+<li><strong>It</strong> (<em>BRepCheck_ListIteratorOfListOfStatus &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </li>
+<li><strong>It</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.InsertBefore">
+<code class="descname">InsertBefore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.InsertBefore" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>BRepCheck_Status &amp;</em>) – </li>
+<li><strong>It</strong> (<em>BRepCheck_ListIteratorOfListOfStatus &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </li>
+<li><strong>It</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.IsEmpty">
+<code class="descname">IsEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.Last">
+<code class="descname">Last</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.Last" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepCheck_Status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.Prepend">
+<code class="descname">Prepend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.Prepend" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>BRepCheck_Status &amp;</em>) – </li>
+<li><strong>I</strong> – </li>
+<li><strong>theIt</strong> (<em>BRepCheck_ListIteratorOfListOfStatus &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.Remove">
+<code class="descname">Remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>It</strong> (<em>BRepCheck_ListIteratorOfListOfStatus &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.RemoveFirst">
+<code class="descname">RemoveFirst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.RemoveFirst" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_ListOfStatus.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_ListOfStatus.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_Result">
+<em class="property">class </em><code class="descname">BRepCheck_Result</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.MMgt_TShared" title="OCC.MMgt.MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.MMgt_TShared</span></code></a></p>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.Blind">
+<code class="descname">Blind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.Blind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.ContextualShape">
+<code class="descname">ContextualShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.ContextualShape" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.InContext">
+<code class="descname">InContext</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.InContext" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ContextShape</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.InitContextIterator">
+<code class="descname">InitContextIterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.InitContextIterator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.IsBlind">
+<code class="descname">IsBlind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.IsBlind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.IsMinimum">
+<code class="descname">IsMinimum</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.IsMinimum" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.Minimum">
+<code class="descname">Minimum</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.Minimum" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.MoreShapeInContext">
+<code class="descname">MoreShapeInContext</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.MoreShapeInContext" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.NextShapeInContext">
+<code class="descname">NextShapeInContext</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.NextShapeInContext" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.SetFailStatus">
+<code class="descname">SetFailStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.SetFailStatus" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.Status">
+<code class="descname">Status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.Status" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.BRepCheck_ListOfStatus" title="OCC.BRepCheck.BRepCheck_ListOfStatus">BRepCheck_ListOfStatus</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Result.StatusOnShape">
+<code class="descname">StatusOnShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.StatusOnShape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>If not already done, performs the InContext control and returns the list of status.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.BRepCheck_ListOfStatus" title="OCC.BRepCheck.BRepCheck_ListOfStatus">BRepCheck_ListOfStatus</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.BRepCheck.BRepCheck_ListOfStatus" title="OCC.BRepCheck.BRepCheck_ListOfStatus">BRepCheck_ListOfStatus</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_Result.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Result.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_Shell">
+<em class="property">class </em><code class="descname">BRepCheck_Shell</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Shell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.BRepCheck_Result" title="OCC.BRepCheck.BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.BRepCheck_Result</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>TopoDS_Shell &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Shell.Closed">
+<code class="descname">Closed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Shell.Closed" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks if the oriented faces of the shell give a closed shell. If the wire is closed, returns BRepCheck_NoError.If &lt;Update&gt; is set to Standard_True, registers the status in the list.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Update</strong> (<em>bool</em>) – default value is Standard_False</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">BRepCheck_Status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Shell.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Shell.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Shell.IsUnorientable">
+<code class="descname">IsUnorientable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Shell.IsUnorientable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Shell.NbConnectedSet">
+<code class="descname">NbConnectedSet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Shell.NbConnectedSet" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theSets</strong> (<em>TopTools_ListOfShape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Shell.Orientation">
+<code class="descname">Orientation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Shell.Orientation" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks if the oriented faces of the shell are correctly oriented. An internal call is made to the method Closed. If &lt;Update&gt; is set to Standard_True, registers the status in the list.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Update</strong> (<em>bool</em>) – default value is Standard_False</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">BRepCheck_Status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Shell.SetUnorientable">
+<code class="descname">SetUnorientable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Shell.SetUnorientable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_Shell.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Shell.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_Solid">
+<em class="property">class </em><code class="descname">BRepCheck_Solid</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Solid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.BRepCheck_Result" title="OCC.BRepCheck.BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.BRepCheck_Result</span></code></a></p>
+<ul class="simple">
+<li>Constructor &lt;theS&gt; is the solid to check</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theS</strong> (<em>TopoDS_Solid &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Solid.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Solid.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_Solid.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Solid.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_Vertex">
+<em class="property">class </em><code class="descname">BRepCheck_Vertex</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Vertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.BRepCheck_Result" title="OCC.BRepCheck.BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.BRepCheck_Result</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Vertex.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Vertex.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Vertex.Tolerance">
+<code class="descname">Tolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Vertex.Tolerance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_Vertex.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Vertex.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.BRepCheck_Wire">
+<em class="property">class </em><code class="descname">BRepCheck_Wire</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Wire" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.BRepCheck_Result" title="OCC.BRepCheck.BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.BRepCheck_Result</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Wire.Closed">
+<code class="descname">Closed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Wire.Closed" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks if the oriented edges of the wire give a closed wire. If the wire is closed, returns BRepCheck_NoError. Warning : if the first and last edge are infinite, the wire will be considered as a closed one. If &lt;Update&gt; is set to Standard_True, registers the status in the list. May return (and registers): <a href="#id1"><span class="problematic" id="id2">**</span></a>BRepCheck_NotConnected, if wire is not topologically closed <a href="#id3"><span class="problematic" id="id4">**</span></a>BRepCheck_RedundantEdge, if an edge is in wire more than 3 times or in case of 2 occurences if not with FORWARD and REVERSED orientation. <a href="#id5"><span class="problematic" id="id6">**</span></a>BRepCheck_NoError</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Update</strong> (<em>bool</em>) – default value is Standard_False</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">BRepCheck_Status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Wire.Closed2d">
+<code class="descname">Closed2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Wire.Closed2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks if edges of the wire give a wire closed in 2d space. Returns BRepCheck_NoError, or BRepCheck_NotClosed If &lt;Update&gt; is set to Standard_True, registers the status in the list.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>Update</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">BRepCheck_Status</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Wire.GeometricControls">
+<code class="descname">GeometricControls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Wire.GeometricControls" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>report SelfIntersect() check would be (is) done</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>set SelfIntersect() to be checked</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>B</strong> (<em>bool</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Wire.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Wire.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Wire.Orientation">
+<code class="descname">Orientation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Wire.Orientation" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks if the oriented edges of the wire are correctly oriented. An internal call is made to the method Closed. If no face exists, call the method with a null face (TopoDS_face()). If &lt;Update&gt; is set to Standard_True, registers the status in the list. May return (and registers): BRepCheck_InvalidDegeneratedFlag, BRepCheck_BadOrientationOfSubshape, BRepCheck_NotClosed, BRepCheck_NoError</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>Update</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">BRepCheck_Status</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Wire.SelfIntersect">
+<code class="descname">SelfIntersect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Wire.SelfIntersect" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks if the wire intersect itself on the face &lt;F&gt;. &lt;E1&gt; and &lt;E2&gt; are the first intersecting edges found. &lt;E2&gt; may be a null edge when a self-intersecting edge is found.If &lt;Update&gt; is set to Standard_True, registers the status in the list. May return (and register): BRepCheck_EmptyWire, BRepCheck_SelfIntersectingWire, BRepCheck_NoCurveOnSurface, BRepCheck_NoError</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>E1</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E2</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>Update</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">BRepCheck_Status</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.BRepCheck_Wire.SetStatus">
+<code class="descname">SetStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Wire.SetStatus" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets status of Wire;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theStatus</strong> (<em>BRepCheck_Status</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.BRepCheck_Wire.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.BRepCheck_Wire.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus">
+<em class="property">class </em><code class="descname">Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_MapNode" title="OCC.TCollection.Handle_TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_MapNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult">
+<em class="property">class </em><code class="descname">Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_MapNode" title="OCC.TCollection.Handle_TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_MapNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Edge">
+<em class="property">class </em><code class="descname">Handle_BRepCheck_Edge</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="OCC.BRepCheck.Handle_BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.Handle_BRepCheck_Result</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Edge.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Edge.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Edge.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Edge.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Edge.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Edge.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Edge.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Edge.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Edge.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Edge.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Face">
+<em class="property">class </em><code class="descname">Handle_BRepCheck_Face</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Face" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="OCC.BRepCheck.Handle_BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.Handle_BRepCheck_Result</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Face.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Face.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Face.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Face.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Face.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Face.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Face.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Face.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Face.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Face.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus">
+<em class="property">class </em><code class="descname">Handle_BRepCheck_ListNodeOfListOfStatus</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_MapNode" title="OCC.TCollection.Handle_TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_MapNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_ListNodeOfListOfStatus.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Result">
+<em class="property">class </em><code class="descname">Handle_BRepCheck_Result</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.Handle_MMgt_TShared" title="OCC.MMgt.Handle_MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.Handle_MMgt_TShared</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Result.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Result.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Result.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Result.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Result.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Result.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Result.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Result.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Result.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Result.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Shell">
+<em class="property">class </em><code class="descname">Handle_BRepCheck_Shell</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Shell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="OCC.BRepCheck.Handle_BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.Handle_BRepCheck_Result</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Shell.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Shell.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Shell.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Shell.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Shell.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Shell.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Shell.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Shell.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Shell.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Shell.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Solid">
+<em class="property">class </em><code class="descname">Handle_BRepCheck_Solid</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Solid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="OCC.BRepCheck.Handle_BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.Handle_BRepCheck_Result</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Solid.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Solid.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Solid.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Solid.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Solid.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Solid.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Solid.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Solid.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Solid.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Solid.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Vertex">
+<em class="property">class </em><code class="descname">Handle_BRepCheck_Vertex</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Vertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="OCC.BRepCheck.Handle_BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.Handle_BRepCheck_Result</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Vertex.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Vertex.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Vertex.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Vertex.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Vertex.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Vertex.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Vertex.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Vertex.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Vertex.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Vertex.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Wire">
+<em class="property">class </em><code class="descname">Handle_BRepCheck_Wire</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Wire" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepCheck.Handle_BRepCheck_Result" title="OCC.BRepCheck.Handle_BRepCheck_Result"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepCheck.Handle_BRepCheck_Result</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Wire.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Wire.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Wire.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Wire.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Wire.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Wire.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Wire.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Wire.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.Handle_BRepCheck_Wire.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.Handle_BRepCheck_Wire.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.BRepCheck.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepCheck.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepCheck.brepcheck">
+<em class="property">class </em><code class="descname">brepcheck</code><a class="headerlink" href="#OCC.BRepCheck.brepcheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.brepcheck.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.brepcheck.Add" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>List</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </li>
+<li><strong>Stat</strong> (<em>BRepCheck_Status</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.brepcheck.Print">
+<em class="property">static </em><code class="descname">Print</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.brepcheck.Print" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Stat</strong> (<em>BRepCheck_Status</em>) – </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.BRepCheck.brepcheck.SelfIntersection">
+<em class="property">static </em><code class="descname">SelfIntersection</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.brepcheck.SelfIntersection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>E1</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E2</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepCheck.brepcheck.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepCheck.brepcheck.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepCheck.brepcheck_Add">
+<code class="descname">brepcheck_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.brepcheck_Add" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>List</strong> (<em>BRepCheck_ListOfStatus &amp;</em>) – </li>
+<li><strong>Stat</strong> (<em>BRepCheck_Status</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepCheck.brepcheck_Print">
+<code class="descname">brepcheck_Print</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.brepcheck_Print" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Stat</strong> (<em>BRepCheck_Status</em>) – </li>
+<li><strong>OS</strong> (<em>Standard_OStream &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepCheck.brepcheck_SelfIntersection">
+<code class="descname">brepcheck_SelfIntersection</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.brepcheck_SelfIntersection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>W</strong> (<em>TopoDS_Wire &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>E1</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E2</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepCheck.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepCheck.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

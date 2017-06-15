@@ -1,0 +1,933 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.GeomAdaptor module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.GeomAdaptor module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.GeomAdaptor module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.GeomAdaptor.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-geomadaptor-module">
+<h1>OCC.GeomAdaptor module<a class="headerlink" href="#occ-geomadaptor-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.GeomAdaptor"></span><dl class="class">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_Curve">
+<em class="property">class </em><code class="descname">GeomAdaptor_Curve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_Curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Adaptor3d.html#OCC.Adaptor3d.Adaptor3d_Curve" title="OCC.Adaptor3d.Adaptor3d_Curve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Adaptor3d.Adaptor3d_Curve</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>ConstructionError is raised if Ufirst&gt;Ulast</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>UFirst</strong> (<em>float</em>) – </li>
+<li><strong>ULast</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_Curve.Curve">
+<code class="descname">Curve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_Curve.Curve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Provides a curve inherited from Hcurve from Adaptor. This is inherited to provide easy to use constructors.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Curve" title="OCC.Geom.Handle_Geom_Curve">Handle_Geom_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_Curve.Load">
+<code class="descname">Load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_Curve.Load" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>ConstructionError is raised if Ufirst&gt;Ulast</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>UFirst</strong> (<em>float</em>) – </li>
+<li><strong>ULast</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_Curve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_Curve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_GHCurve">
+<em class="property">class </em><code class="descname">GeomAdaptor_GHCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_GHCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Adaptor3d.html#OCC.Adaptor3d.Adaptor3d_HCurve" title="OCC.Adaptor3d.Adaptor3d_HCurve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Adaptor3d.Adaptor3d_HCurve</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>GeomAdaptor_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_GHCurve.ChangeCurve">
+<code class="descname">ChangeCurve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_GHCurve.ChangeCurve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.GeomAdaptor.GeomAdaptor_Curve" title="OCC.GeomAdaptor.GeomAdaptor_Curve">GeomAdaptor_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_GHCurve.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_GHCurve.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_GHCurve.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_GHCurve.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>GeomAdaptor_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_GHCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_GHCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_GHSurface">
+<em class="property">class </em><code class="descname">GeomAdaptor_GHSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_GHSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Adaptor3d.html#OCC.Adaptor3d.Adaptor3d_HSurface" title="OCC.Adaptor3d.Adaptor3d_HSurface"><code class="xref py py-class docutils literal"><span class="pre">OCC.Adaptor3d.Adaptor3d_HSurface</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>GeomAdaptor_Surface &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_GHSurface.ChangeSurface">
+<code class="descname">ChangeSurface</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_GHSurface.ChangeSurface" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.GeomAdaptor.GeomAdaptor_Surface" title="OCC.GeomAdaptor.GeomAdaptor_Surface">GeomAdaptor_Surface</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_GHSurface.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_GHSurface.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_GHSurface.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_GHSurface.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>GeomAdaptor_Surface &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_GHSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_GHSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_HCurve">
+<em class="property">class </em><code class="descname">GeomAdaptor_HCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_HCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GeomAdaptor.GeomAdaptor_GHCurve" title="OCC.GeomAdaptor.GeomAdaptor_GHCurve"><code class="xref py py-class docutils literal"><span class="pre">OCC.GeomAdaptor.GeomAdaptor_GHCurve</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>AS</strong> (<em>GeomAdaptor_Curve &amp;</em>) – </li>
+<li><strong>S</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>ConstructionError is raised if UFirst&gt;ULast or VFirst&gt;VLast</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Curve &amp;</em>) – </li>
+<li><strong>UFirst</strong> (<em>float</em>) – </li>
+<li><strong>ULast</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_HCurve.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_HCurve.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_HCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_HCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_HSurface">
+<em class="property">class </em><code class="descname">GeomAdaptor_HSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_HSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GeomAdaptor.GeomAdaptor_GHSurface" title="OCC.GeomAdaptor.GeomAdaptor_GHSurface"><code class="xref py py-class docutils literal"><span class="pre">OCC.GeomAdaptor.GeomAdaptor_GHSurface</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>AS</strong> (<em>GeomAdaptor_Surface &amp;</em>) – </li>
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>ConstructionError is raised if UFirst&gt;ULast or VFirst&gt;VLast</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>UFirst</strong> (<em>float</em>) – </li>
+<li><strong>ULast</strong> (<em>float</em>) – </li>
+<li><strong>VFirst</strong> (<em>float</em>) – </li>
+<li><strong>VLast</strong> (<em>float</em>) – </li>
+<li><strong>TolU</strong> (<em>float</em>) – default value is 0.0</li>
+<li><strong>TolV</strong> (<em>float</em>) – default value is 0.0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_HSurface.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_HSurface.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_HSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_HSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_Surface">
+<em class="property">class </em><code class="descname">GeomAdaptor_Surface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_Surface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Adaptor3d.html#OCC.Adaptor3d.Adaptor3d_Surface" title="OCC.Adaptor3d.Adaptor3d_Surface"><code class="xref py py-class docutils literal"><span class="pre">OCC.Adaptor3d.Adaptor3d_Surface</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>ConstructionError is raised if UFirst&gt;ULast or VFirst&gt;VLast</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>UFirst</strong> (<em>float</em>) – </li>
+<li><strong>ULast</strong> (<em>float</em>) – </li>
+<li><strong>VFirst</strong> (<em>float</em>) – </li>
+<li><strong>VLast</strong> (<em>float</em>) – </li>
+<li><strong>TolU</strong> (<em>float</em>) – default value is 0.0</li>
+<li><strong>TolV</strong> (<em>float</em>) – default value is 0.0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_Surface.Load">
+<code class="descname">Load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_Surface.Load" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>ConstructionError is raised if UFirst&gt;ULast or VFirst&gt;VLast</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Handle_Geom_Surface &amp;</em>) – </li>
+<li><strong>UFirst</strong> (<em>float</em>) – </li>
+<li><strong>ULast</strong> (<em>float</em>) – </li>
+<li><strong>VFirst</strong> (<em>float</em>) – </li>
+<li><strong>VLast</strong> (<em>float</em>) – </li>
+<li><strong>TolU</strong> (<em>float</em>) – default value is 0.0</li>
+<li><strong>TolV</strong> (<em>float</em>) – default value is 0.0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_Surface.Surface">
+<code class="descname">Surface</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_Surface.Surface" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Surface" title="OCC.Geom.Handle_Geom_Surface">Handle_Geom_Surface</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.GeomAdaptor_Surface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.GeomAdaptor_Surface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve">
+<em class="property">class </em><code class="descname">Handle_GeomAdaptor_GHCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Adaptor3d.html#OCC.Adaptor3d.Handle_Adaptor3d_HCurve" title="OCC.Adaptor3d.Handle_Adaptor3d_HCurve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Adaptor3d.Handle_Adaptor3d_HCurve</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface">
+<em class="property">class </em><code class="descname">Handle_GeomAdaptor_GHSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Adaptor3d.html#OCC.Adaptor3d.Handle_Adaptor3d_HSurface" title="OCC.Adaptor3d.Handle_Adaptor3d_HSurface"><code class="xref py py-class docutils literal"><span class="pre">OCC.Adaptor3d.Handle_Adaptor3d_HSurface</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve">
+<em class="property">class </em><code class="descname">Handle_GeomAdaptor_HCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve" title="OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve"><code class="xref py py-class docutils literal"><span class="pre">OCC.GeomAdaptor.Handle_GeomAdaptor_GHCurve</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface">
+<em class="property">class </em><code class="descname">Handle_GeomAdaptor_HSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface" title="OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface"><code class="xref py py-class docutils literal"><span class="pre">OCC.GeomAdaptor.Handle_GeomAdaptor_GHSurface</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.Handle_GeomAdaptor_HSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAdaptor.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.GeomAdaptor.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.GeomAdaptor.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.GeomAdaptor.geomadaptor">
+<em class="property">class </em><code class="descname">geomadaptor</code><a class="headerlink" href="#OCC.GeomAdaptor.geomadaptor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.GeomAdaptor.geomadaptor.MakeCurve">
+<em class="property">static </em><code class="descname">MakeCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.geomadaptor.MakeCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Inherited from GHCurve. Provides a curve handled by reference. Build a Geom_Curve using the informations from the Curve from Adaptor3d</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Curve" title="OCC.Geom.Handle_Geom_Curve">Handle_Geom_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.GeomAdaptor.geomadaptor.MakeSurface">
+<em class="property">static </em><code class="descname">MakeSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.geomadaptor.MakeSurface" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Build a Geom_Surface using the informations from the Surface from Adaptor3d &#64;param theS - Surface adaptor to convert. &#64;param theTrimFlag - True if perform trim surface values by adaptor and false otherwise.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Adaptor3d_Surface &amp;</em>) – </li>
+<li><strong>theTrimFlag</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Surface" title="OCC.Geom.Handle_Geom_Surface">Handle_Geom_Surface</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.GeomAdaptor.geomadaptor.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.GeomAdaptor.geomadaptor.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomAdaptor.geomadaptor_MakeCurve">
+<code class="descname">geomadaptor_MakeCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.geomadaptor_MakeCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Inherited from GHCurve. Provides a curve handled by reference. Build a Geom_Curve using the informations from the Curve from Adaptor3d</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>C</strong> (<em>Adaptor3d_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Curve" title="OCC.Geom.Handle_Geom_Curve">Handle_Geom_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomAdaptor.geomadaptor_MakeSurface">
+<code class="descname">geomadaptor_MakeSurface</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.geomadaptor_MakeSurface" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Build a Geom_Surface using the informations from the Surface from Adaptor3d &#64;param theS - Surface adaptor to convert. &#64;param theTrimFlag - True if perform trim surface values by adaptor and false otherwise.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>Adaptor3d_Surface &amp;</em>) – </li>
+<li><strong>theTrimFlag</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom.html#OCC.Geom.Handle_Geom_Surface" title="OCC.Geom.Handle_Geom_Surface">Handle_Geom_Surface</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.GeomAdaptor.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.GeomAdaptor.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

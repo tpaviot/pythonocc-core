@@ -1,0 +1,2830 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.FEmTool module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.FEmTool module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.FEmTool module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.FEmTool.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-femtool-module">
+<h1>OCC.FEmTool module<a class="headerlink" href="#occ-femtool-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.FEmTool"></span><dl class="class">
+<dt id="OCC.FEmTool.FEmTool_Assembly">
+<em class="property">class </em><code class="descname">FEmTool_Assembly</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dependence</strong> (<em>TColStd_Array2OfInteger &amp;</em>) – </li>
+<li><strong>Table</strong> (<em>Handle_FEmTool_HAssemblyTable &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Assembly.AddConstraint">
+<code class="descname">AddConstraint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.AddConstraint" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IndexofConstraint</strong> (<em>int</em>) – </li>
+<li><strong>Element</strong> (<em>int</em>) – </li>
+<li><strong>Dimension</strong> (<em>int</em>) – </li>
+<li><strong>LinearForm</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Value</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Assembly.AddMatrix">
+<code class="descname">AddMatrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.AddMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Add an elementary Matrix in the assembly Matrix if Dependence(Dimension1,Dimension2) is False</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Element</strong> (<em>int</em>) – </li>
+<li><strong>Dimension1</strong> (<em>int</em>) – </li>
+<li><strong>Dimension2</strong> (<em>int</em>) – </li>
+<li><strong>Mat</strong> (<em>math_Matrix &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Assembly.AddVector">
+<code class="descname">AddVector</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.AddVector" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Add an elementary Vector in the assembly Vector (second member)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Element</strong> (<em>int</em>) – </li>
+<li><strong>Dimension</strong> (<em>int</em>) – </li>
+<li><strong>Vec</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Assembly.GetAssemblyTable">
+<code class="descname">GetAssemblyTable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.GetAssemblyTable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>AssTable</strong> (<em>Handle_FEmTool_HAssemblyTable &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Assembly.NbGlobVar">
+<code class="descname">NbGlobVar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.NbGlobVar" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Assembly.NullifyConstraint">
+<code class="descname">NullifyConstraint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.NullifyConstraint" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Nullify all Constraints.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Assembly.NullifyMatrix">
+<code class="descname">NullifyMatrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.NullifyMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Nullify all Matrix ‘s Coefficient</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Assembly.NullifyVector">
+<code class="descname">NullifyVector</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.NullifyVector" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Nullify all Coordinate of assembly Vector (second member)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Assembly.ResetConstraint">
+<code class="descname">ResetConstraint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.ResetConstraint" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Delete all Constraints.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Assembly.Solution">
+<code class="descname">Solution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.Solution" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Solution</strong> (<em>math_Vector &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Assembly.Solve">
+<code class="descname">Solve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.Solve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Solve the assembly system Returns Standard_False if the computation failed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_Assembly.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_Assembly.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable">
+<em class="property">class </em><code class="descname">FEmTool_AssemblyTable</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>R1</strong> (<em>int</em>) – </li>
+<li><strong>R2</strong> (<em>int</em>) – </li>
+<li><strong>C1</strong> (<em>int</em>) – </li>
+<li><strong>C2</strong> (<em>int</em>) – </li>
+<li><strong>Item</strong> (<em>Handle_TColStd_HArray1OfInteger &amp;</em>) – </li>
+<li><strong>R1</strong> – </li>
+<li><strong>R2</strong> – </li>
+<li><strong>C1</strong> – </li>
+<li><strong>C2</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>FEmTool_AssemblyTable &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.FEmTool.FEmTool_AssemblyTable" title="OCC.FEmTool.FEmTool_AssemblyTable">FEmTool_AssemblyTable</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.ChangeValue">
+<code class="descname">ChangeValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.ChangeValue" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Row</strong> (<em>int</em>) – </li>
+<li><strong>Col</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TColStd.html#OCC.TColStd.Handle_TColStd_HArray1OfInteger" title="OCC.TColStd.Handle_TColStd_HArray1OfInteger">Handle_TColStd_HArray1OfInteger</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.ColLength">
+<code class="descname">ColLength</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.ColLength" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.Destroy">
+<code class="descname">Destroy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.Destroy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>Handle_TColStd_HArray1OfInteger &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.LowerCol">
+<code class="descname">LowerCol</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.LowerCol" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.LowerRow">
+<code class="descname">LowerRow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.LowerRow" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.RowLength">
+<code class="descname">RowLength</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.RowLength" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>FEmTool_AssemblyTable &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.FEmTool.FEmTool_AssemblyTable" title="OCC.FEmTool.FEmTool_AssemblyTable">FEmTool_AssemblyTable</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.SetValue">
+<code class="descname">SetValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.SetValue" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Row</strong> (<em>int</em>) – </li>
+<li><strong>Col</strong> (<em>int</em>) – </li>
+<li><strong>Value</strong> (<em>Handle_TColStd_HArray1OfInteger &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.UpperCol">
+<code class="descname">UpperCol</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.UpperCol" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.UpperRow">
+<code class="descname">UpperRow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.UpperRow" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Row</strong> (<em>int</em>) – </li>
+<li><strong>Col</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TColStd.html#OCC.TColStd.Handle_TColStd_HArray1OfInteger" title="OCC.TColStd.Handle_TColStd_HArray1OfInteger">Handle_TColStd_HArray1OfInteger</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_AssemblyTable.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_AssemblyTable.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_Curve">
+<em class="property">class </em><code class="descname">FEmTool_Curve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.MMgt_TShared" title="OCC.MMgt.MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.MMgt_TShared</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dimension</strong> (<em>int</em>) – </li>
+<li><strong>NbElements</strong> (<em>int</em>) – </li>
+<li><strong>TheBase</strong> (<em>Handle_PLib_Base &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.Base">
+<code class="descname">Base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.Base" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.PLib.html#OCC.PLib.Handle_PLib_Base" title="OCC.PLib.Handle_PLib_Base">Handle_PLib_Base</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.D0">
+<code class="descname">D0</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.D0" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<em>float</em>) – </li>
+<li><strong>Pnt</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.D1">
+<code class="descname">D1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.D1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<em>float</em>) – </li>
+<li><strong>Vec</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.D2">
+<code class="descname">D2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.D2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<em>float</em>) – </li>
+<li><strong>Vec</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.Degree">
+<code class="descname">Degree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.Degree" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IndexOfElement</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.Dimension">
+<code class="descname">Dimension</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.Dimension" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.GetElement">
+<code class="descname">GetElement</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.GetElement" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IndexOfElement</strong> (<em>int</em>) – </li>
+<li><strong>Coeffs</strong> (<em>TColStd_Array2OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.GetPolynom">
+<code class="descname">GetPolynom</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.GetPolynom" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns coefficients of all elements in canonical base.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Coeffs</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.Knots">
+<code class="descname">Knots</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.Knots" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TColStd.html#OCC.TColStd.TColStd_Array1OfReal" title="OCC.TColStd.TColStd_Array1OfReal">TColStd_Array1OfReal</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.Length">
+<code class="descname">Length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.Length" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>FirstU</strong> (<em>float</em>) – </li>
+<li><strong>LastU</strong> (<em>float</em>) – </li>
+<li><strong>Length</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.NbElements">
+<code class="descname">NbElements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.NbElements" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.ReduceDegree">
+<code class="descname">ReduceDegree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.ReduceDegree" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IndexOfElement</strong> (<em>int</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+<li><strong>NewDegree</strong> (<em>int &amp;</em>) – </li>
+<li><strong>MaxError</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.SetDegree">
+<code class="descname">SetDegree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.SetDegree" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IndexOfElement</strong> (<em>int</em>) – </li>
+<li><strong>Degree</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_Curve.SetElement">
+<code class="descname">SetElement</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.SetElement" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IndexOfElement</strong> (<em>int</em>) – </li>
+<li><strong>Coeffs</strong> (<em>TColStd_Array2OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_Curve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_Curve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_ElementaryCriterion">
+<em class="property">class </em><code class="descname">FEmTool_ElementaryCriterion</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ElementaryCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.MMgt_TShared" title="OCC.MMgt.MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.MMgt_TShared</span></code></a></p>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ElementaryCriterion.DependenceTable">
+<code class="descname">DependenceTable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ElementaryCriterion.DependenceTable" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>To know if two dimension are independent.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TColStd.html#OCC.TColStd.Handle_TColStd_HArray2OfInteger" title="OCC.TColStd.Handle_TColStd_HArray2OfInteger">Handle_TColStd_HArray2OfInteger</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ElementaryCriterion.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ElementaryCriterion.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ElementaryCriterion.Gradient">
+<code class="descname">Gradient</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ElementaryCriterion.Gradient" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>To Compute the coefficients in the dimension &lt;dim&gt; of the J(E)’s Gradient where E is the current Element</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dim</strong> (<em>int</em>) – </li>
+<li><strong>G</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ElementaryCriterion.Hessian">
+<code class="descname">Hessian</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ElementaryCriterion.Hessian" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>To Compute J(E) the coefficients of Hessian matrix of J(E) wich are crossed derivatives in dimensions &lt;Dim1&gt; and &lt;Dim2&gt;. If DependenceTable(Dimension1,Dimension2) is False</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Dim1</strong> (<em>int</em>) – </li>
+<li><strong>Dim2</strong> (<em>int</em>) – </li>
+<li><strong>H</strong> (<em>math_Matrix &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ElementaryCriterion.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ElementaryCriterion.Set" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Set the coefficient of the Element (the Curve)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Coeff</strong> (<em>Handle_TColStd_HArray2OfReal &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Set the definition interval of the Element</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>FirstKnot</strong> (<em>float</em>) – </li>
+<li><strong>LastKnot</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ElementaryCriterion.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ElementaryCriterion.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>To Compute J(E) where E is the current Element</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_ElementaryCriterion.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_ElementaryCriterion.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_ElementsOfRefMatrix">
+<em class="property">class </em><code class="descname">FEmTool_ElementsOfRefMatrix</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ElementsOfRefMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_FunctionSet" title="OCC.math.math_FunctionSet"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_FunctionSet</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TheBase</strong> (<em>Handle_PLib_Base &amp;</em>) – </li>
+<li><strong>DerOrder</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_ElementsOfRefMatrix.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_ElementsOfRefMatrix.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable">
+<em class="property">class </em><code class="descname">FEmTool_HAssemblyTable</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.MMgt_TShared" title="OCC.MMgt.MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.MMgt_TShared</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>R1</strong> (<em>int</em>) – </li>
+<li><strong>R2</strong> (<em>int</em>) – </li>
+<li><strong>C1</strong> (<em>int</em>) – </li>
+<li><strong>C2</strong> (<em>int</em>) – </li>
+<li><strong>R1</strong> – </li>
+<li><strong>R2</strong> – </li>
+<li><strong>C1</strong> – </li>
+<li><strong>C2</strong> – </li>
+<li><strong>V</strong> (<em>Handle_TColStd_HArray1OfInteger &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.Array2">
+<code class="descname">Array2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.Array2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.FEmTool.FEmTool_AssemblyTable" title="OCC.FEmTool.FEmTool_AssemblyTable">FEmTool_AssemblyTable</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.ChangeArray2">
+<code class="descname">ChangeArray2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.ChangeArray2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.FEmTool.FEmTool_AssemblyTable" title="OCC.FEmTool.FEmTool_AssemblyTable">FEmTool_AssemblyTable</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.ChangeValue">
+<code class="descname">ChangeValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.ChangeValue" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Row</strong> (<em>int</em>) – </li>
+<li><strong>Col</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TColStd.html#OCC.TColStd.Handle_TColStd_HArray1OfInteger" title="OCC.TColStd.Handle_TColStd_HArray1OfInteger">Handle_TColStd_HArray1OfInteger</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.ColLength">
+<code class="descname">ColLength</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.ColLength" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>Handle_TColStd_HArray1OfInteger &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.LowerCol">
+<code class="descname">LowerCol</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.LowerCol" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.LowerRow">
+<code class="descname">LowerRow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.LowerRow" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.RowLength">
+<code class="descname">RowLength</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.RowLength" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.SetValue">
+<code class="descname">SetValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.SetValue" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Row</strong> (<em>int</em>) – </li>
+<li><strong>Col</strong> (<em>int</em>) – </li>
+<li><strong>Value</strong> (<em>Handle_TColStd_HArray1OfInteger &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.UpperCol">
+<code class="descname">UpperCol</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.UpperCol" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.UpperRow">
+<code class="descname">UpperRow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.UpperRow" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Row</strong> (<em>int</em>) – </li>
+<li><strong>Col</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TColStd.html#OCC.TColStd.Handle_TColStd_HArray1OfInteger" title="OCC.TColStd.Handle_TColStd_HArray1OfInteger">Handle_TColStd_HArray1OfInteger</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_HAssemblyTable.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_HAssemblyTable.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_LinearFlexion">
+<em class="property">class </em><code class="descname">FEmTool_LinearFlexion</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_LinearFlexion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FEmTool.FEmTool_ElementaryCriterion" title="OCC.FEmTool.FEmTool_ElementaryCriterion"><code class="xref py py-class docutils literal"><span class="pre">OCC.FEmTool.FEmTool_ElementaryCriterion</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>WorkDegree</strong> (<em>int</em>) – </li>
+<li><strong>ConstraintOrder</strong> (<em>GeomAbs_Shape</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_LinearFlexion.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_LinearFlexion.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_LinearFlexion.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_LinearFlexion.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_LinearJerk">
+<em class="property">class </em><code class="descname">FEmTool_LinearJerk</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_LinearJerk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FEmTool.FEmTool_ElementaryCriterion" title="OCC.FEmTool.FEmTool_ElementaryCriterion"><code class="xref py py-class docutils literal"><span class="pre">OCC.FEmTool.FEmTool_ElementaryCriterion</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>WorkDegree</strong> (<em>int</em>) – </li>
+<li><strong>ConstraintOrder</strong> (<em>GeomAbs_Shape</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_LinearJerk.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_LinearJerk.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_LinearJerk.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_LinearJerk.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_LinearTension">
+<em class="property">class </em><code class="descname">FEmTool_LinearTension</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_LinearTension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FEmTool.FEmTool_ElementaryCriterion" title="OCC.FEmTool.FEmTool_ElementaryCriterion"><code class="xref py py-class docutils literal"><span class="pre">OCC.FEmTool.FEmTool_ElementaryCriterion</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>WorkDegree</strong> (<em>int</em>) – </li>
+<li><strong>ConstraintOrder</strong> (<em>GeomAbs_Shape</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_LinearTension.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_LinearTension.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_LinearTension.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_LinearTension.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors">
+<em class="property">class </em><code class="descname">FEmTool_ListIteratorOfListOfVectors</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>L</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>L</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors.More">
+<code class="descname">More</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors.More" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors.Next">
+<code class="descname">Next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors.Next" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TColStd.html#OCC.TColStd.Handle_TColStd_HArray1OfReal" title="OCC.TColStd.Handle_TColStd_HArray1OfReal">Handle_TColStd_HArray1OfReal</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListIteratorOfListOfVectors.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_ListNodeOfListOfVectors">
+<em class="property">class </em><code class="descname">FEmTool_ListNodeOfListOfVectors</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListNodeOfListOfVectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_MapNode" title="OCC.TCollection.TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_MapNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>Handle_TColStd_HArray1OfReal &amp;</em>) – </li>
+<li><strong>n</strong> (<em>TCollection_MapNodePtr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListNodeOfListOfVectors.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListNodeOfListOfVectors.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListNodeOfListOfVectors.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListNodeOfListOfVectors.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TColStd.html#OCC.TColStd.Handle_TColStd_HArray1OfReal" title="OCC.TColStd.Handle_TColStd_HArray1OfReal">Handle_TColStd_HArray1OfReal</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_ListNodeOfListOfVectors.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListNodeOfListOfVectors.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors">
+<em class="property">class </em><code class="descname">FEmTool_ListOfVectors</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.Append">
+<code class="descname">Append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.Append" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>Handle_TColStd_HArray1OfReal &amp;</em>) – </li>
+<li><strong>I</strong> – </li>
+<li><strong>theIt</strong> (<em>FEmTool_ListIteratorOfListOfVectors &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.Extent">
+<code class="descname">Extent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.Extent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.First">
+<code class="descname">First</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.First" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TColStd.html#OCC.TColStd.Handle_TColStd_HArray1OfReal" title="OCC.TColStd.Handle_TColStd_HArray1OfReal">Handle_TColStd_HArray1OfReal</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.InsertAfter">
+<code class="descname">InsertAfter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.InsertAfter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>Handle_TColStd_HArray1OfReal &amp;</em>) – </li>
+<li><strong>It</strong> (<em>FEmTool_ListIteratorOfListOfVectors &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </li>
+<li><strong>It</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.InsertBefore">
+<code class="descname">InsertBefore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.InsertBefore" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>Handle_TColStd_HArray1OfReal &amp;</em>) – </li>
+<li><strong>It</strong> (<em>FEmTool_ListIteratorOfListOfVectors &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </li>
+<li><strong>It</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.IsEmpty">
+<code class="descname">IsEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.Last">
+<code class="descname">Last</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.Last" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TColStd.html#OCC.TColStd.Handle_TColStd_HArray1OfReal" title="OCC.TColStd.Handle_TColStd_HArray1OfReal">Handle_TColStd_HArray1OfReal</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.Prepend">
+<code class="descname">Prepend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.Prepend" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>Handle_TColStd_HArray1OfReal &amp;</em>) – </li>
+<li><strong>I</strong> – </li>
+<li><strong>theIt</strong> (<em>FEmTool_ListIteratorOfListOfVectors &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.Remove">
+<code class="descname">Remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>It</strong> (<em>FEmTool_ListIteratorOfListOfVectors &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.RemoveFirst">
+<code class="descname">RemoveFirst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.RemoveFirst" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_ListOfVectors.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_ListOfVectors.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_ProfileMatrix">
+<em class="property">class </em><code class="descname">FEmTool_ProfileMatrix</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ProfileMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FEmTool.FEmTool_SparseMatrix" title="OCC.FEmTool.FEmTool_SparseMatrix"><code class="xref py py-class docutils literal"><span class="pre">OCC.FEmTool.FEmTool_SparseMatrix</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>FirstIndexes</strong> (<em>TColStd_Array1OfInteger &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ProfileMatrix.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ProfileMatrix.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ProfileMatrix.IsInProfile">
+<code class="descname">IsInProfile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ProfileMatrix.IsInProfile" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>i</strong> (<em>int</em>) – </li>
+<li><strong>j</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ProfileMatrix.OutM">
+<code class="descname">OutM</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ProfileMatrix.OutM" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ProfileMatrix.OutS">
+<code class="descname">OutS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ProfileMatrix.OutS" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_ProfileMatrix.Solve">
+<code class="descname">Solve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_ProfileMatrix.Solve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Direct Solve of AX = B</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>B</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>X</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Iterative solve of AX = B</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>B</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Init</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>X</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Residual</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 1.0e-8</li>
+<li><strong>NbIterations</strong> (<em>int</em>) – default value is 50</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_ProfileMatrix.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_ProfileMatrix.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr">
+<em class="property">class </em><code class="descname">FEmTool_SeqOfLinConstr</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BaseSequence" title="OCC.TCollection.TCollection_BaseSequence"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BaseSequence</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>FEmTool_SeqOfLinConstr &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.Append">
+<code class="descname">Append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.Append" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </li>
+<li><strong>S</strong> (<em>FEmTool_SeqOfLinConstr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>FEmTool_SeqOfLinConstr &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr" title="OCC.FEmTool.FEmTool_SeqOfLinConstr">FEmTool_SeqOfLinConstr</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.ChangeValue">
+<code class="descname">ChangeValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.ChangeValue" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.FEmTool.FEmTool_ListOfVectors" title="OCC.FEmTool.FEmTool_ListOfVectors">FEmTool_ListOfVectors</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.First">
+<code class="descname">First</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.First" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.FEmTool.FEmTool_ListOfVectors" title="OCC.FEmTool.FEmTool_ListOfVectors">FEmTool_ListOfVectors</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.InsertAfter">
+<code class="descname">InsertAfter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.InsertAfter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>T</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </li>
+<li><strong>Index</strong> – </li>
+<li><strong>S</strong> (<em>FEmTool_SeqOfLinConstr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.InsertBefore">
+<code class="descname">InsertBefore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.InsertBefore" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>T</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </li>
+<li><strong>Index</strong> – </li>
+<li><strong>S</strong> (<em>FEmTool_SeqOfLinConstr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.Last">
+<code class="descname">Last</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.Last" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.FEmTool.FEmTool_ListOfVectors" title="OCC.FEmTool.FEmTool_ListOfVectors">FEmTool_ListOfVectors</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.Prepend">
+<code class="descname">Prepend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.Prepend" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </li>
+<li><strong>S</strong> (<em>FEmTool_SeqOfLinConstr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.Remove">
+<code class="descname">Remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>FromIndex</strong> (<em>int</em>) – </li>
+<li><strong>ToIndex</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>FEmTool_SeqOfLinConstr &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr" title="OCC.FEmTool.FEmTool_SeqOfLinConstr">FEmTool_SeqOfLinConstr</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.SetValue">
+<code class="descname">SetValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.SetValue" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>I</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.Split">
+<code class="descname">Split</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.Split" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>Sub</strong> (<em>FEmTool_SeqOfLinConstr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.FEmTool.FEmTool_ListOfVectors" title="OCC.FEmTool.FEmTool_ListOfVectors">FEmTool_ListOfVectors</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_SeqOfLinConstr.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_SeqOfLinConstr.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_SequenceNodeOfSeqOfLinConstr">
+<em class="property">class </em><code class="descname">FEmTool_SequenceNodeOfSeqOfLinConstr</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SequenceNodeOfSeqOfLinConstr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_SeqNode" title="OCC.TCollection.TCollection_SeqNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_SeqNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>FEmTool_ListOfVectors &amp;</em>) – </li>
+<li><strong>n</strong> (<em>TCollection_SeqNodePtr &amp;</em>) – </li>
+<li><strong>p</strong> (<em>TCollection_SeqNodePtr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SequenceNodeOfSeqOfLinConstr.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SequenceNodeOfSeqOfLinConstr.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SequenceNodeOfSeqOfLinConstr.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SequenceNodeOfSeqOfLinConstr.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.FEmTool.FEmTool_ListOfVectors" title="OCC.FEmTool.FEmTool_ListOfVectors">FEmTool_ListOfVectors</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_SequenceNodeOfSeqOfLinConstr.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_SequenceNodeOfSeqOfLinConstr.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.FEmTool_SparseMatrix">
+<em class="property">class </em><code class="descname">FEmTool_SparseMatrix</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SparseMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.MMgt_TShared" title="OCC.MMgt.MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.MMgt_TShared</span></code></a></p>
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SparseMatrix.ChangeValue">
+<code class="descname">ChangeValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SparseMatrix.ChangeValue" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>int</em>) – </li>
+<li><strong>J</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SparseMatrix.ColNumber">
+<code class="descname">ColNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SparseMatrix.ColNumber" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the column range of the matrix.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SparseMatrix.Decompose">
+<code class="descname">Decompose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SparseMatrix.Decompose" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>To make a Factorization of &lt;self&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SparseMatrix.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SparseMatrix.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SparseMatrix.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SparseMatrix.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Value</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SparseMatrix.Multiplied">
+<code class="descname">Multiplied</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SparseMatrix.Multiplied" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the product of a SparseMatrix by a vector. An exception is raised if the dimensions are different</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>MX</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SparseMatrix.Prepare">
+<code class="descname">Prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SparseMatrix.Prepare" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Make Preparation to iterative solve</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SparseMatrix.RowNumber">
+<code class="descname">RowNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SparseMatrix.RowNumber" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the row range of a matrix.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.FEmTool_SparseMatrix.Solve">
+<code class="descname">Solve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.FEmTool_SparseMatrix.Solve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Direct Solve of AX = B</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>B</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>X</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Iterative solve of AX = B</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>B</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Init</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>X</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Residual</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 1.0e-8</li>
+<li><strong>NbIterations</strong> (<em>int</em>) – default value is 50</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.FEmTool_SparseMatrix.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.FEmTool_SparseMatrix.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.Handle_FEmTool_Curve">
+<em class="property">class </em><code class="descname">Handle_FEmTool_Curve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_Curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.Handle_MMgt_TShared" title="OCC.MMgt.Handle_MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.Handle_MMgt_TShared</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.FEmTool.Handle_FEmTool_Curve.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_Curve.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_Curve.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_Curve.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_Curve.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_Curve.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_Curve.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_Curve.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.Handle_FEmTool_Curve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_Curve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.Handle_FEmTool_ElementaryCriterion">
+<em class="property">class </em><code class="descname">Handle_FEmTool_ElementaryCriterion</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ElementaryCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.Handle_MMgt_TShared" title="OCC.MMgt.Handle_MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.Handle_MMgt_TShared</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.FEmTool.Handle_FEmTool_ElementaryCriterion.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ElementaryCriterion.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_ElementaryCriterion.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ElementaryCriterion.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_ElementaryCriterion.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ElementaryCriterion.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_ElementaryCriterion.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ElementaryCriterion.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.Handle_FEmTool_ElementaryCriterion.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ElementaryCriterion.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.Handle_FEmTool_HAssemblyTable">
+<em class="property">class </em><code class="descname">Handle_FEmTool_HAssemblyTable</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_HAssemblyTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.Handle_MMgt_TShared" title="OCC.MMgt.Handle_MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.Handle_MMgt_TShared</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.FEmTool.Handle_FEmTool_HAssemblyTable.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_HAssemblyTable.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_HAssemblyTable.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_HAssemblyTable.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_HAssemblyTable.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_HAssemblyTable.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_HAssemblyTable.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_HAssemblyTable.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.Handle_FEmTool_HAssemblyTable.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_HAssemblyTable.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearFlexion">
+<em class="property">class </em><code class="descname">Handle_FEmTool_LinearFlexion</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearFlexion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FEmTool.Handle_FEmTool_ElementaryCriterion" title="OCC.FEmTool.Handle_FEmTool_ElementaryCriterion"><code class="xref py py-class docutils literal"><span class="pre">OCC.FEmTool.Handle_FEmTool_ElementaryCriterion</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearFlexion.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearFlexion.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearFlexion.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearFlexion.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearFlexion.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearFlexion.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearFlexion.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearFlexion.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearFlexion.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearFlexion.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearJerk">
+<em class="property">class </em><code class="descname">Handle_FEmTool_LinearJerk</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearJerk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FEmTool.Handle_FEmTool_ElementaryCriterion" title="OCC.FEmTool.Handle_FEmTool_ElementaryCriterion"><code class="xref py py-class docutils literal"><span class="pre">OCC.FEmTool.Handle_FEmTool_ElementaryCriterion</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearJerk.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearJerk.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearJerk.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearJerk.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearJerk.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearJerk.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearJerk.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearJerk.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearJerk.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearJerk.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearTension">
+<em class="property">class </em><code class="descname">Handle_FEmTool_LinearTension</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearTension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FEmTool.Handle_FEmTool_ElementaryCriterion" title="OCC.FEmTool.Handle_FEmTool_ElementaryCriterion"><code class="xref py py-class docutils literal"><span class="pre">OCC.FEmTool.Handle_FEmTool_ElementaryCriterion</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearTension.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearTension.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearTension.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearTension.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearTension.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearTension.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearTension.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearTension.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.Handle_FEmTool_LinearTension.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_LinearTension.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors">
+<em class="property">class </em><code class="descname">Handle_FEmTool_ListNodeOfListOfVectors</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_MapNode" title="OCC.TCollection.Handle_TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_MapNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ListNodeOfListOfVectors.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.Handle_FEmTool_ProfileMatrix">
+<em class="property">class </em><code class="descname">Handle_FEmTool_ProfileMatrix</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ProfileMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.FEmTool.Handle_FEmTool_SparseMatrix" title="OCC.FEmTool.Handle_FEmTool_SparseMatrix"><code class="xref py py-class docutils literal"><span class="pre">OCC.FEmTool.Handle_FEmTool_SparseMatrix</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.FEmTool.Handle_FEmTool_ProfileMatrix.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ProfileMatrix.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_ProfileMatrix.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ProfileMatrix.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_ProfileMatrix.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ProfileMatrix.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_ProfileMatrix.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ProfileMatrix.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.Handle_FEmTool_ProfileMatrix.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_ProfileMatrix.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr">
+<em class="property">class </em><code class="descname">Handle_FEmTool_SequenceNodeOfSeqOfLinConstr</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_SeqNode" title="OCC.TCollection.Handle_TCollection_SeqNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_SeqNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SequenceNodeOfSeqOfLinConstr.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.Handle_FEmTool_SparseMatrix">
+<em class="property">class </em><code class="descname">Handle_FEmTool_SparseMatrix</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SparseMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.Handle_MMgt_TShared" title="OCC.MMgt.Handle_MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.Handle_MMgt_TShared</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.FEmTool.Handle_FEmTool_SparseMatrix.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SparseMatrix.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_SparseMatrix.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SparseMatrix.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_SparseMatrix.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SparseMatrix.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.Handle_FEmTool_SparseMatrix.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SparseMatrix.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.Handle_FEmTool_SparseMatrix.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.Handle_FEmTool_SparseMatrix.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.FEmTool.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.FEmTool.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.FEmTool.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.FEmTool.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.FEmTool.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.FEmTool.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.FEmTool.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
