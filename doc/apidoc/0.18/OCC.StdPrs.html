@@ -1,0 +1,3150 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.StdPrs module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.StdPrs module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.StdPrs module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.StdPrs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-stdprs-module">
+<h1>OCC.StdPrs module<a class="headerlink" href="#occ-stdprs-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.StdPrs"></span><dl class="class">
+<dt id="OCC.StdPrs.StdPrs_Curve">
+<em class="property">class </em><code class="descname">StdPrs_Curve</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_Curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_Curve.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_Curve.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>drawCurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>drawCurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_SequenceOfPnt" title="OCC.TColgp.TColgp_SequenceOfPnt"><em>TColgp_SequenceOfPnt</em></a>) – </li>
+<li><strong>drawCurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. The drawing will be limited between the points of parameter U1 and U2. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>aDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_SequenceOfPnt" title="OCC.TColgp.TColgp_SequenceOfPnt"><em>TColgp_SequenceOfPnt</em></a>) – </li>
+<li><strong>aNbPoints</strong> (<em>int</em>) – default value is 30</li>
+<li><strong>drawCurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_Curve.Match">
+<em class="property">static </em><code class="descname">Match</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_Curve.Match" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the drawing of the curve is less than aDistance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the drawing of the curve is less than aDistance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aLimit</strong> (<em>float</em>) – </li>
+<li><strong>aNbPoints</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the drawing of the curve aCurve is less than aDistance. The drawing is considered between the points of parameter U1 and U2;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the drawing of the curve aCurve is less than aDistance. The drawing is considered between the points of parameter U1 and U2;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>aDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aNbPoints</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_Curve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_Curve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_Curve_Add">
+<code class="descname">StdPrs_Curve_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_Curve_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>drawCurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>drawCurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_SequenceOfPnt" title="OCC.TColgp.TColgp_SequenceOfPnt"><em>TColgp_SequenceOfPnt</em></a>) – </li>
+<li><strong>drawCurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. The drawing will be limited between the points of parameter U1 and U2. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>aDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Points</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_SequenceOfPnt" title="OCC.TColgp.TColgp_SequenceOfPnt"><em>TColgp_SequenceOfPnt</em></a>) – </li>
+<li><strong>aNbPoints</strong> (<em>int</em>) – default value is 30</li>
+<li><strong>drawCurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_Curve_Match">
+<code class="descname">StdPrs_Curve_Match</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_Curve_Match" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the drawing of the curve is less than aDistance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the drawing of the curve is less than aDistance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aLimit</strong> (<em>float</em>) – </li>
+<li><strong>aNbPoints</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the drawing of the curve aCurve is less than aDistance. The drawing is considered between the points of parameter U1 and U2;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the drawing of the curve aCurve is less than aDistance. The drawing is considered between the points of parameter U1 and U2;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>aDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aNbPoints</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_HLRPolyShape">
+<em class="property">class </em><code class="descname">StdPrs_HLRPolyShape</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRPolyShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_HLRPolyShape.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRPolyShape.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines the hidden line removal display of the topology aShape in the projection defined by aProjector. The shape and the projection are added to the display aPresentation, and the attributes of the elements present in the aPresentation are defined by the attribute manager aDrawer.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>aProjector</strong> (<em>Handle_Prs3d_Projector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_HLRPolyShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRPolyShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_HLRPolyShape_Add">
+<code class="descname">StdPrs_HLRPolyShape_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRPolyShape_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines the hidden line removal display of the topology aShape in the projection defined by aProjector. The shape and the projection are added to the display aPresentation, and the attributes of the elements present in the aPresentation are defined by the attribute manager aDrawer.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>aProjector</strong> (<em>Handle_Prs3d_Projector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_HLRShape">
+<em class="property">class </em><code class="descname">StdPrs_HLRShape</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_HLRShape.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRShape.Add" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>theProjector</strong> (<em>Handle_Prs3d_Projector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_HLRShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_HLRShape_Add">
+<code class="descname">StdPrs_HLRShape_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRShape_Add" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>theProjector</strong> (<em>Handle_Prs3d_Projector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_HLRToolShape">
+<em class="property">class </em><code class="descname">StdPrs_HLRToolShape</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRToolShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TheShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>TheProjector</strong> (<em>HLRAlgo_Projector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_HLRToolShape.Hidden">
+<code class="descname">Hidden</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRToolShape.Hidden" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TheEdge</strong> (<em>BRepAdaptor_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float &amp;</em>) – </li>
+<li><strong>U2</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_HLRToolShape.InitHidden">
+<code class="descname">InitHidden</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRToolShape.InitHidden" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>EdgeNumber</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_HLRToolShape.InitVisible">
+<code class="descname">InitVisible</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRToolShape.InitVisible" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>EdgeNumber</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_HLRToolShape.MoreHidden">
+<code class="descname">MoreHidden</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRToolShape.MoreHidden" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_HLRToolShape.MoreVisible">
+<code class="descname">MoreVisible</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRToolShape.MoreVisible" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_HLRToolShape.NbEdges">
+<code class="descname">NbEdges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRToolShape.NbEdges" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_HLRToolShape.NextHidden">
+<code class="descname">NextHidden</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRToolShape.NextHidden" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_HLRToolShape.NextVisible">
+<code class="descname">NextVisible</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRToolShape.NextVisible" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_HLRToolShape.Visible">
+<code class="descname">Visible</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRToolShape.Visible" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TheEdge</strong> (<em>BRepAdaptor_Curve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float &amp;</em>) – </li>
+<li><strong>U2</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_HLRToolShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_HLRToolShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_Plane">
+<em class="property">class </em><code class="descname">StdPrs_Plane</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_Plane" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_Plane.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_Plane.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines display of infinite planes. The infinite plane aPlane is added to the display aPresentation, and the attributes of the display are defined by the attribute manager aDrawer.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aPlane</strong> (<em>Adaptor3d_Surface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_Plane.Match">
+<em class="property">static </em><code class="descname">Match</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_Plane.Match" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the plane is less than aDistance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aPlane</strong> (<em>Adaptor3d_Surface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_Plane.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_Plane.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_Plane_Add">
+<code class="descname">StdPrs_Plane_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_Plane_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines display of infinite planes. The infinite plane aPlane is added to the display aPresentation, and the attributes of the display are defined by the attribute manager aDrawer.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aPlane</strong> (<em>Adaptor3d_Surface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_Plane_Match">
+<code class="descname">StdPrs_Plane_Match</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_Plane_Match" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the plane is less than aDistance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aPlane</strong> (<em>Adaptor3d_Surface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_PoleCurve">
+<em class="property">class </em><code class="descname">StdPrs_PoleCurve</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_PoleCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_PoleCurve.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_PoleCurve.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines display of BSpline and Bezier curves. Adds the 3D curve aCurve to the StdPrs_PoleCurve algorithm. This shape is found in the presentation object aPresentation, and its display attributes are set in the attribute manager aDrawer. The curve object from Adaptor3d provides data from a Geom curve. This makes it possible to use the surface in a geometric algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_PoleCurve.Match">
+<em class="property">static </em><code class="descname">Match</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_PoleCurve.Match" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the broken line made of the poles is less then aDistance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_PoleCurve.Pick">
+<em class="property">static </em><code class="descname">Pick</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_PoleCurve.Pick" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the pole the most near of the point (X,Y,Z) and returns its range. The distance between the pole and (X,Y,Z) must be less then aDistance. If no pole corresponds, 0 is returned.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_PoleCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_PoleCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_PoleCurve_Add">
+<code class="descname">StdPrs_PoleCurve_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_PoleCurve_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines display of BSpline and Bezier curves. Adds the 3D curve aCurve to the StdPrs_PoleCurve algorithm. This shape is found in the presentation object aPresentation, and its display attributes are set in the attribute manager aDrawer. The curve object from Adaptor3d provides data from a Geom curve. This makes it possible to use the surface in a geometric algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_PoleCurve_Match">
+<code class="descname">StdPrs_PoleCurve_Match</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_PoleCurve_Match" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the distance between the point (X,Y,Z) and the broken line made of the poles is less then aDistance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_PoleCurve_Pick">
+<code class="descname">StdPrs_PoleCurve_Pick</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_PoleCurve_Pick" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the pole the most near of the point (X,Y,Z) and returns its range. The distance between the pole and (X,Y,Z) must be less then aDistance. If no pole corresponds, 0 is returned.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aCurve</strong> (<em>Adaptor3d_Curve &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_ShadedShape">
+<em class="property">class </em><code class="descname">StdPrs_ShadedShape</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_ShadedShape.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedShape.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Shades &lt;theShape&gt;. &#64;param theVolumeType defines the way how to interpret input shapes - as Closed volumes (to activate back-face culling and capping plane algorithms), as Open volumes (shells or solids with holes) or to perform Autodetection (would split input shape into two groups)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>theVolume</strong> (<em>StdPrs_Volume</em>) – default value is StdPrs_Volume_Autodetection</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Shades &lt;theShape&gt; with texture coordinates. &#64;param theVolumeType defines the way how to interpret input shapes - as Closed volumes (to activate back-face culling and capping plane algorithms), as Open volumes (shells or solids with holes) or to perform Autodetection (would split input shape into two groups)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>theHasTexels</strong> (<em>bool</em>) – </li>
+<li><strong>theUVOrigin</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>theUVRepeat</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>theUVScale</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>theVolume</strong> (<em>StdPrs_Volume</em>) – default value is StdPrs_Volume_Autodetection</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_ShadedShape.ExploreSolids">
+<em class="property">static </em><code class="descname">ExploreSolids</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedShape.ExploreSolids" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Searches closed and unclosed subshapes in shape structure and puts them into two compounds for separate processing of closed and unclosed sub-shapes</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theBuilder</strong> (<em>BRep_Builder &amp;</em>) – </li>
+<li><strong>theClosed</strong> (<em>TopoDS_Compound &amp;</em>) – </li>
+<li><strong>theOpened</strong> (<em>TopoDS_Compound &amp;</em>) – </li>
+<li><strong>theIgnore1DSubShape</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_ShadedShape.Tessellate">
+<em class="property">static </em><code class="descname">Tessellate</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedShape.Tessellate" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Validates triangulation within the shape and performs tessellation if necessary.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_ShadedShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_ShadedShape_Add">
+<code class="descname">StdPrs_ShadedShape_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedShape_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Shades &lt;theShape&gt;. &#64;param theVolumeType defines the way how to interpret input shapes - as Closed volumes (to activate back-face culling and capping plane algorithms), as Open volumes (shells or solids with holes) or to perform Autodetection (would split input shape into two groups)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>theVolume</strong> (<em>StdPrs_Volume</em>) – default value is StdPrs_Volume_Autodetection</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Shades &lt;theShape&gt; with texture coordinates. &#64;param theVolumeType defines the way how to interpret input shapes - as Closed volumes (to activate back-face culling and capping plane algorithms), as Open volumes (shells or solids with holes) or to perform Autodetection (would split input shape into two groups)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>theHasTexels</strong> (<em>bool</em>) – </li>
+<li><strong>theUVOrigin</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>theUVRepeat</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>theUVScale</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>theVolume</strong> (<em>StdPrs_Volume</em>) – default value is StdPrs_Volume_Autodetection</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_ShadedShape_ExploreSolids">
+<code class="descname">StdPrs_ShadedShape_ExploreSolids</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedShape_ExploreSolids" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Searches closed and unclosed subshapes in shape structure and puts them into two compounds for separate processing of closed and unclosed sub-shapes</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theBuilder</strong> (<em>BRep_Builder &amp;</em>) – </li>
+<li><strong>theClosed</strong> (<em>TopoDS_Compound &amp;</em>) – </li>
+<li><strong>theOpened</strong> (<em>TopoDS_Compound &amp;</em>) – </li>
+<li><strong>theIgnore1DSubShape</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_ShadedShape_Tessellate">
+<code class="descname">StdPrs_ShadedShape_Tessellate</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedShape_Tessellate" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Validates triangulation within the shape and performs tessellation if necessary.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_ShadedSurface">
+<em class="property">class </em><code class="descname">StdPrs_ShadedSurface</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_ShadedSurface.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedSurface.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds the surface aSurface to the presentation object aPresentation. The surface’s display attributes are set in the attribute manager aDrawer. The surface object from Adaptor3d provides data from a Geom surface in order to use the surface in an algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aSurface</strong> (<em>Adaptor3d_Surface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_ShadedSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_ShadedSurface_Add">
+<code class="descname">StdPrs_ShadedSurface_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ShadedSurface_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds the surface aSurface to the presentation object aPresentation. The surface’s display attributes are set in the attribute manager aDrawer. The surface object from Adaptor3d provides data from a Geom surface in order to use the surface in an algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aSurface</strong> (<em>Adaptor3d_Surface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_ToolPoint">
+<em class="property">class </em><code class="descname">StdPrs_ToolPoint</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_ToolPoint.Coord">
+<em class="property">static </em><code class="descname">Coord</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolPoint.Coord" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPoint</strong> (<em>Handle_Geom_Point &amp;</em>) – </li>
+<li><strong>X</strong> (<em>Quantity_Length &amp;</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length &amp;</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_ToolPoint.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolPoint.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_ToolPoint_Coord">
+<code class="descname">StdPrs_ToolPoint_Coord</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolPoint_Coord" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPoint</strong> (<em>Handle_Geom_Point &amp;</em>) – </li>
+<li><strong>X</strong> (<em>Quantity_Length &amp;</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length &amp;</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_ToolRFace">
+<em class="property">class </em><code class="descname">StdPrs_ToolRFace</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolRFace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aSurface</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_ToolRFace.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolRFace.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_ToolRFace.IsOriented">
+<code class="descname">IsOriented</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolRFace.IsOriented" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_ToolRFace.More">
+<code class="descname">More</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolRFace.More" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_ToolRFace.Next">
+<code class="descname">Next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolRFace.Next" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_ToolRFace.Orientation">
+<code class="descname">Orientation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolRFace.Orientation" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">TopAbs_Orientation</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.StdPrs_ToolRFace.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolRFace.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Adaptor2d_Curve2dPtr</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_ToolRFace.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolRFace.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_ToolShadedShape">
+<em class="property">class </em><code class="descname">StdPrs_ToolShadedShape</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolShadedShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_ToolShadedShape.IsClosed">
+<em class="property">static </em><code class="descname">IsClosed</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolShadedShape.IsClosed" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks back faces visibility for specified shape (to activate back-face culling). returns true if shape is closed manifold Solid or compound of such Solids.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_ToolShadedShape.IsTriangulated">
+<em class="property">static </em><code class="descname">IsTriangulated</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolShadedShape.IsTriangulated" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Similar to BRepTools::Triangulation() but without extra checks. returns true if all faces within shape are triangulated.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_ToolShadedShape.Normal">
+<em class="property">static </em><code class="descname">Normal</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolShadedShape.Normal" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>PC</strong> (<em>Poly_Connect &amp;</em>) – </li>
+<li><strong>Nor</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfDir" title="OCC.TColgp.TColgp_Array1OfDir"><em>TColgp_Array1OfDir</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_ToolShadedShape.Triangulation">
+<em class="property">static </em><code class="descname">Triangulation</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolShadedShape.Triangulation" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>loc</strong> (<em>TopLoc_Location &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Poly.html#OCC.Poly.Handle_Poly_Triangulation" title="OCC.Poly.Handle_Poly_Triangulation">Handle_Poly_Triangulation</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_ToolShadedShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolShadedShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_ToolShadedShape_IsClosed">
+<code class="descname">StdPrs_ToolShadedShape_IsClosed</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolShadedShape_IsClosed" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks back faces visibility for specified shape (to activate back-face culling). returns true if shape is closed manifold Solid or compound of such Solids.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_ToolShadedShape_IsTriangulated">
+<code class="descname">StdPrs_ToolShadedShape_IsTriangulated</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolShadedShape_IsTriangulated" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Similar to BRepTools::Triangulation() but without extra checks. returns true if all faces within shape are triangulated.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_ToolShadedShape_Normal">
+<code class="descname">StdPrs_ToolShadedShape_Normal</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolShadedShape_Normal" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>PC</strong> (<em>Poly_Connect &amp;</em>) – </li>
+<li><strong>Nor</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfDir" title="OCC.TColgp.TColgp_Array1OfDir"><em>TColgp_Array1OfDir</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_ToolShadedShape_Triangulation">
+<code class="descname">StdPrs_ToolShadedShape_Triangulation</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolShadedShape_Triangulation" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>loc</strong> (<em>TopLoc_Location &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Poly.html#OCC.Poly.Handle_Poly_Triangulation" title="OCC.Poly.Handle_Poly_Triangulation">Handle_Poly_Triangulation</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_ToolVertex">
+<em class="property">class </em><code class="descname">StdPrs_ToolVertex</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolVertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_ToolVertex.Coord">
+<em class="property">static </em><code class="descname">Coord</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolVertex.Coord" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPoint</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>X</strong> (<em>Quantity_Length &amp;</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length &amp;</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_ToolVertex.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolVertex.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_ToolVertex_Coord">
+<code class="descname">StdPrs_ToolVertex_Coord</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_ToolVertex_Coord" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPoint</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>X</strong> (<em>Quantity_Length &amp;</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length &amp;</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace">
+<em class="property">class </em><code class="descname">StdPrs_WFDeflectionRestrictedFace</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines a display featuring U and V isoparameters. Adds the surface aFace to the StdPrs_WFRestrictedFace algorithm. This face is found in a shape in the presentation object aPresentation, and its display attributes - in particular, the number of U and V isoparameters - are set in the attribute manager aDrawer. aFace is BRepAdaptor_HSurface surface created from a face in a topological shape. which is passed as an argument through the BRepAdaptor_HSurface surface created from it. This is what allows the topological face to be treated as a geometric surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Defines a display of a delection-specified face. The display will feature U and V isoparameters. Adds the topology aShape to the StdPrs_WFRestrictedFace algorithm. This shape is found in the presentation object aPresentation, and its display attributes - except the number of U and V isoparameters - are set in the attribute manager aDrawer. The function sets the number of U and V isoparameters, NBUiso and NBViso, in the shape. To do this, the arguments DrawUIso and DrawVIso must be true. aFace is BRepAdaptor_HSurface surface created from a face in a topological shape. which is passed as an argument through the BRepAdaptor_HSurface surface created from it. This is what allows the topological face to be treated as a geometric surface. Curves give a sequence of face curves, it is used if the PrimitiveArray visualization approach is activated (it is activated by default).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>DrawUIso</strong> (<em>bool</em>) – </li>
+<li><strong>DrawVIso</strong> (<em>bool</em>) – </li>
+<li><strong>Deflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>NBUiso</strong> (<em>int</em>) – </li>
+<li><strong>NBViso</strong> (<em>int</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>Curves</strong> (<em>Prs3d_NListOfSequenceOfPnt &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.AddBox">
+<em class="property">static </em><code class="descname">AddBox</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.AddBox" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds box as polyline to the presentation object</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePrs</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theBndBox</strong> (<em>Bnd_Box &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.AddUIso">
+<em class="property">static </em><code class="descname">AddUIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.AddUIso" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines a display featuring U isoparameters respectively. Add the surface aFace to the StdPrs_WFRestrictedFace algorithm. This face is found in a shape in the presentation object aPresentation, and its display attributes - in particular, the number of U isoparameters - are set in the attribute manager aDrawer. aFace is BRepAdaptor_HSurface surface created from a face in a topological shape. which is passed to the function as an argument through the BRepAdaptor_HSurface surface created from it. This is what allows the topological face to be treated as a geometric surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.AddVIso">
+<em class="property">static </em><code class="descname">AddVIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.AddVIso" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines a display featuring V isoparameters respectively. Add the surface aFace to the StdPrs_WFRestrictedFace algorithm. This face is found in a shape in the presentation object aPresentation, and its display attributes - in particular, the number of V isoparameters - are set in the attribute manager aDrawer. aFace is BRepAdaptor_HSurface surface created from a face in a topological shape. which is passed to the function as an argument through the BRepAdaptor_HSurface surface created from it. This is what allows the topological face to be treated as a geometric surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.Match">
+<em class="property">static </em><code class="descname">Match</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.Match" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>X</strong> – </li>
+<li><strong>Y</strong> – </li>
+<li><strong>Z</strong> – </li>
+<li><strong>aDistance</strong> – </li>
+<li><strong>aFace</strong> – </li>
+<li><strong>aDrawer</strong> – </li>
+<li><strong>DrawUIso</strong> (<em>bool</em>) – </li>
+<li><strong>DrawVIso</strong> (<em>bool</em>) – </li>
+<li><strong>aDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>NBUiso</strong> (<em>int</em>) – </li>
+<li><strong>NBViso</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.MatchUIso">
+<em class="property">static </em><code class="descname">MatchUIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.MatchUIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.MatchVIso">
+<em class="property">static </em><code class="descname">MatchVIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.MatchVIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_Add">
+<code class="descname">StdPrs_WFDeflectionRestrictedFace_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines a display featuring U and V isoparameters. Adds the surface aFace to the StdPrs_WFRestrictedFace algorithm. This face is found in a shape in the presentation object aPresentation, and its display attributes - in particular, the number of U and V isoparameters - are set in the attribute manager aDrawer. aFace is BRepAdaptor_HSurface surface created from a face in a topological shape. which is passed as an argument through the BRepAdaptor_HSurface surface created from it. This is what allows the topological face to be treated as a geometric surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Defines a display of a delection-specified face. The display will feature U and V isoparameters. Adds the topology aShape to the StdPrs_WFRestrictedFace algorithm. This shape is found in the presentation object aPresentation, and its display attributes - except the number of U and V isoparameters - are set in the attribute manager aDrawer. The function sets the number of U and V isoparameters, NBUiso and NBViso, in the shape. To do this, the arguments DrawUIso and DrawVIso must be true. aFace is BRepAdaptor_HSurface surface created from a face in a topological shape. which is passed as an argument through the BRepAdaptor_HSurface surface created from it. This is what allows the topological face to be treated as a geometric surface. Curves give a sequence of face curves, it is used if the PrimitiveArray visualization approach is activated (it is activated by default).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>DrawUIso</strong> (<em>bool</em>) – </li>
+<li><strong>DrawVIso</strong> (<em>bool</em>) – </li>
+<li><strong>Deflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>NBUiso</strong> (<em>int</em>) – </li>
+<li><strong>NBViso</strong> (<em>int</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>Curves</strong> (<em>Prs3d_NListOfSequenceOfPnt &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_AddBox">
+<code class="descname">StdPrs_WFDeflectionRestrictedFace_AddBox</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_AddBox" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds box as polyline to the presentation object</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePrs</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theBndBox</strong> (<em>Bnd_Box &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_AddUIso">
+<code class="descname">StdPrs_WFDeflectionRestrictedFace_AddUIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_AddUIso" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines a display featuring U isoparameters respectively. Add the surface aFace to the StdPrs_WFRestrictedFace algorithm. This face is found in a shape in the presentation object aPresentation, and its display attributes - in particular, the number of U isoparameters - are set in the attribute manager aDrawer. aFace is BRepAdaptor_HSurface surface created from a face in a topological shape. which is passed to the function as an argument through the BRepAdaptor_HSurface surface created from it. This is what allows the topological face to be treated as a geometric surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_AddVIso">
+<code class="descname">StdPrs_WFDeflectionRestrictedFace_AddVIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_AddVIso" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Defines a display featuring V isoparameters respectively. Add the surface aFace to the StdPrs_WFRestrictedFace algorithm. This face is found in a shape in the presentation object aPresentation, and its display attributes - in particular, the number of V isoparameters - are set in the attribute manager aDrawer. aFace is BRepAdaptor_HSurface surface created from a face in a topological shape. which is passed to the function as an argument through the BRepAdaptor_HSurface surface created from it. This is what allows the topological face to be treated as a geometric surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_Match">
+<code class="descname">StdPrs_WFDeflectionRestrictedFace_Match</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_Match" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>X</strong> – </li>
+<li><strong>Y</strong> – </li>
+<li><strong>Z</strong> – </li>
+<li><strong>aDistance</strong> – </li>
+<li><strong>aFace</strong> – </li>
+<li><strong>aDrawer</strong> – </li>
+<li><strong>DrawUIso</strong> (<em>bool</em>) – </li>
+<li><strong>DrawVIso</strong> (<em>bool</em>) – </li>
+<li><strong>aDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>NBUiso</strong> (<em>int</em>) – </li>
+<li><strong>NBViso</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_MatchUIso">
+<code class="descname">StdPrs_WFDeflectionRestrictedFace_MatchUIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_MatchUIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_MatchVIso">
+<code class="descname">StdPrs_WFDeflectionRestrictedFace_MatchVIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionRestrictedFace_MatchVIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Y</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>Z</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>aFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionShape">
+<em class="property">class </em><code class="descname">StdPrs_WFDeflectionShape</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionShape.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionShape.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Add shape to presentation</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePrs</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionShape.PickCurve">
+<em class="property">static </em><code class="descname">PickCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionShape.PickCurve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline Handle_TopTools_HSequenceOfShape</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionShape.PickPatch">
+<em class="property">static </em><code class="descname">PickPatch</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionShape.PickPatch" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline Handle_TopTools_HSequenceOfShape</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionShape_Add">
+<code class="descname">StdPrs_WFDeflectionShape_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionShape_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Add shape to presentation</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePrs</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionShape_PickCurve">
+<code class="descname">StdPrs_WFDeflectionShape_PickCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionShape_PickCurve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline Handle_TopTools_HSequenceOfShape</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionShape_PickPatch">
+<code class="descname">StdPrs_WFDeflectionShape_PickPatch</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionShape_PickPatch" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline Handle_TopTools_HSequenceOfShape</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionSurface">
+<em class="property">class </em><code class="descname">StdPrs_WFDeflectionSurface</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionSurface.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionSurface.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds the surface aSurface to the presentation object aPresentation, and defines its boundaries and isoparameters. The shape’s display attributes are set in the attribute manager aDrawer. These include whether deflection is absolute or relative to the size of the shape. The surface aSurface is a surface object from Adaptor, and provides data from a Geom surface. This makes it possible to use the surface in a geometric algorithm. Note that this surface object is manipulated by handles.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aSurface</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFDeflectionSurface_Add">
+<code class="descname">StdPrs_WFDeflectionSurface_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFDeflectionSurface_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds the surface aSurface to the presentation object aPresentation, and defines its boundaries and isoparameters. The shape’s display attributes are set in the attribute manager aDrawer. These include whether deflection is absolute or relative to the size of the shape. The surface aSurface is a surface object from Adaptor, and provides data from a Geom surface. This makes it possible to use the surface in a geometric algorithm. Note that this surface object is manipulated by handles.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aSurface</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_WFPoleSurface">
+<em class="property">class </em><code class="descname">StdPrs_WFPoleSurface</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFPoleSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFPoleSurface.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFPoleSurface.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds the surface aSurface to the presentation object aPresentation. The shape’s display attributes are set in the attribute manager aDrawer. The surface aSurface is a surface object from Adaptor3d, and provides data from a Geom surface. This makes it possible to use the surface in a geometric algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aSurface</strong> (<em>Adaptor3d_Surface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_WFPoleSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFPoleSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFPoleSurface_Add">
+<code class="descname">StdPrs_WFPoleSurface_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFPoleSurface_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Adds the surface aSurface to the presentation object aPresentation. The shape’s display attributes are set in the attribute manager aDrawer. The surface aSurface is a surface object from Adaptor3d, and provides data from a Geom surface. This makes it possible to use the surface in a geometric algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aSurface</strong> (<em>Adaptor3d_Surface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace">
+<em class="property">class </em><code class="descname">StdPrs_WFRestrictedFace</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace.Add" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawUIso</strong> (<em>bool</em>) – </li>
+<li><strong>theDrawVIso</strong> (<em>bool</em>) – </li>
+<li><strong>theDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theNbUIso</strong> (<em>int</em>) – </li>
+<li><strong>theNbVIso</strong> (<em>int</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>theCurves</strong> (<em>Prs3d_NListOfSequenceOfPnt &amp;</em>) – </li>
+<li><strong>thePresentation</strong> – </li>
+<li><strong>theFace</strong> – </li>
+<li><strong>theDrawer</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace.AddUIso">
+<em class="property">static </em><code class="descname">AddUIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace.AddUIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace.AddVIso">
+<em class="property">static </em><code class="descname">AddVIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace.AddVIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace.Match">
+<em class="property">static </em><code class="descname">Match</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace.Match" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawUIso</strong> (<em>bool</em>) – </li>
+<li><strong>theDrawVIso</strong> (<em>bool</em>) – </li>
+<li><strong>theDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theNbUIso</strong> (<em>int</em>) – </li>
+<li><strong>theNbVIso</strong> (<em>int</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>theX</strong> – </li>
+<li><strong>theY</strong> – </li>
+<li><strong>theZ</strong> – </li>
+<li><strong>theDistance</strong> – </li>
+<li><strong>theFace</strong> – </li>
+<li><strong>theDrawer</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace.MatchUIso">
+<em class="property">static </em><code class="descname">MatchUIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace.MatchUIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace.MatchVIso">
+<em class="property">static </em><code class="descname">MatchVIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace.MatchVIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace_Add">
+<code class="descname">StdPrs_WFRestrictedFace_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace_Add" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawUIso</strong> (<em>bool</em>) – </li>
+<li><strong>theDrawVIso</strong> (<em>bool</em>) – </li>
+<li><strong>theDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theNbUIso</strong> (<em>int</em>) – </li>
+<li><strong>theNbVIso</strong> (<em>int</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>theCurves</strong> (<em>Prs3d_NListOfSequenceOfPnt &amp;</em>) – </li>
+<li><strong>thePresentation</strong> – </li>
+<li><strong>theFace</strong> – </li>
+<li><strong>theDrawer</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace_AddUIso">
+<code class="descname">StdPrs_WFRestrictedFace_AddUIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace_AddUIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace_AddVIso">
+<code class="descname">StdPrs_WFRestrictedFace_AddVIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace_AddVIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace_Match">
+<code class="descname">StdPrs_WFRestrictedFace_Match</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace_Match" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawUIso</strong> (<em>bool</em>) – </li>
+<li><strong>theDrawVIso</strong> (<em>bool</em>) – </li>
+<li><strong>theDeflection</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theNbUIso</strong> (<em>int</em>) – </li>
+<li><strong>theNbVIso</strong> (<em>int</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+<li><strong>theX</strong> – </li>
+<li><strong>theY</strong> – </li>
+<li><strong>theZ</strong> – </li>
+<li><strong>theDistance</strong> – </li>
+<li><strong>theFace</strong> – </li>
+<li><strong>theDrawer</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace_MatchUIso">
+<code class="descname">StdPrs_WFRestrictedFace_MatchUIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace_MatchUIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFRestrictedFace_MatchVIso">
+<code class="descname">StdPrs_WFRestrictedFace_MatchVIso</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFRestrictedFace_MatchVIso" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theFace</strong> (<em>Handle_BRepAdaptor_HSurface &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_WFShape">
+<em class="property">class </em><code class="descname">StdPrs_WFShape</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFShape.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFShape.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Add shape to presentation</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePrs</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFShape.PickCurve">
+<em class="property">static </em><code class="descname">PickCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFShape.PickCurve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline Handle_TopTools_HSequenceOfShape</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFShape.PickPatch">
+<em class="property">static </em><code class="descname">PickPatch</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFShape.PickPatch" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline Handle_TopTools_HSequenceOfShape</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_WFShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFShape_Add">
+<code class="descname">StdPrs_WFShape_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFShape_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Add shape to presentation</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>thePrs</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFShape_PickCurve">
+<code class="descname">StdPrs_WFShape_PickCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFShape_PickCurve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline Handle_TopTools_HSequenceOfShape</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFShape_PickPatch">
+<code class="descname">StdPrs_WFShape_PickPatch</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFShape_PickPatch" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theX</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theY</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theZ</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theDistance</strong> (<em>Quantity_Length</em>) – </li>
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inline Handle_TopTools_HSequenceOfShape</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.StdPrs_WFSurface">
+<em class="property">class </em><code class="descname">StdPrs_WFSurface</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Prs3d.html#OCC.Prs3d.Prs3d_Root" title="OCC.Prs3d.Prs3d_Root"><code class="xref py py-class docutils literal"><span class="pre">OCC.Prs3d.Prs3d_Root</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.StdPrs.StdPrs_WFSurface.Add">
+<em class="property">static </em><code class="descname">Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFSurface.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Draws a surface by drawing the isoparametric curves with respect to a fixed number of points given by the Drawer. The number of isoparametric curves to be drawn and their color are controlled by the furnished Drawer.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aSurface</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.StdPrs_WFSurface.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFSurface.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.StdPrs_WFSurface_Add">
+<code class="descname">StdPrs_WFSurface_Add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.StdPrs_WFSurface_Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Draws a surface by drawing the isoparametric curves with respect to a fixed number of points given by the Drawer. The number of isoparametric curves to be drawn and their color are controlled by the furnished Drawer.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aPresentation</strong> (<em>Handle_Prs3d_Presentation &amp;</em>) – </li>
+<li><strong>aSurface</strong> (<em>Handle_Adaptor3d_HSurface &amp;</em>) – </li>
+<li><strong>aDrawer</strong> (<em>Handle_Prs3d_Drawer &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.StdPrs.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.StdPrs.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.StdPrs.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.StdPrs.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.StdPrs.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.StdPrs.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.StdPrs.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

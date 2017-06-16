@@ -22,7 +22,7 @@ can compile/use it :
 - the python programming language (http://www.python.org). Python 2.7 and 3.x
  are officially supported,
 
-- OpenCascade Community Edition 0.17.x (https://github.com/tpaviot/oce),
+- OpenCascade Community Edition 0.18.x (https://github.com/tpaviot/oce),
 
 - FreeType 2.6.3 (https://www.freetype.org/),
 
@@ -30,7 +30,10 @@ can compile/use it :
 
 - CMake 2.8 or higher (http://www.cmake.org).
 
-**Important**: the OCE version has to match the pythonocc-core version, which is currently **0.17.x**
+**Important**: the OCE version has to match the pythonocc-core version,
+which is currently **0.18.x**
+
+- Optional : smesh-6.7.4 (https://github.com/tpaviot/smesh)
 
 Create a local copy of the repository
 -------------------------------------

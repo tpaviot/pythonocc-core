@@ -1,0 +1,2501 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.HLRTopoBRep module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.HLRTopoBRep module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.HLRTopoBRep module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.HLRTopoBRep.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-hlrtopobrep-module">
+<h1>OCC.HLRTopoBRep module<a class="headerlink" href="#occ-hlrtopobrep-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.HLRTopoBRep"></span><dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DSFiller">
+<em class="property">class </em><code class="descname">HLRTopoBRep_DSFiller</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DSFiller" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DSFiller.Insert">
+<em class="property">static </em><code class="descname">Insert</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DSFiller.Insert" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Stores in &lt;DS&gt; the outlines of &lt;S&gt; using the current outliner and stores the isolines in &lt;DS&gt; using a Hatcher.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>FO</strong> (<em>Contap_Contour &amp;</em>) – </li>
+<li><strong>DS</strong> (<em>HLRTopoBRep_Data &amp;</em>) – </li>
+<li><strong>MST</strong> (<em>BRepTopAdaptor_MapOfShapeTool &amp;</em>) – </li>
+<li><strong>nbIso</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DSFiller.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DSFiller.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DSFiller_Insert">
+<code class="descname">HLRTopoBRep_DSFiller_Insert</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DSFiller_Insert" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Stores in &lt;DS&gt; the outlines of &lt;S&gt; using the current outliner and stores the isolines in &lt;DS&gt; using a Hatcher.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>FO</strong> (<em>Contap_Contour &amp;</em>) – </li>
+<li><strong>DS</strong> (<em>HLRTopoBRep_Data &amp;</em>) – </li>
+<li><strong>MST</strong> (<em>BRepTopAdaptor_MapOfShapeTool &amp;</em>) – </li>
+<li><strong>nbIso</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data">
+<em class="property">class </em><code class="descname">HLRTopoBRep_Data</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.AddIntL">
+<code class="descname">AddIntL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.AddIntL" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.AddIntV">
+<code class="descname">AddIntV</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.AddIntV" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.AddIsoL">
+<code class="descname">AddIsoL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.AddIsoL" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.AddOldS">
+<code class="descname">AddOldS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.AddOldS" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>NewS</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>OldS</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.AddOutL">
+<code class="descname">AddOutL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.AddOutL" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.AddOutV">
+<code class="descname">AddOutV</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.AddOutV" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.AddSplE">
+<code class="descname">AddSplE</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.AddSplE" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.Append">
+<code class="descname">Append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.Append" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>P</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.Clean">
+<code class="descname">Clean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.Clean" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Clear of all the data not needed during and after the hiding process.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Clear of all the maps.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.Edge">
+<code class="descname">Edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.EdgeHasSplE">
+<code class="descname">EdgeHasSplE</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.EdgeHasSplE" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the Edge is split.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.EdgeSplE">
+<code class="descname">EdgeSplE</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.EdgeSplE" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the list of the edges.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceHasIntL">
+<code class="descname">FaceHasIntL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceHasIntL" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the Face has internal outline.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceHasIsoL">
+<code class="descname">FaceHasIsoL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceHasIsoL" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the Face has isolines.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceHasOutL">
+<code class="descname">FaceHasOutL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceHasOutL" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the Face has outlines on restriction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceIntL">
+<code class="descname">FaceIntL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceIntL" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the list of the internal OutLines.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceIsoL">
+<code class="descname">FaceIsoL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceIsoL" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the list of the IsoLines.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceOutL">
+<code class="descname">FaceOutL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.FaceOutL" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the list of the OutLines on restriction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.InitEdge">
+<code class="descname">InitEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.InitEdge" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.InitVertex">
+<code class="descname">InitVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.InitVertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Start an iteration on the vertices of E.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.InsertBefore">
+<code class="descname">InsertBefore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.InsertBefore" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Insert before the current position.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>P</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.IsIntLFaceEdge">
+<code class="descname">IsIntLFaceEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.IsIntLFaceEdge" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.IsIntV">
+<code class="descname">IsIntV</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.IsIntV" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if V is an internal outline vertex.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.IsIsoLFaceEdge">
+<code class="descname">IsIsoLFaceEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.IsIsoLFaceEdge" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.IsOutLFaceEdge">
+<code class="descname">IsOutLFaceEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.IsOutLFaceEdge" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.IsOutV">
+<code class="descname">IsOutV</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.IsOutV" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if V is an outline vertex on a restriction.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.IsSplEEdgeEdge">
+<code class="descname">IsSplEEdgeEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.IsSplEEdgeEdge" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E1</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E2</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.MoreEdge">
+<code class="descname">MoreEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.MoreEdge" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.MoreVertex">
+<code class="descname">MoreVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.MoreVertex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.NewSOldS">
+<code class="descname">NewSOldS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.NewSOldS" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>New</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.NextEdge">
+<code class="descname">NextEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.NextEdge" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.NextVertex">
+<code class="descname">NextVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.NextVertex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.Vertex">
+<code class="descname">Vertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.Vertex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_Data.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData">
+<em class="property">class </em><code class="descname">HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMapIterator" title="OCC.TCollection.TCollection_BasicMapIterator"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMapIterator</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>HLRTopoBRep_DataMapOfShapeFaceData &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>HLRTopoBRep_DataMapOfShapeFaceData &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData" title="OCC.HLRTopoBRep.HLRTopoBRep_FaceData">HLRTopoBRep_FaceData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData">
+<em class="property">class </em><code class="descname">HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMapIterator" title="OCC.TCollection.TCollection_BasicMapIterator"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMapIterator</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>HLRTopoBRep_MapOfShapeListOfVData &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMap</strong> (<em>HLRTopoBRep_MapOfShapeListOfVData &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData" title="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData">HLRTopoBRep_ListOfVData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData">
+<em class="property">class </em><code class="descname">HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_MapNode" title="OCC.TCollection.TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_MapNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>I</strong> (<em>HLRTopoBRep_FaceData &amp;</em>) – </li>
+<li><strong>n</strong> (<em>TCollection_MapNodePtr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData" title="OCC.HLRTopoBRep.HLRTopoBRep_FaceData">HLRTopoBRep_FaceData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData">
+<em class="property">class </em><code class="descname">HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_MapNode" title="OCC.TCollection.TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_MapNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>I</strong> (<em>HLRTopoBRep_ListOfVData &amp;</em>) – </li>
+<li><strong>n</strong> (<em>TCollection_MapNodePtr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.Key">
+<code class="descname">Key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.Key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData" title="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData">HLRTopoBRep_ListOfVData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData">
+<em class="property">class </em><code class="descname">HLRTopoBRep_DataMapOfShapeFaceData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMap" title="OCC.TCollection.TCollection_BasicMap"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMap</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – default value is 1</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>HLRTopoBRep_DataMapOfShapeFaceData &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData" title="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData">HLRTopoBRep_DataMapOfShapeFaceData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Bind">
+<code class="descname">Bind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Bind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>I</strong> (<em>HLRTopoBRep_FaceData &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.ChangeFind">
+<code class="descname">ChangeFind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.ChangeFind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData" title="OCC.HLRTopoBRep.HLRTopoBRep_FaceData">HLRTopoBRep_FaceData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.ChangeFind1">
+<code class="descname">ChangeFind1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.ChangeFind1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Find">
+<code class="descname">Find</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Find" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData" title="OCC.HLRTopoBRep.HLRTopoBRep_FaceData">HLRTopoBRep_FaceData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Find1">
+<code class="descname">Find1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Find1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.IsBound">
+<code class="descname">IsBound</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.IsBound" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.ReSize">
+<code class="descname">ReSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.ReSize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>HLRTopoBRep_DataMapOfShapeFaceData &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData" title="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData">HLRTopoBRep_DataMapOfShapeFaceData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.UnBind">
+<code class="descname">UnBind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.UnBind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_DataMapOfShapeFaceData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceData">
+<em class="property">class </em><code class="descname">HLRTopoBRep_FaceData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceData.AddIntL">
+<code class="descname">AddIntL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData.AddIntL" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceData.AddIsoL">
+<code class="descname">AddIsoL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData.AddIsoL" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceData.AddOutL">
+<code class="descname">AddOutL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData.AddOutL" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceData.FaceIntL">
+<code class="descname">FaceIntL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData.FaceIntL" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceData.FaceIsoL">
+<code class="descname">FaceIsoL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData.FaceIsoL" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceData.FaceOutL">
+<code class="descname">FaceOutL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData.FaceOutL" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopTools.html#OCC.TopTools.TopTools_ListOfShape" title="OCC.TopTools.TopTools_ListOfShape">TopTools_ListOfShape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner">
+<em class="property">class </em><code class="descname">HLRTopoBRep_FaceIsoLiner</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner.MakeIsoLine">
+<em class="property">static </em><code class="descname">MakeIsoLine</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner.MakeIsoLine" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>Iso</strong> (<em>Handle_Geom2d_Line &amp;</em>) – </li>
+<li><strong>V1</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>V2</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+<li><strong>DS</strong> (<em>HLRTopoBRep_Data &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner.MakeVertex">
+<em class="property">static </em><code class="descname">MakeVertex</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner.MakeVertex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Par</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+<li><strong>DS</strong> (<em>HLRTopoBRep_Data &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner.Perform">
+<em class="property">static </em><code class="descname">Perform</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>FI</strong> (<em>int</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>DS</strong> (<em>HLRTopoBRep_Data &amp;</em>) – </li>
+<li><strong>nbIsos</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner_MakeIsoLine">
+<code class="descname">HLRTopoBRep_FaceIsoLiner_MakeIsoLine</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner_MakeIsoLine" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>Iso</strong> (<em>Handle_Geom2d_Line &amp;</em>) – </li>
+<li><strong>V1</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>V2</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+<li><strong>DS</strong> (<em>HLRTopoBRep_Data &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner_MakeVertex">
+<code class="descname">HLRTopoBRep_FaceIsoLiner_MakeVertex</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner_MakeVertex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Par</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+<li><strong>DS</strong> (<em>HLRTopoBRep_Data &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner_Perform">
+<code class="descname">HLRTopoBRep_FaceIsoLiner_Perform</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_FaceIsoLiner_Perform" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>FI</strong> (<em>int</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>DS</strong> (<em>HLRTopoBRep_Data &amp;</em>) – </li>
+<li><strong>nbIsos</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData">
+<em class="property">class </em><code class="descname">HLRTopoBRep_ListIteratorOfListOfVData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>L</strong> (<em>HLRTopoBRep_ListOfVData &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>L</strong> (<em>HLRTopoBRep_ListOfVData &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData.More">
+<code class="descname">More</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData.More" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData.Next">
+<code class="descname">Next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData.Next" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_VData" title="OCC.HLRTopoBRep.HLRTopoBRep_VData">HLRTopoBRep_VData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListIteratorOfListOfVData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListNodeOfListOfVData">
+<em class="property">class </em><code class="descname">HLRTopoBRep_ListNodeOfListOfVData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListNodeOfListOfVData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_MapNode" title="OCC.TCollection.TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_MapNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>HLRTopoBRep_VData &amp;</em>) – </li>
+<li><strong>n</strong> (<em>TCollection_MapNodePtr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListNodeOfListOfVData.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListNodeOfListOfVData.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListNodeOfListOfVData.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListNodeOfListOfVData.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_VData" title="OCC.HLRTopoBRep.HLRTopoBRep_VData">HLRTopoBRep_VData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListNodeOfListOfVData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListNodeOfListOfVData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData">
+<em class="property">class </em><code class="descname">HLRTopoBRep_ListOfVData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>HLRTopoBRep_ListOfVData &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Append">
+<code class="descname">Append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Append" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>HLRTopoBRep_VData &amp;</em>) – </li>
+<li><strong>I</strong> – </li>
+<li><strong>theIt</strong> (<em>HLRTopoBRep_ListIteratorOfListOfVData &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>HLRTopoBRep_ListOfVData &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>HLRTopoBRep_ListOfVData &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Extent">
+<code class="descname">Extent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Extent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.First">
+<code class="descname">First</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.First" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_VData" title="OCC.HLRTopoBRep.HLRTopoBRep_VData">HLRTopoBRep_VData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.InsertAfter">
+<code class="descname">InsertAfter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.InsertAfter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>HLRTopoBRep_VData &amp;</em>) – </li>
+<li><strong>It</strong> (<em>HLRTopoBRep_ListIteratorOfListOfVData &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>HLRTopoBRep_ListOfVData &amp;</em>) – </li>
+<li><strong>It</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.InsertBefore">
+<code class="descname">InsertBefore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.InsertBefore" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>HLRTopoBRep_VData &amp;</em>) – </li>
+<li><strong>It</strong> (<em>HLRTopoBRep_ListIteratorOfListOfVData &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>HLRTopoBRep_ListOfVData &amp;</em>) – </li>
+<li><strong>It</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.IsEmpty">
+<code class="descname">IsEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Last">
+<code class="descname">Last</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Last" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_VData" title="OCC.HLRTopoBRep.HLRTopoBRep_VData">HLRTopoBRep_VData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Prepend">
+<code class="descname">Prepend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Prepend" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>HLRTopoBRep_VData &amp;</em>) – </li>
+<li><strong>I</strong> – </li>
+<li><strong>theIt</strong> (<em>HLRTopoBRep_ListIteratorOfListOfVData &amp;</em>) – </li>
+<li><strong>Other</strong> (<em>HLRTopoBRep_ListOfVData &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Remove">
+<code class="descname">Remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>It</strong> (<em>HLRTopoBRep_ListIteratorOfListOfVData &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.RemoveFirst">
+<code class="descname">RemoveFirst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.RemoveFirst" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>HLRTopoBRep_ListOfVData &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData">
+<em class="property">class </em><code class="descname">HLRTopoBRep_MapOfShapeListOfVData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BasicMap" title="OCC.TCollection.TCollection_BasicMap"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BasicMap</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – default value is 1</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>HLRTopoBRep_MapOfShapeListOfVData &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData" title="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData">HLRTopoBRep_MapOfShapeListOfVData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Bind">
+<code class="descname">Bind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Bind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>I</strong> (<em>HLRTopoBRep_ListOfVData &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.ChangeFind">
+<code class="descname">ChangeFind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.ChangeFind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData" title="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData">HLRTopoBRep_ListOfVData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.ChangeFind1">
+<code class="descname">ChangeFind1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.ChangeFind1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Find">
+<code class="descname">Find</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Find" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData" title="OCC.HLRTopoBRep.HLRTopoBRep_ListOfVData">HLRTopoBRep_ListOfVData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Find1">
+<code class="descname">Find1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Find1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Standard_Address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.IsBound">
+<code class="descname">IsBound</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.IsBound" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.ReSize">
+<code class="descname">ReSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.ReSize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>NbBuckets</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>HLRTopoBRep_MapOfShapeListOfVData &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData" title="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData">HLRTopoBRep_MapOfShapeListOfVData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.UnBind">
+<code class="descname">UnBind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.UnBind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>K</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_MapOfShapeListOfVData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_OutLiner">
+<em class="property">class </em><code class="descname">HLRTopoBRep_OutLiner</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_OutLiner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.MMgt_TShared" title="OCC.MMgt.MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.MMgt_TShared</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>OriSh</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>OriS</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>OutS</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.DataStructure">
+<code class="descname">DataStructure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.DataStructure" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.HLRTopoBRep.HLRTopoBRep_Data" title="OCC.HLRTopoBRep.HLRTopoBRep_Data">HLRTopoBRep_Data</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.Fill">
+<code class="descname">Fill</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.Fill" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>HLRAlgo_Projector &amp;</em>) – </li>
+<li><strong>MST</strong> (<em>BRepTopAdaptor_MapOfShapeTool &amp;</em>) – </li>
+<li><strong>nbIso</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.OriginalShape">
+<code class="descname">OriginalShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.OriginalShape" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>OriS</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.OutLinedShape">
+<code class="descname">OutLinedShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.OutLinedShape" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>OutS</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_OutLiner.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_VData">
+<em class="property">class </em><code class="descname">HLRTopoBRep_VData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_VData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>float</em>) – </li>
+<li><strong>V</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_VData.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_VData.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_VData.Vertex">
+<code class="descname">Vertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_VData.Vertex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.HLRTopoBRep_VData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.HLRTopoBRep_VData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData">
+<em class="property">class </em><code class="descname">Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_MapNode" title="OCC.TCollection.Handle_TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_MapNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData">
+<em class="property">class </em><code class="descname">Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_MapNode" title="OCC.TCollection.Handle_TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_MapNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData">
+<em class="property">class </em><code class="descname">Handle_HLRTopoBRep_ListNodeOfListOfVData</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_MapNode" title="OCC.TCollection.Handle_TCollection_MapNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_MapNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_ListNodeOfListOfVData.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner">
+<em class="property">class </em><code class="descname">Handle_HLRTopoBRep_OutLiner</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.MMgt.html#OCC.MMgt.Handle_MMgt_TShared" title="OCC.MMgt.Handle_MMgt_TShared"><code class="xref py py-class docutils literal"><span class="pre">OCC.MMgt.Handle_MMgt_TShared</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.Handle_HLRTopoBRep_OutLiner.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.HLRTopoBRep.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.HLRTopoBRep.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.HLRTopoBRep.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.HLRTopoBRep.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.HLRTopoBRep.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.HLRTopoBRep.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

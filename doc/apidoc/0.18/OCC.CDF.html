@@ -1,0 +1,2384 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.CDF module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.CDF module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.CDF module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.CDF.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-cdf-module">
+<h1>OCC.CDF module<a class="headerlink" href="#occ-cdf-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.CDF"></span><dl class="class">
+<dt id="OCC.CDF.CDF_Application">
+<em class="property">class </em><code class="descname">CDF_Application</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.CDM.html#OCC.CDM.CDM_Application" title="OCC.CDM.CDM_Application"><code class="xref py py-class docutils literal"><span class="pre">OCC.CDM.CDM_Application</span></code></a></p>
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.CanClose">
+<code class="descname">CanClose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.CanClose" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aDocument</strong> (<em>Handle_CDM_Document &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">CDM_CanCloseStatus</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.CanRetrieve">
+<code class="descname">CanRetrieve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.CanRetrieve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFolder</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aFolder</strong> – </li>
+<li><strong>aName</strong> – </li>
+<li><strong>aVersion</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">PCDM_ReaderStatus</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">PCDM_ReaderStatus</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.Close">
+<code class="descname">Close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.Close" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>removes the document of the current session directory and closes the document;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aDocument</strong> (<em>Handle_CDM_Document &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.DefaultExtension">
+<code class="descname">DefaultExtension</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.DefaultExtension" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.DefaultFolder">
+<code class="descname">DefaultFolder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.DefaultFolder" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.FindReader">
+<code class="descname">FindReader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.FindReader" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aFileName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.FindReaderFromFormat">
+<code class="descname">FindReaderFromFormat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.FindReaderFromFormat" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aFormat</strong> (<em>TCollection_ExtendedString &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.Format">
+<code class="descname">Format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.Format" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>try to retrieve a Format directly in the file or in application resource by using extension. returns True if found;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFileName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>theFormat</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.Formats">
+<code class="descname">Formats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.Formats" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Formats</strong> (<em>TColStd_SequenceOfExtendedString &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.GetRetrieveStatus">
+<code class="descname">GetRetrieveStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.GetRetrieveStatus" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks status after Retrieve</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">PCDM_ReaderStatus</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.CDF.CDF_Application.Load">
+<em class="property">static </em><code class="descname">Load</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.Load" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>plugs an application. //! Open is used - for opening a Document that has been created in an application - for opening a Document from the database - for opening a Document from a file. The Open methods always add the document in the session directory and calls the virtual Activate method. The document is considered to be opened until Close is used. To be storable, a document must be opened by an application since the application resources are needed to store it.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aGUID</strong> (<em>Standard_GUID &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.CDF.Handle_CDF_Application" title="OCC.CDF.Handle_CDF_Application">Handle_CDF_Application</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.Open">
+<code class="descname">Open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.Open" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>puts the document in the current session directory and calls the virtual method Activate on it.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aDocument</strong> (<em>Handle_CDM_Document &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.Reader">
+<code class="descname">Reader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.Reader" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aFileName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.PCDM.html#OCC.PCDM.Handle_PCDM_Reader" title="OCC.PCDM.Handle_PCDM_Reader">Handle_PCDM_Reader</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.ReaderFromFormat">
+<code class="descname">ReaderFromFormat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.ReaderFromFormat" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aFormat</strong> (<em>TCollection_ExtendedString &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.PCDM.html#OCC.PCDM.Handle_PCDM_Reader" title="OCC.PCDM.Handle_PCDM_Reader">Handle_PCDM_Reader</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.Retrieve">
+<code class="descname">Retrieve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.Retrieve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This method retrieves a document from the database. If the Document references other documents which have been updated, the latest version of these documents will be used if {UseStorageConfiguration} is Standard_True. The content of {aFolder}, {aName} and {aVersion} depends on the Database Manager system. If the DBMS is only based on the OS, {aFolder} is a directory and {aName} is the name of a file. In this case the use of the syntax with {aVersion} has no sense. For example: //! Handle_CDM_Document theDocument=myApplication-&gt;Retrieve(‘/home/cascade’,’box.dsg’); If the DBMS is EUCLID/Design Manager, {aFolder}, {aName} have the form they have in EUCLID/Design Manager. For example: //! Handle_CDM_Document theDocument=myApplication-&gt;Retrieve(‘<a href="#id1"><span class="problematic" id="id2">|</span></a>user|cascade’,’box’); //! Since the version is not specified in this syntax, the latest wil be used. A link is kept with the database through an instance of CDM_MetaData</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFolder</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>UseStorageConfiguration</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.CDM.html#OCC.CDM.Handle_CDM_Document" title="OCC.CDM.Handle_CDM_Document">Handle_CDM_Document</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>This method retrieves a document from the database. If the Document references other documents which have been updated, the latest version of these documents will be used if {UseStorageConfiguration} is Standard_True. – If the DBMS is only based on the OS, this syntax should not be used. //! If the DBMS is EUCLID/Design Manager, {aFolder}, {aName} and {aVersion} have the form they have in EUCLID/Design Manager. For example: //! Handle_CDM_Document theDocument=myApplication-&gt;Retrieve(‘<a href="#id3"><span class="problematic" id="id4">|</span></a>user|cascade’,’box’,‘2’); A link is kept with the database through an instance of CDM_MetaData</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFolder</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aVersion</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>UseStorageConfiguration</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.CDM.html#OCC.CDM.Handle_CDM_Document" title="OCC.CDM.Handle_CDM_Document">Handle_CDM_Document</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Application.SetDefaultFolder">
+<code class="descname">SetDefaultFolder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application.SetDefaultFolder" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aFolder</strong> (<em>Standard_ExtString</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.CDF_Application.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.CDF_Application.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.CDF.CDF_Application_Load">
+<code class="descname">CDF_Application_Load</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Application_Load" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>plugs an application. //! Open is used - for opening a Document that has been created in an application - for opening a Document from the database - for opening a Document from a file. The Open methods always add the document in the session directory and calls the virtual Activate method. The document is considered to be opened until Close is used. To be storable, a document must be opened by an application since the application resources are needed to store it.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aGUID</strong> (<em>Standard_GUID &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.CDF.Handle_CDF_Application" title="OCC.CDF.Handle_CDF_Application">Handle_CDF_Application</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.CDF_Directory">
+<em class="property">class </em><code class="descname">CDF_Directory</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Standard.html#OCC.Standard.Standard_Transient" title="OCC.Standard.Standard_Transient"><code class="xref py py-class docutils literal"><span class="pre">OCC.Standard.Standard_Transient</span></code></a></p>
+<ul class="simple">
+<li>Creates an empty directory.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.CDF.CDF_Directory.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Directory.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>adds a document into the directory.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aDocument</strong> (<em>Handle_CDM_Document &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Directory.Contains">
+<code class="descname">Contains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Directory.Contains" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns true if the document aDocument is in the directory</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aDocument</strong> (<em>Handle_CDM_Document &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Directory.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Directory.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Directory.IsEmpty">
+<code class="descname">IsEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Directory.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the directory is empty.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Directory.Last">
+<code class="descname">Last</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Directory.Last" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the last document (if any) which has been added in the directory.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.CDM.html#OCC.CDM.Handle_CDM_Document" title="OCC.CDM.Handle_CDM_Document">Handle_CDM_Document</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Directory.Length">
+<code class="descname">Length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Directory.Length" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the number of documents of the directory.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Directory.Remove">
+<code class="descname">Remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Directory.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>removes the document.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aDocument</strong> (<em>Handle_CDM_Document &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.CDF_Directory.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.CDF_Directory.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.CDF_DirectoryIterator">
+<em class="property">class </em><code class="descname">CDF_DirectoryIterator</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_DirectoryIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>creates an Iterator with the directory of the current CDF.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aDirectory</strong> (<em>Handle_CDF_Directory &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.CDF.CDF_DirectoryIterator.Document">
+<code class="descname">Document</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_DirectoryIterator.Document" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns item value of current entry</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.CDM.html#OCC.CDM.Handle_CDM_Document" title="OCC.CDM.Handle_CDM_Document">Handle_CDM_Document</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_DirectoryIterator.MoreDocument">
+<code class="descname">MoreDocument</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_DirectoryIterator.MoreDocument" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if there are more entries to return</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_DirectoryIterator.NextDocument">
+<code class="descname">NextDocument</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_DirectoryIterator.NextDocument" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Go to the next entry (if there is not, Value will raise an exception)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.CDF_DirectoryIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.CDF_DirectoryIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.CDF_FWOSDriver">
+<em class="property">class </em><code class="descname">CDF_FWOSDriver</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_FWOSDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.CDF.CDF_MetaDataDriver" title="OCC.CDF.CDF_MetaDataDriver"><code class="xref py py-class docutils literal"><span class="pre">OCC.CDF.CDF_MetaDataDriver</span></code></a></p>
+<ul class="simple">
+<li>initializes the MetaDatadriver with its specific name.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.CDF.CDF_FWOSDriver.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_FWOSDriver.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.CDF_FWOSDriver.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.CDF_FWOSDriver.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.CDF_MetaDataDriver">
+<em class="property">class </em><code class="descname">CDF_MetaDataDriver</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Standard.html#OCC.Standard.Standard_Transient" title="OCC.Standard.Standard_Transient"><code class="xref py py-class docutils literal"><span class="pre">OCC.Standard.Standard_Transient</span></code></a></p>
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.BuildFileName">
+<code class="descname">BuildFileName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.BuildFileName" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aDocument</strong> (<em>Handle_CDM_Document &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_ExtendedString" title="OCC.TCollection.TCollection_ExtendedString">TCollection_ExtendedString</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.CreateDependsOn">
+<code class="descname">CreateDependsOn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.CreateDependsOn" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Creates a ‘Depends On’ relation between two Datas. By default does nothing</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFirstData</strong> (<em>Handle_CDM_MetaData &amp;</em>) – </li>
+<li><strong>aSecondData</strong> (<em>Handle_CDM_MetaData &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.CreateMetaData">
+<code class="descname">CreateMetaData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.CreateMetaData" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>should create meta-data corresponding to aData and maintaining a meta-link between these meta-data and aFileName CreateMetaData is called by CreateData If the metadata-driver has version capabilities, version must be set in the returned Data.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aDocument</strong> (<em>Handle_CDM_Document &amp;</em>) – </li>
+<li><strong>aFileName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.CDM.html#OCC.CDM.Handle_CDM_MetaData" title="OCC.CDM.Handle_CDM_MetaData">Handle_CDM_MetaData</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.CreateReference">
+<code class="descname">CreateReference</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.CreateReference" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFrom</strong> (<em>Handle_CDM_MetaData &amp;</em>) – </li>
+<li><strong>aTo</strong> (<em>Handle_CDM_MetaData &amp;</em>) – </li>
+<li><strong>aReferenceIdentifier</strong> (<em>int</em>) – </li>
+<li><strong>aToDocumentVersion</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.DefaultFolder">
+<code class="descname">DefaultFolder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.DefaultFolder" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_ExtendedString" title="OCC.TCollection.TCollection_ExtendedString">TCollection_ExtendedString</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.Find">
+<code class="descname">Find</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.Find" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>should indicate whether meta-data exist in the DBMS corresponding to the Data. aVersion may be NULL;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFolder</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aVersion</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>calls Find with an empty version</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFolder</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.FindFolder">
+<code class="descname">FindFolder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.FindFolder" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aFolder</strong> (<em>TCollection_ExtendedString &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.HasReadPermission">
+<code class="descname">HasReadPermission</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.HasReadPermission" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFolder</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aVersion</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.HasVersion">
+<code class="descname">HasVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.HasVersion" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>by default return Standard_True.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFolder</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.HasVersionCapability">
+<code class="descname">HasVersionCapability</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.HasVersionCapability" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the MetaDataDriver can manage different versions of a Data. By default, returns Standard_False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.LastVersion">
+<code class="descname">LastVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.LastVersion" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>by default returns aMetaDATA should return the MetaData stored in the DBMS with the meta-data corresponding to the path. If the MetaDataDriver has version management capabilities the version has to be set in the returned MetaData. MetaData is called by GetMetaData If the version is not included in the path , MetaData should return the last version of the metadata is deferred;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMetaData</strong> (<em>Handle_CDM_MetaData &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.CDM.html#OCC.CDM.Handle_CDM_MetaData" title="OCC.CDM.Handle_CDM_MetaData">Handle_CDM_MetaData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.MetaData">
+<code class="descname">MetaData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.MetaData" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>should return the MetaData stored in the DBMS with the meta-data corresponding to the Data. If the MetaDataDriver has version management capabilities the version has to be set in the returned MetaData. aVersion may be NULL MetaData is called by GetMetaData If the version is set to NULL, MetaData should return the last version of the metadata</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFolder</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aVersion</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.CDM.html#OCC.CDM.Handle_CDM_MetaData" title="OCC.CDM.Handle_CDM_MetaData">Handle_CDM_MetaData</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>calls MetaData with an empty version</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aFolder</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+<li><strong>aName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.CDM.html#OCC.CDM.Handle_CDM_MetaData" title="OCC.CDM.Handle_CDM_MetaData">Handle_CDM_MetaData</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.ReferenceIterator">
+<code class="descname">ReferenceIterator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.ReferenceIterator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.PCDM.html#OCC.PCDM.Handle_PCDM_ReferenceIterator" title="OCC.PCDM.Handle_PCDM_ReferenceIterator">Handle_PCDM_ReferenceIterator</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriver.SetName">
+<code class="descname">SetName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.SetName" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>this methods is usefull if the name of an object – depends on the metadatadriver. For example a Driver – based on the operating system can choose to add the extension of file to create to the object.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aDocument</strong> (<em>Handle_CDM_Document &amp;</em>) – </li>
+<li><strong>aName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_ExtendedString" title="OCC.TCollection.TCollection_ExtendedString">TCollection_ExtendedString</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.CDF_MetaDataDriver.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriver.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.CDF_MetaDataDriverFactory">
+<em class="property">class </em><code class="descname">CDF_MetaDataDriverFactory</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriverFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Standard.html#OCC.Standard.Standard_Transient" title="OCC.Standard.Standard_Transient"><code class="xref py py-class docutils literal"><span class="pre">OCC.Standard.Standard_Transient</span></code></a></p>
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriverFactory.Build">
+<code class="descname">Build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriverFactory.Build" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.CDF.Handle_CDF_MetaDataDriver" title="OCC.CDF.Handle_CDF_MetaDataDriver">Handle_CDF_MetaDataDriver</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_MetaDataDriverFactory.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriverFactory.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.CDF_MetaDataDriverFactory.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.CDF_MetaDataDriverFactory.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.CDF_Session">
+<em class="property">class </em><code class="descname">CDF_Session</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Standard.html#OCC.Standard.Standard_Transient" title="OCC.Standard.Standard_Transient"><code class="xref py py-class docutils literal"><span class="pre">OCC.Standard.Standard_Transient</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.CDF.CDF_Session.CurrentApplication">
+<code class="descname">CurrentApplication</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session.CurrentApplication" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.CDF.Handle_CDF_Application" title="OCC.CDF.Handle_CDF_Application">Handle_CDF_Application</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.CDF.CDF_Session.CurrentSession">
+<em class="property">static </em><code class="descname">CurrentSession</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session.CurrentSession" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the only one instance of Session that has been created.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.CDF.Handle_CDF_Session" title="OCC.CDF.Handle_CDF_Session">Handle_CDF_Session</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Session.Directory">
+<code class="descname">Directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session.Directory" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the directory of the session;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.CDF.Handle_CDF_Directory" title="OCC.CDF.Handle_CDF_Directory">Handle_CDF_Directory</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.CDF.CDF_Session.Exists">
+<em class="property">static </em><code class="descname">Exists</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session.Exists" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if a session has been created.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Session.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Session.HasCurrentApplication">
+<code class="descname">HasCurrentApplication</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session.HasCurrentApplication" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Session.LoadDriver">
+<code class="descname">LoadDriver</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session.LoadDriver" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Session.MetaDataDriver">
+<code class="descname">MetaDataDriver</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session.MetaDataDriver" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.CDF.Handle_CDF_MetaDataDriver" title="OCC.CDF.Handle_CDF_MetaDataDriver">Handle_CDF_MetaDataDriver</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Session.SetCurrentApplication">
+<code class="descname">SetCurrentApplication</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session.SetCurrentApplication" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>anApplication</strong> (<em>Handle_CDF_Application &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Session.UnsetCurrentApplication">
+<code class="descname">UnsetCurrentApplication</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session.UnsetCurrentApplication" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.CDF_Session.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.CDF_Session.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.CDF.CDF_Session_CurrentSession">
+<code class="descname">CDF_Session_CurrentSession</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session_CurrentSession" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the only one instance of Session that has been created.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.CDF.Handle_CDF_Session" title="OCC.CDF.Handle_CDF_Session">Handle_CDF_Session</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.CDF.CDF_Session_Exists">
+<code class="descname">CDF_Session_Exists</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Session_Exists" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if a session has been created.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.CDF_Store">
+<em class="property">class </em><code class="descname">CDF_Store</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>creates a store list from the document of the current selection.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aDocument</strong> (<em>Handle_CDM_Document &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.AssociatedStatusText">
+<code class="descname">AssociatedStatusText</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.AssociatedStatusText" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.Check">
+<code class="descname">Check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.Check" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks will make the following control. Check must be used before using Create method. Check will not be done twice by Create. //! 1) controls whether there is one document in the current selection. 2) controls whether there is a storage driver for the document. 3) controls whether the applicationdatatype associated with the driver exists as metadata in the metadata manager (Design Manager for example). 4) controls whether there is a storage driver for each subcomponents of the document if there are. If the control fails for a subcomponent, the control stops and name and type of this subcomponent can be get with LastName method 5) controls whether the applicationdatatype associated with the driver of each subcomponent exists as metadata in the metadata manager (Design Manager for example). If the control fails for a subcomponent, the control stops and name and type of this subcomponent can be get with LastName method</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">CDF_TryStoreStatus</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.Comment">
+<code class="descname">Comment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.Comment" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.Component">
+<code class="descname">Component</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.Component" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns item value of current entry</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.CurrentIsConsistent">
+<code class="descname">CurrentIsConsistent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.CurrentIsConsistent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.Description">
+<code class="descname">Description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.Description" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the description of the format of the main object.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.Folder">
+<code class="descname">Folder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.Folder" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the folder in which the current document will be stored.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.HasAPreviousVersion">
+<code class="descname">HasAPreviousVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.HasAPreviousVersion" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.HasSubComponents">
+<code class="descname">HasSubComponents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.HasSubComponents" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.InitComponent">
+<code class="descname">InitComponent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.InitComponent" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Allows to Start a new Iteration from beginning</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.IsConsistent">
+<code class="descname">IsConsistent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.IsConsistent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.IsMainDocument">
+<code class="descname">IsMainDocument</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.IsMainDocument" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the currentdocument is the main one, ie the document of the current selection.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.IsModified">
+<code class="descname">IsModified</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.IsModified" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.IsStored">
+<code class="descname">IsStored</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.IsStored" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns true if the current document is already stored</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.LastName">
+<code class="descname">LastName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.LastName" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>in the case of a subcomponent for which no storage driver exists, returns the name of the subcomponent if there is one.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.MetaDataPath">
+<code class="descname">MetaDataPath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.MetaDataPath" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the path of the previous store is the object is already stored, otherwise an empty string;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.MoreComponent">
+<code class="descname">MoreComponent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.MoreComponent" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if there are more entries to return</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.Name">
+<code class="descname">Name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.Name" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the name under which the current document will be stored</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.NextComponent">
+<code class="descname">NextComponent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.NextComponent" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Go to the next entry (if there is not, Value will raise an exception)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.Path">
+<code class="descname">Path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.Path" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the complete path of the created meta-data.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.PreviousVersion">
+<code class="descname">PreviousVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.PreviousVersion" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Standard_ExtString</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.Realize">
+<code class="descname">Realize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.Realize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.RecheckName">
+<code class="descname">RecheckName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.RecheckName" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>defines the name under which the document should be stored. uses for example after modification of the folder.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">CDF_StoreSetNameStatus</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.SetComment">
+<code class="descname">SetComment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.SetComment" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aComment</strong> (<em>Standard_ExtString</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.SetCurrent">
+<code class="descname">SetCurrent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.SetCurrent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aPresentation</strong> (<em>Standard_ExtString</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.SetFolder">
+<code class="descname">SetFolder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.SetFolder" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>defines the folder in which the document should be stored. returns Standard_True if the Folder exists, Standard_False otherwise.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aFolder</strong> (<em>TCollection_ExtendedString &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>defines the folder in which the document should be stored. returns Standard_True if the Folder exists, Standard_False otherwise.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aFolder</strong> (<em>Standard_ExtString</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.SetMain">
+<code class="descname">SetMain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.SetMain" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>the two following methods can be used just after Realize or Import – method to know if thes methods worked correctly, and if not why.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.SetName">
+<code class="descname">SetName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.SetName" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>defines the name under which the document should be stored.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aName</strong> (<em>Standard_ExtString</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">CDF_StoreSetNameStatus</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>defines the name under which the document should be stored.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aName</strong> (<em>TCollection_ExtendedString &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">CDF_StoreSetNameStatus</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.SetPreviousVersion">
+<code class="descname">SetPreviousVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.SetPreviousVersion" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aPreviousVersion</strong> (<em>Standard_ExtString</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.StoreStatus">
+<code class="descname">StoreStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.StoreStatus" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">PCDM_StoreStatus</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Store.SubComponentStatus">
+<code class="descname">SubComponentStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Store.SubComponentStatus" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aPresentation</strong> (<em>Standard_ExtString</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">CDF_SubComponentStatus</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.CDF_Store.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.CDF_Store.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.CDF_StoreList">
+<em class="property">class </em><code class="descname">CDF_StoreList</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_StoreList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Standard.html#OCC.Standard.Standard_Transient" title="OCC.Standard.Standard_Transient"><code class="xref py py-class docutils literal"><span class="pre">OCC.Standard.Standard_Transient</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aDocument</strong> (<em>Handle_CDM_Document &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.CDF.CDF_StoreList.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_StoreList.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_StoreList.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_StoreList.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_StoreList.IsConsistent">
+<code class="descname">IsConsistent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_StoreList.IsConsistent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_StoreList.More">
+<code class="descname">More</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_StoreList.More" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_StoreList.Next">
+<code class="descname">Next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_StoreList.Next" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_StoreList.Store">
+<code class="descname">Store</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_StoreList.Store" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>stores each object of the storelist in the reverse order of which they had been added.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aMetaData</strong> (<em>Handle_CDM_MetaData &amp;</em>) – </li>
+<li><strong>aStatusAssociatedText</strong> (<em>TCollection_ExtendedString &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">PCDM_StoreStatus</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_StoreList.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_StoreList.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.CDM.html#OCC.CDM.Handle_CDM_Document" title="OCC.CDM.Handle_CDM_Document">Handle_CDM_Document</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.CDF_StoreList.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.CDF_StoreList.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.CDF_Timer">
+<em class="property">class </em><code class="descname">CDF_Timer</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.CDF.CDF_Timer.MustShow">
+<code class="descname">MustShow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Timer.MustShow" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Timer.ShowAndRestart">
+<code class="descname">ShowAndRestart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Timer.ShowAndRestart" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMessage</strong> (<em>char *</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.CDF_Timer.ShowAndStop">
+<code class="descname">ShowAndStop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.CDF_Timer.ShowAndStop" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>aMessage</strong> (<em>char *</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.CDF_Timer.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.CDF_Timer.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.Handle_CDF_Application">
+<em class="property">class </em><code class="descname">Handle_CDF_Application</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Application" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.CDM.html#OCC.CDM.Handle_CDM_Application" title="OCC.CDM.Handle_CDM_Application"><code class="xref py py-class docutils literal"><span class="pre">OCC.CDM.Handle_CDM_Application</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.CDF.Handle_CDF_Application.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Application.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_Application.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Application.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_Application.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Application.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_Application.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Application.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.Handle_CDF_Application.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.Handle_CDF_Application.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.Handle_CDF_Directory">
+<em class="property">class </em><code class="descname">Handle_CDF_Directory</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Standard.html#OCC.Standard.Handle_Standard_Transient" title="OCC.Standard.Handle_Standard_Transient"><code class="xref py py-class docutils literal"><span class="pre">OCC.Standard.Handle_Standard_Transient</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.CDF.Handle_CDF_Directory.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Directory.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_Directory.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Directory.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_Directory.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Directory.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_Directory.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Directory.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.Handle_CDF_Directory.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.Handle_CDF_Directory.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.Handle_CDF_FWOSDriver">
+<em class="property">class </em><code class="descname">Handle_CDF_FWOSDriver</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_FWOSDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.CDF.Handle_CDF_MetaDataDriver" title="OCC.CDF.Handle_CDF_MetaDataDriver"><code class="xref py py-class docutils literal"><span class="pre">OCC.CDF.Handle_CDF_MetaDataDriver</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.CDF.Handle_CDF_FWOSDriver.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_FWOSDriver.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_FWOSDriver.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_FWOSDriver.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_FWOSDriver.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_FWOSDriver.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_FWOSDriver.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_FWOSDriver.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.Handle_CDF_FWOSDriver.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.Handle_CDF_FWOSDriver.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriver">
+<em class="property">class </em><code class="descname">Handle_CDF_MetaDataDriver</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Standard.html#OCC.Standard.Handle_Standard_Transient" title="OCC.Standard.Handle_Standard_Transient"><code class="xref py py-class docutils literal"><span class="pre">OCC.Standard.Handle_Standard_Transient</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriver.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriver.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriver.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriver.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriver.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriver.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriver.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriver.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriver.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriver.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriverFactory">
+<em class="property">class </em><code class="descname">Handle_CDF_MetaDataDriverFactory</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriverFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Standard.html#OCC.Standard.Handle_Standard_Transient" title="OCC.Standard.Handle_Standard_Transient"><code class="xref py py-class docutils literal"><span class="pre">OCC.Standard.Handle_Standard_Transient</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriverFactory.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriverFactory.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriverFactory.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriverFactory.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriverFactory.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriverFactory.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriverFactory.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriverFactory.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.Handle_CDF_MetaDataDriverFactory.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.Handle_CDF_MetaDataDriverFactory.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.Handle_CDF_Session">
+<em class="property">class </em><code class="descname">Handle_CDF_Session</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Standard.html#OCC.Standard.Handle_Standard_Transient" title="OCC.Standard.Handle_Standard_Transient"><code class="xref py py-class docutils literal"><span class="pre">OCC.Standard.Handle_Standard_Transient</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.CDF.Handle_CDF_Session.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Session.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_Session.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Session.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_Session.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Session.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_Session.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_Session.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.Handle_CDF_Session.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.Handle_CDF_Session.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.Handle_CDF_StoreList">
+<em class="property">class </em><code class="descname">Handle_CDF_StoreList</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_StoreList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Standard.html#OCC.Standard.Handle_Standard_Transient" title="OCC.Standard.Handle_Standard_Transient"><code class="xref py py-class docutils literal"><span class="pre">OCC.Standard.Handle_Standard_Transient</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.CDF.Handle_CDF_StoreList.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_StoreList.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_StoreList.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_StoreList.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_StoreList.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_StoreList.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.Handle_CDF_StoreList.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.Handle_CDF_StoreList.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.Handle_CDF_StoreList.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.Handle_CDF_StoreList.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.CDF.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.CDF.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.CDF.cdf">
+<em class="property">class </em><code class="descname">cdf</code><a class="headerlink" href="#OCC.CDF.cdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.CDF.cdf.GetLicense">
+<em class="property">static </em><code class="descname">GetLicense</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.cdf.GetLicense" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>anApplicationIdentifier</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.CDF.cdf.IsAvailable">
+<em class="property">static </em><code class="descname">IsAvailable</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.cdf.IsAvailable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>anApplicationIdentifier</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.CDF.cdf.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.CDF.cdf.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.CDF.cdf_GetLicense">
+<code class="descname">cdf_GetLicense</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.cdf_GetLicense" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>anApplicationIdentifier</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.CDF.cdf_IsAvailable">
+<code class="descname">cdf_IsAvailable</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.cdf_IsAvailable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>anApplicationIdentifier</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.CDF.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.CDF.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

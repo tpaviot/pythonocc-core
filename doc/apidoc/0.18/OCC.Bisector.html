@@ -1,0 +1,1844 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.Bisector module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.Bisector module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.Bisector module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.Bisector.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-bisector-module">
+<h1>OCC.Bisector module<a class="headerlink" href="#occ-bisector-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.Bisector"></span><dl class="class">
+<dt id="OCC.Bisector.Bisector_Bisec">
+<em class="property">class </em><code class="descname">Bisector_Bisec</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Bisec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_Bisec.ChangeValue">
+<code class="descname">ChangeValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Bisec.ChangeValue" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Curve of &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_Bisec.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Bisec.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Performs the bisecting line between the curves &lt;Cu1&gt; and &lt;Cu2&gt;. &lt;oncurve&gt; is True if the point &lt;P&gt; is common to &lt;Cu1&gt; and &lt;Cu2&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Cu1</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Cu2</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>V1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>V2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>float</em>) – </li>
+<li><strong>ajointype</strong> (<em>GeomAbs_JoinType</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>oncurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Performs the bisecting line between the curve &lt;Cu1&gt; and the point &lt;Pnt&gt;. &lt;oncurve&gt; is True if the point &lt;P&gt; is the point &lt;Pnt&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Cu</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Pnt</strong> (<em>Handle_Geom2d_Point &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>V1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>V2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>float</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>oncurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Performs the bisecting line between the curve &lt;Cu&gt; and the point &lt;Pnt&gt;. &lt;oncurve&gt; is True if the point &lt;P&gt; is the point &lt;Pnt&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pnt</strong> (<em>Handle_Geom2d_Point &amp;</em>) – </li>
+<li><strong>Cu</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>V1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>V2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>float</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>oncurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Performs the bisecting line between the two points &lt;Pnt1&gt; and &lt;Pnt2&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pnt1</strong> (<em>Handle_Geom2d_Point &amp;</em>) – </li>
+<li><strong>Pnt2</strong> (<em>Handle_Geom2d_Point &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>V1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>V2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>float</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 0.0</li>
+<li><strong>oncurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_Bisec.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Bisec.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Curve of &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_TrimmedCurve" title="OCC.Geom2d.Handle_Geom2d_TrimmedCurve">Handle_Geom2d_TrimmedCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Bisector_Bisec.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Bisector_Bisec.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Bisector_BisecAna">
+<em class="property">class </em><code class="descname">Bisector_BisecAna</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecAna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Bisector.Bisector_Curve" title="OCC.Bisector.Bisector_Curve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Bisector.Bisector_Curve</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecAna.Dump">
+<code class="descname">Dump</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecAna.Dump" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Deep</strong> (<em>int</em>) – default value is 0</li>
+<li><strong>Offset</strong> (<em>int</em>) – default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecAna.Geom2dCurve">
+<code class="descname">Geom2dCurve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecAna.Geom2dCurve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve">Handle_Geom2d_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecAna.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecAna.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecAna.Init">
+<code class="descname">Init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecAna.Init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>bisector</strong> (<em>Handle_Geom2d_TrimmedCurve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecAna.ParameterOfEndPoint">
+<code class="descname">ParameterOfEndPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecAna.ParameterOfEndPoint" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecAna.ParameterOfStartPoint">
+<code class="descname">ParameterOfStartPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecAna.ParameterOfStartPoint" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecAna.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecAna.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Performs the bisecting line between the curves &lt;Cu1&gt; and &lt;Cu2&gt;. &lt;oncurve&gt; is True if the point &lt;P&gt; is common to &lt;Cu1&gt; and &lt;Cu2&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Cu1</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Cu2</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>V1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>V2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>float</em>) – </li>
+<li><strong>jointype</strong> (<em>GeomAbs_JoinType</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>oncurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Performs the bisecting line between the curve &lt;Cu1&gt; and the point &lt;Pnt&gt;. &lt;oncurve&gt; is True if the point &lt;P&gt; is the point &lt;Pnt&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Cu</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Pnt</strong> (<em>Handle_Geom2d_Point &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>V1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>V2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>float</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>oncurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Performs the bisecting line between the curve &lt;Cu&gt; and the point &lt;Pnt&gt;. &lt;oncurve&gt; is True if the point &lt;P&gt; is the point &lt;Pnt&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pnt</strong> (<em>Handle_Geom2d_Point &amp;</em>) – </li>
+<li><strong>Cu</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>V1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>V2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>float</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>oncurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Performs the bisecting line between the two points &lt;Pnt1&gt; and &lt;Pnt2&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pnt1</strong> (<em>Handle_Geom2d_Point &amp;</em>) – </li>
+<li><strong>Pnt2</strong> (<em>Handle_Geom2d_Point &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>V1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>V2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Sense</strong> (<em>float</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – default value is 0.0</li>
+<li><strong>oncurve</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecAna.SetTrim">
+<code class="descname">SetTrim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecAna.SetTrim" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Trim &lt;self&gt; by a domain defined by the curve &lt;Cu&gt;. This domain is the set of the points which are nearest from &lt;Cu&gt; than the extremitis of &lt;Cu&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Cu</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Trim &lt;self&gt; by a domain defined by uf and ul</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uf</strong> (<em>float</em>) – </li>
+<li><strong>ul</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Bisector_BisecAna.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Bisector_BisecAna.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Bisector_BisecCC">
+<em class="property">class </em><code class="descname">Bisector_BisecCC</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Bisector.Bisector_Curve" title="OCC.Bisector.Bisector_Curve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Bisector.Bisector_Curve</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Constructs the bisector between the curves &lt;Cu1&gt; and &lt;Cu2&gt;. //! &lt;Side1&gt; (resp &lt;Side2&gt;) = 1 if the bisector curve is on the left of &lt;Cu1&gt; (resp &lt;Cu2&gt;) else &lt;Side1&gt; (resp &lt;Side2&gt;) = -1. //! the Bisector is trimmed by the Point &lt;Origin&gt;. &lt;DistMax&gt; is used to trim the bisector.The distance between the points of the bisector and &lt;Cu&gt; is smaller than &lt;DistMax&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Cu1</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Cu2</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Side1</strong> (<em>float</em>) – </li>
+<li><strong>Side2</strong> (<em>float</em>) – </li>
+<li><strong>Origin</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>DistMax</strong> (<em>float</em>) – default value is 500</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.ChangeGuide">
+<code class="descname">ChangeGuide</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.ChangeGuide" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>The parameter on &lt;self&gt; is linked to the parameter on the first curve. This method creates the same bisector where the curves are inversed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Bisector.Handle_Bisector_BisecCC" title="OCC.Bisector.Handle_Bisector_BisecCC">Handle_Bisector_BisecCC</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.Curve">
+<code class="descname">Curve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.Curve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>IndCurve</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve">Handle_Geom2d_Curve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.Dump">
+<code class="descname">Dump</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.Dump" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Deep</strong> (<em>int</em>) – default value is 0</li>
+<li><strong>Offset</strong> (<em>int</em>) – default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.IntervalContinuity">
+<code class="descname">IntervalContinuity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.IntervalContinuity" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">GeomAbs_Shape</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.IsEmpty">
+<code class="descname">IsEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.LinkBisCurve">
+<code class="descname">LinkBisCurve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.LinkBisCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter on the curve1 of the projection of the point of parameter U on &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>U</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.LinkCurveBis">
+<code class="descname">LinkCurveBis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.LinkCurveBis" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the reciproque of LinkBisCurve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>U</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Computes the bisector between the curves &lt;Cu1&gt; and &lt;Cu2&gt;. //! &lt;Side1&gt; (resp &lt;Side2&gt;) = 1 if the bisector curve is on the left of &lt;Cu1&gt; (resp &lt;Cu2&gt;) else &lt;Side1&gt; (resp &lt;Side2&gt;) = -1. //! the Bisector is trimmed by the Point &lt;Origin&gt;. //! &lt;DistMax&gt; is used to trim the bisector.The distance between the points of the bisector and &lt;Cu&gt; is smaller than &lt;DistMax&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Cu1</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Cu2</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Side1</strong> (<em>float</em>) – </li>
+<li><strong>Side2</strong> (<em>float</em>) – </li>
+<li><strong>Origin</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>DistMax</strong> (<em>float</em>) – default value is 500</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.Polygon">
+<code class="descname">Polygon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.Polygon" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Bisector.Bisector_PolyBis" title="OCC.Bisector.Bisector_PolyBis">Bisector_PolyBis</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.ValueAndDist">
+<code class="descname">ValueAndDist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.ValueAndDist" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point of parameter U. Computes the distance between the current point and the two curves I separate. Computes the parameters on each curve corresponding of the projection of the current point.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float &amp;</em>) – </li>
+<li><strong>U2</strong> (<em>float &amp;</em>) – </li>
+<li><strong>Distance</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecCC.ValueByInt">
+<code class="descname">ValueByInt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.ValueByInt" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point of parameter U. Computes the distance between the current point and the two curves I separate. Computes the parameters on each curve corresponding of the projection of the current point.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float &amp;</em>) – </li>
+<li><strong>U2</strong> (<em>float &amp;</em>) – </li>
+<li><strong>Distance</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Bisector_BisecCC.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Bisector_BisecCC.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Bisector_BisecPC">
+<em class="property">class </em><code class="descname">Bisector_BisecPC</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecPC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Bisector.Bisector_Curve" title="OCC.Bisector.Bisector_Curve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Bisector.Bisector_Curve</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Constructs the bisector between the point &lt;P&gt; and the curve &lt;Cu&gt;. &lt;Side&gt; = 1. if the bisector curve is on the Left of &lt;Cu&gt; else &lt;Side&gt; = -1. &lt;DistMax&gt; is used to trim the bisector.The distance between the points of the bisector and &lt;Cu&gt; is smaller than &lt;DistMax&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Cu</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Side</strong> (<em>float</em>) – </li>
+<li><strong>DistMax</strong> (<em>float</em>) – default value is 500</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Constructs the bisector between the point &lt;P&gt; and the curve &lt;Cu&gt; Trimmed by &lt;UMin&gt; and &lt;UMax&gt; &lt;Side&gt; = 1. if the bisector curve is on the Left of &lt;Cu&gt; else &lt;Side&gt; = -1. Warning: the bisector is supposed all over defined between &lt;UMin&gt; and &lt;UMax&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Cu</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Side</strong> (<em>float</em>) – </li>
+<li><strong>UMin</strong> (<em>float</em>) – </li>
+<li><strong>UMax</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecPC.Distance">
+<code class="descname">Distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecPC.Distance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the distance between the point of parameter U on &lt;self&gt; and my point or my curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>U</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecPC.Dump">
+<code class="descname">Dump</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecPC.Dump" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Deep</strong> (<em>int</em>) – default value is 0</li>
+<li><strong>Offset</strong> (<em>int</em>) – default value is 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecPC.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecPC.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecPC.IntervalContinuity">
+<code class="descname">IntervalContinuity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecPC.IntervalContinuity" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">GeomAbs_Shape</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecPC.IsEmpty">
+<code class="descname">IsEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecPC.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns &lt;True&gt; if the bisector is empty.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecPC.LinkBisCurve">
+<code class="descname">LinkBisCurve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecPC.LinkBisCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter on the curve1 of the projection of the point of parameter U on &lt;self&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>U</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecPC.LinkCurveBis">
+<code class="descname">LinkCurveBis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecPC.LinkCurveBis" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the reciproque of LinkBisCurve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>U</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_BisecPC.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_BisecPC.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Construct the bisector between the point &lt;P&gt; and the curve &lt;Cu&gt;. &lt;Side&gt; = 1. if the bisector curve is on the Left of &lt;Cu&gt; else &lt;Side&gt; = -1. &lt;DistMax&gt; is used to trim the bisector.The distance between the points of the bisector and &lt;Cu&gt; is smaller than &lt;DistMax&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Cu</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>Side</strong> (<em>float</em>) – </li>
+<li><strong>DistMax</strong> (<em>float</em>) – default value is 500</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Bisector_BisecPC.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Bisector_BisecPC.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Bisector_Curve">
+<em class="property">class </em><code class="descname">Bisector_Curve</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Geom2d_Curve" title="OCC.Geom2d.Geom2d_Curve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Geom2d.Geom2d_Curve</span></code></a></p>
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_Curve.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Curve.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_Curve.IntervalFirst">
+<code class="descname">IntervalFirst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Curve.IntervalFirst" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the first parameter of the current interval.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_Curve.IntervalLast">
+<code class="descname">IntervalLast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Curve.IntervalLast" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the last parameter of the current interval.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_Curve.IsExtendAtEnd">
+<code class="descname">IsExtendAtEnd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Curve.IsExtendAtEnd" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_Curve.IsExtendAtStart">
+<code class="descname">IsExtendAtStart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Curve.IsExtendAtStart" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_Curve.NbIntervals">
+<code class="descname">NbIntervals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Curve.NbIntervals" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>If necessary, breaks the curve in intervals of continuity &lt;C1&gt;. And returns the number of intervals.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_Curve.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Curve.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Bisector_Curve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Bisector_Curve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Bisector_FunctionH">
+<em class="property">class </em><code class="descname">Bisector_FunctionH</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_FunctionH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_FunctionWithDerivative" title="OCC.math.math_FunctionWithDerivative"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_FunctionWithDerivative</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C2</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+<li><strong>T1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="OCC.Bisector.Bisector_FunctionH.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Bisector_FunctionH.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Bisector_FunctionInter">
+<em class="property">class </em><code class="descname">Bisector_FunctionInter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_FunctionInter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_FunctionWithDerivative" title="OCC.math.math_FunctionWithDerivative"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_FunctionWithDerivative</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Bis1</strong> (<em>Handle_Bisector_Curve &amp;</em>) – </li>
+<li><strong>Bis2</strong> (<em>Handle_Bisector_Curve &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_FunctionInter.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_FunctionInter.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Bis1</strong> (<em>Handle_Bisector_Curve &amp;</em>) – </li>
+<li><strong>Bis2</strong> (<em>Handle_Bisector_Curve &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Bisector_FunctionInter.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Bisector_FunctionInter.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Bisector_Inter">
+<em class="property">class </em><code class="descname">Bisector_Inter</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Inter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.IntRes2d.html#OCC.IntRes2d.IntRes2d_Intersection" title="OCC.IntRes2d.IntRes2d_Intersection"><code class="xref py py-class docutils literal"><span class="pre">OCC.IntRes2d.IntRes2d_Intersection</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Intersection between 2 curves. C1 separates the element A and B. C2 separates the elements C et D. If B an C have the same geometry. &lt;ComunElement&gt; Has to be True. It Permits an optimiztion of the computation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C1</strong> (<em>Bisector_Bisec &amp;</em>) – </li>
+<li><strong>D1</strong> (<em>IntRes2d_Domain &amp;</em>) – </li>
+<li><strong>C2</strong> (<em>Bisector_Bisec &amp;</em>) – </li>
+<li><strong>D2</strong> (<em>IntRes2d_Domain &amp;</em>) – </li>
+<li><strong>TolConf</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+<li><strong>ComunElement</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_Inter.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_Inter.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Intersection between 2 curves. C1 separates the element A and B. C2 separates the elements C et D. If B an C have the same geometry. &lt;ComunElement&gt; Has to be True. It Permits an optimiztion of the computation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C1</strong> (<em>Bisector_Bisec &amp;</em>) – </li>
+<li><strong>D1</strong> (<em>IntRes2d_Domain &amp;</em>) – </li>
+<li><strong>C2</strong> (<em>Bisector_Bisec &amp;</em>) – </li>
+<li><strong>D2</strong> (<em>IntRes2d_Domain &amp;</em>) – </li>
+<li><strong>TolConf</strong> (<em>float</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+<li><strong>ComunElement</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Bisector_Inter.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Bisector_Inter.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Bisector_PointOnBis">
+<em class="property">class </em><code class="descname">Bisector_PointOnBis</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PointOnBis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Param1</strong> (<em>float</em>) – </li>
+<li><strong>Param2</strong> (<em>float</em>) – </li>
+<li><strong>ParamBis</strong> (<em>float</em>) – </li>
+<li><strong>Distance</strong> (<em>float</em>) – </li>
+<li><strong>Point</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PointOnBis.Distance">
+<code class="descname">Distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PointOnBis.Distance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Distance</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PointOnBis.Dump">
+<code class="descname">Dump</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PointOnBis.Dump" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PointOnBis.IsInfinite">
+<code class="descname">IsInfinite</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PointOnBis.IsInfinite" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Infinite</strong> (<em>bool</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PointOnBis.ParamOnBis">
+<code class="descname">ParamOnBis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PointOnBis.ParamOnBis" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Param</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PointOnBis.ParamOnC1">
+<code class="descname">ParamOnC1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PointOnBis.ParamOnC1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Param</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PointOnBis.ParamOnC2">
+<code class="descname">ParamOnC2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PointOnBis.ParamOnC2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Param</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PointOnBis.Point">
+<code class="descname">Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PointOnBis.Point" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d"><em>gp_Pnt2d</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Bisector_PointOnBis.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Bisector_PointOnBis.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Bisector_PolyBis">
+<em class="property">class </em><code class="descname">Bisector_PolyBis</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PolyBis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PolyBis.Append">
+<code class="descname">Append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PolyBis.Append" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Point</strong> (<em>Bisector_PointOnBis &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PolyBis.First">
+<code class="descname">First</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PolyBis.First" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Bisector.Bisector_PointOnBis" title="OCC.Bisector.Bisector_PointOnBis">Bisector_PointOnBis</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PolyBis.Interval">
+<code class="descname">Interval</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PolyBis.Interval" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>U</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PolyBis.IsEmpty">
+<code class="descname">IsEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PolyBis.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PolyBis.Last">
+<code class="descname">Last</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PolyBis.Last" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Bisector.Bisector_PointOnBis" title="OCC.Bisector.Bisector_PointOnBis">Bisector_PointOnBis</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PolyBis.Length">
+<code class="descname">Length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PolyBis.Length" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PolyBis.Transform">
+<code class="descname">Transform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PolyBis.Transform" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>T</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Trsf2d" title="OCC.gp.gp_Trsf2d"><em>gp_Trsf2d</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Bisector_PolyBis.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Bisector_PolyBis.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Bisector.Bisector_PointOnBis" title="OCC.Bisector.Bisector_PointOnBis">Bisector_PointOnBis</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Bisector_PolyBis.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Bisector_PolyBis.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Handle_Bisector_BisecAna">
+<em class="property">class </em><code class="descname">Handle_Bisector_BisecAna</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecAna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Bisector.Handle_Bisector_Curve" title="OCC.Bisector.Handle_Bisector_Curve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Bisector.Handle_Bisector_Curve</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.Bisector.Handle_Bisector_BisecAna.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecAna.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_BisecAna.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecAna.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_BisecAna.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecAna.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_BisecAna.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecAna.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Handle_Bisector_BisecAna.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecAna.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Handle_Bisector_BisecCC">
+<em class="property">class </em><code class="descname">Handle_Bisector_BisecCC</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecCC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Bisector.Handle_Bisector_Curve" title="OCC.Bisector.Handle_Bisector_Curve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Bisector.Handle_Bisector_Curve</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.Bisector.Handle_Bisector_BisecCC.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecCC.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_BisecCC.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecCC.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_BisecCC.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecCC.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_BisecCC.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecCC.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Handle_Bisector_BisecCC.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecCC.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Handle_Bisector_BisecPC">
+<em class="property">class </em><code class="descname">Handle_Bisector_BisecPC</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecPC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Bisector.Handle_Bisector_Curve" title="OCC.Bisector.Handle_Bisector_Curve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Bisector.Handle_Bisector_Curve</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.Bisector.Handle_Bisector_BisecPC.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecPC.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_BisecPC.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecPC.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_BisecPC.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecPC.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_BisecPC.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecPC.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Handle_Bisector_BisecPC.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_BisecPC.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.Handle_Bisector_Curve">
+<em class="property">class </em><code class="descname">Handle_Bisector_Curve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_Curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_Curve" title="OCC.Geom2d.Handle_Geom2d_Curve"><code class="xref py py-class docutils literal"><span class="pre">OCC.Geom2d.Handle_Geom2d_Curve</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.Bisector.Handle_Bisector_Curve.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_Curve.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_Curve.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_Curve.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_Curve.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_Curve.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.Handle_Bisector_Curve.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_Curve.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.Handle_Bisector_Curve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.Handle_Bisector_Curve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.Bisector.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Bisector.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Bisector.bisector">
+<em class="property">class </em><code class="descname">bisector</code><a class="headerlink" href="#OCC.Bisector.bisector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.Bisector.bisector.IsConvex">
+<em class="property">static </em><code class="descname">IsConvex</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.bisector.IsConvex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Cu</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Sign</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Bisector.bisector.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Bisector.bisector.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Bisector.bisector_IsConvex">
+<code class="descname">bisector_IsConvex</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.bisector_IsConvex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Cu</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Sign</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Bisector.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Bisector.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

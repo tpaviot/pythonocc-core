@@ -1,0 +1,1141 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.Geom2dConvert module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.Geom2dConvert module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.Geom2dConvert module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.Geom2dConvert.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-geom2dconvert-module">
+<h1>OCC.Geom2dConvert module<a class="headerlink" href="#occ-geom2dconvert-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.Geom2dConvert"></span><dl class="class">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_ApproxCurve">
+<em class="property">class </em><code class="descname">Geom2dConvert_ApproxCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_ApproxCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Constructs an approximation framework defined by - the 2D conic Curve - the tolerance value Tol2d - the degree of continuity Order - the maximum number of segments allowed MaxSegments - the highest degree MaxDegree which the polynomial defining the BSpline is allowed to have.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Curve</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Tol2d</strong> (<em>float</em>) – </li>
+<li><strong>Order</strong> (<em>GeomAbs_Shape</em>) – </li>
+<li><strong>MaxSegments</strong> (<em>int</em>) – </li>
+<li><strong>MaxDegree</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Constructs an approximation framework defined by - the 2D conic Curve - the tolerance value Tol2d - the degree of continuity Order - the maximum number of segments allowed MaxSegments - the highest degree MaxDegree which the polynomial defining the BSpline is allowed to have.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Curve</strong> (<em>Handle_Adaptor2d_HCurve2d &amp;</em>) – </li>
+<li><strong>Tol2d</strong> (<em>float</em>) – </li>
+<li><strong>Order</strong> (<em>GeomAbs_Shape</em>) – </li>
+<li><strong>MaxSegments</strong> (<em>int</em>) – </li>
+<li><strong>MaxDegree</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.Curve">
+<code class="descname">Curve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.Curve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the 2D BSpline curve resulting from the approximation algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_BSplineCurve" title="OCC.Geom2d.Handle_Geom2d_BSplineCurve">Handle_Geom2d_BSplineCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.DumpToString">
+<code class="descname">DumpToString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.DumpToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Geom2dConvert_ApproxCurve_DumpToString(Geom2dConvert_ApproxCurve self) -&gt; std::string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.HasResult">
+<code class="descname">HasResult</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.HasResult" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns Standard_True if the approximation did come out with a result that is not NECESSARELY within the required tolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns Standard_True if the approximation has been done with within requiered tolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.MaxError">
+<code class="descname">MaxError</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.MaxError" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the greatest distance between a point on the source conic and the BSpline curve resulting from the approximation. (&gt;0 when an approximation has been done, 0 if no approximation)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_ApproxCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_BSplineCurveKnotSplitting">
+<em class="property">class </em><code class="descname">Geom2dConvert_BSplineCurveKnotSplitting</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_BSplineCurveKnotSplitting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Determines points at which the BSpline curve BasisCurve should be split in order to obtain arcs with a degree of continuity equal to ContinuityRange. These points are knot values of BasisCurve. They are identified by indices in the knots table of BasisCurve. Use the available interrogation functions to access computed values, followed by the global function SplitBSplineCurve (provided by the package Geom2dConvert) to split the curve. Exceptions Standard_RangeError if ContinuityRange is less than zero.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BasisCurve</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>ContinuityRange</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_BSplineCurveKnotSplitting.NbSplits">
+<code class="descname">NbSplits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_BSplineCurveKnotSplitting.NbSplits" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of points at which the analysed BSpline curve should be split, in order to obtain arcs with the continuity required by this framework. All these points correspond to knot values. Note that the first and last points of the curve, which bound the first and last arcs, are counted among these splitting points.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_BSplineCurveKnotSplitting.SplitValue">
+<code class="descname">SplitValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_BSplineCurveKnotSplitting.SplitValue" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the split knot of index Index to the split knots table computed in this framework. The returned value is an index in the knots table of the BSpline curve analysed by this algorithm. Notes: - If Index is equal to 1, the corresponding knot gives the first point of the curve. - If Index is equal to the number of split knots computed in this framework, the corresponding point is the last point of the curve. Exceptions Standard_RangeError if Index is less than 1 or greater than the number of split knots computed in this framework.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_BSplineCurveKnotSplitting.Splitting">
+<code class="descname">Splitting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_BSplineCurveKnotSplitting.Splitting" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Loads the SplitValues table with the split knots values computed in this framework. Each value in the table is an index in the knots table of the BSpline curve analysed by this algorithm. The values in SplitValues are given in ascending order and comprise the indices of the knots which give the first and last points of the curve. Use two consecutive values from the table as arguments of the global function SplitBSplineCurve (provided by the package Geom2dConvert) to split the curve. Exceptions Standard_DimensionError if the array SplitValues was not created with the following bounds: - 1, and - the number of split points computed in this framework (as given by the function NbSplits).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>SplitValues</strong> (<em>TColStd_Array1OfInteger &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_BSplineCurveKnotSplitting.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_BSplineCurveKnotSplitting.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve">
+<em class="property">class </em><code class="descname">Geom2dConvert_BSplineCurveToBezierCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Computes all the data needed to convert - the BSpline curve BasisCurve, into a series of adjacent Bezier arcs. The result consists of a series of BasisCurve arcs limited by points corresponding to knot values of the curve. Use the available interrogation functions to ascertain the number of computed Bezier arcs, and then to construct each individual Bezier curve (or all Bezier curves). Note: ParametricTolerance is not used.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>BasisCurve</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Computes all the data needed to convert the portion of the BSpline curve BasisCurve limited by the two parameter values U1 and U2 for Example if there is a Knot Uk and Uk &lt; U &lt; Uk + ParametricTolerance/2 the last curve corresponds to the span [Uk-1, Uk] and not to [Uk, Uk+1] The result consists of a series of BasisCurve arcs limited by points corresponding to knot values of the curve. Use the available interrogation functions to ascertain the number of computed Bezier arcs, and then to construct each individual Bezier curve (or all Bezier curves). Note: ParametricTolerance is not used. Raises DomainError if U1 or U2 are out of the parametric bounds of the basis curve [FirstParameter, LastParameter]. The Tolerance criterion is ParametricTolerance. Raised if Abs (U2 - U1) &lt;= ParametricTolerance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BasisCurve</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>ParametricTolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve.Arc">
+<code class="descname">Arc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve.Arc" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Constructs and returns the Bezier curve of index Index to the table of adjacent Bezier arcs computed by this algorithm. This Bezier curve has the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_OutOfRange if Index is less than 1 or greater than the number of adjacent Bezier arcs computed by this algorithm.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_BezierCurve" title="OCC.Geom2d.Handle_Geom2d_BezierCurve">Handle_Geom2d_BezierCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve.Arcs">
+<code class="descname">Arcs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve.Arcs" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Constructs all the Bezier curves whose data is computed by this algorithm and loads these curves into the Curves table. The Bezier curves have the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_DimensionError if the Curves array was not created with the following bounds: - 1 , and - the number of adjacent Bezier arcs computed by this algorithm (as given by the function NbArcs).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Curves</strong> (<em>TColGeom2d_Array1OfBezierCurve &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve.Knots">
+<code class="descname">Knots</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve.Knots" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This methode returns the bspline’s knots associated to the converted arcs Raises DimensionError if the length of Curves is not equal to NbArcs + 1</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>TKnots</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve.NbArcs">
+<code class="descname">NbArcs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve.NbArcs" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of BezierCurve arcs. If at the creation time you have decomposed the basis curve between the parametric values UFirst, ULast the number of BezierCurve arcs depends on the number of knots included inside the interval [UFirst, ULast]. If you have decomposed the whole basis B-spline curve the number of BezierCurve arcs NbArcs is equal to the number of knots less one.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_BSplineCurveToBezierCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_CompCurveToBSplineCurve">
+<em class="property">class </em><code class="descname">Geom2dConvert_CompCurveToBSplineCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_CompCurveToBSplineCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Initialize the algorithme - Parameterisation is used to convert</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Parameterisation</strong> (<em>Convert_ParameterisationType</em>) – default value is Convert_TgtThetaOver2</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Initialize the algorithme with one curve - Parameterisation is used to convert</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BasisCurve</strong> (<em>Handle_Geom2d_BoundedCurve &amp;</em>) – </li>
+<li><strong>Parameterisation</strong> (<em>Convert_ParameterisationType</em>) – default value is Convert_TgtThetaOver2</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_CompCurveToBSplineCurve.Add">
+<code class="descname">Add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_CompCurveToBSplineCurve.Add" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Append a curve in the BSpline Return False if the curve is not G0 with the BSplineCurve. Tolerance is used to check continuity and decrease Multiplicty at the common Knot After is usefull if BasisCurve is a closed curve .</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>NewCurve</strong> (<em>Handle_Geom2d_BoundedCurve &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+<li><strong>After</strong> (<em>bool</em>) – default value is Standard_False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_CompCurveToBSplineCurve.BSplineCurve">
+<code class="descname">BSplineCurve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_CompCurveToBSplineCurve.BSplineCurve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_BSplineCurve" title="OCC.Geom2d.Handle_Geom2d_BSplineCurve">Handle_Geom2d_BSplineCurve</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_CompCurveToBSplineCurve.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_CompCurveToBSplineCurve.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Clear result curve</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dConvert.Geom2dConvert_CompCurveToBSplineCurve.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dConvert.Geom2dConvert_CompCurveToBSplineCurve.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Geom2dConvert.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.Geom2dConvert.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dConvert.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dConvert.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Geom2dConvert.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Geom2dConvert.geom2dconvert">
+<em class="property">class </em><code class="descname">geom2dconvert</code><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.Geom2dConvert.geom2dconvert.C0BSplineToArrayOfC1BSplineCurve">
+<em class="property">static </em><code class="descname">C0BSplineToArrayOfC1BSplineCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert.C0BSplineToArrayOfC1BSplineCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. Tolerance is a geometrical tolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BS</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>tabBS</strong> (<em>Handle_TColGeom2d_HArray1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BS</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>tabBS</strong> (<em>Handle_TColGeom2d_HArray1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>AngularTolerance</strong> (<em>float</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.Geom2dConvert.geom2dconvert.C0BSplineToC1BSplineCurve">
+<em class="property">static </em><code class="descname">C0BSplineToC1BSplineCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert.C0BSplineToC1BSplineCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns a new BSpline which could still be C0. tolerance is a geometrical tolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BS</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.Geom2dConvert.geom2dconvert.ConcatC1">
+<em class="property">static </em><code class="descname">ConcatC1</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert.ConcatC1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ArrayOfCurves</strong> (<em>TColGeom2d_Array1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ArrayOfToler</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>ArrayOfIndices</strong> (<em>Handle_TColStd_HArray1OfInteger &amp;</em>) – </li>
+<li><strong>ArrayOfConcatenated</strong> (<em>Handle_TColGeom2d_HArray1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ClosedFlag</strong> (<em>bool</em>) – </li>
+<li><strong>ClosedTolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ArrayOfCurves</strong> (<em>TColGeom2d_Array1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ArrayOfToler</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>ArrayOfIndices</strong> (<em>Handle_TColStd_HArray1OfInteger &amp;</em>) – </li>
+<li><strong>ArrayOfConcatenated</strong> (<em>Handle_TColGeom2d_HArray1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ClosedFlag</strong> (<em>bool</em>) – </li>
+<li><strong>ClosedTolerance</strong> (<em>float</em>) – </li>
+<li><strong>AngularTolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.Geom2dConvert.geom2dconvert.ConcatG1">
+<em class="property">static </em><code class="descname">ConcatG1</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert.ConcatG1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This Method concatenates G1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ArrayOfCurves</strong> (<em>TColGeom2d_Array1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ArrayOfToler</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>ArrayOfConcatenated</strong> (<em>Handle_TColGeom2d_HArray1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ClosedFlag</strong> (<em>bool</em>) – </li>
+<li><strong>ClosedTolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.Geom2dConvert.geom2dconvert.CurveToBSplineCurve">
+<em class="property">static </em><code class="descname">CurveToBSplineCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert.CurveToBSplineCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This function converts a non infinite curve from Geom into a B-spline curve. C must be an ellipse or a circle or a trimmed conic or a trimmed line or a Bezier curve or a trimmed Bezier curve or a BSpline curve or a trimmed BSpline curve or an Offset curve or a trimmed Offset curve. The returned B-spline is not periodic except if C is a Circle or an Ellipse. ParameterisationType applies only if the curve is a Circle or an ellipse : TgtThetaOver2, TgtThetaOver2_1, TgtThetaOver2_2, TgtThetaOver2_3, TgtThetaOver2_4, Purpose: this is the classical rational parameterisation 2 1 - t cos(theta) = —— 2 1 + t //! 2t sin(theta) = —— 2 1 + t //! t = tan (theta/2) //! with TgtThetaOver2 the routine will compute the number of spans using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1 with TgtThetaOver2_N, N spans will be forced: an error will be raized if (ULast - UFirst) &gt;= PI and N = 1, ULast - UFirst &gt;= 2 PI and N = 2 //! QuasiAngular, here t is a rational function that approximates theta —-&gt; tan(theta/2). Neverthless the composing with above function yields exact functions whose square sum up to 1 RationalC1 ; t is replaced by a polynomial function of u so as to grant C1 contiuity across knots. Exceptions Standard_DomainError if the curve C is infinite. Standard_ConstructionError: - if C is a complete circle or ellipse, and if Parameterisation is not equal to Convert_TgtThetaOver2 or to Convert_RationalC1, or - if C is a trimmed circle or ellipse and if Parameterisation is equal to Convert_TgtThetaOver2_1 and if U2 - U1 &gt; 0.9999 * Pi where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a half-circle or a half-ellipse, for example), or - if C is a trimmed circle or ellipse and Parameterisation is equal to Convert_TgtThetaOver2_2 and U2 - U1 &gt; 1.9999 * Pi where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a quasi-complete circle or ellipse).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Parameterisation</strong> (<em>Convert_ParameterisationType</em>) – default value is Convert_TgtThetaOver2</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_BSplineCurve" title="OCC.Geom2d.Handle_Geom2d_BSplineCurve">Handle_Geom2d_BSplineCurve</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="OCC.Geom2dConvert.geom2dconvert.SplitBSplineCurve">
+<em class="property">static </em><code class="descname">SplitBSplineCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert.SplitBSplineCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>– Convert a curve to BSpline by Approximation //! This method computes the arc of B-spline curve between the two knots FromK1 and ToK2. If C is periodic the arc has the same orientation as C if SameOrientation = Standard_True. If C is not periodic SameOrientation is not used for the computation and C is oriented from the knot fromK1 to the knot toK2. We just keep the local definition of C between the knots FromK1 and ToK2. The returned B-spline curve has its first and last knots with a multiplicity equal to degree + 1, where degree is the polynomial degree of C. The indexes of the knots FromK1 and ToK2 doesn’t include the repetition of multiple knots in their definition. //! Raised if FromK1 or ToK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex] Raised if FromK1 = ToK2</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>FromK1</strong> (<em>int</em>) – </li>
+<li><strong>ToK2</strong> (<em>int</em>) – </li>
+<li><strong>SameOrientation</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_BSplineCurve" title="OCC.Geom2d.Handle_Geom2d_BSplineCurve">Handle_Geom2d_BSplineCurve</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>This function computes the segment of B-spline curve between the parametric values FromU1, ToU2. If C is periodic the arc has the same orientation as C if SameOrientation = True. If C is not periodic SameOrientation is not used for the computation and C is oriented fromU1 toU2. If U1 and U2 and two parametric values we consider that U1 = U2 if Abs (U1 - U2) &lt;= ParametricTolerance and ParametricTolerance must be greater or equal to Resolution from package gp. //! Raised if FromU1 or ToU2 are out of the parametric bounds of the curve (The tolerance criterion is ParametricTolerance). Raised if Abs (FromU1 - ToU2) &lt;= ParametricTolerance Raised if ParametricTolerance &lt; Resolution from gp.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>FromU1</strong> (<em>float</em>) – </li>
+<li><strong>ToU2</strong> (<em>float</em>) – </li>
+<li><strong>ParametricTolerance</strong> (<em>float</em>) – </li>
+<li><strong>SameOrientation</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_BSplineCurve" title="OCC.Geom2d.Handle_Geom2d_BSplineCurve">Handle_Geom2d_BSplineCurve</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Geom2dConvert.geom2dconvert.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Geom2dConvert.geom2dconvert_C0BSplineToArrayOfC1BSplineCurve">
+<code class="descname">geom2dconvert_C0BSplineToArrayOfC1BSplineCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert_C0BSplineToArrayOfC1BSplineCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. Tolerance is a geometrical tolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BS</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>tabBS</strong> (<em>Handle_TColGeom2d_HArray1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BS</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>tabBS</strong> (<em>Handle_TColGeom2d_HArray1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>AngularTolerance</strong> (<em>float</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Geom2dConvert.geom2dconvert_C0BSplineToC1BSplineCurve">
+<code class="descname">geom2dconvert_C0BSplineToC1BSplineCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert_C0BSplineToC1BSplineCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns a new BSpline which could still be C0. tolerance is a geometrical tolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BS</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>Tolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Geom2dConvert.geom2dconvert_ConcatC1">
+<code class="descname">geom2dconvert_ConcatC1</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert_ConcatC1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ArrayOfCurves</strong> (<em>TColGeom2d_Array1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ArrayOfToler</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>ArrayOfIndices</strong> (<em>Handle_TColStd_HArray1OfInteger &amp;</em>) – </li>
+<li><strong>ArrayOfConcatenated</strong> (<em>Handle_TColGeom2d_HArray1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ClosedFlag</strong> (<em>bool</em>) – </li>
+<li><strong>ClosedTolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ArrayOfCurves</strong> (<em>TColGeom2d_Array1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ArrayOfToler</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>ArrayOfIndices</strong> (<em>Handle_TColStd_HArray1OfInteger &amp;</em>) – </li>
+<li><strong>ArrayOfConcatenated</strong> (<em>Handle_TColGeom2d_HArray1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ClosedFlag</strong> (<em>bool</em>) – </li>
+<li><strong>ClosedTolerance</strong> (<em>float</em>) – </li>
+<li><strong>AngularTolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Geom2dConvert.geom2dconvert_ConcatG1">
+<code class="descname">geom2dconvert_ConcatG1</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert_ConcatG1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This Method concatenates G1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ArrayOfCurves</strong> (<em>TColGeom2d_Array1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ArrayOfToler</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>ArrayOfConcatenated</strong> (<em>Handle_TColGeom2d_HArray1OfBSplineCurve &amp;</em>) – </li>
+<li><strong>ClosedFlag</strong> (<em>bool</em>) – </li>
+<li><strong>ClosedTolerance</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Geom2dConvert.geom2dconvert_CurveToBSplineCurve">
+<code class="descname">geom2dconvert_CurveToBSplineCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert_CurveToBSplineCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>This function converts a non infinite curve from Geom into a B-spline curve. C must be an ellipse or a circle or a trimmed conic or a trimmed line or a Bezier curve or a trimmed Bezier curve or a BSpline curve or a trimmed BSpline curve or an Offset curve or a trimmed Offset curve. The returned B-spline is not periodic except if C is a Circle or an Ellipse. ParameterisationType applies only if the curve is a Circle or an ellipse : TgtThetaOver2, TgtThetaOver2_1, TgtThetaOver2_2, TgtThetaOver2_3, TgtThetaOver2_4, Purpose: this is the classical rational parameterisation 2 1 - t cos(theta) = —— 2 1 + t //! 2t sin(theta) = —— 2 1 + t //! t = tan (theta/2) //! with TgtThetaOver2 the routine will compute the number of spans using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1 with TgtThetaOver2_N, N spans will be forced: an error will be raized if (ULast - UFirst) &gt;= PI and N = 1, ULast - UFirst &gt;= 2 PI and N = 2 //! QuasiAngular, here t is a rational function that approximates theta —-&gt; tan(theta/2). Neverthless the composing with above function yields exact functions whose square sum up to 1 RationalC1 ; t is replaced by a polynomial function of u so as to grant C1 contiuity across knots. Exceptions Standard_DomainError if the curve C is infinite. Standard_ConstructionError: - if C is a complete circle or ellipse, and if Parameterisation is not equal to Convert_TgtThetaOver2 or to Convert_RationalC1, or - if C is a trimmed circle or ellipse and if Parameterisation is equal to Convert_TgtThetaOver2_1 and if U2 - U1 &gt; 0.9999 * Pi where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a half-circle or a half-ellipse, for example), or - if C is a trimmed circle or ellipse and Parameterisation is equal to Convert_TgtThetaOver2_2 and U2 - U1 &gt; 1.9999 * Pi where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a quasi-complete circle or ellipse).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_Curve &amp;</em>) – </li>
+<li><strong>Parameterisation</strong> (<em>Convert_ParameterisationType</em>) – default value is Convert_TgtThetaOver2</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_BSplineCurve" title="OCC.Geom2d.Handle_Geom2d_BSplineCurve">Handle_Geom2d_BSplineCurve</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Geom2dConvert.geom2dconvert_SplitBSplineCurve">
+<code class="descname">geom2dconvert_SplitBSplineCurve</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.geom2dconvert_SplitBSplineCurve" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>– Convert a curve to BSpline by Approximation //! This method computes the arc of B-spline curve between the two knots FromK1 and ToK2. If C is periodic the arc has the same orientation as C if SameOrientation = Standard_True. If C is not periodic SameOrientation is not used for the computation and C is oriented from the knot fromK1 to the knot toK2. We just keep the local definition of C between the knots FromK1 and ToK2. The returned B-spline curve has its first and last knots with a multiplicity equal to degree + 1, where degree is the polynomial degree of C. The indexes of the knots FromK1 and ToK2 doesn’t include the repetition of multiple knots in their definition. //! Raised if FromK1 or ToK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex] Raised if FromK1 = ToK2</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>FromK1</strong> (<em>int</em>) – </li>
+<li><strong>ToK2</strong> (<em>int</em>) – </li>
+<li><strong>SameOrientation</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_BSplineCurve" title="OCC.Geom2d.Handle_Geom2d_BSplineCurve">Handle_Geom2d_BSplineCurve</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>This function computes the segment of B-spline curve between the parametric values FromU1, ToU2. If C is periodic the arc has the same orientation as C if SameOrientation = True. If C is not periodic SameOrientation is not used for the computation and C is oriented fromU1 toU2. If U1 and U2 and two parametric values we consider that U1 = U2 if Abs (U1 - U2) &lt;= ParametricTolerance and ParametricTolerance must be greater or equal to Resolution from package gp. //! Raised if FromU1 or ToU2 are out of the parametric bounds of the curve (The tolerance criterion is ParametricTolerance). Raised if Abs (FromU1 - ToU2) &lt;= ParametricTolerance Raised if ParametricTolerance &lt; Resolution from gp.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>C</strong> (<em>Handle_Geom2d_BSplineCurve &amp;</em>) – </li>
+<li><strong>FromU1</strong> (<em>float</em>) – </li>
+<li><strong>ToU2</strong> (<em>float</em>) – </li>
+<li><strong>ParametricTolerance</strong> (<em>float</em>) – </li>
+<li><strong>SameOrientation</strong> (<em>bool</em>) – default value is Standard_True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCC.Geom2d.html#OCC.Geom2d.Handle_Geom2d_BSplineCurve" title="OCC.Geom2d.Handle_Geom2d_BSplineCurve">Handle_Geom2d_BSplineCurve</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Geom2dConvert.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Geom2dConvert.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

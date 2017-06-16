@@ -1,0 +1,2720 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.RWStepDimTol module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.RWStepDimTol module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.RWStepDimTol module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.RWStepDimTol.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-rwstepdimtol-module">
+<h1>OCC.RWStepDimTol module<a class="headerlink" href="#occ-rwstepdimtol-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.RWStepDimTol"></span><dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWAngularityTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWAngularityTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWAngularityTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWAngularityTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWAngularityTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads AngularityTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_AngularityTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWAngularityTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWAngularityTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_AngularityTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWAngularityTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWAngularityTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes AngularityTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_AngularityTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWAngularityTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWAngularityTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCircularRunoutTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWCircularRunoutTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCircularRunoutTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCircularRunoutTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCircularRunoutTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads CircularRunoutTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CircularRunoutTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCircularRunoutTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCircularRunoutTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CircularRunoutTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCircularRunoutTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCircularRunoutTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes CircularRunoutTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CircularRunoutTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCircularRunoutTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCircularRunoutTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCoaxialityTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWCoaxialityTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCoaxialityTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCoaxialityTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCoaxialityTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads CoaxialityTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CoaxialityTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCoaxialityTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCoaxialityTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CoaxialityTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCoaxialityTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCoaxialityTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes CoaxialityTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CoaxialityTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCoaxialityTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCoaxialityTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCommonDatum">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWCommonDatum</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCommonDatum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCommonDatum.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCommonDatum.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads CommonDatum</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CommonDatum &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCommonDatum.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCommonDatum.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CommonDatum &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCommonDatum.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCommonDatum.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes CommonDatum</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CommonDatum &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCommonDatum.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCommonDatum.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWConcentricityTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWConcentricityTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWConcentricityTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWConcentricityTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWConcentricityTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads ConcentricityTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_ConcentricityTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWConcentricityTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWConcentricityTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_ConcentricityTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWConcentricityTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWConcentricityTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes ConcentricityTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_ConcentricityTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWConcentricityTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWConcentricityTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCylindricityTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWCylindricityTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCylindricityTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCylindricityTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCylindricityTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads CylindricityTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CylindricityTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCylindricityTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCylindricityTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CylindricityTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCylindricityTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCylindricityTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes CylindricityTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_CylindricityTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWCylindricityTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWCylindricityTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatum">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWDatum</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatum.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatum.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads Datum</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_Datum &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatum.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatum.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_Datum &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatum.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatum.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes Datum</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_Datum &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatum.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatum.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumFeature">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWDatumFeature</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumFeature.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumFeature.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads DatumFeature</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_DatumFeature &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumFeature.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumFeature.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_DatumFeature &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumFeature.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumFeature.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes DatumFeature</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_DatumFeature &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumFeature.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumFeature.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumReference">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWDatumReference</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumReference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumReference.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumReference.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads DatumReference</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_DatumReference &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumReference.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumReference.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_DatumReference &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumReference.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumReference.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes DatumReference</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_DatumReference &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumReference.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumReference.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumTarget">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWDatumTarget</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumTarget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumTarget.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumTarget.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads DatumTarget</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_DatumTarget &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumTarget.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumTarget.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_DatumTarget &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumTarget.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumTarget.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes DatumTarget</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_DatumTarget &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWDatumTarget.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWDatumTarget.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWFlatnessTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWFlatnessTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWFlatnessTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWFlatnessTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWFlatnessTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads FlatnessTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_FlatnessTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWFlatnessTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWFlatnessTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_FlatnessTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWFlatnessTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWFlatnessTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes FlatnessTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_FlatnessTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWFlatnessTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWFlatnessTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.Share" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWGeometricTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads GeometricTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeometricTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeometricTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes GeometricTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeometricTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceRelationship">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWGeometricToleranceRelationship</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceRelationship" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceRelationship.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceRelationship.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads GeometricToleranceRelationship</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeometricToleranceRelationship &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceRelationship.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceRelationship.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeometricToleranceRelationship &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceRelationship.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceRelationship.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes GeometricToleranceRelationship</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeometricToleranceRelationship &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceRelationship.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceRelationship.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceWithDatumReference">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWGeometricToleranceWithDatumReference</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceWithDatumReference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceWithDatumReference.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceWithDatumReference.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads GeometricToleranceWithDatumReference</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeometricToleranceWithDatumReference &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceWithDatumReference.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceWithDatumReference.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeometricToleranceWithDatumReference &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceWithDatumReference.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceWithDatumReference.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes GeometricToleranceWithDatumReference</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_GeometricToleranceWithDatumReference &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceWithDatumReference.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWGeometricToleranceWithDatumReference.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWLineProfileTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWLineProfileTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWLineProfileTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWLineProfileTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWLineProfileTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads LineProfileTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_LineProfileTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWLineProfileTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWLineProfileTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_LineProfileTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWLineProfileTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWLineProfileTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes LineProfileTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_LineProfileTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWLineProfileTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWLineProfileTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWModifiedGeometricTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWModifiedGeometricTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWModifiedGeometricTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWModifiedGeometricTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWModifiedGeometricTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads ModifiedGeometricTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_ModifiedGeometricTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWModifiedGeometricTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWModifiedGeometricTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_ModifiedGeometricTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWModifiedGeometricTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWModifiedGeometricTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes ModifiedGeometricTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_ModifiedGeometricTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWModifiedGeometricTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWModifiedGeometricTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWParallelismTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWParallelismTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWParallelismTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWParallelismTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWParallelismTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads ParallelismTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_ParallelismTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWParallelismTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWParallelismTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_ParallelismTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWParallelismTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWParallelismTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes ParallelismTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_ParallelismTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWParallelismTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWParallelismTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPerpendicularityTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWPerpendicularityTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPerpendicularityTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPerpendicularityTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPerpendicularityTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads PerpendicularityTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_PerpendicularityTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPerpendicularityTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPerpendicularityTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_PerpendicularityTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPerpendicularityTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPerpendicularityTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes PerpendicularityTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_PerpendicularityTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPerpendicularityTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPerpendicularityTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPlacedDatumTargetFeature">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWPlacedDatumTargetFeature</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPlacedDatumTargetFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPlacedDatumTargetFeature.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPlacedDatumTargetFeature.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads PlacedDatumTargetFeature</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_PlacedDatumTargetFeature &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPlacedDatumTargetFeature.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPlacedDatumTargetFeature.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_PlacedDatumTargetFeature &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPlacedDatumTargetFeature.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPlacedDatumTargetFeature.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes PlacedDatumTargetFeature</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_PlacedDatumTargetFeature &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPlacedDatumTargetFeature.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPlacedDatumTargetFeature.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPositionTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWPositionTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPositionTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPositionTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPositionTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads PositionTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_PositionTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPositionTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPositionTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_PositionTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPositionTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPositionTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes PositionTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_PositionTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWPositionTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWPositionTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWRoundnessTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWRoundnessTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWRoundnessTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWRoundnessTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWRoundnessTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads RoundnessTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_RoundnessTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWRoundnessTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWRoundnessTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_RoundnessTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWRoundnessTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWRoundnessTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes RoundnessTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_RoundnessTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWRoundnessTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWRoundnessTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWStraightnessTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWStraightnessTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWStraightnessTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWStraightnessTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWStraightnessTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads StraightnessTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_StraightnessTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWStraightnessTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWStraightnessTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_StraightnessTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWStraightnessTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWStraightnessTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes StraightnessTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_StraightnessTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWStraightnessTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWStraightnessTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWSurfaceProfileTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWSurfaceProfileTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWSurfaceProfileTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWSurfaceProfileTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWSurfaceProfileTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads SurfaceProfileTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_SurfaceProfileTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWSurfaceProfileTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWSurfaceProfileTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_SurfaceProfileTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWSurfaceProfileTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWSurfaceProfileTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes SurfaceProfileTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_SurfaceProfileTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWSurfaceProfileTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWSurfaceProfileTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWSymmetryTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWSymmetryTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWSymmetryTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWSymmetryTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWSymmetryTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads SymmetryTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_SymmetryTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWSymmetryTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWSymmetryTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_SymmetryTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWSymmetryTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWSymmetryTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes SymmetryTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_SymmetryTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWSymmetryTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWSymmetryTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWTotalRunoutTolerance">
+<em class="property">class </em><code class="descname">RWStepDimTol_RWTotalRunoutTolerance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWTotalRunoutTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWTotalRunoutTolerance.ReadStep">
+<code class="descname">ReadStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWTotalRunoutTolerance.ReadStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Reads TotalRunoutTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Handle_StepData_StepReaderData &amp;</em>) – </li>
+<li><strong>num</strong> (<em>int</em>) – </li>
+<li><strong>ach</strong> (<em>Handle_Interface_Check &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_TotalRunoutTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWTotalRunoutTolerance.Share">
+<code class="descname">Share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWTotalRunoutTolerance.Share" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Fills data for graph (shared items)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ent</strong> (<em>Handle_StepDimTol_TotalRunoutTolerance &amp;</em>) – </li>
+<li><strong>iter</strong> (<em>Interface_EntityIterator &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWTotalRunoutTolerance.WriteStep">
+<code class="descname">WriteStep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWTotalRunoutTolerance.WriteStep" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Writes TotalRunoutTolerance</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>SW</strong> (<em>StepData_StepWriter &amp;</em>) – </li>
+<li><strong>ent</strong> (<em>Handle_StepDimTol_TotalRunoutTolerance &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.RWStepDimTol_RWTotalRunoutTolerance.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.RWStepDimTol_RWTotalRunoutTolerance.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.RWStepDimTol.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.RWStepDimTol.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.RWStepDimTol.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.RWStepDimTol.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.RWStepDimTol.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.RWStepDimTol.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.RWStepDimTol.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
