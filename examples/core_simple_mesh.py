@@ -35,7 +35,6 @@ def simple_mesh():
     #
     # Create the shape
     #
-    shape = BRepPrimAPI_MakeBox(200, 200, 200).Shape()
     theBox = BRepPrimAPI_MakeBox(200, 60, 60).Shape()
     theSphere = BRepPrimAPI_MakeSphere(gp_Pnt(100, 20, 20), 80).Shape()
     shape = BRepAlgoAPI_Fuse(theSphere, theBox).Shape()

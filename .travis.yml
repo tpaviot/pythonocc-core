@@ -2,6 +2,9 @@ sudo: false
 
 language: cpp
 
+cache:
+ apt: true
+
 # the secure below is the binstar token
 # to genrate this secure
 # first create an anconda cloud token
@@ -71,13 +74,10 @@ before_install:
   - conda info -a
   # download/install OCE from DLR-SC channel
   - conda config --add channels https://conda.anaconda.org/dlr-sc
-  # on osx, need for pyobjc-core, available at erik's repository
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-    conda config --add channels https://conda.anaconda.org/erik;
-    fi;
   - conda config --add channels https://conda.anaconda.org/conda-forge
   - conda config --add channels https://conda.anaconda.org/tpaviot
   - conda config --add channels https://conda.anaconda.org/oce
+  - conda config --add channels https://conda.anaconda.org/pythonocc
   # install everything required to build the receipe
   - conda install conda-build anaconda-client
 

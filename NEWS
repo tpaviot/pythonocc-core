@@ -1,3 +1,21 @@
+==========================
+Version 0.18 - June 2017
+
+This release requires oce-0.18 or oce-0.18.1.
+
+* wrapper : support oce-0.18 (upstream occt 6.9.1)
+
+* wrapper : support smesh 6.7.4
+
+* wrapper : support for packages Voxel, NIS, DataExchange related
+
+* new examples : background image, emmenthaler, ais_shape downcast,
+  core_display_z_transparency, clipping plane, bounding box computation
+  using mesh, STEP compound loading, surfacic mesh, volumic mesh, mesh traverse,
+  added a fast loading STL example
+
+* many minor bugfixes
+
 =============================
 Version 0.17.3 - March 2017
 

@@ -1,0 +1,2735 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.BRepExtrema module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.BRepExtrema module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.BRepExtrema module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.BRepExtrema.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-brepextrema-module">
+<h1>OCC.BRepExtrema module<a class="headerlink" href="#occ-brepextrema-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.BRepExtrema"></span><dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape">
+<em class="property">class </em><code class="descname">BRepExtrema_DistShapeShape</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>create empty tool</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>computation of the minimum distance (value and pair of points) using default deflection Default value is Precision::Confusion().</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Shape1</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>Shape2</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>F</strong> (<em>Extrema_ExtFlag</em>) – default value is Extrema_ExtFlag_MINMAX</li>
+<li><strong>A</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>create tool and load both shapes into it</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Shape1</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>Shape2</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theDeflection</strong> (<em>float</em>) – </li>
+<li><strong>F</strong> (<em>Extrema_ExtFlag</em>) – default value is Extrema_ExtFlag_MINMAX</li>
+<li><strong>A</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.DumpToString">
+<code class="descname">DumpToString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.DumpToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>BRepExtrema_DistShapeShape_DumpToString(BRepExtrema_DistShapeShape self) -&gt; std::string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.InnerSolution">
+<code class="descname">InnerSolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.InnerSolution" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>True if one of the shapes is a solid and the other shape is completely or partially inside the solid.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>True if the minimum distance is found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.LoadS1">
+<code class="descname">LoadS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.LoadS1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>load first shape into extrema</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Shape1</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.LoadS2">
+<code class="descname">LoadS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.LoadS2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>load second shape into extrema</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Shape1</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.NbSolution">
+<code class="descname">NbSolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.NbSolution" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of solutions satisfying the minimum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.ParOnEdgeS1">
+<code class="descname">ParOnEdgeS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.ParOnEdgeS1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the corresponding parameter t if the Nth solution is situated on an Egde of the first shape</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>N</strong> (<em>int</em>) – </li>
+<li><strong>t</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.ParOnEdgeS2">
+<code class="descname">ParOnEdgeS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.ParOnEdgeS2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the corresponding parameter t if the Nth solution is situated on an Egde of the first shape</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>N</strong> (<em>int</em>) – </li>
+<li><strong>t</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.ParOnFaceS1">
+<code class="descname">ParOnFaceS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.ParOnFaceS1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the corresponding parameters (U,V) if the Nth solution is situated on an face of the first shape</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>N</strong> (<em>int</em>) – </li>
+<li><strong>u</strong> (<em>float &amp;</em>) – </li>
+<li><strong>v</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.ParOnFaceS2">
+<code class="descname">ParOnFaceS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.ParOnFaceS2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the corresponding parameters (U,V) if the Nth solution is situated on an Face of the second shape</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>N</strong> (<em>int</em>) – </li>
+<li><strong>u</strong> (<em>float &amp;</em>) – </li>
+<li><strong>v</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>computation of the minimum distance (value and couple of points). Parameter theDeflection is used to specify a maximum deviation of extreme distances from the minimum one. Returns IsDone status.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.PointOnShape1">
+<code class="descname">PointOnShape1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.PointOnShape1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Point corresponding to the &lt;N&gt;th solution on the first Shape</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.PointOnShape2">
+<code class="descname">PointOnShape2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.PointOnShape2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Point corresponding to the &lt;N&gt;th solution on the second Shape</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.SetAlgo">
+<code class="descname">SetAlgo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.SetAlgo" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>A</strong> (<em>Extrema_ExtAlgo</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.SetDeflection">
+<code class="descname">SetDeflection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.SetDeflection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theDeflection</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.SetFlag">
+<code class="descname">SetFlag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.SetFlag" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>Extrema_ExtFlag</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.SupportOnShape1">
+<code class="descname">SupportOnShape1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.SupportOnShape1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the support where the Nth solution on the first shape is situated. This support can be a Vertex, an Edge or a Face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.SupportOnShape2">
+<code class="descname">SupportOnShape2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.SupportOnShape2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the support where the Nth solution on the second shape is situated. This support can be a Vertex, an Edge or a Face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Shape" title="OCC.TopoDS.TopoDS_Shape">TopoDS_Shape</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.SupportTypeShape1">
+<code class="descname">SupportTypeShape1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.SupportTypeShape1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the type of the support where the Nth solution on the first shape is situated: IsVertex =&gt; the Nth solution on the first shape is a Vertex IsOnEdge =&gt; the Nth soluion on the first shape is on a Edge IsInFace =&gt; the Nth solution on the first shape is inside a face the corresponding support is obtained by the method SupportOnShape1</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">BRepExtrema_SupportType</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.SupportTypeShape2">
+<code class="descname">SupportTypeShape2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.SupportTypeShape2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>gives the type of the support where the Nth solution on the second shape is situated: IsVertex =&gt; the Nth solution on the second shape is a Vertex IsOnEdge =&gt; the Nth soluion on the secondt shape is on a Edge IsInFace =&gt; the Nth solution on the second shape is inside a face the corresponding support is obtained by the method SupportOnShape2</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">BRepExtrema_SupportType</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the value of the minimum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistShapeShape.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistShapeShape.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistanceSS">
+<em class="property">class </em><code class="descname">BRepExtrema_DistanceSS</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistanceSS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>computes the distance between two Shapes ( face edge vertex).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>B1</strong> (<em>Bnd_Box &amp;</em>) – </li>
+<li><strong>B2</strong> (<em>Bnd_Box &amp;</em>) – </li>
+<li><strong>DstRef</strong> (<em>float</em>) – </li>
+<li><strong>F</strong> (<em>Extrema_ExtFlag</em>) – default value is Extrema_ExtFlag_MINMAX</li>
+<li><strong>A</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>computes the distance between two Shapes ( face edge vertex). Parameter theDeflection is used to specify a maximum deviation of extreme distances from the minimum one. Default value is Precision::Confusion().</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>B1</strong> (<em>Bnd_Box &amp;</em>) – </li>
+<li><strong>B2</strong> (<em>Bnd_Box &amp;</em>) – </li>
+<li><strong>DstRef</strong> (<em>float</em>) – </li>
+<li><strong>aDeflection</strong> (<em>float</em>) – </li>
+<li><strong>F</strong> (<em>Extrema_ExtFlag</em>) – default value is Extrema_ExtFlag_MINMAX</li>
+<li><strong>A</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistanceSS.DistValue">
+<code class="descname">DistValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistanceSS.DistValue" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the distance value</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistanceSS.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistanceSS.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>True if the distance has been computed</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistanceSS.Seq1Value">
+<code class="descname">Seq1Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistanceSS.Seq1Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the list of solutions on the first shape</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepExtrema_SeqOfSolution</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistanceSS.Seq2Value">
+<code class="descname">Seq2Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistanceSS.Seq2Value" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns the list of solutions on the second shape</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepExtrema_SeqOfSolution</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistanceSS.SetAlgo">
+<code class="descname">SetAlgo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistanceSS.SetAlgo" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>sets the flag controlling …</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>A</strong> (<em>Extrema_ExtAlgo</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistanceSS.SetFlag">
+<code class="descname">SetFlag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistanceSS.SetFlag" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>sets the flag controlling minimum and maximum search</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>Extrema_ExtFlag</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_DistanceSS.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_DistanceSS.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_ElementFilter">
+<em class="property">class </em><code class="descname">BRepExtrema_ElementFilter</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ElementFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_ElementFilter.DoCheck">
+<code class="descname">DoCheck</code><em class="property"> = 2</em><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ElementFilter.DoCheck" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_ElementFilter.NoCheck">
+<code class="descname">NoCheck</code><em class="property"> = 0</em><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ElementFilter.NoCheck" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_ElementFilter.Overlap">
+<code class="descname">Overlap</code><em class="property"> = 1</em><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ElementFilter.Overlap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ElementFilter.PreCheckElements">
+<code class="descname">PreCheckElements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ElementFilter.PreCheckElements" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Checks if two mesh elements should be tested for overlapping/intersection (used for detection correct/incorrect cases of shared edges and vertices).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Standard_Integer</strong> – </li>
+<li><strong>Standard_Integer</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">FilterResult</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_ElementFilter.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ElementFilter.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC">
+<em class="property">class </em><code class="descname">BRepExtrema_ExtCC</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>It calculates all the distances.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E1</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>E2</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E2</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>True if the distances are found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.IsParallel">
+<code class="descname">IsParallel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.IsParallel" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if E1 and E2 are parallel.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.NbExt">
+<code class="descname">NbExt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.NbExt" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of extremum distances.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.ParameterOnE1">
+<code class="descname">ParameterOnE1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.ParameterOnE1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter on the first edge of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.ParameterOnE2">
+<code class="descname">ParameterOnE2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.ParameterOnE2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter on the second edge of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>An exception is raised if the fields have not been initialized.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E1</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.PointOnE1">
+<code class="descname">PointOnE1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.PointOnE1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Point of the &lt;N&gt;th extremum distance on the edge E1.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.PointOnE2">
+<code class="descname">PointOnE2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.PointOnE2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Point of the &lt;N&gt;th extremum distance on the edge E2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.SquareDistance">
+<code class="descname">SquareDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.SquareDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the value of the &lt;N&gt;th extremum square distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.TrimmedSquareDistances">
+<code class="descname">TrimmedSquareDistances</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.TrimmedSquareDistances" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>if the edges is a trimmed curve, dist11 is a square distance between the point on E1 of parameter FirstParameter and the point of parameter FirstParameter on E2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dist11</strong> (<em>float &amp;</em>) – </li>
+<li><strong>distP12</strong> (<em>float &amp;</em>) – </li>
+<li><strong>distP21</strong> (<em>float &amp;</em>) – </li>
+<li><strong>distP22</strong> (<em>float &amp;</em>) – </li>
+<li><strong>P11</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P12</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P21</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P22</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCC.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCC.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF">
+<em class="property">class </em><code class="descname">BRepExtrema_ExtCF</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>It calculates all the distances.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>True if the distances are found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF.IsParallel">
+<code class="descname">IsParallel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF.IsParallel" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the curve is on a parallel surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF.NbExt">
+<code class="descname">NbExt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF.NbExt" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of extremum distances.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF.ParameterOnEdge">
+<code class="descname">ParameterOnEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF.ParameterOnEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters on the Edge of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF.ParameterOnFace">
+<code class="descname">ParameterOnFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF.ParameterOnFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters on the Face of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>N</strong> (<em>int</em>) – </li>
+<li><strong>U</strong> (<em>float &amp;</em>) – </li>
+<li><strong>V</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>An exception is raised if the fields have not been initialized. Be careful: this method uses the Face only for classify not for the fields.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>F</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF.PointOnEdge">
+<code class="descname">PointOnEdge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF.PointOnEdge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Point of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF.PointOnFace">
+<code class="descname">PointOnFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF.PointOnFace" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Point of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF.SquareDistance">
+<code class="descname">SquareDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF.SquareDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the value of the &lt;N&gt;th extremum square distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtCF.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtCF.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF">
+<em class="property">class </em><code class="descname">BRepExtrema_ExtFF</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>It calculates all the distances.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F1</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>F2</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F2</strong> (<em>TopoDS_Face &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>True if the distances are found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF.IsParallel">
+<code class="descname">IsParallel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF.IsParallel" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the surfaces are parallel.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF.NbExt">
+<code class="descname">NbExt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF.NbExt" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of extremum distances.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF.ParameterOnFace1">
+<code class="descname">ParameterOnFace1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF.ParameterOnFace1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters on the Face F1 of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>N</strong> (<em>int</em>) – </li>
+<li><strong>U</strong> (<em>float &amp;</em>) – </li>
+<li><strong>V</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF.ParameterOnFace2">
+<code class="descname">ParameterOnFace2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF.ParameterOnFace2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters on the Face F2 of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>N</strong> (<em>int</em>) – </li>
+<li><strong>U</strong> (<em>float &amp;</em>) – </li>
+<li><strong>V</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>An exception is raised if the fields have not been initialized. Be careful: this method uses the Face F2 only for classify, not for the fields.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>F1</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>F2</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF.PointOnFace1">
+<code class="descname">PointOnFace1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF.PointOnFace1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Point of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF.PointOnFace2">
+<code class="descname">PointOnFace2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF.PointOnFace2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Point of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF.SquareDistance">
+<code class="descname">SquareDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF.SquareDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the value of the &lt;N&gt;th extremum square distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtFF.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtFF.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPC">
+<em class="property">class </em><code class="descname">BRepExtrema_ExtPC</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>It calculates all the distances.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPC.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPC.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>E</strong> (<em>TopoDS_Edge &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPC.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPC.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>True if the distances are found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPC.IsMin">
+<code class="descname">IsMin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPC.IsMin" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True if the &lt;N&gt;th extremum distance is a minimum.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPC.NbExt">
+<code class="descname">NbExt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPC.NbExt" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of extremum distances.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPC.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPC.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter on the edge of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPC.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPC.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>An exception is raised if the fields have not been initialized.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>V</strong> (<em>TopoDS_Vertex &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPC.Point">
+<code class="descname">Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPC.Point" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Point of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPC.SquareDistance">
+<code class="descname">SquareDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPC.SquareDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the value of the &lt;N&gt;th extremum square distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPC.TrimmedSquareDistances">
+<code class="descname">TrimmedSquareDistances</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPC.TrimmedSquareDistances" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>if the curve is a trimmed curve, dist1 is a square distance between &lt;P&gt; and the point of parameter FirstParameter &lt;pnt1&gt; and dist2 is a square distance between &lt;P&gt; and the point of parameter LastParameter &lt;pnt2&gt;.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dist1</strong> (<em>float &amp;</em>) – </li>
+<li><strong>dist2</strong> (<em>float &amp;</em>) – </li>
+<li><strong>pnt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>pnt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPC.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPC.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPF">
+<em class="property">class </em><code class="descname">BRepExtrema_ExtPF</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>It calculates all the distances.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TheVertex</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>TheFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>TheFlag</strong> (<em>Extrema_ExtFlag</em>) – default value is Extrema_ExtFlag_MINMAX</li>
+<li><strong>TheAlgo</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPF.Initialize">
+<code class="descname">Initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPF.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TheFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>TheFlag</strong> (<em>Extrema_ExtFlag</em>) – default value is Extrema_ExtFlag_MINMAX</li>
+<li><strong>TheAlgo</strong> (<em>Extrema_ExtAlgo</em>) – default value is Extrema_ExtAlgo_Grad</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPF.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPF.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>True if the distances are found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPF.NbExt">
+<code class="descname">NbExt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPF.NbExt" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of extremum distances.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPF.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPF.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters on the Face of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>N</strong> (<em>int</em>) – </li>
+<li><strong>U</strong> (<em>float &amp;</em>) – </li>
+<li><strong>V</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPF.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPF.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>An exception is raised if the fields have not been initialized. Be careful: this method uses the Face only for classify not for the fields.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TheVertex</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+<li><strong>TheFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPF.Point">
+<code class="descname">Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPF.Point" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Point of the &lt;N&gt;th extremum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPF.SetAlgo">
+<code class="descname">SetAlgo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPF.SetAlgo" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>A</strong> (<em>Extrema_ExtAlgo</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPF.SetFlag">
+<code class="descname">SetFlag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPF.SetFlag" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>F</strong> (<em>Extrema_ExtFlag</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPF.SquareDistance">
+<code class="descname">SquareDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPF.SquareDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the value of the &lt;N&gt;th extremum square distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_ExtPF.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ExtPF.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_Poly">
+<em class="property">class </em><code class="descname">BRepExtrema_Poly</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_Poly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="OCC.BRepExtrema.BRepExtrema_Poly.Distance">
+<em class="property">static </em><code class="descname">Distance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_Poly.Distance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns Standard_True if OK.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>dist</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_Poly.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_Poly.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepExtrema.BRepExtrema_Poly_Distance">
+<code class="descname">BRepExtrema_Poly_Distance</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_Poly_Distance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>returns Standard_True if OK.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>S1</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>S2</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>P1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>P2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>dist</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_SelfIntersection">
+<em class="property">class </em><code class="descname">BRepExtrema_SelfIntersection</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SelfIntersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.BRepExtrema.BRepExtrema_ElementFilter" title="OCC.BRepExtrema.BRepExtrema_ElementFilter"><code class="xref py py-class docutils literal"><span class="pre">OCC.BRepExtrema.BRepExtrema_ElementFilter</span></code></a></p>
+<ul class="simple">
+<li>Creates unitialized self-intersection tool.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theTolerance</strong> (<em>float</em>) – default value is 0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates self-intersection tool for the given shape.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theTolerance</strong> (<em>float</em>) – default value is 0.0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SelfIntersection.ElementSet">
+<code class="descname">ElementSet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SelfIntersection.ElementSet" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns set of all the face triangles of the shape.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Handle_BRepExtrema_TriangleSet</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SelfIntersection.GetSubShape">
+<code class="descname">GetSubShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SelfIntersection.GetSubShape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns sub-shape from the shape for the given index (started from 0).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theID</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SelfIntersection.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SelfIntersection.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>True if the detection is completed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SelfIntersection.LoadShape">
+<code class="descname">LoadShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SelfIntersection.LoadShape" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Loads shape for detection of self-intersections.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theShape</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SelfIntersection.OverlapElements">
+<code class="descname">OverlapElements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SelfIntersection.OverlapElements" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns set of IDs of overlapped sub-shapes (started from 0).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepExtrema_MapOfIntegerPackedMapOfInteger</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SelfIntersection.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SelfIntersection.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Performs detection of self-intersections.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SelfIntersection.SetTolerance">
+<code class="descname">SetTolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SelfIntersection.SetTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets tolerance value used for self-intersection test.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theTolerance</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SelfIntersection.Tolerance">
+<code class="descname">Tolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SelfIntersection.Tolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns tolerance value used for self-intersection test.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_SelfIntersection.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SelfIntersection.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity">
+<em class="property">class </em><code class="descname">BRepExtrema_ShapeProximity</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Creates empty proximity tool.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theTolerance</strong> (<em>float</em>) – default value is 0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates proximity tool for the given two shapes.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theShape1</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theShape2</strong> (<em>TopoDS_Shape &amp;</em>) – </li>
+<li><strong>theTolerance</strong> (<em>float</em>) – default value is 0.0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.ElementSet1">
+<code class="descname">ElementSet1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.ElementSet1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns set of all the face triangles of the 1st shape.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Handle_BRepExtrema_TriangleSet</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.ElementSet2">
+<code class="descname">ElementSet2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.ElementSet2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns set of all the face triangles of the 2nd shape.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Handle_BRepExtrema_TriangleSet</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.GetSubShape1">
+<code class="descname">GetSubShape1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.GetSubShape1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns sub-shape from 1st shape with the given index (started from 0).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theID</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.GetSubShape2">
+<code class="descname">GetSubShape2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.GetSubShape2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns sub-shape from 1st shape with the given index (started from 0).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theID</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.IsDone">
+<code class="descname">IsDone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.IsDone" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>True if the search is completed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.LoadShape1">
+<code class="descname">LoadShape1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.LoadShape1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Loads 1st shape into proximity tool.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theShape1</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.LoadShape2">
+<code class="descname">LoadShape2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.LoadShape2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Loads 2nd shape into proximity tool.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theShape2</strong> (<em>TopoDS_Shape &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.OverlapSubShapes1">
+<code class="descname">OverlapSubShapes1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.OverlapSubShapes1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns set of IDs of overlapped faces of 1st shape (started from 0).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepExtrema_MapOfIntegerPackedMapOfInteger</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.OverlapSubShapes2">
+<code class="descname">OverlapSubShapes2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.OverlapSubShapes2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns set of IDs of overlapped faces of 2nd shape (started from 0).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepExtrema_MapOfIntegerPackedMapOfInteger</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.Perform">
+<code class="descname">Perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.Perform" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Performs search of overlapped faces.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.SetTolerance">
+<code class="descname">SetTolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.SetTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets tolerance value for overlap test (distance between shapes).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theTolerance</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.Tolerance">
+<code class="descname">Tolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.Tolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns tolerance value for overlap test (distance between shapes).</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_ShapeProximity.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_ShapeProximity.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.BRepExtrema_SolutionElem">
+<em class="property">class </em><code class="descname">BRepExtrema_SolutionElem</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SolutionElem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<ul class="simple">
+<li>Empty constructor</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>This constructor is used when the solution of a distance is a Vertex. The different initialized fields are: &#64;param theDist the distance &#64;param thePoint the solution point &#64;param theSolType the type of solution &#64;param theVertex and the Vertex</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theDist</strong> (<em>float</em>) – </li>
+<li><strong>thePoint</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>theSolType</strong> (<em>BRepExtrema_SupportType</em>) – </li>
+<li><strong>theVertex</strong> (<em>TopoDS_Vertex &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>This constructor is used when the solution of distance is on an Edge. The different initialized fields are: &#64;param theDist the distance &#64;param thePoint the solution point &#64;param theSolType the type of solution &#64;param theEdge the Edge &#64;param theParam the parameter to locate the solution</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theDist</strong> (<em>float</em>) – </li>
+<li><strong>thePoint</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>theSolType</strong> (<em>BRepExtrema_SupportType</em>) – </li>
+<li><strong>theEdge</strong> (<em>TopoDS_Edge &amp;</em>) – </li>
+<li><strong>theParam</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>This constructor is used when the solution of distance is in a Face. The different initialized fields are: &#64;param theDist the distance &#64;param thePoint the solution point &#64;param theSolType the type of solution &#64;param theFace the Face &#64;param theU U parameter to locate the solution &#64;param theV V parameter to locate the solution</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theDist</strong> (<em>float</em>) – </li>
+<li><strong>thePoint</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>theSolType</strong> (<em>BRepExtrema_SupportType</em>) – </li>
+<li><strong>theFace</strong> (<em>TopoDS_Face &amp;</em>) – </li>
+<li><strong>theU</strong> (<em>float</em>) – </li>
+<li><strong>theV</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SolutionElem.Dist">
+<code class="descname">Dist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SolutionElem.Dist" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the value of the minimum distance.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SolutionElem.Edge">
+<code class="descname">Edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SolutionElem.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the vertex if the solution is an Edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Edge" title="OCC.TopoDS.TopoDS_Edge">TopoDS_Edge</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SolutionElem.EdgeParameter">
+<code class="descname">EdgeParameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SolutionElem.EdgeParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter value if the solution is on Edge.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theParam</strong> (<em>float &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SolutionElem.Face">
+<code class="descname">Face</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SolutionElem.Face" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the vertex if the solution is an Face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Face" title="OCC.TopoDS.TopoDS_Face">TopoDS_Face</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SolutionElem.FaceParameter">
+<code class="descname">FaceParameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SolutionElem.FaceParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameters U and V if the solution is in a Face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>theU</strong> (<em>float &amp;</em>) – </li>
+<li><strong>theV</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SolutionElem.Point">
+<code class="descname">Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SolutionElem.Point" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the solution point.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SolutionElem.SupportKind">
+<code class="descname">SupportKind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SolutionElem.SupportKind" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the Support type: IsVertex =&gt; The solution is a vertex. IsOnEdge =&gt; The solution belongs to an Edge. IsInFace =&gt; The solution is inside a Face.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">BRepExtrema_SupportType</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.BRepExtrema_SolutionElem.Vertex">
+<code class="descname">Vertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SolutionElem.Vertex" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the vertex if the solution is a Vertex.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.TopoDS.html#OCC.TopoDS.TopoDS_Vertex" title="OCC.TopoDS.TopoDS_Vertex">TopoDS_Vertex</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.BRepExtrema_SolutionElem.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.BRepExtrema_SolutionElem.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.BRepExtrema.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.BRepExtrema.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.BRepExtrema.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.BRepExtrema.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.BRepExtrema.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.BRepExtrema.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.BRepExtrema.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

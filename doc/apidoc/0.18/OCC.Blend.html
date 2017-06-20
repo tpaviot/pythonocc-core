@@ -1,0 +1,3601 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OCC.Blend module &mdash; pythonocc API 0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="pythonocc API 0.18 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pythonocc API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OCC.Blend module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pythonocc API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OCC.Blend module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/OCC.Blend.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="occ-blend-module">
+<h1>OCC.Blend module<a class="headerlink" href="#occ-blend-module" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-OCC.Blend"></span><dl class="class">
+<dt id="OCC.Blend.Blend_AppFunction">
+<em class="property">class </em><code class="descname">Blend_AppFunction</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_FunctionSetWithDerivatives" title="OCC.math.math_FunctionSetWithDerivatives"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_FunctionSetWithDerivatives</span></code></a></p>
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.GetBounds">
+<code class="descname">GetBounds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.GetBounds" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector InfBound the lowest values allowed for each of the 4 variables. Returns in the vector SupBound the greatest values allowed for each of the 4 variables.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>InfBound</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>SupBound</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.GetMinimalDistance">
+<code class="descname">GetMinimalDistance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.GetMinimalDistance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the minimal Distance beetween two extremitys of calculed sections.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.GetMinimalWeight">
+<code class="descname">GetMinimalWeight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.GetMinimalWeight" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Compute the minimal value of weight for each poles of all sections.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.GetSectionSize">
+<code class="descname">GetSectionSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.GetSectionSize" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the length of the maximum section</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.GetShape">
+<code class="descname">GetShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.GetShape" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>NbPoles</strong> (<em>int &amp;</em>) – </li>
+<li><strong>NbKnots</strong> (<em>int &amp;</em>) – </li>
+<li><strong>Degree</strong> (<em>int &amp;</em>) – </li>
+<li><strong>NbPoles2d</strong> (<em>int &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.GetTolerance">
+<code class="descname">GetTolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.GetTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector Tolerance the parametric tolerance for each of the 4 variables; Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tolerance</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the tolerance to reach in approximation to respecte BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BoundTol</strong> (<em>float</em>) – </li>
+<li><strong>SurfTol</strong> (<em>float</em>) – </li>
+<li><strong>AngleTol</strong> (<em>float</em>) – </li>
+<li><strong>Tol3d</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol1D</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.Intervals">
+<code class="descname">Intervals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.Intervals" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Stores in &lt;T&gt; the parameters bounding the intervals of continuity &lt;S&gt;. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() &gt; NbIntervals() raises OutOfRange from Standard</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>S</strong> (<em>GeomAbs_Shape</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.IsRational">
+<code class="descname">IsRational</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.IsRational" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns if the section is rationnal</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.IsSolution">
+<code class="descname">IsSolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.IsSolution" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space. The computation is made at the current value of the parameter on the guide line.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Sol</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.Knots">
+<code class="descname">Knots</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.Knots" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>TKnots</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.Mults">
+<code class="descname">Mults</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.Mults" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>TMults</strong> (<em>TColStd_Array1OfInteger &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.NbIntervals">
+<code class="descname">NbIntervals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.NbIntervals" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the number of intervals for continuity &lt;S&gt;. May be one if Continuity(me) &gt;= &lt;S&gt;</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>S</strong> (<em>GeomAbs_Shape</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the parameter of the point P. Used to impose the parameters in the approximation.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<em>Blend_Point &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.Pnt1">
+<code class="descname">Pnt1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.Pnt1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point on the first support.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.Pnt2">
+<code class="descname">Pnt2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.Pnt2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point on the first support.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.Resolution">
+<code class="descname">Resolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.Resolution" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>IC2d</strong> (<em>int</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+<li><strong>TolU</strong> (<em>float &amp;</em>) – </li>
+<li><strong>TolV</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.Section">
+<code class="descname">Section</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.Section" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DPoles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>DPoles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DWeigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>P</strong> – </li>
+<li><strong>Poles</strong> – </li>
+<li><strong>Poles2d</strong> – </li>
+<li><strong>Weigths</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DPoles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>D2Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>DPoles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>D2Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DWeigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>D2Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_AppFunction.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.Set" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the value of the parameter along the guide line. This determines the plane in which the solution has to be found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Param</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>First</strong> (<em>float</em>) – </li>
+<li><strong>Last</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_AppFunction.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_AppFunction.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Blend_CSFunction">
+<em class="property">class </em><code class="descname">Blend_CSFunction</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Blend.Blend_AppFunction" title="OCC.Blend.Blend_AppFunction"><code class="xref py py-class docutils literal"><span class="pre">OCC.Blend.Blend_AppFunction</span></code></a></p>
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.GetTolerance">
+<code class="descname">GetTolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.GetTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tolerance</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the tolerance to reach in approximation to respecte BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BoundTol</strong> (<em>float</em>) – </li>
+<li><strong>SurfTol</strong> (<em>float</em>) – </li>
+<li><strong>AngleTol</strong> (<em>float</em>) – </li>
+<li><strong>Tol3d</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol1D</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.IsTangencyPoint">
+<code class="descname">IsTangencyPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.IsTangencyPoint" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True when it is not possible to compute the tangent vectors at PointOnS and/or PointOnC.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.ParameterOnC">
+<code class="descname">ParameterOnC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.ParameterOnC" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns parameter of the point on the curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.Pnt2d">
+<code class="descname">Pnt2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.Pnt2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns U,V coordinates of the point on the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.PointOnC">
+<code class="descname">PointOnC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.PointOnC" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point on the curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.PointOnS">
+<code class="descname">PointOnS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.PointOnS" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point on the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.Section">
+<code class="descname">Section</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.Section" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DPoles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>DPoles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DWeigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>P</strong> – </li>
+<li><strong>Poles</strong> – </li>
+<li><strong>Poles2d</strong> – </li>
+<li><strong>Weigths</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DPoles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>D2Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>DPoles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>D2Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DWeigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>D2Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.Set" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the value of the parameter along the guide line. This determines the plane in which the solution has to be found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Param</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>First</strong> (<em>float</em>) – </li>
+<li><strong>Last</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.Tangent">
+<code class="descname">Tangent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.Tangent" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at the section, at the beginning and the end of the section, and returns the normal (of the surfaces) at these points.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<em>float</em>) – </li>
+<li><strong>V</strong> (<em>float</em>) – </li>
+<li><strong>TgS</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>NormS</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.Tangent2d">
+<code class="descname">Tangent2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.Tangent2d" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnS, in the parametric space of the first surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d">gp_Vec2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.TangentOnC">
+<code class="descname">TangentOnC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.TangentOnC" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnC, in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CSFunction.TangentOnS">
+<code class="descname">TangentOnS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.TangentOnS" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnS, in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_CSFunction.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_CSFunction.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Blend_CurvPointFuncInv">
+<em class="property">class </em><code class="descname">Blend_CurvPointFuncInv</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CurvPointFuncInv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_FunctionSetWithDerivatives" title="OCC.math.math_FunctionSetWithDerivatives"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_FunctionSetWithDerivatives</span></code></a></p>
+<dl class="method">
+<dt id="OCC.Blend.Blend_CurvPointFuncInv.GetBounds">
+<code class="descname">GetBounds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CurvPointFuncInv.GetBounds" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>InfBound</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>SupBound</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CurvPointFuncInv.GetTolerance">
+<code class="descname">GetTolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CurvPointFuncInv.GetTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tolerance</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CurvPointFuncInv.IsSolution">
+<code class="descname">IsSolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CurvPointFuncInv.IsSolution" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Sol</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_CurvPointFuncInv.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_CurvPointFuncInv.Set" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Set the Point on which a solution has to be found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_CurvPointFuncInv.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_CurvPointFuncInv.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Blend_FuncInv">
+<em class="property">class </em><code class="descname">Blend_FuncInv</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_FuncInv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_FunctionSetWithDerivatives" title="OCC.math.math_FunctionSetWithDerivatives"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_FunctionSetWithDerivatives</span></code></a></p>
+<dl class="method">
+<dt id="OCC.Blend.Blend_FuncInv.GetBounds">
+<code class="descname">GetBounds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_FuncInv.GetBounds" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector InfBound the lowest values allowed for each of the 4 variables. Returns in the vector SupBound the greatest values allowed for each of the 4 variables.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>InfBound</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>SupBound</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_FuncInv.GetTolerance">
+<code class="descname">GetTolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_FuncInv.GetTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector Tolerance the parametric tolerance for each of the 4 variables; Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tolerance</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_FuncInv.IsSolution">
+<code class="descname">IsSolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_FuncInv.IsSolution" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Sol</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_FuncInv.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_FuncInv.Set" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the CurveOnSurface on which a solution has to be found. If &lt;OnFirst&gt; is set to Standard_True, the curve will be on the first surface, otherwise the curve is on the second one.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>OnFirst</strong> (<em>bool</em>) – </li>
+<li><strong>COnSurf</strong> (<em>Handle_Adaptor2d_HCurve2d &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_FuncInv.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_FuncInv.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Blend_Function">
+<em class="property">class </em><code class="descname">Blend_Function</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Blend.Blend_AppFunction" title="OCC.Blend.Blend_AppFunction"><code class="xref py py-class docutils literal"><span class="pre">OCC.Blend.Blend_AppFunction</span></code></a></p>
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.GetTolerance">
+<code class="descname">GetTolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.GetTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector Tolerance the parametric tolerance for each of the 4 variables; Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tolerance</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the tolerance to reach in approximation to respecte BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BoundTol</strong> (<em>float</em>) – </li>
+<li><strong>SurfTol</strong> (<em>float</em>) – </li>
+<li><strong>AngleTol</strong> (<em>float</em>) – </li>
+<li><strong>Tol3d</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol1D</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.IsTangencyPoint">
+<code class="descname">IsTangencyPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.IsTangencyPoint" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True when it is not possible to compute the tangent vectors at PointOnS1 and/or PointOnS2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.PointOnS1">
+<code class="descname">PointOnS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.PointOnS1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point on the first surface, at parameter Sol(1),Sol(2) (Sol is the vector used in the call of IsSolution.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.PointOnS2">
+<code class="descname">PointOnS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.PointOnS2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point on the second surface, at parameter Sol(3),Sol(4) (Sol is the vector used in the call of IsSolution.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.Section">
+<code class="descname">Section</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.Section" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DPoles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>DPoles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DWeigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>P</strong> – </li>
+<li><strong>Poles</strong> – </li>
+<li><strong>Poles2d</strong> – </li>
+<li><strong>Weigths</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DPoles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>D2Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>DPoles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>D2Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DWeigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>D2Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.Set" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the value of the parameter along the guide line. This determines the plane in which the solution has to be found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Param</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>First</strong> (<em>float</em>) – </li>
+<li><strong>Last</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.Tangent">
+<code class="descname">Tangent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.Tangent" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at the section, at the beginning and the end of the section, and returns the normal (of the surfaces) at these points.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+<li><strong>TgFirst</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>TgLast</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>NormFirst</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>NormLast</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.Tangent2dOnS1">
+<code class="descname">Tangent2dOnS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.Tangent2dOnS1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnS1, in the parametric space of the first surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d">gp_Vec2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.Tangent2dOnS2">
+<code class="descname">Tangent2dOnS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.Tangent2dOnS2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnS2, in the parametric space of the second surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d">gp_Vec2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.TangentOnS1">
+<code class="descname">TangentOnS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.TangentOnS1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnS1, in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.TangentOnS2">
+<code class="descname">TangentOnS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.TangentOnS2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnS2, in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.TwistOnS1">
+<code class="descname">TwistOnS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.TwistOnS1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Function.TwistOnS2">
+<code class="descname">TwistOnS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Function.TwistOnS2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_Function.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_Function.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Blend_Point">
+<em class="property">class </em><code class="descname">Blend_Point</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on 2 surfaces, with tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+<li><strong>Tg1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg12d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Tg22d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on 2 surfaces, without tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on a surface and a curve, with tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pts</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Ptc</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U</strong> (<em>float</em>) – </li>
+<li><strong>V</strong> (<em>float</em>) – </li>
+<li><strong>W</strong> (<em>float</em>) – </li>
+<li><strong>Tgs</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tgc</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg2d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on a surface and a curve, without tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pts</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Ptc</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U</strong> (<em>float</em>) – </li>
+<li><strong>V</strong> (<em>float</em>) – </li>
+<li><strong>W</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on a surface and a curve on surface, with tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+<li><strong>PC</strong> (<em>float</em>) – </li>
+<li><strong>Tg1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg12d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Tg22d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on a surface and a curve on surface, without tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+<li><strong>PC</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on two curves on surfaces, with tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+<li><strong>PC1</strong> (<em>float</em>) – </li>
+<li><strong>PC2</strong> (<em>float</em>) – </li>
+<li><strong>Tg1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg12d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Tg22d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on two curves on surfaces, with tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+<li><strong>PC1</strong> (<em>float</em>) – </li>
+<li><strong>PC2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.IsTangencyPoint">
+<code class="descname">IsTangencyPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.IsTangencyPoint" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns Standard_True if it was not possible to compute the tangent vectors at PointOnS1 and/or PointOnS2.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.Parameter">
+<code class="descname">Parameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.ParameterOnC">
+<code class="descname">ParameterOnC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.ParameterOnC" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.ParameterOnC1">
+<code class="descname">ParameterOnC1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.ParameterOnC1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.ParameterOnC2">
+<code class="descname">ParameterOnC2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.ParameterOnC2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.ParametersOnS">
+<code class="descname">ParametersOnS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.ParametersOnS" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<em>float &amp;</em>) – </li>
+<li><strong>V</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.ParametersOnS1">
+<code class="descname">ParametersOnS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.ParametersOnS1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<em>float &amp;</em>) – </li>
+<li><strong>V</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.ParametersOnS2">
+<code class="descname">ParametersOnS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.ParametersOnS2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>U</strong> (<em>float &amp;</em>) – </li>
+<li><strong>V</strong> (<em>float &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.PointOnC">
+<code class="descname">PointOnC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.PointOnC" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.PointOnC1">
+<code class="descname">PointOnC1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.PointOnC1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.PointOnC2">
+<code class="descname">PointOnC2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.PointOnC2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.PointOnS">
+<code class="descname">PointOnS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.PointOnS" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.PointOnS1">
+<code class="descname">PointOnS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.PointOnS1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.PointOnS2">
+<code class="descname">PointOnS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.PointOnS2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.SetParameter">
+<code class="descname">SetParameter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.SetParameter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Changes parameter on existing point</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Param</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.SetValue">
+<code class="descname">SetValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.SetValue" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Set the values for a point on 2 surfaces, with tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+<li><strong>Tg1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg12d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Tg22d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Set the values for a point on 2 surfaces, without tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Set the values for a point on a surface and a curve, with tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pts</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Ptc</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U</strong> (<em>float</em>) – </li>
+<li><strong>V</strong> (<em>float</em>) – </li>
+<li><strong>W</strong> (<em>float</em>) – </li>
+<li><strong>Tgs</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tgc</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg2d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Set the values for a point on a surface and a curve, without tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pts</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Ptc</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U</strong> (<em>float</em>) – </li>
+<li><strong>V</strong> (<em>float</em>) – </li>
+<li><strong>W</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on a surface and a curve on surface, with tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+<li><strong>PC</strong> (<em>float</em>) – </li>
+<li><strong>Tg1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg12d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Tg22d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on a surface and a curve on surface, without tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+<li><strong>PC</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on two curves on surfaces, with tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+<li><strong>PC1</strong> (<em>float</em>) – </li>
+<li><strong>PC2</strong> (<em>float</em>) – </li>
+<li><strong>Tg1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>Tg12d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+<li><strong>Tg22d</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d"><em>gp_Vec2d</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on two curves on surfaces, without tangents.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>U1</strong> (<em>float</em>) – </li>
+<li><strong>V1</strong> (<em>float</em>) – </li>
+<li><strong>U2</strong> (<em>float</em>) – </li>
+<li><strong>V2</strong> (<em>float</em>) – </li>
+<li><strong>PC1</strong> (<em>float</em>) – </li>
+<li><strong>PC2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Creates a point on two curves.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Pt1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Pt2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </li>
+<li><strong>Param</strong> (<em>float</em>) – </li>
+<li><strong>PC1</strong> (<em>float</em>) – </li>
+<li><strong>PC2</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.Tangent2d">
+<code class="descname">Tangent2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.Tangent2d" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d">gp_Vec2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.Tangent2dOnS1">
+<code class="descname">Tangent2dOnS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.Tangent2dOnS1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d">gp_Vec2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.Tangent2dOnS2">
+<code class="descname">Tangent2dOnS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.Tangent2dOnS2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d">gp_Vec2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.TangentOnC">
+<code class="descname">TangentOnC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.TangentOnC" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.TangentOnC1">
+<code class="descname">TangentOnC1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.TangentOnC1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.TangentOnC2">
+<code class="descname">TangentOnC2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.TangentOnC2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.TangentOnS">
+<code class="descname">TangentOnS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.TangentOnS" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.TangentOnS1">
+<code class="descname">TangentOnS1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.TangentOnS1" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_Point.TangentOnS2">
+<code class="descname">TangentOnS2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_Point.TangentOnS2" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_Point.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_Point.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Blend_RstRstFunction">
+<em class="property">class </em><code class="descname">Blend_RstRstFunction</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Blend.Blend_AppFunction" title="OCC.Blend.Blend_AppFunction"><code class="xref py py-class docutils literal"><span class="pre">OCC.Blend.Blend_AppFunction</span></code></a></p>
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.Decroch">
+<code class="descname">Decroch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.Decroch" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Enables to implement a criterion of decrochage specific to the function. Warning: Can be called without previous call of issolution but the values calculated can be senseless.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Sol</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>NRst1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>TgRst1</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>NRst2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>TgRst2</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Blend_DecrochStatus</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.GetTolerance">
+<code class="descname">GetTolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.GetTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector Tolerance the parametric tolerance for each variable; Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tolerance</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the tolerance to reach in approximation to respecte BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BoundTol</strong> (<em>float</em>) – </li>
+<li><strong>SurfTol</strong> (<em>float</em>) – </li>
+<li><strong>AngleTol</strong> (<em>float</em>) – </li>
+<li><strong>Tol3d</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol1D</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.IsTangencyPoint">
+<code class="descname">IsTangencyPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.IsTangencyPoint" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True when it is not possible to compute the tangent vectors at PointOnS and/or PointOnRst.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.ParameterOnRst1">
+<code class="descname">ParameterOnRst1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.ParameterOnRst1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns parameter of the point on the curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.ParameterOnRst2">
+<code class="descname">ParameterOnRst2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.ParameterOnRst2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns parameter of the point on the curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.Pnt2dOnRst1">
+<code class="descname">Pnt2dOnRst1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.Pnt2dOnRst1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns U,V coordinates of the point on the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.Pnt2dOnRst2">
+<code class="descname">Pnt2dOnRst2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.Pnt2dOnRst2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns U,V coordinates of the point on the curve on surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.PointOnRst1">
+<code class="descname">PointOnRst1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.PointOnRst1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point on the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.PointOnRst2">
+<code class="descname">PointOnRst2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.PointOnRst2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point on the curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.Section">
+<code class="descname">Section</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.Section" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DPoles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>DPoles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DWeigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DPoles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>D2Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>DPoles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>D2Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DWeigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>D2Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.Set" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the value of the parameter along the guide line. This determines the plane in which the solution has to be found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Param</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>First</strong> (<em>float</em>) – </li>
+<li><strong>Last</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.Tangent2dOnRst1">
+<code class="descname">Tangent2dOnRst1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.Tangent2dOnRst1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnS, in the parametric space of the first surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d">gp_Vec2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.Tangent2dOnRst2">
+<code class="descname">Tangent2dOnRst2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.Tangent2dOnRst2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnRst, in the parametric space of the second surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d">gp_Vec2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.TangentOnRst1">
+<code class="descname">TangentOnRst1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.TangentOnRst1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnS, in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_RstRstFunction.TangentOnRst2">
+<code class="descname">TangentOnRst2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.TangentOnRst2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnC, in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_RstRstFunction.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_RstRstFunction.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Blend_SequenceNodeOfSequenceOfPoint">
+<em class="property">class </em><code class="descname">Blend_SequenceNodeOfSequenceOfPoint</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceNodeOfSequenceOfPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_SeqNode" title="OCC.TCollection.TCollection_SeqNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_SeqNode</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>I</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>n</strong> (<em>TCollection_SeqNodePtr &amp;</em>) – </li>
+<li><strong>p</strong> (<em>TCollection_SeqNodePtr &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceNodeOfSequenceOfPoint.GetHandle">
+<code class="descname">GetHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceNodeOfSequenceOfPoint.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceNodeOfSequenceOfPoint.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceNodeOfSequenceOfPoint.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Blend.Blend_Point" title="OCC.Blend.Blend_Point">Blend_Point</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_SequenceNodeOfSequenceOfPoint.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_SequenceNodeOfSequenceOfPoint.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Blend_SequenceOfPoint">
+<em class="property">class </em><code class="descname">Blend_SequenceOfPoint</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.TCollection_BaseSequence" title="OCC.TCollection.TCollection_BaseSequence"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.TCollection_BaseSequence</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>Blend_SequenceOfPoint &amp;</em>) – </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.Append">
+<code class="descname">Append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.Append" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>S</strong> (<em>Blend_SequenceOfPoint &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.Assign">
+<code class="descname">Assign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.Assign" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>Blend_SequenceOfPoint &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Blend.Blend_SequenceOfPoint" title="OCC.Blend.Blend_SequenceOfPoint">Blend_SequenceOfPoint</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.ChangeValue">
+<code class="descname">ChangeValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.ChangeValue" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Blend.Blend_Point" title="OCC.Blend.Blend_Point">Blend_Point</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.Clear">
+<code class="descname">Clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.First">
+<code class="descname">First</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.First" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Blend.Blend_Point" title="OCC.Blend.Blend_Point">Blend_Point</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.InsertAfter">
+<code class="descname">InsertAfter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.InsertAfter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>T</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Index</strong> – </li>
+<li><strong>S</strong> (<em>Blend_SequenceOfPoint &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.InsertBefore">
+<code class="descname">InsertBefore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.InsertBefore" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>T</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Index</strong> – </li>
+<li><strong>S</strong> (<em>Blend_SequenceOfPoint &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.Last">
+<code class="descname">Last</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.Last" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Blend.Blend_Point" title="OCC.Blend.Blend_Point">Blend_Point</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.Prepend">
+<code class="descname">Prepend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.Prepend" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>T</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>S</strong> (<em>Blend_SequenceOfPoint &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.Remove">
+<code class="descname">Remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>FromIndex</strong> (<em>int</em>) – </li>
+<li><strong>ToIndex</strong> (<em>int</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.Set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Other</strong> (<em>Blend_SequenceOfPoint &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Blend.Blend_SequenceOfPoint" title="OCC.Blend.Blend_SequenceOfPoint">Blend_SequenceOfPoint</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.SetValue">
+<code class="descname">SetValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.SetValue" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>I</strong> (<em>Blend_Point &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.Split">
+<code class="descname">Split</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.Split" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Index</strong> (<em>int</em>) – </li>
+<li><strong>Sub</strong> (<em>Blend_SequenceOfPoint &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.Value">
+<code class="descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.Value" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Index</strong> (<em>int</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#OCC.Blend.Blend_Point" title="OCC.Blend.Blend_Point">Blend_Point</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_SequenceOfPoint.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_SequenceOfPoint.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Blend_SurfCurvFuncInv">
+<em class="property">class </em><code class="descname">Blend_SurfCurvFuncInv</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfCurvFuncInv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_FunctionSetWithDerivatives" title="OCC.math.math_FunctionSetWithDerivatives"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_FunctionSetWithDerivatives</span></code></a></p>
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfCurvFuncInv.GetBounds">
+<code class="descname">GetBounds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfCurvFuncInv.GetBounds" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>InfBound</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>SupBound</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfCurvFuncInv.GetTolerance">
+<code class="descname">GetTolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfCurvFuncInv.GetTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tolerance</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfCurvFuncInv.IsSolution">
+<code class="descname">IsSolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfCurvFuncInv.IsSolution" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Sol</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfCurvFuncInv.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfCurvFuncInv.Set" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Set the Point on which a solution has to be found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Rst</strong> (<em>Handle_Adaptor2d_HCurve2d &amp;</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_SurfCurvFuncInv.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_SurfCurvFuncInv.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Blend_SurfPointFuncInv">
+<em class="property">class </em><code class="descname">Blend_SurfPointFuncInv</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfPointFuncInv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.math.html#OCC.math.math_FunctionSetWithDerivatives" title="OCC.math.math_FunctionSetWithDerivatives"><code class="xref py py-class docutils literal"><span class="pre">OCC.math.math_FunctionSetWithDerivatives</span></code></a></p>
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfPointFuncInv.GetBounds">
+<code class="descname">GetBounds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfPointFuncInv.GetBounds" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>InfBound</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>SupBound</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfPointFuncInv.GetTolerance">
+<code class="descname">GetTolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfPointFuncInv.GetTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tolerance</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfPointFuncInv.IsSolution">
+<code class="descname">IsSolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfPointFuncInv.IsSolution" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Sol</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfPointFuncInv.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfPointFuncInv.Set" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Set the Point on which a solution has to be found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>P</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt"><em>gp_Pnt</em></a>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_SurfPointFuncInv.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_SurfPointFuncInv.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Blend_SurfRstFunction">
+<em class="property">class </em><code class="descname">Blend_SurfRstFunction</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#OCC.Blend.Blend_AppFunction" title="OCC.Blend.Blend_AppFunction"><code class="xref py py-class docutils literal"><span class="pre">OCC.Blend.Blend_AppFunction</span></code></a></p>
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.Decroch">
+<code class="descname">Decroch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.Decroch" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Enables implementation of a criterion of decrochage specific to the function.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Sol</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>NS</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+<li><strong>TgS</strong> (<a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec"><em>gp_Vec</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.GetTolerance">
+<code class="descname">GetTolerance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.GetTolerance" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns in the vector Tolerance the parametric tolerance for each variable; Tol is the tolerance used in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Tolerance</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Returns the tolerance to reach in approximation to respecte BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BoundTol</strong> (<em>float</em>) – </li>
+<li><strong>SurfTol</strong> (<em>float</em>) – </li>
+<li><strong>AngleTol</strong> (<em>float</em>) – </li>
+<li><strong>Tol3d</strong> (<em>math_Vector &amp;</em>) – </li>
+<li><strong>Tol1D</strong> (<em>math_Vector &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.IsTangencyPoint">
+<code class="descname">IsTangencyPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.IsTangencyPoint" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns True when it is not possible to compute the tangent vectors at PointOnS and/or PointOnRst.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.ParameterOnRst">
+<code class="descname">ParameterOnRst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.ParameterOnRst" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns parameter of the point on the curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.Pnt2dOnRst">
+<code class="descname">Pnt2dOnRst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.Pnt2dOnRst" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns U,V coordinates of the point on the curve on surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.Pnt2dOnS">
+<code class="descname">Pnt2dOnS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.Pnt2dOnS" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns U,V coordinates of the point on the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt2d" title="OCC.gp.gp_Pnt2d">gp_Pnt2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.PointOnRst">
+<code class="descname">PointOnRst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.PointOnRst" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point on the curve.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.PointOnS">
+<code class="descname">PointOnS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.PointOnS" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the point on the surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Pnt" title="OCC.gp.gp_Pnt">gp_Pnt</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.Section">
+<code class="descname">Section</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.Section" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DPoles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>DPoles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DWeigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>P</strong> (<em>Blend_Point &amp;</em>) – </li>
+<li><strong>Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt" title="OCC.TColgp.TColgp_Array1OfPnt"><em>TColgp_Array1OfPnt</em></a>) – </li>
+<li><strong>DPoles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>D2Poles</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec" title="OCC.TColgp.TColgp_Array1OfVec"><em>TColgp_Array1OfVec</em></a>) – </li>
+<li><strong>Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfPnt2d" title="OCC.TColgp.TColgp_Array1OfPnt2d"><em>TColgp_Array1OfPnt2d</em></a>) – </li>
+<li><strong>DPoles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>D2Poles2d</strong> (<a class="reference internal" href="OCC.TColgp.html#OCC.TColgp.TColgp_Array1OfVec2d" title="OCC.TColgp.TColgp_Array1OfVec2d"><em>TColgp_Array1OfVec2d</em></a>) – </li>
+<li><strong>Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>DWeigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>D2Weigths</strong> (<em>TColStd_Array1OfReal &amp;</em>) – </li>
+<li><strong>P</strong> – </li>
+<li><strong>Poles</strong> – </li>
+<li><strong>Poles2d</strong> – </li>
+<li><strong>Weigths</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.Set">
+<code class="descname">Set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.Set" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Sets the value of the parameter along the guide line. This determines the plane in which the solution has to be found.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Param</strong> (<em>float</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>First</strong> (<em>float</em>) – </li>
+<li><strong>Last</strong> (<em>float</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.Tangent2dOnRst">
+<code class="descname">Tangent2dOnRst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.Tangent2dOnRst" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnRst, in the parametric space of the second surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d">gp_Vec2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.Tangent2dOnS">
+<code class="descname">Tangent2dOnS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.Tangent2dOnS" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnS, in the parametric space of the first surface.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec2d" title="OCC.gp.gp_Vec2d">gp_Vec2d</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.TangentOnRst">
+<code class="descname">TangentOnRst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.TangentOnRst" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnC, in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Blend_SurfRstFunction.TangentOnS">
+<code class="descname">TangentOnS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.TangentOnS" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>Returns the tangent vector at PointOnS, in 3d space.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="OCC.gp.html#OCC.gp.gp_Vec" title="OCC.gp.gp_Vec">gp_Vec</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Blend_SurfRstFunction.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Blend_SurfRstFunction.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint">
+<em class="property">class </em><code class="descname">Handle_Blend_SequenceNodeOfSequenceOfPoint</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="OCC.TCollection.html#OCC.TCollection.Handle_TCollection_SeqNode" title="OCC.TCollection.Handle_TCollection_SeqNode"><code class="xref py py-class docutils literal"><span class="pre">OCC.TCollection.Handle_TCollection_SeqNode</span></code></a></p>
+<dl class="staticmethod">
+<dt id="OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint.DownCast">
+<em class="property">static </em><code class="descname">DownCast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint.DownCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint.GetObject">
+<code class="descname">GetObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint.GetObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint.IsNull">
+<code class="descname">IsNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint.IsNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint.Nullify">
+<code class="descname">Nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint.Nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.Handle_Blend_SequenceNodeOfSequenceOfPoint.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OCC.Blend.SwigPyIterator">
+<em class="property">class </em><code class="descname">SwigPyIterator</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.SwigPyIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="OCC.Blend.SwigPyIterator.advance">
+<code class="descname">advance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.SwigPyIterator.advance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.SwigPyIterator.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.SwigPyIterator.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.SwigPyIterator.decr">
+<code class="descname">decr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.SwigPyIterator.decr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.SwigPyIterator.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.SwigPyIterator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.SwigPyIterator.equal">
+<code class="descname">equal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.SwigPyIterator.equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.SwigPyIterator.incr">
+<code class="descname">incr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.SwigPyIterator.incr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.SwigPyIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.SwigPyIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.SwigPyIterator.previous">
+<code class="descname">previous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.SwigPyIterator.previous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="OCC.Blend.SwigPyIterator.thisown">
+<code class="descname">thisown</code><a class="headerlink" href="#OCC.Blend.SwigPyIterator.thisown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The membership flag</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="OCC.Blend.SwigPyIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.SwigPyIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="OCC.Blend.register_handle">
+<code class="descname">register_handle</code><span class="sig-paren">(</span><em>handle</em>, <em>base_object</em><span class="sig-paren">)</span><a class="headerlink" href="#OCC.Blend.register_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the handle into the base object to
+prevent memory corruption in certain cases</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Thomas Paviot.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

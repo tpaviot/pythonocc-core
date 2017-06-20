@@ -95,7 +95,7 @@ def hash_edge_lenght_to_face(faces):
     return _edge_length_to_face, _edge_length_to_edge
 
 
-def build_curve_network(event=None):
+def build_curve_network(event=None, enforce_tangency=True):
     '''
     mimic the curve network surfacing command from rhino
     '''
@@ -131,8 +131,6 @@ def build_curve_network(event=None):
             edges_no_adjacent_face.append(edg)
 
     brep_plate_builder = BRepOffsetAPI_MakeFilling()
-
-    enforce_tangency = True
 
     if enforce_tangency:
         print("going for surface quality")

@@ -1,7 +1,7 @@
-﻿# change the version numer to "0.17.1" or "0.18" in case of a release build
+﻿# change the version number to "0.17.1" or "0.18" in case of a release build
 package:
   name: pythonocc-core
-  version: "nightly"
+  version: 0.18
 
 source:
   path: ../..
@@ -27,19 +27,21 @@ requirements:
     - ninja ==1.7.2
     - swig ==3.0.11
     - freetype ==2.7
+    - smesh ==6.7.4
 
   run:
     - pyqt >=5
     - oce ==0.18.1
     - python
     - freetype ==2.7
-    - pyobjc-core       [osx and py27]
+    - smesh ==6.7.4
 
 test:
   requires:
     - scipy
     - wxpython          [py27]
     - pyside            [py27]
+    - smesh ==6.7.4
 
 about:
   home: https://github.com/tpaviot/pythonocc-core

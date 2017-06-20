@@ -393,9 +393,8 @@ class ThreejsRenderer(object):
         # generate the mesh
         #tess.ExportShapeToThreejs(shape_hash, shape_full_path)
         # and also to JSON
-        json_file = open(shape_full_path, 'w')
-        json_file.write(tess.ExportShapeToThreejsJSONString(shape_uuid))
-        json_file.close()
+        with open(shape_full_path, 'w') as json_file:
+            json_file.write(tess.ExportShapeToThreejsJSONString(shape_uuid))
         # draw edges if necessary
         edges = []
         if export_edges:
@@ -403,19 +402,19 @@ class ThreejsRenderer(object):
             # get number of edges
             nbr_edges = tess.ObjGetEdgeCount()
             for i_edge in range(nbr_edges):
-                edge_hash = "edg%s" % uuid.uuid4().hex
-                # create the file
-                edge_full_path = os.path.join(self._path, edge_hash + '.json')
-                edge_file = open(edge_full_path, "w")
                 # after that, the file can be appended
                 str_to_write = ''
                 edge_point_set = []
                 nbr_vertices = tess.ObjEdgeGetVertexCount(i_edge)
                 for i_vert in range(nbr_vertices):
                     edge_point_set.append(tess.GetEdgeVertex(i_edge, i_vert))
+                # write to file
+                edge_hash = "edg%s" % uuid.uuid4().hex
                 str_to_write += ExportEdgeToJSON(edge_hash, edge_point_set)
-                edge_file.write(str_to_write)
-                edge_file.close()
+                # create the file
+                edge_full_path = os.path.join(self._path, edge_hash + '.json')
+                with open(edge_full_path, "w") as edge_file:
+                    edge_file.write(str_to_write)
                 # store this edge hash
                 self._edges_hash.append(edge_hash)
 
@@ -423,15 +422,6 @@ class ThreejsRenderer(object):
         """ Generate the HTML file to be rendered by the web browser
         """
         global BODY_Part0
-        fp = open(self._html_filename, "w")
-        fp.write("<!DOCTYPE HTML>")
-        fp.write('<html>')
-        # header
-        fp.write(HTMLHeader().get_str())
-        # body
-        BODY_Part0 = BODY_Part0.replace('@VERSION@', OCC_VERSION)
-        fp.write(BODY_Part0)
-        fp.write(HTMLBody_Part1().get_str())
         # loop over shapes to generate html shapes stuff
         # the following line is a list that will help generating the string
         # using "".join()
@@ -461,8 +451,6 @@ class ThreejsRenderer(object):
             else:
                 shape_string_list.append("\t});\n")
             shape_idx += 1
-        # write the string for the shape
-        fp.write("".join(shape_string_list))
         # Process edges
         edge_string_list = []
         for edge_id in self._edges_hash:
@@ -472,11 +460,21 @@ class ThreejsRenderer(object):
         # add mesh to scene
             edge_string_list.append("\tscene.add(line);\n")
             edge_string_list.append("\t});\n")
-        fp.write("".join(edge_string_list))
-        # then write header part 2
-        fp.write(BODY_Part2)
-        fp.write("</html>\n")
-        fp.close()
+        # write the string for the shape
+        with open(self._html_filename, "w") as fp:
+            fp.write("<!DOCTYPE HTML>")
+            fp.write('<html>')
+            # header
+            fp.write(HTMLHeader().get_str())
+            # body
+            BODY_Part0 = BODY_Part0.replace('@VERSION@', OCC_VERSION)
+            fp.write(BODY_Part0)
+            fp.write(HTMLBody_Part1().get_str())
+            fp.write("".join(shape_string_list))
+            fp.write("".join(edge_string_list))
+            # then write header part 2
+            fp.write(BODY_Part2)
+            fp.write("</html>\n")
         print("File written to %s" % self._html_filename)
 
     def render(self, server_port=8080):

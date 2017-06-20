@@ -20,6 +20,7 @@
 # This example is a port of the C++ code
 # available at http://www.algotopia.com/contents/opencascade/opencascade_sprocket
 
+import sys
 from math import pi as M_PI, sin, cos, pow, atan
 
 from OCC.gp import gp_Pnt2d, gp_Ax2d, gp_Dir2d, gp_Circ2d, gp_Origin2d, gp_DX2d, \
@@ -119,7 +120,7 @@ def build_tooth():
     elif num_points == 1:
         p2 = inter.Point(1)
     else:
-        exit(-1)
+        sys.exit(-1)
 
     # Trim the profile circle and mirror
     trimmed_profile = GCE2d_MakeArcOfCircle(profile_circle, p1, p2).Value()
@@ -207,7 +208,7 @@ def round_tooth(wedge):
     # Construct the rounding circle
     round_circle = GccAna_Circ2d2TanRad(p2d_1, p2d_2, round_radius, 0.01)
     if (round_circle.NbSolutions() != 2):
-        exit(-2)
+        sys.exit(-2)
 
     round_circle_2d_1 = round_circle.ThisSolution(1)
     round_circle_2d_2 = round_circle.ThisSolution(2)
