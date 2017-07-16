@@ -21,6 +21,7 @@
 
 
 Display3d::Display3d()
+  : myIsOffscreen(false)
 {
 }
 
@@ -32,6 +33,122 @@ static Handle(OpenGl_GraphicDriver)& GetGraphicDriver()
 {
   static Handle(OpenGl_GraphicDriver) aGraphicDriver;
   return aGraphicDriver;
+}
+
+//=========================================================
+// Function : WClass
+// Purpose  :
+//=========================================================
+static const Handle(MMgt_TShared)& WClass()
+{
+  static Handle(MMgt_TShared) aWindowClass;
+#ifdef WNT
+  if (aWindowClass.IsNull())
+  {
+    aWindowClass = new WNT_WClass ("PyOCC_Class", (void*)DefWindowProc,
+                                   CS_VREDRAW | CS_HREDRAW, 0, 0,
+                                   ::LoadCursor (NULL, IDC_ARROW));
+  }
+#endif
+  return aWindowClass;
+}
+
+
+Standard_Boolean Display3d::InitOffscreen(int size_x, int size_y)
+{
+  printf(" ###### 3D rendering pipe initialisation #####\n");
+  printf("Display3d class initialization starting ...\n");
+
+  myIsOffscreen = true;
+
+  // Create graphic driver
+  Handle(Aspect_DisplayConnection) aDisplayConnection = new Aspect_DisplayConnection();
+  printf("Aspect_DisplayConnection created.\n");
+  if (GetGraphicDriver().IsNull())
+  {
+    GetGraphicDriver() = new OpenGl_GraphicDriver (aDisplayConnection);
+  }
+  printf("Graphic_Driver created.\n");
+  // Create V3dViewer and V3d_View
+  myV3dViewer = new V3d_Viewer(GetGraphicDriver(), (short* const)"viewer");
+  printf("V3d_Viewer created.\n");
+  // Create AISInteractiveViewer
+  myAISContext = new AIS_InteractiveContext(myV3dViewer);
+  printf("AIS_InteractiveContext created.\n");
+  // Create view
+  myV3dView = myV3dViewer->CreateView();  
+  printf("V3d_View created\n");
+
+  SetSize(size_x, size_y);
+
+  printf("Display3d class successfully initialized.\n");
+  printf(" ########################################\n");
+  return true;
+}
+
+Standard_Boolean Display3d::IsOffscreen()
+{
+  return myIsOffscreen;
+}
+
+Standard_Boolean Display3d::SetSize(int size_x, int size_y)
+{
+  if(myIsOffscreen)
+  {
+    mySizeX = size_x;
+    mySizeY = size_y;
+
+#ifdef WNT
+      myWindow = new WNT_Window ("Python OCC",
+                                    Handle(WNT_WClass)::DownCast (WClass()),
+                                    WS_OVERLAPPEDWINDOW,
+                                    0, 0,
+                                    size_x, size_y,
+                                    Quantity_NOC_BLACK);
+      myWindow->SetVirtual (true);
+#elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
+      myWindow = new Cocoa_Window("Python OCC",
+                                  0, 0,
+                                  size_x, size_y);
+      printf("Cocoa window created.\n");
+      myWindow->SetVirtual (true);
+#else
+      myWindow = new Xw_Window (myAISContext->CurrentViewer()->Driver()->GetDisplayConnection(),
+                                   "Python OCC",
+                                   0, 0,
+                                   size_x, size_y);
+      myWindow->SetVirtual (true);
+#endif
+    myV3dView->SetWindow(myWindow);
+    return true;
+  }
+  return false;
+}
+
+Standard_Boolean Display3d::GetSize(int &size_x, int &size_y)
+{
+  if(myIsOffscreen)
+  {
+    size_x = mySizeX;
+    size_y = mySizeY;
+    return true;
+  }
+  return false;
+}
+
+Standard_Boolean Display3d::GetImageData(const char* &data, size_t &size, const Graphic3d_BufferType& theBufferType)
+{
+  if(myIsOffscreen)
+  {
+    static Image_PixMap anImage;
+    if (myV3dView->ToPixMap (anImage, mySizeX, mySizeY, theBufferType))
+    {
+      data = (const char*)anImage.Data();
+      size = anImage.SizeBytes();
+      return true;
+    }
+  }
+  return false;
 }
 
 void Display3d::Init(long window_handle)
