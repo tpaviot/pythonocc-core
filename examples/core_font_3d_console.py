@@ -25,7 +25,7 @@ from OCC.Addons import text_to_brep, Font_FA_Bold
 from OCC.Display.SimpleGui import init_display
 from core_geometry_utils import translate_shp, make_extrusion
 
-display, start_display, add_menu, add_function_to_menu = init_display("qt-pyqt4")
+display, start_display, add_menu, add_function_to_menu = init_display()
 
 from OCC.Display.qtDisplay import qtViewer3d
 from OCC.Display.backend import get_qt_modules
