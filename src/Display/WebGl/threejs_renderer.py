@@ -1,4 +1,4 @@
-##Copyright 2011-2016 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2011-2017 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -26,6 +26,8 @@ from OCC.Visualization import Tesselator
 from OCC import VERSION as OCC_VERSION
 
 from .simple_server import start_server
+
+THREEJS_RELEASE = "r86"
 
 def color_to_hex(rgb_color):
     """ Takes a tuple with 3 floats between 0 and 1.
@@ -118,16 +120,16 @@ BODY_Part0 = """
     <div id="pythonocc_rocks">
         Commands: <b>t</b> toggle visibility
         <hr>
-        pythonocc-@VERSION@ <a href="https://github.com/mrdoob/three.js" target="_blank">three.js</a> renderer
+        pythonocc-@VERSION@ <a href="https://github.com/mrdoob/three.js" target="_blank">three.js %s</a> renderer
         <br>Check our blog at
         <a href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
 
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r85/build/three.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r85/examples/js/controls/OrbitControls.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/r85/examples/js/libs/stats.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/build/three.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/examples/js/controls/OrbitControls.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/examples/js/libs/stats.min.js"></script>
 
-"""
+""" % (THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE)
 
 BODY_Part1 = """
 
