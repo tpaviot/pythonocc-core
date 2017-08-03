@@ -45,7 +45,7 @@ We use the following online resources:
   * Sources
        https://github.com/tpaviot/pythonocc-core
   * API documentation
-       https://cdn.rawgit.com/tpaviot/pythonocc-core/3ceb6b92/doc/apidoc/0.17.3/
+       https://cdn.rawgit.com/tpaviot/pythonocc-core/e05ec51b/doc/apidoc/0.18/
   * Bug tracker
        https://github.com/tpaviot/pythonocc-core/issues
   * Mailing list
