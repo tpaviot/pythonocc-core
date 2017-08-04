@@ -38,9 +38,10 @@ from __future__ import print_function
 import random
 import sys
 
-from OCC.Display.backend import get_backend, get_qt_modules
+from OCC.Display.backend import load_any_qt_backend, get_qt_modules
 
-backend = get_backend()
+load_any_qt_backend()
+
 QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
 from OCC.Display.qtDisplay import qtViewer3d
 
