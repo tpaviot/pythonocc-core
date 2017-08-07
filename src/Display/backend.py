@@ -100,6 +100,29 @@ def get_loaded_backend():
     return BACKEND_MODULE
 
 
+def load_any_qt_backend():
+    """ loads any qt based backend. First try to load
+    PyQt5, then PyQt4 and finally PySide. Raise an exception
+    if none of them are available
+    """
+    try:
+        load_backend(PYQT5)
+        return True
+    except:
+        pass
+    try:
+        load_backend(PYQT4)
+        return True
+    except:
+        pass
+    try:
+        load_backend(PYSIDE)
+        return True
+    except:
+        pass
+    raise AssertionError("None of the PyQt5 orPtQt4 or PySide backend can be loaded")
+
+
 def load_backend(backend_str=None):
     """ loads a gui backend
 
