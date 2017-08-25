@@ -24,11 +24,14 @@ env:
 
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
     packages:
-    - gcc-multilib
-    - g++-multilib
-    - lib32z1+
-    - lsb-core
+      - gcc-multilib
+      - g++-multilib
+      - lib32z1+
+      - lsb-core
+      - g++-5
 
 matrix:
   include:
@@ -48,6 +51,10 @@ matrix:
 # analytic's repository. Follows an approach described by Dan Blanchard:
 # https://gist.github.com/dan-blanchard/7045057
 before_install:
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      export CXX=g++-5;
+      export CC=gcc-5;
+    fi;
   - if [ ${PYTHON:0:1} == "2" ]; then
       if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
