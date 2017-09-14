@@ -27,7 +27,7 @@ from OCC import VERSION as OCC_VERSION
 
 from .simple_server import start_server
 
-THREEJS_RELEASE = "r86"
+THREEJS_RELEASE = "r87"
 
 def color_to_hex(rgb_color):
     """ Takes a tuple with 3 floats between 0 and 1.
