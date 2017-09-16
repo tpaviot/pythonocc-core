@@ -36,8 +36,6 @@ from OCC.TopoDS import topods, TopoDS_Edge, TopoDS_Compound
 from OCC.TopExp import TopExp_Explorer
 from OCC.TopAbs import TopAbs_EDGE, TopAbs_FACE
 from OCC.TopTools import TopTools_ListOfShape
-from OCC.Display.SimpleGui import *
-
 
 def face_is_plane(face):
     """
@@ -63,6 +61,7 @@ height = 70
 width = 50
 thickness = 30
 
+print("creating bottle")
 # The points we'll use to create the profile of the bottle's body
 aPnt1 = gp_Pnt(-width / 2.0, 0, 0)
 aPnt2 = gp_Pnt(-width / 2.0, -thickness / 4.0, 0)
@@ -206,13 +205,15 @@ aTool.CheckCompatibility(False)
 myThreading = aTool.Shape()
 
 # Build the resulting compound
-aRes = TopoDS_Compound()
+bottle = TopoDS_Compound()
 aBuilder = BRep_Builder()
-aBuilder.MakeCompound(aRes)
-aBuilder.Add(aRes, myBody.Shape())
-aBuilder.Add(aRes, myThreading)
+aBuilder.MakeCompound(bottle)
+aBuilder.Add(bottle, myBody.Shape())
+aBuilder.Add(bottle, myThreading)
+print("bottle finished")
 
-display, start_display, add_menu, add_function_to_menu = init_display()
-display.DisplayColoredShape(aRes)
-
-start_display()
+if __name__ == "__main__":
+    from OCC.Display.SimpleGui import init_display
+    display, start_display, add_menu, add_function_to_menu = init_display()
+    display.DisplayColoredShape(bottle, update=True)
+    start_display()
