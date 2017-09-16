@@ -88,6 +88,22 @@ class Display3d {
 	%feature("autodoc", "1");
 	void Init(const long handle);
 	%feature("autodoc", "1");
+	void SetAnaglyphMode(int mode);
+	%feature("autodoc", "1");
+	void ChangeRenderingParams(int  Method,
+                               int  RaytracingDepth,
+                               bool IsShadowEnabled,
+                               bool IsReflectionEnabled,
+                               bool IsAntialiasingEnabled,
+                               bool IsTransparentShadowEnabled,
+                               int  StereoMode,
+                               int  AnaglyphFilter,
+                               bool ToReverseStere);
+    %feature("autodoc", "1");
+    void SetVBBO();
+    %feature("autodoc", "1");
+    void UnsetVBBO();                               
+	%feature("autodoc", "1");
 	Handle_V3d_View& GetView();
 	%feature("autodoc", "1");
 	Handle_V3d_Viewer& GetViewer();

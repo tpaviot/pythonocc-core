@@ -26,6 +26,12 @@
 #include <V3d_View.hxx>
 #include <AIS_Shape.hxx>
 #include <Handle_Graphic3d_GraphicDriver.hxx>
+#include <Graphic3d_Camera.hxx>
+#include <Graphic3d_RenderingParams.hxx>
+#include <Graphic3d_RenderingMode.hxx>
+#include <Graphic3d_StereoMode.hxx>
+#include <Graphic3d_Mat4.hxx>
+#include <Graphic3d_Vec4.hxx>
 #include <OpenGl_GraphicDriver.hxx>
 #include <Aspect_DisplayConnection.hxx>
 
@@ -45,7 +51,19 @@ public:
 	Standard_EXPORT Display3d();
 	Standard_EXPORT virtual ~Display3d();
 	Standard_EXPORT void Init(long window_handle);
-	Standard_EXPORT Handle_V3d_View& GetView() {return myV3dView;};
+  Standard_EXPORT void SetAnaglyphMode(int mode);
+  Standard_EXPORT void ChangeRenderingParams(int Method,
+                                             Standard_Integer        RaytracingDepth,
+                                             Standard_Boolean        IsShadowEnabled,
+                                             Standard_Boolean        IsReflectionEnabled,
+                                             Standard_Boolean        IsAntialiasingEnabled,
+                                             Standard_Boolean        IsTransparentShadowEnabled,
+                                             int    StereoMode,
+                                             int AnaglyphFilter,
+                                             Standard_Boolean        ToReverseStereo);
+  Standard_EXPORT void SetVBBO();
+  Standard_EXPORT void UnsetVBBO();
+  Standard_EXPORT Handle_V3d_View& GetView() {return myV3dView;};
 	Standard_EXPORT Handle_V3d_Viewer& GetViewer() {return myV3dViewer;};
 	Standard_EXPORT Handle_AIS_InteractiveContext GetContext() {return myAISContext;};
 	Standard_EXPORT void Test();

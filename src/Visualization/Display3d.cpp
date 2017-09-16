@@ -28,9 +28,9 @@ Display3d::~Display3d()
 {
 }
 
-static Handle(Graphic3d_GraphicDriver)& GetGraphicDriver()
+static Handle(OpenGl_GraphicDriver)& GetGraphicDriver()
 {
-  static Handle(Graphic3d_GraphicDriver) aGraphicDriver;
+  static Handle(OpenGl_GraphicDriver) aGraphicDriver;
   return aGraphicDriver;
 }
 
@@ -71,6 +71,53 @@ void Display3d::Init(long window_handle)
   if (!myWindow->IsMapped()) myWindow->Map();
   printf("Display3d class successfully initialized.\n");
 	printf(" ########################################\n");
+}
+
+void Display3d::ChangeRenderingParams(int Method,
+                                      Standard_Integer RaytracingDepth,
+                                      Standard_Boolean IsShadowEnabled,
+                                      Standard_Boolean IsReflectionEnabled,
+                                      Standard_Boolean IsAntialiasingEnabled,
+                                      Standard_Boolean IsTransparentShadowEnabled,
+                                      int StereoMode,
+                                      int AnaglyphFilter,
+                                      Standard_Boolean ToReverseStereo)
+{
+  Graphic3d_RenderingParams& aParams = myV3dView->ChangeRenderingParams();
+  aParams.Method = (Graphic3d_RenderingMode)Method;
+  aParams.RaytracingDepth = RaytracingDepth;
+  aParams.IsShadowEnabled = IsShadowEnabled;
+  aParams.IsAntialiasingEnabled = IsAntialiasingEnabled;
+  aParams.IsReflectionEnabled = IsReflectionEnabled;
+  aParams.IsTransparentShadowEnabled = IsTransparentShadowEnabled;
+  aParams.StereoMode = (Graphic3d_StereoMode)StereoMode;
+  aParams.AnaglyphFilter = (Graphic3d_RenderingParams::Anaglyph)AnaglyphFilter;
+  aParams.ToReverseStereo =ToReverseStereo;
+  myV3dView->Redraw();
+}
+
+void Display3d::SetAnaglyphMode(int mode)
+{
+  Handle(Graphic3d_Camera) aCamera = myV3dView->Camera();
+  Graphic3d_RenderingParams*   aParams   = &myV3dView->ChangeRenderingParams();
+  
+  aParams->StereoMode = Graphic3d_StereoMode_Anaglyph;
+  //aParams->AnaglyphFilter = Graphic3d_RenderingParams::Anaglyph_RedCyan_Simple;
+  aParams->AnaglyphFilter = (Graphic3d_RenderingParams::Anaglyph)mode;
+
+  GetGraphicDriver()->ChangeOptions().contextStereo = true;
+  aCamera->SetProjectionType (Graphic3d_Camera::Projection_Stereo);
+  myV3dView->Redraw();
+}
+
+void Display3d::SetVBBO()
+{
+  GetGraphicDriver()->ChangeOptions().vboDisable = false;
+}
+
+void Display3d::UnsetVBBO()
+{
+  GetGraphicDriver()->ChangeOptions().vboDisable = true;
 }
 
 void Display3d::Test()
