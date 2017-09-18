@@ -117,7 +117,7 @@ class qtViewer3d(qtBaseViewer):
         self._rightisdown = False
         self._selection = None
         self._drawtext = True
-        self._qApp = None
+        self._qApp = QtWidgets.QApplication.instance() 
         self._key_map = {}
         self._current_cursor = "arrow"
         self._available_cursors = {}
