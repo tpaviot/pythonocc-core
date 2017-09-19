@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -26,7 +26,7 @@ import math
 import itertools
 
 import OCC
-from OCC.AIS import AIS_MultipleConnectedInteractive, AIS_Shape
+from OCC.AIS import AIS_Shape, AIS_Shaded, AIS_TexturedShape, AIS_WireFrame
 from OCC.TopoDS import TopoDS_Shape
 from OCC.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
 from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
@@ -37,9 +37,10 @@ from OCC.TopAbs import (TopAbs_FACE, TopAbs_EDGE, TopAbs_VERTEX,
                         TopAbs_SHELL, TopAbs_SOLID)
 from OCC.Geom import Handle_Geom_Curve, Handle_Geom_Surface
 from OCC.Geom2d import Handle_Geom2d_Curve
-import OCC.Visualization
-import OCC.V3d
-import OCC.AIS
+from OCC.Visualization import Display3d
+from OCC.V3d import (V3d_ZBUFFER, V3d_PHONG, V3d_Zpos, V3d_Zneg, V3d_Xpos,
+                     V3d_Xneg, V3d_Ypos, V3d_Yneg, V3d_XposYnegZpos, V3d_TEX_ALL,
+                     V3d_TEX_NONE, V3d_TEX_ENVIRONMENT)
 from OCC.TCollection import TCollection_ExtendedString, TCollection_AsciiString
 from OCC.Quantity import (Quantity_Color, Quantity_TOC_RGB, Quantity_NOC_WHITE,
                           Quantity_NOC_BLACK, Quantity_NOC_BLUE1,
@@ -48,9 +49,13 @@ from OCC.Quantity import (Quantity_Color, Quantity_TOC_RGB, Quantity_NOC_WHITE,
                           Quantity_NOC_ORANGE, Quantity_NOC_YELLOW)
 from OCC.Prs3d import (Prs3d_Arrow, Prs3d_Presentation, Prs3d_Text,
                        Prs3d_TextAspect)
-from OCC.Graphic3d import Graphic3d_NOM_NEON_GNC
-from OCC.V3d import V3d_ZBUFFER
-from OCC.Aspect import Aspect_TOTP_RIGHT_LOWER
+from OCC.Graphic3d import (Graphic3d_NOM_NEON_GNC, Graphic3d_NOT_ENV_CLOUDS,
+                           Handle_Graphic3d_TextureEnv, Graphic3d_TextureEnv,
+                           Graphic3d_Camera, Graphic3d_RM_RAYTRACING,
+                           Graphic3d_RM_RASTERIZATION,
+                           Graphic3d_StereoMode_QuadBuffer,
+                           Graphic3d_RenderingParams)
+from OCC.Aspect import Aspect_TOTP_RIGHT_LOWER, Aspect_FM_STRETCH, Aspect_FM_NONE
 
 # Shaders and Units definition must be found by occ
 # the fastest way to get done is to set the CASROOT env variable
@@ -65,7 +70,7 @@ if sys.platform == "win32":
     else:  # on miniconda or anaconda or whatever conda
         occ_package_path = os.path.dirname(OCC.__file__)
         casroot_path = os.path.join(occ_package_path, '..', '..', '..',
-                               'Library', 'share', 'oce')
+                                    'Library', 'share', 'oce')
         # we check that all required files are at the right place
         shaders_dict_found = os.path.isdir(os.path.join(casroot_path,
                                                         'src', 'Shaders'))
@@ -73,8 +78,8 @@ if sys.platform == "win32":
                                                         'src', 'UnitsAPI',
                                                         'Lexi_Expr.dat'))
         unitsdefinition_found = os.path.isfile(os.path.join(casroot_path,
-                                                        'src', 'UnitsAPI',
-                                                        'Units.dat'))
+                                                            'src', 'UnitsAPI',
+                                                            'Units.dat'))
         if shaders_dict_found and unitlexicon_found and unitsdefinition_found:
             os.environ["CASROOT"] = casroot_path
 
@@ -110,9 +115,9 @@ modes = itertools.cycle([TopAbs_FACE, TopAbs_EDGE,
                          TopAbs_SHELL, TopAbs_SOLID])
 
 
-class Viewer3d(OCC.Visualization.Display3d):
+class Viewer3d(Display3d):
     def __init__(self, window_handle):
-        OCC.Visualization.Display3d.__init__(self)
+        Display3d.__init__(self)
         self._window_handle = window_handle
         self._inited = False
         self._local_context_opened = False
@@ -162,7 +167,7 @@ class Viewer3d(OCC.Visualization.Display3d):
             self.Viewer.SetDefaultLights()
             self.Viewer.SetLightOn()
         self.View = self.View_handle.GetObject()
-
+        self.camera = self.View.Camera().GetObject()
         self.default_drawer = self.Context.DefaultDrawer().GetObject()
 
         # draw black contour edges, like Catia
@@ -175,7 +180,7 @@ class Viewer3d(OCC.Visualization.Display3d):
 
         if phong_shading:
             # gouraud shading by defauly, prefer phong instead
-            self.View.SetShadingModel(OCC.V3d.V3d_PHONG)
+            self.View.SetShadingModel(V3d_PHONG)
 
         # the selected elements gray by default, better to use orange...
         # self.Context.SelectionColor(Quantity_NOC_ORANGE)
@@ -183,12 +188,6 @@ class Viewer3d(OCC.Visualization.Display3d):
         # nessecary for text rendering
         self._struc_mgr = self.Context.MainPrsMgr().GetObject().StructureManager()
         self._inited = True
-
-    def SetDoubleBuffer(self, on_or_off):
-        """enables double buffering when shapes are moved in the viewer
-        a very shaky picture is drawn, since double buffering
-        is disabled by default. fixed here..."""
-        self.View.Window().GetObject().SetDoubleBuffer(bool(on_or_off))
 
     def OnResize(self):
         self.View.MustBeResized()
@@ -201,54 +200,114 @@ class Viewer3d(OCC.Visualization.Display3d):
 
     def SetModeWireFrame(self):
         self.View.SetComputedMode(False)
-        self.Context.SetDisplayMode(OCC.AIS.AIS_WireFrame)
+        self.Context.SetDisplayMode(AIS_WireFrame)
 
     def SetModeShaded(self):
         self.View.SetComputedMode(False)
-        self.Context.SetDisplayMode(OCC.AIS.AIS_Shaded)
+        self.Context.SetDisplayMode(AIS_Shaded)
 
     def SetModeHLR(self):
         self.View.SetComputedMode(True)
 
-    def SetOrthographic(self, _bool):
-        '''
-        sets whether this view is a orthographic or perspective view
-        @param _bool:
-        '''
-        raise AssertionError("SetOrthographic method not yet implemented.")
+    def SetOrthographicProjection(self):
+        self.camera.SetProjectionType(Graphic3d_Camera.Projection_Orthographic)
+
+    def SetPerspectiveProjection(self):
+        self.camera.SetProjectionType(Graphic3d_Camera.Projection_Perspective)
 
     def View_Top(self):
-        self.View.SetProj(OCC.V3d.V3d_Zpos)
+        self.View.SetProj(V3d_Zpos)
 
     def View_Bottom(self):
-        self.View.SetProj(OCC.V3d.V3d_Zneg)
+        self.View.SetProj(V3d_Zneg)
 
     def View_Left(self):
-        self.View.SetProj(OCC.V3d.V3d_Xneg)
+        self.View.SetProj(V3d_Xneg)
 
     def View_Right(self):
-        self.View.SetProj(OCC.V3d.V3d_Xpos)
+        self.View.SetProj(V3d_Xpos)
 
     def View_Front(self):
-        self.View.SetProj(OCC.V3d.V3d_Yneg)
+        self.View.SetProj(V3d_Yneg)
 
     def View_Rear(self):
-        self.View.SetProj(OCC.V3d.V3d_Ypos)
+        self.View.SetProj(V3d_Ypos)
 
     def View_Iso(self):
-        self.View.SetProj(OCC.V3d.V3d_XposYnegZpos)
+        self.View.SetProj(V3d_XposYnegZpos)
+
+    def EnableTextureEnv(self, name_of_texture=Graphic3d_NOT_ENV_CLOUDS):
+        """ enable environment mapping. Possible modes are
+        Graphic3d_NOT_ENV_CLOUDS
+        Graphic3d_NOT_ENV_CV
+        Graphic3d_NOT_ENV_MEDIT
+        Graphic3d_NOT_ENV_PEARL
+        Graphic3d_NOT_ENV_SKY1
+        Graphic3d_NOT_ENV_SKY2
+        Graphic3d_NOT_ENV_LINES
+        Graphic3d_NOT_ENV_ROAD
+        Graphic3d_NOT_ENV_UNKNOWN
+        """
+        texture_env = Graphic3d_TextureEnv(name_of_texture)
+        self.View.SetTextureEnv(texture_env.GetHandle())
+        self.View.SetSurfaceDetail(V3d_TEX_ENVIRONMENT)
+        self.View.Redraw()
+
+    def DisableTextureEnv(self):
+        self.View.SetSurfaceDetail(V3d_TEX_NONE)
+        a_null_texture = Handle_Graphic3d_TextureEnv()
+        self.View.SetTextureEnv(a_null_texture) # Passing null handle to clear the texture data
+        self.View.Redraw()
+
+    def SetRenderingParams(self,
+                           Method=Graphic3d_RM_RASTERIZATION,
+                           RaytracingDepth=3,
+                           IsShadowEnabled=True,
+                           IsReflectionEnabled=False,
+                           IsAntialiasingEnabled=False,
+                           IsTransparentShadowEnabled=False,
+                           StereoMode=Graphic3d_StereoMode_QuadBuffer,
+                           AnaglyphFilter=Graphic3d_RenderingParams.Anaglyph_RedCyan_Optimized,
+                           ToReverseStereo=False):
+        """ Default values are :
+            Method=Graphic3d_RM_RASTERIZATION,
+            RaytracingDepth=3,
+            IsShadowEnabled=True,
+            IsReflectionEnabled=False,
+            IsAntialiasingEnabled=False,
+            IsTransparentShadowEnabled=False,
+            StereoMode=Graphic3d_StereoMode_QuadBuffer,
+            AnaglyphFilter=Graphic3d_RenderingParams.Anaglyph_RedCyan_Optimized,
+            ToReverseStereo=False)
+        """
+        self.ChangeRenderingParams(Method,
+                                   RaytracingDepth,
+                                   IsShadowEnabled,
+                                   IsReflectionEnabled,
+                                   IsAntialiasingEnabled,
+                                   IsTransparentShadowEnabled,
+                                   StereoMode,
+                                   AnaglyphFilter,
+                                   ToReverseStereo)
+
+    def SetRasterizationMode(self):
+        """ to enable rasterization mode, just call the SetRenderingParams
+        with default values
+        """
+        self.SetRenderingParams()
+
+    def SetRaytracingMode(self, depth=3):
+        """ enables the raytracing mode
+        """
+        self.SetRenderingParams(Method=Graphic3d_RM_RAYTRACING,
+                                RaytracingDepth=depth,
+                                IsAntialiasingEnabled=True,
+                                IsShadowEnabled=True,
+                                IsReflectionEnabled=True,
+                                IsTransparentShadowEnabled=True)
 
     def ExportToImage(self, image_filename):
         self.View.Dump(image_filename)
-
-    def set_raytracing_mode(self, shadows=True, reflections=True, antialiasing=True):
-        self.View.SetRaytracingMode()
-        if shadows:
-            self.View.EnableRaytracedShadows()
-        if reflections:
-            self.View.EnableRaytracedReflections()
-        if antialiasing:
-            self.View.EnableRaytracedAntialiasing()
 
     def display_graduated_trihedron(self):
         self.View.GraduatedTrihedronDisplay()
@@ -267,14 +326,18 @@ class Viewer3d(OCC.Visualization.Display3d):
         self.View.SetBgGradientColors(aColor1, aColor2, 2, True)
 
     def SetBackgroundImage(self, image_filename, stretch=True):
+        """ displays a background image (jpg, png etc.)
+        """
         if not os.path.isfile(image_filename):
             raise IOError("image file %s not found." % image_filename)
         if stretch:
-            self.View.SetBackgroundImage(image_filename, OCC.Aspect.Aspect_FM_STRETCH, True)
+            self.View.SetBackgroundImage(image_filename, Aspect_FM_STRETCH, True)
         else:
-            self.View.SetBackgroundImage(image_filename, OCC.Aspect.Aspect_FM_NONE, True)
+            self.View.SetBackgroundImage(image_filename, Aspect_FM_NONE, True)
 
     def DisplayVector(self, vec, pnt, update=False):
+        """ displays a vector as an arrow
+        """
         if self._inited:
             aPresentation = Prs3d_Presentation(self._struc_mgr)
 
@@ -323,8 +386,9 @@ class Viewer3d(OCC.Visualization.Display3d):
         return aPresentation
 
     def DisplayShape(self, shapes, material=None, texture=None, color=None, transparency=None, update=False):
-        '''
-        '''
+        """ display one or a set of displayable objects
+        """
+        SOLO = False  # assume multiple instances by default
         # if a gp_Pnt is passed, first convert to vertex
         if issubclass(shapes.__class__, gp_Pnt):
             vertex = BRepBuilderAPI_MakeVertex(shapes)
@@ -372,16 +436,14 @@ class Viewer3d(OCC.Visualization.Display3d):
         elif issubclass(shapes.__class__, TopoDS_Shape):
             shapes = [shapes]
             SOLO = True
-        else:
-            SOLO = False
 
         ais_shapes = []
 
         for shape in shapes:
             if material or texture:
                 if texture:
-                    self.View.SetSurfaceDetail(OCC.V3d.V3d_TEX_ALL)
-                    shape_to_display = OCC.AIS.AIS_TexturedShape(shape)
+                    self.View.SetSurfaceDetail(V3d_TEX_ALL)
+                    shape_to_display = AIS_TexturedShape(shape)
                     filename, toScaleU, toScaleV, toRepeatU, toRepeatV, originU, originV = texture.GetProperties()
                     shape_to_display.SetTextureFileName(TCollection_AsciiString(filename))
                     shape_to_display.SetTextureMapOn()
@@ -485,13 +547,13 @@ class Viewer3d(OCC.Visualization.Display3d):
         self.Context.UpdateSelected()
 
     def SetSelectionModeVertex(self):
-        self.SetSelectionMode(OCC.TopAbs.TopAbs_VERTEX)
+        self.SetSelectionMode(TopAbs_VERTEX)
 
     def SetSelectionModeEdge(self):
-        self.SetSelectionMode(OCC.TopAbs.TopAbs_EDGE)
+        self.SetSelectionMode(TopAbs_EDGE)
 
     def SetSelectionModeFace(self):
-        self.SetSelectionMode(OCC.TopAbs.TopAbs_FACE)
+        self.SetSelectionMode(TopAbs_FACE)
 
     def SetSelectionModeShape(self):
         self.Context.CloseAllContexts()
