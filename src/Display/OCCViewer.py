@@ -40,7 +40,8 @@ from OCC.Geom2d import Handle_Geom2d_Curve
 from OCC.Visualization import Display3d
 from OCC.V3d import (V3d_ZBUFFER, V3d_PHONG, V3d_Zpos, V3d_Zneg, V3d_Xpos,
                      V3d_Xneg, V3d_Ypos, V3d_Yneg, V3d_XposYnegZpos, V3d_TEX_ALL,
-                     V3d_TEX_NONE, V3d_TEX_ENVIRONMENT)
+                     V3d_TEX_NONE, V3d_TEX_ENVIRONMENT,
+                     V3d_LayerMgr)
 from OCC.TCollection import TCollection_ExtendedString, TCollection_AsciiString
 from OCC.Quantity import (Quantity_Color, Quantity_TOC_RGB, Quantity_NOC_WHITE,
                           Quantity_NOC_BLACK, Quantity_NOC_BLUE1,
@@ -127,11 +128,24 @@ class Viewer3d(Display3d):
         self.Context = None
         self.Viewer = None
         self.View = None
+        self.OverLayer = None
+        self.OverLayer_handle = None
         self.selected_shape = None
         self.default_drawer = None
         self._struc_mgr = None
         self.selected_shapes = []
         self._select_callbacks = []
+        self._overlay_items = []
+
+    def register_overlay_item(self, overlay_item):
+        self._overlay_items.append(overlay_item)
+        self.View.MustBeResized()
+        self.View.Redraw()
+
+    def GetOverLayer(self):
+        """ returns an handle to the current overlayer
+        """
+        return self.OverLayer_handle
 
     def register_select_callback(self, callback):
         """ Adds a callback that will be called each time a shape s selected
@@ -170,7 +184,7 @@ class Viewer3d(Display3d):
         self.camera = self.View.Camera().GetObject()
         self.default_drawer = self.Context.DefaultDrawer().GetObject()
 
-        # draw black contour edges, like Catia
+        # draw black contour edges, like other famous CAD packages
         if draw_face_boundaries:
             self.default_drawer.SetFaceBoundaryDraw(True)
 
@@ -179,14 +193,29 @@ class Viewer3d(Display3d):
         self.default_drawer.SetMaximalChordialDeviation(chord_dev)
 
         if phong_shading:
-            # gouraud shading by defauly, prefer phong instead
+            # gouraud shading by default, prefer phong instead
             self.View.SetShadingModel(V3d_PHONG)
 
         # the selected elements gray by default, better to use orange...
         # self.Context.SelectionColor(Quantity_NOC_ORANGE)
 
-        # nessecary for text rendering
+        # necessary for text rendering
         self._struc_mgr = self.Context.MainPrsMgr().GetObject().StructureManager()
+
+        # overlayer
+        self.OverLayer_handle = self.Viewer.Viewer().GetObject().OverLayer()
+        if self.OverLayer_handle.IsNull():
+            aMgr = V3d_LayerMgr(self.View_handle)
+            self.OverLayer_handle = aMgr.Overlay()
+            self.View.SetLayerMgr(aMgr.GetHandle())
+        self.OverLayer = self.OverLayer_handle.GetObject()
+        print("Layer manager created")
+        height, width = self.View.Window().GetObject().Size()
+        print("Layer dimensions: %i, %i" % (height, width))
+        self.OverLayer.SetViewport(height, width)
+
+
+        # turn self._inited flag to True
         self._inited = True
 
     def OnResize(self):
@@ -196,6 +225,12 @@ class Viewer3d(Display3d):
         self.View.Reset()
 
     def Repaint(self):
+        # overlayed objects
+        self.OverLayer.Begin()
+        for item in self._overlay_items:
+            item.RedrawLayerPrs()
+        self.OverLayer.End()
+        # finally redraw the view
         self.Viewer.Redraw()
 
     def SetModeWireFrame(self):
