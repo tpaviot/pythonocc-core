@@ -20,7 +20,10 @@
 
 %{
 #include <Addons.h>
+#include <TextItem.h>
 %}
+
+//%import TopoDS.i
 
 // Font related functions
 enum Font_FontAspect
@@ -35,3 +38,19 @@ Font_FA_BoldItalic = 4
 TopoDS_Shape text_to_brep(char *text_to_render, char* aFontName, Font_FontAspect aFontAspect, float aSize, bool isCompositeCurve);
 void display_available_fonts();
 void register_font(char* aFontPath);
+
+class TextItem {
+ public:
+    TextItem(const TCollection_AsciiString& theText,
+             float theX1,
+             float theY1,
+             float theHeight,
+             const TCollection_AsciiString& theFontName,
+             const Quantity_Color& theColor,
+             const Quantity_Color& theSubtitleColor,
+             int theTypeOfDisplay,
+             const Handle_Visual3d_Layer& theLayer,
+             float ScrollX=0.0,
+             float ScrollY=0.0);
+    void RedrawLayerPrs();
+};

@@ -309,6 +309,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons)
 set(ADDONS_SOURCE_FILES
 ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i
 ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Font3d.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextItem.cpp
 )
 swig_add_module(Addons python ${ADDONS_SOURCE_FILES})
 swig_link_libraries(Addons ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
