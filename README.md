@@ -49,7 +49,7 @@ We use the following online resources:
   * Bug tracker
        https://github.com/tpaviot/pythonocc-core/issues
   * Mailing list
-       http://groups.google.com/group/pythonocc/about
+       http://groups.google.com/group/pythonocc
   * Appveyor
        https://ci.appveyor.com/project/tpaviot/pythonocc-core
   * Travic-CI
