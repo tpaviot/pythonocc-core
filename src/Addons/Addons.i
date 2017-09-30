@@ -21,9 +21,8 @@
 %{
 #include <Addons.h>
 #include <TextItem.h>
+#include <TextureItem.h>
 %}
-
-//%import TopoDS.i
 
 // Font related functions
 enum Font_FontAspect
@@ -53,4 +52,16 @@ class TextItem {
              float ScrollX=0.0,
              float ScrollY=0.0);
     void RedrawLayerPrs();
+};
+
+class TextureItem {
+public:
+    TextureItem(const TCollection_AsciiString& theImageFilename,
+                V3d_View* theView,
+                const Handle_Visual3d_Layer& theLayer);
+    // redraw method
+    void RedrawLayerPrs();
+    // set position
+    void SetAbsolutePosition(float x_abs, float y_abs);
+    void SetRelativePosition(float x_percent, float y_percent);
 };
