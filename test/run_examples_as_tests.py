@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2016 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2009-2017 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -34,6 +34,7 @@ tests_to_exclude = ['core_display_signal_slots.py',
                     'core_display_quality.py',
                     'core_display_raytracing.py',
                     'core_display_overlayered_text.py',
+                    'core_display_overlayered_image.py',
                     'core_display_camera_projection.py',
                     'core_display_export_to_EF.py',
                     'core_matplotlib_box.py',
