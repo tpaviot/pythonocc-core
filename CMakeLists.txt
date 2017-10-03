@@ -317,6 +317,7 @@ set(ADDONS_SOURCE_FILES
 ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i
 ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Font3d.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextItem.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/LineItem.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextureItem.cpp
 )
 swig_add_module(Addons python ${ADDONS_SOURCE_FILES})

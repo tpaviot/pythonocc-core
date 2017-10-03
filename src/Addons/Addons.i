@@ -21,6 +21,7 @@
 %{
 #include <Addons.h>
 #include <TextItem.h>
+#include <LineItem.h>
 #include <TextureItem.h>
 %}
 
@@ -51,6 +52,18 @@ class TextItem {
              const Handle_Visual3d_Layer& theLayer,
              float ScrollX=0.0,
              float ScrollY=0.0);
+    void RedrawLayerPrs();
+};
+
+class LineItem {
+ public:
+    LineItem(float X1, float Y1,
+             float X2, float Y2,
+             const Handle_Visual3d_Layer& theLayer,
+             int theType,
+             float theWidth=0.5,
+             float theTransp=1,
+             const Quantity_Color& theColor=Quantity_Color(Quantity_NOC_WHITE));
     void RedrawLayerPrs();
 };
 
