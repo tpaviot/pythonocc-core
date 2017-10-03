@@ -19,8 +19,7 @@
 
 #include "TextureItem.h"
 
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include <OpenGl_GlCore20.hxx>
 
 TextureItem::TextureItem (const TCollection_AsciiString& theImageFilename,
                           V3d_View* theView,
@@ -83,16 +82,6 @@ void TextureItem::Init(unsigned char* theData)
 // render item
 void TextureItem::RedrawLayerPrs ()
 {
-    //int aW, aH;
-    //myView->Window()->Size (aW, aH);
-    //float aCoord[4][4][2] = {
-    //    { {0, aH - myH}, {myW, aH - myH}, {myW, aH}, {0, aH} }, //Aspect_TOC_BOTTOM_LEFT
-    //    { {aW - myW, aH - myH}, {aW, aH - myH}, {aW, aH}, {aW - myW, aH} }, //Aspect_TOC_BOTTOM_RIGHT
-    //    { {0, 0}, {myW, 0}, {myW, myH}, {0, myH} }, //Aspect_TOC_TOP_LEFT
-    //    { {aW - myW, 0}, {aW, 0}, {aW, myH}, {aW - myW, myH} }  //Aspect_TOC_TOP_RIGHT
-    //};
-    //int n = myPos - Aspect_TOC_BOTTOM_LEFT;
-
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);
     glBindTexture(GL_TEXTURE_2D, myTextureId);
@@ -105,9 +94,10 @@ void TextureItem::RedrawLayerPrs ()
       glTexCoord2f (0.0f, 1.0f); glVertex2f (x, y + myH);
     }
     else if (TypeOfPosition==1) {//relative
-        printf("relative\n");
       int aW, aH;
       myView->Window()->Size (aW, aH);
+      printf("%f\n", x*aW);
+      printf("%f\n", y*aH);
       glTexCoord2f (0.0f, 0.0f); glVertex2f (x*aW, y*aH);
       glTexCoord2f (1.0f, 0.0f); glVertex2f (x*aW + myW, y*aH);
       glTexCoord2f (1.0f, 1.0f); glVertex2f (x*aW + myW, y*aH + myH);

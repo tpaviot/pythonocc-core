@@ -322,6 +322,9 @@ ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextureItem.cpp
 )
 swig_add_module(Addons python ${ADDONS_SOURCE_FILES})
 swig_link_libraries(Addons ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
+if(APPLE)
+    swig_link_libraries(Addons ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OPENGL_LIBRARIES})
+endif(APPLE)
 
 ############
 # Splitter #
