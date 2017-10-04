@@ -23,9 +23,9 @@ requirements:
   build:
     - python
     - oce ==0.18.2
-    - cmake ==3.8.0
-    - ninja ==1.7.2
-    - swig ==3.0.11
+    - cmake ==3.9.3
+    - ninja ==1.8.2
+    - swig ==3.0.12
     - freetype ==2.7
     - smesh ==6.7.5
 
