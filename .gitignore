@@ -42,6 +42,8 @@ coverage.xml
 .mr.developer.cfg
 .project
 .pydevproject
+.idea/
+workspace.xml
 
 # Rope
 .ropeproject
