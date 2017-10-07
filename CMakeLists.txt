@@ -274,6 +274,13 @@ endforeach(OCE_MODULE)
 # Visualisation #
 #################
 if(PYTHONOCC_WRAP_VISU)
+    if (NOT APPLE)
+		find_package(OpenGL REQUIRED)
+	else (NOT APPLE)
+		set(OPENGL_INCLUDE_DIR /usr/X11R6/include/)
+		set(OPENGL_LIBRARIES /usr/X11R6/lib/libGL.dylib /usr/X11R6/lib/libGLU.dylib)
+	endif(NOT APPLE)
+	include_directories(OPENGL_INCLUDE_DIR)
   foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
@@ -309,9 +316,15 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons)
 set(ADDONS_SOURCE_FILES
 ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i
 ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Font3d.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextItem.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/LineItem.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextureItem.cpp
 )
 swig_add_module(Addons python ${ADDONS_SOURCE_FILES})
 swig_link_libraries(Addons ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
+if(APPLE)
+    swig_link_libraries(Addons ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OPENGL_LIBRARIES})
+endif(APPLE)
 
 ############
 # Splitter #
@@ -423,34 +436,3 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/__init__.py DESTINATION ${PYTHON
 # install Splitter
 install(FILES ${BUILD_DIR}/GEOMAlgo.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 install(TARGETS _GEOMAlgo DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-
-#######################
-# pythonOCC Packaging #
-# $ make package      #
-#######################
-if(UNIX)
-  include(InstallRequiredSystemLibraries)
-endif(UNIX)
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "pythonOCC")
-set(CPACK_PACKAGE_VENDOR "Thomas Paviot (tpaviot@gmail.com)")
-set(CPACK_SET_DESTDIR "ON")
-set(CPACK_PACKAGE_DESCRIPTION "A 3D CAD/CAM python package")
-set(CPACK_PACKAGE_VERSION "0.16.0")
-set(CPACK_PACKAGE_VERSION_MAJOR ${PYTHONOCC_VERSION_MAJOR})
-set(CPACK_PACKAGE_VERSION_MINOR ${PYTHONOCC_VERSION_MINOR})
-set(CPACK_PACKAGE_VERSION_PATCH ${PYTHONOCC_VERSION_PATCH})
-set(CPACK_PACKAGE_NAME PYTHONOCC)
-set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE)
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A 3D CAD/CAM python package")
-set(CPACK_PACKAGE_CONTACT "pythonocc googlegroup <pythonocc@googlegroups.com>")
-
-##########
-# Debian #
-##########
-set(CPACK_GENERATOR "DEB")
-set(CPACK_DEBIAN_PACKAGE_NAME "pythonocc")
-set(CPACK_DEBIAN_PACKAGE_SECTION "devel")
-set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
-set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Thomas Paviot (tpaviot@gmail.com)")
-set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "http://www.pythonocc.org")
-include(CPack)

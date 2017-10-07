@@ -66,8 +66,11 @@ def init_display(backend_str=None, size=(1024, 768)):
                 self.Context = Dumb()
                 self.Viewer = Dumb()
                 self.View = Dumb()
+                self.OverLayer = Dumb()
+                self.OverLayer_handle = Dumb()
                 self.selected_shapes = []
                 self._select_callbacks = []
+                self._overlay_items = []
                 self._struc_mgr = Dumb()
 
             def GetContext(self):
