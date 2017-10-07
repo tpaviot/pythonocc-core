@@ -46,8 +46,8 @@ public:
 
   //! Sets texture position in the view port.
   //void SetPredefinedPosition (const Aspect_TypeOfConstraint thePos) { myPos = (int)thePos; }
-  void SetAbsolutePosition(float x_abs, float y_abs) {x=x_abs;y=y_abs;TypeOfPosition=0;}
-  void SetRelativePosition(float x_percent, float y_percent) {x=x_percent;y=y_percent;TypeOfPosition=1;}
+  void SetAbsolutePosition(int x_abs, int y_abs) {x=x_abs;y=y_abs;TypeOfPosition=0;}
+  void SetRelativePosition(int x_percent, int y_percent) {x=x_percent;y=y_percent;TypeOfPosition=1;}
   Aspect_TypeOfConstraint myPos;
   V3d_View* myView;
 

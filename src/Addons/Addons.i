@@ -75,6 +75,6 @@ public:
     // redraw method
     void RedrawLayerPrs();
     // set position
-    void SetAbsolutePosition(float x_abs, float y_abs);
-    void SetRelativePosition(float x_percent, float y_percent);
+    void SetAbsolutePosition(int x_abs, int y_abs);
+    void SetRelativePosition(int x_percent, int y_percent);
 };
