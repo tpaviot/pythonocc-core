@@ -36,7 +36,7 @@ def error_code(n):
               1: "FairCurve_NotConverged",
               2: "FairCurve_InfiniteSliding",
               3: "FairCurve_NullHeight",
-              }
+            }
     return errors[n]
 
 

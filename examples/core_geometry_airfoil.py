@@ -32,7 +32,8 @@ from OCC.Geom2dAPI import Geom2dAPI_PointsToBSpline
 from OCC.GeomAPI import geomapi
 from OCC.gp import gp_Pnt, gp_Vec, gp_Pnt2d, gp_Pln, gp_Dir
 from OCC.TColgp import TColgp_Array1OfPnt2d
-
+from OCC.Display.SimpleGui import init_display
+    
 from core_geometry_utils import make_wire, make_edge
 
 
@@ -106,7 +107,6 @@ def _Tcol_dim_1(li, _type):
 
 if __name__ == '__main__':
     airfoil = UiucAirfoil(50., 200., 'b737a')
-    from OCC.Display.SimpleGui import init_display
     display, start_display, add_menu, add_function_to_menu = init_display()
     display.DisplayShape(airfoil.shape, update=True)
     start_display()

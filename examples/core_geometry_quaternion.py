@@ -17,13 +17,12 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-# TODO : uncomment calls to DisplayMessage when Issue #139 is fixed
-
 from __future__ import print_function
 
 from OCC.Display.SimpleGui import init_display
 from OCC.gp import gp_QuaternionSLerp, gp_Quaternion, gp_Vec, gp_Pnt
-from core_geometry_utils import assert_isdone, make_edge, make_box
+from core_geometry_utils import make_edge
+
 display, start_display, add_menu, add_function_to_menu = init_display()
 
 
@@ -57,11 +56,11 @@ def rotate(event=None):
 
     display.DisplayShape([e1, e2, e3])
     display.DisplayColoredShape([e4, e5], 'GREEN')
-    #display.DisplayMessage(p1, 'e1')
-    #display.DisplayMessage(p2, 'e2')
-    #display.DisplayMessage(v45.as_pnt(), 'e3')
-    #display.DisplayMessage(p3, 'q1*vY')
-    #display.DisplayMessage(p4, 'q1*v45')
+    display.DisplayMessage(p1, 'e1')
+    display.DisplayMessage(p2, 'e2')
+    display.DisplayMessage(as_pnt(v45), 'e3')
+    display.DisplayMessage(p3, 'q1*vY')
+    display.DisplayMessage(p4, 'q1*v45')
     display.DisplayVector((q1 * vY).Normalized(), as_pnt(origin + q1 * vY / 2.))
     display.DisplayVector((q1 * v45).Normalized(), as_pnt(origin + q1 * v45 / 2.))
     display.FitAll()
@@ -70,21 +69,21 @@ def rotate(event=None):
 def frange(start, end=None, inc=None):
     "A range function, that does accept float increments..."
 
-    if end == None:
+    if end is None:
         end = start + 0.0
         start = 0.0
 
-    if inc == None:
+    if inc is None:
         inc = 1.0
 
     L = []
     while 1:
-        next = start + len(L) * inc
-        if inc > 0 and next >= end:
+        next_ = start + len(L) * inc
+        if inc > 0 and next_ >= end:
             break
-        elif inc < 0 and next <= end:
+        elif inc < 0 and next_ <= end:
             break
-        L.append(next)
+        L.append(next_)
 
     return L
 
@@ -110,7 +109,7 @@ def interpolate(event=None):
         e = make_edge(v__as_pnt, p)
         display.DisplayColoredShape(e, 'WHITE')
         msg = 'v45->q1*v45 @{0}'.format(i / 10.)
-        #display.DisplayMessage(p, msg)
+        display.DisplayMessage(p, msg)
     display.FitAll()
 
 

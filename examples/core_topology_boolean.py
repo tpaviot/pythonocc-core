@@ -45,8 +45,8 @@ def fuse(event=None):
     box1 = BRepPrimAPI_MakeBox(2, 1, 1).Shape()
     box2 = BRepPrimAPI_MakeBox(2, 1, 1).Shape()
     box1 = translate_topods_from_vector(box1, gp_Vec(.5, .5, 0))
-    fuse = BRepAlgoAPI_Fuse(box1, box2).Shape()
-    display.DisplayShape(fuse)
+    fuse_shp = BRepAlgoAPI_Fuse(box1, box2).Shape()
+    display.DisplayShape(fuse_shp)
     display.FitAll()
 
 
@@ -88,37 +88,37 @@ def slicer(event=None):
         Pln = gp_Pln(P, D)
         face = BRepBuilderAPI_MakeFace(Pln).Shape()
         # Computes Shape/Plane intersection
-        section = BRepAlgoAPI_Section(shape, face)
-        if section.IsDone():
-            sections.append(section)
+        section_shp = BRepAlgoAPI_Section(shape, face)
+        if section_shp.IsDone():
+            sections.append(section_shp)
     total_time = time.time() - init_time
     print("%.3fs necessary to perform slice." % total_time)
 
     display.EraseAll()
     display.DisplayShape(shape)
-    for section in sections:
-        display.DisplayShape(section.Shape())
+    for section_ in sections:
+        display.DisplayShape(section_.Shape())
     display.FitAll()
 
 
 def section(event=None):
-    Torus = BRepPrimAPI_MakeTorus(120, 20).Shape()
+    torus = BRepPrimAPI_MakeTorus(120, 20).Shape()
     radius = 120.0
     sections = []
     for i in range(-3, 4):
         # Create Sphere
-        Sphere = BRepPrimAPI_MakeSphere(gp_Pnt(26 * 3 * i, 0, 0), radius).Shape()
+        sphere = BRepPrimAPI_MakeSphere(gp_Pnt(26 * 3 * i, 0, 0), radius).Shape()
         # Computes Torus/Sphere section
-        section = BRepAlgoAPI_Section(Torus, Sphere, False)
-        section.ComputePCurveOn1(True)
-        section.Approximation(True)
-        section.Build()
-        sections.append(section)
+        section_shp = BRepAlgoAPI_Section(torus, sphere, False)
+        section_shp.ComputePCurveOn1(True)
+        section_shp.Approximation(True)
+        section_shp.Build()
+        sections.append(section_shp)
 
     display.EraseAll()
-    display.DisplayShape(Torus)
-    for section in sections:
-        display.DisplayShape(section.Shape())
+    display.DisplayShape(torus)
+    for section_ in sections:
+        display.DisplayShape(section_.Shape())
     display.FitAll()
 
 

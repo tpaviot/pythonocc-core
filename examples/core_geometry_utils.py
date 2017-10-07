@@ -94,7 +94,7 @@ class assert_isdone(object):
         else:
             raise AssertionError(self.error_statement)
 
-    def __exit__(self, type, value, traceback):
+    def __exit__(self, type_, value, traceback):
         pass
 
 

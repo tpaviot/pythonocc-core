@@ -19,7 +19,7 @@
 
 from OCC.Bnd import Bnd_Box
 from OCC.BRepBndLib import brepbndlib_Add
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeCylinder, BRepPrimAPI_MakeTorus
+from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeCylinder
 from OCC.BRepMesh import BRepMesh_IncrementalMesh
 
 
@@ -48,17 +48,17 @@ def get_boundingbox(shape, tol=1e-6, use_mesh=True):
     xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
     return xmin, ymin, zmin, xmax, ymax, zmax, xmax-xmin, ymax-ymin, zmax-zmin
 
-print("Box bounding box computation")   
+print("Box bounding box computation")
 box_shape = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
 bb1 = get_boundingbox(box_shape)
 print(bb1)
 
-print("Cylinder bounding box computation")   
+print("Cylinder bounding box computation")
 cyl_shape = BRepPrimAPI_MakeCylinder(10., 20.).Shape()
 bb2 = get_boundingbox(cyl_shape)
 print(bb2)
 
-print("Torus bounding box computation")   
+print("Torus bounding box computation")
 torus_shape = BRepPrimAPI_MakeCylinder(15., 5.).Shape()
 bb3 = get_boundingbox(torus_shape)
 print(bb3)

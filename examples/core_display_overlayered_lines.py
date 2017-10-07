@@ -20,25 +20,13 @@ import random
 from math import pi
 
 from OCC.Display.SimpleGui import init_display
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-from OCC.Visual3d import Visual3d_Layer, Visual3d_LayerItem
-from OCC.V3d import V3d_LayerMgr
-from OCC.Aspect import (Aspect_TODT_NORMAL, Aspect_TODT_SUBTITLE,
-                        Aspect_TODT_DEKALE, Aspect_TODT_BLEND, Aspect_TODT_DIMENSION)
-
-from OCC.Quantity import (Quantity_Color, Quantity_NOC_BLACK,
-                         Quantity_NOC_WHITE, Quantity_NOC_ORANGE)
-from OCC.TCollection import TCollection_AsciiString
-from OCC.gp import gp_Ax1, gp_Pnt, gp_Dir, gp_Trsf
-from OCC.TopLoc import TopLoc_Location
 from OCC.Addons import LineItem
-
-display, start_display, add_menu, add_function_to_menu = init_display()
-mybox = BRepPrimAPI_MakeBox(10, 10, 10).Shape()
 
 # load the bottle
 from core_classic_occ_bottle import bottle
 
+display, start_display, add_menu, add_function_to_menu = init_display()
+mybox = BRepPrimAPI_MakeBox(10, 10, 10).Shape()
 
 number_of_lines = 1000
 
@@ -64,5 +52,5 @@ if __name__ == '__main__':
     ais_bottle = display.DisplayShape(bottle, update=True)
     add_menu('draw lines')
     add_function_to_menu('draw lines', draw_random_overlayered_lines)
-    display.DisplayShape(mybox, update = True)
+    display.DisplayShape(mybox, update=True)
     start_display()

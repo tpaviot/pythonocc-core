@@ -44,7 +44,7 @@ def boolean_cut(shapeToCutFrom, cuttingShape):
               5: '- The Builder can not work with such types of arguments',
               6: '- Unknown operation is not allowed',
               7: '- Can not allocate memory for the Builder',
-              }
+            }
     print('error status:', _error[cut.ErrorStatus()])
     cut.RefineEdges()
     cut.FuseEdges()
@@ -94,12 +94,11 @@ def create_offsets(face, nr_of_counters, distance_between_contours):
             yield offset.Shape()
 
 
-f = make_face_to_contour_from()
-display.DisplayShape(f)
+face = make_face_to_contour_from()
+display.DisplayShape(face)
 
-for contour in create_offsets(f, 50, 0.12):
+for contour in create_offsets(face, 50, 0.12):
     display.DisplayShape(contour)
-
 
 display.FitAll()
 start_display()

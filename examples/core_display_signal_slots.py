@@ -77,7 +77,7 @@ def location_from_vector(x, y, z):
 
 cube = BRepPrimAPI_MakeBox(100, 100, 100).Shape()
 sphere = BRepPrimAPI_MakeSphere(100).Shape()
-sphere.Move(location_from_vector(500,0,0))
+sphere.Move(location_from_vector(500, 0, 0))
 
 display.DisplayShape(cube)
 display.DisplayShape(sphere)
