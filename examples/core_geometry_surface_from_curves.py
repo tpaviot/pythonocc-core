@@ -28,9 +28,11 @@ from OCC.GeomAPI import GeomAPI_PointsToBSpline
 from OCC.Geom import Handle_Geom_BSplineCurve_DownCast
 
 from OCC.Display.SimpleGui import init_display
-display, start_display, add_menu, add_function_to_menu = init_display()
 
 from core_geometry_utils import point_list_to_TColgp_Array1OfPnt, make_face
+
+display, start_display, add_menu, add_function_to_menu = init_display()
+
 
 def surface_from_curves():
     '''

@@ -22,7 +22,7 @@ from OCC.Display.SimpleGui import init_display
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 
-myBox = BRepPrimAPI_MakeBox(60,60,50).Shape()
+myBox = BRepPrimAPI_MakeBox(60, 60, 50).Shape()
 context = display.Context
 context.SetAutoActivateSelection(False)
 

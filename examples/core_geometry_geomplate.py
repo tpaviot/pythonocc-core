@@ -32,7 +32,6 @@ from OCC.GeomPlate import GeomPlate_BuildPlateSurface, GeomPlate_PointConstraint
 from OCC.ShapeAnalysis import ShapeAnalysis_Surface
 from OCC.gp import gp_Pnt
 
-sys.path.append(os.path.dirname(__name__))
 from core_geometry_utils import make_face, make_vertex
 from core_topology_traverse import WireExplorer, Topo
 

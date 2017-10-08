@@ -34,13 +34,13 @@ TextureItem::TextureItem (const TCollection_AsciiString& theImageFilename,
         
         unsigned char *aData = (unsigned char*)Standard::Allocate ((myW * myH) << 2);
         unsigned char *p = aData;
-        Standard_Integer x, y;
+        Standard_Integer i, j;
         Quantity_Color aColor;
         Quantity_Parameter theAlpha;
                 
-        for ( y = 0; y < myH; y++) {
-            for ( x = 0; x < myW; x++ ) {
-                aColor = theImage->PixelColor (x, y, theAlpha);
+        for ( j = 0; j < myH; j++) {
+            for ( i = 0; i < myW; i++ ) {
+                aColor = theImage->PixelColor (i, j, theAlpha);
                 *p++ = (unsigned char)(255 * aColor.Red());
                 *p++ = (unsigned char)(255 * aColor.Green());
                 *p++ = (unsigned char)(255 * aColor.Blue());
@@ -94,14 +94,14 @@ void TextureItem::RedrawLayerPrs ()
       glTexCoord2f (0.0f, 1.0f); glVertex2f (x, y + myH);
     }
     else if (TypeOfPosition==1) {//relative
-      int aW, aH;
+      int aW=0, aH=0;
       myView->Window()->Size (aW, aH);
-      printf("%f\n", x*aW);
-      printf("%f\n", y*aH);
-      glTexCoord2f (0.0f, 0.0f); glVertex2f (x*aW, y*aH);
-      glTexCoord2f (1.0f, 0.0f); glVertex2f (x*aW + myW, y*aH);
-      glTexCoord2f (1.0f, 1.0f); glVertex2f (x*aW + myW, y*aH + myH);
-      glTexCoord2f (0.0f, 1.0f); glVertex2f (x*aW, y*aH + myH);
+      int x_orig = int(x*aW / 100);
+      int y_orig = int(y*aH / 100);
+      glTexCoord2f (0.0f, 0.0f); glVertex2f (x_orig, y_orig);
+      glTexCoord2f (1.0f, 0.0f); glVertex2f (x_orig + myW, y_orig);
+      glTexCoord2f (1.0f, 1.0f); glVertex2f (x_orig + myW, y_orig + myH);
+      glTexCoord2f (0.0f, 1.0f); glVertex2f (x_orig, y_orig + myH);
     }
     glEnd();
     glDisable(GL_BLEND);

@@ -18,16 +18,13 @@
 import sys
 
 from OCC.Display.SimpleGui import init_display
-from OCC.BRepPrimAPI import (BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus,
-                             BRepPrimAPI_MakeCone)
-from OCC.Graphic3d import (Graphic3d_NOM_GLASS, Graphic3d_NOM_COPPER,
-                           Graphic3d_NOM_PLASTIC, Graphic3d_NOM_ALUMINIUM,
-                           Graphic3d_MaterialAspect)
+from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeCone
+from OCC.Graphic3d import Graphic3d_NOM_PLASTIC, Graphic3d_NOM_ALUMINIUM
 from OCC.V3d import V3d_SpotLight, V3d_COMPLETE, V3d_XnegYnegZpos
-from OCC.Quantity import (Quantity_NOC_WHITE, Quantity_NOC_GREEN, Quantity_NOC_INDIANRED,
-                         Quantity_NOC_CORAL2, Quantity_NOC_BROWN)
+from OCC.Quantity import Quantity_NOC_WHITE, Quantity_NOC_CORAL2, Quantity_NOC_BROWN
 from OCC.BRepAlgoAPI import BRepAlgoAPI_Cut
 from OCC.gp import gp_Vec
+
 from core_geometry_utils import translate_shp
 
 # first create geometry
@@ -42,7 +39,7 @@ translated_glass = translate_shp(glass, gp_Vec(-30, -30, 0))
 display, start_display, add_menu, add_function_to_menu = init_display()
 
 # create one spotlight
-spot_light = V3d_SpotLight(display.Viewer_handle, -100,-100,100,
+spot_light = V3d_SpotLight(display.Viewer_handle, -100, -100, 100,
                            V3d_XnegYnegZpos, Quantity_NOC_WHITE)
 ## display the spotlight in rasterized mode
 spot_light.Display(display.View_handle, V3d_COMPLETE)
@@ -52,7 +49,7 @@ display.DisplayShape(bottle, material=Graphic3d_NOM_ALUMINIUM)
 display.DisplayShape(table, material=Graphic3d_NOM_PLASTIC, color=Quantity_NOC_CORAL2)
 display.DisplayShape(translated_glass,
                      material=Graphic3d_NOM_PLASTIC,
-                     color= Quantity_NOC_BROWN,
+                     color=Quantity_NOC_BROWN,
                      transparency=0.6,
                      update=True)
 

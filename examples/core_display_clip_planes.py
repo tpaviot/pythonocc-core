@@ -21,7 +21,7 @@ from __future__ import print_function
 
 import sys
 
-from OCC.gp import gp_Pln, gp_Vec
+from OCC.gp import gp_Vec
 from OCC.Graphic3d import Graphic3d_ClipPlane
 from OCC.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.BRepTools import breptools_Read
@@ -50,9 +50,9 @@ clip_plane_1.SetOn(False)
 
 # set clip plane color
 aMat = clip_plane_1.CappingMaterial()
-aColor = Quantity_Color (0.5, 0.6, 0.7, Quantity_TOC_RGB)
-aMat.SetAmbientColor (aColor)
-aMat.SetDiffuseColor (aColor)
+aColor = Quantity_Color(0.5, 0.6, 0.7, Quantity_TOC_RGB)
+aMat.SetAmbientColor(aColor)
+aMat.SetDiffuseColor(aColor)
 clip_plane_1.SetCappingMaterial(aMat)
 ais_shp.AddClipPlane(clip_plane_1.GetHandle())
 

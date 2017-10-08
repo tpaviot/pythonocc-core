@@ -22,6 +22,7 @@ from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                 BRepBuilderAPI_MakeWire,
                                 BRepBuilderAPI_MakeFace,
                                 BRepBuilderAPI_Sewing)
+from OCC.Display.SimpleGui import init_display
 
 # create vertices
 v1 = gp_Pnt(1, 0, 0)
@@ -59,7 +60,6 @@ sew.Perform()
 tetrahedron_shell = sew.SewedShape()
 
 # display the result
-from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()
 
 display.DisplayShape(tetrahedron_shell, update=True)

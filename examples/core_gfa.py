@@ -1,4 +1,4 @@
-##Copyright 2017 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2010-2014 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -17,12 +17,21 @@
 
 from OCC.Display.SimpleGui import init_display
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-from OCC.Quantity import Quantity_NOC_ALICEBLUE, Quantity_NOC_ANTIQUEWHITE
+from OCC.BOPAlgo import BOPAlgo_Builder
 
 display, start_display, add_menu, add_function_to_menu = init_display()
-my_box = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+my_box1 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+my_box2 = BRepPrimAPI_MakeBox(20., 1., 30.).Shape()
 
-display.View.SetBgGradientColors(Quantity_NOC_ALICEBLUE, Quantity_NOC_ANTIQUEWHITE, 2, True)
-display.Repaint()
-display.DisplayShape(my_box, update=True)
+# use the GFA
+builder = BOPAlgo_Builder()
+builder.AddArgument(my_box1)
+builder.AddArgument(my_box2)
+builder.SetRunParallel(True)
+builder.Perform()  # or .PerformWithFiller(aPF);
+error_code = builder.ErrorStatus()
+if error_code != 0:
+	raise AssertionError("Failed with error code %i" % error_code)
+result = builder.Shape()
+display.DisplayShape(result, update=True)
 start_display()

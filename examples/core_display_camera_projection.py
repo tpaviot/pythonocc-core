@@ -1,4 +1,4 @@
-##Copyright 2009-2016 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2017 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -16,9 +16,6 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 import sys
 
-from OCC.BRepAlgoAPI import BRepAlgoAPI_Cut
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeCylinder
-from OCC.TopTools import TopTools_ListOfShape
 from OCC.Display.SimpleGui import init_display
 from OCC.Graphic3d import Graphic3d_RenderingParams
 from OCC.BRepTools import breptools_Read

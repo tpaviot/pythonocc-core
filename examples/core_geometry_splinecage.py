@@ -27,7 +27,6 @@ from OCC.BRepAdaptor import BRepAdaptor_Curve
 from OCC.GCPnts import GCPnts_AbscissaPoint, GCPnts_UniformAbscissa
 from OCC.GeomAbs import GeomAbs_G1
 from OCC.BRepOffsetAPI import BRepOffsetAPI_MakeFilling
-from OCC.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.TopAbs import TopAbs_FACE, TopAbs_EDGE
 
 from OCC.Display.SimpleGui import init_display
@@ -38,11 +37,12 @@ from core_load_step_ap203 import read_step_file
 display, start_display, add_menu, add_function_to_menu = init_display()
 
 def random_color():
-    return rgb_color(random.random(),random.random(),random.random())
+    return rgb_color(random.random(), random.random(), random.random())
 
 def length_from_edge(edg):
     curve_adapt = BRepAdaptor_Curve(edg)
-    length = GCPnts_AbscissaPoint().Length(curve_adapt, curve_adapt.FirstParameter(), curve_adapt.LastParameter(), 1e-6)
+    length = GCPnts_AbscissaPoint().Length(curve_adapt, curve_adapt.FirstParameter(),
+                                           curve_adapt.LastParameter(), 1e-6)
     return length
 
 def divide_edge_by_nr_of_points(edg, n_pts):
@@ -59,7 +59,7 @@ def divide_edge_by_nr_of_points(edg, n_pts):
     npts = GCPnts_UniformAbscissa(curve_adapt, n_pts, _lbound, _ubound)
     if npts.IsDone():
         tmp = []
-        for i in range (1,npts.NbPoints()+1):
+        for i in range (1, npts.NbPoints()+1):
             param = npts.Parameter(i)
             pnt = curve_adapt.Value(param)
             tmp.append((param, pnt))
@@ -125,7 +125,7 @@ def build_curve_network(event=None, enforce_tangency=True):
     input_edge_face_pairs, edges_no_adjacent_face = [], []
     for l, edg in filtered_length.items():
         if l in _edge_length_to_edge:
-            edge_face_pair = ( _edge_length_to_edge[l], _edge_length_to_face[l] )
+            edge_face_pair = (_edge_length_to_edge[l], _edge_length_to_face[l])
             input_edge_face_pairs.append(edge_face_pair)
         else:
             edges_no_adjacent_face.append(edg)

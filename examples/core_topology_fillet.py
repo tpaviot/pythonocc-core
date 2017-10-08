@@ -30,12 +30,12 @@ display, start_display, add_menu, add_function_to_menu = init_display()
 
 def fillet(event=None):
     Box = BRepPrimAPI_MakeBox(gp_Pnt(-400, 0, 0), 200, 230, 180).Shape()
-    fillet = BRepFilletAPI_MakeFillet(Box)
+    fillet_ = BRepFilletAPI_MakeFillet(Box)
     # Add fillet on each edge
     for e in Topo(Box).edges():
-        fillet.Add(20, e)
+        fillet_.Add(20, e)
 
-    blendedBox = fillet.Shape()
+    blendedBox = fillet_.Shape()
 
     P1 = gp_Pnt(250, 150, 75)
     S1 = BRepPrimAPI_MakeBox(300, 200, 200).Shape()
@@ -80,7 +80,7 @@ def variable_filleting(event=None):
         print("Rake not done.")
     # Create Cylinder
     Cylinder = BRepPrimAPI_MakeCylinder(gp_Ax2(gp_Pnt(-300, 0, 0), gp_Dir(0, 0, 1)), 100, 200).Shape()
-    fillet = BRepFilletAPI_MakeFillet(Cylinder)
+    fillet_ = BRepFilletAPI_MakeFillet(Cylinder)
 
     TabPoint2 = TColgp_Array1OfPnt2d(0, 20)
     for i in range(0, 20):
@@ -88,10 +88,10 @@ def variable_filleting(event=None):
         TabPoint2.SetValue(i, Point2d)
 
     exp2 = Topo(Cylinder).edges()
-    fillet.Add(TabPoint2, next(exp2))
-    fillet.Build()
-    if fillet.IsDone():
-        LawEvolvedCylinder = fillet.Shape()
+    fillet_.Add(TabPoint2, next(exp2))
+    fillet_.Build()
+    if fillet_.IsDone():
+        LawEvolvedCylinder = fillet_.Shape()
         display.DisplayShape(LawEvolvedCylinder)
     else:
         print("fillet not done.")  ## TODO : fillet not done
@@ -123,7 +123,7 @@ def variable_filleting(event=None):
     if afillet.IsDone():
         LawEvolvedBox = afillet.Shape()
     else:
-        print("aFillet not done.") 
+        print("aFillet not done.")
         display.DisplayShape(LawEvolvedBox)
     display.FitAll()
 
