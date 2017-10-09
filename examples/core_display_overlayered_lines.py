@@ -21,12 +21,12 @@ from math import pi
 
 from OCC.Display.SimpleGui import init_display
 from OCC.Addons import LineItem
+from OCC.Quantity import Quantity_Color
 
 # load the bottle
 from core_classic_occ_bottle import bottle
 
 display, start_display, add_menu, add_function_to_menu = init_display()
-mybox = BRepPrimAPI_MakeBox(10, 10, 10).Shape()
 
 number_of_lines = 1000
 
@@ -52,5 +52,4 @@ if __name__ == '__main__':
     ais_bottle = display.DisplayShape(bottle, update=True)
     add_menu('draw lines')
     add_function_to_menu('draw lines', draw_random_overlayered_lines)
-    display.DisplayShape(mybox, update=True)
     start_display()
