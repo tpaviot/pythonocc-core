@@ -23,6 +23,7 @@ import sys
 
 from OCC import VERSION
 from OCC.Display.backend import load_backend, get_qt_modules
+from OCC.Display.OCCViewer import Viewer3d
 
 log = logging.getLogger(__name__)
 
@@ -33,17 +34,29 @@ def check_callable(_callable):
 
 def init_display(backend_str=None, size=(1024, 768)):
     """ This function loads and initialize a GUI using either wx, pyq4, pyqt5 or pyside.
-    If ever the environment variable PYTHONOCC_SHUNT_GUI, then the GUI is simply ignored.
-    It can be useful to test some algorithms without being polluted by GUI statements.
-    This feature is used for running the examples suite as tests for
-    pythonocc-core development.
+    If ever the environment variable PYTHONOCC_OFFSCREEN_RENDERER, then the GUI is simply
+    ignored and an offscreen renderer is returned.
+    init_display returns 4 objects :
+    * display : an instance of Viewer3d ;
+    * start_display : a function (the GUI mainloop) ;
+    * add_menu : a function that creates a menu in the GUI
+    * add_function_to_menu : adds a menu option
+    
+    In case an offscreen renderer is returned, start_display and add_menu are ignored, i.e.
+    an empty function is returned (named do_nothing). add_function_to_menu just execute the
+    function taken as a paramter.
+
+    Note : the offscreen renderer is used on the travis side.
     """
-    if os.getenv("PYTHONOCC_SHUNT_GUI") == "1":
-        # define a dumb class and an empty method
-        from OCC.Display import OCCViewer
+    if os.getenv("PYTHONOCC_OFFSCREEN_RENDERER") == "1":
+        # create the offscreen renderer
+        offscreen_renderer = Viewer3d(None)
+        offscreen_renderer.Create()
+        offscreen_renderer.SetSize(size[0], size[1])
 
         def do_nothing(*kargs, **kwargs):
-            """ A method that does nothing
+            """ takes as many parameters as you want,
+            ans does nothing
             """
             pass
 
@@ -52,46 +65,12 @@ def init_display(backend_str=None, size=(1024, 768)):
             Helpfull to bypass add_function_to_menu. s should be a string
             """
             check_callable(func)
-            print(s, func.__name__)
+            log.info("Execute %s :: %s menu fonction" % (s, func.__name__))
             func()
+            log.info("done")
 
-        class BlindViewer(OCCViewer.Viewer3d):
-            def __init__(self, *kargs):
-                self._window_handle = 0
-                self._inited = False
-                self._local_context_opened = False
-                self.Context_handle = Dumb()
-                self.Viewer_handle = Dumb()
-                self.View_handle = Dumb()
-                self.Context = Dumb()
-                self.Viewer = Dumb()
-                self.View = Dumb()
-                self.OverLayer = Dumb()
-                self.OverLayer_handle = Dumb()
-                self.selected_shapes = []
-                self._select_callbacks = []
-                self._overlay_items = []
-                self._struc_mgr = Dumb()
-
-            def GetContext(self):
-                return Dumb()
-
-            def DisplayMessage(self, *kargs):
-                pass
-
-        class Dumb(object):
-            """ A class the does nothing whatever the method
-            or property is called
-            """
-            def __getattr__(self, name):
-                if name in ['Context']:
-                    return Dumb()
-                elif name in ['GetContext', 'GetObject']:
-                    return Dumb
-                else:
-                    return do_nothing
         # returns empty classes and functions
-        return BlindViewer(), do_nothing, do_nothing, call_function
+        return offscreen_renderer, do_nothing, do_nothing, call_function
     used_backend = load_backend(backend_str)
     log.info("GUI backend set to: %s", used_backend)
     # wxPython based simple GUI
@@ -194,7 +173,7 @@ def init_display(backend_str=None, size=(1024, 768)):
                 except KeyError:
                     raise ValueError('the menu item %s does not exist' % menu_name)
 
-        # following couple of lines is a twek to enable ipython --gui='qt'
+        # following couple of lines is a tweak to enable ipython --gui='qt'
         app = QtWidgets.QApplication.instance()  # checks if QApplication already exists
         if not app:  # create QApplication if it doesnt exist
             app = QtWidgets.QApplication(sys.argv)
