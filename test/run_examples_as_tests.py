@@ -26,26 +26,16 @@ import subprocess
 
 all_examples_file_names = glob.glob(os.path.join('..', 'examples', 'core_*.py'))
 # some tests have to be excluded from the automatic
-# run.
+# run. For instance, qt based examples
 tests_to_exclude = ['core_display_signal_slots.py',
-                    'core_visualization_overpaint_viewer.py',
-                    'core_display_customize_prs3d.py',
-                    'core_visualization_graphic3d_custom_opengl.py',
-                    'core_display_quality.py',
-                    'core_display_raytracing.py',
-                    'core_display_overlayered_text.py',
-                    'core_display_overlayered_image.py',
-                    'core_display_overlayered_image.py',
-                    'core_display_overlayered_lines.py',
-                    'core_display_camera_projection.py',
-                    'core_display_export_to_EF.py',
-                    'core_matplotlib_box.py',
-                    'core_font_3d_console.py',
-                    'core_visualization_camera.py']
-# for OSX travis-ci.org, remove tests that take too long
-if sys.platform == 'darwin':
-    tests_to_exclude.extend(['core_geometry_splinecage.py',  # buggy
-                             'core_parallel_slicer.py'])
+					'core_font_3d_console.py',
+					'core_display_overlayered_image.py',
+					'core_display_overlayered_lines.py',
+					'core_display_overlayered_text.py',
+					'core_display_raytracing.py',
+					'core_visualization_overpaint_viewer.py'
+                    ]
+
 # remove examples to excludes
 for test_name in tests_to_exclude:
     test_fullpath = os.path.join('..', 'examples', test_name)
@@ -56,24 +46,27 @@ nbr_examples = len(all_examples_file_names)
 succeed = 0
 failed = 0
 
-os.environ["PYTHONOCC_SHUNT_GUI"] = "1"
+os.environ["PYTHONOCC_OFFSCREEN_RENDERER"] = "1"
 os.environ["PYTHONOCC_SHUNT_WEB_SERVER"] = "1"
 
 os.chdir(os.path.join('..', 'examples'))
 for example in all_examples_file_names:
     print("running %s ..." % example, end="")
     try:
-        out = subprocess.check_output([sys.executable, example])
+        out = subprocess.check_output([sys.executable, example],
+        	                          stderr=subprocess.STDOUT,
+        	                          universal_newlines=True)
         succeed += 1
         print("[passed]")
-    except:
+    except subprocess.CalledProcessError as cpe:
+        print("%s" % cpe.output)
         failed += 1
         print("[failed]")
 
 print("Test examples results :")
 print("\t %i/%i tests passed" % (succeed, nbr_examples))
 
-del os.environ["PYTHONOCC_SHUNT_GUI"]
+del os.environ["PYTHONOCC_OFFSCREEN_RENDERER"]
 del os.environ["PYTHONOCC_SHUNT_WEB_SERVER"]
 
 if failed > 0:
