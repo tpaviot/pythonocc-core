@@ -111,5 +111,36 @@ class Display3d {
 	Handle_AIS_InteractiveContext GetContext();
 	%feature("autodoc", "1");
 	void Test();
+
+    %feature("autodoc", "1");
+    bool InitOffscreen(int size_x, int size_y);
+    %feature("autodoc", "1");
+    bool SetSize(int size_x, int size_y);
+    %feature("autodoc", "1");
+    bool IsOffscreen();
+};
+
+%extend Display3d {
+    PyObject* GetImageData(int bufType = 0) {
+        const char * data;
+        size_t size = 0;
+        Graphic3d_BufferType theBufferType = (Graphic3d_BufferType)bufType;
+
+        if ($self->GetImageData(data, size, theBufferType)) {
+            return PyBytes_FromStringAndSize(data, (Py_ssize_t)size);
+        }
+        Py_RETURN_NONE;
+    }
+
+    PyObject* GetSize() {
+        int size_x;
+        int size_y;
+
+        if ($self->GetSize(size_x, size_y)) {
+            return Py_BuildValue("ii", size_x, size_y);
+        }
+        Py_RETURN_NONE;
+    }
+
 };
 

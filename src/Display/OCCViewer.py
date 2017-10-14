@@ -133,6 +133,8 @@ class Viewer3d(Display3d):
         self.selected_shape = None
         self.default_drawer = None
         self._struc_mgr = None
+        self._is_offscreen = None
+
         self.selected_shapes = []
         self._select_callbacks = []
         self._overlay_items = []
@@ -171,7 +173,13 @@ class Viewer3d(Display3d):
         self.View.FitAll()
 
     def Create(self, create_default_lights=True, draw_face_boundaries=True, phong_shading=True):
-        self.Init(self._window_handle)
+        if self._window_handle is None:
+            self.InitOffscreen(100, 100)
+            self._is_offscreen = True
+        else:
+            self.Init(self._window_handle)
+            self._is_offscreen = False
+
         self.Context_handle = self.GetContext()
         self.Viewer_handle = self.GetViewer()
         self.View_handle = self.GetView()

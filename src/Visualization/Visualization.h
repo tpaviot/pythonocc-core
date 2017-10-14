@@ -20,6 +20,16 @@
 #if !defined __OCC3d_Renderer__
 #define __OCC3d_Renderer__
 
+#ifdef WNT
+  #include <windows.h>
+  #include <WNT_WClass.hxx>
+  #include <WNT_Window.hxx>
+#elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
+  #include <Cocoa_Window.hxx>
+#else
+  #include <Xw_Window.hxx>
+#endif
+
 #include <AIS_InteractiveContext.hxx>
 #include <BRepPrimAPI_MakeBox.hxx>
 #include <V3d_Viewer.hxx>
@@ -37,13 +47,7 @@
 
 #include <cstdlib>
   
-#ifdef WNT
-  #include <WNT_Window.hxx>
-#elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-  #include <Cocoa_Window.hxx>
-#else
-  #include <Xw_Window.hxx>
-#endif
+
 
 class Display3d 
 {	
@@ -67,11 +71,22 @@ public:
 	Standard_EXPORT Handle_V3d_Viewer& GetViewer() {return myV3dViewer;};
 	Standard_EXPORT Handle_AIS_InteractiveContext GetContext() {return myAISContext;};
 	Standard_EXPORT void Test();
-    
+
+  Standard_EXPORT bool IsOffscreen();
+  Standard_EXPORT bool InitOffscreen(int size_x, int size_y);
+  Standard_EXPORT bool SetSize(int size_x, int size_y);
+  Standard_EXPORT bool GetSize(int &size_x, int &size_y);
+  Standard_EXPORT bool GetImageData(const char* &data, size_t &size, const Graphic3d_BufferType& theBufferType = Graphic3d_BT_RGB);
+
 protected:
    Handle_AIS_InteractiveContext myAISContext;
    Handle_V3d_Viewer myV3dViewer;
    Handle_V3d_View myV3dView;
+
+   int mySizeX;
+   int mySizeY;
+   bool myIsOffscreen;
+
    #ifdef WNT
      Handle_WNT_Window myWindow;
    #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
