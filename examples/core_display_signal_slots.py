@@ -71,7 +71,7 @@ def also_on_select(shapes):
 
 def location_from_vector(x, y, z):
     trsf = gp_Trsf()
-    trsf.SetTranslation(gp_Vec(500, 0, 0))
+    trsf.SetTranslation(gp_Vec(x, y, z))
     loc = TopLoc_Location(trsf)
     return loc
 
