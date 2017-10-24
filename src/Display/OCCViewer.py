@@ -21,7 +21,7 @@ from __future__ import print_function
 
 import os
 import os.path
-from datetime import datetime
+import time
 import sys
 import math
 import itertools
@@ -692,7 +692,7 @@ class OffscreenRenderer(Viewer3d):
         r = super(OffscreenRenderer, self).DisplayShape(shapes, material, texture,
                                                         color, transparency, True)  # always update
         if os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE") == "1":  # dump to jpeg file
-            timestamp = ("%f" % datetime.now().timestamp()).split(".")[0]
+            timestamp = ("%f" % time.time()).split(".")[0]
             import __main__ as main
             calling_script = main.__file__.split(".")[0]  # only the fie without extension
             self.capture_number += 1
