@@ -1,4 +1,4 @@
-##Copyright 2011-2016 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2011-2017 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -18,6 +18,7 @@
 from __future__ import print_function, absolute_import
 
 import os
+import sys
 import tempfile
 
 from OCC.Visualization import Tesselator
@@ -25,6 +26,13 @@ from OCC.gp import gp_Vec
 from OCC import VERSION as OCC_VERSION
 
 from .simple_server import start_server
+
+
+def spinning_cursor():
+    while True:
+        for cursor in '|/-\\':
+            yield cursor
+
 
 HEADER = """
 <head>
@@ -34,7 +42,6 @@ HEADER = """
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="https://x3dom.org/release/x3dom.css" charset="utf-8" ></link>
     <script type="text/javascript" src="https://x3dom.org/release/x3dom-full.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
     <style type="text/css">
         body {
             background: linear-gradient(@bg_gradient_color1@, @bg_gradient_color2@);
@@ -45,33 +52,33 @@ HEADER = """
             padding: 5px;
             position: absolute;
             left: 1%;
-            top: 85%;
-            height: 60px;
-            width: 305px;
+            bottom: 2%;
+            height: 38px;
+            width: 280px;
             border-radius: 5px;
             border: 2px solid #f7941e;
             opacity: 0.7;
             font-family: Arial;
             background-color: #414042;
             color: #ffffff;
-            font-size: 16px;
-            opacity: 0.7;
+            font-size: 14px;
+            opacity: 0.5;
         }
-        #selection_info {
+        #commands {
             padding: 5px;
             position: absolute;
-            left: 85%;
-            top: 1%;
-            height: 22px;
-            width: 200px;
+            right: 1%;
+            top: 2%;
+            height: 65px;
+            width: 180px;
             border-radius: 5px;
             border: 2px solid #f7941e;
             opacity: 0.7;
             font-family: Arial;
             background-color: #414042;
             color: #ffffff;
-            font-size: 16px;
-            opacity: 0.7;
+            font-size: 14px;
+            opacity: 0.5;
         }
         a {
             color: #f7941e;
@@ -86,19 +93,58 @@ HEADER = """
 
 BODY = """
 <body>
-    <div id="x3d_scene">@X3DSCENE@</div>
+    @X3DSCENE@
     <div id="pythonocc_rocks">
-        <b>pythonOCC @VERSION@ <a href="https://www.x3dom.org" target="_blank">x3dom</a> renderer</b><hr>
-        Check our blog at
-        <a style="font-size:14px;" href=http://www.pythonocc.org>http://www.pythonocc.org</a>
+        pythonocc-@VERSION@ <a href="https://www.x3dom.org" target="_blank">x3dom</a> renderer
+        <br>Check our blog at
+        <a href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
-    <div id="selection_info">
-        <input type="button" value="Fit All" onclick="fitAll();">
+    <div id="commands">
+    <b>t</b> view/hide shape<br>
     </div>
     <script>
-    function fitAll(){
-        document.getElementsByTagName('x3d')[0].runtime.showAll();
+    var selected_target_color = null;
+    var current_selected_shape = null;
+    var current_mat = null;
+    function fitCamera()
+    {            
+        var x3dElem = document.getElementById('pythonocc-x3d-scene');            
+        x3dElem.runtime.fitAll();
     }
+    function select(the_shape) // called whenever a shape is clicked
+    {
+        // restore color for previous selected shape
+        if (current_mat) {
+            current_mat.diffuseColor = selected_target_color;
+        }
+        // store the shape for future process
+        current_selected_shape = the_shape;
+        console.log(the_shape);
+        // store color, to be restored later
+        appear = current_selected_shape.getElementsByTagName("Appearance")[0];
+        mat = appear.getElementsByTagName("Material")[0];
+        current_mat = mat;
+        console.log(mat);
+        selected_target_color = mat.diffuseColor;
+        mat.diffuseColor = "1, 0.65, 0";
+        //console.log(the_shape.getElementsByTagName("Appearance"));//.getAttribute('diffuseColor'));
+    }
+    function onDocumentKeyPress(event) {
+      event.preventDefault();
+      if (event.key=="t") {  // t key
+         if (current_selected_shape) {
+           if (current_selected_shape.render == "true") {
+              current_selected_shape.render = "false";
+           }
+           else {
+              current_selected_shape.render = "true";
+           }
+         }
+      }
+
+    }
+    // add events
+    document.addEventListener('keypress', onDocumentKeyPress, false);
     </script>
 </body>
 """
@@ -131,18 +177,25 @@ class HTMLBody(object):
         """ x3d_shapes is a list that contains uid for each shape
         """
         self._x3d_shapes = x3d_shapes
+        self.spinning_cursor = spinning_cursor()
 
     def get_str(self):
         # get the location where pythonocc is running from
         body_str = BODY.replace('@VERSION@', OCC_VERSION)
-        x3dcontent = '\n\t<X3D style="width:100%;border: none" >\n\t\t<Scene>\n'
+        x3dcontent = '\n\t<x3d id="pythonocc-x3d-scene" style="width:100%;border: none" >\n\t\t<Scene>\n'
+        nb_shape = len(self._x3d_shapes)
+        cur_shp = 1
         for shp_uid in self._x3d_shapes:
+            sys.stdout.write("\r%s meshing shapes... %i%%" % (next(self.spinning_cursor), 
+                                                        int(cur_shp / nb_shape * 100)))
+            sys.stdout.flush()
             # TODO: here is the code related to orientation/translation
             # trans, ori = self._x3d_shapes_dict[shp]
             # vx, vy, vz = trans
             # ori_vx, ori_vy, ori_vz, angle = ori
-            x3dcontent += '\t\t\t<Inline mapDEFToID="true" url="shp%s.x3d"></Inline>\n' % shp_uid
-        x3dcontent += "\t\t</Scene>\n\t</X3D>\n"
+            x3dcontent += '\t\t\t<Inline onload="fitCamera()" mapDEFToID="true" url="shp%s.x3d"></Inline>\n' % shp_uid
+            cur_shp += 1
+        x3dcontent += "\t\t</Scene>\n\t</x3d>\n"
         body_str = body_str.replace('@X3DSCENE@', x3dcontent)
         return body_str
 
@@ -195,7 +248,7 @@ class X3DExporter(object):
                 ils = ExportEdgeToILS(edge_point_set)
                 self._line_sets.append(ils)
 
-    def to_x3dfile_string(self):
+    def to_x3dfile_string(self, shape_id):
         x3dfile_str = """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
 <X3D profile="Immersive" version="3.3" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.3.xsd">
@@ -208,14 +261,15 @@ class X3DExporter(object):
 </head>
 <Scene>
         """ % (OCC_VERSION, OCC_VERSION, OCC_VERSION)
-        shape_id = 0
         for triangle_set in self._triangle_sets:
-            x3dfile_str += '<Shape DEF="shape%i"><Appearance>\n' % shape_id
+            x3dfile_str += '<Shape DEF="shape%i" onclick="' % shape_id
+            x3dfile_str += "select(this);"
+            x3dfile_str += '"><Appearance>\n'
             #
             # set Material or shader
             #
             if self._vs is None and self._fs is None:
-                x3dfile_str += "<Material diffuseColor="
+                x3dfile_str += "<Material id='color' diffuseColor="
                 x3dfile_str += "'%g %g %g'" % (self._color[0],
                                         self._color[1],
                                         self._color[2])
@@ -238,12 +292,11 @@ class X3DExporter(object):
             # export triangles
             x3dfile_str += triangle_set
             x3dfile_str += "</Shape>\n"
-            shape_id += 1
         # and now, process edges
         if self._export_edges:
             edge_id = 0
             # below '0' means show all
-            # -1 means doesn' show line
+            # -1 means doesn't show line
             # the "Switch" node selects the group to be displayed
             x3dfile_str += "<Switch whichChoice='0'>\n"
             x3dfile_str += "\t<Group>\n"
@@ -258,9 +311,9 @@ class X3DExporter(object):
         x3dfile_str += '</Scene>\n</X3D>\n'
         return x3dfile_str
    
-    def write_to_file(self, filename):
+    def write_to_file(self, filename, shape_id):
         with open(filename, "w") as f:
-            f.write(self.to_x3dfile_string())
+            f.write(self.to_x3dfile_string(shape_id))
 
 
 class X3DomRenderer(object):
@@ -271,7 +324,7 @@ class X3DomRenderer(object):
             self._path = path
         self._html_filename = os.path.join(self._path, 'index.html')
         self._x3d_shapes = []
-        print("X3DomRenderer initiliazed. Waiting for shapes to be added to the buffer.")
+        print("## x3dom webgl renderer")
 
     def DisplayShape(self,
                      shape,
@@ -295,7 +348,8 @@ class X3DomRenderer(object):
         x3d_exporter.compute()
         x3d_filename = os.path.join(self._path, "shp%s.x3d" % shape_hash)
         # the x3d filename is computed from the shape hash
-        x3d_exporter.write_to_file(x3d_filename)
+        shape_id = len(self._x3d_shapes)
+        x3d_exporter.write_to_file(x3d_filename, shape_id)
         ## TODO : orientation and translation
         # get shape translation and orientation
         # trans = shape.Location().Transformation().TranslationPart().Coord()  # vector
@@ -309,13 +363,12 @@ class X3DomRenderer(object):
     def render(self, server_port=8080):
         """ Call the render() method to display the X3D scene.
         """
-        # log path
-        print("Files written to %s" % self._path)
         # first generate the HTML root file
         self.GenerateHTMLFile()
         # then create a simple web server
         os.chdir(self._path)
-        print("## Serving at port", server_port, "using SimpleHTTPServer")
+        # then create a simple web server
+        print("\n## Serving ", self._path, "\n## using SimpleHTTPServer")
         print("## Open your webbrowser at the URL: http://localhost:%i" % server_port)
         print("## CTRL-C to shutdown the server")
         start_server(server_port)
@@ -324,7 +377,6 @@ class X3DomRenderer(object):
     def GenerateHTMLFile(self):
         """ Generate the HTML file to be rendered wy the web browser
         """
-        print("File written to %s" % self._path)
         with open(self._html_filename, "w") as fp:
             fp.write("<!DOCTYPE HTML>")
             fp.write('<html lang="en">')
@@ -336,8 +388,19 @@ class X3DomRenderer(object):
 
 
 if __name__ == "__main__":
-    from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-    box = BRepPrimAPI_MakeBox(1., 2., 3.).Shape()
+    from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
+    from OCC.BRepBuilderAPI import BRepBuilderAPI_Transform
+    from OCC.gp import gp_Trsf, gp_Vec
+    def translate_shp(shp, vec, copy=False):
+        trns = gp_Trsf()
+        trns.SetTranslation(vec)
+        brep_trns = BRepBuilderAPI_Transform(shp, trns, copy)
+        brep_trns.Build()
+        return brep_trns.Shape()
+    box = BRepPrimAPI_MakeBox(100., 200., 300.).Shape()
+    torus = BRepPrimAPI_MakeTorus(300., 105).Shape()
+    t_torus = translate_shp(torus, gp_Vec(700, 0, 0))
     my_ren = X3DomRenderer()
-    my_ren.DisplayShape(box, export_edges=True)
+    my_ren.DisplayShape(box)
+    my_ren.DisplayShape(t_torus)
     my_ren.render()
