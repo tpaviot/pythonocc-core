@@ -92,11 +92,11 @@ before_install:
   - conda config --add channels https://conda.anaconda.org/oce
   - conda config --add channels https://conda.anaconda.org/pythonocc
   # install everything required to build the receipe
-  - conda install conda-build anaconda-client
+  - conda install conda-build=3.0.28 anaconda-client
 
 
 script:
-  - conda build ci/conda --no-remove-work-dir
+  - conda build ci/conda --dirty --no-remove-work-dir
 
 # automative upload to anaconda cloud only
 # if the build was triggered by a cron
