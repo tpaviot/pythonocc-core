@@ -80,11 +80,11 @@ install:
     - cmd: conda config --set show_channel_urls true
     - cmd: conda update --yes --quiet conda
     - cmd: conda install --yes conda-build=3.0.8
-    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/conda-forge"
-    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/dlr-sc"
-    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/oce"
-    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/pythonocc"
-    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/tpaviot"
+    - cmd: conda config --add channels https://conda.anaconda.org/conda-forge
+    - cmd: conda config --add channels https://conda.anaconda.org/dlr-sc
+    - cmd: conda config --add channels https://conda.anaconda.org/oce
+    - cmd: conda config --add channels https://conda.anaconda.org/pythonocc
+    - cmd: conda config --add channels https://conda.anaconda.org/tpaviot
 
 build: off
 
@@ -102,8 +102,15 @@ test_script:
   # move conda package to /dist
   - cmd: 'mkdir dist'
   - cmd: 'copy /Y %CONDA_INSTALL_LOCN%\conda-bld\win-%PYTHON_ARCH%\pythonocc*.bz2 dist || cmd /c "exit /b 0"'
-  # upload package to anaconda
-  - cmd: anaconda upload -t "%BINSTAR_TOKEN%" dist\*.bz2 --force
+  # upload package to anaconda$
+  # if CRON, labelled as nightly
+  # labelled as continuous-devlivery in all other cases
+  - ps: >-
+      If ($env:TRAVIS_EVENT_TYPE -Match "CRON") {
+        anaconda upload -t $env:BINSTAR_TOKEN dist\*.bz2 -l nightly --force
+      } Else {
+        anaconda upload -t $env:BINSTAR_TOKEN dist\*.bz2 -l continuous-delivery --force
+      }
 
 artifacts:
   - path: dist\*

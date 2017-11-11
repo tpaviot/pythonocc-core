@@ -100,12 +100,16 @@ script:
 
 # automative upload to anaconda cloud only
 # if the build was triggered by a cron
-# that was only nightly builds are uploaded
-# in case of a relase, replace the "nightly" label with "main"
+# labelled as "nightly"
+# else labelled as "continuous-delivery"
 after_success:
   - python ci/move-conda-package.py
-  - ls
-  - anaconda -t $BINSTAR_TOKEN upload *.bz2 --force
+  - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
+      anaconda -t $BINSTAR_TOKEN upload *.bz2 -l nightly --force;
+    else
+      anaconda -t $BINSTAR_TOKEN upload *.bz2 -l continuous-delivery --force;
+    fi;
+
 
 branches:
   only:
