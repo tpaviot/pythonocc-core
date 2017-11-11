@@ -74,12 +74,13 @@ install:
     # we can do a proper activation.
     - cmd: set "OLDPATH=%PATH%"
     - cmd: set "PATH=%CONDA_INSTALL_LOCN%\\Scripts;%CONDA_INSTALL_LOCN%\\Library\\bin;%PATH%"
-    - cmd: conda update --yes conda
+    - cmd: conda config --set always_yes yes --set changeps1 no
+    - cmd: conda update conda
     - cmd: set "PATH=%OLDPATH%"
     - cmd: call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
     - cmd: conda config --set show_channel_urls true
-    - cmd: conda update --yes --quiet conda
-    - cmd: conda install --yes conda-build=3.0.8
+    - cmd: conda update conda
+    - cmd: conda install conda-build=3.0.8 anaconda-client
     - cmd: conda config --add channels https://conda.anaconda.org/conda-forge
     - cmd: conda config --add channels https://conda.anaconda.org/dlr-sc
     - cmd: conda config --add channels https://conda.anaconda.org/oce
