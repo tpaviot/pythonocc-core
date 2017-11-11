@@ -1,6 +1,14 @@
 version: pythonocc-core-0.18.{build}
 
 environment:
+  binstar_token:
+    # below the secure to upload to anaconda cloud
+    # take the travis-ci token genrated from the command line
+    # and copy paste to
+    # https://ci.appveyor.com/tools/encrypt
+    # then copy/paste the result below
+    secure: NoyfHABamm+owHGyn16dzuHcISu9MblnL0lOQY/Oiy8iYBLAuTXzNDvnNehDmPcD
+  
   global:
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
@@ -9,7 +17,6 @@ environment:
   
     # Workaround for https://github.com/conda/conda-build/issues/636
     PYTHONIOENCODING: "UTF-8"
-
 
   matrix:
     - PYTHON: "C:\\Python27_32"
@@ -95,6 +102,8 @@ test_script:
   # move conda package to /dist
   - cmd: 'mkdir dist'
   - cmd: 'copy /Y %CONDA_INSTALL_LOCN%\conda-bld\win-%PYTHON_ARCH%\pythonocc*.bz2 dist || cmd /c "exit /b 0"'
+  # upload package to anaconda
+  - cmd: anaconda upload -t "%BINSTAR_TOKEN%" dist\*.bz2 --force
 
 artifacts:
   - path: dist\*
