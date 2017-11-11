@@ -80,7 +80,7 @@ install:
     - cmd: call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
     - cmd: conda config --set show_channel_urls true
     - cmd: conda update conda
-    - cmd: conda install conda-build=3.0.8 anaconda-client
+    - cmd: conda install conda-build anaconda-client
     - cmd: conda config --add channels https://conda.anaconda.org/conda-forge
     - cmd: conda config --add channels https://conda.anaconda.org/dlr-sc
     - cmd: conda config --add channels https://conda.anaconda.org/oce
@@ -106,12 +106,13 @@ test_script:
   # upload package to anaconda$
   # if CRON, labelled as nightly
   # labelled as continuous-devlivery in all other cases
-  - ps: >-
-      If ($env:TRAVIS_EVENT_TYPE -Match "CRON") {
-        anaconda upload -t $env:BINSTAR_TOKEN dist\*.bz2 -l nightly --force
-      } Else {
-        anaconda upload -t $env:BINSTAR_TOKEN dist\*.bz2 -l continuous-delivery --force
-      }
+  # - "%CMD_IN_ENV% anaconda upload -t %BINSTAR_TOKEN% dist\\*.bz2 -l continuous-delivery --force"
+  #- ps: >-
+  #    If ($env:TRAVIS_EVENT_TYPE -Match "CRON") {
+  #      anaconda upload -t $env:BINSTAR_TOKEN dist\*.bz2 -l nightly --force
+  #    } Else {
+  #      anaconda upload -t $env:BINSTAR_TOKEN dist\*.bz2 -l continuous-delivery --force
+  #    }
 
 artifacts:
   - path: dist\*
