@@ -104,15 +104,7 @@ test_script:
   - cmd: 'mkdir dist'
   - cmd: 'copy /Y %CONDA_INSTALL_LOCN%\conda-bld\win-%PYTHON_ARCH%\pythonocc*.bz2 dist || cmd /c "exit /b 0"'
   # upload package to anaconda$
-  # if CRON, labelled as nightly
-  # labelled as continuous-devlivery in all other cases
-  # - "%CMD_IN_ENV% anaconda upload -t %BINSTAR_TOKEN% dist\\*.bz2 -l continuous-delivery --force"
-  #- ps: >-
-  #    If ($env:TRAVIS_EVENT_TYPE -Match "CRON") {
-  #      anaconda upload -t $env:BINSTAR_TOKEN dist\*.bz2 -l nightly --force
-  #    } Else {
-  #      anaconda upload -t $env:BINSTAR_TOKEN dist\*.bz2 -l continuous-delivery --force
-  #    }
+  - ps: cmd /C anaconda --token $env:BINSTAR_TOKEN upload  dist\*.bz2 -l continuous-delivery "2>&1"
 
 artifacts:
   - path: dist\*
