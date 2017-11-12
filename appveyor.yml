@@ -1,6 +1,14 @@
 version: pythonocc-core-0.18.{build}
 
 environment:
+  binstar_token:
+    # below the secure to upload to anaconda cloud
+    # take the travis-ci token genrated from the command line
+    # and copy paste to
+    # https://ci.appveyor.com/tools/encrypt
+    # then copy/paste the result below
+    secure: NoyfHABamm+owHGyn16dzuHcISu9MblnL0lOQY/Oiy8iYBLAuTXzNDvnNehDmPcD
+  
   global:
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
@@ -9,7 +17,6 @@ environment:
   
     # Workaround for https://github.com/conda/conda-build/issues/636
     PYTHONIOENCODING: "UTF-8"
-
 
   matrix:
     - PYTHON: "C:\\Python27_32"
@@ -67,17 +74,18 @@ install:
     # we can do a proper activation.
     - cmd: set "OLDPATH=%PATH%"
     - cmd: set "PATH=%CONDA_INSTALL_LOCN%\\Scripts;%CONDA_INSTALL_LOCN%\\Library\\bin;%PATH%"
-    - cmd: conda update --yes conda
+    - cmd: conda config --set always_yes yes --set changeps1 no
+    - cmd: conda update conda
     - cmd: set "PATH=%OLDPATH%"
     - cmd: call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
     - cmd: conda config --set show_channel_urls true
-    - cmd: conda update --yes --quiet conda
-    - cmd: conda install --yes conda-build=3.0.8
-    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/conda-forge"
-    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/dlr-sc"
-    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/oce"
-    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/pythonocc"
-    - "%CMD_IN_ENV% conda config --add channels https://conda.anaconda.org/tpaviot"
+    - cmd: conda update conda
+    - cmd: conda install conda-build anaconda-client
+    - cmd: conda config --add channels https://conda.anaconda.org/conda-forge
+    - cmd: conda config --add channels https://conda.anaconda.org/dlr-sc
+    - cmd: conda config --add channels https://conda.anaconda.org/oce
+    - cmd: conda config --add channels https://conda.anaconda.org/pythonocc
+    - cmd: conda config --add channels https://conda.anaconda.org/tpaviot
 
 build: off
 
@@ -95,6 +103,8 @@ test_script:
   # move conda package to /dist
   - cmd: 'mkdir dist'
   - cmd: 'copy /Y %CONDA_INSTALL_LOCN%\conda-bld\win-%PYTHON_ARCH%\pythonocc*.bz2 dist || cmd /c "exit /b 0"'
+  # upload package to anaconda$
+  - ps: cmd /C anaconda --token $env:BINSTAR_TOKEN upload  dist\*.bz2 -l continuous-delivery "2>&1"
 
 artifacts:
   - path: dist\*
