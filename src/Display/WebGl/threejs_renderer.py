@@ -28,7 +28,7 @@ from OCC import VERSION as OCC_VERSION
 
 from .simple_server import start_server
 
-THREEJS_RELEASE = "r87"
+THREEJS_RELEASE = "r88"
 
 def spinning_cursor():
     while True:
