@@ -1,14 +1,14 @@
 [![Travis Build Status](https://travis-ci.org/tpaviot/pythonocc-core.png?branch=master)](https://travis-ci.org/tpaviot/pythonocc-core)
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/qaeurexctw3l8f6f/branch/master?svg=true)](https://ci.appveyor.com/project/tpaviot/pythonocc-core)
 [![Conda installer](https://anaconda.org/pythonocc/pythonocc-core/badges/installer/conda.svg)](https://anaconda.org/pythonocc/pythonocc-core)
-[![Anaconda-Server Badge](https://anaconda.org/pythonocc/pythonocc-core/badges/version.svg)](https://anaconda.org/pythonocc/pythonocc-core)
+[![Downloads Badge](https://anaconda.org/pythonocc/pythonocc-core/badges/downloads.svg)](https://anaconda.org/pythonocc/pythonocc-core)
 [![Join the chat at https://gitter.im/tpaviot/pythonocc-core](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tpaviot/pythonocc-core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 pythonocc-core
 --------------
 
-what is pythonocc?
-------------------
+About
+-----
 
 pythonocc is a python library whose purpose is to provide 3D modeling
 features. It is intended to developers who aim at developing
@@ -16,25 +16,27 @@ CAD/PDM/PLM applications.
 
 Latest release : [pythonocc-core 0.18 (june 2017)](https://github.com/tpaviot/pythonocc-core/releases/tag/0.18)
 
-How to quicky download/install binaries ?
------------------------------------------
+Download/install binaries
+-------------------------
 
-pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the dlr-sc conda repository).
+pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the dlr-sc and conda-forge conda channels).
 This will get you up and running in minutes whether you run win32/win64/linux64/osx64:
 
 ```bash
-# install pythonocc in an environment named `pythonocc` with python 3.5; use python=2 for legacy python 2.7.12
+# install pythonocc in an environment named `pythonocc` with python 3.5;
+# use python=2 for legacy python 2.7.12
 conda install -c conda-forge -c dlr-sc -c pythonocc -c oce pythonocc-core==0.18 python=3
 ```
 
-Nightly builds are available from another repository. If you want to test features under development that have not been released yet:
+Nightly builds are available from another repository. If you want to test features under development:
 ```bash
 conda install -c tpaviot -c oce -c conda-forge pythonocc-core==nightly
 ```
 
-How to compile ?
-----------------
-You can of course build pythonocc-core by your own. Read the [INSTALL.md](https://github.com/tpaviot/pythonocc-core/blob/master/INSTALL.md) instructions.
+Build from source
+-----------------
+
+Read the [INSTALL.md](https://github.com/tpaviot/pythonocc-core/blob/master/INSTALL.md) instructions where you find compilation instructions for all platforms.
 
 Online resources
 ----------------
@@ -63,8 +65,8 @@ We use the following online resources:
   * LGTM code quality review
        https://lgtm.com/projects/g/tpaviot/pythonocc-core/
 
-how do __oce__ and __pythonocc__ relate?
-----------------------------------------
+oce and pythonocc
+-----------------
 
 The basis of pythonocc is python wrapper for the [oce C++ library / CAD kernel]
 (https://github.com/tpaviot/oce), aka pythonocc-core.
@@ -75,7 +77,6 @@ For example; the current pythonocc-core release, 0.18, requires any of the [OCE
  version name of either OCE or pythonocc-core release is __0__, the __Minor__ 
  version is __17__ and the __Patch__ version is (optionally) __x__. pythonocc-core can be built with any OCE version that has a corresponding __Major__ and __Minor__ version 
  number. For example, pythonocc-core 0.18 can be built with OCE-0.18.1.   
-
 
 License
 -------
