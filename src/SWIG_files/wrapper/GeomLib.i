@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") GeomLib
+%define GEOMLIBDOCSTRING
+"Geom  Library.  This  package  provides  animplementation of functions for basic computationon geometric entity from packages Geom and Geom2d."
+%enddef
+%module (package="OCC", docstring=GEOMLIBDOCSTRING) GeomLib
 
 #pragma SWIG nowarn=504,325,503
 

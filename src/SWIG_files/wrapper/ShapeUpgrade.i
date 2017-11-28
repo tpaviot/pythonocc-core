@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") ShapeUpgrade
+%define SHAPEUPGRADEDOCSTRING
+"This package provides toolsfor splitting and converting shapes by some criteria. Itprovides modifications of the kind when one topologicalobject can be converted or splitted to several ones. Inparticular this package contains high level API classes which perform:converting geometry of shapes up to given continuity,splitting revolutions by U to segments less than given value,converting to beziers,splitting closed faces."
+%enddef
+%module (package="OCC", docstring=SHAPEUPGRADEDOCSTRING) ShapeUpgrade
 
 #pragma SWIG nowarn=504,325,503
 

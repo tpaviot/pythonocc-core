@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Quantity
+%define QUANTITYDOCSTRING
+"The Quantities component deals withmathematical and physical quantities.A mathematical quantity is characterized by its value. It is a real value.A physical quantity is characterized by:-  its value, which is also a real value, and-  the unit in which it is expressed. This unit maybe either an international unit complying withthe International Unit System (SI) or a userdefined unit. The unit is managed by thephysical quantity user.Each mathematical or physical quantity isdescribed by its name. This ensures distinctionbetween two different quantities.Moreover, both physical and mathematicalquantities are also manipulated as real values:-  They are defined as aliases of reals, so allfunctions provided by the Standard_Realclass are available on each quantity.-  You may also mix several physical quantitiesin a mathematical or physical formula involving real values.Associated with the physical quantities, a rangeof functions provides tools to manage unit conversions.The physical quantities described in this chapterare commonly used basic physical quantities.Nevertheless, the Quantity package includes allphysical quantities you may require.The Quantities component also providesresources to manage time information (dates andperiods) and color definition."
+%enddef
+%module (package="OCC", docstring=QUANTITYDOCSTRING) Quantity
 
 #pragma SWIG nowarn=504,325,503
 

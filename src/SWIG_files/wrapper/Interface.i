@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Interface
+%define INTERFACEDOCSTRING
+"-Purpose : defines a general frame for interface dataused to manipulate results of normalized Interface outputs(i.e. files), also as a basis to define transfer operations(in other packages : see package Transfer)"
+%enddef
+%module (package="OCC", docstring=INTERFACEDOCSTRING) Interface
 
 #pragma SWIG nowarn=504,325,503
 

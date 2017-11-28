@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TopCnx
+%define TOPCNXDOCSTRING
+"This algorithm provides algorithms to computestransitions when many interferences occurs at thesame place on a shape.An interference is an intersection on a shape (i.ea vertex on an edge or an edge on a face) withdata about  the transition (how the shape iscrossing the  boundary where the  intersectionoccurs).There   are   three algorithms  to processinterferences :* EdgeFaceTransition : To process interferences onan adge crossing other edges on the boundary of aface.* EdgeSolidTransition : To  process interferenceson an  edge crossing faces  and edges on theboundary of a solid.* FaceSolidTransition : To process interferenceson a face crossing other faces on the boundary ofa solid.This package relies on the TopTrans package forthe geometric computations."
+%enddef
+%module (package="OCC", docstring=TOPCNXDOCSTRING) TopCnx
 
 #pragma SWIG nowarn=504,325,503
 

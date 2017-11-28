@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") XmlMDataStd
+%define XMLMDATASTDDOCSTRING
+"Storage and Retrieval drivers for modelling attributes.Transient attributes are defined in package TDataStd."
+%enddef
+%module (package="OCC", docstring=XMLMDATASTDDOCSTRING) XmlMDataStd
 
 #pragma SWIG nowarn=504,325,503
 

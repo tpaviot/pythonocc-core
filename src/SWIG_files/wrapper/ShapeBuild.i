@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") ShapeBuild
+%define SHAPEBUILDDOCSTRING
+"This package provides basic building tools for other packages in ShapeHealing.These tools are rather internal for ShapeHealing ."
+%enddef
+%module (package="OCC", docstring=SHAPEBUILDDOCSTRING) ShapeBuild
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepPrim
+%define BREPPRIMDOCSTRING
+"this package implements the primitives of thePrimitives package with the BRep TopologyContains :a Builder implementing the Template from PrimitivesThe instantiations of the algorithms :OneAxisWedgeThe rotational primitives inherited from OneAxisRevolutionCylinderConeSphereTorusThe class FaceBuilder is a tool to build a facefrom a Geom surface."
+%enddef
+%module (package="OCC", docstring=BREPPRIMDOCSTRING) BRepPrim
 
 #pragma SWIG nowarn=504,325,503
 

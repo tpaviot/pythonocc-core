@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2016 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") SMESHDS
+%define SMESHDSDOCSTRING
+"No docstring provided."
+%enddef
+%module (package="OCC", docstring=SMESHDSDOCSTRING) SMESHDS
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") ShapeConstruct
+%define SHAPECONSTRUCTDOCSTRING
+"This package provides new algorithms for constructingnew geometrical objects and topological shapes. Itcomplements and extends algorithms available in OpenCASCADE topological and geometrical toolkist.The functionality provided by this package are thefollowing:projecting curves on surface,adjusting curve to have given start and end points. P"
+%enddef
+%module (package="OCC", docstring=SHAPECONSTRUCTDOCSTRING) ShapeConstruct
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") StlTransfer
+%define STLTRANSFERDOCSTRING
+"The package  Algorithm for Meshing  implementsfacilities to retrieve the Mesh data-structure from a shape of packageTopoDS. The triangulation should be computed before.The result  is stored in the meshdata-structure Mesh from package StlMesh."
+%enddef
+%module (package="OCC", docstring=STLTRANSFERDOCSTRING) StlTransfer
 
 #pragma SWIG nowarn=504,325,503
 

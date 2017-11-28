@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") PDF
+%define PDFDOCSTRING
+"This pakage is the persistent equivalent ofTDF. It describes persistent classes used to storea TDF structure into a Database."
+%enddef
+%module (package="OCC", docstring=PDFDOCSTRING) PDF
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepLib
+%define BREPLIBDOCSTRING
+"The BRepLib package provides general utilities forBRep.* FindSurface : Class to compute a surface througha set of edges.* Compute missing 3d curve on an edge."
+%enddef
+%module (package="OCC", docstring=BREPLIBDOCSTRING) BRepLib
 
 #pragma SWIG nowarn=504,325,503
 

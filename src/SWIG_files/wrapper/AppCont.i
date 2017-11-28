@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") AppCont
+%define APPCONTDOCSTRING
+"This package provides the least square algorithmsnecessary to approximate a set of continous curvesor a continous surface.It also provides an instantiation of these algorithmsfor a class Function, a function f(t).The user will have to inherit class Function to use it.-Level : Advanced.All methods of all classes will be advanced."
+%enddef
+%module (package="OCC", docstring=APPCONTDOCSTRING) AppCont
 
 #pragma SWIG nowarn=504,325,503
 

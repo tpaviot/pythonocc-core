@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") CSLib
+%define CSLIBDOCSTRING
+"This package implements functions for basis geometriccomputation on curves and surfaces.The tolerance criterions used in this package areResolution from package gp and RealEpsilon from classReal of package Standard."
+%enddef
+%module (package="OCC", docstring=CSLIBDOCSTRING) CSLib
 
 #pragma SWIG nowarn=504,325,503
 

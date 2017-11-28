@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") ExprIntrp
+%define EXPRINTRPDOCSTRING
+"Describes an interpreter for GeneralExpressions,GeneralFunctions, and GeneralRelations defined inpackage Expr."
+%enddef
+%module (package="OCC", docstring=EXPRINTRPDOCSTRING) ExprIntrp
 
 #pragma SWIG nowarn=504,325,503
 

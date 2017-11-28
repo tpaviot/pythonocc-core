@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BinMFunction
+%define BINMFUNCTIONDOCSTRING
+"Storage and Retrieval drivers for TFunction modelling attributes."
+%enddef
+%module (package="OCC", docstring=BINMFUNCTIONDOCSTRING) BinMFunction
 
 #pragma SWIG nowarn=504,325,503
 

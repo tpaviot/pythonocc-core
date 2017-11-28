@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IntStart
+%define INTSTARTDOCSTRING
+"This package provides generic algorithms tofind specific points (points on boundariesand points inside a surface) used as startingpoints for marching algorithms.-Level: InternalAll the methods of the classes of this package are Internal."
+%enddef
+%module (package="OCC", docstring=INTSTARTDOCSTRING) IntStart
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Bnd
+%define BNDDOCSTRING
+"Supports the Boundings Volumes. A Bounding Volumeis used to bound a shape to optimising algorithms.If a point is outside the Bounding  Volume of ashape it is also outside the shape. The contraryis not necessarily true.Various classes are then implemented to describethe usual Bounding volumes. Not all classes areimplemented.in 3D :Box         ImplementedBoundSortBox    Implementedin 2D :Box2d        ImplementedBoundSortBox2d   Implemented-Level : Public.All methods of all classes will be public."
+%enddef
+%module (package="OCC", docstring=BNDDOCSTRING) Bnd
 
 #pragma SWIG nowarn=504,325,503
 

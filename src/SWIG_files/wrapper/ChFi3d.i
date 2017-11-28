@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") ChFi3d
+%define CHFI3DDOCSTRING
+"creation of spatial fillets on a solid."
+%enddef
+%module (package="OCC", docstring=CHFI3DDOCSTRING) ChFi3d
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Geom2dGcc
+%define GEOM2DGCCDOCSTRING
+"- Purpose: The Geom2dGcc package describes qualified 2Dcurves used in the construction of constrained geometricobjects by an algorithm provided by the Geom2dGcc package.A qualified 2D curve is a curve with a qualifier whichspecifies whether the solution of a constructionalgorithm using the qualified curve (as an argument):-  encloses the curve, or-  is enclosed by the curve, or-  is built so that both the curve and this solution are external to one another, or-  is undefined (all solutions apply).These package methods provide simpler functions to construct a qualified curve.Note: the interior of a curve is defined as the left-handside of the curve in relation to its orientation."
+%enddef
+%module (package="OCC", docstring=GEOM2DGCCDOCSTRING) Geom2dGcc
 
 #pragma SWIG nowarn=504,325,503
 

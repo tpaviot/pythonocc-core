@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") VrmlAPI
+%define VRMLAPIDOCSTRING
+"API for writing to VRML 1.0"
+%enddef
+%module (package="OCC", docstring=VRMLAPIDOCSTRING) VrmlAPI
 
 #pragma SWIG nowarn=504,325,503
 

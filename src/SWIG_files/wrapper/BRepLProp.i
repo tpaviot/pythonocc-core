@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepLProp
+%define BREPLPROPDOCSTRING
+"These global functions compute the degree ofcontinuity of a curve built by concatenation of twoedges at their junction point."
+%enddef
+%module (package="OCC", docstring=BREPLPROPDOCSTRING) BRepLProp
 
 #pragma SWIG nowarn=504,325,503
 

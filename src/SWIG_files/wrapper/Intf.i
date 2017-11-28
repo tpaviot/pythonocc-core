@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Intf
+%define INTFDOCSTRING
+"Interference computation between polygons, lines andpolyhedra with only triangular facets. These objectsare polygonal representations of complex  curves andtriangulated representations of complex surfaces."
+%enddef
+%module (package="OCC", docstring=INTFDOCSTRING) Intf
 
 #pragma SWIG nowarn=504,325,503
 

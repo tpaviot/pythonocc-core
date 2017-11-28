@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TopoDS
+%define TOPODSDOCSTRING
+"Provides methods to cast objects of classTopoDS_Shape to be onjects of more specializedsub-classes. Types are verified, thus in the examplebelow, the first two blocks are correct but the third isrejected by the compiler."
+%enddef
+%module (package="OCC", docstring=TOPODSDOCSTRING) TopoDS
 
 #pragma SWIG nowarn=504,325,503
 

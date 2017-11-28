@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") GeomToStep
+%define GEOMTOSTEPDOCSTRING
+"- Purpose: Creation des entites geometriques du schema PmsAp2Demo3d apartir des entites de Geom ou de gp.Update : mise a jour pour traiter le schema StepGeom, pour demo de 94"
+%enddef
+%module (package="OCC", docstring=GEOMTOSTEPDOCSTRING) GeomToStep
 
 #pragma SWIG nowarn=504,325,503
 

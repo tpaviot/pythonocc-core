@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TDocStd
+%define TDOCSTDDOCSTRING
+"This package define CAF main classes.* The standard application root class* The standard document wich contains data* The external reference mechanism between documents* Attributes for Document managementStandard documents offer you a ready-to-usedocument containing a TDF-based datastructure. The documents themselves arecontained in a class inheriting fromTDocStd_Application which manages creation,storage and retrieval of documents.You can implement undo and redo in yourdocument, and refer from the data framework ofone document to that of another one. This isdone by means of external link attributes, whichstore the path and the entry of external links. Tosum up, standard documents alone provideaccess to the data framework. They also allowyou to:-  Update external links-  Manage the saving and opening of data-  Manage undo/redo functionality.NoteFor information on the relations between thiscomponent of OCAF and the others, refer to theOCAF User's Guide."
+%enddef
+%module (package="OCC", docstring=TDOCSTDDOCSTRING) TDocStd
 
 #pragma SWIG nowarn=504,325,503
 

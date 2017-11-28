@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepProj
+%define BREPPROJDOCSTRING
+"The BRepProj  package provides  ProjectionAlgorithms   like Cylindrical  and ConicalProjections. Those algorithms have been put in anindependant package  instead of BRepAlgo  (likeNormalProjection) because of cyclic reference withBRepFill. So this package is not available forthe moment to BRepFill."
+%enddef
+%module (package="OCC", docstring=BREPPROJDOCSTRING) BRepProj
 
 #pragma SWIG nowarn=504,325,503
 

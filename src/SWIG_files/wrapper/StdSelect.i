@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") StdSelect
+%define STDSELECTDOCSTRING
+"The StdSelect package provides the following services-  the definition of selection modes for topological shapes-  the definition of several concrete filtertandardSelection2d.ap classes-  2D and 3D viewer selectors.Note that each new Interactive Object must have allits selection modes defined.Standard Classes is useful to build3D Selectable Objects, and to process3D Selections:- Implementation of View Selector for dynamic selectionin Views from V3d.- Implementation of Tool class to decompose 3D BRep Objectsinto sensitive Primitives for every desired mode of selection(selection of vertex,edges,wires,faces,...)- Implementation of dedicated Sensitives Entities:Text for 2D Views (linked to Specific 2D projectors.)"
+%enddef
+%module (package="OCC", docstring=STDSELECTDOCSTRING) StdSelect
 
 #pragma SWIG nowarn=504,325,503
 

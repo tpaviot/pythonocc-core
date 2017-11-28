@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Voxel
+%define VOXELDOCSTRING
+"Data structuire and visualization engine for voxel modeling."
+%enddef
+%module (package="OCC", docstring=VOXELDOCSTRING) Voxel
 
 #pragma SWIG nowarn=504,325,503
 

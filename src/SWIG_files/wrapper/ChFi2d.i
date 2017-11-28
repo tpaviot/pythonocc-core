@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") ChFi2d
+%define CHFI2DDOCSTRING
+"This package contains the algorithms used to buildfillets or chamfers on planar wire.This package provides two algorithms for 2D fillets:ChFi2d_Builder - it constructs a fillet or chamferfor linear and circular edges of a face.ChFi2d_FilletAPI - it encapsulates two algorithms:ChFi2d_AnaFilletAlgo - analytical constructor of the fillet.It works only for linear and circular edges,having a common point.ChFi2d_FilletAlgo - iteration recursive method constructingthe fillet edge for any type of edges includingellipses and b-splines.The edges may even have no common point.ChFi2d_ChamferAPI - an algoroithm for construction of chamfersbetween two linear edges of a plane.The algorithms ChFi2d_AnaFilletAlgo and ChFi2d_FilletAlgo may be used directlyor via the interface class ChFi2d_FilletAPI."
+%enddef
+%module (package="OCC", docstring=CHFI2DDOCSTRING) ChFi2d
 
 #pragma SWIG nowarn=504,325,503
 

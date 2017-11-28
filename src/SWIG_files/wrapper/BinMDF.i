@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BinMDF
+%define BINMDFDOCSTRING
+"This package provides classes and methods totranslate a transient DF into a persistent one andvice versa.DriverA driver is a tool used to translate a transientattribute into a persistent one and vice versa.Driver TableA driver table is an object building links betweenobject types and object drivers. In thetranslation process, a driver table is asked togive a translation driver for each current objectto be translated."
+%enddef
+%module (package="OCC", docstring=BINMDFDOCSTRING) BinMDF
 
 #pragma SWIG nowarn=504,325,503
 

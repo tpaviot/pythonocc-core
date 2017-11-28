@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") ShapeFix
+%define SHAPEFIXDOCSTRING
+"This package provides algorithms for fixingproblematic (violating Open CASCADE requirements) shapes.Tools from package ShapeAnalysis are used for detecting the problems. Thedetecting and fixing is done taking in account variouscriteria implemented in BRepCheck package.Each class of package ShapeFix deals with onecertain type of shapes or with some family of problems."
+%enddef
+%module (package="OCC", docstring=SHAPEFIXDOCSTRING) ShapeFix
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TDataStd
+%define TDATASTDDOCSTRING
+"This package defines  standard attributes formodelling.These allow you to create and modify labelsand attributes for many basic data types.Standard topological and visualizationattributes have also been created.To find an attribute attached to a specific label,you use the GUID of the type of attribute youare looking for. To do this, first find thisinformation using the method GetID as follows: Standard_GUID anID =MyAttributeClass::GetID();Then, use the method Find for the label as follows:Standard_Boolean HasAttribute=aLabel.Find(anID,anAttribute);NoteFor information on the relations between thiscomponent of OCAF and the others, refer to the OCAF User's Guide.- Category: GUID - AttributeID2a96b606-ec8b-11d0-bee7-080009dc3333	TDataStd_Integer2a96b608-ec8b-11d0-bee7-080009dc3333	TDataStd_Name2a96b60f-ec8b-11d0-bee7-080009dc3333	TDataStd_Real2a96b610-ec8b-11d0-bee7-080009dc3333	TDataStd_Reference2a96b616-ec8b-11d0-bee7-080009dc3333	TDataStd_Comment2a96b61c-ec8b-11d0-bee7-080009dc3333  TDataStd_UAttribute2a96b61d-ec8b-11d0-bee7-080009dc3333  TDataStd_IntegerArray2a96b61e-ec8b-11d0-bee7-080009dc3333  TDataStd_RealArray2a96b624-ec8b-11d0-bee7-080009dc3333  TDataStd_ExtStringArray2a96b609-ec8b-11d0-bee7-080009dc3333	TDataStd_NoteBook2a96b61f-ec8b-11d0-bee7-080009dc3333  TDataStd_Directory"
+%enddef
+%module (package="OCC", docstring=TDATASTDDOCSTRING) TDataStd
 
 #pragma SWIG nowarn=504,325,503
 

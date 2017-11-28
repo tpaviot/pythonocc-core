@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Plugin
+%define PLUGINDOCSTRING
+""
+%enddef
+%module (package="OCC", docstring=PLUGINDOCSTRING) Plugin
 
 #pragma SWIG nowarn=504,325,503
 

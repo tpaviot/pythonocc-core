@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") PLib
+%define PLIBDOCSTRING
+"PLib means Polynomial functions library. This pkprovides basic    computation  functions forpolynomial functions."
+%enddef
+%module (package="OCC", docstring=PLIBDOCSTRING) PLib
 
 #pragma SWIG nowarn=504,325,503
 

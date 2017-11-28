@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IntImpParGen
+%define INTIMPPARGENDOCSTRING
+"Gives a generic algorithm to intersect Implicit Curvesand Bounded Parametric Curves.Level: InternalAll the methods of all the classes are Internal."
+%enddef
+%module (package="OCC", docstring=INTIMPPARGENDOCSTRING) IntImpParGen
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TopClass
+%define TOPCLASSDOCSTRING
+"The package TopClass  provides  Classificationalgorithms. A Classification algorithm is used tocompute if a point is inside, outside or on theboundary of a Shape."
+%enddef
+%module (package="OCC", docstring=TOPCLASSDOCSTRING) TopClass
 
 #pragma SWIG nowarn=504,325,503
 

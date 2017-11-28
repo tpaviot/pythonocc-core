@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") StepToGeom
+%define STEPTOGEOMDOCSTRING
+"- Purpose: Creation des entites geometriques de Geom a partir du schemaStepGeom (Part42, geometric)"
+%enddef
+%module (package="OCC", docstring=STEPTOGEOMDOCSTRING) StepToGeom
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IntWalk
+%define INTWALKDOCSTRING
+"This package defines the 'walking' (marching) algorithmesfor the intersection between two surfaces.One of the surfaces is a parametric one.If the other is an implicit one, the 'IWalking' class willbe used.If both surfaces are parametric, the 'PWalking' class willbe used.-Level: InternalAll the methods of the classes of this package are Internal."
+%enddef
+%module (package="OCC", docstring=INTWALKDOCSTRING) IntWalk
 
 #pragma SWIG nowarn=504,325,503
 

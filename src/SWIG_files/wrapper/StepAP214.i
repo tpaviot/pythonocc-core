@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") StepAP214
+%define STEPAP214DOCSTRING
+"-Purpose : Complete AP214 CC1 , Revision 4Upgrading from Revision 2 to Revision 4 : 26 Mar 1997Splitting in sub-schemas : 5 Nov 1997"
+%enddef
+%module (package="OCC", docstring=STEPAP214DOCSTRING) StepAP214
 
 #pragma SWIG nowarn=504,325,503
 

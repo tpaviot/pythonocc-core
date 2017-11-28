@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") StepGeom
+%define STEPGEOMDOCSTRING
+"-Purpose : AP214 CC1 , Revision 4 for Geom (Part42, geometric)Upgrading from Revision 2 to Revision 4 : 26 Mar 1997"
+%enddef
+%module (package="OCC", docstring=STEPGEOMDOCSTRING) StepGeom
 
 #pragma SWIG nowarn=504,325,503
 

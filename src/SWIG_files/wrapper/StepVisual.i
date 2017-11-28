@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") StepVisual
+%define STEPVISUALDOCSTRING
+"Collects definitions of STEP entities for visualpresentations from Part 46 of ISO10303"
+%enddef
+%module (package="OCC", docstring=STEPVISUALDOCSTRING) StepVisual
 
 #pragma SWIG nowarn=504,325,503
 

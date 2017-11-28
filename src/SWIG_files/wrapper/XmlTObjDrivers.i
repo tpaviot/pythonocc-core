@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") XmlTObjDrivers
+%define XMLTOBJDRIVERSDOCSTRING
+"No docstring provided."
+%enddef
+%module (package="OCC", docstring=XMLTOBJDRIVERSDOCSTRING) XmlTObjDrivers
 
 #pragma SWIG nowarn=504,325,503
 

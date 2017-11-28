@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IntTools
+%define INTTOOLSDOCSTRING
+"Contains classes for intersection and classification-     purposes and accompanying classes"
+%enddef
+%module (package="OCC", docstring=INTTOOLSDOCSTRING) IntTools
 
 #pragma SWIG nowarn=504,325,503
 

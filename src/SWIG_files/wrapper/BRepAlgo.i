@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepAlgo
+%define BREPALGODOCSTRING
+"The BRepAlgo package provides a full range ofservices to perform Old Boolean Operations in Open CASCADE.Attention:The New Boolean Operation has replaced the OldBoolean Operations algorithm in the BrepAlgoAPIpackage in Open CASCADE."
+%enddef
+%module (package="OCC", docstring=BREPALGODOCSTRING) BRepAlgo
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") XmlObjMgt
+%define XMLOBJMGTDOCSTRING
+"This package defines services to manage the storagegrain of data produced by applications and those classesto manage persistent extern reference."
+%enddef
+%module (package="OCC", docstring=XMLOBJMGTDOCSTRING) XmlObjMgt
 
 #pragma SWIG nowarn=504,325,503
 

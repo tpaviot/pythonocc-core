@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepBuilderAPI
+%define BREPBUILDERAPIDOCSTRING
+"The BRepBuilderAPI package  provides an  ApplicationProgramming Interface for the BRep topology datastructure.The API is a set of classes aiming to provide :* High level and simple calls for the most commonoperations.*  Keeping  an  access on  the  low-levelimplementation of high-level calls.* Examples of programming of high-level operationsfrom low-level operations.* A complete coverage of modelling :- Creating vertices ,edges, faces, solids.- Sweeping operations.- Boolean operations.- Global properties computation.The API provides classes to build objects:* The constructors of the classes provides thedifferent constructions methods.* The class keeps as fields the  different toolsused to build the object.*  The class provides a casting method to getautomatically the result with a  function-likecall.For example to make a vertex <V> from a point <P>one can writes :V = BRepBuilderAPI_MakeVertex(P);orBRepBuilderAPI_MakeVertex MV(P);V = MV.Vertex();For tolerances a default precision is used whichcan  be  changed  by  the  packahe methodBRepBuilderAPI::Precision.For error handling the BRepBuilderAPI commands raise onlythe NotDone error. When Done is false on a commandthe error description can be asked to the command.In theory the comands can be  called with anyarguments, argument checking is performed by thecommand."
+%enddef
+%module (package="OCC", docstring=BREPBUILDERAPIDOCSTRING) BRepBuilderAPI
 
 #pragma SWIG nowarn=504,325,503
 

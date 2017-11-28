@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TopBas
+%define TOPBASDOCSTRING
+"The TopBas package provides data structure fortopological algorithms.  THe data structures areused to store the intermediary dat and the resultsof the algorithms.* Interference, List : An Interference is thetopological  representation of an intersection.The classes are generic in order to be independantof the data structure."
+%enddef
+%module (package="OCC", docstring=TOPBASDOCSTRING) TopBas
 
 #pragma SWIG nowarn=504,325,503
 

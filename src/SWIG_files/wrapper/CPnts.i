@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") CPnts
+%define CPNTSDOCSTRING
+"- Purpose :This package contains  the definition of the geometricalgorithms  used to compute characteristic points  onparametrized curves in 3d or 2d space.This package defines the external geometric entities, withtheir requirements, used in the algorithms."
+%enddef
+%module (package="OCC", docstring=CPNTSDOCSTRING) CPnts
 
 #pragma SWIG nowarn=504,325,503
 

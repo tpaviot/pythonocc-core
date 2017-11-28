@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") AppParCurves
+%define APPPARCURVESDOCSTRING
+"Parallel Approximation in n curves.This package gives all the algorithms used to approximate a MultiLinedescribed by the tool MLineTool.The result of the approximation will be a MultiCurve."
+%enddef
+%module (package="OCC", docstring=APPPARCURVESDOCSTRING) AppParCurves
 
 #pragma SWIG nowarn=504,325,503
 

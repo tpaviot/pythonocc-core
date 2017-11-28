@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") StepShape
+%define STEPSHAPEDOCSTRING
+"Collects definitions of STEP topological entitiesfrom Part 42 of ISO10303 (topology_schema)"
+%enddef
+%module (package="OCC", docstring=STEPSHAPEDOCSTRING) StepShape
 
 #pragma SWIG nowarn=504,325,503
 

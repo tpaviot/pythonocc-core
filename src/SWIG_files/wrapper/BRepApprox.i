@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepApprox
+%define BREPAPPROXDOCSTRING
+"This package provides services on intersection curvesdealt by topological operations on BRep objects.Services are approximation services."
+%enddef
+%module (package="OCC", docstring=BREPAPPROXDOCSTRING) BRepApprox
 
 #pragma SWIG nowarn=504,325,503
 

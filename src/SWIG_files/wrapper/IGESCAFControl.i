@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IGESCAFControl
+%define IGESCAFCONTROLDOCSTRING
+"Provides high-level API to translate IGES fileto and from DECAF document"
+%enddef
+%module (package="OCC", docstring=IGESCAFCONTROLDOCSTRING) IGESCAFControl
 
 #pragma SWIG nowarn=504,325,503
 

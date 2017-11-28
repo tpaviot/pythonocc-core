@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Aspect
+%define ASPECTDOCSTRING
+"-Version:This package contains the group of graphic elements commonto different types of visualisers. It allows the descriptionof a screen background, a window, an edge, and groups ofgraphic attributes that can be used in describing 2Dand 3D objects.-Keywords: Window, Aspect, FillArea, Line, Marker, EdgeHighlight, Hatch, Background, GradientBackground, Color map,Type map, Width map, Font map-Warning:-References:"
+%enddef
+%module (package="OCC", docstring=ASPECTDOCSTRING) Aspect
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepClass
+%define BREPCLASSDOCSTRING
+"The BRepClass packages provides  classificationalgorithms for the BRep topology. It instantiatesthe algorithms from the package TopClass."
+%enddef
+%module (package="OCC", docstring=BREPCLASSDOCSTRING) BRepClass
 
 #pragma SWIG nowarn=504,325,503
 

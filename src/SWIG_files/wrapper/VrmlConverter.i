@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") VrmlConverter
+%define VRMLCONVERTERDOCSTRING
+"-Purpose:Computes different kinds of presentation and converts CasCade objects( points, curves, surfaces, shapes ... ) into nodes of VRML format( package Vrml ), into specific geometry shapes ( AsciiText, Cone,IndexedFaceSet, IndexedLineSet, .... ) for requested (or default) propertiesof the geometry and its appearance ( Material, Normal, Texture2, ... )and requested (or default) properties of cameras and lights ( OrthograpicCamera,PerspectiveCamera, DirectionalLight, SpotLight ).All requested properties of a current representation are specifiedin aDrawer of Drawer class, which qualifies how the presentationalgorithms compute the presentation of a specific kind of object.This includes for example color, maximal chordial deviation, etc... with default values.In the result the classes of this package Add a corresponding VRMLdescription to anOStream."
+%enddef
+%module (package="OCC", docstring=VRMLCONVERTERDOCSTRING) VrmlConverter
 
 #pragma SWIG nowarn=504,325,503
 

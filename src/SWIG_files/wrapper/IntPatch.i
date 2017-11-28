@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IntPatch
+%define INTPATCHDOCSTRING
+"Intersection between two patches.The class PatchIntersection implements the algorithmesof intersection.The classes IntPoint, PointOnDomain, Line, ILin, a.s.o...describe the results of the algorithmes.-Level: InternalAll the methods of the classes of this package are Internal."
+%enddef
+%module (package="OCC", docstring=INTPATCHDOCSTRING) IntPatch
 
 #pragma SWIG nowarn=504,325,503
 

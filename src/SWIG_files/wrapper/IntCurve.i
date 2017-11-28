@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IntCurve
+%define INTCURVEDOCSTRING
+"This package provides algorithmes to intersect 2D curves,with domains.class IntConicConic : Algorithm used to intersect 2 conicsfrom gp with domains.class IntConicCurveGen : Generic algorithm used to intersecta conic from gp, and a parametrisedcurve.The parametrised Curve cannot be a Composite curve andcan not be a conic.class IntCurveCurveGen : Generic algorithm used to intersect 2curves. The resources on a curve arediscribed in the class CurveTool.class UserIntConicCurveGen: Generic algorithm used tointersect a Conic from gpand a parametrised curve.This curve can be either acomposite curve or a conic.-Level: AdvancedThe Classes <PConicTool,IConicTool,PConic,ProjectOnPConicTool,IntConicCurveGen,ProjPCurGen,UserIntConicCurveGen,IntPolyPolyGen,Polygon2dGen,DistBetweenPCurvesGen>  are InternalThe Classe  <IntCurveCurveGen>    is  Advanced"
+%enddef
+%module (package="OCC", docstring=INTCURVEDOCSTRING) IntCurve
 
 #pragma SWIG nowarn=504,325,503
 

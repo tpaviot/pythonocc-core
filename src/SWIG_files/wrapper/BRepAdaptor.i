@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepAdaptor
+%define BREPADAPTORDOCSTRING
+"The BRepAdaptor package provides classes to accessthe geometry of the BRep models.OverView of classes* Surface : Provides the methods of Surface fromAdpator on a Face.* Curve : Provides the methods of Curve fromAdaptor3d on an Edge.* Curve2d : Provides the methods of Curve2d fromAdaptor2d on an Edge on a Face."
+%enddef
+%module (package="OCC", docstring=BREPADAPTORDOCSTRING) BRepAdaptor
 
 #pragma SWIG nowarn=504,325,503
 

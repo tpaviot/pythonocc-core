@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TopAbs
+%define TOPABSDOCSTRING
+"applications such as : Topological Data Structure,Topological Algorithms.It contains :* The ShapeEnum  enumeration to describe thedifferents topological shapes.* The Orientation enumeration to describe theorientation of a topological shape.* The State  enumeration to describes theposition of a point relative to a Shape.* Methods to manage the enumerations.-Level : Public.All methods of all classes will be public."
+%enddef
+%module (package="OCC", docstring=TOPABSDOCSTRING) TopAbs
 
 #pragma SWIG nowarn=504,325,503
 

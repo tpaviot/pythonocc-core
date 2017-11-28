@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") RWStepAP214
+%define RWSTEPAP214DOCSTRING
+""
+%enddef
+%module (package="OCC", docstring=RWSTEPAP214DOCSTRING) RWStepAP214
 
 #pragma SWIG nowarn=504,325,503
 

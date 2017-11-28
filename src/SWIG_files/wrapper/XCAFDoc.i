@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") XCAFDoc
+%define XCAFDOCDOCSTRING
+"Definition of general structure of DECAF documentand tools to work with itThe document is composed of sections, each sectionstoring its own kind of data and managing by correspondingtoolSome properties can be attached directly to shapes. These properties are:* Name (the standard definition from OCAF) - class TDataStd_Name* Centroid (for the validation of transfer) - class XCAFDoc_Centroid* Volume (for the validation of transfer) - class XCAFDoc_Volume* Area (for the validation of transfer) - class XCafDoc_AreaManagement of these attributes is realized by OCAF. For gettingthe attributes attached to a label the method classTDF_Label::FindAttribute() should be used."
+%enddef
+%module (package="OCC", docstring=XCAFDOCDOCSTRING) XCAFDoc
 
 #pragma SWIG nowarn=504,325,503
 

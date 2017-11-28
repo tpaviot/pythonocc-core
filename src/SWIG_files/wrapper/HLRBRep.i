@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") HLRBRep
+%define HLRBREPDOCSTRING
+"algorithms on the BRep DataStructure.The class PolyAlgo is used to remove Hidden lineson Shapes with Triangulations."
+%enddef
+%module (package="OCC", docstring=HLRBREPDOCSTRING) HLRBRep
 
 #pragma SWIG nowarn=504,325,503
 

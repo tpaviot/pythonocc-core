@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Poly
+%define POLYDOCSTRING
+"This package provides classes and services tohandle :* 3D triangular polyhedrons.* 3D polygons.* 2D polygon.* Tools to dump, save and restore those objects."
+%enddef
+%module (package="OCC", docstring=POLYDOCSTRING) Poly
 
 #pragma SWIG nowarn=504,325,503
 

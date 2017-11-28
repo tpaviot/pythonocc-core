@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IFSelect
+%define IFSELECTDOCSTRING
+"-Purpose : Gives tools to manage Selecting a group of Entitiesprocessed by an Interface, for instance to divide up anoriginal Model (from a File) to several smaller onesThey use description of an Interface Model as a graphRemark that this corresponds to the description of a'scenario' of sharing out a File. Parts of this Scenarioare intended to be permanently stored. IFSelect providesthe Transient, active counterparts (to run the Scenario).But a permanent one (either as Persistent Objects or asinterpretable Text) must be provided elsewhere."
+%enddef
+%module (package="OCC", docstring=IFSELECTDOCSTRING) IFSelect
 
 #pragma SWIG nowarn=504,325,503
 

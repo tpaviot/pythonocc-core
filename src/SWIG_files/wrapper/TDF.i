@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TDF
+%define TDFDOCSTRING
+"This package provides data framework for bindingfeatures and data structures.The feature structure is a tree used to bindsemantic informations about each feature together.The only one concrete  attribute defined in thispackage is the TagSource attribute.This attributeis used for random creation of child labels undera given label. Tags are randomly delivered.-Category: GUID - AttributeID2a96b611-ec8b-11d0-bee7-080009dc3333	TDataStd_TagSource"
+%enddef
+%module (package="OCC", docstring=TDFDOCSTRING) TDF
 
 #pragma SWIG nowarn=504,325,503
 

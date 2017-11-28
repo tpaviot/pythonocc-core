@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") AppStdL
+%define APPSTDLDOCSTRING
+""
+%enddef
+%module (package="OCC", docstring=APPSTDLDOCSTRING) AppStdL
 
 #pragma SWIG nowarn=504,325,503
 

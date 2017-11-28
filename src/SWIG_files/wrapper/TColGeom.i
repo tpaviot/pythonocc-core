@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TColGeom
+%define TCOLGEOMDOCSTRING
+"-Purpose : This package is used to instantiate of severalgeneric classes from the package TCollection withobjects from the package Geom."
+%enddef
+%module (package="OCC", docstring=TCOLGEOMDOCSTRING) TColGeom
 
 #pragma SWIG nowarn=504,325,503
 
