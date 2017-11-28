@@ -104,7 +104,7 @@ test_script:
   - cmd: 'mkdir dist'
   - cmd: 'copy /Y %CONDA_INSTALL_LOCN%\conda-bld\win-%PYTHON_ARCH%\pythonocc*.bz2 dist || cmd /c "exit /b 0"'
   # upload package to anaconda$
-  - ps: cmd /C anaconda --token $env:BINSTAR_TOKEN upload  dist\*.bz2 -l continuous-delivery "2>&1"
+  - ps: cmd /C anaconda --token $env:BINSTAR_TOKEN upload  dist\*.bz2 -l cd-$env:APPVEYOR_REPO_BRANCH "2>&1"
 
 artifacts:
   - path: dist\*

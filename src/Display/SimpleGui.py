@@ -23,7 +23,7 @@ import sys
 
 from OCC import VERSION
 from OCC.Display.backend import load_backend, get_qt_modules
-from OCC.Display.OCCViewer import Viewer3d
+from OCC.Display.OCCViewer import OffscreenRenderer
 
 log = logging.getLogger(__name__)
 
@@ -50,9 +50,7 @@ def init_display(backend_str=None, size=(1024, 768)):
     """
     if os.getenv("PYTHONOCC_OFFSCREEN_RENDERER") == "1":
         # create the offscreen renderer
-        offscreen_renderer = Viewer3d(None)
-        offscreen_renderer.Create()
-        offscreen_renderer.SetSize(size[0], size[1])
+        offscreen_renderer = OffscreenRenderer()
 
         def do_nothing(*kargs, **kwargs):
             """ takes as many parameters as you want,

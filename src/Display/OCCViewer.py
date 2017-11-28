@@ -21,6 +21,7 @@ from __future__ import print_function
 
 import os
 import os.path
+import time
 import sys
 import math
 import itertools
@@ -174,7 +175,7 @@ class Viewer3d(Display3d):
 
     def Create(self, create_default_lights=True, draw_face_boundaries=True, phong_shading=True):
         if self._window_handle is None:
-            self.InitOffscreen(100, 100)
+            self.InitOffscreen(640, 480)
             self._is_offscreen = True
         else:
             self.Init(self._window_handle)
@@ -221,7 +222,6 @@ class Viewer3d(Display3d):
         height, width = self.View.Window().GetObject().Size()
         print("Layer dimensions: %i, %i" % (height, width))
         self.OverLayer.SetViewport(height, width)
-
 
         # turn self._inited flag to True
         self._inited = True
@@ -670,3 +670,42 @@ class Viewer3d(Display3d):
 
     def StartRotation(self, X, Y):
         self.View.StartRotation(X, Y)
+
+
+class OffscreenRenderer(Viewer3d):
+    """ The offscreen renderer is inherited from Viewer3d.
+    The DisplayShape method is overriden to export to image
+    each time it is called.
+    """
+    def __init__(self, screen_size=(640, 480)):
+        Viewer3d.__init__(self, None)
+        # create the renderer
+        self.Create()
+        self.SetSize(screen_size[0], screen_size[1])
+        self.SetModeShaded()
+        self.set_bg_gradient_color(206, 215, 222, 128, 128, 128)
+        self.display_trihedron()
+        self.capture_number = 0
+
+    def DisplayShape(self, shapes, material=None, texture=None, color=None, transparency=None, update=False):
+        # call the "original" DisplayShape method
+        r = super(OffscreenRenderer, self).DisplayShape(shapes, material, texture,
+                                                        color, transparency, True)  # always update
+        if os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE") == "1":  # dump to jpeg file
+            timestamp = ("%f" % time.time()).split(".")[0]
+            import __main__ as main
+            calling_script = main.__file__.split(".")[0]  # only the fie without extension
+            self.capture_number += 1
+            image_filename = "capture-%s-%i-%s.jpeg" % (calling_script,
+                                                        self.capture_number,
+                                                        timestamp.replace(" ", "-"))
+            if os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH"):
+                path = os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH")
+                assert os.path.isdir(path)
+            else:
+                path = os.getcwd()
+            image_full_name = os.path.join(path, image_filename)
+            self.View.Dump(image_full_name)
+            assert os.path.isfile(image_full_name)
+            print("OffscreenRenderer content dumped to %s" % image_full_name)
+        return r

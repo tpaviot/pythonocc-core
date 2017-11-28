@@ -18,6 +18,7 @@
 from __future__ import print_function, absolute_import
 
 import os
+import sys
 import tempfile
 import uuid
 
@@ -27,7 +28,12 @@ from OCC import VERSION as OCC_VERSION
 
 from .simple_server import start_server
 
-THREEJS_RELEASE = "r87"
+THREEJS_RELEASE = "r88"
+
+def spinning_cursor():
+    while True:
+        for cursor in '|/-\\':
+            yield cursor
 
 def color_to_hex(rgb_color):
     """ Takes a tuple with 3 floats between 0 and 1.
@@ -92,9 +98,25 @@ HEADER = """
             padding: 5px;
             position: absolute;
             left: 1%;
-            top: 88%;
-            height: 60px;
-            width: 305px;
+            bottom: 2%;
+            height: 38px;
+            width: 280px;
+            border-radius: 5px;
+            border: 2px solid #f7941e;
+            opacity: 0.7;
+            font-family: Arial;
+            background-color: #414042;
+            color: #ffffff;
+            font-size: 14px;
+            opacity: 0.5;
+        }
+        #commands {
+            padding: 5px;
+            position: absolute;
+            right: 1%;
+            top: 2%;
+            height: 65px;
+            width: 180px;
             border-radius: 5px;
             border: 2px solid #f7941e;
             opacity: 0.7;
@@ -118,15 +140,18 @@ BODY_Part0 = """
 <body>
     <div id="container"></div>
     <div id="pythonocc_rocks">
-        Commands: <b>t</b> toggle visibility
-        <hr>
         pythonocc-@VERSION@ <a href="https://github.com/mrdoob/three.js" target="_blank">three.js %s</a> renderer
         <br>Check our blog at
         <a href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
-
+    <div id="commands">
+    <b>t</b> view/hide shape<br>
+    <b>w</b> toggle wireframe/shaded<br>
+    <b>g</b> view/hide grid<br>
+    <b>a</b> view/hide axis<br>
+    </div>
     <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/build/three.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/examples/js/controls/OrbitControls.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/examples/js/controls/TrackballControls.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/examples/js/libs/stats.min.js"></script>
 
 """ % (THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE)
@@ -162,7 +187,8 @@ BODY_Part1 = """
 
             camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 200);
             camera.position.z = 100;
-            controls = new THREE.OrbitControls(camera);
+            //controls = new THREE.OrbitControls(camera);
+            //controls = new THREE.OrbitControls(camera);
             // for selection
             raycaster = new THREE.Raycaster();
             mouse = new THREE.Vector2();
@@ -183,15 +209,20 @@ BODY_Part1 = """
             # here comes the shape definition
 BODY_Part2 = """
             renderer = new THREE.WebGLRenderer({antialias:true, alpha: true});
-            renderer.setSize( window.innerWidth, window.innerHeight);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio( window.devicePixelRatio );
             container.appendChild(renderer.domElement);
+            //renderer.gammaInput = true;
+            //renderer.gammaOutput = true;
             // for shadow rendering
             renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFShadowMap;
+            controls = new THREE.TrackballControls(camera, renderer.domElement);
             // show stats, is it really useful ?
             stats = new Stats();
             stats.domElement.style.position = 'absolute';
-            stats.domElement.style.top = '0px';
+            stats.domElement.style.top = '2%';
+            stats.domElement.style.left = '1%';
             container.appendChild(stats.domElement);
             // add events
             document.addEventListener('keypress', onDocumentKeyPress, false);
@@ -221,7 +252,17 @@ BODY_Part2 = """
                     selected_target.material.visible = !selected_target.material.visible;
                 }
           }
-
+          else if (event.key=="g") { // g key, toggle grid visibility
+               gridHelper.visible = !gridHelper.visible;
+          }
+          else if (event.key=="a") { // g key, toggle axisHelper visibility
+               axisHelper.visible = !axisHelper.visible;
+          }
+          else if (event.key=="w") { // g key, toggle axisHelper visibility
+               if (selected_target) {
+                    selected_target.material.wireframe = !selected_target.material.wireframe;
+                }
+          }
         }
         function onDocumentMouseClick(event) {
             event.preventDefault();
@@ -264,7 +305,7 @@ BODY_Part2 = """
                 }
             });
             if (radiuses.length > 0) {
-                center.divideScalar(radiuses.length);
+                center.divideScalar(radiuses.length*0.7);
             }
             var maxRad = 1.;
             // compute bounding radius
@@ -275,6 +316,7 @@ BODY_Part2 = """
                     maxRad = totalDist;
                 }
             }
+            maxRad = maxRad * 0.7; // otherwise the scene seems to be too far away
             camera.lookAt(center);
             var direction = new THREE.Vector3().copy(camera.position).sub(controls.target);
             var len = direction.length();
@@ -292,6 +334,12 @@ BODY_Part2 = """
             camera.updateProjectionMatrix();
             controls.target = center;
             controls.update();
+            // adds and adjust a grid helper if needed
+            gridHelper = new THREE.GridHelper(maxRad*4, 10)
+            scene.add(gridHelper);
+            // axisHelper
+            var axisHelper = new THREE.AxisHelper(maxRad);
+            scene.add(axisHelper);
         }
         function render() {
             //@IncrementTime@  TODO UNCOMMENT
@@ -367,6 +415,8 @@ class ThreejsRenderer(object):
         self._html_filename = os.path.join(self._path, "index.html")
         self._3js_shapes = {}
         self._edges_hash = []
+        self.spinning_cursor = spinning_cursor()
+        print("## threejs %s webgl renderer" % THREEJS_RELEASE)
 
     def DisplayShape(self,
                      shape,
@@ -387,7 +437,10 @@ class ThreejsRenderer(object):
         # tesselate
         tess = Tesselator(shape)
         tess.Compute(compute_edges=export_edges, mesh_quality=mesh_quality)
-        print("Number of triangles: %i" % tess.ObjGetTriangleCount())
+        # 
+        sys.stdout.write("\r%s mesh shape, %i triangles" % (next(self.spinning_cursor), 
+                                                            tess.ObjGetTriangleCount()))
+        sys.stdout.flush()
         # export to 3JS
         shape_full_path = os.path.join(self._path, shape_hash + '.json')
         # add this shape to the shape dict, sotres everything related to it
@@ -434,7 +487,7 @@ class ThreejsRenderer(object):
             # get properties for this shape
             export_edges, color, specular_color, shininess, transparency, line_color, line_width = self._3js_shapes[shape_hash]
             # creates a material for the shape
-            shape_string_list.append('\t%s_phong_material = new THREE.MeshPhongMaterial({' % shape_hash)
+            shape_string_list.append('\t\t\t%s_phong_material = new THREE.MeshPhongMaterial({' % shape_hash)
             shape_string_list.append('color:%s,' % color_to_hex(color))
             shape_string_list.append('specular:%s,' % color_to_hex(specular_color))
             shape_string_list.append('shininess:%g,' % shininess)
@@ -443,15 +496,18 @@ class ThreejsRenderer(object):
             #var line_material = new THREE.LineBasicMaterial({color: 0x000000, linewidth: 2});
             shape_string_list.append('});\n')
             # load json geometry files
-            shape_string_list.append("\tloader.load('%s.json', function(geometry) {\n" % shape_hash)
-            shape_string_list.append("\tmesh = new THREE.Mesh(geometry, %s_phong_material);\n" % shape_hash)
+            shape_string_list.append("\t\t\tloader.load('%s.json', function(geometry) {\n" % shape_hash)
+            shape_string_list.append("\t\t\t\tmesh = new THREE.Mesh(geometry, %s_phong_material);\n" % shape_hash)
+            # enable shadows for object
+            shape_string_list.append("\t\t\t\tmesh.castShadow = true;\n")
+            shape_string_list.append("\t\t\t\tmesh.receiveShadow = true;\n")
             # add mesh to scene
-            shape_string_list.append("\tscene.add(mesh);\n")
+            shape_string_list.append("\t\t\t\tscene.add(mesh);\n")
             # last shape, we request for a fit_to_scene
             if shape_idx == len(self._3js_shapes) - 1:
                 shape_string_list.append("\tfit_to_scene();});\n")
             else:
-                shape_string_list.append("\t});\n")
+                shape_string_list.append("\t\t\t});\n\n")
             shape_idx += 1
         # Process edges
         edge_string_list = []
@@ -477,25 +533,33 @@ class ThreejsRenderer(object):
             # then write header part 2
             fp.write(BODY_Part2)
             fp.write("</html>\n")
-        print("File written to %s" % self._html_filename)
 
     def render(self, server_port=8080):
         ''' render the scene into the browser.
         '''
-        # log path
-        print("Files written to %s" % self._path)
         # generate HTML file
         self.GenerateHTMLFile()
-        # then create a simple web server
         os.chdir(self._path)
-        print("## Serving at port", server_port, "using SimpleHTTPServer")
+        # then create a simple web server
+        print("\n## Serving ", self._path, "\n## using SimpleHTTPServer")
         print("## Open your webbrowser at the URL: http://localhost:%i" % server_port)
         print("## CTRL-C to shutdown the server")
         start_server(server_port)
 
 if __name__ == "__main__":
-    from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-    box = BRepPrimAPI_MakeBox(1., 2., 3.).Shape()
+    from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
+    from OCC.BRepBuilderAPI import BRepBuilderAPI_Transform
+    from OCC.gp import gp_Trsf, gp_Vec
+    def translate_shp(shp, vec, copy=False):
+        trns = gp_Trsf()
+        trns.SetTranslation(vec)
+        brep_trns = BRepBuilderAPI_Transform(shp, trns, copy)
+        brep_trns.Build()
+        return brep_trns.Shape()
+    box = BRepPrimAPI_MakeBox(100., 200., 300.).Shape()
+    torus = BRepPrimAPI_MakeTorus(300., 105).Shape()
+    t_torus = translate_shp(torus, gp_Vec(700, 0, 0))
     my_ren = ThreejsRenderer()
     my_ren.DisplayShape(box)
+    my_ren.DisplayShape(t_torus)
     my_ren.render()

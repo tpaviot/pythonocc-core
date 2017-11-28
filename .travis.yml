@@ -105,9 +105,9 @@ script:
 after_success:
   - python ci/move-conda-package.py
   - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
-      anaconda -t $BINSTAR_TOKEN upload *.bz2 -l nightly --force;
+      anaconda -t $BINSTAR_TOKEN upload *.bz2 -l nightly-master --force;
     else
-      anaconda -t $BINSTAR_TOKEN upload *.bz2 -l continuous-delivery --force;
+      anaconda -t $BINSTAR_TOKEN upload *.bz2 -l cd-$TRAVIS_BRANCH --force;
     fi;
 
 

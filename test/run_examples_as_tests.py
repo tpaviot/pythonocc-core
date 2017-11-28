@@ -28,12 +28,12 @@ all_examples_file_names = glob.glob(os.path.join('..', 'examples', 'core_*.py'))
 # some tests have to be excluded from the automatic
 # run. For instance, qt based examples
 tests_to_exclude = ['core_display_signal_slots.py',
-					'core_font_3d_console.py',
-					'core_display_overlayered_image.py',
-					'core_display_overlayered_lines.py',
-					'core_display_overlayered_text.py',
-					'core_display_raytracing.py',
-					'core_visualization_overpaint_viewer.py'
+                    'core_font_3d_console.py',
+                    'core_display_overlayered_image.py',
+                    'core_display_overlayered_lines.py',
+                    'core_display_overlayered_text.py',
+                    'core_display_raytracing.py',
+                    'core_visualization_overpaint_viewer.py'
                     ]
 
 # remove examples to excludes
@@ -47,6 +47,7 @@ succeed = 0
 failed = 0
 
 os.environ["PYTHONOCC_OFFSCREEN_RENDERER"] = "1"
+os.environ["PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE"] = "1"
 os.environ["PYTHONOCC_SHUNT_WEB_SERVER"] = "1"
 
 os.chdir(os.path.join('..', 'examples'))
@@ -54,8 +55,8 @@ for example in all_examples_file_names:
     print("running %s ..." % example, end="")
     try:
         out = subprocess.check_output([sys.executable, example],
-        	                          stderr=subprocess.STDOUT,
-        	                          universal_newlines=True)
+                                      stderr=subprocess.STDOUT,
+                                      universal_newlines=True)
         succeed += 1
         print("[passed]")
     except subprocess.CalledProcessError as cpe:
