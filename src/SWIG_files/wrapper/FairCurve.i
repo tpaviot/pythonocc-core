@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") FairCurve
+%define FAIRCURVEDOCSTRING
+"this package is used to make 'FairCurve' byno linear optimization.- Batten- [Curve with] MinimalVariation [of curvature] or 'MVC'."
+%enddef
+%module (package="OCC", docstring=FAIRCURVEDOCSTRING) FairCurve
 
 #pragma SWIG nowarn=504,325,503
 

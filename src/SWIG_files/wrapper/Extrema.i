@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Extrema
+%define EXTREMADOCSTRING
+"points, curves and surfaces.In general case, the algorithm to find thedistances is a minimization algorithm of a functionof variables: F(X). It is stopped when:for X1=X+Dx, F(X) and F(X1) are the same.The value of Dx can be calculated for all thealgorithms.-Level : Public.All methods of all classes will be public."
+%enddef
+%module (package="OCC", docstring=EXTREMADOCSTRING) Extrema
 
 #pragma SWIG nowarn=504,325,503
 

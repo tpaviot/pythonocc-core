@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepBndLib
+%define BREPBNDLIBDOCSTRING
+"This package provides the bounding boxes for curvesand surfaces from BRepAdaptor.Functions to add a topological shape to a bounding box"
+%enddef
+%module (package="OCC", docstring=BREPBNDLIBDOCSTRING) BRepBndLib
 
 #pragma SWIG nowarn=504,325,503
 

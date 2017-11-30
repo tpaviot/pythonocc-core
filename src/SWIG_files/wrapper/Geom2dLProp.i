@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Geom2dLProp
+%define GEOM2DLPROPDOCSTRING
+"Handles local properties of curves and surfaces from thepackages Geom and Geom2d.SeeAlso: Package LProp.-Level : Public.All methods of all classes will be public."
+%enddef
+%module (package="OCC", docstring=GEOM2DLPROPDOCSTRING) Geom2dLProp
 
 #pragma SWIG nowarn=504,325,503
 

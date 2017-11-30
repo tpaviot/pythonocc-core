@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") AppDef
+%define APPDEFDOCSTRING
+"This package describes all the classes needed to approximatepoints in Bezier curves. It is used in the packageAppParCurves.The points of the same range for the approximation areorganised in MultiPointConstraints. These MultiPointConstraintsare organized in a MultiLine.The corresponding result of a MultiLine approximation isa MultiCurve (set of Bezier curves) which has the samestructure as a MultiLine: The MultiCurve is a set ofMultiPoint.A point of a MultiLine can have many significations: the approximation curvecan go through this point or not, can have a given tangency, or canhave a given curvature.Note: a CurvaturePoint is also a PassPoint and a TangencyPoint.A TangencyPoint is also a PassPoint."
+%enddef
+%module (package="OCC", docstring=APPDEFDOCSTRING) AppDef
 
 #pragma SWIG nowarn=504,325,503
 

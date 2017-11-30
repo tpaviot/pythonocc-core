@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") ChFiKPart
+%define CHFIKPARTDOCSTRING
+"Fonctions de remplissage pour une SurfData, dansles cas particulers de conges/chanfreins suivants :- cylindre/plan entre 2 surfaces planes,- tore/sphere/cone entre un plan et un cylindre othogonal,- tore/sphere/cone entre un plan et un cone othogonal,- tore/sphere/cone entre un plan et un tore othogonal,- tore/cone entre un plan et une sphere."
+%enddef
+%module (package="OCC", docstring=CHFIKPARTDOCSTRING) ChFiKPart
 
 #pragma SWIG nowarn=504,325,503
 

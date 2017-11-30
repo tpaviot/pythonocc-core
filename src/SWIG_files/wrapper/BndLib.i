@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BndLib
+%define BNDLIBDOCSTRING
+"The BndLib package provides functions to add a geometric primitive to a bounding box.Note: these functions work with gp objects, optionallylimited by parameter values. If the curves and surfacesprovided by the gp package are not explicitlyparameterized, they still have an implicit parameterization,similar to that which they infer for the equivalent Geom or Geom2d objects.Add : Package to compute the bounding boxes for elementaryobjects from gp in 2d and 3d .AddCurve2d : A class to compute the bounding box for a curvein 2d dimensions ;the curve is defined by a toolAddCurve : A class to compute the bounding box for a curvein 3d dimensions ;the curve is defined by a toolAddSurface : A class to compute the bounding box for a surface.The surface is defined by a tool for the geometry and anothertool for the topology (only the edges in 2d dimensions)-Level : Public.All methods of all classes will be public."
+%enddef
+%module (package="OCC", docstring=BNDLIBDOCSTRING) BndLib
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IGESControl
+%define IGESCONTROLDOCSTRING
+"-Purpose : This package provide external access and control to use IGESSee also IGESToBRep for reading IGES to Shapes"
+%enddef
+%module (package="OCC", docstring=IGESCONTROLDOCSTRING) IGESControl
 
 #pragma SWIG nowarn=504,325,503
 

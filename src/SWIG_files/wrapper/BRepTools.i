@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepTools
+%define BREPTOOLSDOCSTRING
+"-Level : Public.All methods of all classes will be public.The BRepTools package provides utilities for BRepdata structures.* WireExplorer : A tool to explore the topology ofa wire in the order of the edges.* ShapeSet : Tools used for dumping, writing andreading.* UVBounds : Methods to compute the limits of theboundary of a face, a wire or  an edge in theparametric space of a face.* Update : Methods to call when  a topology hasbeen created to compute all missing data.* UpdateFaceUVPoints : Method to update the UVpoints stored  with the edges  on a face. Thismethod ensure that connected edges have the sameUV point on their common extremity.* Compare : Method to compare two vertices.* Compare : Method to compare two edges.* OuterWire : A method to find the outer wire of aface.* Map3DEdges : A method to map all the 3D Edges ofa Shape.* Dump : A method to dump a BRep object."
+%enddef
+%module (package="OCC", docstring=BREPTOOLSDOCSTRING) BRepTools
 
 #pragma SWIG nowarn=504,325,503
 

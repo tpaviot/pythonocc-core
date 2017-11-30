@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BinMDataStd
+%define BINMDATASTDDOCSTRING
+"Storage and Retrieval drivers for modelling attributes."
+%enddef
+%module (package="OCC", docstring=BINMDATASTDDOCSTRING) BinMDataStd
 
 #pragma SWIG nowarn=504,325,503
 

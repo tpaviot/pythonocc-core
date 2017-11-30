@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") StepDimTol
+%define STEPDIMTOLDOCSTRING
+"-Purpose :Collects definition of STEP GD&T entities TR12J"
+%enddef
+%module (package="OCC", docstring=STEPDIMTOLDOCSTRING) StepDimTol
 
 #pragma SWIG nowarn=504,325,503
 

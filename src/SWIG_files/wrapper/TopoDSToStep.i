@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TopoDSToStep
+%define TOPODSTOSTEPDOCSTRING
+"This package implements the mapping between CAS.CADShape representation and AP214 Shape Representation.The target schema is pms_c4 (a subset of AP214)How to use this Package :Entry point are context dependent. It can be :MakeManifoldSolidBrepMakeBrepWithVoidsMakeFacetedBrepMakeFacetedBrepAndBrepWithVoidsMakeShellBasedSurfaceModelEach of these classes call the BuilderThe class tool centralizes some common informations."
+%enddef
+%module (package="OCC", docstring=TOPODSTOSTEPDOCSTRING) TopoDSToStep
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") STEPControl
+%define STEPCONTROLDOCSTRING
+"-Purpose : This package provides external access and control for STEP,especially to deal with Shapes"
+%enddef
+%module (package="OCC", docstring=STEPCONTROLDOCSTRING) STEPControl
 
 #pragma SWIG nowarn=504,325,503
 

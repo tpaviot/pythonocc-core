@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TopOpeBRepTool
+%define TOPOPEBREPTOOLDOCSTRING
+"This package provides services used by the TopOpeBReppackage performing topological operations on the BRepdata structure."
+%enddef
+%module (package="OCC", docstring=TOPOPEBREPTOOLDOCSTRING) TopOpeBRepTool
 
 #pragma SWIG nowarn=504,325,503
 

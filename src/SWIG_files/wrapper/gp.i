@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") gp
+%define GPDOCSTRING
+"- Purpose :The geometric processor package, called gp, provides animplementation of entities used :. for algebraic calculation such as 'XYZ' coordinates, 'Mat'matrix. for basis analytic geometry such as Transformations, point,vector, line, plane, axis placement, conics, and elementarysurfaces.These entities are defined in 2d and 3d space.All the classes of this package are non-persistent."
+%enddef
+%module (package="OCC", docstring=GPDOCSTRING) gp
 
 #pragma SWIG nowarn=504,325,503
 

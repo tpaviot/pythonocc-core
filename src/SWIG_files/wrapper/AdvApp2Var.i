@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") AdvApp2Var
+%define ADVAPP2VARDOCSTRING
+"This package provides algorithms to approximate afunction of 2 variables that can be multidimensional;the result is a BSpline function with the required continuityWarning: only one 3D BSpline for the moment"
+%enddef
+%module (package="OCC", docstring=ADVAPP2VARDOCSTRING) AdvApp2Var
 
 #pragma SWIG nowarn=504,325,503
 

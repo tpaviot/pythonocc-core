@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IntAna
+%define INTANADOCSTRING
+"This package provides the intersections between :- Natural Quadrics when the result is a conic (QuadQuadGeo)- A natural Quadric and a Quadric defined by its Coefficients(IntQuadQuad)- 3 Pln  (Int3Pln)- a Line and a Torus  (IntLinTorus)- a Conic from gp and a Quadric defined by its Coefficients(IntConicQuad)-Level: PublicAll the methods of the classes of this package are public."
+%enddef
+%module (package="OCC", docstring=INTANADOCSTRING) IntAna
 
 #pragma SWIG nowarn=504,325,503
 

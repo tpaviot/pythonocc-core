@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") GeomAbs
+%define GEOMABSDOCSTRING
+"This package gives resources for Geometric applicationsit contains :CurveType enumeration to describe the different type ofcurvesSurfaceType enumeration to describe the different type ofsurfacesShape enumeration to describe the continuity of curveor surfaceCurveForm enumeration to describe the specific form ofcurveSurfaceForm enumeration to describe the specific form ofsurfaceBSplKnotDistribution enumeration to describe therepartition of set of knotsUVSense enumeration to describe the orientation ofthe parametric surface"
+%enddef
+%module (package="OCC", docstring=GEOMABSDOCSTRING) GeomAbs
 
 #pragma SWIG nowarn=504,325,503
 

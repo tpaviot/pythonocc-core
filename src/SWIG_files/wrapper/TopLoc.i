@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TopLoc
+%define TOPLOCDOCSTRING
+"-Level : Public.All methods of all classes will be public.The TopLoc package gives ressources to handle 3D localcoordinate systems called Locations.A Location is a composition of elementary coordinatesystems, each one is called a Datum.  The Locationkeeps track of this composition."
+%enddef
+%module (package="OCC", docstring=TOPLOCDOCSTRING) TopLoc
 
 #pragma SWIG nowarn=504,325,503
 

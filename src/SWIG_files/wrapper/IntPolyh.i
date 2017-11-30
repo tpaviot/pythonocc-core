@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IntPolyh
+%define INTPOLYHDOCSTRING
+"This  package provides algorithms  to computestarting  points for  the   surface surfaceintersection packages. Those starting points areused if  the two  surfaces are bi-parametricsurfaces (bezier, nurbs, algorithm surfaces ...)This package provides methodsto compute meshes on the two surfaces. The meshes canbe refined if necessary. It is the major improvementto the Intf package which  gives the same kind ofressources.to intersect the two meshesto give approximated starting-points. Those points areorganised in lines, when the points belong to a samesection line, or returned as isolated points when theycan neither define a new line nor be linked to anexistant line.A starting-point  contains 3d  information, parametricionformation and quality criterion. (i.e.  X,Y,Z, U1,V1,U2,V2, Incidence). Incidence is a real wich  gives anestimated  angle  between the two  surfaces near theintersection point."
+%enddef
+%module (package="OCC", docstring=INTPOLYHDOCSTRING) IntPolyh
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BinObjMgt
+%define BINOBJMGTDOCSTRING
+"This package defines services to manage the storagegrain of data produced by applications."
+%enddef
+%module (package="OCC", docstring=BINOBJMGTDOCSTRING) BinObjMgt
 
 #pragma SWIG nowarn=504,325,503
 

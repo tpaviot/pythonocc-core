@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") MDataXtd
+%define MDATAXTDDOCSTRING
+"Storage  and Retrieval drivers  for modellingattributes.  Transient attributes are defined inpackage TDataStd and persistent one are defined inpackage PDataStd"
+%enddef
+%module (package="OCC", docstring=MDATAXTDDOCSTRING) MDataXtd
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Convert
+%define CONVERTDOCSTRING
+"- Purpose:The Convert package provides algorithms to convert the following into a BSpline curve or surface:-  a bounded curve based on an elementary 2D curve (line, circle or conic) from the gp package,-  a bounded surface based on an elementary surface (cylinder, cone, sphere or torus) from the gp package,-  a series of adjacent 2D or 3D Bezier curves defined by their poles.These algorithms compute the data needed to define the resulting BSpline curve or surface.This elementary data (degrees, periodic characteristics, poles and weights, knots andmultiplicities) may then be used directly in an algorithm, or can be used to construct the curveor the surface by calling the appropriate constructor provided by the classesGeom2d_BSplineCurve, Geom_BSplineCurve or Geom_BSplineSurface."
+%enddef
+%module (package="OCC", docstring=CONVERTDOCSTRING) Convert
 
 #pragma SWIG nowarn=504,325,503
 

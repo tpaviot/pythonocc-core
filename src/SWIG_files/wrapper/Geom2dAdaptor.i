@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Geom2dAdaptor
+%define GEOM2DADAPTORDOCSTRING
+"this package contains the geometric definition of2d curves compatible with the Adaptor packagetemplates."
+%enddef
+%module (package="OCC", docstring=GEOM2DADAPTORDOCSTRING) Geom2dAdaptor
 
 #pragma SWIG nowarn=504,325,503
 

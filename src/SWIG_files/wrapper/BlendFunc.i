@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BlendFunc
+%define BLENDFUNCDOCSTRING
+"This package provides a set of generic functions, that caninstantiated to compute blendings between two surfaces(Constant radius, Evolutive radius, Ruled surface)."
+%enddef
+%module (package="OCC", docstring=BLENDFUNCDOCSTRING) BlendFunc
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Visual3d
+%define VISUAL3DDOCSTRING
+"-Version:This package contains the group of classes necessaryfor the implementation of commands for the 3D visualiser.Use of this package is reserved to the visualiser.The visualiser manages the structures, the views, thelight sources, and object picking.-Keywords: View, Light, Pick-Warning:-References:"
+%enddef
+%module (package="OCC", docstring=VISUAL3DDOCSTRING) Visual3d
 
 #pragma SWIG nowarn=504,325,503
 
@@ -894,20 +897,6 @@ class Visual3d_Layer : public MMgt_TShared {
 	:rtype: None
 ") DrawRectangle;
 		void DrawRectangle (const Standard_Real X,const Standard_Real Y,const Standard_Real Width,const Standard_Real Height);
-		%feature("compactdefaultargs") DrawText;
-		%feature("autodoc", "	* Draws the string <AText> at position <X,Y>. The attributes are given with respect to the plane of projection. <AHeight> : Height of text. (Relative to the Normalized Projection Coordinates (NPC) Space).
-
-	:param AText:
-	:type AText: char *
-	:param X:
-	:type X: float
-	:param Y:
-	:type Y: float
-	:param AHeight:
-	:type AHeight: float
-	:rtype: None
-") DrawText;
-		void DrawText (const char * AText,const Standard_Real X,const Standard_Real Y,const Standard_Real AHeight);
 		%feature("compactdefaultargs") TextSize;
 		%feature("autodoc", "	* Get the size of text. The attributes are given with respect to the plane of projection. <AHeight> : Height of text. (Relative to the Normalized Projection Coordinates (NPC) Space).
 

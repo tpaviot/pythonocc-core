@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") MAT2d
+%define MAT2DDOCSTRING
+"-Purpose : Package of computation of Bisector locus on aSet of geometrys from Geom2d."
+%enddef
+%module (package="OCC", docstring=MAT2DDOCSTRING) MAT2d
 
 #pragma SWIG nowarn=504,325,503
 

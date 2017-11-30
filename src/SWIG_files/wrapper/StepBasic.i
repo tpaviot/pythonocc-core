@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") StepBasic
+%define STEPBASICDOCSTRING
+"-Purpose : Collects definitions of STEP entities from Part 41 of ISO10303"
+%enddef
+%module (package="OCC", docstring=STEPBASICDOCSTRING) StepBasic
 
 #pragma SWIG nowarn=504,325,503
 

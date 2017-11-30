@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") FilletSurf
+%define FILLETSURFDOCSTRING
+"This package contains the API givingonly geometric informations about filletsfor Toyota Project UV4."
+%enddef
+%module (package="OCC", docstring=FILLETSURFDOCSTRING) FilletSurf
 
 #pragma SWIG nowarn=504,325,503
 

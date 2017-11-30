@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TopExp
+%define TOPEXPDOCSTRING
+"This package  provides basic tools to  explore thetopological data structures.* Explorer : A tool to find all sub-shapes of a giventype. e.g. all faces of a solid.* Package methods to map sub-shapes of a shape.Level : PublicAll methods of all classes will be public."
+%enddef
+%module (package="OCC", docstring=TOPEXPDOCSTRING) TopExp
 
 #pragma SWIG nowarn=504,325,503
 

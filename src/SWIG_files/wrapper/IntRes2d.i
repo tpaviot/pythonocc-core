@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IntRes2d
+%define INTRES2DDOCSTRING
+"This package provides the definition of the results ofthe intersection between 2D curves and the definitionof a domain on a 2D curve.-Level: PublicAll the methods of all the classes of this package are public."
+%enddef
+%module (package="OCC", docstring=INTRES2DDOCSTRING) IntRes2d
 
 #pragma SWIG nowarn=504,325,503
 

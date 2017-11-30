@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BOPDS
+%define BOPDSDOCSTRING
+"The package contains classes that implementsthe data structure forgeneral fuse and boolean operation algorithms"
+%enddef
+%module (package="OCC", docstring=BOPDSDOCSTRING) BOPDS
 
 #pragma SWIG nowarn=504,325,503
 

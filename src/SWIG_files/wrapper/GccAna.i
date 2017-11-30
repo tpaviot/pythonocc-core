@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") GccAna
+%define GCCANADOCSTRING
+"-Purpose : This package provides an implementation of analyticsalgorithms (using only non persistant entities) usedto create 2d lines or circles with geometric constraints."
+%enddef
+%module (package="OCC", docstring=GCCANADOCSTRING) GccAna
 
 #pragma SWIG nowarn=504,325,503
 

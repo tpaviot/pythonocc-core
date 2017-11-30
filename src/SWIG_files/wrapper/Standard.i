@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Standard
+%define STANDARDDOCSTRING
+"The package Standard provides the minimum services necessaryfor other toolkits to handle persistent and transient objects.It is the Standard run-time encapsulation of the CAS.CADEdatabase, that is, it defines a single programming interfacefor creating and accessing persistent objects manipulated byhandles."
+%enddef
+%module (package="OCC", docstring=STANDARDDOCSTRING) Standard
 
 #pragma SWIG nowarn=504,325,503
 

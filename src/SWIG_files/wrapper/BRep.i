@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRep
+%define BREPDOCSTRING
+"This package describes a Boundary RepresentationData  Structure  inherited from  the abstractTopology  defined in the  TopoDS package. Thegeometric data are provided by the Geom and Geom2dpackages.The TVertex, TEdge, and TFace are redefined inthis package to add geometric information.-Level : PublicAll methods of all classes will be public."
+%enddef
+%module (package="OCC", docstring=BREPDOCSTRING) BRep
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") GeomLProp
+%define GEOMLPROPDOCSTRING
+"These global functions compute the degree ofcontinuity of a 3D curve built by concatenation of twoother curves (or portions of curves) at their junction point."
+%enddef
+%module (package="OCC", docstring=GEOMLPROPDOCSTRING) GeomLProp
 
 #pragma SWIG nowarn=504,325,503
 

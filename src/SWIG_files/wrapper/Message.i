@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Message
+%define MESSAGEDOCSTRING
+"Defines- tools to work with messages- basic tools intended for progress indication"
+%enddef
+%module (package="OCC", docstring=MESSAGEDOCSTRING) Message
 
 #pragma SWIG nowarn=504,325,503
 

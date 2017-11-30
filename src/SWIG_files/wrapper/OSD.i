@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") OSD
+%define OSDDOCSTRING
+"-History:Version  Date    Purpose1.1  24/06/92  Operating System Dependent tools1.22.03.0Windows NT 30/09/96 ( EUG )Set of Operating Sytem Dependent Tools(O)perating (S)ystem (D)ependent"
+%enddef
+%module (package="OCC", docstring=OSDDOCSTRING) OSD
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") HLRTopoBRep
+%define HLRTOPOBREPDOCSTRING
+"This   Package provides some    topologicalreconstruction services needed by the Hidden LineRemoval Algorithms  using OutLine and  IsoLinefacilities, applied to an object represented by aBRep data structure."
+%enddef
+%module (package="OCC", docstring=HLRTOPOBREPDOCSTRING) HLRTopoBRep
 
 #pragma SWIG nowarn=504,325,503
 

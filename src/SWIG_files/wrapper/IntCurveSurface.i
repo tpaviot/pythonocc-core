@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IntCurveSurface
+%define INTCURVESURFACEDOCSTRING
+"This package provides algorithmes to intersect a Curveand a Surface.Level: InternalAll the methods of the classes of this package are Internal.except the methods of the classes <Intersection,IntersectionPoint,IntersectionSegment>"
+%enddef
+%module (package="OCC", docstring=INTCURVESURFACEDOCSTRING) IntCurveSurface
 
 #pragma SWIG nowarn=504,325,503
 

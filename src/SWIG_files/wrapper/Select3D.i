@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Select3D
+%define SELECT3DDOCSTRING
+"The Select3D package provides the following services-  definition of standard  3D sensitive primitives such as points, curves and faces.-  recovery of the bounding boxes in the 2D graphic selection space, if required.-  a 3D-2D projector."
+%enddef
+%module (package="OCC", docstring=SELECT3DDOCSTRING) Select3D
 
 #pragma SWIG nowarn=504,325,503
 

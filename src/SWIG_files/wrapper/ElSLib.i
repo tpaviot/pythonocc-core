@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") ElSLib
+%define ELSLIBDOCSTRING
+"- Purpose : Provides functions for basic geometric computation onelementary surfaces.This includes:-  calculation of a point or derived vector on a surfacewhere the surface is provided by the gp package, ordefined in canonical form (as in the gp package), andthe point is defined with a parameter,-  evaluation of the parameters corresponding to apoint on an elementary surface from gp,-  calculation of isoparametric curves on an elementarysurface defined in canonical form (as in the gp package).Notes:-  ElSLib stands for Elementary Surfaces Library.-  If the surfaces provided by the gp package are notexplicitly parameterized, they still have an implicitparameterization, similar to that which they infer onthe equivalent Geom surfaces.Note: ElSLib stands for Elementary Surfaces Library."
+%enddef
+%module (package="OCC", docstring=ELSLIBDOCSTRING) ElSLib
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") STEPEdit
+%define STEPEDITDOCSTRING
+"-Purpose : Provides tools to exploit and edit a set of STEP data :editors, selections .."
+%enddef
+%module (package="OCC", docstring=STEPEDITDOCSTRING) STEPEdit
 
 #pragma SWIG nowarn=504,325,503
 

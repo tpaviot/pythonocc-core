@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Geom2dConvert
+%define GEOM2DCONVERTDOCSTRING
+"- Purpose :This package provides an implementation of algorithmes to dothe conversion between equivalent geometric entities frompackage Geom2d.It gives the possibility :. to obtain the B-spline representation of bounded curves.. to split a B-spline curve into several B-spline curveswith some constraints of continuity,. to convert a B-spline curve into several Bezier curvesor surfaces.All the geometric entities used in this package are bounded.References :. Generating the Bezier Points of B-spline curves and surfaces(Wolfgang Bohm) CAGD volume 13 number 6 november 1981. On NURBS: A Survey (Leslie Piegl) IEEE Computer Graphics andApplication January 1991. Curve and surface construction using rational B-splines(Leslie Piegl and Wayne Tiller) CAD Volume 19 number 9 november1987. A survey of curve and surface methods in CAGD (Wolfgang BOHM)CAGD 1 1984"
+%enddef
+%module (package="OCC", docstring=GEOM2DCONVERTDOCSTRING) Geom2dConvert
 
 #pragma SWIG nowarn=504,325,503
 

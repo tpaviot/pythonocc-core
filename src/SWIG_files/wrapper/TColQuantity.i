@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TColQuantity
+%define TCOLQUANTITYDOCSTRING
+"the classes of this package should be usedwhen exporting arrays of real representing lengths,for having benefit of the unit conversion."
+%enddef
+%module (package="OCC", docstring=TCOLQUANTITYDOCSTRING) TColQuantity
 
 #pragma SWIG nowarn=504,325,503
 

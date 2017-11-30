@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") RWStepDimTol
+%define RWSTEPDIMTOLDOCSTRING
+"Packsge contains tools for parsing and formatting GD&T entities."
+%enddef
+%module (package="OCC", docstring=RWSTEPDIMTOLDOCSTRING) RWStepDimTol
 
 #pragma SWIG nowarn=504,325,503
 

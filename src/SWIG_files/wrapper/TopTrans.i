@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") TopTrans
+%define TOPTRANSDOCSTRING
+"This  package provides algorithms to  computecomplex transitions. A transition is the status ofgeometry near the boundary of a Shape. An exampleis the intersection of a curve and a surfaceenclosing a solid  , the transition tells if theparts of the curve just before and just after theintersection are  inside, outside  or  on theboundary of the solid.The difficulty with transitions arise when dealingwith trimmed geometries like edges and faces. Whenthe geometric intersections are inside the trimmedgeometry the transition is usually computed by theintersection algorithms  as the trimming can besafely ignored. If the intersection falls on thetrimming boundaries  one must  consider  theneighbouring entities. Consider as an example theintersection of a curve  and a  solid, if theintersection falls on an edge of the solid it doesnot falls inside the two faces adjacent to theedge, a complex transition occurs.This package provides two classes :* CurveTransition is used to compute complextransitions with an other curve.* SurfaceTransition is used to compute complextransitions in 3D space.The curves and surfaces are given  by a first orsecond order approximation around the intersectionpoint.  For a curve, the tangent vector or theosculating circle. For a surface the normal vectoror the osculating quadric."
+%enddef
+%module (package="OCC", docstring=TOPTRANSDOCSTRING) TopTrans
 
 #pragma SWIG nowarn=504,325,503
 

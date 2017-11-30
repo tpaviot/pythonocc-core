@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") PrsMgr
+%define PRSMGRDOCSTRING
+"and is only to be used when you do not want to usethe services provided by AIS.PrsMgr manages display through the following services:-  supplying a graphic structure for the object to be presented-  recalculating presentations when required, e.g. bymoving the object or changing its color-  defining the display mode of the object to bepresented; in the case of AIS_Shape, for example,this determines whether the object is to be displayed in:-  wireframe 0-  shading 1.Note that each new Interactive Object must have all its display modes defined."
+%enddef
+%module (package="OCC", docstring=PRSMGRDOCSTRING) PrsMgr
 
 #pragma SWIG nowarn=504,325,503
 

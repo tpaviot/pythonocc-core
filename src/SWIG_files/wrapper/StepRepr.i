@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") StepRepr
+%define STEPREPRDOCSTRING
+"-Purpose : Sub-Schema of Step for RepresentationsCollects definitions of STEP entities used for describingrepresentation structures (from Parts 41, 43, 44 of ISO10303)"
+%enddef
+%module (package="OCC", docstring=STEPREPRDOCSTRING) StepRepr
 
 #pragma SWIG nowarn=504,325,503
 

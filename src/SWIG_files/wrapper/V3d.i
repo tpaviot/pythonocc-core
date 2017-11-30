@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") V3d
+%define V3DDOCSTRING
+"This package contains the set of commands and servicesof the 3D Viewer. It provides a set of high level commandsto control the views and viewing modes. This package iscomplementary to the Visual3D graphic package."
+%enddef
+%module (package="OCC", docstring=V3DDOCSTRING) V3d
 
 #pragma SWIG nowarn=504,325,503
 

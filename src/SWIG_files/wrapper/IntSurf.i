@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") IntSurf
+%define INTSURFDOCSTRING
+"This package provides resources forall the packages concerning the intersectionbetween surfaces.-Level: InternalAll the methods of all the classes of this package are Internal."
+%enddef
+%module (package="OCC", docstring=INTSURFDOCSTRING) IntSurf
 
 #pragma SWIG nowarn=504,325,503
 

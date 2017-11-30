@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Approx
+%define APPROXDOCSTRING
+"Tis package provides algorithms approximating a set ofpoints or curves with the possibility of dividing intoone or many bezier curves.It also provides an instantiation for approximatinga continous function f(t) into one or many curves."
+%enddef
+%module (package="OCC", docstring=APPROXDOCSTRING) Approx
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") LProp3d
+%define LPROP3DDOCSTRING
+"Handles local properties of curves and surfaces from thepackage Adaptor3d.SeeAlso: Package LProp."
+%enddef
+%module (package="OCC", docstring=LPROP3DDOCSTRING) LProp3d
 
 #pragma SWIG nowarn=504,325,503
 

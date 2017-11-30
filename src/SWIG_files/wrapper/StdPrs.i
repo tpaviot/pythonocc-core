@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") StdPrs
+%define STDPRSDOCSTRING
+"for specific geometries and topologies whereasPrs3d provides those for generic objects. Amongthese classes are definitions of the display of thespecific geometry or topology in various displaymodes such as wireframe, shading or hidden line removal mode."
+%enddef
+%module (package="OCC", docstring=STDPRSDOCSTRING) StdPrs
 
 #pragma SWIG nowarn=504,325,503
 

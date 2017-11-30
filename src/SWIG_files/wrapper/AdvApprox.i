@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") AdvApprox
+%define ADVAPPROXDOCSTRING
+"This package provides algorithms approximating a functionthat can be multidimensional creating in the end aBSpline function with the required continuity"
+%enddef
+%module (package="OCC", docstring=ADVAPPROXDOCSTRING) AdvApprox
 
 #pragma SWIG nowarn=504,325,503
 

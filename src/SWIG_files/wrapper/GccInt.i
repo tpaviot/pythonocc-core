@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") GccInt
+%define GCCINTDOCSTRING
+"This package implements the services needed by thetoolkit Gcc to use curves other than lines or circles.This package is also used for intersections andbisecting curves."
+%enddef
+%module (package="OCC", docstring=GCCINTDOCSTRING) GccInt
 
 #pragma SWIG nowarn=504,325,503
 

@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepTopAdaptor
+%define BREPTOPADAPTORDOCSTRING
+"*** Class2d  : Low level algorithm for 2d classification*** FClass2d  : 2d classification on a Face from TopoDSA face is first loaded and then everyclassification is computed as a rejection.(call BRepClass algorithms if necessary,ie, when the rejection is not efficient)*** TopolTool : Several tools used by the intersectionalgorithm and topology.-Level: Internal"
+%enddef
+%module (package="OCC", docstring=BREPTOPADAPTORDOCSTRING) BRepTopAdaptor
 
 #pragma SWIG nowarn=504,325,503
 

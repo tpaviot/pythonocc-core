@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Graphic3d
+%define GRAPHIC3DDOCSTRING
+"-Version:This package permits the creation of 3d graphic objectsin a visualiser.These objects, called structures, are composed of groups ofprimitives and attributes.The group is the smallest editable element of a structure.A structure can be displayed, erased, high-lighted.A transformation can be applied to it.Structures can be connected to form a tree of structures,composed by transformations.The visualiser permits global manipulation of structures.-Keywords: Structure, Group, Primitives, Line, Marker, Text,FillAreas, Vertex, Vector, Material, Font, Shading-Warning:-References:"
+%enddef
+%module (package="OCC", docstring=GRAPHIC3DDOCSTRING) Graphic3d
 
 #pragma SWIG nowarn=504,325,503
 

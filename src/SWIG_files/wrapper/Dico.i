@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Dico
+%define DICODOCSTRING
+"-Purpose : Defines alphanumeric dictionaries and iterators on themThose are generic classes (Iterator is nested in Dictionary)Three default instantiations are offered :with Integer and Handle Objects (Persistent and Transient)"
+%enddef
+%module (package="OCC", docstring=DICODOCSTRING) Dico
 
 #pragma SWIG nowarn=504,325,503
 

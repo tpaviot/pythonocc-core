@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") Geom2dAPI
+%define GEOM2DAPIDOCSTRING
+"The Geom2dAPI package provides an ApplicationProgramming Interface for the Geometry.The API is a set of classes aiming to provide :* High level and simple calls for the most commonoperations.*  Keeping  an  access on  the  low-levelimplementation of high-level calls.The API provides classes to call the algorithmesof the Geometry* The constructors of the classes provides thedifferent constructions methods.* The class keeps as fields the  different toolsused by the algorithmes*  The class provides a casting method to getautomatically the result with a  function-likecall.For example to evaluate the distance <D> between apoint <P> and a curve <C>, one can writes :D = Geom2dAPI_ProjectPointOnCurve(P,C);orGeom2dAPI_ProjectPointOnCurve PonC(P,C);D = PonC.LowerDistance();"
+%enddef
+%module (package="OCC", docstring=GEOM2DAPIDOCSTRING) Geom2dAPI
 
 #pragma SWIG nowarn=504,325,503
 

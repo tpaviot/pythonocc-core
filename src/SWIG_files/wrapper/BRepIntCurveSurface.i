@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") BRepIntCurveSurface
+%define BREPINTCURVESURFACEDOCSTRING
+"Inttantiates IntCurveSurface with Surfaces from BRepand Curves from Adaptor-Level: PublicAll the methods of the classes of this package are public."
+%enddef
+%module (package="OCC", docstring=BREPINTCURVESURFACEDOCSTRING) BRepIntCurveSurface
 
 #pragma SWIG nowarn=504,325,503
 

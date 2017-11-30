@@ -17,7 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module (package="OCC") LProp
+%define LPROPDOCSTRING
+"Handles local properties of curves and surfaces.Given a curve and a parameter value the following computationsare available :- point,- derivatives,- tangent,- normal,- curvature,- centre of curvature,- Locals curvature's extremas,- Points of inflection,Given a surface and 2 parameters the following computationsare available :- for each parameter:- derivatives,- tangent line,- centre of curvature,- point,- normal line,- maximum and minimum curvatures,- principal directions of curvature,- mean curvature,- Gaussian curvature.-Level : Public.All methods of all classes will be public."
+%enddef
+%module (package="OCC", docstring=LPROPDOCSTRING) LProp
 
 #pragma SWIG nowarn=504,325,503
 
