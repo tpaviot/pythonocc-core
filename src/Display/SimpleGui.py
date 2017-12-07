@@ -151,9 +151,10 @@ def init_display(backend_str=None, size=(1024, 768)):
 
             def centerOnScreen(self):
                 '''Centers the window on the screen.'''
-                resolution = QtWidgets.QDesktopWidget().screenGeometry()
-                self.move((resolution.width() / 2) - (self.frameSize().width() / 2),
-                          (resolution.height() / 2) - (self.frameSize().height() / 2))
+                resolution = QtWidgets.QApplication.desktop().screenGeometry()
+                x = (resolution.width() - self.frameSize().width()) / 2
+                y = (resolution.height() - self.frameSize().height()) / 2
+                self.move(x, y)
 
             def add_menu(self, menu_name):
                 _menu = self.menu_bar.addMenu("&" + menu_name)
@@ -178,6 +179,7 @@ def init_display(backend_str=None, size=(1024, 768)):
         win = MainWindow()
         win.show()
         win.resize(size[0], size[1])
+        win.centerOnScreen()
         win.canva.InitDriver()
         win.canva.qApp = app
         display = win.canva._display
