@@ -16,8 +16,8 @@ build:
   binary_relocation: false [osx]
   features:
     - vc9               [win and py27]
-    - vc10              [win and py34]
     - vc14              [win and py35]
+    - vc14              [win and py36]
 
 requirements:
   build:

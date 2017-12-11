@@ -31,7 +31,7 @@ addons:
       - g++-multilib
       - lib32z1+
       - lsb-core
-      - g++-5
+      - g++-7
 
 matrix:
   include:
@@ -58,8 +58,8 @@ matrix:
 # https://gist.github.com/dan-blanchard/7045057
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      export CXX=g++-5;
-      export CC=gcc-5;
+      export CXX=g++-7;
+      export CC=gcc-7;
     fi;
   - if [ ${PYTHON:0:1} == "2" ]; then
       if [ "$TRAVIS_OS_NAME" == "linux" ]; then
