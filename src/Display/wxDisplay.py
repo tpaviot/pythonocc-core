@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -18,6 +18,8 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 from __future__ import print_function
+
+import time
 
 try:
     import wx
@@ -47,6 +49,35 @@ class wxBaseViewer(wx.Panel):
 
         self._display = None
         self._inited = False
+
+    def GetWinId(self):
+        """ Returns the windows Id as an integer.
+        issue with GetHandle on Linux for wx versions
+        >3 or 4. Window must be displayed before GetHandle is
+        called. For that, just wait for a few milliseconds/seconds
+        before calling InitDriver
+        a solution is given here
+        see https://github.com/cztomczak/cefpython/issues/349
+        but raises an issue with wxPython 4.x
+        finally, it seems that the sleep function does the job
+        reported as a pythonocc issue
+        https://github.com/tpaviot/pythonocc-core/476
+        """
+        timeout = 10  # 10 seconds
+        win_id = self.GetHandle()
+        init_time = time.time()
+        delta_t = 0.  # elapsed time, initialized to 0 before the while loop
+        # if ever win_id is 0, enter the loop untill it gets a value
+        while win_id == 0 and delta_t < timeout:
+            time.sleep(0.1)
+            wx.SafeYield()
+            win_id = self.GetHandle()
+            delta_t = time.time() - init_time
+        # check that win_id is different from 0
+        if win_id == 0:
+            raise AssertionError("Can't get win Id")
+        # otherwise returns the window Id
+        return win_id
 
     def OnSize(self, event):
         if self._inited:
@@ -109,7 +140,7 @@ class wxViewer3d(wxBaseViewer):
         self.dragStartPos = None
 
     def InitDriver(self):
-        self._display = OCCViewer.Viewer3d(self.GetHandle())
+        self._display = OCCViewer.Viewer3d(self.GetWinId())
         self._display.Create()
         self._display.display_trihedron()
         self._display.SetModeShaded()
