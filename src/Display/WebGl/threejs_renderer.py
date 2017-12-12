@@ -534,17 +534,13 @@ class ThreejsRenderer(object):
             fp.write(BODY_Part2)
             fp.write("</html>\n")
 
-    def render(self, server_port=8080):
+    def render(self, server_port=8080, open_webbrowser=False):
         ''' render the scene into the browser.
         '''
         # generate HTML file
         self.GenerateHTMLFile()
-        os.chdir(self._path)
         # then create a simple web server
-        print("\n## Serving ", self._path, "\n## using SimpleHTTPServer")
-        print("## Open your webbrowser at the URL: http://localhost:%i" % server_port)
-        print("## CTRL-C to shutdown the server")
-        start_server(server_port)
+        start_server(server_port, self._path, open_webbrowser)
 
 if __name__ == "__main__":
     from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
