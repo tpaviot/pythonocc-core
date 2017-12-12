@@ -31,7 +31,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=$PREFIX \
 if [ `uname` == Darwin ]; then
 ninja
 else
-ninja -j 8
+ninja -j 6
 fi
 
 # Install step
