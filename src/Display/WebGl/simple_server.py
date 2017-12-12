@@ -37,7 +37,7 @@ def get_available_port(port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         s.bind(("", port))
-    except socket.error, e:
+    except socket.error as e:
         if e.errno == errno.EADDRINUSE:
             print("\nPort %i is already in use. Picking another one." % port)
             # take another one
@@ -80,4 +80,4 @@ def start_server(port=8080, path='.', open_webbrowser=False):
 if __name__ == "__main__":
     get_available_port(8080)
     get_available_port(5022)
-    start_server(8080, True)
+    start_server(8080)
