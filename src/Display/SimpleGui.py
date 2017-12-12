@@ -110,6 +110,11 @@ def init_display(backend_str=None, size=(1024, 768)):
         win.canva.InitDriver()
         app.SetTopWindow(win)
         display = win.canva._display
+        # background gradient
+        display.set_bg_gradient_color(206, 215, 222, 128, 128, 128)
+        # display black trihedron
+        display.display_trihedron()
+
 
         def add_menu(*args, **kwargs):
             win.add_menu(*args, **kwargs)
