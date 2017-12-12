@@ -360,19 +360,13 @@ class X3DomRenderer(object):
         #  self._x3d_shapes[shape_hash] = [trans, ori]
         self._x3d_shapes.append(shape_hash)
 
-    def render(self, server_port=8080):
+    def render(self, server_port=8080, open_webbrowser=False):
         """ Call the render() method to display the X3D scene.
         """
         # first generate the HTML root file
         self.GenerateHTMLFile()
         # then create a simple web server
-        os.chdir(self._path)
-        # then create a simple web server
-        print("\n## Serving ", self._path, "\n## using SimpleHTTPServer")
-        print("## Open your webbrowser at the URL: http://localhost:%i" % server_port)
-        print("## CTRL-C to shutdown the server")
-        start_server(server_port)
-
+        start_server(server_port, self._path, open_webbrowser)
 
     def GenerateHTMLFile(self):
         """ Generate the HTML file to be rendered wy the web browser
