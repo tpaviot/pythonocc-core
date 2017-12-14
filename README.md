@@ -14,7 +14,7 @@ pythonocc is a python library whose purpose is to provide 3D modeling
 features. It is intended to developers who aim at developing
 CAD/PDM/PLM applications.
 
-Latest release : [pythonocc-core 0.18 (june 2017)](https://github.com/tpaviot/pythonocc-core/releases/tag/0.18)
+Latest release : [pythonocc-core 0.18.1 (december 2017)](https://github.com/tpaviot/pythonocc-core/releases/tag/0.18.1)
 
 Download/install binaries
 -------------------------
@@ -25,7 +25,7 @@ This will get you up and running in minutes whether you run win32/win64/linux64/
 ```bash
 # install pythonocc in an environment named `pythonocc` with python 3.5;
 # use python=2 for legacy python 2.7.12
-conda install -c conda-forge -c dlr-sc -c pythonocc -c oce pythonocc-core==0.18 python=3
+conda install -c conda-forge -c dlr-sc -c pythonocc -c oce pythonocc-core==0.18.1 python=3
 ```
 
 Nightly builds are available from another repository. If you want to test features under development:
@@ -47,7 +47,7 @@ We use the following online resources:
   * Sources
        https://github.com/tpaviot/pythonocc-core
   * API documentation
-       https://cdn.rawgit.com/tpaviot/pythonocc-core/e05ec51b/doc/apidoc/0.18/
+       https://cdn.rawgit.com/tpaviot/pythonocc-core/e05ec51b/doc/apidoc/0.18.1/
   * Bug tracker
        https://github.com/tpaviot/pythonocc-core/issues
   * Mailing list
@@ -76,7 +76,7 @@ For example; the current pythonocc-core release, 0.18, requires any of the [OCE
  0.18.x](https://github.com/tpaviot/oce/releases) releases. Here, the __Major__ 
  version name of either OCE or pythonocc-core release is __0__, the __Minor__ 
  version is __17__ and the __Patch__ version is (optionally) __x__. pythonocc-core can be built with any OCE version that has a corresponding __Major__ and __Minor__ version 
- number. For example, pythonocc-core 0.18 can be built with OCE-0.18.1.   
+ number. For example, pythonocc-core 0.18.1 can be built with OCE-0.18.1.
 
 License
 -------

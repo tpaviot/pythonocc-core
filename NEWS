@@ -1,4 +1,35 @@
 ==========================
+Version 0.18.1 - December 2017
+
+This release requires oce-0.18 or oce-0.18.1.
+
+* wrapper : adds a docstring for each module, fixed Addon documentation,
+
+* wrapper : new OffscreenRenderer class, to export to image without any GUI
+manager installed
+
+* wrapper : new TextureItem, LineItem and ImageItem classes for overlayered
+items
+
+* wrapper : Add missing DrawText method from Visual3d_Layer module
+
+* wrapper : support for smesh 6.7.5
+
+* new examples : heithgmap, face recognition, 3d to 2d screen coordinates,
+overlayered lines-text-images, raytracing, camera projection, import
+STEP file with colors,
+
+* examples : example to rst script, in order to provide a description for
+each example, in rst format
+
+* webgl : x3dom and threejs minors fixes/enhancement, simple_server fixes
+
+* gui : fix SimpleGui position at startup, wx fixes
+
+* ci/cd : upload each successfull travis or appveyor built to anaconda cloud,
+tagged using the branch name
+
+==========================
 Version 0.18 - June 2017
 
 This release requires oce-0.18 or oce-0.18.1.
