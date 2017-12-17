@@ -459,6 +459,62 @@ std::string formatFloatNumber(float f)
   return formatted_float.str();
 }
 
+std::vector<float> Tesselator::GetVerticesPositionAsTuple()
+{
+  // create the vector and allocate memory
+  std::vector<float> vertices_position;
+  vertices_position.reserve(tot_triangle_count);
+  // loop over tertices
+  int pID = 0;
+  int qID = 0;
+  int rID = 0;
+  for (int i=0;i<tot_triangle_count;i++) {
+      pID = loc_tri_indexes[(i * 3) + 0] * 3;
+      vertices_position.push_back(locVertexcoord[pID]);
+      vertices_position.push_back(locVertexcoord[pID+1]);
+      vertices_position.push_back(locVertexcoord[pID+2]);
+      // Second vertex
+      qID = loc_tri_indexes[(i * 3) + 1] * 3;
+      vertices_position.push_back(locVertexcoord[qID]);
+      vertices_position.push_back(locVertexcoord[qID+1]);
+      vertices_position.push_back(locVertexcoord[qID+2]);
+      // Third vertex
+      rID = loc_tri_indexes[(i * 3) + 2] * 3;
+      vertices_position.push_back(locVertexcoord[rID]);
+      vertices_position.push_back(locVertexcoord[rID+1]);
+      vertices_position.push_back(locVertexcoord[rID+2]);
+    }
+  return vertices_position;
+}
+
+std::vector<float> Tesselator::GetNormalsAsTuple()
+{
+  // create the vector and allocate memory
+  std::vector<float> normals;
+  normals.reserve(tot_triangle_count);
+  // loop over normals
+  int pID = 0;
+  int qID = 0;
+  int rID = 0;
+  for (int i=0;i<tot_triangle_count;i++) {
+      pID = loc_tri_indexes[(i * 3) + 0] * 3;
+      normals.push_back(locNormalcoord[pID]);
+      normals.push_back(locNormalcoord[pID+1]);
+      normals.push_back(locNormalcoord[pID+2]);
+      // Second normal
+      qID = loc_tri_indexes[(i * 3) + 1] * 3;
+      normals.push_back(locNormalcoord[qID]);
+      normals.push_back(locNormalcoord[qID+1]);
+      normals.push_back(locNormalcoord[qID+2]);
+      // Third normal
+      rID = loc_tri_indexes[(i * 3) + 2] * 3;
+      normals.push_back(locNormalcoord[rID]);
+      normals.push_back(locNormalcoord[rID+1]);
+      normals.push_back(locNormalcoord[rID+2]);
+    }
+  return normals;
+}
+
 std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
 {
   std::stringstream str_ifs, str_vertices, str_normals;
