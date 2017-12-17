@@ -1,4 +1,4 @@
-version: pythonocc-core-0.18.1
+version: pythonocc-core-0.18.2-dev.{build}
 
 environment:
   binstar_token:
