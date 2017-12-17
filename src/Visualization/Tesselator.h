@@ -119,5 +119,7 @@ class Tesselator
       int ObjGetEdgeCount();
       int ObjEdgeGetVertexCount(int iEdge);
       void ObjGetTriangle(int trianglenum, int *vertices, int *texcoords, int *normals);
+      std::vector<float> GetVerticesPositionAsTuple();
+      std::vector<float> GetNormalsAsTuple();
 };
 #endif
