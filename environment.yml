@@ -1,0 +1,11 @@
+name: pyocc0182
+channels:
+- pythonocc
+- tpaviot
+- conda-forge
+- dlr-sc
+- oce
+- defaults
+dependencies:
+- pythonocc-core=0.18.2
+- pythreejs=0.4.1
