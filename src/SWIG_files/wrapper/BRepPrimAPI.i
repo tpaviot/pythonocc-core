@@ -18,8 +18,40 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPPRIMAPIDOCSTRING
-"The BRepBuilderAPI package  provides an  ApplicationProgramming Interface for the BRep topology datastructure.The API is a set of classes aiming to provide :* High level and simple calls for the most commonoperations.*  Keeping  an  access on  the  low-levelimplementation of high-level calls.* Examples of programming of high-level operationsfrom low-level operations.* A complete coverage of modelling :- Creating vertices ,edges, faces, solids.- Sweeping operations.- Boolean operations.- Global properties computation.The API provides classes to build objects:* The constructors of the classes provides thedifferent constructions methods.* The class keeps as fields the  different toolsused to build the object.*  The class provides a casting method to getautomatically the result with a  function-likecall.For example to make a vertex <V> from a point <P>one can writes :V = BRepBuilderAPI_MakeVertex(P);orBRepBuilderAPI_MakeVertex MV(P);V = MV.Vertex();For tolerances a default precision is used whichcan  be  changed  by  the  packahe methodBRepBuilderAPI::Precision.For error handling the BRepBuilderAPI commands raise onlythe NotDone error. When Done is false on a commandthe error description can be asked to the command.In theory the comands can be  called with anyarguments, argument checking is performed by thecommand."
+"The BRepBuilderAPI package  provides an Application Programming Interface for
+the BRep topology datastructure. The API is a set of classes aiming to provide:
+
+- High level and simple calls for the most commonoperations.
+- Keeping  an  access on  the  low-levelimplementation of high-level calls.
+- Examples of programming of high-level operations from low-level operations.
+- A complete coverage of modeling:
+
+  - Creating vertices ,edges, faces, solids.
+  - Sweeping operations.
+  - Boolean operations.
+  - Global properties computation.
+
+The API provides classes to build objects:
+
+- The constructors of the classes provides the different constructions methods.
+- The class keeps as fields the  different tools used to build the object.
+- The class provides a casting method to get automatically the result with a  function-likecall.
+For example to make a vertex <V> from a point <P> one can writes:
+
+  V = BRepBuilderAPI_MakeVertex(P);
+
+  or
+
+  BRepBuilderAPI_MakeVertex MV(P);
+  V = MV.Vertex();
+
+For tolerances a default precision is used which can  be  changed  by  the  package methodBRepBuilderAPI::Precision.
+
+For error handling the BRepBuilderAPI commands raise only the Not Done error. When Done is false on a command the error description can be asked to the command.
+In theory the commands can be  called with any arguments, argument checking is performed by the command."
+
 %enddef
+
 %module (package="OCC", docstring=BREPPRIMAPIDOCSTRING) BRepPrimAPI
 
 #pragma SWIG nowarn=504,325,503
@@ -131,7 +163,7 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 ") Shell;
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Shell;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Shell;
 		 operator TopoDS_Shell ();
 		%feature("compactdefaultargs") Solid;
@@ -141,7 +173,7 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 ") Solid;
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 		%feature("compactdefaultargs") BottomFace;
@@ -218,7 +250,7 @@ class BRepPrimAPI_MakeHalfSpace : public BRepBuilderAPI_MakeShape {
 ") Solid;
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 };
@@ -251,7 +283,7 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 ") Face;
 		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") operator TopoDS_Face;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Face;
 		 operator TopoDS_Face ();
 		%feature("compactdefaultargs") Shell;
@@ -261,7 +293,7 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 ") Shell;
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Shell;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Shell;
 		 operator TopoDS_Shell ();
 		%feature("compactdefaultargs") Solid;
@@ -271,7 +303,7 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 ") Solid;
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 };
@@ -399,7 +431,7 @@ class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 ") Shell;
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Shell;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Shell;
 		 operator TopoDS_Shell ();
 		%feature("compactdefaultargs") Solid;
@@ -409,7 +441,7 @@ class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 ") Solid;
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 };
