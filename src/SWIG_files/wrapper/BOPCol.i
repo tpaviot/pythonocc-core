@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BOPCOLDOCSTRING
-"The package contains collection classesthat are used bypartition and boolean operation algorithms"
+"The package contains collection classes that are used by partition and boolean operation algorithms"
 %enddef
 %module (package="OCC", docstring=BOPCOLDOCSTRING) BOPCol
 

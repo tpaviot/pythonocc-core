@@ -18,7 +18,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPDOCSTRING
-"This package describes a Boundary RepresentationData  Structure  inherited from  the abstractTopology  defined in the  TopoDS package. Thegeometric data are provided by the Geom and Geom2dpackages.The TVertex, TEdge, and TFace are redefined inthis package to add geometric information.-Level : PublicAll methods of all classes will be public."
+"This package describes a Boundary Representation Data  Structure  inherited from  the
+abstractTopology  defined in the  TopoDS package.
+The geometric data are provided by the Geom and Geom2dpackages. The TVertex, TEdge, and TFace are redefined in
+this package to add geometric information.-Level :
+Public
+All methods of all classes will be public."
 %enddef
 %module (package="OCC", docstring=BREPDOCSTRING) BRep
 

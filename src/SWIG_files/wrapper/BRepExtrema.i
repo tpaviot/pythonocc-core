@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPEXTREMADOCSTRING
-"This package gives  tools to compute extrema betweenShapes from BRep."
+"This package gives  tools to compute extrema between Shapes from BRep."
 %enddef
 %module (package="OCC", docstring=BREPEXTREMADOCSTRING) BRepExtrema
 
@@ -388,9 +388,9 @@ enum FilterResult {
 		%feature("autodoc", "	* Checks if two mesh elements should be tested for overlapping/intersection (used for detection correct/incorrect cases of shared edges and vertices).
 
 	:param Standard_Integer:
-	:type Standard_Integer: 
+	:type Standard_Integer:
 	:param Standard_Integer:
-	:type Standard_Integer: 
+	:type Standard_Integer:
 	:rtype: FilterResult
 ") PreCheckElements;
 		FilterResult PreCheckElements (const Standard_Integer,const Standard_Integer);

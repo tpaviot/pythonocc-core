@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BOPDSDOCSTRING
-"The package contains classes that implementsthe data structure forgeneral fuse and boolean operation algorithms"
+"The package contains classes that implements the data structure for general fuse and boolean operation algorithms"
 %enddef
 %module (package="OCC", docstring=BOPDSDOCSTRING) BOPDS
 

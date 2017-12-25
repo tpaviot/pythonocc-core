@@ -18,7 +18,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPGPROPDOCSTRING
-"Provides global functions to compute a shape's globalproperties for lines, surfaces or volumes, and bringthem together with the global properties alreadycomputed for a geometric system.The global properties computed for a system are :- its mass,- its center of mass,- its matrix of inertia,- its moment about an axis,- its radius of gyration about an axis,- and its principal properties of inertia such asprincipal axis, principal moments, principal radius of gyration."
+"Provides global functions to compute a shape's global properties for lines, surfaces or volumes,
+and bring them together with the global properties already computed for a geometric system.
+The global properties computed for a system are :
+
+- its mass,
+- its center of mass,
+- its matrix of inertia,
+- its moment about an axis,
+- its radius of gyration about an axis,
+- and its principal properties of inertia such asprincipal axis, principal moments, principal radius of gyration."
 %enddef
 %module (package="OCC", docstring=BREPGPROPDOCSTRING) BRepGProp
 

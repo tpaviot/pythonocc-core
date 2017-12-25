@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCCINTDOCSTRING
-"This package implements the services needed by thetoolkit Gcc to use curves other than lines or circles.This package is also used for intersections andbisecting curves."
+"This package implements the services needed by the toolkit Gcc to use curves other than lines or circles.This package is also used for intersections and
+bisecting curves."
 %enddef
 %module (package="OCC", docstring=GCCINTDOCSTRING) GccInt
 

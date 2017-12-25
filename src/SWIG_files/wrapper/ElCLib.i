@@ -75,7 +75,11 @@ class ElCLib {
 ") InPeriod;
 		static Standard_Real InPeriod (const Standard_Real U,const Standard_Real UFirst,const Standard_Real ULast);
 		%feature("compactdefaultargs") AdjustPeriodic;
-		%feature("autodoc", "	* Adjust U1 and U2 in the parametric range UFirst Ulast of a periodic curve, where ULast - UFirst is its period. To do this, this function: - sets U1 in the range [ UFirst, ULast ] by adding/removing the period to/from the value U1, then - sets U2 in the range [ U1, U1 + period ] by adding/removing the period to/from the value U2. Precision is used to test the equalities.
+		%feature("autodoc", "	* Adjust U1 and U2 in the parametric range UFirst Ulast of a periodic curve, where ULast
+    - UFirst is its period. To do this, this function:
+    - sets U1 in the range [ UFirst, ULast ] by adding/removing the period to/from the value U1, then
+    - sets U2 in the range [ U1, U1 + period ] by adding/removing the period to/from the value U2.
+    Precision is used to test the equalities.
 
 	:param UFirst:
 	:type UFirst: float

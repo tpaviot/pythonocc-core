@@ -18,7 +18,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ASPECTDOCSTRING
-"-Version:This package contains the group of graphic elements commonto different types of visualisers. It allows the descriptionof a screen background, a window, an edge, and groups ofgraphic attributes that can be used in describing 2Dand 3D objects.-Keywords: Window, Aspect, FillArea, Line, Marker, EdgeHighlight, Hatch, Background, GradientBackground, Color map,Type map, Width map, Font map-Warning:-References:"
+"-Version:
+This package contains the group of graphic elements common to different types of visualizers.
+It allows the description of a screen background, a window, an edge, and groups of
+graphic attributes that can be used in describing 2Dand 3D objects.
+-Keywords: Window, Aspect, FillArea, Line, Marker, EdgeHighlight, Hatch, Background, GradientBackground,
+Color map,Type map, Width map, Font map-Warning:-References:"
 %enddef
 %module (package="OCC", docstring=ASPECTDOCSTRING) Aspect
 

@@ -18,7 +18,36 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPALGOAPIDOCSTRING
-"The BRepAlgoAPI package provides a full range ofservices to perform Boolean Operations on arguments (shapesthat are defined in the BRep data structures). Theimplemented new algorithm is intended to replace the OldBoolean Operations algorithm in the BRepAlgoAPI package.The New algorithm is free of a large number of weak spotsand limitations characteristics of the Old algorithm.It is more powerful and flexible.It can process arguments the Old algorithm was not adapted for.The new algorithm is based on a new approach to operationswith interfered shapes. The advantages of the new algorithminclude an ability to treat arguments that have sharedentities. It can properly process two solids with sharedfaces (in terms of TopoDS_Shape::IsSame()), twofaces that have shared edges and so on. Now the New BooleanOperation algorithm can treat a wide range of shapes while theOld one fails on them.A generalization of treatment of same-domain faceswas included into the New algorithm. Two faces that sharethe same domain are processed according to the common ruleeven if the underlying surfaces are of different types. Thisallows to execute Boolean Operations properly for the samedomain faces. It also concerns solids and shells that have thesame domain faces. It is quite frequent when two faces sharethe same domain. And the New algorithm successfully copeswith it in contrast to the Old one.Generalization oftreatment of degenerated edgesgives a possibility to process them properly. Although thereare still some difficulties with processing faces in areas closeto degenerated edges.Now the processing of arguments having internal sub-shapes givesa correct result. Internal sub-shape means a sub-shape of ashape with the orientation TopAbs_INTERNAL and is locatedinside the shape boundaries. The New algorithm processes faceswith internal edges properly. The new API of the BooleanOperations (in addition to the old API) allows to reuse thealready computed interference between arguments in differenttypes of Boolean Operations. It is possible to use once computedinterference in FUSE, CUT and COMMON operations on givenarguments. So there is no need to re-compute the interferencebetween the arguments. It allows to reduce time for more than oneoperation on given arguments.The shape type of a Boolean Operation result and types of the arguments:-   For arguments with the same shape type (e.g. SOLID /SOLID) the type of the resulting shape will be aCOMPOUND, containing shapes of this type;-   For arguments with different shape types (e.g.SHELL / SOLID) the type of the resulting shape will be aCOMPOUND, containing shapes of the type that is the same asthat of the low type of the argument. Example: ForSHELL/SOLID the result is a COMPOUND of SHELLs.-   For arguments with different shape types some ofBoolean Operations can not be done using the defaultimplementation, because of a non-manifold type of theresult. Example: the FUSE operation for SHELL and SOLIDcan not be done, but the CUT operation can be done, whereSHELL is the object and SOLID is the tool.It is possible to perform Boolean Operations on argumentsof the COMPOUND shape type. In this case each compound must notbe heterogeneous, i.e. it must contain equidimensional shapes(EDGEs or/and WIREs, FACEs or/and SHELLs, SOLIDs). SOLIDsinside the COMPOUND must not contact (intersect or touch)each other. The same condition is true for SHELLs or FACEs,WIREs or EDGEs.It does not support Boolean Operations for COMPSOLID type of shape."
+"The BRepAlgoAPI package provides a full range of services to perform Boolean Operations on arguments (shapesthat are defined in the BRep data structures).
+The implemented new algorithm is intended to replace the Old Boolean Operations algorithm in the BRepAlgoAPI package.
+The New algorithm is free of a large number of weak spots and limitations characteristics of the Old algorithm.
+It is more powerful and flexible.It can process arguments the Old algorithm was not adapted for.
+The new algorithm is based on a new approach to operations with interfered shapes. The advantages of the new algorithm
+include an ability to treat arguments that have shared entities. It can properly process two solids with shared
+faces (in terms of TopoDS_Shape::IsSame()), two faces that have shared edges and so on. Now the New Boolean Operation algorithm can treat a wide range of shapes while the
+Old one fails on them. A generalization of treatment of same-domain faces was included into the New algorithm.
+Two faces that share the same domain are processed according to the common rule even if the underlying surfaces are of different types.
+This allows to execute Boolean Operations properly for the same domain faces. It also concerns solids and shells that have the same domain faces.
+It is quite frequent when two faces share the same domain. And the New algorithm successfully copes with it in contrast to the Old one.Generalization of
+treatment of degenerated edges gives a possibility to process them properly. Although there are still some difficulties with processing faces in areas close
+to degenerated edges.Now the processing of arguments having internal sub-shapes gives a correct result. Internal sub-shape means a sub-shape of a
+shape with the orientation TopAbs_INTERNAL and is located inside the shape boundaries. The New algorithm processes faces
+with internal edges properly. The new API of the Boolean Operations (in addition to the old API) allows to reuse the
+already computed interference between arguments in different types of Boolean Operations.
+It is possible to use once computed interference in FUSE, CUT and COMMON operations on given arguments.
+So there is no need to re-compute the interference between the arguments. It allows to reduce time for more than one
+operation on given arguments.The shape type of a Boolean Operation result and types of the arguments:
+
+-   For arguments with the same shape type (e.g. SOLID /SOLID) the type of the resulting shape will be aCOMPOUND, containing shapes of this type;
+-   For arguments with different shape types (e.g.SHELL / SOLID) the type of the resulting shape will be aCOMPOUND, containing shapes of the type that is the same as
+that of the low type of the argument. Example: ForSHELL/SOLID the result is a COMPOUND of SHELLs.
+-   For arguments with different shape types some of Boolean Operations can not be done using the default
+implementation, because of a non-manifold type of the result.
+Example: the FUSE operation for SHELL and SOLID can not be done, but the CUT operation can be done, where
+SHELL is the object and SOLID is the tool.It is possible to perform Boolean Operations on arguments of the COMPOUND shape type. In this case each compound must not
+be heterogeneous, i.e. it must contain equidimensional shapes(EDGEs or/and WIREs, FACEs or/and SHELLs, SOLIDs).
+SOLIDs inside the COMPOUND must not contact (intersect or touch)each other. The same condition is true for SHELLs or FACEs,WIREs or EDGEs.
+It does not support Boolean Operations for COMPSOLID type of shape."
 %enddef
 %module (package="OCC", docstring=BREPALGOAPIDOCSTRING) BRepAlgoAPI
 

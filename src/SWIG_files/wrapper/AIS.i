@@ -18,7 +18,58 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define AISDOCSTRING
-"Application Interactive Services provide the means tocreate links between an application GUI viewer andthe packages which are used to manage selectionand presentation. The tools AIS defined in order todo this include different sorts of entities: both theselectable viewable objects themselves and thecontext and attribute managers to define theirselection and display.To orient the user as he works in a modelingenvironment, views and selections must becomprehensible. There must be several different sortsof selectable and viewable object defined. These mustalso be interactive, that is, connecting graphicrepresentation and the underlying referencegeometry. These entities are called InteractiveObjects, and are divided into four types:-  the Datum-  the Relation-  the Object-  None.The Datum groups together the construction elementssuch as lines, circles, points, trihedra, plane trihedra,planes and axes.The Relation is made up of constraints on one ormore interactive shapes and the correspondingreference geometry. For example, you might want toconstrain two edges in a parallel relation. Thiscontraint is considered as an object in its own right,and is shown as a sensitive primitive. This takes thegraphic form of a perpendicular arrow marked withthe || symbol and lying between the two edges.The Object type includes topological shapes, andconnections between shapes.None, in order not to eliminate the object, tells theapplication to look further until it finds an objectdefinition in its generation which is accepted.Inside these categories, you have the possibilityof  an additional characterization by means of asignature. The signature provides an index to thefurther characterization. By default, the  InteractiveObject has a None type and a signature of 0(equivalent to None.) If you want to give a particulartype and signature to your interactive object, you mustredefine the two virtual methods: Type and Signature.In the C++ inheritance structure of the package, eachclass representing a specific Interactive Objectinherits AIS_InteractiveObject. Among theseinheriting classes, AIS_Relation functions as theabstract mother class for tinheriting classes definingdisplay of specific relational constraints and types ofdimension. Some of these include:-  display of constraints based on relations ofsymmetry, tangency, parallelism and concentricity-  display of dimensions for angles, offsets,diameters, radii and chamfers.No viewer can show everything at once with anycoherence or clarity. Views must be managedcarefully both sequentially and at any given instant.Another function of the view is that of a context tocarry out design in. The design changes are appliedto the objects in the view and then extended to theunderlying reference geometry by a solver. To makesense of this complicated visual data, several displayand selection tools are required. To facilitatemanagement, each object and each constructionelement has a selection priority. There are alsomeans to modify the default priority.To define an environment of dynamic detection, youcan use standard filter classes or create your own. Afilter questions the owner of the sensitive primitive inlocal context to determine if it has the the desiredqualities. If it answers positively, it is kept. If not, it is rejected.The standard filters supplied in AIS include:AIS_AttributeFilterAIS_SignatureFilterAIS_TypeFilter.Only the type filter can be used in the defaultoperating mode, the neutral point. The others canonly be used in open local contexts.Neutral point and local context constitute the twooperating modes of the central entity which pilotsvisualizations and selections, the Interactive Context.It is linked to a main viewer and if you like, a trash binviewer as well.The neutral point, which is the default mode, allowsyou to easily visualize and select interactive objectswhich have been loaded into the context. Openinglocal contexts allows you to prepare and use atemporary selection environment without disturbingthe neutral point. A set of functions allows you tochoose the interactive objects which you want to acton, the selection modes which you want to activate,and the temporary visualizations which you willexecute. When the operation is finished, you close thecurrent local context and return to the state in whichyou were before opening it (neutral point or previouslocal context).An interactive object can have a certain number ofgraphic attributes which are specific to it, such asvisualization mode, color, and material. By the sametoken, the interactive context has a set of graphicattributes, the Drawer which is valid by default for theobjects it controls.  When an interactive object isvisualized, the required graphic attributes are firsttaken from the object's own Drawer if one exists, orfrom the context drawer for the others."
+"Application Interactive Services provide the means to create links between an
+application GUI viewer and the packages which are used to manage selection and presentation. The tools AIS defined in order to
+do this include different sorts of entities: both the selectable viewable objects themselves
+and the context and attribute managers to define their selection and display.To orient the user as he works in a modeling
+environment, views and selections must be comprehensible. There must be several different sorts
+of select able and view able object defined. These must also be interactive, that is, connecting graphic representation
+and the underlying reference geometry. These entities are called Interactive Objects, and are divided into four types:
+
+-  the Datum
+-  the Relation
+-  the Object
+-  None.
+The Datum groups together the construction elementssuch as lines, circles, points, trihedra, plane trihedra, planes and axes.
+The Relation is made up of constraints on one or more interactive shapes and the corresponding reference geometry. For example, you might want to
+constrain two edges in a parallel relation. This constraint is considered as an object in its own right,and is shown as a sensitive primitive.
+ takes the graphic form of a perpendicular arrow marked with
+ the || symbol and lying between the two edges.The Object type includes topological shapes, and
+ connections between shapes.None, in order not to eliminate the object, tells the
+ application to look further until it finds an object
+ definition in its
+ generation which is accepted.Inside these categories, you have the possibility of  an additional characterization by means of a signature.
+ The signature provides an index to the further characterization. By default, the  Interactive
+Object has a None type and a signature of 0(equivalent to None.) If you want to give a particular type and signature to your interactive object, you must
+redefine the two virtual methods: Type and Signature.In the C++ inheritance structure of the package, each
+class representing a specific Interactive Object inherits AIS_Interactive Object. Among these
+inheriting classes, AIS_Relation functions as the abstract mother class for inheriting classes defining
+display of specific relational constraints and types of dimension. Some of these include:
+-  display of constraints based on relations of symmetry, tangency, parallelism and concentricity
+-  display of dimensions for angles, offsets,diameters, radii and chamfers. No viewer can show everything at once with any
+coherence or clarity. Views must be managed carefully both sequentially and at any given instant.Another function of the view is that of a context to carry out design in.
+The design changes are applied to the objects in the view and then extended to the
+underlying reference geometry by a solver. To make sense of this complicated visual data, several display and selection tools are required. To facilitate
+management, each object and each construction element has a selection priority. There are also means to modify the default priority.
+To define an environment of dynamic detection, you can use standard filter classes or create your own. A filter questions the owner of the sensitive primitive in
+local context to determine if it has the the desired
+qualities. If it answers positively, it is kept. If not, it is rejected.The standard filters supplied in AIS include:
+
+- AIS_AttributeFilter
+- AIS_SignatureFilter
+- AIS_TypeFilter.
+Only the type filter can be used in the default
+operating mode, the neutral point. The others can only be used in open local contexts.Neutral point and local context constitute the two
+operating modes of the central entity which pilots visualizations and selections, the Interactive Context.
+It is linked to a main viewer and if you like, a trash bin viewer as well.The neutral point, which is the default mode, allows
+you to easily visualize and select interactive objects which have been loaded into the context. Opening
+local contexts allows you to prepare and use a temporary selection environment without disturbing the neutral point.
+A set of functions allows you to choose the interactive objects which you want to act on, the selection modes which you want to activate,
+and the temporary visualizations which you will
+execute. When the operation is finished, you close the current local context and return to the state in which you were before opening it (neutral point or previous
+local context).An interactive object can have a certain number of graphic attributes which are specific to it, such as visualization mode, color, and material. By the same
+ token, the interactive context has a set of graphic attributes, the Drawer which is valid by default for the objects it controls.  When an interactive object is
+visualized, the required graphic attributes are first taken from the object's own Drawer if one exists, or from the context drawer for the others."
 %enddef
 %module (package="OCC", docstring=AISDOCSTRING) AIS
 
@@ -1001,7 +1052,7 @@ class AIS_ColoredDrawer : public Prs3d_Drawer {
 		void UnsetOwnWidth ();
 		%feature("compactdefaultargs") SetOwnWidth;
 		%feature("autodoc", "	:param Standard_Real:
-	:type Standard_Real: 
+	:type Standard_Real:
 	:rtype: None
 ") SetOwnWidth;
 		void SetOwnWidth (const Standard_Real);

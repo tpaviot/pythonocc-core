@@ -70,7 +70,10 @@ enum Draft_ErrorStatus {
 class Draft {
 	public:
 		%feature("compactdefaultargs") Angle;
-		%feature("autodoc", "	* Returns the draft angle of the face <F> using the direction <Direction>. The method is valid for : - Plane faces, - Cylindrical or conical faces, when the direction of the axis of the surface is colinear with the direction. Otherwise, the exception DomainError is raised.
+		%feature("autodoc", "	* Returns the draft angle of the face <F> using the direction <Direction>. The method is valid for :
+    - Plane faces,
+    - Cylindrical or conical faces, when the direction of the axis of the surface is colinear with the direction.
+    Otherwise, the exception DomainError is raised.
 
 	:param F:
 	:type F: TopoDS_Face &

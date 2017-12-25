@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BISECTORDOCSTRING
-"- Purpose : This package provides the bisecting line between twogeometric elements."
+"- Purpose : This package provides the bisecting line between two geometric elements."
 %enddef
 %module (package="OCC", docstring=BISECTORDOCSTRING) Bisector
 

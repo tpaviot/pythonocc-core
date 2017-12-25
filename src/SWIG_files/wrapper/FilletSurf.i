@@ -84,7 +84,8 @@ enum FilletSurf_StatusType {
 class FilletSurf_Builder {
 	public:
 		%feature("compactdefaultargs") FilletSurf_Builder;
-		%feature("autodoc", "	* initialize of the informations necessary for the computation of the fillet on the Shape S from a list of edges E and a radius R. //! Ta is the angular tolerance Tapp3d is the 3d approximation tolerance Tapp2d is the 2d approximation tolerance
+		%feature("autodoc", "	* initialize of the informations necessary for the computation of the fillet on the Shape S from a list of edges E and a radius R.
+    //! Ta is the angular tolerance Tapp3d is the 3d approximation tolerance Tapp2d is the 2d approximation tolerance
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -112,13 +113,24 @@ class FilletSurf_Builder {
 ") Simulate;
 		void Simulate ();
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* gives the status about the computation of the fillet returns: IsOK :no problem during the computation IsNotOk: no result is produced IsPartial: the result is partial
+		%feature("autodoc", "	* gives the status about the computation of the fillet returns:
+
+    IsOK :no problem during the computation
+
+    IsNotOk: no result is produced
+
+    IsPartial: the result is partial
 
 	:rtype: FilletSurf_StatusDone
 ") IsDone;
 		FilletSurf_StatusDone IsDone ();
 		%feature("compactdefaultargs") StatusError;
-		%feature("autodoc", "	* gives informations about error status if IsDone=IsNotOk returns EdgeNotG1: the edges are not G1 FacesNotG1 : two connected faces on a same support are not G1 EdgeNotOnShape: the edge is not on shape NotSharpEdge: the edge is not sharp PbFilletCompute: problem during the computation of the fillet
+		%feature("autodoc", "	* gives informations about error status if IsDone=IsNotOk returns
+    - EdgeNotG1: the edges are not G1 F
+    - acesNotG1 : two connected faces on a same support are not G1
+    - EdgeNotOnShape: the edge is not on shape
+    - NotSharpEdge: the edge is not sharp
+    - PbFilletCompute: problem during the computation of the fillet
 
 	:rtype: FilletSurf_ErrorTypeStatus
 ") StatusError;

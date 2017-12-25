@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPLIBDOCSTRING
-"The BRepLib package provides general utilities forBRep.* FindSurface : Class to compute a surface througha set of edges.* Compute missing 3d curve on an edge."
+"The BRepLib package provides general utilities forBRep.* FindSurface :
+Class to compute a surface through a set of edges.
+* Compute missing 3d curve on an edge."
 %enddef
 %module (package="OCC", docstring=BREPLIBDOCSTRING) BRepLib
 
@@ -638,7 +640,7 @@ class BRepLib_MakeShape : public BRepLib_Command {
 ") Shape;
 		const TopoDS_Shape  Shape ();
 		%feature("compactdefaultargs") operator TopoDS_Shape;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Shape;
 		 operator TopoDS_Shape ();
 		%feature("compactdefaultargs") FaceStatus;
@@ -1189,7 +1191,7 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 ") Edge;
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Vertex1;
@@ -1550,7 +1552,7 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 ") Edge;
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Vertex1;
@@ -1887,7 +1889,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 ") Face;
 		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") operator TopoDS_Face;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Face;
 		 operator TopoDS_Face ();
 		%feature("compactdefaultargs") IsDegenerated;
@@ -2024,7 +2026,7 @@ class BRepLib_MakePolygon : public BRepLib_MakeShape {
 ") Edge;
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Wire;
@@ -2032,7 +2034,7 @@ class BRepLib_MakePolygon : public BRepLib_MakeShape {
 ") Wire;
 		const TopoDS_Wire  Wire ();
 		%feature("compactdefaultargs") operator TopoDS_Wire;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Wire;
 		 operator TopoDS_Wire ();
 };
@@ -2105,7 +2107,7 @@ class BRepLib_MakeShell : public BRepLib_MakeShape {
 ") Shell;
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Shell;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Shell;
 		 operator TopoDS_Shell ();
 };
@@ -2196,7 +2198,7 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 ") Solid;
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 		%feature("compactdefaultargs") FaceStatus;
@@ -2229,7 +2231,7 @@ class BRepLib_MakeVertex : public BRepLib_MakeShape {
 ") Vertex;
 		const TopoDS_Vertex  Vertex ();
 		%feature("compactdefaultargs") operator TopoDS_Vertex;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Vertex;
 		 operator TopoDS_Vertex ();
 };
@@ -2346,7 +2348,7 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 ") Wire;
 		const TopoDS_Wire  Wire ();
 		%feature("compactdefaultargs") operator TopoDS_Wire;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Wire;
 		 operator TopoDS_Wire ();
 		%feature("compactdefaultargs") Edge;

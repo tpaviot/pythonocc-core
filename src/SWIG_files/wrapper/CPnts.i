@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CPNTSDOCSTRING
-"- Purpose :This package contains  the definition of the geometricalgorithms  used to compute characteristic points  onparametrized curves in 3d or 2d space.This package defines the external geometric entities, withtheir requirements, used in the algorithms."
+"- Purpose :This package contains  the definition of the geometricalgorithms  used to compute characteristic points  on
+parametrized curves in 3d or 2d space.This package defines the external geometric entities, withtheir requirements, used in the algorithms."
 %enddef
 %module (package="OCC", docstring=CPNTSDOCSTRING) CPnts
 
