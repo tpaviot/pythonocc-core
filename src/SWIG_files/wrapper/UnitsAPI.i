@@ -18,7 +18,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define UNITSAPIDOCSTRING
-"The UnitsAPI global functions are used toconvert a value from any unit into another unit.PrinciplesConversion is executed among three unit systems:-  the SI System-  the user's Local System-  the user's Current System.The SI System is the standard international unitsystem. It is indicated by SI in the synopses ofthe UnitsAPI functions.The MDTV System corresponds to the SIinternational standard but the length unit and allits derivatives use millimeters instead of the meters.Both systems are proposed by Open CASCADE;the SI System is the standard option. Byselecting one of these two systems, the userdefines his Local System through theSetLocalSystem function. The Local System isindicated by LS in the synopses of the UnitsAPI functions.The user's Local System units can be modified inthe working environment. The user defines hisCurrent System by modifying its units throughthe SetCurrentUnit function. The CurrentSystem is indicated by Current in the synopsesof the UnitsAPI functions."
+"The UnitsAPI global functions are used toconvert a value from any unit into another unit.
+PrinciplesConversion is executed among three unit systems:
+
+-  the SI System
+
+-  the user's Local System
+
+-  the user's Current System.
+
+The SI System is the standard international unitsystem. It is indicated by SI in the synopses ofthe UnitsAPI functions.
+The MDTV System corresponds to the SIinternational standard but the length unit and all its derivatives use millimeters instead of the meters.
+Both systems are proposed by Open CASCADE;the SI System is the standard option. Byselecting one of these two systems,
+the userdefines his Local System through theSetLocalSystem function. The Local System is indicated by LS in the synopses of the UnitsAPI functions.
+The user's Local System units can be modified inthe working environment. The user defines hisCurrent System by modifying its units through
+the SetCurrentUnit function. The CurrentSystem is indicated by Current in the synopses of the UnitsAPI functions."
 %enddef
 %module (package="OCC", docstring=UNITSAPIDOCSTRING) UnitsAPI
 
@@ -69,7 +83,8 @@ enum UnitsAPI_SystemUnits {
 class UnitsAPI {
 	public:
 		%feature("compactdefaultargs") CurrentToLS;
-		%feature("autodoc", "	* Converts the current unit value to the local system units value. Example: CurrentToLS(1.,'LENGTH') returns 1000. if the current length unit is meter and LocalSystem is MDTV.
+		%feature("autodoc", "	* Converts the current unit value to the local system units value. Example: CurrentToLS(1.,'LENGTH') returns 1000. 
+    if the current length unit is meter and LocalSystem is MDTV.
 
 	:param aData:
 	:type aData: float
@@ -89,7 +104,8 @@ class UnitsAPI {
 ") CurrentToSI;
 		static Standard_Real CurrentToSI (const Standard_Real aData,const char * aQuantity);
 		%feature("compactdefaultargs") CurrentFromLS;
-		%feature("autodoc", "	* Converts the local system units value to the current unit value. Example: CurrentFromLS(1000.,'LENGTH') returns 1. if current length unit is meter and LocalSystem is MDTV.
+		%feature("autodoc", "	* Converts the local system units value to the current unit value. Example: CurrentFromLS(1000.,'LENGTH') returns 1. if current length unit is meter and
+    LocalSystem is MDTV.
 
 	:param aData:
 	:type aData: float
@@ -153,7 +169,9 @@ class UnitsAPI {
 ") AnyToSI;
 		static Standard_Real AnyToSI (const Standard_Real aData,const char * aUnit,Handle_Units_Dimensions & aDim);
 		%feature("compactdefaultargs") AnyFromLS;
-		%feature("autodoc", "	* Converts the local system units value to the local unit value. Example: AnyFromLS(25.4,'in.') returns 1. if the LocalSystem is MDTV. Note: aUnit is also used to identify the type of physical quantity to convert.
+		%feature("autodoc", "	* Converts the local system units value to the local unit value. Example: AnyFromLS(25.4,'in.') returns 1. if the LocalSystem is MDTV.
+
+    Note: aUnit is also used to identify the type of physical quantity to convert.
 
 	:param aData:
 	:type aData: float
@@ -163,7 +181,9 @@ class UnitsAPI {
 ") AnyFromLS;
 		static Standard_Real AnyFromLS (const Standard_Real aData,const char * aUnit);
 		%feature("compactdefaultargs") AnyFromSI;
-		%feature("autodoc", "	* Converts the SI system units value to the local unit value. Example: AnyFromSI(0.0254,'in.') returns 0.001 Note: aUnit is also used to identify the type of physical quantity to convert.
+		%feature("autodoc", "	* Converts the SI system units value to the local unit value. Example: AnyFromSI(0.0254,'in.') returns 0.001
+
+    Note: aUnit is also used to identify the type of physical quantity to convert.
 
 	:param aData:
 	:type aData: float
@@ -173,7 +193,8 @@ class UnitsAPI {
 ") AnyFromSI;
 		static Standard_Real AnyFromSI (const Standard_Real aData,const char * aUnit);
 		%feature("compactdefaultargs") CurrentToAny;
-		%feature("autodoc", "	* Converts the aData value expressed in the current unit for the working environment, as defined for the physical quantity aQuantity by the last call to the SetCurrentUnit function, into the unit aUnit.
+		%feature("autodoc", "	* Converts the aData value expressed in the current unit for the working environment, as defined for the physical quantity aQuantity
+    by the last call to the SetCurrentUnit function, into the unit aUnit.
 
 	:param aData:
 	:type aData: float
@@ -185,7 +206,8 @@ class UnitsAPI {
 ") CurrentToAny;
 		static Standard_Real CurrentToAny (const Standard_Real aData,const char * aQuantity,const char * aUnit);
 		%feature("compactdefaultargs") CurrentFromAny;
-		%feature("autodoc", "	* Converts the aData value expressed in the unit aUnit, into the current unit for the working environment, as defined for the physical quantity aQuantity by the last call to the SetCurrentUnit function.
+		%feature("autodoc", "	* Converts the aData value expressed in the unit aUnit, into the current unit for the working environment, as defined for the physical quantity
+    aQuantity by the last call to the SetCurrentUnit function.
 
 	:param aData:
 	:type aData: float
@@ -209,7 +231,8 @@ class UnitsAPI {
 ") AnyToAny;
 		static Standard_Real AnyToAny (const Standard_Real aData,const char * aUnit1,const char * aUnit2);
 		%feature("compactdefaultargs") LSToSI;
-		%feature("autodoc", "	* Converts the local system units value to the SI system unit value. Example: LSToSI(1.,'LENGTH') returns 0.001 if the local system length unit is millimeter.
+		%feature("autodoc", "	* Converts the local system units value to the SI system unit value. Example: LSToSI(1.,'LENGTH') returns 0.001 if the local system length unit
+    is millimeter.
 
 	:param aData:
 	:type aData: float
@@ -219,7 +242,8 @@ class UnitsAPI {
 ") LSToSI;
 		static Standard_Real LSToSI (const Standard_Real aData,const char * aQuantity);
 		%feature("compactdefaultargs") SIToLS;
-		%feature("autodoc", "	* Converts the SI system unit value to the local system units value. Example: SIToLS(1.,'LENGTH') returns 1000. if the local system length unit is millimeter.
+		%feature("autodoc", "	* Converts the SI system unit value to the local system units value. Example: SIToLS(1.,'LENGTH') returns 1000.
+    if the local system length unit is millimeter.
 
 	:param aData:
 	:type aData: float

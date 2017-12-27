@@ -63,7 +63,8 @@ def register_handle(handle, base_object):
 class XSControl {
 	public:
 		%feature("compactdefaultargs") Session;
-		%feature("autodoc", "	* Returns the WorkSession of a SessionPilot, but casts it as from XSControl : it then gives access to Control & Transfers
+		%feature("autodoc", "	* Returns the WorkSession of a SessionPilot, but casts it as from XSControl :
+    it then gives access to Control & Transfers
 
 	:param pilot:
 	:type pilot: Handle_IFSelect_SessionPilot &
@@ -96,7 +97,8 @@ class XSControl_ConnectedShapes : public IFSelect_SelectExplore {
 ") XSControl_ConnectedShapes;
 		 XSControl_ConnectedShapes ();
 		%feature("compactdefaultargs") XSControl_ConnectedShapes;
-		%feature("autodoc", "	* Creates a Selection ConnectedShapes, which will work with the current TransferProcess brought by the TransferReader
+		%feature("autodoc", "	* Creates a Selection ConnectedShapes, which will work with the current TransferProcess brought by the
+    TransferReader
 
 	:param TR:
 	:type TR: Handle_XSControl_TransferReader &
@@ -104,7 +106,8 @@ class XSControl_ConnectedShapes : public IFSelect_SelectExplore {
 ") XSControl_ConnectedShapes;
 		 XSControl_ConnectedShapes (const Handle_XSControl_TransferReader & TR);
 		%feature("compactdefaultargs") SetReader;
-		%feature("autodoc", "	* Sets a TransferReader to sort entities : it brings the TransferProcess which may change, while the TransferReader does not
+		%feature("autodoc", "	* Sets a TransferReader to sort entities : it brings the TransferProcess which may change, while the
+    TransferReader does not
 
 	:param TR:
 	:type TR: Handle_XSControl_TransferReader &
@@ -124,7 +127,8 @@ class XSControl_ConnectedShapes : public IFSelect_SelectExplore {
 	:type explored: Interface_EntityIterator &
 	:rtype: bool
 ") Explore;
-		Standard_Boolean Explore (const Standard_Integer level,const Handle_Standard_Transient & ent,const Interface_Graph & G,Interface_EntityIterator & explored);
+		Standard_Boolean Explore (const Standard_Integer level,const Handle_Standard_Transient & ent,const Interface_Graph & G,
+    Interface_EntityIterator & explored);
 		%feature("compactdefaultargs") ExploreLabel;
 		%feature("autodoc", "	* Returns a text defining the criterium. 'Connected Entities through produced Shapes'
 
@@ -233,7 +237,8 @@ class XSControl_Controller : public MMgt_TShared {
 ") Recorded;
 		static Handle_XSControl_Controller Recorded (const char * name);
 		%feature("compactdefaultargs") ListRecorded;
-		%feature("autodoc", "	* Returns the list of names of recorded norms, according to mode = 0 (D) : all the recorded names < 0 : for each distinct norm, its resource (short) name > 0 : for each distinct norm, its complete (long) name
+		%feature("autodoc", "	* Returns the list of names of recorded norms, according to mode = 0 (D) : all the recorded names < 0 : for each distinct norm, its resource (short) name > 0 : 
+    for each distinct norm, its complete (long) name
 
 	:param mode: default value is 0
 	:type mode: int
@@ -241,7 +246,8 @@ class XSControl_Controller : public MMgt_TShared {
 ") ListRecorded;
 		static Handle_TColStd_HSequenceOfHAsciiString ListRecorded (const Standard_Integer mode = 0);
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns a name, as given when initializing : rsc = False (D) : True Name attached to the Norm (long name) rsc = True : Name of the ressource set (i.e. short name)
+		%feature("autodoc", "	* Returns a name, as given when initializing : rsc = False (D) : True
+    Name attached to the Norm (long name) rsc = True : Name of the ressource set (i.e. short name)
 
 	:param rsc: default value is Standard_False
 	:type rsc: bool
@@ -249,7 +255,8 @@ class XSControl_Controller : public MMgt_TShared {
 ") Name;
 		const char * Name (const Standard_Boolean rsc = Standard_False);
 		%feature("compactdefaultargs") Profile;
-		%feature("autodoc", "	* Returns the Profile It starts with a first configuration Base (empty) and the following options : protocol for the Protocol sign-type for the SignType (Default Signature for Type) access for the WorkLibrary tr-read for ActorRead (import processor) tr-write for ActorWrite (export processor)
+		%feature("autodoc", "	* Returns the Profile It starts with a first configuration Base (empty) and the following options :
+     protocol for the Protocol sign-type for the SignType (Default Signature for Type) access for the WorkLibrary tr-read for ActorRead (import processor) tr-write for ActorWrite (export processor)
 
 	:rtype: Handle_IFSelect_Profile
 ") Profile;
@@ -263,7 +270,8 @@ class XSControl_Controller : public MMgt_TShared {
 ") DefineProfile;
 		void DefineProfile (const char * confname);
 		%feature("compactdefaultargs") SetProfile;
-		%feature("autodoc", "	* Sets the Controller in a given Configuration of its Profile Calls SettingProfile (which can be redefined) //! Returns True if done, False if <confname> unknown
+		%feature("autodoc", "	* Sets the Controller in a given Configuration of its Profile Calls SettingProfile (which can be redefined)
+    //! Returns True if done, False if <confname> unknown
 
 	:param confname:
 	:type confname: char *
@@ -337,7 +345,14 @@ class XSControl_Controller : public MMgt_TShared {
 ") ActorWrite;
 		virtual Handle_Transfer_ActorOfFinderProcess ActorWrite ();
 		%feature("compactdefaultargs") UpdateStatics;
-		%feature("autodoc", "	* Updates static values <mode> precises the kind of updating : (see Items from Static) -1 : a precise static item : criter = its name 0 : all items of a family : criter = the family name 1 : all items which match regexp name : criter = regexp name By default (criter empty) should consider all relevant statics If <name> is defined, can consider only this static item The provided default method does nothing, to be redefined
+		%feature("autodoc", "	* Updates static values <mode> precises the kind of updating : (see Items from Static) -1 :
+
+    - a precise static item :  criter = its name 0 :
+    - all items of a family : criter = the family name 1
+    - all items which match regexp name :  criter = regexp name
+
+    By default (criter empty) should consider all relevant statics If <name> is defined,
+    can consider only this static item The provided default method does nothing, to be redefined
 
 	:param mode:
 	:type mode: int

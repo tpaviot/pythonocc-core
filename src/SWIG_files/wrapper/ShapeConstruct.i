@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPECONSTRUCTDOCSTRING
-"This package provides new algorithms for constructingnew geometrical objects and topological shapes. Itcomplements and extends algorithms available in OpenCASCADE topological and geometrical toolkist.The functionality provided by this package are thefollowing:projecting curves on surface,adjusting curve to have given start and end points. P"
+"This package provides new algorithms for constructingnew geometrical objects and topological shapes. It
+complements and extends algorithms available in OpenCASCADE topological and geometrical tool kits.
+The functionality provided by this package are the following:projecting curves on surface,
+adjusting curve to have given start and end points. P"
 %enddef
 %module (package="OCC", docstring=SHAPECONSTRUCTDOCSTRING) ShapeConstruct
 
@@ -511,7 +514,7 @@ class ShapeConstruct_ProjectCurveOnSurface : public MMgt_TShared {
                 $self->BuildCurveMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetAdjustOverDegenMode() {

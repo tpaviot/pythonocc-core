@@ -123,7 +123,8 @@ class Voxel_BooleanOperation {
 ") Cut;
 		Standard_Boolean Cut (Voxel_BoolDS & theVoxels1,const Voxel_BoolDS & theVoxels2);
 		%feature("compactdefaultargs") Cut;
-		%feature("autodoc", "	* Cuts two cubes of voxels. It modifies the first cube of voxels. It returns false in case of different dimension of the cube, different number of voxels. It subtracts the value of corresponding voxels and puts the result to theVoxels1.
+		%feature("autodoc", "	* Cuts two cubes of voxels. It modifies the first cube of voxels. It returns false in case of different dimension of the cube, different number of voxels.
+    It subtracts the value of corresponding voxels and puts the result to theVoxels1.
 
 	:param theVoxels1:
 	:type theVoxels1: Voxel_ColorDS &
@@ -133,7 +134,8 @@ class Voxel_BooleanOperation {
 ") Cut;
 		Standard_Boolean Cut (Voxel_ColorDS & theVoxels1,const Voxel_ColorDS & theVoxels2);
 		%feature("compactdefaultargs") Cut;
-		%feature("autodoc", "	* Cuts two cubes of voxels. It modifies the first cube of voxels. It returns false in case of different dimension of the cube, different number of voxels. It subtracts the value of corresponding voxels and puts the result to theVoxels1.
+		%feature("autodoc", "	* Cuts two cubes of voxels. It modifies the first cube of voxels. It returns false in case of different dimension of the cube, different number of voxels.
+    It subtracts the value of corresponding voxels and puts the result to theVoxels1.
 
 	:param theVoxels1:
 	:type theVoxels1: Voxel_FloatDS &
@@ -160,7 +162,8 @@ class Voxel_CollisionDetection {
 ") Voxel_CollisionDetection;
 		 Voxel_CollisionDetection ();
 		%feature("compactdefaultargs") Voxel_CollisionDetection;
-		%feature("autodoc", "	* A constructor. It defines deflection of triangulation for the shapes. As lower the deflection is, as proper the triangulation is generated. Also, it defines number of splits along X, Y and Z axes for generation of voxels. As greater the numbers are, as greater number of voxels is used for detection of collision.
+		%feature("autodoc", "	* A constructor. It defines deflection of triangulation for the shapes. As lower the deflection is, as proper the triangulation is generated.
+    Also, it defines number of splits along X, Y and Z axes for generation of voxels. As greater the numbers are, as greater number of voxels is used for detection of collision.
 
 	:param deflection:
 	:type deflection: float
@@ -236,7 +239,9 @@ class Voxel_CollisionDetection {
 ") KeepCollisions;
 		void KeepCollisions (const Standard_Boolean keep);
 		%feature("compactdefaultargs") Voxelize;
-		%feature("autodoc", "	* Prepares data for computation of collisions. It checks the inner parameters (number of voxels along X, Y and Z axes) and voxelizes the shapes. If the shape is not changed since the last call to this method, this method may be not called for this shape. <ishape> - is the index of the shape for processing by this method. If it is equal to -1, all shapes will be processed.
+		%feature("autodoc", "	* Prepares data for computation of collisions. It checks the inner parameters (number of voxels along X, Y and Z axes) and voxelizes the shapes.
+    If the shape is not changed since the last call to this method, this method may be not called for this shape.
+    <ishape> - is the index of the shape for processing by this method. If it is equal to -1, all shapes will be processed.
 
 	:param ishape: default value is -1
 	:type ishape: int
@@ -309,7 +314,13 @@ class Voxel_DS {
 ") Voxel_DS;
 		 Voxel_DS (const Standard_Real x,const Standard_Real y,const Standard_Real z,const Standard_Real x_len,const Standard_Real y_len,const Standard_Real z_len,const Standard_Integer nb_x,const Standard_Integer nb_y,const Standard_Integer nb_z);
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Initialization of the voxel model. (x, y, z) - the start point of the box. (x_len, y_len, z_len) - lengths in x, y and z directions along axes of a co-ordinate system. (nb_x, nb_y, nb_z) - number of splits (voxels) along x, y and z directions. The methods below return initial data of the voxel model.
+		%feature("autodoc", "	* Initialization of the voxel model.
+
+    - (x, y, z) - the start point of the box.
+    - (x_len, y_len, z_len) - lengths in x, y and z directions along axes of a co-ordinate system.
+    - (nb_x, nb_y, nb_z) - number of splits (voxels) along x, y and z directions.
+
+    The methods below return initial data of the voxel model.
 
 	:param x:
 	:type x: float
@@ -464,7 +475,8 @@ class Voxel_DS {
 class Voxel_FastConverter {
 	public:
 		%feature("compactdefaultargs") Voxel_FastConverter;
-		%feature("autodoc", "	* A constructor for conversion of a shape into a cube of boolean voxels. It allocates the voxels in memory. 'nbthreads' defines the number of threads used to convert the shape.
+		%feature("autodoc", "	* A constructor for conversion of a shape into a cube of boolean voxels. It allocates the voxels in memory.
+    'nbthreads' defines the number of threads used to convert the shape.
 
 	:param shape:
 	:type shape: TopoDS_Shape &
@@ -486,7 +498,8 @@ class Voxel_FastConverter {
 ") Voxel_FastConverter;
 		 Voxel_FastConverter (const TopoDS_Shape & shape,Voxel_BoolDS & voxels,const Standard_Real deflection = 0.1,const Standard_Integer nbx = 10,const Standard_Integer nby = 10,const Standard_Integer nbz = 10,const Standard_Integer nbthreads = 1,const Standard_Boolean useExistingTriangulation = Standard_False);
 		%feature("compactdefaultargs") Voxel_FastConverter;
-		%feature("autodoc", "	* A constructor for conversion of a shape into a cube of colored voxels. It allocates the voxels in memory. 'nbthreads' defines the number of threads used to convert the shape.
+		%feature("autodoc", "	* A constructor for conversion of a shape into a cube of colored voxels. It allocates the voxels in memory.
+    'nbthreads' defines the number of threads used to convert the shape.
 
 	:param shape:
 	:type shape: TopoDS_Shape &
@@ -508,7 +521,8 @@ class Voxel_FastConverter {
 ") Voxel_FastConverter;
 		 Voxel_FastConverter (const TopoDS_Shape & shape,Voxel_ColorDS & voxels,const Standard_Real deflection = 0.1,const Standard_Integer nbx = 10,const Standard_Integer nby = 10,const Standard_Integer nbz = 10,const Standard_Integer nbthreads = 1,const Standard_Boolean useExistingTriangulation = Standard_False);
 		%feature("compactdefaultargs") Voxel_FastConverter;
-		%feature("autodoc", "	* A constructor for conversion of a shape into a cube of boolean voxels split into 8 sub-voxels recursively. It allocates the voxels in memory. 'nbthreads' defines the number of threads used to convert the shape.
+		%feature("autodoc", "	* A constructor for conversion of a shape into a cube of boolean voxels split into 8 sub-voxels recursively. It allocates the voxels in memory.
+    'nbthreads' defines the number of threads used to convert the shape.
 
 	:param shape:
 	:type shape: TopoDS_Shape &

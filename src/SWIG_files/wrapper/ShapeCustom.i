@@ -18,7 +18,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPECUSTOMDOCSTRING
-"This package is intended toconvert geometrical objects and topological. Themodifications of one geometrical object to another(one) geometrical object are provided. The supportedmodifications are the following:conversion of BSpline and Bezier surfaces to analytical form,conversion of indirect elementary surfaces (with left-handedcoordinate systems) into direct ones,conversion of elementary surfaces to surfaces of revolution,conversion of surface of linear extrusion, revolution, offsetsurface to bspline,modification of parameterization, degree, number of segments of bsplinesurfaces, scale the shape."
+"This package is intended toconvert geometrical objects and topological. The
+modifications of one geometrical object to another(one) geometrical object are provided.
+The supported modifications are the following:conversion of BSpline and Bezier surfaces to analytical form,
+conversion of indirect elementary surfaces (with left-handedcoordinate systems) into direct ones,
+conversion of elementary surfaces to surfaces of revolution, conversion of surface of linear extrusion, revolution, off setsurface to bspline,
+modification of parameterization, degree, number of segments of bspline surfaces, scale the shape."
 %enddef
 %module (package="OCC", docstring=SHAPECUSTOMDOCSTRING) ShapeCustom
 
@@ -358,7 +363,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->GMaxDegree()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetGMaxSeg() {
@@ -371,7 +376,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->GMaxSeg()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertPlane() {
@@ -384,7 +389,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertPlane()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertBezierSurf() {
@@ -397,7 +402,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertBezierSurf()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertRevolutionSurf() {
@@ -410,7 +415,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertRevolutionSurf()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertExtrusionSurf() {
@@ -423,7 +428,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertExtrusionSurf()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertOffsetSurf() {
@@ -436,7 +441,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertOffsetSurf()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertCylindricalSurf() {
@@ -449,7 +454,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertCylindricalSurf()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertConicalSurf() {
@@ -462,7 +467,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertConicalSurf()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertToroidalSurf() {
@@ -475,7 +480,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertToroidalSurf()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertSphericalSurf() {
@@ -488,7 +493,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertSphericalSurf()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetSegmentSurfaceMode() {
@@ -501,7 +506,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->SegmentSurfaceMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertCurve3d() {
@@ -514,7 +519,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertCurve3d()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertOffsetCurv3d() {
@@ -527,7 +532,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertOffsetCurv3d()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertCurve2d() {
@@ -540,7 +545,7 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
                 $self->ConvertCurve2d()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetConvertOffsetCurv2d() {

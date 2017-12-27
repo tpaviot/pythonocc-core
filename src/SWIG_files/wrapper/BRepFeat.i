@@ -26,10 +26,12 @@ Form features can be depressions orprotrusions and include the following types:
 -     Prism
 -     Revolved feature
 -     Pipe
+
 Depending on whether you wish to make a depression or a protrusion, you can choose your operation type between the following:
 
 - removing matter (a Boolean cut: Fuse setting 0)
 - adding matter (Boolean fusion: Fuse setting 1)
+
 The semantics of form feature creation is based on the construction of shapes:
 
 -     for a certain length in a certain direction

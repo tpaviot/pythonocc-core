@@ -21,7 +21,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 "this package implements the primitives of the Primitives package with the BRep Topology Contains :
 a Builder implementing the Template from Primitives
 The instantiations of the algorithms :
-OneAxisWedgeThe rotational primitives inherited from OneAxisRevolutionCylinderConeSphereTorus
+OneAxisWedge The rotational primitives inherited from OneAxis Revolution Cylinder Cone Sphere Torus
 The class FaceBuilder is a tool to build a face from a Geom surface."
 %enddef
 %module (package="OCC", docstring=BREPPRIMDOCSTRING) BRepPrim

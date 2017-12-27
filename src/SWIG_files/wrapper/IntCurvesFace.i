@@ -18,7 +18,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTCURVESFACEDOCSTRING
-"This package provide algorithms to compute the intersection pointsbetween a Face [a Shape] and a set of curves (The face [shape] isloaded, then for each curve is given to compute the intersection).Intersector [ ShapeIntersector ] can be used when the caller haveto intersect more than one curve with the face [the shape].If there is only one curve, or if the face has no restrictions,someother algorithms can be called.see for example the packages :** BRepIntCurveSurface : ( One Curve  <->  One Shape )** IntCurveSurface   : ( One Curve  <->  One Surface)"
+"This package provide algorithms to compute the intersection pointsbetween a Face [a Shape] and a set of curves (The face [shape] is
+loaded, then for each curve is given to compute the intersection).
+Intersector [ ShapeIntersector ] can be used when the caller have
+to intersect more than one curve with the face [the shape].If there is only one curve, or if the face has no restrictions,some
+other algorithms can be called.see for example the packages :
+
+** BRepIntCurveSurface : ( One Curve  <->  One Shape )
+** IntCurveSurface   : ( One Curve  <->  One Surface)"
+
 %enddef
 %module (package="OCC", docstring=INTCURVESFACEDOCSTRING) IntCurvesFace
 

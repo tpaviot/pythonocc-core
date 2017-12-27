@@ -21,19 +21,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 "The BRepBuilderAPI package  provides an  Application Programming Interface for the BRep topology data structure.
 The API is a set of classes aiming to provide :
 
-- High level and simple calls for the most commonoperations.
-- Keeping  an  access on  the  low-levelimplementation of high-level calls.
-- Examples of programming of high-level operationsfrom low-level operations.
-- A complete coverage of modelling :
+* High level and simple calls for the most commonoperations.
+* Keeping  an  access on  the  low-levelimplementation of high-level calls.
+* Examples of programming of high-level operationsfrom low-level operations.
+* A complete coverage of modelling :
   - Creating vertices ,edges, faces, solids.
   - Sweeping operations.
   - Boolean operations.
   - Global properties computation.
 The API provides classes to build objects:
-- The constructors of the classes provides the
+* The constructors of the classes provides the
 different constructions methods.
-- The class keeps as fields the  different tools used to build the object.
--  The class provides a casting method to getautomatically the result with a  function-likecall.
+* The class keeps as fields the  different tools used to build the object.
+* The class provides a casting method to getautomatically the result with a  function-likecall.
 For example to make a vertex <V> from a point <P>one can writes :
 
   V = BRepBuilderAPI_MakeVertex(P);orBRepBuilderAPI_MakeVertex MV(P);

@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPBASDOCSTRING
-"The TopBas package provides data structure fortopological algorithms.  THe data structures areused to store the intermediary dat and the resultsof the algorithms.* Interference, List : An Interference is thetopological  representation of an intersection.The classes are generic in order to be independantof the data structure."
+"The TopBas package provides data structure fortopological algorithms.  THe data structures areused to store the intermediary dat and the results
+of the algorithms.
+
+* Interference, List : An Interference is thetopological  representation of an intersection.
+The classes are generic in order to be independantof the data structure."
 %enddef
 %module (package="OCC", docstring=TOPBASDOCSTRING) TopBas
 

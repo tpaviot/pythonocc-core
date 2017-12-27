@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPEXPDOCSTRING
-"This package  provides basic tools to  explore thetopological data structures.* Explorer : A tool to find all sub-shapes of a giventype. e.g. all faces of a solid.* Package methods to map sub-shapes of a shape.Level : PublicAll methods of all classes will be public."
+"This package  provides basic tools to  explore thetopological data structures.
+
+- Explorer : A tool to find all sub-shapes of a giventype. e.g. all faces of a solid.
+
+- Package methods to map sub-shapes of a shape.Level : PublicAll methods of all classes will be public."
 %enddef
 %module (package="OCC", docstring=TOPEXPDOCSTRING) TopExp
 

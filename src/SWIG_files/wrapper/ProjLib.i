@@ -18,7 +18,25 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PROJLIBDOCSTRING
-"The projLib package first provides projection ofcurves on a  plane along a given Direction. Theresult will be a 3D curve.The ProjLib package provides projection of curveson surfaces to compute the curve in the parametricspace.It is assumed that the curve is on the surface.It provides :* Package methods to handle the easiest cases :- Line, Circle, Ellipse, Parabola, Hyperbola on plane.- Line, Circle on cylinder.- Line, Circle on cone.* Classes to handle the general cases :- Plane.- Cylinder.- Cone.- Sphere.- Torus.* A generic class to handle a Curve from Adaptor3don a Surface from Adaptor3d."
+"The projLib package first provides projection ofcurves on a  plane along a given Direction. Theresult will be a 3D curve. The ProjLib package provides projection of curves
+on surfaces to compute the curve in the parametricspace. It is assumed that the curve is on the surface. It provides :
+
+* Package methods to handle the easiest cases :
+
+  - Line, Circle, Ellipse, Parabola, Hyperbola on plane.
+
+  - Line, Circle on cylinder.
+
+  - Line, Circle on cone.
+
+* Classes to handle the general cases :
+  - Plane.
+  - Cylinder.
+  - Cone.
+  - Sphere.
+  - Torus.
+
+* A generic class to handle a Curve from Adaptor3don a Surface from Adaptor3d."
 %enddef
 %module (package="OCC", docstring=PROJLIBDOCSTRING) ProjLib
 

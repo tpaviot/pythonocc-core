@@ -193,7 +193,8 @@ class XmlObjMgt {
 class XmlObjMgt_Array1 {
 	public:
 		%feature("compactdefaultargs") XmlObjMgt_Array1;
-		%feature("autodoc", "	* Create an array of lower bound <Low> and upper bound <Up>. Range error is raised when <Up> is less than <Low>.
+		%feature("autodoc", "	* Create an array of lower bound <Low> and upper bound <Up>.
+    Range error is raised when <Up> is less than <Low>.
 
 	:param Low:
 	:type Low: int

@@ -84,7 +84,8 @@ class Geom_Geometry : public MMgt_TShared {
 ") Mirror;
 		void Mirror (const gp_Pnt & P);
 		%feature("compactdefaultargs") Mirror;
-		%feature("autodoc", "	* Performs the symmetrical transformation of a Geometry with respect to an axis placement which is the axis of the symmetry.
+		%feature("autodoc", "	* Performs the symmetrical transformation of a Geometry with respect to an axis
+    placement which is the axis of the symmetry.
 
 	:param A1:
 	:type A1: gp_Ax1
@@ -92,7 +93,8 @@ class Geom_Geometry : public MMgt_TShared {
 ") Mirror;
 		void Mirror (const gp_Ax1 & A1);
 		%feature("compactdefaultargs") Mirror;
-		%feature("autodoc", "	* Performs the symmetrical transformation of a Geometry with respect to a plane. The axis placement A2 locates the plane of the symmetry : 
+		%feature("autodoc", "	* Performs the symmetrical transformation of a Geometry with respect to a plane.
+    The axis placement A2 locates the plane of the symmetry :
     (Location, XDirection, YDirection).
 
 	:param A2:
@@ -139,7 +141,9 @@ class Geom_Geometry : public MMgt_TShared {
 ") Translate;
 		void Translate (const gp_Pnt & P1,const gp_Pnt & P2);
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	* Transformation of a geometric object. This tansformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations. (see class Transformation of the package Geom).
+		%feature("autodoc", "	* Transformation of a geometric object. This tansformation can be a translation,
+    a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the
+    previous elementaries transformations. (see class Transformation of the package Geom).
 
 	:param T:
 	:type T: gp_Trsf
@@ -457,7 +461,8 @@ class Geom_OsculatingSurface {
 ") Geom_OsculatingSurface;
 		 Geom_OsculatingSurface ();
 		%feature("compactdefaultargs") Geom_OsculatingSurface;
-		%feature("autodoc", "	* detects if the surface has punctual U or V isoparametric curve along on the bounds of the surface relativly to the tolerance Tol and Builds the corresponding osculating surfaces.
+		%feature("autodoc", "	* detects if the surface has punctual U or V isoparametric curve along on the bounds of the
+    surface relativly to the tolerance Tol and Builds the corresponding osculating surfaces.
 
 	:param BS:
 	:type BS: Handle_Geom_Surface &
@@ -766,7 +771,8 @@ class Geom_Transformation : public MMgt_TShared {
 ") SetMirror;
 		void SetMirror (const gp_Ax1 & A1);
 		%feature("compactdefaultargs") SetMirror;
-		%feature("autodoc", "	* Makes the transformation into a symmetrical transformation with respect to a plane. The plane of the symmetry is defined with the axis placement A2. It is the plane (Location, XDirection, YDirection).
+		%feature("autodoc", "	* Makes the transformation into a symmetrical transformation with respect to a plane.
+    The plane of the symmetry is defined with the axis placement A2. It is the plane (Location, XDirection, YDirection).
 
 	:param A2:
 	:type A2: gp_Ax2

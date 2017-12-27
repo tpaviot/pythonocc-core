@@ -19,15 +19,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define ADAPTOR2DDOCSTRING
 "The Adaptor2d package  is used to help defining reusable geometric algorithms. i.e. that can be used on curves and surfaces. It defines general services for objects :
-- the 2d curve.
+* the 2d curve.
 Curve2dThe services are :
-- Usual services found in Geom or Geom2d :
+* Usual services found in Geom or Geom2d :
   - parameter range, value and derivatives, etc...
-- Continuity breakout services :
+* Continuity breakout services :
   - Allows to divide a curve or a surfaces inparts with a given derivation order.
-- Special geometries detection services :
+* Special geometries detection services :
   - Allows to test for special cases that canbe processed more easily :
-- Conics, Quadrics, Bezier, BSpline
+* Conics, Quadrics, Bezier, BSpline
 
 ...And to get the corresponding data form the package gp or  Geom.
   The special type Other Curve means that no special case has been detected and the algorithm may use only
@@ -62,10 +62,9 @@ const Adaptor2d_Curve& CI = HCI->Curve();
 pC = &(HCI->Curve());
 
 * The  Adaptor2d provides also Generic classesimplementing algorithmic curves and surfaces.
-- IsoCurve    :
 
- Isoparametric curve on a surface.
- - CurveOnSurface : 2D curve in the parametricspace of a surface.
+- IsoCurve    : Isoparametric curve on a surface.
+- CurveOnSurface : 2D curve in the parametricspace of a surface.
 - OffsetCurve2d : 2d offset curve
 - ProjectedCurve : 3d curve projected on a plane- SurfaceOfLinearExtrusion
 - SurfaceOfRevolutionThey are instantiated with HCurve, HSurface, HCurved2d"

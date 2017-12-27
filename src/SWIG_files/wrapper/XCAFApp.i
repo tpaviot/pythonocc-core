@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XCAFAPPDOCSTRING
-"Defines application for DECAF documentand provides application-specific toolsThe application should be registered before work with DECAFdocuments by call to XCAFApp_Application::GetApplication()"
+"Defines application for DECAF documentand provides application-specific toolsThe application should be registered before work with DECAFdocuments by call to
+XCAFApp_Application::GetApplication()"
 %enddef
 %module (package="OCC", docstring=XCAFAPPDOCSTRING) XCAFApp
 
@@ -69,7 +70,8 @@ class XCAFApp_Application : public TDocStd_Application {
 ") Formats;
 		virtual void Formats (TColStd_SequenceOfExtendedString & Formats);
 		%feature("compactdefaultargs") ResourcesName;
-		%feature("autodoc", "	* methods from TDocStd_Application ================================
+		%feature("autodoc", "	* methods from TDocStd_Application
+    ================================
 
 	:rtype: char *
 ") ResourcesName;
@@ -83,7 +85,8 @@ class XCAFApp_Application : public TDocStd_Application {
 ") InitDocument;
 		virtual void InitDocument (const Handle_TDocStd_Document & aDoc);
 		%feature("compactdefaultargs") GetApplication;
-		%feature("autodoc", "	* Initializes (for the first time) and returns the static object (XCAFApp_Application) This is the only valid method to get XCAFApp_Application object, and it should be called at least once before any actions with documents in order to init application
+		%feature("autodoc", "	* Initializes (for the first time) and returns the static object (XCAFApp_Application) This is the only valid method to get XCAFApp_Application object,
+    and it should be called at least once before any actions with documents in order to init application
 
 	:rtype: Handle_XCAFApp_Application
 ") GetApplication;

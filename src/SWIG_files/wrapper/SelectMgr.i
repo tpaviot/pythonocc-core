@@ -18,7 +18,90 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SELECTMGRDOCSTRING
-"SelectMgr manages the process of dynamicselection through the following services:-  activating and deactivating selection modes for Interactive Objects-  adding and removing viewer selectors-  definitions of abstract filter classesThe principle of graphic selection consists inrepresenting the objects which you want to selectby a bounding box in the selection view. The objectis selected when you use the mouse to designatethe zone produced by the object.To realize this, the application creates a selectionstructure which is independent of the point of view.This structure is made up of sensitive primitiveswhich have one owner object associated to each ofthem. The role of the sensitive primitive is to replyto the requests of the selection algorithm whereasthe owner's purpose is to make the link betweenthe sensitive primitive and the object to be selected.Each selection structure corresponds to a selectionmode which defines the elements that can be selected.For example, to select a complete geometric model,the application can create a sensitive primitive foreach face of the interactive object representing thegeometric model. In this case, all the primitivesshare the same owner. On the other hand, to selectan edge in a model, the application must createone sensitive primitive per edge.ExamplevoidInteractiveBox::ComputeSelection(const Handle(SelectMgr_Selection)& Sel,const Standard_Integer Mode){ switch(Mode){ case 0:// locating the whole box by making its faces sensitive ...{Handle(SelectMgr_EntityOwner)Ownr = newSelectMgr_EntityOwner(this,5);for(Standard_IntegerI=1;I<=Nbfaces;I++){Sel->Add(new Select3D_SensitiveFace(Ownr,[array of the vertices] face I);break;}case 1:     // locates the  edges{for(Standard_Integeri=1;i<=12;i++){// 1 owner per edge...Handle(mypk_EdgeOwner)Ownr = newmypk_EdgeOwner(this,i,6);// 6->prioritySel->Add(newSelect3D_SensitiveSegment(Ownr,firstpt(i),lastpt(i));}}}The algorithms for creating selection structuresstore the sensitive primitives in aSelectMgr_Selection object. To do this, a set ofready-made sensitive primitives is supplied in theSelect2D and Select3D packages. New sensitiveprimitives can be defined through inheritancefrom  SensitiveEntity. For the application to makeits own objects selectable, it must define ownerclasses inheriting SelectMgr_EntityOwner.For any object inheriting fromAIS_InteractiveObject, you redefine itsComputeSelection functions. In the example belowthere are different modes of selection on thetopological shape contained within the interactiveobject -selection of the shape itself, the vertices,the edges, the wires, the faces.ExamplevoidMyPack_MyClass::ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode){switch(aMode){case 0:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_SHAPE);break;}case 1:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_VERTEX);break;}case 2:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_EDGE);break;}case 3:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_WIRE);break;}case 4:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_FACE);break;}}The StdSelect_BRepSelectionTool objectprovides a high level service which will make theshape 'myShape' selectable when theAIS_InteractiveContext is asked to display your object.Note: The traditional way of highlighting selected entityowners adopted by the Open CASCADE library assumes thateach entity owner highlights itself on its own. This approachhas two drawbacks:-   each entity owner has to maintain its ownPrs3d_Presentation object, that results inlarge memory overhead for thousands of owners;-   drawing selected owners one by one is notefficient from the OpenGL usage viewpoint.That is why a different method has been introduced. On the basis ofSelectMgr_EntityOwner::IsAutoHilight() return value an AIS_LocalContextobject either uses the traditional way of highlighting(IsAutoHilight() returned true) or groups such owners accordingto their Selectable Objects and finally callsSelectMgr_SelectableObject::HilightSelected()or ClearSelected(), passing a group of owners as an argument.Hence, an application can derive its own interactive object andredefine HilightSelected(), ClearSelected() andHilightOwnerWithColor() virtual methods to take advantage ofsuch OpenGL technique as arrays of primitives. In any case,these methods should at least have empty implementation.The AIS_LocalContext::UpdateSelected(const Handle(AIS_InteratciveObject)&,Standard_Boolean) method can be used for efficient redrawing aselection presentation for a given interactive object from anapplication code.Additionally, the SelectMgr_SelectableObject::ClearSelections()method now accepts an optional boolean argument. This parameterdefines whether all object selections should be flagged forfurther update or not. This improved method can be used tore-compute an object selection (without redisplaying the objectcompletely) when some selection mode is activated not for the first time."
+"SelectMgr manages the process of dynamicselection through the following services:
+
+-  activating and deactivating selection modes for Interactive Objects
+
+-  adding and removing viewer selectors
+
+-  definitions of abstract filter classesThe principle of graphic selection consists in
+representing the objects which you want to selectby a bounding box in the selection view. The object
+is selected when you use the mouse to designate the zone produced by the object.
+To realize this, the application creates a selection structure which is independent of the point of view.
+This structure is made up of sensitive primitives which have one owner object associated to each of them.
+The role of the sensitive primitive is to reply to the requests of the selection algorithm where as the
+owner's purpose is to make the link between the sensitive primitive and the object to be selected.
+Each selection structure corresponds to a selection mode which defines the elements that can be selected.
+For example, to select a complete geometric model,the application can create a sensitive primitive for
+each face of the interactive object representing the geometric model. In this case, all the primitives
+share the same owner. On the other hand, to select an edge in a model, the application must create
+one sensitive primitive per edge.Example::
+
+  voidInteractiveBox::ComputeSelection(const Handle(SelectMgr_Selection)& Sel,const Standard_Integer Mode){
+  switch(Mode){
+  case 0:
+  // locating the whole box by making its faces sensitive ...
+  {Handle(SelectMgr_EntityOwner)Ownr = newSelectMgr_EntityOwner(this,5);
+  for(Standard_IntegerI=1;I<=Nbfaces;I++){
+  Sel->Add(new Select3D_SensitiveFace(Ownr,[array of the vertices] face I);
+  break;}
+  case 1:
+  // locates the  edges
+  {
+  for(Standard_Integeri=1;i<=12;i++){
+  // 1 owner per edge...
+  Handle(mypk_EdgeOwner)Ownr = newmypk_EdgeOwner(this,i,6);
+  // 6->priority
+  Sel->Add(newSelect3D_SensitiveSegment(Ownr,firstpt(i),lastpt(i));
+  }}}
+
+  The algorithms for creating selection structures store the sensitive primitives in a
+  SelectMgr_Selection object. To do this, a set of ready-made sensitive primitives is supplied in theSelect2D and Select3D packages.
+  New sensitive primitives can be defined through in heritance from  Sensitive Entity.
+  For the application to make its own objects select able, it must define owner classes inheriting SelectMgr_EntityOwner.
+  For any object inheriting from AIS_InteractiveObject, you redefine its ComputeSelection functions. In the example below there are different modes of selection on the
+  topological shape contained within the interactive object -selection of the shape itself, the vertices,
+  the edges, the wires, the faces.Example::
+
+    voidMyPack_MyClass::ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode){
+    switch(aMode){
+      case 0:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_SHAPE);
+      break;
+      }
+      case 1:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_VERTEX);
+      break;
+      }
+      case 2:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_EDGE);
+      break;
+      }
+      case 3:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_WIRE);
+      break;
+      }
+      case 4:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_FACE);
+      break;
+      }
+    }
+
+The StdSelect_BRepSelectionTool object provides a high level service which will make the
+shape 'myShape' selectable when the AIS_InteractiveContext is asked to display your object.
+
+Note: The traditional way of highlighting selected entityowners adopted by the Open CASCADE library assumes that
+each entity owner highlights itself on its own. This approach has two drawbacks:
+
+-   each entity owner has to maintain its ownPrs3d_Presentation object, that results inlarge memory overhead for thousands of owners;
+
+-   drawing selected owners one by one is notefficient from the OpenGL usage viewpoint.
+
+That is why a different method has been introduced. On the basis ofSelectMgr_EntityOwner::IsAutoHilight() return value an AIS_LocalContext
+object either uses the traditional way of highlighting(IsAutoHilight() returned true) or groups such owners according to their Select
+able Objects and finally calls SelectMgr_SelectableObject::HilightSelected() or ClearSelected(), passing a group of owners
+as an argument. Hence, an application can derive its own interactive object and redefine HilightSelected(), ClearSelected() and
+HilightOwnerWithColor() virtual methods to take advantage of such OpenGL technique as arrays of primitives. In any case,
+these methods should at least have empty implementation.The AIS_LocalContext::UpdateSelected(const Handle(AIS_InteratciveObject)&,Standard_Boolean)
+method can be used for efficient redrawing a selection presentation for a given interactive object from an
+application code.Additionally, the SelectMgr_SelectableObject::ClearSelections()method now accepts an optional boolean argument.
+This parameter defines whether all object selections should be flagged for further update or not. This improved method can be used to
+re-compute an object selection (without re-displaying the object completely) when some selection mode is activated not for the first time."
 %enddef
 %module (package="OCC", docstring=SELECTMGRDOCSTRING) SelectMgr
 

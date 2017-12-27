@@ -18,7 +18,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEANALYSISDOCSTRING
-"This package is intended to analyze geometrical objectsand topological shapes. Analysis domain includes bothexploring geometrical and topological properties ofshapes and checking their conformance to Open CASCADE requirements.The directions of analysis provided by tools of this package are:computing quantities of subshapes,computing parameters of points on curve and surface,computing surface singularities,checking edge and wire consistency,checking edges order in the wire,checking face bounds orientation,checking small faces,analyzing shape tolerances,analyzing of free bounds of the shape."
+"This package is intended to analyze geometrical objectsand topological shapes. Analysis domain includes both
+exploring geometrical and topological properties of  shapes and checking their conformance to Open CASCADE requirements.
+The directions of analysis provided by tools of this package are:computing quantities of subshapes,
+computing parameters of points on curve and surface,computing surface singularities,checking edge and wire consistency,
+checking edges order in the wire,checking face bounds orientation,checking small faces,
+analyzing shape tolerances,analyzing of free bounds of the shape."
 %enddef
 %module (package="OCC", docstring=SHAPEANALYSISDOCSTRING) ShapeAnalysis
 
@@ -2156,7 +2161,7 @@ class ShapeAnalysis_ShapeContents {
                 $self->ModifyBigSplineMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetModifyIndirectMode() {
@@ -2169,7 +2174,7 @@ class ShapeAnalysis_ShapeContents {
                 $self->ModifyIndirectMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetModifyOffestSurfaceMode() {
@@ -2182,7 +2187,7 @@ class ShapeAnalysis_ShapeContents {
                 $self->ModifyOffestSurfaceMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetModifyTrimmed3dMode() {
@@ -2195,7 +2200,7 @@ class ShapeAnalysis_ShapeContents {
                 $self->ModifyTrimmed3dMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetModifyOffsetCurveMode() {
@@ -2208,7 +2213,7 @@ class ShapeAnalysis_ShapeContents {
                 $self->ModifyOffsetCurveMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetModifyTrimmed2dMode() {

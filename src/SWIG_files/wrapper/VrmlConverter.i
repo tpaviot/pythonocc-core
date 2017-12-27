@@ -18,7 +18,13 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VRMLCONVERTERDOCSTRING
-"-Purpose:Computes different kinds of presentation and converts CasCade objects( points, curves, surfaces, shapes ... ) into nodes of VRML format( package Vrml ), into specific geometry shapes ( AsciiText, Cone,IndexedFaceSet, IndexedLineSet, .... ) for requested (or default) propertiesof the geometry and its appearance ( Material, Normal, Texture2, ... )and requested (or default) properties of cameras and lights ( OrthograpicCamera,PerspectiveCamera, DirectionalLight, SpotLight ).All requested properties of a current representation are specifiedin aDrawer of Drawer class, which qualifies how the presentationalgorithms compute the presentation of a specific kind of object.This includes for example color, maximal chordial deviation, etc... with default values.In the result the classes of this package Add a corresponding VRMLdescription to anOStream."
+"-Purpose:Computes different kinds of presentation and converts CasCade objects( points, curves, surfaces, shapes ... ) into nodes of VRML format( package Vrml ),
+into specific geometry shapes ( AsciiText, Cone,IndexedFaceSet, IndexedLineSet, .... ) for requested (or default)
+properties of the geometry and its appearance ( Material, Normal, Texture2, ... )
+and requested (or default) properties of cameras and lights ( OrthograpicCamera,PerspectiveCamera, DirectionalLight, SpotLight ).
+All requested properties of a current representation are specifiedin aDrawer of Drawer class, which qualifies how the presentationalgorithms compute
+the presentation of a specific kind of object.This includes for example color, maximal chordial deviation, etc... with default values.
+In the result the classes of this package Add a corresponding VRMLdescription to anOStream."
 %enddef
 %module (package="OCC", docstring=VRMLCONVERTERDOCSTRING) VrmlConverter
 
@@ -87,7 +93,8 @@ class VrmlConverter_Curve {
 ") Add;
 		static void Add (const Adaptor3d_Curve & aCurve,const Handle_VrmlConverter_Drawer & aDrawer,Standard_OStream & anOStream);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* adds to the OStream the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2.
+		%feature("autodoc", "	* adds to the OStream the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer.
+    The drawing will be limited between the points of parameter U1 and U2.
 
 	:param aCurve:
 	:type aCurve: Adaptor3d_Curve &
@@ -129,7 +136,8 @@ class VrmlConverter_Curve {
 class VrmlConverter_DeflectionCurve {
 	public:
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation defined by the drawer aDrawer. The aspect is defined by LineAspect in aDrawer.
+		%feature("autodoc", "	* adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation defined by the drawer aDrawer.
+    The aspect is defined by LineAspect in aDrawer.
 
 	:param anOStream:
 	:type anOStream: Standard_OStream &
@@ -141,7 +149,8 @@ class VrmlConverter_DeflectionCurve {
 ") Add;
 		static void Add (Standard_OStream & anOStream,Adaptor3d_Curve & aCurve,const Handle_VrmlConverter_Drawer & aDrawer);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation defined by the drawer aDrawer. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2.
+		%feature("autodoc", "	* adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation defined by the drawer aDrawer.
+    The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2.
 
 	:param anOStream:
 	:type anOStream: Standard_OStream &
@@ -185,7 +194,8 @@ class VrmlConverter_DeflectionCurve {
 ") Add;
 		static void Add (Standard_OStream & anOStream,Adaptor3d_Curve & aCurve,const Standard_Real aDeflection,const Handle_VrmlConverter_Drawer & aDrawer);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation aDeflection. The aspect is the current aspect The drawing will be limited between the points of parameter U1 and U2.
+		%feature("autodoc", "	* adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation aDeflection.
+    The aspect is the current aspect The drawing will be limited between the points of parameter U1 and U2.
 
 	:param anOStream:
 	:type anOStream: Standard_OStream &
@@ -244,7 +254,9 @@ class VrmlConverter_Drawer : public MMgt_TShared {
 ") TypeOfDeflection;
 		Aspect_TypeOfDeflection TypeOfDeflection ();
 		%feature("compactdefaultargs") SetMaximalChordialDeviation;
-		%feature("autodoc", "	* Defines the maximal chordial deviation when drawing any curve; If this value is one of the obvious parameters of methods, current value from Drawer won't be used. This value is used by: //! VrmlConverter_DeflectionCurve VrmlConverter_WFDeflectionRestrictedFace VrmlConverter_WFDeflectionShape
+		%feature("autodoc", "	* Defines the maximal chordial deviation when drawing any curve; If this value is one of the obvious parameters of methods,
+    current value from Drawer won't be used. This value is used by:
+    //! VrmlConverter_DeflectionCurve VrmlConverter_WFDeflectionRestrictedFace VrmlConverter_WFDeflectionShape
 
 	:param aChordialDeviation:
 	:type aChordialDeviation: Quantity_Length
@@ -270,7 +282,9 @@ class VrmlConverter_Drawer : public MMgt_TShared {
 ") DeviationCoefficient;
 		Standard_Real DeviationCoefficient ();
 		%feature("compactdefaultargs") SetDiscretisation;
-		%feature("autodoc", "	* default: 17 points. Defines the Discretisation (myNbPoints) when drawing any curve; If this value is one of the obvious parameters of methods, current value from Drawer won't be used. This value is used by: //! VrmlConverter_Curve VrmlConverter_WFRestrictedFace VrmlConverter_WFShape
+		%feature("autodoc", "	* default: 17 points. Defines the Discretisation (myNbPoints) when drawing any curve;
+    If this value is one of the obvious parameters of methods, current value from Drawer won't be used. This value is used by:
+    //! VrmlConverter_Curve VrmlConverter_WFRestrictedFace VrmlConverter_WFShape
 
 	:param d:
 	:type d: int
@@ -282,7 +296,8 @@ class VrmlConverter_Drawer : public MMgt_TShared {
 ") Discretisation;
 		Standard_Integer Discretisation ();
 		%feature("compactdefaultargs") SetMaximalParameterValue;
-		%feature("autodoc", "	* defines the maximum value allowed for the first and last parameters of an infinite curve. Default value: 500. VrmlConverter_Curve VrmlConverter_WFRestrictedFace VrmlConverter_WFShape
+		%feature("autodoc", "	* defines the maximum value allowed for the first and last parameters of an infinite curve. Default value: 500.
+    VrmlConverter_Curve VrmlConverter_WFRestrictedFace VrmlConverter_WFShape
 
 	:param Value:
 	:type Value: float
@@ -593,7 +608,9 @@ class VrmlConverter_LineAspect : public MMgt_TShared {
 ") Material;
 		Handle_Vrml_Material Material ();
 		%feature("compactdefaultargs") SetHasMaterial;
-		%feature("autodoc", "	* defines the necessary of writing own Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
+		%feature("autodoc", "	* defines the necessary of writing own Material from Vrml into output OStream.
+     By default False - the material is not writing into OStream,
+     True - the material is writing.
 
 	:param OnOff:
 	:type OnOff: bool
@@ -601,7 +618,7 @@ class VrmlConverter_LineAspect : public MMgt_TShared {
 ") SetHasMaterial;
 		void SetHasMaterial (const Standard_Boolean OnOff);
 		%feature("compactdefaultargs") HasMaterial;
-		%feature("autodoc", "	* returns True if the materials is writing into OStream.
+		%feature("", "	* returns True if the materials is writing into OStream.
 
 	:rtype: bool
 ") HasMaterial;
@@ -688,7 +705,9 @@ class VrmlConverter_PointAspect : public MMgt_TShared {
 ") Material;
 		Handle_Vrml_Material Material ();
 		%feature("compactdefaultargs") SetHasMaterial;
-		%feature("autodoc", "	* defines the necessary of writing own Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
+		%feature("autodoc", "	* defines the necessary of writing own Material from Vrml into output OStream.
+    By default False - the material is not writing into OStream,
+    True - the material is writing.
 
 	:param OnOff:
 	:type OnOff: bool

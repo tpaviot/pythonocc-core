@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPBNDLIBDOCSTRING
-"This package provides the bounding boxes for curvesand surfaces from BRepAdaptor.Functions to add a topological shape to a bounding box"
+"This package provides the bounding boxes for curves and surfaces from BRepAdaptor. Functions to add a topological shape to a bounding box"
 %enddef
 %module (package="OCC", docstring=BREPBNDLIBDOCSTRING) BRepBndLib
 

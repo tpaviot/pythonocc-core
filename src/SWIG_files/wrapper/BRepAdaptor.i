@@ -19,7 +19,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPADAPTORDOCSTRING
 "The BRepAdaptor package provides classes to access the geometry of the BRep models.
-OverView of classes
+OverV iew of classes:
+
 - Surface :Provides the methods of Surface from Adpator on a Face.
 - Curve : Provides the methods of Curve fromAdaptor3d on an Edge.
 - Curve2d : Provides the methods of Curve2d fromAdaptor2d on an Edge on a Face."

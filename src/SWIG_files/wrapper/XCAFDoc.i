@@ -18,7 +18,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XCAFDOCDOCSTRING
-"Definition of general structure of DECAF documentand tools to work with itThe document is composed of sections, each sectionstoring its own kind of data and managing by correspondingtoolSome properties can be attached directly to shapes. These properties are:* Name (the standard definition from OCAF) - class TDataStd_Name* Centroid (for the validation of transfer) - class XCAFDoc_Centroid* Volume (for the validation of transfer) - class XCAFDoc_Volume* Area (for the validation of transfer) - class XCafDoc_AreaManagement of these attributes is realized by OCAF. For gettingthe attributes attached to a label the method classTDF_Label::FindAttribute() should be used."
+"Definition of general structure of DECAF documentand tools to work with it
+The document is composed of sections, each section storing its own kind of data and managing by corresponding tool
+Some properties can be attached directly to shapes.
+These properties are:
+- Name (the standard definition from OCAF)
+  - class TDataStd_Name* Centroid (for the validation of transfer)
+  - class XCAFDoc_Centroid* Volume (for the validation of transfer)
+  - class XCAFDoc_Volume* Area (for the validation of transfer)
+  - class XCafDoc_AreaManagement of these attributes is realized by OCAF.
+For getting the attributes attached to a label the method classTDF_Label::FindAttribute() should be used."
 %enddef
 %module (package="OCC", docstring=XCAFDOCDOCSTRING) XCAFDoc
 
@@ -281,7 +290,10 @@ class XCAFDoc_Centroid : public TDF_Attribute {
 ") GetID;
 		static const Standard_GUID & GetID ();
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* Find, or create, a Location attribute and set it's value the Location attribute is returned. Location methods ===============
+		%feature("autodoc", "	* Find, or create, a Location attribute and set it's value the Location attribute is returned.
+
+    Location methods
+    ===============
 
 	:param label:
 	:type label: TDF_Label &
@@ -593,7 +605,8 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 ") IsColor;
 		Standard_Boolean IsColor (const TDF_Label & lab);
 		%feature("compactdefaultargs") GetColor;
-		%feature("autodoc", "	* Returns color defined by label lab Returns False if the label is not in colortable or does not define a color
+		%feature("autodoc", "	* Returns color defined by label lab Returns False if the label is not in color
+    table or does not define a color
 
 	:param lab:
 	:type lab: TDF_Label &
@@ -603,7 +616,7 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 ") GetColor;
 		Standard_Boolean GetColor (const TDF_Label & lab,Quantity_Color & col);
 		%feature("compactdefaultargs") FindColor;
-		%feature("autodoc", "	* Finds a color definition in a colortable and returns its label if found Returns False if color is not found in colortable
+		%feature("autodoc", "	* Finds a color definition in a color table and returns its label if found Returns False if color is not found in colortable
 
 	:param col:
 	:type col: Quantity_Color &
@@ -613,7 +626,7 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 ") FindColor;
 		Standard_Boolean FindColor (const Quantity_Color & col,TDF_Label & lab);
 		%feature("compactdefaultargs") FindColor;
-		%feature("autodoc", "	* Finds a color definition in a colortable and returns its label if found (or Null label else)
+		%feature("autodoc", "	* Finds a color definition in a color table and returns its label if found (or Null label else)
 
 	:param col:
 	:type col: Quantity_Color &
@@ -621,7 +634,7 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 ") FindColor;
 		TDF_Label FindColor (const Quantity_Color & col);
 		%feature("compactdefaultargs") AddColor;
-		%feature("autodoc", "	* Adds a color definition to a colortable and returns its label (returns existing label if the same color is already defined)
+		%feature("autodoc", "	* Adds a color definition to a color table and returns its label (returns existing label if the same color is already defined)
 
 	:param col:
 	:type col: Quantity_Color &
@@ -645,7 +658,9 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 ") GetColors;
 		void GetColors (TDF_LabelSequence & Labels);
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	* Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color defined by <colorL>. Color of shape is defined following way in dependance with type of color. If type of color is XCAFDoc_ColorGen - then this color defines default color for surfaces and curves. If for shape color with types XCAFDoc_ColorSurf or XCAFDoc_ColorCurv is specified then such color overrides generic color.
+		%feature("autodoc", "	* Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color defined by <colorL>.
+    Color of shape is defined following way in dependance with type of color. If type of color is XCAFDoc_ColorGen  - then this color defines default color for surfaces and curves.
+     If for shape color with types XCAFDoc_ColorSurf or XCAFDoc_ColorCurv is specified then such color overrides generic color.
 
 	:param L:
 	:type L: TDF_Label &
@@ -713,7 +728,8 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 ") GetColor;
 		Standard_Boolean GetColor (const TDF_Label & L,const XCAFDoc_ColorType type,Quantity_Color & color);
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	* Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color defined by <colorL> Returns False if cannot find a label for shape S
+		%feature("autodoc", "	* Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color defined by <colorL>
+    Returns False if cannot find a label for shape S
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -725,7 +741,8 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 ") SetColor;
 		Standard_Boolean SetColor (const TopoDS_Shape & S,const TDF_Label & colorL,const XCAFDoc_ColorType type);
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	* Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color <Color> in the colortable Adds a color as necessary Returns False if cannot find a label for shape S
+		%feature("autodoc", "	* Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color <Color> in the colortable Adds a color as necessary
+    Returns False if cannot find a label for shape S
 
 	:param S:
 	:type S: TopoDS_Shape &

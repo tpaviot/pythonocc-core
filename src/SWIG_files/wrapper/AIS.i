@@ -45,8 +45,10 @@ redefine the two virtual methods: Type and Signature.In the C++ inheritance stru
 class representing a specific Interactive Object inherits AIS_Interactive Object. Among these
 inheriting classes, AIS_Relation functions as the abstract mother class for inheriting classes defining
 display of specific relational constraints and types of dimension. Some of these include:
+
 -  display of constraints based on relations of symmetry, tangency, parallelism and concentricity
 -  display of dimensions for angles, offsets,diameters, radii and chamfers. No viewer can show everything at once with any
+
 coherence or clarity. Views must be managed carefully both sequentially and at any given instant.Another function of the view is that of a context to carry out design in.
 The design changes are applied to the objects in the view and then extended to the
 underlying reference geometry by a solver. To make sense of this complicated visual data, several display and selection tools are required. To facilitate

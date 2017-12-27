@@ -21,10 +21,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 "The BRepBuilderAPI package  provides an Application Programming Interface for
 the BRep topology datastructure. The API is a set of classes aiming to provide:
 
-- High level and simple calls for the most commonoperations.
-- Keeping  an  access on  the  low-levelimplementation of high-level calls.
-- Examples of programming of high-level operations from low-level operations.
-- A complete coverage of modeling:
+* High level and simple calls for the most commonoperations.
+* Keeping  an  access on  the  low-levelimplementation of high-level calls.
+* Examples of programming of high-level operations from low-level operations.
+* A complete coverage of modeling:
 
   - Creating vertices ,edges, faces, solids.
   - Sweeping operations.
@@ -33,9 +33,9 @@ the BRep topology datastructure. The API is a set of classes aiming to provide:
 
 The API provides classes to build objects:
 
-- The constructors of the classes provides the different constructions methods.
-- The class keeps as fields the  different tools used to build the object.
-- The class provides a casting method to get automatically the result with a  function-likecall.
+* The constructors of the classes provides the different constructions methods.
+* The class keeps as fields the  different tools used to build the object.
+* The class provides a casting method to get automatically the result with a  function-likecall.
 For example to make a vertex <V> from a point <P> one can writes:
 
   V = BRepBuilderAPI_MakeVertex(P);
@@ -131,7 +131,22 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 ") BRepPrimAPI_MakeBox;
 		 BRepPrimAPI_MakeBox (const gp_Pnt & P1,const gp_Pnt & P2);
 		%feature("compactdefaultargs") BRepPrimAPI_MakeBox;
-		%feature("autodoc", "	* Ax2 is the left corner and the axis. Constructs a box such that its sides are parallel to the axes of - the global coordinate system, or - the local coordinate system Axis. and - with a corner at (0, 0, 0) and of size (dx, dy, dz), or - with a corner at point P and of size (dx, dy, dz), or - with corners at points P1 and P2. Exceptions Standard_DomainError if: dx, dy, dz are less than or equal to Precision::Confusion(), or - the vector joining the points P1 and P2 has a component projected onto the global coordinate system less than or equal to Precision::Confusion(). In these cases, the box would be flat.
+		%feature("autodoc", "	* Ax2 is the left corner and the axis. Constructs a box such that its sides are parallel to the axes of
+
+    - the global coordinate system, or
+
+    - the local coordinate system Axis. and
+
+    - with a corner at (0, 0, 0) and of size (dx, dy, dz), or
+
+    - with a corner at point P and of size (dx, dy, dz), or
+
+    - with corners at points P1 and P2.
+
+    Exceptions Standard_DomainError if: dx, dy, dz are less than or equal to Precision::Confusion(), or
+
+    - the vector joining the points P1 and P2 has a component projected onto the global coordinate system less than or equal to Precision::Confusion().
+    In these cases, the box would be flat.
 
 	:param Axes:
 	:type Axes: gp_Ax2

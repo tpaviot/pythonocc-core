@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MDATAXTDDOCSTRING
-"Storage  and Retrieval drivers  for modellingattributes.  Transient attributes are defined inpackage TDataStd and persistent one are defined inpackage PDataStd"
+"Storage  and Retrieval drivers  for modelling attributes.  Transient attributes are defined in package TDataStd and persistent one are defined in package PDataStd"
 %enddef
 %module (package="OCC", docstring=MDATAXTDDOCSTRING) MDataXtd
 

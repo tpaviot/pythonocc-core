@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ADAPTOR3DDOCSTRING
-"The Adaptor3d package  is used to help definingreusable geometric algorithms. i.e. that can beused on curves and surfaces.It defines general services for 3 kind of objects :
+"The Adaptor3d package  is used to help definingreusable geometric algorithms. i.e. that can be
+used on curves and surfaces.It defines general services for 3 kind of objects :
 - the 2d curve.   Curve2d
 - the 3d curve.   Curve
 - the 3d surface.  SurfaceThe services are :

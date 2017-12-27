@@ -43,6 +43,7 @@ operation on given arguments.The shape type of a Boolean Operation result and ty
 that of the low type of the argument. Example: ForSHELL/SOLID the result is a COMPOUND of SHELLs.
 -   For arguments with different shape types some of Boolean Operations can not be done using the default
 implementation, because of a non-manifold type of the result.
+
 Example: the FUSE operation for SHELL and SOLID can not be done, but the CUT operation can be done, where
 SHELL is the object and SOLID is the tool.It is possible to perform Boolean Operations on arguments of the COMPOUND shape type. In this case each compound must not
 be heterogeneous, i.e. it must contain equidimensional shapes(EDGEs or/and WIREs, FACEs or/and SHELLs, SOLIDs).
