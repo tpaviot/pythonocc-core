@@ -18,7 +18,18 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCCENTDOCSTRING
-"This package provides an implementation of the qualifiedentities useful to create 2d entities with geometricconstraints. The qualifier explains which subfamily ofsolutions we want to obtain. It uses the following law: thematter/the interior side is at the left of the line, if we gofrom the beginning to the end.The qualifiers are:Enclosing  : the solution(s) must enclose the argument.Enclosed  : the solution(s) must be enclosed in theargument.Outside   : both the solution(s) and the argument must beoutside to each other.Unqualified : the position is undefined, so give all thesolutions.The use of a qualifier is always required if suchsubfamilies exist. For example, it is not used for a point.Note:  the interior of a curve is defined as the left-handside of the curve in relation to its orientation."
+"This package provides an implementation of the qualifiedentities useful to create 2d entities with geometricconstraints.
+The qualifier explains which subfamily ofsolutions we want to obtain. It uses the following law:
+thematter/the interior side is at the left of the line, if we gofrom the beginning to the end.The qualifiers are:
+
+- Enclosing  : the solution(s) must enclose the argument.
+- Enclosed  : the solution(s) must be enclosed in theargument.
+- Outside   : both the solution(s) and the argument must beoutside to each other.
+- Unqualified : the position is undefined, so give all thesolutions.
+
+The use of a qualifier is always required if suchsubfamilies exist.
+For example, it is not used for a point.
+Note:  the interior of a curve is defined as the left-handside of the curve in relation to its orientation."
 %enddef
 %module (package="OCC", docstring=GCCENTDOCSTRING) GccEnt
 
@@ -71,7 +82,8 @@ enum GccEnt_Position {
 class GccEnt {
 	public:
 		%feature("compactdefaultargs") Unqualified;
-		%feature("autodoc", "	* Constructs a qualified line, so that the relative position to the circle or line of the solution computed by a construction algorithm using the qualified circle or line is not qualified, i.e. all solutions apply.
+		%feature("autodoc", "	* Constructs a qualified line, so that the relative position to the circle or line of the solution computed by a
+    construction algorithm using the qualified circle or line is not qualified, i.e. all solutions apply.
 
 	:param Obj:
 	:type Obj: gp_Lin2d
@@ -79,7 +91,8 @@ class GccEnt {
 ") Unqualified;
 		static GccEnt_QualifiedLin Unqualified (const gp_Lin2d & Obj);
 		%feature("compactdefaultargs") Unqualified;
-		%feature("autodoc", "	* Constructs a qualified circle so that the relative position to the circle or line of the solution computed by a construction algorithm using the qualified circle or line is not qualified, i.e. all solutions apply.
+		%feature("autodoc", "	* Constructs a qualified circle so that the relative position to the circle or line of the solution
+    computed by a construction algorithm using the qualified circle or line is not qualified, i.e. all solutions apply.
 
 	:param Obj:
 	:type Obj: gp_Circ2d
@@ -95,7 +108,8 @@ class GccEnt {
 ") Enclosing;
 		static GccEnt_QualifiedCirc Enclosing (const gp_Circ2d & Obj);
 		%feature("compactdefaultargs") Enclosed;
-		%feature("autodoc", "	* Constructs a qualified line, so that the solution computed by a construction algorithm using the qualified circle or line is enclosed by the circle or line.
+		%feature("autodoc", "	* Constructs a qualified line, so that the solution computed by a construction algorithm using the qualified circle or line is
+    enclosed by the circle or line.
 
 	:param Obj:
 	:type Obj: gp_Lin2d
@@ -103,7 +117,8 @@ class GccEnt {
 ") Enclosed;
 		static GccEnt_QualifiedLin Enclosed (const gp_Lin2d & Obj);
 		%feature("compactdefaultargs") Enclosed;
-		%feature("autodoc", "	* Constructs a qualified circle so that the solution computed by a construction algorithm using the qualified circle or line is enclosed by the circle or line.
+		%feature("autodoc", "	* Constructs a qualified circle so that the solution computed by a construction algorithm using the qualified circle or line is
+    enclosed by the circle or line.
 
 	:param Obj:
 	:type Obj: gp_Circ2d
@@ -111,7 +126,8 @@ class GccEnt {
 ") Enclosed;
 		static GccEnt_QualifiedCirc Enclosed (const gp_Circ2d & Obj);
 		%feature("compactdefaultargs") Outside;
-		%feature("autodoc", "	* Constructs a qualified line, so that the solution computed by a construction algorithm using the qualified circle or line and the circle or line are external to one another.
+		%feature("autodoc", "	* Constructs a qualified line, so that the solution computed by a construction algorithm using the qualified
+    circle or line and the circle or line are external to one another.
 
 	:param Obj:
 	:type Obj: gp_Lin2d
@@ -119,7 +135,8 @@ class GccEnt {
 ") Outside;
 		static GccEnt_QualifiedLin Outside (const gp_Lin2d & Obj);
 		%feature("compactdefaultargs") Outside;
-		%feature("autodoc", "	* Constructs a qualified circle so that the solution computed by a construction algorithm using the qualified circle or line and the circle or line are external to one another.
+		%feature("autodoc", "	* Constructs a qualified circle so that the solution computed by a construction algorithm using the qualified circle or line
+    and the circle or line are external to one another.
 
 	:param Obj:
 	:type Obj: gp_Circ2d
@@ -225,7 +242,12 @@ class GccEnt_Array1OfPosition {
 class GccEnt_QualifiedCirc {
 	public:
 		%feature("compactdefaultargs") GccEnt_QualifiedCirc;
-		%feature("autodoc", "	* Constructs a qualified circle by assigning the qualifier Qualifier to the circle Qualified. Qualifier may be: - GccEnt_enclosing if the solution computed by a construction algorithm using the qualified circle encloses the circle, or - GccEnt_enclosed if the solution is enclosed by the circle, or - GccEnt_outside if both the solution and the circle are external to one another, or - GccEnt_unqualified if all solutions apply.
+		%feature("autodoc", "	* Constructs a qualified circle by assigning the qualifier Qualifier to the circle Qualified. Qualifier may be:
+
+     - GccEnt_enclosing if the solution computed by a construction algorithm using the qualified circle encloses the circle, or
+     - GccEnt_enclosed if the solution is enclosed by the circle, or
+     - GccEnt_outside if both the solution and the circle are external to one another, or
+     - GccEnt_unqualified if all solutions apply.
 
 	:param Qualified:
 	:type Qualified: gp_Circ2d
@@ -241,7 +263,10 @@ class GccEnt_QualifiedCirc {
 ") Qualified;
 		gp_Circ2d Qualified ();
 		%feature("compactdefaultargs") Qualifier;
-		%feature("autodoc", "	* Returns - the qualifier of this qualified circle, if it is enclosing, enclosed or outside, or - GccEnt_noqualifier if it is unqualified.
+		%feature("autodoc", "	* Returns
+
+    - the qualifier of this qualified circle, if it is enclosing, enclosed or outside, or 
+    - GccEnt_noqualifier if it is unqualified.
 
 	:rtype: GccEnt_Position
 ") Qualifier;
@@ -300,7 +325,13 @@ class GccEnt_QualifiedCirc {
 class GccEnt_QualifiedLin {
 	public:
 		%feature("compactdefaultargs") GccEnt_QualifiedLin;
-		%feature("autodoc", "	* Constructs a qualified line by assigning the qualifier Qualifier to the line Qualified. Qualifier may be: - GccEnt_enclosed if the solution is enclosed by the line, or - GccEnt_outside if both the solution and the line are external to one another, or - GccEnt_unqualified if all solutions apply. Note : the interior of a line is defined as the left-hand side of the line in relation to its orientation.
+		%feature("autodoc", "	* Constructs a qualified line by assigning the qualifier Qualifier to the line Qualified. Qualifier may be:
+
+    - GccEnt_enclosed if the solution is enclosed by the line, or
+    - GccEnt_outside if both the solution and the line are external to one another, or
+    - GccEnt_unqualified if all solutions apply.
+
+    Note : the interior of a line is defined as the left-hand side of the line in relation to its orientation.
 
 	:param Qualified:
 	:type Qualified: gp_Lin2d

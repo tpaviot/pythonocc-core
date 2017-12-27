@@ -18,7 +18,20 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMDOCSTRING
-"- Purpose :This package contains the definition of the geometric objectssuch as point, vector, axis placement, curves, surfaces and thedescription of the geometric transformations available for theseobjects.All these entities are defined in 3D space.This package gives the possibility :. to create geometric objects,. to have information about them,. to modify these objects.This package uses the services of the package gp (Geometricprocessor) which describes non-persistent objects for algebraiccalculus and basic analytic geometry. The purpose of this packageis to create persistent geometric objects and to read geometricinformation about these objects. Complexes geometric algorithmesare not described in this package.   At construction time,elementary verifications are done to verify that the objectsare coherents, but some verifications which require complexalgorithmes (for example to check that a curve has not nulllength or does not self-intersect) must be done before theconstruction of the geometric objects."
+"- Purpose :This package contains the definition of the geometric objectssuch as point, vector, axis placement, curves, surfaces and the
+description of the geometric transformations available for theseobjects.All these entities are defined in 3D space.This package gives the possibility :
+
+- to create geometric objects,
+- to have information about them,
+- to modify these objects.
+
+This package uses the services of the package gp (Geometricprocessor) which describes non-persistent objects for algebraic
+calculus and basic analytic geometry. The purpose of this packageis to create persistent geometric objects and to read geometric
+information about these objects. Complexes geometric algorithmesare not described in this package.
+At construction time,elementary verifications
+are done to verify that the objects are coherent, but some verifications which require complex
+algorithmes (for example to check that a curve has not null length or does not self-intersect) must be done before the
+construction of the geometric objects."
 %enddef
 %module (package="OCC", docstring=GEOMDOCSTRING) Geom
 
@@ -71,7 +84,8 @@ class Geom_Geometry : public MMgt_TShared {
 ") Mirror;
 		void Mirror (const gp_Pnt & P);
 		%feature("compactdefaultargs") Mirror;
-		%feature("autodoc", "	* Performs the symmetrical transformation of a Geometry with respect to an axis placement which is the axis of the symmetry.
+		%feature("autodoc", "	* Performs the symmetrical transformation of a Geometry with respect to an axis
+    placement which is the axis of the symmetry.
 
 	:param A1:
 	:type A1: gp_Ax1
@@ -79,7 +93,9 @@ class Geom_Geometry : public MMgt_TShared {
 ") Mirror;
 		void Mirror (const gp_Ax1 & A1);
 		%feature("compactdefaultargs") Mirror;
-		%feature("autodoc", "	* Performs the symmetrical transformation of a Geometry with respect to a plane. The axis placement A2 locates the plane of the symmetry : (Location, XDirection, YDirection).
+		%feature("autodoc", "	* Performs the symmetrical transformation of a Geometry with respect to a plane.
+    The axis placement A2 locates the plane of the symmetry :
+    (Location, XDirection, YDirection).
 
 	:param A2:
 	:type A2: gp_Ax2
@@ -125,7 +141,9 @@ class Geom_Geometry : public MMgt_TShared {
 ") Translate;
 		void Translate (const gp_Pnt & P1,const gp_Pnt & P2);
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "	* Transformation of a geometric object. This tansformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations. (see class Transformation of the package Geom).
+		%feature("autodoc", "	* Transformation of a geometric object. This tansformation can be a translation,
+    a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the
+    previous elementaries transformations. (see class Transformation of the package Geom).
 
 	:param T:
 	:type T: gp_Trsf
@@ -443,7 +461,8 @@ class Geom_OsculatingSurface {
 ") Geom_OsculatingSurface;
 		 Geom_OsculatingSurface ();
 		%feature("compactdefaultargs") Geom_OsculatingSurface;
-		%feature("autodoc", "	* detects if the surface has punctual U or V isoparametric curve along on the bounds of the surface relativly to the tolerance Tol and Builds the corresponding osculating surfaces.
+		%feature("autodoc", "	* detects if the surface has punctual U or V isoparametric curve along on the bounds of the
+    surface relativly to the tolerance Tol and Builds the corresponding osculating surfaces.
 
 	:param BS:
 	:type BS: Handle_Geom_Surface &
@@ -752,7 +771,8 @@ class Geom_Transformation : public MMgt_TShared {
 ") SetMirror;
 		void SetMirror (const gp_Ax1 & A1);
 		%feature("compactdefaultargs") SetMirror;
-		%feature("autodoc", "	* Makes the transformation into a symmetrical transformation with respect to a plane. The plane of the symmetry is defined with the axis placement A2. It is the plane (Location, XDirection, YDirection).
+		%feature("autodoc", "	* Makes the transformation into a symmetrical transformation with respect to a plane.
+    The plane of the symmetry is defined with the axis placement A2. It is the plane (Location, XDirection, YDirection).
 
 	:param A2:
 	:type A2: gp_Ax2

@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPLOCDOCSTRING
-"-Level : Public.All methods of all classes will be public.The TopLoc package gives ressources to handle 3D localcoordinate systems called Locations.A Location is a composition of elementary coordinatesystems, each one is called a Datum.  The Locationkeeps track of this composition."
+"-Level : Public.All methods of all classes will be public.The TopLoc package gives ressources to handle 3D localcoordinate systems called Locations.
+A Location is a composition of elementary coordinatesystems, each one is called a Datum.  The Locationkeeps track of this composition."
 %enddef
 %module (package="OCC", docstring=TOPLOCDOCSTRING) TopLoc
 
@@ -398,7 +399,7 @@ class TopLoc_Location {
 ") Transformation;
 		const gp_Trsf  Transformation ();
 		%feature("compactdefaultargs") operator gp_Trsf;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Trsf;
 		 operator gp_Trsf ();
 		%feature("compactdefaultargs") Inverted;
@@ -509,7 +510,7 @@ class TopLoc_Location {
             except:
                 return True
         }
-        
+
         %feature("autodoc", "1");
         %extend{
             std::string ShallowDumpToString() {

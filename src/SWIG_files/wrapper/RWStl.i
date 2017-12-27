@@ -18,7 +18,20 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RWSTLDOCSTRING
-"This package contains the methods to be used inthe Stereo Lithograpy Application. The mainfeatures of this application are ,starting from aShape :- mesh this shape with a maximun tolerance,- display the meshing,- write the meshing in a file (binary or ascii),- read of file (binary or ascii) and display it,- translate a binary file to an ascii file,- translate an ascii file to an binary file."
+"This package contains the methods to be used inthe Stereo Lithograpy Application. The main
+features of this application are ,starting from aShape :
+
+- mesh this shape with a maximun tolerance,
+
+- display the meshing,
+
+- write the meshing in a file (binary or ascii),
+
+- read of file (binary or ascii) and display it,
+
+- translate a binary file to an ascii file,
+
+- translate an ascii file to an binary file."
 %enddef
 %module (package="OCC", docstring=RWSTLDOCSTRING) RWStl
 

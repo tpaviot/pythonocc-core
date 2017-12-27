@@ -191,7 +191,15 @@ class V3d {
 ") GetProjAxis;
 		static Graphic3d_Vector GetProjAxis (const V3d_TypeOfOrientation Orientation);
 		%feature("compactdefaultargs") ArrowOfRadius;
-		%feature("autodoc", "	* Compute the graphic structure of arrow. X0,Y0,Z0 : coordinate of the arrow. DX,DY,DZ : Direction of the arrow. Alpha : Angle of arrow. Lng : Length of arrow.
+		%feature("autodoc", "	* Compute the graphic structure of arrow.
+
+    X0,Y0,Z0 : coordinate of the arrow.
+
+    DX,DY,DZ : Direction of the arrow.
+
+    Alpha : Angle of arrow.
+
+    Lng : Length of arrow.
 
 	:param garrow:
 	:type garrow: Handle_Graphic3d_Group &
@@ -215,7 +223,9 @@ class V3d {
 ") ArrowOfRadius;
 		static void ArrowOfRadius (const Handle_Graphic3d_Group & garrow,const V3d_Coordinate X0,const V3d_Coordinate Y0,const V3d_Coordinate Z0,const V3d_Parameter DX,const V3d_Parameter DY,const V3d_Parameter DZ,const Quantity_PlaneAngle Alpha,const V3d_Parameter Lng);
 		%feature("compactdefaultargs") CircleInPlane;
-		%feature("autodoc", "	* Compute the graphic structure of circle. X0,Y0,Z0 : Center of circle. VX,VY,VZ : Axis of circle. Radius : Radius of circle.
+		%feature("autodoc", "	* Compute the graphic structure of circle. X0,Y0,Z0 : Center of circle.
+
+    VX,VY,VZ : Axis of circle. Radius : Radius of circle.
 
 	:param gcircle:
 	:type gcircle: Handle_Graphic3d_Group &

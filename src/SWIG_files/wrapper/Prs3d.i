@@ -18,7 +18,17 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PRS3DDOCSTRING
-"The Prs3d package provides the following services-  a presentation object (the context for allmodifications to the display, its presentation will bedisplayed in every view of an active viewer)-  an attribute manager governing how objects suchas color, width, and type of line are displayed;these are generic objects, whereas those inStdPrs are specific geometries and topologies.-  generic  algorithms providing default settings forobjects such as points, curves, surfaces and shapes-  a root object which provides the abstractframework for the DsgPrs definitions at work indisplay of dimensions, relations and trihedra."
+"The Prs3d package provides the following services:
+
+-  a presentation object (the context for allmodifications to the display, its presentation will be
+displayed in every view of an active viewer)
+
+-  an attribute manager governing how objects such as color, width, and type of line are displayed;these are generic objects, whereas those in
+StdPrs are specific geometries and topologies.
+
+-  generic  algorithms providing default settings forobjects such as points, curves, surfaces and shapes
+
+-  a root object which provides the abstract framework for the DsgPrs definitions at work in display of dimensions, relations and trihedra."
 %enddef
 %module (package="OCC", docstring=PRS3DDOCSTRING) Prs3d
 

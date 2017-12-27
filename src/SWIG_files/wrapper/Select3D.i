@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SELECT3DDOCSTRING
-"The Select3D package provides the following services-  definition of standard  3D sensitive primitives such as points, curves and faces.-  recovery of the bounding boxes in the 2D graphic selection space, if required.-  a 3D-2D projector."
+"The Select3D package provides the following services-  definition of standard  3D sensitive primitives such as points, curves and faces.
+
+-  recovery of the bounding boxes in the 2D graphic selection space, if required.
+
+-  a 3D-2D projector."
 %enddef
 %module (package="OCC", docstring=SELECT3DDOCSTRING) Select3D
 

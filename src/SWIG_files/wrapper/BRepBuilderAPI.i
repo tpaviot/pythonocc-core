@@ -18,7 +18,31 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPBUILDERAPIDOCSTRING
-"The BRepBuilderAPI package  provides an  ApplicationProgramming Interface for the BRep topology datastructure.The API is a set of classes aiming to provide :* High level and simple calls for the most commonoperations.*  Keeping  an  access on  the  low-levelimplementation of high-level calls.* Examples of programming of high-level operationsfrom low-level operations.* A complete coverage of modelling :- Creating vertices ,edges, faces, solids.- Sweeping operations.- Boolean operations.- Global properties computation.The API provides classes to build objects:* The constructors of the classes provides thedifferent constructions methods.* The class keeps as fields the  different toolsused to build the object.*  The class provides a casting method to getautomatically the result with a  function-likecall.For example to make a vertex <V> from a point <P>one can writes :V = BRepBuilderAPI_MakeVertex(P);orBRepBuilderAPI_MakeVertex MV(P);V = MV.Vertex();For tolerances a default precision is used whichcan  be  changed  by  the  packahe methodBRepBuilderAPI::Precision.For error handling the BRepBuilderAPI commands raise onlythe NotDone error. When Done is false on a commandthe error description can be asked to the command.In theory the comands can be  called with anyarguments, argument checking is performed by thecommand."
+"The BRepBuilderAPI package  provides an  Application Programming Interface for the BRep topology data structure.
+The API is a set of classes aiming to provide :
+
+* High level and simple calls for the most commonoperations.
+* Keeping  an  access on  the  low-levelimplementation of high-level calls.
+* Examples of programming of high-level operationsfrom low-level operations.
+* A complete coverage of modelling :
+  - Creating vertices ,edges, faces, solids.
+  - Sweeping operations.
+  - Boolean operations.
+  - Global properties computation.
+The API provides classes to build objects:
+* The constructors of the classes provides the
+different constructions methods.
+* The class keeps as fields the  different tools used to build the object.
+* The class provides a casting method to getautomatically the result with a  function-likecall.
+For example to make a vertex <V> from a point <P>one can writes :
+
+  V = BRepBuilderAPI_MakeVertex(P);orBRepBuilderAPI_MakeVertex MV(P);
+  V = MV.Vertex();
+
+For tolerances a default precision is used which can  be  changed  by  the  package methodBRepBuilderAPI::Precision.
+For error handling the BRepBuilderAPI commands raise only the NotDone error. When Done is false on a command
+the error description can be asked to the command.In theory the commands can be  called with any
+arguments, argument checking is performed by the command."
 %enddef
 %module (package="OCC", docstring=BREPBUILDERAPIDOCSTRING) BRepBuilderAPI
 
@@ -930,7 +954,7 @@ class BRepBuilderAPI_MakeShape : public BRepBuilderAPI_Command {
 ") Shape;
 		virtual const TopoDS_Shape  Shape ();
 		%feature("compactdefaultargs") operator TopoDS_Shape;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Shape;
 		 operator TopoDS_Shape ();
 		%feature("compactdefaultargs") Generated;
@@ -1471,7 +1495,7 @@ class BRepBuilderAPI_MakeEdge : public BRepBuilderAPI_MakeShape {
 ") Edge;
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Vertex1;
@@ -1836,7 +1860,7 @@ class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 ") Edge;
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Vertex1;
@@ -2181,7 +2205,7 @@ class BRepBuilderAPI_MakeFace : public BRepBuilderAPI_MakeShape {
 ") Face;
 		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") operator TopoDS_Face;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Face;
 		 operator TopoDS_Face ();
 };
@@ -2322,7 +2346,7 @@ class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 ") Edge;
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") operator TopoDS_Edge;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("compactdefaultargs") Wire;
@@ -2332,7 +2356,7 @@ class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 ") Wire;
 		const TopoDS_Wire  Wire ();
 		%feature("compactdefaultargs") operator TopoDS_Wire;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Wire;
 		 operator TopoDS_Wire ();
 };
@@ -2417,7 +2441,7 @@ class BRepBuilderAPI_MakeShell : public BRepBuilderAPI_MakeShape {
 ") Shell;
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") operator TopoDS_Shell;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Shell;
 		 operator TopoDS_Shell ();
 };
@@ -2514,7 +2538,7 @@ class BRepBuilderAPI_MakeSolid : public BRepBuilderAPI_MakeShape {
 ") Solid;
 		const TopoDS_Solid  Solid ();
 		%feature("compactdefaultargs") operator TopoDS_Solid;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Solid;
 		 operator TopoDS_Solid ();
 		%feature("compactdefaultargs") IsDeleted;
@@ -2549,7 +2573,7 @@ class BRepBuilderAPI_MakeVertex : public BRepBuilderAPI_MakeShape {
 ") Vertex;
 		const TopoDS_Vertex  Vertex ();
 		%feature("compactdefaultargs") operator TopoDS_Vertex;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Vertex;
 		 operator TopoDS_Vertex ();
 };
@@ -2674,7 +2698,7 @@ class BRepBuilderAPI_MakeWire : public BRepBuilderAPI_MakeShape {
 ") Wire;
 		const TopoDS_Wire  Wire ();
 		%feature("compactdefaultargs") operator TopoDS_Wire;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Wire;
 		 operator TopoDS_Wire ();
 		%feature("compactdefaultargs") Edge;

@@ -18,7 +18,14 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MESHVSDOCSTRING
-"This package provides classes and simple methods of flexible presentation objectthat is responsible for the following tasks:1) Displaying mesh ( some mesh elements and nodes may be hidden )2) Results of calculations and analysis are shown through the single common interface.3) The data can be shown with different visual styles: colors, vectors, texts and deformed mesh.4) Selection of mesh entities (except hidden ones)"
+"This package provides classes and simple methods of flexible presentation object
+that is responsible for the following tasks:
+
+1) Displaying mesh ( some mesh elements and nodes may be hidden )
+
+2) Results of calculations and analysis are shown through the single common interface.
+
+3) The data can be shown with different visual styles: colors, vectors, texts and deformed mesh.4) Selection of mesh entities (except hidden ones)"
 %enddef
 %module (package="OCC", docstring=MESHVSDOCSTRING) MeshVS
 
@@ -933,7 +940,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerBoolean : public TCollection_MapNode {
                 $self->Key()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetValue() {

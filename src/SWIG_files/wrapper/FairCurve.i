@@ -88,7 +88,8 @@ class FairCurve_Batten {
 ") Delete;
 		virtual void Delete ();
 		%feature("compactdefaultargs") SetFreeSliding;
-		%feature("autodoc", "	* Freesliding is initialized with the default setting false. When Freesliding is set to true and, as a result, sliding is free, the sliding factor is automatically computed to satisfy the equilibrium of the batten.
+		%feature("autodoc", "	* Freesliding is initialized with the default setting false. When Freesliding is set to true and, as a result, sliding is free,
+    the sliding factor is automatically computed to satisfy the equilibrium of the batten.
 
 	:param FreeSliding:
 	:type FreeSliding: bool
@@ -96,7 +97,13 @@ class FairCurve_Batten {
 ") SetFreeSliding;
 		void SetFreeSliding (const Standard_Boolean FreeSliding);
 		%feature("compactdefaultargs") SetConstraintOrder1;
-		%feature("autodoc", "	* Allows you to change the order of the constraint on the first point. ConstraintOrder has the default setting of 1. The following settings are available: - 0-the curve must pass through a point - 1-the curve must pass through a point and have a given tangent - 2-the curve must pass through a point, have a given tangent and a given curvature. The third setting is only valid for FairCurve_MinimalVariation curves. These constraints, though geometric, represent the mechanical constraints due, for example, to the resistance of the material the actual physical batten is made of.
+		%feature("autodoc", "	* Allows you to change the order of the constraint on the first point. ConstraintOrder has the default setting of 1.
+    The following settings are available:
+    - 0-the curve must pass through a point
+    - 1-the curve must pass through a point and have a given tangent
+    - 2-the curve must pass through a point, have a given tangent and a given curvature.
+    The third setting is only valid for FairCurve_MinimalVariation curves. These constraints, though geometric, represent the mechanical constraints due,
+    for example, to the resistance of the material the actual physical batten is made of.
 
 	:param ConstraintOrder:
 	:type ConstraintOrder: int
@@ -104,7 +111,13 @@ class FairCurve_Batten {
 ") SetConstraintOrder1;
 		void SetConstraintOrder1 (const Standard_Integer ConstraintOrder);
 		%feature("compactdefaultargs") SetConstraintOrder2;
-		%feature("autodoc", "	* Allows you to change the order of the constraint on the second point. ConstraintOrder is initialized with the default setting of 1. The following settings are available: - 0-the curve must pass through a point - 1-the curve must pass through a point and have a given tangent - 2-the curve must pass through a point, have a given tangent and a given curvature. The third setting is only valid for FairCurve_MinimalVariation curves. These constraints, though geometric, represent the mechanical constraints due, for example, to the resistance of the material the actual physical batten is made of.
+		%feature("autodoc", "	* Allows you to change the order of the constraint on the second point. ConstraintOrder is initialized with the default setting of 1.
+    The following settings are available:
+    - 0-the curve must pass through a point
+    - 1-the curve must pass through a point and have a given tangent
+    - 2-the curve must pass through a point, have a given tangent and a given curvature.
+    The third setting is only valid for FairCurve_MinimalVariation curves. These constraints, though geometric, represent the mechanical constraints due, for example,
+    to the resistance of the material the actual physical batten is made of.
 
 	:param ConstraintOrder:
 	:type ConstraintOrder: int
@@ -112,7 +125,9 @@ class FairCurve_Batten {
 ") SetConstraintOrder2;
 		void SetConstraintOrder2 (const Standard_Integer ConstraintOrder);
 		%feature("compactdefaultargs") SetP1;
-		%feature("autodoc", "	* Allows you to change the location of the point, P1, and in doing so, modify the curve. Warning This method changes the angle as well as the point. Exceptions NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case.
+		%feature("autodoc", "	* Allows you to change the location of the point, P1, and in doing so, modify the curve. Warning This method changes the angle as well as the point.
+    Exceptions NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion:
+    P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case.
 
 	:param P1:
 	:type P1: gp_Pnt2d
@@ -120,7 +135,9 @@ class FairCurve_Batten {
 ") SetP1;
 		void SetP1 (const gp_Pnt2d & P1);
 		%feature("compactdefaultargs") SetP2;
-		%feature("autodoc", "	* Allows you to change the location of the point, P1, and in doing so, modify the curve. Warning This method changes the angle as well as the point. Exceptions NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case.
+		%feature("autodoc", "	* Allows you to change the location of the point, P1, and in doing so, modify the curve. Warning This method changes the angle as well as the point.
+    Exceptions NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion:
+    P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case.
 
 	:param P2:
 	:type P2: gp_Pnt2d
@@ -160,7 +177,12 @@ class FairCurve_Batten {
 ") SetSlope;
 		void SetSlope (const Standard_Real Slope);
 		%feature("compactdefaultargs") SetSlidingFactor;
-		%feature("autodoc", "	* Allows you to change the ratio SlidingFactor. This compares the length of the batten and the reference length, which is, in turn, a function of the constraints. This modification has one of the following two effects: - if you increase the value, it inflates the batten - if you decrease the value, it flattens the batten. When sliding is free, the sliding factor is automatically computed to satisfy the equilibrium of the batten. When sliding is imposed, a value is required for the sliding factor. SlidingFactor is initialized with the default setting of 1.
+		%feature("autodoc", "	* Allows you to change the ratio SlidingFactor. This compares the length of the batten and the reference length, which is, in turn,
+    a function of the constraints. This modification has one of the following two effects:
+    - if you increase the value, it inflates the batten
+    - if you decrease the value, it flattens the batten.
+    When sliding is free, the sliding factor is automatically computed to satisfy the equilibrium of the batten.
+    When sliding is imposed, a value is required for the sliding factor. SlidingFactor is initialized with the default setting of 1.
 
 	:param SlidingFactor:
 	:type SlidingFactor: float
@@ -168,7 +190,13 @@ class FairCurve_Batten {
 ") SetSlidingFactor;
 		void SetSlidingFactor (const Standard_Real SlidingFactor);
 		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* Performs the algorithm, using the arguments Code, NbIterations and Tolerance and computes the curve with respect to the constraints. Code will have one of the following values: - OK - NotConverged - InfiniteSliding - NullHeight The parameters Tolerance and NbIterations control how precise the computation is, and how long it will take.
+		%feature("autodoc", "	* Performs the algorithm, using the arguments Code, NbIterations and Tolerance and computes the curve with respect to the constraints.
+    Code will have one of the following values:
+    - OK
+    - NotConverged
+    - InfiniteSliding
+    - NullHeight
+    The parameters Tolerance and NbIterations control how precise the computation is, and how long it will take.
 
 	:param Code:
 	:type Code: FairCurve_AnalysisCode &
@@ -180,13 +208,17 @@ class FairCurve_Batten {
 ") Compute;
 		virtual Standard_Boolean Compute (FairCurve_AnalysisCode &OutValue,const Standard_Integer NbIterations = 50,const Standard_Real Tolerance = 1.0e-3);
 		%feature("compactdefaultargs") SlidingOfReference;
-		%feature("autodoc", "	* Computes the real number value for length Sliding of Reference for new constraints. If you want to give a specific length to a batten curve, use the following syntax: b.SetSlidingFactor(L / b.SlidingOfReference()) where b is the name of the batten curve object.
+		%feature("autodoc", "	* Computes the real number value for length Sliding of Reference for new constraints.
+    If you want to give a specific length to a batten curve, use the following syntax:
+    b.SetSlidingFactor(L / b.SlidingOfReference())
+    where b is the name of the batten curve object.
 
 	:rtype: float
 ") SlidingOfReference;
 		Standard_Real SlidingOfReference ();
 		%feature("compactdefaultargs") GetFreeSliding;
-		%feature("autodoc", "	* Returns the initial free sliding value, false by default. Free sliding is generally more aesthetically pleasing than constrained sliding. However, the computation can fail with values such as angles greater than PI/2. This is because the resulting batten length is theoretically infinite.
+		%feature("autodoc", "	* Returns the initial free sliding value, false by default. Free sliding is generally more aesthetically pleasing than constrained sliding.
+     However, the computation can fail with values such as angles greater than PI/2. This is because the resulting batten length is theoretically infinite.
 
 	:rtype: bool
 ") GetFreeSliding;
@@ -271,7 +303,10 @@ class FairCurve_Batten {
 class FairCurve_BattenLaw : public math_Function {
 	public:
 		%feature("compactdefaultargs") FairCurve_BattenLaw;
-		%feature("autodoc", "	* Constructor of linear batten with Heigth : the Heigth at the middle point Slope : the geometric slope of the batten Sliding : Active Length of the batten without extension
+		%feature("autodoc", "	* Constructor of linear batten with Heigth :
+    the Heigth at the middle point Slope :
+    the geometric slope of the batten Sliding :
+    Active Length of the batten without extension
 
 	:param Heigth:
 	:type Heigth: float

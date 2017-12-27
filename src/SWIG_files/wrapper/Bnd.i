@@ -18,7 +18,21 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BNDDOCSTRING
-"Supports the Boundings Volumes. A Bounding Volumeis used to bound a shape to optimising algorithms.If a point is outside the Bounding  Volume of ashape it is also outside the shape. The contraryis not necessarily true.Various classes are then implemented to describethe usual Bounding volumes. Not all classes areimplemented.in 3D :Box         ImplementedBoundSortBox    Implementedin 2D :Box2d        ImplementedBoundSortBox2d   Implemented-Level : Public.All methods of all classes will be public."
+"Supports the Boundings Volumes. A Bounding Volume is used to bound a shape to optimizing algorithms.
+If a point is outside the Bounding  Volume of a shape it is also outside the shape.
+The contraryis not necessarily true.Various classes are then implemented to describe
+the usual Bounding volumes. Not all classes are implemented.in 3D :
+
+- Box
+- ImplementedBoundSortBox
+
+Implemented in 2D :
+
+- Box2d
+- ImplementedBoundSortBox2d
+- Implemented-Level :
+- Public.
+All methods of all classes will be public."
 %enddef
 %module (package="OCC", docstring=BNDDOCSTRING) Bnd
 

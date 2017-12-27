@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCPNTSDOCSTRING
-"This package contains the geometric algorithmes used tocompute characteristic points on parametrized curves.They are high level algorithms based on the low levelalgorithms in CPnts.-Level : Public.All methods of all classes will be public."
+"This package contains the geometric algorithmes used tocompute characteristic points on parametrized curves.
+They are high level algorithms based on the low levelalgorithms in CPnts.-Level :
+
+Public.All methods of all classes will be public."
 %enddef
 %module (package="OCC", docstring=GCPNTSDOCSTRING) GCPnts
 
@@ -149,7 +152,9 @@ class GCPnts_AbscissaPoint {
 ") Length;
 		static Standard_Real Length (Adaptor3d_Curve & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol);
 		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	* Computes the length of the Curve <C> with the given tolerance. Constructs an empty algorithm. This function is used only for initializing a framework to compute the length of a curve (or a series of curves). Warning The function IsDone will return the value false after the use of this function.
+		%feature("autodoc", "	* Computes the length of the Curve <C> with the given tolerance. Constructs an empty algorithm.
+    This function is used only for initializing a framework to compute the length of a curve (or a series of curves). Warning The function
+    IsDone will return the value false after the use of this function.
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -219,7 +224,8 @@ class GCPnts_AbscissaPoint {
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real U0);
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "	* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Ui> is the starting value used in the iterative process which find the solution, it must be close to the final solution
+		%feature("autodoc", "	* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>.
+     <Ui> is the starting value used in the iterative process which find the solution, it must be close to the final solution
 
 	:param C:
 	:type C: Adaptor3d_Curve &
@@ -233,7 +239,8 @@ class GCPnts_AbscissaPoint {
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint (Adaptor3d_Curve & C,const Standard_Real Abscissa,const Standard_Real U0,const Standard_Real Ui);
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "	* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Ui> is the starting value used in the iterative process which find the solution, it must be closed to the final solution
+		%feature("autodoc", "	* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>.
+    <Ui> is the starting value used in the iterative process which find the solution, it must be closed to the final solution
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -247,7 +254,8 @@ class GCPnts_AbscissaPoint {
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real U0,const Standard_Real Ui);
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "	* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Ui> is the starting value used in the iterative process which find the solution, it must be close to the final solution
+		%feature("autodoc", "	* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>.
+    <Ui> is the starting value used in the iterative process which find the solution, it must be close to the final solution
 
 	:param C:
 	:type C: Adaptor3d_Curve &
@@ -263,7 +271,8 @@ class GCPnts_AbscissaPoint {
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint (Adaptor3d_Curve & C,const Standard_Real Abscissa,const Standard_Real U0,const Standard_Real Ui,const Standard_Real Tol);
 		%feature("compactdefaultargs") GCPnts_AbscissaPoint;
-		%feature("autodoc", "	* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Ui> is the starting value used in the iterative process which find the solution, it must be close to the final solution
+		%feature("autodoc", "	* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>.
+    <Ui> is the starting value used in the iterative process which find the solution, it must be close to the final solution
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -279,13 +288,17 @@ class GCPnts_AbscissaPoint {
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real U0,const Standard_Real Ui,const Standard_Real Tol);
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* True if the computation was successful, False otherwise. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.
+		%feature("autodoc", "	* True if the computation was successful, False otherwise. IsDone is a protection against:
+
+    - non-convergence of the algorithm
+    - querying the results before computation.
 
 	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	* Returns the parameter on the curve of the point solution of this algorithm. Exceptions StdFail_NotDone if the computation was not successful, or was not done.
+		%feature("autodoc", "	* Returns the parameter on the curve of the point solution of this algorithm. Exceptions StdFail_NotDone if the computation was not successful,
+    or was not done.
 
 	:rtype: float
 ") Parameter;
@@ -308,7 +321,8 @@ class GCPnts_QuasiUniformAbscissa {
 ") GCPnts_QuasiUniformAbscissa;
 		 GCPnts_QuasiUniformAbscissa ();
 		%feature("compactdefaultargs") GCPnts_QuasiUniformAbscissa;
-		%feature("autodoc", "	* Computes a uniform abscissa distribution of points - on the curve C where Abscissa is the curvilinear distance between two consecutive points of the distribution.
+		%feature("autodoc", "	* Computes a uniform abscissa distribution of points - on the curve C where Abscissa is the curvilinear distance between
+    two consecutive points of the distribution.
 
 	:param C:
 	:type C: Adaptor3d_Curve &
@@ -318,7 +332,17 @@ class GCPnts_QuasiUniformAbscissa {
 ") GCPnts_QuasiUniformAbscissa;
 		 GCPnts_QuasiUniformAbscissa (Adaptor3d_Curve & C,const Standard_Integer NbPoints);
 		%feature("compactdefaultargs") GCPnts_QuasiUniformAbscissa;
-		%feature("autodoc", "	* Computes a uniform abscissa distribution of points on the part of curve C limited by the two parameter values U1 and U2, where Abscissa is the curvilinear distance between two consecutive points of the distribution. The first point of the distribution is either the origin of curve C or the point of parameter U1. The following points are computed such that the curvilinear distance between two consecutive points is equal to Abscissa. The last point of the distribution is either the end point of curve C or the point of parameter U2. However the curvilinear distance between this last point and the point just preceding it in the distribution is, of course, generally not equal to Abscissa. Use the function IsDone to verify that the computation was successful, the function NbPoints to obtain the number of points of the computed distribution, and the function Parameter to read the parameter of each point. Warning The roles of U1 and U2 are inverted if U1 > U2 . Warning C is an adapted curve, that is, an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), - and those required on the curve by the computation algorithm.
+		%feature("autodoc", "	* Computes a uniform abscissa distribution of points on the part of curve C limited by the two parameter values U1 and U2,
+    where Abscissa is the curvilinear distance between two consecutive points of the distribution. The first point of the distribution is either the
+    origin of curve C or the point of parameter U1. The following points are computed such that the curvilinear distance between two consecutive points is
+    equal to Abscissa. The last point of the distribution is either the end point of curve C or the point of parameter U2. However the curvilinear distance
+    between this last point and the point just preceding it in the distribution is, of course, generally not equal to Abscissa. Use the function IsDone to
+    verify that the computation was successful, the function NbPoints to obtain the number of points of the computed distribution, and the function Parameter to
+    read the parameter of each point. Warning The roles of U1 and U2 are inverted if U1 > U2 . Warning C is an adapted curve, that is, an object which is an interface between:
+
+    - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve)
+    or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve),
+    - and those required on the curve by the computation algorithm.
 
 	:param C:
 	:type C: Adaptor3d_Curve &
@@ -404,19 +428,27 @@ class GCPnts_QuasiUniformAbscissa {
 ") Initialize;
 		void Initialize (Adaptor2d_Curve2d & C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2);
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if the computation was successful. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.
+		%feature("autodoc", "	* Returns true if the computation was successful. IsDone is a protection against:
+    - non-convergence of the algorithm
+    - querying the results before computation.
 
 	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* Returns the number of points of the distribution computed by this algorithm. This value is either: - the one imposed on the algorithm at the time of construction (or initialization), or - the one computed by the algorithm when the curvilinear distance between two consecutive points of the distribution is imposed on the algorithm at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
+		%feature("autodoc", "	* Returns the number of points of the distribution computed by this algorithm. This value is either:
+    - the one imposed on the algorithm at the time of construction (or initialization), or
+    - the one computed by the algorithm when the curvilinear distance between two consecutive points of the distribution is imposed on the algorithm
+    at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 
 	:rtype: int
 ") NbPoints;
 		Standard_Integer NbPoints ();
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	* Returns the parameter of the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
+		%feature("autodoc", "	* Returns the parameter of the point of index Index in the distribution computed by this algorithm.
+    Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However,
+    pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized,
+    or if the computation was not successful.
 
 	:param Index:
 	:type Index: int
@@ -481,7 +513,29 @@ class GCPnts_QuasiUniformDeflection {
 ") GCPnts_QuasiUniformDeflection;
 		 GCPnts_QuasiUniformDeflection (Adaptor3d_Curve & C,const Standard_Real Deflection,const Standard_Real U1,const Standard_Real U2,const GeomAbs_Shape Continuity = GeomAbs_C1);
 		%feature("compactdefaultargs") GCPnts_QuasiUniformDeflection;
-		%feature("autodoc", "	* Computes a QuasiUniform Deflection distribution of points on a part of the Curve <C>. This and the above algorithms compute a distribution of points: - on the curve C, or - on the part of curve C limited by the two parameter values U1 and U2, where the deflection resulting from the distributed points is not greater than Deflection. The first point of the distribution is either the origin of curve C or the point of parameter U1. The last point of the distribution is either the end point of curve C or the point of parameter U2. Intermediate points of the distribution are built such that the deflection is not greater than Deflection. Using the following evaluation of the deflection: if Pi and Pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of Pi and Pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2 ] on curve C). Continuity, defaulted to GeomAbs_C1, gives the degree of continuity of the curve C. (Note that C is an Adaptor3d_Curve or an Adaptor2d_Curve2d object, and does not know the degree of continuity of the underlying curve). Use the function IsDone to verify that the computation was successful, the function NbPoints to obtain the number of points of the computed distribution, and the function Parameter to read the parameter of each point. Warning - The roles of U1 and U2 are inverted if U1 > U2. - Derivative functions on the curve are called according to Continuity. An error may occur if Continuity is greater than the real degree of continuity of the curve. Warning C is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), - and those required on the curve by the computation algorithm.
+		%feature("autodoc", "	* Computes a QuasiUniform Deflection distribution of points on a part of the Curve <C>.
+    This and the above algorithms compute a distribution of points: - on the curve C, or
+    - on the part of curve C limited by the two parameter values U1 and U2, where the deflection resulting from the distributed points is not greater than Deflection.
+    The first point of the distribution is either the origin of curve C or the point of parameter U1.
+    The last point of the distribution is either the end point of curve C or the point of parameter U2.
+    Intermediate points of the distribution are built such that the deflection is not greater than Deflection.
+    Using the following evaluation of the deflection: if Pi and Pj are two consecutive points of the distribution,
+    respectively of parameter ui and uj on the curve, the deflection is the distance between:
+
+    - the mid-point of Pi and Pj (the center of the chord joining these two points)
+    - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2 ] on curve C).
+    Continuity, defaulted to GeomAbs_C1, gives the degree of continuity of the curve C. (Note that C is an Adaptor3d_Curve or an
+    Adaptor2d_Curve2d object, and does not know the degree of continuity of the underlying curve). Use the function IsDone to verify
+    that the computation was successful, the function NbPoints to obtain the number of points of the computed distribution, and the function Parameter
+    to read the parameter of each point.
+    Warning
+    - The roles of U1 and U2 are inverted if U1 > U2.
+    - Derivative functions on the curve are called according to Continuity.
+    An error may occur if Continuity is greater than the real degree of continuity of the curve.
+    Warning C is an adapted curve, i.e. an object which is an interface between:
+    - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the
+    spackage Geom (in the case of an Adaptor3d_Curve curve),
+    - and those required on the curve by the computation algorithm.
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -537,7 +591,24 @@ class GCPnts_QuasiUniformDeflection {
 ") Initialize;
 		void Initialize (Adaptor3d_Curve & C,const Standard_Real Deflection,const Standard_Real U1,const Standard_Real U2,const GeomAbs_Shape Continuity = GeomAbs_C1);
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	* Initialize the algoritms with <C>, <Deflection>, -- <U1>,<U2> This and the above algorithms initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve C, or - on the part of curve C limited by the two parameter values U1 and U2, where the deflection resulting from the distributed points is not greater than Deflection. The first point of the distribution is either the origin of curve C or the point of parameter U1. The last point of the distribution is either the end point of curve C or the point of parameter U2. Intermediate points of the distribution are built in such a way that the deflection is not greater than Deflection. Using the following evaluation of the deflection: if Pi and Pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of Pi and Pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2 ] on curve C). Continuity, defaulted to GeomAbs_C1, gives the degree of continuity of the curve C. (Note that C is an Adaptor3d_Curve or an Adaptor2d_Curve2d object, and does not know the degree of continuity of the underlying curve). Use the function IsDone to verify that the computation was successful, the function NbPoints to obtain the number of points of the computed distribution, and the function Parameter to read the parameter of each point. Warning - The roles of U1 and U2 are inverted if U1 > U2. - Derivative functions on the curve are called according to Continuity. An error may occur if Continuity is greater than the real degree of continuity of the curve. Warning C is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), and those required on the curve by the computation algorithm.
+		%feature("autodoc", "	* Initialize the algoritms with <C>, <Deflection>, -- <U1>,<U2> This and the above algorithms initialize (or reinitialize) this
+    algorithm and compute a distribution of points: - on the curve C, or - on the part of curve C limited by the two parameter values U1 and U2, where the
+    deflection resulting from the distributed points is not greater than Deflection. The first point of the distribution is either the origin of curve C or
+    the point of parameter U1. The last point of the distribution is either the end point of curve C or the point of parameter U2. Intermediate points of the
+    distribution are built in such a way that the deflection is not greater than Deflection. Using the following evaluation of the deflection: if Pi and Pj are
+    two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between:
+
+    - the mid-point of Pi and Pj (the center of the chord joining these two points)
+    - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2 ] on curve C).
+    Continuity, defaulted to GeomAbs_C1, gives the degree of continuity of the curve C. (Note that C is an Adaptor3d_Curve or an Adaptor2d_Curve2d object,
+    and does not know the degree of continuity of the underlying curve). Use the function IsDone to verify that the computation was successful, the function
+    NbPoints to obtain the number of points of the computed distribution, and the function Parameter to read the parameter of each point. Warning
+    - The roles of U1 and U2 are inverted if U1 > U2.
+    - Derivative functions on the curve are called according to Continuity.
+    An error may occur if Continuity is greater than the real degree of continuity of the curve.
+    Warning C is an adapted curve, i.e. an object which is an interface between:
+    - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve
+    from the package Geom (in the case of an Adaptor3d_Curve curve), and those required on the curve by the computation algorithm.
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -553,19 +624,25 @@ class GCPnts_QuasiUniformDeflection {
 ") Initialize;
 		void Initialize (Adaptor2d_Curve2d & C,const Standard_Real Deflection,const Standard_Real U1,const Standard_Real U2,const GeomAbs_Shape Continuity = GeomAbs_C1);
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if the computation was successful. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.
+		%feature("autodoc", "	* Returns true if the computation was successful. IsDone is a protection against:
+    - non-convergence of the algorithm
+    - querying the results before computation.
 
 	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* Returns the number of points of the distribution computed by this algorithm. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
+		%feature("autodoc", "	* Returns the number of points of the distribution computed by this algorithm.
+    Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 
 	:rtype: int
 ") NbPoints;
 		Standard_Integer NbPoints ();
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	* Returns the parameter of the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
+		%feature("autodoc", "	* Returns the parameter of the point of index Index in the distribution computed by this algorithm.
+    Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However,
+    pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized,
+    or if the computation was not successful.
 
 	:param Index:
 	:type Index: int
@@ -573,7 +650,9 @@ class GCPnts_QuasiUniformDeflection {
 ") Parameter;
 		Standard_Real Parameter (const Standard_Integer Index);
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
+		%feature("autodoc", "	* Returns the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1,
+    and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function.
+    Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 
 	:param Index:
 	:type Index: int
@@ -581,7 +660,9 @@ class GCPnts_QuasiUniformDeflection {
 ") Value;
 		gp_Pnt Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") Deflection;
-		%feature("autodoc", "	* Returns the deflection between the curve and the polygon resulting from the points of the distribution computed by this algorithm. This is the value given to the algorithm at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
+		%feature("autodoc", "	* Returns the deflection between the curve and the polygon resulting from the points of the distribution computed by this algorithm.
+    This is the value given to the algorithm at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized,
+    or if the computation was not successful.
 
 	:rtype: float
 ") Deflection;
@@ -805,7 +886,8 @@ class GCPnts_UniformAbscissa {
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa ();
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "	* Computes a uniform abscissa distribution of points on the Curve <C>. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
+		%feature("autodoc", "	* Computes a uniform abscissa distribution of points on the Curve <C>. Parameter Toler is equal Precision::
+    Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
 	:type C: Adaptor3d_Curve &
@@ -817,7 +899,9 @@ class GCPnts_UniformAbscissa {
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa (Adaptor3d_Curve & C,const Standard_Real Abscissa,const Standard_Real Toler = -1);
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve <C>. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
+		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve <C>.
+    Parameter Toler is equal Precision::
+    Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
 	:type C: Adaptor3d_Curve &
@@ -845,7 +929,8 @@ class GCPnts_UniformAbscissa {
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa (Adaptor3d_Curve & C,const Standard_Integer NbPoints,const Standard_Real Toler = -1);
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve <C>. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
+		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve <C>. P
+    arameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
 	:type C: Adaptor3d_Curve &
@@ -917,7 +1002,8 @@ class GCPnts_UniformAbscissa {
 ") Initialize;
 		void Initialize (Adaptor3d_Curve & C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = -1);
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "	* Computes a uniform abscissa distribution of points on the Curve2d <C>. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
+		%feature("autodoc", "	* Computes a uniform abscissa distribution of points on the Curve2d <C>.
+    Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -929,7 +1015,8 @@ class GCPnts_UniformAbscissa {
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real Toler = -1);
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve2d <C>. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
+		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve2d <C>.
+    Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -945,7 +1032,8 @@ class GCPnts_UniformAbscissa {
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = -1);
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "	* Computes a uniform abscissa distribution of points on the Curve2d <C>. <NbPoints> defines the nomber of desired points. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
+		%feature("autodoc", "	* Computes a uniform abscissa distribution of points on the Curve2d <C>.
+    <NbPoints> defines the nomber of desired points. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -957,7 +1045,8 @@ class GCPnts_UniformAbscissa {
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa (Adaptor2d_Curve2d & C,const Standard_Integer NbPoints,const Standard_Real Toler = -1);
 		%feature("compactdefaultargs") GCPnts_UniformAbscissa;
-		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve2d <C>. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
+		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve2d <C>.
+    Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -1068,7 +1157,7 @@ class GCPnts_UniformDeflection {
 ") GCPnts_UniformDeflection;
 		 GCPnts_UniformDeflection ();
 		%feature("compactdefaultargs") GCPnts_UniformDeflection;
-		%feature("autodoc", "	* Computes a uniform Deflection distribution of points on the Curve <C>. if <WithControl> is True,the algorithm controls the estimate deflection
+		%feature("autodoc", "	* Computes a uniform Deflection distribution of points on the Curve <C>. if <WithControl> is True, the algorithm controls the estimate deflection
 
 	:param C:
 	:type C: Adaptor3d_Curve &
@@ -1080,7 +1169,7 @@ class GCPnts_UniformDeflection {
 ") GCPnts_UniformDeflection;
 		 GCPnts_UniformDeflection (Adaptor3d_Curve & C,const Standard_Real Deflection,const Standard_Boolean WithControl = Standard_True);
 		%feature("compactdefaultargs") GCPnts_UniformDeflection;
-		%feature("autodoc", "	* Computes a uniform Deflection distribution of points on the Curve <C>. if <WithControl> is True,the algorithm controls the estimate deflection
+		%feature("autodoc", "	* Computes a uniform Deflection distribution of points on the Curve <C>. if <WithControl> is True, the algorithm controls the estimate deflection
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -1108,7 +1197,8 @@ class GCPnts_UniformDeflection {
 ") GCPnts_UniformDeflection;
 		 GCPnts_UniformDeflection (Adaptor3d_Curve & C,const Standard_Real Deflection,const Standard_Real U1,const Standard_Real U2,const Standard_Boolean WithControl = Standard_True);
 		%feature("compactdefaultargs") GCPnts_UniformDeflection;
-		%feature("autodoc", "	* Computes a Uniform Deflection distribution of points on a part of the Curve <C>. if <WithControl> is True,the algorithm controls the estimate deflection
+		%feature("autodoc", "	* Computes a Uniform Deflection distribution of points on a part of the Curve <C>. if <WithControl> is True,
+    the algorithm controls the estimate deflection
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -1164,7 +1254,26 @@ class GCPnts_UniformDeflection {
 ") Initialize;
 		void Initialize (Adaptor3d_Curve & C,const Standard_Real Deflection,const Standard_Real U1,const Standard_Real U2,const Standard_Boolean WithControl = Standard_True);
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	* Initialize the algoritms with <C>, <Deflection>, <U1>,<U2> This and the above methods initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve C, or - on the part of curve C limited by the two parameter values U1 and U2, where the maximum distance between C and the polygon that results from the points of the distribution is not greater than Deflection. The first point of the distribution is either the origin of curve C or the point of parameter U1. The last point of the distribution is either the end point of curve C or the point of parameter U2. Intermediate points of the distribution are built using interpolations of segments of the curve limited at the 2nd degree. The construction ensures, in a first step, that the chordal deviation for this interpolation of the curve is less than or equal to Deflection. However, it does not ensure that the chordal deviation for the curve itself is less than or equal to Deflection. To do this a check is necessary, which may generate (second step) additional intermediate points. This check is time consuming, and can be avoided by setting WithControl to false. Note that by default WithControl is true and check is performed. Use the function IsDone to verify that the computation was successful, the function NbPoints to obtain the number of points of the computed distribution, and the function Parameter to read the parameter of each point. Warning - C is necessary, 'C2' continuous. This property is not checked at construction time. - The roles of U1 and U2 are inverted if U1 > U2. Warning C is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), - and those required on the curve by the computation algorithm.
+		%feature("autodoc", "	* Initialize the algoritms with <C>, <Deflection>, <U1>,<U2>
+    This and the above methods initialize (or reinitialize) this algorithm and compute a distribution of points:
+
+    - on the curve C, or
+    - on the part of curve C limited by the two parameter values U1 and U2, where the maximum distance between C and the polygon that results from the
+    points of the distribution is not greater than Deflection. The first point of the distribution is either the origin of curve C or the point of parameter U1.
+    The last point of the distribution is either the end point of curve C or the point of parameter U2. Intermediate points of the distribution are built using
+    interpolations of segments of the curve limited at the 2nd degree. The construction ensures, in a first step, that the chordal deviation for this interpolation
+    of the curve is less than or equal to Deflection. However, it does not ensure that the chordal deviation for the curve itself is less than or equal to Deflection.
+    To do this a check is necessary, which may generate (second step) additional intermediate points. This check is time consuming, and can be avoided by setting
+    WithControl to false. Note that by default WithControl is true and check is performed. Use the function IsDone to verify that the computation was successful,
+    the function NbPoints to obtain the number of points of the computed distribution, and the function Parameter to read the parameter of each point.
+
+    Warning
+
+    - C is necessary, 'C2' continuous. This property is not checked at construction time.
+    - The roles of U1 and U2 are inverted if U1 > U2. Warning C is an adapted curve, i.e. an object which is an interface between:
+    - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the
+    package Geom (in the case of an Adaptor3d_Curve curve),
+    - and those required on the curve by the computation algorithm.
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
@@ -1180,19 +1289,25 @@ class GCPnts_UniformDeflection {
 ") Initialize;
 		void Initialize (Adaptor2d_Curve2d & C,const Standard_Real Deflection,const Standard_Real U1,const Standard_Real U2,const Standard_Boolean WithControl = Standard_True);
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	* Returns true if the computation was successful. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.
+		%feature("autodoc", "	* Returns true if the computation was successful. IsDone is a protection against:
+    - non-convergence of the algorithm
+    - querying the results before computation.
 
 	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	* Returns the number of points of the distribution computed by this algorithm. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
+		%feature("autodoc", "	* Returns the number of points of the distribution computed by this algorithm.
+    Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 
 	:rtype: int
 ") NbPoints;
 		Standard_Integer NbPoints ();
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "	* Returns the parameter of the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
+		%feature("autodoc", "	* Returns the parameter of the point of index Index in the distribution computed by this algorithm. Warning Index must
+    be greater than or equal to 1, and less than or equal to the number of points of the distribution. However,
+    pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this
+    algorithm has not been initialized, or if the computation was not successful.
 
 	:param Index:
 	:type Index: int
@@ -1200,7 +1315,9 @@ class GCPnts_UniformDeflection {
 ") Parameter;
 		Standard_Real Parameter (const Standard_Integer Index);
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFAil_NotDone if this algorithm has not been initialized, or if the computation was not successful.
+		%feature("autodoc", "	* Returns the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1,
+    and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function.
+    Exceptions StdFAil_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 
 	:param Index:
 	:type Index: int
@@ -1208,7 +1325,9 @@ class GCPnts_UniformDeflection {
 ") Value;
 		gp_Pnt Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") Deflection;
-		%feature("autodoc", "	* Returns the deflection between the curve and the polygon resulting from the points of the distribution computed by this algorithm. This value is the one given to the algorithm at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
+		%feature("autodoc", "	* Returns the deflection between the curve and the polygon resulting from the points of the distribution computed by this algorithm.
+    This value is the one given to the algorithm at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized,
+    or if the computation was not successful.
 
 	:rtype: float
 ") Deflection;

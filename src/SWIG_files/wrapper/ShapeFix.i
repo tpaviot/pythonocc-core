@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEFIXDOCSTRING
-"This package provides algorithms for fixingproblematic (violating Open CASCADE requirements) shapes.Tools from package ShapeAnalysis are used for detecting the problems. Thedetecting and fixing is done taking in account variouscriteria implemented in BRepCheck package.Each class of package ShapeFix deals with onecertain type of shapes or with some family of problems."
+"This package provides algorithms for fixingproblematic (violating Open CASCADE requirements) shapes.
+Tools from package Shape Analysis are used for detecting the problems. The detecting and fixing is done taking in account various
+criteria implemented in BRepCheck package. Each class of package ShapeFix deals with one certain type of shapes or with some family of problems."
 %enddef
 %module (package="OCC", docstring=SHAPEFIXDOCSTRING) ShapeFix
 
@@ -1765,7 +1767,7 @@ class ShapeFix_Face : public ShapeFix_Root {
                 $self->FixWireMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixOrientationMode() {
@@ -1778,7 +1780,7 @@ class ShapeFix_Face : public ShapeFix_Root {
                 $self->FixOrientationMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixAddNaturalBoundMode() {
@@ -1791,7 +1793,7 @@ class ShapeFix_Face : public ShapeFix_Root {
                 $self->FixAddNaturalBoundMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixMissingSeamMode() {
@@ -1804,7 +1806,7 @@ class ShapeFix_Face : public ShapeFix_Root {
                 $self->FixMissingSeamMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixSmallAreaWireMode() {
@@ -1817,7 +1819,7 @@ class ShapeFix_Face : public ShapeFix_Root {
                 $self->FixSmallAreaWireMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetRemoveSmallAreaFaceMode() {
@@ -1830,7 +1832,7 @@ class ShapeFix_Face : public ShapeFix_Root {
                 $self->RemoveSmallAreaFaceMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixIntersectingWiresMode() {
@@ -1843,7 +1845,7 @@ class ShapeFix_Face : public ShapeFix_Root {
                 $self->FixIntersectingWiresMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixLoopWiresMode() {
@@ -1856,7 +1858,7 @@ class ShapeFix_Face : public ShapeFix_Root {
                 $self->FixLoopWiresMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixSplitFaceMode() {
@@ -1869,7 +1871,7 @@ class ShapeFix_Face : public ShapeFix_Root {
                 $self->FixSplitFaceMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetAutoCorrectPrecisionMode() {
@@ -1882,7 +1884,7 @@ class ShapeFix_Face : public ShapeFix_Root {
                 $self->AutoCorrectPrecisionMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixPeriodicDegeneratedMode() {
@@ -2465,7 +2467,7 @@ class ShapeFix_Shape : public ShapeFix_Root {
                 $self->FixSolidMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixFreeShellMode() {
@@ -2478,7 +2480,7 @@ class ShapeFix_Shape : public ShapeFix_Root {
                 $self->FixFreeShellMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixFreeFaceMode() {
@@ -2491,7 +2493,7 @@ class ShapeFix_Shape : public ShapeFix_Root {
                 $self->FixFreeFaceMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixFreeWireMode() {
@@ -2504,7 +2506,7 @@ class ShapeFix_Shape : public ShapeFix_Root {
                 $self->FixFreeWireMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixSameParameterMode() {
@@ -2517,7 +2519,7 @@ class ShapeFix_Shape : public ShapeFix_Root {
                 $self->FixSameParameterMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixVertexPositionMode() {
@@ -2530,7 +2532,7 @@ class ShapeFix_Shape : public ShapeFix_Root {
                 $self->FixVertexPositionMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixVertexTolMode() {
@@ -2725,7 +2727,7 @@ class ShapeFix_Shell : public ShapeFix_Root {
                 $self->FixFaceMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixOrientationMode() {
@@ -2898,7 +2900,7 @@ class ShapeFix_Solid : public ShapeFix_Root {
                 $self->FixShellMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetCreateOpenSolidMode() {
@@ -3226,7 +3228,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->ModifyTopologyMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetModifyGeometryMode() {
@@ -3239,7 +3241,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->ModifyGeometryMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetModifyRemoveLoopMode() {
@@ -3252,7 +3254,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->ModifyRemoveLoopMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetClosedWireMode() {
@@ -3265,7 +3267,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->ClosedWireMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetPreferencePCurveMode() {
@@ -3278,7 +3280,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->PreferencePCurveMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetFixGapsByRangesMode() {
@@ -3291,7 +3293,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixGapsByRangesMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixReorderMode() {
@@ -3304,7 +3306,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixReorderMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixSmallMode() {
@@ -3317,7 +3319,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixSmallMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixConnectedMode() {
@@ -3330,7 +3332,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixConnectedMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixEdgeCurvesMode() {
@@ -3343,7 +3345,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixEdgeCurvesMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixDegeneratedMode() {
@@ -3356,7 +3358,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixDegeneratedMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixSelfIntersectionMode() {
@@ -3369,7 +3371,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixSelfIntersectionMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixLackingMode() {
@@ -3382,7 +3384,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixLackingMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixGaps3dMode() {
@@ -3395,7 +3397,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixGaps3dMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixGaps2dMode() {
@@ -3408,7 +3410,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixGaps2dMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixReversed2dMode() {
@@ -3421,7 +3423,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixReversed2dMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixRemovePCurveMode() {
@@ -3434,7 +3436,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixRemovePCurveMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixAddPCurveMode() {
@@ -3447,7 +3449,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixAddPCurveMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixRemoveCurve3dMode() {
@@ -3460,7 +3462,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixRemoveCurve3dMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixAddCurve3dMode() {
@@ -3473,7 +3475,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixAddCurve3dMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixSeamMode() {
@@ -3486,7 +3488,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixSeamMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixShiftedMode() {
@@ -3499,7 +3501,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixShiftedMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixSameParameterMode() {
@@ -3512,7 +3514,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixSameParameterMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixVertexToleranceMode() {
@@ -3525,7 +3527,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixVertexToleranceMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixNotchedEdgesMode() {
@@ -3538,7 +3540,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixNotchedEdgesMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixSelfIntersectingEdgeMode() {
@@ -3551,7 +3553,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixSelfIntersectingEdgeMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixIntersectingEdgesMode() {
@@ -3564,7 +3566,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixIntersectingEdgesMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixNonAdjacentIntersectingEdgesMode() {
@@ -3577,7 +3579,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
                 $self->FixNonAdjacentIntersectingEdgesMode()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Integer GetFixTailMode() {

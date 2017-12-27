@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define APPCONTDOCSTRING
-"This package provides the least square algorithmsnecessary to approximate a set of continous curvesor a continous surface.It also provides an instantiation of these algorithmsfor a class Function, a function f(t).The user will have to inherit class Function to use it.-Level : Advanced.All methods of all classes will be advanced."
+"This package provides the least square algorithms necessary to approximate a set of
+continuous curves or a continuous surface.It also provides an instantiation of these
+algorithms for a class Function, a function f(t).The user will have to inherit class Function to use it.-Level :
+ Advanced.All methods of all classes will be advanced."
 %enddef
 %module (package="OCC", docstring=APPCONTDOCSTRING) AppCont
 
@@ -124,7 +127,7 @@ class AppCont_Function {
 		%feature("autodoc", "	* Return information about peridicity in output paramateters space. @param theDimIdx Defines index in output parameters space. 1 <= theDimIdx <= 3 * myNbPnt + 2 * myNbPnt2d.
 
 	:param Standard_Integer:
-	:type Standard_Integer: 
+	:type Standard_Integer:
 	:param IsPeriodic:
 	:type IsPeriodic: bool
 	:param thePeriod:

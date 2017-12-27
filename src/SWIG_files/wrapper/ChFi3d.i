@@ -69,7 +69,10 @@ enum ChFi3d_FilletShape {
 class ChFi3d {
 	public:
 		%feature("compactdefaultargs") ConcaveSide;
-		%feature("autodoc", "	* Returns Reversed in Or1 and(or) Or2 if the concave edge defined by the interior of faces F1 and F2, in the neighbourhood of their boundary E is of the edge opposite to the normal of their surface support. The orientation of faces is not taken into consideration in the calculation. The function returns 0 if the calculation fails (tangence), if not, it returns the number of choice of the fillet or chamfer corresponding to the orientations calculated and to the tangent to the guide line read in E.
+		%feature("autodoc", "	* Returns Reversed in Or1 and(or) Or2 if the concave edge defined by the interior of faces F1 and F2,
+    in the neighborhood of their boundary E is of the edge opposite to the normal of their surface support. The orientation of faces
+    is not taken into consideration in the calculation. The function returns 0 if the calculation fails (tangence), if not,
+    it returns the number of choice of the fillet or chamfer corresponding to the orientations calculated and to the tangent to the guide line read in E.
 
 	:param S1:
 	:type S1: BRepAdaptor_Surface &

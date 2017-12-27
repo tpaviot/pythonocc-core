@@ -134,7 +134,7 @@ class gce_MakeMirror {
 ") Operator;
 		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Trsf;
 		 operator gp_Trsf ();
 };
@@ -187,7 +187,7 @@ class gce_MakeMirror2d {
 ") Operator;
 		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Trsf2d;
 		 operator gp_Trsf2d ();
 };
@@ -244,7 +244,7 @@ class gce_MakeRotation {
 ") Operator;
 		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Trsf;
 		 operator gp_Trsf ();
 };
@@ -279,7 +279,7 @@ class gce_MakeRotation2d {
 ") Operator;
 		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Trsf2d;
 		 operator gp_Trsf2d ();
 };
@@ -314,7 +314,7 @@ class gce_MakeScale {
 ") Operator;
 		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Trsf;
 		 operator gp_Trsf ();
 };
@@ -349,7 +349,7 @@ class gce_MakeScale2d {
 ") Operator;
 		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Trsf2d;
 		 operator gp_Trsf2d ();
 };
@@ -392,7 +392,7 @@ class gce_MakeTranslation {
 ") Operator;
 		const gp_Trsf  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Trsf;
 		 operator gp_Trsf ();
 };
@@ -435,7 +435,7 @@ class gce_MakeTranslation2d {
 ") Operator;
 		const gp_Trsf2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Trsf2d;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Trsf2d;
 		 operator gp_Trsf2d ();
 };
@@ -455,7 +455,10 @@ class gce_Root {
 ") IsDone;
 		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "	* Returns the status of the construction: - gce_Done, if the construction is successful, or - another value of the gce_ErrorType enumeration indicating why the construction failed.
+		%feature("autodoc", "	* Returns the status of the construction:
+
+    - gce_Done, if the construction is successful, or
+    - another value of the gce_ErrorType enumeration indicating why the construction failed.
 
 	:rtype: gce_ErrorType
 ") Status;
@@ -570,7 +573,7 @@ class gce_MakeCirc : public gce_Root {
 ") Operator;
 		const gp_Circ  Operator ();
 		%feature("compactdefaultargs") operator gp_Circ;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Circ;
 		 operator gp_Circ ();
 };
@@ -673,7 +676,7 @@ class gce_MakeCirc2d : public gce_Root {
 ") Operator;
 		const gp_Circ2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Circ2d;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Circ2d;
 		 operator gp_Circ2d ();
 };
@@ -782,7 +785,7 @@ class gce_MakeCone : public gce_Root {
 ") Operator;
 		const gp_Cone  Operator ();
 		%feature("compactdefaultargs") operator gp_Cone;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Cone;
 		 operator gp_Cone ();
 };
@@ -867,7 +870,7 @@ class gce_MakeCylinder : public gce_Root {
 ") Operator;
 		const gp_Cylinder  Operator ();
 		%feature("compactdefaultargs") operator gp_Cylinder;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Cylinder;
 		 operator gp_Cylinder ();
 };
@@ -930,7 +933,7 @@ class gce_MakeDir : public gce_Root {
 ") Operator;
 		const gp_Dir  Operator ();
 		%feature("compactdefaultargs") operator gp_Dir;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Dir;
 		 operator gp_Dir ();
 };
@@ -991,7 +994,7 @@ class gce_MakeDir2d : public gce_Root {
 ") Operator;
 		const gp_Dir2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Dir2d;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Dir2d;
 		 operator gp_Dir2d ();
 };
@@ -1040,7 +1043,7 @@ class gce_MakeElips : public gce_Root {
 ") Operator;
 		const gp_Elips  Operator ();
 		%feature("compactdefaultargs") operator gp_Elips;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Elips;
 		 operator gp_Elips ();
 };
@@ -1103,7 +1106,7 @@ class gce_MakeElips2d : public gce_Root {
 ") Operator;
 		const gp_Elips2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Elips2d;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Elips2d;
 		 operator gp_Elips2d ();
 };
@@ -1152,7 +1155,7 @@ class gce_MakeHypr : public gce_Root {
 ") Operator;
 		const gp_Hypr  Operator ();
 		%feature("compactdefaultargs") operator gp_Hypr;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Hypr;
 		 operator gp_Hypr ();
 };
@@ -1215,7 +1218,7 @@ class gce_MakeHypr2d : public gce_Root {
 ") Operator;
 		const gp_Hypr2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Hypr2d;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Hypr2d;
 		 operator gp_Hypr2d ();
 };
@@ -1278,7 +1281,7 @@ class gce_MakeLin : public gce_Root {
 ") Operator;
 		const gp_Lin  Operator ();
 		%feature("compactdefaultargs") operator gp_Lin;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Lin;
 		 operator gp_Lin ();
 };
@@ -1363,7 +1366,7 @@ class gce_MakeLin2d : public gce_Root {
 ") Operator;
 		gp_Lin2d Operator ();
 		%feature("compactdefaultargs") operator gp_Lin2d;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Lin2d;
 		 operator gp_Lin2d ();
 };
@@ -1408,7 +1411,7 @@ class gce_MakeParab : public gce_Root {
 ") Operator;
 		const gp_Parab  Operator ();
 		%feature("compactdefaultargs") operator gp_Parab;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Parab;
 		 operator gp_Parab ();
 };
@@ -1489,7 +1492,7 @@ class gce_MakeParab2d : public gce_Root {
 ") Operator;
 		const gp_Parab2d  Operator ();
 		%feature("compactdefaultargs") operator gp_Parab2d;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Parab2d;
 		 operator gp_Parab2d ();
 };
@@ -1596,7 +1599,7 @@ class gce_MakePln : public gce_Root {
 ") Operator;
 		const gp_Pln  Operator ();
 		%feature("compactdefaultargs") operator gp_Pln;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator gp_Pln;
 		 operator gp_Pln ();
 };

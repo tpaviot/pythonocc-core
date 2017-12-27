@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPCHECKDOCSTRING
-"This package provides tools to check the validityof the BRep."
+"This package provides tools to check the validity of the BRep."
 %enddef
 %module (package="OCC", docstring=BREPCHECKDOCSTRING) BRepCheck
 
@@ -142,7 +142,13 @@ class BRepCheck {
 class BRepCheck_Analyzer {
 	public:
 		%feature("compactdefaultargs") BRepCheck_Analyzer;
-		%feature("autodoc", "	* Constructs a shape validation object defined by the shape S. <S> is the shape to control. <GeomControls> If False only topological informaions are checked. The geometricals controls are For a Vertex : BRepCheck_InvalidToleranceValue NYI For an Edge : BRepCheck_InvalidCurveOnClosedSurface, BRepCheck_InvalidCurveOnSurface, BRepCheck_InvalidSameParameterFlag, BRepCheck_InvalidToleranceValue NYI For a face : BRepCheck_UnorientableShape, BRepCheck_IntersectingWires, BRepCheck_InvalidToleranceValue NYI For a wire : BRepCheck_SelfIntersectingWire
+		%feature("autodoc", "	* Constructs a shape validation object defined by the shape S. <S> is the shape to control. <GeomControls> If False only topological informaions are checked. The geometricals controls are For a Vertex : BRepCheck_InvalidToleranceValue
+
+    NYI For an Edge : BRepCheck_InvalidCurveOnClosedSurface, BRepCheck_InvalidCurveOnSurface, BRepCheck_InvalidSameParameterFlag, BRepCheck_InvalidToleranceValue
+
+    NYI For a face : BRepCheck_UnorientableShape, BRepCheck_IntersectingWires, BRepCheck_InvalidToleranceValue
+
+    NYI For a wire : BRepCheck_SelfIntersectingWire
 
 	:param S:
 	:type S: TopoDS_Shape &

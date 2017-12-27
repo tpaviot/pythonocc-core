@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTERFACEDOCSTRING
-"-Purpose : defines a general frame for interface dataused to manipulate results of normalized Interface outputs(i.e. files), also as a basis to define transfer operations(in other packages : see package Transfer)"
+"-Purpose : defines a general frame for interface dataused to manipulate results of normalized Interface outputs(i.e. files),
+also as a basis to define transfer operations(in other packages : see package Transfer)"
 %enddef
 %module (package="OCC", docstring=INTERFACEDOCSTRING) Interface
 

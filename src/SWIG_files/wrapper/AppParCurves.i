@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define APPPARCURVESDOCSTRING
-"Parallel Approximation in n curves.This package gives all the algorithms used to approximate a MultiLinedescribed by the tool MLineTool.The result of the approximation will be a MultiCurve."
+"Parallel Approximation in n curves.
+This package gives all the algorithms used to approximate a MultiLine described by the tool MLineTool.
+The result of the approximation will be a MultiCurve."
 %enddef
 %module (package="OCC", docstring=APPPARCURVESDOCSTRING) AppParCurves
 

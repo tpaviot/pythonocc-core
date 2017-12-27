@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VISUAL3DDOCSTRING
-"-Version:This package contains the group of classes necessaryfor the implementation of commands for the 3D visualiser.Use of this package is reserved to the visualiser.The visualiser manages the structures, the views, thelight sources, and object picking.-Keywords: View, Light, Pick-Warning:-References:"
+"-Version:This package contains the group of classes necessary for the implementation of commands for the 3D visualiser.
+Use of this package is reserved to the visualiser.
+The visualiser manages the structures, the views, thelight sources, and object picking.
+-Keywords: View, Light, Pick-Warning:-References:"
 %enddef
 %module (package="OCC", docstring=VISUAL3DDOCSTRING) Visual3d
 
@@ -114,7 +117,8 @@ enum Visual3d_TypeOfVisualization {
 class Visual3d_ContextPick {
 	public:
 		%feature("compactdefaultargs") Visual3d_ContextPick;
-		%feature("autodoc", "	* Creates a context from default values //! Aperture	: 4.0 Depth	: 10 Order	: TOO_TOPFIRST
+		%feature("autodoc", "	* Creates a context from default values
+    //! Aperture	: 4.0 Depth	: 10 Order	: TOO_TOPFIRST
 
 	:rtype: None
 ") Visual3d_ContextPick;
@@ -132,7 +136,9 @@ class Visual3d_ContextPick {
 ") Visual3d_ContextPick;
 		 Visual3d_ContextPick (const Standard_Real Aperture,const Standard_Integer Depth,const Visual3d_TypeOfOrder Order);
 		%feature("compactdefaultargs") SetAperture;
-		%feature("autodoc", "	* Modifies the size of the pick window. Category: Methods to modifies the class definition Warning: Raises ContextPickDefinitionError if <Aperture> is a negative value.
+		%feature("autodoc", "	* Modifies the size of the pick window. Category: Methods to modifies the class definition
+
+     Warning: Raises ContextPickDefinitionError if <Aperture> is a negative value.
 
 	:param Aperture:
 	:type Aperture: float
@@ -140,7 +146,11 @@ class Visual3d_ContextPick {
 ") SetAperture;
 		void SetAperture (const Standard_Real Aperture);
 		%feature("compactdefaultargs") SetDepth;
-		%feature("autodoc", "	* Modifies the pick depth a priori. Category: Methods to modifies the class definition Warning: Raises ContextPickDefinitionError if <Depth> is a negative value.
+		%feature("autodoc", "	* Modifies the pick depth a priori.
+
+    Category: Methods to modifies the class definition
+
+    Warning: Raises ContextPickDefinitionError if <Depth> is a negative value.
 
 	:param Depth:
 	:type Depth: int
@@ -148,7 +158,8 @@ class Visual3d_ContextPick {
 ") SetDepth;
 		void SetDepth (const Standard_Integer Depth);
 		%feature("compactdefaultargs") SetOrder;
-		%feature("autodoc", "	* Modifies the order of picking. //! TypeOfOrder : TOO_TOPFIRST TOO_BOTTOMFIRST
+		%feature("autodoc", "	* Modifies the order of picking.
+    //! TypeOfOrder : TOO_TOPFIRST TOO_BOTTOMFIRST
 
 	:param Order:
 	:type Order: Visual3d_TypeOfOrder
@@ -168,7 +179,8 @@ class Visual3d_ContextPick {
 ") Depth;
 		Standard_Integer Depth ();
 		%feature("compactdefaultargs") Order;
-		%feature("autodoc", "	* Returns the order of picking of <self>. //! TypeOfOrder	: TOO_TOPFIRST TOO_BOTTOMFIRST
+		%feature("autodoc", "	* Returns the order of picking of <self>.
+    //! TypeOfOrder	: TOO_TOPFIRST TOO_BOTTOMFIRST
 
 	:rtype: Visual3d_TypeOfOrder
 ") Order;
@@ -185,7 +197,25 @@ class Visual3d_ContextPick {
 class Visual3d_ContextView {
 	public:
 		%feature("compactdefaultargs") Visual3d_ContextView;
-		%feature("autodoc", "	* Creates a context from default values //! Aliasing		 : OFF BackZClipping	 : OFF FrontZClipping	 : OFF Depth-cueing	 : OFF Light source	 : 0 Clipping plane	 : 0 Type Of Visualization : TOV_WIREFRAME Type Of Model	 : TOM_NONE Type Of SurfaceDetail : TOSD_NONE
+		%feature("autodoc", "	* Creates a context from default values
+    //!
+    Aliasing		 : OFF
+
+    BackZClipping	 : OFF
+
+    FrontZClipping	 : OFF
+
+    Depth-cueing	 : OFF
+
+    Light source	 : 0
+
+    Clipping plane	 : 0
+
+    Type Of Visualization : TOV_WIREFRAME
+
+    Type Of Model	 : TOM_NONE
+
+    Type Of SurfaceDetail : TOSD_NONE
 
 	:rtype: None
 ") Visual3d_ContextView;
@@ -219,7 +249,11 @@ class Visual3d_ContextView {
 ") SetAliasingOff;
 		void SetAliasingOff ();
 		%feature("compactdefaultargs") SetDepthCueingBackPlane;
-		%feature("autodoc", "	* Modifies the back depth-cueing plane. Category: Methods to modify the class definition Warning: Raises DepthCueingDefinitionError if <BackPlane> is front of <FrontPlane> and DepthCueing is ON.
+		%feature("autodoc", "	* Modifies the back depth-cueing plane.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises DepthCueingDefinitionError if <BackPlane> is front of <FrontPlane> and DepthCueing is ON.
 
 	:param ABack:
 	:type ABack: float
@@ -227,7 +261,9 @@ class Visual3d_ContextView {
 ") SetDepthCueingBackPlane;
 		void SetDepthCueingBackPlane (const Standard_Real ABack);
 		%feature("compactdefaultargs") SetDepthCueingFrontPlane;
-		%feature("autodoc", "	* Modifies the front depth-cueing plane. Category: Methods to modify the class definition Warning: Raises DepthCueingDefinitionError if <BackPlane> is front of <FrontPlane> and DepthCueing is ON.
+		%feature("autodoc", "	* Modifies the front depth-cueing plane.
+
+    Category: Methods to modify the class definition Warning: Raises DepthCueingDefinitionError if <BackPlane> is front of <FrontPlane> and DepthCueing is ON.
 
 	:param ABack:
 	:type ABack: float
@@ -235,7 +271,11 @@ class Visual3d_ContextView {
 ") SetDepthCueingFrontPlane;
 		void SetDepthCueingFrontPlane (const Standard_Real ABack);
 		%feature("compactdefaultargs") SetDepthCueingOn;
-		%feature("autodoc", "	* Activates the depth-cueing. Depth-cueing can be activated on all structures present in the view. Category: Methods to modify the class definition Warning: Raises DepthCueingDefinitionError if <BackPlane> is front of <FrontPlane>.
+		%feature("autodoc", "	* Activates the depth-cueing. Depth-cueing can be activated on all structures present in the view.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises DepthCueingDefinitionError if <BackPlane> is front of <FrontPlane>.
 
 	:rtype: None
 ") SetDepthCueingOn;
@@ -291,7 +331,8 @@ class Visual3d_ContextView {
 ") SetVisualization;
 		void SetVisualization (const Visual3d_TypeOfVisualization AVisual);
 		%feature("compactdefaultargs") SetZClippingBackPlane;
-		%feature("autodoc", "	* Modifies the back Z-clipping plane. Category: Methods to modify the class definition Warning: Raises ZClippingDefinitionError if <BackPlane> is front of <FrontPlane> and ZClipping is ON.
+		%feature("autodoc", "	* Modifies the back Z-clipping plane. Category: Methods to modify the class definition Warning: Raises ZClippingDefinitionError
+    if <BackPlane> is front of <FrontPlane> and ZClipping is ON.
 
 	:param ABack:
 	:type ABack: float
@@ -299,7 +340,8 @@ class Visual3d_ContextView {
 ") SetZClippingBackPlane;
 		void SetZClippingBackPlane (const Standard_Real ABack);
 		%feature("compactdefaultargs") SetZClippingFrontPlane;
-		%feature("autodoc", "	* Modifies the front Z-clipping plane. Category: Methods to modify the class definition Warning: Raises ZClippingDefinitionError if <BackPlane> is front of <FrontPlane> and ZClipping is ON.
+		%feature("autodoc", "	* Modifies the front Z-clipping plane. Category: Methods to modify the class definition Warning: Raises ZClippingDefinitionError
+    if <BackPlane> is front of <FrontPlane> and ZClipping is ON.
 
 	:param AFront:
 	:type AFront: float
@@ -307,7 +349,11 @@ class Visual3d_ContextView {
 ") SetZClippingFrontPlane;
 		void SetZClippingFrontPlane (const Standard_Real AFront);
 		%feature("compactdefaultargs") SetZClippingOn;
-		%feature("autodoc", "	* Activates the Z-clipping planes defined by SetZClippingFrontPlane and SetZClippingBackPlane. Category: Methods to modify the class definition Warning: Raises ZClippingDefinitionError if <BackPlane> is front of <FrontPlane>.
+		%feature("autodoc", "	* Activates the Z-clipping planes defined by SetZClippingFrontPlane and SetZClippingBackPlane.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises ZClippingDefinitionError if <BackPlane> is front of <FrontPlane>.
 
 	:rtype: None
 ") SetZClippingOn;
@@ -331,7 +377,11 @@ class Visual3d_ContextView {
 ") SetFrontZClippingOff;
 		void SetFrontZClippingOff ();
 		%feature("compactdefaultargs") SetBackZClippingOn;
-		%feature("autodoc", "	* Activates the back Z-clipping plane defined by SetBackPlane method. Category: Methods to modify the class definition Warning: Raises ZClippingDefinitionError if <BackPlane> is front of <FrontPlane>.
+		%feature("autodoc", "	* Activates the back Z-clipping plane defined by SetBackPlane method.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises ZClippingDefinitionError if <BackPlane> is front of <FrontPlane>.
 
 	:rtype: None
 ") SetBackZClippingOn;
@@ -818,7 +868,13 @@ class Handle_Visual3d_HSequenceOfView : public Handle_MMgt_TShared {
 class Visual3d_Layer : public MMgt_TShared {
 	public:
 		%feature("compactdefaultargs") Visual3d_Layer;
-		%feature("autodoc", "	* Creates a layer with the type <Atype>. if <AFlag> == Standard_True then the layer is 'size dependent'. The mapping of the layer is dependent of each window's size. if <AFlag> == Standard_False then the mapping of the layer is dependent of the highest window and the largest window of all the views of the viewer <AViewer>. When the viewer <AViewer> have only one view, the result will be the same with <AFlag> == Standard_False or <AFlag> == Standard_True.
+		%feature("autodoc", "	* Creates a layer with the type <Atype>.
+
+    if <AFlag> == Standard_True then the layer is 'size dependent'. The mapping of the layer is dependent of each window's size.
+
+    if <AFlag> == Standard_False then the mapping of the layer is dependent of the highest window and the largest window of all the views of the viewer <AViewer>.
+
+    When the viewer <AViewer> have only one view, the result will be the same with <AFlag> == Standard_False or <AFlag> == Standard_True.
 
 	:param AViewer:
 	:type AViewer: Handle_Visual3d_ViewManager &
@@ -866,7 +922,9 @@ class Visual3d_Layer : public MMgt_TShared {
 ") BeginPolygon;
 		void BeginPolygon ();
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "	* Puts <X, Y> as a new point in the current primitive. If <AFlag> then it is a draw between last point and this point else it is a move between last point and this point.
+		%feature("autodoc", "	* Puts <X, Y> as a new point in the current primitive.
+
+    If <AFlag> then it is a draw between last point and this point else it is a move between last point and this point.
 
 	:param X:
 	:type X: float
@@ -898,7 +956,9 @@ class Visual3d_Layer : public MMgt_TShared {
 ") DrawRectangle;
 		void DrawRectangle (const Standard_Real X,const Standard_Real Y,const Standard_Real Width,const Standard_Real Height);
 		%feature("compactdefaultargs") TextSize;
-		%feature("autodoc", "	* Get the size of text. The attributes are given with respect to the plane of projection. <AHeight> : Height of text. (Relative to the Normalized Projection Coordinates (NPC) Space).
+		%feature("autodoc", "	* Get the size of text. The attributes are given with respect to the plane of projection.
+
+    <AHeight> : Height of text. (Relative to the Normalized Projection Coordinates (NPC) Space).
 
 	:param AText:
 	:type AText: char *
@@ -914,7 +974,9 @@ class Visual3d_Layer : public MMgt_TShared {
 ") TextSize;
 		void TextSize (const char * AText,const Standard_Real AHeight,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	* Modifies the current color. Warning: No default color
+		%feature("autodoc", "	* Modifies the current color.
+
+    Warning: No default color
 
 	:param AColor:
 	:type AColor: Quantity_Color &
@@ -922,7 +984,9 @@ class Visual3d_Layer : public MMgt_TShared {
 ") SetColor;
 		void SetColor (const Quantity_Color & AColor);
 		%feature("compactdefaultargs") SetTransparency;
-		%feature("autodoc", "	* Modifies the current transparency. Warning: No default transparency
+		%feature("autodoc", "	* Modifies the current transparency.
+
+    Warning: No default transparency
 
 	:param ATransparency:
 	:type ATransparency: Standard_ShortReal
@@ -946,7 +1010,10 @@ class Visual3d_Layer : public MMgt_TShared {
 ") SetLineAttributes;
 		void SetLineAttributes (const Aspect_TypeOfLine AType,const Standard_Real AWidth);
 		%feature("compactdefaultargs") SetTextAttributes;
-		%feature("autodoc", "	* Modifies the current texts attributes. <AFont> defines the name of the font to be used. <AType> defines the display type of the text. <AColor> defines the color of decal or subtitle background. To set the color of the text you can use the SetColor method. Warning: No default attributes
+		%feature("autodoc", "	* Modifies the current texts attributes. <AFont> defines the name of the font to be used. <AType> defines the display type of the text.
+    <AColor> defines the color of decal or subtitle background. To set the color of the text you can use the SetColor method.
+
+    Warning: No default attributes
 
 	:param AFont:
 	:type AFont: char *
@@ -1162,7 +1229,8 @@ class Handle_Visual3d_LayerItem : public Handle_MMgt_TShared {
 class Visual3d_Light : public MMgt_TShared {
 	public:
 		%feature("compactdefaultargs") Visual3d_Light;
-		%feature("autodoc", "	* Creates a light from default values. Light sources are created in a visualiser and are activated in one of its views. //! Type	= TOLS_AMBIENT Color	= WHITE
+		%feature("autodoc", "	* Creates a light from default values. Light sources are created in a visualiser and are activated in one of its views.
+    //! Type	= TOLS_AMBIENT Color	= WHITE
 
 	:rtype: None
 ") Visual3d_Light;
@@ -1188,7 +1256,13 @@ class Visual3d_Light : public MMgt_TShared {
 ") Visual3d_Light;
 		 Visual3d_Light (const Quantity_Color & Color,const Graphic3d_Vector & Direction,const Standard_Boolean Headlight = Standard_False);
 		%feature("compactdefaultargs") Visual3d_Light;
-		%feature("autodoc", "	* Creates a POSITIONAL light source. Light sources are created in a visualiser and are activated in one of its views. Warning: Raises LightDefinitionError if <Fact1> and <Fact2> are null. if <Fact1> is a negative value or greater than 1.0. if <Fact2> is a negative value or greater than 1.0.
+		%feature("autodoc", "	* Creates a POSITIONAL light source. Light sources are created in a visualiser and are activated in one of its views.
+
+    Warning: Raises LightDefinitionError if <Fact1> and <Fact2> are null.
+
+    if <Fact1> is a negative value or greater than 1.0.
+
+    if <Fact2> is a negative value or greater than 1.0.
 
 	:param Color:
 	:type Color: Quantity_Color &
@@ -1202,7 +1276,25 @@ class Visual3d_Light : public MMgt_TShared {
 ") Visual3d_Light;
 		 Visual3d_Light (const Quantity_Color & Color,const Graphic3d_Vertex & Position,const Standard_Real Fact1,const Standard_Real Fact2);
 		%feature("compactdefaultargs") Visual3d_Light;
-		%feature("autodoc", "	* Creates a SPOT light source. Light sources are created in a visualiser and are activated in one of its views. <Concentration> specifies the intensity distribution of the light. <AngleCone> specifies the angle (radians) of the cone created by the spot. the global attenuation is equal : 1 / (Fact1 + Fact2 * (norm(ObjectPosition - LightPosition))) Warning: Raises LightDefinitionError if <Direction> is null. if <Concentration> is a negative value or greater than 1.0. if <Fact1> and <Fact2> are null. if <Fact1> is a negative value or greater than 1.0. if <Fact2> is a negative value or greater than 1.0. if <AngleCone> is a negative value or greater than PI/2.
+		%feature("autodoc", "	* Creates a SPOT light source. Light sources are created in a visualiser and are activated in one of its views.
+
+    <Concentration> specifies the intensity distribution of the light.
+
+    <AngleCone> specifies the angle (radians) of the cone created by the spot.
+
+    the global attenuation is equal : 1 / (Fact1 + Fact2 * (norm(ObjectPosition - LightPosition)))
+
+    Warning: Raises LightDefinitionError if <Direction> is null.
+
+    if <Concentration> is a negative value or greater than 1.0.
+
+    if <Fact1> and <Fact2> are null.
+
+    if <Fact1> is a negative value or greater than 1.0.
+
+    if <Fact2> is a negative value or greater than 1.0.
+
+    if <AngleCone> is a negative value or greater than PI/2.
 
 	:param Color:
 	:type Color: Quantity_Color &
@@ -1222,7 +1314,14 @@ class Visual3d_Light : public MMgt_TShared {
 ") Visual3d_Light;
 		 Visual3d_Light (const Quantity_Color & Color,const Graphic3d_Vertex & Position,const Graphic3d_Vector & Direction,const Standard_Real Concentration,const Standard_Real Fact1,const Standard_Real Fact2,const Standard_Real AngleCone);
 		%feature("compactdefaultargs") SetAngle;
-		%feature("autodoc", "	* Modifies the angle (radians) of the cone created by the spot. Works only on TOLS_SPOT lights. Category: Methods to modify the class definition Warning: Raises LightDefinitionError if the type of the light is not TOLS_SPOT. if <AngleCone> is a negative value or greater than PI/2.
+		%feature("autodoc", "	* Modifies the angle (radians) of the cone created by the spot.
+    Works only on TOLS_SPOT lights.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises LightDefinitionError if the type of the light is not TOLS_SPOT.
+
+    if <AngleCone> is a negative value or greater than PI/2.
 
 	:param AngleCone:
 	:type AngleCone: float
@@ -1230,7 +1329,13 @@ class Visual3d_Light : public MMgt_TShared {
 ") SetAngle;
 		void SetAngle (const Standard_Real AngleCone);
 		%feature("compactdefaultargs") SetAttenuation1;
-		%feature("autodoc", "	* Modifies the attenuation factor of the light. Works only on the TOLS_POSITIONAL and TOLS_SPOT lights. Category: Methods to modify the class definition Warning: Raises LightDefinitionError if the type of the light is not TOLS_SPOT or TOLS_POSITIONAL. if <Fact1> is a negative value or greater than 1.0.
+		%feature("autodoc", "	* Modifies the attenuation factor of the light. Works only on the TOLS_POSITIONAL and TOLS_SPOT lights.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises LightDefinitionError if the type of the light is not TOLS_SPOT or TOLS_POSITIONAL.
+
+    if <Fact1> is a negative value or greater than 1.0.
 
 	:param Fact1:
 	:type Fact1: float
@@ -1238,7 +1343,14 @@ class Visual3d_Light : public MMgt_TShared {
 ") SetAttenuation1;
 		void SetAttenuation1 (const Standard_Real Fact1);
 		%feature("compactdefaultargs") SetAttenuation2;
-		%feature("autodoc", "	* Modifies the attenuation factor of the light. Works only on the TOLS_POSITIONAL and TOLS_SPOT lights. Category: Methods to modify the class definition Warning: Raises LightDefinitionError if the type of the light is not TOLS_POSITIONAL or TOLS_SPOT. if <Fact2> is a negative value or greater than 1.0..
+		%feature("autodoc", "	* Modifies the attenuation factor of the light. Works only on the TOLS_POSITIONAL and TOLS_SPOT lights.
+
+    Category: Methods to modify the class definition
+
+
+    Warning: Raises LightDefinitionError if the type of the light is not TOLS_POSITIONAL or TOLS_SPOT.
+
+    if <Fact2> is a negative value or greater than 1.0..
 
 	:param Fact2:
 	:type Fact2: float
@@ -1254,7 +1366,11 @@ class Visual3d_Light : public MMgt_TShared {
 ") SetColor;
 		void SetColor (const Quantity_Color & Color);
 		%feature("compactdefaultargs") SetConcentration;
-		%feature("autodoc", "	* Modifies the intensity distribution of the light. Works only on the TOLS_SPOT lights. Category: Methods to modify the class definition Warning: Raises LightDefinitionError if the type of the light is not TOLS_SPOT. if <Concentration> is a negative value or greater than 1.0.
+		%feature("autodoc", "	* Modifies the intensity distribution of the light. Works only on the TOLS_SPOT lights.
+
+    Category: Methods to modify the class definition Warning: Raises LightDefinitionError if the type of the light is not TOLS_SPOT.
+
+    if <Concentration> is a negative value or greater than 1.0.
 
 	:param Concentration:
 	:type Concentration: float
@@ -1262,7 +1378,11 @@ class Visual3d_Light : public MMgt_TShared {
 ") SetConcentration;
 		void SetConcentration (const Standard_Real Concentration);
 		%feature("compactdefaultargs") SetDirection;
-		%feature("autodoc", "	* Modifies the light direction. Works only on the TOLS_DIRECTIONAL and TOLS_SPOT lights. Default z Category: Methods to modify the class definition Warning: Raises LightDefinitionError if the type of the light is not TOLS_DIRECTIONAL or TOLS_SPOT. if <Direction> is null.
+		%feature("autodoc", "	* Modifies the light direction. Works only on the TOLS_DIRECTIONAL and TOLS_SPOT lights.
+
+    Default z Category: Methods to modify the class definition
+
+    Warning: Raises LightDefinitionError if the type of the light is not TOLS_DIRECTIONAL or TOLS_SPOT. if <Direction> is null.
 
 	:param Direction:
 	:type Direction: Graphic3d_Vector &
@@ -1270,7 +1390,11 @@ class Visual3d_Light : public MMgt_TShared {
 ") SetDirection;
 		void SetDirection (const Graphic3d_Vector & Direction);
 		%feature("compactdefaultargs") SetPosition;
-		%feature("autodoc", "	* Modifies the position of the light. Works only on the TOLS_POSITIONAL and TOLS_SPOT lights. Category: Methods to modify the class definition Warning: Raises LightDefinitionError if the type of the light is not TOLS_POSITIONAL or TOLS_SPOT.
+		%feature("autodoc", "	* Modifies the position of the light. Works only on the TOLS_POSITIONAL and TOLS_SPOT lights.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises LightDefinitionError if the type of the light is not TOLS_POSITIONAL or TOLS_SPOT.
 
 	:param Position:
 	:type Position: Graphic3d_Vertex &
@@ -1304,7 +1428,11 @@ class Visual3d_Light : public MMgt_TShared {
 ") LightType;
 		Visual3d_TypeOfLightSource LightType ();
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "	* Returns the definition of <self> if <self> is a light source of the TOLS_AMBIENT type. Category: Inquire methods Warning: Raises LightDefinitionError if the type of the light is not TOLS_AMBIENT.
+		%feature("autodoc", "	* Returns the definition of <self> if <self> is a light source of the TOLS_AMBIENT type.
+
+    Category: Inquire methods
+
+    Warning: Raises LightDefinitionError if the type of the light is not TOLS_AMBIENT.
 
 	:param Color:
 	:type Color: Quantity_Color &
@@ -1312,7 +1440,10 @@ class Visual3d_Light : public MMgt_TShared {
 ") Values;
 		void Values (Quantity_Color & Color);
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "	* Returns the definition of <self> if <self> is a light source of the TOLS_DIRECTIONAL type. Category: Inquire methods Warning: Raises LightDefinitionError if the type of the light is not TOLS_DIRECTIONAL.
+		%feature("autodoc", "	* Returns the definition of <self> if <self> is a light source of the TOLS_DIRECTIONAL type.
+    Category: Inquire methods
+
+    Warning: Raises LightDefinitionError if the type of the light is not TOLS_DIRECTIONAL.
 
 	:param Color:
 	:type Color: Quantity_Color &
@@ -1322,7 +1453,11 @@ class Visual3d_Light : public MMgt_TShared {
 ") Values;
 		void Values (Quantity_Color & Color,Graphic3d_Vector & Direction);
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "	* Returns the definition of <self> if <self> is a light source of the TOLS_POSITIONAL type. Category: Inquire methods Warning: Raises LightDefinitionError if the type of the light is not TOLS_POSITIONAL.
+		%feature("autodoc", "	* Returns the definition of <self> if <self> is a light source of the TOLS_POSITIONAL type.
+
+    Category: Inquire methods
+
+    Warning: Raises LightDefinitionError if the type of the light is not TOLS_POSITIONAL.
 
 	:param Color:
 	:type Color: Quantity_Color &
@@ -1336,7 +1471,9 @@ class Visual3d_Light : public MMgt_TShared {
 ") Values;
 		void Values (Quantity_Color & Color,Graphic3d_Vertex & Position,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "	* Returns the definition of <self> if <self> is a light source of the TOLS_SPOT type. Category: Inquire methods Warning: Raises LightDefinitionError if the type of the light is not TOLS_SPOT.
+		%feature("autodoc", "	* Returns the definition of <self> if <self> is a light source of the TOLS_SPOT type.
+
+    Category: Inquire methods Warning: Raises LightDefinitionError if the type of the light is not TOLS_SPOT.
 
 	:param Color:
 	:type Color: Quantity_Color &
@@ -1855,13 +1992,19 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") Visual3d_View;
 		 Visual3d_View (const Handle_Visual3d_ViewManager & AManager);
 		%feature("compactdefaultargs") Activate;
-		%feature("autodoc", "	* Activates the view <self>. Map the associated window on the screen and post the view in this window. Category: Methods to modify the class definition Warning: Raises ViewDefinitionError if the associated window isn't defined.
+		%feature("autodoc", "	* Activates the view <self>. Map the associated window on the screen and post the view in this window.
+
+    Category: Methods to modify the class definition Warning: Raises ViewDefinitionError if the associated window isn't defined.
 
 	:rtype: None
 ") Activate;
 		void Activate ();
 		%feature("compactdefaultargs") Deactivate;
-		%feature("autodoc", "	* Deactivates the view <self>. Unmap the associated window on the screen and unpost the view in this window. Category: Methods to modify the class definition Warning: Raises ViewDefinitionError if the associated window isn't defined.
+		%feature("autodoc", "	* Deactivates the view <self>. Unmap the associated window on the screen and unpost the view in this window.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises ViewDefinitionError if the associated window isn't defined.
 
 	:rtype: None
 ") Deactivate;
@@ -1943,19 +2086,29 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") Redraw;
 		void Redraw (const Handle_Visual3d_Layer & AnUnderLayer,const Handle_Visual3d_Layer & AnOverLayer,const Standard_Integer x,const Standard_Integer y,const Standard_Integer width,const Standard_Integer height);
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	* Deletes and erases the view <self>. Warning: No more graphic operations in <self> after this call.
+		%feature("autodoc", "	* Deletes and erases the view <self>.
+
+    Warning: No more graphic operations in <self> after this call.
 
 	:rtype: None
 ") Remove;
 		void Remove ();
 		%feature("compactdefaultargs") Resized;
-		%feature("autodoc", "	* Updates the view <self> after the modification of the associated window. Category: Methods to modify the class definition Warning: Raises ViewDefinitionError if the associated window isn't defined.
+		%feature("autodoc", "	* Updates the view <self> after the modification of the associated window.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises ViewDefinitionError if the associated window isn't defined.
 
 	:rtype: None
 ") Resized;
 		void Resized ();
 		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "	* Modifies the default window background. Category: Methods to modify the class definition Warning: Raises ViewDefinitionError if the associated window isn't defined.
+		%feature("autodoc", "	* Modifies the default window background.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises ViewDefinitionError if the associated window isn't defined.
 
 	:param ABack:
 	:type ABack: Aspect_Background &
@@ -1963,7 +2116,9 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") SetBackground;
 		void SetBackground (const Aspect_Background & ABack);
 		%feature("compactdefaultargs") SetBackgroundImage;
-		%feature("autodoc", "	* Category: Methods to modify the class definition Warning: Raises ViewDefinitionError if the associated window isn't defined.
+		%feature("autodoc", "	* Category: Methods to modify the class definition
+
+    Warning: Raises ViewDefinitionError if the associated window isn't defined.
 
 	:param FileName:
 	:type FileName: char *
@@ -1975,7 +2130,9 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") SetBackgroundImage;
 		void SetBackgroundImage (const char * FileName,const Aspect_FillMethod FillStyle,const Standard_Boolean update);
 		%feature("compactdefaultargs") SetBgImageStyle;
-		%feature("autodoc", "	* Category: Methods to modify the class definition Warning: Raises ViewDefinitionError if the associated window isn't defined.
+		%feature("autodoc", "	* Category: Methods to modify the class definition
+
+    Warning: Raises ViewDefinitionError if the associated window isn't defined.
 
 	:param FillStyle:
 	:type FillStyle: Aspect_FillMethod
@@ -1985,7 +2142,11 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") SetBgImageStyle;
 		void SetBgImageStyle (const Aspect_FillMethod FillStyle,const Standard_Boolean update);
 		%feature("compactdefaultargs") SetGradientBackground;
-		%feature("autodoc", "	* Modifies the gradient window background. Category: Methods to modify the class definition Warning: Raises ViewDefinitionError if the associated window isn't defined.
+		%feature("autodoc", "	* Modifies the gradient window background.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises ViewDefinitionError if the associated window isn't defined.
 
 	:param ABack:
 	:type ABack: Aspect_GradientBackground &
@@ -1995,7 +2156,9 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") SetGradientBackground;
 		void SetGradientBackground (const Aspect_GradientBackground & ABack,const Standard_Boolean update);
 		%feature("compactdefaultargs") SetBgGradientStyle;
-		%feature("autodoc", "	* Category: Methods to modify the class definition Warning: Raises ViewDefinitionError if the associated window isn't defined.
+		%feature("autodoc", "	* Category: Methods to modify the class definition
+
+    Warning: Raises ViewDefinitionError if the associated window isn't defined.
 
 	:param FillStyle:
 	:type FillStyle: Aspect_GradientFillMethod
@@ -2039,7 +2202,31 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") SetViewOrientationDefault;
 		void SetViewOrientationDefault ();
 		%feature("compactdefaultargs") SetWindow;
-		%feature("autodoc", "	* Associates the window <AWindow> to the view <self>. No new association if the window is already defined. Category: Methods to modify the class definition Warning: Raises ViewDefinitionError if it is impossible to associate a view and a window. (association already done or another problem) Modifies the viewmapping of the associated view when it calls the SetRatio method. //! After this call, each view is mapped in an unique window. //! Programming example : //! An example when we have 1 view and 1 window ------------------------------------------- //! Handle_Aspect_DisplayConnection aDisplayConnection; //! // Display connection initialization only needed on Linux platform // and on Mac OS X, in cases when you use Xlib for windows drawing. aDisplayConnection = new Aspect_DisplayConnection(); //! // Graphic driver initialization Handle_Graphic3d_GraphicDriver aGraphicDriver = Graphic3d::InitGraphicDriver (aDisplayConnection); //! // Define a view manager Handle_Visual3d_ViewManager aVisualManager = new Visual3d_ViewManager (aGraphicDriver); //! // Define a view Handle_Visual3d_View aView = new Visual3d_View (aVisaulManager); //! // Define a window Handle_Xw_Window aWindow = new Xw_Window (aDisplayConnection, 'Graphic View 1', 0.695, 0.695, 0.600, 0.600, Quantity_NOC_MATRAGRAY); //! // Associate the view and the window aView->SetWindow (aWindow); //! // Map the window aWindow->Map (); //! // Activate the view aView->Activate ();
+		%feature("autodoc", "	* Associates the window <AWindow> to the view <self>.
+    No new association if the window is already defined. Category: Methods to modify the class definition
+
+    Warning: Raises ViewDefinitionError if it is impossible to associate a view and a window. (association already done or another problem)
+    Modifies the viewmapping of the associated view when it calls the SetRatio method. //! After this call, each view is mapped in an unique window.
+    //! Programming example :
+
+    //! An example when we have 1 view and 1 window
+    -------------------------------------------
+    //! Handle_Aspect_DisplayConnection aDisplayConnection;
+    //! // Display connection initialization only needed on Linux platform
+    // and on Mac OS X, in cases when you use Xlib for windows drawing.
+    aDisplayConnection = new Aspect_DisplayConnection();
+    //! // Graphic driver initialization
+    Handle_Graphic3d_GraphicDriver aGraphicDriver = Graphic3d::InitGraphicDriver (aDisplayConnection);
+    //! // Define a view manager
+    Handle_Visual3d_ViewManager aVisualManager = new Visual3d_ViewManager (aGraphicDriver);
+    //! // Define a view
+    Handle_Visual3d_View aView = new Visual3d_View (aVisaulManager);
+    //! // Define a window
+    Handle_Xw_Window aWindow = new Xw_Window (aDisplayConnection, 'Graphic View 1', 0.695, 0.695, 0.600, 0.600, Quantity_NOC_MATRAGRAY);
+    //! // Associate the view and the window
+    aView->SetWindow (aWindow);
+    //! // Map the window aWindow->Map ();
+    //! // Activate the view aView->Activate ();
 
 	:param AWindow:
 	:type AWindow: Handle_Aspect_Window &
@@ -2047,7 +2234,18 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") SetWindow;
 		void SetWindow (const Handle_Aspect_Window & AWindow);
 		%feature("compactdefaultargs") SetWindow;
-		%feature("autodoc", "	* Associates the window <AWindow> and context <AContext> to the view <self>. If <AContext> is not NULL the graphic context is used directly to draw something in this view. Otherwise an internal context is created. If <ADisplayCB> is not NULL then a user display CB is call at the end of the OCC graphic traversal and just before the swap of buffers. The <aClientData> is pass to this call back. No new association if the window is already defined. Category: Methods to modify the class definition Warning: Raises ViewDefinitionError if it is impossible to associate a view and a window. (association already done or another problem) Modifies the viewmapping of the associated view when it calls the SetRatio method. //! After this call, each view is mapped in an unique window.
+		%feature("autodoc", "	* Associates the window <AWindow> and context <AContext> to the view <self>.
+
+    If <AContext> is not NULL the graphic context is used directly to draw something in this view. Otherwise an internal context is created.
+
+    If <ADisplayCB> is not NULL then a user display CB is call at the end of the OCC graphic traversal and just before the swap of buffers.
+    The <aClientData> is pass to this call back. No new association if the window is already defined.
+
+    Category: Methods to modify the class definition
+
+    Warning: Raises ViewDefinitionError if it is impossible to associate a view and a window.
+    (association already done or another problem) Modifies the viewmapping of the associated view when it calls the SetRatio method.
+    //! After this call, each view is mapped in an unique window.
 
 	:param AWindow:
 	:type AWindow: Handle_Aspect_Window &
@@ -2079,7 +2277,10 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") Update;
 		void Update (const Handle_Visual3d_Layer & AnUnderLayer,const Handle_Visual3d_Layer & AnOverLayer);
 		%feature("compactdefaultargs") SetAutoZFitMode;
-		%feature("autodoc", "	* Sets the automatic z-fit mode and its parameters. The auto z-fit has extra parameters which can controlled from application level to ensure that the size of viewing volume will be sufficiently large to cover the depth of unmanaged objects, for example, transformation persistent ones. @param theScaleFactor [in] the scale factor for Z-range. The range between Z-min, Z-max projection volume planes evaluated by z fitting method will be scaled using this coefficient. Program error exception is thrown if negative or zero value is passed.
+		%feature("autodoc", "	* Sets the automatic z-fit mode and its parameters. The auto z-fit has extra parameters which can controlled from application
+    level to ensure that the size of viewing volume will be sufficiently large to cover the depth of unmanaged objects, for example, transformation persistent ones.
+    @param theScaleFactor [in] the scale factor for Z-range. The range between Z-min, Z-max projection volume planes evaluated by z fitting method will be scaled
+    using this coefficient. Program error exception is thrown if negative or zero value is passed.
 
 	:param theIsOn:
 	:type theIsOn: bool
@@ -2141,7 +2342,8 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") ComputedMode;
 		Standard_Boolean ComputedMode ();
 		%feature("compactdefaultargs") ZBufferTriedronSetup;
-		%feature("autodoc", "	* Customization of the ZBUFFER Triedron. Initializes Colors of X Y and axis Scale ratio defines decreasing of trihedron size when its position is out of a View
+		%feature("autodoc", "	* Customization of the ZBUFFER Triedron. Initializes Colors of X Y and axis Scale ratio defines decreasing of trihedron size when its position
+    is out of a View
 
 	:param XColor: default value is Quantity_NOC_RED
 	:type XColor: Quantity_NameOfColor
@@ -2159,7 +2361,8 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") ZBufferTriedronSetup;
 		void ZBufferTriedronSetup (const Quantity_NameOfColor XColor = Quantity_NOC_RED,const Quantity_NameOfColor YColor = Quantity_NOC_GREEN,const Quantity_NameOfColor ZColor = Quantity_NOC_BLUE1,const Standard_Real SizeRatio = 0.8,const Standard_Real AxisDiametr = 0.05,const Standard_Integer NbFacettes = 12);
 		%feature("compactdefaultargs") TriedronDisplay;
-		%feature("autodoc", "	* Display of the Triedron. Initialize position, color and length of Triedron axes. The scale is a percent of the window width. If AsWireframe is False triedron is shown in shaded mode AColor is not considered for ZBUFFER mode
+		%feature("autodoc", "	* Display of the Triedron. Initialize position, color and length of Triedron axes. The scale is a percent of the window width.
+    If AsWireframe is False triedron is shown in shaded mode AColor is not considered for ZBUFFER mode
 
 	:param APosition: default value is Aspect_TOTP_CENTER
 	:type APosition: Aspect_TypeOfTriedronPosition
@@ -2265,7 +2468,8 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") IsDeleted;
 		Standard_Boolean IsDeleted ();
 		%feature("compactdefaultargs") MinMaxValues;
-		%feature("autodoc", "	* Returns the coordinates of the boundary box of all structures displayed in the view <self>. If <theToIgnoreInfiniteFlag> is True, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite structures.
+		%feature("autodoc", "	* Returns the coordinates of the boundary box of all structures displayed in the view <self>.
+    If <theToIgnoreInfiniteFlag> is True, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite structures.
 
 	:param theToIgnoreInfiniteFlag: default value is Standard_False
 	:type theToIgnoreInfiniteFlag: bool
@@ -2273,7 +2477,8 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") MinMaxValues;
 		Bnd_Box MinMaxValues (const Standard_Boolean theToIgnoreInfiniteFlag = Standard_False);
 		%feature("compactdefaultargs") MinMaxValues;
-		%feature("autodoc", "	* Returns the coordinates of the boundary box of all structures in the set <theSet>. If <theToIgnoreInfiniteFlag> is True, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite structures.
+		%feature("autodoc", "	* Returns the coordinates of the boundary box of all structures in the set <theSet>.
+    If <theToIgnoreInfiniteFlag> is True, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite structures.
 
 	:param theSet:
 	:type theSet: Graphic3d_MapOfStructure &
@@ -2407,7 +2612,13 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") ZBufferIsActivated;
 		Standard_Boolean ZBufferIsActivated ();
 		%feature("compactdefaultargs") SetZBufferActivity;
-		%feature("autodoc", "	* Activates the ZBuffer if the integer <AnActivity> is equal to 1. Deactivates the ZBuffer if the integer <AnActivity> is equal to 0. If the integer <AnActivity> is equal to -1 then - the ZBuffer is activated if me->Context ().Visualization () == Visual3d_TOV_SHADING - the ZBuffer is deactivated if me->Context ().Visualization () == Visual3d_TOV_WIREFRAME
+		%feature("autodoc", "	* Activates the ZBuffer if the integer <AnActivity> is equal to 1. Deactivates the ZBuffer if the integer <AnActivity> is equal to 0.
+
+    If the integer <AnActivity> is equal to -1 then - the ZBuffer is activated
+
+    if me->Context ().Visualization () == Visual3d_TOV_SHADING - the ZBuffer is deactivated
+
+    if me->Context ().Visualization () == Visual3d_TOV_WIREFRAME
 
 	:param AnActivity:
 	:type AnActivity: int
@@ -2527,7 +2738,9 @@ class Visual3d_View : public Graphic3d_DataStructureManager {
 ") IsGLLightEnabled;
 		Standard_Boolean IsGLLightEnabled ();
 		%feature("compactdefaultargs") Export;
-		%feature("autodoc", "	* Export scene into the one of the Vector graphics formats (SVG, PS, PDF...). In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer). Notice however that results may differ a lot and do not contain some elements.
+		%feature("autodoc", "	* Export scene into the one of the Vector graphics formats (SVG, PS, PDF...).
+    In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer).
+    Notice however that results may differ a lot and do not contain some elements.
 
 	:param theFileName:
 	:type theFileName: char *
@@ -2614,7 +2827,10 @@ class Handle_Visual3d_View : public Handle_Graphic3d_DataStructureManager {
 class Visual3d_ViewManager : public Graphic3d_StructureManager {
 	public:
 		%feature("compactdefaultargs") Visual3d_ViewManager;
-		%feature("autodoc", "	* Creates a 3D visualizer. Currently creating of more than 100 viewer instances is not supported and leads to InitializationError and initialisation failure. This limitation might be addressed in some future OCCT releases. //! Category: Methods to modify the class definition
+		%feature("autodoc", "	* Creates a 3D visualizer. Currently creating of more than 100 viewer instances is not supported and leads to InitializationError
+    and initialisation failure. This limitation might be addressed in some future OCCT releases.
+
+    //! Category: Methods to modify the class definition
 
 	:param theDriver:
 	:type theDriver: Handle_Graphic3d_GraphicDriver &
@@ -2688,7 +2904,9 @@ class Visual3d_ViewManager : public Graphic3d_StructureManager {
 ") DefinedViews;
 		const Visual3d_SequenceOfView & DefinedViews ();
 		%feature("compactdefaultargs") MaxNumOfViews;
-		%feature("autodoc", "	* Returns the theoretical maximum number of definable views in the view manager <self>. Warning: It's not possible to accept an infinite number of definable views because each view must have an identification and we have different view managers.
+		%feature("autodoc", "	* Returns the theoretical maximum number of definable views in the view manager <self>.
+
+    Warning: It's not possible to accept an infinite number of definable views because each view must have an identification and we have different view managers.
 
 	:rtype: int
 ") MaxNumOfViews;
@@ -2764,7 +2982,8 @@ class Visual3d_ViewManager : public Graphic3d_StructureManager {
 ") ZLayerSettings;
 		Graphic3d_ZLayerSettings ZLayerSettings (const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") AddZLayer;
-		%feature("autodoc", "	* Add a new top-level Z layer and get its ID as <theLayerId> value. The method returns Standard_False if the layer can not be created. The layer mechanism allows to display structures in higher layers in overlay of structures in lower layers.
+		%feature("autodoc", "	* Add a new top-level Z layer and get its ID as <theLayerId> value. The method returns Standard_False if the layer can not be created.
+    The layer mechanism allows to display structures in higher layers in overlay of structures in lower layers.
 
 	:param theLayerId:
 	:type theLayerId: Graphic3d_ZLayerId &
@@ -2772,7 +2991,8 @@ class Visual3d_ViewManager : public Graphic3d_StructureManager {
 ") AddZLayer;
 		Standard_Boolean AddZLayer (Graphic3d_ZLayerId & theLayerId);
 		%feature("compactdefaultargs") RemoveZLayer;
-		%feature("autodoc", "	* Remove Z layer with ID <theLayerId>. Method returns Standard_False if the layer can not be removed or doesn't exists. By default, there are always default bottom-level layer that can't be removed.
+		%feature("autodoc", "	* Remove Z layer with ID <theLayerId>. Method returns Standard_False if the layer can not be removed or doesn't exists.
+    By default, there are always default bottom-level layer that can't be removed.
 
 	:param theLayerId:
 	:type theLayerId: Graphic3d_ZLayerId
@@ -2780,7 +3000,8 @@ class Visual3d_ViewManager : public Graphic3d_StructureManager {
 ") RemoveZLayer;
 		Standard_Boolean RemoveZLayer (const Graphic3d_ZLayerId theLayerId);
 		%feature("compactdefaultargs") GetAllZLayers;
-		%feature("autodoc", "	* Return all Z layer ids in sequence ordered by overlay level from lowest layer to highest ( foreground ). The first layer ID in sequence is the default layer that can't be removed.
+		%feature("autodoc", "	* Return all Z layer ids in sequence ordered by overlay level from lowest layer to highest ( foreground ).
+    The first layer ID in sequence is the default layer that can't be removed.
 
 	:param theLayerSeq:
 	:type theLayerSeq: TColStd_SequenceOfInteger &
@@ -2866,7 +3087,8 @@ class Visual3d_ViewManager : public Graphic3d_StructureManager {
 ") UnHighlight;
 		void UnHighlight (const Handle_Graphic3d_Structure & AStructure);
 		%feature("compactdefaultargs") ViewExists;
-		%feature("autodoc", "	* Returns Standard_True if the view associated to the window <AWindow> exists and is activated. <TheViewId> contains the internal identification of the associated view.
+		%feature("autodoc", "	* Returns Standard_True if the view associated to the window <AWindow> exists and is activated.
+    <TheViewId> contains the internal identification of the associated view.
 
 	:param AWindow:
 	:type AWindow: Handle_Aspect_Window &

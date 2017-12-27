@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPSHAPEDOCSTRING
-"Collects definitions of STEP topological entitiesfrom Part 42 of ISO10303 (topology_schema)"
+"Collects definitions of STEP topological entities from Part 42 of ISO10303 (topology_schema)"
 %enddef
 %module (package="OCC", docstring=STEPSHAPEDOCSTRING) StepShape
 

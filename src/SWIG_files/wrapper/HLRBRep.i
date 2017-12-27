@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HLRBREPDOCSTRING
-"algorithms on the BRep DataStructure.The class PolyAlgo is used to remove Hidden lineson Shapes with Triangulations."
+"algorithms on the BRep DataStructure. The class PolyAlgo is used to remove Hidden lineson Shapes with Triangulations."
 %enddef
 %module (package="OCC", docstring=HLRBREPDOCSTRING) HLRBRep
 

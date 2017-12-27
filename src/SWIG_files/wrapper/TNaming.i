@@ -18,7 +18,35 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TNAMINGDOCSTRING
-"A topological attribute can be seen as a hookinto the topological structure. To this hook,data can be attached and references defined.It is used for keeping and access totopological objects and their evolution. Alltopological objects are stored in the oneuser-protected TNaming_UsedShapesattribute at the root label of the dataframework. This attribute contains map with alltopological shapes, used in this document.To all other labels TNaming_NamedShapeattribute can be added. This attribute containsreferences (hooks) to shapes from theTNaming_UsedShapes attribute and evolutionof these shapes. TNaming_NamedShapeattribute contains a set of pairs of hooks: oldshape and new shape (see the figure below).It allows not only get the topological shapes bythe labels, but also trace evolution of theshapes and correctly resolve dependentshapes by the changed one.If shape is just-created, then the old shape foraccorded named shape is an empty shape. Ifa shape is deleted, then the new shape in this named shape is empty.Different algorithms may dispose sub-shapesof the result shape at the individual label depending on necessity:- If a sub-shape must have some extra attributes (material ofeach face or color of each edge). In this case a specific sub-shape isplaced to the separate label (usually, sub-label of the result shape label)with all attributes of this sub-shape.- If topological naming is needed, a necessary and sufficient(for selected sub-shapes identification) set of sub-shapes isplaced to the child labels of the resultshape label. As usual, as far as basic solids and closed shells areconcerned, all faces of the shape are disposed. Edges and verticessub-shapes can be identified as intersection of contiguous faces.Modified/generated shapes may be placed to one named shape andidentified as this named shape and source named shape that also can beidentified with used algorithms.TNaming_NamedShape may contain a fewpairs of hooks with the same evolution. In thiscase topology shape, which belongs to thenamed shape, is a compound of new shapes.The data model contains both the topologyand the hooks, and functions handle bothtopological entities and hooks. Consider thecase of a box function, which creates a solidwith six faces and six hooks. Each hook isattached to a face. If you want, you can alsohave this function create hooks for edges andvertices as well as for faces. For the sake ofsimplicity though, let's limit the example.Not all functions can define explicit hooks forall topological entities they create, but alltopological entities can be turned into hookswhen necessary. This is where topological naming is necessary.-Category: GUIDc4ef4200-568f-11d1-8940-080009dc3333	TNaming_NamedShapec4ef4201-568f-11d1-8940-080009dc3333	TNaming_UsedShapes"
+"A topological attribute can be seen as a hookinto the topological structure. To this hook,data can be attached and references defined.
+It is used for keeping and access totopological objects and their evolution. Alltopological objects are stored
+in the oneuser-protected TNaming_UsedShapesattribute at the root label of the data framework. This attribute contains map with all
+topological shapes, used in this document.To all other labels TNaming_NamedShapeattribute can be added.
+This attribute containsreferences (hooks) to shapes from theTNaming_UsedShapes attribute and evolutionof these shapes.
+TNaming_NamedShapeattribute contains a set of pairs of hooks: oldshape and new shape (see the figure below).
+It allows not only get the topological shapes bythe labels, but also trace evolution of theshapes and correctly resolve dependent
+shapes by the changed one.If shape is just-created, then the old shape foraccorded named shape is an empty shape. Ifa shape is deleted,
+then the new shape in this named shape is empty.Different algorithms may dispose sub-shapesof the result shape at the individual label
+depending on necessity:
+
+- If a sub-shape must have some extra attributes (material ofeach face or color of each edge). In this case a specific sub-shape is
+placed to the separate label (usually, sub-label of the result shape label)with all attributes of this sub-shape.
+
+- If topological naming is needed, a necessary and sufficient(for selected sub-shapes identification) set of sub-shapes is
+placed to the child labels of the result shape label.
+
+As usual, as far as basic solids and closed shells are concerned, 
+all faces of the shape are disposed. Edges and verticessub-shapes can be identified as intersection of contiguous faces.
+Modified/generated shapes may be placed to one named shape andidentified as this named shape and source named shape that also can be
+identified with used algorithms.TNaming_NamedShape may contain a few pairs of hooks with the same evolution. In this
+case topology shape, which belongs to the named shape, is a compound of new shapes.The data model contains both the topology
+and the hooks, and functions handle both topological entities and hooks. Consider the case of a box function, which creates a solid
+with six faces and six hooks. Each hook is attached to a face. If you want, you can also have this function create hooks for edges and vertices as well as for faces. For the sake of
+simplicity though, let's limit the example.Not all functions can define explicit hooks for
+all topological entities they create, but allt opological entities can be turned into hooks
+when necessary. This is where topological naming is necessary.
+
+-Category: GUIDc4ef4200-568f-11d1-8940-080009dc3333	TNaming_NamedShapec4ef4201-568f-11d1-8940-080009dc3333	TNaming_UsedShapes"
 %enddef
 %module (package="OCC", docstring=TNAMINGDOCSTRING) TNaming
 

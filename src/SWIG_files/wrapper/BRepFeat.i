@@ -18,7 +18,47 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPFEATDOCSTRING
-"BRepFeat is necessary for thecreation and manipulation of both form and mechanical features in aBoundary Representation framework. Form features can be depressions orprotrusions and include the following types:-     Cylinder-     Draft Prism-     Prism-     Revolved feature-     PipeDepending on whether you wish to make a depression or a protrusion,you can choose your operation type between the following:- removing matter (a Boolean cut: Fuse setting 0)- adding matter (Boolean fusion: Fuse setting 1)The semantics of form feature creation is based on theconstruction of shapes:-     for a certain length in a certain direction-     up to a limiting face-     from a limiting face at a height-     above and/or below a planeThe shape defining the construction of a feature can be either asupporting edge or a concerned area of a face.In case of supporting edge, this contour can be attached to a faceof the basis shape by binding. When the contour is bound to this face,the information that the contour will slide on the face becomesavailable to the relevant class methods. In case of the concernedarea of a face, you could, for example, cut it out and move it ata different height, which will define the limiting face of aprotrusion or depression. Topological definition with localoperations of this sort makes calculations simpler and fasterthan a global operation. The latter would entail a second phase ofremoving unwanted matter to get the same result.Mechanical features include ribs - protrusions - and grooves (orslots) - depressions along planar (linear) surfaces or revolution surfaces.The semantics of mechanical features is based on givingthickness to a contour. This thickness can either be unilateral- on one side of the contour - or bilateral - on both sides. As inthe semantics of form features, the thickness is defined byconstruction of shapes in specific contexts.However, in case of mechanical features, development contextsdiffer. Here they include extrusion:-     to a limiting face of the basis shape-     to or from a limiting plane-     to a height."
+"BRepFeat is necessary for the creation and manipulation of both form and mechanical features in a Boundary Representation framework.
+Form features can be depressions orprotrusions and include the following types:
+
+-     Cylinder
+-     Draft Prism
+-     Prism
+-     Revolved feature
+-     Pipe
+
+Depending on whether you wish to make a depression or a protrusion, you can choose your operation type between the following:
+
+- removing matter (a Boolean cut: Fuse setting 0)
+- adding matter (Boolean fusion: Fuse setting 1)
+
+The semantics of form feature creation is based on the construction of shapes:
+
+-     for a certain length in a certain direction
+-     up to a limiting face
+-     from a limiting face at a height
+-     above and/or below a plane
+
+The shape defining the construction of a feature can be either a supporting edge or a concerned area of a face.
+In case of supporting edge, this contour can be attached to a face of the basis shape by binding.
+When the contour is bound to this face,the information that the contour will slide on the face becomes
+available to the relevant class methods. In case of the concerned area of a face, you could, for example, cut it out and move it at
+a different height, which will define the limiting face of a protrusion or depression. Topological definition with local
+operations of this sort makes calculations simpler and faster than a global operation. The latter would entail a second phase of
+removing unwanted matter to get the same result.
+Mechanical features include ribs
+- protrusions
+- and grooves (or slots)
+- depressions along planar (linear) surfaces or revolution surfaces.
+The semantics of mechanical features is based on giving thickness to a contour. This thickness can either be unilateral
+- on one side of the contour
+- or bilateral
+- on both sides.
+ As in the semantics of form features, the thickness is defined by construction of shapes in specific contexts.However,
+ in case of mechanical features, development contexts differ. Here they include extrusion:
+ - to a limiting face of the basis shape
+ - to or from a limiting plane
+ - to a height."
 %enddef
 %module (package="OCC", docstring=BREPFEATDOCSTRING) BRepFeat
 

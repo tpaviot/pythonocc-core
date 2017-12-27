@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPREPRDOCSTRING
-"-Purpose : Sub-Schema of Step for RepresentationsCollects definitions of STEP entities used for describingrepresentation structures (from Parts 41, 43, 44 of ISO10303)"
+"-Purpose : Sub-Schema of Step for RepresentationsCollects definitions of STEP entities used for describing
+representation structures (from Parts 41, 43, 44 of ISO10303)"
 %enddef
 %module (package="OCC", docstring=STEPREPRDOCSTRING) StepRepr
 

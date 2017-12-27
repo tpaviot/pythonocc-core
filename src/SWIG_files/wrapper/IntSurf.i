@@ -18,7 +18,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTSURFDOCSTRING
-"This package provides resources forall the packages concerning the intersectionbetween surfaces.-Level: InternalAll the methods of all the classes of this package are Internal."
+"This package provides resources forall the packages concerning the intersection between surfaces.
+
+-Level: InternalAll the methods of all the classes of this package are Internal."
 %enddef
 %module (package="OCC", docstring=INTSURFDOCSTRING) IntSurf
 

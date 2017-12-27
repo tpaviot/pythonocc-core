@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TCOLGEOMDOCSTRING
-"-Purpose : This package is used to instantiate of severalgeneric classes from the package TCollection withobjects from the package Geom."
+"-Purpose : This package is used to instantiate of severalgeneric classes from the package TCollection with
+objects from the package Geom."
 %enddef
 %module (package="OCC", docstring=TCOLGEOMDOCSTRING) TColGeom
 

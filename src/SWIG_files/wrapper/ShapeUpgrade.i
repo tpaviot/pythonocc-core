@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEUPGRADEDOCSTRING
-"This package provides toolsfor splitting and converting shapes by some criteria. Itprovides modifications of the kind when one topologicalobject can be converted or splitted to several ones. Inparticular this package contains high level API classes which perform:converting geometry of shapes up to given continuity,splitting revolutions by U to segments less than given value,converting to beziers,splitting closed faces."
+"This package provides toolsfor splitting and converting shapes by some criteria. It
+provides modifications of the kind when one topological object can be converted or splitted to several ones.
+In particular this package contains high level API classes which perform:converting geometry of shapes up to given continuity,
+splitting revolutions by U to segments less than given value,converting to beziers, splitting closed faces."
 %enddef
 %module (package="OCC", docstring=SHAPEUPGRADEDOCSTRING) ShapeUpgrade
 
@@ -1465,7 +1468,7 @@ class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
                 $self->MinArea()=value;
                 }
             };
-            
+
             %feature("autodoc","1");
             %extend {
                 Standard_Boolean GetRemoveFaceMode() {

@@ -18,7 +18,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPOPEBREPBUILDDOCSTRING
-"This package describes algorithms and dedicated toolsinvolved in topological operation on BRep shapes.These 'builders' works on a data structure that must have beenpreviously filled (by a 'filler') according to thetopological operation rules defined in class DataStructurefrom TopOpeBRepDS.The DSFiller must be considered as a 'linking' tooldealing with geometric data as an input and a DS as anoutput.These geometric data may be seen as the result of 3Dintersection between BRep shapes."
+"This package describes algorithms and dedicated toolsinvolved in topological operation on BRep shapes.These 'builders' works on a data structure that must have been
+previously filled (by a 'filler') according to the topological operation rules defined in class DataStructurefrom TopOpeBRepDS.
+The DSFiller must be considered as a 'linking' tool dealing with geometric data as an input and a DS as anoutput.
+These geometric data may be seen as the result of 3Dintersection between BRep shapes."
 %enddef
 %module (package="OCC", docstring=TOPOPEBREPBUILDDOCSTRING) TopOpeBRepBuild
 

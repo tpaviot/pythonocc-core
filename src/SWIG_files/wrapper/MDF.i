@@ -18,7 +18,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MDFDOCSTRING
-"This package provides classes and methods totranslate a transient DF into a persistent one andvice versa.DriverA driver is a tool used to translate a transientattribute into a persistent one and vice versa.Relocation TableA relocation table is a tool who provides servicesto relocate transient objects into persistent ones(or vice versa). It uses a map system to keep thesharing. This service is used by the drivers.Driver TableA driver table is an object building links betweenobject types and object drivers. In thetranslation process, a driver table is asked togive a translation driver for each current objectto be translated."
+"This package provides classes and methods totranslate a transient DF into a persistent one andvice versa.
+DriverA driver is a tool used to translate a transient attribute into a persistent one and vice versa. Relocation TableA
+relocation table is a tool who provides servicesto relocate transient objects into persistent ones(or vice versa).
+It uses a map system to keep thesharing. This service is used by the drivers.Driver TableA driver table is an object
+building links between object types and object drivers. In thetranslation process, a driver table is asked to give a
+translation driver for each current object to be translated."
 %enddef
 %module (package="OCC", docstring=MDFDOCSTRING) MDF
 

@@ -18,7 +18,24 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define QUANTITYDOCSTRING
-"The Quantities component deals withmathematical and physical quantities.A mathematical quantity is characterized by its value. It is a real value.A physical quantity is characterized by:-  its value, which is also a real value, and-  the unit in which it is expressed. This unit maybe either an international unit complying withthe International Unit System (SI) or a userdefined unit. The unit is managed by thephysical quantity user.Each mathematical or physical quantity isdescribed by its name. This ensures distinctionbetween two different quantities.Moreover, both physical and mathematicalquantities are also manipulated as real values:-  They are defined as aliases of reals, so allfunctions provided by the Standard_Realclass are available on each quantity.-  You may also mix several physical quantitiesin a mathematical or physical formula involving real values.Associated with the physical quantities, a rangeof functions provides tools to manage unit conversions.The physical quantities described in this chapterare commonly used basic physical quantities.Nevertheless, the Quantity package includes allphysical quantities you may require.The Quantities component also providesresources to manage time information (dates andperiods) and color definition."
+"The Quantities component deals withmathematical and physical quantities. A mathematical quantity is
+characterized by its value. It is a real value.A physical quantity is characterized by:
+
+-  its value, which is also a real value, and
+
+-  the unit in which it is expressed.
+
+This unit maybe either an international unit complying withthe International Unit System (SI) or a userdefined unit.
+The unit is managed by the physical quantity user.Each mathematical or physical quantity is described by its name.
+This ensures distinction between two different quantities.Moreover, both physical and mathematical quantities are also manipulated as real values:
+
+-  They are defined as aliases of reals, so all functions provided by the Standard_Real class are available on each quantity.
+
+-  You may also mix several physical quantities in a mathematical or physical formula involving real values.
+
+Associated with the physical quantities, a range of functions provides tools to manage unit conversions.The physical quantities
+described in this chapter are commonly used basic physical quantities. Nevertheless, the Quantity package includes all
+physical quantities you may require.The Quantities component also provides resources to manage time information (dates and periods) and color definition."
 %enddef
 %module (package="OCC", docstring=QUANTITYDOCSTRING) Quantity
 

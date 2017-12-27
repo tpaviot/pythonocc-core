@@ -18,7 +18,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPPRIMDOCSTRING
-"this package implements the primitives of thePrimitives package with the BRep TopologyContains :a Builder implementing the Template from PrimitivesThe instantiations of the algorithms :OneAxisWedgeThe rotational primitives inherited from OneAxisRevolutionCylinderConeSphereTorusThe class FaceBuilder is a tool to build a facefrom a Geom surface."
+"this package implements the primitives of the Primitives package with the BRep Topology Contains :
+a Builder implementing the Template from Primitives
+The instantiations of the algorithms :
+OneAxisWedge The rotational primitives inherited from OneAxis Revolution Cylinder Cone Sphere Torus
+The class FaceBuilder is a tool to build a face from a Geom surface."
 %enddef
 %module (package="OCC", docstring=BREPPRIMDOCSTRING) BRepPrim
 
@@ -373,7 +377,7 @@ class BRepPrim_FaceBuilder {
 ") Face;
 		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") operator TopoDS_Face;
-		%feature("autodoc", "	:rtype: 
+		%feature("autodoc", "	:rtype:
 ") operator TopoDS_Face;
 		 operator TopoDS_Face ();
 		%feature("compactdefaultargs") Edge;

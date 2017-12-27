@@ -103,7 +103,8 @@ class Units {
 ") FirstQuantity;
 		static const char * FirstQuantity (const char * aunit);
 		%feature("compactdefaultargs") LexiconUnits;
-		%feature("autodoc", "	* Returns a unique instance of the Units_Lexicon. If <amode> is True, it forces the recomputation of the dictionary of units, and by consequence the completion of the Units_Lexicon.
+		%feature("autodoc", "	* Returns a unique instance of the Units_Lexicon. If <amode> is True, it forces the recomputation of the dictionary of units,
+    and by consequence the completion of the Units_Lexicon.
 
 	:param amode: default value is Standard_True
 	:type amode: bool
@@ -304,7 +305,8 @@ class Units_Explorer {
 ") Unit;
 		TCollection_AsciiString Unit ();
 		%feature("compactdefaultargs") IsActive;
-		%feature("autodoc", "	* If the units system to explore is a user system, returns True if the current unit is active, False otherwise. //! If the units system to explore is the units dictionary, returns True if the current unit is the S.I. unit.
+		%feature("autodoc", "	* If the units system to explore is a user system, returns True if the current unit is active, False otherwise.
+    //! If the units system to explore is the units dictionary, returns True if the current unit is the S.I. unit.
 
 	:rtype: bool
 ") IsActive;
@@ -353,7 +355,8 @@ class Units_Lexicon : public MMgt_TShared {
 ") UpToDate;
 		virtual Standard_Boolean UpToDate ();
 		%feature("compactdefaultargs") AddToken;
-		%feature("autodoc", "	* Adds to the lexicon a new token with <aword>, <amean>, <avalue> as arguments. If there is already a token with the field <theword> equal to <aword>, the existing token is updated.
+		%feature("autodoc", "	* Adds to the lexicon a new token with <aword>, <amean>, <avalue> as arguments. If there is already a token with the field <theword> equal to <aword>,
+    the existing token is updated.
 
 	:param aword:
 	:type aword: char *
@@ -1378,7 +1381,8 @@ class Units_Token : public MMgt_TShared {
 ") Units_Token;
 		 Units_Token (const char * aword,const char * amean);
 		%feature("compactdefaultargs") Units_Token;
-		%feature("autodoc", "	* Creates and returns a token. <aword> is a string containing the available word, <amean> gives the signification of the token and <avalue> is the numeric value of the dimension.
+		%feature("autodoc", "	* Creates and returns a token. <aword> is a string containing the available word,
+    <amean> gives the signification of the token and <avalue> is the numeric value of the dimension.
 
 	:param aword:
 	:type aword: char *
@@ -1390,7 +1394,8 @@ class Units_Token : public MMgt_TShared {
 ") Units_Token;
 		 Units_Token (const char * aword,const char * amean,const Standard_Real avalue);
 		%feature("compactdefaultargs") Units_Token;
-		%feature("autodoc", "	* Creates and returns a token. <aword> is a string containing the available word, <amean> gives the signification of the token, <avalue> is the numeric value of the dimension, and <adimensions> is the dimension of the given word <aword>.
+		%feature("autodoc", "	* Creates and returns a token. <aword> is a string containing the available word, <amean> gives the signification of the token,
+    <avalue> is the numeric value of the dimension, and <adimensions> is the dimension of the given word <aword>.
 
 	:param aword:
 	:type aword: char *
@@ -1876,7 +1881,8 @@ class Handle_Units_TokensSequence : public Handle_MMgt_TShared {
 class Units_Unit : public MMgt_TShared {
 	public:
 		%feature("compactdefaultargs") Units_Unit;
-		%feature("autodoc", "	* Creates and returns a unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, and <avalue> is the value in relation to the International System of Units.
+		%feature("autodoc", "	* Creates and returns a unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit,
+    and <avalue> is the value in relation to the International System of Units.
 
 	:param aname:
 	:type aname: char *
@@ -2071,7 +2077,8 @@ class Units_UnitsDictionary : public MMgt_TShared {
 ") ActiveUnit;
 		TCollection_AsciiString ActiveUnit (const char * aquantity);
 		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	* Dumps only the sequence of quantities without the units if <alevel> is equal to zero, and for each quantity all the units stored if <alevel> is equal to one.
+		%feature("autodoc", "	* Dumps only the sequence of quantities without the units if <alevel> is equal to zero, and for each quantity all the units stored if
+    <alevel> is equal to one.
 
 	:param alevel:
 	:type alevel: int
@@ -2339,7 +2346,18 @@ class Units_UnitsSystem : public MMgt_TShared {
 ") Units_UnitsSystem;
 		 Units_UnitsSystem ();
 		%feature("compactdefaultargs") Units_UnitsSystem;
-		%feature("autodoc", "	* Returns an instance of UnitsSystem initialized to the S.I. units system upgraded by the base system units decription file. Attempts to find the four following files: $CSF_`aName`Defaults/.aName $CSF_`aName`SiteDefaults/.aName $CSF_`aName`GroupDefaults/.aName $CSF_`aName`UserDefaults/.aName See : Resource_Manager for the description of this file.
+		%feature("autodoc", "	* Returns an instance of UnitsSystem initialized to the S.I. units system upgraded by the base system units decription file.
+    Attempts to find the four following files:
+
+    $CSF_`aName`Defaults/.aName
+
+    $CSF_`aName`SiteDefaults/.aName
+
+    $CSF_`aName`GroupDefaults/.aName
+
+    $CSF_`aName`UserDefaults/.aName
+
+    See : Resource_Manager for the description of this file.
 
 	:param aName:
 	:type aName: char *
@@ -2355,7 +2373,8 @@ class Units_UnitsSystem : public MMgt_TShared {
 ") QuantitiesSequence;
 		Handle_Units_QuantitiesSequence QuantitiesSequence ();
 		%feature("compactdefaultargs") ActiveUnitsSequence;
-		%feature("autodoc", "	* Returns a sequence of integer in correspondance with the sequence of quantities, which indicates, for each redefined quantity, the index into the sequence of units, of the active unit.
+		%feature("autodoc", "	* Returns a sequence of integer in correspondance with the sequence of quantities, which indicates, for each redefined quantity,
+    the index into the sequence of units, of the active unit.
 
 	:rtype: Handle_TColStd_HSequenceOfInteger
 ") ActiveUnitsSequence;
@@ -2781,7 +2800,9 @@ class Handle_Units_ShiftedToken : public Handle_Units_Token {
 class Units_ShiftedUnit : public Units_Unit {
 	public:
 		%feature("compactdefaultargs") Units_ShiftedUnit;
-		%feature("autodoc", "	* Creates and returns a shifted unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, <avalue> is the value in relation to the International System of Units, and <amove> is the gap in relation to another unit. //! For example Celcius dregee of temperature is an instance of ShiftedUnit with <avalue> equal to 1. and <amove> equal to 273.15.
+		%feature("autodoc", "	* Creates and returns a shifted unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, <avalue>
+    is the value in relation to the International System of Units, and <amove> is the gap in relation to another unit.
+    //! For example Celcius dregee of temperature is an instance of ShiftedUnit with <avalue> equal to 1. and <amove> equal to 273.15.
 
 	:param aname:
 	:type aname: char *
@@ -2908,7 +2929,8 @@ class Units_UnitSentence : public Units_Sentence {
 ") Units_UnitSentence;
 		 Units_UnitSentence (const char * astring);
 		%feature("compactdefaultargs") Units_UnitSentence;
-		%feature("autodoc", "	* Creates and returns a UnitSentence. The string <astring> describes in natural language the unit to be analysed. The sequence of physical quantities <asequenceofquantities> describes the available dictionary of units you want to use.
+		%feature("autodoc", "	* Creates and returns a UnitSentence. The string <astring> describes in natural language the unit to be analysed.
+    The sequence of physical quantities <asequenceofquantities> describes the available dictionary of units you want to use.
 
 	:param astring:
 	:type astring: char *

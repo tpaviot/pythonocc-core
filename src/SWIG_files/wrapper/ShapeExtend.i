@@ -18,7 +18,20 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEEXTENDDOCSTRING
-"This package provides general tools and data structures commonfor other packages in SHAPEWORKS and extending CAS.CADEstructures.The following items are provided by this package:- enumeration Status used for coding status flags in methodsinside the SHAPEWORKS- enumeration Parametrisation used for setting global parametrisationon the composite surface- class CompositeSurface representing a composite surfacemade of a grid of surface patches- class WireData representing a wire in the form of orderedlist of edges- class MsgRegistrator for attaching messages to the objects- tools for exploring the shapes-    tools for creating    new shapes."
+"This package provides general tools and data structures commonfor other packages in SHAPEWORKS and extending CAS.CADEstructures.
+The following items are provided by this package:
+
+- enumeration Status used for coding status flags in methods inside the SHAPEWORKS
+
+- enumeration Parametrisation used for setting global parametrisationon the composite surface
+
+- class CompositeSurface representing a composite surfacemade of a grid of surface patches
+
+- class WireData representing a wire in the form of orderedlist of edges
+
+- class MsgRegistrator for attaching messages to the objects- tools for exploring the shapes
+
+- tools for creating new shapes."
 %enddef
 %module (package="OCC", docstring=SHAPEEXTENDDOCSTRING) ShapeExtend
 
