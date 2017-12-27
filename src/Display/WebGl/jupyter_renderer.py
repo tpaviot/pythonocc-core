@@ -30,12 +30,20 @@ try:
 except ImportError:
     raise AssertionError("You must install pythreejs and dependencies to benefit from the jupyter renderer")
 
+# this renderer currently targets pythreejs version number 1.0.x
+assert version_info[0] == 1 and version_info[1] == 0
+
 from OCC.Bnd import Bnd_Box
 from OCC.BRepBndLib import brepbndlib_Add
 from OCC.Visualization import Tesselator
 
 # default values
-default_shape_color = '#%02x%02x%02x' % (166, 166, 166)
+
+def format_color(r,g,b):
+    return '#%02x%02x%02x' % (r,g,b)
+
+default_shape_color = format_color(166, 166, 166)
+default_edge_color = format_color(0, 0, 0)
 
 
 def get_boundingbox(shape, tol=1e-5):
@@ -71,12 +79,12 @@ class JupyterRenderer(object):
         self._size = size
 
 
-    def DisplayShape(self, shp, shape_color = default_shape_color):
+    def DisplayShape(self, shp, shape_color = default_shape_color, render_edges = False, edge_color = default_edge_color):
         """ takes a topods_shape and displays it in a jupyter notebook
         """
         # compute the tesselation
         tess = Tesselator(shp)
-        tess.Compute()
+        tess.Compute(compute_edges=render_edges)
         # get vertices and normals
         vertices_position = tess.GetVerticesPositionAsTuple()
 
@@ -87,35 +95,55 @@ class JupyterRenderer(object):
         assert number_of_vertices % 3 == 0
         assert number_of_triangles * 9 == number_of_vertices
 
-        #normals = tess.GetNormalsAsTuple()
-        #number_of_normals = len(normals)
-        ## there should be as many normals than vertices
-        #assert number_of_normals == number_of_vertices
-
         # then we compute the vertices and normals arrays
         np_vertices = np.array(vertices_position, dtype='float32').reshape(int(number_of_vertices / 3), 3)
-        #np_normals = np.array(normals, dtype='float32').reshape(int(number_of_vertices / 3), 3)
-        number_of_faces = number_of_vertices / 3
-        np_faces = np.arange(number_of_faces, dtype='uint32').reshape(int(number_of_faces/3), 3)
+        np_normals = np.array(tess.GetNormalsAsTuple(), dtype='float32').reshape(-1, 3)
+        np_faces = np.arange(np_vertices.shape[0], dtype='uint32')
+
+        assert np_normals.shape == np_vertices.shape
 
         # finally DisplayShape
-        shape_geometry = PlainBufferGeometry(vertices=np_vertices, faces=np_faces)
+        shape_geometry = BufferGeometry(attributes={
+            'position': BufferAttribute(np_vertices),
+            'normal'  : BufferAttribute(np_normals),
+            'index'   : BufferAttribute(np_faces)
+        })
+        
         #shape_geometry.exec_three_obj_method('computeFaceNormals') TODO normals should be client-side computed
         #shape_geometry.exec_three_obj_method('computeVertexNormals') TODO idem for vertex normals
-        shp_material = PhongMaterial(color=default_shape_color, shininess=0.9, morphTargets=True)
+        shp_material = MeshPhongMaterial(color=default_shape_color, shininess=0.9, morphTargets=True)
         shape_mesh = Mesh(geometry=shape_geometry, material = shp_material)
-        scene_shp = Scene(children=[shape_mesh, AmbientLight(color='#101010')])
 
+        edges = list(map(lambda i_edge: [tess.GetEdgeVertex(i_edge, i_vert) for i_vert in range(tess.ObjEdgeGetVertexCount(i_edge))], range(tess.ObjGetEdgeCount())))
+        edges = list(filter(lambda edge: len(edge) == 2, edges))
+        np_edge_vertices = np.array(edges, dtype=np.float32).reshape(-1,3)
+        np_edge_indices = np.arange(np_edge_vertices.shape[0], dtype=np.uint32)
+        
         # create a camera
         px, py, pz, xc, yc, zc = get_boundingbox(shp)
-        self._camera = PerspectiveCamera(position=[0, -3*py, pz *3],
-                                         fov=50,
-                                         children=[DirectionalLight(color='#ffffff', position=[50, 50, 50], intensity=0.5)])
-        renderer_shp = Renderer(camera=self._camera,
+        self._camera = c = PerspectiveCamera(position=[0, -3*py, pz *3],
+                                             fov=50,
+                                             children=[DirectionalLight(color='#ffffff', position=[50, 50, 50], intensity=0.5)])
+                                             
+        scene_children = [AmbientLight(color='#101010'), shape_mesh, c]
+        
+        if render_edges:
+            edge_geometry = BufferGeometry(attributes={
+                'position': BufferAttribute(np_edge_vertices),
+                'index'   : BufferAttribute(np_edge_indices)
+            })
+            edge_material = LineBasicMaterial(color=edge_color)
+            edge_lines = LineSegments(geometry=edge_geometry, material=edge_material)
+            scene_children.append(edge_lines)
+
+        scene_shp = Scene(children=scene_children)
+        
+        renderer_shp = Renderer(camera=c,
                                 background=self._background,
                                 background_opacity=self._background_opacity,
                                 scene = scene_shp,
                                 controls=[TrackballControls(controlling=self._camera)])
+                                
         display(renderer_shp)
 
 
@@ -125,4 +153,3 @@ if __name__ == "__main__":
     my_ren = JupyterRenderer()
     box_s = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
     my_ren.DisplayShape(box_s)
-    
