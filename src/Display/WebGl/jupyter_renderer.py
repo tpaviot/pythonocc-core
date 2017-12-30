@@ -73,13 +73,17 @@ def get_boundingbox(shape, tol=1e-5):
 
 
 class JupyterRenderer(object):
-    def __init__(self, size='100%%'):
+    def __init__(self, size=(480,480)):
         self._background = 'white'
         self._background_opacity = 1
         self._size = size
 
 
-    def DisplayShape(self, shp, shape_color = default_shape_color, render_edges = False, edge_color = default_edge_color):
+    def DisplayShape(self,
+                     shp,  # the TopoDS_Shape to be displayed
+                     shape_color = default_shape_color,
+                     render_edges = False,
+                     edge_color = default_edge_color):
         """ takes a topods_shape and displays it in a jupyter notebook
         """
         # compute the tesselation
@@ -132,8 +136,9 @@ class JupyterRenderer(object):
                 'position': BufferAttribute(np_edge_vertices),
                 'index'   : BufferAttribute(np_edge_indices)
             })
-            edge_material = LineBasicMaterial(color=edge_color)
+            edge_material = LineBasicMaterial(color=edge_color, linewidth=2)
             edge_lines = LineSegments(geometry=edge_geometry, material=edge_material)
+
             scene_children.append(edge_lines)
 
         scene_shp = Scene(children=scene_children)
@@ -142,7 +147,10 @@ class JupyterRenderer(object):
                                 background=self._background,
                                 background_opacity=self._background_opacity,
                                 scene = scene_shp,
-                                controls=[TrackballControls(controlling=self._camera)])
+                                controls=[OrbitControls(controlling=self._camera)],
+                                width=self._size[0],
+                                height=self._size[1],
+                                antialias=True)
                                 
         display(renderer_shp)
 
