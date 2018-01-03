@@ -126,7 +126,7 @@ class JupyterRenderer(object):
         
         self._camera = None                  
         
-        self._html = HTML("No element selected")
+        self.html = HTML("No element selected")
         
         self._pickable_objects = Group()
         self._wireframes = Group()
@@ -157,16 +157,17 @@ class JupyterRenderer(object):
     
     def onclick(self, item):
         if item:
-            self._html.value = "Selected element " + str(item.name)
+            self.html.value = "Selected element " + str(item.name)
         else:
-            self._html.value = "No element selected"
+            self.html.value = "No element selected"
         
 
     def _update_camera(self):
         bb = reduce(operator.add, map(bounding_box, self._shapes))
         
+        self._target = [bb.x_center, bb.y_center, bb.z_center]
         self._camera = PerspectiveCamera(position=[0, bb.y_center - 3 * bb.y_size, bb.z_center + 3 * bb.z_center],
-                                         lookAt=[bb.x_center, bb.y_center, bb.z_center],
+                                         lookAt=self._target,
                                          up=[0,0,1],
                                          fov=50,
                                          children=[DirectionalLight(color='#ffffff', position=[50, 50, 50], intensity=0.5)])
@@ -275,11 +276,9 @@ class JupyterRenderer(object):
                             width = self._size[0],
                             height = self._size[1],
                             antialias=True,
-                            controls=[OrbitControls(controlling=self._camera), self._picker])
+                            controls=[OrbitControls(controlling=self._camera, target=self._target), self._picker])
                                 
-        display(renderer, self._html)
-        
-    __repr__ = Display
+        display(renderer, self.html)
 
 if __name__ == "__main__":
     from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
