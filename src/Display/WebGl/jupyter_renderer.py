@@ -31,6 +31,7 @@ try:
     # this renderer currently targets pythreejs version number 1.0.x
     assert version_info[0] == 1 and version_info[1] == 0
     from IPython.display import display
+    from ipywidgets import HTML
     import numpy as np
 except ImportError:
     print("Error You must install pythreejs/ipywidegets/numpy to run the jupyter notebook renderer")
@@ -47,7 +48,12 @@ def format_color(r, g, b):
 
 default_shape_color = format_color(166, 166, 166)
 default_edge_color = format_color(0, 0, 0)
-
+default_selection_material = MeshPhongMaterial(color='gray',
+                                               polygonOffset=True,
+                                               polygonOffsetFactor=1,
+                                               polygonOffsetUnits=1,
+                                               shininess=0.9,
+                                               wireframe=True)
 
 class bounding_box(object):
     """ Representation of the bounding box of the TopoDS_Shape `shape`
@@ -116,31 +122,62 @@ class JupyterRenderer(object):
         self._background_opacity = 1
         self._size = size
         self._compute_normals_mode = compute_normals_mode
-
+        self.html = HTML("mesh id:<br>shape id:")
         # the default camera object
         self._camera = None
+        self._target = [0., 0., 0.]  # the point to look at
 
-        # the collection of displayed shapes, empty by default
-        self._shapes = []
-
-        # a collection for Mesh objects
-        self._meshes = []
-
-        # a collection for edges
-        self._edges = []
+        # a dictionnary of all the shapes belonging to the renderer
+        # each element is a key 'mesh_id:shape'
+        self._shapes = {}
 
         # we save the renderer so that is can be accessed
         self._renderer = None
 
-    def _update_camera(self):
-        bb = reduce(operator.add, map(bounding_box, self._shapes))
+        # the group of 3d and 2d objects to render
+        self._displayed_pickable_objects = Group()
 
+        # event manager/selection manager
+        self._picker = Picker(controlling=self._displayed_pickable_objects, event='click')
+        self._current_shape_selection = None
+        self._current_mesh_selection = None
+        self._current_selection_material = None  # the color of the object currently being rendered
+
+        def click(value):
+            """ called whenever a shape  or edge is clicked
+            """
+            obj = value.owner.object
+            if self._current_mesh_selection is not None:
+                    self._current_mesh_selection.material = self._current_selection_material
+            if obj is not None:
+                    id_clicked = obj.name  # the mesh id clicked
+                    self._current_mesh_selection = obj
+                    self._current_selection_material = obj.material
+                    obj.material = default_selection_material
+                    # get the shape from this mesh id
+                    selected_shape = self._shapes[id_clicked]
+                    self.html.value = "mesh id: %s<br>shape id: %s" % (id_clicked, selected_shape)
+                    self._current_shape_selection = selected_shape
+            else:
+                self.html.value = "mesh id:<br>shape id:"
+
+        self._picker.observe(click, names=['point'])
+
+
+    def _update_camera(self):
+        bb = reduce(operator.add, map(bounding_box, list(self._shapes.values())))
+        self._target = [bb.x_center, bb.y_center, bb.z_center]
         self._camera = PerspectiveCamera(position=[0, bb.y_center - 3 * bb.y_size, bb.z_center + 3 * bb.z_center],
-                                         lookAt=[bb.x_center, bb.y_center, bb.z_center],
+                                         lookAt=self._target,
                                          up=[0, 0, 1],
                                          fov=50,
                                          children=[DirectionalLight(color='#ffffff', position=[50, 50, 50], intensity=0.5)])
 
+
+    def GetSelectedShape(self):
+        """ Returns the selected shape
+        """
+        return self._current_shape_selection
 
     def DisplayShape(self,
                      shp,  # the TopoDS_Shape to be displayed
@@ -164,9 +201,6 @@ class JupyterRenderer(object):
                       mesh will be less precise, i.e. lower numer of triangles.
         update: optional, False by default. If True, render all the shapes.
         """
-        # adds the shape to the collection of displayed_shapes
-        self._shapes.append(shp)
-
         # first, compute the tesselation
         tess = Tesselator(shp)
         tess.Compute(uv_coords=compute_uv_coords, compute_edges=render_edges, mesh_quality=quality)
@@ -218,14 +252,13 @@ class JupyterRenderer(object):
         # finally create the mash
         shape_mesh = Mesh(geometry=shape_geometry,
                           material=shp_material,
-                          id=mesh_id)
+                          name=mesh_id)
 
         # adds this mesh to the list of meshes
-        self._meshes.append(shape_mesh)
+        self._displayed_pickable_objects.add(shape_mesh)
 
-        # create a link between the mesh and the shape
-        # TODO
-        # create a camera
+        # and to the dict of shapes, to have a mapping between meshes and shapes
+        self._shapes[mesh_id] = shp
 
         # edge rendering, if set to True
         edge_lines = None
@@ -240,7 +273,7 @@ class JupyterRenderer(object):
             })
             edge_material = LineBasicMaterial(color=edge_color, linewidth=2)
             edge_lines = LineSegments(geometry=edge_geometry, material=edge_material)
-            self._edges.append(edge_lines)
+            self._displayed_pickable_objects.add(edge_lines)
 
         if update:
             self.Display()
@@ -251,29 +284,19 @@ class JupyterRenderer(object):
         self._renderer.scene = Scene(children=[])
 
     def Display(self):
-        # start rendering
-        #scene_children = [shape_mesh, edge_lines, self._camera, AmbientLight(color='#101010')]
-        # build the children list:
         self._update_camera()
-        scene_children = []
-        for mesh in self._meshes:
-            scene_children.append(mesh)
-        for edge in self._edges:
-            scene_children.append(edge)
-        scene_children.append(self._camera)
-        scene_children.append(AmbientLight(color='#101010'))
-        scene_shp = Scene(children=scene_children)
+        scene_shp = Scene(children=[self._displayed_pickable_objects, self._camera, AmbientLight(color='#101010')])
 
         self._renderer = Renderer(camera=self._camera,
                                   background=self._background,
                                   background_opacity=self._background_opacity,
                                   scene=scene_shp,
-                                  controls=[OrbitControls(controlling=self._camera)],
+                                  controls=[OrbitControls(controlling=self._camera, target=self._target), self._picker],
                                   width=self._size[0],
                                   height=self._size[1],
                                   antialias=True)
+        display(self.html)
         display(self._renderer)
-
 
 if __name__ == "__main__":
     from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
