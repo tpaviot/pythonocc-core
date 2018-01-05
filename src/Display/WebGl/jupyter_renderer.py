@@ -125,7 +125,8 @@ class JupyterRenderer(object):
         self.html = HTML("mesh id:<br>shape id:")
         # the default camera object
         self._camera = None
-        self._target = [0., 0., 0.]  # the point to look at
+        self._camera_target = [0., 0., 0.]  # the point to look at
+        self._camera_position = [0, 0., 10.]0  # the camera initial position
 
         # a dictionnary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
@@ -165,10 +166,13 @@ class JupyterRenderer(object):
 
 
     def _update_camera(self):
-        bb = reduce(operator.add, map(bounding_box, list(self._shapes.values())))
-        self._target = [bb.x_center, bb.y_center, bb.z_center]
-        self._camera = PerspectiveCamera(position=[0, bb.y_center - 3 * bb.y_size, bb.z_center + 3 * bb.z_center],
-                                         lookAt=self._target,
+        all_shapes = list(self._shapes.values())
+        if all_shapes:
+            bb = reduce(operator.add, map(bounding_box, all_shapes))
+            self._camera_target = [bb.x_center, bb.y_center, bb.z_center]
+            self._camera_position = [0, bb.y_center - 3 * bb.y_size, bb.z_center + 3 * bb.z_center]
+        self._camera = PerspectiveCamera(position=self._camera_position,
+                                         lookAt=self._camera_target,
                                          up=[0, 0, 1],
                                          fov=50,
                                          children=[DirectionalLight(color='#ffffff', position=[50, 50, 50], intensity=0.5)])
@@ -291,7 +295,7 @@ class JupyterRenderer(object):
                                   background=self._background,
                                   background_opacity=self._background_opacity,
                                   scene=scene_shp,
-                                  controls=[OrbitControls(controlling=self._camera, target=self._target), self._picker],
+                                  controls=[OrbitControls(controlling=self._camera, target=self._camera_target), self._picker],
                                   width=self._size[0],
                                   height=self._size[1],
                                   antialias=True)
