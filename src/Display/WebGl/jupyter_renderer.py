@@ -21,10 +21,7 @@ import sys
 import enum
 import uuid
 import operator
-
-try:
-    from functools import reduce
-except: pass
+from functools import reduce
 
 try:
     from pythreejs import *
@@ -301,6 +298,11 @@ class JupyterRenderer(object):
                                   antialias=True)
         display(self.html)
         display(self._renderer)
+
+    def __repr__(self):
+        self.Display()
+        return ""
+
 
 if __name__ == "__main__":
     from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
