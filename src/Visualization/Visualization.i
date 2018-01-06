@@ -51,6 +51,7 @@ enum theTextureMappingRule {
 
 class Tesselator {
  public:
+    %feature("autodoc", "1");
     Tesselator(TopoDS_Shape aShape,
                theTextureMappingRule aTxtMapType,
                float anAutoScaleSizeOnU,
@@ -63,7 +64,10 @@ class Tesselator {
                float aScaleU,
                float aScaleV,
                float aRotationAngle);
+    %feature("autodoc", "1");
     Tesselator(TopoDS_Shape aShape);
+    %feature("autodoc", "1");
+    ~Tesselator();
     %feature("kwargs") Compute;
     void Compute(bool uv_coords=true, bool compute_edges=false, float mesh_quality=1.0);
     void GetVertex(int ivert, float& x, float& y, float& z);
