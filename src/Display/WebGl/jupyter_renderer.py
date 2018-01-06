@@ -119,11 +119,11 @@ class JupyterRenderer(object):
         self._background_opacity = 1
         self._size = size
         self._compute_normals_mode = compute_normals_mode
-        self.html = HTML("mesh id:<br>shape id:")
+        self.html = HTML("")
         # the default camera object
         self._camera = None
         self._camera_target = [0., 0., 0.]  # the point to look at
-        self._camera_position = [0, 0., 10.]0  # the camera initial position
+        self._camera_position = [0, 0., 100.]  # the camera initial position
 
         # a dictionnary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
@@ -140,27 +140,46 @@ class JupyterRenderer(object):
         self._current_shape_selection = None
         self._current_mesh_selection = None
         self._current_selection_material = None  # the color of the object currently being rendered
+        self._select_callbacks = []  # a list of all functions called after an object is selected
 
         def click(value):
             """ called whenever a shape  or edge is clicked
             """
             obj = value.owner.object
             if self._current_mesh_selection is not None:
-                    self._current_mesh_selection.material = self._current_selection_material
+                self._current_mesh_selection.material = self._current_selection_material
             if obj is not None:
-                    id_clicked = obj.name  # the mesh id clicked
-                    self._current_mesh_selection = obj
-                    self._current_selection_material = obj.material
-                    obj.material = default_selection_material
-                    # get the shape from this mesh id
-                    selected_shape = self._shapes[id_clicked]
-                    self.html.value = "mesh id: %s<br>shape id: %s" % (id_clicked, selected_shape)
-                    self._current_shape_selection = selected_shape
+                id_clicked = obj.name  # the mesh id clicked
+                self._current_mesh_selection = obj
+                self._current_selection_material = obj.material
+                obj.material = default_selection_material
+                # get the shape from this mesh id
+                selected_shape = self._shapes[id_clicked]
+                self.html.value = "mesh id: %s<br>shape id: %s" % (id_clicked, selected_shape)
+                self._current_shape_selection = selected_shape
             else:
-                self.html.value = "mesh id:<br>shape id:"
+                self.html.value = ""
+            # then execute calbacks
+            for callback in self._select_callbacks:
+                callback(self._current_shape_selection)
 
         self._picker.observe(click, names=['point'])
 
+    def register_select_callback(self, callback):
+        """ Adds a callback that will be called each time a shape s selected
+        """
+        if not callable(callback):
+            raise AssertionError("You must provide a callable to register the callback")
+        else:
+            self._select_callbacks.append(callback)
+
+    def unregister_callback(self, callback):
+        """ Remove a callback from the callback list
+        """
+        if not callback in self._select_callbacks:
+            raise AssertionError("This callback is not registered")
+        else:
+            self._select_callbacks.remove(callback)
 
     def _update_camera(self):
         all_shapes = list(self._shapes.values())
@@ -280,8 +299,11 @@ class JupyterRenderer(object):
             self.Display()
 
     def EraseAll(self):
-        self._meshes = []
-        self._edges = []
+        self._shapes = {}
+        self._displayed_pickable_objects = Group()
+        self._current_shape_selection = None
+        self._current_mesh_selection = None
+        self._current_selection_material = None
         self._renderer.scene = Scene(children=[])
 
     def Display(self):
