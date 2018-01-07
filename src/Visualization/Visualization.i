@@ -69,7 +69,7 @@ class Tesselator {
     %feature("autodoc", "1");
     ~Tesselator();
     %feature("kwargs") Compute;
-    void Compute(bool uv_coords=true, bool compute_edges=false, float mesh_quality=1.0);
+    void Compute(bool uv_coords=true, bool compute_edges=false, float mesh_quality=1.0, bool parallel=false);
     void GetVertex(int ivert, float& x, float& y, float& z);
     void GetNormal(int inorm, float& x, float& y, float& z);
     void GetTriangleIndex(int triangleIdx, int& v1, int& v2, int& v3);

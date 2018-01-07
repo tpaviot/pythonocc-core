@@ -98,13 +98,13 @@ Tesselator::Tesselator(TopoDS_Shape   aShape) :
     ComputeDefaultDeviation();
 }
 
-void Tesselator::Compute(bool uv_coords, bool compute_edges, float mesh_quality)
+void Tesselator::Compute(bool uv_coords, bool compute_edges, float mesh_quality, bool parallel)
 {
   if (uv_coords) {
-    TesselateWithUVCoords(compute_edges, mesh_quality);
+    TesselateWithUVCoords(compute_edges, mesh_quality, parallel);
   }
   else {
-    Tesselate(compute_edges, mesh_quality);
+    Tesselate(compute_edges, mesh_quality, parallel);
   }
 }
 
@@ -141,7 +141,7 @@ void Tesselator::SetDeviation(Standard_Real aDeviation)
 
 
 //---------------------------------------------------------------------------
-void Tesselator::Tesselate(bool compute_edges, float mesh_quality)
+void Tesselator::Tesselate(bool compute_edges, float mesh_quality, bool parallel)
 {
     TopExp_Explorer       ExpFace;
     StdPrs_ToolShadedShape   SST;
@@ -153,7 +153,7 @@ void Tesselator::Tesselate(bool compute_edges, float mesh_quality)
     gp_Pnt2d d_coord;
 
     //Triangulate
-    BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, false);
+    BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, parallel);
 
 
     for (ExpFace.Init(myShape, TopAbs_FACE); ExpFace.More(); ExpFace.Next()) {
@@ -226,7 +226,7 @@ void Tesselator::Tesselate(bool compute_edges, float mesh_quality)
 }
 
 //---------------------------------------------------------------------------
-void Tesselator::TesselateWithUVCoords(bool compute_edges, float mesh_quality)
+void Tesselator::TesselateWithUVCoords(bool compute_edges, float mesh_quality, bool parallel)
 {
   Standard_Real Umin;
   Standard_Real Umax;
@@ -246,7 +246,7 @@ void Tesselator::TesselateWithUVCoords(bool compute_edges, float mesh_quality)
   gp_Pnt2d d_coord;
   
   //Triangulate
-  BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, false);
+  BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, parallel);
 
   for (ExpFace.Init(myShape, TopAbs_FACE); ExpFace.More(); ExpFace.Next()) {
     const TopoDS_Face&    myFace    = TopoDS::Face(ExpFace.Current());
