@@ -101,7 +101,7 @@ class NORMAL(enum.Enum):
 
 
 class JupyterRenderer(object):
-    def __init__(self, size=(480, 480), compute_normals_mode=NORMAL.SERVER_SIDE):
+    def __init__(self, size=(480, 480), compute_normals_mode=NORMAL.SERVER_SIDE, parallel=False):
         """ Creates a jupyter renderer.
         size: a tuple (width, height). Must be a square, or shapes will look like deformed
         compute_normals_mode: optional, set to SERVER_SIDE by default. This flag lets you choose the
@@ -114,11 +114,14 @@ class JupyterRenderer(object):
                               choose this option (mobile terminals for instance)
                               CLIENT_SIDE: lower server load, loading time decreased, higher client load. Higher performance clients will
                               choose this option (laptops, desktop machines).
+        parallel: optional, False by default. If set to True, meshing runs in parallelized mode.
         """
         self._background = 'white'
         self._background_opacity = 1
         self._size = size
         self._compute_normals_mode = compute_normals_mode
+        self._parallel = parallel
+
         self.html = HTML("")
         # the default camera object
         self._camera = None
@@ -223,8 +226,10 @@ class JupyterRenderer(object):
         """
         # first, compute the tesselation
         tess = Tesselator(shp)
-        tess.Compute(uv_coords=compute_uv_coords, compute_edges=render_edges, mesh_quality=quality)
-
+        tess.Compute(uv_coords=compute_uv_coords,
+                     compute_edges=render_edges,
+                     mesh_quality=quality,
+                     parallel=self._parallel)
         # get vertices and normals
         vertices_position = tess.GetVerticesPositionAsTuple()
 
