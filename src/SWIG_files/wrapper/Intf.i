@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTFDOCSTRING
-"Interference computation between polygons, lines andpolyhedra with only triangular facets. These objectsare polygonal representations of complex  curves andtriangulated representations of complex surfaces."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=INTFDOCSTRING) Intf
 

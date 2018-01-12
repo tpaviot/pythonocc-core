@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPCLASSDOCSTRING
-"The package TopClass  provides  Classificationalgorithms. A Classification algorithm is used tocompute if a point is inside, outside or on theboundary of a Shape."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TOPCLASSDOCSTRING) TopClass
 

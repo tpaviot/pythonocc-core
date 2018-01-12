@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOM2DINTDOCSTRING
-"Intersection between two Curves2 from Geom2dAdaptor-Level: PublicAll the methods of the classes are public."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GEOM2DINTDOCSTRING) Geom2dInt
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define UNITSAPIDOCSTRING
-"The UnitsAPI global functions are used toconvert a value from any unit into another unit.PrinciplesConversion is executed among three unit systems:-  the SI System-  the user's Local System-  the user's Current System.The SI System is the standard international unitsystem. It is indicated by SI in the synopses ofthe UnitsAPI functions.The MDTV System corresponds to the SIinternational standard but the length unit and allits derivatives use millimeters instead of the meters.Both systems are proposed by Open CASCADE;the SI System is the standard option. Byselecting one of these two systems, the userdefines his Local System through theSetLocalSystem function. The Local System isindicated by LS in the synopses of the UnitsAPI functions.The user's Local System units can be modified inthe working environment. The user defines hisCurrent System by modifying its units throughthe SetCurrentUnit function. The CurrentSystem is indicated by Current in the synopsesof the UnitsAPI functions."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=UNITSAPIDOCSTRING) UnitsAPI
 

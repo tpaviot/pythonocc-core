@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCPNTSDOCSTRING
-"This package contains the geometric algorithmes used tocompute characteristic points on parametrized curves.They are high level algorithms based on the low levelalgorithms in CPnts.-Level : Public.All methods of all classes will be public."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GCPNTSDOCSTRING) GCPnts
 
@@ -57,17 +57,17 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum GCPnts_AbscissaType {
-	GCPnts_LengthParametrized = 0,
-	GCPnts_Parametrized = 1,
-	GCPnts_AbsComposite = 2,
-};
-
 enum GCPnts_DeflectionType {
 	GCPnts_Linear = 0,
 	GCPnts_Circular = 1,
 	GCPnts_Curved = 2,
 	GCPnts_DefComposite = 3,
+};
+
+enum GCPnts_AbscissaType {
+	GCPnts_LengthParametrized = 0,
+	GCPnts_Parametrized = 1,
+	GCPnts_AbsComposite = 2,
 };
 
 /* end public enums declaration */

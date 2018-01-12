@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define IMAGEDOCSTRING
-"The package Image provides image manipulation classes."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=IMAGEDOCSTRING) Image
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTRES2DDOCSTRING
-"This package provides the definition of the results ofthe intersection between 2D curves and the definitionof a domain on a 2D curve.-Level: PublicAll the methods of all the classes of this package are public."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=INTRES2DDOCSTRING) IntRes2d
 

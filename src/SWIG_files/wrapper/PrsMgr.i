@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PRSMGRDOCSTRING
-"and is only to be used when you do not want to usethe services provided by AIS.PrsMgr manages display through the following services:-  supplying a graphic structure for the object to be presented-  recalculating presentations when required, e.g. bymoving the object or changing its color-  defining the display mode of the object to bepresented; in the case of AIS_Shape, for example,this determines whether the object is to be displayed in:-  wireframe 0-  shading 1.Note that each new Interactive Object must have all its display modes defined."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=PRSMGRDOCSTRING) PrsMgr
 
@@ -55,8 +55,8 @@ def register_handle(handle, base_object):
 
 /* typedefs */
 typedef Handle_PrsMgr_PresentationManager Handle_PrsMgr_PresentationManager3d;
-typedef PrsMgr_PresentableObject * PrsMgr_PresentableObjectPointer;
 typedef PrsMgr_Presentation PrsMgr_Presentation3d;
+typedef PrsMgr_PresentableObject * PrsMgr_PresentableObjectPointer;
 typedef PrsMgr_Presentation * PrsMgr_PresentationPointer;
 typedef NCollection_List <Handle_Prs3d_Presentation> PrsMgr_ListOfPresentations;
 typedef Handle_PrsMgr_Presentation Handle_PrsMgr_Presentation3d;

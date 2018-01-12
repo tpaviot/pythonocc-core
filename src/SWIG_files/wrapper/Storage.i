@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STORAGEDOCSTRING
-"Storage package is used to write and read persistent objects.These objects are read and written by a retrieval or storagealgorithm (Storage_Schema object) in a container (disk, memory,network ...). Drivers (FSD_File objects) assign a physicalcontainer for data to be stored or retrieved.The standard procedure for an application inreading a container is the following:-  open the driver in reading mode,-  call the Read function from the schema,setting the driver as a parameter. This  function returnsan instance of the  Storage_Data class which contains the  data being read,-  close the driver.The standard procedure for an application in writing a container is the following:-  open the driver in writing mode,-  create an instance of the Storage_Data  class, thenadd the persistent data to write  with the function AddRoot,-  call the function Write from the schema,setting the driver and the Storage_Data  instance as parameters,-   close the driver."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STORAGEDOCSTRING) Storage
 
@@ -59,6 +59,12 @@ typedef long Storage_Position;
 /* end typedefs declaration */
 
 /* public enums */
+enum Storage_SolveMode {
+	Storage_AddSolve = 0,
+	Storage_WriteSolve = 1,
+	Storage_ReadSolve = 2,
+};
+
 enum Storage_Error {
 	Storage_VSOk = 0,
 	Storage_VSOpenError = 1,
@@ -81,12 +87,6 @@ enum Storage_OpenMode {
 	Storage_VSRead = 1,
 	Storage_VSWrite = 2,
 	Storage_VSReadWrite = 3,
-};
-
-enum Storage_SolveMode {
-	Storage_AddSolve = 0,
-	Storage_WriteSolve = 1,
-	Storage_ReadSolve = 2,
 };
 
 /* end public enums declaration */

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VRMLDOCSTRING
-"Vrml package implements the specification of theVRML ( Virtual Reality Modeling Language ). VRMLis a standard language for describing interactive3-D objects and worlds delivered across Internet.Actual version of Vrml package have made for objectsof VRML version 1.0.This package is used by VrmlConverter package.The developer should already be familiar with VRMLspecification before using this package.Coordinate SystemVRML uses a Cartesian, right-handed, 3-dimensional coordinate system.By default, objects are projected onto a 2-dimensional device by projectingthem in the direction of the positive Z axis, with the positive X axis tothe right and the positive Y axis up. A camera or modeling transformationmay be used to alter this default projection.The standard unit for lengths and distances specified is meters.The standard unit for angles is radians.FieldsThere are two general classes of fields; fields that contain a single value(where a value may be a single number, a vector, or even an image), and fields thatcontain multiple values. Single-valued fields all have names that begin with 'SF',multiple-valued fields have names that begin with 'MF'. Each field type definesthe format for the values it writes.NodesVRML defines several different classes of nodes. Most of the nodes can be classifiedinto one of three categories; shape, property or group. Shape nodes define the geometryin the world. Conceptually, they are the only nodes that draw anything. Property nodesaffect the way shapes are drawn. And grouping nodes gather other nodes together, allowingcollections of nodes to be treated as a single object. Some group nodes also controlwhether or not their children are drawn.Nodes may contain zero or more fields. Each node type defines the type, name, and defaultvalue for each of its fields. The default value for the field is used if a value forthe field is not specified in the VRML file.InstancingA node may be the child of more than one group. This is called 'instancing' (using the sameinstance of a node multiple times, called 'aliasing' or 'multiple references' by othersystems), and is accomplished by using the 'USE' and 'DEF keywords."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=VRMLDOCSTRING) Vrml
 
@@ -57,6 +57,34 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
+enum Vrml_VertexOrdering {
+	Vrml_UNKNOWN_ORDERING = 0,
+	Vrml_CLOCKWISE = 1,
+	Vrml_COUNTERCLOCKWISE = 2,
+};
+
+enum Vrml_FontStyleFamily {
+	Vrml_SERIF = 0,
+	Vrml_SANS = 1,
+	Vrml_TYPEWRITER = 2,
+};
+
+enum Vrml_SeparatorRenderCulling {
+	Vrml_OFF = 0,
+	Vrml_ON = 1,
+	Vrml_AUTO = 2,
+};
+
+enum Vrml_Texture2Wrap {
+	Vrml_REPEAT = 0,
+	Vrml_CLAMP = 1,
+};
+
+enum Vrml_FaceType {
+	Vrml_UNKNOWN_FACE_TYPE = 0,
+	Vrml_CONVEX = 1,
+};
+
 enum Vrml_AsciiTextJustification {
 	Vrml_LEFT = 0,
 	Vrml_CENTER = 1,
@@ -69,28 +97,12 @@ enum Vrml_ConeParts {
 	Vrml_ConeALL = 2,
 };
 
-enum Vrml_CylinderParts {
-	Vrml_CylinderSIDES = 0,
-	Vrml_CylinderTOP = 1,
-	Vrml_CylinderBOTTOM = 2,
-	Vrml_CylinderALL = 3,
-};
-
-enum Vrml_FaceType {
-	Vrml_UNKNOWN_FACE_TYPE = 0,
-	Vrml_CONVEX = 1,
-};
-
-enum Vrml_FontStyleFamily {
-	Vrml_SERIF = 0,
-	Vrml_SANS = 1,
-	Vrml_TYPEWRITER = 2,
-};
-
-enum Vrml_FontStyleStyle {
-	Vrml_NONE = 0,
-	Vrml_BOLD = 1,
-	Vrml_ITALIC = 2,
+enum Vrml_SFImageNumber {
+	Vrml_NULL = 0,
+	Vrml_ONE = 1,
+	Vrml_TWO = 2,
+	Vrml_THREE = 3,
+	Vrml_FOUR = 4,
 };
 
 enum Vrml_MaterialBindingAndNormalBinding {
@@ -104,39 +116,27 @@ enum Vrml_MaterialBindingAndNormalBinding {
 	Vrml_PER_VERTEX_INDEXED = 7,
 };
 
-enum Vrml_SeparatorRenderCulling {
-	Vrml_OFF = 0,
-	Vrml_ON = 1,
-	Vrml_AUTO = 2,
-};
-
-enum Vrml_SFImageNumber {
-	Vrml_NULL = 0,
-	Vrml_ONE = 1,
-	Vrml_TWO = 2,
-	Vrml_THREE = 3,
-	Vrml_FOUR = 4,
-};
-
 enum Vrml_ShapeType {
 	Vrml_UNKNOWN_SHAPE_TYPE = 0,
 	Vrml_SOLID = 1,
 };
 
-enum Vrml_Texture2Wrap {
-	Vrml_REPEAT = 0,
-	Vrml_CLAMP = 1,
-};
-
-enum Vrml_VertexOrdering {
-	Vrml_UNKNOWN_ORDERING = 0,
-	Vrml_CLOCKWISE = 1,
-	Vrml_COUNTERCLOCKWISE = 2,
-};
-
 enum Vrml_WWWAnchorMap {
 	Vrml_MAP_NONE = 0,
 	Vrml_POINT = 1,
+};
+
+enum Vrml_CylinderParts {
+	Vrml_CylinderSIDES = 0,
+	Vrml_CylinderTOP = 1,
+	Vrml_CylinderBOTTOM = 2,
+	Vrml_CylinderALL = 3,
+};
+
+enum Vrml_FontStyleStyle {
+	Vrml_NONE = 0,
+	Vrml_BOLD = 1,
+	Vrml_ITALIC = 2,
 };
 
 /* end public enums declaration */

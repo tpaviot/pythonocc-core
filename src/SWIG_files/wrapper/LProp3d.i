@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define LPROP3DDOCSTRING
-"Handles local properties of curves and surfaces from thepackage Adaptor3d.SeeAlso: Package LProp."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=LPROP3DDOCSTRING) LProp3d
 

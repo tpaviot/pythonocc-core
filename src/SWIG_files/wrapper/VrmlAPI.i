@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VRMLAPIDOCSTRING
-"API for writing to VRML 1.0"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=VRMLAPIDOCSTRING) VrmlAPI
 

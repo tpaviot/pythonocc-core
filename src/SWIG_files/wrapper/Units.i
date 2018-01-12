@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define UNITSDOCSTRING
-"This package provides all the facilities to createand question a dictionary of units, and also tomanipulate measurements which are real values withunits."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=UNITSDOCSTRING) Units
 

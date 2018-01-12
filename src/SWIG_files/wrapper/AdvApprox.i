@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ADVAPPROXDOCSTRING
-"This package provides algorithms approximating a functionthat can be multidimensional creating in the end aBSpline function with the required continuity"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=ADVAPPROXDOCSTRING) AdvApprox
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SWEEPDOCSTRING
-"This package contains generic classes usefull to createswept 3D primitives."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=SWEEPDOCSTRING) Sweep
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MPRSSTDDOCSTRING
-"Storage  and Retrieval drivers  for graphicattributes.  Transient attributes are defined inpackage TPrsStd and persistent one are defined inpackage PPrsStd"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=MPRSSTDDOCSTRING) MPrsStd
 

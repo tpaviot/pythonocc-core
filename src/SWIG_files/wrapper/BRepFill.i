@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPFILLDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPFILLDOCSTRING) BRepFill
 
@@ -57,16 +57,16 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum BRepFill_TransitionStyle {
-	BRepFill_Modified = 0,
-	BRepFill_Right = 1,
-	BRepFill_Round = 2,
-};
-
 enum BRepFill_TypeOfContact {
 	BRepFill_NoContact = 0,
 	BRepFill_Contact = 1,
 	BRepFill_ContactOnBorder = 2,
+};
+
+enum BRepFill_TransitionStyle {
+	BRepFill_Modified = 0,
+	BRepFill_Right = 1,
+	BRepFill_Round = 2,
 };
 
 /* end public enums declaration */

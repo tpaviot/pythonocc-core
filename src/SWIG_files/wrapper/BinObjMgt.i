@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINOBJMGTDOCSTRING
-"This package defines services to manage the storagegrain of data produced by applications."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BINOBJMGTDOCSTRING) BinObjMgt
 

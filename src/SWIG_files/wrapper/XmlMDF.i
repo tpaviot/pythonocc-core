@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLMDFDOCSTRING
-"This package provides classes and methods totranslate a transient DF into a persistent one andvice versa.DriverA driver is a tool used to translate a transientattribute into a persistent one and vice versa.Driver TableA driver table is an object building links betweenobject types and object drivers. In thetranslation process, a driver table is asked togive a translation driver for each current objectto be translated."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=XMLMDFDOCSTRING) XmlMDF
 

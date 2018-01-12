@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPBUILDERAPIDOCSTRING
-"The BRepBuilderAPI package  provides an  ApplicationProgramming Interface for the BRep topology datastructure.The API is a set of classes aiming to provide :* High level and simple calls for the most commonoperations.*  Keeping  an  access on  the  low-levelimplementation of high-level calls.* Examples of programming of high-level operationsfrom low-level operations.* A complete coverage of modelling :- Creating vertices ,edges, faces, solids.- Sweeping operations.- Boolean operations.- Global properties computation.The API provides classes to build objects:* The constructors of the classes provides thedifferent constructions methods.* The class keeps as fields the  different toolsused to build the object.*  The class provides a casting method to getautomatically the result with a  function-likecall.For example to make a vertex <V> from a point <P>one can writes :V = BRepBuilderAPI_MakeVertex(P);orBRepBuilderAPI_MakeVertex MV(P);V = MV.Vertex();For tolerances a default precision is used whichcan  be  changed  by  the  packahe methodBRepBuilderAPI::Precision.For error handling the BRepBuilderAPI commands raise onlythe NotDone error. When Done is false on a commandthe error description can be asked to the command.In theory the comands can be  called with anyarguments, argument checking is performed by thecommand."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPBUILDERAPIDOCSTRING) BRepBuilderAPI
 
@@ -60,6 +60,21 @@ typedef NCollection_UBTree <Standard_Integer , Bnd_Box> BRepBuilderAPI_BndBoxTre
 /* end typedefs declaration */
 
 /* public enums */
+enum BRepBuilderAPI_ShapeModification {
+	BRepBuilderAPI_Preserved = 0,
+	BRepBuilderAPI_Deleted = 1,
+	BRepBuilderAPI_Trimmed = 2,
+	BRepBuilderAPI_Merged = 3,
+	BRepBuilderAPI_BoundaryModified = 4,
+};
+
+enum BRepBuilderAPI_WireError {
+	BRepBuilderAPI_WireDone = 0,
+	BRepBuilderAPI_EmptyWire = 1,
+	BRepBuilderAPI_DisconnectedWire = 2,
+	BRepBuilderAPI_NonManifoldWire = 3,
+};
+
 enum BRepBuilderAPI_EdgeError {
 	BRepBuilderAPI_EdgeDone = 0,
 	BRepBuilderAPI_PointProjectionFailed = 1,
@@ -70,34 +85,11 @@ enum BRepBuilderAPI_EdgeError {
 	BRepBuilderAPI_LineThroughIdenticPoints = 6,
 };
 
-enum BRepBuilderAPI_FaceError {
-	BRepBuilderAPI_FaceDone = 0,
-	BRepBuilderAPI_NoFace = 1,
-	BRepBuilderAPI_NotPlanar = 2,
-	BRepBuilderAPI_CurveProjectionFailed = 3,
-	BRepBuilderAPI_ParametersOutOfRange = 4,
-};
-
 enum BRepBuilderAPI_PipeError {
 	BRepBuilderAPI_PipeDone = 0,
 	BRepBuilderAPI_PipeNotDone = 1,
 	BRepBuilderAPI_PlaneNotIntersectGuide = 2,
 	BRepBuilderAPI_ImpossibleContact = 3,
-};
-
-enum BRepBuilderAPI_ShapeModification {
-	BRepBuilderAPI_Preserved = 0,
-	BRepBuilderAPI_Deleted = 1,
-	BRepBuilderAPI_Trimmed = 2,
-	BRepBuilderAPI_Merged = 3,
-	BRepBuilderAPI_BoundaryModified = 4,
-};
-
-enum BRepBuilderAPI_ShellError {
-	BRepBuilderAPI_ShellDone = 0,
-	BRepBuilderAPI_EmptyShell = 1,
-	BRepBuilderAPI_DisconnectedShell = 2,
-	BRepBuilderAPI_ShellParametersOutOfRange = 3,
 };
 
 enum BRepBuilderAPI_TransitionMode {
@@ -106,11 +98,19 @@ enum BRepBuilderAPI_TransitionMode {
 	BRepBuilderAPI_RoundCorner = 2,
 };
 
-enum BRepBuilderAPI_WireError {
-	BRepBuilderAPI_WireDone = 0,
-	BRepBuilderAPI_EmptyWire = 1,
-	BRepBuilderAPI_DisconnectedWire = 2,
-	BRepBuilderAPI_NonManifoldWire = 3,
+enum BRepBuilderAPI_FaceError {
+	BRepBuilderAPI_FaceDone = 0,
+	BRepBuilderAPI_NoFace = 1,
+	BRepBuilderAPI_NotPlanar = 2,
+	BRepBuilderAPI_CurveProjectionFailed = 3,
+	BRepBuilderAPI_ParametersOutOfRange = 4,
+};
+
+enum BRepBuilderAPI_ShellError {
+	BRepBuilderAPI_ShellDone = 0,
+	BRepBuilderAPI_EmptyShell = 1,
+	BRepBuilderAPI_DisconnectedShell = 2,
+	BRepBuilderAPI_ShellParametersOutOfRange = 3,
 };
 
 /* end public enums declaration */

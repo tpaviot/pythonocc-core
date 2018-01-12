@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PDATAXTDDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=PDATAXTDDOCSTRING) PDataXtd
 

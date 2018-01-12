@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMLIBDOCSTRING
-"Geom  Library.  This  package  provides  animplementation of functions for basic computationon geometric entity from packages Geom and Geom2d."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GEOMLIBDOCSTRING) GeomLib
 

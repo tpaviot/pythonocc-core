@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPSWEEPDOCSTRING
-"This package implements the package Sweep for the BRepstructure."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPSWEEPDOCSTRING) BRepSweep
 

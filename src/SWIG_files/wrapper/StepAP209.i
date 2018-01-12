@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPAP209DOCSTRING
-"-Purpose:"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPAP209DOCSTRING) StepAP209
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOM2DADAPTORDOCSTRING
-"this package contains the geometric definition of2d curves compatible with the Adaptor packagetemplates."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GEOM2DADAPTORDOCSTRING) Geom2dAdaptor
 

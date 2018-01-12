@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define FEMTOOLDOCSTRING
-"Tool to Finite Element methods-Level: Advanced"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=FEMTOOLDOCSTRING) FEmTool
 

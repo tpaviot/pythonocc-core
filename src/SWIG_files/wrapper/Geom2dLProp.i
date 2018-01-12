@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOM2DLPROPDOCSTRING
-"Handles local properties of curves and surfaces from thepackages Geom and Geom2d.SeeAlso: Package LProp.-Level : Public.All methods of all classes will be public."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GEOM2DLPROPDOCSTRING) Geom2dLProp
 

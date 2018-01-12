@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TCOLQUANTITYDOCSTRING
-"the classes of this package should be usedwhen exporting arrays of real representing lengths,for having benefit of the unit conversion."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TCOLQUANTITYDOCSTRING) TColQuantity
 

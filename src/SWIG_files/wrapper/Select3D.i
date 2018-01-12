@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SELECT3DDOCSTRING
-"The Select3D package provides the following services-  definition of standard  3D sensitive primitives such as points, curves and faces.-  recovery of the bounding boxes in the 2D graphic selection space, if required.-  a 3D-2D projector."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=SELECT3DDOCSTRING) Select3D
 
@@ -55,10 +55,10 @@ def register_handle(handle, base_object):
 
 /* typedefs */
 typedef NCollection_Sequence <Handle_Select3D_SensitiveEntity> Select3D_EntitySequence;
-typedef NCollection_Sequence <Handle_Select3D_SensitiveEntity>::Iterator Select3D_EntitySequenceIter;
+typedef BVH_Box <Standard_Real , 3> Select3D_BndBox3d;
 typedef NCollection_Vec3 <Standard_Real> Select3D_Vec3;
 typedef NCollection_Vector <Handle_Select3D_SensitivePoly> Select3D_VectorOfHPoly;
-typedef BVH_Box <Standard_Real , 3> Select3D_BndBox3d;
+typedef NCollection_Sequence <Handle_Select3D_SensitiveEntity>::Iterator Select3D_EntitySequenceIter;
 /* end typedefs declaration */
 
 /* public enums */

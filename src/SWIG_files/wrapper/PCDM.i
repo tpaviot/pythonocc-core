@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PCDMDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=PCDMDOCSTRING) PCDM
 
@@ -58,6 +58,22 @@ typedef Storage_BaseDriver * PCDM_BaseDriverPointer;
 /* end typedefs declaration */
 
 /* public enums */
+enum PCDM_StoreStatus {
+	PCDM_SS_OK = 0,
+	PCDM_SS_DriverFailure = 1,
+	PCDM_SS_WriteFailure = 2,
+	PCDM_SS_Failure = 3,
+	PCDM_SS_Doc_IsNull = 4,
+	PCDM_SS_No_Obj = 5,
+	PCDM_SS_Info_Section_Error = 6,
+};
+
+enum PCDM_TypeOfFileDriver {
+	PCDM_TOFD_File = 0,
+	PCDM_TOFD_CmpFile = 1,
+	PCDM_TOFD_Unknown = 2,
+};
+
 enum PCDM_ReaderStatus {
 	PCDM_RS_OK = 0,
 	PCDM_RS_NoDriver = 1,
@@ -81,22 +97,6 @@ enum PCDM_ReaderStatus {
 	PCDM_RS_WrongResource = 19,
 	PCDM_RS_ReaderException = 20,
 	PCDM_RS_NoModel = 21,
-};
-
-enum PCDM_StoreStatus {
-	PCDM_SS_OK = 0,
-	PCDM_SS_DriverFailure = 1,
-	PCDM_SS_WriteFailure = 2,
-	PCDM_SS_Failure = 3,
-	PCDM_SS_Doc_IsNull = 4,
-	PCDM_SS_No_Obj = 5,
-	PCDM_SS_Info_Section_Error = 6,
-};
-
-enum PCDM_TypeOfFileDriver {
-	PCDM_TOFD_File = 0,
-	PCDM_TOFD_CmpFile = 1,
-	PCDM_TOFD_Unknown = 2,
 };
 
 /* end public enums declaration */

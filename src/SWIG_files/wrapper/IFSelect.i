@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define IFSELECTDOCSTRING
-"-Purpose : Gives tools to manage Selecting a group of Entitiesprocessed by an Interface, for instance to divide up anoriginal Model (from a File) to several smaller onesThey use description of an Interface Model as a graphRemark that this corresponds to the description of a'scenario' of sharing out a File. Parts of this Scenarioare intended to be permanently stored. IFSelect providesthe Transient, active counterparts (to run the Scenario).But a permanent one (either as Persistent Objects or asinterpretable Text) must be provided elsewhere."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=IFSELECTDOCSTRING) IFSelect
 
@@ -62,27 +62,6 @@ typedef MoniTool_Profile IFSelect_Profile;
 /* end typedefs declaration */
 
 /* public enums */
-enum IFSelect_EditValue {
-	IFSelect_Optional = 0,
-	IFSelect_Editable = 1,
-	IFSelect_EditProtected = 2,
-	IFSelect_EditComputed = 3,
-	IFSelect_EditRead = 4,
-	IFSelect_EditDynamic = 5,
-};
-
-enum IFSelect_PrintCount {
-	IFSelect_ItemsByEntity = 0,
-	IFSelect_CountByItem = 1,
-	IFSelect_ShortByItem = 2,
-	IFSelect_ListByItem = 3,
-	IFSelect_EntitiesByItem = 4,
-	IFSelect_CountSummary = 5,
-	IFSelect_GeneralInfo = 6,
-	IFSelect_Mapping = 7,
-	IFSelect_ResultCount = 8,
-};
-
 enum IFSelect_PrintFail {
 	IFSelect_FailOnly = 0,
 	IFSelect_FailAndWarn = 1,
@@ -95,12 +74,33 @@ enum IFSelect_RemainMode {
 	IFSelect_RemainUndo = 3,
 };
 
+enum IFSelect_EditValue {
+	IFSelect_Optional = 0,
+	IFSelect_Editable = 1,
+	IFSelect_EditProtected = 2,
+	IFSelect_EditComputed = 3,
+	IFSelect_EditRead = 4,
+	IFSelect_EditDynamic = 5,
+};
+
 enum IFSelect_ReturnStatus {
 	IFSelect_RetVoid = 0,
 	IFSelect_RetDone = 1,
 	IFSelect_RetError = 2,
 	IFSelect_RetFail = 3,
 	IFSelect_RetStop = 4,
+};
+
+enum IFSelect_PrintCount {
+	IFSelect_ItemsByEntity = 0,
+	IFSelect_CountByItem = 1,
+	IFSelect_ShortByItem = 2,
+	IFSelect_ListByItem = 3,
+	IFSelect_EntitiesByItem = 4,
+	IFSelect_CountSummary = 5,
+	IFSelect_GeneralInfo = 6,
+	IFSelect_Mapping = 7,
+	IFSelect_ResultCount = 8,
 };
 
 /* end public enums declaration */

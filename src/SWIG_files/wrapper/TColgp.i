@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TCOLGPDOCSTRING
-"-Purpose :  This package provides standard and frequentlyused instantiations of generic classes from theTCollection package with geometric objects from the gp package."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TCOLGPDOCSTRING) TColgp
 

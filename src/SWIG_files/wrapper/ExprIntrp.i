@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define EXPRINTRPDOCSTRING
-"Describes an interpreter for GeneralExpressions,GeneralFunctions, and GeneralRelations defined inpackage Expr."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=EXPRINTRPDOCSTRING) ExprIntrp
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMPROJLIBDOCSTRING
-"Projection of a curve on a surface."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GEOMPROJLIBDOCSTRING) GeomProjLib
 

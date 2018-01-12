@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCE2DDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GCE2DDOCSTRING) GCE2d
 

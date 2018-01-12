@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPCONTROLDOCSTRING
-"-Purpose : This package provides external access and control for STEP,especially to deal with Shapes"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPCONTROLDOCSTRING) STEPControl
 

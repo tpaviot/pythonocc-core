@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPCONSTRUCTDOCSTRING
-"Defines tools for creation and investigation STEP constructsused for representing various kinds of data, such as product andassembly structure, unit contexts, associated informationThe creation of these structures is made according to currentlyactive schema (AP203 or AP214 CD2 or DIS)This is taken from parameter write.step.schema"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPCONSTRUCTDOCSTRING) STEPConstruct
 

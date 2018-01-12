@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPSELECTIONSDOCSTRING
-"-Purpose : Step Selections"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPSELECTIONSDOCSTRING) STEPSelections
 

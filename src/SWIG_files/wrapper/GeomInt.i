@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMINTDOCSTRING
-"Provides intersections on between two surfaces of Geom.The result are curves from Geom."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GEOMINTDOCSTRING) GeomInt
 

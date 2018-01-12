@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XCAFPRSDOCSTRING
-"Presentation (visualiation, selection etc.) tools forDECAF documents"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=XCAFPRSDOCSTRING) XCAFPrs
 

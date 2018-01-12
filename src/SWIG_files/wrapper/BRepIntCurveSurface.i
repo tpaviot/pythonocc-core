@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPINTCURVESURFACEDOCSTRING
-"Inttantiates IntCurveSurface with Surfaces from BRepand Curves from Adaptor-Level: PublicAll the methods of the classes of this package are public."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPINTCURVESURFACEDOCSTRING) BRepIntCurveSurface
 

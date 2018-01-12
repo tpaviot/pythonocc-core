@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCCENTDOCSTRING
-"This package provides an implementation of the qualifiedentities useful to create 2d entities with geometricconstraints. The qualifier explains which subfamily ofsolutions we want to obtain. It uses the following law: thematter/the interior side is at the left of the line, if we gofrom the beginning to the end.The qualifiers are:Enclosing  : the solution(s) must enclose the argument.Enclosed  : the solution(s) must be enclosed in theargument.Outside   : both the solution(s) and the argument must beoutside to each other.Unqualified : the position is undefined, so give all thesolutions.The use of a qualifier is always required if suchsubfamilies exist. For example, it is not used for a point.Note:  the interior of a curve is defined as the left-handside of the curve in relation to its orientation."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GCCENTDOCSTRING) GccEnt
 
@@ -206,13 +206,13 @@ class GccEnt_Array1OfPosition {
 	:type Index: int
 	:rtype: GccEnt_Position
 ") Value;
-		const GccEnt_Position & Value (const Standard_Integer Index);
+		const GccEnt_Position  Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: GccEnt_Position
 ") ChangeValue;
-		GccEnt_Position & ChangeValue (const Standard_Integer Index);
+		GccEnt_Position  ChangeValue (const Standard_Integer Index);
 };
 
 

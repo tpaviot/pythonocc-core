@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPTOGEOMDOCSTRING
-"- Purpose: Creation des entites geometriques de Geom a partir du schemaStepGeom (Part42, geometric)"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPTOGEOMDOCSTRING) StepToGeom
 

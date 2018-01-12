@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPCLASSDOCSTRING
-"The BRepClass packages provides  classificationalgorithms for the BRep topology. It instantiatesthe algorithms from the package TopClass."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPCLASSDOCSTRING) BRepClass
 

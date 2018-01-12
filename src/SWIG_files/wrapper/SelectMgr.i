@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SELECTMGRDOCSTRING
-"SelectMgr manages the process of dynamicselection through the following services:-  activating and deactivating selection modes for Interactive Objects-  adding and removing viewer selectors-  definitions of abstract filter classesThe principle of graphic selection consists inrepresenting the objects which you want to selectby a bounding box in the selection view. The objectis selected when you use the mouse to designatethe zone produced by the object.To realize this, the application creates a selectionstructure which is independent of the point of view.This structure is made up of sensitive primitiveswhich have one owner object associated to each ofthem. The role of the sensitive primitive is to replyto the requests of the selection algorithm whereasthe owner's purpose is to make the link betweenthe sensitive primitive and the object to be selected.Each selection structure corresponds to a selectionmode which defines the elements that can be selected.For example, to select a complete geometric model,the application can create a sensitive primitive foreach face of the interactive object representing thegeometric model. In this case, all the primitivesshare the same owner. On the other hand, to selectan edge in a model, the application must createone sensitive primitive per edge.ExamplevoidInteractiveBox::ComputeSelection(const Handle(SelectMgr_Selection)& Sel,const Standard_Integer Mode){ switch(Mode){ case 0:// locating the whole box by making its faces sensitive ...{Handle(SelectMgr_EntityOwner)Ownr = newSelectMgr_EntityOwner(this,5);for(Standard_IntegerI=1;I<=Nbfaces;I++){Sel->Add(new Select3D_SensitiveFace(Ownr,[array of the vertices] face I);break;}case 1:     // locates the  edges{for(Standard_Integeri=1;i<=12;i++){// 1 owner per edge...Handle(mypk_EdgeOwner)Ownr = newmypk_EdgeOwner(this,i,6);// 6->prioritySel->Add(newSelect3D_SensitiveSegment(Ownr,firstpt(i),lastpt(i));}}}The algorithms for creating selection structuresstore the sensitive primitives in aSelectMgr_Selection object. To do this, a set ofready-made sensitive primitives is supplied in theSelect2D and Select3D packages. New sensitiveprimitives can be defined through inheritancefrom  SensitiveEntity. For the application to makeits own objects selectable, it must define ownerclasses inheriting SelectMgr_EntityOwner.For any object inheriting fromAIS_InteractiveObject, you redefine itsComputeSelection functions. In the example belowthere are different modes of selection on thetopological shape contained within the interactiveobject -selection of the shape itself, the vertices,the edges, the wires, the faces.ExamplevoidMyPack_MyClass::ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode){switch(aMode){case 0:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_SHAPE);break;}case 1:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_VERTEX);break;}case 2:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_EDGE);break;}case 3:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_WIRE);break;}case 4:StdSelect_BRepSelectionTool::Load(aSelection,this,myShape,TopAbs_FACE);break;}}The StdSelect_BRepSelectionTool objectprovides a high level service which will make theshape 'myShape' selectable when theAIS_InteractiveContext is asked to display your object.Note: The traditional way of highlighting selected entityowners adopted by the Open CASCADE library assumes thateach entity owner highlights itself on its own. This approachhas two drawbacks:-   each entity owner has to maintain its ownPrs3d_Presentation object, that results inlarge memory overhead for thousands of owners;-   drawing selected owners one by one is notefficient from the OpenGL usage viewpoint.That is why a different method has been introduced. On the basis ofSelectMgr_EntityOwner::IsAutoHilight() return value an AIS_LocalContextobject either uses the traditional way of highlighting(IsAutoHilight() returned true) or groups such owners accordingto their Selectable Objects and finally callsSelectMgr_SelectableObject::HilightSelected()or ClearSelected(), passing a group of owners as an argument.Hence, an application can derive its own interactive object andredefine HilightSelected(), ClearSelected() andHilightOwnerWithColor() virtual methods to take advantage ofsuch OpenGL technique as arrays of primitives. In any case,these methods should at least have empty implementation.The AIS_LocalContext::UpdateSelected(const Handle(AIS_InteratciveObject)&,Standard_Boolean) method can be used for efficient redrawing aselection presentation for a given interactive object from anapplication code.Additionally, the SelectMgr_SelectableObject::ClearSelections()method now accepts an optional boolean argument. This parameterdefines whether all object selections should be flagged forfurther update or not. This improved method can be used tore-compute an object selection (without redisplaying the objectcompletely) when some selection mode is activated not for the first time."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=SELECTMGRDOCSTRING) SelectMgr
 
@@ -58,27 +58,25 @@ typedef NCollection_DataMap <Handle_SelectMgr_EntityOwner , Standard_Integer> Se
 typedef NCollection_Handle <NCollection_IndexedMap <Handle_SelectMgr_EntityOwner>> Handle_SelectMgr_IndexedMapOfOwner;
 typedef SelectMgr_SelectableObject * SelectMgr_SOPtr;
 typedef NCollection_Mat4 <Standard_Real> SelectMgr_Mat4;
-typedef NCollection_DataMap <Standard_Integer , SelectMgr_SelectingVolumeManager> SelectMgr_FrustumCache;
 typedef NCollection_List <SelectMgr_HTriangularFrustum> SelectMgr_TriangFrustums;
 typedef NCollection_IndexedMap <Handle_SelectMgr_SensitiveEntity> SelectMgr_IndexedMapOfHSensitive;
 typedef NCollection_DataMap <Handle_SelectMgr_EntityOwner , Standard_Integer>::Iterator SelectMgr_MapOfOwnerDetectedEntitiesIterator;
-typedef NCollection_IndexedMap <Handle_SelectMgr_EntityOwner> SelectMgr_IndexedMapOfOwner;
+typedef NCollection_List <SelectMgr_HTriangularFrustum>::Iterator SelectMgr_TriangFrustumsIter;
 typedef NCollection_Sequence <Handle_SelectMgr_Selection> SelectMgr_SequenceOfSelection;
 typedef NCollection_DataMap <Handle_SelectMgr_SelectableObject , NCollection_Handle <SelectMgr_SensitiveEntitySet>> SelectMgr_MapOfObjectSensitives;
+typedef NCollection_IndexedMap <Handle_SelectMgr_EntityOwner> SelectMgr_IndexedMapOfOwner;
 typedef NCollection_DataMap <Handle_SelectMgr_SelectableObject , NCollection_Handle <SelectMgr_SensitiveEntitySet>>::Iterator SelectMgr_MapOfObjectSensitivesIterator;
 typedef NCollection_Vec3 <Standard_Real> SelectMgr_Vec3;
-typedef NCollection_List <SelectMgr_HTriangularFrustum>::Iterator SelectMgr_TriangFrustumsIter;
+typedef NCollection_DataMap <Standard_Integer , SelectMgr_SelectingVolumeManager> SelectMgr_FrustumCache;
 typedef NCollection_Vec4 <Standard_Real> SelectMgr_Vec4;
 typedef NCollection_Handle <SelectMgr_TriangularFrustum> SelectMgr_HTriangularFrustum;
 /* end typedefs declaration */
 
 /* public enums */
-enum SelectMgr_StateOfSelection {
-	SelectMgr_SOS_Activated = 0,
-	SelectMgr_SOS_Deactivated = 1,
-	SelectMgr_SOS_Sleeping = 2,
-	SelectMgr_SOS_Any = 3,
-	SelectMgr_SOS_Unknown = 4,
+enum SelectMgr_TypeOfUpdate {
+	SelectMgr_TOU_Full = 0,
+	SelectMgr_TOU_Partial = 1,
+	SelectMgr_TOU_None = 2,
 };
 
 enum SelectMgr_TypeOfBVHUpdate {
@@ -89,10 +87,12 @@ enum SelectMgr_TypeOfBVHUpdate {
 	SelectMgr_TBU_None = 4,
 };
 
-enum SelectMgr_TypeOfUpdate {
-	SelectMgr_TOU_Full = 0,
-	SelectMgr_TOU_Partial = 1,
-	SelectMgr_TOU_None = 2,
+enum SelectMgr_StateOfSelection {
+	SelectMgr_SOS_Activated = 0,
+	SelectMgr_SOS_Deactivated = 1,
+	SelectMgr_SOS_Sleeping = 2,
+	SelectMgr_SOS_Any = 3,
+	SelectMgr_SOS_Unknown = 4,
 };
 
 /* end public enums declaration */

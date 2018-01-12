@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define LPROPDOCSTRING
-"Handles local properties of curves and surfaces.Given a curve and a parameter value the following computationsare available :- point,- derivatives,- tangent,- normal,- curvature,- centre of curvature,- Locals curvature's extremas,- Points of inflection,Given a surface and 2 parameters the following computationsare available :- for each parameter:- derivatives,- tangent line,- centre of curvature,- point,- normal line,- maximum and minimum curvatures,- principal directions of curvature,- mean curvature,- Gaussian curvature.-Level : Public.All methods of all classes will be public."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=LPROPDOCSTRING) LProp
 
@@ -57,17 +57,17 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum LProp_CIType {
-	LProp_Inflection = 0,
-	LProp_MinCur = 1,
-	LProp_MaxCur = 2,
-};
-
 enum LProp_Status {
 	LProp_Undecided = 0,
 	LProp_Undefined = 1,
 	LProp_Defined = 2,
 	LProp_Computed = 3,
+};
+
+enum LProp_CIType {
+	LProp_Inflection = 0,
+	LProp_MinCur = 1,
+	LProp_MaxCur = 2,
 };
 
 /* end public enums declaration */
@@ -174,7 +174,7 @@ class LProp_SequenceNodeOfSequenceOfCIType : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: LProp_CIType
 ") Value;
-		LProp_CIType & Value ();
+		LProp_CIType  Value ();
 };
 
 
@@ -317,11 +317,11 @@ class LProp_SequenceOfCIType : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: LProp_CIType
 ") First;
-		const LProp_CIType & First ();
+		const LProp_CIType  First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: LProp_CIType
 ") Last;
-		const LProp_CIType & Last ();
+		const LProp_CIType  Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -335,7 +335,7 @@ class LProp_SequenceOfCIType : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: LProp_CIType
 ") Value;
-		const LProp_CIType & Value (const Standard_Integer Index);
+		const LProp_CIType  Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -349,7 +349,7 @@ class LProp_SequenceOfCIType : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: LProp_CIType
 ") ChangeValue;
-		LProp_CIType & ChangeValue (const Standard_Integer Index);
+		LProp_CIType  ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int

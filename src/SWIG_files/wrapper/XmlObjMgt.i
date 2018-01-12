@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLOBJMGTDOCSTRING
-"This package defines services to manage the storagegrain of data produced by applications and those classesto manage persistent extern reference."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=XMLOBJMGTDOCSTRING) XmlObjMgt
 
@@ -54,10 +54,10 @@ def register_handle(handle, base_object):
 };
 
 /* typedefs */
-typedef LDOM_Document XmlObjMgt_Document;
+typedef TColStd_IndexedMapOfTransient XmlObjMgt_SRelocationTable;
 typedef LDOM_Element XmlObjMgt_Element;
 typedef LDOMString XmlObjMgt_DOMString;
-typedef TColStd_IndexedMapOfTransient XmlObjMgt_SRelocationTable;
+typedef LDOM_Document XmlObjMgt_Document;
 typedef TColStd_DataMapOfIntegerTransient XmlObjMgt_RRelocationTable;
 /* end typedefs declaration */
 

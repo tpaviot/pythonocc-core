@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CDFDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=CDFDOCSTRING) CDF
 
@@ -57,17 +57,10 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum CDF_StoreSetNameStatus {
-	CDF_SSNS_OK = 0,
-	CDF_SSNS_ReplacingAnExistentDocument = 1,
-	CDF_SSNS_OpenDocument = 2,
-};
-
-enum CDF_SubComponentStatus {
-	CDF_SCS_Consistent = 0,
-	CDF_SCS_Unconsistent = 1,
-	CDF_SCS_Stored = 2,
-	CDF_SCS_Modified = 3,
+enum CDF_TypeOfActivation {
+	CDF_TOA_New = 0,
+	CDF_TOA_Modified = 1,
+	CDF_TOA_Unchanged = 2,
 };
 
 enum CDF_TryStoreStatus {
@@ -77,10 +70,17 @@ enum CDF_TryStoreStatus {
 	CDF_TS_NoSubComponentDriver = 3,
 };
 
-enum CDF_TypeOfActivation {
-	CDF_TOA_New = 0,
-	CDF_TOA_Modified = 1,
-	CDF_TOA_Unchanged = 2,
+enum CDF_SubComponentStatus {
+	CDF_SCS_Consistent = 0,
+	CDF_SCS_Unconsistent = 1,
+	CDF_SCS_Stored = 2,
+	CDF_SCS_Modified = 3,
+};
+
+enum CDF_StoreSetNameStatus {
+	CDF_SSNS_OK = 0,
+	CDF_SSNS_ReplacingAnExistentDocument = 1,
+	CDF_SSNS_OpenDocument = 2,
 };
 
 /* end public enums declaration */

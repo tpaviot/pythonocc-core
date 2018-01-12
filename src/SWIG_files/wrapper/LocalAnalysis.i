@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define LOCALANALYSISDOCSTRING
-"-Purpose:This package gives tools to check the local continuitybetween two points situated on two curves or two surfaces."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=LOCALANALYSISDOCSTRING) LocalAnalysis
 

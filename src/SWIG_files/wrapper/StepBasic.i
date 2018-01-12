@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPBASICDOCSTRING
-"-Purpose : Collects definitions of STEP entities from Part 41 of ISO10303"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPBASICDOCSTRING) StepBasic
 
@@ -57,29 +57,16 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
+enum StepBasic_Source {
+	StepBasic_sMade = 0,
+	StepBasic_sBought = 1,
+	StepBasic_sNotKnown = 2,
+};
+
 enum StepBasic_AheadOrBehind {
 	StepBasic_aobAhead = 0,
 	StepBasic_aobExact = 1,
 	StepBasic_aobBehind = 2,
-};
-
-enum StepBasic_SiPrefix {
-	StepBasic_spExa = 0,
-	StepBasic_spPeta = 1,
-	StepBasic_spTera = 2,
-	StepBasic_spGiga = 3,
-	StepBasic_spMega = 4,
-	StepBasic_spKilo = 5,
-	StepBasic_spHecto = 6,
-	StepBasic_spDeca = 7,
-	StepBasic_spDeci = 8,
-	StepBasic_spCenti = 9,
-	StepBasic_spMilli = 10,
-	StepBasic_spMicro = 11,
-	StepBasic_spNano = 12,
-	StepBasic_spPico = 13,
-	StepBasic_spFemto = 14,
-	StepBasic_spAtto = 15,
 };
 
 enum StepBasic_SiUnitName {
@@ -113,10 +100,23 @@ enum StepBasic_SiUnitName {
 	StepBasic_sunSievert = 27,
 };
 
-enum StepBasic_Source {
-	StepBasic_sMade = 0,
-	StepBasic_sBought = 1,
-	StepBasic_sNotKnown = 2,
+enum StepBasic_SiPrefix {
+	StepBasic_spExa = 0,
+	StepBasic_spPeta = 1,
+	StepBasic_spTera = 2,
+	StepBasic_spGiga = 3,
+	StepBasic_spMega = 4,
+	StepBasic_spKilo = 5,
+	StepBasic_spHecto = 6,
+	StepBasic_spDeca = 7,
+	StepBasic_spDeci = 8,
+	StepBasic_spCenti = 9,
+	StepBasic_spMilli = 10,
+	StepBasic_spMicro = 11,
+	StepBasic_spNano = 12,
+	StepBasic_spPico = 13,
+	StepBasic_spFemto = 14,
+	StepBasic_spAtto = 15,
 };
 
 /* end public enums declaration */

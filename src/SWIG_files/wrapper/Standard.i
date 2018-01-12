@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STANDARDDOCSTRING
-"The package Standard provides the minimum services necessaryfor other toolkits to handle persistent and transient objects.It is the Standard run-time encapsulation of the CAS.CADEdatabase, that is, it defines a single programming interfacefor creating and accessing persistent objects manipulated byhandles."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STANDARDDOCSTRING) Standard
 
@@ -61,7 +61,7 @@ typedef Standard_ExtCharacter * Standard_PExtCharacter;
 typedef std::time_t Standard_Time;
 typedef unsigned char Standard_Byte;
 typedef void * Standard_Address;
-typedef uint16_t Standard_Utf16Char;
+typedef Standard_Byte * Standard_PByte;
 typedef GUID Standard_UUID;
 typedef short Standard_ExtCharacter;
 typedef unsigned __int8 uint8_t;
@@ -77,7 +77,7 @@ typedef char Standard_Character;
 typedef unsigned char Standard_Utf8UChar;
 typedef uint32_t Standard_Utf32Char;
 typedef std::stringstream Standard_SStream;
-typedef Standard_Byte * Standard_PByte;
+typedef uint16_t Standard_Utf16Char;
 typedef const short * Standard_ExtString;
 typedef unsigned __int32 uint32_t;
 typedef size_t Standard_Size;
@@ -87,6 +87,23 @@ typedef unsigned __int16 uint16_t;
 /* end typedefs declaration */
 
 /* public enums */
+enum Standard_KindOfType {
+	Standard_IsUnKnown = 0,
+	Standard_IsClass = 1,
+	Standard_IsEnumeration = 2,
+	Standard_IsPrimitive = 3,
+	Standard_IsImported = 4,
+	Standard_IsPackage = 5,
+};
+
+enum Standard_WayOfLife {
+	Standard_IsNothing = 0,
+	Standard_IsAddress = 1,
+	Standard_IsTransient = 2,
+	Standard_IsPersistent = 3,
+	Standard_IsNotLoaded = 4,
+};
+
 enum Standard_HandlerStatus {
 	Standard_HandlerVoid = 0,
 	Standard_HandlerJumped = 1,
@@ -108,23 +125,6 @@ enum Standard_InternalType {
 	Standard_EngineHandle = 11,
 	Standard_Long64 = 12,
 	Standard_Array = 13,
-};
-
-enum Standard_KindOfType {
-	Standard_IsUnKnown = 0,
-	Standard_IsClass = 1,
-	Standard_IsEnumeration = 2,
-	Standard_IsPrimitive = 3,
-	Standard_IsImported = 4,
-	Standard_IsPackage = 5,
-};
-
-enum Standard_WayOfLife {
-	Standard_IsNothing = 0,
-	Standard_IsAddress = 1,
-	Standard_IsTransient = 2,
-	Standard_IsPersistent = 3,
-	Standard_IsNotLoaded = 4,
 };
 
 /* end public enums declaration */

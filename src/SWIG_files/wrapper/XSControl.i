@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XSCONTROLDOCSTRING
-"-Purpose : This package provides complements to IFSelect & Co forcontrol of a session"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=XSCONTROLDOCSTRING) XSControl
 

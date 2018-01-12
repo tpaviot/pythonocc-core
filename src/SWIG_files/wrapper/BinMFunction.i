@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINMFUNCTIONDOCSTRING
-"Storage and Retrieval drivers for TFunction modelling attributes."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BINMFUNCTIONDOCSTRING) BinMFunction
 

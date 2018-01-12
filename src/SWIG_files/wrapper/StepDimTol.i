@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPDIMTOLDOCSTRING
-"-Purpose :Collects definition of STEP GD&T entities TR12J"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPDIMTOLDOCSTRING) StepDimTol
 

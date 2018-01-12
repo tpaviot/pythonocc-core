@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STLTRANSFERDOCSTRING
-"The package  Algorithm for Meshing  implementsfacilities to retrieve the Mesh data-structure from a shape of packageTopoDS. The triangulation should be computed before.The result  is stored in the meshdata-structure Mesh from package StlMesh."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STLTRANSFERDOCSTRING) StlTransfer
 

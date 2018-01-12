@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PDFDOCSTRING
-"This pakage is the persistent equivalent ofTDF. It describes persistent classes used to storea TDF structure into a Database."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=PDFDOCSTRING) PDF
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PRS3DDOCSTRING
-"The Prs3d package provides the following services-  a presentation object (the context for allmodifications to the display, its presentation will bedisplayed in every view of an active viewer)-  an attribute manager governing how objects suchas color, width, and type of line are displayed;these are generic objects, whereas those inStdPrs are specific geometries and topologies.-  generic  algorithms providing default settings forobjects such as points, curves, surfaces and shapes-  a root object which provides the abstractframework for the DsgPrs definitions at work indisplay of dimensions, relations and trihedra."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=PRS3DDOCSTRING) Prs3d
 
@@ -59,10 +59,16 @@ typedef Prs3d_NListOfSequenceOfPnt::Iterator Prs3d_NListIteratorOfListOfSequence
 /* end typedefs declaration */
 
 /* public enums */
-enum Prs3d_DimensionArrowOrientation {
-	Prs3d_DAO_Internal = 0,
-	Prs3d_DAO_External = 1,
-	Prs3d_DAO_Fit = 2,
+enum Prs3d_DimensionTextVerticalPosition {
+	Prs3d_DTVP_Above = 0,
+	Prs3d_DTVP_Below = 1,
+	Prs3d_DTVP_Center = 2,
+};
+
+enum Prs3d_VertexDrawMode {
+	Prs3d_VDM_Isolated = 0,
+	Prs3d_VDM_All = 1,
+	Prs3d_VDM_Inherited = 2,
 };
 
 enum Prs3d_DimensionTextHorizontalPosition {
@@ -72,10 +78,9 @@ enum Prs3d_DimensionTextHorizontalPosition {
 	Prs3d_DTHP_Fit = 3,
 };
 
-enum Prs3d_DimensionTextVerticalPosition {
-	Prs3d_DTVP_Above = 0,
-	Prs3d_DTVP_Below = 1,
-	Prs3d_DTVP_Center = 2,
+enum Prs3d_TypeOfLinePicking {
+	Prs3d_TOLP_Point = 0,
+	Prs3d_TOLP_Segment = 1,
 };
 
 enum Prs3d_TypeOfHLR {
@@ -84,15 +89,10 @@ enum Prs3d_TypeOfHLR {
 	Prs3d_TOH_Algo = 2,
 };
 
-enum Prs3d_TypeOfLinePicking {
-	Prs3d_TOLP_Point = 0,
-	Prs3d_TOLP_Segment = 1,
-};
-
-enum Prs3d_VertexDrawMode {
-	Prs3d_VDM_Isolated = 0,
-	Prs3d_VDM_All = 1,
-	Prs3d_VDM_Inherited = 2,
+enum Prs3d_DimensionArrowOrientation {
+	Prs3d_DAO_Internal = 0,
+	Prs3d_DAO_External = 1,
+	Prs3d_DAO_Fit = 2,
 };
 
 /* end public enums declaration */

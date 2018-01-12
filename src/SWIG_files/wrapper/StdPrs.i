@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STDPRSDOCSTRING
-"for specific geometries and topologies whereasPrs3d provides those for generic objects. Amongthese classes are definitions of the display of thespecific geometry or topology in various displaymodes such as wireframe, shading or hidden line removal mode."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STDPRSDOCSTRING) StdPrs
 

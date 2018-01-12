@@ -105,16 +105,6 @@ typedef BRepMesh::NCollection_DataMap <Standard_Integer , gp_Pnt> BRepMesh::DMap
 /* end typedefs declaration */
 
 /* public enums */
-enum BRepMesh_DegreeOfFreedom {
-	BRepMesh_Free = 0,
-	BRepMesh_InVolume = 1,
-	BRepMesh_OnSurface = 2,
-	BRepMesh_OnCurve = 3,
-	BRepMesh_Fixed = 4,
-	BRepMesh_Frontier = 5,
-	BRepMesh_Deleted = 6,
-};
-
 enum BRepMesh_FactoryError {
 	BRepMesh_FE_NOERROR = 0,
 	BRepMesh_FE_LIBRARYNOTFOUND = 1,
@@ -128,6 +118,16 @@ enum BRepMesh_Status {
 	BRepMesh_SelfIntersectingWire = 2,
 	BRepMesh_Failure = 4,
 	BRepMesh_ReMesh = 8,
+};
+
+enum BRepMesh_DegreeOfFreedom {
+	BRepMesh_Free = 0,
+	BRepMesh_InVolume = 1,
+	BRepMesh_OnSurface = 2,
+	BRepMesh_OnCurve = 3,
+	BRepMesh_Fixed = 4,
+	BRepMesh_Frontier = 5,
+	BRepMesh_Deleted = 6,
 };
 
 /* end public enums declaration */

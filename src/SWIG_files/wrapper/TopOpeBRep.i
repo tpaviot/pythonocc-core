@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPOPEBREPDOCSTRING
-"This package provides the topological operationson the BRep data structure."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TOPOPEBREPDOCSTRING) TopOpeBRep
 
@@ -54,13 +54,13 @@ def register_handle(handle, base_object):
 };
 
 /* typedefs */
-typedef TopOpeBRep_EdgesIntersector * TopOpeBRep_PEdgesIntersector;
-typedef IntPatch_Point * TopOpeBRep_PThePointOfIntersection;
-typedef IntSurf_PntOn2S * TopOpeBRep_PPntOn2S;
-typedef TopOpeBRep_FacesFiller * TopOpeBRep_PFacesFiller;
-typedef IntRes2d_IntersectionPoint * TopOpeBRep_PIntRes2d_IntersectionPoint;
-typedef TopOpeBRep_LineInter * TopOpeBRep_PLineInter;
 typedef TopOpeBRep_FacesIntersector * TopOpeBRep_PFacesIntersector;
+typedef IntPatch_Point * TopOpeBRep_PThePointOfIntersection;
+typedef IntRes2d_IntersectionPoint * TopOpeBRep_PIntRes2d_IntersectionPoint;
+typedef TopOpeBRep_FacesFiller * TopOpeBRep_PFacesFiller;
+typedef IntSurf_PntOn2S * TopOpeBRep_PPntOn2S;
+typedef TopOpeBRep_LineInter * TopOpeBRep_PLineInter;
+typedef TopOpeBRep_EdgesIntersector * TopOpeBRep_PEdgesIntersector;
 /* end typedefs declaration */
 
 /* public enums */

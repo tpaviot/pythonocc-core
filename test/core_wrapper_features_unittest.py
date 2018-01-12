@@ -47,7 +47,9 @@ from OCC.Graphic3d import Graphic3d_RenderingParams
 from OCC.AIS import (Handle_AIS_Shape, Handle_AIS_Shape_DownCast,
                      Handle_AIS_InteractiveObject,
                      AIS_InteractiveObject)
-
+from OCC.BRepCheck import (BRepCheck_ListIteratorOfListOfStatus,
+                           BRepCheck_ListOfStatus, BRepCheck_Multiple3DCurve,
+                           BRepCheck_EmptyWire)
 
 class TestWrapperFeatures(unittest.TestCase):
     def test_hash(self):
@@ -316,6 +318,7 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         shp_dump = open("./test_io/box_shape.brep", "rb")
         box_shape = pickle.load(shp_dump)
+        shp_dump.close()
         self.assertFalse(box_shape.IsNull())
 
     def test_sub_class(self):
@@ -504,6 +507,25 @@ class TestWrapperFeatures(unittest.TestCase):
         ais_shape_handle = Handle_AIS_Shape_DownCast(ais_interactive_object_handle)
         assert isinstance(ais_shape_handle, Handle_AIS_Shape)
         assert ais_shape_handle.IsNull()
+
+    def test_return_enum(self):
+        """ Check that returned enums are properly handled, wether they're returned
+        by reference or not. To check that point, we use the BRepCheck_ListOfStatus class,
+        where methods take and return BRepCheck_Status values
+        """
+        los1 = BRepCheck_ListOfStatus()
+        los1.Append(BRepCheck_Multiple3DCurve)
+        los1.Append(BRepCheck_EmptyWire)
+        assert los1.First() == BRepCheck_Multiple3DCurve
+        assert los1.Last() == BRepCheck_EmptyWire
+        # then check with an iterator
+        los2 = BRepCheck_ListOfStatus()
+        los2.Append(BRepCheck_Multiple3DCurve)
+        los2.Append(BRepCheck_EmptyWire)
+        it = BRepCheck_ListIteratorOfListOfStatus(los2)
+        while it.More():
+            assert isinstance(it.Value(), int)
+            it.Next()
 
 
 def suite():

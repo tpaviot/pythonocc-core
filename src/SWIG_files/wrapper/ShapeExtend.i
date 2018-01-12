@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEEXTENDDOCSTRING
-"This package provides general tools and data structures commonfor other packages in SHAPEWORKS and extending CAS.CADEstructures.The following items are provided by this package:- enumeration Status used for coding status flags in methodsinside the SHAPEWORKS- enumeration Parametrisation used for setting global parametrisationon the composite surface- class CompositeSurface representing a composite surfacemade of a grid of surface patches- class WireData representing a wire in the form of orderedlist of edges- class MsgRegistrator for attaching messages to the objects- tools for exploring the shapes-    tools for creating    new shapes."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=SHAPEEXTENDDOCSTRING) ShapeExtend
 
@@ -57,12 +57,6 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum ShapeExtend_Parametrisation {
-	ShapeExtend_Natural = 0,
-	ShapeExtend_Uniform = 1,
-	ShapeExtend_Unitary = 2,
-};
-
 enum ShapeExtend_Status {
 	ShapeExtend_OK = 0,
 	ShapeExtend_DONE1 = 1,
@@ -83,6 +77,12 @@ enum ShapeExtend_Status {
 	ShapeExtend_FAIL7 = 16,
 	ShapeExtend_FAIL8 = 17,
 	ShapeExtend_FAIL = 18,
+};
+
+enum ShapeExtend_Parametrisation {
+	ShapeExtend_Natural = 0,
+	ShapeExtend_Uniform = 1,
+	ShapeExtend_Unitary = 2,
 };
 
 /* end public enums declaration */

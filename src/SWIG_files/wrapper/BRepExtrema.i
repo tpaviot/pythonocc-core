@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPEXTREMADOCSTRING
-"This package gives  tools to compute extrema betweenShapes from BRep."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPEXTREMADOCSTRING) BRepExtrema
 
@@ -54,8 +54,8 @@ def register_handle(handle, base_object):
 };
 
 /* typedefs */
-typedef NCollection_DataMap <Standard_Integer , TColStd_PackedMapOfInteger> BRepExtrema_MapOfIntegerPackedMapOfInteger;
 typedef NCollection_Sequence <BRepExtrema_SolutionElem> BRepExtrema_SeqOfSolution;
+typedef NCollection_DataMap <Standard_Integer , TColStd_PackedMapOfInteger> BRepExtrema_MapOfIntegerPackedMapOfInteger;
 typedef NCollection_Vector <TopoDS_Face> BRepExtrema_ShapeList;
 /* end typedefs declaration */
 

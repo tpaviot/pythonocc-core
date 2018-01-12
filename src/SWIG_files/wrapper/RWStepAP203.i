@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RWSTEPAP203DOCSTRING
-"Reading & Writing tools for classes from StepAP203"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=RWSTEPAP203DOCSTRING) RWStepAP203
 

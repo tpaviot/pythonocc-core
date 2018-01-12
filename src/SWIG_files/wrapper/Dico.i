@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define DICODOCSTRING
-"-Purpose : Defines alphanumeric dictionaries and iterators on themThose are generic classes (Iterator is nested in Dictionary)Three default instantiations are offered :with Integer and Handle Objects (Persistent and Transient)"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=DICODOCSTRING) Dico
 

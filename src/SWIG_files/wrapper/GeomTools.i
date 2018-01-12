@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMTOOLSDOCSTRING
-"The GeomTools package provides utilities for Geometry.* SurfaceSet, CurveSet, Curve2dSet : Tools usedfor dumping, writing and reading.* Methods to dump, write, read curves and surfaces."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GEOMTOOLSDOCSTRING) GeomTools
 

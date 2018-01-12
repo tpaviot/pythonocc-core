@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CHFIKPARTDOCSTRING
-"Fonctions de remplissage pour une SurfData, dansles cas particulers de conges/chanfreins suivants :- cylindre/plan entre 2 surfaces planes,- tore/sphere/cone entre un plan et un cylindre othogonal,- tore/sphere/cone entre un plan et un cone othogonal,- tore/sphere/cone entre un plan et un tore othogonal,- tore/cone entre un plan et une sphere."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=CHFIKPARTDOCSTRING) ChFiKPart
 

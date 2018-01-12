@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEBUILDDOCSTRING
-"This package provides basic building tools for other packages in ShapeHealing.These tools are rather internal for ShapeHealing ."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=SHAPEBUILDDOCSTRING) ShapeBuild
 

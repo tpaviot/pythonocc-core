@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTCURVESURFACEDOCSTRING
-"This package provides algorithmes to intersect a Curveand a Surface.Level: InternalAll the methods of the classes of this package are Internal.except the methods of the classes <Intersection,IntersectionPoint,IntersectionSegment>"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=INTCURVESURFACEDOCSTRING) IntCurveSurface
 

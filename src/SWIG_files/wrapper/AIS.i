@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define AISDOCSTRING
-"Application Interactive Services provide the means tocreate links between an application GUI viewer andthe packages which are used to manage selectionand presentation. The tools AIS defined in order todo this include different sorts of entities: both theselectable viewable objects themselves and thecontext and attribute managers to define theirselection and display.To orient the user as he works in a modelingenvironment, views and selections must becomprehensible. There must be several different sortsof selectable and viewable object defined. These mustalso be interactive, that is, connecting graphicrepresentation and the underlying referencegeometry. These entities are called InteractiveObjects, and are divided into four types:-  the Datum-  the Relation-  the Object-  None.The Datum groups together the construction elementssuch as lines, circles, points, trihedra, plane trihedra,planes and axes.The Relation is made up of constraints on one ormore interactive shapes and the correspondingreference geometry. For example, you might want toconstrain two edges in a parallel relation. Thiscontraint is considered as an object in its own right,and is shown as a sensitive primitive. This takes thegraphic form of a perpendicular arrow marked withthe || symbol and lying between the two edges.The Object type includes topological shapes, andconnections between shapes.None, in order not to eliminate the object, tells theapplication to look further until it finds an objectdefinition in its generation which is accepted.Inside these categories, you have the possibilityof  an additional characterization by means of asignature. The signature provides an index to thefurther characterization. By default, the  InteractiveObject has a None type and a signature of 0(equivalent to None.) If you want to give a particulartype and signature to your interactive object, you mustredefine the two virtual methods: Type and Signature.In the C++ inheritance structure of the package, eachclass representing a specific Interactive Objectinherits AIS_InteractiveObject. Among theseinheriting classes, AIS_Relation functions as theabstract mother class for tinheriting classes definingdisplay of specific relational constraints and types ofdimension. Some of these include:-  display of constraints based on relations ofsymmetry, tangency, parallelism and concentricity-  display of dimensions for angles, offsets,diameters, radii and chamfers.No viewer can show everything at once with anycoherence or clarity. Views must be managedcarefully both sequentially and at any given instant.Another function of the view is that of a context tocarry out design in. The design changes are appliedto the objects in the view and then extended to theunderlying reference geometry by a solver. To makesense of this complicated visual data, several displayand selection tools are required. To facilitatemanagement, each object and each constructionelement has a selection priority. There are alsomeans to modify the default priority.To define an environment of dynamic detection, youcan use standard filter classes or create your own. Afilter questions the owner of the sensitive primitive inlocal context to determine if it has the the desiredqualities. If it answers positively, it is kept. If not, it is rejected.The standard filters supplied in AIS include:AIS_AttributeFilterAIS_SignatureFilterAIS_TypeFilter.Only the type filter can be used in the defaultoperating mode, the neutral point. The others canonly be used in open local contexts.Neutral point and local context constitute the twooperating modes of the central entity which pilotsvisualizations and selections, the Interactive Context.It is linked to a main viewer and if you like, a trash binviewer as well.The neutral point, which is the default mode, allowsyou to easily visualize and select interactive objectswhich have been loaded into the context. Openinglocal contexts allows you to prepare and use atemporary selection environment without disturbingthe neutral point. A set of functions allows you tochoose the interactive objects which you want to acton, the selection modes which you want to activate,and the temporary visualizations which you willexecute. When the operation is finished, you close thecurrent local context and return to the state in whichyou were before opening it (neutral point or previouslocal context).An interactive object can have a certain number ofgraphic attributes which are specific to it, such asvisualization mode, color, and material. By the sametoken, the interactive context has a set of graphicattributes, the Drawer which is valid by default for theobjects it controls.  When an interactive object isvisualized, the required graphic attributes are firsttaken from the object's own Drawer if one exists, orfrom the context drawer for the others."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=AISDOCSTRING) AIS
 
@@ -56,8 +56,8 @@ def register_handle(handle, base_object):
 /* typedefs */
 typedef NCollection_List <Handle_Standard_Transient> AIS_NListTransient;
 typedef AIS_NListTransient::Iterator AIS_NListIteratorOfListTransient;
-typedef NCollection_DataMap <Handle_Standard_Transient , AIS_NListIteratorOfListTransient> AIS_NDataMapOfTransientIteratorOfListTransient;
 typedef AIS_InteractiveContext * AIS_PToContext;
+typedef NCollection_DataMap <Handle_Standard_Transient , AIS_NListIteratorOfListTransient> AIS_NDataMapOfTransientIteratorOfListTransient;
 /* end typedefs declaration */
 
 /* public enums */
@@ -67,120 +67,6 @@ enum AIS_ClearMode {
 	AIS_CM_Filters = 2,
 	AIS_CM_StandardModes = 3,
 	AIS_CM_TemporaryShapePrs = 4,
-};
-
-enum AIS_ConnectStatus {
-	AIS_CS_None = 0,
-	AIS_CS_Connection = 1,
-	AIS_CS_Transform = 2,
-	AIS_CS_Both = 3,
-};
-
-enum AIS_DimensionSelectionMode {
-	AIS_DSM_All = 0,
-	AIS_DSM_Line = 1,
-	AIS_DSM_Text = 2,
-};
-
-enum AIS_DisplayMode {
-	AIS_WireFrame = 0,
-	AIS_Shaded = 1,
-};
-
-enum AIS_DisplaySpecialSymbol {
-	AIS_DSS_No = 0,
-	AIS_DSS_Before = 1,
-	AIS_DSS_After = 2,
-};
-
-enum AIS_DisplayStatus {
-	AIS_DS_Displayed = 0,
-	AIS_DS_Erased = 1,
-	AIS_DS_Temporary = 2,
-	AIS_DS_None = 3,
-};
-
-enum AIS_KindOfDimension {
-	AIS_KOD_NONE = 0,
-	AIS_KOD_LENGTH = 1,
-	AIS_KOD_PLANEANGLE = 2,
-	AIS_KOD_SOLIDANGLE = 3,
-	AIS_KOD_AREA = 4,
-	AIS_KOD_VOLUME = 5,
-	AIS_KOD_MASS = 6,
-	AIS_KOD_TIME = 7,
-	AIS_KOD_RADIUS = 8,
-	AIS_KOD_DIAMETER = 9,
-	AIS_KOD_CHAMF2D = 10,
-	AIS_KOD_CHAMF3D = 11,
-	AIS_KOD_OFFSET = 12,
-	AIS_KOD_ELLIPSERADIUS = 13,
-};
-
-enum AIS_KindOfInteractive {
-	AIS_KOI_None = 0,
-	AIS_KOI_Datum = 1,
-	AIS_KOI_Shape = 2,
-	AIS_KOI_Object = 3,
-	AIS_KOI_Relation = 4,
-	AIS_KOI_Dimension = 5,
-};
-
-enum AIS_KindOfSurface {
-	AIS_KOS_Plane = 0,
-	AIS_KOS_Cylinder = 1,
-	AIS_KOS_Cone = 2,
-	AIS_KOS_Sphere = 3,
-	AIS_KOS_Torus = 4,
-	AIS_KOS_Revolution = 5,
-	AIS_KOS_Extrusion = 6,
-	AIS_KOS_OtherSurface = 7,
-};
-
-enum AIS_KindOfUnit {
-	AIS_TOU_LENGTH = 0,
-	AIS_TOU_SURFACE = 1,
-	AIS_TOU_VOLUME = 2,
-	AIS_TOU_PLANE_ANGLE = 3,
-	AIS_TOU_SOLID_ANGLE = 4,
-	AIS_TOU_MASS = 5,
-	AIS_TOU_FORCE = 6,
-	AIS_TOU_TIME = 7,
-};
-
-enum AIS_SelectStatus {
-	AIS_SS_Added = 0,
-	AIS_SS_Removed = 1,
-	AIS_SS_NotDone = 2,
-};
-
-enum AIS_StandardDatum {
-	AIS_SD_None = 0,
-	AIS_SD_Point = 1,
-	AIS_SD_Axis = 2,
-	AIS_SD_Trihedron = 3,
-	AIS_SD_PlaneTrihedron = 4,
-	AIS_SD_Line = 5,
-	AIS_SD_Circle = 6,
-	AIS_SD_Plane = 7,
-};
-
-enum AIS_StatusOfDetection {
-	AIS_SOD_Error = 0,
-	AIS_SOD_Nothing = 1,
-	AIS_SOD_AllBad = 2,
-	AIS_SOD_Selected = 3,
-	AIS_SOD_OnlyOneDetected = 4,
-	AIS_SOD_OnlyOneGood = 5,
-	AIS_SOD_SeveralGood = 6,
-};
-
-enum AIS_StatusOfPick {
-	AIS_SOP_Error = 0,
-	AIS_SOP_NothingSelected = 1,
-	AIS_SOP_Removed = 2,
-	AIS_SOP_OneSelected = 3,
-	AIS_SOP_SeveralSelected = 4,
 };
 
 enum AIS_TypeOfAttribute {
@@ -201,6 +87,44 @@ enum AIS_TypeOfAttribute {
 	AIS_TOA_ThirdAxis = 14,
 };
 
+enum AIS_DimensionSelectionMode {
+	AIS_DSM_All = 0,
+	AIS_DSM_Line = 1,
+	AIS_DSM_Text = 2,
+};
+
+enum AIS_KindOfInteractive {
+	AIS_KOI_None = 0,
+	AIS_KOI_Datum = 1,
+	AIS_KOI_Shape = 2,
+	AIS_KOI_Object = 3,
+	AIS_KOI_Relation = 4,
+	AIS_KOI_Dimension = 5,
+};
+
+enum AIS_KindOfDimension {
+	AIS_KOD_NONE = 0,
+	AIS_KOD_LENGTH = 1,
+	AIS_KOD_PLANEANGLE = 2,
+	AIS_KOD_SOLIDANGLE = 3,
+	AIS_KOD_AREA = 4,
+	AIS_KOD_VOLUME = 5,
+	AIS_KOD_MASS = 6,
+	AIS_KOD_TIME = 7,
+	AIS_KOD_RADIUS = 8,
+	AIS_KOD_DIAMETER = 9,
+	AIS_KOD_CHAMF2D = 10,
+	AIS_KOD_CHAMF3D = 11,
+	AIS_KOD_OFFSET = 12,
+	AIS_KOD_ELLIPSERADIUS = 13,
+};
+
+enum AIS_SelectStatus {
+	AIS_SS_Added = 0,
+	AIS_SS_Removed = 1,
+	AIS_SS_NotDone = 2,
+};
+
 enum AIS_TypeOfAxis {
 	AIS_TOAX_Unknown = 0,
 	AIS_TOAX_XAxis = 1,
@@ -208,10 +132,22 @@ enum AIS_TypeOfAxis {
 	AIS_TOAX_ZAxis = 3,
 };
 
-enum AIS_TypeOfDist {
-	AIS_TOD_Unknown = 0,
-	AIS_TOD_Horizontal = 1,
-	AIS_TOD_Vertical = 2,
+enum AIS_KindOfUnit {
+	AIS_TOU_LENGTH = 0,
+	AIS_TOU_SURFACE = 1,
+	AIS_TOU_VOLUME = 2,
+	AIS_TOU_PLANE_ANGLE = 3,
+	AIS_TOU_SOLID_ANGLE = 4,
+	AIS_TOU_MASS = 5,
+	AIS_TOU_FORCE = 6,
+	AIS_TOU_TIME = 7,
+};
+
+enum AIS_ConnectStatus {
+	AIS_CS_None = 0,
+	AIS_CS_Connection = 1,
+	AIS_CS_Transform = 2,
+	AIS_CS_Both = 3,
 };
 
 enum AIS_TypeOfIso {
@@ -220,11 +156,75 @@ enum AIS_TypeOfIso {
 	AIS_TOI_Both = 2,
 };
 
+enum AIS_StatusOfDetection {
+	AIS_SOD_Error = 0,
+	AIS_SOD_Nothing = 1,
+	AIS_SOD_AllBad = 2,
+	AIS_SOD_Selected = 3,
+	AIS_SOD_OnlyOneDetected = 4,
+	AIS_SOD_OnlyOneGood = 5,
+	AIS_SOD_SeveralGood = 6,
+};
+
+enum AIS_KindOfSurface {
+	AIS_KOS_Plane = 0,
+	AIS_KOS_Cylinder = 1,
+	AIS_KOS_Cone = 2,
+	AIS_KOS_Sphere = 3,
+	AIS_KOS_Torus = 4,
+	AIS_KOS_Revolution = 5,
+	AIS_KOS_Extrusion = 6,
+	AIS_KOS_OtherSurface = 7,
+};
+
+enum AIS_StandardDatum {
+	AIS_SD_None = 0,
+	AIS_SD_Point = 1,
+	AIS_SD_Axis = 2,
+	AIS_SD_Trihedron = 3,
+	AIS_SD_PlaneTrihedron = 4,
+	AIS_SD_Line = 5,
+	AIS_SD_Circle = 6,
+	AIS_SD_Plane = 7,
+};
+
+enum AIS_DisplayMode {
+	AIS_WireFrame = 0,
+	AIS_Shaded = 1,
+};
+
+enum AIS_StatusOfPick {
+	AIS_SOP_Error = 0,
+	AIS_SOP_NothingSelected = 1,
+	AIS_SOP_Removed = 2,
+	AIS_SOP_OneSelected = 3,
+	AIS_SOP_SeveralSelected = 4,
+};
+
+enum AIS_DisplaySpecialSymbol {
+	AIS_DSS_No = 0,
+	AIS_DSS_Before = 1,
+	AIS_DSS_After = 2,
+};
+
+enum AIS_TypeOfDist {
+	AIS_TOD_Unknown = 0,
+	AIS_TOD_Horizontal = 1,
+	AIS_TOD_Vertical = 2,
+};
+
 enum AIS_TypeOfPlane {
 	AIS_TOPL_Unknown = 0,
 	AIS_TOPL_XYPlane = 1,
 	AIS_TOPL_XZPlane = 2,
 	AIS_TOPL_YZPlane = 3,
+};
+
+enum AIS_DisplayStatus {
+	AIS_DS_Displayed = 0,
+	AIS_DS_Erased = 1,
+	AIS_DS_Temporary = 2,
+	AIS_DS_None = 3,
 };
 
 /* end public enums declaration */

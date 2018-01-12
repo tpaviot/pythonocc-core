@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BLENDDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BLENDDOCSTRING) Blend
 
@@ -57,13 +57,6 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum Blend_DecrochStatus {
-	Blend_NoDecroch = 0,
-	Blend_DecrochRst1 = 1,
-	Blend_DecrochRst2 = 2,
-	Blend_DecrochBoth = 3,
-};
-
 enum Blend_Status {
 	Blend_StepTooLarge = 0,
 	Blend_StepTooSmall = 1,
@@ -73,6 +66,13 @@ enum Blend_Status {
 	Blend_OnRst2 = 5,
 	Blend_OnRst12 = 6,
 	Blend_OK = 7,
+};
+
+enum Blend_DecrochStatus {
+	Blend_NoDecroch = 0,
+	Blend_DecrochRst1 = 1,
+	Blend_DecrochRst2 = 2,
+	Blend_DecrochBoth = 3,
 };
 
 /* end public enums declaration */

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPLPROPDOCSTRING
-"These global functions compute the degree ofcontinuity of a curve built by concatenation of twoedges at their junction point."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPLPROPDOCSTRING) BRepLProp
 

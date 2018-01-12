@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPTOTOPODSDOCSTRING
-"- Purpose: This package implements the mapping between AP214Shape representation and CAS.CAD Shape Representation.The source schema is Part42 (which is included in AP214)"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPTOTOPODSDOCSTRING) StepToTopoDS
 
@@ -57,11 +57,6 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum StepToTopoDS_BuilderError {
-	StepToTopoDS_BuilderDone = 0,
-	StepToTopoDS_BuilderOther = 1,
-};
-
 enum StepToTopoDS_GeometricToolError {
 	StepToTopoDS_GeometricToolDone = 0,
 	StepToTopoDS_GeometricToolIsDegenerated = 1,
@@ -71,19 +66,9 @@ enum StepToTopoDS_GeometricToolError {
 	StepToTopoDS_GeometricToolOther = 5,
 };
 
-enum StepToTopoDS_TranslateEdgeError {
-	StepToTopoDS_TranslateEdgeDone = 0,
-	StepToTopoDS_TranslateEdgeOther = 1,
-};
-
-enum StepToTopoDS_TranslateEdgeLoopError {
-	StepToTopoDS_TranslateEdgeLoopDone = 0,
-	StepToTopoDS_TranslateEdgeLoopOther = 1,
-};
-
-enum StepToTopoDS_TranslateFaceError {
-	StepToTopoDS_TranslateFaceDone = 0,
-	StepToTopoDS_TranslateFaceOther = 1,
+enum StepToTopoDS_TranslateShellError {
+	StepToTopoDS_TranslateShellDone = 0,
+	StepToTopoDS_TranslateShellOther = 1,
 };
 
 enum StepToTopoDS_TranslatePolyLoopError {
@@ -91,19 +76,34 @@ enum StepToTopoDS_TranslatePolyLoopError {
 	StepToTopoDS_TranslatePolyLoopOther = 1,
 };
 
-enum StepToTopoDS_TranslateShellError {
-	StepToTopoDS_TranslateShellDone = 0,
-	StepToTopoDS_TranslateShellOther = 1,
+enum StepToTopoDS_TranslateEdgeError {
+	StepToTopoDS_TranslateEdgeDone = 0,
+	StepToTopoDS_TranslateEdgeOther = 1,
 };
 
-enum StepToTopoDS_TranslateVertexError {
-	StepToTopoDS_TranslateVertexDone = 0,
-	StepToTopoDS_TranslateVertexOther = 1,
+enum StepToTopoDS_BuilderError {
+	StepToTopoDS_BuilderDone = 0,
+	StepToTopoDS_BuilderOther = 1,
+};
+
+enum StepToTopoDS_TranslateFaceError {
+	StepToTopoDS_TranslateFaceDone = 0,
+	StepToTopoDS_TranslateFaceOther = 1,
 };
 
 enum StepToTopoDS_TranslateVertexLoopError {
 	StepToTopoDS_TranslateVertexLoopDone = 0,
 	StepToTopoDS_TranslateVertexLoopOther = 1,
+};
+
+enum StepToTopoDS_TranslateEdgeLoopError {
+	StepToTopoDS_TranslateEdgeLoopDone = 0,
+	StepToTopoDS_TranslateEdgeLoopOther = 1,
+};
+
+enum StepToTopoDS_TranslateVertexError {
+	StepToTopoDS_TranslateVertexDone = 0,
+	StepToTopoDS_TranslateVertexOther = 1,
 };
 
 /* end public enums declaration */

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HATCHDOCSTRING
-"The Hatch package provides  algorithm to computecross-hatchings on a 2D face.The Hatcher algorithms stores a  set of lines inthe 2D plane.The user stores lines in the Hatcher and afterwardtrim them with other lines.At any moment when trimming the user can ask forany line if  it is intersected and how  manyintervals are defined on the line by the trim."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=HATCHDOCSTRING) Hatch
 

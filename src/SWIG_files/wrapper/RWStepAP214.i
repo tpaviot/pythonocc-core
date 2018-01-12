@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RWSTEPAP214DOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=RWSTEPAP214DOCSTRING) RWStepAP214
 

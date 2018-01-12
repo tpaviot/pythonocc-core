@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPECUSTOMDOCSTRING
-"This package is intended toconvert geometrical objects and topological. Themodifications of one geometrical object to another(one) geometrical object are provided. The supportedmodifications are the following:conversion of BSpline and Bezier surfaces to analytical form,conversion of indirect elementary surfaces (with left-handedcoordinate systems) into direct ones,conversion of elementary surfaces to surfaces of revolution,conversion of surface of linear extrusion, revolution, offsetsurface to bspline,modification of parameterization, degree, number of segments of bsplinesurfaces, scale the shape."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=SHAPECUSTOMDOCSTRING) ShapeCustom
 

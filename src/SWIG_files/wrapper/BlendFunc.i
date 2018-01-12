@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BLENDFUNCDOCSTRING
-"This package provides a set of generic functions, that caninstantiated to compute blendings between two surfaces(Constant radius, Evolutive radius, Ruled surface)."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BLENDFUNCDOCSTRING) BlendFunc
 

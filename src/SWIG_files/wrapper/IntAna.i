@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTANADOCSTRING
-"This package provides the intersections between :- Natural Quadrics when the result is a conic (QuadQuadGeo)- A natural Quadric and a Quadric defined by its Coefficients(IntQuadQuad)- 3 Pln  (Int3Pln)- a Line and a Torus  (IntLinTorus)- a Conic from gp and a Quadric defined by its Coefficients(IntConicQuad)-Level: PublicAll the methods of the classes of this package are public."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=INTANADOCSTRING) IntAna
 

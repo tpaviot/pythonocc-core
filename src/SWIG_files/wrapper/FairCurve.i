@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define FAIRCURVEDOCSTRING
-"this package is used to make 'FairCurve' byno linear optimization.- Batten- [Curve with] MinimalVariation [of curvature] or 'MVC'."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=FAIRCURVEDOCSTRING) FairCurve
 
