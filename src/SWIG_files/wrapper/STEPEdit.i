@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPEDITDOCSTRING
-"-Purpose : Provides tools to exploit and edit a set of STEP data :editors, selections .."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPEDITDOCSTRING) STEPEdit
 

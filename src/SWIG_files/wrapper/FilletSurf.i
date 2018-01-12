@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define FILLETSURFDOCSTRING
-"This package contains the API givingonly geometric informations about filletsfor Toyota Project UV4."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=FILLETSURFDOCSTRING) FilletSurf
 
@@ -57,15 +57,6 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum FilletSurf_ErrorTypeStatus {
-	FilletSurf_EmptyList = 0,
-	FilletSurf_EdgeNotG1 = 1,
-	FilletSurf_FacesNotG1 = 2,
-	FilletSurf_EdgeNotOnShape = 3,
-	FilletSurf_NotSharpEdge = 4,
-	FilletSurf_PbFilletCompute = 5,
-};
-
 enum FilletSurf_StatusDone {
 	FilletSurf_IsOk = 0,
 	FilletSurf_IsNotOk = 1,
@@ -76,6 +67,15 @@ enum FilletSurf_StatusType {
 	FilletSurf_TwoExtremityOnEdge = 0,
 	FilletSurf_OneExtremityOnEdge = 1,
 	FilletSurf_NoExtremityOnEdge = 2,
+};
+
+enum FilletSurf_ErrorTypeStatus {
+	FilletSurf_EmptyList = 0,
+	FilletSurf_EdgeNotG1 = 1,
+	FilletSurf_FacesNotG1 = 2,
+	FilletSurf_EdgeNotOnShape = 3,
+	FilletSurf_NotSharpEdge = 4,
+	FilletSurf_PbFilletCompute = 5,
 };
 
 /* end public enums declaration */

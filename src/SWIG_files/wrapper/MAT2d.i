@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MAT2DDOCSTRING
-"-Purpose : Package of computation of Bisector locus on aSet of geometrys from Geom2d."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=MAT2DDOCSTRING) MAT2d
 

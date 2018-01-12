@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define CHFIDSDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=CHFIDSDOCSTRING) ChFiDS
 
@@ -57,6 +57,16 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
+enum ChFiDS_State {
+	ChFiDS_OnSame = 0,
+	ChFiDS_OnDiff = 1,
+	ChFiDS_AllSame = 2,
+	ChFiDS_BreakPoint = 3,
+	ChFiDS_FreeBoundary = 4,
+	ChFiDS_Closed = 5,
+	ChFiDS_Tangent = 6,
+};
+
 enum ChFiDS_ChamfMethod {
 	ChFiDS_Sym = 0,
 	ChFiDS_TwoDist = 1,
@@ -69,16 +79,6 @@ enum ChFiDS_ErrorStatus {
 	ChFiDS_WalkingFailure = 2,
 	ChFiDS_StartsolFailure = 3,
 	ChFiDS_TwistedSurface = 4,
-};
-
-enum ChFiDS_State {
-	ChFiDS_OnSame = 0,
-	ChFiDS_OnDiff = 1,
-	ChFiDS_AllSame = 2,
-	ChFiDS_BreakPoint = 3,
-	ChFiDS_FreeBoundary = 4,
-	ChFiDS_Closed = 5,
-	ChFiDS_Tangent = 6,
 };
 
 /* end public enums declaration */

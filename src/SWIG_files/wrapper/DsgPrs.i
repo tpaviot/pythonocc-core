@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define DSGPRSDOCSTRING
-"Describes Standard Presentations for DsgIHM objects"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=DSGPRSDOCSTRING) DsgPrs
 

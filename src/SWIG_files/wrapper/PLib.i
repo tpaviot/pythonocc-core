@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PLIBDOCSTRING
-"PLib means Polynomial functions library. This pkprovides basic    computation  functions forpolynomial functions."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=PLIBDOCSTRING) PLib
 

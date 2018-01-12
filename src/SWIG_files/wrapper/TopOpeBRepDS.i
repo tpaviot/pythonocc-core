@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPOPEBREPDSDOCSTRING
-"This package provides services used by the TopOpeBRepBuildpackage performing topological operations on the BRepdata structure."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TOPOPEBREPDSDOCSTRING) TopOpeBRepDS
 
@@ -58,15 +58,15 @@ typedef TopOpeBRepDS_DataStructure * TopOpeBRepDS_PDataStructure;
 /* end typedefs declaration */
 
 /* public enums */
-enum TopOpeBRepDS_CheckStatus {
-	TopOpeBRepDS_OK = 0,
-	TopOpeBRepDS_NOK = 1,
-};
-
 enum TopOpeBRepDS_Config {
 	TopOpeBRepDS_UNSHGEOMETRY = 0,
 	TopOpeBRepDS_SAMEORIENTED = 1,
 	TopOpeBRepDS_DIFFORIENTED = 2,
+};
+
+enum TopOpeBRepDS_CheckStatus {
+	TopOpeBRepDS_OK = 0,
+	TopOpeBRepDS_NOK = 1,
 };
 
 enum TopOpeBRepDS_Kind {

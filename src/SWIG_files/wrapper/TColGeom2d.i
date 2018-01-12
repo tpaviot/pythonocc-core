@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TCOLGEOM2DDOCSTRING
-"-Purpose :The package TColGeom2d provides standard andfrequently used instantiations of generic classes fromthe TCollection package with geometric objects from the Geom2d package."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TCOLGEOM2DDOCSTRING) TColGeom2d
 

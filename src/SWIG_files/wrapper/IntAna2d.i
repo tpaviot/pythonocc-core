@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTANA2DDOCSTRING
-"This package defines the intersection between two elements ofthe geometric processor : Line, Circle, Ellipse, Parabola andHyperbola; One of these elements is known with his real type,the other one is known by an implicit quadratic equation (seeclass Conic).A particular case has been made for the intersection betweentwo Lin2d, two Circ2d, a Lin2d and a Circ2d."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=INTANA2DDOCSTRING) IntAna2d
 

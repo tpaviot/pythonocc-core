@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MDOCSTDDOCSTRING
-"Drivers for TDocStd_Document"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=MDOCSTDDOCSTRING) MDocStd
 

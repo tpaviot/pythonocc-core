@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VOXELDOCSTRING
-"Data structuire and visualization engine for voxel modeling."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=VOXELDOCSTRING) Voxel
 
@@ -59,16 +59,16 @@ typedef NCollection_DataMap <iXYZ , Standard_Integer> iXYZIndex;
 /* end typedefs declaration */
 
 /* public enums */
+enum Voxel_VoxelFileFormat {
+	Voxel_VFF_ASCII = 0,
+	Voxel_VFF_BINARY = 1,
+};
+
 enum Voxel_VoxelDisplayMode {
 	Voxel_VDM_POINTS = 0,
 	Voxel_VDM_NEARESTPOINTS = 1,
 	Voxel_VDM_BOXES = 2,
 	Voxel_VDM_NEARESTBOXES = 3,
-};
-
-enum Voxel_VoxelFileFormat {
-	Voxel_VFF_ASCII = 0,
-	Voxel_VFF_BINARY = 1,
 };
 
 /* end public enums declaration */

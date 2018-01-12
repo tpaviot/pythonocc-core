@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GPROPDOCSTRING
-"- Purpose:This package defines algorithmes to compute the global propertiesof a set of points, a curve, a surface, a solid (non infiniteregion of space delimited with geometric entities), a compoundgeometric system (heterogeneous composition of the previousentities).Global properties are :. length, area, volume,. centre of mass,. axis of inertia,. moments of inertia,. radius of gyration.It provides also a class to compile the average point orline of a set of points."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GPROPDOCSTRING) GProp
 

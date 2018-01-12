@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TDATAXTDDOCSTRING
-"This package defines extension of standard attributes formodelling (mainly for work with geometry).- Category: GUID - AttributeID2a96b602-ec8b-11d0-bee7-080009dc3333	TDataXtd_Constraint2a96b618-ec8b-11d0-bee7-080009dc3333	TDataXtd_Pattern2a96b61b-ec8b-11d0-bee7-080009dc3333	TDataXtd_PatternStd2a96b620-ec8b-11d0-bee7-080009dc3333    TDataXtd_Shape2a96b60d-ec8b-11d0-bee7-080009dc3333	TDataXtd_Point2a96b601-ec8b-11d0-bee7-080009dc3333	TDataXtd_Axis2a96b60c-ec8b-11d0-bee7-080009dc3333	TDataXtd_Plane2a96b604-ec8b-11d0-bee7-080009dc3333	TDataXtd_Geometry2a96b60b-ec8b-11d0-bee7-080009dc3333    TDataXtd_Placement"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TDATAXTDDOCSTRING) TDataXtd
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPCAFCONTROLDOCSTRING
-"-Purpose : This package provides external access and control for STEP,on the level of CAF (shapes with attributes, externalreferences etc.)"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPCAFCONTROLDOCSTRING) STEPCAFControl
 

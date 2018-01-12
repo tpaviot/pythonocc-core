@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPODSDOCSTRING
-"Provides methods to cast objects of classTopoDS_Shape to be onjects of more specializedsub-classes. Types are verified, thus in the examplebelow, the first two blocks are correct but the third isrejected by the compiler."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TOPODSDOCSTRING) TopoDS
 

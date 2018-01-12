@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TPRSSTDDOCSTRING
-"The visualization attribute implements theApplication Interactive Services in the contextof Open CASCADE Application Framework.-Category: GUID04fb4d05-5690-11d1-8940-080009dc3333  TPrsStd_AISViewer04fb4d00-5690-11d1-8940-080009dc3333	TPrsStd_AISPresentation"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TPRSSTDDOCSTRING) TPrsStd
 

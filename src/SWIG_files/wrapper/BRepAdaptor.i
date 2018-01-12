@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPADAPTORDOCSTRING
-"The BRepAdaptor package provides classes to accessthe geometry of the BRep models.OverView of classes* Surface : Provides the methods of Surface fromAdpator on a Face.* Curve : Provides the methods of Curve fromAdaptor3d on an Edge.* Curve2d : Provides the methods of Curve2d fromAdaptor2d on an Edge on a Face."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPADAPTORDOCSTRING) BRepAdaptor
 

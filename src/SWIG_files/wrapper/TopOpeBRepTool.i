@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPOPEBREPTOOLDOCSTRING
-"This package provides services used by the TopOpeBReppackage performing topological operations on the BRepdata structure."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TOPOPEBREPTOOLDOCSTRING) TopOpeBRepTool
 

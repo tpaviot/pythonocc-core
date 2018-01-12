@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HLRALGODOCSTRING
-"industrial design, drawings need to offer thepossibility of removing lines, which are hiddenin a given projection. To do this, the HiddenLine Removal component provides twoalgorithms: HLRBRep_Algo and HLRBRep_PolyAlgo.These algorithms remove or indicate lineshidden by surfaces. For a given projection, theycalculate a set of lines characteristic of theobject being represented. They are also usedin conjunction with extraction utilities, whichreconstruct a new, simplified shape from aselection of calculation results. This new shapeis made up of edges, which represent the linesof the visualized shape in a plane. This plane is the projection plane.HLRBRep_Algo takes into account the shapeitself. HLRBRep_PolyAlgo works with apolyhedral simplification of the shape. Whenyou use HLRBRep_Algo, you obtain an exactresult, whereas, when you useHLRBRep_PolyAlgo, you reduce computationtime but obtain polygonal segments."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=HLRALGODOCSTRING) HLRAlgo
 

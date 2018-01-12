@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define VISUAL3DDOCSTRING
-"-Version:This package contains the group of classes necessaryfor the implementation of commands for the 3D visualiser.Use of this package is reserved to the visualiser.The visualiser manages the structures, the views, thelight sources, and object picking.-Keywords: View, Light, Pick-Warning:-References:"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=VISUAL3DDOCSTRING) Visual3d
 
@@ -61,16 +61,10 @@ typedef NCollection_DataMap <Graphic3d_ZLayerId , Graphic3d_ZLayerSettings> Visu
 /* end typedefs declaration */
 
 /* public enums */
-enum Visual3d_TypeOfAnswer {
-	Visual3d_TOA_YES = 0,
-	Visual3d_TOA_NO = 1,
-	Visual3d_TOA_COMPUTE = 2,
-};
-
-enum Visual3d_TypeOfBackfacingModel {
-	Visual3d_TOBM_AUTOMATIC = 0,
-	Visual3d_TOBM_FORCE = 1,
-	Visual3d_TOBM_DISABLE = 2,
+enum Visual3d_TypeOfSurfaceDetail {
+	Visual3d_TOD_NONE = 0,
+	Visual3d_TOD_ENVIRONMENT = 1,
+	Visual3d_TOD_ALL = 2,
 };
 
 enum Visual3d_TypeOfLightSource {
@@ -80,6 +74,17 @@ enum Visual3d_TypeOfLightSource {
 	Visual3d_TOLS_SPOT = 3,
 };
 
+enum Visual3d_TypeOfVisualization {
+	Visual3d_TOV_WIREFRAME = 0,
+	Visual3d_TOV_SHADING = 1,
+};
+
+enum Visual3d_TypeOfAnswer {
+	Visual3d_TOA_YES = 0,
+	Visual3d_TOA_NO = 1,
+	Visual3d_TOA_COMPUTE = 2,
+};
+
 enum Visual3d_TypeOfModel {
 	Visual3d_TOM_NONE = 0,
 	Visual3d_TOM_FACET = 1,
@@ -87,25 +92,20 @@ enum Visual3d_TypeOfModel {
 	Visual3d_TOM_FRAGMENT = 3,
 };
 
-enum Visual3d_TypeOfOrder {
-	Visual3d_TOO_TOPFIRST = 0,
-	Visual3d_TOO_BOTTOMFIRST = 1,
-};
-
 enum Visual3d_TypeOfProjection {
 	Visual3d_TOP_PERSPECTIVE = 0,
 	Visual3d_TOP_PARALLEL = 1,
 };
 
-enum Visual3d_TypeOfSurfaceDetail {
-	Visual3d_TOD_NONE = 0,
-	Visual3d_TOD_ENVIRONMENT = 1,
-	Visual3d_TOD_ALL = 2,
+enum Visual3d_TypeOfOrder {
+	Visual3d_TOO_TOPFIRST = 0,
+	Visual3d_TOO_BOTTOMFIRST = 1,
 };
 
-enum Visual3d_TypeOfVisualization {
-	Visual3d_TOV_WIREFRAME = 0,
-	Visual3d_TOV_SHADING = 1,
+enum Visual3d_TypeOfBackfacingModel {
+	Visual3d_TOBM_AUTOMATIC = 0,
+	Visual3d_TOBM_FORCE = 1,
+	Visual3d_TOBM_DISABLE = 2,
 };
 
 /* end public enums declaration */

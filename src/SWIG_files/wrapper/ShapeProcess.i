@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEPROCESSDOCSTRING
-"Shape Processing moduleallows to define and apply general Shape Processing as acustomizable sequence of Shape Healing operators. Thecustomization is implemented via user-editable resourcefile which defines sequence of operators to be executedand their parameters."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=SHAPEPROCESSDOCSTRING) ShapeProcess
 

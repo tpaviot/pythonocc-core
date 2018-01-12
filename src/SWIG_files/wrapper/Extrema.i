@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define EXTREMADOCSTRING
-"points, curves and surfaces.In general case, the algorithm to find thedistances is a minimization algorithm of a functionof variables: F(X). It is stopped when:for X1=X+Dx, F(X) and F(X1) are the same.The value of Dx can be calculated for all thealgorithms.-Level : Public.All methods of all classes will be public."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=EXTREMADOCSTRING) Extrema
 
@@ -60,13 +60,6 @@ typedef NCollection_Handle <Extrema_UBTreeOfSphere> Extrema_HUBTreeOfSphere;
 /* end typedefs declaration */
 
 /* public enums */
-enum Extrema_ElementType {
-	Extrema_Node = 0,
-	Extrema_UIsoEdge = 1,
-	Extrema_VIsoEdge = 2,
-	Extrema_Face = 3,
-};
-
 enum Extrema_ExtAlgo {
 	Extrema_ExtAlgo_Grad = 0,
 	Extrema_ExtAlgo_Tree = 1,
@@ -76,6 +69,13 @@ enum Extrema_ExtFlag {
 	Extrema_ExtFlag_MIN = 0,
 	Extrema_ExtFlag_MAX = 1,
 	Extrema_ExtFlag_MINMAX = 2,
+};
+
+enum Extrema_ElementType {
+	Extrema_Node = 0,
+	Extrema_UIsoEdge = 1,
+	Extrema_VIsoEdge = 2,
+	Extrema_Face = 3,
 };
 
 /* end public enums declaration */

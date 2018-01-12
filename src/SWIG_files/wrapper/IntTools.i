@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTTOOLSDOCSTRING
-"Contains classes for intersection and classification-     purposes and accompanying classes"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=INTTOOLSDOCSTRING) IntTools
 

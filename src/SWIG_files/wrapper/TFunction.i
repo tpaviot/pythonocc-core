@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TFUNCTIONDOCSTRING
-"algorithms. Each function contains the ID of a function driver."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TFUNCTIONDOCSTRING) TFunction
 

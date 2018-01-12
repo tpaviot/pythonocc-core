@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPAPPROXDOCSTRING
-"This package provides services on intersection curvesdealt by topological operations on BRep objects.Services are approximation services."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPAPPROXDOCSTRING) BRepApprox
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define INTPATCHDOCSTRING
-"Intersection between two patches.The class PatchIntersection implements the algorithmesof intersection.The classes IntPoint, PointOnDomain, Line, ILin, a.s.o...describe the results of the algorithmes.-Level: InternalAll the methods of the classes of this package are Internal."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=INTPATCHDOCSTRING) IntPatch
 

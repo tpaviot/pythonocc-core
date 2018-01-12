@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define IGESCAFCONTROLDOCSTRING
-"Provides high-level API to translate IGES fileto and from DECAF document"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=IGESCAFCONTROLDOCSTRING) IGESCAFControl
 

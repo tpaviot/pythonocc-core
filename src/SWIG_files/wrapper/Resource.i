@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RESOURCEDOCSTRING
-"A RESOURCE is a parameter saved on a file and used toinitialize a variable."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=RESOURCEDOCSTRING) Resource
 

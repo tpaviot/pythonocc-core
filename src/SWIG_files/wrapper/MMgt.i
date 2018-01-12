@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define MMGTDOCSTRING
-"-Purpose:The package MMgt provides single class TShared which is second in hierarchyof inheritance from Standard_Transient, kept for historic reasons"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=MMGTDOCSTRING) MMgt
 

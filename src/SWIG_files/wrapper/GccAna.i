@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GCCANADOCSTRING
-"-Purpose : This package provides an implementation of analyticsalgorithms (using only non persistant entities) usedto create 2d lines or circles with geometric constraints."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GCCANADOCSTRING) GccAna
 

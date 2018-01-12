@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HLRAPPLIDOCSTRING
-"-Purpose : This package represents applicationsof Hidden Lines Removal algorithm"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=HLRAPPLIDOCSTRING) HLRAppli
 

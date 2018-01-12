@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ELCLIBDOCSTRING
-"- Purpose: Provides functions for basic geometric computations onelementary curves such as conics and lines in 2D and 3D space.This includes:-  calculation of a point or derived vector on a 2D or3D curve where:-  the curve is provided by the gp package, ordefined in reference form (as in the gp package),and-  the point is defined by a parameter,-  evaluation of the parameter corresponding to a pointon a 2D or 3D curve from gp,-  various elementary computations which allow you toposition parameterized values within the period of a curve.Notes:-  ElCLib stands for Elementary Curves Library.-  If the curves provided by the gp package are notexplicitly parameterized, they still have an implicitparameterization, analogous to that which they inferfor the equivalent Geom or Geom2d curves."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=ELCLIBDOCSTRING) ElCLib
 

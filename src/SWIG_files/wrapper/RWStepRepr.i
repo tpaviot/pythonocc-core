@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RWSTEPREPRDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=RWSTEPREPRDOCSTRING) RWStepRepr
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPPROJDOCSTRING
-"The BRepProj  package provides  ProjectionAlgorithms   like Cylindrical  and ConicalProjections. Those algorithms have been put in anindependant package  instead of BRepAlgo  (likeNormalProjection) because of cyclic reference withBRepFill. So this package is not available forthe moment to BRepFill."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPPROJDOCSTRING) BRepProj
 

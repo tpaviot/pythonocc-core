@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMTOSTEPDOCSTRING
-"- Purpose: Creation des entites geometriques du schema PmsAp2Demo3d apartir des entites de Geom ou de gp.Update : mise a jour pour traiter le schema StepGeom, pour demo de 94"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GEOMTOSTEPDOCSTRING) GeomToStep
 

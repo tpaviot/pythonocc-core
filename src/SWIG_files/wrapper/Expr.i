@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define EXPRDOCSTRING
-"This package describes the data structure of anyexpression, relation or function used in mathematics.It also describes the assignment of variables. Standardmathematical functions are implemented such astrigonometrics, hyperbolics, and log functions."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=EXPRDOCSTRING) Expr
 

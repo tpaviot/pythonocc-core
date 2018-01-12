@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPBLENDDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPBLENDDOCSTRING) BRepBlend
 

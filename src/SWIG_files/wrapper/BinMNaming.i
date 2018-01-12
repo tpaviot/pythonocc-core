@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINMNAMINGDOCSTRING
-"Storage/Retrieval drivers for TNaming attributes"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BINMNAMINGDOCSTRING) BinMNaming
 

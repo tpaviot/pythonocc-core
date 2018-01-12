@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define PDOCSTDDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=PDOCSTDDOCSTRING) PDocStd
 

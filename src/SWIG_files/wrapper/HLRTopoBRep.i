@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define HLRTOPOBREPDOCSTRING
-"This   Package provides some    topologicalreconstruction services needed by the Hidden LineRemoval Algorithms  using OutLine and  IsoLinefacilities, applied to an object represented by aBRep data structure."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=HLRTOPOBREPDOCSTRING) HLRTopoBRep
 

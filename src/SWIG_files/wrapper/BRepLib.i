@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPLIBDOCSTRING
-"The BRepLib package provides general utilities forBRep.* FindSurface : Class to compute a surface througha set of edges.* Compute missing 3d curve on an edge."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPLIBDOCSTRING) BRepLib
 
@@ -67,12 +67,11 @@ enum BRepLib_EdgeError {
 	BRepLib_LineThroughIdenticPoints = 6,
 };
 
-enum BRepLib_FaceError {
-	BRepLib_FaceDone = 0,
-	BRepLib_NoFace = 1,
-	BRepLib_NotPlanar = 2,
-	BRepLib_CurveProjectionFailed = 3,
-	BRepLib_ParametersOutOfRange = 4,
+enum BRepLib_ShellError {
+	BRepLib_ShellDone = 0,
+	BRepLib_EmptyShell = 1,
+	BRepLib_DisconnectedShell = 2,
+	BRepLib_ShellParametersOutOfRange = 3,
 };
 
 enum BRepLib_ShapeModification {
@@ -83,18 +82,19 @@ enum BRepLib_ShapeModification {
 	BRepLib_BoundaryModified = 4,
 };
 
-enum BRepLib_ShellError {
-	BRepLib_ShellDone = 0,
-	BRepLib_EmptyShell = 1,
-	BRepLib_DisconnectedShell = 2,
-	BRepLib_ShellParametersOutOfRange = 3,
-};
-
 enum BRepLib_WireError {
 	BRepLib_WireDone = 0,
 	BRepLib_EmptyWire = 1,
 	BRepLib_DisconnectedWire = 2,
 	BRepLib_NonManifoldWire = 3,
+};
+
+enum BRepLib_FaceError {
+	BRepLib_FaceDone = 0,
+	BRepLib_NoFace = 1,
+	BRepLib_NotPlanar = 2,
+	BRepLib_CurveProjectionFailed = 3,
+	BRepLib_ParametersOutOfRange = 4,
 };
 
 /* end public enums declaration */

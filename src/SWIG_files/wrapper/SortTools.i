@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SORTTOOLSDOCSTRING
-"This package provides the basic sorting tools generallyused."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=SORTTOOLSDOCSTRING) SortTools
 

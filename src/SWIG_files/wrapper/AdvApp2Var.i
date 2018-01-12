@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ADVAPP2VARDOCSTRING
-"This package provides algorithms to approximate afunction of 2 variables that can be multidimensional;the result is a BSpline function with the required continuityWarning: only one 3D BSpline for the moment"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=ADVAPP2VARDOCSTRING) AdvApp2Var
 

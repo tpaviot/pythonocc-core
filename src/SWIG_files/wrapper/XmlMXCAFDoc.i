@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLMXCAFDOCDOCSTRING
-"Storage and Retrieval drivers for modelling attributes.Transient attributes are defined in package XCAFDoc"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=XMLMXCAFDOCDOCSTRING) XmlMXCAFDoc
 

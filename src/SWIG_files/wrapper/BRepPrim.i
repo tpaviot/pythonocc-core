@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPPRIMDOCSTRING
-"this package implements the primitives of thePrimitives package with the BRep TopologyContains :a Builder implementing the Template from PrimitivesThe instantiations of the algorithms :OneAxisWedgeThe rotational primitives inherited from OneAxisRevolutionCylinderConeSphereTorusThe class FaceBuilder is a tool to build a facefrom a Geom surface."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPPRIMDOCSTRING) BRepPrim
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define IGESCONTROLDOCSTRING
-"-Purpose : This package provide external access and control to use IGESSee also IGESToBRep for reading IGES to Shapes"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=IGESCONTROLDOCSTRING) IGESControl
 

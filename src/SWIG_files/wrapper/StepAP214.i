@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPAP214DOCSTRING
-"-Purpose : Complete AP214 CC1 , Revision 4Upgrading from Revision 2 to Revision 4 : 26 Mar 1997Splitting in sub-schemas : 5 Nov 1997"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPAP214DOCSTRING) StepAP214
 

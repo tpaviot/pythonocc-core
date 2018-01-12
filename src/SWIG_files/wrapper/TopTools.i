@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define TOPTOOLSDOCSTRING
-"The TopTools package provides  utilities for thetopological data structure.* ShapeMapHasher. Hash a Shape base on the TShapeand the Location. The Orientation is not used.* OrientedShapeMapHasher. Hash a Shape base on theTShape ,the Location and the Orientation.* Instantiations of TCollection for Shapes :MapOfShapeIndexedMapOfShapeDataMapOfIntegerShapeDataMapOfShapeIntegerDataMapOfShapeRealArray1OfShapeHArray1OfShapeSequenceOfShapeHSequenceOfShapeListOfShapeArray1OfListShapeHArray1OfListShapeDataMapOfIntegerListOfShapeDataMapOfShapeListOfShapeDataMapOfShapeListOfIntegerIndexedDataMapOfShapeShapeIndexedDataMapOfShapeListOfShapeDataMapOfShapeShapeIndexedMapOfOrientedShapeDataMapOfShapeSequenceOfShapeIndexedDataMapOfShapeAddressDataMapOfOrientedShapeShape* LocationSet : to write sets of locations.* ShapeSet : to writes sets of TShapes.Package Methods :Dump : To dump the topology of a Shape.- Level : PublicAll methods of all classes will be public."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=TOPTOOLSDOCSTRING) TopTools
 

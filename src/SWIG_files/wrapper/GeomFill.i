@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMFILLDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GEOMFILLDOCSTRING) GeomFill
 
@@ -62,19 +62,6 @@ enum GeomFill_ApproxStyle {
 	GeomFill_Location = 1,
 };
 
-enum GeomFill_FillingStyle {
-	GeomFill_StretchStyle = 0,
-	GeomFill_CoonsStyle = 1,
-	GeomFill_CurvedStyle = 2,
-};
-
-enum GeomFill_PipeError {
-	GeomFill_PipeOk = 0,
-	GeomFill_PipeNotOk = 1,
-	GeomFill_PlaneNotIntersectGuide = 2,
-	GeomFill_ImpossibleContact = 3,
-};
-
 enum GeomFill_Trihedron {
 	GeomFill_IsCorrectedFrenet = 0,
 	GeomFill_IsFixed = 1,
@@ -86,6 +73,19 @@ enum GeomFill_Trihedron {
 	GeomFill_IsGuideACWithContact = 7,
 	GeomFill_IsGuidePlanWithContact = 8,
 	GeomFill_IsDiscreteTrihedron = 9,
+};
+
+enum GeomFill_FillingStyle {
+	GeomFill_StretchStyle = 0,
+	GeomFill_CoonsStyle = 1,
+	GeomFill_CurvedStyle = 2,
+};
+
+enum GeomFill_PipeError {
+	GeomFill_PipeOk = 0,
+	GeomFill_PipeNotOk = 1,
+	GeomFill_PlaneNotIntersectGuide = 2,
+	GeomFill_ImpossibleContact = 3,
 };
 
 /* end public enums declaration */

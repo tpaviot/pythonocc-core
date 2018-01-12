@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOMADAPTORDOCSTRING
-"this package contains the geometric definition ofcurve and surface necessary to use algorithmes."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GEOMADAPTORDOCSTRING) GeomAdaptor
 

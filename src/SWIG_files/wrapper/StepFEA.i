@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPFEADOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPFEADOCSTRING) StepFEA
 
@@ -57,18 +57,14 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
+enum StepFEA_ElementVolume {
+	StepFEA_Volume = 0,
+};
+
 enum StepFEA_CoordinateSystemType {
 	StepFEA_Cartesian = 0,
 	StepFEA_Cylindrical = 1,
 	StepFEA_Spherical = 2,
-};
-
-enum StepFEA_CurveEdge {
-	StepFEA_ElementEdge = 0,
-};
-
-enum StepFEA_ElementVolume {
-	StepFEA_Volume = 0,
 };
 
 enum StepFEA_EnumeratedDegreeOfFreedom {
@@ -79,6 +75,10 @@ enum StepFEA_EnumeratedDegreeOfFreedom {
 	StepFEA_YRotation = 4,
 	StepFEA_ZRotation = 5,
 	StepFEA_Warp = 6,
+};
+
+enum StepFEA_CurveEdge {
+	StepFEA_ElementEdge = 0,
 };
 
 enum StepFEA_UnspecifiedValue {

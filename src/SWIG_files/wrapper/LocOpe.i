@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define LOCOPEDOCSTRING
-"Provides tools to implement local   topologicaloperations on a shape."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=LOCOPEDOCSTRING) LocOpe
 

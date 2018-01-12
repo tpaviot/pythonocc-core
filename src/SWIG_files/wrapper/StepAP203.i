@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPAP203DOCSTRING
-"Contains implementation of STEP entities specific for AP203"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPAP203DOCSTRING) StepAP203
 

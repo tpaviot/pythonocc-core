@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XMLMDATASTDDOCSTRING
-"Storage and Retrieval drivers for modelling attributes.Transient attributes are defined in package TDataStd."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=XMLMDATASTDDOCSTRING) XmlMDataStd
 

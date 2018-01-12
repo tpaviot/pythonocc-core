@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BINMDATASTDDOCSTRING
-"Storage and Retrieval drivers for modelling attributes."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BINMDATASTDDOCSTRING) BinMDataStd
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPFEATDOCSTRING
-"BRepFeat is necessary for thecreation and manipulation of both form and mechanical features in aBoundary Representation framework. Form features can be depressions orprotrusions and include the following types:-     Cylinder-     Draft Prism-     Prism-     Revolved feature-     PipeDepending on whether you wish to make a depression or a protrusion,you can choose your operation type between the following:- removing matter (a Boolean cut: Fuse setting 0)- adding matter (Boolean fusion: Fuse setting 1)The semantics of form feature creation is based on theconstruction of shapes:-     for a certain length in a certain direction-     up to a limiting face-     from a limiting face at a height-     above and/or below a planeThe shape defining the construction of a feature can be either asupporting edge or a concerned area of a face.In case of supporting edge, this contour can be attached to a faceof the basis shape by binding. When the contour is bound to this face,the information that the contour will slide on the face becomesavailable to the relevant class methods. In case of the concernedarea of a face, you could, for example, cut it out and move it ata different height, which will define the limiting face of aprotrusion or depression. Topological definition with localoperations of this sort makes calculations simpler and fasterthan a global operation. The latter would entail a second phase ofremoving unwanted matter to get the same result.Mechanical features include ribs - protrusions - and grooves (orslots) - depressions along planar (linear) surfaces or revolution surfaces.The semantics of mechanical features is based on givingthickness to a contour. This thickness can either be unilateral- on one side of the contour - or bilateral - on both sides. As inthe semantics of form features, the thickness is defined byconstruction of shapes in specific contexts.However, in case of mechanical features, development contextsdiffer. Here they include extrusion:-     to a limiting face of the basis shape-     to or from a limiting plane-     to a height."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPFEATDOCSTRING) BRepFeat
 
@@ -57,14 +57,6 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum BRepFeat_PerfSelection {
-	BRepFeat_NoSelection = 0,
-	BRepFeat_SelectionFU = 1,
-	BRepFeat_SelectionU = 2,
-	BRepFeat_SelectionSh = 3,
-	BRepFeat_SelectionShU = 4,
-};
-
 enum BRepFeat_Status {
 	BRepFeat_NoError = 0,
 	BRepFeat_InvalidPlacement = 1,
@@ -100,6 +92,14 @@ enum BRepFeat_StatusError {
 	BRepFeat_NullRealTool = 25,
 	BRepFeat_NullToolF = 26,
 	BRepFeat_NullToolU = 27,
+};
+
+enum BRepFeat_PerfSelection {
+	BRepFeat_NoSelection = 0,
+	BRepFeat_SelectionFU = 1,
+	BRepFeat_SelectionU = 2,
+	BRepFeat_SelectionSh = 3,
+	BRepFeat_SelectionShU = 4,
 };
 
 /* end public enums declaration */

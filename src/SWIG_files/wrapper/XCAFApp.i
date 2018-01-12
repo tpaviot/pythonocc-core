@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define XCAFAPPDOCSTRING
-"Defines application for DECAF documentand provides application-specific toolsThe application should be registered before work with DECAFdocuments by call to XCAFApp_Application::GetApplication()"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=XCAFAPPDOCSTRING) XCAFApp
 

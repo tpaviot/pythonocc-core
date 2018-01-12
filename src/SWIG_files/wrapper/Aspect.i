@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define ASPECTDOCSTRING
-"-Version:This package contains the group of graphic elements commonto different types of visualisers. It allows the descriptionof a screen background, a window, an edge, and groups ofgraphic attributes that can be used in describing 2Dand 3D objects.-Keywords: Window, Aspect, FillArea, Line, Marker, EdgeHighlight, Hatch, Background, GradientBackground, Color map,Type map, Width map, Font map-Warning:-References:"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=ASPECTDOCSTRING) Aspect
 
@@ -56,19 +56,25 @@ def register_handle(handle, base_object):
 /* typedefs */
 typedef void * Aspect_Display;
 typedef unsigned long Aspect_Drawable;
-typedef CALL_DEF_LAYER Aspect_CLayer2d;
+typedef void * HANDLE;
 typedef int ( * Aspect_GraphicCallbackProc ) ( Aspect_Drawable theWindowID , void * theUserData , Aspect_GraphicCallbackStruct * theCallData );
 typedef void * Aspect_RenderingContext;
 typedef unsigned long Aspect_Handle;
-typedef void * HANDLE;
+typedef CALL_DEF_LAYER Aspect_CLayer2d;
 /* end typedefs declaration */
 
 /* public enums */
-enum Aspect_FillMethod {
-	Aspect_FM_NONE = 0,
-	Aspect_FM_CENTERED = 1,
-	Aspect_FM_TILED = 2,
-	Aspect_FM_STRETCH = 3,
+enum Aspect_TypeOfDeflection {
+	Aspect_TOD_RELATIVE = 0,
+	Aspect_TOD_ABSOLUTE = 1,
+};
+
+enum Aspect_TypeOfLine {
+	Aspect_TOL_SOLID = 0,
+	Aspect_TOL_DASH = 1,
+	Aspect_TOL_DOT = 2,
+	Aspect_TOL_DOTDASH = 3,
+	Aspect_TOL_USERDEFINED = 4,
 };
 
 enum Aspect_GradientFillMethod {
@@ -83,93 +89,22 @@ enum Aspect_GradientFillMethod {
 	Aspect_GFM_CORNER4 = 8,
 };
 
-enum Aspect_GridDrawMode {
-	Aspect_GDM_Lines = 0,
-	Aspect_GDM_Points = 1,
-	Aspect_GDM_None = 2,
+enum Aspect_TypeOfHighlightMethod {
+	Aspect_TOHM_COLOR = 0,
+	Aspect_TOHM_BOUNDBOX = 1,
 };
 
-enum Aspect_GridType {
-	Aspect_GT_Rectangular = 0,
-	Aspect_GT_Circular = 1,
-};
-
-enum Aspect_HatchStyle {
-	Aspect_HS_HORIZONTAL = 0,
-	Aspect_HS_HORIZONTAL_WIDE = 1,
-	Aspect_HS_VERTICAL = 2,
-	Aspect_HS_VERTICAL_WIDE = 3,
-	Aspect_HS_DIAGONAL_45 = 4,
-	Aspect_HS_DIAGONAL_45_WIDE = 5,
-	Aspect_HS_DIAGONAL_135 = 6,
-	Aspect_HS_DIAGONAL_135_WIDE = 7,
-	Aspect_HS_GRID = 8,
-	Aspect_HS_GRID_WIDE = 9,
-	Aspect_HS_GRID_DIAGONAL = 10,
-	Aspect_HS_GRID_DIAGONAL_WIDE = 11,
-};
-
-enum Aspect_InteriorStyle {
-	Aspect_IS_EMPTY = 0,
-	Aspect_IS_HOLLOW = 1,
-	Aspect_IS_HATCH = 2,
-	Aspect_IS_SOLID = 3,
-	Aspect_IS_HIDDENLINE = 4,
-	Aspect_IS_POINT = 5,
-};
-
-enum Aspect_PolygonOffsetMode {
-	Aspect_POM_Off = 0,
-	Aspect_POM_Fill = 1,
-	Aspect_POM_Line = 2,
-	Aspect_POM_Point = 4,
-	Aspect_POM_All = Aspect_POM_Fill | Aspect_POM_Line | Aspect_POM_Point,
-	Aspect_POM_None = 8,
-	Aspect_POM_Mask = Aspect_POM_All | Aspect_POM_None,
-};
-
-enum Aspect_PrintAlgo {
-	Aspect_PA_STRETCH = 0,
-	Aspect_PA_TILE = 1,
-};
-
-enum Aspect_TypeOfColorScaleData {
-	Aspect_TOCSD_AUTO = 0,
-	Aspect_TOCSD_USER = 1,
-};
-
-enum Aspect_TypeOfColorScaleOrientation {
-	Aspect_TOCSO_NONE = 0,
-	Aspect_TOCSO_LEFT = 1,
-	Aspect_TOCSO_RIGHT = 2,
-	Aspect_TOCSO_CENTER = 3,
-};
-
-enum Aspect_TypeOfColorScalePosition {
-	Aspect_TOCSP_NONE = 0,
-	Aspect_TOCSP_LEFT = 1,
-	Aspect_TOCSP_RIGHT = 2,
-	Aspect_TOCSP_CENTER = 3,
-};
-
-enum Aspect_TypeOfConstraint {
-	Aspect_TOC_BOTTOM_LEFT = 0,
-	Aspect_TOC_BOTTOM_RIGHT = 1,
-	Aspect_TOC_TOP_LEFT = 2,
-	Aspect_TOC_TOP_RIGHT = 3,
-};
-
-enum Aspect_TypeOfDeflection {
-	Aspect_TOD_RELATIVE = 0,
-	Aspect_TOD_ABSOLUTE = 1,
-};
-
-enum Aspect_TypeOfDisplayText {
-	Aspect_TODT_NORMAL = 0,
-	Aspect_TODT_SUBTITLE = 1,
-	Aspect_TODT_DEKALE = 2,
-	Aspect_TODT_BLEND = 3,
-	Aspect_TODT_DIMENSION = 4,
+enum Aspect_TypeOfResize {
+	Aspect_TOR_UNKNOWN = 0,
+	Aspect_TOR_NO_BORDER = 1,
+	Aspect_TOR_TOP_BORDER = 2,
+	Aspect_TOR_RIGHT_BORDER = 3,
+	Aspect_TOR_BOTTOM_BORDER = 4,
+	Aspect_TOR_LEFT_BORDER = 5,
+	Aspect_TOR_TOP_AND_RIGHT_BORDER = 6,
+	Aspect_TOR_RIGHT_AND_BOTTOM_BORDER = 7,
+	Aspect_TOR_BOTTOM_AND_LEFT_BORDER = 8,
+	Aspect_TOR_LEFT_AND_TOP_BORDER = 9,
 };
 
 enum Aspect_TypeOfDrawMode {
@@ -179,33 +114,26 @@ enum Aspect_TypeOfDrawMode {
 	Aspect_TODM_XORLIGHT = 3,
 };
 
-enum Aspect_TypeOfEdge {
-	Aspect_TOE_VISIBLE = 0,
-	Aspect_TOE_INVISIBLE = 1,
+enum Aspect_GridType {
+	Aspect_GT_Rectangular = 0,
+	Aspect_GT_Circular = 1,
 };
 
-enum Aspect_TypeOfFacingModel {
-	Aspect_TOFM_BOTH_SIDE = 0,
-	Aspect_TOFM_BACK_SIDE = 1,
-	Aspect_TOFM_FRONT_SIDE = 2,
+enum Aspect_TypeOfConstraint {
+	Aspect_TOC_BOTTOM_LEFT = 0,
+	Aspect_TOC_BOTTOM_RIGHT = 1,
+	Aspect_TOC_TOP_LEFT = 2,
+	Aspect_TOC_TOP_RIGHT = 3,
 };
 
-enum Aspect_TypeOfHighlightMethod {
-	Aspect_TOHM_COLOR = 0,
-	Aspect_TOHM_BOUNDBOX = 1,
+enum Aspect_TypeOfColorScaleData {
+	Aspect_TOCSD_AUTO = 0,
+	Aspect_TOCSD_USER = 1,
 };
 
-enum Aspect_TypeOfLayer {
-	Aspect_TOL_OVERLAY = 0,
-	Aspect_TOL_UNDERLAY = 1,
-};
-
-enum Aspect_TypeOfLine {
-	Aspect_TOL_SOLID = 0,
-	Aspect_TOL_DASH = 1,
-	Aspect_TOL_DOT = 2,
-	Aspect_TOL_DOTDASH = 3,
-	Aspect_TOL_USERDEFINED = 4,
+enum Aspect_TypeOfStyleText {
+	Aspect_TOST_NORMAL = 0,
+	Aspect_TOST_ANNOTATION = 1,
 };
 
 enum Aspect_TypeOfMarker {
@@ -225,33 +153,29 @@ enum Aspect_TypeOfMarker {
 	Aspect_TOM_USERDEFINED = 13,
 };
 
-enum Aspect_TypeOfPrimitive {
-	Aspect_TOP_UNKNOWN = 0,
-	Aspect_TOP_POLYLINE = 1,
-	Aspect_TOP_POLYGON = 2,
-	Aspect_TOP_SEGMENTS = 3,
-	Aspect_TOP_ARCS = 4,
-	Aspect_TOP_POLYARCS = 5,
-	Aspect_TOP_POINTS = 6,
-	Aspect_TOP_MARKERS = 7,
+enum Aspect_TypeOfColorScaleOrientation {
+	Aspect_TOCSO_NONE = 0,
+	Aspect_TOCSO_LEFT = 1,
+	Aspect_TOCSO_RIGHT = 2,
+	Aspect_TOCSO_CENTER = 3,
 };
 
-enum Aspect_TypeOfResize {
-	Aspect_TOR_UNKNOWN = 0,
-	Aspect_TOR_NO_BORDER = 1,
-	Aspect_TOR_TOP_BORDER = 2,
-	Aspect_TOR_RIGHT_BORDER = 3,
-	Aspect_TOR_BOTTOM_BORDER = 4,
-	Aspect_TOR_LEFT_BORDER = 5,
-	Aspect_TOR_TOP_AND_RIGHT_BORDER = 6,
-	Aspect_TOR_RIGHT_AND_BOTTOM_BORDER = 7,
-	Aspect_TOR_BOTTOM_AND_LEFT_BORDER = 8,
-	Aspect_TOR_LEFT_AND_TOP_BORDER = 9,
+enum Aspect_TypeOfFacingModel {
+	Aspect_TOFM_BOTH_SIDE = 0,
+	Aspect_TOFM_BACK_SIDE = 1,
+	Aspect_TOFM_FRONT_SIDE = 2,
 };
 
-enum Aspect_TypeOfStyleText {
-	Aspect_TOST_NORMAL = 0,
-	Aspect_TOST_ANNOTATION = 1,
+enum Aspect_FillMethod {
+	Aspect_FM_NONE = 0,
+	Aspect_FM_CENTERED = 1,
+	Aspect_FM_TILED = 2,
+	Aspect_FM_STRETCH = 3,
+};
+
+enum Aspect_TypeOfUpdate {
+	Aspect_TOU_ASAP = 0,
+	Aspect_TOU_WAIT = 1,
 };
 
 enum Aspect_TypeOfTriedronEcho {
@@ -275,6 +199,58 @@ enum Aspect_TypeOfTriedronEcho {
 	Aspect_TOTE_10 = 17,
 };
 
+enum Aspect_TypeOfPrimitive {
+	Aspect_TOP_UNKNOWN = 0,
+	Aspect_TOP_POLYLINE = 1,
+	Aspect_TOP_POLYGON = 2,
+	Aspect_TOP_SEGMENTS = 3,
+	Aspect_TOP_ARCS = 4,
+	Aspect_TOP_POLYARCS = 5,
+	Aspect_TOP_POINTS = 6,
+	Aspect_TOP_MARKERS = 7,
+};
+
+enum Aspect_HatchStyle {
+	Aspect_HS_HORIZONTAL = 0,
+	Aspect_HS_HORIZONTAL_WIDE = 1,
+	Aspect_HS_VERTICAL = 2,
+	Aspect_HS_VERTICAL_WIDE = 3,
+	Aspect_HS_DIAGONAL_45 = 4,
+	Aspect_HS_DIAGONAL_45_WIDE = 5,
+	Aspect_HS_DIAGONAL_135 = 6,
+	Aspect_HS_DIAGONAL_135_WIDE = 7,
+	Aspect_HS_GRID = 8,
+	Aspect_HS_GRID_WIDE = 9,
+	Aspect_HS_GRID_DIAGONAL = 10,
+	Aspect_HS_GRID_DIAGONAL_WIDE = 11,
+};
+
+enum Aspect_PolygonOffsetMode {
+	Aspect_POM_Off = 0,
+	Aspect_POM_Fill = 1,
+	Aspect_POM_Line = 2,
+	Aspect_POM_Point = 4,
+	Aspect_POM_All = Aspect_POM_Fill | Aspect_POM_Line | Aspect_POM_Point,
+	Aspect_POM_None = 8,
+	Aspect_POM_Mask = Aspect_POM_All | Aspect_POM_None,
+};
+
+enum Aspect_TypeOfEdge {
+	Aspect_TOE_VISIBLE = 0,
+	Aspect_TOE_INVISIBLE = 1,
+};
+
+enum Aspect_TypeOfColorScalePosition {
+	Aspect_TOCSP_NONE = 0,
+	Aspect_TOCSP_LEFT = 1,
+	Aspect_TOCSP_RIGHT = 2,
+	Aspect_TOCSP_CENTER = 3,
+};
+
+enum Aspect_XAtom {
+	Aspect_XA_DELETE_WINDOW = 0,
+};
+
 enum Aspect_TypeOfTriedronPosition {
 	Aspect_TOTP_CENTER = 0,
 	Aspect_TOTP_LEFT_LOWER = 1,
@@ -293,9 +269,20 @@ enum Aspect_TypeOfTriedronPosition {
 	Aspect_TOTP_10 = 14,
 };
 
-enum Aspect_TypeOfUpdate {
-	Aspect_TOU_ASAP = 0,
-	Aspect_TOU_WAIT = 1,
+enum Aspect_TypeOfLayer {
+	Aspect_TOL_OVERLAY = 0,
+	Aspect_TOL_UNDERLAY = 1,
+};
+
+enum Aspect_PrintAlgo {
+	Aspect_PA_STRETCH = 0,
+	Aspect_PA_TILE = 1,
+};
+
+enum Aspect_GridDrawMode {
+	Aspect_GDM_Lines = 0,
+	Aspect_GDM_Points = 1,
+	Aspect_GDM_None = 2,
 };
 
 enum Aspect_WidthOfLine {
@@ -306,8 +293,21 @@ enum Aspect_WidthOfLine {
 	Aspect_WOL_USERDEFINED = 4,
 };
 
-enum Aspect_XAtom {
-	Aspect_XA_DELETE_WINDOW = 0,
+enum Aspect_TypeOfDisplayText {
+	Aspect_TODT_NORMAL = 0,
+	Aspect_TODT_SUBTITLE = 1,
+	Aspect_TODT_DEKALE = 2,
+	Aspect_TODT_BLEND = 3,
+	Aspect_TODT_DIMENSION = 4,
+};
+
+enum Aspect_InteriorStyle {
+	Aspect_IS_EMPTY = 0,
+	Aspect_IS_HOLLOW = 1,
+	Aspect_IS_HATCH = 2,
+	Aspect_IS_SOLID = 3,
+	Aspect_IS_HIDDENLINE = 4,
+	Aspect_IS_POINT = 5,
 };
 
 /* end public enums declaration */

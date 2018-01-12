@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STLMESHDOCSTRING
-"Implements a basic mesh data-structure for theneeds of the application fast prototyping."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STLMESHDOCSTRING) StlMesh
 

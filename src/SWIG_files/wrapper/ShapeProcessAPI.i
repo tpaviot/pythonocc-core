@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEPROCESSAPIDOCSTRING
-"Provides tools for converting shapes for data exchangebetween various systems (CATIA, EUCLID3 etc.)"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=SHAPEPROCESSAPIDOCSTRING) ShapeProcessAPI
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define GEOM2DDOCSTRING
-"- Purpose :This package contains the definition of the geometric objectssuch as point, vector, axis placement, curves and thedescription of the geometric transformations availablefor these objects.All these entities are defined in 2D space.This package gives the possibility :. to create geometric objects,. to have information about them,. to modify these objects.This package uses the services of the package gp (Geometricprocessor) which describes non-persistent objects for algebraiccalculus and basic analytic geometry. The purpose of this packageis to create persistent geometric objects and to read geometricinformation about these objects. Complexes geometric algorithmesare not described in this package.   At construction time,elementary verifications are done to verify that the objectsare coherents, but some verifications which require complexalgorithmes (for example to check that a curve has not nulllength or does not self-intersect) must be done before theconstruction of the geometric objects."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=GEOM2DDOCSTRING) Geom2d
 

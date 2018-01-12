@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define POLYDOCSTRING
-"This package provides classes and services tohandle :* 3D triangular polyhedrons.* 3D polygons.* 2D polygon.* Tools to dump, save and restore those objects."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=POLYDOCSTRING) Poly
 
@@ -55,8 +55,8 @@ def register_handle(handle, base_object):
 
 /* typedefs */
 typedef NCollection_Vector <Poly_CoherentLink>::Iterator Poly_BaseIteratorOfCoherentLink;
-typedef NCollection_Vector <Poly_CoherentNode>::Iterator Poly_BaseIteratorOfCoherentNode;
 typedef NCollection_Vector <Poly_CoherentTriangle>::Iterator Poly_BaseIteratorOfCoherentTriangle;
+typedef NCollection_Vector <Poly_CoherentNode>::Iterator Poly_BaseIteratorOfCoherentNode;
 typedef NCollection_List <Handle_Poly_Triangulation> Poly_ListOfTriangulation;
 /* end typedefs declaration */
 

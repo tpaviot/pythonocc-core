@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPGEOMDOCSTRING
-"-Purpose : AP214 CC1 , Revision 4 for Geom (Part42, geometric)Upgrading from Revision 2 to Revision 4 : 26 Mar 1997"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPGEOMDOCSTRING) StepGeom
 
@@ -57,13 +57,11 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum StepGeom_BSplineCurveForm {
-	StepGeom_bscfPolylineForm = 0,
-	StepGeom_bscfCircularArc = 1,
-	StepGeom_bscfEllipticArc = 2,
-	StepGeom_bscfParabolicArc = 3,
-	StepGeom_bscfHyperbolicArc = 4,
-	StepGeom_bscfUnspecified = 5,
+enum StepGeom_KnotType {
+	StepGeom_ktUniformKnots = 0,
+	StepGeom_ktUnspecified = 1,
+	StepGeom_ktQuasiUniformKnots = 2,
+	StepGeom_ktPiecewiseBezierKnots = 3,
 };
 
 enum StepGeom_BSplineSurfaceForm {
@@ -80,11 +78,19 @@ enum StepGeom_BSplineSurfaceForm {
 	StepGeom_bssfUnspecified = 10,
 };
 
-enum StepGeom_KnotType {
-	StepGeom_ktUniformKnots = 0,
-	StepGeom_ktUnspecified = 1,
-	StepGeom_ktQuasiUniformKnots = 2,
-	StepGeom_ktPiecewiseBezierKnots = 3,
+enum StepGeom_BSplineCurveForm {
+	StepGeom_bscfPolylineForm = 0,
+	StepGeom_bscfCircularArc = 1,
+	StepGeom_bscfEllipticArc = 2,
+	StepGeom_bscfParabolicArc = 3,
+	StepGeom_bscfHyperbolicArc = 4,
+	StepGeom_bscfUnspecified = 5,
+};
+
+enum StepGeom_TrimmingPreference {
+	StepGeom_tpCartesian = 0,
+	StepGeom_tpParameter = 1,
+	StepGeom_tpUnspecified = 2,
 };
 
 enum StepGeom_PreferredSurfaceCurveRepresentation {
@@ -98,12 +104,6 @@ enum StepGeom_TransitionCode {
 	StepGeom_tcContinuous = 1,
 	StepGeom_tcContSameGradient = 2,
 	StepGeom_tcContSameGradientSameCurvature = 3,
-};
-
-enum StepGeom_TrimmingPreference {
-	StepGeom_tpCartesian = 0,
-	StepGeom_tpParameter = 1,
-	StepGeom_tpUnspecified = 2,
 };
 
 /* end public enums declaration */

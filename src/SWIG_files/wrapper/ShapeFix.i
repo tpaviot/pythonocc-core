@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define SHAPEFIXDOCSTRING
-"This package provides algorithms for fixingproblematic (violating Open CASCADE requirements) shapes.Tools from package ShapeAnalysis are used for detecting the problems. Thedetecting and fixing is done taking in account variouscriteria implemented in BRepCheck package.Each class of package ShapeFix deals with onecertain type of shapes or with some family of problems."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=SHAPEFIXDOCSTRING) ShapeFix
 

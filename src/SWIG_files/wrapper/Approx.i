@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define APPROXDOCSTRING
-"Tis package provides algorithms approximating a set ofpoints or curves with the possibility of dividing intoone or many bezier curves.It also provides an instantiation for approximatinga continous function f(t) into one or many curves."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=APPROXDOCSTRING) Approx
 
@@ -57,16 +57,16 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum Approx_ParametrizationType {
-	Approx_ChordLength = 0,
-	Approx_Centripetal = 1,
-	Approx_IsoParametric = 2,
-};
-
 enum Approx_Status {
 	Approx_PointsAdded = 0,
 	Approx_NoPointsAdded = 1,
 	Approx_NoApproximation = 2,
+};
+
+enum Approx_ParametrizationType {
+	Approx_ChordLength = 0,
+	Approx_Centripetal = 1,
+	Approx_IsoParametric = 2,
 };
 
 /* end public enums declaration */

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define RWSTEPDIMTOLDOCSTRING
-"Packsge contains tools for parsing and formatting GD&T entities."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=RWSTEPDIMTOLDOCSTRING) RWStepDimTol
 

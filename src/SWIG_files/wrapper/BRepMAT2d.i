@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BREPMAT2DDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BREPMAT2DDOCSTRING) BRepMAT2d
 

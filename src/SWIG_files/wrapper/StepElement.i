@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPELEMENTDOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPELEMENTDOCSTRING) StepElement
 
@@ -57,13 +57,19 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
+enum StepElement_ElementVolume {
+	StepElement_Volume = 0,
+};
+
 enum StepElement_CurveEdge {
 	StepElement_ElementEdge = 0,
 };
 
-enum StepElement_Element2dShape {
-	StepElement_Quadrilateral = 0,
-	StepElement_Triangle = 1,
+enum StepElement_Volume3dElementShape {
+	StepElement_Hexahedron = 0,
+	StepElement_Wedge = 1,
+	StepElement_Tetrahedron = 2,
+	StepElement_Pyramid = 3,
 };
 
 enum StepElement_ElementOrder {
@@ -72,8 +78,9 @@ enum StepElement_ElementOrder {
 	StepElement_Cubic = 2,
 };
 
-enum StepElement_ElementVolume {
-	StepElement_Volume = 0,
+enum StepElement_Element2dShape {
+	StepElement_Quadrilateral = 0,
+	StepElement_Triangle = 1,
 };
 
 enum StepElement_EnumeratedCurveElementFreedom {
@@ -87,14 +94,8 @@ enum StepElement_EnumeratedCurveElementFreedom {
 	StepElement_None = 7,
 };
 
-enum StepElement_EnumeratedCurveElementPurpose {
-	StepElement_Axial = 0,
-	StepElement_YYBending = 1,
-	StepElement_ZZBending = 2,
-	StepElement_Torsion = 3,
-	StepElement_XYShear = 4,
-	StepElement_XZShear = 5,
-	StepElement_Warping = 6,
+enum StepElement_EnumeratedVolumeElementPurpose {
+	StepElement_StressDisplacement = 0,
 };
 
 enum StepElement_EnumeratedSurfaceElementPurpose {
@@ -105,19 +106,18 @@ enum StepElement_EnumeratedSurfaceElementPurpose {
 	StepElement_NormalToPlaneShear = 4,
 };
 
-enum StepElement_EnumeratedVolumeElementPurpose {
-	StepElement_StressDisplacement = 0,
-};
-
 enum StepElement_UnspecifiedValue {
 	StepElement_Unspecified = 0,
 };
 
-enum StepElement_Volume3dElementShape {
-	StepElement_Hexahedron = 0,
-	StepElement_Wedge = 1,
-	StepElement_Tetrahedron = 2,
-	StepElement_Pyramid = 3,
+enum StepElement_EnumeratedCurveElementPurpose {
+	StepElement_Axial = 0,
+	StepElement_YYBending = 1,
+	StepElement_ZZBending = 2,
+	StepElement_Torsion = 3,
+	StepElement_XYShear = 4,
+	StepElement_XZShear = 5,
+	StepElement_Warping = 6,
 };
 
 /* end public enums declaration */

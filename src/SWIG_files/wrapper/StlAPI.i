@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STLAPIDOCSTRING
-"-Purpose : Offers the API for STL data manipulation."
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STLAPIDOCSTRING) StlAPI
 

@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define STEPVISUALDOCSTRING
-"Collects definitions of STEP entities for visualpresentations from Part 46 of ISO10303"
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=STEPVISUALDOCSTRING) StepVisual
 
@@ -62,16 +62,6 @@ enum StepVisual_CentralOrParallel {
 	StepVisual_copParallel = 1,
 };
 
-enum StepVisual_MarkerType {
-	StepVisual_mtDot = 0,
-	StepVisual_mtX = 1,
-	StepVisual_mtPlus = 2,
-	StepVisual_mtAsterisk = 3,
-	StepVisual_mtRing = 4,
-	StepVisual_mtSquare = 5,
-	StepVisual_mtTriangle = 6,
-};
-
 enum StepVisual_SurfaceSide {
 	StepVisual_ssNegative = 0,
 	StepVisual_ssPositive = 1,
@@ -83,6 +73,16 @@ enum StepVisual_TextPath {
 	StepVisual_tpRight = 1,
 	StepVisual_tpDown = 2,
 	StepVisual_tpLeft = 3,
+};
+
+enum StepVisual_MarkerType {
+	StepVisual_mtDot = 0,
+	StepVisual_mtX = 1,
+	StepVisual_mtPlus = 2,
+	StepVisual_mtAsterisk = 3,
+	StepVisual_mtRing = 4,
+	StepVisual_mtSquare = 5,
+	StepVisual_mtTriangle = 6,
 };
 
 /* end public enums declaration */

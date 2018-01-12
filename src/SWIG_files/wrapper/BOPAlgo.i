@@ -18,7 +18,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 %define BOPALGODOCSTRING
-""
+"No docstring provided."
 %enddef
 %module (package="OCC", docstring=BOPALGODOCSTRING) BOPAlgo
 
@@ -56,12 +56,12 @@ def register_handle(handle, base_object):
 /* typedefs */
 typedef NCollection_List <BOPAlgo_CheckResult> BOPAlgo_ListOfCheckResult;
 typedef BOPAlgo_ListOfCheckResult::Iterator BOPAlgo_ListIteratorOfListOfCheckResult;
-typedef BOPAlgo_ArgumentAnalyzer * BOPAlgo_PArgumentAnalyzer;
 typedef BOPAlgo_WireEdgeSet * BOPAlgo_PWireEdgeSet;
+typedef BOPAlgo_ArgumentAnalyzer * BOPAlgo_PArgumentAnalyzer;
 typedef BOPAlgo_Builder * BOPAlgo_PBuilder;
 typedef BOPAlgo_BOP * BOPAlgo_PBOP;
-typedef BOPAlgo_PaveFiller * BOPAlgo_PPaveFiller;
 typedef BOPAlgo_Section * BOPAlgo_PSection;
+typedef BOPAlgo_PaveFiller * BOPAlgo_PPaveFiller;
 /* end typedefs declaration */
 
 /* public enums */
