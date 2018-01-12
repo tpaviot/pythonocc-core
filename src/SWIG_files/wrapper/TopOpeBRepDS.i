@@ -1281,7 +1281,7 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus : public TCollection_Ba
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: TopOpeBRepDS_CheckStatus
 ") Value;
-		const TopOpeBRepDS_CheckStatus & Value ();
+		const TopOpeBRepDS_CheckStatus  Value ();
 };
 
 
@@ -1669,7 +1669,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus : public TCollection_MapNod
             		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: TopOpeBRepDS_CheckStatus
 ") Value;
-		TopOpeBRepDS_CheckStatus & Value ();
+		TopOpeBRepDS_CheckStatus  Value ();
 };
 
 
@@ -2575,13 +2575,13 @@ class TopOpeBRepDS_DataMapOfCheckStatus : public TCollection_BasicMap {
 	:type K: int &
 	:rtype: TopOpeBRepDS_CheckStatus
 ") Find;
-		const TopOpeBRepDS_CheckStatus & Find (const Standard_Integer & K);
+		const TopOpeBRepDS_CheckStatus  Find (const Standard_Integer & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: int &
 	:rtype: TopOpeBRepDS_CheckStatus
 ") ChangeFind;
-		TopOpeBRepDS_CheckStatus & ChangeFind (const Standard_Integer & K);
+		TopOpeBRepDS_CheckStatus  ChangeFind (const Standard_Integer & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: int &

@@ -542,7 +542,7 @@ class BOPAlgo_ArgumentAnalyzer : public BOPAlgo_Algo {
 
 	:rtype: BOPAlgo_Operation
 ") OperationType;
-		BOPAlgo_Operation & OperationType ();
+		BOPAlgo_Operation  OperationType ();
 
             %feature("autodoc","1");
             %extend {

@@ -605,7 +605,7 @@ class BRepCheck_ListIteratorOfListOfStatus {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: BRepCheck_Status
 ") Value;
-		BRepCheck_Status & Value ();
+		BRepCheck_Status  Value ();
 };
 
 
@@ -628,7 +628,7 @@ class BRepCheck_ListNodeOfListOfStatus : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: BRepCheck_Status
 ") Value;
-		BRepCheck_Status & Value ();
+		BRepCheck_Status  Value ();
 };
 
 
@@ -763,11 +763,11 @@ class BRepCheck_ListOfStatus {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: BRepCheck_Status
 ") First;
-		BRepCheck_Status & First ();
+		BRepCheck_Status  First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: BRepCheck_Status
 ") Last;
-		BRepCheck_Status & Last ();
+		BRepCheck_Status  Last ();
 		%feature("compactdefaultargs") RemoveFirst;
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;

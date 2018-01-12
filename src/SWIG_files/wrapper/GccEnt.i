@@ -206,13 +206,13 @@ class GccEnt_Array1OfPosition {
 	:type Index: int
 	:rtype: GccEnt_Position
 ") Value;
-		const GccEnt_Position & Value (const Standard_Integer Index);
+		const GccEnt_Position  Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: GccEnt_Position
 ") ChangeValue;
-		GccEnt_Position & ChangeValue (const Standard_Integer Index);
+		GccEnt_Position  ChangeValue (const Standard_Integer Index);
 };
 
 

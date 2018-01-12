@@ -151,7 +151,7 @@ class TopTrans_Array2OfOrientation {
 	:type Col: int
 	:rtype: TopAbs_Orientation
 ") Value;
-		const TopAbs_Orientation & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const TopAbs_Orientation  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Row:
 	:type Row: int
@@ -159,7 +159,7 @@ class TopTrans_Array2OfOrientation {
 	:type Col: int
 	:rtype: TopAbs_Orientation
 ") ChangeValue;
-		TopAbs_Orientation & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		TopAbs_Orientation  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
