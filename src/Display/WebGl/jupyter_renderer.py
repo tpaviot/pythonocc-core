@@ -23,6 +23,7 @@ import uuid
 import operator
 from functools import reduce
 
+# pythreejs
 try:
     from pythreejs import *
     # this renderer currently targets pythreejs version number 1.0.x
@@ -37,6 +38,14 @@ except ImportError:
 from OCC.Bnd import Bnd_Box
 from OCC.BRepBndLib import brepbndlib_Add
 from OCC.Visualization import Tesselator
+
+# smesh
+try:
+    from OCC.SMESH import SMESH_Mesh
+    HAVE_SMESH = True
+    print("SMESH wrapper not found, can't display SMESH meshes")
+except ImportError:
+    HAVE_SMESH = False
 
 # default values
 
@@ -201,6 +210,62 @@ class JupyterRenderer(object):
         """ Returns the selected shape
         """
         return self._current_shape_selection
+
+    def DisplayMesh(self,
+                    mesh):
+        """ Display a MEFISTO2 triangle mesh
+        """
+        assert isinstance(mesh, SMESH_Mesh)
+        mesh_ds = aMesh.GetMeshDS()  # the mesh data source
+        face_iter = mesh_ds.facesIterator()
+        # vertices positions are stored to a liste
+        vertices_position = []
+        for i in range(mesh_ds.NbFaces()-1):
+            face = face_iter.next()
+            print('Face %i, type %i' % (i, face.GetType()))
+            #print(dir(face))
+            # if face.GetType == 3 : triangle mesh, then 3 nodes
+            for j in range(3):
+                node = face.GetNode(i)
+                #print('Coordinates of node %i:(%f,%f,%f)'%(i, node.X(), node.Y(), node.Z()))
+                vertices_position.append(node.X())
+                vertices_position.append(node.Y())
+                vertices_position.append(node.Z())
+        # then we build the vertex and faces collections as numpy ndarrays
+        np_vertices = np.array(vertices_position, dtype='float32').reshape(int(number_of_vertices / 3), 3)
+        # Note: np_faces is just [0, 1, 2, 3, 4, 5, ...], thus arange is used
+        np_faces = np.arange(np_vertices.shape[0], dtype='uint32')
+
+        # set geometry properties
+        buffer_geometry_properties = {'position': BufferAttribute(np_vertices),
+                                      'index'   : BufferAttribute(np_faces)}
+        # build a BufferGeometry instance
+        mesh_geometry = BufferGeometry(attributes=buffer_geometry_properties)
+
+        #mesh_geometry.exec_three_obj_method('computeVertexNormals')
+
+        # then a default material
+        mesh_material = MeshPhongMaterial(color=shape_color,
+                                          polygonOffset=True,
+                                          polygonOffsetFactor=1,
+                                          polygonOffsetUnits=1,
+                                          shininess=0.9,
+                                          wireframe=True)
+
+        # create a mesh unique id
+        mesh_id = uuid.uuid4().hex
+
+        # finally create the mash
+        shape_mesh = Mesh(geometry=mesh_geometry,
+                          material=mesh_material,
+                          name=mesh_id)
+
+        # adds this mesh to the list of meshes
+        self._displayed_pickable_objects.add(shape_mesh)
+        self._shapes[mesh_id] = None
+
+        if update:
+            self.Display()
 
     def DisplayShape(self,
                      shp,  # the TopoDS_Shape to be displayed
