@@ -96,9 +96,9 @@ class Tesselator
                Standard_Real aRotationAngle);
       Tesselator(TopoDS_Shape aShape);
       ~Tesselator();
-      void Compute(bool uv_coords=true, bool compute_edges=false, float mesh_quality=1.0);
-      void Tesselate(bool compute_edges, float mesh_quality);
-      void TesselateWithUVCoords(bool compute_edges, float mesh_quality);
+      void Compute(bool uv_coords=true, bool compute_edges=false, float mesh_quality=1.0, bool parallel=false);
+      void Tesselate(bool compute_edges, float mesh_quality, bool parallel);
+      void TesselateWithUVCoords(bool compute_edges, float mesh_quality, bool parallel);
       void JoinPrimitives();
       void JoinPrimitivesWithUVCoords();
       void SetDeviation(Standard_Real aDeviation);
@@ -119,5 +119,7 @@ class Tesselator
       int ObjGetEdgeCount();
       int ObjEdgeGetVertexCount(int iEdge);
       void ObjGetTriangle(int trianglenum, int *vertices, int *texcoords, int *normals);
+      std::vector<float> GetVerticesPositionAsTuple();
+      std::vector<float> GetNormalsAsTuple();
 };
 #endif

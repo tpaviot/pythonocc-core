@@ -26,7 +26,10 @@
 
 %include ../SWIG_files/common/ExceptionCatcher.i
 %include "python/std_string.i"
+%include "std_vector.i"
 %include "typemaps.i"
+
+%template(vector_float) std::vector<float>;
 
 %typemap(out) float [ANY] {
   int i;
@@ -38,16 +41,17 @@
 }
 
 enum theTextureMappingRule {
-	atCube,
-	atNormal,
-	atNormalAutoScale
-	};
+  atCube,
+  atNormal,
+  atNormalAutoScale
+  };
 
 %apply int& OUTPUT {int& v1, int& v2, int& v3}
 %apply float& OUTPUT {float& x, float& y, float& z}
 
 class Tesselator {
  public:
+    %feature("autodoc", "1");
     Tesselator(TopoDS_Shape aShape,
                theTextureMappingRule aTxtMapType,
                float anAutoScaleSizeOnU,
@@ -60,37 +64,42 @@ class Tesselator {
                float aScaleU,
                float aScaleV,
                float aRotationAngle);
+    %feature("autodoc", "1");
     Tesselator(TopoDS_Shape aShape);
+    %feature("autodoc", "1");
+    ~Tesselator();
     %feature("kwargs") Compute;
-    void Compute(bool uv_coords=true, bool compute_edges=false, float mesh_quality=1.0);
+    void Compute(bool uv_coords=true, bool compute_edges=false, float mesh_quality=1.0, bool parallel=false);
     void GetVertex(int ivert, float& x, float& y, float& z);
     void GetNormal(int inorm, float& x, float& y, float& z);
     void GetTriangleIndex(int triangleIdx, int& v1, int& v2, int& v3);
     void GetEdgeVertex(int iEdge, int ivert, float& x, float& y, float& z);
-	float* VerticesList();
-	int ObjGetTriangleCount();
-	int ObjGetVertexCount();
-	int ObjGetNormalCount();
-	int ObjGetEdgeCount();
-	int ObjEdgeGetVertexCount(int iEdge);
+    float* VerticesList();
+    int ObjGetTriangleCount();
+    int ObjGetVertexCount();
+    int ObjGetNormalCount();
+    int ObjGetEdgeCount();
+    int ObjEdgeGetVertexCount(int iEdge);
     std::string ExportShapeToX3DIndexedFaceSet();
-	std::string ExportShapeToThreejsJSONString(char *shape_function_name, bool export_uv=false);
-	%feature("kwargs") ExportShapeToX3D;
-	void ExportShapeToX3D(char *filename, int diffR=1, int diffG=0, int diffB=0);
+    std::string ExportShapeToThreejsJSONString(char *shape_function_name, bool export_uv=false);
+    %feature("kwargs") ExportShapeToX3D;
+    void ExportShapeToX3D(char *filename, int diffR=1, int diffG=0, int diffB=0);
+    std::vector<float> GetVerticesPositionAsTuple();
+    std::vector<float> GetNormalsAsTuple();
 };
 
 class Display3d {
  public:
-	%feature("autodoc", "1");
-	Display3d();
-	%feature("autodoc", "1");
-	~Display3d();
-	%feature("autodoc", "1");
-	void Init(const long handle);
-	%feature("autodoc", "1");
-	void SetAnaglyphMode(int mode);
-	%feature("autodoc", "1");
-	void ChangeRenderingParams(int  Method,
+    %feature("autodoc", "1");
+    Display3d();
+    %feature("autodoc", "1");
+    ~Display3d();
+    %feature("autodoc", "1");
+    void Init(const long handle);
+    %feature("autodoc", "1");
+    void SetAnaglyphMode(int mode);
+    %feature("autodoc", "1");
+    void ChangeRenderingParams(int  Method,
                                int  RaytracingDepth,
                                bool IsShadowEnabled,
                                bool IsReflectionEnabled,
@@ -103,14 +112,14 @@ class Display3d {
     void SetVBBO();
     %feature("autodoc", "1");
     void UnsetVBBO();                               
-	%feature("autodoc", "1");
-	Handle_V3d_View& GetView();
-	%feature("autodoc", "1");
-	Handle_V3d_Viewer& GetViewer();
-	%feature("autodoc", "1");
-	Handle_AIS_InteractiveContext GetContext();
-	%feature("autodoc", "1");
-	void Test();
+    %feature("autodoc", "1");
+    Handle_V3d_View& GetView();
+    %feature("autodoc", "1");
+    Handle_V3d_Viewer& GetViewer();
+    %feature("autodoc", "1");
+    Handle_AIS_InteractiveContext GetContext();
+    %feature("autodoc", "1");
+    void Test();
 
     %feature("autodoc", "1");
     bool InitOffscreen(int size_x, int size_y);

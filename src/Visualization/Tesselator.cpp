@@ -98,13 +98,13 @@ Tesselator::Tesselator(TopoDS_Shape   aShape) :
     ComputeDefaultDeviation();
 }
 
-void Tesselator::Compute(bool uv_coords, bool compute_edges, float mesh_quality)
+void Tesselator::Compute(bool uv_coords, bool compute_edges, float mesh_quality, bool parallel)
 {
   if (uv_coords) {
-    TesselateWithUVCoords(compute_edges, mesh_quality);
+    TesselateWithUVCoords(compute_edges, mesh_quality, parallel);
   }
   else {
-    Tesselate(compute_edges, mesh_quality);
+    Tesselate(compute_edges, mesh_quality, parallel);
   }
 }
 
@@ -141,7 +141,7 @@ void Tesselator::SetDeviation(Standard_Real aDeviation)
 
 
 //---------------------------------------------------------------------------
-void Tesselator::Tesselate(bool compute_edges, float mesh_quality)
+void Tesselator::Tesselate(bool compute_edges, float mesh_quality, bool parallel)
 {
     TopExp_Explorer       ExpFace;
     StdPrs_ToolShadedShape   SST;
@@ -153,7 +153,7 @@ void Tesselator::Tesselate(bool compute_edges, float mesh_quality)
     gp_Pnt2d d_coord;
 
     //Triangulate
-    BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, false);
+    BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, parallel);
 
 
     for (ExpFace.Init(myShape, TopAbs_FACE); ExpFace.More(); ExpFace.Next()) {
@@ -226,7 +226,7 @@ void Tesselator::Tesselate(bool compute_edges, float mesh_quality)
 }
 
 //---------------------------------------------------------------------------
-void Tesselator::TesselateWithUVCoords(bool compute_edges, float mesh_quality)
+void Tesselator::TesselateWithUVCoords(bool compute_edges, float mesh_quality, bool parallel)
 {
   Standard_Real Umin;
   Standard_Real Umax;
@@ -246,7 +246,7 @@ void Tesselator::TesselateWithUVCoords(bool compute_edges, float mesh_quality)
   gp_Pnt2d d_coord;
   
   //Triangulate
-  BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, false);
+  BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, parallel);
 
   for (ExpFace.Init(myShape, TopAbs_FACE); ExpFace.More(); ExpFace.Next()) {
     const TopoDS_Face&    myFace    = TopoDS::Face(ExpFace.Current());
@@ -457,6 +457,62 @@ std::string formatFloatNumber(float f)
   // for lower quality, it can be down to 3 or 2
   // for better quality, up to 5 or 6
   return formatted_float.str();
+}
+
+std::vector<float> Tesselator::GetVerticesPositionAsTuple()
+{
+  // create the vector and allocate memory
+  std::vector<float> vertices_position;
+  vertices_position.reserve(tot_triangle_count);
+  // loop over tertices
+  int pID = 0;
+  int qID = 0;
+  int rID = 0;
+  for (int i=0;i<tot_triangle_count;i++) {
+      pID = loc_tri_indexes[(i * 3) + 0] * 3;
+      vertices_position.push_back(locVertexcoord[pID]);
+      vertices_position.push_back(locVertexcoord[pID+1]);
+      vertices_position.push_back(locVertexcoord[pID+2]);
+      // Second vertex
+      qID = loc_tri_indexes[(i * 3) + 1] * 3;
+      vertices_position.push_back(locVertexcoord[qID]);
+      vertices_position.push_back(locVertexcoord[qID+1]);
+      vertices_position.push_back(locVertexcoord[qID+2]);
+      // Third vertex
+      rID = loc_tri_indexes[(i * 3) + 2] * 3;
+      vertices_position.push_back(locVertexcoord[rID]);
+      vertices_position.push_back(locVertexcoord[rID+1]);
+      vertices_position.push_back(locVertexcoord[rID+2]);
+    }
+  return vertices_position;
+}
+
+std::vector<float> Tesselator::GetNormalsAsTuple()
+{
+  // create the vector and allocate memory
+  std::vector<float> normals;
+  normals.reserve(tot_triangle_count);
+  // loop over normals
+  int pID = 0;
+  int qID = 0;
+  int rID = 0;
+  for (int i=0;i<tot_triangle_count;i++) {
+      pID = loc_tri_indexes[(i * 3) + 0] * 3;
+      normals.push_back(locNormalcoord[pID]);
+      normals.push_back(locNormalcoord[pID+1]);
+      normals.push_back(locNormalcoord[pID+2]);
+      // Second normal
+      qID = loc_tri_indexes[(i * 3) + 1] * 3;
+      normals.push_back(locNormalcoord[qID]);
+      normals.push_back(locNormalcoord[qID+1]);
+      normals.push_back(locNormalcoord[qID+2]);
+      // Third normal
+      rID = loc_tri_indexes[(i * 3) + 2] * 3;
+      normals.push_back(locNormalcoord[rID]);
+      normals.push_back(locNormalcoord[rID+1]);
+      normals.push_back(locNormalcoord[rID+2]);
+    }
+  return normals;
 }
 
 std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
