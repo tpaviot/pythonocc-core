@@ -43,8 +43,8 @@ from OCC.Visualization import Tesselator
 try:
     from OCC.SMESH import SMESH_Mesh
     HAVE_SMESH = True
-    print("SMESH wrapper not found, can't display SMESH meshes")
 except ImportError:
+    print("SMESH wrapper not found, can't display SMESH meshes")
     HAVE_SMESH = False
 
 # default values
@@ -167,7 +167,7 @@ class JupyterRenderer(object):
                 obj.material = default_selection_material
                 # get the shape from this mesh id
                 selected_shape = self._shapes[id_clicked]
-                self.html.value = "mesh id: %s<br>shape id: %s" % (id_clicked, selected_shape)
+                self.html.value = "shape id: %s" % (selected_shape)
                 self._current_shape_selection = selected_shape
             else:
                 self.html.value = ""
@@ -215,22 +215,26 @@ class JupyterRenderer(object):
                     mesh):
         """ Display a MEFISTO2 triangle mesh
         """
+        if not HAVE_SMESH:
+            print("SMESH not installed, DisplayMesh method unavailable.")
+            return
         assert isinstance(mesh, SMESH_Mesh)
-        mesh_ds = aMesh.GetMeshDS()  # the mesh data source
+        mesh_ds = mesh.GetMeshDS()  # the mesh data source
         face_iter = mesh_ds.facesIterator()
         # vertices positions are stored to a liste
         vertices_position = []
         for i in range(mesh_ds.NbFaces()-1):
             face = face_iter.next()
-            print('Face %i, type %i' % (i, face.GetType()))
+            #print('Face %i, type %i' % (i, face.GetType()))
             #print(dir(face))
             # if face.GetType == 3 : triangle mesh, then 3 nodes
             for j in range(3):
-                node = face.GetNode(i)
+                node = face.GetNode(j)
                 #print('Coordinates of node %i:(%f,%f,%f)'%(i, node.X(), node.Y(), node.Z()))
                 vertices_position.append(node.X())
                 vertices_position.append(node.Y())
                 vertices_position.append(node.Z())
+        number_of_vertices = len(vertices_position)
         # then we build the vertex and faces collections as numpy ndarrays
         np_vertices = np.array(vertices_position, dtype='float32').reshape(int(number_of_vertices / 3), 3)
         # Note: np_faces is just [0, 1, 2, 3, 4, 5, ...], thus arange is used
@@ -245,7 +249,7 @@ class JupyterRenderer(object):
         #mesh_geometry.exec_three_obj_method('computeVertexNormals')
 
         # then a default material
-        mesh_material = MeshPhongMaterial(color=shape_color,
+        mesh_material = MeshPhongMaterial(color='gray',
                                           polygonOffset=True,
                                           polygonOffsetFactor=1,
                                           polygonOffsetUnits=1,
@@ -260,12 +264,29 @@ class JupyterRenderer(object):
                           material=mesh_material,
                           name=mesh_id)
 
-        # adds this mesh to the list of meshes
-        self._displayed_pickable_objects.add(shape_mesh)
-        self._shapes[mesh_id] = None
+        # a special display for the mesh
+        camera_target = [0., 0., 0.]  # the point to look at
+        camera_position = [0, 0., 100.]  # the camera initial position
+        camera = PerspectiveCamera(position=camera_position,
+                                   lookAt=camera_target,
+                                   up=[0, 0, 1],
+                                   fov=50,
+                                   children=[DirectionalLight(color='#ffffff',
+                                                              position=[50, 50, 50],
+                                                              intensity=0.5)])
+        scene_shp = Scene(children=[shape_mesh, camera, AmbientLight(color='#101010')])
 
-        if update:
-            self.Display()
+        renderer = Renderer(camera=camera,
+                            background=self._background,
+                            background_opacity=self._background_opacity,
+                            scene=scene_shp,
+                            controls=[OrbitControls(controlling=camera, target=camera_target)],
+                            width=self._size[0],
+                            height=self._size[1],
+                            antialias=True)
+
+        display(renderer)
+
 
     def DisplayShape(self,
                      shp,  # the TopoDS_Shape to be displayed
@@ -361,7 +382,7 @@ class JupyterRenderer(object):
                 'position': BufferAttribute(np_edge_vertices),
                 'index'   : BufferAttribute(np_edge_indices)
             })
-            edge_material = LineBasicMaterial(color=edge_color, linewidth=2)
+            edge_material = LineBasicMaterial(color=edge_color, linewidth=1)
             edge_lines = LineSegments(geometry=edge_geometry, material=edge_material)
             self._displayed_pickable_objects.add(edge_lines)
 
