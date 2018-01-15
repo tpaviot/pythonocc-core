@@ -26,8 +26,6 @@ from functools import reduce
 # pythreejs
 try:
     from pythreejs import *
-    # this renderer currently targets pythreejs version number 1.0.x
-    assert version_info[0] == 1 and version_info[1] == 0
     from IPython.display import display
     from ipywidgets import HTML
     import numpy as np
