@@ -77,13 +77,6 @@ class TestWebGL(unittest.TestCase):
         my_x3dom_renderer.DisplayShape(torus_shp, mesh_quality=1.0)
         my_x3dom_renderer.DisplayShape(torus_shp, mesh_quality=0.8)
         my_x3dom_renderer.DisplayShape(torus_shp, mesh_quality=2.0)
-    
-    def test_jupyter_render_torus(self):
-        """ Render a simple torus using x3dom
-        """
-        torus_shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
-        my_jupyter_renderer = jupyter_renderer.JupyterRenderer()
-        my_jupyter_renderer.DisplayShape(torus_shp)
 
 def suite():
     suite = unittest.TestSuite()
