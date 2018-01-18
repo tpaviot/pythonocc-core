@@ -51,13 +51,13 @@ def format_color(r, g, b):
     return '#%02x%02x%02x' % (r, g, b)
 
 default_shape_color = format_color(166, 166, 166)
+default_mesh_color = 'white'
 default_edge_color = format_color(0, 0, 0)
-default_selection_material = MeshPhongMaterial(color='gray',
+default_selection_material = MeshPhongMaterial(color='orange',
                                                polygonOffset=True,
                                                polygonOffsetFactor=1,
                                                polygonOffsetUnits=1,
-                                               shininess=0.9,
-                                               wireframe=True)
+                                               shininess=0.9)
 
 class bounding_box(object):
     """ Representation of the bounding box of the TopoDS_Shape `shape`
@@ -146,7 +146,7 @@ class JupyterRenderer(object):
         self._displayed_pickable_objects = Group()
 
         # event manager/selection manager
-        self._picker = Picker(controlling=self._displayed_pickable_objects, event='click')
+        self._picker = Picker(controlling=self._displayed_pickable_objects, event='mousedown')
         self._current_shape_selection = None
         self._current_mesh_selection = None
         self._current_selection_material = None  # the color of the object currently being rendered
@@ -201,7 +201,7 @@ class JupyterRenderer(object):
                                          lookAt=self._camera_target,
                                          up=[0, 0, 1],
                                          fov=50,
-                                         children=[DirectionalLight(color='#ffffff', position=[50, 50, 50], intensity=0.5)])
+                                         children=[DirectionalLight(color='#ffffff', position=[50, 50, 50], intensity=0.9)])
 
 
     def GetSelectedShape(self):
@@ -210,7 +210,8 @@ class JupyterRenderer(object):
         return self._current_shape_selection
 
     def DisplayMesh(self,
-                    mesh):
+                    mesh,
+                    color=default_mesh_color):
         """ Display a MEFISTO2 triangle mesh
         """
         if not HAVE_SMESH:
@@ -237,23 +238,27 @@ class JupyterRenderer(object):
         np_vertices = np.array(vertices_position, dtype='float32').reshape(int(number_of_vertices / 3), 3)
         # Note: np_faces is just [0, 1, 2, 3, 4, 5, ...], thus arange is used
         np_faces = np.arange(np_vertices.shape[0], dtype='uint32')
-
         # set geometry properties
         buffer_geometry_properties = {'position': BufferAttribute(np_vertices),
                                       'index'   : BufferAttribute(np_faces)}
         # build a BufferGeometry instance
         mesh_geometry = BufferGeometry(attributes=buffer_geometry_properties)
 
-        #mesh_geometry.exec_three_obj_method('computeVertexNormals')
+        mesh_geometry.exec_three_obj_method('computeVertexNormals')
 
         # then a default material
-        mesh_material = MeshPhongMaterial(color='gray',
+        mesh_material = MeshPhongMaterial(color=color,
                                           polygonOffset=True,
                                           polygonOffsetFactor=1,
                                           polygonOffsetUnits=1,
-                                          shininess=0.9,
+                                          shininess=0.5,
+                                          wireframe=False)
+        edges_material = MeshPhongMaterial(color='black',
+                                          polygonOffset=True,
+                                          polygonOffsetFactor=1,
+                                          polygonOffsetUnits=1,
+                                          shininess=0.5,
                                           wireframe=True)
-
         # create a mesh unique id
         mesh_id = uuid.uuid4().hex
 
@@ -261,6 +266,10 @@ class JupyterRenderer(object):
         shape_mesh = Mesh(geometry=mesh_geometry,
                           material=mesh_material,
                           name=mesh_id)
+        edges_mesh = Mesh(geometry=mesh_geometry,
+                          material=edges_material,
+                          name=mesh_id)
+
 
         # a special display for the mesh
         camera_target = [0., 0., 0.]  # the point to look at
@@ -271,8 +280,8 @@ class JupyterRenderer(object):
                                    fov=50,
                                    children=[DirectionalLight(color='#ffffff',
                                                               position=[50, 50, 50],
-                                                              intensity=0.5)])
-        scene_shp = Scene(children=[shape_mesh, camera, AmbientLight(color='#101010')])
+                                                              intensity=0.9)])
+        scene_shp = Scene(children=[shape_mesh, edges_mesh, camera, AmbientLight(color='#101010')])
 
         renderer = Renderer(camera=camera,
                             background=self._background,
