@@ -1,4 +1,4 @@
-##Copyright 2017 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 20117-2018 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -27,7 +27,7 @@ from functools import reduce
 try:
     from pythreejs import *
     from IPython.display import display
-    from ipywidgets import HTML
+    from ipywidgets import HTML, HBox
     import numpy as np
 except ImportError:
     print("Error You must install pythreejs/ipywidegets/numpy to run the jupyter notebook renderer")
@@ -36,6 +36,7 @@ except ImportError:
 from OCC.Bnd import Bnd_Box
 from OCC.BRepBndLib import brepbndlib_Add
 from OCC.Visualization import Tesselator
+from OCC.TopologyUtils import TopologyExplorer, WireExplorer, dump_topology_to_string, shape_type_string
 
 # smesh
 try:
@@ -129,7 +130,7 @@ class JupyterRenderer(object):
         self._compute_normals_mode = compute_normals_mode
         self._parallel = parallel
 
-        self.html = HTML("")
+        self.html = HTML("Selected shape : None")
         # the default camera object
         self._camera = None
         self._camera_target = [0., 0., 0.]  # the point to look at
@@ -145,12 +146,17 @@ class JupyterRenderer(object):
         # the group of 3d and 2d objects to render
         self._displayed_pickable_objects = Group()
 
+        # the group of other objects (grid, trihedron etc.) that can't e selected
+        self._displayed_non_pickable_objects = Group()
+
         # event manager/selection manager
         self._picker = Picker(controlling=self._displayed_pickable_objects, event='mousedown')
+
         self._current_shape_selection = None
         self._current_mesh_selection = None
         self._current_selection_material = None  # the color of the object currently being rendered
         self._select_callbacks = []  # a list of all functions called after an object is selected
+
 
         def click(value):
             """ called whenever a shape  or edge is clicked
@@ -165,15 +171,22 @@ class JupyterRenderer(object):
                 obj.material = default_selection_material
                 # get the shape from this mesh id
                 selected_shape = self._shapes[id_clicked]
-                self.html.value = "shape id: %s" % (selected_shape)
+                self.html.value = "<b>Shape id:</b> %s<br><b>Topology hierearchy</b>" % (selected_shape)
                 self._current_shape_selection = selected_shape
             else:
-                self.html.value = ""
+                self.html.value = "<b>Shape id:</b> None"
             # then execute calbacks
             for callback in self._select_callbacks:
                 callback(self._current_shape_selection)
 
-        self._picker.observe(click, names=['point'])
+        self._picker.observe(click)
+
+        # key press and related events
+        def key_pressed(widget):
+            print("popo")
+        #self._picker2 = Picker(event='keypress')
+        #self._picker.observe(key_pressed)
+
 
     def register_select_callback(self, callback):
         """ Adds a callback that will be called each time a shape s selected
@@ -196,10 +209,11 @@ class JupyterRenderer(object):
         if all_shapes:
             bb = reduce(operator.add, map(bounding_box, all_shapes))
             self._camera_target = [bb.x_center, bb.y_center, bb.z_center]
-            self._camera_position = [0, bb.y_center - 3 * bb.y_size, bb.z_center + 3 * bb.z_center]
+            self._camera_position = [0, bb.y_center - 2 * bb.y_size, bb.z_center + 2 * bb.z_center]
         self._camera = PerspectiveCamera(position=self._camera_position,
                                          lookAt=self._camera_target,
                                          up=[0, 0, 1],
+                                         aspect=self._size[0] / self._size[1],
                                          fov=50,
                                          children=[DirectionalLight(color='#ffffff', position=[50, 50, 50], intensity=0.9)])
 
@@ -208,6 +222,27 @@ class JupyterRenderer(object):
         """ Returns the selected shape
         """
         return self._current_shape_selection
+
+
+    def DisplayGrid(self, sizex, sizey, nx, ny):
+        """ Displays a grid in the renderer.
+        sizex: float, grid size along x axis
+        sizey: float, grid size along y axis
+        nx: integer, number of segments along the x axis
+        ny: integer, number of segments along the y axis
+        """
+        surf_geo = SurfaceGeometry(z=[0] * (nx + 1) * (ny + 1),
+                                   width=sizex,
+                                   height=sizey,
+                                   width_segments=nx,
+                                   height_segments=ny)
+        surf_grid = SurfaceGrid(geometry=surf_geo,
+                                material=LineBasicMaterial(color='#000000',
+                                                           opacity=0.2,
+                                                           transparent=True))
+        self._displayed_non_pickable_objects.add(surf_grid)
+        return surf_geo
+
 
     def DisplayMesh(self,
                     mesh,
@@ -254,11 +289,11 @@ class JupyterRenderer(object):
                                           shininess=0.5,
                                           wireframe=False)
         edges_material = MeshPhongMaterial(color='black',
-                                          polygonOffset=True,
-                                          polygonOffsetFactor=1,
-                                          polygonOffsetUnits=1,
-                                          shininess=0.5,
-                                          wireframe=True)
+                                           polygonOffset=True,
+                                           polygonOffsetFactor=1,
+                                           polygonOffsetUnits=1,
+                                           shininess=0.5,
+                                           wireframe=True)
         # create a mesh unique id
         mesh_id = uuid.uuid4().hex
 
@@ -302,6 +337,9 @@ class JupyterRenderer(object):
                      edge_color=default_edge_color,
                      compute_uv_coords=False,
                      quality=1.0,
+                     transparency=False,
+                     opacity=1.,
+                     topo_level='default',
                      update=False):
         """ Displays a topods_shape in the renderer instance.
         shp: the TopoDS_Shape to render
@@ -315,8 +353,36 @@ class JupyterRenderer(object):
         quality: optional, 1.0 by default. If set to something lower than 1.0,
                       mesh will be more precise. If set to something higher than 1.0,
                       mesh will be less precise, i.e. lower numer of triangles.
+        transparency: optional, False by default (opaque).
+        opacity: optioanl, float, by default to 1 (opaque). if transparency is set to True,
+                 0. is fully opque, 1. is fully transparent.
+        detail_level: "default" by default. The value should be either "compound", "shape", "vertex".
         update: optional, False by default. If True, render all the shapes.
         """
+        if topo_level != "default":
+            t = TopologyExplorer(shp)
+            map_type_and_methods = {"Solid": t.solids, "Face": t.faces, "Shell": t.shells,
+                                    "Compound": t.compounds, "Compsolid": t.comp_solids}
+            for subshape in map_type_and_methods[topo_level]():
+                self.AddShapeToScene(subshape, shape_color, render_edges, edge_color, compute_uv_coords, quality,
+                                     transparency, opacity)
+        else:
+            self.AddShapeToScene(shp, shape_color, render_edges, edge_color, compute_uv_coords, quality,
+                                 transparency, opacity)
+
+        if update:
+            self.Display()
+
+
+    def AddShapeToScene(self,
+                        shp,  # the TopoDS_Shape to be displayed
+                        shape_color=default_shape_color,  # the default
+                        render_edges=False,
+                        edge_color=default_edge_color,
+                        compute_uv_coords=False,
+                        quality=1.0,
+                        transparency=False,
+                        opacity=1.):
         # first, compute the tesselation
         tess = Tesselator(shp)
         tess.Compute(uv_coords=compute_uv_coords,
@@ -362,7 +428,8 @@ class JupyterRenderer(object):
                                          polygonOffset=True,
                                          polygonOffsetFactor=1,
                                          polygonOffsetUnits=1,
-                                         shininess=0.9)
+                                         shininess=0.9,
+                                         transparent=transparency)
 
         # create a mesh unique id
         mesh_id = uuid.uuid4().hex
@@ -372,8 +439,6 @@ class JupyterRenderer(object):
                           material=shp_material,
                           name=mesh_id)
 
-        # adds this mesh to the list of meshes
-        self._displayed_pickable_objects.add(shape_mesh)
 
         # and to the dict of shapes, to have a mapping between meshes and shapes
         self._shapes[mesh_id] = shp
@@ -391,10 +456,12 @@ class JupyterRenderer(object):
             })
             edge_material = LineBasicMaterial(color=edge_color, linewidth=1)
             edge_lines = LineSegments(geometry=edge_geometry, material=edge_material)
-            self._displayed_pickable_objects.add(edge_lines)
 
-        if update:
-            self.Display()
+        # Add geometries to pickable or non pickable objects
+        self._displayed_pickable_objects.add(shape_mesh)
+        if render_edges:
+            self._displayed_non_pickable_objects.add(edge_lines)
+
 
     def EraseAll(self):
         self._shapes = {}
@@ -404,9 +471,13 @@ class JupyterRenderer(object):
         self._current_selection_material = None
         self._renderer.scene = Scene(children=[])
 
+
     def Display(self):
         self._update_camera()
-        scene_shp = Scene(children=[self._displayed_pickable_objects, self._camera, AmbientLight(color='#101010')])
+        scene_shp = Scene(children=[self._displayed_pickable_objects,
+                                    self._displayed_non_pickable_objects,
+                                    self._camera,
+                                    AmbientLight(color='#101010')])
 
         self._renderer = Renderer(camera=self._camera,
                                   background=self._background,
@@ -416,16 +487,10 @@ class JupyterRenderer(object):
                                   width=self._size[0],
                                   height=self._size[1],
                                   antialias=True)
-        display(self.html)
-        display(self._renderer)
+        # then display both 3d widgets and webui
+        display(HBox([self._renderer, self.html]))
+
 
     def __repr__(self):
         self.Display()
         return ""
-
-
-if __name__ == "__main__":
-    from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
-    my_ren = JupyterRenderer()
-    box_s = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-    my_ren.DisplayShape(box_s)
