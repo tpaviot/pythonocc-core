@@ -32,7 +32,7 @@ Code
   from OCC.Display.SimpleGui import init_display
   from OCC.gp import gp_Pnt, gp_Ax2, gp_Circ
   
-  from core_geometry_utils import make_edge, make_vertex
+  from OCC.ShapeFactory import make_edge, make_vertex
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

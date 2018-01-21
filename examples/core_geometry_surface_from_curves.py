@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2015 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2015 Jelle Feringa (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -29,7 +29,7 @@ from OCC.Geom import Handle_Geom_BSplineCurve_DownCast
 
 from OCC.Display.SimpleGui import init_display
 
-from core_geometry_utils import point_list_to_TColgp_Array1OfPnt, make_face
+from OCC.ShapeFactory import point_list_to_TColgp_Array1OfPnt, make_face
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 

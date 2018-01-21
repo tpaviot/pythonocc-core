@@ -8,7 +8,7 @@ from OCC.TopLoc import TopLoc_Location
 from OCC.TopoDS import topods_Face
 from OCC.gp import gp_Pnt, gp_Trsf, gp_Vec
 
-from core_geometry_utils import center_boundingbox
+from OCC.ShapeFactory import center_boundingbox
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 

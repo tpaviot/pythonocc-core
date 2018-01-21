@@ -42,7 +42,7 @@ Code
   from OCC.TColgp import TColgp_Array1OfPnt2d
   from OCC.Display.SimpleGui import init_display
       
-  from core_geometry_utils import make_wire, make_edge
+  from OCC.ShapeFactory import make_wire, make_edge
   
   
   class UiucAirfoil(object):

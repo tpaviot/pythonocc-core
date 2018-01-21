@@ -1,4 +1,4 @@
-##Copyright 2009-2016 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2016 Jelle Feringa (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -28,12 +28,16 @@ from OCC.Display.SimpleGui import init_display
 from OCC.GeomAbs import GeomAbs_C0
 from OCC.GeomLProp import GeomLProp_SLProps
 from OCC.GeomLProp import GeomLProp_SurfaceTool
-from OCC.GeomPlate import GeomPlate_BuildPlateSurface, GeomPlate_PointConstraint, GeomPlate_MakeApprox
+from OCC.GeomPlate import (GeomPlate_BuildPlateSurface, GeomPlate_PointConstraint,
+	                       GeomPlate_MakeApprox)
 from OCC.ShapeAnalysis import ShapeAnalysis_Surface
 from OCC.gp import gp_Pnt
+from OCC.BRepFill import BRepFill_Filling
+from OCC.IGESControl import IGESControl_Reader
+from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
 
-from core_geometry_utils import make_face, make_vertex
-from core_topology_traverse import WireExplorer, Topo
+from OCC.TopologyUtils import TopologyExplorer, WireExplorer
+from OCC.ShapeFactory import make_face, make_vertex
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 
@@ -74,7 +78,6 @@ def make_n_sided(edges, points, continuity=GeomAbs_C0):
     :param continuity: GeomAbs_0, 1, 2
     :return: TopoDS_Face
     """
-    from OCC.BRepFill import BRepFill_Filling
     n_sided = BRepFill_Filling()
     for edg in edges:
         n_sided.Add(edg, continuity)
@@ -100,8 +103,6 @@ def make_closed_polygon(*args):
 
 
 def iges_importer(path_):
-    from OCC.IGESControl import IGESControl_Reader
-    from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
     iges_reader = IGESControl_Reader()
     status = iges_reader.ReadFile(path_)
 
@@ -124,7 +125,7 @@ def geom_plate(event=None):
     p4 = gp_Pnt(0, 0, 10)
     p5 = gp_Pnt(5, 5, 5)
     poly = make_closed_polygon([p1, p2, p3, p4])
-    edges = [i for i in Topo(poly).edges()]
+    edges = [i for i in TopologyExplorer(poly).edges()]
     face = make_n_sided(edges, [p5])
     display.DisplayShape(edges)
     display.DisplayShape(make_vertex(p5))
@@ -299,7 +300,7 @@ def build_curve_network(event=None):
     print('done.')
 
     print('Building geomplate...')
-    topo = Topo(iges)
+    topo = TopologyExplorer(iges)
     edges_list = list(topo.edges())
     face = build_geom_plate(edges_list)
     print('done.')

@@ -25,7 +25,7 @@ from OCC.Quantity import Quantity_NOC_WHITE, Quantity_NOC_CORAL2, Quantity_NOC_B
 from OCC.BRepAlgoAPI import BRepAlgoAPI_Cut
 from OCC.gp import gp_Vec
 
-from core_geometry_utils import translate_shp
+from OCC.ShapeFactory import translate_shp
 
 # first create geometry
 from core_classic_occ_bottle import bottle

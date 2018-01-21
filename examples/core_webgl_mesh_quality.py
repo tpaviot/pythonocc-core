@@ -25,7 +25,7 @@ from OCC.Display.WebGl import threejs_renderer
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeTorus
 from OCC.gp import gp_Vec
 
-from core_geometry_utils import translate_shp
+from OCC.ShapeFactory import translate_shp
 
 my_ren = threejs_renderer.ThreejsRenderer()
 

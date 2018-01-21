@@ -40,7 +40,7 @@ Code
   from OCC.ShapeAnalysis import ShapeAnalysis_Surface
   from OCC.gp import gp_Pnt
   
-  from core_geometry_utils import make_face, make_vertex
+  from OCC.ShapeFactory import make_face, make_vertex
   from core_topology_traverse import WireExplorer, Topo
   
   display, start_display, add_menu, add_function_to_menu = init_display()
@@ -132,7 +132,7 @@ Code
       p4 = gp_Pnt(0, 0, 10)
       p5 = gp_Pnt(5, 5, 5)
       poly = make_closed_polygon([p1, p2, p3, p4])
-      edges = [i for i in Topo(poly).edges()]
+      edges = [i for i in TopologyExplorer(poly).edges()]
       face = make_n_sided(edges, [p5])
       display.DisplayShape(edges)
       display.DisplayShape(make_vertex(p5))
@@ -307,7 +307,7 @@ Code
       print('done.')
   
       print('Building geomplate...')
-      topo = Topo(iges)
+      topo = TopologyExplorer(iges)
       edges_list = list(topo.edges())
       face = build_geom_plate(edges_list)
       print('done.')

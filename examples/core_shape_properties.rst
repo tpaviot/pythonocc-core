@@ -29,7 +29,7 @@ Code
   from OCC.GProp import GProp_GProps
   from OCC.BRepGProp import brepgprop_VolumeProperties, brepgprop_SurfaceProperties
   
-  from core_topology_traverse import Topo
+  from OCC.TopologyUtils import TopologyExplorer
   
   def cube_inertia_properties():
       """ Compute the inertia properties of a shape
@@ -56,7 +56,7 @@ Code
       # first create the shape
       the_shape = BRepPrimAPI_MakeBox(50., 30., 10.).Shape()
       # then loop over faces
-      t = Topo(the_shape)
+      t = TopologyExplorer(the_shape)
       props = GProp_GProps()
       shp_idx = 1
       for face in t.faces():

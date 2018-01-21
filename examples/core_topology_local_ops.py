@@ -1,4 +1,4 @@
-##Copyright 2009-2016 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2009-2018 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -19,10 +19,10 @@ from math import pi
 
 from OCC.BRep import BRep_Tool_Surface
 from OCC.BRepAlgoAPI import BRepAlgoAPI_Section, BRepAlgoAPI_Fuse
-from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeWire, BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeFace, \
-    BRepBuilderAPI_GTransform
-from OCC.BRepFeat import BRepFeat_MakePrism, BRepFeat_MakeDPrism, BRepFeat_SplitShape, \
-    BRepFeat_MakeLinearForm, BRepFeat_MakeRevol
+from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeWire, BRepBuilderAPI_MakeEdge,
+	                            BRepBuilderAPI_MakeFace, BRepBuilderAPI_GTransform)
+from OCC.BRepFeat import (BRepFeat_MakePrism, BRepFeat_MakeDPrism, BRepFeat_SplitShape,
+                          BRepFeat_MakeLinearForm, BRepFeat_MakeRevol)
 from OCC.BRepLib import breplib_BuildCurves3d
 from OCC.BRepOffset import BRepOffset_Skin
 from OCC.BRepOffsetAPI import BRepOffsetAPI_MakeThickSolid, BRepOffsetAPI_MakeOffsetShape
@@ -34,9 +34,10 @@ from OCC.Geom2d import Geom2d_Circle
 from OCC.GeomAbs import GeomAbs_Arc
 from OCC.TopTools import TopTools_ListOfShape
 from OCC.TopoDS import TopoDS_Face
-from OCC.gp import gp_Pnt2d, gp_Circ2d, gp_Ax2d, gp_Dir2d, gp_Pnt, gp_Pln, gp_Vec, gp_OX, gp_Trsf, gp_GTrsf
+from OCC.gp import (gp_Pnt2d, gp_Circ2d, gp_Ax2d, gp_Dir2d, gp_Pnt, gp_Pln,
+	                gp_Vec, gp_OX, gp_Trsf, gp_GTrsf)
 
-from core_topology_traverse import Topo
+from OCC.TopologyUtils import TopologyExplorer
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 
@@ -47,7 +48,7 @@ def extrusion(event=None):
     S = Box.Shape()
 
     # Choose the first Face of the box
-    F = next(Topo(S).faces())
+    F = next(TopologyExplorer(S).faces())
     surf = BRep_Tool_Surface(F)
 
     #  Make a plane from this face
@@ -103,7 +104,7 @@ def extrusion(event=None):
 
 def brepfeat_prism(event=None):
     box = BRepPrimAPI_MakeBox(400, 250, 300).Shape()
-    faces = Topo(box).faces()
+    faces = TopologyExplorer(box).faces()
 
     for i in range(5):
         face = next(faces)
@@ -145,7 +146,7 @@ def brepfeat_prism(event=None):
 def thick_solid(event=None):
     S = BRepPrimAPI_MakeBox(150, 200, 110).Shape()
 
-    topo = Topo(S)
+    topo = TopologyExplorer(S)
     vert = next(topo.vertices())
 
     shapes = TopTools_ListOfShape()
@@ -177,7 +178,7 @@ def split_shape(event=None):
 
     asplit = BRepFeat_SplitShape(S)
 
-    for edg in Topo(R).edges():
+    for edg in TopologyExplorer(R).edges():
         face = TopoDS_Face()
         if asect.HasAncestorFaceOn1(edg, face):
             asplit.Add(edg, face)
@@ -219,7 +220,7 @@ def brep_feat_rib(event=None):
 
 def brep_feat_local_revolution(event=None):
     S = BRepPrimAPI_MakeBox(400., 250., 300.).Shape()
-    faces = list(Topo(S).faces())
+    faces = list(TopologyExplorer(S).faces())
     F1 = faces[2]
     surf = BRep_Tool_Surface(F1)
 
@@ -257,7 +258,7 @@ def brep_feat_local_revolution(event=None):
 def brep_feat_extrusion_protrusion(event=None):
     # Extrusion
     S = BRepPrimAPI_MakeBox(400., 250., 300.).Shape()
-    faces = Topo(S).faces()
+    faces = TopologyExplorer(S).faces()
     F = next(faces)
     surf1 = BRep_Tool_Surface(F)
 

@@ -44,7 +44,7 @@ Code
   from OCC.TopoDS import TopoDS_Face
   from OCC.gp import gp_Pnt2d, gp_Circ2d, gp_Ax2d, gp_Dir2d, gp_Pnt, gp_Pln, gp_Vec, gp_OX, gp_Trsf, gp_GTrsf
   
-  from core_topology_traverse import Topo
+  from OCC.TopologyUtils import TopologyExplorer
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   
@@ -55,7 +55,7 @@ Code
       S = Box.Shape()
   
       # Choose the first Face of the box
-      F = next(Topo(S).faces())
+      F = next(TopologyExplorer(S).faces())
       surf = BRep_Tool_Surface(F)
   
       #  Make a plane from this face
@@ -111,7 +111,7 @@ Code
   
   def brepfeat_prism(event=None):
       box = BRepPrimAPI_MakeBox(400, 250, 300).Shape()
-      faces = Topo(box).faces()
+      faces = TopologyExplorer(box).faces()
   
       for i in range(5):
           face = next(faces)
@@ -153,7 +153,7 @@ Code
   def thick_solid(event=None):
       S = BRepPrimAPI_MakeBox(150, 200, 110).Shape()
   
-      topo = Topo(S)
+      topo = TopologyExplorer(S)
       vert = next(topo.vertices())
   
       shapes = TopTools_ListOfShape()
@@ -185,7 +185,7 @@ Code
   
       asplit = BRepFeat_SplitShape(S)
   
-      for edg in Topo(R).edges():
+      for edg in TopologyExplorer(R).edges():
           face = TopoDS_Face()
           if asect.HasAncestorFaceOn1(edg, face):
               asplit.Add(edg, face)
@@ -227,7 +227,7 @@ Code
   
   def brep_feat_local_revolution(event=None):
       S = BRepPrimAPI_MakeBox(400., 250., 300.).Shape()
-      faces = list(Topo(S).faces())
+      faces = list(TopologyExplorer(S).faces())
       F1 = faces[2]
       surf = BRep_Tool_Surface(F1)
   
@@ -265,7 +265,7 @@ Code
   def brep_feat_extrusion_protrusion(event=None):
       # Extrusion
       S = BRepPrimAPI_MakeBox(400., 250., 300.).Shape()
-      faces = Topo(S).faces()
+      faces = TopologyExplorer(S).faces()
       F = next(faces)
       surf1 = BRep_Tool_Surface(F)
   

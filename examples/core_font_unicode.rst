@@ -31,7 +31,7 @@ Code
   from OCC.Display.SimpleGui import init_display
   from OCC.Addons import text_to_brep, Font_FA_Regular
   
-  from core_geometry_utils import translate_shp, make_extrusion
+  from OCC.ShapeFactory import translate_shp, make_extrusion
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

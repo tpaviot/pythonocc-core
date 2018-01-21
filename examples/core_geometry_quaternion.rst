@@ -29,7 +29,7 @@ Code
   
   from OCC.Display.SimpleGui import init_display
   from OCC.gp import gp_QuaternionSLerp, gp_Quaternion, gp_Vec, gp_Pnt
-  from core_geometry_utils import make_edge
+  from OCC.ShapeFactory import make_edge
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

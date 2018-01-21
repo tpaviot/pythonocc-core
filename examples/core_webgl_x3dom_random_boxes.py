@@ -23,7 +23,7 @@ from OCC.Display.WebGl import x3dom_renderer
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.gp import gp_Vec
 
-from core_geometry_utils import translate_shp, rotate_shp_3_axis
+from OCC.ShapeFactory import translate_shp, rotate_shp_3_axis
 
 my_ren = x3dom_renderer.X3DomRenderer()
 
