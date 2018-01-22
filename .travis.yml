@@ -83,6 +83,9 @@ before_install:
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
+  # install everything required to build the receipe
+  - conda install conda-build
+  - conda install anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
   # download/install OCE from DLR-SC channel
@@ -91,8 +94,7 @@ before_install:
   - conda config --add channels https://conda.anaconda.org/tpaviot
   - conda config --add channels https://conda.anaconda.org/oce
   - conda config --add channels https://conda.anaconda.org/pythonocc
-  # install everything required to build the receipe
-  - conda install conda-build=3.0.28 anaconda-client
+  
 
 
 script:
