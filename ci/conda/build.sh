@@ -38,9 +38,9 @@ fi
 ninja install
 
 # copy the source
-mkdir -p $PREFIX/src
-mkdir -p $PREFIX/src/pythonocc-core
-cp -r src $PREFIX/src/pythonocc-core
+#mkdir -p $PREFIX/src
+#mkdir -p $PREFIX/src/pythonocc-core
+#cp -r src $PREFIX/src/pythonocc-core
 
 # fix rpaths
 if [ `uname` == Darwin ]; then

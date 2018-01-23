@@ -26,7 +26,7 @@ set(PYTHONOCC_VERSION_DEVEL -dev)
 
 cmake_minimum_required(VERSION 2.6)
 
-set(CMAKE_BUILD_TYPE "MinSizeRel" CACHE STRING "Build type")
+set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build type")
 message(STATUS " ${CMAKE_CXX_FLAGS}") 
 set(BUILD_SHARED_LIBS ON)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
