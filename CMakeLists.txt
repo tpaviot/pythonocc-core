@@ -26,7 +26,11 @@ set(PYTHONOCC_VERSION_DEVEL -dev)
 
 cmake_minimum_required(VERSION 2.6)
 
-set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build type")
+if( NOT DEFINED PYTHONOCC_BUILD_TYPE )
+  set( PYTHONOCC_BUILD_TYPE "Release" CACHE STRING "Build type" ) # By default set release build
+endif( NOT DEFINED PYTHONOCC_BUILD_TYPE )
+set( CMAKE_BUILD_TYPE ${PYTHONOCC_BUILD_TYPE} CACHE INTERNAL "Build type, immutable" FORCE )
+
 message(STATUS " ${CMAKE_CXX_FLAGS}") 
 set(BUILD_SHARED_LIBS ON)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
@@ -44,9 +48,9 @@ endif(APPLE)
 #############################
 macro( option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT )
 if( NOT DEFINED ${OPTION_NAME} )
-	set( ${OPTION_NAME} ${OPTION_DEFAULT} )
+  set( ${OPTION_NAME} ${OPTION_DEFAULT} )
 endif( NOT DEFINED ${OPTION_NAME} )
-	OPTION( ${OPTION_NAME} "${OPTION_STRING}" ${${OPTION_NAME}} )
+  OPTION( ${OPTION_NAME} "${OPTION_STRING}" ${${OPTION_NAME}} )
 endmacro( option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT )
 
 ##########
@@ -60,41 +64,33 @@ include_directories(${PYTHON_INCLUDE_PATH})
 # 32/64 bit detection
 ###############################################################
 if(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
-	# If in 64bit mode, we have to define the _OCC64 variable
-	add_definitions(-D_OCC64)
-	set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -D_OCC64)
-	set(BIT 64)
+  # If in 64bit mode, we have to define the _OCC64 variable
+  add_definitions(-D_OCC64)
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -D_OCC64)
+  set(BIT 64)
 else(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
-	set(BIT 32)
+  set(BIT 32)
 endif(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
 message(STATUS "Build ${BIT}bit")
 
-if ((NOT MSVC) OR (CMAKE_BUILD_TOOL STREQUAL "nmake"))
-	if( NOT DEFINED PYTHONOCC_BUILD_TYPE )
-		set( PYTHONOCC_BUILD_TYPE "MinSizeRel" CACHE STRING "Build type" ) # By default set release build
-	endif( NOT DEFINED PYTHONOCC_BUILD_TYPE )
-	set( CMAKE_BUILD_TYPE ${PYTHONOCC_BUILD_TYPE} CACHE INTERNAL "Build type,
-		immutable" FORCE )
-endif((NOT MSVC) OR (CMAKE_BUILD_TOOL STREQUAL "nmake"))
-
 # Mingw64 needs MS_WIN64 to be defined (otherwise link failures)
 if(MINGW)
-	message(STATUS "MinGW:")
-	if(BIT MATCHES "64")
-		add_definitions(-DMS_WIN64)
-	endif(BIT MATCHES "64")
+  message(STATUS "MinGW:")
+  if(BIT MATCHES "64")
+      add_definitions(-DMS_WIN64)
+  endif(BIT MATCHES "64")
 endif(MINGW)
 
 # MACOSX_DEPLOYEMENT_TARGET
 # explicit link to libc++ for recent osx versions
 if(APPLE)
-    if(DEFINED ENV{MACOSX_DEPLOYMENT_TARGET})
-      message(STATUS "MACOSX_DEPLOYMENT_TARGET set to: " $ENV{MACOSX_DEPLOYMENT_TARGET})
-      if($ENV{MACOSX_DEPLOYMENT_TARGET} MATCHES "10.9")
-          message(STATUS "Link to libc++")
-          add_definitions(-stdlib=libc++)
-      endif($ENV{MACOSX_DEPLOYMENT_TARGET} MATCHES "10.9")
-    endif(DEFINED ENV{MACOSX_DEPLOYMENT_TARGET})
+  if(DEFINED ENV{MACOSX_DEPLOYMENT_TARGET})
+    message(STATUS "MACOSX_DEPLOYMENT_TARGET set to: " $ENV{MACOSX_DEPLOYMENT_TARGET})
+    if($ENV{MACOSX_DEPLOYMENT_TARGET} MATCHES "10.9")
+        message(STATUS "Link to libc++")
+        add_definitions(-stdlib=libc++)
+    endif($ENV{MACOSX_DEPLOYMENT_TARGET} MATCHES "10.9")
+  endif(DEFINED ENV{MACOSX_DEPLOYMENT_TARGET})
 endif(APPLE)
 
 ########
@@ -103,7 +99,6 @@ endif(APPLE)
 find_package(SWIG 3.0.9)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
-
 
 ############
 # FreeType #
@@ -174,7 +169,7 @@ set(OCE_OCAF_LIBRARIES TKLCAF TKXCAF TKXDESTEP TKXDEIGES TKXSBase TKV3d)
 if(UNIX)
   if(APPLE)
     ######### MacOSX ###########
-	set(PLATFORM Darwin)
+    set(PLATFORM Darwin)
   else(APPLE)
     ######### Unix/Linux ###########
     set(PLATFORM Unix)
@@ -186,11 +181,11 @@ else(UNIX)
   if(WIN32)
     ######### Windows ###########
     add_definitions(-DWNT -DWIN32 -D_WINDOWS -DCSFDB -DHAVE_CONFIG_H)
-	# specific windows defines for python version >=2.6.0
-	execute_process(COMMAND python -c "import sys;print (2,6)>=sys.version_info[:2]" OUTPUT_VARIABLE PYTHON_26_OR_HIGHER OUTPUT_STRIP_TRAILING_WHITESPACE)
-	if(${PYTHON_26_OR_HIGHER} MATCHES "True")
-	  add_definitions(-DHAVE_ACOSH -DHAVE_ASINH -DHAVE_ATANH)
-	endif(${PYTHON_26_OR_HIGHER} MATCHES "True")
+    # specific windows defines for python version >=2.6.0
+    execute_process(COMMAND python -c "import sys;print (2,6)>=sys.version_info[:2]" OUTPUT_VARIABLE PYTHON_26_OR_HIGHER OUTPUT_STRIP_TRAILING_WHITESPACE)
+    if(${PYTHON_26_OR_HIGHER} MATCHES "True")
+      add_definitions(-DHAVE_ACOSH -DHAVE_ASINH -DHAVE_ATANH)
+    endif(${PYTHON_26_OR_HIGHER} MATCHES "True")
     set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512 -DCSFDB -DWIN32 -D_WINDOWS)
     set(PLATFORM win)
   else(WIN32)
@@ -264,8 +259,8 @@ endif(PYTHONOCC_WRAP_SMESH)
 ##################
 file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/${SWIG_FILES_PATH})
 foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
-	set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
-	set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
+    set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+    set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
   if (CMAKE_VERSION LESS 3.8)
     swig_add_module(${OCE_MODULE} python ${FILE})
   else (CMAKE_VERSION LESS 3.8)
@@ -280,12 +275,12 @@ endforeach(OCE_MODULE)
 #################
 if(PYTHONOCC_WRAP_VISU)
     if (NOT APPLE)
-		find_package(OpenGL REQUIRED)
-	else (NOT APPLE)
-		set(OPENGL_INCLUDE_DIR /usr/X11R6/include/)
-		set(OPENGL_LIBRARIES /usr/X11R6/lib/libGL.dylib /usr/X11R6/lib/libGLU.dylib)
-	endif(NOT APPLE)
-	include_directories(OPENGL_INCLUDE_DIR)
+        find_package(OpenGL REQUIRED)
+    else (NOT APPLE)
+        set(OPENGL_INCLUDE_DIR /usr/X11R6/include/)
+        set(OPENGL_LIBRARIES /usr/X11R6/lib/libGL.dylib /usr/X11R6/lib/libGLU.dylib)
+    endif(NOT APPLE)
+    include_directories(OPENGL_INCLUDE_DIR)
   foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
@@ -304,10 +299,10 @@ if(PYTHONOCC_WRAP_VISU)
   set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i PROPERTIES CPLUSPLUS ON)
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization)
   set(VISUALIZATION_SOURCE_FILES
-  	${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i
-  	${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Display3d.cpp
-  	${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Tesselator.cpp
-  	)
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Display3d.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Tesselator.cpp
+    )
 
   if (CMAKE_VERSION LESS 3.8)
     swig_add_module(Visualization python ${VISUALIZATION_SOURCE_FILES})
@@ -427,16 +422,16 @@ endif(PYTHONOCC_WRAP_SMESH)
 # Installation #
 ################
 if(WIN32)
-	set(EXTENSION "pyd")
+    set(EXTENSION "pyd")
 else(WIN32)
-	set(EXTENSION "so")
+    set(EXTENSION "so")
 endif(WIN32)
 set(BUILD_DIR ${CMAKE_BINARY_DIR}/${LIBRARY_OUTPUT_PATH})
 
 # install pythonOCC modules
 foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
-	install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-	install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+    install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 endforeach(OCE_MODULE)
 if(PYTHONOCC_WRAP_VISU)
 foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
