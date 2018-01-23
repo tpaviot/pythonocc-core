@@ -28,32 +28,14 @@ from OCC.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.Display.SimpleGui import init_display
 
 from OCC.TopologyUtils import TopologyExplorer
-
-def read_step_file(filename):
-    """ read the STEP file and returns a compound
-    """
-    step_reader = STEPControl_Reader()
-    status = step_reader.ReadFile(filename)
-
-    if status == IFSelect_RetDone:  # check status
-        failsonly = False
-        step_reader.PrintCheckLoad(failsonly, IFSelect_ItemsByEntity)
-        step_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
-
-        ok = step_reader.TransferRoot(1)
-        _nbs = step_reader.NbShapes()
-        aResShape = step_reader.Shape(1)
-    else:
-        print("Error: can't read file.")
-        sys.exit(0)
-    return aResShape
+from OCC.DataExchange import read_step_file
 
 def import_as_one_shape(event=None):
     shp = read_step_file(os.path.join('.', 'models', 'as1_pe_203.stp'))
     display.EraseAll()
     display.DisplayShape(shp, update=True)
 
-def import_as_compound(event=None):
+def import_as_multiple_shapes(event=None):
     compound = read_step_file(os.path.join('.', 'models', 'as1_pe_203.stp'))
     t = TopologyExplorer(compound)
     display.EraseAll()
@@ -73,5 +55,5 @@ if __name__ == '__main__':
     display, start_display, add_menu, add_function_to_menu = init_display()
     add_menu('STEP import')
     add_function_to_menu('STEP import', import_as_one_shape)
-    add_function_to_menu('STEP import', import_as_compound)
+    add_function_to_menu('STEP import', import_as_multiple_shapes)
     start_display()
