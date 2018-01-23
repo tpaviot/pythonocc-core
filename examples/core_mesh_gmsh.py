@@ -23,12 +23,12 @@ import os
 import sys
 
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
-from OCC.Display.SimpleGui import init_display
-from OCC.StlAPI import StlAPI_Reader
-from OCC.TopoDS import TopoDS_Shape
 from OCC.BRepTools import breptools_Write
 
-    
+from OCC.Display.SimpleGui import init_display
+from OCC.DataExchange import read_stl_file
+
+
 def mesh_shape(a_topods_shape):
     """ Takes a BRep filename (extension .brep) and returns
     a topods_shp ready to be displayed
@@ -52,10 +52,7 @@ def mesh_shape(a_topods_shape):
     gmsh_success = os.system("gmsh shape.geo -2 -o shape.stl -format stl")
     # load the stl file
     if gmsh_success != 0 and os.path.isfile("shape.stl") :
-        stl_reader = StlAPI_Reader()
-        mesh_shp = TopoDS_Shape()
-        stl_reader.Read(mesh_shp, "shape.stl")
-        return mesh_shp
+        return read_stl_file("shape.stl")
     else:
         print("Be sure gmsh is in your PATH")
         sys.exit()

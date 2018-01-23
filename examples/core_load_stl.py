@@ -15,14 +15,14 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from OCC.Display.SimpleGui import init_display
-from OCC.TopoDS import TopoDS_Shape
-from OCC.StlAPI import StlAPI_Reader
+import os
 
-stl_reader = StlAPI_Reader()
-fan_shp = TopoDS_Shape()
-stl_reader.Read(fan_shp, './models/fan.stl')
+from OCC.Display.SimpleGui import init_display
+from OCC.DataExchange import read_stl_file
+
+stl_filename = os.path.join('.', 'models', 'fan.stl')
+stl_shp = read_stl_file(stl_filename)
 
 display, start_display, add_menu, add_function_to_menu = init_display()
-display.DisplayShape(fan_shp, update=True)
+display.DisplayShape(stl_shp, update=True)
 start_display()
