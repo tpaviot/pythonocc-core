@@ -33,11 +33,10 @@ from OCC.GeomPlate import (GeomPlate_BuildPlateSurface, GeomPlate_PointConstrain
 from OCC.ShapeAnalysis import ShapeAnalysis_Surface
 from OCC.gp import gp_Pnt
 from OCC.BRepFill import BRepFill_Filling
-from OCC.IGESControl import IGESControl_Reader
-from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
 
 from OCC.TopologyUtils import TopologyExplorer, WireExplorer
 from OCC.ShapeFactory import make_face, make_vertex
+from OCC.DataExchange import read_iges_file
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 
@@ -101,20 +100,6 @@ def make_closed_polygon(*args):
     result = poly.Wire()
     return result
 
-
-def iges_importer(path_):
-    iges_reader = IGESControl_Reader()
-    status = iges_reader.ReadFile(path_)
-
-    if status == IFSelect_RetDone:  # check status
-        failsonly = False
-        iges_reader.PrintCheckLoad(failsonly, IFSelect_ItemsByEntity)
-        iges_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
-        ok = iges_reader.TransferRoots()
-        aResShape = iges_reader.Shape(1)
-        return aResShape
-    else:
-        raise AssertionError("could not import IGES file: {0}".format(path_))
 
 
 def geom_plate(event=None):
@@ -296,8 +281,8 @@ def build_curve_network(event=None):
     pth = os.path.dirname(os.path.abspath(__file__))
     pth = os.path.abspath(
         os.path.join(pth, 'models', 'curve_geom_plate.igs'))
-    iges = iges_importer(pth)
-    print('done.')
+    iges = read_iges_file(pth)
+    print(iges)
 
     print('Building geomplate...')
     topo = TopologyExplorer(iges)
