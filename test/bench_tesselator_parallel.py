@@ -7,9 +7,7 @@ import time
 from OCC.STEPControl import STEPControl_Reader
 from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
 from OCC.Visualization import Tesselator
-
-sys.path.append('../examples')
-from core_topology_traverse import Topo
+from OCC.TopologyUtils import TopologyExplorer
 
 def read_step_file(filename):
     """ read the STEP file and returns a compound
@@ -64,7 +62,7 @@ print("TEST 2 ===")
 shp3 = read_step_file(os.path.join('..', 'examples', 'models', 'RC_Buggy_2_front_suspension.stp'))
 shp4 = read_step_file(os.path.join('..', 'examples', 'models', 'RC_Buggy_2_front_suspension.stp'))
 
-topo1 = Topo(shp3)
+topo1 = TopologyExplorer(shp3)
 t4 = time.monotonic()
 for solid in topo1.solids():
     o = Tesselator(solid)
@@ -72,7 +70,7 @@ for solid in topo1.solids():
 t5 = time.monotonic()
 delta_single = t5-t4
 
-topo2 = Topo(shp4)
+topo2 = TopologyExplorer(shp4)
 t6 = time.monotonic()
 for solid in topo2.solids():
     o = Tesselator(solid)
