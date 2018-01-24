@@ -21,6 +21,10 @@ from OCC.TopoDS import TopoDS_Shape
 from OCC.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.StlAPI import StlAPI_Reader, StlAPI_Writer
 
+from OCC.BRep import BRep_Builder
+from OCC.TopoDS import TopoDS_Compound
+
+from OCC.IGESControl import IGESControl_Reader, IGESControl_Writer
 from OCC.STEPControl import STEPControl_Reader, STEPControl_Writer, STEPControl_AsIs
 from OCC.Interface import Interface_Static_SetCVal
 from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
@@ -50,13 +54,11 @@ def read_step_file(filename, return_as_shapes=False, verbosity=False):
         ok = step_reader.TransferRoot(1)
         _nbs = step_reader.NbShapes()
         shape_to_return = step_reader.Shape(1)  # a compound
+        assert not shape_to_return.IsNull()
     else:
         raise AssertionError("Error: can't read file.")
-        sys.exit(0)
     if return_as_shapes:
-        shape_to_return = TopologyExplorer(compound).shapes()
-
-    assert not shape_to_return.IsNull()
+        shape_to_return = TopologyExplorer(shape_to_return).solids()
 
     return shape_to_return
 
@@ -128,6 +130,77 @@ def read_stl_file(filename):
 
     return the_shape
 
+######################
+# IGES import/export #
+######################
+def read_iges_file(filename, return_as_shapes=False, verbosity=False):
+    """ read the IGES file and returns a compound
+    filename: the file path
+    return_as_shapes: optional, False by default. If True returns a list of shapes,
+                      else returns a single compound
+    verbosity: optionl, False by default.
+    """
+    assert os.path.isfile(filename)
+
+    iges_reader = IGESControl_Reader()
+    status = iges_reader.ReadFile(filename)
+
+    _shapes = []
+
+    if status == IFSelect_RetDone:  # check status
+        if verbosity:
+            failsonly = False
+            iges_reader.PrintCheckLoad(failsonly, IFSelect_ItemsByEntity)
+            iges_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
+        iges_reader.TransferRoots()
+        nbr = iges_reader.NbRootsForTransfer()
+        for n in range(1, nbr+1):
+            nbs = iges_reader.NbShapes()
+            if nbs == 0:
+                print("At least one shape in IGES cannot be transfered")
+            elif nbr == 1 and nbs == 1:
+                aResShape = iges_reader.Shape(1)
+                if aResShape.IsNull():
+                    print("At least one shape in IGES cannot be transferred")
+                else:
+                    _shapes.append(aResShape)
+            else:
+                for i in range(1, nbs+1):
+                    aShape = iges_reader.Shape(i)
+                    if aShape.IsNull():
+                        print("At least one shape in STEP cannot be transferred")
+                    else:
+                        _shapes.append(aShape)
+    # if not return as shapes
+    # create a compound and store all shapes
+    # TODO
+    if not return_as_shapes:
+        builder = BRep_Builder()
+        Comp = TopoDS_Compound()
+        builder.MakeCompound(Comp)
+        for s in _shapes:
+            builder.Add(Comp, s)
+        _shapes=Comp
+    return _shapes
+
+def write_iges_file(a_shape, filename):
+    """ exports a shape to a STEP file
+    a_shape: the topods_shape to export (a compound, a solid etc.)
+    filename: the filename
+    application protocol: "AP203" or "AP214"
+    """
+    # a few checks
+    assert not a_shape.IsNull()
+    if os.path.isfile(filename):
+        print("Warning: %s file already exists and will be replaced" % filename)
+    # creates and initialise the step exporter
+    iges_writer = IGESControl_Writer()
+    iges_writer.AddShape(a_shape)
+    status = iges_writer.Write(filename)
+
+    assert status == IFSelect_RetDone
+    assert os.path.isfile(filename)
+
 if __name__ == "__main__":
     from OCC.BRepPrimAPI import BRepPrimAPI_MakeSphere
     b = BRepPrimAPI_MakeSphere(30.).Shape()
@@ -135,6 +208,7 @@ if __name__ == "__main__":
     write_step_file(b, "s_214.stp", application_protocol="AP214IS")
     b2 = read_step_file("s_203.stp")
     b3 = read_step_file("s_214.stp")
+    b3_bis = read_step_file("s_214.stp", return_as_shapes=True)
     write_stl_file(b, "s_stl_ascii.stl")
     write_stl_file(b, "s_stl_binary.stl", mode="binary")
     b4 = read_stl_file("s_stl_ascii.stl")
@@ -142,3 +216,8 @@ if __name__ == "__main__":
     # improve the precision by a factor 2
     write_stl_file(b, "s_stl_precise_ascii.stl", linear_deflection=0.1, angular_deflection=0.2)
     b6 = read_stl_file("s_stl_precise_ascii.stl")
+    # iges test
+    write_iges_file(b, "s_iges.igs")
+    b7 = read_iges_file("s_iges.igs")
+    print(b7)
+    b8 = read_iges_file("s_iges.igs", return_as_shapes=True)
