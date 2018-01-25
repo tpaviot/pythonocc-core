@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 
-# TODO:
-# * need examples where the tangency to constraining faces is respected
-
-# #Copyright 2009-2011 Jelle Ferina (jelleferinga@gmail.com)
+# #Copyright 2009-2011 Jelle Feringa (jelleferinga@gmail.com)
 # #
 ##This file is part of pythonOCC.
 ##
@@ -20,6 +17,9 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+# TODO:
+# * need examples where the tangency to constraining faces is respected
+
 import os
 import random
 
@@ -31,8 +31,8 @@ from OCC.TopAbs import TopAbs_FACE, TopAbs_EDGE
 
 from OCC.Display.SimpleGui import init_display
 from OCC.Display.OCCViewer import rgb_color
-from core_topology_traverse import Topo
-from core_load_step_ap203 import read_step_file
+from OCC.TopologyUtils import TopologyExplorer
+from OCC.DataExchange import read_step_file
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 
@@ -86,7 +86,7 @@ def hash_edge_lenght_to_face(faces):
     _edge_length_to_edge = {}
 
     for f in faces:
-        tp = Topo(f)
+        tp = TopologyExplorer(f)
         for e in tp.edges():
             length = round(length_from_edge(e), 3)
             _edge_length_to_face[length] = f
@@ -100,14 +100,14 @@ def build_curve_network(event=None, enforce_tangency=True):
     mimic the curve network surfacing command from rhino
     '''
     root_compound_shape = read_step_file("./models/splinecage.stp")
-    topo = Topo(root_compound_shape)
+    topology_explorer = TopologyExplorer(root_compound_shape)
 
     # approximate the hell out of all surfaces and curves
     # I wanna see it in its full glory
     display.Context.SetDeviationAngle(0.00001)  # 0.001 -> default
     display.Context.SetDeviationCoefficient(0.0001)  # 0.001 -> default
 
-    tangent_constraint_faces = [f for f in topo.faces()]
+    tangent_constraint_faces = [f for f in topology_explorer.faces()]
 
     # loop through the imported faces
     # associate the length of each of the faces edges to the corresponding face
@@ -115,7 +115,7 @@ def build_curve_network(event=None, enforce_tangency=True):
 
     # loop through the imported curves, avoiding the imported faces
     # when we've got these filtered out, we retrieved the geometry to build the surface from
-    filtered_edges = [e for e in topo._loop_topo(TopAbs_EDGE, root_compound_shape, TopAbs_FACE)]
+    filtered_edges = [e for e in topology_explorer._loop_topo(TopAbs_EDGE, root_compound_shape, TopAbs_FACE)]
 
     filtered_length = {}
     for e in filtered_edges:

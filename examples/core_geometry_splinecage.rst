@@ -39,8 +39,8 @@ Code
   
   from OCC.Display.SimpleGui import init_display
   from OCC.Display.OCCViewer import rgb_color
-  from core_topology_traverse import Topo
-  from core_load_step_ap203 import read_step_file
+  from OCC.TopologyUtils import TopologyExplorer
+  from OCC.DataExchange import read_step_file
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   
@@ -94,7 +94,7 @@ Code
       _edge_length_to_edge = {}
   
       for f in faces:
-          tp = Topo(f)
+          tp = TopologyExplorer(f)
           for e in tp.edges():
               length = round(length_from_edge(e), 3)
               _edge_length_to_face[length] = f
@@ -108,7 +108,7 @@ Code
       mimic the curve network surfacing command from rhino
       '''
       root_compound_shape = read_step_file("./models/splinecage.stp")
-      topo = Topo(root_compound_shape)
+      topo = TopologyExplorer(root_compound_shape)
   
       # approximate the hell out of all surfaces and curves
       # I wanna see it in its full glory
@@ -123,7 +123,7 @@ Code
   
       # loop through the imported curves, avoiding the imported faces
       # when we've got these filtered out, we retrieved the geometry to build the surface from
-      filtered_edges = [e for e in topo._loop_topo(TopAbs_EDGE, root_compound_shape, TopAbs_FACE)]
+      filtered_edges = [e for e in topo._loop_TopologyExplorer(TopAbs_EDGE, root_compound_shape, TopAbs_FACE)]
   
       filtered_length = {}
       for e in filtered_edges:

@@ -43,7 +43,7 @@ from OCC.TopoDS import topods_Face
 from OCC.BRepAdaptor import BRepAdaptor_Surface
 from OCC.Display.SimpleGui import init_display
 
-from core_topology_traverse import Topo
+from OCC.TopologyUtils import TopologyExplorer
 
 
 def read_step_file(filename):
@@ -112,7 +112,7 @@ def recognize_batch(event=None):
     """ Menu item : process all the faces of a single shape
     """
     # then traverse the topology using the Topo class
-    t = Topo(shp)
+    t = TopologyExplorer(shp)
     # loop over faces only
     for f in t.faces():
         # call the recognition function

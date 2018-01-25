@@ -23,7 +23,7 @@ from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeCylinder
 from OCC.Display.SimpleGui import init_display
 from OCC.TColgp import TColgp_Array1OfPnt2d
 from OCC.gp import gp_Ax2, gp_Pnt, gp_Dir, gp_Pnt2d
-from core_topology_traverse import Topo
+from OCC.TopologyUtils import TopologyExplorer
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 
@@ -32,7 +32,7 @@ def fillet(event=None):
     Box = BRepPrimAPI_MakeBox(gp_Pnt(-400, 0, 0), 200, 230, 180).Shape()
     fillet_ = BRepFilletAPI_MakeFillet(Box)
     # Add fillet on each edge
-    for e in Topo(Box).edges():
+    for e in TopologyExplorer(Box).edges():
         fillet_.Add(20, e)
 
     blendedBox = fillet_.Shape()
@@ -44,7 +44,7 @@ def fillet(event=None):
     FusedShape = Fuse.Shape()
 
     fill = BRepFilletAPI_MakeFillet(FusedShape)
-    for e in Topo(FusedShape).edges():
+    for e in TopologyExplorer(FusedShape).edges():
         fill.Add(e)
 
     for i in range(1, fill.NbContours() + 1):
@@ -66,7 +66,7 @@ def variable_filleting(event=None):
     Box = BRepPrimAPI_MakeBox(200, 200, 200).Shape()
     # Fillet
     Rake = BRepFilletAPI_MakeFillet(Box)
-    ex = Topo(Box).edges()
+    ex = TopologyExplorer(Box).edges()
     next(ex)
     next(ex)
     next(ex)
@@ -87,7 +87,7 @@ def variable_filleting(event=None):
         Point2d = gp_Pnt2d(i * 2 * pi / 19, 60 * cos(i * pi / 19 - pi / 2) + 10)
         TabPoint2.SetValue(i, Point2d)
 
-    exp2 = Topo(Cylinder).edges()
+    exp2 = TopologyExplorer(Cylinder).edges()
     fillet_.Add(TabPoint2, next(exp2))
     fillet_.Build()
     if fillet_.IsDone():
@@ -113,7 +113,7 @@ def variable_filleting(event=None):
     TabPoint.SetValue(5, P5)
     TabPoint.SetValue(6, P6)
 
-    exp = Topo(Box2).edges()
+    exp = TopologyExplorer(Box2).edges()
     next(exp)
     next(exp)
     next(exp)

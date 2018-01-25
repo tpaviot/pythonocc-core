@@ -31,8 +31,8 @@ Code
   from OCC.Display.SimpleGui import init_display
   from OCC.GeomAbs import GeomAbs_Arc
   from OCC.gp import gp_Pnt
-  from core_geometry_utils import make_edge, make_vertex, make_wire, make_face
-  from core_topology_traverse import Topo
+  from OCC.ShapeFactory import make_edge, make_vertex, make_wire, make_face
+  from OCC.TopologyUtils import TopologyExplorer
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   
@@ -93,7 +93,7 @@ Code
       offset = BRepOffsetAPI_MakeOffset()
       offset.Init(GeomAbs_Arc)
   
-      for wi in Topo(face).wires():
+      for wi in TopologyExplorer(face).wires():
           offset.AddWire(wi)
   
       for i in range(nr_of_counters):

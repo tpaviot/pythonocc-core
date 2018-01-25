@@ -28,7 +28,7 @@ Code
   from OCC.ChFi2d import ChFi2d_AnaFilletAlgo
   from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge,BRepBuilderAPI_MakeWire
   
-  from core_geometry_utils import make_wire
+  from OCC.ShapeFactory import make_wire
   display,start_display, add_menu,add_functionto_menu = init_display()
   
   # Defining the points

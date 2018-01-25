@@ -6,7 +6,7 @@ set MY_PY_VER=%PY_VER:.=%
 
 REM Configure step
 cmake -G "Ninja" -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
- -DCMAKE_BUILD_TYPE=Release ^
+ -DPYTHONOCC_BUILD_TYPE=RelWithDebInfo ^
  -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" ^
  -DCMAKE_SYSTEM_PREFIX_PATH="%LIBRARY_PREFIX%" ^
  -DPYTHON_EXECUTABLE:FILEPATH="%PYTHON%" ^
@@ -27,6 +27,6 @@ ninja install
 if errorlevel 1 exit 1
 
 REM copy the source
-cd ..
-xcopy src "%LIBRARY_PREFIX%\src\pythonocc-core\src" /s /e /i
-if errorlevel 1 exit 1
+REM cd ..
+REM xcopy src "%LIBRARY_PREFIX%\src\pythonocc-core\src" /s /e /i
+REM if errorlevel 1 exit 1

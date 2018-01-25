@@ -37,7 +37,7 @@ Code
   from OCC.Display.OCCViewer import rgb_color
   from OCC.Display.SimpleGui import init_display
   
-  from core_topology_traverse import Topo
+  from OCC.TopologyUtils import TopologyExplorer
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   
@@ -45,7 +45,7 @@ Code
   
   ais = AIS_ColoredShape(my_box)
   
-  for fc in Topo(my_box).faces():
+  for fc in TopologyExplorer(my_box).faces():
       # set a custom color per-face
       ais.SetCustomColor(fc, rgb_color(random(), random(), random()))
   

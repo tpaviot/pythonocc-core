@@ -32,7 +32,7 @@ Code
   from OCC.GccAna import GccAna_Lin2dBisec, GccAna_CircLin2dBisec, GccAna_Pnt2dBisec
   from OCC.gp import gp_Lin2d, gp_Pnt2d, gp_Dir2d, gp_Circ2d, gp_Ax22d, gp_Pnt
   
-  from core_geometry_utils import make_vertex, make_edge2d
+  from OCC.ShapeFactory import make_vertex, make_edge2d
   
   # start gui
   display, start_display, add_menu, add_function_to_menu = init_display()

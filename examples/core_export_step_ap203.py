@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2014 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2014 Jelle Feringa (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -36,4 +36,4 @@ Interface_Static_SetCVal("write.step.schema", "AP203")
 step_writer.Transfer(box_s, STEPControl_AsIs)
 status = step_writer.Write("box.stp")
 
-assert(status == IFSelect_RetDone)
+assert status == IFSelect_RetDone

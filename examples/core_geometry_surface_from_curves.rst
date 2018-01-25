@@ -37,7 +37,7 @@ Code
   
   from OCC.Display.SimpleGui import init_display
   
-  from core_geometry_utils import point_list_to_TColgp_Array1OfPnt, make_face
+  from OCC.ShapeFactory import point_list_to_TColgp_Array1OfPnt, make_face
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

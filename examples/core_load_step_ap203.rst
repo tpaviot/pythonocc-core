@@ -35,7 +35,7 @@ Code
   from OCC.Quantity import Quantity_Color, Quantity_TOC_RGB
   from OCC.Display.SimpleGui import init_display
   
-  from core_topology_traverse import Topo
+  from OCC.TopologyUtils import TopologyExplorer
   
   def read_step_file(filename):
       """ read the STEP file and returns a compound
@@ -63,7 +63,7 @@ Code
   
   def import_as_compound(event=None):
       compound = read_step_file(os.path.join('.', 'models', 'as1_pe_203.stp'))
-      t = Topo(compound)
+      t = TopologyExplorer(compound)
       display.EraseAll()
       for solid in t.solids():
           color = Quantity_Color(random.random(),

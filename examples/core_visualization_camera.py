@@ -24,7 +24,7 @@ from OCC.Graphic3d import Graphic3d_Camera
 import sys, os
 
 sys.path.append(os.path.dirname(__name__))
-from core_load_step_ap203 import read_step_file
+from OCC.DataExchange import read_step_file
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 

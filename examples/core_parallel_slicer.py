@@ -33,7 +33,7 @@ from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeFace
 
 from OCC.Display.SimpleGui import init_display
 
-from core_geometry_utils import get_boundingbox
+from OCC.ShapeFactory import get_boundingbox
 
 
 def drange(start, stop, step):
