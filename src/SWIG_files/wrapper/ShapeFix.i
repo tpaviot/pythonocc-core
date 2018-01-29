@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SHAPEFIXDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SHAPEFIXDOCSTRING) ShapeFix
+%module (package="OCC.Core", docstring=SHAPEFIXDOCSTRING) ShapeFix
 
 #pragma SWIG nowarn=504,325,503
 

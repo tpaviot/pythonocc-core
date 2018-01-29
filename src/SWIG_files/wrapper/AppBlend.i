@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define APPBLENDDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=APPBLENDDOCSTRING) AppBlend
+%module (package="OCC.Core", docstring=APPBLENDDOCSTRING) AppBlend
 
 #pragma SWIG nowarn=504,325,503
 

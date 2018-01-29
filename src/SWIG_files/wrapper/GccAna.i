@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GCCANADOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GCCANADOCSTRING) GccAna
+%module (package="OCC.Core", docstring=GCCANADOCSTRING) GccAna
 
 #pragma SWIG nowarn=504,325,503
 

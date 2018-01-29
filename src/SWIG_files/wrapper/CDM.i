@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define CDMDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=CDMDOCSTRING) CDM
+%module (package="OCC.Core", docstring=CDMDOCSTRING) CDM
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define QUANTITYDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=QUANTITYDOCSTRING) Quantity
+%module (package="OCC.Core", docstring=QUANTITYDOCSTRING) Quantity
 
 #pragma SWIG nowarn=504,325,503
 

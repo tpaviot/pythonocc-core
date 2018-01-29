@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define CPNTSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=CPNTSDOCSTRING) CPnts
+%module (package="OCC.Core", docstring=CPNTSDOCSTRING) CPnts
 
 #pragma SWIG nowarn=504,325,503
 

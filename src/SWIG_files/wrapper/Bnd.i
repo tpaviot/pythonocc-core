@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BNDDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BNDDOCSTRING) Bnd
+%module (package="OCC.Core", docstring=BNDDOCSTRING) Bnd
 
 #pragma SWIG nowarn=504,325,503
 

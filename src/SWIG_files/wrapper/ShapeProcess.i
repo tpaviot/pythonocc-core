@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SHAPEPROCESSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SHAPEPROCESSDOCSTRING) ShapeProcess
+%module (package="OCC.Core", docstring=SHAPEPROCESSDOCSTRING) ShapeProcess
 
 #pragma SWIG nowarn=504,325,503
 

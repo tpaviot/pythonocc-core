@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GCCGEODOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GCCGEODOCSTRING) GccGeo
+%module (package="OCC.Core", docstring=GCCGEODOCSTRING) GccGeo
 
 #pragma SWIG nowarn=504,325,503
 

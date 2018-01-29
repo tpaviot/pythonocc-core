@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define PLIBDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=PLIBDOCSTRING) PLib
+%module (package="OCC.Core", docstring=PLIBDOCSTRING) PLib
 
 #pragma SWIG nowarn=504,325,503
 

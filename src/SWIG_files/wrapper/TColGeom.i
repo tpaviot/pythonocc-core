@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TCOLGEOMDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TCOLGEOMDOCSTRING) TColGeom
+%module (package="OCC.Core", docstring=TCOLGEOMDOCSTRING) TColGeom
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GRAPHDSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GRAPHDSDOCSTRING) GraphDS
+%module (package="OCC.Core", docstring=GRAPHDSDOCSTRING) GraphDS
 
 #pragma SWIG nowarn=504,325,503
 

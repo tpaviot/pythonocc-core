@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define ELSLIBDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=ELSLIBDOCSTRING) ElSLib
+%module (package="OCC.Core", docstring=ELSLIBDOCSTRING) ElSLib
 
 #pragma SWIG nowarn=504,325,503
 

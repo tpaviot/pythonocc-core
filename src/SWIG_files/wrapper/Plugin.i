@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define PLUGINDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=PLUGINDOCSTRING) Plugin
+%module (package="OCC.Core", docstring=PLUGINDOCSTRING) Plugin
 
 #pragma SWIG nowarn=504,325,503
 

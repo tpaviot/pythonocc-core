@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define NISDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=NISDOCSTRING) NIS
+%module (package="OCC.Core", docstring=NISDOCSTRING) NIS
 
 #pragma SWIG nowarn=504,325,503
 

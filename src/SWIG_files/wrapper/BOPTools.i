@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BOPTOOLSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BOPTOOLSDOCSTRING) BOPTools
+%module (package="OCC.Core", docstring=BOPTOOLSDOCSTRING) BOPTools
 
 #pragma SWIG nowarn=504,325,503
 

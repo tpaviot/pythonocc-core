@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BREPMESHDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BREPMESHDOCSTRING) BRepMesh
+%module (package="OCC.Core", docstring=BREPMESHDOCSTRING) BRepMesh
 
 #pragma SWIG nowarn=504,325,503
 

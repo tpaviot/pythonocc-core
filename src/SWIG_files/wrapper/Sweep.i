@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SWEEPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SWEEPDOCSTRING) Sweep
+%module (package="OCC.Core", docstring=SWEEPDOCSTRING) Sweep
 
 #pragma SWIG nowarn=504,325,503
 

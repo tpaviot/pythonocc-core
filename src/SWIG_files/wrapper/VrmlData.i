@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define VRMLDATADOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=VRMLDATADOCSTRING) VrmlData
+%module (package="OCC.Core", docstring=VRMLDATADOCSTRING) VrmlData
 
 #pragma SWIG nowarn=504,325,503
 

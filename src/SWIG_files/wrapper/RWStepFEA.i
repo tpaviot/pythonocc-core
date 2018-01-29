@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define RWSTEPFEADOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=RWSTEPFEADOCSTRING) RWStepFEA
+%module (package="OCC.Core", docstring=RWSTEPFEADOCSTRING) RWStepFEA
 
 #pragma SWIG nowarn=504,325,503
 

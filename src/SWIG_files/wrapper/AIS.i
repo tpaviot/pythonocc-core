@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define AISDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=AISDOCSTRING) AIS
+%module (package="OCC.Core", docstring=AISDOCSTRING) AIS
 
 #pragma SWIG nowarn=504,325,503
 

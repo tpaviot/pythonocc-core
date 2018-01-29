@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TPRSSTDDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TPRSSTDDOCSTRING) TPrsStd
+%module (package="OCC.Core", docstring=TPRSSTDDOCSTRING) TPrsStd
 
 #pragma SWIG nowarn=504,325,503
 

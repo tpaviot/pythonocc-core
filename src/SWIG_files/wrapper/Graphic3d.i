@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GRAPHIC3DDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GRAPHIC3DDOCSTRING) Graphic3d
+%module (package="OCC.Core", docstring=GRAPHIC3DDOCSTRING) Graphic3d
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define DSGPRSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=DSGPRSDOCSTRING) DsgPrs
+%module (package="OCC.Core", docstring=DSGPRSDOCSTRING) DsgPrs
 
 #pragma SWIG nowarn=504,325,503
 

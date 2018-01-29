@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GPDOCSTRING) gp
+%module (package="OCC.Core", docstring=GPDOCSTRING) gp
 
 #pragma SWIG nowarn=504,325,503
 

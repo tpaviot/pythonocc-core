@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GEOM2DAPIDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GEOM2DAPIDOCSTRING) Geom2dAPI
+%module (package="OCC.Core", docstring=GEOM2DAPIDOCSTRING) Geom2dAPI
 
 #pragma SWIG nowarn=504,325,503
 

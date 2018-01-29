@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define APPPARCURVESDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=APPPARCURVESDOCSTRING) AppParCurves
+%module (package="OCC.Core", docstring=APPPARCURVESDOCSTRING) AppParCurves
 
 #pragma SWIG nowarn=504,325,503
 

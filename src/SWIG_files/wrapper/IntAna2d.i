@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define INTANA2DDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=INTANA2DDOCSTRING) IntAna2d
+%module (package="OCC.Core", docstring=INTANA2DDOCSTRING) IntAna2d
 
 #pragma SWIG nowarn=504,325,503
 

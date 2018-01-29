@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define DICODOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=DICODOCSTRING) Dico
+%module (package="OCC.Core", docstring=DICODOCSTRING) Dico
 
 #pragma SWIG nowarn=504,325,503
 

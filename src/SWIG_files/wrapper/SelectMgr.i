@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SELECTMGRDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SELECTMGRDOCSTRING) SelectMgr
+%module (package="OCC.Core", docstring=SELECTMGRDOCSTRING) SelectMgr
 
 #pragma SWIG nowarn=504,325,503
 

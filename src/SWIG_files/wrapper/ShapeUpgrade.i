@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SHAPEUPGRADEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SHAPEUPGRADEDOCSTRING) ShapeUpgrade
+%module (package="OCC.Core", docstring=SHAPEUPGRADEDOCSTRING) ShapeUpgrade
 
 #pragma SWIG nowarn=504,325,503
 

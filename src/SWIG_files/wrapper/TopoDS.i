@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TOPODSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TOPODSDOCSTRING) TopoDS
+%module (package="OCC.Core", docstring=TOPODSDOCSTRING) TopoDS
 
 #pragma SWIG nowarn=504,325,503
 
@@ -38,6 +38,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include TopoDS_headers.i
 
+%pythoncode {
+from .Core.BRepTools import BRepTools_ShapeSet	
+};
 
 %pythoncode {
 def register_handle(handle, base_object):
@@ -988,14 +991,12 @@ class TopoDS_Shape {
 %extend TopoDS_Shape {
 %pythoncode {
 	def __getstate__(self):
-		from .BRepTools import BRepTools_ShapeSet
 		ss = BRepTools_ShapeSet()
 		ss.Add(self)
 		str_shape = ss.WriteToString()
 		indx = ss.Locations().Index(self.Location())
 		return str_shape, indx
 	def __setstate__(self, state):
-		from .BRepTools import BRepTools_ShapeSet
 		topods_str, indx = state
 		ss = BRepTools_ShapeSet()
 		ss.ReadFromString(topods_str)

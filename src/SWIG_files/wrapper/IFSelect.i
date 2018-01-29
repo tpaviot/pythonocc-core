@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define IFSELECTDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=IFSELECTDOCSTRING) IFSelect
+%module (package="OCC.Core", docstring=IFSELECTDOCSTRING) IFSelect
 
 #pragma SWIG nowarn=504,325,503
 

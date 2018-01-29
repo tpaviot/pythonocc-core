@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define DYNAMICDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=DYNAMICDOCSTRING) Dynamic
+%module (package="OCC.Core", docstring=DYNAMICDOCSTRING) Dynamic
 
 #pragma SWIG nowarn=504,325,503
 

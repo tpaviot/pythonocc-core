@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define IGESCONTROLDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=IGESCONTROLDOCSTRING) IGESControl
+%module (package="OCC.Core", docstring=IGESCONTROLDOCSTRING) IGESControl
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define PCDMDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=PCDMDOCSTRING) PCDM
+%module (package="OCC.Core", docstring=PCDMDOCSTRING) PCDM
 
 #pragma SWIG nowarn=504,325,503
 

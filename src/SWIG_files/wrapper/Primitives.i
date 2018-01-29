@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define PRIMITIVESDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=PRIMITIVESDOCSTRING) Primitives
+%module (package="OCC.Core", docstring=PRIMITIVESDOCSTRING) Primitives
 
 #pragma SWIG nowarn=504,325,503
 

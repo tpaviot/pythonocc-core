@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define VRMLCONVERTERDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=VRMLCONVERTERDOCSTRING) VrmlConverter
+%module (package="OCC.Core", docstring=VRMLCONVERTERDOCSTRING) VrmlConverter
 
 #pragma SWIG nowarn=504,325,503
 

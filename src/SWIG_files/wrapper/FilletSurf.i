@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define FILLETSURFDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=FILLETSURFDOCSTRING) FilletSurf
+%module (package="OCC.Core", docstring=FILLETSURFDOCSTRING) FilletSurf
 
 #pragma SWIG nowarn=504,325,503
 

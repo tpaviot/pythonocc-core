@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define PLATEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=PLATEDOCSTRING) Plate
+%module (package="OCC.Core", docstring=PLATEDOCSTRING) Plate
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SELECT3DDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SELECT3DDOCSTRING) Select3D
+%module (package="OCC.Core", docstring=SELECT3DDOCSTRING) Select3D
 
 #pragma SWIG nowarn=504,325,503
 

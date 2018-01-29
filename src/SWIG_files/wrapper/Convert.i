@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define CONVERTDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=CONVERTDOCSTRING) Convert
+%module (package="OCC.Core", docstring=CONVERTDOCSTRING) Convert
 
 #pragma SWIG nowarn=504,325,503
 

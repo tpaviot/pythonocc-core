@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define FAIRCURVEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=FAIRCURVEDOCSTRING) FairCurve
+%module (package="OCC.Core", docstring=FAIRCURVEDOCSTRING) FairCurve
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SMESHDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SMESHDOCSTRING) SMESH
+%module (package="OCC.Core", docstring=SMESHDOCSTRING) SMESH
 
 #pragma SWIG nowarn=504,325,503
 
@@ -1467,7 +1467,10 @@ class SMESH_MeshVSLink : public MeshVS_DataSource3D {
 ") SMESH_MeshVSLink;
 		 SMESH_MeshVSLink (const SMESH_Mesh * aMesh);
 		%feature("compactdefaultargs") GetGeom;
-		%feature("autodoc", "	* Returns geometry information about node ( if IsElement is False ) or element ( IsElement is True )  by co-ordinates. For element this method must return all its nodes co-ordinates in the strict order: X, Y, Z and  with nodes order is the same as in wire bounding the face or link. NbNodes is number of nodes of element.  It is recommended to return 1 for node. Type is an element type.
+		%feature("autodoc", "	* Returns geometry information about node ( if IsElement is False ) or element ( IsElement is True ) 
+ by co-ordinates. For element this method must return all its nodes co-ordinates in the strict order: X, Y, Z and 
+ with nodes order is the same as in wire bounding the face or link. NbNodes is number of nodes of element. 
+ It is recommended to return 1 for node. Type is an element type.
 
 	:param ID:
 	:type ID: int
@@ -1493,7 +1496,8 @@ class SMESH_MeshVSLink : public MeshVS_DataSource3D {
 ") Get3DGeom;
 		Standard_Boolean Get3DGeom (const Standard_Integer ID,Standard_Integer &OutValue,Handle_MeshVS_HArray1OfSequenceOfInteger & Data);
 		%feature("compactdefaultargs") GetGeomType;
-		%feature("autodoc", "	* This method is similar to GetGeom, but returns only element or node type. This method is provided for  a fine performance.
+		%feature("autodoc", "	* This method is similar to GetGeom, but returns only element or node type. This method is provided for 
+ a fine performance.
 
 	:param ID:
 	:type ID: int
@@ -1539,7 +1543,8 @@ class SMESH_MeshVSLink : public MeshVS_DataSource3D {
 ") GetAllElements;
 		const TColStd_PackedMapOfInteger & GetAllElements ();
 		%feature("compactdefaultargs") GetNormal;
-		%feature("autodoc", "	* This method calculates normal of face, which is using for correct reflection presentation.  There is default method, for advance reflection this method can be redefined.
+		%feature("autodoc", "	* This method calculates normal of face, which is using for correct reflection presentation. 
+ There is default method, for advance reflection this method can be redefined.
 
 	:param Id:
 	:type Id: int

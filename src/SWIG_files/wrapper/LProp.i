@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define LPROPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=LPROPDOCSTRING) LProp
+%module (package="OCC.Core", docstring=LPROPDOCSTRING) LProp
 
 #pragma SWIG nowarn=504,325,503
 

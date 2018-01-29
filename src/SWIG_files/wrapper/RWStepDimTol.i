@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define RWSTEPDIMTOLDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=RWSTEPDIMTOLDOCSTRING) RWStepDimTol
+%module (package="OCC.Core", docstring=RWSTEPDIMTOLDOCSTRING) RWStepDimTol
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GEOMADAPTORDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GEOMADAPTORDOCSTRING) GeomAdaptor
+%module (package="OCC.Core", docstring=GEOMADAPTORDOCSTRING) GeomAdaptor
 
 #pragma SWIG nowarn=504,325,503
 

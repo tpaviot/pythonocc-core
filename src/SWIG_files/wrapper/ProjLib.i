@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define PROJLIBDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=PROJLIBDOCSTRING) ProjLib
+%module (package="OCC.Core", docstring=PROJLIBDOCSTRING) ProjLib
 
 #pragma SWIG nowarn=504,325,503
 

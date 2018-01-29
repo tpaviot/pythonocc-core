@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BINMDATASTDDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BINMDATASTDDOCSTRING) BinMDataStd
+%module (package="OCC.Core", docstring=BINMDATASTDDOCSTRING) BinMDataStd
 
 #pragma SWIG nowarn=504,325,503
 

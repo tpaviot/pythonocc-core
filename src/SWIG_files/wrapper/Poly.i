@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define POLYDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=POLYDOCSTRING) Poly
+%module (package="OCC.Core", docstring=POLYDOCSTRING) Poly
 
 #pragma SWIG nowarn=504,325,503
 

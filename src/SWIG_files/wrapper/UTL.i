@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define UTLDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=UTLDOCSTRING) UTL
+%module (package="OCC.Core", docstring=UTLDOCSTRING) UTL
 
 #pragma SWIG nowarn=504,325,503
 

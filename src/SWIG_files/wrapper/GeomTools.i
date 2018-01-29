@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GEOMTOOLSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GEOMTOOLSDOCSTRING) GeomTools
+%module (package="OCC.Core", docstring=GEOMTOOLSDOCSTRING) GeomTools
 
 #pragma SWIG nowarn=504,325,503
 

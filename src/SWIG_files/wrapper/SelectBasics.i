@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SELECTBASICSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SELECTBASICSDOCSTRING) SelectBasics
+%module (package="OCC.Core", docstring=SELECTBASICSDOCSTRING) SelectBasics
 
 #pragma SWIG nowarn=504,325,503
 

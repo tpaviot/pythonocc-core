@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TOPCNXDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TOPCNXDOCSTRING) TopCnx
+%module (package="OCC.Core", docstring=TOPCNXDOCSTRING) TopCnx
 
 #pragma SWIG nowarn=504,325,503
 

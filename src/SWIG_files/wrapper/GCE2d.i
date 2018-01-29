@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GCE2DDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GCE2DDOCSTRING) GCE2d
+%module (package="OCC.Core", docstring=GCE2DDOCSTRING) GCE2d
 
 #pragma SWIG nowarn=504,325,503
 

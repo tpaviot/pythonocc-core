@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define MATHDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=MATHDOCSTRING) math
+%module (package="OCC.Core", docstring=MATHDOCSTRING) math
 
 #pragma SWIG nowarn=504,325,503
 

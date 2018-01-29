@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define PRSMGRDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=PRSMGRDOCSTRING) PrsMgr
+%module (package="OCC.Core", docstring=PRSMGRDOCSTRING) PrsMgr
 
 #pragma SWIG nowarn=504,325,503
 

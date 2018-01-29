@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define INTSTARTDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=INTSTARTDOCSTRING) IntStart
+%module (package="OCC.Core", docstring=INTSTARTDOCSTRING) IntStart
 
 #pragma SWIG nowarn=504,325,503
 

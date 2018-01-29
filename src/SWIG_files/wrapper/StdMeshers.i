@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define STDMESHERSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=STDMESHERSDOCSTRING) StdMeshers
+%module (package="OCC.Core", docstring=STDMESHERSDOCSTRING) StdMeshers
 
 #pragma SWIG nowarn=504,325,503
 

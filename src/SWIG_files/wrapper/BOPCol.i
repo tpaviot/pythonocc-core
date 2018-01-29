@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BOPCOLDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BOPCOLDOCSTRING) BOPCol
+%module (package="OCC.Core", docstring=BOPCOLDOCSTRING) BOPCol
 
 #pragma SWIG nowarn=504,325,503
 

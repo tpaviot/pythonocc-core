@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BREPOFFSETDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BREPOFFSETDOCSTRING) BRepOffset
+%module (package="OCC.Core", docstring=BREPOFFSETDOCSTRING) BRepOffset
 
 #pragma SWIG nowarn=504,325,503
 

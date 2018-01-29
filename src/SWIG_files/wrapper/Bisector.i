@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BISECTORDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BISECTORDOCSTRING) Bisector
+%module (package="OCC.Core", docstring=BISECTORDOCSTRING) Bisector
 
 #pragma SWIG nowarn=504,325,503
 

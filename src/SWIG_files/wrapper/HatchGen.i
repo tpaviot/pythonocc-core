@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define HATCHGENDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=HATCHGENDOCSTRING) HatchGen
+%module (package="OCC.Core", docstring=HATCHGENDOCSTRING) HatchGen
 
 #pragma SWIG nowarn=504,325,503
 

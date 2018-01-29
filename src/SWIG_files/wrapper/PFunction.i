@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define PFUNCTIONDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=PFUNCTIONDOCSTRING) PFunction
+%module (package="OCC.Core", docstring=PFUNCTIONDOCSTRING) PFunction
 
 #pragma SWIG nowarn=504,325,503
 

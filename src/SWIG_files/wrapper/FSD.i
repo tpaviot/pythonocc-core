@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define FSDDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=FSDDOCSTRING) FSD
+%module (package="OCC.Core", docstring=FSDDOCSTRING) FSD
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TCOLGPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TCOLGPDOCSTRING) TColgp
+%module (package="OCC.Core", docstring=TCOLGPDOCSTRING) TColgp
 
 #pragma SWIG nowarn=504,325,503
 

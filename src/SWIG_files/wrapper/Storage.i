@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define STORAGEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=STORAGEDOCSTRING) Storage
+%module (package="OCC.Core", docstring=STORAGEDOCSTRING) Storage
 
 #pragma SWIG nowarn=504,325,503
 

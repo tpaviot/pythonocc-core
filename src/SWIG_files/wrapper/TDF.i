@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TDFDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TDFDOCSTRING) TDF
+%module (package="OCC.Core", docstring=TDFDOCSTRING) TDF
 
 #pragma SWIG nowarn=504,325,503
 

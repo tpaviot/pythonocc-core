@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define HLRTOPOBREPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=HLRTOPOBREPDOCSTRING) HLRTopoBRep
+%module (package="OCC.Core", docstring=HLRTOPOBREPDOCSTRING) HLRTopoBRep
 
 #pragma SWIG nowarn=504,325,503
 

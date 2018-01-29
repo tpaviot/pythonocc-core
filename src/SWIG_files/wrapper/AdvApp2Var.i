@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define ADVAPP2VARDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=ADVAPP2VARDOCSTRING) AdvApp2Var
+%module (package="OCC.Core", docstring=ADVAPP2VARDOCSTRING) AdvApp2Var
 
 #pragma SWIG nowarn=504,325,503
 

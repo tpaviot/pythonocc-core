@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define STEPTOTOPODSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=STEPTOTOPODSDOCSTRING) StepToTopoDS
+%module (package="OCC.Core", docstring=STEPTOTOPODSDOCSTRING) StepToTopoDS
 
 #pragma SWIG nowarn=504,325,503
 

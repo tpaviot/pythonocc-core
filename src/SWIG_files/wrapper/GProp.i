@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GPROPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GPROPDOCSTRING) GProp
+%module (package="OCC.Core", docstring=GPROPDOCSTRING) GProp
 
 #pragma SWIG nowarn=504,325,503
 

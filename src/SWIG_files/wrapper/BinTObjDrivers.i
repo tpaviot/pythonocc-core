@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BINTOBJDRIVERSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BINTOBJDRIVERSDOCSTRING) BinTObjDrivers
+%module (package="OCC.Core", docstring=BINTOBJDRIVERSDOCSTRING) BinTObjDrivers
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define V3DDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=V3DDOCSTRING) V3d
+%module (package="OCC.Core", docstring=V3DDOCSTRING) V3d
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GEOM2DCONVERTDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GEOM2DCONVERTDOCSTRING) Geom2dConvert
+%module (package="OCC.Core", docstring=GEOM2DCONVERTDOCSTRING) Geom2dConvert
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define STEPDIMTOLDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=STEPDIMTOLDOCSTRING) StepDimTol
+%module (package="OCC.Core", docstring=STEPDIMTOLDOCSTRING) StepDimTol
 
 #pragma SWIG nowarn=504,325,503
 

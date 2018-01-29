@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define MFUNCTIONDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=MFUNCTIONDOCSTRING) MFunction
+%module (package="OCC.Core", docstring=MFUNCTIONDOCSTRING) MFunction
 
 #pragma SWIG nowarn=504,325,503
 

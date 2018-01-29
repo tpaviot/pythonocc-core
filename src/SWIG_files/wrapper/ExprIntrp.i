@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define EXPRINTRPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=EXPRINTRPDOCSTRING) ExprIntrp
+%module (package="OCC.Core", docstring=EXPRINTRPDOCSTRING) ExprIntrp
 
 #pragma SWIG nowarn=504,325,503
 

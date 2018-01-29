@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BOPALGODOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BOPALGODOCSTRING) BOPAlgo
+%module (package="OCC.Core", docstring=BOPALGODOCSTRING) BOPAlgo
 
 #pragma SWIG nowarn=504,325,503
 
