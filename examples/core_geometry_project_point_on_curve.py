@@ -19,9 +19,9 @@
 
 from __future__ import print_function
 
-from OCC.gp import gp_Pnt, gp_XOY
-from OCC.GeomAPI import GeomAPI_ProjectPointOnCurve
-from OCC.Geom import Geom_Circle
+from OCC.Core.gp import gp_Pnt, gp_XOY
+from OCC.Core.GeomAPI import GeomAPI_ProjectPointOnCurve
+from OCC.Core.Geom import Geom_Circle
 
 from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()

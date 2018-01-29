@@ -28,8 +28,8 @@ Code
   import os
   import os.path
   
-  from OCC.SMESH import SMESH_Gen, SMESH_MeshVSLink
-  from OCC.MeshVS import MeshVS_Mesh, MeshVS_BP_Mesh, MeshVS_MeshPrsBuilder, MeshVS_DMF_WireFrame
+  from OCC.Core.SMESH import SMESH_Gen, SMESH_MeshVSLink
+  from OCC.Core.MeshVS import MeshVS_Mesh, MeshVS_BP_Mesh, MeshVS_MeshPrsBuilder, MeshVS_DMF_WireFrame
   from OCC.Display.SimpleGui import init_display
   
   # Create the Mesh

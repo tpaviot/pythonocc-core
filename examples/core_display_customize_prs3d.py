@@ -22,7 +22,7 @@
 # Be carful that improving quality results in higher memory consumption
 #
 
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeCylinder
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeCylinder
 from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()
 display.SetModeHLR()

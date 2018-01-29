@@ -15,9 +15,9 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-from OCC.AIS import AIS_Shape
-from OCC.Quantity import Quantity_NOC_BLACK
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.AIS import AIS_Shape
+from OCC.Core.Quantity import Quantity_NOC_BLACK
 from OCC.Display.SimpleGui import init_display
 
 display, start_display, add_menu, add_function_to_menu = init_display()

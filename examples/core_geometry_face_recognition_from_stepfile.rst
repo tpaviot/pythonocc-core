@@ -54,14 +54,14 @@ Code
   import sys
   
   
-  from OCC.STEPControl import STEPControl_Reader
-  from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
-  from OCC.GeomAbs import GeomAbs_Plane, GeomAbs_Cylinder
-  from OCC.TopoDS import topods_Face
-  from OCC.BRepAdaptor import BRepAdaptor_Surface
+  from OCC.Core.STEPControl import STEPControl_Reader
+  from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
+  from OCC.Core.GeomAbs import GeomAbs_Plane, GeomAbs_Cylinder
+  from OCC.Core.TopoDS import topods_Face
+  from OCC.Core.BRepAdaptor import BRepAdaptor_Surface
   from OCC.Display.SimpleGui import init_display
   
-  from OCC.TopologyUtils import TopologyExplorer
+  from OCC.Extend.TopologyUtils import TopologyExplorer
   
   
   def read_step_file(filename):

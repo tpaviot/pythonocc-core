@@ -18,13 +18,13 @@
 import random
 from math import pi
 
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-from OCC.Aspect import Aspect_TODT_NORMAL, Aspect_TODT_DEKALE 
-from OCC.Quantity import Quantity_Color, Quantity_NOC_BLACK, Quantity_NOC_ORANGE
-from OCC.TCollection import TCollection_AsciiString
-from OCC.gp import gp_Ax1, gp_Pnt, gp_Dir, gp_Trsf
-from OCC.TopLoc import TopLoc_Location
-from OCC.Addons import TextItem
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.Aspect import Aspect_TODT_NORMAL, Aspect_TODT_DEKALE 
+from OCC.Core.Quantity import Quantity_Color, Quantity_NOC_BLACK, Quantity_NOC_ORANGE
+from OCC.Core.TCollection import TCollection_AsciiString
+from OCC.Core.gp import gp_Ax1, gp_Pnt, gp_Dir, gp_Trsf
+from OCC.Core.TopLoc import TopLoc_Location
+from OCC.Core.Addons import TextItem
 
 from OCC.Display.SimpleGui import init_display
 

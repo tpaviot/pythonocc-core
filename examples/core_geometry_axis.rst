@@ -29,7 +29,7 @@ Code
   
   import sys
   
-  from OCC.gp import gp_Pnt, gp_Dir, gp_Ax3
+  from OCC.Core.gp import gp_Pnt, gp_Dir, gp_Ax3
   
   from OCC.Display.SimpleGui import init_display
   display, start_display, add_menu, add_function_to_menu = init_display()

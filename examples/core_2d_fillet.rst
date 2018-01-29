@@ -23,12 +23,12 @@ Code
 
 .. code-block:: python
 
-  from OCC.gp import gp_Pnt,gp_Dir,gp_Pln
+  from OCC.Core.gp import gp_Pnt,gp_Dir,gp_Pln
   from OCC.Display.SimpleGui import init_display
-  from OCC.ChFi2d import ChFi2d_AnaFilletAlgo
-  from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge,BRepBuilderAPI_MakeWire
+  from OCC.Core.ChFi2d import ChFi2d_AnaFilletAlgo
+  from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge,BRepBuilderAPI_MakeWire
   
-  from OCC.ShapeFactory import make_wire
+  from OCC.Extend.ShapeFactory import make_wire
   display,start_display, add_menu,add_functionto_menu = init_display()
   
   # Defining the points

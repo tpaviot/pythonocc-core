@@ -23,9 +23,9 @@ Code
 
 .. code-block:: python
 
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
-  from OCC.Bnd import Bnd_Box
-  from OCC.BRepBndLib import brepbndlib_Add
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
+  from OCC.Core.Bnd import Bnd_Box
+  from OCC.Core.BRepBndLib import brepbndlib_Add
   from OCC.Display.SimpleGui import init_display
   
   

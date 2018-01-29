@@ -24,9 +24,9 @@ Code
 .. code-block:: python
 
   from OCC.Display.SimpleGui import init_display
-  from OCC.BRepTools import breptools_Read
-  from OCC.TopoDS import TopoDS_Shape
-  from OCC.BRep import BRep_Builder
+  from OCC.Core.BRepTools import breptools_Read
+  from OCC.Core.TopoDS import TopoDS_Shape
+  from OCC.Core.BRep import BRep_Builder
   
   cylinder_head = TopoDS_Shape()
   builder = BRep_Builder()

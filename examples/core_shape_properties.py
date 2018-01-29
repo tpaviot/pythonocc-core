@@ -17,11 +17,11 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-from OCC.GProp import GProp_GProps
-from OCC.BRepGProp import brepgprop_VolumeProperties, brepgprop_SurfaceProperties
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.GProp import GProp_GProps
+from OCC.Core.BRepGProp import brepgprop_VolumeProperties, brepgprop_SurfaceProperties
 
-from OCC.TopologyUtils import TopologyExplorer
+from OCC.Extend.TopologyUtils import TopologyExplorer
 
 def cube_inertia_properties():
     """ Compute the inertia properties of a shape

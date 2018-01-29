@@ -16,7 +16,7 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 from OCC.Display.SimpleGui import init_display
-from OCC.Addons import text_to_brep, Font_FA_Bold
+from OCC.Core.Addons import text_to_brep, Font_FA_Bold
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 

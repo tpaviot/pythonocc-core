@@ -26,15 +26,15 @@ try:
 except ImportError:
     import urllib2  # Python2
 
-from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeFace
-from OCC.BRepPrimAPI import BRepPrimAPI_MakePrism
-from OCC.Geom2dAPI import Geom2dAPI_PointsToBSpline
-from OCC.GeomAPI import geomapi
-from OCC.gp import gp_Pnt, gp_Vec, gp_Pnt2d, gp_Pln, gp_Dir
-from OCC.TColgp import TColgp_Array1OfPnt2d
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeFace
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakePrism
+from OCC.Core.Geom2dAPI import Geom2dAPI_PointsToBSpline
+from OCC.Core.GeomAPI import geomapi
+from OCC.Core.gp import gp_Pnt, gp_Vec, gp_Pnt2d, gp_Pln, gp_Dir
+from OCC.Core.TColgp import TColgp_Array1OfPnt2d
 from OCC.Display.SimpleGui import init_display
     
-from OCC.ShapeFactory import make_wire, make_edge
+from OCC.Extend.ShapeFactory import make_wire, make_edge
 
 
 class UiucAirfoil(object):

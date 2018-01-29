@@ -24,7 +24,7 @@ Code
 .. code-block:: python
 
   from OCC.Display.OCCViewer import Display3d, Viewer3d
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
   
   # create the renderer
   offscreen_renderer = Viewer3d(None)

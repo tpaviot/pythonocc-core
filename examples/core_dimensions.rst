@@ -25,9 +25,9 @@ Code
 
   ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
   
-  from OCC.gp import gp_Dir, gp_Ax2, gp_Circ, gp_Pnt
-  from OCC.AIS import AIS_Shape, AIS_RadiusDimension
-  from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
+  from OCC.Core.gp import gp_Dir, gp_Ax2, gp_Circ, gp_Pnt
+  from OCC.Core.AIS import AIS_Shape, AIS_RadiusDimension
+  from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
   from OCC.Display.SimpleGui import init_display
   
   display, start_display, add_menu, add_function_to_menu = init_display()

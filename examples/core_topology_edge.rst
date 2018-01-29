@@ -25,11 +25,11 @@ Code
 
   import math
   
-  from OCC.gp import gp_Pnt, gp_Lin, gp_Ax1, gp_Dir, gp_Elips, gp_Ax2
-  from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
+  from OCC.Core.gp import gp_Pnt, gp_Lin, gp_Ax1, gp_Dir, gp_Elips, gp_Ax2
+  from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                   BRepBuilderAPI_MakeVertex)
-  from OCC.TColgp import TColgp_Array1OfPnt
-  from OCC.Geom import Geom_BezierCurve
+  from OCC.Core.TColgp import TColgp_Array1OfPnt
+  from OCC.Core.Geom import Geom_BezierCurve
   
   from OCC.Display.SimpleGui import init_display
   display, start_display, add_menu, add_function_to_menu = init_display()

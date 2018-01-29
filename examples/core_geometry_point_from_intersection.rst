@@ -27,11 +27,11 @@ Code
   
   from __future__ import print_function
   
-  from OCC.gp import gp_Pln, gp_XOY, gp_Ax3, gp_YOZ, gp_Elips
-  from OCC.IntAna import IntAna_IntConicQuad
-  from OCC.Precision import precision_Angular, precision_Confusion
-  from OCC.GC import GC_MakePlane, GC_MakeEllipse
-  from OCC.Geom import Geom_RectangularTrimmedSurface
+  from OCC.Core.gp import gp_Pln, gp_XOY, gp_Ax3, gp_YOZ, gp_Elips
+  from OCC.Core.IntAna import IntAna_IntConicQuad
+  from OCC.Core.Precision import precision_Angular, precision_Confusion
+  from OCC.Core.GC import GC_MakePlane, GC_MakeEllipse
+  from OCC.Core.Geom import Geom_RectangularTrimmedSurface
   
   from OCC.Display.SimpleGui import init_display
   display, start_display, add_menu, add_function_to_menu = init_display()

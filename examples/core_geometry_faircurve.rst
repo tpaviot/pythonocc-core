@@ -31,10 +31,10 @@ Code
   import time
   import sys
   
-  from OCC.gp import gp_Pnt2d, gp_Pln
-  from OCC.Geom import Geom_Plane
-  from OCC.FairCurve import FairCurve_MinimalVariation
-  from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
+  from OCC.Core.gp import gp_Pnt2d, gp_Pln
+  from OCC.Core.Geom import Geom_Plane
+  from OCC.Core.FairCurve import FairCurve_MinimalVariation
+  from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
   from OCC.Display.SimpleGui import init_display
   display, start_display, add_menu, add_function_to_menu = init_display()
   

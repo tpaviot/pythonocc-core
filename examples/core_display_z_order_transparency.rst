@@ -23,11 +23,11 @@ Code
 
 .. code-block:: python
 
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
   from OCC.Display.SimpleGui import init_display
-  from OCC.gp import gp_Vec, gp_Pnt
+  from OCC.Core.gp import gp_Vec, gp_Pnt
   
-  from OCC.ShapeFactory import translate_shp
+  from OCC.Extend.ShapeFactory import translate_shp
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

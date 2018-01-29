@@ -25,10 +25,10 @@ Code
 
   ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
   
-  from OCC.Bnd import Bnd_Box
-  from OCC.BRepBndLib import brepbndlib_Add
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeCylinder
-  from OCC.BRepMesh import BRepMesh_IncrementalMesh
+  from OCC.Core.Bnd import Bnd_Box
+  from OCC.Core.BRepBndLib import brepbndlib_Add
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeCylinder
+  from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
   
   
   def get_boundingbox(shape, tol=1e-6, use_mesh=True):

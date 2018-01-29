@@ -17,8 +17,8 @@
 
 from math import pi
 
-from OCC.TCollection import TCollection_AsciiString
-from OCC.Addons import TextureItem
+from OCC.Core.TCollection import TCollection_AsciiString
+from OCC.Core.Addons import TextureItem
 from OCC.Display.SimpleGui import init_display
 
 # load the bottle

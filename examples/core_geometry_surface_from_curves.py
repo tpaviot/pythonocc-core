@@ -19,17 +19,17 @@
 
 from __future__ import print_function
 
-from OCC.gp import gp_Pnt, gp_Vec
-from OCC.GeomFill import (GeomFill_BSplineCurves,
+from OCC.Core.gp import gp_Pnt, gp_Vec
+from OCC.Core.GeomFill import (GeomFill_BSplineCurves,
                           GeomFill_StretchStyle,
                           GeomFill_CoonsStyle,
                           GeomFill_CurvedStyle)
-from OCC.GeomAPI import GeomAPI_PointsToBSpline
-from OCC.Geom import Handle_Geom_BSplineCurve_DownCast
+from OCC.Core.GeomAPI import GeomAPI_PointsToBSpline
+from OCC.Core.Geom import Handle_Geom_BSplineCurve_DownCast
 
 from OCC.Display.SimpleGui import init_display
 
-from OCC.ShapeFactory import point_list_to_TColgp_Array1OfPnt, make_face
+from OCC.Extend.ShapeFactory import point_list_to_TColgp_Array1OfPnt, make_face
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 

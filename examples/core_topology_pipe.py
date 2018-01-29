@@ -19,11 +19,11 @@
 
 from __future__ import print_function
 
-from OCC.gp import gp_Pnt
-from OCC.GeomAPI import GeomAPI_PointsToBSpline
-from OCC.TColgp import TColgp_Array1OfPnt
-from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeWire
-from OCC.BRepOffsetAPI import BRepOffsetAPI_MakePipe
+from OCC.Core.gp import gp_Pnt
+from OCC.Core.GeomAPI import GeomAPI_PointsToBSpline
+from OCC.Core.TColgp import TColgp_Array1OfPnt
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeWire
+from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_MakePipe
 
 from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()

@@ -27,8 +27,8 @@ Code
   
   import os
   
-  from OCC.Graphic3d import Graphic3d_NOM_SILVER, Graphic3d_MaterialAspect
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeCylinder
+  from OCC.Core.Graphic3d import Graphic3d_NOM_SILVER, Graphic3d_MaterialAspect
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeCylinder
   
   from OCC.Display.SimpleGui import init_display
   display, start_display, add_menu, add_function_to_menu = init_display()

@@ -16,16 +16,16 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 from __future__ import print_function
 
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
-from OCC.gp import gp_Pnt
-from OCC.BRepAlgoAPI import BRepAlgoAPI_Cut
-from OCC.SMESH import SMESH_Gen, SMESH_MeshVSLink
-from OCC.StdMeshers import (StdMeshers_Arithmetic1D, StdMeshers_QuadranglePreference,
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
+from OCC.Core.gp import gp_Pnt
+from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Cut
+from OCC.Core.SMESH import SMESH_Gen, SMESH_MeshVSLink
+from OCC.Core.StdMeshers import (StdMeshers_Arithmetic1D, StdMeshers_QuadranglePreference,
 	                        StdMeshers_Regular_1D, StdMeshers_Prism_3D, StdMeshers_CompositeHexa_3D,
 	                        StdMeshers_Quadrangle_2D)
-from OCC.MeshVS import (MeshVS_Mesh, MeshVS_BP_Mesh, MeshVS_MeshPrsBuilder,
+from OCC.Core.MeshVS import (MeshVS_Mesh, MeshVS_BP_Mesh, MeshVS_MeshPrsBuilder,
 	                    MeshVS_DMF_NodalColorDataPrs)
-from OCC.SMDSAbs import SMDSAbs_Face
+from OCC.Core.SMDSAbs import SMDSAbs_Face
 
 from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()

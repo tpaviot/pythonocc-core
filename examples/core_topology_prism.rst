@@ -27,11 +27,11 @@ Code
   
   from __future__ import print_function
   
-  from OCC.gp import gp_Pnt, gp_Vec
-  from OCC.GeomAPI import GeomAPI_PointsToBSpline
-  from OCC.TColgp import TColgp_Array1OfPnt
-  from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakePrism
+  from OCC.Core.gp import gp_Pnt, gp_Vec
+  from OCC.Core.GeomAPI import GeomAPI_PointsToBSpline
+  from OCC.Core.TColgp import TColgp_Array1OfPnt
+  from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakePrism
   
   from OCC.Display.SimpleGui import init_display
   display, start_display, add_menu, add_function_to_menu = init_display()

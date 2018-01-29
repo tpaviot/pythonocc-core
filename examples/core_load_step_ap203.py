@@ -22,13 +22,13 @@ import os
 import os.path
 import sys
 
-from OCC.STEPControl import STEPControl_Reader
-from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
-from OCC.Quantity import Quantity_Color, Quantity_TOC_RGB
+from OCC.Core.STEPControl import STEPControl_Reader
+from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
+from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.Display.SimpleGui import init_display
 
-from OCC.TopologyUtils import TopologyExplorer
-from OCC.DataExchange import read_step_file
+from OCC.Extend.TopologyUtils import TopologyExplorer
+from OCC.Extend.DataExchange import read_step_file
 
 def import_as_one_shape(event=None):
     shp = read_step_file(os.path.join('.', 'models', 'as1_pe_203.stp'))

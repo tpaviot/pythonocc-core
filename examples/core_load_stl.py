@@ -18,7 +18,7 @@
 import os
 
 from OCC.Display.SimpleGui import init_display
-from OCC.DataExchange import read_stl_file
+from OCC.Extend.DataExchange import read_stl_file
 
 stl_filename = os.path.join('.', 'models', 'fan.stl')
 stl_shp = read_stl_file(stl_filename)

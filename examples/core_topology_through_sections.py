@@ -15,10 +15,10 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from OCC.gp import gp_Dir, gp_Pnt, gp_Circ, gp_Ax2
-from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeWire,
+from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Circ, gp_Ax2
+from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeWire,
                                 BRepBuilderAPI_MakeEdge)
-from OCC.BRepOffsetAPI import BRepOffsetAPI_ThruSections
+from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_ThruSections
 
 from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()

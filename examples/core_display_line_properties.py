@@ -21,10 +21,10 @@ from __future__ import print_function
 
 import sys
 
-from OCC.gp import gp_Pnt, gp_Dir
-from OCC.Geom import Geom_Line
-from OCC.AIS import AIS_Line
-from OCC.Prs3d import Prs3d_LineAspect, Prs3d_Drawer
+from OCC.Core.gp import gp_Pnt, gp_Dir
+from OCC.Core.Geom import Geom_Line
+from OCC.Core.AIS import AIS_Line
+from OCC.Core.Prs3d import Prs3d_LineAspect, Prs3d_Drawer
 
 from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()

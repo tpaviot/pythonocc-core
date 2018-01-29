@@ -24,8 +24,8 @@ Code
 .. code-block:: python
 
   from OCC.Display.SimpleGui import init_display
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeTorus
-  from OCC.Graphic3d import (Graphic3d_EF_PDF,
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
+  from OCC.Core.Graphic3d import (Graphic3d_EF_PDF,
                              Graphic3d_EF_SVG,
                              Graphic3d_EF_TEX,
                              Graphic3d_EF_PostScript,

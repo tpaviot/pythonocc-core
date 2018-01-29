@@ -20,23 +20,23 @@ import os
 import sys
 import time
 
-from OCC.BRep import BRep_Tool
-from OCC.BRepAdaptor import BRepAdaptor_HCurve
-from OCC.BRepBuilderAPI import BRepBuilderAPI_MakePolygon
-from OCC.BRepFill import BRepFill_CurveConstraint
+from OCC.Core.BRep import BRep_Tool
+from OCC.Core.BRepAdaptor import BRepAdaptor_HCurve
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakePolygon
+from OCC.Core.BRepFill import BRepFill_CurveConstraint
 from OCC.Display.SimpleGui import init_display
-from OCC.GeomAbs import GeomAbs_C0
-from OCC.GeomLProp import GeomLProp_SLProps
-from OCC.GeomLProp import GeomLProp_SurfaceTool
-from OCC.GeomPlate import (GeomPlate_BuildPlateSurface, GeomPlate_PointConstraint,
+from OCC.Core.GeomAbs import GeomAbs_C0
+from OCC.Core.GeomLProp import GeomLProp_SLProps
+from OCC.Core.GeomLProp import GeomLProp_SurfaceTool
+from OCC.Core.GeomPlate import (GeomPlate_BuildPlateSurface, GeomPlate_PointConstraint,
 	                       GeomPlate_MakeApprox)
-from OCC.ShapeAnalysis import ShapeAnalysis_Surface
-from OCC.gp import gp_Pnt
-from OCC.BRepFill import BRepFill_Filling
+from OCC.Core.ShapeAnalysis import ShapeAnalysis_Surface
+from OCC.Core.gp import gp_Pnt
+from OCC.Core.BRepFill import BRepFill_Filling
 
-from OCC.TopologyUtils import TopologyExplorer, WireExplorer
-from OCC.ShapeFactory import make_face, make_vertex
-from OCC.DataExchange import read_iges_file
+from OCC.Extend.TopologyUtils import TopologyExplorer, WireExplorer
+from OCC.Extend.ShapeFactory import make_face, make_vertex
+from OCC.Extend.DataExchange import read_iges_file
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 

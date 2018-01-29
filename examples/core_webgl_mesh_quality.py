@@ -22,10 +22,10 @@ from __future__ import print_function
 import random
 
 from OCC.Display.WebGl import threejs_renderer
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeTorus
-from OCC.gp import gp_Vec
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
+from OCC.Core.gp import gp_Vec
 
-from OCC.ShapeFactory import translate_shp
+from OCC.Extend.ShapeFactory import translate_shp
 
 my_ren = threejs_renderer.ThreejsRenderer()
 

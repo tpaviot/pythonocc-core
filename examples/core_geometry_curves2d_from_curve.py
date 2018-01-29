@@ -19,11 +19,11 @@
 
 from __future__ import print_function
 
-from OCC.gp import gp_OX2d
-from OCC.GCE2d import GCE2d_MakeEllipse
-from OCC.Geom2d import Geom2d_TrimmedCurve
-from OCC.Geom2dConvert import geom2dconvert_CurveToBSplineCurve
-from OCC.Convert import Convert_TgtThetaOver2
+from OCC.Core.gp import gp_OX2d
+from OCC.Core.GCE2d import GCE2d_MakeEllipse
+from OCC.Core.Geom2d import Geom2d_TrimmedCurve
+from OCC.Core.Geom2dConvert import geom2dconvert_CurveToBSplineCurve
+from OCC.Core.Convert import Convert_TgtThetaOver2
 
 from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()

@@ -23,10 +23,10 @@ Code
 
 .. code-block:: python
 
-  from OCC.gp import gp_Pnt
-  from OCC.BRepBuilderAPI import BRepBuilderAPI_MakePolygon
-  from OCC.GeomAbs import GeomAbs_Arc
-  from OCC.BRepOffsetAPI import BRepOffsetAPI_MakeEvolved
+  from OCC.Core.gp import gp_Pnt
+  from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakePolygon
+  from OCC.Core.GeomAbs import GeomAbs_Arc
+  from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_MakeEvolved
   
   from OCC.Display.SimpleGui import init_display
   display, start_display, add_menu, add_function_to_menu = init_display()

@@ -3,12 +3,12 @@ from __future__ import print_function
 import random
 import warnings
 
-from OCC.Aspect import Aspect_TOL_SOLID
+from OCC.Core.Aspect import Aspect_TOL_SOLID
 from OCC.Display.SimpleGui import init_display
-from OCC.Graphic3d import Graphic3d_ArrayOfPolylines, Graphic3d_AspectLine3d
-from OCC.Prs3d import Prs3d_Root_CurrentGroup, Prs3d_Presentation
-from OCC.Quantity import Quantity_NOC_BLACK, Quantity_Color
-from OCC.gp import gp_Pnt
+from OCC.Core.Graphic3d import Graphic3d_ArrayOfPolylines, Graphic3d_AspectLine3d
+from OCC.Core.Prs3d import Prs3d_Root_CurrentGroup, Prs3d_Presentation
+from OCC.Core.Quantity import Quantity_NOC_BLACK, Quantity_Color
+from OCC.Core.gp import gp_Pnt
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 

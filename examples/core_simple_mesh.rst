@@ -23,16 +23,16 @@ Code
 
 .. code-block:: python
 
-  from OCC.BRep import BRep_Builder, BRep_Tool
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
-  from OCC.BRepAlgoAPI import BRepAlgoAPI_Fuse
-  from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
-  from OCC.BRepMesh import BRepMesh_IncrementalMesh
-  from OCC.TopExp import TopExp_Explorer
-  from OCC.TopoDS import TopoDS_Compound, topods_Face, topods_Edge
-  from OCC.TopAbs import TopAbs_FACE
-  from OCC.TopLoc import TopLoc_Location
-  from OCC.gp import gp_Pnt
+  from OCC.Core.BRep import BRep_Builder, BRep_Tool
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
+  from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Fuse
+  from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
+  from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
+  from OCC.Core.TopExp import TopExp_Explorer
+  from OCC.Core.TopoDS import TopoDS_Compound, topods_Face, topods_Edge
+  from OCC.Core.TopAbs import TopAbs_FACE
+  from OCC.Core.TopLoc import TopLoc_Location
+  from OCC.Core.gp import gp_Pnt
   from OCC.Display.SimpleGui import init_display
   
   display, start_display, add_menu, add_function_to_menu = init_display()

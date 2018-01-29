@@ -30,8 +30,8 @@ Code
   
   import sys
   
-  from OCC.Visualization import Tesselator
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+  from OCC.Core.Visualization import Tesselator
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
   try:
       from mpl_toolkits.mplot3d import Axes3D
       from matplotlib import pyplot as plt

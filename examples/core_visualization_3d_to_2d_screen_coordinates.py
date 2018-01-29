@@ -20,10 +20,10 @@ coordinates in the console.
 """
 
 from OCC.Display.SimpleGui import init_display
-from OCC.Graphic3d import Graphic3d_Camera
-from OCC.TopoDS import topods_Vertex
-from OCC.BRep import BRep_Tool
-from OCC.DataExchange import read_step_file
+from OCC.Core.Graphic3d import Graphic3d_Camera
+from OCC.Core.TopoDS import topods_Vertex
+from OCC.Core.BRep import BRep_Tool
+from OCC.Extend.DataExchange import read_step_file
 
 def vertex_clicked(shp, *kwargs):
     """ This function is called whenever a vertex is selected

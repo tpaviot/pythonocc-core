@@ -32,16 +32,16 @@ Code
   else:
       import processing
   
-  from OCC.BRep import BRep_Builder
-  from OCC.BRepTools import breptools_Read
-  from OCC.TopoDS import TopoDS_Shape
-  from OCC.gp import gp_Pln, gp_Dir, gp_Pnt
-  from OCC.BRepAlgoAPI import BRepAlgoAPI_Section
-  from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeFace
+  from OCC.Core.BRep import BRep_Builder
+  from OCC.Core.BRepTools import breptools_Read
+  from OCC.Core.TopoDS import TopoDS_Shape
+  from OCC.Core.gp import gp_Pln, gp_Dir, gp_Pnt
+  from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Section
+  from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeFace
   
   from OCC.Display.SimpleGui import init_display
   
-  from OCC.ShapeFactory import get_boundingbox
+  from OCC.Extend.ShapeFactory import get_boundingbox
   
   
   def drange(start, stop, step):

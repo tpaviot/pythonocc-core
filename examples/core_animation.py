@@ -22,9 +22,9 @@ from __future__ import print_function
 import time
 from math import pi
 
-from OCC.gp import gp_Ax1, gp_Pnt, gp_Dir, gp_Trsf
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-from OCC.TopLoc import TopLoc_Location
+from OCC.Core.gp import gp_Ax1, gp_Pnt, gp_Dir, gp_Trsf
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.TopLoc import TopLoc_Location
 from OCC.Display.SimpleGui import init_display
 
 display, start_display, add_menu, add_function_to_menu = init_display()

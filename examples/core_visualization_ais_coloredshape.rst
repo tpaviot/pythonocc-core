@@ -32,12 +32,12 @@ Code
   
   from random import random
   
-  from OCC.AIS import AIS_ColoredShape
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+  from OCC.Core.AIS import AIS_ColoredShape
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
   from OCC.Display.OCCViewer import rgb_color
   from OCC.Display.SimpleGui import init_display
   
-  from OCC.TopologyUtils import TopologyExplorer
+  from OCC.Extend.TopologyUtils import TopologyExplorer
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

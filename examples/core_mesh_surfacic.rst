@@ -25,23 +25,23 @@ Code
 
   import sys
   
-  from OCC.gp import gp_Pnt
-  from OCC.TopAbs import TopAbs_FACE
-  from OCC.TopExp import TopExp_Explorer
-  from OCC.TopoDS import TopoDS_Compound, topods_Face
-  from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeFace
-  from OCC.GeomAPI import GeomAPI_PointsToBSpline
-  from OCC.GeomFill import GeomFill_ConstrainedFilling, GeomFill_SimpleBound
-  from OCC.GeomAdaptor import GeomAdaptor_HCurve
-  from OCC.TColgp import TColgp_Array1OfPnt
-  from OCC.BRep import BRep_Builder, BRep_Tool
-  from OCC.BRepMesh import BRepMesh_IncrementalMesh
-  from OCC.TopLoc import TopLoc_Location
-  from OCC.MeshVS import MeshVS_Mesh, MeshVS_BP_Mesh, MeshVS_MeshPrsBuilder, MeshVS_DMF_NodalColorDataPrs
+  from OCC.Core.gp import gp_Pnt
+  from OCC.Core.TopAbs import TopAbs_FACE
+  from OCC.Core.TopExp import TopExp_Explorer
+  from OCC.Core.TopoDS import TopoDS_Compound, topods_Face
+  from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeFace
+  from OCC.Core.GeomAPI import GeomAPI_PointsToBSpline
+  from OCC.Core.GeomFill import GeomFill_ConstrainedFilling, GeomFill_SimpleBound
+  from OCC.Core.GeomAdaptor import GeomAdaptor_HCurve
+  from OCC.Core.TColgp import TColgp_Array1OfPnt
+  from OCC.Core.BRep import BRep_Builder, BRep_Tool
+  from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
+  from OCC.Core.TopLoc import TopLoc_Location
+  from OCC.Core.MeshVS import MeshVS_Mesh, MeshVS_BP_Mesh, MeshVS_MeshPrsBuilder, MeshVS_DMF_NodalColorDataPrs
   
   # SMESH wrappers
-  from OCC.SMESH import SMESH_Gen, SMESH_MeshVSLink
-  from OCC.StdMeshers import (StdMeshers_Arithmetic1D, StdMeshers_TrianglePreference,
+  from OCC.Core.SMESH import SMESH_Gen, SMESH_MeshVSLink
+  from OCC.Core.StdMeshers import (StdMeshers_Arithmetic1D, StdMeshers_TrianglePreference,
                               StdMeshers_Regular_1D, StdMeshers_Quadrangle_2D,
                               StdMeshers_MEFISTO_2D)
   

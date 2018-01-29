@@ -26,13 +26,13 @@ Code
   import os
   import sys
   
-  from OCC.Bisector import Bisector_BisecCC
+  from OCC.Core.Bisector import Bisector_BisecCC
   from OCC.Display.SimpleGui import init_display
-  from OCC.GCE2d import GCE2d_MakeLine, GCE2d_MakeCircle
-  from OCC.GccAna import GccAna_Lin2dBisec, GccAna_CircLin2dBisec, GccAna_Pnt2dBisec
-  from OCC.gp import gp_Lin2d, gp_Pnt2d, gp_Dir2d, gp_Circ2d, gp_Ax22d, gp_Pnt
+  from OCC.Core.GCE2d import GCE2d_MakeLine, GCE2d_MakeCircle
+  from OCC.Core.GccAna import GccAna_Lin2dBisec, GccAna_CircLin2dBisec, GccAna_Pnt2dBisec
+  from OCC.Core.gp import gp_Lin2d, gp_Pnt2d, gp_Dir2d, gp_Circ2d, gp_Ax22d, gp_Pnt
   
-  from OCC.ShapeFactory import make_vertex, make_edge2d
+  from OCC.Extend.ShapeFactory import make_vertex, make_edge2d
   
   # start gui
   display, start_display, add_menu, add_function_to_menu = init_display()

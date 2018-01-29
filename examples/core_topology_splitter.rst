@@ -27,13 +27,13 @@ Code
   import sys
   import time
   
-  from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge, \
+  from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge, \
       BRepBuilderAPI_MakeFace
   from OCC.Display.SimpleGui import init_display
-  from OCC.GEOMAlgo import GEOMAlgo_Splitter
-  from OCC.TopAbs import TopAbs_EDGE
-  from OCC.TopExp import TopExp_Explorer
-  from OCC.gp import gp_Dir, gp_Pln, gp_Pnt
+  from OCC.Core.GEOMAlgo import GEOMAlgo_Splitter
+  from OCC.Core.TopAbs import TopAbs_EDGE
+  from OCC.Core.TopExp import TopExp_Explorer
+  from OCC.Core.gp import gp_Dir, gp_Pln, gp_Pnt
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

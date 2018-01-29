@@ -23,10 +23,10 @@ Code
 
 .. code-block:: python
 
-  from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeWire, BRepBuilderAPI_MakeFace
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeRevol
+  from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeWire, BRepBuilderAPI_MakeFace
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeRevol
   from OCC.Display.SimpleGui import init_display
-  from OCC.gp import gp_Pnt, gp_Dir, gp_Ax1
+  from OCC.Core.gp import gp_Pnt, gp_Dir, gp_Ax1
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

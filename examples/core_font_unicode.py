@@ -17,13 +17,13 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import random
-from OCC.gp import gp_Vec
-from OCC.Quantity import Quantity_Color, Quantity_TOC_RGB
+from OCC.Core.gp import gp_Vec
+from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 
 from OCC.Display.SimpleGui import init_display
-from OCC.Addons import text_to_brep, Font_FA_Regular
+from OCC.Core.Addons import text_to_brep, Font_FA_Regular
 
-from OCC.ShapeFactory import translate_shp, make_extrusion
+from OCC.Extend.ShapeFactory import translate_shp, make_extrusion
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 

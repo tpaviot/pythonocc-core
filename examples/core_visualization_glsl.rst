@@ -24,12 +24,12 @@ Code
 .. code-block:: python
 
   
-  from OCC.AIS import AIS_Shape
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeSphere
+  from OCC.Core.AIS import AIS_Shape
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
   from OCC.Display.SimpleGui import init_display
-  from OCC.Graphic3d import (Graphic3d_ShaderProgram, Graphic3d_TOS_VERTEX, Graphic3d_TOS_FRAGMENT,
+  from OCC.Core.Graphic3d import (Graphic3d_ShaderProgram, Graphic3d_TOS_VERTEX, Graphic3d_TOS_FRAGMENT,
                              Graphic3d_ShaderObject)
-  from OCC.TCollection import TCollection_AsciiString
+  from OCC.Core.TCollection import TCollection_AsciiString
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

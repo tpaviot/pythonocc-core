@@ -24,9 +24,9 @@ Code
 .. code-block:: python
 
   import os
-  from OCC.StlAPI import StlAPI_Writer
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeTorus
-  from OCC.BRepMesh import BRepMesh_IncrementalMesh
+  from OCC.Core.StlAPI import StlAPI_Writer
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
+  from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
   
   # first, create the shape
   my_torus = BRepPrimAPI_MakeTorus(20., 10.).Shape()

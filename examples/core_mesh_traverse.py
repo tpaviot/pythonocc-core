@@ -15,9 +15,9 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-from OCC.SMESH import SMESH_Gen
-from OCC.StdMeshers import (StdMeshers_Arithmetic1D, StdMeshers_Regular_1D,
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.SMESH import SMESH_Gen
+from OCC.Core.StdMeshers import (StdMeshers_Arithmetic1D, StdMeshers_Regular_1D,
                             StdMeshers_TrianglePreference, StdMeshers_MEFISTO_2D,
                             StdMeshers_QuadranglePreference, StdMeshers_Quadrangle_2D)
 

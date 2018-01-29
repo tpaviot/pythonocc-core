@@ -25,17 +25,17 @@ Code
 
   import math
   
-  from OCC.gp import (gp_Pnt, gp_Sphere, gp_Ax3, gp_Dir, gp_Circ, gp_Ax2,
+  from OCC.Core.gp import (gp_Pnt, gp_Sphere, gp_Ax3, gp_Dir, gp_Circ, gp_Ax2,
                       gp_Pnt2d, gp_Dir2d)
-  from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
+  from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                   BRepBuilderAPI_MakeFace,
                                   BRepBuilderAPI_MakeWire)
-  from OCC.TColgp import TColgp_Array2OfPnt
-  from OCC.GeomAPI import GeomAPI_PointsToBSplineSurface
-  from OCC.GeomAbs import GeomAbs_C2
-  from OCC.Geom2d import Geom2d_Line
-  from OCC.BRepLib import breplib_BuildCurves3d
-  from OCC.Quantity import Quantity_Color, Quantity_NOC_PINK
+  from OCC.Core.TColgp import TColgp_Array2OfPnt
+  from OCC.Core.GeomAPI import GeomAPI_PointsToBSplineSurface
+  from OCC.Core.GeomAbs import GeomAbs_C2
+  from OCC.Core.Geom2d import Geom2d_Line
+  from OCC.Core.BRepLib import breplib_BuildCurves3d
+  from OCC.Core.Quantity import Quantity_Color, Quantity_NOC_PINK
   
   from OCC.Display.SimpleGui import init_display
   display, start_display, add_menu, add_function_to_menu = init_display()

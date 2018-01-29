@@ -19,7 +19,7 @@
 
 from __future__ import print_function
 
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 import pickle
 

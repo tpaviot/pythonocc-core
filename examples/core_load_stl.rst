@@ -24,8 +24,8 @@ Code
 .. code-block:: python
 
   from OCC.Display.SimpleGui import init_display
-  from OCC.TopoDS import TopoDS_Shape
-  from OCC.StlAPI import StlAPI_Reader
+  from OCC.Core.TopoDS import TopoDS_Shape
+  from OCC.Core.StlAPI import StlAPI_Reader
   
   stl_reader = StlAPI_Reader()
   fan_shp = TopoDS_Shape()

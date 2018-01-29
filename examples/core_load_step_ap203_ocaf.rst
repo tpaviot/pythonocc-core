@@ -26,17 +26,17 @@ Code
   from __future__ import print_function
   
   
-  from OCC.TCollection import TCollection_ExtendedString
+  from OCC.Core.TCollection import TCollection_ExtendedString
   
-  from OCC.TDocStd import Handle_TDocStd_Document
-  from OCC.XCAFApp import XCAFApp_Application
-  from OCC.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
+  from OCC.Core.TDocStd import Handle_TDocStd_Document
+  from OCC.Core.XCAFApp import XCAFApp_Application
+  from OCC.Core.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
                            XCAFDoc_DocumentTool_ColorTool,
                            XCAFDoc_DocumentTool_LayerTool,
                            XCAFDoc_DocumentTool_MaterialTool)
-  from OCC.STEPCAFControl import STEPCAFControl_Reader
-  from OCC.IFSelect import IFSelect_RetDone
-  from OCC.TDF import TDF_LabelSequence
+  from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
+  from OCC.Core.IFSelect import IFSelect_RetDone
+  from OCC.Core.TDF import TDF_LabelSequence
   
   from OCC.Display.SimpleGui import init_display
   

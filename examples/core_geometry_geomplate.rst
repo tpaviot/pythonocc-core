@@ -28,19 +28,19 @@ Code
   import sys
   import time
   
-  from OCC.BRep import BRep_Tool
-  from OCC.BRepAdaptor import BRepAdaptor_HCurve
-  from OCC.BRepBuilderAPI import BRepBuilderAPI_MakePolygon
-  from OCC.BRepFill import BRepFill_CurveConstraint
+  from OCC.Core.BRep import BRep_Tool
+  from OCC.Core.BRepAdaptor import BRepAdaptor_HCurve
+  from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakePolygon
+  from OCC.Core.BRepFill import BRepFill_CurveConstraint
   from OCC.Display.SimpleGui import init_display
-  from OCC.GeomAbs import GeomAbs_C0
-  from OCC.GeomLProp import GeomLProp_SLProps
-  from OCC.GeomLProp import GeomLProp_SurfaceTool
-  from OCC.GeomPlate import GeomPlate_BuildPlateSurface, GeomPlate_PointConstraint, GeomPlate_MakeApprox
-  from OCC.ShapeAnalysis import ShapeAnalysis_Surface
-  from OCC.gp import gp_Pnt
+  from OCC.Core.GeomAbs import GeomAbs_C0
+  from OCC.Core.GeomLProp import GeomLProp_SLProps
+  from OCC.Core.GeomLProp import GeomLProp_SurfaceTool
+  from OCC.Core.GeomPlate import GeomPlate_BuildPlateSurface, GeomPlate_PointConstraint, GeomPlate_MakeApprox
+  from OCC.Core.ShapeAnalysis import ShapeAnalysis_Surface
+  from OCC.Core.gp import gp_Pnt
   
-  from OCC.ShapeFactory import make_face, make_vertex
+  from OCC.Extend.ShapeFactory import make_face, make_vertex
   from core_topology_traverse import WireExplorer, Topo
   
   display, start_display, add_menu, add_function_to_menu = init_display()
@@ -82,7 +82,7 @@ Code
       :param continuity: GeomAbs_0, 1, 2
       :return: TopoDS_Face
       """
-      from OCC.BRepFill import BRepFill_Filling
+      from OCC.Core.BRepFill import BRepFill_Filling
       n_sided = BRepFill_Filling()
       for edg in edges:
           n_sided.Add(edg, continuity)
@@ -108,8 +108,8 @@ Code
   
   
   def iges_importer(path_):
-      from OCC.IGESControl import IGESControl_Reader
-      from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
+      from OCC.Core.IGESControl import IGESControl_Reader
+      from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
       iges_reader = IGESControl_Reader()
       status = iges_reader.ReadFile(path_)
   

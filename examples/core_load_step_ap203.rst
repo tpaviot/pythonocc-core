@@ -30,12 +30,12 @@ Code
   import os.path
   import sys
   
-  from OCC.STEPControl import STEPControl_Reader
-  from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
-  from OCC.Quantity import Quantity_Color, Quantity_TOC_RGB
+  from OCC.Core.STEPControl import STEPControl_Reader
+  from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
+  from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
   from OCC.Display.SimpleGui import init_display
   
-  from OCC.TopologyUtils import TopologyExplorer
+  from OCC.Extend.TopologyUtils import TopologyExplorer
   
   def read_step_file(filename):
       """ read the STEP file and returns a compound

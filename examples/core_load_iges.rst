@@ -27,8 +27,8 @@ Code
   
   import sys
   
-  from OCC.IGESControl import IGESControl_Reader
-  from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
+  from OCC.Core.IGESControl import IGESControl_Reader
+  from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
   from OCC.Display.SimpleGui import init_display
   
   iges_reader = IGESControl_Reader()

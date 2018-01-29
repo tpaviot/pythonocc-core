@@ -19,7 +19,7 @@
 import os
 
 from OCC.Display.SimpleGui import init_display
-from OCC.Addons import text_to_brep, register_font, Font_FA_Bold, Font_FA_Regular
+from OCC.Core.Addons import text_to_brep, register_font, Font_FA_Bold, Font_FA_Regular
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 

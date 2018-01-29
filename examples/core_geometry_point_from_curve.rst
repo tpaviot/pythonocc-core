@@ -25,10 +25,10 @@ Code
 
   ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
   
-  from OCC.gp import gp_Pnt, gp_Pnt2d, gp_OX2d
-  from OCC.Geom2d import Geom2d_Circle
-  from OCC.Geom2dAdaptor import Geom2dAdaptor_Curve
-  from OCC.GCPnts import GCPnts_UniformAbscissa
+  from OCC.Core.gp import gp_Pnt, gp_Pnt2d, gp_OX2d
+  from OCC.Core.Geom2d import Geom2d_Circle
+  from OCC.Core.Geom2dAdaptor import Geom2dAdaptor_Curve
+  from OCC.Core.GCPnts import GCPnts_UniformAbscissa
   
   from OCC.Display.SimpleGui import init_display
   display, start_display, add_menu, add_function_to_menu = init_display()

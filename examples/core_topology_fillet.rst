@@ -25,13 +25,13 @@ Code
 
   from math import cos, pi
   
-  from OCC.BRepAlgoAPI import BRepAlgoAPI_Fuse
-  from OCC.BRepFilletAPI import BRepFilletAPI_MakeFillet
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeCylinder
+  from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Fuse
+  from OCC.Core.BRepFilletAPI import BRepFilletAPI_MakeFillet
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeCylinder
   from OCC.Display.SimpleGui import init_display
-  from OCC.TColgp import TColgp_Array1OfPnt2d
-  from OCC.gp import gp_Ax2, gp_Pnt, gp_Dir, gp_Pnt2d
-  from OCC.TopologyUtils import TopologyExplorer
+  from OCC.Core.TColgp import TColgp_Array1OfPnt2d
+  from OCC.Core.gp import gp_Ax2, gp_Pnt, gp_Dir, gp_Pnt2d
+  from OCC.Extend.TopologyUtils import TopologyExplorer
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

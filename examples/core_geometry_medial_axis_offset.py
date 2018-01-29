@@ -19,18 +19,18 @@
 
 # this example was ported from: http://heekscnc.blogspot.nl/2009/09/occ-offset.html, by Dan Heeks
 
-from OCC.BRepOffsetAPI import BRepOffsetAPI_MakeOffset
+from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_MakeOffset
 from OCC.Display.SimpleGui import init_display
-from OCC.GeomAbs import GeomAbs_Arc
-from OCC.gp import gp_Pnt
-from OCC.ShapeFactory import make_edge, make_vertex, make_wire, make_face
-from OCC.TopologyUtils import TopologyExplorer
+from OCC.Core.GeomAbs import GeomAbs_Arc
+from OCC.Core.gp import gp_Pnt
+from OCC.Extend.ShapeFactory import make_edge, make_vertex, make_wire, make_face
+from OCC.Extend.TopologyUtils import TopologyExplorer
 
 display, start_display, add_menu, add_function_to_menu = init_display()
 
 
 def boolean_cut(shapeToCutFrom, cuttingShape):
-    from OCC.BRepAlgoAPI import BRepAlgoAPI_Cut
+    from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Cut
     cut = BRepAlgoAPI_Cut(shapeToCutFrom, cuttingShape)
 
     if not cut.BuilderCanWork():

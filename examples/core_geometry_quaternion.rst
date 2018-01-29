@@ -28,8 +28,8 @@ Code
   from __future__ import print_function
   
   from OCC.Display.SimpleGui import init_display
-  from OCC.gp import gp_QuaternionSLerp, gp_Quaternion, gp_Vec, gp_Pnt
-  from OCC.ShapeFactory import make_edge
+  from OCC.Core.gp import gp_QuaternionSLerp, gp_Quaternion, gp_Vec, gp_Pnt
+  from OCC.Extend.ShapeFactory import make_edge
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

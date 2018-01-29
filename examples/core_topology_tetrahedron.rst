@@ -25,8 +25,8 @@ Code
 
   ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
   
-  from OCC.gp import gp_Pnt
-  from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
+  from OCC.Core.gp import gp_Pnt
+  from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                   BRepBuilderAPI_MakeWire,
                                   BRepBuilderAPI_MakeFace,
                                   BRepBuilderAPI_Sewing)

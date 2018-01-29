@@ -22,11 +22,11 @@ from __future__ import print_function
 import os
 import sys
 
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
-from OCC.BRepTools import breptools_Write
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
+from OCC.Core.BRepTools import breptools_Write
 
 from OCC.Display.SimpleGui import init_display
-from OCC.DataExchange import read_stl_file
+from OCC.Extend.DataExchange import read_stl_file
 
 
 def mesh_shape(a_topods_shape):

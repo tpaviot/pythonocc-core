@@ -20,8 +20,8 @@ import random
 from math import pi
 
 from OCC.Display.SimpleGui import init_display
-from OCC.Addons import LineItem
-from OCC.Quantity import Quantity_Color
+from OCC.Core.Addons import LineItem
+from OCC.Core.Quantity import Quantity_Color
 
 # load the bottle
 from core_classic_occ_bottle import bottle

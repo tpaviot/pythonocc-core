@@ -22,14 +22,14 @@
 
 from math import atan, cos, sin, pi
 
-from OCC.BRepAlgoAPI import BRepAlgoAPI_Cut, BRepAlgoAPI_Fuse
-from OCC.BRepBuilderAPI import (BRepBuilderAPI_Transform, BRepBuilderAPI_MakeWire,
+from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Cut, BRepAlgoAPI_Fuse
+from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_Transform, BRepBuilderAPI_MakeWire,
                                 BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeFace)
-from OCC.BRepFeat import BRepFeat_MakeCylindricalHole
-from OCC.BRepPrimAPI import (BRepPrimAPI_MakeSphere, BRepPrimAPI_MakeCylinder,
+from OCC.Core.BRepFeat import BRepFeat_MakeCylindricalHole
+from OCC.Core.BRepPrimAPI import (BRepPrimAPI_MakeSphere, BRepPrimAPI_MakeCylinder,
                              BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeRevol)
-from OCC.TColgp import TColgp_Array1OfPnt
-from OCC.gp import gp_Ax2, gp_Pnt, gp_Dir, gp_Ax1, gp_Trsf, gp_Vec
+from OCC.Core.TColgp import TColgp_Array1OfPnt
+from OCC.Core.gp import gp_Ax2, gp_Pnt, gp_Dir, gp_Ax1, gp_Trsf, gp_Vec
 
 from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()

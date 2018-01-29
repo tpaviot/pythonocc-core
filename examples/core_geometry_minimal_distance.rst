@@ -27,12 +27,12 @@ Code
   
   from __future__ import print_function
   
-  from OCC.BRepExtrema import BRepExtrema_DistShapeShape
-  from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+  from OCC.Core.BRepExtrema import BRepExtrema_DistShapeShape
+  from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
   from OCC.Display.SimpleGui import init_display
-  from OCC.gp import gp_Pnt, gp_Ax2, gp_Circ
+  from OCC.Core.gp import gp_Pnt, gp_Ax2, gp_Circ
   
-  from OCC.ShapeFactory import make_edge, make_vertex
+  from OCC.Extend.ShapeFactory import make_edge, make_vertex
   
   display, start_display, add_menu, add_function_to_menu = init_display()
   

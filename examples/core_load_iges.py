@@ -17,10 +17,10 @@
 
 from __future__ import print_function
 
-from OCC.IGESControl import IGESControl_Reader
-from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
+from OCC.Core.IGESControl import IGESControl_Reader
+from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
 from OCC.Display.SimpleGui import init_display
-from OCC.DataExchange import read_iges_file
+from OCC.Extend.DataExchange import read_iges_file
 
 shapes = read_iges_file('./models/surf114.igs')
 

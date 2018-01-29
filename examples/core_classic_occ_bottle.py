@@ -19,23 +19,23 @@
 
 import math
 
-from OCC.gp import gp_Pnt, gp_OX, gp_Vec, gp_Trsf, gp_DZ, gp_Ax2, gp_Ax3, gp_Pnt2d, gp_Dir2d, gp_Ax2d
-from OCC.GC import GC_MakeArcOfCircle, GC_MakeSegment
-from OCC.GCE2d import GCE2d_MakeSegment
-from OCC.Geom import Geom_Plane, Geom_CylindricalSurface, Handle_Geom_Plane, Handle_Geom_Surface
-from OCC.Geom2d import Geom2d_Ellipse, Geom2d_TrimmedCurve, Handle_Geom2d_Ellipse, Handle_Geom2d_Curve
-from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeWire, BRepBuilderAPI_MakeFace, \
+from OCC.Core.gp import gp_Pnt, gp_OX, gp_Vec, gp_Trsf, gp_DZ, gp_Ax2, gp_Ax3, gp_Pnt2d, gp_Dir2d, gp_Ax2d
+from OCC.Core.GC import GC_MakeArcOfCircle, GC_MakeSegment
+from OCC.Core.GCE2d import GCE2d_MakeSegment
+from OCC.Core.Geom import Geom_Plane, Geom_CylindricalSurface, Handle_Geom_Plane, Handle_Geom_Surface
+from OCC.Core.Geom2d import Geom2d_Ellipse, Geom2d_TrimmedCurve, Handle_Geom2d_Ellipse, Handle_Geom2d_Curve
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge, BRepBuilderAPI_MakeWire, BRepBuilderAPI_MakeFace, \
     BRepBuilderAPI_Transform
-from OCC.BRepPrimAPI import BRepPrimAPI_MakePrism, BRepPrimAPI_MakeCylinder
-from OCC.BRepFilletAPI import BRepFilletAPI_MakeFillet
-from OCC.BRepAlgoAPI import BRepAlgoAPI_Fuse
-from OCC.BRepOffsetAPI import BRepOffsetAPI_MakeThickSolid, BRepOffsetAPI_ThruSections
-from OCC.BRepLib import breplib
-from OCC.BRep import BRep_Tool_Surface, BRep_Builder
-from OCC.TopoDS import topods, TopoDS_Edge, TopoDS_Compound
-from OCC.TopExp import TopExp_Explorer
-from OCC.TopAbs import TopAbs_EDGE, TopAbs_FACE
-from OCC.TopTools import TopTools_ListOfShape
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakePrism, BRepPrimAPI_MakeCylinder
+from OCC.Core.BRepFilletAPI import BRepFilletAPI_MakeFillet
+from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Fuse
+from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_MakeThickSolid, BRepOffsetAPI_ThruSections
+from OCC.Core.BRepLib import breplib
+from OCC.Core.BRep import BRep_Tool_Surface, BRep_Builder
+from OCC.Core.TopoDS import topods, TopoDS_Edge, TopoDS_Compound
+from OCC.Core.TopExp import TopExp_Explorer
+from OCC.Core.TopAbs import TopAbs_EDGE, TopAbs_FACE
+from OCC.Core.TopTools import TopTools_ListOfShape
 
 def face_is_plane(face):
     """

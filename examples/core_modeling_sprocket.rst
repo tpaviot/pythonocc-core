@@ -31,23 +31,23 @@ Code
   import sys
   from math import pi as M_PI, sin, cos, pow, atan
   
-  from OCC.gp import gp_Pnt2d, gp_Ax2d, gp_Dir2d, gp_Circ2d, gp_Origin2d, gp_DX2d, \
+  from OCC.Core.gp import gp_Pnt2d, gp_Ax2d, gp_Dir2d, gp_Circ2d, gp_Origin2d, gp_DX2d, \
       gp_Ax2, gp_OX2d, gp_Lin2d, gp_Trsf, gp_XOY, \
       gp_Pnt, gp_Vec, gp_Ax3, gp_Pln, gp_Origin, gp_DX, gp_DY, gp_DZ, gp_OZ
-  from OCC.GCE2d import GCE2d_MakeArcOfCircle, GCE2d_MakeCircle, GCE2d_MakeLine
-  from OCC.Geom2dAPI import Geom2dAPI_InterCurveCurve
-  from OCC.Geom2d import Handle_Geom2d_TrimmedCurve
-  from OCC.GeomAPI import geomapi_To3d
-  from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
+  from OCC.Core.GCE2d import GCE2d_MakeArcOfCircle, GCE2d_MakeCircle, GCE2d_MakeLine
+  from OCC.Core.Geom2dAPI import Geom2dAPI_InterCurveCurve
+  from OCC.Core.Geom2d import Handle_Geom2d_TrimmedCurve
+  from OCC.Core.GeomAPI import geomapi_To3d
+  from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                   BRepBuilderAPI_MakeWire,
                                   BRepBuilderAPI_MakeFace,
                                   BRepBuilderAPI_Transform)
-  from OCC.BRepPrimAPI import (BRepPrimAPI_MakePrism, BRepPrimAPI_MakeRevol,
+  from OCC.Core.BRepPrimAPI import (BRepPrimAPI_MakePrism, BRepPrimAPI_MakeRevol,
                                BRepPrimAPI_MakeCylinder, BRepPrimAPI_MakeCone)
-  from OCC.GccAna import GccAna_Circ2d2TanRad
-  from OCC.BRepAlgoAPI import BRepAlgoAPI_Cut, BRepAlgoAPI_Fuse
-  from OCC.BRepFilletAPI import BRepFilletAPI_MakeFillet2d
-  from OCC.BRepTools import BRepTools_WireExplorer
+  from OCC.Core.GccAna import GccAna_Circ2d2TanRad
+  from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Cut, BRepAlgoAPI_Fuse
+  from OCC.Core.BRepFilletAPI import BRepFilletAPI_MakeFillet2d
+  from OCC.Core.BRepTools import BRepTools_WireExplorer
   from OCC.Display.SimpleGui import init_display
   
   roller_diameter = 10.2

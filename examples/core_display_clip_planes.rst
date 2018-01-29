@@ -29,12 +29,12 @@ Code
   
   import sys
   
-  from OCC.gp import gp_Vec
-  from OCC.Graphic3d import Graphic3d_ClipPlane
-  from OCC.Quantity import Quantity_Color, Quantity_TOC_RGB
-  from OCC.BRepTools import breptools_Read
-  from OCC.TopoDS import TopoDS_Shape
-  from OCC.BRep import BRep_Builder
+  from OCC.Core.gp import gp_Vec
+  from OCC.Core.Graphic3d import Graphic3d_ClipPlane
+  from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
+  from OCC.Core.BRepTools import breptools_Read
+  from OCC.Core.TopoDS import TopoDS_Shape
+  from OCC.Core.BRep import BRep_Builder
   from OCC.Display.SimpleGui import init_display
   display, start_display, add_menu, add_function_to_menu = init_display()
   
