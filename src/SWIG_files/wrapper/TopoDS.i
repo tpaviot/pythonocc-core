@@ -39,7 +39,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include TopoDS_headers.i
 
 %pythoncode {
-from .Core.BRepTools import BRepTools_ShapeSet	
+from .BRepTools import BRepTools_ShapeSet	
 };
 
 %pythoncode {
