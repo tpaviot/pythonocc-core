@@ -29,7 +29,7 @@ from OCC.STEPControl import STEPControl_Reader, STEPControl_Writer, STEPControl_
 from OCC.Interface import Interface_Static_SetCVal
 from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
 
-from OCC.TopologyUtils import TopologyExplorer
+from OCC.Extend.TopologyUtils import TopologyExplorer
 
 ##########################
 # Step import and export #
