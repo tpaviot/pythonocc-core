@@ -27,37 +27,37 @@ import math
 import itertools
 
 import OCC
-from OCC.AIS import AIS_Shape, AIS_Shaded, AIS_TexturedShape, AIS_WireFrame
-from OCC.TopoDS import TopoDS_Shape
-from OCC.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
-from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
+from OCC.Core.AIS import AIS_Shape, AIS_Shaded, AIS_TexturedShape, AIS_WireFrame
+from OCC.Core.TopoDS import TopoDS_Shape
+from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
+from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                 BRepBuilderAPI_MakeEdge,
                                 BRepBuilderAPI_MakeEdge2d,
                                 BRepBuilderAPI_MakeFace)
-from OCC.TopAbs import (TopAbs_FACE, TopAbs_EDGE, TopAbs_VERTEX,
+from OCC.Core.TopAbs import (TopAbs_FACE, TopAbs_EDGE, TopAbs_VERTEX,
                         TopAbs_SHELL, TopAbs_SOLID)
-from OCC.Geom import Handle_Geom_Curve, Handle_Geom_Surface
-from OCC.Geom2d import Handle_Geom2d_Curve
-from OCC.Visualization import Display3d
-from OCC.V3d import (V3d_ZBUFFER, V3d_PHONG, V3d_Zpos, V3d_Zneg, V3d_Xpos,
+from OCC.Core.Geom import Handle_Geom_Curve, Handle_Geom_Surface
+from OCC.Core.Geom2d import Handle_Geom2d_Curve
+from OCC.Core.Visualization import Display3d
+from OCC.Core.V3d import (V3d_ZBUFFER, V3d_PHONG, V3d_Zpos, V3d_Zneg, V3d_Xpos,
                      V3d_Xneg, V3d_Ypos, V3d_Yneg, V3d_XposYnegZpos, V3d_TEX_ALL,
                      V3d_TEX_NONE, V3d_TEX_ENVIRONMENT,
                      V3d_LayerMgr)
-from OCC.TCollection import TCollection_ExtendedString, TCollection_AsciiString
-from OCC.Quantity import (Quantity_Color, Quantity_TOC_RGB, Quantity_NOC_WHITE,
+from OCC.Core.TCollection import TCollection_ExtendedString, TCollection_AsciiString
+from OCC.Core.Quantity import (Quantity_Color, Quantity_TOC_RGB, Quantity_NOC_WHITE,
                           Quantity_NOC_BLACK, Quantity_NOC_BLUE1,
                           Quantity_NOC_CYAN1, Quantity_NOC_RED,
                           Quantity_NOC_GREEN,
                           Quantity_NOC_ORANGE, Quantity_NOC_YELLOW)
-from OCC.Prs3d import (Prs3d_Arrow, Prs3d_Presentation, Prs3d_Text,
+from OCC.Core.Prs3d import (Prs3d_Arrow, Prs3d_Presentation, Prs3d_Text,
                        Prs3d_TextAspect)
-from OCC.Graphic3d import (Graphic3d_NOM_NEON_GNC, Graphic3d_NOT_ENV_CLOUDS,
+from OCC.Core.Graphic3d import (Graphic3d_NOM_NEON_GNC, Graphic3d_NOT_ENV_CLOUDS,
                            Handle_Graphic3d_TextureEnv, Graphic3d_TextureEnv,
                            Graphic3d_Camera, Graphic3d_RM_RAYTRACING,
                            Graphic3d_RM_RASTERIZATION,
                            Graphic3d_StereoMode_QuadBuffer,
                            Graphic3d_RenderingParams)
-from OCC.Aspect import Aspect_TOTP_RIGHT_LOWER, Aspect_FM_STRETCH, Aspect_FM_NONE
+from OCC.Core.Aspect import Aspect_TOTP_RIGHT_LOWER, Aspect_FM_STRETCH, Aspect_FM_NONE
 
 # Shaders and Units definition must be found by occ
 # the fastest way to get done is to set the CASROOT env variable

@@ -33,14 +33,14 @@ except ImportError:
     print("Error You must install pythreejs/ipywidegets/numpy to run the jupyter notebook renderer")
     sys.exit(0)
 
-from OCC.Bnd import Bnd_Box
-from OCC.BRepBndLib import brepbndlib_Add
-from OCC.Visualization import Tesselator
-from OCC.TopologyUtils import TopologyExplorer, WireExplorer, dump_topology_to_string, shape_type_string
+from OCC.Core.Bnd import Bnd_Box
+from OCC.Core.BRepBndLib import brepbndlib_Add
+from OCC.Core.Visualization import Tesselator
+from OCC.Extend.TopologyUtils import TopologyExplorer, WireExplorer, dump_topology_to_string, shape_type_string
 
 # smesh
 try:
-    from OCC.SMESH import SMESH_Mesh
+    from OCC.Core.SMESH import SMESH_Mesh
     HAVE_SMESH = True
 except ImportError:
     print("SMESH wrapper not found, can't display SMESH meshes")

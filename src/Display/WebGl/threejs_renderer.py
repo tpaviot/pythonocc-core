@@ -22,8 +22,8 @@ import sys
 import tempfile
 import uuid
 
-from OCC.gp import gp_Vec
-from OCC.Visualization import Tesselator
+from OCC.Core.gp import gp_Vec
+from OCC.Core.Visualization import Tesselator
 from OCC import VERSION as OCC_VERSION
 
 from .simple_server import start_server
@@ -543,9 +543,9 @@ class ThreejsRenderer(object):
         start_server(server_port, self._path, open_webbrowser)
 
 if __name__ == "__main__":
-    from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
-    from OCC.BRepBuilderAPI import BRepBuilderAPI_Transform
-    from OCC.gp import gp_Trsf, gp_Vec
+    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
+    from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
+    from OCC.Core.gp import gp_Trsf, gp_Vec
     def translate_shp(shp, vec, copy=False):
         trns = gp_Trsf()
         trns.SetTranslation(vec)

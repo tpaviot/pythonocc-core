@@ -207,7 +207,7 @@ def init_display(backend_str=None, size=(1024, 768)):
 
 if __name__ == '__main__':
     display, start_display, add_menu, add_function_to_menu = init_display("qt-pyside")
-    from OCC.BRepPrimAPI import BRepPrimAPI_MakeSphere, BRepPrimAPI_MakeBox
+    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere, BRepPrimAPI_MakeBox
 
     def sphere(event=None):
         display.DisplayShape(BRepPrimAPI_MakeSphere(100).Shape(), update=True)
