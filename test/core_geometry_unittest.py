@@ -23,34 +23,34 @@ import unittest
 import time
 import sys
 
-from OCC.gp import *
-from OCC.Geom2d import *
-from OCC.Geom2dAdaptor import *
-from OCC.Geom2dAPI import *
-from OCC.GCPnts import *
-from OCC.Geom import *
-from OCC.GeomAPI import *
-from OCC.Precision import *
-from OCC.IntAna import *
-from OCC.GC import *
-from OCC.GCE2d import *
-from OCC.Geom2dConvert import *
-from OCC.TopAbs import *
-from OCC.GccEnt import *
-from OCC.gce import *
-from OCC.GccAna import *
-from OCC.Quantity import *
-from OCC.GeomConvert import *
-from OCC.TColGeom import *
-from OCC.BRepBuilderAPI import *
-from OCC.TCollection import *
-from OCC.Graphic3d import *
-from OCC.BRepPrimAPI import *
-from OCC.AIS import *
-from OCC.Prs3d import *
-from OCC.TColgp import *
-from OCC.GeomFill import *
-from OCC.Convert import Convert_TgtThetaOver2
+from OCC.Core.gp import *
+from OCC.Core.Geom2d import *
+from OCC.Core.Geom2dAdaptor import *
+from OCC.Core.Geom2dAPI import *
+from OCC.Core.GCPnts import *
+from OCC.Core.Geom import *
+from OCC.Core.GeomAPI import *
+from OCC.Core.Precision import *
+from OCC.Core.IntAna import *
+from OCC.Core.GC import *
+from OCC.Core.GCE2d import *
+from OCC.Core.Geom2dConvert import *
+from OCC.Core.TopAbs import *
+from OCC.Core.GccEnt import *
+from OCC.Core.gce import *
+from OCC.Core.GccAna import *
+from OCC.Core.Quantity import *
+from OCC.Core.GeomConvert import *
+from OCC.Core.TColGeom import *
+from OCC.Core.BRepBuilderAPI import *
+from OCC.Core.TCollection import *
+from OCC.Core.Graphic3d import *
+from OCC.Core.BRepPrimAPI import *
+from OCC.Core.AIS import *
+from OCC.Core.Prs3d import *
+from OCC.Core.TColgp import *
+from OCC.Core.GeomFill import *
+from OCC.Core.Convert import Convert_TgtThetaOver2
 #
 # Utility functions
 #

@@ -22,20 +22,20 @@ from __future__ import print_function
 import unittest
 import os
 
-from OCC.TCollection import TCollection_ExtendedString
+from OCC.Core.TCollection import TCollection_ExtendedString
 
-from OCC.TDocStd import Handle_TDocStd_Document
-from OCC.XCAFApp import XCAFApp_Application
-from OCC.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
+from OCC.Core.TDocStd import Handle_TDocStd_Document
+from OCC.Core.XCAFApp import XCAFApp_Application
+from OCC.Core.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
                          XCAFDoc_DocumentTool_ColorTool,
                          XCAFDoc_ColorGen)
-from OCC.STEPCAFControl import STEPCAFControl_Reader, STEPCAFControl_Writer
-from OCC.IFSelect import IFSelect_RetDone
-from OCC.Quantity import Quantity_Color
-from OCC.TDF import TDF_LabelSequence
-from OCC.XSControl import XSControl_WorkSession
-from OCC.STEPControl import STEPControl_AsIs
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.STEPCAFControl import STEPCAFControl_Reader, STEPCAFControl_Writer
+from OCC.Core.IFSelect import IFSelect_RetDone
+from OCC.Core.Quantity import Quantity_Color
+from OCC.Core.TDF import TDF_LabelSequence
+from OCC.Core.XSControl import XSControl_WorkSession
+from OCC.Core.STEPControl import STEPControl_AsIs
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 
 class TestOCAF(unittest.TestCase):

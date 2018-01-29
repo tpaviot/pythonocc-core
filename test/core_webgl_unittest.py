@@ -21,8 +21,8 @@ import unittest
 import random
 import os
 
-from OCC.Display.WebGl import threejs_renderer, x3dom_renderer
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeBox
+from OCC.Core.Display.WebGl import threejs_renderer, x3dom_renderer
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeBox
 
 
 class TestWebGL(unittest.TestCase):

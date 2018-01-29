@@ -20,9 +20,9 @@
 from __future__ import print_function
 import sys
 
-from OCC.Display.backend import load_pyqt4
-from OCC.Display.SimpleGui import init_display
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.Display.backend import load_pyqt4
+from OCC.Core.Display.SimpleGui import init_display
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 # check for pyqt4
 if not load_pyqt4():

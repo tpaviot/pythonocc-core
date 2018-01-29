@@ -22,32 +22,32 @@ import unittest
 import os
 from math import sqrt
 
-from OCC.Standard import Standard_Transient, Handle_Standard_Transient
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
+from OCC.Core.Standard import Standard_Transient, Handle_Standard_Transient
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                 BRepBuilderAPI_MakeEdge)
-from OCC.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir,
+from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir,
                     gp_Quaternion, gp_QuaternionSLerp)
-from OCC.GC import GC_MakeSegment
-from OCC.STEPControl import STEPControl_Writer
-from OCC.Interface import Interface_Static_SetCVal, Interface_Static_CVal
-from OCC.GCE2d import GCE2d_MakeSegment
-from OCC.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
-from OCC.TopoDS import TopoDS_Compound, TopoDS_Builder, TopoDS_Edge
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeCylinder
-from OCC.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
-from OCC.TopExp import TopExp_Explorer
-from OCC.TopAbs import TopAbs_FACE
-from OCC.GProp import GProp_GProps
-from OCC.BRepGProp import brepgprop_LinearProperties
-from OCC.ShapeAnalysis import ShapeAnalysis_Curve
-from OCC.BRep import BRep_Builder
-from OCC.ChFiDS import ChFiDS_ChamfSpine
-from OCC.Graphic3d import Graphic3d_RenderingParams
-from OCC.AIS import (Handle_AIS_Shape, Handle_AIS_Shape_DownCast,
+from OCC.Core.GC import GC_MakeSegment
+from OCC.Core.STEPControl import STEPControl_Writer
+from OCC.Core.Interface import Interface_Static_SetCVal, Interface_Static_CVal
+from OCC.Core.GCE2d import GCE2d_MakeSegment
+from OCC.Core.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
+from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Builder, TopoDS_Edge
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeCylinder
+from OCC.Core.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
+from OCC.Core.TopExp import TopExp_Explorer
+from OCC.Core.TopAbs import TopAbs_FACE
+from OCC.Core.GProp import GProp_GProps
+from OCC.Core.BRepGProp import brepgprop_LinearProperties
+from OCC.Core.ShapeAnalysis import ShapeAnalysis_Curve
+from OCC.Core.BRep import BRep_Builder
+from OCC.Core.ChFiDS import ChFiDS_ChamfSpine
+from OCC.Core.Graphic3d import Graphic3d_RenderingParams
+from OCC.Core.AIS import (Handle_AIS_Shape, Handle_AIS_Shape_DownCast,
                      Handle_AIS_InteractiveObject,
                      AIS_InteractiveObject)
-from OCC.BRepCheck import (BRepCheck_ListIteratorOfListOfStatus,
+from OCC.Core.BRepCheck import (BRepCheck_ListIteratorOfListOfStatus,
                            BRepCheck_ListOfStatus, BRepCheck_Multiple3DCurve,
                            BRepCheck_EmptyWire)
 
@@ -240,7 +240,7 @@ class TestWrapperFeatures(unittest.TestCase):
         static Standard_Boolean SetCVal(const char * name, const char * val);
 
         makes possible to use the method as:
-        >>> from OCC.Interface import *
+        >>> from OCC.Core.Interface import *
         >>> Interface_Static_SetCVal("write.step.schema","AP203")
         '''
         # needs to be inited otherwise the following does not work
@@ -361,7 +361,7 @@ class TestWrapperFeatures(unittest.TestCase):
     def testProtectedConstructor(self):
         """ Test: protected constructor """
         # 1st, class with no subclass
-        from OCC.TopoDS import TopoDS_Builder
+        from OCC.Core.TopoDS import TopoDS_Builder
         tds_builder = TopoDS_Builder()
         self.assertTrue(hasattr(tds_builder, "MakeCompound"))
 
@@ -373,7 +373,7 @@ class TestWrapperFeatures(unittest.TestCase):
         # since the OCC.Geom2d module
         # is *not* manually imported
         returned_object_type = '%s' % type(returned_object)
-        self.assertEqual(returned_object_type, "<class 'OCC.Geom2d.Handle_Geom2d_TrimmedCurve'>")
+        self.assertEqual(returned_object_type, "<class 'OCC.Core.Geom2d.Handle_Geom2d_TrimmedCurve'>")
 
     def test_hash_eq_operator(self):
         ''' test that the == wrapper is ok
