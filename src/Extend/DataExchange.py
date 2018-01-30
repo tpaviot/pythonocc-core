@@ -17,17 +17,17 @@
 
 import os
 
-from OCC.TopoDS import TopoDS_Shape
-from OCC.BRepMesh import BRepMesh_IncrementalMesh
-from OCC.StlAPI import StlAPI_Reader, StlAPI_Writer
+from OCC.Core.TopoDS import TopoDS_Shape
+from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
+from OCC.Core.StlAPI import StlAPI_Reader, StlAPI_Writer
 
-from OCC.BRep import BRep_Builder
-from OCC.TopoDS import TopoDS_Compound
+from OCC.Core.BRep import BRep_Builder
+from OCC.Core.TopoDS import TopoDS_Compound
 
-from OCC.IGESControl import IGESControl_Reader, IGESControl_Writer
-from OCC.STEPControl import STEPControl_Reader, STEPControl_Writer, STEPControl_AsIs
-from OCC.Interface import Interface_Static_SetCVal
-from OCC.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
+from OCC.Core.IGESControl import IGESControl_Reader, IGESControl_Writer
+from OCC.Core.STEPControl import STEPControl_Reader, STEPControl_Writer, STEPControl_AsIs
+from OCC.Core.Interface import Interface_Static_SetCVal
+from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
 
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
@@ -202,7 +202,7 @@ def write_iges_file(a_shape, filename):
     assert os.path.isfile(filename)
 
 if __name__ == "__main__":
-    from OCC.BRepPrimAPI import BRepPrimAPI_MakeSphere
+    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
     b = BRepPrimAPI_MakeSphere(30.).Shape()
     write_step_file(b, "s_203.stp", application_protocol="AP203")
     write_step_file(b, "s_214.stp", application_protocol="AP214IS")

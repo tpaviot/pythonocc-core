@@ -19,17 +19,17 @@
 
 from __future__ import print_function
 
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
-from OCC.BRep import BRep_Tool
-from OCC.BRepTools import BRepTools_WireExplorer
-from OCC.TopAbs import (TopAbs_VERTEX, TopAbs_EDGE, TopAbs_FACE, TopAbs_WIRE,
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
+from OCC.Core.BRep import BRep_Tool
+from OCC.Core.BRepTools import BRepTools_WireExplorer
+from OCC.Core.TopAbs import (TopAbs_VERTEX, TopAbs_EDGE, TopAbs_FACE, TopAbs_WIRE,
                         TopAbs_SHELL, TopAbs_SOLID, TopAbs_COMPOUND,
                         TopAbs_COMPSOLID)
-from OCC.TopExp import TopExp_Explorer, topexp_MapShapesAndAncestors
-from OCC.TopTools import (TopTools_ListOfShape,
+from OCC.Core.TopExp import TopExp_Explorer, topexp_MapShapesAndAncestors
+from OCC.Core.TopTools import (TopTools_ListOfShape,
                           TopTools_ListIteratorOfListOfShape,
                           TopTools_IndexedDataMapOfShapeListOfShape)
-from OCC.TopoDS import (topods, TopoDS_Wire, TopoDS_Vertex, TopoDS_Edge,
+from OCC.Core.TopoDS import (topods, TopoDS_Wire, TopoDS_Vertex, TopoDS_Edge,
                         TopoDS_Face, TopoDS_Shell, TopoDS_Solid,
                         TopoDS_Compound, TopoDS_CompSolid, topods_Edge,
                         topods_Vertex, TopoDS_Iterator)

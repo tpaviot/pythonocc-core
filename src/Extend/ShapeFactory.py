@@ -20,19 +20,19 @@ from __future__ import absolute_import
 from functools import wraps
 from math import radians
 
-from OCC.BRepBndLib import brepbndlib_Add
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
-from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
+from OCC.Core.BRepBndLib import brepbndlib_Add
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
+from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                 BRepBuilderAPI_MakeVertex,
                                 BRepBuilderAPI_MakeWire,
                                 BRepBuilderAPI_MakeFace, BRepBuilderAPI_MakeEdge2d,
                                 BRepBuilderAPI_Transform)
-from OCC.BRepFill import BRepFill_Filling
-from OCC.Bnd import Bnd_Box
-from OCC.GeomAbs import GeomAbs_C0
-from OCC.GeomAPI import GeomAPI_PointsToBSpline
-from OCC.TColgp import TColgp_Array1OfPnt
-from OCC.gp import gp_Vec, gp_Pnt, gp_Trsf, gp_OX, gp_OY, gp_OZ
+from OCC.Core.BRepFill import BRepFill_Filling
+from OCC.Core.Bnd import Bnd_Box
+from OCC.Core.GeomAbs import GeomAbs_C0
+from OCC.Core.GeomAPI import GeomAPI_PointsToBSpline
+from OCC.Core.TColgp import TColgp_Array1OfPnt
+from OCC.Core.gp import gp_Vec, gp_Pnt, gp_Trsf, gp_OX, gp_OY, gp_OZ
 
 
 def make_edge(*args):
