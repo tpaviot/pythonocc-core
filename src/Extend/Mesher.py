@@ -15,10 +15,10 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from OCC.BRep import BRep_Tool_Curve
-from OCC.TopoDS import topods_Edge
-from OCC.TopAbs import TopAbs_FACE, TopAbs_EDGE
-from OCC.TopExp import TopExp_Explorer
+from OCC.Core.BRep import BRep_Tool_Curve
+from OCC.Core.TopoDS import topods_Edge
+from OCC.Core.TopAbs import TopAbs_FACE, TopAbs_EDGE
+from OCC.Core.TopExp import TopExp_Explorer
 
 def get_faces_from_shape(a_topods_shape):
     """ Returns a list of faces from a TopoDS_Shape
