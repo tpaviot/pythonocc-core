@@ -38,6 +38,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 %include TopoDS_headers.i
 
+
 %pythoncode {
 def register_handle(handle, base_object):
     """
