@@ -23,7 +23,7 @@ pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/p
 
 ```bash
 # install pythonocc in an environment named `pyocc` with python 3.5;
-conda install -c conda-forge -c dlr-sc -c pyocc -c oce pythonocc-core==0.18.1 python=3.5
+conda install -c conda-forge -c dlr-sc -c pythonocc -c oce pythonocc-core==0.18.1 python=3.5
 ```
 
 Just replace "3.5" with "2.7" or "3.6" in the previous command to fit with your prefered python version.
