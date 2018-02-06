@@ -22,7 +22,7 @@ Download/install binaries
 pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the dlr-sc and conda-forge conda channels) for python 2.7, 3.5 and 3.6. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.5:
 
 ```bash
-# install pythonocc in an environment named `pyocc` with python 3.5;
+# install pythonocc in the active environment with python 3.5
 conda install -c conda-forge -c dlr-sc -c pythonocc -c oce pythonocc-core==0.18.1 python=3.5
 ```
 
