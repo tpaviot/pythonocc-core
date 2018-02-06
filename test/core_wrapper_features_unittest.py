@@ -527,6 +527,17 @@ class TestWrapperFeatures(unittest.TestCase):
             assert isinstance(it.Value(), int)
             it.Next()
 
+    def test_deprecation_warning(self):
+        """ since pythonocc-0.18.2. import OCC.* changed to import OCC.Core.*
+        Such deprecated import raises a DeprecatedWarning
+        """
+        import warnings
+        catched = False
+        with warnings.catch_warnings():
+            from OCC.gp import gp_Pln
+            catched = True
+        assert catched
+
 
 def suite():
     test_suite = unittest.TestSuite()
