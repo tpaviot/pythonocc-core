@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SMESHDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SMESHDOCSTRING) SMESH
+%module (package="OCC.Core", docstring=SMESHDOCSTRING) SMESH
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TOPBASDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TOPBASDOCSTRING) TopBas
+%module (package="OCC.Core", docstring=TOPBASDOCSTRING) TopBas
 
 #pragma SWIG nowarn=504,325,503
 

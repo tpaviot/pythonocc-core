@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define STLTRANSFERDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=STLTRANSFERDOCSTRING) StlTransfer
+%module (package="OCC.Core", docstring=STLTRANSFERDOCSTRING) StlTransfer
 
 #pragma SWIG nowarn=504,325,503
 

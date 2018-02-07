@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BREPLPROPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BREPLPROPDOCSTRING) BRepLProp
+%module (package="OCC.Core", docstring=BREPLPROPDOCSTRING) BRepLProp
 
 #pragma SWIG nowarn=504,325,503
 

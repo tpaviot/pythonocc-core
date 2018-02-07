@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define XMLMXCAFDOCDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=XMLMXCAFDOCDOCSTRING) XmlMXCAFDoc
+%module (package="OCC.Core", docstring=XMLMXCAFDOCDOCSTRING) XmlMXCAFDoc
 
 #pragma SWIG nowarn=504,325,503
 

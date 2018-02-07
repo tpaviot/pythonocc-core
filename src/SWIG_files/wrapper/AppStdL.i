@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define APPSTDLDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=APPSTDLDOCSTRING) AppStdL
+%module (package="OCC.Core", docstring=APPSTDLDOCSTRING) AppStdL
 
 #pragma SWIG nowarn=504,325,503
 

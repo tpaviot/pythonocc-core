@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define MATERIALSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=MATERIALSDOCSTRING) Materials
+%module (package="OCC.Core", docstring=MATERIALSDOCSTRING) Materials
 
 #pragma SWIG nowarn=504,325,503
 

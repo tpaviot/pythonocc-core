@@ -23,8 +23,8 @@ import os
 import unittest
 import json
 
-from OCC.Visualization import Tesselator, atNormal
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeSphere
+from OCC.Core.Visualization import Tesselator, atNormal
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeSphere
 
 
 class TestTesselator(unittest.TestCase):

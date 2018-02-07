@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define XMLMFUNCTIONDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=XMLMFUNCTIONDOCSTRING) XmlMFunction
+%module (package="OCC.Core", docstring=XMLMFUNCTIONDOCSTRING) XmlMFunction
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TDATAXTDDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TDATAXTDDOCSTRING) TDataXtd
+%module (package="OCC.Core", docstring=TDATAXTDDOCSTRING) TDataXtd
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define DRAFTDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=DRAFTDOCSTRING) Draft
+%module (package="OCC.Core", docstring=DRAFTDOCSTRING) Draft
 
 #pragma SWIG nowarn=504,325,503
 

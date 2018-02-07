@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define PDFDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=PDFDOCSTRING) PDF
+%module (package="OCC.Core", docstring=PDFDOCSTRING) PDF
 
 #pragma SWIG nowarn=504,325,503
 

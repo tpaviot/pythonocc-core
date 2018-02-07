@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BREPINTCURVESURFACEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BREPINTCURVESURFACEDOCSTRING) BRepIntCurveSurface
+%module (package="OCC.Core", docstring=BREPINTCURVESURFACEDOCSTRING) BRepIntCurveSurface
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SHAPEALGODOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SHAPEALGODOCSTRING) ShapeAlgo
+%module (package="OCC.Core", docstring=SHAPEALGODOCSTRING) ShapeAlgo
 
 #pragma SWIG nowarn=504,325,503
 

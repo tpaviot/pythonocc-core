@@ -22,7 +22,7 @@ import sys
 
 from OCC.Display.backend import load_pyside
 from OCC.Display.SimpleGui import init_display
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 # check for pyside
 if not load_pyside():

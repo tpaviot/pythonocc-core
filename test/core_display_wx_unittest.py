@@ -22,7 +22,7 @@ import sys
 
 from OCC.Display.backend import load_wx
 from OCC.Display.SimpleGui import init_display
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 # check for wx
 if not load_wx():

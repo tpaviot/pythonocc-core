@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define MESHVSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=MESHVSDOCSTRING) MeshVS
+%module (package="OCC.Core", docstring=MESHVSDOCSTRING) MeshVS
 
 #pragma SWIG nowarn=504,325,503
 

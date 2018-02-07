@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define INTSURFDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=INTSURFDOCSTRING) IntSurf
+%module (package="OCC.Core", docstring=INTSURFDOCSTRING) IntSurf
 
 #pragma SWIG nowarn=504,325,503
 

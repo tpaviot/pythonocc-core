@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BITGTEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BITGTEDOCSTRING) BiTgte
+%module (package="OCC.Core", docstring=BITGTEDOCSTRING) BiTgte
 
 #pragma SWIG nowarn=504,325,503
 

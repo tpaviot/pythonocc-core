@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define PRS3DDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=PRS3DDOCSTRING) Prs3d
+%module (package="OCC.Core", docstring=PRS3DDOCSTRING) Prs3d
 
 #pragma SWIG nowarn=504,325,503
 

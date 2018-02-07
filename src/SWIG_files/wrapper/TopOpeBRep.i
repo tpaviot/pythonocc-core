@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TOPOPEBREPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TOPOPEBREPDOCSTRING) TopOpeBRep
+%module (package="OCC.Core", docstring=TOPOPEBREPDOCSTRING) TopOpeBRep
 
 #pragma SWIG nowarn=504,325,503
 

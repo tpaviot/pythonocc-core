@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GRAPHTOOLSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GRAPHTOOLSDOCSTRING) GraphTools
+%module (package="OCC.Core", docstring=GRAPHTOOLSDOCSTRING) GraphTools
 
 #pragma SWIG nowarn=504,325,503
 

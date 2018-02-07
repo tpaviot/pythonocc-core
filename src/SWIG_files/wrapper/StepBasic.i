@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define STEPBASICDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=STEPBASICDOCSTRING) StepBasic
+%module (package="OCC.Core", docstring=STEPBASICDOCSTRING) StepBasic
 
 #pragma SWIG nowarn=504,325,503
 

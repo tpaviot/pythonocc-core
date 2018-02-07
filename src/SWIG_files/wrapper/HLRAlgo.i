@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define HLRALGODOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=HLRALGODOCSTRING) HLRAlgo
+%module (package="OCC.Core", docstring=HLRALGODOCSTRING) HLRAlgo
 
 #pragma SWIG nowarn=504,325,503
 

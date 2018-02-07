@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define INTRES2DDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=INTRES2DDOCSTRING) IntRes2d
+%module (package="OCC.Core", docstring=INTRES2DDOCSTRING) IntRes2d
 
 #pragma SWIG nowarn=504,325,503
 

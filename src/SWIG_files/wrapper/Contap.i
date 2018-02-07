@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define CONTAPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=CONTAPDOCSTRING) Contap
+%module (package="OCC.Core", docstring=CONTAPDOCSTRING) Contap
 
 #pragma SWIG nowarn=504,325,503
 

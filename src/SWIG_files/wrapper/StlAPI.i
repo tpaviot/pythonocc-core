@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define STLAPIDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=STLAPIDOCSTRING) StlAPI
+%module (package="OCC.Core", docstring=STLAPIDOCSTRING) StlAPI
 
 #pragma SWIG nowarn=504,325,503
 

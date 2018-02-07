@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GCCENTDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GCCENTDOCSTRING) GccEnt
+%module (package="OCC.Core", docstring=GCCENTDOCSTRING) GccEnt
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define RESOURCEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=RESOURCEDOCSTRING) Resource
+%module (package="OCC.Core", docstring=RESOURCEDOCSTRING) Resource
 
 #pragma SWIG nowarn=504,325,503
 

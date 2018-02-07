@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define STEPGEOMDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=STEPGEOMDOCSTRING) StepGeom
+%module (package="OCC.Core", docstring=STEPGEOMDOCSTRING) StepGeom
 
 #pragma SWIG nowarn=504,325,503
 

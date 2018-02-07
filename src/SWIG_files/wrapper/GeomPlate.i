@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GEOMPLATEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GEOMPLATEDOCSTRING) GeomPlate
+%module (package="OCC.Core", docstring=GEOMPLATEDOCSTRING) GeomPlate
 
 #pragma SWIG nowarn=504,325,503
 

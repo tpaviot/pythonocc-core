@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BINXCAFDRIVERSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BINXCAFDRIVERSDOCSTRING) BinXCAFDrivers
+%module (package="OCC.Core", docstring=BINXCAFDRIVERSDOCSTRING) BinXCAFDrivers
 
 #pragma SWIG nowarn=504,325,503
 

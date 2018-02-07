@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define INTCURVESFACEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=INTCURVESFACEDOCSTRING) IntCurvesFace
+%module (package="OCC.Core", docstring=INTCURVESFACEDOCSTRING) IntCurvesFace
 
 #pragma SWIG nowarn=504,325,503
 

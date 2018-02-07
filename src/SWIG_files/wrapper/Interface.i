@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define INTERFACEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=INTERFACEDOCSTRING) Interface
+%module (package="OCC.Core", docstring=INTERFACEDOCSTRING) Interface
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define ASPECTDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=ASPECTDOCSTRING) Aspect
+%module (package="OCC.Core", docstring=ASPECTDOCSTRING) Aspect
 
 #pragma SWIG nowarn=504,325,503
 

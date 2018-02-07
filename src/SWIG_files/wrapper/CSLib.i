@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define CSLIBDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=CSLIBDOCSTRING) CSLib
+%module (package="OCC.Core", docstring=CSLIBDOCSTRING) CSLib
 
 #pragma SWIG nowarn=504,325,503
 

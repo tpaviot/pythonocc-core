@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SHAPEBUILDDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SHAPEBUILDDOCSTRING) ShapeBuild
+%module (package="OCC.Core", docstring=SHAPEBUILDDOCSTRING) ShapeBuild
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TOPTRANSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TOPTRANSDOCSTRING) TopTrans
+%module (package="OCC.Core", docstring=TOPTRANSDOCSTRING) TopTrans
 
 #pragma SWIG nowarn=504,325,503
 

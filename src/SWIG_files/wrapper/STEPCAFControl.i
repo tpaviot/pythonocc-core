@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define STEPCAFCONTROLDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=STEPCAFCONTROLDOCSTRING) STEPCAFControl
+%module (package="OCC.Core", docstring=STEPCAFCONTROLDOCSTRING) STEPCAFControl
 
 #pragma SWIG nowarn=504,325,503
 

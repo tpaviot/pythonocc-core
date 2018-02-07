@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define MNAMINGDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=MNAMINGDOCSTRING) MNaming
+%module (package="OCC.Core", docstring=MNAMINGDOCSTRING) MNaming
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TOPEXPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TOPEXPDOCSTRING) TopExp
+%module (package="OCC.Core", docstring=TOPEXPDOCSTRING) TopExp
 
 #pragma SWIG nowarn=504,325,503
 

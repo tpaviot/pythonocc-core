@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TCOLLECTIONDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TCOLLECTIONDOCSTRING) TCollection
+%module (package="OCC.Core", docstring=TCOLLECTIONDOCSTRING) TCollection
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define CHFI3DDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=CHFI3DDOCSTRING) ChFi3d
+%module (package="OCC.Core", docstring=CHFI3DDOCSTRING) ChFi3d
 
 #pragma SWIG nowarn=504,325,503
 

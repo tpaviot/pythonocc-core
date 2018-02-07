@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TOPODSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TOPODSDOCSTRING) TopoDS
+%module (package="OCC.Core", docstring=TOPODSDOCSTRING) TopoDS
 
 #pragma SWIG nowarn=504,325,503
 

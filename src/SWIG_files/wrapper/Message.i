@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define MESSAGEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=MESSAGEDOCSTRING) Message
+%module (package="OCC.Core", docstring=MESSAGEDOCSTRING) Message
 
 #pragma SWIG nowarn=504,325,503
 

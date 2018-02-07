@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GEOMTOSTEPDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GEOMTOSTEPDOCSTRING) GeomToStep
+%module (package="OCC.Core", docstring=GEOMTOSTEPDOCSTRING) GeomToStep
 
 #pragma SWIG nowarn=504,325,503
 

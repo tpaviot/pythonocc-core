@@ -1,0 +1,3 @@
+[submodule "demos"]
+	path = demos
+	url = https://github.com/tpaviot/pythonocc-demos

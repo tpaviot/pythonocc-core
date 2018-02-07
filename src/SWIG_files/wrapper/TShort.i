@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TSHORTDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TSHORTDOCSTRING) TShort
+%module (package="OCC.Core", docstring=TSHORTDOCSTRING) TShort
 
 #pragma SWIG nowarn=504,325,503
 

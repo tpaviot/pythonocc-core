@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GCCITERDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GCCITERDOCSTRING) GccIter
+%module (package="OCC.Core", docstring=GCCITERDOCSTRING) GccIter
 
 #pragma SWIG nowarn=504,325,503
 

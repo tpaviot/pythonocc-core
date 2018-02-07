@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define GEOMPROJLIBDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=GEOMPROJLIBDOCSTRING) GeomProjLib
+%module (package="OCC.Core", docstring=GEOMPROJLIBDOCSTRING) GeomProjLib
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define STEPCONSTRUCTDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=STEPCONSTRUCTDOCSTRING) STEPConstruct
+%module (package="OCC.Core", docstring=STEPCONSTRUCTDOCSTRING) STEPConstruct
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define APPROXDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=APPROXDOCSTRING) Approx
+%module (package="OCC.Core", docstring=APPROXDOCSTRING) Approx
 
 #pragma SWIG nowarn=504,325,503
 

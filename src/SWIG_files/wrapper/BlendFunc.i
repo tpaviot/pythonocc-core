@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BLENDFUNCDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BLENDFUNCDOCSTRING) BlendFunc
+%module (package="OCC.Core", docstring=BLENDFUNCDOCSTRING) BlendFunc
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define MDATASTDDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=MDATASTDDOCSTRING) MDataStd
+%module (package="OCC.Core", docstring=MDATASTDDOCSTRING) MDataStd
 
 #pragma SWIG nowarn=504,325,503
 

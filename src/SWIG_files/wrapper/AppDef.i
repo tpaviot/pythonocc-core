@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define APPDEFDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=APPDEFDOCSTRING) AppDef
+%module (package="OCC.Core", docstring=APPDEFDOCSTRING) AppDef
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define MMGTDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=MMGTDOCSTRING) MMgt
+%module (package="OCC.Core", docstring=MMGTDOCSTRING) MMgt
 
 #pragma SWIG nowarn=504,325,503
 

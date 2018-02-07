@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TNAMINGDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TNAMINGDOCSTRING) TNaming
+%module (package="OCC.Core", docstring=TNAMINGDOCSTRING) TNaming
 
 #pragma SWIG nowarn=504,325,503
 

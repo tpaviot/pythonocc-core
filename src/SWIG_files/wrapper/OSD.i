@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define OSDDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=OSDDOCSTRING) OSD
+%module (package="OCC.Core", docstring=OSDDOCSTRING) OSD
 
 #pragma SWIG nowarn=504,325,503
 

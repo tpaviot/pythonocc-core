@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SORTTOOLSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SORTTOOLSDOCSTRING) SortTools
+%module (package="OCC.Core", docstring=SORTTOOLSDOCSTRING) SortTools
 
 #pragma SWIG nowarn=504,325,503
 

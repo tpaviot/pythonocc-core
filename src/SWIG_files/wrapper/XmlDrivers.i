@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define XMLDRIVERSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=XMLDRIVERSDOCSTRING) XmlDrivers
+%module (package="OCC.Core", docstring=XMLDRIVERSDOCSTRING) XmlDrivers
 
 #pragma SWIG nowarn=504,325,503
 

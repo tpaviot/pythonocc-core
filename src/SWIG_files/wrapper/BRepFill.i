@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BREPFILLDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BREPFILLDOCSTRING) BRepFill
+%module (package="OCC.Core", docstring=BREPFILLDOCSTRING) BRepFill
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define XSCONTROLDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=XSCONTROLDOCSTRING) XSControl
+%module (package="OCC.Core", docstring=XSCONTROLDOCSTRING) XSControl
 
 #pragma SWIG nowarn=504,325,503
 

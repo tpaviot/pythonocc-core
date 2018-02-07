@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define SMDSABSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=SMDSABSDOCSTRING) SMDSAbs
+%module (package="OCC.Core", docstring=SMDSABSDOCSTRING) SMDSAbs
 
 #pragma SWIG nowarn=504,325,503
 

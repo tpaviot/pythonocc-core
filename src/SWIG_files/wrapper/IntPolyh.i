@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define INTPOLYHDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=INTPOLYHDOCSTRING) IntPolyh
+%module (package="OCC.Core", docstring=INTPOLYHDOCSTRING) IntPolyh
 
 #pragma SWIG nowarn=504,325,503
 

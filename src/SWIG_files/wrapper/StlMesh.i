@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define STLMESHDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=STLMESHDOCSTRING) StlMesh
+%module (package="OCC.Core", docstring=STLMESHDOCSTRING) StlMesh
 
 #pragma SWIG nowarn=504,325,503
 

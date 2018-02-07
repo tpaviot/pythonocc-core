@@ -24,7 +24,15 @@ import glob
 import sys
 import subprocess
 
-all_examples_file_names = glob.glob(os.path.join('..', 'examples', 'core_*.py'))
+# find examplessubdir from current file
+path = os.path.abspath(__file__)
+test_dirname = os.path.dirname(path)
+examples_directory = os.path.join(test_dirname, '..', 'demos', 'examples')
+os.chdir(examples_directory)
+all_examples_file_names=glob.glob('core_*.py')
+print(all_examples_file_names)
+
+#all_examples_file_names = glob.glob(os.path.join(examples_directory, 'core_*.py'))
 # some tests have to be excluded from the automatic
 # run. For instance, qt based examples
 tests_to_exclude = ['core_display_signal_slots.py',
@@ -38,9 +46,7 @@ tests_to_exclude = ['core_display_signal_slots.py',
 
 # remove examples to excludes
 for test_name in tests_to_exclude:
-    test_fullpath = os.path.join('..', 'examples', test_name)
-    if test_fullpath in all_examples_file_names:
-        all_examples_file_names.remove(test_fullpath)
+    all_examples_file_names.remove(test_name)
 
 nbr_examples = len(all_examples_file_names)
 succeed = 0
@@ -50,7 +56,6 @@ os.environ["PYTHONOCC_OFFSCREEN_RENDERER"] = "1"
 os.environ["PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE"] = "1"
 os.environ["PYTHONOCC_SHUNT_WEB_SERVER"] = "1"
 
-os.chdir(os.path.join('..', 'examples'))
 for example in all_examples_file_names:
     print("running %s ..." % example, end="")
     try:

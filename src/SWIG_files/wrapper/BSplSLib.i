@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define BSPLSLIBDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=BSPLSLIBDOCSTRING) BSplSLib
+%module (package="OCC.Core", docstring=BSPLSLIBDOCSTRING) BSplSLib
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define INTTOOLSDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=INTTOOLSDOCSTRING) IntTools
+%module (package="OCC.Core", docstring=INTTOOLSDOCSTRING) IntTools
 
 #pragma SWIG nowarn=504,325,503
 

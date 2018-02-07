@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define IVTKOCCDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=IVTKOCCDOCSTRING) IVtkOCC
+%module (package="OCC.Core", docstring=IVTKOCCDOCSTRING) IVtkOCC
 
 #pragma SWIG nowarn=504,325,503
 

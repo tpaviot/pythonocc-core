@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TFUNCTIONDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TFUNCTIONDOCSTRING) TFunction
+%module (package="OCC.Core", docstring=TFUNCTIONDOCSTRING) TFunction
 
 #pragma SWIG nowarn=504,325,503
 

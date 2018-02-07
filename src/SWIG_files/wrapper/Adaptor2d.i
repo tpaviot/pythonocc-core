@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define ADAPTOR2DDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=ADAPTOR2DDOCSTRING) Adaptor2d
+%module (package="OCC.Core", docstring=ADAPTOR2DDOCSTRING) Adaptor2d
 
 #pragma SWIG nowarn=504,325,503
 

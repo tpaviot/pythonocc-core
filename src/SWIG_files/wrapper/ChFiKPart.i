@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define CHFIKPARTDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=CHFIKPARTDOCSTRING) ChFiKPart
+%module (package="OCC.Core", docstring=CHFIKPARTDOCSTRING) ChFiKPart
 
 #pragma SWIG nowarn=504,325,503
 

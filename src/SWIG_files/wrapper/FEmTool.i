@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define FEMTOOLDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=FEMTOOLDOCSTRING) FEmTool
+%module (package="OCC.Core", docstring=FEMTOOLDOCSTRING) FEmTool
 
 #pragma SWIG nowarn=504,325,503
 

@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define TCOLQUANTITYDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=TCOLQUANTITYDOCSTRING) TColQuantity
+%module (package="OCC.Core", docstring=TCOLQUANTITYDOCSTRING) TColQuantity
 
 #pragma SWIG nowarn=504,325,503
 

@@ -22,10 +22,10 @@ from __future__ import print_function
 import unittest
 import os
 
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeSphere
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
 
-from OCC.SMESH import SMESH_Gen, SMESH_MeshVSLink
-from OCC.StdMeshers import (StdMeshers_Arithmetic1D, StdMeshers_TrianglePreference,
+from OCC.Core.SMESH import SMESH_Gen, SMESH_MeshVSLink
+from OCC.Core.StdMeshers import (StdMeshers_Arithmetic1D, StdMeshers_TrianglePreference,
                             StdMeshers_Regular_1D, StdMeshers_Quadrangle_2D)
 
 class TestSMESH(unittest.TestCase):

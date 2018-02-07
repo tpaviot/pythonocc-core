@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define LOCOPEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=LOCOPEDOCSTRING) LocOpe
+%module (package="OCC.Core", docstring=LOCOPEDOCSTRING) LocOpe
 
 #pragma SWIG nowarn=504,325,503
 

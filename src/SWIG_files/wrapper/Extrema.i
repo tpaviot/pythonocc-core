@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define EXTREMADOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=EXTREMADOCSTRING) Extrema
+%module (package="OCC.Core", docstring=EXTREMADOCSTRING) Extrema
 
 #pragma SWIG nowarn=504,325,503
 

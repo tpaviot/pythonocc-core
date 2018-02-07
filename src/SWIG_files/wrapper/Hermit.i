@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define HERMITDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=HERMITDOCSTRING) Hermit
+%module (package="OCC.Core", docstring=HERMITDOCSTRING) Hermit
 
 #pragma SWIG nowarn=504,325,503
 

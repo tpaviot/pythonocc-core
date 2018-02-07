@@ -20,7 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %define NLPLATEDOCSTRING
 "No docstring provided."
 %enddef
-%module (package="OCC", docstring=NLPLATEDOCSTRING) NLPlate
+%module (package="OCC.Core", docstring=NLPLATEDOCSTRING) NLPlate
 
 #pragma SWIG nowarn=504,325,503
 

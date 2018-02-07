@@ -57,6 +57,7 @@ matrix:
 # analytic's repository. Follows an approach described by Dan Blanchard:
 # https://gist.github.com/dan-blanchard/7045057
 before_install:
+  - git submodule update --init --remote --recursive
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       export CXX=g++-7;
       export CC=gcc-7;
