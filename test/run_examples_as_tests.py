@@ -23,6 +23,10 @@ import os
 import glob
 import sys
 import subprocess
+import multiprocessing as mp
+import time
+
+init_time = time.time()
 
 # find examplessubdir from current file
 path = os.path.abspath(__file__)
@@ -30,9 +34,7 @@ test_dirname = os.path.dirname(path)
 examples_directory = os.path.join(test_dirname, '..', 'demos', 'examples')
 os.chdir(examples_directory)
 all_examples_file_names=glob.glob('core_*.py')
-print(all_examples_file_names)
 
-#all_examples_file_names = glob.glob(os.path.join(examples_directory, 'core_*.py'))
 # some tests have to be excluded from the automatic
 # run. For instance, qt based examples
 tests_to_exclude = ['core_display_signal_slots.py',
@@ -49,31 +51,46 @@ for test_name in tests_to_exclude:
     all_examples_file_names.remove(test_name)
 
 nbr_examples = len(all_examples_file_names)
-succeed = 0
-failed = 0
 
 os.environ["PYTHONOCC_OFFSCREEN_RENDERER"] = "1"
 os.environ["PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE"] = "1"
 os.environ["PYTHONOCC_SHUNT_WEB_SERVER"] = "1"
 
-for example in all_examples_file_names:
-    print("running %s ..." % example, end="")
+failed = mp.Value('i', 0)
+
+def init(args):
+    ''' store the counter for later use '''
+    global failed
+    failed = args
+
+def worker(example_name):
+    global failed
+    # += operation is not atomic, so we need to get a lock:
+    print("running %s ..." % example_name, end="")
     try:
-        out = subprocess.check_output([sys.executable, example],
+        out = subprocess.check_output([sys.executable, example_name],
                                       stderr=subprocess.STDOUT,
                                       universal_newlines=True)
-        succeed += 1
         print("[passed]")
     except subprocess.CalledProcessError as cpe:
         print("%s" % cpe.output)
-        failed += 1
+        with failed.get_lock():
+            failed.value += 1
         print("[failed]")
 
+
+pool = mp.Pool(initializer = init, initargs = (failed, ))
+pool.map_async(worker, all_examples_file_names).get(99999999)
+pool.close()
+pool.join()
+
 print("Test examples results :")
-print("\t %i/%i tests passed" % (succeed, nbr_examples))
+print("\t %i/%i tests passed" % ((nbr_examples - failed.value), nbr_examples))
 
 del os.environ["PYTHONOCC_OFFSCREEN_RENDERER"]
 del os.environ["PYTHONOCC_SHUNT_WEB_SERVER"]
 
-if failed > 0:
-    raise AssertionError("%i tests failed" % (failed))
+if failed.value > 0:
+    raise AssertionError("%i tests failed" % (failed.value))
+
+print("Total time to run all examples: %fs" %(time.time() - init_time))
