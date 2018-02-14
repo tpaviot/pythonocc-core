@@ -26,7 +26,7 @@ from OCC.Core.gp import gp_Vec
 from OCC.Core.Visualization import Tesselator
 from OCC import VERSION as OCC_VERSION
 
-from .simple_server import start_server
+from simple_server import start_server
 
 THREEJS_RELEASE = "r88"
 
