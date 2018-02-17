@@ -22,26 +22,26 @@ build:
 requirements:
   build:
     - python
-    - oce ==0.18.2
+    - oce ==0.18.3
     - cmake ==3.9.3
     - ninja ==1.8.2
     - swig ==3.0.12
-    - freetype ==2.7
-    - smesh ==6.7.5
+    - freetype ==2.8.1
+    - smesh ==6.7.6
 
   run:
     - pyqt >=5
-    - oce ==0.18.2
+    - oce ==0.18.3
     - python
-    - freetype ==2.7
-    - smesh ==6.7.5
+    - freetype >=2.7
+    - smesh ==6.7.6
 
 test:
   requires:
     - numpy
     - wxpython          [py27]
     - pyside            [py27]
-    - smesh ==6.7.5
+    - smesh ==6.7.6
 
 about:
   home: https://github.com/tpaviot/pythonocc-core
