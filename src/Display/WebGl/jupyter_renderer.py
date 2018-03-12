@@ -189,7 +189,7 @@ class JupyterRenderer(object):
 
 
     def register_select_callback(self, callback):
-        """ Adds a callback that will be called each time a shape s selected
+        """ Adds a callback that will be called each time a shape is selected
         """
         if not callable(callback):
             raise AssertionError("You must provide a callable to register the callback")
