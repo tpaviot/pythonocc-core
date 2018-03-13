@@ -189,7 +189,7 @@ class JupyterRenderer(object):
 
 
     def register_select_callback(self, callback):
-        """ Adds a callback that will be called each time a shape s selected
+        """ Adds a callback that will be called each time a shape is selected
         """
         if not callable(callback):
             raise AssertionError("You must provide a callable to register the callback")
@@ -354,8 +354,8 @@ class JupyterRenderer(object):
                       mesh will be more precise. If set to something higher than 1.0,
                       mesh will be less precise, i.e. lower numer of triangles.
         transparency: optional, False by default (opaque).
-        opacity: optioanl, float, by default to 1 (opaque). if transparency is set to True,
-                 0. is fully opque, 1. is fully transparent.
+        opacity: optional, float, by default to 1 (opaque). if transparency is set to True,
+                 0. is fully opaque, 1. is fully transparent.
         detail_level: "default" by default. The value should be either "compound", "shape", "vertex".
         update: optional, False by default. If True, render all the shapes.
         """
