@@ -70,8 +70,8 @@ We use the following online resources:
 oce and pythonocc
 -----------------
 
-The basis of pythonocc is python wrapper for the [oce C++ library / CAD kernel]
-(https://github.com/tpaviot/oce), aka pythonocc-core.
+The basis of pythonocc is python wrapper for the 
+[oce C++ library / CAD kernel](https://github.com/tpaviot/oce), aka pythonocc-core.
 pythonocc-core version number correspond to oce library releases its wrapping.
  
 For example; the current pythonocc-core release, 0.18, requires any of the [OCE
