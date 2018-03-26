@@ -38,11 +38,12 @@ coverage.xml
 # Translations
 *.mo
 
-# Mr Developer
+# Mr Developer and other IDE stuff
 .mr.developer.cfg
 .project
 .pydevproject
 .idea/
+.vs/
 workspace.xml
 
 # Rope
