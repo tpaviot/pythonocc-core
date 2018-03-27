@@ -80,7 +80,7 @@ if __name__ == "__main__":
     failed = mp.Value('i', 0)
 
     pool = mp.Pool(initializer = init, initargs = (failed, ))
-    pool.map_async(worker, all_examples_file_names).get(99999999)
+    pool.map_async(worker, all_examples_file_names).get(4233600)
     pool.close()
     pool.join()
 
