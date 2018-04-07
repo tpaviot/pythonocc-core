@@ -25,6 +25,10 @@ import sys
 import subprocess
 import multiprocessing as mp
 import time
+try:
+    from threading import TIMEOUT_MAX
+except ImportError:
+    TIMEOUT_MAX = 60 * 60 * 24 * 49
 
 def init(args):
     ''' store the counter for later use '''
@@ -80,7 +84,7 @@ if __name__ == "__main__":
     failed = mp.Value('i', 0)
 
     pool = mp.Pool(initializer = init, initargs = (failed, ))
-    pool.map_async(worker, all_examples_file_names).get(99999999)
+    pool.map_async(worker, all_examples_file_names).get(TIMEOUT_MAX)
     pool.close()
     pool.join()
 
