@@ -429,7 +429,8 @@ class JupyterRenderer(object):
                                          polygonOffsetFactor=1,
                                          polygonOffsetUnits=1,
                                          shininess=0.9,
-                                         transparent=transparency)
+                                         transparent=transparency,
+                                         opacity=opacity)
 
         # create a mesh unique id
         mesh_id = uuid.uuid4().hex
