@@ -23,6 +23,7 @@ requirements:
   build:
     - python
     - oce ==0.18.3
+    - tbb ==2018_20171205
     - cmake ==3.9.3
     - ninja ==1.8.2
     - swig ==3.0.12
