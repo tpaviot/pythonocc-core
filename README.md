@@ -77,7 +77,7 @@ pythonocc-core version number correspond to oce library releases its wrapping.
 For example; the current pythonocc-core release, 0.18, requires any of the [OCE
  0.18.x](https://github.com/tpaviot/oce/releases) releases. Here, the __Major__ 
  version name of either OCE or pythonocc-core release is __0__, the __Minor__ 
- version is __17__ and the __Patch__ version is (optionally) __x__. pythonocc-core can be built with any OCE version that has a corresponding __Major__ and __Minor__ version 
+ version is __18__ and the __Patch__ version is (optionally) __x__. pythonocc-core can be built with any OCE version that has a corresponding __Major__ and __Minor__ version 
  number. For example, pythonocc-core 0.18.1 can be built with OCE-0.18.1.
 
 License
