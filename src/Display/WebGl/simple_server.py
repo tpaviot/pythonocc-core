@@ -72,7 +72,8 @@ def start_server(port=8080, path='.', open_webbrowser=False):
         print("## Open your webbrowser at the URL: http://localhost:%i" % port)
         print("## CTRL-C to shutdown the server")
         # open webbrowser
-        webbrowser.open('http://localhost:%i' % port, new=2)
+        if open_webbrowser:
+            webbrowser.open('http://localhost:%i' % port, new=2)        
         # starts the web_server
         httpd.serve_forever()
 
