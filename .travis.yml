@@ -20,7 +20,7 @@ cache:
 # after that, copy/paste the secure on the following line
 env:
   global:
-    - secure: "MN4jlNpnIQn6IPcO+jL2b8jRqVDxsLEvsKBRZbi+CL2A5Usle7iyvVeR4uLsCM76mJz0MBJXVU9Z0E5EihypD7rqP+Q5gf+1GpYd+6gR42MY/Uv6Zie+AcV+lstEQZNg9f2LcrinXuxiI6nc8ESQuf/Y4n+oXp3TmPCrafkzdPY="
+    - secure: "Bqor4TrYqeJUkjiIHjCq/e3xt/jAoU3Q5kwG/ej+QxaiT6hmkirX3Io3rHxNTbS+mYMAMTbtkkpGqYIYIYtNVx8jGYLdwOzNcuW/wzZf9VuAW/rnjx2lzuYRhHk3GOylSPUU06JHvXDmZvdMxetNBeWaE5hGuJsC9liA+stDepA="
 
 addons:
   apt:
