@@ -11,9 +11,13 @@ cache:
 # $ anaconda auth -n the_token_name --max-age 22896000 -c --scopes api
 # the token is return as something like "yh-6654-12334_111225"
 # then encrypt the token
+# Note : in order to encrypt using travis
+# You may have to :
+# $ sudo gem install travis
+# (especially if you performed a linux distro upgrade, ruby should not be up to date)
 # You have to be in the directory where you installed the local copy of the repository
 # $ cd [your_dev_dir]/pythonocc-core
-# $ travis encrypt BINSTAR_TOKEN="yh-6654-12334_111225"
+# $ sudo travis encrypt BINSTAR_TOKEN="yh-6654-12334_111225"
 # !!be careful about the typo BINSTAR_TOKEN with the proper case. Otherwise
 # !!the $BINSTAR_TOKEN env var value will be null and the line
 # !!anaconda -t $BINSTAR_TOKEN upload *.bz2 will not be run properly
