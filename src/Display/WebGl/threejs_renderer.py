@@ -28,7 +28,7 @@ from OCC import VERSION as OCC_VERSION
 
 from .simple_server import start_server
 
-THREEJS_RELEASE = "r88"
+THREEJS_RELEASE = "r97"
 
 def spinning_cursor():
     while True:
@@ -338,7 +338,7 @@ BODY_Part2 = """
             gridHelper = new THREE.GridHelper(maxRad*4, 10)
             scene.add(gridHelper);
             // axisHelper
-            var axisHelper = new THREE.AxisHelper(maxRad);
+            axisHelper = new THREE.AxesHelper(maxRad);
             scene.add(axisHelper);
         }
         function render() {
