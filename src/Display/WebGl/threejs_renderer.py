@@ -21,6 +21,7 @@ import os
 import sys
 import tempfile
 import uuid
+import json
 
 from OCC.Core.gp import gp_Vec
 from OCC.Core.Visualization import Tesselator
@@ -46,40 +47,31 @@ def color_to_hex(rgb_color):
     rh = int(r * 255.)
     gh = int(g * 255.)
     bh = int(b * 255.)
-    return "0x%.02x%.02x%.02x" %(rh, gh,bh)
+    return "0x%.02x%.02x%.02x" %(rh, gh, bh)
 
 def ExportEdgeToJSON(edge_hash, point_set):
     """ Export a set of points to a LineSegment buffergeometry
     """
-    edge_uuid = uuid.uuid4()
-    nbr_of_points = len(point_set)
-    json_string = '{\n\t"metadata": {\n\t\t"version": 4.4,\n'
-    json_string += '\t\t"type": "BufferGeometry",\n\t\t"generator": "pythonOCC"\n\t},\n'
-    json_string += '\t"uuid": "%s",\n' % edge_uuid
-    json_string += '\t"type": "BufferGeometry",\n'
-    json_string += '\t"data": {\n\t\t"attributes": {\n'
-    json_string += '\t\t\t"position": {\n'
-    json_string += '\t\t\t\t"itemSize": 3,\n'
-    json_string += '\t\t\t\t"type": "Float32Array",\n'
-    json_string += '\t\t\t\t"array": ['
-    for point_index in range(nbr_of_points - 1):
-        fp_x = point_set[point_index][0]
-        fp_y = point_set[point_index][1]
-        fp_z = point_set[point_index][2]
-        sp_x = point_set[point_index + 1][0]
-        sp_y = point_set[point_index + 1][1]
-        sp_z = point_set[point_index + 1][2]
-        if point_index <= nbr_of_points - 3:
-            json_string += "%s, %s, %s, %s, %s, %s," % (fp_x, fp_y, fp_z, sp_x, sp_y, sp_z)
-        else:
-            json_string += "%s, %s, %s, %s, %s, %s]\n" % (fp_x, fp_y, fp_z, sp_x, sp_y, sp_z)
-        # careful, json doesn't like the last comma
-    # so we write the 
-    json_string += '\t\t\t}\n'
-    json_string += '\t\t}\n'
-    json_string += '\t}\n'
-    json_string += '}\n'
-    return json_string
+    # first build the array of point coordinates
+    # edges are built as follows:
+    # points_coordinates  =[P0x, P0y, P0z, P1x, P1y, P1z, P2x, P2y, etc.]
+    points_coordinates = []
+    for point in point_set:
+        for coord in point:
+            points_coordinates.append(coord)
+    # then build the dictionnary exported to json
+    edges_data = {"metadata": {"version": 4.4,
+                               "type": "BufferGeometry",
+                               "generator": "pythonocc"},
+                  "uuid": edge_hash,
+                  "type": "BufferGeometry",
+                  "data": {"attributes": {"position": {"itemSize": 3,
+                                                       "type": "Float32Array",
+                                                       "array": points_coordinates}
+                                         }
+                          }
+                  }
+    return json.dumps(edges_data)
 
 
 HEADER = """
@@ -437,9 +429,10 @@ class ThreejsRenderer(object):
         # tesselate
         tess = Tesselator(shape)
         tess.Compute(compute_edges=export_edges, mesh_quality=mesh_quality)
-        # 
-        sys.stdout.write("\r%s mesh shape, %i triangles" % (next(self.spinning_cursor), 
-                                                            tess.ObjGetTriangleCount()))
+        # update spinning cursor
+        sys.stdout.write("\r%s mesh shape %s, %i triangles     " % (next(self.spinning_cursor),
+                                                                    shape_hash,
+                                                                    tess.ObjGetTriangleCount()))
         sys.stdout.flush()
         # export to 3JS
         shape_full_path = os.path.join(self._path, shape_hash + '.json')
@@ -451,7 +444,6 @@ class ThreejsRenderer(object):
         with open(shape_full_path, 'w') as json_file:
             json_file.write(tess.ExportShapeToThreejsJSONString(shape_uuid))
         # draw edges if necessary
-        edges = []
         if export_edges:
             # export each edge to a single json
             # get number of edges
@@ -514,7 +506,7 @@ class ThreejsRenderer(object):
         for edge_id in self._edges_hash:
             edge_string_list.append("\tloader.load('%s.json', function(geometry) {\n" % edge_id)
             edge_string_list.append("\tline_material = new THREE.LineBasicMaterial({color: 0x000000, linewidth: 2});\n")
-            edge_string_list.append("\tline = new THREE.LineSegments(geometry, line_material);\n")
+            edge_string_list.append("\tline = new THREE.Line(geometry, line_material);\n")
         # add mesh to scene
             edge_string_list.append("\tscene.add(line);\n")
             edge_string_list.append("\t});\n")
@@ -545,7 +537,7 @@ class ThreejsRenderer(object):
 if __name__ == "__main__":
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
     from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
-    from OCC.Core.gp import gp_Trsf, gp_Vec
+    from OCC.Core.gp import gp_Trsf
     def translate_shp(shp, vec, copy=False):
         trns = gp_Trsf()
         trns.SetTranslation(vec)
@@ -556,6 +548,6 @@ if __name__ == "__main__":
     torus = BRepPrimAPI_MakeTorus(300., 105).Shape()
     t_torus = translate_shp(torus, gp_Vec(700, 0, 0))
     my_ren = ThreejsRenderer()
-    my_ren.DisplayShape(box)
-    my_ren.DisplayShape(t_torus)
+    my_ren.DisplayShape(box, export_edges=True)
+    my_ren.DisplayShape(t_torus, export_edges=True)
     my_ren.render()
