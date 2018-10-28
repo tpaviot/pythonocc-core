@@ -57,6 +57,12 @@ matrix:
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET="10.9"
       os: osx
       osx_image: xcode8.3
+    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
+      os: linux
+      dist: trusty
+    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET="10.9"
+      os: osx
+      osx_image: xcode8.3
   allow_failures:
     - os: osx
 
