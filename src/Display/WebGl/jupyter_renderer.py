@@ -36,7 +36,7 @@ except ImportError:
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepBndLib import brepbndlib_Add
 from OCC.Core.Visualization import Tesselator
-from OCC.Extend.TopologyUtils import TopologyExplorer, WireExplorer, dump_topology_to_string, shape_type_string
+from OCC.Extend.TopologyUtils import TopologyExplorer
 
 # smesh
 try:
@@ -113,16 +113,16 @@ class JupyterRenderer(object):
         """ Creates a jupyter renderer.
         size: a tuple (width, height). Must be a square, or shapes will look like deformed
         compute_normals_mode: optional, set to SERVER_SIDE by default. This flag lets you choose the
-                              way normals are computed. If SERVER_SIDE is selected (default value), then normals
-                              will be computed by the Tesselator, packed as a python tuple, and send as a json structure
-                              to the client. If, on the other hand, CLIENT_SIDE is chose, then the computer only compute vertex
-                              indices, and let the normals be computed by the client (the web js machine embedded in the webrowser).
-                              In a few words:
-                              SERVER_SIDE: higher server load, loading time increased, lower client load. Poor performance client will
-                              choose this option (mobile terminals for instance)
-                              CLIENT_SIDE: lower server load, loading time decreased, higher client load. Higher performance clients will
-                              choose this option (laptops, desktop machines).
-        parallel: optional, False by default. If set to True, meshing runs in parallelized mode.
+        way normals are computed. If SERVER_SIDE is selected (default value), then normals
+        will be computed by the Tesselator, packed as a python tuple, and send as a json structure
+        to the client. If, on the other hand, CLIENT_SIDE is chose, then the computer only compute vertex
+        indices, and let the normals be computed by the client (the web js machine embedded in the webrowser).
+
+        * SERVER_SIDE: higher server load, loading time increased, lower client load. Poor performance client will
+          choose this option (mobile terminals for instance)
+        * CLIENT_SIDE: lower server load, loading time decreased, higher client load. Higher performance clients will
+                            choose this option (laptops, desktop machines).
+        * parallel: optional, False by default. If set to True, meshing runs in parallelized mode.
         """
         self._background = 'white'
         self._background_opacity = 1
@@ -183,7 +183,7 @@ class JupyterRenderer(object):
 
         # key press and related events
         def key_pressed(widget):
-            print("popo")
+            print("key pressed")
         #self._picker2 = Picker(event='keypress')
         #self._picker.observe(key_pressed)
 
@@ -196,6 +196,7 @@ class JupyterRenderer(object):
         else:
             self._select_callbacks.append(callback)
 
+
     def unregister_callback(self, callback):
         """ Remove a callback from the callback list
         """
@@ -203,6 +204,7 @@ class JupyterRenderer(object):
             raise AssertionError("This callback is not registered")
         else:
             self._select_callbacks.remove(callback)
+
 
     def _update_camera(self):
         all_shapes = list(self._shapes.values())
