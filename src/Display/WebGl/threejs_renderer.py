@@ -47,9 +47,9 @@ def color_to_hex(rgb_color):
     rh = int(r * 255.)
     gh = int(g * 255.)
     bh = int(b * 255.)
-    return "0x%.02x%.02x%.02x" %(rh, gh, bh)
+    return "0x%.02x%.02x%.02x" % (rh, gh, bh)
 
-def ExportEdgeToJSON(edge_hash, point_set):
+def export_edgedata_to_json(edge_hash, point_set):
     """ Export a set of points to a LineSegment buffergeometry
     """
     # first build the array of point coordinates
@@ -76,9 +76,9 @@ def ExportEdgeToJSON(edge_hash, point_set):
 
 HEADER = """
 <head>
-    <title>pythonOCC @VERSION@ webgl renderer</title>
+    <title>pythonocc @VERSION@ webgl renderer</title>
     <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
-    <meta name='Keywords' content='WebGl,pythonOCC'>
+    <meta name='Keywords' content='WebGl,pythonocc'>
     <meta charset="utf-8">
     <style type="text/css">
         body {
@@ -128,7 +128,7 @@ HEADER = """
     </style>
 </head>
 """
-BODY_Part0 = """
+BODY_PART0 = """
 <body>
     <div id="container"></div>
     <div id="pythonocc_rocks">
@@ -142,13 +142,13 @@ BODY_Part0 = """
     <b>g</b> view/hide grid<br>
     <b>a</b> view/hide axis<br>
     </div>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/build/three.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/examples/js/controls/TrackballControls.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/examples/js/libs/stats.min.js"></script>
+    <script type="text/javascript" src="https://rawcdn.githack.com/mrdoob/three.js/%s/build/three.min.js"></script>
+    <script type="text/javascript" src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/controls/TrackballControls.js"></script>
+    <script type="text/javascript" src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/libs/stats.min.js"></script>
 
 """ % (THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE)
 
-BODY_Part1 = """
+BODY_PART1 = """
 
     @VertexShaderDefinition@
     @FragmentShaderDefinition@
@@ -199,7 +199,7 @@ BODY_Part1 = """
             @ShaderMaterialDefinition@
             """
             # here comes the shape definition
-BODY_Part2 = """
+BODY_PART2 = """
             renderer = new THREE.WebGLRenderer({antialias:true, alpha: true});
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio( window.devicePixelRatio );
@@ -266,7 +266,7 @@ BODY_Part2 = """
                     selected_target_color_g,
                     selected_target_color_b);
             }
-            // performe selection
+            // perform selection
             raycaster.setFromCamera(mouse, camera);
             var intersects = raycaster.intersectObjects(scene.children);
             if (intersects.length > 0) {
@@ -362,9 +362,9 @@ class HTMLBody_Part1(object):
         self._uniforms = uniforms
 
     def get_str(self):
-        global BODY_Part2
+        global BODY_PART2
         # get the location where pythonocc is running from
-        body_str = BODY_Part1.replace('@VERSION@', OCC_VERSION)
+        body_str = BODY_PART1.replace('@VERSION@', OCC_VERSION)
         if (self._fragment_shader is not None) and (self._fragment_shader is not None):
             vertex_shader_string_definition = '<script type="x-shader/x-vertex" id="vertexShader">%s</script>' % self._vertex_shader
             fragment_shader_string_definition = '<script type="x-shader/x-fragment" id="fragmentShader">%s</script>' % self._fragment_shader
@@ -377,13 +377,13 @@ class HTMLBody_Part1(object):
             """
             if self._uniforms is None:
                 body_str = body_str.replace('@Uniforms@', 'uniforms ={};\n')
-                BODY_Part2 = BODY_Part2.replace('@IncrementTime@', '')
+                BODY_PART2 = BODY_PART2.replace('@IncrementTime@', '')
             else:
                 body_str = body_str.replace('@Uniforms@', self._uniforms)
                 if 'time' in self._uniforms:
-                    BODY_Part2 = BODY_Part2.replace('@IncrementTime@', 'uniforms.time.value += 0.05;')
+                    BODY_PART2 = BODY_PART2.replace('@IncrementTime@', 'uniforms.time.value += 0.05;')
                 else:
-                    BODY_Part2 = BODY_Part2.replace('@IncrementTime@', '')
+                    BODY_PART2 = BODY_PART2.replace('@IncrementTime@', '')
             body_str = body_str.replace('@VertexShaderDefinition@', vertex_shader_string_definition)
             body_str = body_str.replace('@FragmentShaderDefinition@', fragment_shader_string_definition)
             body_str = body_str.replace('@ShaderMaterialDefinition@', shader_material_definition)
@@ -412,9 +412,6 @@ class ThreejsRenderer(object):
 
     def DisplayShape(self,
                      shape,
-                     vertex_shader=None,
-                     fragment_shader=None,
-                     map_faces_to_mesh=False,
                      export_edges=False,
                      color=(0.65, 0.65, 0.65),
                      specular_color=(1, 1, 1),
@@ -428,7 +425,10 @@ class ThreejsRenderer(object):
         shape_hash = "shp%s" % shape_uuid
         # tesselate
         tess = Tesselator(shape)
-        tess.Compute(compute_edges=export_edges, mesh_quality=mesh_quality)
+        tess.Compute(compute_edges=export_edges,
+                     mesh_quality=mesh_quality,
+                     uv_coords=False,
+                     parallel=True)
         # update spinning cursor
         sys.stdout.write("\r%s mesh shape %s, %i triangles     " % (next(self.spinning_cursor),
                                                                     shape_hash,
@@ -457,7 +457,7 @@ class ThreejsRenderer(object):
                     edge_point_set.append(tess.GetEdgeVertex(i_edge, i_vert))
                 # write to file
                 edge_hash = "edg%s" % uuid.uuid4().hex
-                str_to_write += ExportEdgeToJSON(edge_hash, edge_point_set)
+                str_to_write += export_edgedata_to_json(edge_hash, edge_point_set)
                 # create the file
                 edge_full_path = os.path.join(self._path, edge_hash + '.json')
                 with open(edge_full_path, "w") as edge_file:
@@ -465,10 +465,10 @@ class ThreejsRenderer(object):
                 # store this edge hash
                 self._edges_hash.append(edge_hash)
 
-    def GenerateHTMLFile(self):
+    def generate_html_file(self):
         """ Generate the HTML file to be rendered by the web browser
         """
-        global BODY_Part0
+        global BODY_PART0
         # loop over shapes to generate html shapes stuff
         # the following line is a list that will help generating the string
         # using "".join()
@@ -517,20 +517,20 @@ class ThreejsRenderer(object):
             # header
             fp.write(HTMLHeader().get_str())
             # body
-            BODY_Part0 = BODY_Part0.replace('@VERSION@', OCC_VERSION)
-            fp.write(BODY_Part0)
+            BODY_PART0 = BODY_PART0.replace('@VERSION@', OCC_VERSION)
+            fp.write(BODY_PART0)
             fp.write(HTMLBody_Part1().get_str())
             fp.write("".join(shape_string_list))
             fp.write("".join(edge_string_list))
             # then write header part 2
-            fp.write(BODY_Part2)
+            fp.write(BODY_PART2)
             fp.write("</html>\n")
 
     def render(self, server_port=8080, open_webbrowser=False):
         ''' render the scene into the browser.
         '''
         # generate HTML file
-        self.GenerateHTMLFile()
+        self.generate_html_file()
         # then create a simple web server
         start_server(server_port, self._path, open_webbrowser)
 
@@ -538,6 +538,7 @@ if __name__ == "__main__":
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
     from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
     from OCC.Core.gp import gp_Trsf
+    import time
     def translate_shp(shp, vec, copy=False):
         trns = gp_Trsf()
         trns.SetTranslation(vec)
@@ -548,6 +549,9 @@ if __name__ == "__main__":
     torus = BRepPrimAPI_MakeTorus(300., 105).Shape()
     t_torus = translate_shp(torus, gp_Vec(700, 0, 0))
     my_ren = ThreejsRenderer()
+    init_time = time.time()
     my_ren.DisplayShape(box, export_edges=True)
     my_ren.DisplayShape(t_torus, export_edges=True)
+    final_time = time.time()
+    print("\nTotal meshing time : ", final_time - init_time)
     my_ren.render()
