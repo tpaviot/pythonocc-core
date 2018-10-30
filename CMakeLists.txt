@@ -182,7 +182,7 @@ else(UNIX)
     ######### Windows ###########
     add_definitions(-DWNT -DWIN32 -D_WINDOWS -DCSFDB -DHAVE_CONFIG_H)
     # specific windows defines for python version >=2.6.0
-    execute_process(COMMAND python -c "import sys;print (2,6)>=sys.version_info[:2]" OUTPUT_VARIABLE PYTHON_26_OR_HIGHER OUTPUT_STRIP_TRAILING_WHITESPACE)
+    execute_process(COMMAND python -c "import sys;print ((2,6)>=sys.version_info[:2])" OUTPUT_VARIABLE PYTHON_26_OR_HIGHER OUTPUT_STRIP_TRAILING_WHITESPACE)
     if(${PYTHON_26_OR_HIGHER} MATCHES "True")
       add_definitions(-DHAVE_ACOSH -DHAVE_ASINH -DHAVE_ATANH)
     endif(${PYTHON_26_OR_HIGHER} MATCHES "True")

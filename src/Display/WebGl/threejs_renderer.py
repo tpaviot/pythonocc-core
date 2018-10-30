@@ -21,6 +21,7 @@ import os
 import sys
 import tempfile
 import uuid
+import json
 
 from OCC.Core.gp import gp_Vec
 from OCC.Core.Visualization import Tesselator
@@ -46,47 +47,38 @@ def color_to_hex(rgb_color):
     rh = int(r * 255.)
     gh = int(g * 255.)
     bh = int(b * 255.)
-    return "0x%.02x%.02x%.02x" %(rh, gh,bh)
+    return "0x%.02x%.02x%.02x" % (rh, gh, bh)
 
-def ExportEdgeToJSON(edge_hash, point_set):
+def export_edgedata_to_json(edge_hash, point_set):
     """ Export a set of points to a LineSegment buffergeometry
     """
-    edge_uuid = uuid.uuid4()
-    nbr_of_points = len(point_set)
-    json_string = '{\n\t"metadata": {\n\t\t"version": 4.4,\n'
-    json_string += '\t\t"type": "BufferGeometry",\n\t\t"generator": "pythonOCC"\n\t},\n'
-    json_string += '\t"uuid": "%s",\n' % edge_uuid
-    json_string += '\t"type": "BufferGeometry",\n'
-    json_string += '\t"data": {\n\t\t"attributes": {\n'
-    json_string += '\t\t\t"position": {\n'
-    json_string += '\t\t\t\t"itemSize": 3,\n'
-    json_string += '\t\t\t\t"type": "Float32Array",\n'
-    json_string += '\t\t\t\t"array": ['
-    for point_index in range(nbr_of_points - 1):
-        fp_x = point_set[point_index][0]
-        fp_y = point_set[point_index][1]
-        fp_z = point_set[point_index][2]
-        sp_x = point_set[point_index + 1][0]
-        sp_y = point_set[point_index + 1][1]
-        sp_z = point_set[point_index + 1][2]
-        if point_index <= nbr_of_points - 3:
-            json_string += "%s, %s, %s, %s, %s, %s," % (fp_x, fp_y, fp_z, sp_x, sp_y, sp_z)
-        else:
-            json_string += "%s, %s, %s, %s, %s, %s]\n" % (fp_x, fp_y, fp_z, sp_x, sp_y, sp_z)
-        # careful, json doesn't like the last comma
-    # so we write the 
-    json_string += '\t\t\t}\n'
-    json_string += '\t\t}\n'
-    json_string += '\t}\n'
-    json_string += '}\n'
-    return json_string
+    # first build the array of point coordinates
+    # edges are built as follows:
+    # points_coordinates  =[P0x, P0y, P0z, P1x, P1y, P1z, P2x, P2y, etc.]
+    points_coordinates = []
+    for point in point_set:
+        for coord in point:
+            points_coordinates.append(coord)
+    # then build the dictionnary exported to json
+    edges_data = {"metadata": {"version": 4.4,
+                               "type": "BufferGeometry",
+                               "generator": "pythonocc"},
+                  "uuid": edge_hash,
+                  "type": "BufferGeometry",
+                  "data": {"attributes": {"position": {"itemSize": 3,
+                                                       "type": "Float32Array",
+                                                       "array": points_coordinates}
+                                         }
+                          }
+                  }
+    return json.dumps(edges_data)
 
 
 HEADER = """
 <head>
-    <title>pythonOCC @VERSION@ webgl renderer</title>
+    <title>pythonocc @VERSION@ webgl renderer</title>
     <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
-    <meta name='Keywords' content='WebGl,pythonOCC'>
+    <meta name='Keywords' content='WebGl,pythonocc'>
     <meta charset="utf-8">
     <style type="text/css">
         body {
@@ -136,7 +128,7 @@ HEADER = """
     </style>
 </head>
 """
-BODY_Part0 = """
+BODY_PART0 = """
 <body>
     <div id="container"></div>
     <div id="pythonocc_rocks">
@@ -150,13 +142,13 @@ BODY_Part0 = """
     <b>g</b> view/hide grid<br>
     <b>a</b> view/hide axis<br>
     </div>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/build/three.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/examples/js/controls/TrackballControls.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/%s/examples/js/libs/stats.min.js"></script>
+    <script type="text/javascript" src="https://rawcdn.githack.com/mrdoob/three.js/%s/build/three.min.js"></script>
+    <script type="text/javascript" src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/controls/TrackballControls.js"></script>
+    <script type="text/javascript" src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/libs/stats.min.js"></script>
 
 """ % (THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE)
 
-BODY_Part1 = """
+BODY_PART1 = """
 
     @VertexShaderDefinition@
     @FragmentShaderDefinition@
@@ -207,7 +199,7 @@ BODY_Part1 = """
             @ShaderMaterialDefinition@
             """
             # here comes the shape definition
-BODY_Part2 = """
+BODY_PART2 = """
             renderer = new THREE.WebGLRenderer({antialias:true, alpha: true});
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio( window.devicePixelRatio );
@@ -274,7 +266,7 @@ BODY_Part2 = """
                     selected_target_color_g,
                     selected_target_color_b);
             }
-            // performe selection
+            // perform selection
             raycaster.setFromCamera(mouse, camera);
             var intersects = raycaster.intersectObjects(scene.children);
             if (intersects.length > 0) {
@@ -370,9 +362,9 @@ class HTMLBody_Part1(object):
         self._uniforms = uniforms
 
     def get_str(self):
-        global BODY_Part2
+        global BODY_PART2
         # get the location where pythonocc is running from
-        body_str = BODY_Part1.replace('@VERSION@', OCC_VERSION)
+        body_str = BODY_PART1.replace('@VERSION@', OCC_VERSION)
         if (self._fragment_shader is not None) and (self._fragment_shader is not None):
             vertex_shader_string_definition = '<script type="x-shader/x-vertex" id="vertexShader">%s</script>' % self._vertex_shader
             fragment_shader_string_definition = '<script type="x-shader/x-fragment" id="fragmentShader">%s</script>' % self._fragment_shader
@@ -385,13 +377,13 @@ class HTMLBody_Part1(object):
             """
             if self._uniforms is None:
                 body_str = body_str.replace('@Uniforms@', 'uniforms ={};\n')
-                BODY_Part2 = BODY_Part2.replace('@IncrementTime@', '')
+                BODY_PART2 = BODY_PART2.replace('@IncrementTime@', '')
             else:
                 body_str = body_str.replace('@Uniforms@', self._uniforms)
                 if 'time' in self._uniforms:
-                    BODY_Part2 = BODY_Part2.replace('@IncrementTime@', 'uniforms.time.value += 0.05;')
+                    BODY_PART2 = BODY_PART2.replace('@IncrementTime@', 'uniforms.time.value += 0.05;')
                 else:
-                    BODY_Part2 = BODY_Part2.replace('@IncrementTime@', '')
+                    BODY_PART2 = BODY_PART2.replace('@IncrementTime@', '')
             body_str = body_str.replace('@VertexShaderDefinition@', vertex_shader_string_definition)
             body_str = body_str.replace('@FragmentShaderDefinition@', fragment_shader_string_definition)
             body_str = body_str.replace('@ShaderMaterialDefinition@', shader_material_definition)
@@ -420,9 +412,6 @@ class ThreejsRenderer(object):
 
     def DisplayShape(self,
                      shape,
-                     vertex_shader=None,
-                     fragment_shader=None,
-                     map_faces_to_mesh=False,
                      export_edges=False,
                      color=(0.65, 0.65, 0.65),
                      specular_color=(1, 1, 1),
@@ -436,10 +425,14 @@ class ThreejsRenderer(object):
         shape_hash = "shp%s" % shape_uuid
         # tesselate
         tess = Tesselator(shape)
-        tess.Compute(compute_edges=export_edges, mesh_quality=mesh_quality)
-        # 
-        sys.stdout.write("\r%s mesh shape, %i triangles" % (next(self.spinning_cursor), 
-                                                            tess.ObjGetTriangleCount()))
+        tess.Compute(compute_edges=export_edges,
+                     mesh_quality=mesh_quality,
+                     uv_coords=False,
+                     parallel=True)
+        # update spinning cursor
+        sys.stdout.write("\r%s mesh shape %s, %i triangles     " % (next(self.spinning_cursor),
+                                                                    shape_hash,
+                                                                    tess.ObjGetTriangleCount()))
         sys.stdout.flush()
         # export to 3JS
         shape_full_path = os.path.join(self._path, shape_hash + '.json')
@@ -451,7 +444,6 @@ class ThreejsRenderer(object):
         with open(shape_full_path, 'w') as json_file:
             json_file.write(tess.ExportShapeToThreejsJSONString(shape_uuid))
         # draw edges if necessary
-        edges = []
         if export_edges:
             # export each edge to a single json
             # get number of edges
@@ -465,7 +457,7 @@ class ThreejsRenderer(object):
                     edge_point_set.append(tess.GetEdgeVertex(i_edge, i_vert))
                 # write to file
                 edge_hash = "edg%s" % uuid.uuid4().hex
-                str_to_write += ExportEdgeToJSON(edge_hash, edge_point_set)
+                str_to_write += export_edgedata_to_json(edge_hash, edge_point_set)
                 # create the file
                 edge_full_path = os.path.join(self._path, edge_hash + '.json')
                 with open(edge_full_path, "w") as edge_file:
@@ -473,10 +465,10 @@ class ThreejsRenderer(object):
                 # store this edge hash
                 self._edges_hash.append(edge_hash)
 
-    def GenerateHTMLFile(self):
+    def generate_html_file(self):
         """ Generate the HTML file to be rendered by the web browser
         """
-        global BODY_Part0
+        global BODY_PART0
         # loop over shapes to generate html shapes stuff
         # the following line is a list that will help generating the string
         # using "".join()
@@ -514,7 +506,7 @@ class ThreejsRenderer(object):
         for edge_id in self._edges_hash:
             edge_string_list.append("\tloader.load('%s.json', function(geometry) {\n" % edge_id)
             edge_string_list.append("\tline_material = new THREE.LineBasicMaterial({color: 0x000000, linewidth: 2});\n")
-            edge_string_list.append("\tline = new THREE.LineSegments(geometry, line_material);\n")
+            edge_string_list.append("\tline = new THREE.Line(geometry, line_material);\n")
         # add mesh to scene
             edge_string_list.append("\tscene.add(line);\n")
             edge_string_list.append("\t});\n")
@@ -525,27 +517,28 @@ class ThreejsRenderer(object):
             # header
             fp.write(HTMLHeader().get_str())
             # body
-            BODY_Part0 = BODY_Part0.replace('@VERSION@', OCC_VERSION)
-            fp.write(BODY_Part0)
+            BODY_PART0 = BODY_PART0.replace('@VERSION@', OCC_VERSION)
+            fp.write(BODY_PART0)
             fp.write(HTMLBody_Part1().get_str())
             fp.write("".join(shape_string_list))
             fp.write("".join(edge_string_list))
             # then write header part 2
-            fp.write(BODY_Part2)
+            fp.write(BODY_PART2)
             fp.write("</html>\n")
 
     def render(self, server_port=8080, open_webbrowser=False):
         ''' render the scene into the browser.
         '''
         # generate HTML file
-        self.GenerateHTMLFile()
+        self.generate_html_file()
         # then create a simple web server
         start_server(server_port, self._path, open_webbrowser)
 
 if __name__ == "__main__":
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
     from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
-    from OCC.Core.gp import gp_Trsf, gp_Vec
+    from OCC.Core.gp import gp_Trsf
+    import time
     def translate_shp(shp, vec, copy=False):
         trns = gp_Trsf()
         trns.SetTranslation(vec)
@@ -556,6 +549,9 @@ if __name__ == "__main__":
     torus = BRepPrimAPI_MakeTorus(300., 105).Shape()
     t_torus = translate_shp(torus, gp_Vec(700, 0, 0))
     my_ren = ThreejsRenderer()
-    my_ren.DisplayShape(box)
-    my_ren.DisplayShape(t_torus)
+    init_time = time.time()
+    my_ren.DisplayShape(box, export_edges=True)
+    my_ren.DisplayShape(t_torus, export_edges=True)
+    final_time = time.time()
+    print("\nTotal meshing time : ", final_time - init_time)
     my_ren.render()
