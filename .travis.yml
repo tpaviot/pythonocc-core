@@ -98,7 +98,7 @@ before_install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   # install everything required to build the receipe
-  - conda install conda-build
+  - conda install conda-build==3.2.0
   - conda install anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
