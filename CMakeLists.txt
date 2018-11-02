@@ -84,13 +84,8 @@ endif(MINGW)
 # MACOSX_DEPLOYEMENT_TARGET
 # explicit link to libc++ for recent osx versions
 if(APPLE)
-  if(DEFINED ENV{MACOSX_DEPLOYMENT_TARGET})
-    message(STATUS "MACOSX_DEPLOYMENT_TARGET set to: " $ENV{MACOSX_DEPLOYMENT_TARGET})
-    if($ENV{MACOSX_DEPLOYMENT_TARGET} MATCHES "10.9")
-        message(STATUS "Link to libc++")
-        add_definitions(-stdlib=libc++)
-    endif($ENV{MACOSX_DEPLOYMENT_TARGET} MATCHES "10.9")
-  endif(DEFINED ENV{MACOSX_DEPLOYMENT_TARGET})
+  message(STATUS "Explicitely link to libc++ on modern osx versions")
+  add_definitions(-stdlib=libc++)
 endif(APPLE)
 
 ########
