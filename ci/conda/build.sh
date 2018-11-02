@@ -30,14 +30,9 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=$PREFIX \
 # gcc gets out of memory
 ninja -j 6 install
 
-# copy the source
-#mkdir -p $PREFIX/src
-#mkdir -p $PREFIX/src/pythonocc-core
-#cp -r src $PREFIX/src/pythonocc-core
-
 # fix rpaths
-if [ `uname` == Darwin ]; then
-    for lib in `ls $SP_DIR/OCC/_*.so`; do
-      install_name_tool -rpath $PREFIX/lib @loader_path/../../../ $lib
-    done
-fi
+#if [ `uname` == Darwin ]; then
+#    for lib in `ls $SP_DIR/OCC/_*.so`; do
+#      install_name_tool -rpath $PREFIX/lib @loader_path/../../../ $lib
+#    done
+#fi

@@ -39,7 +39,7 @@ if(APPLE)
   set(CMAKE_MACOSX_RPATH ON)
   set(CMAKE_SKIP_BUILD_RPATH FALSE)
   set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
-  set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+  set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib;@loader_path/../../../")
   set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 endif(APPLE)
 
@@ -84,13 +84,8 @@ endif(MINGW)
 # MACOSX_DEPLOYEMENT_TARGET
 # explicit link to libc++ for recent osx versions
 if(APPLE)
-  if(DEFINED ENV{MACOSX_DEPLOYMENT_TARGET})
-    message(STATUS "MACOSX_DEPLOYMENT_TARGET set to: " $ENV{MACOSX_DEPLOYMENT_TARGET})
-    if($ENV{MACOSX_DEPLOYMENT_TARGET} MATCHES "10.9")
-        message(STATUS "Link to libc++")
-        add_definitions(-stdlib=libc++)
-    endif($ENV{MACOSX_DEPLOYMENT_TARGET} MATCHES "10.9")
-  endif(DEFINED ENV{MACOSX_DEPLOYMENT_TARGET})
+  message(STATUS "Explicitely link to libc++ on modern osx versions")
+  add_definitions(-stdlib=libc++)
 endif(APPLE)
 
 ########

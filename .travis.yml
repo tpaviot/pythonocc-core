@@ -42,29 +42,27 @@ matrix:
     - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
       os: linux
       dist: trusty
-    - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET="10.9"
+    - env: PYTHON="2.7" CONDA_PY=27 ARCH="x86_64"
       os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.4
     - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: linux
       dist: trusty
-    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET="10.9"
+    - env: PYTHON="3.5" CONDA_PY=35 ARCH="x86_64"
       os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.4
     - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
       os: linux
       dist: trusty
-    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET="10.9"
+    - env: PYTHON="3.6" CONDA_PY=36 ARCH="x86_64"
       os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.4
     - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
       os: linux
       dist: trusty
-    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64" MACOSX_DEPLOYMENT_TARGET="10.9"
+    - env: PYTHON="3.7" CONDA_PY=37 ARCH="x86_64"
       os: osx
-      osx_image: xcode8.3
-  allow_failures:
-    - os: osx
+      osx_image: xcode9.4
 
 # Use miniconda to install binary versions of numpy etc. from continuum
 # analytic's repository. Follows an approach described by Dan Blanchard:
@@ -98,7 +96,13 @@ before_install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   # install everything required to build the receipe
-  - conda install conda-build
+  # conda-build 3.2.0 on osx to prevent using check_overlinking
+  # method which is quite loooong to process
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      conda install conda-build;
+      else
+      conda install conda-build==3.2.0;
+    fi;
   - conda install anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
