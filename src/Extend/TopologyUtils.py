@@ -23,16 +23,16 @@ from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
 from OCC.Core.BRep import BRep_Tool
 from OCC.Core.BRepTools import BRepTools_WireExplorer
 from OCC.Core.TopAbs import (TopAbs_VERTEX, TopAbs_EDGE, TopAbs_FACE, TopAbs_WIRE,
-                        TopAbs_SHELL, TopAbs_SOLID, TopAbs_COMPOUND,
-                        TopAbs_COMPSOLID)
+                             TopAbs_SHELL, TopAbs_SOLID, TopAbs_COMPOUND,
+                             TopAbs_COMPSOLID)
 from OCC.Core.TopExp import TopExp_Explorer, topexp_MapShapesAndAncestors
 from OCC.Core.TopTools import (TopTools_ListOfShape,
-                          TopTools_ListIteratorOfListOfShape,
-                          TopTools_IndexedDataMapOfShapeListOfShape)
+                               TopTools_ListIteratorOfListOfShape,
+                               TopTools_IndexedDataMapOfShapeListOfShape)
 from OCC.Core.TopoDS import (topods, TopoDS_Wire, TopoDS_Vertex, TopoDS_Edge,
-                        TopoDS_Face, TopoDS_Shell, TopoDS_Solid,
-                        TopoDS_Compound, TopoDS_CompSolid, topods_Edge,
-                        topods_Vertex, TopoDS_Iterator)
+                             TopoDS_Face, TopoDS_Shell, TopoDS_Solid,
+                             TopoDS_Compound, TopoDS_CompSolid, topods_Edge,
+                             topods_Vertex, TopoDS_Iterator)
 
 
 class WireExplorer(object):
@@ -488,9 +488,9 @@ def dump_topology_to_string(shape, level=0, buffer=""):
     s = shape.ShapeType()
     if s == TopAbs_VERTEX:
         pnt = brt.Pnt(topods_Vertex(shape))
-        print( ".." * level  + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z()))
+        print(".." * level  + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z()))
     else:
-        print(".." * level, end ="")
+        print(".." * level, end="")
         print(shape_type_string(shape))
     it = TopoDS_Iterator(shape)
     while it.More() and level < 5:  # LEVEL MAX
