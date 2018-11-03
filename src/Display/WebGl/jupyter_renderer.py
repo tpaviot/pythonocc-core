@@ -30,7 +30,10 @@ try:
     from ipywidgets import HTML, HBox
     import numpy as np
 except ImportError:
-    print("Error You must install pythreejs/ipywidegets/numpy to run the jupyter notebook renderer")
+    error_log = """ Error You must install pythreejs/ipywidgets/numpy to run the jupyter notebook renderer.
+If you installed pythonocc using conda, just type :
+$ conda install -c conda-forge pythreejs"""
+    print(error_log)
     sys.exit(0)
 
 from OCC.Core.Bnd import Bnd_Box
