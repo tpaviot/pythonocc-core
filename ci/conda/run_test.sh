@@ -1,9 +1,7 @@
 cd ../work/test
 python run_tests.py
+python core_webgl_unittest.py
 if [ `uname` == Linux ]; then
-    # run those tests only on linux because
-    # it takes too long on travis osx
-    python core_webgl_unittest.py
     # start xvfb
     export DISPLAY=:99.0
     sh -e /etc/init.d/xvfb start
