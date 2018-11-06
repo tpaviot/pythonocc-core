@@ -269,12 +269,7 @@ endforeach(OCE_MODULE)
 # Visualisation #
 #################
 if(PYTHONOCC_WRAP_VISU)
-    if (NOT APPLE)
-        find_package(OpenGL REQUIRED)
-    else (NOT APPLE)
-        set(OPENGL_INCLUDE_DIR /usr/X11R6/include/)
-        set(OPENGL_LIBRARIES /usr/X11R6/lib/libGL.dylib /usr/X11R6/lib/libGLU.dylib)
-    endif(NOT APPLE)
+    find_package(OpenGL REQUIRED)
     include_directories(OPENGL_INCLUDE_DIR)
   foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
