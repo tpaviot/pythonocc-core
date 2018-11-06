@@ -27,7 +27,8 @@ from OCC.Core.gp import gp_Vec
 from OCC.Core.Visualization import Tesselator
 from OCC import VERSION as OCC_VERSION
 
-from .simple_server import start_server
+from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
+from OCC.Display.WebGl.simple_server import start_server
 
 THREEJS_RELEASE = "r98"
 
@@ -406,7 +407,7 @@ class ThreejsRenderer(object):
             self._path = path
         self._html_filename = os.path.join(self._path, "index.html")
         self._3js_shapes = {}
-        self._edges_hash = []
+        self._3js_edges = {}
         self.spinning_cursor = spinning_cursor()
         print("## threejs %s webgl renderer" % THREEJS_RELEASE)
 
@@ -420,7 +421,29 @@ class ThreejsRenderer(object):
                      line_color=(0, 0., 0.),
                      line_width=2.,
                      mesh_quality=1.):
-        # create the shape hash
+        # if the shape is an edge or a wire, use the related functions
+        if is_edge(shape):
+            print("discretize an edge")
+            pnts = discretize_edge(shape)
+            edge_hash = "edg%s" % uuid.uuid4().hex
+            str_to_write = export_edgedata_to_json(edge_hash, pnts)
+            edge_full_path = os.path.join(self._path, edge_hash + '.json')
+            with open(edge_full_path, "w") as edge_file:
+                edge_file.write(str_to_write)
+            # store this edge hash
+            self._3js_edges[edge_hash] = [color, line_width]
+            return True
+        elif is_wire(shape):
+            print("discretize a wire")
+            pnts = discretize_wire(shape)
+            wire_hash = "wir%s" % uuid.uuid4().hex
+            str_to_write = export_edgedata_to_json(wire_hash, pnts)
+            wire_full_path = os.path.join(self._path, wire_hash + '.json')
+            with open(wire_full_path, "w") as wire_file:
+                edge_file.write(str_to_write)
+            # store this edge hash
+            self._3js_edges[edge_hash] = [color, line_width]
+            return True
         shape_uuid = uuid.uuid4().hex
         shape_hash = "shp%s" % shape_uuid
         # tesselate
@@ -462,8 +485,8 @@ class ThreejsRenderer(object):
                 edge_full_path = os.path.join(self._path, edge_hash + '.json')
                 with open(edge_full_path, "w") as edge_file:
                     edge_file.write(str_to_write)
-                # store this edge hash
-                self._edges_hash.append(edge_hash)
+                # store this edge hash, with black color
+                self._3js_edges[hash] = [(0, 0, 0), line_width]
 
     def generate_html_file(self):
         """ Generate the HTML file to be rendered by the web browser
@@ -503,9 +526,10 @@ class ThreejsRenderer(object):
             shape_idx += 1
         # Process edges
         edge_string_list = []
-        for edge_id in self._edges_hash:
-            edge_string_list.append("\tloader.load('%s.json', function(geometry) {\n" % edge_id)
-            edge_string_list.append("\tline_material = new THREE.LineBasicMaterial({color: 0x000000, linewidth: 2});\n")
+        for edge_hash in self._3js_edges:
+            color, line_width = self._3js_edges[edge_hash]
+            edge_string_list.append("\tloader.load('%s.json', function(geometry) {\n" % edge_hash)
+            edge_string_list.append("\tline_material = new THREE.LineBasicMaterial({color: %s, linewidth: %s});\n" % ((color_to_hex(color), line_width)))
             edge_string_list.append("\tline = new THREE.Line(geometry, line_material);\n")
         # add mesh to scene
             edge_string_list.append("\tscene.add(line);\n")
