@@ -23,16 +23,17 @@ from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
 from OCC.Core.BRep import BRep_Tool
 from OCC.Core.BRepTools import BRepTools_WireExplorer
 from OCC.Core.TopAbs import (TopAbs_VERTEX, TopAbs_EDGE, TopAbs_FACE, TopAbs_WIRE,
-                        TopAbs_SHELL, TopAbs_SOLID, TopAbs_COMPOUND,
-                        TopAbs_COMPSOLID)
+                             TopAbs_SHELL, TopAbs_SOLID, TopAbs_COMPOUND,
+                             TopAbs_COMPSOLID)
 from OCC.Core.TopExp import TopExp_Explorer, topexp_MapShapesAndAncestors
 from OCC.Core.TopTools import (TopTools_ListOfShape,
-                          TopTools_ListIteratorOfListOfShape,
-                          TopTools_IndexedDataMapOfShapeListOfShape)
+                               TopTools_ListIteratorOfListOfShape,
+                               TopTools_IndexedDataMapOfShapeListOfShape)
 from OCC.Core.TopoDS import (topods, TopoDS_Wire, TopoDS_Vertex, TopoDS_Edge,
-                        TopoDS_Face, TopoDS_Shell, TopoDS_Solid,
-                        TopoDS_Compound, TopoDS_CompSolid, topods_Edge,
-                        topods_Vertex, TopoDS_Iterator)
+                             TopoDS_Face, TopoDS_Shell, TopoDS_Solid,
+                             TopoDS_Compound, TopoDS_CompSolid, topods_Edge,
+                             topods_Vertex, TopoDS_Iterator)
+from OCC.Core.GCPnts import GCPnts_UniformAbscissa
 
 
 class WireExplorer(object):
@@ -488,9 +489,9 @@ def dump_topology_to_string(shape, level=0, buffer=""):
     s = shape.ShapeType()
     if s == TopAbs_VERTEX:
         pnt = brt.Pnt(topods_Vertex(shape))
-        print( ".." * level  + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z()))
+        print(".." * level  + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z()))
     else:
-        print(".." * level, end ="")
+        print(".." * level, end="")
         print(shape_type_string(shape))
     it = TopoDS_Iterator(shape)
     while it.More() and level < 5:  # LEVEL MAX
@@ -498,7 +499,69 @@ def dump_topology_to_string(shape, level=0, buffer=""):
         it.Next()
         print(dump_topology_to_string(shp, level + 1, buffer))
 
+#
+# Edge and wire discretizers
+#
 
+def discretize_wire(a_topods_wire):
+    """ Returns a set of points
+    """
+    if not is_wire(a_topods_wire):
+        raise AssertionError("You must provide a TopoDS_Wire to the discretize_wire function.")
+    wire_explorer = WireExplorer(a_topods_wire)
+    wire_pnts = []
+    # loop over ordered edges
+    for edg in wire_explorer.ordered_edges():
+        edg_pnts = discretize_edge(edg)
+        wire_pnts += edg_pnts
+    return wire_pnts
+
+
+def discretize_edge(a_topods_edge, deflection=0.5):
+    """ Take a TopoDS_Edge and returns a list of points
+    The more deflection is small, the more the discretization is precise,
+    i.e. the more points you get in the returned points
+    """
+    if not is_edge(a_topods_edge):
+        raise AssertionError("You must provide a TopoDS_Edge to the discretize_edge function.")
+    edg = topods_Edge(a_topods_edge)
+    if edg.IsNull():
+        print("Warning : TopoDS_Edge is null. discretize_edge will return an empty list of points.")
+        return []
+    curve_adaptator = BRepAdaptor_Curve(edg)
+    first = curve_adaptator.FirstParameter()
+    last = curve_adaptator.LastParameter()
+    
+    discretizer = GCPnts_UniformAbscissa()
+    discretizer.Initialize(curve_adaptator, deflection, first, last)
+
+    assert discretizer.IsDone ()
+    assert discretizer.NbPoints () > 0
+    
+    points = []
+    for i in range(1, discretizer.NbPoints() + 1):
+        p = curve_adaptator.Value (discretizer.Parameter (i))
+        points.append(p.Coord())
+    return points
+
+def test_discretize_edge():
+    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
+    tor = BRepPrimAPI_MakeTorus(50, 20).Shape()
+    topo = TopologyExplorer(tor)
+    for edge in topo.edges():
+        discretize_edge(edge)
+
+
+def test_discretize_wire():
+    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
+    tor = BRepPrimAPI_MakeTorus(50, 20).Shape()
+    topo = TopologyExplorer(tor)
+    for wire in topo.wires():
+        discretize_wire(wire)
+
+#
+# TopoDS_Shape type utils
+#
 def shape_type_string(shape):
     """ Returns the type and id of any topods_shape
     shape: a TopoDS_Shape
@@ -507,11 +570,52 @@ def shape_type_string(shape):
     the shape id, as a string
     """
     shape_type = shape.ShapeType()
-    types = {TopAbs_VERTEX: "Vertex", TopAbs_SOLID: "Solid", TopAbs_EDGE: "Edge",
-             TopAbs_FACE: "Face", TopAbs_SHELL: "Shell", TopAbs_WIRE: "Wire",
-             TopAbs_COMPOUND: "Compound", TopAbs_COMPSOLID: "Compsolid"}
+    types = {TopAbs_VERTEX: "Vertex",
+             TopAbs_SOLID: "Solid",
+             TopAbs_EDGE: "Edge",
+             TopAbs_FACE: "Face",
+             TopAbs_SHELL: "Shell",
+             TopAbs_WIRE: "Wire",
+             TopAbs_COMPOUND: "Compound",
+             TopAbs_COMPSOLID: "Compsolid"}
     return "%s (id %s)" % (types[shape_type], hash(shape))
 
+
+def is_vertex(topods_shape):
+    return topods_shape.ShapeType() == TopAbs_VERTEX
+
+
+def is_solid(topods_shape):
+    return topods_shape.ShapeType() == TopAbs_SOLID
+
+
+def is_edge(topods_shape):
+    return topods_shape.ShapeType() == TopAbs_EDGE
+
+
+def is_face(topods_shape):
+    return topods_shape.ShapeType() == TopAbs_FACE
+
+
+def is_shell(topods_shape):
+    return topods_shape.ShapeType() == TopAbs_SHELL
+
+
+def is_wire(topods_shape):
+    return topods_shape.ShapeType() == TopAbs_WIRE
+
+
+def is_compound(topods_shape):
+    return topods_shape.ShapeType() == TopAbs_COMPOUND
+
+
+def is_compsolid(topods_shape):
+    return topods_shape.ShapeType() == TopAbs_COMPSOLID
+
+
+#
+# Tests
+#
 
 def get_test_box_shape():
     return BRepPrimAPI_MakeBox(10, 20, 30).Shape()
@@ -519,7 +623,6 @@ def get_test_box_shape():
 
 def get_test_sphere_shape():
     return BRepPrimAPI_MakeSphere(10.).Shape()
-
 
 def test_loop_faces():
     i = 0
@@ -626,7 +729,7 @@ def test_edges_out_of_scope():
     # check pointers going out of scope
     face = next(topo.faces())
     _edges = []
-    for edg in Topo(face).edges():
+    for edg in TopologyExplorer(face).edges():
         _edges.append(edg)
     for edg in _edges:
         assert not edg.IsNull()
@@ -660,3 +763,6 @@ if __name__ == "__main__":
     test_loop_faces()
     test_edges_out_of_scope()
     test_wires_out_of_scope()
+    # tests discretize
+    test_discretize_edge()
+    test_discretize_wire()

@@ -23,10 +23,10 @@ from math import radians
 from OCC.Core.BRepBndLib import brepbndlib_Add
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
-                                BRepBuilderAPI_MakeVertex,
-                                BRepBuilderAPI_MakeWire,
-                                BRepBuilderAPI_MakeFace, BRepBuilderAPI_MakeEdge2d,
-                                BRepBuilderAPI_Transform)
+                                     BRepBuilderAPI_MakeVertex,
+                                     BRepBuilderAPI_MakeWire,
+                                     BRepBuilderAPI_MakeFace, BRepBuilderAPI_MakeEdge2d,
+                                     BRepBuilderAPI_Transform)
 from OCC.Core.BRepFill import BRepFill_Filling
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.GeomAbs import GeomAbs_C0
@@ -40,11 +40,13 @@ def make_edge(*args):
     result = edge.Edge()
     return result
 
+
 def make_edge2d(*args):
     edge = BRepBuilderAPI_MakeEdge2d(*args)
     result = edge.Edge()
     edge.Delete()
     return result
+
 
 def make_vertex(*args):
     vert = BRepBuilderAPI_MakeVertex(*args)
@@ -63,7 +65,7 @@ def make_n_sided(edges, continuity=GeomAbs_C0):
 
 def make_wire(*args):
     # if we get an iterable, than add all edges to wire builder
-    if isinstance(args[0], list) or isinstance(args[0], tuple):
+    if isinstance(args[0], (list, tuple)):
         wire = BRepBuilderAPI_MakeWire()
         for i in args[0]:
             wire.Add(i)
@@ -150,7 +152,7 @@ def get_boundingbox(shape, tol=1e-6, as_vec=False):
     bbox.SetGap(tol)
     brepbndlib_Add(shape, bbox)
     xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
-    if as_vec is False:
+    if not as_vec:
         return xmin, ymin, zmin, xmax, ymax, zmax
     else:
         return gp_Vec(xmin, ymin, zmin), gp_Vec(xmax, ymax, zmax)

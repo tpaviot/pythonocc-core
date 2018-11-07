@@ -20,10 +20,8 @@ import os
 from OCC.Core.TopoDS import TopoDS_Shape
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.Core.StlAPI import StlAPI_Reader, StlAPI_Writer
-
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.TopoDS import TopoDS_Compound
-
 from OCC.Core.IGESControl import IGESControl_Reader, IGESControl_Writer
 from OCC.Core.STEPControl import STEPControl_Reader, STEPControl_Writer, STEPControl_AsIs
 from OCC.Core.Interface import Interface_Static_SetCVal
@@ -41,7 +39,8 @@ def read_step_file(filename, return_as_shapes=False, verbosity=False):
                       else returns a single compound
     verbosity: optionl, False by default.
     """
-    assert os.path.isfile(filename)
+    if not os.path.isfile(filename):
+        raise FileNotFoundError("%s not found." % filename)
 
     step_reader = STEPControl_Reader()
     status = step_reader.ReadFile(filename)
@@ -70,20 +69,24 @@ def write_step_file(a_shape, filename, application_protocol="AP203"):
     application protocol: "AP203" or "AP214"
     """
     # a few checks
-    assert not a_shape.IsNull()
-    assert application_protocol in ["AP203", "AP214IS"]
+    if a_shape.IsNull():
+        raise AssertionError("Shape %s is null." % a_shape)
+    if application_protocol not in ["AP203", "AP214IS"]:
+        raise AssertionError("application_protocol must be either AP203 or AP214IS. You passed %s." % application_protocol)
     if os.path.isfile(filename):
         print("Warning: %s file already exists and will be replaced" % filename)
     # creates and initialise the step exporter
     step_writer = STEPControl_Writer()
-    Interface_Static_SetCVal("write.step.schema", "AP203")
+    Interface_Static_SetCVal("write.step.schema", application_protocol)
 
     # transfer shapes and write file
     step_writer.Transfer(a_shape, STEPControl_AsIs)
     status = step_writer.Write(filename)
 
-    assert status == IFSelect_RetDone
-    assert os.path.isfile(filename)
+    if not status == IFSelect_RetDone:
+        raise AssertionError("Error while writing shape to STEP file.")
+    if not os.path.isfile(filename):
+        raise AssertionError("File %s was not saved to filesystem." % filename)
 
 #########################
 # STL import and export #
@@ -113,7 +116,7 @@ def write_stl_file(a_shape, filename, mode="ascii", linear_deflection=0.9, angul
     else:  # binary, just set the ASCII flag to False
         stl_exporter.SetASCIIMode(False)
     stl_exporter.Write(a_shape, filename)
-    
+
     assert os.path.isfile(filename)
 
 
@@ -159,28 +162,27 @@ def read_iges_file(filename, return_as_shapes=False, verbosity=False):
             if nbs == 0:
                 print("At least one shape in IGES cannot be transfered")
             elif nbr == 1 and nbs == 1:
-                aResShape = iges_reader.Shape(1)
-                if aResShape.IsNull():
+                a_res_shape = iges_reader.Shape(1)
+                if a_res_shape.IsNull():
                     print("At least one shape in IGES cannot be transferred")
                 else:
-                    _shapes.append(aResShape)
+                    _shapes.append(a_res_shape)
             else:
                 for i in range(1, nbs+1):
-                    aShape = iges_reader.Shape(i)
-                    if aShape.IsNull():
+                    a_shape = iges_reader.Shape(i)
+                    if a_shape.IsNull():
                         print("At least one shape in STEP cannot be transferred")
                     else:
-                        _shapes.append(aShape)
+                        _shapes.append(a_shape)
     # if not return as shapes
     # create a compound and store all shapes
-    # TODO
     if not return_as_shapes:
         builder = BRep_Builder()
-        Comp = TopoDS_Compound()
-        builder.MakeCompound(Comp)
+        compound = TopoDS_Compound()
+        builder.MakeCompound(compound)
         for s in _shapes:
-            builder.Add(Comp, s)
-        _shapes=Comp
+            builder.Add(compound, s)
+        _shapes = compound
     return _shapes
 
 def write_iges_file(a_shape, filename):
@@ -203,21 +205,20 @@ def write_iges_file(a_shape, filename):
 
 if __name__ == "__main__":
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
-    b = BRepPrimAPI_MakeSphere(30.).Shape()
-    write_step_file(b, "s_203.stp", application_protocol="AP203")
-    write_step_file(b, "s_214.stp", application_protocol="AP214IS")
-    b2 = read_step_file("s_203.stp")
-    b3 = read_step_file("s_214.stp")
-    b3_bis = read_step_file("s_214.stp", return_as_shapes=True)
-    write_stl_file(b, "s_stl_ascii.stl")
-    write_stl_file(b, "s_stl_binary.stl", mode="binary")
-    b4 = read_stl_file("s_stl_ascii.stl")
-    b5 = read_stl_file("s_stl_binary.stl")
+    sphere_shape = BRepPrimAPI_MakeSphere(30.).Shape()
+    write_step_file(sphere_shape, "s_203.stp", application_protocol="AP203")
+    write_step_file(sphere_shape, "s_214.stp", application_protocol="AP214IS")
+    read_step_file("s_203.stp")
+    read_step_file("s_214.stp")
+    read_step_file("s_214.stp", return_as_shapes=True)
+    write_stl_file(sphere_shape, "s_stl_ascii.stl")
+    write_stl_file(sphere_shape, "s_stl_binary.stl", mode="binary")
+    read_stl_file("s_stl_ascii.stl")
+    read_stl_file("s_stl_binary.stl")
     # improve the precision by a factor 2
-    write_stl_file(b, "s_stl_precise_ascii.stl", linear_deflection=0.1, angular_deflection=0.2)
-    b6 = read_stl_file("s_stl_precise_ascii.stl")
+    write_stl_file(sphere_shape, "s_stl_precise_ascii.stl", linear_deflection=0.1, angular_deflection=0.2)
+    read_stl_file("s_stl_precise_ascii.stl")
     # iges test
-    write_iges_file(b, "s_iges.igs")
-    b7 = read_iges_file("s_iges.igs")
-    print(b7)
-    b8 = read_iges_file("s_iges.igs", return_as_shapes=True)
+    write_iges_file(sphere_shape, "s_iges.igs")
+    read_iges_file("s_iges.igs")
+    read_iges_file("s_iges.igs", return_as_shapes=True)
