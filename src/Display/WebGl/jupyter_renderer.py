@@ -61,7 +61,8 @@ default_selection_material = MeshPhongMaterial(color='orange',
                                                polygonOffset=True,
                                                polygonOffsetFactor=1,
                                                polygonOffsetUnits=1,
-                                               shininess=0.9)
+                                               shininess=0.9,
+                                               side='DoubleSide')
 
 class bounding_box(object):
     """ Representation of the bounding box of the TopoDS_Shape `shape`
@@ -292,7 +293,8 @@ class JupyterRenderer(object):
                                           polygonOffsetFactor=1,
                                           polygonOffsetUnits=1,
                                           shininess=0.5,
-                                          wireframe=False)
+                                          wireframe=False,
+                                          side='DoubleSide')
         edges_material = MeshPhongMaterial(color='black',
                                            polygonOffset=True,
                                            polygonOffsetFactor=1,
@@ -435,7 +437,8 @@ class JupyterRenderer(object):
                                          polygonOffsetUnits=1,
                                          shininess=0.9,
                                          transparent=transparency,
-                                         opacity=opacity)
+                                         opacity=opacity,
+                                         side='DoubleSide')
 
         # create a mesh unique id
         mesh_id = uuid.uuid4().hex
