@@ -34,7 +34,7 @@ from OCC.Core.TopoDS import (topods, TopoDS_Wire, TopoDS_Vertex, TopoDS_Edge,
                              TopoDS_Compound, TopoDS_CompSolid, topods_Edge,
                              topods_Vertex, TopoDS_Iterator)
 from OCC.Core.GCPnts import GCPnts_UniformAbscissa
-
+from OCC.BRepAdaptor import BRepAdaptor_Curve
 
 class WireExplorer(object):
     '''
