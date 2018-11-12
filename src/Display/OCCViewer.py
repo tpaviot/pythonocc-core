@@ -696,9 +696,8 @@ class OffscreenRenderer(Viewer3d):
             import __main__ as main
             calling_script = main.__file__.split(".")[0]  # only the fie without extension
             self.capture_number += 1
-            image_filename = "capture-%s-%i-%s.jpeg" % (calling_script,
-                                                        self.capture_number,
-                                                        timestamp.replace(" ", "-"))
+            image_filename = "capture-%i-%s.jpeg" % (self.capture_number,
+                                                     timestamp.replace(" ", "-"))
             if os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH"):
                 path = os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH")
                 assert os.path.isdir(path)
