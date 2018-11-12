@@ -282,6 +282,8 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
         Interface
         IFSelect
         XSControl
+        Transfer
+        TransferBRep
         )
 
 LIST(APPEND OCE_TOOLKIT_OCAF
