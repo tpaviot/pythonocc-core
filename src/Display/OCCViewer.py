@@ -687,10 +687,10 @@ class OffscreenRenderer(Viewer3d):
         self.display_trihedron()
         self.capture_number = 0
 
-    def DisplayShape(self, shapes, material=None, texture=None, color=None, transparency=None, update=False):
+    def DisplayShape(self, shapes, material=None, texture=None, color=None, transparency=None, update=True):
         # call the "original" DisplayShape method
         r = super(OffscreenRenderer, self).DisplayShape(shapes, material, texture,
-                                                        color, transparency, True)  # always update
+                                                        color, transparency, update)  # always update
         if os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE") == "1":  # dump to jpeg file
             timestamp = ("%f" % time.time()).split(".")[0]
             import __main__ as main
